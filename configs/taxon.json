@@ -1,0 +1,84 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "browsers": [
+        {
+          "label": "NCBI",
+          "title": "NCBI Taxonomy Browser",
+          "url": "http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
+        }
+      ],
+      "build": {
+        "infallible": 1,
+        "method": "archive",
+        "path": "archive",
+        "source_url": "http://build.berkeleybop.org/job/build-ncbitaxon/lastSuccessfulBuild/artifact/*zip*/archive.zip"
+      },
+      "contact": {
+        "email": "frederic.bastian@unil.ch",
+        "github": "fbastian",
+        "label": "Frederic Bastian"
+      },
+      "createdWith": "https://github.com/owlcollab/owltools/",
+      "description": "An ontology representation of the NCBI organismal taxonomy",
+      "domain": "taxonomy",
+      "homepage": "https://github.com/obophenotype/ncbitaxon",
+      "id": "ncbitaxon",
+      "jobs": [
+        {
+          "id": "http://build.berkeleybop.org/job/build-ncbitaxon/",
+          "type": "ReleaseBuild"
+        }
+      ],
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC0 1.0 Universal",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/cc-zero.png",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "page": "http://www.ncbi.nlm.nih.gov/taxonomy",
+      "preferredPrefix": "NCBITaxon",
+      "products": [
+        {
+          "id": "ncbitaxon.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+          "title": "Main release"
+        },
+        {
+          "id": "ncbitaxon.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ncbitaxon.obo",
+          "title": "OBO Format version of Main release"
+        },
+        {
+          "id": "ncbitaxon/subsets/taxslim.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ncbitaxon/subsets/taxslim.owl",
+          "page": "https://github.com/obophenotype/ncbitaxon/blob/master/subsets/README.md",
+          "title": "taxslim"
+        },
+        {
+          "id": "ncbitaxon/subsets/taxslim-disjoint-over-in-taxon.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ncbitaxon/subsets/taxslim-disjoint-over-in-taxon.owl",
+          "page": "https://github.com/obophenotype/ncbitaxon/blob/master/subsets/README.md",
+          "title": "taxslim disjointness axioms"
+        }
+      ],
+      "source": "http://www.ncbi.nlm.nih.gov/taxonomy",
+      "title": "NCBI organismal classification",
+      "tracker": "https://github.com/obophenotype/ncbitaxon/issues",
+      "wasDerivedFrom": "ftp://ftp.ebi.ac.uk/pub/databases/taxonomy/taxonomy.dat"
+    }
+  ]
+}
