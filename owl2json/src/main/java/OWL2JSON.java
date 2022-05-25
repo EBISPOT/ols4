@@ -57,7 +57,12 @@ public class OWL2JSON {
         writer.beginArray();
 
         for(var ontoConfig : config.ontologies) {
-            new OwlTranslator(ontoConfig).write(writer);
+            System.out.println("--- Loading ontology: " + (String)ontoConfig.get("id"));
+            try {
+                new OwlTranslator(ontoConfig).write(writer);
+            } catch(Throwable t) {
+                 t.printStackTrace();
+            }
         }
 
         writer.endArray();
