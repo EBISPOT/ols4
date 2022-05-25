@@ -188,7 +188,11 @@ public class OwlTranslator implements StreamRDF {
 
         if(v.isBlank()) {
             OwlNode c = nodes.get(v.getBlankNodeId().toString());
-            writeNode(writer, c);
+            if(c == null) {
+                writer.value("?");
+            } else {
+                writeNode(writer, c);
+            }
         } else if(v.isURI()) {
             writer.value(v.getURI());
         } else if(v.isLiteral()) {
