@@ -97,7 +97,7 @@ public class JSON2CSV {
         csvHeader.add("config");
         csvHeader.addAll(props);
 
-        String outName = outPath + "/" + (String) ontology.config.get("id") + ".csv";
+        String outName = outPath + "/" + (String) ontology.config.get("id") + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
