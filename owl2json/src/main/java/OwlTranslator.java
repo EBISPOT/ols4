@@ -205,7 +205,7 @@ public class OwlTranslator implements StreamRDF {
                 writer.name("datatype");
                 writer.value(v.getLiteralDatatypeURI());
                 writer.name("value");
-                writer.value(v.getLiteralValue().toString());
+                writer.value(v.getLiteralLexicalForm());
                 if(!v.getLiteralLanguage().equals("")) {
                     writer.name("lang");
                     writer.value(v.getLiteralLanguage());
