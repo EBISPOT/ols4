@@ -10,8 +10,10 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class JSON2CSV {
 
@@ -25,9 +27,18 @@ public class JSON2CSV {
         input.setRequired(true);
         options.addOption(input);
 
-        Option output = new Option(null, "outDir", true, "output CSV folder path");
-        output.setRequired(true);
-        options.addOption(output);
+        Option outOntologies = new Option(null, "out-ontologies", true, "output ontologies CSV filename");
+        outOntologies.setRequired(true);
+        options.addOption(outOntologies);
+
+        Option outClasses = new Option(null, "out-classes", true, "output classes CSV filename");
+        outClasses.setRequired(true);
+        options.addOption(outClasses);
+
+        Option outClassEdges = new Option(null, "out-class-edges", true, "output class edges CSV filename");
+        outClassEdges.setRequired(true);
+        options.addOption(outClassEdges);
+        
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -37,17 +48,27 @@ public class JSON2CSV {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("ols-json2csv", options);
+            formatter.printHelp("json2csv", options);
 
             System.exit(1);
             return;
         }
 
         String inputFilePath = cmd.getOptionValue("input");
-        String outputFilePath = cmd.getOptionValue("outDir");
+        String outOntologiesPath = cmd.getOptionValue("out-ontologies");
+        String outClassesPath = cmd.getOptionValue("out-classes");
+        String outClassEdgesPath = cmd.getOptionValue("out-class-edges");
+
+
+        Set<String> allClassProperties = new HashSet<>();
+        Set<String> allEdgeProperties = new HashSet<>();
+        Set<String> allNodes = new HashSet<>();
+        Set<String> allOntologyProps = new HashSet<>();
+
+        /// 1. populate sets
+        ///
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
-
         reader.beginObject();
 
         while(reader.peek() != JsonToken.END_OBJECT) {
@@ -61,15 +82,9 @@ public class JSON2CSV {
                 while(reader.peek() != JsonToken.END_ARRAY) {
                     JsonOntology ontology = gson.fromJson(reader, JsonOntology.class);
 
-                    NodesAndPropertiesExtractor.Result nodesAndProps =
-                            NodesAndPropertiesExtractor.extractNodesAndProperties(ontology);
+                    allOntologyProps.addAll(ontology.properties.keySet());
 
-                    //EdgesExtractor.Result edges =
-                    //EdgesExtractor.extractEdges(ontology, nodesAndProps);
-
-                    writeOntology(ontology, outputFilePath);
-                    writeClasses(ontology, outputFilePath, nodesAndProps);
-                    writeClassEdges(ontology, outputFilePath, nodesAndProps);
+                    NodesAndPropertiesExtractor.extractNodesAndProperties(ontology, allClassProperties, allEdgeProperties, allNodes);
                 }
 
                 reader.endArray();
@@ -80,27 +95,84 @@ public class JSON2CSV {
 
             }
         }
-
         reader.endObject();
         reader.close();
+
+
+        /// 2. write ontologies
+        ///
+
+        List<String> ontologiesCsvHeader = new ArrayList<>();
+        ontologiesCsvHeader.add("ontology_id");
+        ontologiesCsvHeader.add("config");
+        ontologiesCsvHeader.addAll(allOntologyProps);
+
+        CSVPrinter ontologiesPrinter = CSVFormat.POSTGRESQL_CSV.withHeader(ontologiesCsvHeader.toArray(new String[0])).print(
+                new File(outOntologiesPath), Charset.defaultCharset());
+
+        List<String> classesCsvHeader = new ArrayList<>();
+        classesCsvHeader.add("id");
+        classesCsvHeader.add("ontology_id");
+        classesCsvHeader.add("uri");
+        classesCsvHeader.addAll(allClassProperties);
+
+        CSVPrinter classesPrinter = CSVFormat.POSTGRESQL_CSV.withHeader(classesCsvHeader.toArray(new String[0])).print(
+                new File(outClassesPath), Charset.defaultCharset());
+
+        List<String> edgesCsvHeader = new ArrayList<>();
+        edgesCsvHeader.add("a");
+        edgesCsvHeader.add("predicate");
+        edgesCsvHeader.add("b");
+        edgesCsvHeader.addAll(allEdgeProperties);
+
+        CSVPrinter edgesPrinter = CSVFormat.POSTGRESQL_CSV.withHeader(edgesCsvHeader.toArray(new String[0])).print(
+                new File(outClassEdgesPath), Charset.defaultCharset());
+        
+
+        reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
+        reader.beginObject();
+
+        while(reader.peek() != JsonToken.END_OBJECT) {
+
+            String name = reader.nextName();
+
+            if (name.equals("ontologies")) {
+
+                reader.beginArray();
+
+                while(reader.peek() != JsonToken.END_ARRAY) {
+                    JsonOntology ontology = gson.fromJson(reader, JsonOntology.class);
+
+                    writeOntology(ontologiesCsvHeader, ontologiesPrinter, ontology);
+                    writeClasses(classesCsvHeader, classesPrinter, ontology);
+                    writeClassEdges(edgesCsvHeader, edgesPrinter, ontology, allNodes);
+                }
+
+                reader.endArray();
+
+            } else {
+
+                reader.skipValue();
+
+            }
+        }
+        reader.endObject();
+        reader.close();
+
+        ontologiesPrinter.close(true);
+        classesPrinter.close(true);
+        edgesPrinter.close(true);
+
+
     }
 
-    public static void writeOntology(JsonOntology ontology, String outPath) throws IOException {
-
-        List<String> props = new ArrayList<>(ontology.properties.keySet());
-
-        List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("ontology_id");
-        csvHeader.add("config");
-        csvHeader.addAll(props);
-
-        String outName = outPath + "/" + (String) ontology.config.get("id") + ".csv";
-
-        CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
-                new File(outName), Charset.defaultCharset());
+    public static void writeOntology(
+        List<String> ontologiesCsvHeader,
+        CSVPrinter ontologiesPrinter,
+        JsonOntology ontology) throws IOException {
 
         List<String> row = new ArrayList<>();
-        for (String column : csvHeader) {
+        for (String column : ontologiesCsvHeader) {
             if (column.equals("ontology_id")) {
                 row.add((String) ontology.config.get("id"));
                 continue;
@@ -125,31 +197,22 @@ public class JSON2CSV {
             row.add(gson.toJson(value));
         }
 
-        printer.printRecord(row.toArray());
-        printer.close(true);
+        ontologiesPrinter.printRecord(row.toArray());
     }
 
-    public static void writeClasses(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeClasses(
+        List<String> classesCsvHeader,
+        CSVPrinter classesPrinter,
+        JsonOntology ontology) throws IOException {
 
         String id = (String) ontology.config.get("id");
 
-        String outName = outPath + "/" + id + "_classes.csv";
-
-        List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("id");
-        csvHeader.add("ontology_id");
-        csvHeader.add("uri");
-        csvHeader.addAll(nodesAndProps.allClassProperties);
-
-        CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
-                new File(outName), Charset.defaultCharset());
-
         for (Map<String, Object> _class : ontology.classes) {
 
-            String[] row = new String[csvHeader.size()];
+            String[] row = new String[classesCsvHeader.size()];
             int n = 0;
 
-            for (String column : csvHeader) {
+            for (String column : classesCsvHeader) {
                 if (column.equals("id")) {
                     row[n++] = id + "+" + (String) _class.get("uri");
                     continue;
@@ -209,26 +272,18 @@ public class JSON2CSV {
 
             }
 
-            printer.printRecord(row);
+            classesPrinter.printRecord(row);
         }
-
-        printer.close(true);
     }
 
-    public static void writeClassEdges(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeClassEdges(
+        List<String> edgesCsvHeader,
+        CSVPrinter edgesPrinter,
+        JsonOntology ontology,
+        Set<String> allNodes
+        ) throws IOException {
 
-        String ontologyId = (String) ontology.config.get("id");
-
-        String outName = outPath + "/" + ontologyId + "_class_edges.csv";
-
-        List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("a");
-        csvHeader.add("predicate");
-        csvHeader.add("b");
-        csvHeader.addAll(nodesAndProps.allEdgeProperties);
-
-        CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
-                new File(outName), Charset.defaultCharset());
+        String ontologyId = (String)ontology.config.get("id");
 
         for (Map<String, Object> _class : ontology.classes) {
 
@@ -257,13 +312,13 @@ public class JSON2CSV {
                             // axiom
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
-                            if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printClassEdge(printer, csvHeader, ontologyId, _class, predicate, axiomValue, mapValue);
+                            if (allNodes.contains(axiomValue)) {
+                                printClassEdge(edgesPrinter, edgesCsvHeader, ontologyId, _class, predicate, axiomValue, mapValue);
                             }
                         }
                     } else if (v instanceof String) {
-                        if (nodesAndProps.allNodes.contains((String) v)) {
-                            printClassEdge(printer, csvHeader, ontologyId, _class, predicate, v, new HashMap<>());
+                        if (allNodes.contains((String) v)) {
+                            printClassEdge(edgesPrinter, edgesCsvHeader, ontologyId, _class, predicate, v, new HashMap<>());
                         }
                     } else {
                         assert(false);
@@ -273,8 +328,6 @@ public class JSON2CSV {
 
             }
         }
-
-        printer.close(true);
     }
 
 

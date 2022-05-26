@@ -9,6 +9,6 @@ CONFIG_URL=$1
 JSONPATH=$2
 
 java -jar owl2json/target/owl2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSONPATH"
-java -jar json2csv/target/json2csv-1.0-SNAPSHOT.jar --input "$JSONPATH" --outDir out
+java -jar json2csv/target/json2csv-1.0-SNAPSHOT.jar --input "$JSONPATH" --out-ontologies ontologies.csv --out-classes classes.csv --out-class-edges class_edges.csv
 
 

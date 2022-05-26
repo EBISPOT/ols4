@@ -1,44 +1,43 @@
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class NodesAndPropertiesExtractor {
 
-    public static class Result {
-        public Set<String> allClassProperties = new HashSet<>();
-        public Set<String> allEdgeProperties = new HashSet<>();
-        public Set<String> allNodes = new HashSet<>();
-    }
 
-    public static Result extractNodesAndProperties(JsonOntology ontology) {
-
-        Result res = new Result();
+    public static void extractNodesAndProperties(
+        JsonOntology ontology,
+        Set<String> allClassProperties,
+        Set<String> allEdgeProperties,
+        Set<String> allNodes) {
 
         for(Map<String, Object> _class : ontology.classes) {
 
             String uri = (String) _class.get("uri");
-            res.allNodes.add(uri);
+            allNodes.add(uri);
 
             for(String predicate : _class.keySet()) {
 
                 if(predicate.equals("uri"))
                     continue;
 
-                res.allClassProperties.add(predicate);
+                allClassProperties.add(predicate);
 
                 Object value = _class.get(predicate);
 
-                visitValue(predicate, value, res);
+                visitValue(predicate, value, allClassProperties, allEdgeProperties, allNodes);
             }
 
         }
-
-        return res;
-
     }
 
-    private static void visitValue(String predicate, Object value, Result res) {
+    private static void visitValue(
+        String predicate,
+        Object value,
+        Set<String> allClassProperties,
+        Set<String> allEdgeProperties,
+        Set<String> allNodes) {
 
         if(value instanceof String) {
 
@@ -47,7 +46,7 @@ public class NodesAndPropertiesExtractor {
             List<Object> listValue = (List<Object>) value;
 
             for(Object entry : listValue)
-                visitValue(predicate, entry, res);
+                visitValue(predicate, entry, allClassProperties, allEdgeProperties, allNodes);
 
         } else if(value instanceof Map) {
 
@@ -62,7 +61,7 @@ public class NodesAndPropertiesExtractor {
                 // for predicates used in reification we store it twice, one with the value and no axiom metadata
                 // so that it can be queried directly, and then again with the metadata as json in an axiom+ field
                 //
-                res.allClassProperties.add("axiom+" + predicate);
+                allClassProperties.add("axiom+" + predicate);
 
                 // predicates used to describe the edge itself
                 for(String edgePredicate : mapValue.keySet()) {
@@ -70,10 +69,10 @@ public class NodesAndPropertiesExtractor {
                     if(edgePredicate.equals("value"))
                         continue;
 
-                    res.allEdgeProperties.add(edgePredicate);
+                    allEdgeProperties.add(edgePredicate);
                 }
 
-                visitValue(predicate, mapValue.get("value"), res);
+                visitValue(predicate, mapValue.get("value"), allClassProperties, allEdgeProperties, allNodes);
 
             } else {
 
