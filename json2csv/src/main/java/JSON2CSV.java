@@ -95,7 +95,7 @@ public class JSON2CSV {
         csvHeader.add("ontologyId:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
-        csvHeader.addAll(props);
+        csvHeader.addAll(replaceNeo4jSpecialChars(props));
 
         String outName = outPath + "/" + (String) ontology.config.get("id") + "_ontologies.csv";
 
@@ -136,15 +136,6 @@ public class JSON2CSV {
         printer.close(true);
     }
 
-    public static Set<String> replaceNeo4jSpecialChars(Set<String> uris) {
-        Set<String> newUris = new HashSet<>();
-
-        for(String uri : uris) {
-            newUris.add(uri.replace(":", "+"));
-        }
-
-        return newUris;
-    }
 
     public static void writeClasses(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
@@ -337,6 +328,16 @@ public class JSON2CSV {
         }
 
         printer.printRecord(row);
+    }
+
+    public static Set<String> replaceNeo4jSpecialChars(Set<String> uris) {
+        Set<String> newUris = new HashSet<>();
+
+        for(String uri : uris) {
+            newUris.add(uri.replace(":", "+"));
+        }
+
+        return newUris;
     }
 }
 
