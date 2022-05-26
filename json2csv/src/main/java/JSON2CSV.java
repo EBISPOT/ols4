@@ -190,12 +190,18 @@ public class JSON2CSV {
 
                 if(value instanceof Map) {
 
+                    // axiom, but we are writing the value itself as a property directly
+                    // in this case; the rest of the axiom properties go in the axiom+ field
+
                     Map<String, Object> mapValue = (Map<String, Object>) value;
 
                     if(mapValue.containsKey("value")) {
                         Object val = mapValue.get("value");
-                        assert(val instanceof String);
-                        row[n++] = (String) val;
+                        if(val instanceof String) {
+                            row[n++] = (String) val;
+                        } else {
+                            row[n++] = gson.toJson(value);
+                        }
                     } else {
                         row[n++] = gson.toJson(value);
                     }
