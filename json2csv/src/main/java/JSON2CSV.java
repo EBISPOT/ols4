@@ -89,13 +89,11 @@ public class JSON2CSV {
 
     public static void writeOntology(JsonOntology ontology, String outPath) throws IOException {
 
-        List<String> props = new ArrayList<>(ontology.properties.keySet());
-
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("ontologyId:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
-        csvHeader.addAll(replaceNeo4jSpecialChars(props));
+        csvHeader.addAll(replaceNeo4jSpecialChars(ontology.properties.keySet()));
 
         String outName = outPath + "/" + (String) ontology.config.get("id") + "_ontologies.csv";
 
