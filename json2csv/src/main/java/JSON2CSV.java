@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 public class JSON2CSV {
 
@@ -90,7 +92,8 @@ public class JSON2CSV {
         List<String> props = new ArrayList<>(ontology.properties.keySet());
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("ontology_id");
+        csvHeader.add("ontologyId:ID");
+        csvHeader.add(":LABEL");
         csvHeader.add("config");
         csvHeader.addAll(props);
 
@@ -101,8 +104,12 @@ public class JSON2CSV {
 
         List<String> row = new ArrayList<>();
         for (String column : csvHeader) {
-            if (column.equals("ontology_id")) {
+            if (column.equals("ontologyId:ID")) {
                 row.add((String) ontology.config.get("id"));
+                continue;
+            }
+            if (column.equals(":LABEL")) {
+                row.add("Ontology");
                 continue;
             }
             if (column.equals("config")) {
@@ -129,6 +136,16 @@ public class JSON2CSV {
         printer.close(true);
     }
 
+    public static Set<String> replaceNeo4jSpecialChars(Set<String> uris) {
+        Set<String> newUris = new HashSet<>();
+
+        for(String uri : uris) {
+            newUris.add(uri.replace(":", "+"));
+        }
+
+        return newUris;
+    }
+
     public static void writeClasses(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
         String id = (String) ontology.config.get("id");
@@ -136,10 +153,11 @@ public class JSON2CSV {
         String outName = outPath + "/" + id + "_classes.csv";
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("id");
+        csvHeader.add("classId:ID");
+        csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(nodesAndProps.allClassProperties);
+        csvHeader.addAll(replaceNeo4jSpecialChars(nodesAndProps.allClassProperties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -150,8 +168,12 @@ public class JSON2CSV {
             int n = 0;
 
             for (String column : csvHeader) {
-                if (column.equals("id")) {
+                if (column.equals("classId:ID")) {
                     row[n++] = id + "+" + (String) _class.get("uri");
+                    continue;
+                }
+                if (column.equals(":LABEL")) {
+                    row[n++] = "OwlClass";
                     continue;
                 }
                 if (column.equals("ontology_id")) {
@@ -222,10 +244,10 @@ public class JSON2CSV {
         String outName = outPath + "/" + ontologyId + "_class_edges.csv";
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("a");
-        csvHeader.add("predicate");
-        csvHeader.add("b");
-        csvHeader.addAll(nodesAndProps.allEdgeProperties);
+        csvHeader.add(":START_ID");
+        csvHeader.add(":TYPE");
+        csvHeader.add(":END_ID");
+        csvHeader.addAll(replaceNeo4jSpecialChars(nodesAndProps.allEdgeProperties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -284,15 +306,15 @@ public class JSON2CSV {
         int n = 0;
 
         for (String column : csvHeader) {
-            if (column.equals("a")) {
+            if (column.equals(":START_ID")) {
                 row[n++] = ontologyId + "+" + (String) a.get("uri");
                 continue;
             }
-            if (column.equals("predicate")) {
+            if (column.equals(":TYPE")) {
                 row[n++] = predicate;
                 continue;
             }
-            if (column.equals("b")) {
+            if (column.equals(":END_ID")) {
                 row[n++] = ontologyId + "+" + (String) bUri;
                 continue;
             }
