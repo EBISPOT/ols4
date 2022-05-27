@@ -89,48 +89,44 @@ public class JSON2CSV {
 
     public static void writeOntology(JsonOntology ontology, String outPath) throws IOException {
 
+        List<String> properties = new ArrayList<String>(ontology.properties.keySet());
+
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("ontologyId:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
-        csvHeader.addAll(replaceNeo4jSpecialChars(ontology.properties.keySet()));
+        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
 
         String outName = outPath + "/" + (String) ontology.config.get("id") + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        List<String> row = new ArrayList<>();
-        for (String column : csvHeader) {
-            if (column.equals("ontologyId:ID")) {
-                row.add((String) ontology.config.get("id"));
-                continue;
-            }
-            if (column.equals(":LABEL")) {
-                row.add("Ontology");
-                continue;
-            }
-            if (column.equals("config")) {
-                row.add(gson.toJson(ontology.config));
-                continue;
-            }
+        String[] row = new String[csvHeader.size()];
+        int n = 0;
 
-            Object value = ontology.properties.get(unreplaceNeo4jSpecialChars(column));
+        row[n++] = (String) ontology.config.get("id");
+        row[n++] = "Ontology";
+        row[n++] = gson.toJson(ontology.config);
+
+        for (String column : properties) {
+
+            Object value = ontology.properties.get(column);
 
             if (value == null) {
-                row.add("");
+                row[n++] = "";
                 continue;
             }
 
             if (value instanceof String) {
-                row.add((String) value);
+                row[n++] = (String)value;
                 continue;
             }
 
-            row.add(gson.toJson(value));
+            row[n++] = gson.toJson(value);
         }
 
-        printer.printRecord(row.toArray());
+        printer.printRecord(row);
         printer.close(true);
     }
 
@@ -141,12 +137,14 @@ public class JSON2CSV {
 
         String outName = outPath + "/" + id + "_classes.csv";
 
+        List<String> properties = new ArrayList<String>(nodesAndProps.allClassProperties);
+
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("classId:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(replaceNeo4jSpecialChars(nodesAndProps.allClassProperties));
+        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -156,27 +154,16 @@ public class JSON2CSV {
             String[] row = new String[csvHeader.size()];
             int n = 0;
 
-            for (String column : csvHeader) {
-                if (column.equals("classId:ID")) {
-                    row[n++] = id + "+" + (String) _class.get("uri");
-                    continue;
-                }
-                if (column.equals(":LABEL")) {
-                    row[n++] = "OwlClass";
-                    continue;
-                }
-                if (column.equals("ontology_id")) {
-                    row[n++] = id;
-                    continue;
-                }
-                if (column.equals("uri")) {
-                    row[n++] = (String) _class.get("uri");
-                    continue;
-                }
+            row[n++] = id + "+" + (String) _class.get("uri");
+            row[n++] = "OwlClass";
+            row[n++] = id;
+            row[n++] = (String) _class.get("uri");
+
+            for (String column : properties) {
 
                 if(column.startsWith("axiom+")) {
 
-                    Object value = _class.get(unreplaceNeo4jSpecialChars(column.substring(6)));
+                    Object value = _class.get(column.substring(6));
 
                     if(value instanceof Map) {
                         row[n++] = gson.toJson(value);
@@ -187,7 +174,7 @@ public class JSON2CSV {
                     continue;
                 }
 
-                Object value = _class.get(unreplaceNeo4jSpecialChars(column));
+                Object value = _class.get(column);
 
                 if (value == null) {
                     row[n++] = "";
@@ -232,11 +219,13 @@ public class JSON2CSV {
 
         String outName = outPath + "/" + ontologyId + "_class_edges.csv";
 
+        List<String> properties = new ArrayList<String>(nodesAndProps.allEdgeProperties);
+
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add(":START_ID");
         csvHeader.add(":TYPE");
         csvHeader.add(":END_ID");
-        csvHeader.addAll(replaceNeo4jSpecialChars(nodesAndProps.allEdgeProperties));
+        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -248,7 +237,7 @@ public class JSON2CSV {
                 if (predicate.equals("uri"))
                     continue;
 
-                Object value = _class.get(unreplaceNeo4jSpecialChars(predicate));
+                Object value = _class.get(predicate);
 
                 List<Object> values;
 
@@ -269,12 +258,12 @@ public class JSON2CSV {
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
                             if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printClassEdge(printer, csvHeader, ontologyId, _class, predicate, axiomValue, mapValue);
+                                printClassEdge(printer, properties, ontologyId, _class, predicate, axiomValue, mapValue);
                             }
                         }
                     } else if (v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
-                            printClassEdge(printer, csvHeader, ontologyId, _class, predicate, v, new HashMap<>());
+                            printClassEdge(printer, properties, ontologyId, _class, predicate, v, new HashMap<>());
                         }
                     } else {
                         assert(false);
@@ -289,28 +278,20 @@ public class JSON2CSV {
     }
 
 
-    private static void printClassEdge(CSVPrinter printer, List<String> csvHeader, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
+    private static void printClassEdge(CSVPrinter printer, List<String> properties, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
-        String[] row = new String[csvHeader.size()];
+        String[] row = new String[3 + properties.size()];
         int n = 0;
 
-        for (String column : csvHeader) {
-            if (column.equals(":START_ID")) {
-                row[n++] = ontologyId + "+" + (String) a.get("uri");
-                continue;
-            }
-            if (column.equals(":TYPE")) {
-                row[n++] = predicate;
-                continue;
-            }
-            if (column.equals(":END_ID")) {
-                row[n++] = ontologyId + "+" + (String) bUri;
-                continue;
-            }
+        row[n++] = ontologyId + "+" + (String) a.get("uri");
+        row[n++] = predicate;
+        row[n++] = ontologyId + "+" + (String) bUri;
+
+        for (String column : properties) {
 
             // anything else are properties on the edge itself (from axioms)
             //
-            Object val = edgeProps.get(unreplaceNeo4jSpecialChars(column));
+            Object val = edgeProps.get(column);
 
             if (val == null) {
                 row[n++] = "";
@@ -328,19 +309,16 @@ public class JSON2CSV {
         printer.printRecord(row);
     }
 
-    public static Set<String> replaceNeo4jSpecialChars(Set<String> uris) {
-        Set<String> newUris = new HashSet<>();
+    public static List<String> replaceNeo4jSpecialChars(List<String> uris) {
+        List<String> newUris = new ArrayList<>();
 
         for(String uri : uris) {
-            newUris.add(uri.replace("http:", "http+"));
+            newUris.add(uri.replace(":", "+"));
         }
 
         return newUris;
     }
 
-    public static String unreplaceNeo4jSpecialChars(String uri) {
-        return uri.replace("http+", "http:");
-    }
 }
 
 
