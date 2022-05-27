@@ -115,7 +115,7 @@ public class JSON2CSV {
                 continue;
             }
 
-            Object value = ontology.properties.get(column);
+            Object value = ontology.properties.get(unreplaceNeo4jSpecialChars(column));
 
             if (value == null) {
                 row.add("");
@@ -176,7 +176,7 @@ public class JSON2CSV {
 
                 if(column.startsWith("axiom+")) {
 
-                    Object value = _class.get(column.substring(6));
+                    Object value = _class.get(unreplaceNeo4jSpecialChars(column.substring(6)));
 
                     if(value instanceof Map) {
                         row[n++] = gson.toJson(value);
@@ -187,7 +187,7 @@ public class JSON2CSV {
                     continue;
                 }
 
-                Object value = _class.get(column);
+                Object value = _class.get(unreplaceNeo4jSpecialChars(column));
 
                 if (value == null) {
                     row[n++] = "";
@@ -248,7 +248,7 @@ public class JSON2CSV {
                 if (predicate.equals("uri"))
                     continue;
 
-                Object value = _class.get(predicate);
+                Object value = _class.get(unreplaceNeo4jSpecialChars(predicate));
 
                 List<Object> values;
 
@@ -310,7 +310,7 @@ public class JSON2CSV {
 
             // anything else are properties on the edge itself (from axioms)
             //
-            Object val = edgeProps.get(column);
+            Object val = edgeProps.get(unreplaceNeo4jSpecialChars(column));
 
             if (val == null) {
                 row[n++] = "";
@@ -332,10 +332,14 @@ public class JSON2CSV {
         Set<String> newUris = new HashSet<>();
 
         for(String uri : uris) {
-            newUris.add(uri.replace(":", "+"));
+            newUris.add(uri.replace("http:", "http+"));
         }
 
         return newUris;
+    }
+
+    public static String unreplaceNeo4jSpecialChars(String uri) {
+        return uri.replace("http+", "http:");
     }
 }
 
