@@ -48,6 +48,13 @@ public class OwlTranslator implements StreamRDF {
 	ontologyNode.properties.addProperty(
 		"https://github.com/EBISPOT/owl2neo#numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
 
+
+	String now = java.time.LocalDateTime.now().toString();
+
+	ontologyNode.properties.addProperty(
+		"https://github.com/EBISPOT/owl2neo#loaded", NodeFactory.createLiteral(now));
+
+
         long startTime3 = System.nanoTime();
         for(String id : nodes.keySet()) {
             OwlNode c = nodes.get(id);
@@ -438,6 +445,7 @@ public class OwlTranslator implements StreamRDF {
         }
         throw new RuntimeException("unknown node type");
     }
+
 
 
 

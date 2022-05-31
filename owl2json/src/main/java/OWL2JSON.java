@@ -47,7 +47,7 @@ public class OWL2JSON {
                 new InputStreamReader(new URL(configFilePath).openStream())
         );
 
-        Config config = gson.fromJson(reader, Config.class);
+        InputJson config = gson.fromJson(reader, InputJson.class);
 
         JsonWriter writer = new JsonWriter(new FileWriter(outputFilePath));
         writer.setIndent("  ");
@@ -59,7 +59,8 @@ public class OWL2JSON {
         for(var ontoConfig : config.ontologies) {
             System.out.println("--- Loading ontology: " + (String)ontoConfig.get("id"));
             try {
-                new OwlTranslator(ontoConfig).write(writer);
+                OwlTranslator translator = new OwlTranslator(ontoConfig);
+		translator.write(writer);
             } catch(Throwable t) {
                  t.printStackTrace();
             }
