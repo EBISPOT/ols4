@@ -3,8 +3,11 @@ import java.util.Map;
 
 public class JsonOntology {
 
-    public Map<String, Object> config;
-    public Map<String, Object> properties;
+    public Map<String, Object> ontologyConfig;
+    public Map<String, Object> ontologyProperties;
+
     public List<Map<String, Object>> classes;
+    public List<Map<String, Object>> properties;
+    public List<Map<String, Object>> individuals;
 
 }

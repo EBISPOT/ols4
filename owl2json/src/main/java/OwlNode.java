@@ -8,7 +8,7 @@ public class OwlNode {
         ONTOLOGY,
         CLASS,
         PROPERTY,
-        INDIVIDUAL,
+        NAMED_INDIVIDUAL,
         ANNOTATION,
         AXIOM,
         RESTRICTION,
@@ -38,11 +38,15 @@ public class OwlNode {
         public void addProperty(String predicate, Node value) {
             List<Property> props = properties.get(predicate);
             if (props != null) {
-//                for(Property p : props) {
-//                    if(p.predicate.equals(predicate) && p.value.equals(value)) {
-//                        return;
-//                    }
-//                }
+
+		// prevent dupliacte values if same triple appears in multiple owl files
+               for(Property p : props) {
+                   if(p.value.equals(value)) {
+                       return;
+                   }
+               }
+
+
                 props.add(new Property(value));
             } else {
                 props = new ArrayList<>();

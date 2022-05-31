@@ -29,7 +29,7 @@ public class OWL2JSON {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("ols-owl2json", options);
+            formatter.printHelp("owl2json", options);
 
             System.exit(1);
             return;

@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 import org.apache.jena.graph.Node;
+import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.system.StreamRDF;
@@ -16,6 +17,10 @@ public class OwlTranslator implements StreamRDF {
 
     Map<String, Object> config;
     List<String> importUrls = new ArrayList<>();
+
+    int numberOfClasses = 0;
+    int numberOfProperties = 0;
+    int numberOfIndividuals = 0;
 
     OwlTranslator(Map<String, Object> config) {
 
@@ -34,6 +39,14 @@ public class OwlTranslator implements StreamRDF {
 		RDFDataMgr.parse(this, importUrl);
 	}
 
+	ontologyNode.properties.addProperty(
+		"https://github.com/EBISPOT/owl2neo#numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
+
+	ontologyNode.properties.addProperty(
+		"https://github.com/EBISPOT/owl2neo#numberOfProperties", NodeFactory.createLiteral(Integer.toString(numberOfProperties)));
+
+	ontologyNode.properties.addProperty(
+		"https://github.com/EBISPOT/owl2neo#numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
 
         long startTime3 = System.nanoTime();
         for(String id : nodes.keySet()) {
@@ -75,10 +88,10 @@ public class OwlTranslator implements StreamRDF {
 
         writer.beginObject();
 
-        writer.name("config");
+        writer.name("ontologyConfig");
         new Gson().toJson(new Gson().toJsonTree(config).getAsJsonObject(), writer);
 
-        writer.name("properties");
+        writer.name("ontologyProperties");
         writeNode(writer, ontologyNode);
 
         writer.name("classes");
@@ -96,6 +109,42 @@ public class OwlTranslator implements StreamRDF {
         }
 
         writer.endArray();
+
+
+        writer.name("properties");
+        writer.beginArray();
+
+        for(String id : nodes.keySet()) {
+            OwlNode c = nodes.get(id);
+            if (c.uri == null) {
+                // don't print bnodes at top level
+                continue;
+            }
+            if (c.type == OwlNode.NodeType.PROPERTY) {
+                writeNode(writer, c);
+            }
+        }
+
+        writer.endArray();
+
+
+        writer.name("individuals");
+        writer.beginArray();
+
+        for(String id : nodes.keySet()) {
+            OwlNode c = nodes.get(id);
+            if (c.uri == null) {
+                // don't print bnodes at top level
+                continue;
+            }
+            if (c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
+                writeNode(writer, c);
+            }
+        }
+
+        writer.endArray();
+
+
         writer.endObject();
 
     }
@@ -320,6 +369,7 @@ public class OwlTranslator implements StreamRDF {
     public void handleType(OwlNode subjNode, Node type) {
 
         switch (type.getURI()) {
+
             case "http://www.w3.org/2002/07/owl#Ontology":
 
 		subjNode.type = OwlNode.NodeType.ONTOLOGY;
@@ -329,12 +379,28 @@ public class OwlTranslator implements StreamRDF {
 		}
 
                 break;
+
             case "http://www.w3.org/2002/07/owl#Class":
                 subjNode.type = OwlNode.NodeType.CLASS;
+		++ numberOfClasses;
                 break;
+
+            case "http://www.w3.org/2002/07/owl#AnnotationProperty":
+            case "http://www.w3.org/2002/07/owl#ObjectProperty":
+            case "http://www.w3.org/2002/07/owl#DatatypeProperty":
+                subjNode.type = OwlNode.NodeType.PROPERTY;
+		++ numberOfProperties;
+                break;
+
+            case "http://www.w3.org/2002/07/owl#NamedIndividual":
+                subjNode.type = OwlNode.NodeType.NAMED_INDIVIDUAL;
+		++ numberOfIndividuals;
+		break;
+
             case "http://www.w3.org/2002/07/owl#Axiom":
                 subjNode.type = OwlNode.NodeType.AXIOM;
                 break;
+
             case "http://www.w3.org/2002/07/owl#Restriction":
                 subjNode.type = OwlNode.NodeType.RESTRICTION;
                 break;

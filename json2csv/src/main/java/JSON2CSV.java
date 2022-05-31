@@ -39,7 +39,7 @@ public class JSON2CSV {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("ols-json2csv", options);
+            formatter.printHelp("json2csv", options);
 
             System.exit(1);
             return;
@@ -70,8 +70,12 @@ public class JSON2CSV {
                     //EdgesExtractor.extractEdges(ontology, nodesAndProps);
 
                     writeOntology(ontology, outputFilePath);
+
                     writeClasses(ontology, outputFilePath, nodesAndProps);
-                    writeClassEdges(ontology, outputFilePath, nodesAndProps);
+                    writeProperties(ontology, outputFilePath, nodesAndProps);
+                    writeIndividuals(ontology, outputFilePath, nodesAndProps);
+
+                    writeEdges(ontology, outputFilePath, nodesAndProps);
                 }
 
                 reader.endArray();
@@ -89,15 +93,15 @@ public class JSON2CSV {
 
     public static void writeOntology(JsonOntology ontology, String outPath) throws IOException {
 
-        List<String> properties = new ArrayList<String>(ontology.properties.keySet());
+        List<String> properties = new ArrayList<String>(ontology.ontologyProperties.keySet());
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("ontologyId:ID");
+        csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
-        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
+        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
 
-        String outName = outPath + "/" + (String) ontology.config.get("id") + "_ontologies.csv";
+        String outName = outPath + "/" + (String) ontology.ontologyConfig.get("id") + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -105,13 +109,13 @@ public class JSON2CSV {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = (String) ontology.config.get("id");
+        row[n++] = (String) ontology.ontologyConfig.get("id");
         row[n++] = "Ontology";
-        row[n++] = gson.toJson(ontology.config);
+        row[n++] = gson.toJson(ontology.ontologyConfig);
 
         for (String column : properties) {
 
-            Object value = ontology.properties.get(column);
+            Object value = ontology.ontologyProperties.get(column);
 
             if (value == null) {
                 row[n++] = "";
@@ -133,18 +137,18 @@ public class JSON2CSV {
 
     public static void writeClasses(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String id = (String) ontology.config.get("id");
+        String id = (String) ontology.ontologyConfig.get("id");
 
         String outName = outPath + "/" + id + "_classes.csv";
 
         List<String> properties = new ArrayList<String>(nodesAndProps.allClassProperties);
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("classId:ID");
+        csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
+        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -162,48 +166,11 @@ public class JSON2CSV {
             for (String column : properties) {
 
                 if(column.startsWith("axiom+")) {
-
-                    Object value = _class.get(column.substring(6));
-
-                    if(value instanceof Map) {
-                        row[n++] = gson.toJson(value);
-                        continue;
-                    }
-
-                    row[n++] = "";
-                    continue;
-                }
-
-                Object value = _class.get(column);
-
-                if (value == null) {
-                    row[n++] = "";
-                    continue;
-                }
-
-                if (value instanceof String) {
-                    row[n++] = (String) value;
-                    continue;
-                }
-
-                if(value instanceof Map) {
-
-                    // axiom, but we are writing the value itself as a property directly
-                    // in this case; the rest of the axiom properties go in the axiom+ field
-
-                    Map<String, Object> mapValue = (Map<String, Object>) value;
-
-                    if(mapValue.containsKey("value")) {
-                        Object val = mapValue.get("value");
-                        if(val instanceof String) {
-                            row[n++] = (String) val;
-                        } else {
-                            row[n++] = gson.toJson(value);
-                        }
-                    } else {
-                        row[n++] = gson.toJson(value);
-                    }
-                }
+			Object axiom = _class.get(column.substring(6));
+                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
+		} else {
+			row[n++] = valueToCsv(_class.get(column));
+		}
 
             }
 
@@ -213,11 +180,101 @@ public class JSON2CSV {
         printer.close(true);
     }
 
-    public static void writeClassEdges(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String ontologyId = (String) ontology.config.get("id");
+    public static void writeProperties(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String outName = outPath + "/" + ontologyId + "_class_edges.csv";
+        String id = (String) ontology.ontologyConfig.get("id");
+
+        String outName = outPath + "/" + id + "_properties.csv";
+
+        List<String> properties = new ArrayList<String>(nodesAndProps.allPropertyProperties);
+
+        List<String> csvHeader = new ArrayList<>();
+        csvHeader.add("id:ID");
+        csvHeader.add(":LABEL");
+        csvHeader.add("ontology_id");
+        csvHeader.add("uri");
+        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+
+        CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
+                new File(outName), Charset.defaultCharset());
+
+        for (Map<String, Object> _property : ontology.properties) {
+
+            String[] row = new String[csvHeader.size()];
+            int n = 0;
+
+            row[n++] = id + "+" + (String) _property.get("uri");
+            row[n++] = "OwlProperty";
+            row[n++] = id;
+            row[n++] = (String) _property.get("uri");
+
+            for (String column : properties) {
+
+                if(column.startsWith("axiom+")) {
+			Object axiom = _property.get(column.substring(6));
+                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
+		} else {
+			row[n++] = valueToCsv(_property.get(column));
+		}
+            }
+
+            printer.printRecord(row);
+        }
+
+        printer.close(true);
+    }
+
+    public static void writeIndividuals(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+
+        String id = (String) ontology.ontologyConfig.get("id");
+
+        String outName = outPath + "/" + id + "_individuals.csv";
+
+        List<String> properties = new ArrayList<String>(nodesAndProps.allIndividualProperties);
+
+        List<String> csvHeader = new ArrayList<>();
+        csvHeader.add("id:ID");
+        csvHeader.add(":LABEL");
+        csvHeader.add("ontology_id");
+        csvHeader.add("uri");
+        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+
+        CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
+                new File(outName), Charset.defaultCharset());
+
+        for (Map<String, Object> _individual : ontology.individuals) {
+
+            String[] row = new String[csvHeader.size()];
+            int n = 0;
+
+            row[n++] = id + "+" + (String) _individual.get("uri");
+            row[n++] = "OwlIndividual";
+            row[n++] = id;
+            row[n++] = (String) _individual.get("uri");
+
+            for (String column : properties) {
+
+                if(column.startsWith("axiom+")) {
+			Object axiom = _individual.get(column.substring(6));
+                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
+		} else {
+			row[n++] = valueToCsv(_individual.get(column));
+		}
+            }
+
+            printer.printRecord(row);
+        }
+
+        printer.close(true);
+    }
+
+
+    public static void writeEdges(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+
+        String ontologyId = (String) ontology.ontologyConfig.get("id");
+
+        String outName = outPath + "/" + ontologyId + "_edges.csv";
 
         List<String> properties = new ArrayList<String>(nodesAndProps.allEdgeProperties);
 
@@ -225,7 +282,7 @@ public class JSON2CSV {
         csvHeader.add(":START_ID");
         csvHeader.add(":TYPE");
         csvHeader.add(":END_ID");
-        csvHeader.addAll(replaceNeo4jSpecialChars(properties));
+        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -258,12 +315,100 @@ public class JSON2CSV {
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
                             if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printClassEdge(printer, properties, ontologyId, _class, predicate, axiomValue, mapValue);
+                                printEdge(printer, properties, ontologyId, _class, predicate, axiomValue, mapValue);
                             }
                         }
                     } else if (v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
-                            printClassEdge(printer, properties, ontologyId, _class, predicate, v, new HashMap<>());
+                            printEdge(printer, properties, ontologyId, _class, predicate, v, new HashMap<>());
+                        }
+                    } else {
+                        assert(false);
+                    }
+
+                }
+
+            }
+        }
+
+        for (Map<String, Object> property : ontology.properties) {
+
+            for (String predicate : property.keySet()) {
+
+                if (predicate.equals("uri"))
+                    continue;
+
+                Object value = property.get(predicate);
+
+                List<Object> values;
+
+                if(value instanceof List) {
+                    values = (List<Object>) value;
+                } else {
+                    values = new ArrayList<>();
+                    values.add(value);
+                }
+
+                for(Object v : values) {
+
+                    if (v instanceof Map) {
+                        // maybe axiom
+                        Map<String, Object> mapValue = (Map<String, Object>) v;
+                        if (mapValue.containsKey("value")) {
+                            // axiom
+                            Object axiomValue = mapValue.get("value");
+                            assert (axiomValue instanceof String);
+                            if (nodesAndProps.allNodes.contains(axiomValue)) {
+                                printEdge(printer, properties, ontologyId, property, predicate, axiomValue, mapValue);
+                            }
+                        }
+                    } else if (v instanceof String) {
+                        if (nodesAndProps.allNodes.contains((String) v)) {
+                            printEdge(printer, properties, ontologyId, property, predicate, v, new HashMap<>());
+                        }
+                    } else {
+                        assert(false);
+                    }
+
+                }
+
+            }
+        }
+
+        for (Map<String, Object> individual : ontology.individuals) {
+
+            for (String predicate : individual.keySet()) {
+
+                if (predicate.equals("uri"))
+                    continue;
+
+                Object value = individual.get(predicate);
+
+                List<Object> values;
+
+                if(value instanceof List) {
+                    values = (List<Object>) value;
+                } else {
+                    values = new ArrayList<>();
+                    values.add(value);
+                }
+
+                for(Object v : values) {
+
+                    if (v instanceof Map) {
+                        // maybe axiom
+                        Map<String, Object> mapValue = (Map<String, Object>) v;
+                        if (mapValue.containsKey("value")) {
+                            // axiom
+                            Object axiomValue = mapValue.get("value");
+                            assert (axiomValue instanceof String);
+                            if (nodesAndProps.allNodes.contains(axiomValue)) {
+                                printEdge(printer, properties, ontologyId, individual, predicate, axiomValue, mapValue);
+                            }
+                        }
+                    } else if (v instanceof String) {
+                        if (nodesAndProps.allNodes.contains((String) v)) {
+                            printEdge(printer, properties, ontologyId, individual, predicate, v, new HashMap<>());
                         }
                     } else {
                         assert(false);
@@ -278,7 +423,7 @@ public class JSON2CSV {
     }
 
 
-    private static void printClassEdge(CSVPrinter printer, List<String> properties, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
+    private static void printEdge(CSVPrinter printer, List<String> properties, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
         String[] row = new String[3 + properties.size()];
         int n = 0;
@@ -309,7 +454,52 @@ public class JSON2CSV {
         printer.printRecord(row);
     }
 
-    public static List<String> replaceNeo4jSpecialChars(List<String> uris) {
+    private static String valueToCsv(Object value) {
+
+	if(value instanceof List) {
+		String out = "";
+		for(Object val : (List<Object>) value)  {
+			if(out.length() > 0) {
+				out += "|";
+			}
+			out += valueToCsv(val);
+		}
+		return out;
+	}
+
+	if (value == null) {
+		return "";
+	}
+
+	if (value instanceof String) {
+		return replaceNeo4jSpecialCharsValue((String) value);
+	}
+
+	if(value instanceof Map) {
+
+		// could be an axiom, but we are writing the value itself as a property
+		// directly in this case; the rest of the axiom properties go in
+		// the axiom+ field
+
+		Map<String, Object> mapValue = (Map<String, Object>) value;
+
+		if (mapValue.containsKey("value")) {
+			Object val = mapValue.get("value");
+			if (val instanceof String) {
+				return replaceNeo4jSpecialCharsValue((String) val);
+			}
+		}
+	}
+
+	return replaceNeo4jSpecialCharsValue(gson.toJson(value));
+    }
+
+
+    private static String replaceNeo4jSpecialCharsValue(String val) {
+	return val.replace("|", "+");
+    }
+
+    private static List<String> replaceNeo4jSpecialCharsHeaders(List<String> uris) {
         List<String> newUris = new ArrayList<>();
 
         for(String uri : uris) {
