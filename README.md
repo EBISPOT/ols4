@@ -1,5 +1,7 @@
 Converts ontologies represented in OWL RDF/XML to a CSV format ready for use with `neo4j-admin import`. Designed to load large numbers of ontologies (e.g. all of OBO foundry) very quickly.
 
+A work in progress reimplementation of the OLS API using the output of this tool as its backing database is located at [EBISPOT/ols4-web](https://github.com/EBISPOT/ols4-web).
+
 
 # Implementation
 
