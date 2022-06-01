@@ -99,7 +99,7 @@ public class JSON2CSV {
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
-        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+        csvHeader.addAll(propertyHeaders(properties));
 
         String outName = outPath + "/" + (String) ontology.ontologyConfig.get("id") + "_ontologies.csv";
 
@@ -148,7 +148,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+        csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -194,7 +194,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+        csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -238,7 +238,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+        csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -282,7 +282,7 @@ public class JSON2CSV {
         csvHeader.add(":START_ID");
         csvHeader.add(":TYPE");
         csvHeader.add(":END_ID");
-        csvHeader.addAll(replaceNeo4jSpecialCharsHeaders(properties));
+        csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -499,14 +499,14 @@ public class JSON2CSV {
 	return val.replace("|", "+");
     }
 
-    private static List<String> replaceNeo4jSpecialCharsHeaders(List<String> uris) {
-        List<String> newUris = new ArrayList<>();
+    private static List<String> propertyHeaders(List<String> uris) {
+        List<String> headers = new ArrayList<>();
 
         for(String uri : uris) {
-            newUris.add(uri.replace(":", "+"));
+            headers.add(uri.replace(":", "+") + ":string[]");
         }
 
-        return newUris;
+        return headers;
     }
 
 }
