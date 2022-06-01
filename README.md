@@ -17,5 +17,37 @@ The conversion has two stages:
 
 # Usage
 
-TODO
+Start with a config JSON file that lists the ontologies you want to load. You can get the OBO config into a file called `foundry.json` like so (make sure you have yq installed):
+
+    curl "https://raw.githubusercontent.com/OBOFoundry/OBOFoundry.github.io/master/_config.yml" \
+        | ./yq eval -j - > foundry.json
+        
+        
+## Step 1: OWL to JSON
+
+Use owl2json to download all the OWL files, resolve imports, and export JSON files:
+
+     java -jar owl2json/target/owl2json-1.0-SNAPSHOT.jar --config file://$(pwd)/foundry.json --output foundry_out.json
+     
+Now (after about 15 min) you should have a huge file called `foundry_out.json` that contains not only the original config for each ontology loaded from `foundry.json`, but also the ontologies themselves represented in an intermediate JSON format! (Note: the intermediate JSON format is a non-standardised application format totally specific to this tool and is subject to change.)
+
+## Step 2: JSON to CSV
+
+You can now convert this huge JSON file to CSV using json2csv:
+
+    rm -rf output_csv && mkdir output_csv
+    java -jar json2csv/target/json2csv-1.0-SNAPSHOT.jar --input foundry_out.json --outDir output_csv
+
+Now (after 5-10 mins) you should have a directory full of CSV files. These files are formatted especially for Neo4j. You can load them using `neo4j-admin import`, but you'll need to provide the filename of every single CSV file on the command line, which is boring, so included in this repo is a script called `make_csv_import_cmd.sh` that generates the command line for you.
+
+    neo4j-admin import \
+	    --ignore-empty-strings=true \
+	    --legacy-style-quoting=false \
+	    --multiline-fields=true \
+	    --array-delimiter="|" \
+	    --database=neo4j \
+	    $(./make_csv_import_cmd.sh)
+
+Now you should have a Neo4j database ready to start!
+
 
