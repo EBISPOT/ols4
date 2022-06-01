@@ -38,6 +38,8 @@ You can now convert this huge JSON file to CSV using json2csv:
     rm -rf output_csv && mkdir output_csv
     java -jar json2csv/target/json2csv-1.0-SNAPSHOT.jar --input foundry_out.json --outDir output_csv
 
+## Step 3: CSV to Neo4j
+
 Now (after 5-10 mins) you should have a directory full of CSV files. These files are formatted especially for Neo4j. You can load them using `neo4j-admin import`, but you'll need to provide the filename of every single CSV file on the command line, which is boring, so included in this repo is a script called `make_csv_import_cmd.sh` that generates the command line for you.
 
     neo4j-admin import \
