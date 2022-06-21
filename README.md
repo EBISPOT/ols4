@@ -52,4 +52,22 @@ Now (after 5-10 mins) you should have a directory full of CSV files. These files
 
 Now you should have a Neo4j database ready to start!
 
+# Vocabulary
+
+owl2neo maps the OWL RDF data model losslessly to Neo4j graph nodes. **In addition** to this lossless mapping, it also defines some additional properties in its own namespace to aid querying.
+
+Currently, these properties are as follows for `Ontology` nodes:
+
+* `https://github.com/EBISPOT/owl2neo#numberOfClasses`
+* `https://github.com/EBISPOT/owl2neo#numberOfProperties`
+* `https://github.com/EBISPOT/owl2neo#numberOfIndividuals`
+
+And as follows for `OwlClass`, `OwlProperty`, and `OwlIndividual` nodes:
+
+* `https://github.com/EBISPOT/owl2neo#shortForm`
+* `https://github.com/EBISPOT/owl2neo#relatedTo`
+
+
+
+
 

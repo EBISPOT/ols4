@@ -1,3 +1,4 @@
+package uk.ac.ebi.owl2json;
 import java.util.List;
 import java.util.Map;
 

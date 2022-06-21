@@ -20,7 +20,7 @@
           <shadedArtifactAttached>false</shadedArtifactAttached>
           <transformers>
             <transformer>
-              <mainClass>OWL2JSON</mainClass>
+              <mainClass>uk.ac.ebi.owl2json.OWL2JSON</mainClass>
               <manifestEntries>
                 <Multi-Release>true</Multi-Release>
               </manifestEntries>

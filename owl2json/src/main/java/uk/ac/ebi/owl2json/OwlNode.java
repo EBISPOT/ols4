@@ -1,10 +1,11 @@
+package uk.ac.ebi.owl2json;
 import org.apache.jena.graph.Node;
 
 import java.util.*;
 
 public class OwlNode {
 
-    enum NodeType {
+    public enum NodeType {
         ONTOLOGY,
         CLASS,
         PROPERTY,
@@ -15,20 +16,20 @@ public class OwlNode {
         RDF_LIST
     }
 
-    String uri;
-    NodeType type;
+    public String uri;
+    public NodeType type;
 //    List<OwlNode> parents;
-    PropertySet properties = new PropertySet();
+    public PropertySet properties = new PropertySet();
 
     public class Property {
-        Node value;
+        public Node value;
 
         public Property(Node value) {
             this.value = value;
         }
 
         // further properties (for reification)
-        PropertySet properties = null;
+        public PropertySet properties = null;
     }
 
     public class PropertySet {
