@@ -52,9 +52,10 @@ Now (after 5-10 mins) you should have a directory full of CSV files. These files
 
 Now you should have a Neo4j database ready to start!
 
-# Vocabulary
 
-owl2neo maps the OWL RDF data model losslessly to Neo4j graph nodes. **In addition** to this lossless mapping, it also defines some additional properties in its own namespace to aid querying.
+<h1>Vocabulary</h1>
+
+owl2neo maps the OWL RDF data model losslessly to Neo4j graph nodes. _**In addition to**_ this lossless mapping, it also defines some additional properties in its own namespace to aid querying.
 
 Currently, these properties are as follows for `Ontology` nodes:
 
