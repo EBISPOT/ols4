@@ -89,6 +89,78 @@ public class OwlTranslator implements StreamRDF {
         long endTime3 = System.nanoTime();
         System.out.println("reification: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000) + " - now have " + nodes.size() + " nodes");
 
+
+
+
+
+	// turn bnode types (Restrictions, Classes with oneOf etc) into direct edges
+
+        long startTime4 = System.nanoTime();
+
+        for(String id : nodes.keySet()) {
+            OwlNode c = nodes.get(id);
+
+	    // skip BNodes; we are looking for things with BNodes as types, not the BNodes themselves
+	    if(c.uri == null)
+		continue;
+
+		List<OwlNode.Property> types = c.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+
+		for(OwlNode.Property type : types) {
+			OwlNode typeNode = nodes.get(nodeId(type.value));
+
+			// Is the type a BNode?
+			if(typeNode != null && typeNode.uri == null) {
+				evaluateTypeExpression(c, type);
+			}
+		}
+	}
+
+
+
+        long endTime4 = System.nanoTime();
+        System.out.println("evaluate restrictions: " + ((endTime4 - startTime4) / 1000 / 1000 / 1000) + " - now have " + nodes.size() + " nodes");
+    }
+
+    private void evaluateTypeExpression(OwlNode node, OwlNode.Property typeProperty) {
+
+	OwlNode typeNode = nodes.get(nodeId(typeProperty.value));
+
+	if(typeNode != null && typeNode.type == OwlNode.NodeType.RESTRICTION) {
+
+		List<OwlNode.Property> hasValue = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#hasValue");
+		if(hasValue != null && hasValue.size() > 0) {
+			evaluateTypeExpression(node, hasValue.get(0));
+			return;
+		}
+
+		List<OwlNode.Property> someValuesFrom = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#someValuesFrom");
+		if(someValuesFrom != null && someValuesFrom.size() > 0) {
+			evaluateTypeExpression(node, someValuesFrom.get(0));
+			return;
+		}
+
+		List<OwlNode.Property> allValuesFrom = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#allValuesFrom");
+		if(allValuesFrom != null && allValuesFrom.size() > 0) {
+			evaluateTypeExpression(node, allValuesFrom.get(0));
+			return;
+		}
+
+	} else if(typeNode != null && typeNode.type == OwlNode.NodeType.CLASS) {
+
+		List<OwlNode.Property> oneOf = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#oneOf");
+		if(oneOf != null && oneOf.size() > 0) {
+			for(OwlNode.Property prop : oneOf) {
+				evaluateTypeExpression(node, prop);
+			}
+			return;
+		}
+
+	}
+
+	// not an expression - we should recursively end up here!
+	//
+	node.properties.addProperty("https://github.com/EBISPOT/owl2neo#relatedTo", typeProperty.value);
     }
 
     public void write(JsonWriter writer) throws IOException {
