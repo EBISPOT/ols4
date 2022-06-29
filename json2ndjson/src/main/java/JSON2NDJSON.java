@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
@@ -52,6 +53,13 @@ public class JSON2NDJSON {
         PrintStream classesWriter = null;
 
 
+                            String ontologiesOutName = outPath + "/ontologies.ndjson";
+                            String classesOutName = outPath + "/classes.ndjson";
+
+                            ontologiesWriter = new PrintStream(ontologiesOutName);
+                            classesWriter = new PrintStream(classesOutName);
+
+
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
 
         reader.beginObject();
@@ -78,14 +86,6 @@ public class JSON2NDJSON {
 
                             ontology.ontologyConfig = gson.fromJson(reader, Map.class);
 
-                            String ontologiesOutName = outPath + "/" + ((String)ontology.ontologyConfig.get("id")) + "_ontologies.ndjson";
-                            String classesOutName = outPath + "/" + ((String)ontology.ontologyConfig.get("id")) + "_classes.ndjson";
-
-                            ontologiesWriter = new PrintStream(ontologiesOutName);
-
-                            classesWriter = new PrintStream(classesOutName);
-
-
                         } else if(key.equals("ontologyProperties")) {
                             ontology.ontologyProperties = gson.fromJson(reader, Map.class);
                         } else if(key.equals("classes")) {
@@ -95,8 +95,31 @@ public class JSON2NDJSON {
                             while(reader.peek() != JsonToken.END_ARRAY) {
 
                                 Map<String,Object> _class = gson.fromJson(reader, Map.class);
-                                //classesWriter.println("{\"index\": {}}");
-                                classesWriter.println(gson.toJson(_class));
+                                //classesWriter.println("{\"index\": {\"_index\": \"owl_classes\"}}");
+
+                                // Stringify any nested objects
+                                //
+                                
+                                Map<String,Object> flattenedClass = new HashMap<>();
+                                for(String k : _class.keySet()) {
+
+                                    Object v = discardMetadata( _class.get(k) );
+
+                                    if(v instanceof Collection) {
+                                        List<String> flattenedList = new ArrayList<String>();
+                                        for(Object entry : ((Collection<Object>) v)) {
+                                                flattenedList.add( objToString( discardMetadata(entry)));
+                                        }
+                                        flattenedClass.put(k, flattenedList);
+                                    } else {
+                                        flattenedClass.put(k, objToString(v));
+                                    }
+                                }
+
+                                //classesWriter.println(gson.toJson(flattenedClass));
+                                classesWriter.println(gson.toJson(flattenedClass));
+
+
 
                             }
 
@@ -109,6 +132,8 @@ public class JSON2NDJSON {
 
 
                     }
+
+                    ontologiesWriter.println(gson.toJson(ontology));
 
                     reader.endObject(); // ontology
                 }
@@ -126,6 +151,41 @@ public class JSON2NDJSON {
         reader.close();
     }
 
+    // Where the JSON has type information or Axiom information (metadata about
+    // a property), that is, the two forms:
+    //
+    //  { datatype: ..., value: ... }
+    //
+    //  or
+    //
+    //  { type: Axiom, ....,  value: ... }
+    //
+    //  We want to discard this, because it's not useful for the full text
+    //  indexing and would mean we would have loads of JSON in the index
+    //  instead of actual values.
+    //  
+    //  The metadata is still stored in Neo4j, but here we just read the "value"
+    //  and discard everything else.
+    //  
+    public static Object discardMetadata(Object obj) {
+
+        if(obj instanceof Map) {
+            Map<String,Object> dict = (Map<String,Object>) obj;
+            if(dict.containsKey("value")) {
+                return discardMetadata(dict.get("value"));
+            }
+        }
+
+        return obj;
+    }
+
+    public static String objToString(Object obj) {
+        if(obj instanceof String) {
+            return (String)obj;
+        } else {
+            return gson.toJson(obj);
+        }
+    }
 
 }
 
