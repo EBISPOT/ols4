@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
-public class JSON2NDJSON {
+public class JSON2Solr {
 
     static Gson gson = new Gson();
 
@@ -28,7 +28,7 @@ public class JSON2NDJSON {
         input.setRequired(true);
         options.addOption(input);
 
-        Option output = new Option(null, "outDir", true, "output NDJSON folder path");
+        Option output = new Option(null, "outDir", true, "output JSON folder path");
         output.setRequired(true);
         options.addOption(output);
 
@@ -40,7 +40,7 @@ public class JSON2NDJSON {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("json2csv", options);
+            formatter.printHelp("json2solr", options);
 
             System.exit(1);
             return;
