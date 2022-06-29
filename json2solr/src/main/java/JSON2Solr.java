@@ -53,8 +53,8 @@ public class JSON2Solr {
         PrintStream classesWriter = null;
 
 
-                            String ontologiesOutName = outPath + "/ontologies.ndjson";
-                            String classesOutName = outPath + "/classes.ndjson";
+                            String ontologiesOutName = outPath + "/ontologies.jsonl";
+                            String classesOutName = outPath + "/classes.jsonl";
 
                             ontologiesWriter = new PrintStream(ontologiesOutName);
                             classesWriter = new PrintStream(classesOutName);
