@@ -972,7 +972,7 @@
        See https://solr.apache.org/guide/schemaless-mode.html for further explanation.
 
     -->
-  <updateProcessor class="solr.UUIDUpdateProcessorFactory" name="uuid"/>
+              <!--<updateProcessor class="solr.UUIDUpdateProcessorFactory" name="uuid"/>-->
               <!--<updateProcessor class="solr.RemoveBlankFieldUpdateProcessorFactory" name="remove-blank"/>-->
   <!--<updateProcessor class="solr.FieldNameMutatingUpdateProcessorFactory" name="field-name-mutating">
       <str name="pattern">[^\w-\.]</str>
@@ -1029,7 +1029,7 @@
   <!--<updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
   processor="uuid,remove-blank,field-name-mutating,parse-boolean,parse-long,parse-double,parse-date,add-schema-fields">-->
   <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
-           processor="uuid,add-schema-fields">
+           processor="add-schema-fields">
     <processor class="solr.LogUpdateProcessorFactory"/>
     <processor class="solr.DistributedUpdateProcessorFactory"/>
     <processor class="solr.RunUpdateProcessorFactory"/>

@@ -101,6 +101,11 @@ public class JSON2Solr {
                                 //
                                 
                                 Map<String,Object> flattenedClass = new HashMap<>();
+
+                                String ontologyId = (String) ontology.ontologyConfig.get("id");
+                                flattenedClass.put("ontology_id", ontologyId);
+                                flattenedClass.put("id", ontologyId + "+" + (String)_class.get("uri"));
+
                                 for(String k : _class.keySet()) {
 
                                     Object v = discardMetadata( _class.get(k) );
