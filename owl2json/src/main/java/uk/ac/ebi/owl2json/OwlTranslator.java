@@ -38,6 +38,15 @@ public class OwlTranslator implements StreamRDF {
 
         RDFDataMgr.parse(this, url);
 
+        // Before we evaluate imports, mark all the nodes so far as not imported
+        for(String id : nodes.keySet()) {
+            OwlNode c = nodes.get(id);
+            if(c.uri != null) {
+                c.properties.addProperty("https://github.com/EBISPOT/owl2neo#imported", NodeFactory.createLiteral("false"));
+            }
+        }
+
+
 	while(importUrls.size() > 0) {
 		String importUrl = importUrls.get(0);
 		importUrls.remove(0);
@@ -45,6 +54,16 @@ public class OwlTranslator implements StreamRDF {
 		System.out.println("import: " + importUrl);
 		RDFDataMgr.parse(this, importUrl);
 	}
+
+        // Now the imports are done, mark everything else as imported
+    for(String id : nodes.keySet()) {
+        OwlNode c = nodes.get(id);
+        if(c.uri != null) {
+            if(!c.properties.properties.containsKey("https://github.com/EBISPOT/owl2neo#imported")) {
+                c.properties.addProperty("https://github.com/EBISPOT/owl2neo#imported", NodeFactory.createLiteral("true"));
+            }
+        }
+    }
 
 	ontologyNode.properties.addProperty(
 		"https://github.com/EBISPOT/owl2neo#numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
