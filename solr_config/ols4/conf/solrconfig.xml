@@ -998,8 +998,11 @@
       <str name="valueClass">java.lang.String</str>
       <str name="fieldType">text_general</str>
       <lst name="copyField">
-        <str name="dest">*_str</str>
+        <str name="dest">str_*</str>
         <int name="maxChars">512</int>
+      </lst>
+      <lst name="copyField">
+        <str name="dest">lowercase_*</str>
       </lst>
       <!-- Use as default mapping instead of defaultFieldType -->
       <bool name="default">true</bool>

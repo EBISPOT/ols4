@@ -149,7 +149,10 @@
     <dynamicField name="ignored_*" type="ignored"/>
 
     <!-- Type used for data-driven schema, to add a string copy for each text field -->
-    <dynamicField name="*_str" type="strings" stored="false" docValues="true" indexed="false" useDocValuesAsStored="false"/>
+    <dynamicField name="str_*" type="strings" stored="false" docValues="true" indexed="false" useDocValuesAsStored="false"/>
+
+    <!-- ols4 -->
+    <dynamicField name="lowercase_*" type="ols4lowercase" stored="true" indexed="true" multiValued="true" />
 
     <dynamicField name="*_dt"  type="pdate"    indexed="true"  stored="true"/>
     <dynamicField name="*_dts" type="pdate"    indexed="true"  stored="true" multiValued="true"/>
@@ -293,6 +296,23 @@
          also applies synonyms.
     -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+      <analyzer type="index">
+        <tokenizer name="standard"/>
+        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+        <!-- in this example, we will only use synonyms at query time
+        <filter name="synonymGraph" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter name="flattenGraph"/>
+        -->
+        <!--<filter name="lowercase"/>-->
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer name="standard"/>
+        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <!--<filter name="lowercase"/>-->
+      </analyzer>
+    </fieldType>
+    <fieldType name="ols4lowercase" class="solr.TextField" positionIncrementGap="100" multiValued="true">
       <analyzer type="index">
         <tokenizer name="standard"/>
         <filter name="stop" ignoreCase="true" words="stopwords.txt" />
