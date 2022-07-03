@@ -5,7 +5,9 @@ import com.google.gson.stream.JsonWriter;
 
 import uk.ac.ebi.owl2json.operations.AxiomEvaluator;
 import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
+import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
 import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
+import uk.ac.ebi.owl2json.operations.SynonymAnnotator;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
@@ -81,9 +83,11 @@ public class OwlTranslator implements StreamRDF {
 		"https://github.com/EBISPOT/owl2neo#loaded", NodeFactory.createLiteral(now));
 
 
+	ShortFormAnnotator.annotateShortForms(this);
+	DefinitionAnnotator.annotateDefinitions(this);
+	SynonymAnnotator.annotateSynonyms(this);
 	AxiomEvaluator.evaluateAxioms(this);
 	ClassExpressionEvaluator.evaluateClassExpressions(this);
-	ShortFormAnnotator.annotateShortForms(this);
 
     }
 

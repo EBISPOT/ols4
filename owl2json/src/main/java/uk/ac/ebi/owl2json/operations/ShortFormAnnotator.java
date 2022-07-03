@@ -19,11 +19,14 @@ public class ShortFormAnnotator {
 		Set<String> ontologyBaseUris = new HashSet<String>();
 
 
+
 		Object configBaseUris = translator.config.get("baseUris");
 
 		if(configBaseUris instanceof Collection<?>) {
 			ontologyBaseUris.addAll((Collection<String>) configBaseUris);
 		}
+
+
 
 		String preferredPrefix = (String)translator.config.get("preferredPrefix");
 

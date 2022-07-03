@@ -73,6 +73,8 @@ And as follows for `OwlClass`, `OwlProperty`, and `OwlIndividual` nodes:
 
 * `https://github.com/EBISPOT/owl2neo#shortForm`
 * `https://github.com/EBISPOT/owl2neo#relatedTo`
+* `https://github.com/EBISPOT/owl2neo#definition`
+* `https://github.com/EBISPOT/owl2neo#synonym`
 
 
 
