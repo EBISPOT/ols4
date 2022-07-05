@@ -108,9 +108,9 @@ public class JSON2Solr {
 
                                 for(String k : _class.keySet()) {
 
-                                    k = k.replace(":", "__");
-
                                     Object v = discardMetadata( _class.get(k) );
+
+                                    k = k.replace(":", "__");
 
                                     if(v instanceof Collection) {
                                         List<String> flattenedList = new ArrayList<String>();
