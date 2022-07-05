@@ -503,7 +503,7 @@ public class JSON2CSV {
         List<String> headers = new ArrayList<>();
 
         for(String uri : uris) {
-            headers.add(uri.replace(":", "+") + ":string[]");
+            headers.add(uri.replace(":", "__") + ":string[]");
         }
 
         return headers;

@@ -108,6 +108,8 @@ public class JSON2Solr {
 
                                 for(String k : _class.keySet()) {
 
+                                    k = k.replace(":", "__");
+
                                     Object v = discardMetadata( _class.get(k) );
 
                                     if(v instanceof Collection) {
