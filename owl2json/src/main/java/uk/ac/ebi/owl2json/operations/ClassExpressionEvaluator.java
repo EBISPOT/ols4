@@ -26,14 +26,16 @@ public class ClassExpressionEvaluator {
 
 			List<OwlNode.Property> types = c.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
 
-			for(OwlNode.Property type : types) {
-				OwlNode typeNode = translator.nodes.get(translator.nodeId(type.value));
+            if(types != null) {
+                for(OwlNode.Property type : types) {
+                    OwlNode typeNode = translator.nodes.get(translator.nodeId(type.value));
 
-				// Is the type a BNode?
-				if(typeNode != null && typeNode.uri == null) {
-					evaluateTypeExpression(translator, c, type);
-				}
-			}
+                    // Is the type a BNode?
+                    if(typeNode != null && typeNode.uri == null) {
+                        evaluateTypeExpression(translator, c, type);
+                    }
+                }
+            }
 		}
 
 
