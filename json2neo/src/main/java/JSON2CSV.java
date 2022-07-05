@@ -114,20 +114,7 @@ public class JSON2CSV {
         row[n++] = gson.toJson(ontology.ontologyConfig);
 
         for (String column : properties) {
-
-            Object value = ontology.ontologyProperties.get(column);
-
-            if (value == null) {
-                row[n++] = "";
-                continue;
-            }
-
-            if (value instanceof String) {
-                row[n++] = (String)value;
-                continue;
-            }
-
-            row[n++] = gson.toJson(value);
+            row[n++] = getValue(ontology.ontologyProperties, column);
         }
 
         printer.printRecord(row);
@@ -164,14 +151,7 @@ public class JSON2CSV {
             row[n++] = (String) _class.get("uri");
 
             for (String column : properties) {
-
-                if(column.startsWith("axiom+")) {
-			Object axiom = _class.get(column.substring(6));
-                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
-		} else {
-			row[n++] = valueToCsv(_class.get(column));
-		}
-
+                row[n++] = getValue(_class, column);
             }
 
             printer.printRecord(row);
@@ -210,13 +190,7 @@ public class JSON2CSV {
             row[n++] = (String) _property.get("uri");
 
             for (String column : properties) {
-
-                if(column.startsWith("axiom+")) {
-			Object axiom = _property.get(column.substring(6));
-                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
-		} else {
-			row[n++] = valueToCsv(_property.get(column));
-		}
+                row[n++] = getValue(_property, column);
             }
 
             printer.printRecord(row);
@@ -254,13 +228,7 @@ public class JSON2CSV {
             row[n++] = (String) _individual.get("uri");
 
             for (String column : properties) {
-
-                if(column.startsWith("axiom+")) {
-			Object axiom = _individual.get(column.substring(6));
-                        row[n++] = axiom != null ? gson.toJson(axiom) : "";
-		} else {
-			row[n++] = valueToCsv(_individual.get(column));
-		}
+                row[n++] = getValue(_individual, column);
             }
 
             printer.printRecord(row);
@@ -310,7 +278,7 @@ public class JSON2CSV {
                     if (v instanceof Map) {
                         // maybe axiom
                         Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value")) {
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
                             // axiom
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
@@ -354,7 +322,7 @@ public class JSON2CSV {
                     if (v instanceof Map) {
                         // maybe axiom
                         Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value")) {
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
                             // axiom
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
@@ -398,7 +366,7 @@ public class JSON2CSV {
                     if (v instanceof Map) {
                         // maybe axiom
                         Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value")) {
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
                             // axiom
                             Object axiomValue = mapValue.get("value");
                             assert (axiomValue instanceof String);
@@ -436,19 +404,7 @@ public class JSON2CSV {
 
             // anything else are properties on the edge itself (from axioms)
             //
-            Object val = edgeProps.get(column);
-
-            if (val == null) {
-                row[n++] = "";
-                continue;
-            }
-
-            if (val instanceof String) {
-                row[n++] = (String) val;
-                continue;
-            }
-
-            row[n++] = gson.toJson(val);
+            row[n++] = getValue(edgeProps, column);
         }
 
         printer.printRecord(row);
@@ -477,17 +433,15 @@ public class JSON2CSV {
 
 	if(value instanceof Map) {
 
-		// could be an axiom, but we are writing the value itself as a property
-		// directly in this case; the rest of the axiom properties go in
-		// the axiom+ field
+		// could be an axiom or a langString, but we are writing the value
+        // itself as a property directly in this case; the rest of the axiom 
+        // properties or localized strings go in the axiom+ field or lang+ fields
 
 		Map<String, Object> mapValue = (Map<String, Object>) value;
 
 		if (mapValue.containsKey("value")) {
 			Object val = mapValue.get("value");
-			if (val instanceof String) {
-				return replaceNeo4jSpecialCharsValue((String) val);
-			}
+            return valueToCsv(val);
 		}
 	}
 
@@ -507,6 +461,55 @@ public class JSON2CSV {
         }
 
         return headers;
+    }
+
+    private static String getValue(Map<String,Object> properties, String column) {
+
+            if(column.startsWith("axiom+")) {
+
+                String predicate = column.substring(6);
+                Object axiom = properties.get(predicate);
+
+                return axiom != null ? gson.toJson(axiom) : "";
+            }
+
+            if(column.indexOf('+') != -1) {
+                String lang = column.substring(0, column.indexOf('+'));
+                String predicate = column.substring(column.indexOf('+')+1);
+
+                return valueToCsv(getLocalizedValue(properties, predicate, lang));
+            }
+
+            Object value = properties.get(column);
+
+            return valueToCsv(value);
+    }
+
+
+    private static Object getLocalizedValue(Map<String,Object> properties, String predicate, String lang) {
+
+            Object values = properties.get(predicate);
+
+            if(values == null)
+                return null;
+
+            if(! (values instanceof List)) {
+                List<Object> valuesList = new ArrayList<>();
+                valuesList.add(values);
+                values = valuesList;
+            }
+
+            for(Object value : ((List<Object>) values)) {
+                if(value instanceof Map) {
+                    Map<String, Object> mapValue = (Map<String, Object>) value;
+                    String valueLang = (String)mapValue.get("lang");
+                    if(valueLang != null && valueLang.equals(lang)) {
+                        return valueToCsv(mapValue.get("value"));
+                    }
+                }
+            }
+
+            return null;
     }
 
 }

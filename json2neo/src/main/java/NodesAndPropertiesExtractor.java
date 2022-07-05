@@ -91,20 +91,37 @@ public class NodesAndPropertiesExtractor {
 
             if(mapValue.containsKey("value")) {
 
-                // reification (an owl axiom)
+                // either reification (an owl axiom) OR a langString
 
-                // for predicates used in reification we store it twice, one with the value and no axiom metadata
-                // so that it can be queried directly, and then again with the metadata as json in an axiom+ field
-                //
-                outProps.add("axiom+" + predicate);
+                if(mapValue.containsKey("lang")) {
 
-                // predicates used to describe the edge itself
-                for(String edgePredicate : mapValue.keySet()) {
+                    String lang = (String)mapValue.get("lang");
+                    assert(lang != null);
 
-                    if(edgePredicate.equals("value"))
-                        continue;
+                    // add a localized property like e.g. fr+http://some/predicate
+                    // (english is the default and doesn't get a prefix)
+                    // 
+                    if(!lang.equals("en")) {
+                        outProps.add(lang + "+" + predicate);
+                    }
 
-                    outEdgeProps.add(edgePredicate);
+                } else {
+
+                    // assume reificiation (owl:Axiom); TODO maybe don't assume
+                    
+                    // for predicates used in reification we store it twice, one with the value and no axiom metadata
+                    // so that it can be queried directly, and then again with the metadata as json in an axiom+ field
+                    //
+                    outProps.add("axiom+" + predicate);
+
+                    // predicates used to describe the edge itself
+                    for(String edgePredicate : mapValue.keySet()) {
+
+                        if(edgePredicate.equals("value"))
+                            continue;
+
+                        outEdgeProps.add(edgePredicate);
+                    }
                 }
 
                 visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);

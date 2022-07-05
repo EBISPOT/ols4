@@ -53,18 +53,18 @@ public class JSON2Solr {
         PrintStream classesWriter = null;
 
 
-                            String ontologiesOutName = outPath + "/ontologies.jsonl";
-                            String classesOutName = outPath + "/classes.jsonl";
+        String ontologiesOutName = outPath + "/ontologies.jsonl";
+        String classesOutName = outPath + "/classes.jsonl";
 
-                            ontologiesWriter = new PrintStream(ontologiesOutName);
-                            classesWriter = new PrintStream(classesOutName);
+        ontologiesWriter = new PrintStream(ontologiesOutName);
+        classesWriter = new PrintStream(classesOutName);
 
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
 
         reader.beginObject();
 
-        while(reader.peek() != JsonToken.END_OBJECT) {
+        while (reader.peek() != JsonToken.END_OBJECT) {
 
             String name = reader.nextName();
 
@@ -72,59 +72,79 @@ public class JSON2Solr {
 
                 reader.beginArray();
 
-                while(reader.peek() != JsonToken.END_ARRAY) {
+                while (reader.peek() != JsonToken.END_ARRAY) {
 
                     reader.beginObject(); // ontology
 
                     JsonOntology ontology = new JsonOntology();
 
-                    while(reader.peek() != JsonToken.END_OBJECT) {
+                    while (reader.peek() != JsonToken.END_OBJECT) {
 
                         String key = reader.nextName();
 
-                        if(key.equals("ontologyConfig")) {
+                        if (key.equals("ontologyConfig")) {
 
                             ontology.ontologyConfig = gson.fromJson(reader, Map.class);
 
-                        } else if(key.equals("ontologyProperties")) {
+                        } else if (key.equals("ontologyProperties")) {
                             ontology.ontologyProperties = gson.fromJson(reader, Map.class);
-                        } else if(key.equals("classes")) {
+                        } else if (key.equals("classes")) {
 
                             reader.beginArray();
 
-                            while(reader.peek() != JsonToken.END_ARRAY) {
+                            while (reader.peek() != JsonToken.END_ARRAY) {
 
-                                Map<String,Object> _class = gson.fromJson(reader, Map.class);
+                                Map<String, Object> _class = gson.fromJson(reader, Map.class);
                                 //classesWriter.println("{\"index\": {\"_index\": \"owl_classes\"}}");
 
-                                // Stringify any nested objects
-                                //
-                                
-                                Map<String,Object> flattenedClass = new HashMap<>();
 
-                                String ontologyId = (String) ontology.ontologyConfig.get("id");
-                                flattenedClass.put("ontology_id", ontologyId);
-                                flattenedClass.put("id", ontologyId + "+" + (String)_class.get("uri"));
-
+                                Set<String> languages = new HashSet<>();
+                                languages.add("en");
                                 for(String k : _class.keySet()) {
-
-                                    Object v = discardMetadata( _class.get(k) );
-
-                                    k = k.replace(":", "__");
-
-                                    if(v instanceof Collection) {
-                                        List<String> flattenedList = new ArrayList<String>();
-                                        for(Object entry : ((Collection<Object>) v)) {
-                                                flattenedList.add( objToString( discardMetadata(entry)));
-                                        }
-                                        flattenedClass.put(k, flattenedList);
-                                    } else {
-                                        flattenedClass.put(k, objToString(v));
-                                    }
+                                    languages.addAll(extractLanguages(_class.get(k)));
                                 }
 
-                                //classesWriter.println(gson.toJson(flattenedClass));
-                                classesWriter.println(gson.toJson(flattenedClass));
+
+                                // Create 1 document per language
+                                //
+                                for(String lang : languages) {
+
+                                    // Stringify any nested objects
+                                    //
+                                    Map<String, Object> flattenedClass = new HashMap<>();
+
+                                    String ontologyId = (String) ontology.ontologyConfig.get("id");
+                                    flattenedClass.put("lang", lang);
+                                    flattenedClass.put("ontology_id", ontologyId);
+                                    flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
+
+                                    for (String k : _class.keySet()) {
+
+                                        Object v = discardMetadata(_class.get(k), lang);
+                                        if(v == null) {
+                                            continue;
+                                        }
+
+                                        k = k.replace(":", "__");
+
+                                        if (v instanceof Collection) {
+                                            List<String> flattenedList = new ArrayList<String>();
+                                            for (Object entry : ((Collection<Object>) v)) {
+                                                Object obj = discardMetadata(entry, lang);
+                                                if(obj != null) {
+                                                    flattenedList.add(objToString(obj));
+                                                }
+                                            }
+                                            flattenedClass.put(k, flattenedList);
+                                        } else {
+                                            flattenedClass.put(k, objToString(v));
+                                        }
+                                    }
+
+                                    //classesWriter.println(gson.toJson(flattenedClass));
+                                    classesWriter.println(gson.toJson(flattenedClass));
+
+                                }
 
 
 
@@ -135,7 +155,6 @@ public class JSON2Solr {
                         } else {
                             reader.skipValue();
                         }
-
 
 
                     }
@@ -174,16 +193,56 @@ public class JSON2Solr {
     //  The metadata is still stored in Neo4j, but here we just read the "value"
     //  and discard everything else.
     //  
-    public static Object discardMetadata(Object obj) {
+    public static Object discardMetadata(Object obj, String lang) {
 
-        if(obj instanceof Map) {
-            Map<String,Object> dict = (Map<String,Object>) obj;
-            if(dict.containsKey("value")) {
-                return discardMetadata(dict.get("value"));
+        if (obj instanceof Map) {
+            Map<String, Object> dict = (Map<String, Object>) obj;
+            if (dict.containsKey("value")) {
+                if(dict.containsKey("lang")) {
+                    String valLang = (String)dict.get("lang");
+                    assert(valLang != null);
+                    if(! (valLang.equals(lang))) {
+                        return null;
+                    }
+                }
+                return discardMetadata(dict.get("value"), lang);
             }
         }
 
         return obj;
+    }
+
+    // Gather all of the lang: attributes from an object and all of its descendants
+    //
+    public static Collection<String> extractLanguages(Object obj) {
+
+        Set<String> langs = new HashSet<>();
+
+        if (obj instanceof Map) {
+
+            Map<String, Object> mapObj = (Map<String, Object>) obj;
+
+            if (mapObj.containsKey("lang")) {
+                langs.add((String) mapObj.get("lang"));
+            }
+
+            for (String k : mapObj.keySet()) {
+
+                Object value = mapObj.get(k);
+
+                langs.addAll(extractLanguages(value));
+            }
+
+            return langs;
+        }
+
+        if(obj instanceof List) {
+            for(Object obj2 : (List<Object>) obj) {
+                langs.addAll(extractLanguages(obj2));
+            }
+        }
+
+        return langs;
     }
 
     public static String objToString(Object obj) {
