@@ -82,7 +82,7 @@ public class ClassExpressionEvaluator {
 
 	// not an expression - we should recursively end up here!
 	//
-	node.properties.addProperty("https://github.com/EBISPOT/owl2neo#relatedTo", typeProperty.value);
+	node.properties.addProperty("relatedTo", typeProperty.value);
     }
 	
 }

@@ -41,7 +41,7 @@ public class DefinitionAnnotator {
 				List<OwlNode.Property> values = c.properties.properties.get(prop);
 				if(values != null) {
 					for(OwlNode.Property value : values) {
-						c.properties.addProperty("https://github.com/EBISPOT/owl2neo#definition", value.value);
+						c.properties.addProperty("definition", value.value);
 					}
 				}
 			}

@@ -46,7 +46,7 @@ public class ShortFormAnnotator {
 				continue;
 	
 			c.properties.addProperty(
-				"https://github.com/EBISPOT/owl2neo#shortForm",
+				"shortForm",
 					NodeFactory.createLiteral(
 						getShortForm(translator, ontologyBaseUris, preferredPrefix, c)
 					));

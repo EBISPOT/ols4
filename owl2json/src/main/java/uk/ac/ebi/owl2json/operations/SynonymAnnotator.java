@@ -40,7 +40,7 @@ public class SynonymAnnotator {
 				List<OwlNode.Property> values = c.properties.properties.get(prop);
 				if(values != null) {
 					for(OwlNode.Property value : values) {
-						c.properties.addProperty("https://github.com/EBISPOT/owl2neo#synonym", value.value);
+						c.properties.addProperty("synonym", value.value);
 					}
 				}
 			}
