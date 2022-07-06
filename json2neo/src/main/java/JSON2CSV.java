@@ -99,6 +99,7 @@ public class JSON2CSV {
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("config");
+        csvHeader.add("propertyLabels");
         csvHeader.addAll(propertyHeaders(properties));
 
         String outName = outPath + "/" + (String) ontology.ontologyConfig.get("id") + "_ontologies.csv";
@@ -112,8 +113,11 @@ public class JSON2CSV {
         row[n++] = (String) ontology.ontologyConfig.get("id");
         row[n++] = "Ontology";
         row[n++] = gson.toJson(ontology.ontologyConfig);
+        row[n++] = gson.toJson(ontology.ontologyProperties.get("propertyLabels"));
 
         for (String column : properties) {
+            if(column.equals("propertyLabels"))
+                continue;
             row[n++] = getValue(ontology.ontologyProperties, column);
         }
 
@@ -135,6 +139,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
+        csvHeader.add("propertyLabels");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -149,6 +154,7 @@ public class JSON2CSV {
             row[n++] = "OwlClass";
             row[n++] = id;
             row[n++] = (String) _class.get("uri");
+            row[n++] = gson.toJson(_class.get("propertyLabels"));
 
             for (String column : properties) {
                 row[n++] = getValue(_class, column);
@@ -174,6 +180,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
+        csvHeader.add("propertyLabels");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -188,6 +195,7 @@ public class JSON2CSV {
             row[n++] = "OwlProperty";
             row[n++] = id;
             row[n++] = (String) _property.get("uri");
+            row[n++] = gson.toJson(_property.get("propertyLabels"));
 
             for (String column : properties) {
                 row[n++] = getValue(_property, column);
@@ -212,6 +220,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
+        csvHeader.add("propertyLabels");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -226,6 +235,7 @@ public class JSON2CSV {
             row[n++] = "OwlIndividual";
             row[n++] = id;
             row[n++] = (String) _individual.get("uri");
+            row[n++] = gson.toJson(_individual.get("propertyLabels"));
 
             for (String column : properties) {
                 row[n++] = getValue(_individual, column);
@@ -250,6 +260,7 @@ public class JSON2CSV {
         csvHeader.add(":START_ID");
         csvHeader.add(":TYPE");
         csvHeader.add(":END_ID");
+        csvHeader.add("propertyLabels");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -393,12 +404,13 @@ public class JSON2CSV {
 
     private static void printEdge(CSVPrinter printer, List<String> properties, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
-        String[] row = new String[3 + properties.size()];
+        String[] row = new String[4 + properties.size()];
         int n = 0;
 
         row[n++] = ontologyId + "+" + (String) a.get("uri");
         row[n++] = predicate;
         row[n++] = ontologyId + "+" + (String) bUri;
+        row[n++] = gson.toJson(edgeProps.get("propertyLabels"));
 
         for (String column : properties) {
 
@@ -465,7 +477,10 @@ public class JSON2CSV {
 
     private static String getValue(Map<String,Object> properties, String column) {
 
-            if(column.startsWith("axiom+")) {
+        //System.out.println("get " + column);
+        //System.out.println(properties.get(column));
+
+        if(column.startsWith("axiom+")) {
 
                 String predicate = column.substring(6);
                 Object axiom = properties.get(predicate);

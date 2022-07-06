@@ -117,8 +117,12 @@ public class JSON2Solr {
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("ontology_id", ontologyId);
                                     flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
+                                    flattenedClass.put("propertyLabels", gson.toJson(_class.get("propertyLabels")));
 
                                     for (String k : _class.keySet()) {
+
+                                        if(k.equals("propertyLabels"))
+                                            continue;
 
                                         Object v = discardMetadata(_class.get(k), lang);
                                         if(v == null) {

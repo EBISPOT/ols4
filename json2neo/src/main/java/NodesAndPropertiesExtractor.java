@@ -26,6 +26,8 @@ public class NodesAndPropertiesExtractor {
 
                 if(predicate.equals("uri"))
                     continue;
+                if(predicate.equals("propertyLabels"))
+                    continue;
 
                 res.allClassProperties.add(predicate);
 
@@ -43,6 +45,8 @@ public class NodesAndPropertiesExtractor {
 
                 if(predicate.equals("uri"))
                     continue;
+                if(predicate.equals("propertyLabels"))
+                    continue;
 
                 res.allPropertyProperties.add(predicate);
 
@@ -59,6 +63,8 @@ public class NodesAndPropertiesExtractor {
             for(String predicate : individual.keySet()) {
 
                 if(predicate.equals("uri"))
+                    continue;
+                if(predicate.equals("propertyLabels"))
                     continue;
 
                 res.allIndividualProperties.add(predicate);
@@ -118,6 +124,8 @@ public class NodesAndPropertiesExtractor {
                     for(String edgePredicate : mapValue.keySet()) {
 
                         if(edgePredicate.equals("value"))
+                            continue;
+                        if(edgePredicate.equals("propertyLabels"))
                             continue;
 
                         outEdgeProps.add(edgePredicate);

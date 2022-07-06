@@ -17,15 +17,13 @@ import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OwlTranslator implements StreamRDF {
 
     public Map<String, Object> config;
     public List<String> importUrls = new ArrayList<>();
+    public Set<String> languages = new HashSet<>();
 
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
@@ -36,6 +34,9 @@ public class OwlTranslator implements StreamRDF {
 
         this.config = config;
 
+        languages.add("en");
+
+
         String url = (String) config.get("ontology_purl");
 
         RDFDataMgr.parse(this, url);
@@ -44,7 +45,7 @@ public class OwlTranslator implements StreamRDF {
         for(String id : nodes.keySet()) {
             OwlNode c = nodes.get(id);
             if(c.uri != null) {
-                c.properties.addProperty("https://github.com/EBISPOT/owl2neo#imported", NodeFactory.createLiteral("false"));
+                c.properties.addProperty("imported", NodeFactory.createLiteral("false"));
             }
         }
 
@@ -61,26 +62,26 @@ public class OwlTranslator implements StreamRDF {
     for(String id : nodes.keySet()) {
         OwlNode c = nodes.get(id);
         if(c.uri != null) {
-            if(!c.properties.properties.containsKey("https://github.com/EBISPOT/owl2neo#imported")) {
-                c.properties.addProperty("https://github.com/EBISPOT/owl2neo#imported", NodeFactory.createLiteral("true"));
+            if(!c.properties.properties.containsKey("imported")) {
+                c.properties.addProperty("imported", NodeFactory.createLiteral("true"));
             }
         }
     }
 
 	ontologyNode.properties.addProperty(
-		"https://github.com/EBISPOT/owl2neo#numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
+		"numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
 
 	ontologyNode.properties.addProperty(
-		"https://github.com/EBISPOT/owl2neo#numberOfProperties", NodeFactory.createLiteral(Integer.toString(numberOfProperties)));
+		"numberOfProperties", NodeFactory.createLiteral(Integer.toString(numberOfProperties)));
 
 	ontologyNode.properties.addProperty(
-		"https://github.com/EBISPOT/owl2neo#numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
+		"numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
 
 
 	String now = java.time.LocalDateTime.now().toString();
 
 	ontologyNode.properties.addProperty(
-		"https://github.com/EBISPOT/owl2neo#loaded", NodeFactory.createLiteral(now));
+		"loaded", NodeFactory.createLiteral(now));
 
 
 	ShortFormAnnotator.annotateShortForms(this);
@@ -220,6 +221,41 @@ public class OwlTranslator implements StreamRDF {
                 writer.endArray();
             }
         }
+
+
+        // Labels for rendering the properties in the frontend (or for API consumers)
+        //
+        writer.name("propertyLabels");
+        writer.beginObject();
+
+        for(String k : properties.keySet()) {
+
+            OwlNode labelNode = nodes.get(k);
+            if(labelNode == null) {
+                continue;
+            }
+
+            List<OwlNode.Property> labelProps = labelNode.properties.properties.get("http://www.w3.org/2000/01/rdf-schema#label");
+
+            if(labelProps != null && labelProps.size() > 0) {
+                for (OwlNode.Property prop : labelProps) {
+
+                    if(!prop.value.isLiteral())
+                        continue;
+
+                    String lang = prop.value.getLiteralLanguage();
+
+                    if(lang==null)
+                        lang="en";
+
+                    writer.name(lang+"+"+k);
+                    writer.value(prop.value.getLiteralLexicalForm());
+                }
+            }
+
+        }
+
+        writer.endObject();
     }
 
 
@@ -308,9 +344,11 @@ public class OwlTranslator implements StreamRDF {
 
         if(triple.getObject().isURI()) {
             handleUriTriple(triple);
-        } else {
+        } else if(triple.getObject().isLiteral()) {
             handleLiteralTriple(triple);
         }
+
+        // TODO: BNodes?
 
     }
 
@@ -319,6 +357,11 @@ public class OwlTranslator implements StreamRDF {
 
         String subjId = nodeId(triple.getSubject());
         OwlNode subjNode = getOrCreateTerm(triple.getSubject());
+
+        String lang = triple.getObject().getLiteralLanguage();
+        if(lang != null) {
+            languages.add(lang);
+        }
 
         subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
 

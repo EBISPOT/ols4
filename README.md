@@ -61,20 +61,20 @@ Similar to how the Neo4j CSV was generated, you can also generate JSON files rea
 
 <h1>Vocabulary</h1>
 
-owl2neo maps the OWL RDF data model losslessly to Neo4j graph nodes. _**In addition to**_ this lossless mapping, it also defines some additional properties in its own namespace to aid querying.
+owl2neo maps the OWL RDF data model losslessly to Neo4j graph nodes. _**In addition to**_ this lossless mapping, it also defines some additional properties to aid querying.
 
 Currently, these properties are as follows for `Ontology` nodes:
 
-* `https://github.com/EBISPOT/owl2neo#numberOfClasses`
-* `https://github.com/EBISPOT/owl2neo#numberOfProperties`
-* `https://github.com/EBISPOT/owl2neo#numberOfIndividuals`
+* `numberOfClasses`
+* `numberOfProperties`
+* `numberOfIndividuals`
 
 And as follows for `OwlClass`, `OwlProperty`, and `OwlIndividual` nodes:
 
-* `https://github.com/EBISPOT/owl2neo#shortForm`
-* `https://github.com/EBISPOT/owl2neo#relatedTo`
-* `https://github.com/EBISPOT/owl2neo#definition`
-* `https://github.com/EBISPOT/owl2neo#synonym`
+* `shortForm`
+* `relatedTo`
+* `definition`
+* `synonym`
 
 
 
