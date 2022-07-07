@@ -469,6 +469,10 @@ public class JSON2CSV {
         List<String> headers = new ArrayList<>();
 
         for(String uri : uris) {
+            
+	    if(uri.equals("propertyLabels"))
+		    continue;
+
             headers.add(uri.replace(":", "__") + ":string[]");
         }
 
