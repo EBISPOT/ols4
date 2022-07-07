@@ -245,7 +245,7 @@ public class OwlTranslator implements StreamRDF {
 
                     String lang = prop.value.getLiteralLanguage();
 
-                    if(lang==null)
+                    if(lang==null||lang.equals(""))
                         lang="en";
 
                     writer.name(lang+"+"+k);
