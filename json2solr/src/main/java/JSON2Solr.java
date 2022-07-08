@@ -119,31 +119,7 @@ public class JSON2Solr {
                                     flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
                                     flattenedClass.put("propertyLabels", gson.toJson(_class.get("propertyLabels")));
 
-                                    for (String k : _class.keySet()) {
-
-                                        if(k.equals("propertyLabels"))
-                                            continue;
-
-                                        Object v = discardMetadata(_class.get(k), lang);
-                                        if(v == null) {
-                                            continue;
-                                        }
-
-                                        k = k.replace(":", "__");
-
-                                        if (v instanceof Collection) {
-                                            List<String> flattenedList = new ArrayList<String>();
-                                            for (Object entry : ((Collection<Object>) v)) {
-                                                Object obj = discardMetadata(entry, lang);
-                                                if(obj != null) {
-                                                    flattenedList.add(objToString(obj));
-                                                }
-                                            }
-                                            flattenedClass.put(k, flattenedList);
-                                        } else {
-                                            flattenedClass.put(k, objToString(v));
-                                        }
-                                    }
+                                    flattenProperties(_class, flattenedClass, lang);
 
                                     //classesWriter.println(gson.toJson(flattenedClass));
                                     classesWriter.println(gson.toJson(flattenedClass));
@@ -159,11 +135,26 @@ public class JSON2Solr {
                         } else {
                             reader.skipValue();
                         }
-
-
                     }
 
-                    ontologiesWriter.println(gson.toJson(ontology));
+                    Set<String> languages = new HashSet<>();
+                    languages.add("en");
+                    for(String k : ontology.ontologyProperties.keySet()) {
+                        languages.addAll(extractLanguages(ontology.ontologyProperties.get(k)));
+                    }
+
+                    for(String lang : languages) {
+
+                        Map<String, Object> flattenedOntology = new HashMap<>();
+                        flattenedOntology.put("id", ontology.ontologyConfig.get("id"));
+                        flattenedOntology.put("lang", lang);
+                        flattenedOntology.put("ontologyConfig", gson.toJson(ontology.ontologyConfig)); 
+                        flattenedOntology.put("propertyLabels", gson.toJson(ontology.ontologyProperties.get("propertyLabels"))); 
+
+                        flattenProperties(ontology.ontologyProperties, flattenedOntology, lang);
+
+                        ontologiesWriter.println(gson.toJson(flattenedOntology));
+                    }
 
                     reader.endObject(); // ontology
                 }
@@ -179,6 +170,36 @@ public class JSON2Solr {
 
         reader.endObject();
         reader.close();
+    }
+
+    static private void flattenProperties(Map<String,Object> properties, Map<String,Object> flattened, String lang) {
+
+        for (String k : properties.keySet()) {
+
+            if(k.equals("propertyLabels"))
+                continue;
+
+            Object v = discardMetadata(properties.get(k), lang);
+            if(v == null) {
+                continue;
+            }
+
+            k = k.replace(":", "__");
+
+            if (v instanceof Collection) {
+                List<String> flattenedList = new ArrayList<String>();
+                for (Object entry : ((Collection<Object>) v)) {
+                    Object obj = discardMetadata(entry, lang);
+                    if(obj != null) {
+                        flattenedList.add(objToString(obj));
+                    }
+                }
+                flattened.put(k, flattenedList);
+            } else {
+                flattened.put(k, objToString(v));
+            }
+        }
+
     }
 
     // Where the JSON has type information or Axiom information (metadata about
