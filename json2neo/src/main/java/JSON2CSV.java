@@ -120,7 +120,12 @@ public class JSON2CSV {
 
         row[n++] = (String) ontology.ontologyConfig.get("id");
         row[n++] = "Ontology";
-        row[n++] = gson.toJson(ontology);
+
+        // don't want to store the whole ontology including terms!!
+        Map<String,Object> ontologyJsonObj = new HashMap<>();
+        ontologyJsonObj.put("ontologyConfig", ontology.ontologyConfig);
+        ontologyJsonObj.put("ontologyProperties", ontology.ontologyProperties);
+        row[n++] = gson.toJson(ontologyJsonObj);
 
         for (String column : properties) {
             if(!DONT_INDEX_FIELDS.contains(column))
