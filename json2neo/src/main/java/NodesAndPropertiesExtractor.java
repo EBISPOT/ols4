@@ -2,6 +2,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collection;
 
 public class NodesAndPropertiesExtractor {
 
@@ -13,20 +14,18 @@ public class NodesAndPropertiesExtractor {
         public Set<String> allNodes = new HashSet<>();
     }
 
-    public static Result extractNodesAndProperties(JsonOntology ontology) {
+    public static Result extractNodesAndProperties(Map<String,Object> ontology) {
 
         Result res = new Result();
 
-        for(Map<String, Object> _class : ontology.classes) {
+        for(Map<String, Object> _class : (Collection<Map<String,Object>>) ontology.get("classes")) {
 
             String uri = (String) _class.get("uri");
             res.allNodes.add(uri);
 
             for(String predicate : _class.keySet()) {
 
-                if(predicate.equals("uri"))
-                    continue;
-                if(predicate.equals("propertyLabels"))
+                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
                     continue;
 
                 res.allClassProperties.add(predicate);
@@ -36,16 +35,14 @@ public class NodesAndPropertiesExtractor {
             }
         }
 
-        for(Map<String, Object> property : ontology.properties) {
+        for(Map<String, Object> property : (Collection<Map<String,Object>>) ontology.get("properties")) {
 
             String uri = (String) property.get("uri");
             res.allNodes.add(uri);
 
             for(String predicate : property.keySet()) {
 
-                if(predicate.equals("uri"))
-                    continue;
-                if(predicate.equals("propertyLabels"))
+                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
                     continue;
 
                 res.allPropertyProperties.add(predicate);
@@ -55,16 +52,14 @@ public class NodesAndPropertiesExtractor {
             }
         }
 
-        for(Map<String, Object> individual : ontology.individuals) {
+        for(Map<String, Object> individual : (Collection<Map<String,Object>>) ontology.get("individuals")) {
 
             String uri = (String) individual.get("uri");
             res.allNodes.add(uri);
 
             for(String predicate : individual.keySet()) {
 
-                if(predicate.equals("uri"))
-                    continue;
-                if(predicate.equals("propertyLabels"))
+                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
                     continue;
 
                 res.allIndividualProperties.add(predicate);
@@ -123,9 +118,7 @@ public class NodesAndPropertiesExtractor {
                     // predicates used to describe the edge itself
                     for(String edgePredicate : mapValue.keySet()) {
 
-                        if(edgePredicate.equals("value"))
-                            continue;
-                        if(edgePredicate.equals("propertyLabels"))
+                        if(edgePredicate.equals("value") || JSON2CSV.DONT_INDEX_FIELDS.contains(edgePredicate))
                             continue;
 
                         outEdgeProps.add(edgePredicate);

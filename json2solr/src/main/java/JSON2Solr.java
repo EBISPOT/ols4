@@ -27,7 +27,7 @@ public class JSON2Solr {
     // in the "_json" string field.
     // 
     public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "ontologyConfig", "ontologyProperties", "propertyLabels"
+        "ontologyConfig", "propertyLabels", "classes", "properties", "individuals"
     );
 
 
@@ -87,19 +87,13 @@ public class JSON2Solr {
 
                     reader.beginObject(); // ontology
 
-                    JsonOntology ontology = new JsonOntology();
+                    Map<String,Object> ontology = new HashMap<>();
 
                     while (reader.peek() != JsonToken.END_OBJECT) {
 
                         String key = reader.nextName();
 
-                        if (key.equals("ontologyConfig")) {
-
-                            ontology.ontologyConfig = gson.fromJson(reader, Map.class);
-
-                        } else if (key.equals("ontologyProperties")) {
-                            ontology.ontologyProperties = gson.fromJson(reader, Map.class);
-                        } else if (key.equals("classes")) {
+                        if (key.equals("classes")) {
 
                             reader.beginArray();
 
@@ -124,7 +118,7 @@ public class JSON2Solr {
                                     //
                                     Map<String, Object> flattenedClass = new HashMap<>();
 
-                                    String ontologyId = (String) ontology.ontologyConfig.get("id");
+                                    String ontologyId = (String) ontology.get("id");
                                     flattenedClass.put("_json", gson.toJson(_class));
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("ontology_id", ontologyId);
@@ -144,24 +138,37 @@ public class JSON2Solr {
                             reader.endArray();
 
                         } else {
-                            reader.skipValue();
+                            ontology.put(key, gson.fromJson(reader, Object.class));
                         }
                     }
 
                     Set<String> languages = new HashSet<>();
                     languages.add("en");
-                    for(String k : ontology.ontologyProperties.keySet()) {
-                        languages.addAll(extractLanguages(ontology.ontologyProperties.get(k)));
+                    for(String k : ontology.keySet()) {
+                        languages.addAll(extractLanguages(ontology.get(k)));
                     }
 
                     for(String lang : languages) {
 
+                        String ontologyId = (String) ontology.get("id");
+
+
                         Map<String, Object> flattenedOntology = new HashMap<>();
-                        flattenedOntology.put("_json", gson.toJson(ontology));
-                        flattenedOntology.put("id", ontology.ontologyConfig.get("id"));
+
+                        // don't want to store a copy of all the terms in here too
+                        Map<String, Object> ontologyJsonObj = new HashMap<>();
+                        for(String k : ontology.keySet()) {
+                            if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
+                                continue;
+                            ontologyJsonObj.put(k, ontology.get(k));
+                        }
+                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
+
+
+                        flattenedOntology.put("id", ontologyId);
                         flattenedOntology.put("lang", lang);
 
-                        flattenProperties(ontology.ontologyProperties, flattenedOntology, lang);
+                        flattenProperties(ontology, flattenedOntology, lang);
 
                         ontologiesWriter.println(gson.toJson(flattenedOntology));
                     }

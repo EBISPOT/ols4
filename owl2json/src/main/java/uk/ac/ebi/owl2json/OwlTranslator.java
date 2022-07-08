@@ -97,11 +97,13 @@ public class OwlTranslator implements StreamRDF {
 
         writer.beginObject();
 
+        writer.name("id");
+        writer.value((String) config.get("id"));
+
         writer.name("ontologyConfig");
         new Gson().toJson(new Gson().toJsonTree(config).getAsJsonObject(), writer);
 
-        writer.name("ontologyProperties");
-        writeNode(writer, ontologyNode);
+        writeProperties(writer, ontologyNode.properties.properties);
 
         writer.name("classes");
         writer.beginArray();

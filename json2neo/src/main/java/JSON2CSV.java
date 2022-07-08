@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Collection;
 
 public class JSON2CSV {
 
@@ -25,7 +26,7 @@ public class JSON2CSV {
     // in the "_json" string field.
     // 
     public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "ontologyConfig", "ontologyProperties", "propertyLabels"
+        "ontologyConfig", "propertyLabels", "classes", "properties", "individuals"
     );
 
     public static void main(String[] args) throws IOException {
@@ -70,7 +71,7 @@ public class JSON2CSV {
                 reader.beginArray();
 
                 while(reader.peek() != JsonToken.END_ARRAY) {
-                    JsonOntology ontology = gson.fromJson(reader, JsonOntology.class);
+                    Map<String,Object> ontology = gson.fromJson(reader, Map.class);
 
                     NodesAndPropertiesExtractor.Result nodesAndProps =
                             NodesAndPropertiesExtractor.extractNodesAndProperties(ontology);
@@ -100,9 +101,9 @@ public class JSON2CSV {
         reader.close();
     }
 
-    public static void writeOntology(JsonOntology ontology, String outPath) throws IOException {
+    public static void writeOntology(Map<String,Object> ontology, String outPath) throws IOException {
 
-        List<String> properties = new ArrayList<String>(ontology.ontologyProperties.keySet());
+        List<String> properties = new ArrayList<String>(ontology.keySet());
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
@@ -110,7 +111,7 @@ public class JSON2CSV {
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
-        String outName = outPath + "/" + (String) ontology.ontologyConfig.get("id") + "_ontologies.csv";
+        String outName = outPath + "/" + (String) ontology.get("id") + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -118,18 +119,24 @@ public class JSON2CSV {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = (String) ontology.ontologyConfig.get("id");
+        row[n++] = (String) ontology.get("id");
         row[n++] = "Ontology";
 
+
         // don't want to store the whole ontology including terms!!
+        // just the ontologyConfig and the properties
         Map<String,Object> ontologyJsonObj = new HashMap<>();
-        ontologyJsonObj.put("ontologyConfig", ontology.ontologyConfig);
-        ontologyJsonObj.put("ontologyProperties", ontology.ontologyProperties);
+        for(String prop : properties) {
+            if(prop.equals("classes") || prop.equals("properties") || prop.equals("individuals"))
+                continue;
+            ontologyJsonObj.put(prop, ontology.get(prop));
+        }
         row[n++] = gson.toJson(ontologyJsonObj);
+
 
         for (String column : properties) {
             if(!DONT_INDEX_FIELDS.contains(column))
-                row[n++] = getValue(ontology.ontologyProperties, column);
+                row[n++] = getValue(ontology, column);
         }
 
         printer.printRecord(row);
@@ -137,9 +144,9 @@ public class JSON2CSV {
     }
 
 
-    public static void writeClasses(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeClasses(Map<String,Object> ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String id = (String) ontology.ontologyConfig.get("id");
+        String id = (String) ontology.get("id");
 
         String outName = outPath + "/" + id + "_classes.csv";
 
@@ -156,7 +163,7 @@ public class JSON2CSV {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        for (Map<String, Object> _class : ontology.classes) {
+        for (Map<String, Object> _class : (Collection<Map<String,Object>>) ontology.get("classes")) {
 
             String[] row = new String[csvHeader.size()];
             int n = 0;
@@ -179,9 +186,9 @@ public class JSON2CSV {
     }
 
 
-    public static void writeProperties(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeProperties(Map<String,Object> ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String id = (String) ontology.ontologyConfig.get("id");
+        String id = (String) ontology.get("id");
 
         String outName = outPath + "/" + id + "_properties.csv";
 
@@ -198,7 +205,7 @@ public class JSON2CSV {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        for (Map<String, Object> _property : ontology.properties) {
+        for (Map<String, Object> _property : (Collection<Map<String,Object>>) ontology.get("properties")) {
 
             String[] row = new String[csvHeader.size()];
             int n = 0;
@@ -220,9 +227,9 @@ public class JSON2CSV {
         printer.close(true);
     }
 
-    public static void writeIndividuals(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeIndividuals(Map<String,Object> ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String id = (String) ontology.ontologyConfig.get("id");
+        String id = (String) ontology.get("id");
 
         String outName = outPath + "/" + id + "_individuals.csv";
 
@@ -239,7 +246,7 @@ public class JSON2CSV {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        for (Map<String, Object> _individual : ontology.individuals) {
+        for (Map<String, Object> _individual : (Collection<Map<String,Object>>) ontology.get("individuals")) {
 
             String[] row = new String[csvHeader.size()];
             int n = 0;
@@ -262,9 +269,9 @@ public class JSON2CSV {
     }
 
 
-    public static void writeEdges(JsonOntology ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
+    public static void writeEdges(Map<String,Object> ontology, String outPath, NodesAndPropertiesExtractor.Result nodesAndProps) throws IOException {
 
-        String ontologyId = (String) ontology.ontologyConfig.get("id");
+        String ontologyId = (String) ontology.get("id");
 
         String outName = outPath + "/" + ontologyId + "_edges.csv";
 
@@ -280,7 +287,7 @@ public class JSON2CSV {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        for (Map<String, Object> _class : ontology.classes) {
+        for (Map<String, Object> _class : (Collection<Map<String,Object>>) ontology.get("classes")) {
 
             for (String predicate : _class.keySet()) {
 
@@ -324,7 +331,7 @@ public class JSON2CSV {
             }
         }
 
-        for (Map<String, Object> property : ontology.properties) {
+        for (Map<String, Object> property : (Collection<Map<String,Object>>) ontology.get("properties")) {
 
             for (String predicate : property.keySet()) {
 
@@ -368,7 +375,7 @@ public class JSON2CSV {
             }
         }
 
-        for (Map<String, Object> individual : ontology.individuals) {
+        for (Map<String, Object> individual : (Collection<Map<String,Object>>) ontology.get("individuals")) {
 
             for (String predicate : individual.keySet()) {
 
