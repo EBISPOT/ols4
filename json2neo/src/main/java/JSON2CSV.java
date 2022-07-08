@@ -19,6 +19,15 @@ public class JSON2CSV {
 
     static Gson gson = new Gson();
 
+
+    // Fields that we never want to query, so shouldn't be added to the Neo4j
+    // objects. We can still access them via the API because they will be stored
+    // in the "_json" string field.
+    // 
+    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
+        "ontologyConfig", "ontologyProperties", "propertyLabels"
+    );
+
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -98,8 +107,7 @@ public class JSON2CSV {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
-        csvHeader.add("config");
-        csvHeader.add("propertyLabels");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         String outName = outPath + "/" + (String) ontology.ontologyConfig.get("id") + "_ontologies.csv";
@@ -112,13 +120,11 @@ public class JSON2CSV {
 
         row[n++] = (String) ontology.ontologyConfig.get("id");
         row[n++] = "Ontology";
-        row[n++] = gson.toJson(ontology.ontologyConfig);
-        row[n++] = gson.toJson(ontology.ontologyProperties.get("propertyLabels"));
+        row[n++] = gson.toJson(ontology);
 
         for (String column : properties) {
-            if(column.equals("propertyLabels"))
-                continue;
-            row[n++] = getValue(ontology.ontologyProperties, column);
+            if(!DONT_INDEX_FIELDS.contains(column))
+                row[n++] = getValue(ontology.ontologyProperties, column);
         }
 
         printer.printRecord(row);
@@ -139,7 +145,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("propertyLabels");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -154,10 +160,11 @@ public class JSON2CSV {
             row[n++] = "OwlClass";
             row[n++] = id;
             row[n++] = (String) _class.get("uri");
-            row[n++] = gson.toJson(_class.get("propertyLabels"));
+            row[n++] = gson.toJson(_class);
 
             for (String column : properties) {
-                row[n++] = getValue(_class, column);
+                if(!DONT_INDEX_FIELDS.contains(column))
+                    row[n++] = getValue(_class, column);
             }
 
             printer.printRecord(row);
@@ -180,7 +187,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("propertyLabels");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -195,10 +202,11 @@ public class JSON2CSV {
             row[n++] = "OwlProperty";
             row[n++] = id;
             row[n++] = (String) _property.get("uri");
-            row[n++] = gson.toJson(_property.get("propertyLabels"));
+            row[n++] = gson.toJson(_property);
 
             for (String column : properties) {
-                row[n++] = getValue(_property, column);
+                if(!DONT_INDEX_FIELDS.contains(column))
+                    row[n++] = getValue(_property, column);
             }
 
             printer.printRecord(row);
@@ -220,7 +228,7 @@ public class JSON2CSV {
         csvHeader.add(":LABEL");
         csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("propertyLabels");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -235,10 +243,11 @@ public class JSON2CSV {
             row[n++] = "OwlIndividual";
             row[n++] = id;
             row[n++] = (String) _individual.get("uri");
-            row[n++] = gson.toJson(_individual.get("propertyLabels"));
+            row[n++] = gson.toJson(_individual);
 
             for (String column : properties) {
-                row[n++] = getValue(_individual, column);
+                if(!DONT_INDEX_FIELDS.contains(column))
+                    row[n++] = getValue(_individual, column);
             }
 
             printer.printRecord(row);
@@ -260,7 +269,7 @@ public class JSON2CSV {
         csvHeader.add(":START_ID");
         csvHeader.add(":TYPE");
         csvHeader.add(":END_ID");
-        csvHeader.add("propertyLabels");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -410,7 +419,7 @@ public class JSON2CSV {
         row[n++] = ontologyId + "+" + (String) a.get("uri");
         row[n++] = predicate;
         row[n++] = ontologyId + "+" + (String) bUri;
-        row[n++] = gson.toJson(edgeProps.get("propertyLabels"));
+        row[n++] = gson.toJson(edgeProps);
 
         for (String column : properties) {
 
@@ -465,15 +474,12 @@ public class JSON2CSV {
 	return val.replace("|", "+");
     }
 
-    private static List<String> propertyHeaders(List<String> uris) {
+    private static List<String> propertyHeaders(List<String> fieldNames) {
         List<String> headers = new ArrayList<>();
 
-        for(String uri : uris) {
-            
-	    if(uri.equals("propertyLabels"))
-		    continue;
-
-            headers.add(uri.replace(":", "__") + ":string[]");
+        for(String k : fieldNames) {
+            if(!DONT_INDEX_FIELDS.contains(k))
+                headers.add(k.replace(":", "__") + ":string[]");
         }
 
         return headers;

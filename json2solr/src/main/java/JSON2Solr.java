@@ -20,6 +20,17 @@ public class JSON2Solr {
 
     static Gson gson = new Gson();
 
+
+
+    // Fields that we never want to query, so shouldn't be added to the Solr
+    // objects. We can still access them via the API because they will be stored
+    // in the "_json" string field.
+    // 
+    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
+        "ontologyConfig", "ontologyProperties", "propertyLabels"
+    );
+
+
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -114,10 +125,10 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedClass = new HashMap<>();
 
                                     String ontologyId = (String) ontology.ontologyConfig.get("id");
+                                    flattenedClass.put("_json", gson.toJson(_class));
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("ontology_id", ontologyId);
                                     flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
-                                    flattenedClass.put("propertyLabels", gson.toJson(_class.get("propertyLabels")));
 
                                     flattenProperties(_class, flattenedClass, lang);
 
@@ -146,10 +157,9 @@ public class JSON2Solr {
                     for(String lang : languages) {
 
                         Map<String, Object> flattenedOntology = new HashMap<>();
+                        flattenedOntology.put("_json", gson.toJson(ontology));
                         flattenedOntology.put("id", ontology.ontologyConfig.get("id"));
                         flattenedOntology.put("lang", lang);
-                        flattenedOntology.put("ontologyConfig", gson.toJson(ontology.ontologyConfig)); 
-                        flattenedOntology.put("propertyLabels", gson.toJson(ontology.ontologyProperties.get("propertyLabels"))); 
 
                         flattenProperties(ontology.ontologyProperties, flattenedOntology, lang);
 
@@ -176,7 +186,7 @@ public class JSON2Solr {
 
         for (String k : properties.keySet()) {
 
-            if(k.equals("propertyLabels"))
+            if(DONT_INDEX_FIELDS.contains(k))
                 continue;
 
             Object v = discardMetadata(properties.get(k), lang);

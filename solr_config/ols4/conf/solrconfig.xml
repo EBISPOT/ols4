@@ -994,7 +994,7 @@
     </arr>
   </updateProcessor>-->
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
-    <str name="fieldRegex">^(?!.*propertyLabels).*</str>
+    <str name="fieldRegex">^[^_].*</str>
     <lst name="typeMapping">
       <str name="valueClass">java.lang.String</str>
       <str name="fieldType">text_general</str>

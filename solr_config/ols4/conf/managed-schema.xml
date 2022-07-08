@@ -127,7 +127,7 @@
     <!-- OLS4: we are using dynamic fields for everything so no need to specify much of a schema.
 	 however we do need to specify the fields we DON'T want to be indexed
     -->
-    <field name="propertyLabels" type="text_general" indexed="false" stored="true" multiValued="false" />
+    <field name="_json" type="text_general" indexed="false" stored="true" multiValued="false" />
 
 
 
