@@ -3,6 +3,7 @@ package uk.ac.ebi.owl2json;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
+import org.apache.jena.riot.Lang;
 import uk.ac.ebi.owl2json.operations.AxiomEvaluator;
 import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
 import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
@@ -13,6 +14,7 @@ import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
@@ -29,6 +31,17 @@ public class OwlTranslator implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
+    private void parseRDF(String url) {
+
+        RDFParser.create()
+                .forceLang(Lang.RDFXML)
+                .strict(false)
+                .checking(false)
+                .source(url)
+                .parse(this);
+    }
+
+
     OwlTranslator(Map<String, Object> config) {
 
 
@@ -36,10 +49,9 @@ public class OwlTranslator implements StreamRDF {
 
         languages.add("en");
 
-
         String url = (String) config.get("ontology_purl");
-
-        RDFDataMgr.parse(this, url);
+        System.out.println("load ontology from: " + url);
+        parseRDF(url);
 
         // Before we evaluate imports, mark all the nodes so far as not imported
         for(String id : nodes.keySet()) {
@@ -55,7 +67,7 @@ public class OwlTranslator implements StreamRDF {
 		importUrls.remove(0);
 
 		System.out.println("import: " + importUrl);
-		RDFDataMgr.parse(this, importUrl);
+        parseRDF(importUrl);
 	}
 
         // Now the imports are done, mark everything else as imported
