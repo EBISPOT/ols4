@@ -20,7 +20,7 @@ public class AxiomEvaluator {
 			assert(sourceProp.size() == 1);
 			Node source = sourceProp.get(0).value;
 
-                System.out.println("sourceProp " + source);
+                //System.out.println("sourceProp " + source);
 	
 			List<OwlNode.Property> propertyProp = c.properties.properties.get("http://www.w3.org/2002/07/owl#annotatedProperty");
 			assert(propertyProp.size() == 1);
