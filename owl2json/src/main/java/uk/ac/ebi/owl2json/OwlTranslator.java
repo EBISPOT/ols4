@@ -9,6 +9,7 @@ import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
 import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
 import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
 import uk.ac.ebi.owl2json.operations.SynonymAnnotator;
+import uk.ac.ebi.owl2json.operations.OntologyIdAnnotator;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
@@ -101,6 +102,7 @@ public class OwlTranslator implements StreamRDF {
 	SynonymAnnotator.annotateSynonyms(this);
 	AxiomEvaluator.evaluateAxioms(this);
 	ClassExpressionEvaluator.evaluateClassExpressions(this);
+    OntologyIdAnnotator.annotateOntologyIds(this);
 
     }
 
