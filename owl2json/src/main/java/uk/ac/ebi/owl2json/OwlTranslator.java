@@ -356,10 +356,10 @@ public class OwlTranslator implements StreamRDF {
     @Override
     public void triple(Triple triple) {
 
-        if(triple.getObject().isURI()) {
-            handleUriTriple(triple);
-        } else if(triple.getObject().isLiteral()) {
+        if(triple.getObject().isLiteral()) {
             handleLiteralTriple(triple);
+        } else {
+            handleNamedNodeTriple(triple);
         }
 
         // TODO: BNodes?
@@ -404,7 +404,7 @@ public class OwlTranslator implements StreamRDF {
 //        </owl:equivalentClass>
 
 
-    public void handleUriTriple(Triple triple) {
+    public void handleNamedNodeTriple(Triple triple) {
 
         OwlNode subjNode = getOrCreateTerm(triple.getSubject());
 
@@ -432,6 +432,9 @@ public class OwlTranslator implements StreamRDF {
     }
 
     public void handleType(OwlNode subjNode, Node type) {
+
+        if(!type.isURI())
+            return;
 
         switch (type.getURI()) {
 

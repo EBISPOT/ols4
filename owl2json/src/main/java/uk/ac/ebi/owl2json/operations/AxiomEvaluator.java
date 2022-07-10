@@ -14,15 +14,19 @@ public class AxiomEvaluator {
 		for(String id : translator.nodes.keySet()) {
 		    OwlNode c = translator.nodes.get(id);
 		    if (c.type == OwlNode.NodeType.AXIOM) {
+
 	
 			List<OwlNode.Property> sourceProp = c.properties.properties.get("http://www.w3.org/2002/07/owl#annotatedSource");
 			assert(sourceProp.size() == 1);
 			Node source = sourceProp.get(0).value;
+
+                System.out.println("sourceProp " + source);
 	
 			List<OwlNode.Property> propertyProp = c.properties.properties.get("http://www.w3.org/2002/07/owl#annotatedProperty");
 			assert(propertyProp.size() == 1);
 			String property = propertyProp.get(0).value.toString();
-	
+
+			// Why is this null when it's a BNode?
 			List<OwlNode.Property> targetProp = c.properties.properties.get("http://www.w3.org/2002/07/owl#annotatedTarget");
 			assert(targetProp.size() == 1);
 			Node target = targetProp.get(0).value;
