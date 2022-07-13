@@ -110,11 +110,6 @@ public class NodesAndPropertiesExtractor {
 
                     // assume reificiation (owl:Axiom); TODO maybe don't assume
                     
-                    // for predicates used in reification we store it twice, one with the value and no axiom metadata
-                    // so that it can be queried directly, and then again with the metadata as json in an axiom+ field
-                    //
-                    outProps.add("axiom+" + predicate);
-
                     // predicates used to describe the edge itself
                     for(String edgePredicate : mapValue.keySet()) {
 

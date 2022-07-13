@@ -468,7 +468,7 @@ public class JSON2CSV {
 
 		// could be an axiom or a langString, but we are writing the value
         // itself as a property directly in this case; the rest of the axiom 
-        // properties or localized strings go in the axiom+ field or lang+ fields
+        // properties or localized strings are preserved in the _json field
 
 		Map<String, Object> mapValue = (Map<String, Object>) value;
 
@@ -498,17 +498,6 @@ public class JSON2CSV {
     }
 
     private static String getValue(Map<String,Object> properties, String column) {
-
-        //System.out.println("get " + column);
-        //System.out.println(properties.get(column));
-
-        if(column.startsWith("axiom+")) {
-
-                String predicate = column.substring(6);
-                Object axiom = properties.get(predicate);
-
-                return axiom != null ? gson.toJson(axiom) : "";
-            }
 
             if(column.indexOf('+') != -1) {
                 String lang = column.substring(0, column.indexOf('+'));
