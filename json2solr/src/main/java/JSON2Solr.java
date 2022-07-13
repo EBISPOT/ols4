@@ -62,13 +62,19 @@ public class JSON2Solr {
 
         PrintStream ontologiesWriter = null;
         PrintStream classesWriter = null;
+        PrintStream propertiesWriter = null;
+        PrintStream individualsWriter = null;
 
 
         String ontologiesOutName = outPath + "/ontologies.jsonl";
         String classesOutName = outPath + "/classes.jsonl";
+        String propertiesOutName = outPath + "/properties.jsonl";
+        String individualsOutName = outPath + "/individuals.jsonl";
 
         ontologiesWriter = new PrintStream(ontologiesOutName);
         classesWriter = new PrintStream(classesOutName);
+        propertiesWriter = new PrintStream(propertiesOutName);
+        individualsWriter = new PrintStream(individualsOutName);
 
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
@@ -126,8 +132,91 @@ public class JSON2Solr {
 
                                     flattenProperties(_class, flattenedClass, lang);
 
-                                    //classesWriter.println(gson.toJson(flattenedClass));
                                     classesWriter.println(gson.toJson(flattenedClass));
+
+                                }
+
+
+
+                            }
+
+                            reader.endArray();
+
+                        } else if (key.equals("properties")) {
+
+                            reader.beginArray();
+
+                            while (reader.peek() != JsonToken.END_ARRAY) {
+
+                                Map<String, Object> property = gson.fromJson(reader, Map.class);
+
+                                Set<String> languages = new HashSet<>();
+                                languages.add("en");
+                                for(String k : property.keySet()) {
+                                    languages.addAll(extractLanguages(property.get(k)));
+                                }
+
+
+                                // Create 1 document per language
+                                //
+                                for(String lang : languages) {
+
+                                    // Stringify any nested objects
+                                    //
+                                    Map<String, Object> flattenedProperty = new HashMap<>();
+
+                                    String ontologyId = (String) ontology.get("id");
+                                    flattenedProperty.put("_json", gson.toJson(property));
+                                    flattenedProperty.put("lang", lang);
+                                    flattenedProperty.put("ontology_id", ontologyId);
+                                    flattenedProperty.put("id", ontologyId + "+" + lang + "+" + (String) property.get("uri"));
+
+                                    flattenProperties(property, flattenedProperty, lang);
+
+                                    propertiesWriter.println(gson.toJson(flattenedProperty));
+
+                                }
+
+
+
+                            }
+
+                            reader.endArray();
+
+                        } else if (key.equals("individuals")) {
+
+                            reader.beginArray();
+
+                            while (reader.peek() != JsonToken.END_ARRAY) {
+
+                                Map<String, Object> individual = gson.fromJson(reader, Map.class);
+                                //classesWriter.println("{\"index\": {\"_index\": \"owlindividuales\"}}");
+
+
+                                Set<String> languages = new HashSet<>();
+                                languages.add("en");
+                                for(String k : individual.keySet()) {
+                                    languages.addAll(extractLanguages(individual.get(k)));
+                                }
+
+
+                                // Create 1 document per language
+                                //
+                                for(String lang : languages) {
+
+                                    // Stringify any nested objects
+                                    //
+                                    Map<String, Object> flattenedIndividual = new HashMap<>();
+
+                                    String ontologyId = (String) ontology.get("id");
+                                    flattenedIndividual.put("_json", gson.toJson(individual));
+                                    flattenedIndividual.put("lang", lang);
+                                    flattenedIndividual.put("ontology_id", ontologyId);
+                                    flattenedIndividual.put("id", ontologyId + "+" + lang + "+" + (String) individual.get("uri"));
+
+                                    flattenProperties(individual, flattenedIndividual, lang);
+
+                                    individualsWriter.println(gson.toJson(flattenedIndividual));
 
                                 }
 

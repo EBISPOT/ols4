@@ -10,6 +10,7 @@ import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
 import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
 import uk.ac.ebi.owl2json.operations.SynonymAnnotator;
 import uk.ac.ebi.owl2json.operations.OntologyIdAnnotator;
+import uk.ac.ebi.owl2json.operations.TypesAnnotator;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
@@ -51,6 +52,25 @@ public class OwlTranslator implements StreamRDF {
         languages.add("en");
 
         String url = (String) config.get("ontology_purl");
+
+        if(url == null) {
+
+            Collection<Map<String,Object>> products =
+                (Collection<Map<String,Object>>) config.get("products");
+
+            for(Map<String,Object> product : products) {
+
+                String purl = (String) product.get("ontology_purl");
+
+                if(purl != null && purl.endsWith(".owl")) {
+                    url = purl;
+                    break;
+                }
+
+            }
+
+        }
+
         System.out.println("load ontology from: " + url);
         parseRDF(url);
 
@@ -103,6 +123,7 @@ public class OwlTranslator implements StreamRDF {
 	AxiomEvaluator.evaluateAxioms(this);
 	ClassExpressionEvaluator.evaluateClassExpressions(this);
     OntologyIdAnnotator.annotateOntologyIds(this);
+    TypesAnnotator.annotateTypes(this);
 
     }
 
