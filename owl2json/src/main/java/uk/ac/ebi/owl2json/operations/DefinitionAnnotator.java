@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class DefinitionAnnotator {

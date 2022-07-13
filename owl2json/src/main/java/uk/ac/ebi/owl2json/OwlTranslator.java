@@ -3,7 +3,11 @@ package uk.ac.ebi.owl2json;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
+import org.apache.jena.graph.Graph;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.sparql.util.NodeUtils;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import uk.ac.ebi.owl2json.operations.AxiomEvaluator;
 import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
 import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
@@ -22,16 +26,23 @@ import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class OwlTranslator implements StreamRDF {
+public class OwlTranslator {
 
     public Map<String, Object> config;
+
+    public Graph graph;
+    public Model model;
+
     public List<String> importUrls = new ArrayList<>();
     public Set<String> languages = new HashSet<>();
 
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
+
+    Node ontologyNode = null;
 
     private void parseRDF(String url) {
 
@@ -40,12 +51,15 @@ public class OwlTranslator implements StreamRDF {
                 .strict(false)
                 .checking(false)
                 .source(url)
-                .parse(this);
+                .parse(model);
     }
 
 
     OwlTranslator(Map<String, Object> config) {
 
+
+        model = ModelFactory.createDefaultModel();
+        graph = model.getGraph();
 
         this.config = config;
 
@@ -53,16 +67,16 @@ public class OwlTranslator implements StreamRDF {
 
         String url = (String) config.get("ontology_purl");
 
-        if(url == null) {
+        if (url == null) {
 
-            Collection<Map<String,Object>> products =
-                (Collection<Map<String,Object>>) config.get("products");
+            Collection<Map<String, Object>> products =
+                    (Collection<Map<String, Object>>) config.get("products");
 
-            for(Map<String,Object> product : products) {
+            for (Map<String, Object> product : products) {
 
                 String purl = (String) product.get("ontology_purl");
 
-                if(purl != null && purl.endsWith(".owl")) {
+                if (purl != null && purl.endsWith(".owl")) {
                     url = purl;
                     break;
                 }
@@ -75,55 +89,82 @@ public class OwlTranslator implements StreamRDF {
         parseRDF(url);
 
         // Before we evaluate imports, mark all the nodes so far as not imported
-        for(String id : nodes.keySet()) {
-            OwlNode c = nodes.get(id);
-            if(c.uri != null) {
-                c.properties.addProperty("imported", NodeFactory.createLiteral("false"));
+
+        ResIterator it = model.listSubjects();
+
+        while (it.hasNext()) {
+            Resource res = it.next();
+            if (res.isURIResource()) {
+                graph.add(Triple.create(
+                        NodeUtils.asNode(res.getURI()),
+                        NodeUtils.asNode("imported"),
+                        NodeFactory.createLiteral("false")
+                ));
             }
         }
 
+        ontologyNode = nodesWithRdfType("http://www.w3.org/2002/07/owl#Ontology").next();
 
-	while(importUrls.size() > 0) {
-		String importUrl = importUrls.get(0);
-		importUrls.remove(0);
+        while (importUrls.size() > 0) {
+            String importUrl = importUrls.get(0);
+            importUrls.remove(0);
 
-		System.out.println("import: " + importUrl);
-        parseRDF(importUrl);
-	}
+            System.out.println("import: " + importUrl);
+            parseRDF(importUrl);
+        }
 
         // Now the imports are done, mark everything else as imported
-    for(String id : nodes.keySet()) {
-        OwlNode c = nodes.get(id);
-        if(c.uri != null) {
-            if(!c.properties.properties.containsKey("imported")) {
-                c.properties.addProperty("imported", NodeFactory.createLiteral("true"));
+        while (it.hasNext()) {
+            Resource res = it.next();
+            if (res.isURIResource()) {
+                if (!graph.contains(
+                        NodeUtils.asNode(res.getURI()),
+                        NodeUtils.asNode("imported"),
+                        Node.ANY
+                )) {
+                    graph.add(Triple.create(
+                            NodeUtils.asNode(res.getURI()),
+                            NodeUtils.asNode("imported"),
+                            NodeFactory.createLiteral("true")
+                    ));
+                }
             }
         }
-    }
 
-	ontologyNode.properties.addProperty(
-		"numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
+        graph.add(Triple.create(
+                ontologyNode,
+                NodeUtils.asNode("numberOfClasses"),
+                NodeFactory.createLiteral(Integer.toString(numberOfClasses))
+        ));
 
-	ontologyNode.properties.addProperty(
-		"numberOfProperties", NodeFactory.createLiteral(Integer.toString(numberOfProperties)));
+        graph.add(Triple.create(
+                ontologyNode,
+                NodeUtils.asNode("numberOfProperties"),
+                NodeFactory.createLiteral(Integer.toString(numberOfProperties))
+        ));
 
-	ontologyNode.properties.addProperty(
-		"numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
+        graph.add(Triple.create(
+                ontologyNode,
+                NodeUtils.asNode("numberOfIndividuals"),
+                NodeFactory.createLiteral(Integer.toString(numberOfIndividuals))
+        ));
 
 
-	String now = java.time.LocalDateTime.now().toString();
+        String now = java.time.LocalDateTime.now().toString();
 
-	ontologyNode.properties.addProperty(
-		"loaded", NodeFactory.createLiteral(now));
+        graph.add(Triple.create(
+                ontologyNode,
+                NodeUtils.asNode("loaded"),
+                NodeFactory.createLiteral(now)
+        ));
 
-
-	ShortFormAnnotator.annotateShortForms(this);
-	DefinitionAnnotator.annotateDefinitions(this);
-	SynonymAnnotator.annotateSynonyms(this);
-	AxiomEvaluator.evaluateAxioms(this);
-	ClassExpressionEvaluator.evaluateClassExpressions(this);
-    OntologyIdAnnotator.annotateOntologyIds(this);
-    TypesAnnotator.annotateTypes(this);
+        TypesAnnotator.annotateTypes(this);
+        ShortFormAnnotator.annotateShortForms(this);
+        DefinitionAnnotator.annotateDefinitions(this);
+        SynonymAnnotator.annotateSynonyms(this);
+        AxiomEvaluator.evaluateAxioms(this);
+        ClassExpressionEvaluator.evaluateClassExpressions(this);
+        OntologyIdAnnotator.annotateOntologyIds(this);
 
     }
 
@@ -138,20 +179,14 @@ public class OwlTranslator implements StreamRDF {
         writer.name("ontologyConfig");
         new Gson().toJson(new Gson().toJsonTree(config).getAsJsonObject(), writer);
 
-        writeProperties(writer, ontologyNode.properties.properties);
+        writeProperties(writer, ontologyNode);
 
         writer.name("classes");
         writer.beginArray();
 
-        for(String id : nodes.keySet()) {
-            OwlNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.type == OwlNode.NodeType.CLASS) {
-                writeNode(writer, c);
-            }
+        for (ExtendedIterator<Node> iter = nodesWithType("class"); iter.hasNext(); ) {
+            Node node = iter.next();
+            writeNode(writer, node);
         }
 
         writer.endArray();
@@ -160,15 +195,9 @@ public class OwlTranslator implements StreamRDF {
         writer.name("properties");
         writer.beginArray();
 
-        for(String id : nodes.keySet()) {
-            OwlNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.type == OwlNode.NodeType.PROPERTY) {
-                writeNode(writer, c);
-            }
+        for (ExtendedIterator<Node> iter = nodesWithType("property"); iter.hasNext(); ) {
+            Node node = iter.next();
+            writeNode(writer, node);
         }
 
         writer.endArray();
@@ -177,15 +206,9 @@ public class OwlTranslator implements StreamRDF {
         writer.name("individuals");
         writer.beginArray();
 
-        for(String id : nodes.keySet()) {
-            OwlNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
-                writeNode(writer, c);
-            }
+        for (ExtendedIterator<Node> iter = nodesWithType("individual"); iter.hasNext(); ) {
+            Node node = iter.next();
+            writeNode(writer, node);
         }
 
         writer.endArray();
@@ -196,27 +219,27 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    private void writeNode(JsonWriter writer, OwlNode c) throws IOException {
+    private void writeNode(JsonWriter writer, Node c) throws IOException {
 
-        if(c.type == OwlNode.NodeType.RDF_LIST) {
+        if(nodeHasRdfType(c, "http://www.w3.org/1999/02/22-rdf-syntax-ns#List")) {
 
             writer.beginArray();
 
-            for(OwlNode cur = c;;) {
+            for (Node cur = c; ; ) {
 
-                List<OwlNode.Property> first = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
-                assert(first != null && first.size() == 1);
-                writePropertyValue(writer, first.get(0));
+                List<Node> first = graph.find(cur, NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#first"), Node.ANY).mapWith(t -> t.getObject()).toList();
+                assert (first != null && first.size() == 1);
+                writePropertyValue(writer, null, null, first.get(0));
 
-                List<OwlNode.Property> rest = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
-                assert(rest != null && rest.size() == 1);
+                List<Node> rest = graph.find(cur, NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"), Node.ANY).mapWith(t -> t.getObject()).toList();
+                assert (rest != null && rest.size() == 1);
 
-                if(rest.get(0).value.isURI() &&
-                        rest.get(0).value.getURI().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
+                if (rest.get(0).isURI() &&
+                        rest.get(0).getURI().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
                     break;
                 }
 
-                cur = nodes.get(nodeId(rest.get(0).value));
+                cur = rest.get(0);
             }
 
             writer.endArray();
@@ -225,35 +248,42 @@ public class OwlTranslator implements StreamRDF {
 
             writer.beginObject();
 
-            if (c.uri != null) {
+            if (c.getURI() != null) {
                 writer.name("uri");
-                writer.value(c.uri);
+                writer.value(c.getURI());
             }
 
-            writeProperties(writer, c.properties.properties);
+            writeProperties(writer, c);
             writer.endObject();
         }
     }
 
-    private void writeProperties(JsonWriter writer, Map<String, List<OwlNode.Property>> properties) throws IOException {
+    private void writeProperties(JsonWriter writer, Node node) throws IOException {
 
         // TODO: sort keys, rdf:type should be first ideally
-        for (String predicate : properties.keySet()) {
 
-            List<OwlNode.Property> values = properties.get(predicate);
+        List<Triple> triples = graph.find(node, Node.ANY, Node.ANY).toList();
 
-//            String name = predicate
-//                    .replace("http://www.w3.org/2002/07/owl#", "owl:")
-//                    .replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
+        Set<String> predicates = triples.stream()
+                .map(t -> t.getPredicate())
+                .map(p -> p.getURI().toString())
+                .collect(Collectors.toSet());
+
+        for(String predicate : predicates) {
 
             writer.name(predicate);
 
-            if(values.size() == 1) {
-                writePropertyValue(writer, values.get(0));
+            List<Node> values = triples.stream()
+                    .filter(t -> t.getPredicate().toString().equals(predicate))
+                    .map(t -> t.getObject())
+                    .collect(Collectors.toList());
+
+            if (values.size() == 1) {
+                writePropertyValue(writer, node, NodeUtils.asNode(predicate), values.get(0));
             } else {
                 writer.beginArray();
-                for (OwlNode.Property value : values) {
-                    writePropertyValue(writer, value);
+                for (Node value : values) {
+                    writePropertyValue(writer, node, NodeUtils.asNode(predicate), value);
                 }
                 writer.endArray();
             }
@@ -265,28 +295,32 @@ public class OwlTranslator implements StreamRDF {
         writer.name("propertyLabels");
         writer.beginObject();
 
-        for(String k : properties.keySet()) {
+        for (String predicate : predicates) {
 
-            OwlNode labelNode = nodes.get(k);
-            if(labelNode == null) {
-                continue;
-            }
+            List<Triple> propertyTriples = graph.find(
+                    NodeUtils.asNode(predicate),
+                    Node.ANY,
+                    Node.ANY
+            ).toList();
 
-            List<OwlNode.Property> labelProps = labelNode.properties.properties.get("http://www.w3.org/2000/01/rdf-schema#label");
+            List<Node> labelProps = propertyTriples.stream()
+                    .filter(t -> t.getPredicate().toString().equals("http://www.w3.org/2000/01/rdf-schema#label"))
+                    .map(t -> t.getObject())
+                    .collect(Collectors.toList());
 
-            if(labelProps != null && labelProps.size() > 0) {
-                for (OwlNode.Property prop : labelProps) {
+            if (labelProps != null && labelProps.size() > 0) {
+                for (Node prop : labelProps) {
 
-                    if(!prop.value.isLiteral())
+                    if (!prop.isLiteral())
                         continue;
 
-                    String lang = prop.value.getLiteralLanguage();
+                    String lang = prop.getLiteralLanguage();
 
-                    if(lang==null||lang.equals(""))
-                        lang="en";
+                    if (lang == null || lang.equals(""))
+                        lang = "en";
 
-                    writer.name(lang+"+"+k);
-                    writer.value(prop.value.getLiteralLexicalForm());
+                    writer.name(lang + "+" + predicate);
+                    writer.value(prop.getLiteralLexicalForm());
                 }
             }
 
@@ -296,37 +330,60 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    public void writePropertyValue(JsonWriter writer, OwlNode.Property value) throws IOException {
-        if (value.properties != null) {
+    public void writePropertyValue(JsonWriter writer, Node s, Node p, Node o) throws IOException {
+
+        var axiomsOfThisSubject = graph.find(
+                Node.ANY,
+                NodeUtils.asNode("http://www.w3.org/2002/07/owl#annotatedSource"),
+                s
+        ).mapWith(t -> t.getSubject());
+
+        var filteredAxioms = axiomsOfThisSubject.filterKeep(axiom -> {
+
+            var annotatedProperty = graph.find(
+                    axiom,
+                    NodeUtils.asNode("http://www.w3.org/2002/07/owl#annotatedProperty"),
+                    Node.ANY).toList().get(0);
+
+            var annotatedTarget = graph.find(
+                    axiom,
+                    NodeUtils.asNode("http://www.w3.org/2002/07/owl#annotatedTarget"),
+                    Node.ANY).toList().get(0);
+
+            return annotatedProperty.equals(p) && annotatedTarget.equals(o);
+        }).toList();
+
+        // can only reify once!
+        assert(filteredAxioms.size() <= 1);
+
+        if (filteredAxioms.size() > 0) {
             // reified
             writer.beginObject();
             writer.name("value");
-            writeValue(writer, value);
-            writeProperties(writer, value.properties.properties);
+            writeValue(writer, o);
+            writeProperties(writer, filteredAxioms.get(0));
             writer.endObject();
         } else {
             // not reified
-            writeValue(writer, value);
+            writeValue(writer, o);
         }
 
     }
 
-    public void writeValue(JsonWriter writer, OwlNode.Property value) throws IOException {
-        assert (value.properties == null);
+    public void writeValue(JsonWriter writer, Node v) throws IOException {
+        //assert (value.properties == null);
 
-        Node v = value.value;
-
-        if(v.isBlank()) {
-            OwlNode c = nodes.get(v.getBlankNodeId().toString());
-            if(c == null) {
-                writer.value("?");
-            } else {
-                writeNode(writer, c);
-            }
-        } else if(v.isURI()) {
+        if (v.isBlank()) {
+//            Node c = nodes.get(v.getBlankNodeId().toString());
+//            if (c == null) {
+//                writer.value("?");
+//            } else {
+                writeNode(writer, v);
+//            }
+        } else if (v.isURI()) {
             writer.value(v.getURI());
-        } else if(v.isLiteral()) {
-            if(v.getLiteralDatatypeURI().equals("http://www.w3.org/2001/XMLSchema#string") &&
+        } else if (v.isLiteral()) {
+            if (v.getLiteralDatatypeURI().equals("http://www.w3.org/2001/XMLSchema#string") &&
                     v.getLiteralLanguage().equals("")
             ) {
                 writer.value(v.toString(false));
@@ -336,7 +393,7 @@ public class OwlTranslator implements StreamRDF {
                 writer.value(v.getLiteralDatatypeURI());
                 writer.name("value");
                 writer.value(v.getLiteralLexicalForm());
-                if(!v.getLiteralLanguage().equals("")) {
+                if (!v.getLiteralLanguage().equals("")) {
                     writer.name("lang");
                     writer.value(v.getLiteralLanguage());
                 }
@@ -347,62 +404,6 @@ public class OwlTranslator implements StreamRDF {
         }
     }
 
-
-
-
-
-
-    public Map<String, OwlNode> nodes = new HashMap<>();
-    OwlNode ontologyNode = null;
-
-    private OwlNode getOrCreateTerm(Node node) {
-        String id = nodeId(node);
-        OwlNode term = nodes.get(id);
-        if (term != null) {
-            return term;
-        }
-
-        term = new OwlNode();
-
-        if(!node.isBlank())
-            term.uri = id;
-
-        nodes.put(id, term);
-        return term;
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void triple(Triple triple) {
-
-        if(triple.getObject().isLiteral()) {
-            handleLiteralTriple(triple);
-        } else {
-            handleNamedNodeTriple(triple);
-        }
-
-        // TODO: BNodes?
-
-    }
-
-
-    public void handleLiteralTriple(Triple triple) {
-
-        String subjId = nodeId(triple.getSubject());
-        OwlNode subjNode = getOrCreateTerm(triple.getSubject());
-
-        String lang = triple.getObject().getLiteralLanguage();
-        if(lang != null) {
-            languages.add(lang);
-        }
-
-        subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
-
-    }
 
 
 //        <owl:equivalentClass>
@@ -427,110 +428,45 @@ public class OwlTranslator implements StreamRDF {
 //        </owl:equivalentClass>
 
 
-    public void handleNamedNodeTriple(Triple triple) {
 
-        OwlNode subjNode = getOrCreateTerm(triple.getSubject());
-
-        switch (triple.getPredicate().getURI()) {
-            case "http://www.w3.org/1999/02/22-rdf-syntax-ns#type":
-                handleType(subjNode, triple.getObject());
-                break;
-            case "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest":
-            case "http://www.w3.org/1999/02/22-rdf-syntax-ns#first":
-                subjNode.type = OwlNode.NodeType.RDF_LIST;
-                break;
-
-	     case "http://www.w3.org/2002/07/owl#imports":
-		importUrls.add(triple.getObject().getURI());
-		//fallthrough
-
-//            default:
-//                subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
-//                break;
-        }
-
-        subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
-
-
-    }
-
-    public void handleType(OwlNode subjNode, Node type) {
-
-        if(!type.isURI())
-            return;
-
-        switch (type.getURI()) {
-
-            case "http://www.w3.org/2002/07/owl#Ontology":
-
-		subjNode.type = OwlNode.NodeType.ONTOLOGY;
-
-                if(ontologyNode == null) {
-			ontologyNode = subjNode;
-		}
-
-                break;
-
-            case "http://www.w3.org/2002/07/owl#Class":
-                subjNode.type = OwlNode.NodeType.CLASS;
-		++ numberOfClasses;
-                break;
-
-            case "http://www.w3.org/2002/07/owl#AnnotationProperty":
-            case "http://www.w3.org/2002/07/owl#ObjectProperty":
-            case "http://www.w3.org/2002/07/owl#DatatypeProperty":
-                subjNode.type = OwlNode.NodeType.PROPERTY;
-		++ numberOfProperties;
-                break;
-
-            case "http://www.w3.org/2002/07/owl#NamedIndividual":
-                subjNode.type = OwlNode.NodeType.NAMED_INDIVIDUAL;
-		++ numberOfIndividuals;
-		break;
-
-            case "http://www.w3.org/2002/07/owl#Axiom":
-                subjNode.type = OwlNode.NodeType.AXIOM;
-                break;
-
-            case "http://www.w3.org/2002/07/owl#Restriction":
-                subjNode.type = OwlNode.NodeType.RESTRICTION;
-                break;
-        }
-    }
-
-    @Override
-    public void quad(Quad quad) {
-
-    }
-
-    @Override
-    public void base(String s) {
-
-    }
-
-    @Override
-    public void prefix(String s, String s1) {
-
-    }
-
-    @Override
-    public void finish() {
-
-    }
-
-
-
-    public String nodeId(Node node)  {
-        if(node.isURI()) {
+    public String nodeId(Node node) {
+        if (node.isURI()) {
             return node.getURI();
         }
-        if(node.isBlank()) {
+        if (node.isBlank()) {
             return node.getBlankNodeId().toString();
         }
         throw new RuntimeException("unknown node type");
     }
 
 
+    public ExtendedIterator<Node> nodesWithType(String type) {
 
+        return graph.find(
+                Node.ANY,
+                NodeUtils.asNode("type"),
+                NodeUtils.asNode(type)
+        ).mapWith(t -> t.getSubject());
+    }
 
+    public ExtendedIterator<Node> nodesWithRdfType(String type) {
+
+        return graph.find(
+                Node.ANY,
+                NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                NodeUtils.asNode(type)
+        ).mapWith(t -> t.getSubject());
+    }
+
+    public boolean nodeHasRdfType(Node node, String type) {
+
+        return graph.contains(
+                node,
+                NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                NodeUtils.asNode(type)
+        );
+    }
 }
+
+
+

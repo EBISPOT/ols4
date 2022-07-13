@@ -1,12 +1,12 @@
 package uk.ac.ebi.owl2json.operations;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
+import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 
-import uk.ac.ebi.owl2json.OwlNode;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.util.NodeUtils;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class OntologyIdAnnotator {
@@ -15,27 +15,34 @@ public class OntologyIdAnnotator {
 
 		long startTime3 = System.nanoTime();
 
-
 		String ontologyId = (String) translator.config.get("id");
 
 
-		for(String id : translator.nodes.keySet()) {
-		    OwlNode c = translator.nodes.get(id);
-		    if (c.type == OwlNode.NodeType.CLASS ||
-				c.type == OwlNode.NodeType.PROPERTY ||
-				c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
+		for(ResIterator res = translator.model.listSubjects(); res.hasNext(); ) {
 
-			// skip bnodes
-			if(c.uri == null)
+			Resource subjRes = res.nextResource();
+
+			if(!subjRes.isURIResource())
 				continue;
-	
-			c.properties.addProperty(
-				"ontologyId",
-					NodeFactory.createLiteral(
-						ontologyId
-					));
-		    }
+
+			boolean isClass = translator.graph.contains(
+					subjRes.asNode(), NodeUtils.asNode("type"), NodeFactory.createLiteral("class"));
+
+			boolean isProperty = translator.graph.contains(
+					subjRes.asNode(), NodeUtils.asNode("type"), NodeFactory.createLiteral("property"));
+
+			boolean isIndividual = translator.graph.contains(
+					subjRes.asNode(), NodeUtils.asNode("type"), NodeFactory.createLiteral("individual"));
+
+			if (isClass || isProperty || isIndividual) {
+				translator.graph.add(Triple.create(
+						subjRes.asNode(),
+						NodeUtils.asNode("ontologyId"),
+						NodeFactory.createLiteral(ontologyId)
+				));
+			}
 		}
+
 		long endTime3 = System.nanoTime();
 		System.out.println("annotate ontology IDs: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 

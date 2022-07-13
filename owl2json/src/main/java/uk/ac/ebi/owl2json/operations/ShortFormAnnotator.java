@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.apache.jena.graph.NodeFactory;
 
-import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class ShortFormAnnotator {

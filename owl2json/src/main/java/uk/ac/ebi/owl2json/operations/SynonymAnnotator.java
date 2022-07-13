@@ -5,12 +5,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import uk.ac.ebi.owl2json.OwlNode;
+import org.apache.jena.graph.Graph;
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.util.NodeUtils;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class SynonymAnnotator {
 
 	public static void annotateSynonyms(OwlTranslator translator) {
+
+		Graph graph = translator.graph;
+		Model model = translator.model;
 
 		long startTime3 = System.nanoTime();
 
@@ -26,26 +35,35 @@ public class SynonymAnnotator {
 		}
 
 
-		for(String id : translator.nodes.keySet()) {
-		    OwlNode c = translator.nodes.get(id);
-		    if (c.type == OwlNode.NodeType.CLASS ||
-				c.type == OwlNode.NodeType.PROPERTY ||
-				c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
+		for(ResIterator it = translator.model.listSubjects(); it.hasNext();) {
 
-			// skip bnodes
-			if(c.uri == null)
+			Resource res = it.next();
+
+			if (!res.isURIResource())
 				continue;
 
 			for(String prop : synonymProperties) {
-				List<OwlNode.Property> values = c.properties.properties.get(prop);
-				if(values != null) {
-					for(OwlNode.Property value : values) {
-						c.properties.addProperty("synonym", value.value);
-					}
+
+				var values =  graph.find(
+						res.asNode(),
+						NodeUtils.asNode(prop),
+						Node.ANY
+				)
+					.mapWith(t -> t.getObject())
+					.toList();
+
+
+				for(Node value : values) {
+
+					graph.add(Triple.create(
+							res.asNode(),
+							NodeUtils.asNode("synonym"),
+							value
+					));
 				}
 			}
-		    }
 		}
+
 		long endTime3 = System.nanoTime();
 		System.out.println("annotate synonyms: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 

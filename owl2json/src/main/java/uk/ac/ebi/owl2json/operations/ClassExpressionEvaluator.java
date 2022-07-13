@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.jena.graph.Node;
 
-import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 
