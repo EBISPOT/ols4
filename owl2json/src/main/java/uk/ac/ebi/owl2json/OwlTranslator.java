@@ -43,6 +43,8 @@ public class OwlTranslator {
 
     Node ontologyNode = null;
 
+
+
     private void parseRDF(String url) {
 
         RDFParser.create()
@@ -267,8 +269,15 @@ public class OwlTranslator {
         Set<String> predicates = triples.stream()
                 .map(t -> t.getPredicate())
                 .map(p -> p.getURI().toString())
-                .collect(Collectors.toSet());
 
+                // we don't want/need these in the output JSON because owl:Axioms are already folded into their
+                // respective properties
+                .filter(p ->
+                    !p.equals("http://www.w3.org/2002/07/owl#annotatedSource") &&
+                            !p.equals("http://www.w3.org/2002/07/owl#annotatedProperty") &&
+                            !p.equals("http://www.w3.org/2002/07/owl#annotatedTarget")
+                )
+                .collect(Collectors.toSet());
 
         for(String predicate : predicates) {
 
@@ -344,12 +353,12 @@ public class OwlTranslator {
             var annotatedProperty = graph.find(
                     axiom,
                     NodeUtils.asNode("http://www.w3.org/2002/07/owl#annotatedProperty"),
-                    Node.ANY).toList().get(0);
+                    Node.ANY).toList().get(0).getObject();
 
             var annotatedTarget = graph.find(
                     axiom,
                     NodeUtils.asNode("http://www.w3.org/2002/07/owl#annotatedTarget"),
-                    Node.ANY).toList().get(0);
+                    Node.ANY).toList().get(0).getObject();
 
             return annotatedProperty.equals(p) && annotatedTarget.equals(o);
         }).toList();
