@@ -8,7 +8,6 @@ import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.sparql.util.NodeUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import uk.ac.ebi.owl2json.operations.AxiomEvaluator;
 import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
 import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
 import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
@@ -162,7 +161,6 @@ public class OwlTranslator {
         ShortFormAnnotator.annotateShortForms(this);
         DefinitionAnnotator.annotateDefinitions(this);
         SynonymAnnotator.annotateSynonyms(this);
-        AxiomEvaluator.evaluateAxioms(this);
         ClassExpressionEvaluator.evaluateClassExpressions(this);
         OntologyIdAnnotator.annotateOntologyIds(this);
 
@@ -221,7 +219,8 @@ public class OwlTranslator {
 
     private void writeNode(JsonWriter writer, Node c) throws IOException {
 
-        if(nodeHasRdfType(c, "http://www.w3.org/1999/02/22-rdf-syntax-ns#List")) {
+        // is it a list?
+        if (graph.contains(c, NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#first"), Node.ANY)) {
 
             writer.beginArray();
 
@@ -248,7 +247,7 @@ public class OwlTranslator {
 
             writer.beginObject();
 
-            if (c.getURI() != null) {
+            if (c.isURI()) {
                 writer.name("uri");
                 writer.value(c.getURI());
             }
@@ -258,9 +257,10 @@ public class OwlTranslator {
         }
     }
 
+
     private void writeProperties(JsonWriter writer, Node node) throws IOException {
 
-        // TODO: sort keys, rdf:type should be first ideally
+        // TODO: sort keys, type and uri should be first ideally
 
         List<Triple> triples = graph.find(node, Node.ANY, Node.ANY).toList();
 
@@ -268,6 +268,7 @@ public class OwlTranslator {
                 .map(t -> t.getPredicate())
                 .map(p -> p.getURI().toString())
                 .collect(Collectors.toSet());
+
 
         for(String predicate : predicates) {
 
@@ -304,11 +305,11 @@ public class OwlTranslator {
             ).toList();
 
             List<Node> labelProps = propertyTriples.stream()
-                    .filter(t -> t.getPredicate().toString().equals("http://www.w3.org/2000/01/rdf-schema#label"))
+                    .filter(t -> t.getPredicate().getURI().equals("http://www.w3.org/2000/01/rdf-schema#label"))
                     .map(t -> t.getObject())
                     .collect(Collectors.toList());
 
-            if (labelProps != null && labelProps.size() > 0) {
+            if (labelProps.size() > 0) {
                 for (Node prop : labelProps) {
 
                     if (!prop.isLiteral())

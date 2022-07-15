@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.jena.graph.Graph;
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.util.NodeUtils;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class DefinitionAnnotator {
@@ -26,24 +33,29 @@ public class DefinitionAnnotator {
 		}
 
 
-		for(String id : translator.nodes.keySet()) {
-		    OwlNode c = translator.nodes.get(id);
-		    if (c.type == OwlNode.NodeType.CLASS ||
-				c.type == OwlNode.NodeType.PROPERTY ||
-				c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
 
-			// skip bnodes
-			if(c.uri == null)
+		for(ResIterator it = translator.model.listSubjects(); it.hasNext();) {
+
+			Resource res = it.next();
+
+			if (!res.isURIResource())
 				continue;
 
 			for(String prop : definitionProperties) {
-				List<OwlNode.Property> values = c.properties.properties.get(prop);
-				if(values != null) {
-					for(OwlNode.Property value : values) {
-						c.properties.addProperty("definition", value.value);
-					}
+
+				List<Node> definitions = translator.graph.find(
+						res.asNode(),
+						NodeUtils.asNode(prop),
+						Node.ANY
+				).mapWith(t -> t.getObject()).toList();
+
+				for(Node defNode : definitions) {
+					translator.graph.add(Triple.create(
+							res.asNode(),
+							NodeUtils.asNode("definition"),
+							defNode
+					));
 				}
-			}
 		    }
 		}
 		long endTime3 = System.nanoTime();

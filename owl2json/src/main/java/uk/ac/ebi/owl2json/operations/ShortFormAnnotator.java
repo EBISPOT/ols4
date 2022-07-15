@@ -4,8 +4,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 
+import org.apache.jena.graph.Triple;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.util.NodeUtils;
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class ShortFormAnnotator {
@@ -33,23 +38,20 @@ public class ShortFormAnnotator {
 			ontologyBaseUris.add("http://purl.obolibrary.org/obo/" + preferredPrefix + "_");
 		}
 
+		for(ResIterator it = translator.model.listSubjects(); it.hasNext();) {
 
-		for(String id : translator.nodes.keySet()) {
-		    OwlNode c = translator.nodes.get(id);
-		    if (c.type == OwlNode.NodeType.CLASS ||
-				c.type == OwlNode.NodeType.PROPERTY ||
-				c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
+			Resource res = it.next();
 
-			// skip bnodes
-			if(c.uri == null)
+			if (!res.isURIResource())
 				continue;
-	
-			c.properties.addProperty(
-				"shortForm",
+
+			translator.graph.add(Triple.create(
+					res.asNode(),
+					NodeUtils.asNode("shortForm"),
 					NodeFactory.createLiteral(
-						getShortForm(translator, ontologyBaseUris, preferredPrefix, c)
-					));
-		    }
+							getShortForm(translator, ontologyBaseUris, preferredPrefix, res.getURI())
+					)
+			));
 		}
 		long endTime3 = System.nanoTime();
 		System.out.println("annotate short forms: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
@@ -58,9 +60,7 @@ public class ShortFormAnnotator {
 	}
 	
 
-	private static String getShortForm(OwlTranslator translator, Set<String> ontologyBaseUris, String preferredPrefix, OwlNode node) {
-
-		String uri = node.uri;
+	private static String getShortForm(OwlTranslator translator, Set<String> ontologyBaseUris, String preferredPrefix, String uri) {
 
 		if(uri.startsWith("urn:")) {
 			return uri.substring(4);
