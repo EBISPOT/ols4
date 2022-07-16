@@ -8,12 +8,7 @@ import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.sparql.util.NodeUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
-import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
-import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
-import uk.ac.ebi.owl2json.operations.SynonymAnnotator;
-import uk.ac.ebi.owl2json.operations.OntologyIdAnnotator;
-import uk.ac.ebi.owl2json.operations.TypesAnnotator;
+import uk.ac.ebi.owl2json.operations.*;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
@@ -165,6 +160,7 @@ public class OwlTranslator {
         SynonymAnnotator.annotateSynonyms(this);
         ClassExpressionEvaluator.evaluateClassExpressions(this);
         OntologyIdAnnotator.annotateOntologyIds(this);
+        HierarchyAnnotator.annotateHierarchy(this);
 
     }
 

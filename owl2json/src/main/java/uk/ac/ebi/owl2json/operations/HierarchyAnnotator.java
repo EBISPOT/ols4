@@ -30,15 +30,25 @@ public class HierarchyAnnotator {
 			if (!res.isURIResource())
 				continue;
 
-//			var types = translator.graph.find(
-//					res.asNode(),
-//					NodeUtils.asNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-//					Node.ANY
-//			)
-//					.mapWith(t -> t.getObject())
-//					.filterKeep(o -> o.isURI())
-//					.mapWith(o -> o.getURI())
-//					.toSet();
+			var types = translator.graph.find(
+					res.asNode(),
+					NodeUtils.asNode("type"),
+					Node.ANY
+			)
+					.mapWith(t -> t.getObject())
+					.filterKeep(o -> o.isURI())
+					.mapWith(o -> o.getURI())
+					.toSet();
+
+			if(!
+					(
+							types.contains("class")
+							|| types.contains("property")
+							|| types.contains("individual")
+					)
+			) {
+				continue;
+			}
 //
 //			Set<String> parents = new HashSet<>();
 //			Set<String> hierarchicalParents = new HashSet<>();
