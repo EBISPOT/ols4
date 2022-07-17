@@ -451,11 +451,18 @@ public class OwlTranslator implements StreamRDF {
 
             case "http://www.w3.org/2000/01/rdf-schema#subClassOf":
 
-                if(subjNode.uri != null)
-                    hasParents.add(subjNode.uri);
+                boolean top = triple.getObject().isURI() &&
+                        triple.getObject().getURI().equals("http://www.w3.org/2002/07/owl#Thing");
 
-                if(triple.getObject().isURI())
-                    hasChildren.add(triple.getObject().getURI());
+                if(!top) {
+
+                    if(subjNode.uri != null)
+                        hasParents.add(subjNode.uri);
+
+                    if(triple.getObject().isURI())
+                        hasChildren.add(triple.getObject().getURI());
+
+                }
 
                 break;
         }
