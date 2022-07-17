@@ -4,13 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
 import org.apache.jena.riot.Lang;
-import uk.ac.ebi.owl2json.operations.AxiomEvaluator;
-import uk.ac.ebi.owl2json.operations.ClassExpressionEvaluator;
-import uk.ac.ebi.owl2json.operations.DefinitionAnnotator;
-import uk.ac.ebi.owl2json.operations.ShortFormAnnotator;
-import uk.ac.ebi.owl2json.operations.SynonymAnnotator;
-import uk.ac.ebi.owl2json.operations.OntologyIdAnnotator;
-import uk.ac.ebi.owl2json.operations.TypesAnnotator;
+import uk.ac.ebi.owl2json.operations.*;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
@@ -29,6 +23,9 @@ public class OwlTranslator implements StreamRDF {
     public List<String> importUrls = new ArrayList<>();
     public Set<String> languages = new HashSet<>();
 
+    public Set<String> hasChildren = new HashSet<>();
+    public Set<String> hasParents = new HashSet<>();
+
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
@@ -46,6 +43,7 @@ public class OwlTranslator implements StreamRDF {
 
     OwlTranslator(Map<String, Object> config) {
 
+        long startTime = System.nanoTime();
 
         this.config = config;
 
@@ -117,6 +115,9 @@ public class OwlTranslator implements StreamRDF {
 		"loaded", NodeFactory.createLiteral(now));
 
 
+    long endTime = System.nanoTime();
+    System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
+
 	ShortFormAnnotator.annotateShortForms(this);
 	DefinitionAnnotator.annotateDefinitions(this);
 	SynonymAnnotator.annotateSynonyms(this);
@@ -124,6 +125,7 @@ public class OwlTranslator implements StreamRDF {
 	ClassExpressionEvaluator.evaluateClassExpressions(this);
     OntologyIdAnnotator.annotateOntologyIds(this);
     TypesAnnotator.annotateTypes(this);
+    HierarchyFlagsAnnotator.annotateHierarchyFlags(this);
 
     }
 
@@ -440,13 +442,19 @@ public class OwlTranslator implements StreamRDF {
                 subjNode.type = OwlNode.NodeType.RDF_LIST;
                 break;
 
-	     case "http://www.w3.org/2002/07/owl#imports":
-		importUrls.add(triple.getObject().getURI());
-		//fallthrough
+            case "http://www.w3.org/2002/07/owl#imports":
+                importUrls.add(triple.getObject().getURI());
+                break;
 
-//            default:
-//                subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
-//                break;
+            case "http://www.w3.org/2000/01/rdf-schema#subClassOf":
+
+                if(subjNode.uri != null)
+                    hasParents.add(subjNode.uri);
+
+                if(triple.getObject().isURI())
+                    hasChildren.add(triple.getObject().getURI());
+
+                break;
         }
 
         subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
