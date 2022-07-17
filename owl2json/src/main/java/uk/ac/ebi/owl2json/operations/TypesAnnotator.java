@@ -25,19 +25,16 @@ public class TypesAnnotator {
                         NodeFactory.createLiteral("ontology"));
             }
             else if ( c.type == OwlNode.NodeType.CLASS) {
-                c.properties.addProperty(
-                        "type",
-                        NodeFactory.createLiteral("class"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("term"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("class"));
             }
             else if ( c.type == OwlNode.NodeType.PROPERTY) {
-                c.properties.addProperty(
-                        "type",
-                        NodeFactory.createLiteral("property"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("term"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("property"));
             }
             else if ( c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
-                c.properties.addProperty(
-                        "type",
-                        NodeFactory.createLiteral("individual"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("term"));
+                c.properties.addProperty( "type", NodeFactory.createLiteral("individual"));
             }
 		}
 

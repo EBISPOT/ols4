@@ -100,6 +100,9 @@ public class OwlTranslator implements StreamRDF {
     }
 
 	ontologyNode.properties.addProperty(
+		"numberOfTerms", NodeFactory.createLiteral(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
+
+	ontologyNode.properties.addProperty(
 		"numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
 
 	ontologyNode.properties.addProperty(
