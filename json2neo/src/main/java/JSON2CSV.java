@@ -169,7 +169,7 @@ public class JSON2CSV {
             int n = 0;
 
             row[n++] = id + "+" + (String) _class.get("uri");
-            row[n++] = "OwlClass";
+            row[n++] = "OntologyTerm|OntologyClass";
             row[n++] = id;
             row[n++] = (String) _class.get("uri");
             row[n++] = gson.toJson(_class);
@@ -211,7 +211,7 @@ public class JSON2CSV {
             int n = 0;
 
             row[n++] = id + "+" + (String) _property.get("uri");
-            row[n++] = "OwlProperty";
+            row[n++] = "OntologyTerm|OntologyProperty";
             row[n++] = id;
             row[n++] = (String) _property.get("uri");
             row[n++] = gson.toJson(_property);
@@ -252,7 +252,7 @@ public class JSON2CSV {
             int n = 0;
 
             row[n++] = id + "+" + (String) _individual.get("uri");
-            row[n++] = "OwlIndividual";
+            row[n++] = "OntologyTerm|OntologyIndividual";
             row[n++] = id;
             row[n++] = (String) _individual.get("uri");
             row[n++] = gson.toJson(_individual);

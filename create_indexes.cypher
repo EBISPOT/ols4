@@ -1,7 +1,7 @@
 
-CREATE INDEX FOR (n:OwlClass) ON n.id;
-CREATE INDEX FOR (n:OwlProperty) ON n.id;
-CREATE INDEX FOR (n:OwlIndividual) ON n.id;
+CREATE INDEX FOR (n:OntologyClass) ON n.id;
+CREATE INDEX FOR (n:OntologyProperty) ON n.id;
+CREATE INDEX FOR (n:OntologyIndividual) ON n.id;
 
 CALL db.awaitIndexes(1800);
 
