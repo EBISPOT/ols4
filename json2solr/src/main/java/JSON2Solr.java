@@ -20,17 +20,6 @@ public class JSON2Solr {
 
     static Gson gson = new Gson();
 
-
-
-    // Fields that we never want to query, so shouldn't be added to the Solr
-    // objects. We can still access them via the API because they will be stored
-    // in the "_json" string field.
-    // 
-    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "ontologyConfig", "propertyLabels", "classes", "properties", "individuals"
-    );
-
-
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -106,8 +95,6 @@ public class JSON2Solr {
                             while (reader.peek() != JsonToken.END_ARRAY) {
 
                                 Map<String, Object> _class = gson.fromJson(reader, Map.class);
-                                //classesWriter.println("{\"index\": {\"_index\": \"owl_classes\"}}");
-
 
                                 Set<String> languages = new HashSet<>();
                                 languages.add("en");
@@ -125,9 +112,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedClass = new HashMap<>();
 
                                     String ontologyId = (String) ontology.get("id");
-                                    flattenedClass.put("_json", gson.toJson(_class));
                                     flattenedClass.put("lang", lang);
-                                    flattenedClass.put("ontology_id", ontologyId);
                                     flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
 
                                     flattenProperties(_class, flattenedClass, lang);
@@ -166,9 +151,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedProperty = new HashMap<>();
 
                                     String ontologyId = (String) ontology.get("id");
-                                    flattenedProperty.put("_json", gson.toJson(property));
                                     flattenedProperty.put("lang", lang);
-                                    flattenedProperty.put("ontology_id", ontologyId);
                                     flattenedProperty.put("id", ontologyId + "+" + lang + "+" + (String) property.get("uri"));
 
                                     flattenProperties(property, flattenedProperty, lang);
@@ -209,9 +192,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedIndividual = new HashMap<>();
 
                                     String ontologyId = (String) ontology.get("id");
-                                    flattenedIndividual.put("_json", gson.toJson(individual));
                                     flattenedIndividual.put("lang", lang);
-                                    flattenedIndividual.put("ontology_id", ontologyId);
                                     flattenedIndividual.put("id", ontologyId + "+" + lang + "+" + (String) individual.get("uri"));
 
                                     flattenProperties(individual, flattenedIndividual, lang);
@@ -251,10 +232,7 @@ public class JSON2Solr {
                                 continue;
                             ontologyJsonObj.put(k, ontology.get(k));
                         }
-                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
 
-
-                        flattenedOntology.put("id", ontologyId);
                         flattenedOntology.put("lang", lang);
 
                         flattenProperties(ontology, flattenedOntology, lang);
@@ -282,9 +260,6 @@ public class JSON2Solr {
 
         for (String k : properties.keySet()) {
 
-            if(DONT_INDEX_FIELDS.contains(k))
-                continue;
-
             Object v = discardMetadata(properties.get(k), lang);
             if(v == null) {
                 continue;
@@ -308,21 +283,28 @@ public class JSON2Solr {
 
     }
 
-    // Where the JSON has type information or Axiom information (metadata about
-    // a property), that is, the two forms:
+    // There are two cases when the object can be a Map {} instead of a literal.
     //
-    //  { datatype: ..., value: ... }
+    //  (1) It's a value with type information { datatype: ..., value: ... }
     //
-    //  or
+    //  (2) It's a class expression
     //
-    //  { type: Axiom, ....,  value: ... }
+    //  (3) It's a localization, which is a specific case of (1) where a
+    //      language and localized value are provided.
     //
-    //  We want to discard this, because it's not useful for the full text
-    //  indexing and would mean we would have loads of JSON in the index
-    //  instead of actual values.
-    //  
-    //  The metadata is still stored in Neo4j, but here we just read the "value"
-    //  and discard everything else.
+    //  (4) It's reification { type: Axiom, ....,  value: ... }
+    // 
+    // The JSON provided to json2solr has been preprocessed by the flattener,
+    // so (1) and (2) have already been evaluated. However, (3) and (4) are up
+    // to us.
+    //
+    // In the case of (3), we create a Solr document for each language (see 
+    // above), and the language is passed into this function so we know which
+    // language's strings to keep.
+    //
+    // In the case of (4), we discard any metadata (in Neo4j the metadata is
+    // preserved for edges, but in Solr we don't care about it).
+    //
     //  
     public static Object discardMetadata(Object obj, String lang) {
 

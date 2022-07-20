@@ -25,7 +25,7 @@ public class NodesAndPropertiesExtractor {
 
             for(String predicate : _class.keySet()) {
 
-                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
+                if(predicate.equals("uri"))
                     continue;
 
                 res.allClassProperties.add(predicate);
@@ -42,7 +42,7 @@ public class NodesAndPropertiesExtractor {
 
             for(String predicate : property.keySet()) {
 
-                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
+                if(predicate.equals("uri"))
                     continue;
 
                 res.allPropertyProperties.add(predicate);
@@ -59,7 +59,7 @@ public class NodesAndPropertiesExtractor {
 
             for(String predicate : individual.keySet()) {
 
-                if(predicate.equals("uri") || JSON2CSV.DONT_INDEX_FIELDS.contains(predicate))
+                if(predicate.equals("uri"))
                     continue;
 
                 res.allIndividualProperties.add(predicate);
@@ -113,7 +113,7 @@ public class NodesAndPropertiesExtractor {
                     // predicates used to describe the edge itself
                     for(String edgePredicate : mapValue.keySet()) {
 
-                        if(edgePredicate.equals("value") || JSON2CSV.DONT_INDEX_FIELDS.contains(edgePredicate))
+                        if(edgePredicate.equals("value"))
                             continue;
 
                         outEdgeProps.add(edgePredicate);

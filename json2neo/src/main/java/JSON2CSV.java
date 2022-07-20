@@ -268,11 +268,26 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-                    if(v instanceof String) {
+
+                    if (v instanceof Map) {
+                        // maybe axiom
+                        Map<String, Object> mapValue = (Map<String, Object>) v;
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
+                            // axiom
+                            Object axiomValue = mapValue.get("value");
+                            assert (axiomValue instanceof String);
+                            if (nodesAndProps.allNodes.contains(axiomValue)) {
+                                printEdge(printer, properties, ontologyId, _class, predicate, axiomValue, mapValue);
+                            }
+                        }
+                    } else if (v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, _class, predicate, v, new HashMap<>());
                         }
+                    } else {
+                        assert(false);
                     }
+
                 }
 
             }
@@ -297,11 +312,26 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-                    if(v instanceof String) {
+
+                    if (v instanceof Map) {
+                        // maybe axiom
+                        Map<String, Object> mapValue = (Map<String, Object>) v;
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
+                            // axiom
+                            Object axiomValue = mapValue.get("value");
+                            assert (axiomValue instanceof String);
+                            if (nodesAndProps.allNodes.contains(axiomValue)) {
+                                printEdge(printer, properties, ontologyId, property, predicate, axiomValue, mapValue);
+                            }
+                        }
+                    } else if (v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, property, predicate, v, new HashMap<>());
                         }
+                    } else {
+                        assert(false);
                     }
+
                 }
 
             }
@@ -326,11 +356,26 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-                    if(v instanceof String) {
+
+                    if (v instanceof Map) {
+                        // maybe axiom
+                        Map<String, Object> mapValue = (Map<String, Object>) v;
+                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
+                            // axiom
+                            Object axiomValue = mapValue.get("value");
+                            assert (axiomValue instanceof String);
+                            if (nodesAndProps.allNodes.contains(axiomValue)) {
+                                printEdge(printer, properties, ontologyId, individual, predicate, axiomValue, mapValue);
+                            }
+                        }
+                    } else if (v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, individual, predicate, v, new HashMap<>());
                         }
+                    } else {
+                        assert(false);
                     }
+
                 }
 
             }
@@ -338,7 +383,6 @@ public class JSON2CSV {
 
         printer.close(true);
     }
-
 
     private static void printEdge(CSVPrinter printer, List<String> properties, String ontologyId, Map<String,Object> a, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
@@ -407,9 +451,7 @@ public class JSON2CSV {
         List<String> headers = new ArrayList<>();
 
         for(String k : fieldNames) {
-            if(!k.equals("id")) {
-                headers.add(k.replace(":", "__") + ":string[]");
-            }
+            headers.add(k.replace(":", "__") + ":string[]");
         }
 
         return headers;
