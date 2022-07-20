@@ -20,15 +20,6 @@ public class JSON2CSV {
 
     static Gson gson = new Gson();
 
-
-    // Fields that we never want to query, so shouldn't be added to the Neo4j
-    // objects. We can still access them via the API because they will be stored
-    // in the "_json" string field.
-    // 
-    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "ontologyConfig", "propertyLabels", "classes", "properties", "individuals"
-    );
-
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -108,7 +99,6 @@ public class JSON2CSV {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
-        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         String outName = outPath + "/" + (String) ontology.get("id") + "_ontologies.csv";
@@ -122,21 +112,8 @@ public class JSON2CSV {
         row[n++] = (String) ontology.get("id");
         row[n++] = "Ontology";
 
-
-        // don't want to store the whole ontology including terms!!
-        // just the ontologyConfig and the properties
-        Map<String,Object> ontologyJsonObj = new HashMap<>();
-        for(String prop : properties) {
-            if(prop.equals("classes") || prop.equals("properties") || prop.equals("individuals"))
-                continue;
-            ontologyJsonObj.put(prop, ontology.get(prop));
-        }
-        row[n++] = gson.toJson(ontologyJsonObj);
-
-
         for (String column : properties) {
-            if(!DONT_INDEX_FIELDS.contains(column))
-                row[n++] = getValue(ontology, column);
+            row[n++] = getValue(ontology, column);
         }
 
         printer.printRecord(row);
@@ -155,9 +132,7 @@ public class JSON2CSV {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
-        csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -170,13 +145,10 @@ public class JSON2CSV {
 
             row[n++] = id + "+" + (String) _class.get("uri");
             row[n++] = "OntologyTerm|OntologyClass";
-            row[n++] = id;
             row[n++] = (String) _class.get("uri");
-            row[n++] = gson.toJson(_class);
 
             for (String column : properties) {
-                if(!DONT_INDEX_FIELDS.contains(column))
-                    row[n++] = getValue(_class, column);
+                row[n++] = getValue(_class, column);
             }
 
             printer.printRecord(row);
@@ -197,9 +169,7 @@ public class JSON2CSV {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
-        csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -212,13 +182,10 @@ public class JSON2CSV {
 
             row[n++] = id + "+" + (String) _property.get("uri");
             row[n++] = "OntologyTerm|OntologyProperty";
-            row[n++] = id;
             row[n++] = (String) _property.get("uri");
-            row[n++] = gson.toJson(_property);
 
             for (String column : properties) {
-                if(!DONT_INDEX_FIELDS.contains(column))
-                    row[n++] = getValue(_property, column);
+                row[n++] = getValue(_property, column);
             }
 
             printer.printRecord(row);
@@ -238,9 +205,7 @@ public class JSON2CSV {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
-        csvHeader.add("ontology_id");
         csvHeader.add("uri");
-        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -253,13 +218,10 @@ public class JSON2CSV {
 
             row[n++] = id + "+" + (String) _individual.get("uri");
             row[n++] = "OntologyTerm|OntologyIndividual";
-            row[n++] = id;
             row[n++] = (String) _individual.get("uri");
-            row[n++] = gson.toJson(_individual);
 
             for (String column : properties) {
-                if(!DONT_INDEX_FIELDS.contains(column))
-                    row[n++] = getValue(_individual, column);
+                row[n++] = getValue(_individual, column);
             }
 
             printer.printRecord(row);
@@ -306,26 +268,11 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-
-                    if (v instanceof Map) {
-                        // maybe axiom
-                        Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
-                            // axiom
-                            Object axiomValue = mapValue.get("value");
-                            assert (axiomValue instanceof String);
-                            if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printEdge(printer, properties, ontologyId, _class, predicate, axiomValue, mapValue);
-                            }
-                        }
-                    } else if (v instanceof String) {
+                    if(v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, _class, predicate, v, new HashMap<>());
                         }
-                    } else {
-                        assert(false);
                     }
-
                 }
 
             }
@@ -350,26 +297,11 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-
-                    if (v instanceof Map) {
-                        // maybe axiom
-                        Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
-                            // axiom
-                            Object axiomValue = mapValue.get("value");
-                            assert (axiomValue instanceof String);
-                            if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printEdge(printer, properties, ontologyId, property, predicate, axiomValue, mapValue);
-                            }
-                        }
-                    } else if (v instanceof String) {
+                    if(v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, property, predicate, v, new HashMap<>());
                         }
-                    } else {
-                        assert(false);
                     }
-
                 }
 
             }
@@ -394,26 +326,11 @@ public class JSON2CSV {
                 }
 
                 for(Object v : values) {
-
-                    if (v instanceof Map) {
-                        // maybe axiom
-                        Map<String, Object> mapValue = (Map<String, Object>) v;
-                        if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
-                            // axiom
-                            Object axiomValue = mapValue.get("value");
-                            assert (axiomValue instanceof String);
-                            if (nodesAndProps.allNodes.contains(axiomValue)) {
-                                printEdge(printer, properties, ontologyId, individual, predicate, axiomValue, mapValue);
-                            }
-                        }
-                    } else if (v instanceof String) {
+                    if(v instanceof String) {
                         if (nodesAndProps.allNodes.contains((String) v)) {
                             printEdge(printer, properties, ontologyId, individual, predicate, v, new HashMap<>());
                         }
-                    } else {
-                        assert(false);
                     }
-
                 }
 
             }
@@ -490,8 +407,9 @@ public class JSON2CSV {
         List<String> headers = new ArrayList<>();
 
         for(String k : fieldNames) {
-            if(!DONT_INDEX_FIELDS.contains(k))
+            if(!k.equals("id")) {
                 headers.add(k.replace(":", "__") + ":string[]");
+            }
         }
 
         return headers;
