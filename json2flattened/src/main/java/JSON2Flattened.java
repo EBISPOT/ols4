@@ -92,6 +92,9 @@ public class JSON2Flattened {
                                 key.equals("individuals")) {
 
                             if(!wroteOntologyProperties) {
+
+                                System.out.println("Write ontology properties: " + (String)ontology.get("id"));
+
                                 writeFlattenedObjectProperties(writer, ontology);
                                 wroteOntologyProperties = true;
                             }
@@ -152,7 +155,7 @@ public class JSON2Flattened {
                         } else {
 
                             if(wroteOntologyProperties) {
-                                throw new RuntimeException("found ontology metadata after classes/properties/individuals lists");
+                                throw new RuntimeException("found ontology metadata after classes/properties/individuals lists: " + key);
                             } else {
                                 ontology.put(key, gson.fromJson(reader, Object.class));
                             }
