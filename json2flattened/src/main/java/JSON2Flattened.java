@@ -251,7 +251,9 @@ public class JSON2Flattened {
         if (obj instanceof Collection) {
             List<Object> flattenedList = new ArrayList<>();
             for (Object entry : ((Collection<Object>) obj)) {
-                flattenedList.add(flatten(entry));
+                Object flattened = flatten(entry);
+                if(flattened != null)
+                    flattenedList.add(flattened);
             }
             return flattenedList;
         }
@@ -289,10 +291,14 @@ public class JSON2Flattened {
                 // process these in the flattener. However, we still need
                 // to recursively process the value.
                 //  
-                Map<String, Object> res = new HashMap<>(dict);
-                res.put("value", flatten(dict.get("value")));
-                return res;
+                Object flattened = flatten(dict.get("value"));
 
+                if(flattened == null)
+                    return null;
+
+                Map<String, Object> res = new HashMap<>(dict);
+                res.put("value", flattened);
+                return res;
             }
 
         } else {
@@ -334,10 +340,38 @@ public class JSON2Flattened {
 
             Collection<Object> oneOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#oneOf"));
 
-            return oneOf.stream().map(obj -> flatten(obj)).collect(Collectors.toList());
+            if(oneOf != null && oneOf.size() > 0) {
+                return oneOf.stream()
+                            .map(obj -> flatten(obj))
+                            .filter(obj -> obj != null)
+                            .collect(Collectors.toList());
+            }
+
+            Collection<Object> intersectionOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#intersectionOf"));
+
+            if(intersectionOf != null && intersectionOf.size() > 0) {
+                return intersectionOf.stream()
+                            .map(obj -> flatten(obj))
+                            .filter(obj -> obj != null)
+                            .collect(Collectors.toList());
+            }
+
+            Collection<Object> unionOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#unionOf"));
+
+            if(unionOf != null && unionOf.size() > 0) {
+                return unionOf.stream()
+                            .map(obj -> flatten(obj))
+                            .filter(obj -> obj != null)
+                            .collect(Collectors.toList());
+            }
+
         }
 
-        throw new RuntimeException("Unknown class expression: " + gson.toJson(expr, Map.class));
+        // Could be: cardinality, complementOf, any others we don't deal with yet...
+        //
+        return null;
+
+        //throw new RuntimeException("Unknown class expression: " + gson.toJson(expr, Map.class));
     }
 
 
