@@ -71,8 +71,6 @@ public class JSON2Flattened {
                 writer.beginArray();
 
 
-                boolean wroteOntologyProperties = false;
-
 
                 reader.beginArray();
                 while (reader.peek() != JsonToken.END_ARRAY) {
@@ -81,6 +79,7 @@ public class JSON2Flattened {
                     writer.beginObject();
 
                     Map<String,Object> ontology = new HashMap<>();
+                    boolean wroteOntologyProperties = false;
 
                     reader.beginObject(); // ontology
                     while (reader.peek() != JsonToken.END_OBJECT) {
