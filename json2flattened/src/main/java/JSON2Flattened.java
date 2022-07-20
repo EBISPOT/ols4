@@ -337,7 +337,7 @@ public class JSON2Flattened {
             return oneOf.stream().map(obj -> flatten(obj)).collect(Collectors.toList());
         }
 
-        throw new RuntimeException("Unknown class expression");
+        throw new RuntimeException("Unknown class expression: " + gson.toJson(expr, Map.class));
     }
 
 
