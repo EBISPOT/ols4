@@ -9,13 +9,8 @@ import org.apache.jena.vocabulary.RDF;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class JSON2Flattened {
 
@@ -261,54 +256,88 @@ public class JSON2Flattened {
             return flattenedList;
         }
 
-
-        // Is this a Map {}, rather than just a plain old value?
+        // If this is not a Map {} it's a plain old literal value so we have
+        // nothing to do.
         // 
-        if (obj instanceof Map) {
+        if (! (obj instanceof Map)) {
+            return obj;
+        }
 
-            Map<String, Object> dict = (Map<String, Object>) obj;
 
+        Map<String, Object> dict = (Map<String, Object>) obj;
 
-            // Does the Map have a field called `value`? If so, it's one of:
-            //
-            // (1) A value with type information { datatype: ..., value: ... }
-            // (3) A localization
-            // (4) Reification
-            //
-            // But it's _not_   (2) A class expression
-            //
-            if (dict.containsKey("value")) {
+        // Does the Map have a field called `value`? If so, it's one of:
+        //
+        // (1) A value with type information { datatype: ..., value: ... }
+        // (3) A localization
+        // (4) Reification
+        //
+        // But it's _not_   (2) A class expression
+        //
+        if (dict.containsKey("value")) {
 
-                if(dict.containsKey("datatype") && !dict.containsKey("lang")) {
+            if(dict.containsKey("datatype") && !dict.containsKey("lang")) {
 
-                    // This is (1) A value with type information.
-                    // Just return the value with any metadata discarded.
+                // This is (1) A value with type information.
+                // Just return the value with any metadata discarded.
 
-                    return flatten(dict.get("value"));
-
-                } else {
-
-                    // This is (3) a localization or (4) reification. We do not
-                    // process these in the flattener. However, we still need
-                    // to recursively process the value.
-                    //  
-                    Map<String, Object> res = new HashMap<>(dict);
-                    res.put("value", flatten(dict.get("value")));
-                    return res;
-
-                }
+                return flatten(dict.get("value"));
 
             } else {
 
-                // This is (2) A class expression
-                // TBD!
-                
-                return objToString(obj);
-                
+                // This is (3) a localization or (4) reification. We do not
+                // process these in the flattener. However, we still need
+                // to recursively process the value.
+                //  
+                Map<String, Object> res = new HashMap<>(dict);
+                res.put("value", flatten(dict.get("value")));
+                return res;
+
             }
+
+        } else {
+
+            // This is (2) A class expression
+            // Let's flatten it!
+
+            return flattenClassExpression(dict);
+            
+        }
+    }
+
+
+    private static Object flattenClassExpression(Map<String, Object> expr) {
+
+        Collection<Object> types = asCollection(expr.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
+
+        if(types.contains("http://www.w3.org/2002/07/owl#Restriction")) {
+
+            Object hasValue = expr.get("http://www.w3.org/2002/07/owl#hasValue");
+
+            if(hasValue != null) {
+                return flatten(hasValue);
+            }
+
+            Object someValuesFrom = expr.get("http://www.w3.org/2002/07/owl#someValuesFrom");
+
+            if(someValuesFrom != null) {
+                return flatten(someValuesFrom);
+            }
+
+            Object allValuesFrom = expr.get("http://www.w3.org/2002/07/owl#allValuesFrom");
+
+            if(allValuesFrom != null) {
+                return flatten(allValuesFrom);
+            }
+
+        } else if(types.contains("http://www.w3.org/2002/07/owl#Class")) {
+
+            Collection<Object> oneOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#oneOf"));
+
+            return oneOf.stream().map(obj -> flatten(obj)).collect(Collectors.toList());
         }
 
-        return obj;
+        throw new RuntimeException("Unknown class expression");
     }
 
 
@@ -318,6 +347,14 @@ public class JSON2Flattened {
         } else {
             return gson.toJson(obj);
         }
+    }
+
+    private static Collection<Object> asCollection(Object val) {
+
+        if(val instanceof Collection)
+            return (Collection<Object>) val;
+        else
+            return Arrays.asList(val);
     }
 
 }
