@@ -42,10 +42,17 @@ public class NeoConverter {
 
                 while(reader.peek() != JsonToken.END_ARRAY) {
 
+
+                    System.out.println("Scanning ontology...");
+
                     OntologyScanner.Result ontologyScannerResult =
                             OntologyScanner.scanOntology(extractorReader);
 
+                    System.out.println("Ontology scan complete for " + ontologyScannerResult.ontologyId);
+
                     new OntologyWriter(reader, outputFilePath, ontologyScannerResult).write();
+
+                    System.out.println("OntologyWriter complete for " + ontologyScannerResult.ontologyId);
                 }
 
                 reader.endArray(); extractorReader.endArray();
