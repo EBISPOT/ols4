@@ -75,7 +75,7 @@ public class OntologyWriter {
         List<String> properties = new ArrayList<String>( ontologyScannerResult.allOntologyProperties);
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("id:ID");
+        csvHeader.add("uniqueId:ID");
         csvHeader.add(":LABEL");
         csvHeader.addAll(propertyHeaders(properties));
 
@@ -99,7 +99,7 @@ public class OntologyWriter {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = (String) ontologyProperties.get("id");
+        row[n++] = ontologyId + "+" + (String) ontologyProperties.get("uri");
         row[n++] = "Ontology";
 
         for (String column : properties) {
@@ -115,7 +115,7 @@ public class OntologyWriter {
         List<String> properties = new ArrayList<String>(allTermProperties);
 
         List<String> csvHeader = new ArrayList<>();
-        csvHeader.add("id:ID");
+        csvHeader.add("uniqueId:ID");
         csvHeader.add(":LABEL");
         csvHeader.addAll(propertyHeaders(properties));
 
