@@ -24,7 +24,7 @@ java -jar json2flattened/target/json2flattened-1.0-SNAPSHOT.jar --input "$JSON_P
 echo json2neo
 java -jar json2neo/target/json2neo-1.0-SNAPSHOT.jar --input "$JSON_FLATTENED_PATH" --outDir out
 
-#echo json2solr
-#java -jar json2solr/target/json2solr-1.0-SNAPSHOT.jar --input "$JSON_FLATTENED_PATH" --outDir out
+echo json2solr
+java -jar json2solr/target/json2solr-1.0-SNAPSHOT.jar --input "$JSON_FLATTENED_PATH" --outDir out
 
 

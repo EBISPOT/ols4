@@ -200,27 +200,8 @@ public class JSON2Flattened {
             }
 
             writer.name(k);
-
-            if (v instanceof Collection) {
-
-                writer.beginArray();
-
-                for (Object entry : ((Collection<Object>) v)) {
-                    Object entryObj = flatten(entry);
-                    if(entryObj != null) {
-                        writer.value(objToString(entryObj));
-                    }
-                }
-
-                writer.endArray();
-
-            } else {
-
-                writer.value(objToString(v));
-
-            }
+            writeGenericValue(writer, v);
         }
-
     }
 
     // There are four cases when the object can be a Map {} instead of a literal.
@@ -391,6 +372,34 @@ public class JSON2Flattened {
             return (Collection<Object>) val;
         else
             return Arrays.asList(val);
+    }
+
+    private static void writeGenericValue(JsonWriter writer, Object val) throws IOException {
+
+        if(val instanceof Collection) {
+            writer.beginArray();
+            for(Object entry : ((Collection<Object>) val)) {
+                writeGenericValue(writer, entry);
+            }
+            writer.endArray();
+        } else if(val instanceof Map) {
+            Map<String,Object> map = (Map<String,Object>) val;
+            writer.beginObject();
+            for(String k : map.keySet()) {
+                writer.name(k);
+                writeGenericValue(writer, map.get(k));
+            }
+            writer.endObject();
+        } else if(val instanceof String) {
+            writer.value((String) val);
+        } else if(val instanceof Long) {
+            writer.value((Long) val);
+        } else if(val instanceof Boolean) {
+            writer.value((Boolean) val);
+        } else {
+            throw new RuntimeException("Unknown value type");
+        }
+
     }
 
 }
