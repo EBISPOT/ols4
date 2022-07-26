@@ -137,7 +137,7 @@ public class OwlTranslator implements StreamRDF {
 
         writer.beginObject();
 
-        writer.name("id");
+        writer.name("ontologyId");
         writer.value((String) config.get("id"));
 
         writer.name("uri");

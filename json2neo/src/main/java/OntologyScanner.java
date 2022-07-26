@@ -103,7 +103,7 @@ public class OntologyScanner {
 
             if(name.equals("uri")) {
                 res.allNodes.add(reader.nextString());
-            } else if(name.equals("id")) {
+            } else if(name.equals("ontologyId")) {
                 res.ontologyId = reader.nextString();
             } else {
                 Object value = gson.fromJson(reader, Object.class);

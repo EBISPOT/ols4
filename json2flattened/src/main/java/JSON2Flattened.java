@@ -92,7 +92,7 @@ public class JSON2Flattened {
 
                             if(!wroteOntologyProperties) {
 
-                                System.out.println("Write ontology properties: " + (String)ontology.get("id"));
+                                System.out.println("Write ontology properties: " + (String)ontology.get("ontologyId"));
 
                                 writeFlattenedObjectProperties(writer, ontology);
                                 wroteOntologyProperties = true;

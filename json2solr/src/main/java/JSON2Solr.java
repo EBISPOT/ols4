@@ -111,7 +111,7 @@ public class JSON2Solr {
                                     //
                                     Map<String, Object> flattenedClass = new HashMap<>();
 
-                                    String ontologyId = (String) ontology.get("id");
+                                    String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("id", ontologyId + "+" + lang + "+" + (String) _class.get("uri"));
 
@@ -150,7 +150,7 @@ public class JSON2Solr {
                                     //
                                     Map<String, Object> flattenedProperty = new HashMap<>();
 
-                                    String ontologyId = (String) ontology.get("id");
+                                    String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedProperty.put("lang", lang);
                                     flattenedProperty.put("id", ontologyId + "+" + lang + "+" + (String) property.get("uri"));
 
@@ -191,7 +191,7 @@ public class JSON2Solr {
                                     //
                                     Map<String, Object> flattenedIndividual = new HashMap<>();
 
-                                    String ontologyId = (String) ontology.get("id");
+                                    String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedIndividual.put("lang", lang);
                                     flattenedIndividual.put("id", ontologyId + "+" + lang + "+" + (String) individual.get("uri"));
 
@@ -220,7 +220,7 @@ public class JSON2Solr {
 
                     for(String lang : languages) {
 
-                        String ontologyId = (String) ontology.get("id");
+                        String ontologyId = (String) ontology.get("ontologyId");
 
 
                         Map<String, Object> flattenedOntology = new HashMap<>();
