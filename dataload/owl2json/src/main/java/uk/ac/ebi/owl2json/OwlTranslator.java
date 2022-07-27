@@ -484,30 +484,40 @@ public class OwlTranslator implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#Ontology":
 
-		subjNode.type = OwlNode.NodeType.ONTOLOGY;
+                subjNode.type = OwlNode.NodeType.ONTOLOGY;
 
                 if(ontologyNode == null) {
-			ontologyNode = subjNode;
-		}
+                    ontologyNode = subjNode;
+                }
 
                 break;
 
             case "http://www.w3.org/2002/07/owl#Class":
                 subjNode.type = OwlNode.NodeType.CLASS;
-		++ numberOfClasses;
+                ++ numberOfClasses;
                 break;
 
             case "http://www.w3.org/2002/07/owl#AnnotationProperty":
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
                 subjNode.type = OwlNode.NodeType.PROPERTY;
-		++ numberOfProperties;
+                ++ numberOfProperties;
                 break;
 
             case "http://www.w3.org/2002/07/owl#NamedIndividual":
+
+                // There is a weird thing in iao where the Ontology object
+                // also has rdf:type NamedIndividual. TODO if this is
+                // indeed illegal OWL, report to iao developers and find
+                // out if any other ontologies do it.
+                //
+                if(subjNode.type == OwlNode.NodeType.ONTOLOGY) {
+                    break;
+                }
+
                 subjNode.type = OwlNode.NodeType.NAMED_INDIVIDUAL;
-		++ numberOfIndividuals;
-		break;
+                ++ numberOfIndividuals;
+                break;
 
             case "http://www.w3.org/2002/07/owl#Axiom":
                 subjNode.type = OwlNode.NodeType.AXIOM;
