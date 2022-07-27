@@ -5,7 +5,7 @@ Converts ontologies represented in OWL RDF/XML to Solr and Neo4j databases.
 Start with a config JSON file that lists the ontologies you want to load. You can get the OBO config into a file called `foundry.json` like so (make sure you have yq installed):
 
     curl "https://raw.githubusercontent.com/OBOFoundry/OBOFoundry.github.io/master/_config.yml" \
-        | ./yq eval -j - > foundry.json
+        | yq eval -j - > foundry.json
         
         
 ## Step 1: OWL to JSON
