@@ -99,7 +99,7 @@ public class OntologyWriter {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = (String) ontologyProperties.get("ontologyId");
+        row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+" + (String) ontologyProperties.get("uri");
         row[n++] = "Ontology";
 
         for (String column : properties) {
