@@ -1,0 +1,27 @@
+version: '2'
+services:
+    ols4-dataload:
+      build: ./dataload
+      volumes:
+        - ols4-solr-data:/opt/solr/server/solr/ols4
+        - ols4-neo4j-data:/opt/neo4j/data
+
+    ols4-solr:
+      image: solr:9
+      environment:
+        - SOLR_HOME=/mnt/ols4-solr-data
+      ports:
+        - 8983:8983
+      volumes:
+        - ols4-solr-data:/mnt/ols4-solr-data
+      command: ["-f"]
+      depends_on:
+        ols4-dataload:
+          condition: service_completed_successfully
+
+volumes:
+    ols4-solr-data:
+    ols4-neo4j-data:
+
+
+
