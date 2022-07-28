@@ -1,5 +1,5 @@
 
-![Test workflow](https://github.com/EBISPOT/ols4/actions/workflows/test.yml/badge.svg)
+<a href="https://github.com/EBISPOT/ols4/actions/workflows/test.yml"><img src="https://github.com/EBISPOT/ols4/actions/workflows/test.yml/badge.svg"/></a>
 
 Work in progress
 
