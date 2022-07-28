@@ -270,7 +270,14 @@ public class OntologyWriter {
 
         Object value = termProperties.get(column);
 
-        maybeWriteEdges((String)termProperties.get("uri"), column, value);
+        String uri = (String)termProperties.get("uri");
+
+        // BNodes subjects don't get edges in the graph, so only write if there
+        // is a URI
+        //
+        if(uri != null) {
+            maybeWriteEdges(uri, column, value);
+        }
 
         return valueToCsv(value);
     }
