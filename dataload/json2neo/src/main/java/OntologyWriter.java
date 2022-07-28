@@ -190,8 +190,15 @@ public class OntologyWriter {
     private void printEdge(String ontologyId, String aUri, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
         // In the case of punning, the same URI can have multiple types. In this case
-        // it is ambiguous which of the types the edge points to/from; really, it points to
-        // all of them! So we create the edge multiple times between each type.
+        // it is ambiguous which of the types the edge points to/from. For example, if
+        // a URI points to a node which is both a Class and an Individual, does it point
+        // to the Class or the Individual?
+        // 
+        // In the hacky approach below, we just make multiple edges: in the above example,
+        // one edge would point to the Class and another would point to the Individual.
+        //
+        // TODO: We should instead look up "predicate" and find out what the semantics
+        // of the property are.
         //
         Set<OntologyScanner.NodeType> aTypes = ontologyScannerResult.uriToTypes.get(aUri);
         Set<OntologyScanner.NodeType> bTypes = ontologyScannerResult.uriToTypes.get(bUri);
