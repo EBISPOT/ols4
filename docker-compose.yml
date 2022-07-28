@@ -3,9 +3,9 @@ services:
     ols4-dataload:
       build: ./dataload
       volumes:
-        - ols4-solr-data:/opt/solr/server/solr/ols4
-        - ols4-neo4j-data:/opt/neo4j/data
-
+        - ols4-solr-data:/opt/solr/server/solr/ols4:rw
+        - ols4-neo4j-data:/opt/neo4j/data:rw
+        - ./docker_config.json:/mnt/config.json:ro
     ols4-solr:
       image: solr:9
       environment:

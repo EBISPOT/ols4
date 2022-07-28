@@ -1,0 +1,73 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "browsers": [
+        {
+          "label": "BioPortal",
+          "title": "BioPortal Browser",
+          "url": "http://bioportal.bioontology.org/ontologies/BFO?p=classes"
+        }
+      ],
+      "contact": {
+        "email": "phismith@buffalo.edu",
+        "github": "phismith",
+        "label": "Barry Smith",
+        "orcid": "0000-0003-1384-116X"
+      },
+      "depicted_by": "https://avatars2.githubusercontent.com/u/12972134?v=3&s=200",
+      "description": "The upper level ontology upon which OBO Foundry ontologies are built.",
+      "domain": "upper",
+      "homepage": "http://ifomis.org/bfo/",
+      "id": "bfo",
+      "in_foundry_order": 1,
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      "mailing_list": "https://groups.google.com/forum/#!forum/bfo-discuss",
+      "ontology_purl": "http://purl.obolibrary.org/obo/bfo.owl",
+      "preferredPrefix": "BFO",
+      "products": [
+        {
+          "id": "bfo.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/bfo.owl"
+        },
+        {
+          "id": "bfo.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/bfo.obo"
+        }
+      ],
+      "repository": "https://github.com/BFO-ontology/BFO",
+      "review": {
+        "date": 2016,
+        "document": {
+          "label": "PDF",
+          "link": "https://drive.google.com/open?id=0B81h9ah4tAM_RnNTRUZnVGRyWXM"
+        }
+      },
+      "title": "Basic Formal Ontology",
+      "tracker": "https://github.com/BFO-ontology/BFO/issues",
+      "usages": [
+        {
+          "description": "BFO is imported by multiple OBO ontologies to standardize upper level structure",
+          "type": "owl_import",
+          "user": "http://obofoundry.org"
+        }
+      ]
+    }
+  ]
+}
