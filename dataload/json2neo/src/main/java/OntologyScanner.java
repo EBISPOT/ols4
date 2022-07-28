@@ -15,7 +15,7 @@ public class OntologyScanner {
     static Gson gson = new Gson();
 
     public enum NodeType {
-        CLASS, PROPERTY, INDIVIDUAL
+        ONTOLOGY, CLASS, PROPERTY, INDIVIDUAL
     }
     public static class Result {
         String ontologyId;
@@ -117,6 +117,7 @@ public class OntologyScanner {
 
             if(name.equals("uri")) {
                 res.ontologyUri = reader.nextString();
+                addType(res, res.ontologyUri, NodeType.ONTOLOGY);
             } else if(name.equals("ontologyId")) {
                 res.ontologyId = reader.nextString();
             } else {
