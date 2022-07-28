@@ -3,12 +3,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.*;
 
 public class OntologyScanner {
 
@@ -31,7 +26,7 @@ public class OntologyScanner {
     private static void addType(Result res, String uri, NodeType type) {
         Set<NodeType> types = res.uriToTypes.get(uri);
         if(types == null) {
-            types = new HashSet<NodeType>();
+            types = new TreeSet<NodeType>();
             res.uriToTypes.put(uri, types);
         }
         types.add(type);
@@ -147,7 +142,7 @@ public class OntologyScanner {
 
             // either reification, or a bnode (anon. class or restriction)
 
-            Map<String, Object> mapValue = (Map<String, Object>) value;
+            Map<String, Object> mapValue = new TreeMap<String,Object>((Map<String, Object>) value);
 
             if(mapValue.containsKey("value")) {
 

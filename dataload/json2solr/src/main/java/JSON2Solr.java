@@ -8,13 +8,7 @@ import org.apache.jena.vocabulary.RDF;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 public class JSON2Solr {
 
@@ -82,7 +76,7 @@ public class JSON2Solr {
 
                     reader.beginObject(); // ontology
 
-                    Map<String,Object> ontology = new HashMap<>();
+                    Map<String,Object> ontology = new TreeMap<>();
 
                     while (reader.peek() != JsonToken.END_OBJECT) {
 
@@ -96,7 +90,7 @@ public class JSON2Solr {
 
                                 Map<String, Object> _class = gson.fromJson(reader, Map.class);
 
-                                Set<String> languages = new HashSet<>();
+                                Set<String> languages = new TreeSet<>();
                                 languages.add("en");
                                 for(String k : _class.keySet()) {
                                     languages.addAll(extractLanguages(_class.get(k)));
@@ -109,7 +103,7 @@ public class JSON2Solr {
 
                                     // Stringify any nested objects
                                     //
-                                    Map<String, Object> flattenedClass = new HashMap<>();
+                                    Map<String, Object> flattenedClass = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedClass.put("lang", lang);
@@ -135,7 +129,7 @@ public class JSON2Solr {
 
                                 Map<String, Object> property = gson.fromJson(reader, Map.class);
 
-                                Set<String> languages = new HashSet<>();
+                                Set<String> languages = new TreeSet<>();
                                 languages.add("en");
                                 for(String k : property.keySet()) {
                                     languages.addAll(extractLanguages(property.get(k)));
@@ -148,7 +142,7 @@ public class JSON2Solr {
 
                                     // Stringify any nested objects
                                     //
-                                    Map<String, Object> flattenedProperty = new HashMap<>();
+                                    Map<String, Object> flattenedProperty = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedProperty.put("lang", lang);
@@ -176,7 +170,7 @@ public class JSON2Solr {
                                 //classesWriter.println("{\"index\": {\"_index\": \"owlindividuales\"}}");
 
 
-                                Set<String> languages = new HashSet<>();
+                                Set<String> languages = new TreeSet<>();
                                 languages.add("en");
                                 for(String k : individual.keySet()) {
                                     languages.addAll(extractLanguages(individual.get(k)));
@@ -189,7 +183,7 @@ public class JSON2Solr {
 
                                     // Stringify any nested objects
                                     //
-                                    Map<String, Object> flattenedIndividual = new HashMap<>();
+                                    Map<String, Object> flattenedIndividual = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
                                     flattenedIndividual.put("lang", lang);
@@ -212,7 +206,7 @@ public class JSON2Solr {
                         }
                     }
 
-                    Set<String> languages = new HashSet<>();
+                    Set<String> languages = new TreeSet<>();
                     languages.add("en");
                     for(String k : ontology.keySet()) {
                         languages.addAll(extractLanguages(ontology.get(k)));
@@ -223,10 +217,10 @@ public class JSON2Solr {
                         String ontologyId = (String) ontology.get("ontologyId");
 
 
-                        Map<String, Object> flattenedOntology = new HashMap<>();
+                        Map<String, Object> flattenedOntology = new TreeMap<>();
 
                         // don't want to store a copy of all the terms in here too
-                        Map<String, Object> ontologyJsonObj = new HashMap<>();
+                        Map<String, Object> ontologyJsonObj = new TreeMap<>();
                         for(String k : ontology.keySet()) {
                             if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
                                 continue;
@@ -330,7 +324,7 @@ public class JSON2Solr {
     //
     public static Collection<String> extractLanguages(Object obj) {
 
-        Set<String> langs = new HashSet<>();
+        Set<String> langs = new TreeSet<>();
 
         if (obj instanceof Map) {
 

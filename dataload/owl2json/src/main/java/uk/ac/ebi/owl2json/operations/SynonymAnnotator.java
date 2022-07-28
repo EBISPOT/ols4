@@ -1,9 +1,5 @@
 package uk.ac.ebi.owl2json.operations;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
@@ -15,7 +11,7 @@ public class SynonymAnnotator {
 		long startTime3 = System.nanoTime();
 
 
-		Set<String> synonymProperties = new HashSet<String>();
+		Set<String> synonymProperties = new TreeSet<String>();
 		synonymProperties.add("http://www.geneontology.org/formats/oboInOwl#hasExactSynonym");
 
 

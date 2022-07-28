@@ -1,9 +1,5 @@
 package uk.ac.ebi.owl2json.operations;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
@@ -15,7 +11,7 @@ public class DefinitionAnnotator {
 		long startTime3 = System.nanoTime();
 
 
-		Set<String> definitionProperties = new HashSet<String>();
+		Set<String> definitionProperties = new TreeSet<String>();
 		definitionProperties.add("http://www.w3.org/2000/01/rdf-schema#description");
 		definitionProperties.add("http://www.w3.org/2000/01/rdf-schema#comment");
 		definitionProperties.add("http://purl.obolibrary.org/obo/IAO_0000115");

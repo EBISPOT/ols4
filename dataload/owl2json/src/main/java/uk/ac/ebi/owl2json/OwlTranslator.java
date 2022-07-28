@@ -24,7 +24,7 @@ public class OwlTranslator implements StreamRDF {
 
     public Map<String, Object> config;
     public List<String> importUrls = new ArrayList<>();
-    public Set<String> languages = new HashSet<>();
+    public Set<String> languages = new TreeSet<>();
 
     public Set<String> hasChildren = new HashSet<>();
     public Set<String> hasParents = new HashSet<>();
@@ -386,7 +386,7 @@ public class OwlTranslator implements StreamRDF {
 
 
 
-    public Map<String, OwlNode> nodes = new HashMap<>();
+    public Map<String, OwlNode> nodes = new TreeMap<>();
     OwlNode ontologyNode = null;
 
     private OwlNode getOrCreateTerm(Node node) {

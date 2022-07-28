@@ -84,7 +84,7 @@ public class OntologyWriter {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        Map<String,Object> ontologyProperties = new HashMap<>();
+        Map<String,Object> ontologyProperties = new TreeMap<>();
 
         while(reader.peek() != JsonToken.END_OBJECT) {
 
@@ -176,7 +176,7 @@ public class OntologyWriter {
 
                 // is the value the URI of something that exists in the ontology?
                 if (ontologyScannerResult.uriToTypes.containsKey(v)) {
-                    printEdge(ontologyId, subject, property, v, new HashMap<>());
+                    printEdge(ontologyId, subject, property, v, new TreeMap<>());
                 }
 
             } else {

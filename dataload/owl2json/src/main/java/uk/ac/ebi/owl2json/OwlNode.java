@@ -17,7 +17,7 @@ public class OwlNode {
     }
 
     public String uri;
-    public Set<NodeType> types = new HashSet<>();
+    public Set<NodeType> types = new TreeSet<>();
 //    List<OwlNode> parents;
     public PropertySet properties = new PropertySet();
 
@@ -34,7 +34,7 @@ public class OwlNode {
 
     public class PropertySet {
 
-        public Map<String, List<Property>> properties = new HashMap<>();
+        public Map<String, List<Property>> properties = new TreeMap<>();
 
         public void addProperty(String predicate, Node value) {
             List<Property> props = properties.get(predicate);
