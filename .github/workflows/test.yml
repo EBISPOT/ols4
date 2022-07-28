@@ -2,7 +2,7 @@ name: Run OLS4 dataload test cases
 on:
   push:
     branches:
-      - testing
+      - main
 jobs:
   login:
     runs-on: ubuntu-latest
