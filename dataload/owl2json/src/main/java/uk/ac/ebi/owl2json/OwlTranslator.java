@@ -57,7 +57,7 @@ public class OwlTranslator implements StreamRDF {
 
     private boolean loadLocalFiles;
 
-    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles) {
+    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles, boolean noDates) {
 
 	this.loadLocalFiles = loadLocalFiles;
 
@@ -130,10 +130,12 @@ public class OwlTranslator implements StreamRDF {
 		"numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
 
 
-	String now = java.time.LocalDateTime.now().toString();
+    if(!noDates) {
+        String now = java.time.LocalDateTime.now().toString();
 
-	ontologyNode.properties.addProperty(
-		"loaded", NodeFactory.createLiteral(now));
+        ontologyNode.properties.addProperty(
+            "loaded", NodeFactory.createLiteral(now));
+    }
 
 
     long endTime = System.nanoTime();
@@ -149,6 +151,10 @@ public class OwlTranslator implements StreamRDF {
 
     }
 
+
+    static final Set<String> classTypes = new TreeSet<>(Set.of("term", "class"));
+    static final Set<String> propertyTypes = new TreeSet<>(Set.of("term", "property"));
+    static final Set<String> individualTypes = new TreeSet<>(Set.of("term", "individual"));
 
     public void write(JsonWriter writer) throws IOException {
 
@@ -175,7 +181,7 @@ public class OwlTranslator implements StreamRDF {
                 continue;
             }
             if (c.types.contains(OwlNode.NodeType.CLASS)) {
-                writeNode(writer, c, Set.of("term", "class"));
+                writeNode(writer, c, classTypes);
             }
         }
 
@@ -192,7 +198,7 @@ public class OwlTranslator implements StreamRDF {
                 continue;
             }
             if (c.types.contains(OwlNode.NodeType.PROPERTY)) {
-                writeNode(writer, c, Set.of("term", "property"));
+                writeNode(writer, c, propertyTypes);
             }
         }
 
@@ -209,7 +215,7 @@ public class OwlTranslator implements StreamRDF {
                 continue;
             }
             if (c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
-                writeNode(writer, c, Set.of("term", "individual"));
+                writeNode(writer, c, individualTypes);
             }
         }
 

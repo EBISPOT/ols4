@@ -16,7 +16,7 @@ JSON_FLATTENED_PATH=$OUTDIR/ontologies_flat.json
 rm -f $OUTDIR/*
 
 echo owl2json
-java -jar $SCRIPT_PATH/owl2json/target/owl2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" $3
+java -jar $SCRIPT_PATH/owl2json/target/owl2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
 
 echo json2flattened
 java -jar $SCRIPT_PATH/json2flattened/target/json2flattened-1.0-SNAPSHOT.jar --input "$JSON_PATH" --output "$JSON_FLATTENED_PATH"

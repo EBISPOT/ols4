@@ -26,6 +26,10 @@ public class OWL2JSON {
         loadLocalFiles.setRequired(false);
         options.addOption(loadLocalFiles);
 
+        Option noDates = new Option(null, "noDates", false, "Set to leave LOADED dates blank (for testing)");
+        noDates.setRequired(false);
+        options.addOption(noDates);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -42,7 +46,8 @@ public class OWL2JSON {
 
         String configFilePath = cmd.getOptionValue("config");
         String outputFilePath = cmd.getOptionValue("output");
-	boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
+        boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
+        boolean bNoDates = cmd.hasOption("noDates");
 
 
         System.out.println("Config: " + configFilePath);
@@ -74,7 +79,7 @@ public class OWL2JSON {
         for(var ontoConfig : config.ontologies) {
             System.out.println("--- Loading ontology: " + (String)ontoConfig.get("id"));
             try {
-                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles);
+                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates);
 		translator.write(writer);
             } catch(Throwable t) {
                  t.printStackTrace();
