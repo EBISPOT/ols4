@@ -1,0 +1,1249 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-minimal",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-minimal",
+        "preferredPrefix": "owl2primer-minimal",
+        "ontology_purl": "./testcases/owl2-primer/minimal.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "0",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-class",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-class",
+        "preferredPrefix": "owl2primer-class",
+        "ontology_purl": "./testcases/owl2-primer/class.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
+      "imported": "false",
+      "numberOfClasses": "1",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-class",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-individual",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-individual",
+        "preferredPrefix": "owl2primer-individual",
+        "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "0",
+      "numberOfTerms": "1",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-individual",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-subClassOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-subClassOf",
+        "preferredPrefix": "owl2primer-subClassOf",
+        "ontology_purl": "./testcases/owl2-primer/subClassOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "3",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Mother",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-equivalentClass",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-equivalentClass",
+        "preferredPrefix": "owl2primer-equivalentClass",
+        "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
+      "imported": "false",
+      "numberOfClasses": "2",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentClass",
+          "shortForm": "Human",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentClass",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-disjointClasses",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-disjointClasses",
+        "preferredPrefix": "owl2primer-disjointClasses",
+        "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-subObjectPropertyOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+      "ontologyConfig": {
+        "id": "owl2primer-subObjectPropertyOf",
+        "preferredPrefix": "owl2primer-subObjectPropertyOf",
+        "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "2",
+      "numberOfTerms": "5",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "hasSpouse",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-domain-range-restriction",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-domain-range-restriction",
+        "preferredPrefix": "owl2primer-domain-range-restriction",
+        "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "numberOfTerms": "4",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-objectProperty-assertionProperty",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-objectProperty-assertionProperty",
+        "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
+        "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "1",
+      "numberOfTerms": "6",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "John",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-objectProperty-negativePropertyAssertion",
+        "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+        "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "1",
+      "numberOfTerms": "6",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Bill",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-namedIndividual-sameAs",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-namedIndividual-sameAs",
+        "preferredPrefix": "owl2primer-namedIndividual-sameAs",
+        "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-sameAs",
+          "shortForm": "James",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-sameAs",
+          "shortForm": "Jim",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-namedIndividual-differentFrom",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-namedIndividual-differentFrom",
+        "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
+        "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "Bill",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "John",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-datatypes",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-datatypes",
+        "preferredPrefix": "owl2primer-datatypes",
+        "ontology_purl": "./testcases/owl2-primer/datatypes.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+      "imported": "false",
+      "numberOfClasses": "1",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "1",
+      "numberOfTerms": "3",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
+          "type": [
+            "property",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "hasAge",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "value": "51"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "Jack",
+          "propertyLabels": {}
+        }
+      ]
+    },
+    {
+      "ontologyId": "owl2primer-intersectionOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-intersectionOf",
+        "preferredPrefix": "owl2primer-intersectionOf",
+        "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "4",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "4",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#intersectionOfOf": [
+              "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+              "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
+            ],
+            "propertyLabels": {}
+          },
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Mother",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-disjointUnionOf.",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-disjointUnionOf.",
+        "preferredPrefix": "owl2primer-disjointUnionOf.",
+        "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "3",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Father",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Mother",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#disjointUnionOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+          ],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-unionOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-unionOf",
+        "preferredPrefix": "owl2primer-unionOf",
+        "ontology_purl": "./testcases/owl2-primer/unionOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Father",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Mother",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#unionOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
+          ],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-equivalent-intersectionOf-complementOf",
+        "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
+        "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#intersectionOf": [
+              "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+              {
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+                "http://www.w3.org/2002/07/owl#complementOf": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
+                "propertyLabels": {}
+              }
+            ],
+            "propertyLabels": {}
+          },
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "ChildlessPerson",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "owl2primer-subClassOf-intersectionOf",
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+      "ontologyConfig": {
+        "id": "owl2primer-subClassOf-intersectionOf",
+        "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
+        "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl"
+      },
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "4",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "4",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#intersectionOf": [
+              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+            ],
+            "propertyLabels": {}
+          },
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Grandfather",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}
