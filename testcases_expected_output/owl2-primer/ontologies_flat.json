@@ -1,0 +1,1131 @@
+{
+  "ontologies": [
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl\",\"imported\":\"false\",\"numberOfClasses\":\"0\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"0\",\"ontologyConfig\":{\"id\":\"owl2primer-minimal\",\"preferredPrefix\":\"owl2primer-minimal\",\"ontology_purl\":\"./testcases/owl2-primer/minimal.owl\"},\"ontologyId\":\"owl2primer-minimal\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "0",
+      "ontologyId": "owl2primer-minimal",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
+      "classes": [],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl\",\"imported\":\"false\",\"numberOfClasses\":\"1\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"1\",\"ontologyConfig\":{\"id\":\"owl2primer-class\",\"preferredPrefix\":\"owl2primer-class\",\"ontology_purl\":\"./testcases/owl2-primer/class.owl\"},\"ontologyId\":\"owl2primer-class\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/class.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
+      "imported": "false",
+      "numberOfClasses": "1",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "1",
+      "ontologyId": "owl2primer-class",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-class\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/class#Person\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-class",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl\",\"imported\":\"false\",\"numberOfClasses\":\"0\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"1\",\"ontologyConfig\":{\"id\":\"owl2primer-individual\",\"preferredPrefix\":\"owl2primer-individual\",\"ontology_purl\":\"./testcases/owl2-primer/namedIndividual.owl\"},\"ontologyId\":\"owl2primer-individual\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "0",
+      "numberOfTerms": "1",
+      "ontologyId": "owl2primer-individual",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-individual\",\"propertyLabels\":{},\"shortForm\":\"Mary\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-individual",
+          "shortForm": "Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"3\",\"ontologyConfig\":{\"id\":\"owl2primer-subClassOf\",\"preferredPrefix\":\"owl2primer-subClassOf\",\"ontology_purl\":\"./testcases/owl2-primer/subClassOf.owl\"},\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "3",
+      "ontologyId": "owl2primer-subClassOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl\",\"imported\":\"false\",\"numberOfClasses\":\"2\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"2\",\"ontologyConfig\":{\"id\":\"owl2primer-equivalentClass\",\"preferredPrefix\":\"owl2primer-equivalentClass\",\"ontology_purl\":\"./testcases/owl2-primer/equivalentClass.owl\"},\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
+      "imported": "false",
+      "numberOfClasses": "2",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "ontologyId": "owl2primer-equivalentClass",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Human\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentClass",
+          "shortForm": "Human",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentClass",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl\",\"imported\":\"false\",\"numberOfClasses\":\"5\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"5\",\"ontologyConfig\":{\"id\":\"owl2primer-disjointClasses\",\"preferredPrefix\":\"owl2primer-disjointClasses\",\"ontology_purl\":\"./testcases/owl2-primer/allDisjointClasses.owl\"},\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "ontologyId": "owl2primer-disjointClasses",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointClasses",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"2\",\"numberOfTerms\":\"5\",\"ontologyConfig\":{\"id\":\"owl2primer-subObjectPropertyOf\",\"preferredPrefix\":\"owl2primer-subObjectPropertyOf\",\"ontology_purl\":\"./testcases/owl2-primer/subObjectPropertyOf.owl\"},\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "2",
+      "numberOfTerms": "5",
+      "ontologyId": "owl2primer-subObjectPropertyOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman"
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "hasSpouse",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subObjectPropertyOf",
+          "shortForm": "hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife"
+        }
+      ],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"1\",\"numberOfTerms\":\"4\",\"ontologyConfig\":{\"id\":\"owl2primer-domain-range-restriction\",\"preferredPrefix\":\"owl2primer-domain-range-restriction\",\"ontology_purl\":\"./testcases/owl2-primer/domain-range-restriction.owl\"},\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "numberOfTerms": "4",
+      "ontologyId": "owl2primer-domain-range-restriction",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman"
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "shortForm": "hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife"
+        }
+      ],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"2\",\"numberOfProperties\":\"1\",\"numberOfTerms\":\"6\",\"ontologyConfig\":{\"id\":\"owl2primer-objectProperty-assertionProperty\",\"preferredPrefix\":\"owl2primer-objectProperty-assertionProperty\",\"ontology_purl\":\"./testcases/owl2-primer/objectProperty-assertionProperty.owl\"},\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "1",
+      "numberOfTerms": "6",
+      "ontologyId": "owl2primer-objectProperty-assertionProperty",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman"
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife"
+        }
+      ],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"John\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John\"}",
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "John",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Mary\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-assertionProperty",
+          "shortForm": "Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"2\",\"numberOfProperties\":\"1\",\"numberOfTerms\":\"6\",\"ontologyConfig\":{\"id\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"preferredPrefix\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"ontology_purl\":\"./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl\"},\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "1",
+      "numberOfTerms": "6",
+      "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\"}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman"
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "hasWife",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife"
+        }
+      ],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Bill\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Bill",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Mary\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Mary",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl\",\"imported\":\"false\",\"numberOfClasses\":\"0\",\"numberOfIndividuals\":\"2\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"2\",\"ontologyConfig\":{\"id\":\"owl2primer-namedIndividual-sameAs\",\"preferredPrefix\":\"owl2primer-namedIndividual-sameAs\",\"ontology_purl\":\"./testcases/owl2-primer/namedIndividual-sameAs.owl\"},\"ontologyId\":\"owl2primer-namedIndividual-sameAs\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "ontologyId": "owl2primer-namedIndividual-sameAs",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"http://www.w3.org/2002/07/owl#sameAs\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedIndividual-sameAs\",\"propertyLabels\":{},\"shortForm\":\"James\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-sameAs",
+          "shortForm": "James",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedIndividual-sameAs\",\"propertyLabels\":{},\"shortForm\":\"Jim\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-sameAs",
+          "shortForm": "Jim",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl\",\"imported\":\"false\",\"numberOfClasses\":\"0\",\"numberOfIndividuals\":\"2\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"2\",\"ontologyConfig\":{\"id\":\"owl2primer-namedIndividual-differentFrom\",\"preferredPrefix\":\"owl2primer-namedIndividual-differentFrom\",\"ontology_purl\":\"./testcases/owl2-primer/namedIndividual-differentFrom.owl\"},\"ontologyId\":\"owl2primer-namedIndividual-differentFrom\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
+      "imported": "false",
+      "numberOfClasses": "0",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "0",
+      "numberOfTerms": "2",
+      "ontologyId": "owl2primer-namedIndividual-differentFrom",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedIndividual-differentFrom\",\"propertyLabels\":{},\"shortForm\":\"Bill\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "Bill",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedIndividual-differentFrom\",\"propertyLabels\":{},\"shortForm\":\"John\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "John",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl\",\"imported\":\"false\",\"numberOfClasses\":\"1\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"1\",\"numberOfTerms\":\"3\",\"ontologyConfig\":{\"id\":\"owl2primer-datatypes\",\"preferredPrefix\":\"owl2primer-datatypes\",\"ontology_purl\":\"./testcases/owl2-primer/datatypes.owl\"},\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+      "imported": "false",
+      "numberOfClasses": "1",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "1",
+      "numberOfTerms": "3",
+      "ontologyId": "owl2primer-datatypes",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person"
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.w3.org/2001/XMLSchema#integer\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "hasAge",
+          "type": [
+            "property",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge"
+        }
+      ],
+      "individuals": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\":{\"datatype\":\"http://www.w3.org/2001/XMLSchema#integer\",\"value\":\"51\"},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Jack\",\"type\":[\"individual\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack\"}",
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": "51",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "shortForm": "Jack",
+          "type": [
+            "individual",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack"
+        }
+      ]
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"4\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"4\",\"ontologyConfig\":{\"id\":\"owl2primer-intersectionOf\",\"preferredPrefix\":\"owl2primer-intersectionOf\",\"ontology_purl\":\"./testcases/owl2-primer/intersectionOf.owl\"},\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "4",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "4",
+      "ontologyId": "owl2primer-intersectionOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOfOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": [],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-intersectionOf",
+          "shortForm": "Woman",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"3\",\"ontologyConfig\":{\"id\":\"owl2primer-disjointUnionOf.\",\"preferredPrefix\":\"owl2primer-disjointUnionOf.\",\"ontology_purl\":\"./testcases/owl2-primer/disjointUnionOf.owl\"},\"ontologyId\":\"owl2primer-disjointUnionOf.\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "3",
+      "ontologyId": "owl2primer-disjointUnionOf.",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf.\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Father",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf.\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#disjointUnionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\",\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf.\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#disjointUnionOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+          ],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointUnionOf.",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"5\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"5\",\"ontologyConfig\":{\"id\":\"owl2primer-unionOf\",\"preferredPrefix\":\"owl2primer-unionOf\",\"ontology_purl\":\"./testcases/owl2-primer/unionOf.owl\"},\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "ontologyId": "owl2primer-unionOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Father",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Mother",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#unionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\",\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#unionOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
+          ],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionOf",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"5\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"5\",\"ontologyConfig\":{\"id\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"preferredPrefix\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"ontology_purl\":\"./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl\"},\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
+      "imported": "false",
+      "numberOfClasses": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "5",
+      "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#complementOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\",\"propertyLabels\":{}}],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"ChildlessPerson\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": [],
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "ChildlessPerson",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl\",\"imported\":\"false\",\"numberOfClasses\":\"4\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"numberOfTerms\":\"4\",\"ontologyConfig\":{\"id\":\"owl2primer-subClassOf-intersectionOf\",\"preferredPrefix\":\"owl2primer-subClassOf-intersectionOf\",\"ontology_purl\":\"./testcases/owl2-primer/subClassOf-intersectionOf.owl\"},\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl\"}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
+      "imported": "false",
+      "numberOfClasses": "4",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "numberOfTerms": "4",
+      "ontologyId": "owl2primer-subClassOf-intersectionOf",
+      "type": [
+        "ontology"
+      ],
+      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\",\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Grandfather\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [],
+          "imported": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Grandfather",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Man",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man"
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subClassOf-intersectionOf",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "term"
+          ],
+          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}

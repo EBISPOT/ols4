@@ -78,7 +78,7 @@ public class JSON2Flattened {
 
                     writer.beginObject();
 
-                    Map<String,Object> ontology = new HashMap<>();
+                    Map<String,Object> ontology = new TreeMap<>();
                     boolean wroteOntologyProperties = false;
 
                     reader.beginObject(); // ontology
@@ -107,7 +107,7 @@ public class JSON2Flattened {
                             reader.beginArray();
 
                             while (reader.peek() != JsonToken.END_ARRAY) {
-                                Map<String, Object> _class = gson.fromJson(reader, Map.class);
+                                Map<String, Object> _class = gson.fromJson(reader, TreeMap.class);
                                 writer.beginObject();
                                 writeFlattenedObjectProperties(writer, _class);
                                 writer.endObject();
@@ -124,7 +124,7 @@ public class JSON2Flattened {
                             writer.beginArray();
 
                             while (reader.peek() != JsonToken.END_ARRAY) {
-                                Map<String, Object> property = gson.fromJson(reader, Map.class);
+                                Map<String, Object> property = gson.fromJson(reader,  TreeMap.class);
                                 writer.beginObject();
                                 writeFlattenedObjectProperties(writer, property);
                                 writer.endObject();
@@ -142,7 +142,7 @@ public class JSON2Flattened {
 
                             while (reader.peek() != JsonToken.END_ARRAY) {
 
-                                Map<String, Object> individual = gson.fromJson(reader, Map.class);
+                                Map<String, Object> individual = gson.fromJson(reader, TreeMap.class);
                                 writer.beginObject();
                                 writeFlattenedObjectProperties(writer, individual);
                                 writer.endObject();
@@ -249,7 +249,7 @@ public class JSON2Flattened {
         }
 
 
-        Map<String, Object> dict = (Map<String, Object>) obj;
+        Map<String, Object> dict = new TreeMap<String,Object>( (Map<String, Object>) obj );
 
         // Does the Map have a field called `value`? If so, it's one of:
         //
@@ -279,7 +279,7 @@ public class JSON2Flattened {
                 if(flattened == null)
                     return null;
 
-                Map<String, Object> res = new HashMap<>(dict);
+                Map<String, Object> res = new TreeMap<>(dict);
                 res.put("value", flattened);
                 return res;
             }
@@ -383,7 +383,7 @@ public class JSON2Flattened {
             }
             writer.endArray();
         } else if(val instanceof Map) {
-            Map<String,Object> map = (Map<String,Object>) val;
+            Map<String,Object> map = new TreeMap<String,Object> ( (Map<String,Object>) val );
             writer.beginObject();
             for(String k : map.keySet()) {
                 writer.name(k);

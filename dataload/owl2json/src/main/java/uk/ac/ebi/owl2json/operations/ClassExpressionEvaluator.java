@@ -48,7 +48,7 @@ public class ClassExpressionEvaluator {
 
 	OwlNode typeNode = translator.nodes.get(translator.nodeId(typeProperty.value));
 
-	if(typeNode != null && typeNode.type == OwlNode.NodeType.RESTRICTION) {
+	if(typeNode != null && typeNode.types.contains(OwlNode.NodeType.RESTRICTION)) {
 
 		List<OwlNode.Property> hasValue = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#hasValue");
 		if(hasValue != null && hasValue.size() > 0) {
@@ -68,7 +68,7 @@ public class ClassExpressionEvaluator {
 			return;
 		}
 
-	} else if(typeNode != null && typeNode.type == OwlNode.NodeType.CLASS) {
+	} else if(typeNode != null && typeNode.types.contains(OwlNode.NodeType.CLASS)) {
 
 		List<OwlNode.Property> oneOf = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#oneOf");
 		if(oneOf != null && oneOf.size() > 0) {

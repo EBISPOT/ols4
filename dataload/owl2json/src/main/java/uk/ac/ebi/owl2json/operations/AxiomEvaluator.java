@@ -13,7 +13,7 @@ public class AxiomEvaluator {
 		long startTime3 = System.nanoTime();
 		for(String id : translator.nodes.keySet()) {
 		    OwlNode c = translator.nodes.get(id);
-		    if (c.type == OwlNode.NodeType.AXIOM) {
+		    if (c.types.contains(OwlNode.NodeType.AXIOM)) {
 
 	
 			List<OwlNode.Property> sourceProp = c.properties.properties.get("http://www.w3.org/2002/07/owl#annotatedSource");
