@@ -8,19 +8,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Collection;
+import java.util.HashMap;
 
 public class OntologyScanner {
 
     static Gson gson = new Gson();
 
+    public enum NodeType {
+        CLASS, PROPERTY, INDIVIDUAL
+    }
     public static class Result {
         String ontologyId;
+        String ontologyUri;
         public Set<String> allOntologyProperties = new HashSet<>();
         public Set<String> allClassProperties = new HashSet<>();
         public Set<String> allPropertyProperties = new HashSet<>();
         public Set<String> allIndividualProperties = new HashSet<>();
         public Set<String> allEdgeProperties = new HashSet<>();
-        public Set<String> allNodes = new HashSet<>();
+        public Map<String, Set<NodeType>> uriToTypes = new HashMap<>();
+    }
+
+    private static void addType(Result res, String uri, NodeType type) {
+        Set<NodeType> types = res.uriToTypes.get(uri);
+        if(types == null) {
+            types = new HashSet<NodeType>();
+            res.uriToTypes.put(uri, types);
+        }
+        types.add(type);
     }
 
     public static Result scanOntology(JsonReader reader) throws IOException {
@@ -43,7 +57,7 @@ public class OntologyScanner {
                         res.allClassProperties.add(property);
 
                         if(property.equals("uri")) {
-                            res.allNodes.add(reader.nextString());
+                            addType(res, reader.nextString(), NodeType.CLASS);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
                             visitValue(property, value, res.allClassProperties, res.allEdgeProperties);
@@ -65,7 +79,7 @@ public class OntologyScanner {
                         res.allPropertyProperties.add(property);
 
                         if(property.equals("uri")) {
-                            res.allNodes.add(reader.nextString());
+                            addType(res, reader.nextString(), NodeType.PROPERTY);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
                             visitValue(property, value, res.allPropertyProperties, res.allEdgeProperties);
@@ -87,7 +101,7 @@ public class OntologyScanner {
                         res.allIndividualProperties.add(property);
 
                         if(property.equals("uri")) {
-                            res.allNodes.add(reader.nextString());
+                            addType(res, reader.nextString(), NodeType.INDIVIDUAL);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
                             visitValue(property, value, res.allIndividualProperties, res.allEdgeProperties);
@@ -102,7 +116,7 @@ public class OntologyScanner {
             res.allOntologyProperties.add(name);
 
             if(name.equals("uri")) {
-                res.allNodes.add(reader.nextString());
+                res.ontologyUri = reader.nextString();
             } else if(name.equals("ontologyId")) {
                 res.ontologyId = reader.nextString();
             } else {

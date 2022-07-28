@@ -17,9 +17,10 @@ public class HierarchyFlagsAnnotator {
 
         for(String id : translator.nodes.keySet()) {
             OwlNode c = translator.nodes.get(id);
-            if (c.type == OwlNode.NodeType.CLASS ||
-                    c.type == OwlNode.NodeType.PROPERTY ||
-                    c.type == OwlNode.NodeType.NAMED_INDIVIDUAL) {
+
+		    if (c.types.contains(OwlNode.NodeType.CLASS) ||
+				c.types.contains(OwlNode.NodeType.PROPERTY) ||
+				c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)

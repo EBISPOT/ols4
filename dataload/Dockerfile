@@ -30,7 +30,7 @@ WORKDIR /opt/dataload
 
 CMD bash -c "\
 echo Loading data... && \
-./create_datafiles.sh file:///mnt/config.json /tmp/out/ontologies.json /tmp/out && \
+./create_datafiles.sh file:///mnt/config.json /tmp/out && \
 ./load_into_neo4j.sh /opt/neo4j /tmp/out && \
 ./load_into_solr.sh /opt/solr /tmp/out && \
 chmod -R 777 /opt/solr && \

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 if [ $# == 0 ]; then
-    echo "Usage: $0 <configurl> <jsonpath> <outdir>"
+    echo "Usage: $0 <configurl> <outdir>"
     exit 1
 fi
 
 CONFIG_URL=$1
-JSON_PATH=$2
-OUTDIR=$3
+OUTDIR=$2
 
-JSON_FLATTENED_PATH=$OUTDIR/$(basename "$JSON_PATH" | sed 's/.json$/_flat.json/g')
+JSON_PATH=$OUTDIR/ontologies.json
+JSON_FLATTENED_PATH=$OUTDIR/ontologies_flat.json
 
 
 mvn clean package

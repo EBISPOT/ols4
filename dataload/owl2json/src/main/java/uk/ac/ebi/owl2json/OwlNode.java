@@ -17,7 +17,7 @@ public class OwlNode {
     }
 
     public String uri;
-    public NodeType type;
+    public Set<NodeType> types = new HashSet<>();
 //    List<OwlNode> parents;
     public PropertySet properties = new PropertySet();
 

@@ -51,17 +51,17 @@ public class OntologyWriter {
         writeOntology();
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-                "OntologyTerm|OntologyClass", ontologyScannerResult.allClassProperties);
+                "OntologyTerm|OntologyClass", "class", ontologyScannerResult.allClassProperties);
 
         reader.nextName(); // properties
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-                "OntologyTerm|OntologyProperty", ontologyScannerResult.allPropertyProperties);
+                "OntologyTerm|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
 
         reader.nextName(); // individuals
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-                "OntologyTerm|OntologyIndividual", ontologyScannerResult.allIndividualProperties);
+                "OntologyTerm|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
 
         reader.endObject(); // ontology
 
@@ -99,7 +99,7 @@ public class OntologyWriter {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+" + (String) ontologyProperties.get("uri");
+        row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+ontology+" + (String) ontologyProperties.get("uri");
         row[n++] = "Ontology";
 
         for (String column : properties) {
@@ -110,7 +110,7 @@ public class OntologyWriter {
         printer.close(true);
     }
 
-    public void writeTerms(String outName, String ontologyId, String nodeLabels, Set<String> allTermProperties) throws IOException {
+    public void writeTerms(String outName, String ontologyId, String nodeLabels, String type, Set<String> allTermProperties) throws IOException {
 
         List<String> properties = new ArrayList<String>(allTermProperties);
 
@@ -131,7 +131,7 @@ public class OntologyWriter {
             String[] row = new String[csvHeader.size()];
             int n = 0;
 
-            row[n++] = ontologyId + "+" + (String) term.get("uri");
+            row[n++] = ontologyId + "+" + type + "+" + (String) term.get("uri");
             row[n++] = nodeLabels;
 
             for (String column : properties) {
@@ -166,14 +166,19 @@ public class OntologyWriter {
                     // axiom
                     Object axiomValue = mapValue.get("value");
                     assert (axiomValue instanceof String);
-                    if (ontologyScannerResult.allNodes.contains(axiomValue)) {
+
+                    // is the value the URI of something that exists in the ontology?
+                    if (ontologyScannerResult.uriToTypes.containsKey(axiomValue)) {
                         printEdge(ontologyId, subject, property, axiomValue, mapValue);
                     }
                 }
             } else if (v instanceof String) {
-                if (ontologyScannerResult.allNodes.contains((String) v)) {
+
+                // is the value the URI of something that exists in the ontology?
+                if (ontologyScannerResult.uriToTypes.containsKey(v)) {
                     printEdge(ontologyId, subject, property, v, new HashMap<>());
                 }
+
             } else {
                 assert(false);
             }
@@ -184,19 +189,45 @@ public class OntologyWriter {
 
     private void printEdge(String ontologyId, String aUri, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
-        String[] row = new String[4 + edgesProperties.size()];
-        int n = 0;
+        // In the case of punning, the same URI can have multiple types. In this case
+        // it is ambiguous which of the types the edge points to/from; really, it points to
+        // all of them! So we create the edge multiple times between each type.
+        //
+        Set<OntologyScanner.NodeType> aTypes = ontologyScannerResult.uriToTypes.get(aUri);
+        Set<OntologyScanner.NodeType> bTypes = ontologyScannerResult.uriToTypes.get(bUri);
 
-        row[n++] = ontologyId + "+" + aUri;
-        row[n++] = predicate;
-        row[n++] = ontologyId + "+" + bUri;
-        row[n++] = gson.toJson(edgeProps);
+        for(OntologyScanner.NodeType aType : aTypes) {
+            for (OntologyScanner.NodeType bType : bTypes) {
 
-        for (String column : edgesProperties) {
-            row[n++] = serializeValue(edgeProps, column);
+                String[] row = new String[4 + edgesProperties.size()];
+                int n = 0;
+
+                row[n++] = ontologyId + "+" + nodeTypeToString(aType) + "+" + aUri;
+                row[n++] = predicate;
+                row[n++] = ontologyId + "+" + nodeTypeToString(bType) + "+" + bUri;
+                row[n++] = gson.toJson(edgeProps);
+
+                for (String column : edgesProperties) {
+                    row[n++] = serializeValue(edgeProps, column);
+                }
+
+                edgesPrinter.printRecord(row);
+            }
         }
 
-        edgesPrinter.printRecord(row);
+    }
+
+    private String nodeTypeToString(OntologyScanner.NodeType type) {
+        switch(type) {
+            case CLASS:
+                return "class";
+            case PROPERTY:
+                return "property";
+            case INDIVIDUAL:
+                return "individual";
+            default:
+                throw new RuntimeException("Unknown node type");
+        }
     }
 
     private String valueToCsv(Object value) {
@@ -308,5 +339,6 @@ public class OntologyWriter {
 
         return null;
     }
+
 
 }
