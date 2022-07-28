@@ -232,6 +232,8 @@ public class OntologyWriter {
                 return "property";
             case INDIVIDUAL:
                 return "individual";
+            case ONTOLOGY:
+                return "ontology";
             default:
                 throw new RuntimeException("Unknown node type");
         }
