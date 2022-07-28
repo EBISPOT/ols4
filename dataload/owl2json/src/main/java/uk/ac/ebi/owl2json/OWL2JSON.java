@@ -21,6 +21,10 @@ public class OWL2JSON {
         Option output = new Option(null, "output", true, "JSON output filename");
         output.setRequired(true);
         options.addOption(output);
+	
+        Option loadLocalFiles = new Option(null, "loadLocalFiles", false, "Whether or not to load local files (unsafe, for testing)");
+        loadLocalFiles.setRequired(false);
+        options.addOption(loadLocalFiles);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -38,14 +42,24 @@ public class OWL2JSON {
 
         String configFilePath = cmd.getOptionValue("config");
         String outputFilePath = cmd.getOptionValue("output");
+	boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
+
 
         System.out.println("Config: " + configFilePath);
         System.out.println("Output: " + outputFilePath);
 
         Gson gson = new Gson();
 
+	InputStream inputStream;
+
+	if(configFilePath.contains("://")) {
+		inputStream = new URL(configFilePath).openStream();
+	} else {
+		inputStream = new FileInputStream(configFilePath);
+	}
+
         JsonReader reader = new JsonReader(
-                new InputStreamReader(new URL(configFilePath).openStream())
+                new InputStreamReader(inputStream)
         );
 
         InputJson config = gson.fromJson(reader, InputJson.class);
@@ -60,7 +74,7 @@ public class OWL2JSON {
         for(var ontoConfig : config.ontologies) {
             System.out.println("--- Loading ontology: " + (String)ontoConfig.get("id"));
             try {
-                OwlTranslator translator = new OwlTranslator(ontoConfig);
+                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles);
 		translator.write(writer);
             } catch(Throwable t) {
                  t.printStackTrace();

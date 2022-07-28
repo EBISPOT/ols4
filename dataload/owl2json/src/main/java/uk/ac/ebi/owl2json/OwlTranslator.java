@@ -11,10 +11,13 @@ import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFParser;
+import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class OwlTranslator implements StreamRDF {
@@ -30,18 +33,33 @@ public class OwlTranslator implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
-    private void parseRDF(String url) {
+    private RDFParserBuilder createParser() {
 
-        RDFParser.create()
+        return RDFParser.create()
                 .forceLang(Lang.RDFXML)
                 .strict(false)
-                .checking(false)
-                .source(url)
-                .parse(this);
+                .checking(false);
+    }
+
+    private void parseRDF(String url)  {
+
+	    if(loadLocalFiles && !url.contains("://")) {
+		    try {
+			    createParser().source(new FileInputStream(url)).parse(this);
+		    } catch(FileNotFoundException e) {
+			    throw new RuntimeException(e);
+		    }
+	    } else {
+		    createParser().source(url).parse(this);
+	    }
     }
 
 
-    OwlTranslator(Map<String, Object> config) {
+    private boolean loadLocalFiles;
+
+    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles) {
+
+	this.loadLocalFiles = loadLocalFiles;
 
         long startTime = System.nanoTime();
 
