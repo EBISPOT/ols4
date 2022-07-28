@@ -17,11 +17,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
+import javax.validation.constraints.NotNull;
+
 import static org.neo4j.driver.Values.parameters;
 import static org.neo4j.driver.SessionConfig.builder;
 
 @Component
 public class Neo4jClient {
+
+
+	@NotNull
+	@org.springframework.beans.factory.annotation.Value("${ols.neo4j.host:bolt://localhost:7687}")
+	private static String host = "bolt://localhost:7687";
+
+
 
 	private static Gson gson = new Gson();
 
@@ -30,7 +39,7 @@ public class Neo4jClient {
 	public static Driver getDriver() {
 
 		if(driver == null) {
-			driver = GraphDatabase.driver( "bolt://localhost:7887");
+			driver = GraphDatabase.driver(host);
 		}
 
 		return driver;

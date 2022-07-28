@@ -15,8 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import uk.ac.ebi.spot.ols.config.SearchConfiguration;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
+import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
 import javax.servlet.http.HttpServletResponse;
@@ -43,9 +43,6 @@ public class V1SearchController {
     private static String SPACE = " ";
     private static String OR = "OR";
     private static String AND = "AND";
-
-    @Autowired
-    private SearchConfiguration searchConfiguration;
 
     @Autowired
     private V1OntologyRepository ontologyRepository;
@@ -603,7 +600,7 @@ public class V1SearchController {
 //        rawJsonResponseParser.setWriterType("json");
 //        req.setResponseParser(rawJsonResponseParser);
 
-        SolrClient mySolrClient = new HttpSolrClient.Builder(searchConfiguration.getOlsSearchServer() + "/solr/ols4").build();
+        SolrClient mySolrClient = new HttpSolrClient.Builder(SolrQueryHelper.host + "/solr/ols4").build();
 
         QueryResponse qr = mySolrClient.query(query);
 

@@ -12,10 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.config.SearchConfiguration;
 import uk.ac.ebi.spot.ols.service.OwlGraphNode;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,8 +26,11 @@ import java.util.stream.Collectors;
 @Component
 public class SolrQueryHelper {
 
-    @Autowired
-    SearchConfiguration searchConfiguration;
+
+    @NotNull
+    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:bolt://localhost:8983}")
+    public static String host = "bolt://localhost:8983";
+
 
     private Gson gson = new Gson();
 
@@ -60,7 +63,7 @@ public class SolrQueryHelper {
 
         System.out.println("solr query: " + query.toQueryString());
 
-        SolrClient mySolrClient = new HttpSolrClient.Builder(this.searchConfiguration.getOlsSearchServer() + "/solr/ols4").build();
+        SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
 
         QueryResponse qr = null;
         try {

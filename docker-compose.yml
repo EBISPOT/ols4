@@ -18,7 +18,31 @@ services:
       depends_on:
         ols4-dataload:
           condition: service_completed_successfully
-
+    ols4-neo4j:
+      image: neo4j:4.4.9-community
+      ports:
+        - 7474:7474
+        - 7687:7687
+      volumes:
+        - ols4-neo4j-data:/var/lib/neo4j/data
+      environment:
+        - NEO4J_AUTH=none
+      depends_on:
+        ols4-dataload:
+          condition: service_completed_successfully
+    ols4-server:
+      build: ./server
+      ports:
+        - 8080:8080
+      environment:
+        - OLS_SOLR_HOST=http://ols4-solr:8983
+        - OLS_NEO4J_HOST=bolt://ols4-neo4j:7687
+      depends_on:
+        - ols4-solr
+        - ols4-neo4j    
+      links:
+        - ols4-solr
+        - ols4-neo4j 
 volumes:
     ols4-solr-data:
     ols4-neo4j-data:

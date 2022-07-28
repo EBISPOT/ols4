@@ -13,6 +13,8 @@ RUN mkdir /opt/neo4j && \
 RUN mkdir /opt/solr && \
     curl https://dlcdn.apache.org/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
 
+RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
+
 
 RUN mkdir /opt/dataload
 COPY . /opt/dataload/ 
@@ -33,6 +35,7 @@ echo Loading data... && \
 ./create_datafiles.sh file:///mnt/config.json /tmp/out/ontologies.json /tmp/out && \
 ./load_into_neo4j.sh /opt/neo4j /tmp/out && \
 ./load_into_solr.sh /opt/solr /tmp/out && \
+./create_neo4j_indexes.sh /opt/neo4j && \
 chmod -R 777 /opt/solr && \
 chmod -R 777 /opt/neo4j \
 "
