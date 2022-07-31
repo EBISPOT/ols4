@@ -30,7 +30,7 @@ public class V1Ontology {
                 localizedNode.asMap().get("ontologyConfig");
 
         config = new V1OntologyConfig();
-        config.id = localizedNode.get("id");
+        config.id = localizedNode.get("ontologyId");
         config.versionIri = localizedNode.get("http://www.w3.org/2002/07/owl#versionIRI");
         config.namespace = localizedNode.get("id"); // TODO ??
         config.version = localizedNode.get("http://www.w3.org/2002/07/owl#versionInfo");

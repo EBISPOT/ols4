@@ -28,8 +28,8 @@ public class SolrQueryHelper {
 
 
     @NotNull
-    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:bolt://localhost:8983}")
-    public static String host = "bolt://localhost:8983";
+    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:http://localhost:8999}")
+    public static String host = "http://localhost:8999";
 
 
     private Gson gson = new Gson();

@@ -21,7 +21,7 @@ public class V2OntologyAssembler implements ResourceAssembler<V2Ontology, Resour
 
         Resource<V2Ontology> resource = new Resource<V2Ontology>(document);
         final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
-                ControllerLinkBuilder.methodOn(V2OntologyController.class).getOntology(document.get("id"), document.get("lang")));
+                ControllerLinkBuilder.methodOn(V2OntologyController.class).getOntology(document.get("ontologyId"), document.get("lang")));
 
         resource.add(lb.withSelfRel());
 
