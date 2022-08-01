@@ -49,7 +49,7 @@ public class V2OntologyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return new V2Ontology(this.neo4jQueryHelper.getOne("Ontology", ontologyId), lang);
+        return new V2Ontology(this.neo4jQueryHelper.getOne("Ontology", "ontologyId", ontologyId), lang);
 
     }
 

@@ -19,9 +19,6 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 import javax.validation.constraints.NotNull;
 
-import static org.neo4j.driver.Values.parameters;
-import static org.neo4j.driver.SessionConfig.builder;
-
 @Component
 public class Neo4jClient {
 
@@ -54,7 +51,7 @@ public class Neo4jClient {
 
 
 
-	public static List<OwlGraphNode> query(String query, String resVar) {
+	public static List<OntologyEntity> query(String query, String resVar) {
 
 		Session session = getSession();
 
@@ -63,11 +60,11 @@ public class Neo4jClient {
 		return result.list().stream()
 					.map(r -> r.get(resVar).get("_json").asString())
 					.map(r -> gson.fromJson(r, Map.class))
-					.map(r -> new OwlGraphNode(r))
+					.map(r -> new OntologyEntity(r))
 					.collect(Collectors.toList());
 	}
 
-	public static Page<OwlGraphNode> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
+	public static Page<OntologyEntity> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
 
@@ -109,15 +106,15 @@ public class Neo4jClient {
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
 
-		return new PageImpl<OwlGraphNode>(
+		return new PageImpl<OntologyEntity>(
 				result.list().stream()
 						.map(r -> gson.fromJson(r.get(resVar).get("_json").asString(), Map.class))
-						.map(r -> new OwlGraphNode(r))
+						.map(r -> new OntologyEntity(r))
 						.collect(Collectors.toList()),
 				pageable, count);
 	}
 
-	public static OwlGraphNode queryOne(String query, String resVar,  Value parameters) {
+	public static OntologyEntity queryOne(String query, String resVar, Value parameters) {
 
 		Session session = getSession();
 
@@ -135,7 +132,7 @@ public class Neo4jClient {
 			throw new ResourceNotFoundException();
 		}
 
-		return new OwlGraphNode(
+		return new OntologyEntity(
 				gson.fromJson(v.asString(), Map.class)
 		);
 	}

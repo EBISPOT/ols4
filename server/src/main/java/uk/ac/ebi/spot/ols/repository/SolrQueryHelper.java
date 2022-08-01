@@ -7,18 +7,15 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.service.OwlGraphNode;
+import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -34,27 +31,27 @@ public class SolrQueryHelper {
 
     private Gson gson = new Gson();
 
-    public Collection<OwlGraphNode> searchSolr(SolrQuery query) throws IOException {
+    public Collection<OntologyEntity> searchSolr(SolrQuery query) throws IOException {
 
         QueryResponse qr = runSolrQuery(query);
 
         return qr.getResults()
                 .stream()
-                .map(res -> new OwlGraphNode(gson.fromJson((String) res.get("_json"), Map.class)))
+                .map(res -> new OntologyEntity(gson.fromJson((String) res.get("_json"), Map.class)))
                 .collect(Collectors.toList());
     }
 
-    public Page<OwlGraphNode> searchSolrPaginated(SolrQuery query, Pageable pageable) throws IOException {
+    public Page<OntologyEntity> searchSolrPaginated(SolrQuery query, Pageable pageable) throws IOException {
 
         query.setStart(pageable.getOffset());
         query.setRows(pageable.getPageSize());
 
         QueryResponse qr = runSolrQuery(query);
 
-        return new PageImpl<OwlGraphNode>(
+        return new PageImpl<OntologyEntity>(
                 qr.getResults()
                         .stream()
-                        .map(res -> new OwlGraphNode(gson.fromJson((String) res.get("_json"), Map.class)))
+                        .map(res -> new OntologyEntity(gson.fromJson((String) res.get("_json"), Map.class)))
                         .collect(Collectors.toList()),
                 pageable, qr.getResults().getNumFound());
     }

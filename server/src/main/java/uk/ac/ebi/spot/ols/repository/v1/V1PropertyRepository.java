@@ -73,7 +73,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return new V1Property(this.neo4jQueryHelper.getOne("OntologyTerm", ontologyId + "+" + iri), ontology, lang);
+	return new V1Property(this.neo4jQueryHelper.getOne("OntologyTerm", "id", ontologyId + "+" + iri), ontology, lang);
 
     }
 

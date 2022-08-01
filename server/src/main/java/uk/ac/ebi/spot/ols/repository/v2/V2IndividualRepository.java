@@ -69,7 +69,7 @@ public class V2IndividualRepository {
 
         String id = ontologyId + "+" + uri;
 
-        return new V2Individual(this.neo4jQueryHelper.getOne("OntologyTerm", id), lang);
+        return new V2Individual(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
 
     }
 

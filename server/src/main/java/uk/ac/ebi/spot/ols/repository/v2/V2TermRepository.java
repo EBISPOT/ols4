@@ -73,7 +73,7 @@ public class V2TermRepository {
 
         String id = ontologyId + "+" + uri;
 
-        return new V2Term(this.neo4jQueryHelper.getOne("OntologyTerm", id), lang);
+        return new V2Term(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
 
     }
 

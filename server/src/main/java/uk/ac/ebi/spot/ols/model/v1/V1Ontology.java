@@ -4,9 +4,8 @@ package uk.ac.ebi.spot.ols.model.v1;
 import java.util.*;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 import org.springframework.hateoas.core.Relation;
-import uk.ac.ebi.spot.ols.service.OwlGraphNode;
+import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 
 @Relation(collectionRelation = "ontologies")
@@ -15,25 +14,25 @@ public class V1Ontology {
 
     public static Gson gson = new Gson();
 
-    public V1Ontology(OwlGraphNode node, String lang) {
+    public V1Ontology(OntologyEntity node, String lang) {
 
         if(!node.hasType("ontology")) {
             throw new IllegalArgumentException("Node has wrong type");
         }
 
-        OwlGraphNode localizedNode = new OwlGraphNode(node, lang);
+        OntologyEntity localizedNode = new OntologyEntity(node, lang);
         this.lang =lang;
 
-        ontologyId = localizedNode.get("id");
+        ontologyId = localizedNode.getString("ontologyId");
 
         Map<String,Object> ontologyConfig = (Map<String,Object>)
                 localizedNode.asMap().get("ontologyConfig");
 
         config = new V1OntologyConfig();
-        config.id = localizedNode.get("ontologyId");
-        config.versionIri = localizedNode.get("http://www.w3.org/2002/07/owl#versionIRI");
-        config.namespace = localizedNode.get("id"); // TODO ??
-        config.version = localizedNode.get("http://www.w3.org/2002/07/owl#versionInfo");
+        config.id = localizedNode.getString("ontologyId");
+        config.versionIri = localizedNode.getString("http://www.w3.org/2002/07/owl#versionIRI");
+        config.namespace = localizedNode.getString("id"); // TODO ??
+        config.version = localizedNode.getString("http://www.w3.org/2002/07/owl#versionInfo");
         config.preferredPrefix = (String)ontologyConfig.get("preferredPrefix");
         config.title = (String)ontologyConfig.get("title");
         config.description = (String)ontologyConfig.get("description");
@@ -68,28 +67,28 @@ public class V1Ontology {
 
         status = "LOADED";
 
-        numberOfTerms = Integer.parseInt(localizedNode.get("numberOfClasses"));
-        numberOfProperties = Integer.parseInt(localizedNode.get("numberOfProperties"));
-        numberOfIndividuals = Integer.parseInt(localizedNode.get("numberOfIndividuals"));
+        numberOfTerms = Integer.parseInt(localizedNode.getString("numberOfClasses"));
+        numberOfProperties = Integer.parseInt(localizedNode.getString("numberOfProperties"));
+        numberOfIndividuals = Integer.parseInt(localizedNode.getString("numberOfIndividuals"));
 
         // TODO just setting these to the same thing for now, as we don't keep track of when ontologies change
         // there is currently no way to set updated (everything gets updated every time we index now anyway)
         //
-        loaded = localizedNode.get("loaded");
-        updated = localizedNode.get("loaded");
+        loaded = localizedNode.getString("loaded");
+        updated = localizedNode.getString("loaded");
 
 
         message = "";
         loadAttempts = 0;
 
 
-        String embeddedTitle = localizedNode.get("http://purl.org/dc/elements/1.1/title");
+        String embeddedTitle = localizedNode.getString("http://purl.org/dc/elements/1.1/title");
 
         if(embeddedTitle != null) {
             config.title = embeddedTitle;
         }
 
-        String embeddedDesc = localizedNode.get("http://purl.org/dc/elements/1.1/description");
+        String embeddedDesc = localizedNode.getString("http://purl.org/dc/elements/1.1/description");
 
         if(embeddedDesc != null) {
             config.description = embeddedDesc;

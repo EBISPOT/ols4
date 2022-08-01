@@ -165,7 +165,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return new V1Term(this.neo4jQueryHelper.getOne("OntologyTerm", ontologyId + "+" + iri), ontology, lang);
+	return new V1Term(this.neo4jQueryHelper.getOne("OntologyTerm", "id", ontologyId + "+" + iri), ontology, lang);
 
     }
 

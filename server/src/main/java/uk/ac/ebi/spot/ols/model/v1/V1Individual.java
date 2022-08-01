@@ -7,8 +7,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.hateoas.core.Relation;
-import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
-import uk.ac.ebi.spot.ols.service.OwlGraphNode;
+import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
@@ -17,24 +16,24 @@ import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 public class V1Individual {
 
 
-    public V1Individual(OwlGraphNode node, V1Ontology ontology, String lang) {
+    public V1Individual(OntologyEntity node, V1Ontology ontology, String lang) {
 
         if(!node.hasType("individual")) {
             throw new IllegalArgumentException("Node has wrong type");
         }
 
-        OwlGraphNode localizedNode = new OwlGraphNode(node, lang);
+        OntologyEntity localizedNode = new OntologyEntity(node, lang);
 
-        iri = localizedNode.get("uri");
+        iri = localizedNode.getString("uri");
         lang = "en";
 
-        ontologyName = localizedNode.get("ontologyId");
+        ontologyName = localizedNode.getString("ontologyId");
         ontologyPrefix = ontology.config.preferredPrefix;
         ontologyIri = ontology.config.id;
 
-        label = localizedNode.get("http://www.w3.org/2000/01/rdf-schema#label");
+        label = localizedNode.getString("http://www.w3.org/2000/01/rdf-schema#label");
 
-        shortForm = localizedNode.get("shortForm");
+        shortForm = localizedNode.getString("shortForm");
         oboId = shortForm.replace("_", ":");
     }
 

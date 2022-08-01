@@ -6,15 +6,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.*;
 
-public class OwlGraphNode {
+public class OntologyEntity {
 
     final static String rdfsPrefix = "http__//www.w3.org/2000/01/rdf-schema#";
 
-    public OwlGraphNode(OwlGraphNode graphNode) {
+    public OntologyEntity(OntologyEntity graphNode) {
         this.record = new HashMap<>(graphNode.record);
     }
 
-    public OwlGraphNode(OwlGraphNode graphNode, String lang) {
+    public OntologyEntity(OntologyEntity graphNode, String lang) {
         this.record = new HashMap<>();
         for (String k : graphNode.record.keySet()) {
             this.record.put(k, GenericLocalizer.localize(graphNode.record.get(k), lang));
@@ -31,7 +31,7 @@ public class OwlGraphNode {
     }
 
 
-    public OwlGraphNode(Map<String, Object> record) {
+    public OntologyEntity(Map<String, Object> record) {
         this.record = record;
     }
 
@@ -41,16 +41,19 @@ public class OwlGraphNode {
     }
 
 
-    public String get(String predicate) {
+    public String getString(String predicate) {
+        return objectToString( this.record.get(predicate) );
+    }
 
-        Object value = this.record.get(predicate);
+    private static String objectToString(Object value) {
 
         if (value instanceof Collection) {
-            return (String) ((Collection<Object>) value).toArray()[0];
+            return objectToString(  ((Collection<Object>) value).toArray()[0] );
+        } else if(value instanceof Map) {
+            return objectToString( ((Map<String,Object>) value).get("value") );
         } else {
             return (String) value;
         }
-
     }
 
     public boolean hasType(String type) {

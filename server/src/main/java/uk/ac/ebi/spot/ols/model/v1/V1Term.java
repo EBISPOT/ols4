@@ -12,33 +12,32 @@ import com.google.gson.Gson;
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
 import org.springframework.hateoas.core.Relation;
-import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.service.MetadataExtractor;
-import uk.ac.ebi.spot.ols.service.OwlGraphNode;
+import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Relation(collectionRelation = "terms")
 public class V1Term {
 
     public static Gson gson = new Gson();
 
-    public V1Term(OwlGraphNode node, V1Ontology ontology, String lang) {
+    public V1Term(OntologyEntity node, V1Ontology ontology, String lang) {
 
         if(!node.hasType("class")) {
             throw new IllegalArgumentException("Node has wrong type");
         }
 
-        OwlGraphNode localizedNode = new OwlGraphNode(node, lang);
+        OntologyEntity localizedNode = new OntologyEntity(node, lang);
 
         this.lang = lang;
-        iri = localizedNode.get("uri");
+        iri = localizedNode.getString("uri");
 
-        ontologyName = localizedNode.get("ontologyId");
+        ontologyName = localizedNode.getString("ontologyId");
         ontologyPrefix = ontology.config.preferredPrefix;
         ontologyIri = ontology.config.id;
 
-        label = localizedNode.get("http://www.w3.org/2000/01/rdf-schema#label");
+        label = localizedNode.getString("http://www.w3.org/2000/01/rdf-schema#label");
 
-        shortForm = localizedNode.get("shortForm");
+        shortForm = localizedNode.getString("shortForm");
         oboId = shortForm.replace("_", ":");
 
         description = MetadataExtractor.extractDescriptions(localizedNode, ontology);
@@ -56,7 +55,7 @@ public class V1Term {
         isPreferredRoot = false;
         related = new HashSet<>();
 
-        isDefiningOntology = !Boolean.parseBoolean(localizedNode.get("imported"));
+        isDefiningOntology = !Boolean.parseBoolean(localizedNode.getString("imported"));
 
 
     }

@@ -16,7 +16,7 @@ public class V1OntologyRepository {
 
     public V1Ontology get(String id, String lang) {
 
-       return new V1Ontology(this.neo4jQueryHelper.getOne("Ontology", id), lang);
+       return new V1Ontology(this.neo4jQueryHelper.getOne("Ontology", "ontologyId", id), lang);
 
     }
 

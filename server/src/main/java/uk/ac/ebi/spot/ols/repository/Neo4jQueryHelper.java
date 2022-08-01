@@ -9,12 +9,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import uk.ac.ebi.spot.ols.service.OwlGraphNode;
+import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Component
 public class Neo4jQueryHelper {
 
-    public Page<OwlGraphNode> getAll(String type, Pageable pageable) {
+    public Page<OntologyEntity> getAll(String type, Pageable pageable) {
 
 		// TODO: can we just return _json ?
 		// seems to break the neo4j client to return a string
@@ -26,7 +26,7 @@ public class Neo4jQueryHelper {
     }
 
 
-	public Page<OwlGraphNode> getAllInOntology(String ontologyId, String type, Pageable pageable) {
+	public Page<OntologyEntity> getAllInOntology(String ontologyId, String type, Pageable pageable) {
 
 		String query = "MATCH (a:" + type + ") WHERE a.ontology_id = $ontologyId RETURN a";
 		String countQuery = "MATCH (a:" + type + ") RETURN count(a)";
@@ -34,14 +34,14 @@ public class Neo4jQueryHelper {
 		return Neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "ontologyId", ontologyId), pageable);
 	}
 
-	public OwlGraphNode getOne(String type, String id) {
+	public OntologyEntity getOne(String type, String field, String value) {
 
-	String query = "MATCH (a:" + type + ") WHERE a.id = $id RETURN a";
+	String query = "MATCH (a:" + type + ") WHERE a." + field + "= $val RETURN a";
 
-	return Neo4jClient.queryOne(query, "a", parameters("type", type, "id", id));
+	return Neo4jClient.queryOne(query, "a", parameters("type", type, "val", value));
     }
 
-    public static Page<OwlGraphNode> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public static Page<OntologyEntity> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -62,7 +62,7 @@ public class Neo4jQueryHelper {
 		return Neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<OwlGraphNode> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<OntologyEntity> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -79,7 +79,7 @@ public class Neo4jQueryHelper {
 	return Neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public static Page<OwlGraphNode> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public static Page<OntologyEntity> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -98,7 +98,7 @@ public class Neo4jQueryHelper {
 	return Neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<OwlGraphNode> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<OntologyEntity> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 

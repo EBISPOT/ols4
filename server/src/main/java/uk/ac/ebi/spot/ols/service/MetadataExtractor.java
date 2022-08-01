@@ -9,7 +9,7 @@ public class MetadataExtractor {
 
     final static String rdfsPrefix = "http__//www.w3.org/2000/01/rdf-schema#";
 
-    public static Map<String,Object> extractAnnotations(OwlGraphNode node, V1Ontology ontology) {
+    public static Map<String,Object> extractAnnotations(OntologyEntity node, V1Ontology ontology) {
 
         Map<String, Object> record = node.asMap();
 
@@ -62,7 +62,7 @@ public class MetadataExtractor {
 
     }
 
-    public static String[] extractDescriptions(OwlGraphNode node, V1Ontology ontology) {
+    public static String[] extractDescriptions(OntologyEntity node, V1Ontology ontology) {
 
         Set<String> descriptionProperties = new HashSet<String>();
         descriptionProperties.add("http__//www.w3.org/2000/01/rdf-schema#description");
@@ -75,7 +75,7 @@ public class MetadataExtractor {
         return extract(node, descriptionProperties);
     }
 
-    public static String[] extractSynonyms(OwlGraphNode node, V1Ontology ontology) {
+    public static String[] extractSynonyms(OntologyEntity node, V1Ontology ontology) {
 
         Set<String> synonymProperties = new HashSet<String>();
         synonymProperties.add("http__//www.geneontology.org/formats/oboInOwl#hasExactSynonym");
@@ -86,12 +86,12 @@ public class MetadataExtractor {
         return extract(node, synonymProperties);
     }
 
-    private static String[] extract(OwlGraphNode node, Set<String> predicates) {
+    private static String[] extract(OntologyEntity node, Set<String> predicates) {
 
         List<String> res = new ArrayList<>();
 
         for(String prop : predicates) {
-            Object val = node.get(prop);
+            Object val = node.getString(prop);
             if(val != null) {
                 if (val instanceof List) {
                     for(String synonym : (List<String>) val) {
