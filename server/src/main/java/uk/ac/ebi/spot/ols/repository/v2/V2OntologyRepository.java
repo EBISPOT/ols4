@@ -49,8 +49,11 @@ public class V2OntologyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return new V2Ontology(this.neo4jQueryHelper.getOne("Ontology", "ontologyId", ontologyId), lang);
+        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, null, null);
+        query.addFilterQuery("type:ontology");
+        query.addFilterQuery("ontologyId:" + ontologyId);
 
+        return new V2Ontology(this.solrQueryHelper.getOne(query), lang);
     }
 
 

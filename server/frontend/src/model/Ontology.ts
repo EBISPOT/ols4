@@ -6,6 +6,10 @@ export default class Ontology extends Entity {
 	super(properties)
     }
 
+    getOntologyId(): string {
+        return this.properties['ontologyId']
+    }
+
     getConfig():any {
 	return this.properties['ontologyConfig']
     }

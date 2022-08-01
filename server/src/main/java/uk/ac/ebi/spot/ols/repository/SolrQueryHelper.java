@@ -7,6 +7,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
+import org.apache.solr.common.SolrDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,17 @@ public class SolrQueryHelper {
 
     private Gson gson = new Gson();
 
-    public Collection<OntologyEntity> searchSolr(SolrQuery query) throws IOException {
+    public Collection<OntologyEntity> searchSolr(SolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query);
 
         return qr.getResults()
                 .stream()
-                .map(res -> new OntologyEntity(gson.fromJson((String) res.get("_json"), Map.class)))
+                .map(res -> new OntologyEntity(solrDocumentToOntologyEntity(res)))
                 .collect(Collectors.toList());
     }
 
-    public Page<OntologyEntity> searchSolrPaginated(SolrQuery query, Pageable pageable) throws IOException {
+    public Page<OntologyEntity> searchSolrPaginated(SolrQuery query, Pageable pageable) {
 
         query.setStart(pageable.getOffset());
         query.setRows(pageable.getPageSize());
@@ -51,12 +52,29 @@ public class SolrQueryHelper {
         return new PageImpl<OntologyEntity>(
                 qr.getResults()
                         .stream()
-                        .map(res -> new OntologyEntity(gson.fromJson((String) res.get("_json"), Map.class)))
+                        .map(res -> new OntologyEntity(solrDocumentToOntologyEntity(res)))
                         .collect(Collectors.toList()),
                 pageable, qr.getResults().getNumFound());
     }
 
-    public QueryResponse runSolrQuery(SolrQuery query) throws IOException {
+    public OntologyEntity getOne(SolrQuery query) {
+
+        QueryResponse qr = runSolrQuery(query);
+
+        if(qr.getResults().getNumFound() != 1) {
+            throw new RuntimeException("Expected exactly 1 result for solr getOne");
+        }
+
+        return solrDocumentToOntologyEntity(qr.getResults().get(0));
+    }
+
+    private OntologyEntity solrDocumentToOntologyEntity(SolrDocument doc) {
+        return new OntologyEntity(
+                gson.fromJson((String) doc.get("_json"), Map.class)
+        );
+    }
+
+    public QueryResponse runSolrQuery(SolrQuery query) {
 
         System.out.println("solr query: " + query.toQueryString());
 
@@ -66,7 +84,9 @@ public class SolrQueryHelper {
         try {
             qr = mySolrClient.query(query);
         } catch (SolrServerException e) {
-            throw new IOException(e);
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         return qr;

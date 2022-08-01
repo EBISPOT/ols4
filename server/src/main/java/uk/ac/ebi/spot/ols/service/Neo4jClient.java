@@ -90,6 +90,7 @@ public class Neo4jClient {
 						+ " LIMIT " + pageable.getPageSize();
 
 		System.out.println(queryToRun);
+		System.out.println(gson.toJson(parameters.asMap()));
 
 		Stopwatch timer = Stopwatch.createStarted();
 		Result result = session.run(

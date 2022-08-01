@@ -41,7 +41,7 @@ export default function OntologyList() {
             endpoint={`/api/v2/ontologies`}
             instantiateRow={(row) => new Ontology(row)}
 	    onClickRow={(ontology:Ontology) => {
-		history.push('/ontologies/' + ontology.getId())
+		history.push('/ontologies/' + ontology.getOntologyId())
 	    }}
         />
 }

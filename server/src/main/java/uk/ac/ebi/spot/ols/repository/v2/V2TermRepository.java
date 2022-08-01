@@ -71,9 +71,13 @@ public class V2TermRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+" + uri;
+        // TODO: change to query by ontologyid and uri separately instead of by id because we don't know the type to
+        // make an id string. there may be multiple results tho??
 
-        return new V2Term(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
+        throw new RuntimeException("not implemented rn");
+//        String id = ontologyId + "+" + uri;
+//
+//        return new V2Term(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
 
     }
 

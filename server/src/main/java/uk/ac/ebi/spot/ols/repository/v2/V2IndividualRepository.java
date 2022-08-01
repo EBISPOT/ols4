@@ -67,7 +67,7 @@ public class V2IndividualRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+" + uri;
+        String id = ontologyId + "+individual+" + uri;
 
         return new V2Individual(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
 

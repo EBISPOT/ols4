@@ -70,7 +70,7 @@ public class V2PropertyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+" + uri;
+        String id = ontologyId + "+property+" + uri;
 
         return new V2Property(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
 
