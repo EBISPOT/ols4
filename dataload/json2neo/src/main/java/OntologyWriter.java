@@ -51,17 +51,17 @@ public class OntologyWriter {
         writeOntology();
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-                "OntologyTerm|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+                "OntologyEntity|OntologyTerm|OntologyClass", "class", ontologyScannerResult.allClassProperties);
 
         reader.nextName(); // properties
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-                "OntologyTerm|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+                "OntologyEntity|OntologyTerm|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
 
         reader.nextName(); // individuals
 
         writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-                "OntologyTerm|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+                "OntologyEntity|OntologyTerm|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
 
         reader.endObject(); // ontology
 

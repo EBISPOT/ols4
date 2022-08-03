@@ -7,22 +7,19 @@ import org.springframework.hateoas.ResourceAssembler;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriUtils;
-import uk.ac.ebi.spot.ols.controller.api.v2.V2TermController;
-import uk.ac.ebi.spot.ols.model.v2.V2Term;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Collection;
-import java.util.HashSet;
 
 @Component
-public class V2TermAssembler implements ResourceAssembler<V2Term, Resource<V2Term>> {
+public class V2TermAssembler implements ResourceAssembler<V2Entity, Resource<V2Entity>> {
 
     @Autowired
     EntityLinks entityLinks;
 
     @Override
-    public Resource<V2Term> toResource(V2Term _term) {
-        Resource<V2Term> resource = new Resource<V2Term>(_term);
+    public Resource<V2Entity> toResource(V2Entity _term) {
+        Resource<V2Entity> resource = new Resource<V2Entity>(_term);
         try {
             String id = UriUtils.encode(_term.get("uri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(

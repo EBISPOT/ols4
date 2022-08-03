@@ -19,8 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
-import uk.ac.ebi.spot.ols.model.v2.V2Term;
-import uk.ac.ebi.spot.ols.repository.v2.V2TermRepository;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
+import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class V2TermController implements
     V2TermAssembler documentAssembler;
 
     @Autowired
-    V2TermRepository termRepository;
+    V2EntityRepository termRepository;
 
     public Logger getLog() {
         return log;
@@ -51,7 +51,7 @@ public class V2TermController implements
     }
 
     @RequestMapping(path = "/terms", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<PagedResources<V2Term>> getTerms(
+    public HttpEntity<PagedResources<V2Entity>> getTerms(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -60,13 +60,13 @@ public class V2TermController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Term> document = termRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Entity> document = termRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<PagedResources<V2Term>> getTerms(
+    public HttpEntity<PagedResources<V2Entity>> getTerms(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") @NotNull String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -76,13 +76,13 @@ public class V2TermController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Term> document = termRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Entity> document = termRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/terms/{term}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<Resource<V2Term>> getTerm(
+    public HttpEntity<Resource<V2Entity>> getTerm(
             @PathVariable("onto") String ontologyId,
             @PathVariable("term") String uri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
@@ -94,7 +94,7 @@ public class V2TermController implements
             throw new ResourceNotFoundException();
         }
 
-        V2Term document = termRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Entity document = termRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }

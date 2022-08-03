@@ -72,7 +72,7 @@ public class V2PropertyRepository {
 
         String id = ontologyId + "+property+" + uri;
 
-        return new V2Property(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
+        return new V2Property(this.neo4jQueryHelper.getOne("OntologyProperty", "id", id), lang);
 
     }
 

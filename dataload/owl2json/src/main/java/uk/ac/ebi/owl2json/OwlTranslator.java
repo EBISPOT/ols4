@@ -118,7 +118,7 @@ public class OwlTranslator implements StreamRDF {
     }
 
 	ontologyNode.properties.addProperty(
-		"numberOfTerms", NodeFactory.createLiteral(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
+		"numberOfEntities", NodeFactory.createLiteral(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
 
 	ontologyNode.properties.addProperty(
 		"numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
@@ -152,9 +152,9 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    static final Set<String> classTypes = new TreeSet<>(Set.of("term", "class"));
-    static final Set<String> propertyTypes = new TreeSet<>(Set.of("term", "property"));
-    static final Set<String> individualTypes = new TreeSet<>(Set.of("term", "individual"));
+    static final Set<String> classTypes = new TreeSet<>(Set.of("entity", "term", "class"));
+    static final Set<String> propertyTypes = new TreeSet<>(Set.of("entity", "term", "property"));
+    static final Set<String> individualTypes = new TreeSet<>(Set.of("entity", "individual"));
 
     public void write(JsonWriter writer) throws IOException {
 
@@ -395,7 +395,7 @@ public class OwlTranslator implements StreamRDF {
     public Map<String, OwlNode> nodes = new TreeMap<>();
     OwlNode ontologyNode = null;
 
-    private OwlNode getOrCreateTerm(Node node) {
+    private OwlNode getOrCreateNode(Node node) {
         String id = nodeId(node);
         OwlNode term = nodes.get(id);
         if (term != null) {
@@ -433,7 +433,7 @@ public class OwlTranslator implements StreamRDF {
     public void handleLiteralTriple(Triple triple) {
 
         String subjId = nodeId(triple.getSubject());
-        OwlNode subjNode = getOrCreateTerm(triple.getSubject());
+        OwlNode subjNode = getOrCreateNode(triple.getSubject());
 
         String lang = triple.getObject().getLiteralLanguage();
         if(lang != null) {
@@ -469,7 +469,7 @@ public class OwlTranslator implements StreamRDF {
 
     public void handleNamedNodeTriple(Triple triple) {
 
-        OwlNode subjNode = getOrCreateTerm(triple.getSubject());
+        OwlNode subjNode = getOrCreateNode(triple.getSubject());
 
         switch (triple.getPredicate().getURI()) {
             case "http://www.w3.org/1999/02/22-rdf-syntax-ns#type":

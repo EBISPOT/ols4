@@ -7,11 +7,11 @@ import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Relation(collectionRelation = "terms")
-public class V2Term extends DynamicJsonObject {
+public class V2Entity extends DynamicJsonObject {
 
-    public V2Term(OntologyEntity node, String lang) {
+    public V2Entity(OntologyEntity node, String lang) {
 
-        if(!node.hasType("term")) {
+        if(!node.hasType("entity")) {
             throw new IllegalArgumentException("Node has wrong type");
         }
 

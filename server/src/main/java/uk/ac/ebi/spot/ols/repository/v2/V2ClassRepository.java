@@ -74,7 +74,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + uri;
 
-        return new V2Class(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
+        return new V2Class(this.neo4jQueryHelper.getOne("OntologyClass", "id", id), lang);
 
     }
 
@@ -85,7 +85,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + uri;
 
-        return this.neo4jQueryHelper.getChildren("OntologyTerm", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+        return this.neo4jQueryHelper.getChildren("OntologyClass", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
             .map(record -> new V2Class(record, lang));
     }
 
