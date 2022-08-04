@@ -14,3 +14,41 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 
 This repository contains both the dataloader (`dataload` directory) and the API/webapp server (`server` directory).
 
+# Updating `testcases_expected_output`
+
+If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks like), the CI on this repo will fail.
+
+To fix this, you need to replace the `testcases_expected_output` folder with the new expected output.
+
+First make sure all the JARs are up to date:
+
+    mvn clean package
+
+Then run the script:
+
+    ./test.sh
+
+Remove the existing expected output:
+
+    rm -rf testcases_expected_output
+
+Copy your new output to `testcases_expected_output`:
+
+    cp -r testcases_output testcases_expected_output
+
+You can now commit it:
+
+    git add -A testcases_expected_output
+    git commit -m "Update expected test output"
+    git push origin main
+
+
+
+
+
+
+    
+
+
+
+
