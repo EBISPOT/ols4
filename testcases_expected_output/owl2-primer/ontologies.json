@@ -15,9 +15,9 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
       "imported": "false",
       "numberOfClasses": "0",
+      "numberOfEntities": "0",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "0",
       "propertyLabels": {},
       "classes": [],
       "properties": [],
@@ -38,15 +38,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
       "imported": "false",
       "numberOfClasses": "1",
+      "numberOfEntities": "1",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "1",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -76,9 +77,9 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl",
       "imported": "false",
       "numberOfClasses": "0",
+      "numberOfEntities": "1",
       "numberOfIndividuals": "1",
       "numberOfProperties": "0",
-      "numberOfTerms": "1",
       "propertyLabels": {},
       "classes": [],
       "properties": [],
@@ -86,8 +87,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -114,15 +115,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "3",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -138,6 +140,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -152,6 +155,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -182,15 +186,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
       "imported": "false",
       "numberOfClasses": "2",
+      "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "2",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -206,6 +211,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -235,15 +241,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
       "imported": "false",
       "numberOfClasses": "5",
+      "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "5",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -259,6 +266,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -273,6 +281,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -303,15 +312,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
-      "numberOfTerms": "5",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -328,6 +338,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -342,6 +353,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -358,6 +370,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -372,6 +385,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -402,15 +416,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "4",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "numberOfTerms": "4",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -427,6 +442,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -441,6 +457,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -457,6 +474,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -488,15 +506,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "6",
       "numberOfIndividuals": "2",
       "numberOfProperties": "1",
-      "numberOfTerms": "6",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -513,6 +532,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -527,6 +547,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -543,6 +564,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -559,8 +581,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
@@ -574,8 +596,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -602,15 +624,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "6",
       "numberOfIndividuals": "2",
       "numberOfProperties": "1",
-      "numberOfTerms": "6",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -627,6 +650,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "true",
@@ -641,6 +665,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -657,6 +682,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -673,8 +699,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -687,8 +713,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -715,9 +741,9 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
       "imported": "false",
       "numberOfClasses": "0",
+      "numberOfEntities": "2",
       "numberOfIndividuals": "2",
       "numberOfProperties": "0",
-      "numberOfTerms": "2",
       "propertyLabels": {},
       "classes": [],
       "properties": [],
@@ -725,8 +751,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -740,8 +766,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -768,9 +794,9 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
       "imported": "false",
       "numberOfClasses": "0",
+      "numberOfEntities": "2",
       "numberOfIndividuals": "2",
       "numberOfProperties": "0",
-      "numberOfTerms": "2",
       "propertyLabels": {},
       "classes": [],
       "properties": [],
@@ -778,8 +804,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -792,8 +818,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -820,15 +846,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
       "imported": "false",
       "numberOfClasses": "1",
+      "numberOfEntities": "3",
       "numberOfIndividuals": "1",
       "numberOfProperties": "1",
-      "numberOfTerms": "3",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -844,6 +871,7 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
           "type": [
+            "entity",
             "property",
             "term"
           ],
@@ -862,8 +890,8 @@
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
           "type": [
-            "individual",
-            "term"
+            "entity",
+            "individual"
           ],
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": {
@@ -894,15 +922,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
       "imported": "false",
       "numberOfClasses": "4",
+      "numberOfEntities": "4",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "4",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -925,6 +954,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -939,6 +969,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -968,15 +999,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
       "imported": "false",
       "numberOfClasses": "3",
+      "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "3",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -991,6 +1023,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1005,6 +1038,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1038,15 +1072,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
       "imported": "false",
       "numberOfClasses": "5",
+      "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "5",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1061,6 +1096,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1075,6 +1111,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1108,15 +1145,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
       "imported": "false",
       "numberOfClasses": "5",
+      "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "5",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1143,6 +1181,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1157,6 +1196,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1186,15 +1226,16 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
       "imported": "false",
       "numberOfClasses": "4",
+      "numberOfEntities": "4",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "numberOfTerms": "4",
       "propertyLabels": {},
       "classes": [
         {
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1217,6 +1258,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
@@ -1231,6 +1273,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
           "type": [
             "class",
+            "entity",
             "term"
           ],
           "hasChildren": "false",
