@@ -18,7 +18,7 @@ This repository contains both the dataloader (`dataload` directory) and the API/
 
 If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks like), the CI on this repo will fail.
 
-To fix this, you need to replace the `testcases_expected_output` folder with the new expected output.
+To fix this, you need to replace the `testcases_expected_output` folder with the new expected output. **You should do this in the same commit as your code/test changes because then we can track exactly what changed in the output.**
 
 First make sure all the JARs are up to date:
 
@@ -36,11 +36,9 @@ Copy your new output to `testcases_expected_output`:
 
     cp -r testcases_output testcases_expected_output
 
-You can now commit it:
+You can now add it to your commit:
 
     git add -A testcases_expected_output
-    git commit -m "Update expected test output"
-    git push origin main
 
 
 
