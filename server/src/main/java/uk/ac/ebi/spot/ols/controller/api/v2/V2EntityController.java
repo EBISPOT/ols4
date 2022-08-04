@@ -29,16 +29,16 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/api/v2")
-public class V2TermController implements
+public class V2EntityController implements
         ResourceProcessor<RepositoryLinksResource> {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    V2TermAssembler documentAssembler;
+    V2EntityAssembler documentAssembler;
 
     @Autowired
-    V2EntityRepository termRepository;
+    V2EntityRepository entityRepository;
 
     public Logger getLog() {
         return log;
@@ -46,11 +46,11 @@ public class V2TermController implements
 
     @Override
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
-        resource.add(ControllerLinkBuilder.linkTo(V2TermController.class).withRel("terms"));
+        resource.add(ControllerLinkBuilder.linkTo(V2EntityController.class).withRel("terms"));
         return resource;
     }
 
-    @RequestMapping(path = "/terms", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/entities", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<PagedResources<V2Entity>> getTerms(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -60,12 +60,12 @@ public class V2TermController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Entity> document = termRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Entity> document = entityRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/entities", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<PagedResources<V2Entity>> getTerms(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") @NotNull String ontologyId,
@@ -76,15 +76,15 @@ public class V2TermController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Entity> document = termRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Entity> document = entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/terms/{term}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/entities/{entity}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<Resource<V2Entity>> getTerm(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("term") String uri,
+            @PathVariable("entity") String uri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
@@ -94,7 +94,7 @@ public class V2TermController implements
             throw new ResourceNotFoundException();
         }
 
-        V2Entity document = termRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Entity document = entityRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }

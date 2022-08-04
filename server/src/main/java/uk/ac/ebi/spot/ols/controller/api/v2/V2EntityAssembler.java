@@ -12,18 +12,18 @@ import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import java.io.UnsupportedEncodingException;
 
 @Component
-public class V2TermAssembler implements ResourceAssembler<V2Entity, Resource<V2Entity>> {
+public class V2EntityAssembler implements ResourceAssembler<V2Entity, Resource<V2Entity>> {
 
     @Autowired
     EntityLinks entityLinks;
 
     @Override
-    public Resource<V2Entity> toResource(V2Entity _term) {
-        Resource<V2Entity> resource = new Resource<V2Entity>(_term);
+    public Resource<V2Entity> toResource(V2Entity entity) {
+        Resource<V2Entity> resource = new Resource<V2Entity>(entity);
         try {
-            String id = UriUtils.encode(_term.get("uri"), "UTF-8");
+            String id = UriUtils.encode(entity.get("uri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
-                    ControllerLinkBuilder.methodOn(V2TermController.class).getTerm(_term.get("ontologyId"), id, _term.get("lang")));
+                    ControllerLinkBuilder.methodOn(V2EntityController.class).getTerm(entity.get("ontologyId"), id, entity.get("lang")));
 
             resource.add(lb.withSelfRel());
 
