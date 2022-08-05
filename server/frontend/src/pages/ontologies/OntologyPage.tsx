@@ -11,15 +11,15 @@ import { Link as RouterLink } from 'react-router-dom'
 import { IconButton } from '@mui/material';
 import { AccountTree } from '@mui/icons-material'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import TermList from './TermList'
-import TermTree from './TermTree'
+import EntityList from './EntityList'
+import EntityTree from './EntityTree'
 
 export default function OntologyPage(props:{ontologyId:string}) {
 
     let { ontologyId } = props
 
     let [ ontology, setOntology ] = useState<Ontology|undefined>(undefined)
-    let [ tab, setTab ] = useState<'terms'|'classes'|'properties'|'individuals'>('classes')
+    let [ tab, setTab ] = useState<'entities'|'classes'|'properties'|'individuals'>('classes')
     let [ viewMode, setViewMode ] = useState<'tree'|'list'>('tree')
 
     useEffect(() => {
@@ -78,7 +78,7 @@ function renderOntologyPage() {
                 value={tab}
                 onChange={(e, tab) => setTab(tab)}
             >
-                <Tab label={`All Terms (${ontology.getNumTerms().toLocaleString()})`} value='terms' disabled={ontology.getNumTerms()==0} />
+                <Tab label={`All Entities (${ontology.getNumEntities().toLocaleString()})`} value='entities' disabled={ontology.getNumEntities()==0} />
                 <Tab label={`Classes (${ontology.getNumClasses().toLocaleString()})`} value='classes' disabled={ontology.getNumClasses()==0} />
                 <Tab label={`Properties (${ontology.getNumProperties().toLocaleString()})`} value='properties' disabled={ontology.getNumProperties()==0} />
                 <Tab label={`Individuals (${ontology.getNumIndividuals().toLocaleString()})`} value='individuals' disabled={ontology.getNumIndividuals()==0} />
@@ -108,8 +108,8 @@ function renderOntologyPage() {
 
 <Box py={2}>
 	{ viewMode === 'list' ?
-		<TermList ontologyId={ontologyId} termType={tab} />
-		: <TermTree ontologyId={ontologyId} termType={tab} />
+		<EntityList ontologyId={ontologyId} entityType={tab} />
+		: <EntityTree ontologyId={ontologyId} entityType={tab} />
 	}
 	</Box>
 

@@ -1,7 +1,7 @@
 import asArray from "../asArray";
-import Term from "./Term";
+import Entity from "./Entity";
 
-export default class Property extends Term {
+export default class Property extends Entity {
 
 	constructor(properties:any) {
 	    super(properties)

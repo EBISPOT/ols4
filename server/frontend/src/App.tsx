@@ -11,7 +11,7 @@ import Help from './pages/help/HelpPage';
 import { get } from './api';
 import OntologiesPage from './pages/ontologies/OntologiesPage';
 import OntologyPage from './pages/ontologies/OntologyPage';
-import TermPage from './pages/ontologies/TermPage';
+import EntityPage from './pages/ontologies/EntityPage';
 
 let styles = (theme:Theme) => createStyles({
     main: {
@@ -54,11 +54,11 @@ class App extends React.Component<Props, State> {
 					<Route exact path={`/ontologies/:id`}
 						component={(props:any) => <OntologyPage ontologyId={props.match.params.id}/>}></Route>
 
-					<Route exact path={`/ontologies/:id/terms/:uri`}
+					<Route exact path={`/ontologies/:id/entities/:uri`}
 						component={(props:any) =>
-							<TermPage
+							<EntityPage
 								ontologyId={props.match.params.id}
-								termUri={decodeURIComponent(decodeURIComponent(props.match.params.uri))}
+								entityUri={decodeURIComponent(decodeURIComponent(props.match.params.uri))}
 							/>}></Route>
 
 					<Route exact path={`/help`}

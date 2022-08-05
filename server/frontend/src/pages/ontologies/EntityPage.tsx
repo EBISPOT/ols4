@@ -11,16 +11,15 @@ import { Link as RouterLink } from 'react-router-dom'
 import { IconButton } from '@mui/material';
 import { AccountTree, Share } from '@mui/icons-material'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import TermTree from './TermTree'
-import Term from '../../model/Term'
-import { termFromProperties } from '../../model/fromProperties'
+import EntityTree from './EntityTree'
+import Entity from '../../model/Entity'
 
-export default function TermPage(props:{ontologyId:string,termUri:string}) {
+export default function EntityPage(props:{ontologyId:string,entityUri:string}) {
 
-    let { ontologyId, termUri } = props
+    let { ontologyId, entityUri } = props
 
     let [ ontology, setOntology ] = useState<Ontology|undefined>(undefined)
-    let [ term, setTerm ] = useState<Term|undefined>(undefined)
+    let [ term, setTerm ] = useState<Entity|undefined>(undefined)
     let [ viewMode, setViewMode ] = useState<'tree'|'graph'>('tree')
 
     useEffect(() => {
@@ -31,9 +30,9 @@ export default function TermPage(props:{ontologyId:string,termUri:string}) {
 	}
 
 	async function fetchTerm() {
-		let doubleEncodedTermUri = encodeURIComponent(encodeURIComponent(termUri))
+		let doubleEncodedTermUri = encodeURIComponent(encodeURIComponent(entityUri))
 		let termProperties = await get<any>(`/api/v2/ontologies/${ontologyId}/terms/${doubleEncodedTermUri}`)
-		setTerm(termFromProperties(termProperties))
+		setTerm(entityFromProperties(termProperties))
 	}
 
 	fetchOntology()
@@ -109,7 +108,7 @@ function renderTermPage() {
 
 <Box py={2}>
 	{ viewMode === 'tree' ?
-		<TermTree ontologyId={ontologyId} termType={({
+		<EntityTree ontologyId={ontologyId} entityType={({
 			'class': 'classes',
 			'property': 'properties',
 			'individual': 'individuals'
@@ -127,4 +126,8 @@ function renderTermPage() {
 
 }
 
+
+function entityFromProperties(termProperties: any): React.SetStateAction<Entity | undefined> {
+	throw new Error('Function not implemented.')
+}
 

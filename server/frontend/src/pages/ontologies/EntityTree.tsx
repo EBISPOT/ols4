@@ -2,16 +2,15 @@
 
 
 import React, { useEffect, useState } from "react";
-import Term from "../../model/Term";
 import OlsDatatable, { Column } from "../../components/OlsDatatable";
 import { getPaginated } from "../../api";
 import Entity from "../../model/Entity";
 import Spinner from "../../components/Spinner";
 import { Link } from "@mui/material";
 import { Set as ImmutableSet, Map as ImmutableMap } from 'immutable'
-import { termFromProperties } from "../../model/fromProperties";
 import Multimap from 'multimap'
 import assert from "assert";
+import { thingFromProperties } from "../../model/fromProperties";
 
 interface TreeNode {
 
@@ -23,12 +22,12 @@ interface TreeNode {
 	expandable:boolean
 }
 
-export default function TermTree(props:{
+export default function EntityTree(props:{
 	ontologyId:string
-	startingNode?:Term,
-	termType:'terms'|'classes'|'properties'|'individuals'
+	startingNode?:Entity,
+	entityType:'entities'|'classes'|'properties'|'individuals'
 }) {
-	let { ontologyId, termType, startingNode } = props
+	let { ontologyId, entityType, startingNode } = props
 
 	let [ rootNodes, setRootNodes ] = useState<TreeNode[]>()
 	let [ nodeChildren, setNodeChildren ] = useState<ImmutableMap<String,TreeNode[]>>(ImmutableMap())
@@ -43,22 +42,22 @@ export default function TermTree(props:{
 
 				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(startingNode.getUri()))
 
-				let ancestorsPage = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${termType}/${doubleEncodedUri}/ancestors?${new URLSearchParams({
+				let ancestorsPage = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams({
 					size: '100'
 				})}`)
 				
-				let ancestors = ancestorsPage.elements.map(obj => termFromProperties(obj))
+				let ancestors = ancestorsPage.elements.map(obj => thingFromProperties(obj))
 
 				populateTreeFromTermNodes([ startingNode, ...ancestors ])
 
 			} else {
 
-				let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${termType}?${new URLSearchParams({
+				let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
 					isRoot: 'true',
 					size: '100'
 				})}`)
 
-				let rootTerms = page.elements.map(obj => termFromProperties(obj))
+				let rootTerms = page.elements.map(obj => thingFromProperties(obj))
 
 				setRootNodes(rootTerms.map(term => {
 					return {
@@ -74,13 +73,13 @@ export default function TermTree(props:{
 
 		fetchTree()
 		
-	}, [ termType ])
+	}, [ entityType ])
 
-	function populateTreeFromTermNodes(termNodes: Term[]) {
+	function populateTreeFromTermNodes(termNodes: Entity[]) {
 
-		let uriToNode: Map<string, Term> = new Map()
-		let uriToChildNodes: Multimap<string, Term> = new Multimap()
-		let uriToParentNodes: Multimap<string, Term> = new Multimap()
+		let uriToNode: Map<string, Entity> = new Map()
+		let uriToChildNodes: Multimap<string, Entity> = new Multimap()
+		let uriToParentNodes: Multimap<string, Entity> = new Multimap()
 
 		for (let node of termNodes) {
 			uriToNode.set(node.getUri(), node)
@@ -106,7 +105,7 @@ export default function TermTree(props:{
 
 		setRootNodes(rootTermNodes.map((rootTerm) => createTreeNode(rootTerm)))
 
-		function createTreeNode(node: Term, parent?: TreeNode): TreeNode {
+		function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
 
 			let childNodes = uriToChildNodes.get(node.getUri()) || []
 
@@ -143,11 +142,11 @@ export default function TermTree(props:{
 
 			let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.uri))
 
-			let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${termType}/${doubleEncodedUri}/children?${new URLSearchParams({
+			let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/children?${new URLSearchParams({
 				size: '100'
 			})}`)
 
-			let childTerms = page.elements.map(obj => termFromProperties(obj))
+			let childTerms = page.elements.map(obj => thingFromProperties(obj))
 
 			setNodeChildren(
 				nodeChildren.set(node.absoluteIdentity, childTerms.map(term => {

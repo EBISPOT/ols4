@@ -1,6 +1,5 @@
-import Entity from "./Entity"
-
-export default class Ontology extends Entity {
+import Thing from "./Thing"
+export default class Ontology extends Thing {
 
     constructor(properties:any) {
 	super(properties)
@@ -26,8 +25,8 @@ export default class Ontology extends Entity {
 			|| ''
     }
 
-    getNumTerms():number {
-	return parseInt(this.properties['numberOfTerms'])
+    getNumEntities():number {
+	return parseInt(this.properties['numberOfEntities'])
     }
 
     getNumClasses():number {

@@ -1,24 +1,23 @@
 import { Autocomplete, Grid, TextField, CircularProgress, Stack } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { get, getPaginated } from "../../api"
-import Entity from "../../model/Entity"
-import { termFromProperties } from "../../model/fromProperties"
 import Ontology from "../../model/Ontology"
-import Term from "../../model/Term"
+import { thingFromProperties } from "../../model/fromProperties"
+import Thing from "../../model/Thing"
 
 export default function HomeSearchBox(props) {
 	 
 	let [ open, setOpen ] = useState<boolean>(false)
 	let [ loading, setLoading ] = useState<boolean>(false)
 	let [ query, setQuery ] = useState<string>('')
-	let [ options, setOptions ] = useState<Entity[]>([])
+	let [ options, setOptions ] = useState<Thing[]>([])
 
 	async function doSearch() {
 
 		let search = '*' + query + '*'
 
-		let [ terms, ontologies ] = await Promise.all([
-			getPaginated<any>(`/api/v2/terms?${new URLSearchParams({
+		let [ entities, ontologies ] = await Promise.all([
+			getPaginated<any>(`/api/v2/entities?${new URLSearchParams({
 				search: search,
 				size: '10'
 			})}`),
@@ -30,7 +29,7 @@ export default function HomeSearchBox(props) {
 
 		setOptions([
 			...ontologies.elements.map(obj => new Ontology(obj)),
-			...terms.elements.map(obj => termFromProperties(obj))
+			...entities.elements.map(obj => thingFromProperties(obj))
 		])
 	}
 
@@ -49,8 +48,8 @@ export default function HomeSearchBox(props) {
             onClose={() => { setOpen(false) }}
             onChange={(e, option) => {}}
             // getOptionSelected={(option:OlsSearchResult, value:OlsSearchResult) => option.iri === value.iri}
-            getOptionLabel={(option:Entity) => option.getId()}
-            renderOption={(props, option:Entity) =>
+            getOptionLabel={(option:Thing) => option.getId()}
+            renderOption={(props, option:Thing) =>
 <Stack
   direction="row"
   justifyContent="space-between"
@@ -60,7 +59,7 @@ export default function HomeSearchBox(props) {
                 <span>{ truncate(option.getName(), 40) }</span>
 		
 		
-		{ option instanceof Term && 
+		{ !(option instanceof Ontology) && 
 		<span style={{
                 backgroundColor: '#1976d2',
                 padding: '0 10px',
@@ -72,7 +71,7 @@ export default function HomeSearchBox(props) {
                 textAlign: 'center',
                 borderRadius: '0.6rem',
                 textTransform: 'uppercase',
-            }}>{(option as Term).getOntologyId()}</span>
+            }}>{option.getOntologyId()}</span>
 	    }
             
             </Stack>

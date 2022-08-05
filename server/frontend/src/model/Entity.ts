@@ -1,35 +1,15 @@
+import Thing from "./Thing"
 
-export default abstract class Entity {
+export default abstract class Entity extends Thing {
 
-	properties:any
-    
 	constructor(properties:any) {
-	    this.properties = properties
+		super(properties)
 	}
 
-	getId():string {
-		return this.properties['id']
+
+	hasChildren():boolean {
+	    return this.properties['hasChildren'] === "true"
 	}
 
-	getUri():string {
-		return this.properties['uri']
-	}
-
-	getType():'ontology'|'class'|'property'|'individual' {
-
-		let types = this.properties['type'] as string[]
-
-		for(let type of types) {
-			if(['ontology','class','property','individual'].indexOf(type) !== -1) {
-				return type as any
-			}
-		}
-
-		throw new Error('unknown type')
-	}
-
-	abstract getName():string
-
+	abstract getParents():any[]
 }
-
-    
