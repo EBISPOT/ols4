@@ -20,8 +20,10 @@ This repository contains both the dataloader (`dataload` directory) and the API/
 # Developing OLS4
 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
-It therefore uses two database servers: **Solr**, a Lucene server similar to ElasticSearch; and **Neo4j**, a graph database. 
+It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph database. 
+
 The `dataload` directory contains the code which turns OWL ontologies into datasets which can be loaded into Solr and Neo4j.
+
 The `server` directory contains (1) a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances; and (2) a React frontend built upon the OLS API.
 
 ## Running Solr and Neo4j using Docker
