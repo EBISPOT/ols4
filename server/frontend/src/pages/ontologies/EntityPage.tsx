@@ -114,7 +114,7 @@ function renderTermPage() {
 			'property': 'properties',
 			'individual': 'individuals'
 		})[entity.getType()]} 
-		startingNode={entity}
+		selectedEntity={entity}
 		/>
 		: <div/>
 	}

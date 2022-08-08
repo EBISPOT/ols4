@@ -26,10 +26,10 @@ interface TreeNode {
 
 export default function EntityTree(props:{
 	ontologyId:string
-	startingNode?:Entity,
+	selectedEntity?:Entity,
 	entityType:'entities'|'classes'|'properties'|'individuals'
 }) {
-	let { ontologyId, entityType, startingNode } = props
+	let { ontologyId, entityType, selectedEntity } = props
 
 	let [ rootNodes, setRootNodes ] = useState<TreeNode[]>()
 	let [ nodeChildren, setNodeChildren ] = useState<ImmutableMap<String,TreeNode[]>>(ImmutableMap())
@@ -40,9 +40,9 @@ export default function EntityTree(props:{
 
 		async function fetchTree() {
 
-			if(startingNode) {
+			if(selectedEntity) {
 
-				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(startingNode.getUri()))
+				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(selectedEntity.getUri()))
 
 				let ancestorsPage = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams({
 					size: '100'
@@ -50,7 +50,7 @@ export default function EntityTree(props:{
 				
 				let ancestors = ancestorsPage.elements.map(obj => thingFromProperties(obj))
 
-				populateTreeFromTermNodes([ startingNode, ...ancestors ])
+				populateTreeFromTermNodes([ selectedEntity, ...ancestors ])
 
 			} else {
 
@@ -85,6 +85,9 @@ export default function EntityTree(props:{
 		let uriToChildNodes: Multimap<string, Entity> = new Multimap()
 		let uriToParentNodes: Multimap<string, Entity> = new Multimap()
 
+		let newNodeChildren = new Map<String, TreeNode[]>()
+		let newExpandedNodes = new Set<String>()
+
 		for (let node of termNodes) {
 			uriToNode.set(node.getUri(), node)
 		}
@@ -111,6 +114,9 @@ export default function EntityTree(props:{
 			rootTermNodes.map((rootTerm) => createTreeNode(rootTerm))
 		)
 
+		setNodeChildren(ImmutableMap(newNodeChildren))
+		setExpandedNodes(ImmutableSet(newExpandedNodes))
+
 		function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
 
 			let childNodes = uriToChildNodes.get(node.getUri()) || []
@@ -123,14 +129,14 @@ export default function EntityTree(props:{
 				entity: node
 			}
 
-			setNodeChildren(
-				nodeChildren.set(treeNode.absoluteIdentity, childNodes.map(
-					childNode => createTreeNode(childNode, treeNode)))
+			newNodeChildren.set(
+				treeNode.absoluteIdentity,
+				childNodes.map(childNode => createTreeNode(childNode, treeNode))
 			)
 
-			setExpandedNodes(
-				expandedNodes.add(treeNode.absoluteIdentity)
-			)
+			if(treeNode.uri !== selectedEntity?.getUri()) {
+				newExpandedNodes.add(treeNode.absoluteIdentity)
+			}
 
 			return treeNode
 
@@ -183,9 +189,11 @@ export default function EntityTree(props:{
 			let isLast = i == (rootNodes!.length - 1)
 			let isExpanded = expandedNodes.has(node.absoluteIdentity)
 			let termUrl = encodeURIComponent(encodeURIComponent(node.uri))
+			let highlight = ( selectedEntity && (node.uri === selectedEntity.getUri()) ) || false
 			return <TreeNode
 				expandable={node.expandable}
 				expanded={isExpanded}
+				highlight={highlight}
 				isLast={isLast}
 				onClick={() => toggleNode(node)}
 				>
@@ -210,11 +218,14 @@ export default function EntityTree(props:{
 			{
 				children.map((childNode:TreeNode, i) => {
 					let isExpanded = expandedNodes.has(childNode.absoluteIdentity)
+					console.log('node ' + childNode.absoluteIdentity + ' expanded ' + isExpanded)
 					let isLast = i == (children!.length - 1)
 					let termUrl = encodeURIComponent(encodeURIComponent(childNode.uri))
+					let highlight = ( selectedEntity && ( childNode.uri === selectedEntity.getUri() ) ) || false
 					return <TreeNode
 						expandable={childNode.expandable}
 						expanded={isExpanded}
+						highlight={highlight}
 						isLast={isLast}
 						onClick={() => toggleNode(childNode)}
 						>
@@ -230,9 +241,16 @@ export default function EntityTree(props:{
 	}
 }
 
-function TreeNode(props:{ expandable:boolean, expanded:boolean, isLast:boolean, children:any, onClick:()=>void }) {
+function TreeNode(props:{
+	expandable:boolean,
+	expanded:boolean,
+	highlight:boolean,
+	isLast:boolean,
+	children:any,
+	onClick:()=>void
+}) {
 
-	let { expandable, expanded, isLast, children, onClick } = props
+	let { expandable, expanded, highlight, isLast, children, onClick } = props
 
 	let classes:string[] = [ 'jstree-node' ]
 
@@ -248,6 +266,10 @@ function TreeNode(props:{ expandable:boolean, expanded:boolean, isLast:boolean, 
 
 	if(isLast) {
 		classes.push('jstree-last')
+	}
+
+	if(highlight) {
+		children = <span className="jstree-clicked">{children}</span>
 	}
 
 	return <li role="treeitem" className={classes.join(' ')}>
