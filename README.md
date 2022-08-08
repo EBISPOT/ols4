@@ -14,7 +14,21 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 
 This repository contains both the dataloader (`dataload` directory) and the API/webapp server (`server` directory).
 
-# Updating `testcases_expected_output`
+
+
+
+# Developing OLS4
+
+## Running Neo4j and Solr using Docker
+
+Update the config in `docker_config.json` to your liking. Then:
+
+    docker compose build --no-cache docker compose build --no-cache
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-neo4j ols4-solr
+
+This will build and run the dataload, and start up Neo4j and Solr with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server and frontend for development.
+
+## Updating `testcases_expected_output`
 
 If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks like), the CI on this repo will fail.
 

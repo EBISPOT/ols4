@@ -6,6 +6,7 @@ services:
         - ols4-solr-data:/opt/solr/server/solr/ols4:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
         - ./docker_config.json:/mnt/config.json:ro
+          #- ./docker_out:/tmp/out:rw
     ols4-solr:
       image: solr:9
       environment:

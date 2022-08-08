@@ -7,6 +7,12 @@ FROM maven:3.8-jdk-11
 
 
 
+
+# Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
+#
+# We use these only as temporary servers for the dataload. The "real" Neo4j 
+# and Solr servers are the standard images specified in docker-compose.yml
+#
 RUN mkdir /opt/neo4j && \
     curl https://dist.neo4j.org/neo4j-community-4.4.9-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
 
@@ -16,13 +22,16 @@ RUN mkdir /opt/solr && \
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
 
 
+# Copy all the code for dataload into /opt/dataload and build the JARs
+#
 RUN mkdir /opt/dataload
 COPY . /opt/dataload/ 
 RUN cd /opt/dataload && mvn clean package
 
 
+# Copy the OLS4 Solr config into our temporary Solr server
+#
 RUN cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4
-
 
 
 RUN mkdir /tmp/out
@@ -34,6 +43,8 @@ CMD bash -c "\
 echo Loading data... && \
 ./create_datafiles.sh file:///mnt/config.json /tmp/out && \
 ./load_into_neo4j.sh /opt/neo4j /tmp/out && \
+rm -rf /opt/solr/server/solr/ols4/* && \
+cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4 && \
 ./load_into_solr.sh /opt/solr /tmp/out && \
 ./create_neo4j_indexes.sh /opt/neo4j && \
 chmod -R 777 /opt/solr && \
