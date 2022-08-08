@@ -37,7 +37,7 @@ public class V2IndividualRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, search, searchFields);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
         query.addFilterQuery("type:individual");
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)
@@ -54,7 +54,7 @@ public class V2IndividualRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, search, searchFields);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
         query.addFilterQuery("type:individual");
         query.addFilterQuery("ontologyId:" + ontologyId);
 

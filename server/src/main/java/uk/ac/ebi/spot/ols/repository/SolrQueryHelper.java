@@ -27,7 +27,7 @@ public class SolrQueryHelper {
 
     @NotNull
     @org.springframework.beans.factory.annotation.Value("${ols.solr.host:http://localhost:8999}")
-    public static String host = "http://localhost:8999";
+    public String host = "http://localhost:8999";
 
 
     private Gson gson = new Gson();
@@ -77,6 +77,7 @@ public class SolrQueryHelper {
     public QueryResponse runSolrQuery(SolrQuery query) {
 
         System.out.println("solr query: " + query.toQueryString());
+        System.out.println("solr host: " + host);
 
         SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
 
@@ -92,7 +93,7 @@ public class SolrQueryHelper {
         return qr;
     }
 
-    public static SolrQuery createSolrQuery(String lang, String search, String searchFields) {
+    public SolrQuery createSolrQuery(String lang, String search, String searchFields) {
 
         SolrQuery query = new SolrQuery();
 
@@ -109,7 +110,7 @@ public class SolrQueryHelper {
         return query;
     }
 
-    public static void addDynamicFilterProperties(SolrQuery query, Map<String,String> properties) {
+    public void addDynamicFilterProperties(SolrQuery query, Map<String,String> properties) {
 
         for(String k : properties.keySet()) {
 

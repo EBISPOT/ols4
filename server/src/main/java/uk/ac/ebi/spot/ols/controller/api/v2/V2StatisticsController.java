@@ -60,10 +60,10 @@ public class V2StatisticsController {
         }
 
         V2Statistics stats = new V2Statistics();
-        stats.numberOfOntologies = counts.get("ontology");
-        stats.numberOfClasses = counts.get("class");
-        stats.numberOfIndividuals = counts.get("individual");
-        stats.numberOfProperties = counts.get("property");
+        stats.numberOfOntologies = counts.containsKey("ontology") ? counts.get("ontology") : 0;
+        stats.numberOfClasses = counts.containsKey("class") ? counts.get("class") : 0;
+        stats.numberOfIndividuals = counts.containsKey("individual") ? counts.get("individual") : 0;
+        stats.numberOfProperties = counts.containsKey("property") ? counts.get("property") : 0;
 
         return new ResponseEntity<>( stats, HttpStatus.OK);
     }

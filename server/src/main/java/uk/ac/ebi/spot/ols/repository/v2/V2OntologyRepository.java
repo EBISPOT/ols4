@@ -37,10 +37,10 @@ public class V2OntologyRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, search, searchFields);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
         query.addFilterQuery("type:ontology");
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Ontology(result, lang));
     }
 
@@ -49,7 +49,7 @@ public class V2OntologyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, null, null);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
         query.addFilterQuery("type:ontology");
         query.addFilterQuery("ontologyId:" + ontologyId);
 

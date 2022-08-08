@@ -8,7 +8,7 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 * Much faster dataload (hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
 * A lossless data representation: everything in the OWL is preserved in the databases
-* Support for the latest Neo4j and Solr (no embedded databases, no MongoDB)
+* Support for the latest Solr and Neo4j (no embedded databases, no MongoDB)
 * React frontend
 * Backwards compatibility with the OLS3 API
 
@@ -19,14 +19,26 @@ This repository contains both the dataloader (`dataload` directory) and the API/
 
 # Developing OLS4
 
-## Running Neo4j and Solr using Docker
+OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
+It therefore uses two database servers: **Solr**, a Lucene server similar to ElasticSearch; and **Neo4j**, a graph database. 
+The `dataload` directory contains the code which turns OWL ontologies into datasets which can be loaded into Solr and Neo4j.
+The `server` directory contains (1) a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances; and (2) a React frontend built upon the OLS API.
+
+## Running Solr and Neo4j using Docker
 
 Update the config in `docker_config.json` to your liking. Then:
 
     docker compose build --no-cache docker compose build --no-cache
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-neo4j ols4-solr
 
-This will build and run the dataload, and start up Neo4j and Solr with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server and frontend for development.
+This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server and frontend for development.
+
+For the API server, you can set the following environment variables to point it at your local Solr and Neo4j servers:
+
+    OLS_SOLR_HOST=http://localhost:8983
+    OLS_NEO4J_HOST=bolt://localhost:7687
+
+
 
 ## Updating `testcases_expected_output`
 

@@ -47,6 +47,9 @@ public class V1SearchController {
     @Autowired
     private V1OntologyRepository ontologyRepository;
 
+    @Autowired
+    private SolrQueryHelper solrQueryHelper;
+
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
         resource.add(ControllerLinkBuilder.linkTo(V1SearchController.class).withRel("search"));
         return resource;
@@ -600,7 +603,7 @@ public class V1SearchController {
 //        rawJsonResponseParser.setWriterType("json");
 //        req.setResponseParser(rawJsonResponseParser);
 
-        SolrClient mySolrClient = new HttpSolrClient.Builder(SolrQueryHelper.host + "/solr/ols4").build();
+        SolrClient mySolrClient = new HttpSolrClient.Builder(solrQueryHelper.host + "/solr/ols4").build();
 
         QueryResponse qr = mySolrClient.query(query);
 

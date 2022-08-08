@@ -40,11 +40,11 @@ public class V2ClassRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, search, searchFields);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
         query.addFilterQuery("type:class");
-        SolrQueryHelper.addDynamicFilterProperties(query, properties);
+        solrQueryHelper.addDynamicFilterProperties(query, properties);
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Class(result, lang));
     }
 
@@ -58,12 +58,12 @@ public class V2ClassRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = SolrQueryHelper.createSolrQuery(lang, search, searchFields);
+        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
         query.addFilterQuery("type:class");
         query.addFilterQuery("ontologyId:" + ontologyId);
-        SolrQueryHelper.addDynamicFilterProperties(query, properties);
+        solrQueryHelper.addDynamicFilterProperties(query, properties);
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Class(result, lang));
     }
 
