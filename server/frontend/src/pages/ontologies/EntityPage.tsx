@@ -14,6 +14,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import EntityTree from './EntityTree'
 import Entity from '../../model/Entity'
 import { thingFromProperties } from '../../model/fromProperties'
+import EntityGraph from './EntityGraph'
 
 export default function EntityPage(props:{ontologyId:string,entityUri:string,entityType:'classes'|'properties'|'individuals'}) {
 
@@ -116,7 +117,14 @@ function renderTermPage() {
 		})[entity.getType()]} 
 		selectedEntity={entity}
 		/>
-		: <div/>
+		:
+		<EntityGraph ontologyId={ontologyId} entityType={({
+			'class': 'classes',
+			'property': 'properties',
+			'individual': 'individuals'
+		})[entity.getType()]} 
+		selectedEntity={entity}
+		/>
 	}
 	</Box>
 

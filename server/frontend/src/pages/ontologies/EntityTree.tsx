@@ -11,6 +11,7 @@ import { Set as ImmutableSet, Map as ImmutableMap } from 'immutable'
 import Multimap from 'multimap'
 import assert from "assert";
 import { thingFromProperties } from "../../model/fromProperties";
+import extractEntityHierarchy from "./extractEntityHierarchy";
 
 interface TreeNode {
 
@@ -50,7 +51,7 @@ export default function EntityTree(props:{
 				
 				let ancestors = ancestorsPage.elements.map(obj => thingFromProperties(obj))
 
-				populateTreeFromTermNodes([ selectedEntity, ...ancestors ])
+				populateTreeFromEntities([ selectedEntity, ...ancestors ])
 
 			} else {
 
@@ -79,39 +80,15 @@ export default function EntityTree(props:{
 		
 	}, [ entityType ])
 
-	function populateTreeFromTermNodes(termNodes: Entity[]) {
+	function populateTreeFromEntities(entities: Entity[]) {
 
-		let uriToNode: Map<string, Entity> = new Map()
-		let uriToChildNodes: Multimap<string, Entity> = new Multimap()
-		let uriToParentNodes: Multimap<string, Entity> = new Multimap()
+		let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities)
 
 		let newNodeChildren = new Map<String, TreeNode[]>()
 		let newExpandedNodes = new Set<String>()
 
-		for (let node of termNodes) {
-			uriToNode.set(node.getUri(), node)
-		}
-
-		for (let node of termNodes) {
-			let parents = node.getParents()
-				// not interested in bnode subclassofs like restrictions etc
-				.filter(parent => typeof parent === 'string')
-				.map(parentUri => uriToNode.get(parentUri))
-				.filter(parent => parent !== undefined)
-
-			for (let parent of parents) {
-				assert(parent)
-				uriToChildNodes.set(parent.getUri(), node)
-				uriToParentNodes.set(node.getUri(), parent)
-			}
-		}
-
-		let rootTermNodes = termNodes.filter((node) => {
-			return (uriToParentNodes.get(node.getUri()) || []).length === 0
-		})
-
 		setRootNodes(
-			rootTermNodes.map((rootTerm) => createTreeNode(rootTerm))
+			rootEntities.map((rootEntity) => createTreeNode(rootEntity))
 		)
 
 		setNodeChildren(ImmutableMap(newNodeChildren))
