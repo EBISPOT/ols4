@@ -54,10 +54,27 @@ class App extends React.Component<Props, State> {
 					<Route exact path={`/ontologies/:id`}
 						component={(props:any) => <OntologyPage ontologyId={props.match.params.id}/>}></Route>
 
-					<Route exact path={`/ontologies/:id/entities/:uri`}
+					<Route exact path={`/ontologies/:id/classes/:uri`}
 						component={(props:any) =>
 							<EntityPage
 								ontologyId={props.match.params.id}
+								entityType="classes"
+								entityUri={decodeURIComponent(decodeURIComponent(props.match.params.uri))}
+							/>}></Route>
+
+					<Route exact path={`/ontologies/:id/properties/:uri`}
+						component={(props:any) =>
+							<EntityPage
+								ontologyId={props.match.params.id}
+								entityType="properties"
+								entityUri={decodeURIComponent(decodeURIComponent(props.match.params.uri))}
+							/>}></Route>
+
+					<Route exact path={`/ontologies/:id/individuals/:uri`}
+						component={(props:any) =>
+							<EntityPage
+								ontologyId={props.match.params.id}
+								entityType="individuals"
 								entityUri={decodeURIComponent(decodeURIComponent(props.match.params.uri))}
 							/>}></Route>
 

@@ -20,6 +20,8 @@ interface TreeNode {
 	uri:string
 	title:string
 	expandable:boolean
+
+	entity:Entity
 }
 
 export default function EntityTree(props:{
@@ -57,16 +59,18 @@ export default function EntityTree(props:{
 					size: '100'
 				})}`)
 
-				let rootTerms = page.elements.map(obj => thingFromProperties(obj))
+				let rootEntities = page.elements.map(obj => thingFromProperties(obj))
 
-				setRootNodes(rootTerms.map(term => {
+				setRootNodes(rootEntities.map(entity => {
 					return {
-						uri: term.getUri(),
-						absoluteIdentity: term.getUri(),
-						title: term.getName(),
-						expandable: term.hasChildren()
+						uri: entity.getUri(),
+						absoluteIdentity: entity.getUri(),
+						title: entity.getName(),
+						expandable: entity.hasChildren(),
+						entity: entity
 					}
 				}))
+				
 
 			}
 		}
@@ -103,7 +107,9 @@ export default function EntityTree(props:{
 			return (uriToParentNodes.get(node.getUri()) || []).length === 0
 		})
 
-		setRootNodes(rootTermNodes.map((rootTerm) => createTreeNode(rootTerm)))
+		setRootNodes(
+			rootTermNodes.map((rootTerm) => createTreeNode(rootTerm))
+		)
 
 		function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
 
@@ -113,13 +119,18 @@ export default function EntityTree(props:{
 				absoluteIdentity: parent ? parent.absoluteIdentity + ';' + node.getUri() : node.getUri(),
 				uri: node.getUri(),
 				title: node.getName(),
-				expandable: node.hasChildren()
+				expandable: node.hasChildren(),
+				entity: node
 			}
 
-			nodeChildren.set(treeNode.absoluteIdentity, childNodes.map(
-				childNode => createTreeNode(childNode, treeNode)))
+			setNodeChildren(
+				nodeChildren.set(treeNode.absoluteIdentity, childNodes.map(
+					childNode => createTreeNode(childNode, treeNode)))
+			)
 
-			expandedNodes.add(treeNode.absoluteIdentity)
+			setExpandedNodes(
+				expandedNodes.add(treeNode.absoluteIdentity)
+			)
 
 			return treeNode
 
@@ -142,7 +153,7 @@ export default function EntityTree(props:{
 
 			let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.uri))
 
-			let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/children?${new URLSearchParams({
+			let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${doubleEncodedUri}/children?${new URLSearchParams({
 				size: '100'
 			})}`)
 
@@ -154,7 +165,8 @@ export default function EntityTree(props:{
 						uri: term.getUri(),
 						absoluteIdentity: node.absoluteIdentity + ';' + term.getUri(),
 						title: term.getName(),
-						expandable: term.hasChildren()
+						expandable: term.hasChildren(),
+						entity: term
 					}
 				}))
 			)
@@ -177,7 +189,7 @@ export default function EntityTree(props:{
 				isLast={isLast}
 				onClick={() => toggleNode(node)}
 				>
-					<Link href={`/ontologies/${ontologyId}/terms/${termUrl}`}>
+					<Link href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}>
 					{node.title}
 					</Link>
 					{ isExpanded && renderNodeChildren(node) }
@@ -207,7 +219,7 @@ export default function EntityTree(props:{
 						onClick={() => toggleNode(childNode)}
 						>
 							{/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
-							<Link href={`/ontologies/${ontologyId}/terms/${termUrl}`}>
+							<Link href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}>
 								{childNode.title}
 							</Link>
 							{ isExpanded && renderNodeChildren(childNode) }

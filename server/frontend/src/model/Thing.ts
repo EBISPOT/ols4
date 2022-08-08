@@ -29,6 +29,19 @@ export default abstract class Thing {
 		throw new Error('unknown type')
 	}
 
+	getTypePlural():'ontologies'|'classes'|'properties'|'individuals' {
+		
+		let type = this.getType()
+
+		switch(type) {
+			case 'ontology': return 'ontologies'
+			case 'class': return 'classes'
+			case 'property': return 'properties'
+			case 'individual': return 'individuals'
+			default: throw new Error('unknown type')
+		}
+	}
+
 	getName():string {
 	    return this.properties['http://www.w3.org/2000/01/rdf-schema#label']
 			|| this.getUri()

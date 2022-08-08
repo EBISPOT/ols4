@@ -13,13 +13,14 @@ import { AccountTree, Share } from '@mui/icons-material'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import EntityTree from './EntityTree'
 import Entity from '../../model/Entity'
+import { thingFromProperties } from '../../model/fromProperties'
 
-export default function EntityPage(props:{ontologyId:string,entityUri:string}) {
+export default function EntityPage(props:{ontologyId:string,entityUri:string,entityType:'classes'|'properties'|'individuals'}) {
 
-    let { ontologyId, entityUri } = props
+    let { ontologyId, entityUri, entityType } = props
 
     let [ ontology, setOntology ] = useState<Ontology|undefined>(undefined)
-    let [ term, setTerm ] = useState<Entity|undefined>(undefined)
+    let [ entity, setEntity ] = useState<Entity|undefined>(undefined)
     let [ viewMode, setViewMode ] = useState<'tree'|'graph'>('tree')
 
     useEffect(() => {
@@ -29,14 +30,14 @@ export default function EntityPage(props:{ontologyId:string,entityUri:string}) {
 		setOntology(new Ontology(ontologyProperties))
 	}
 
-	async function fetchTerm() {
+	async function fetchEntity() {
 		let doubleEncodedTermUri = encodeURIComponent(encodeURIComponent(entityUri))
-		let termProperties = await get<any>(`/api/v2/ontologies/${ontologyId}/terms/${doubleEncodedTermUri}`)
-		setTerm(entityFromProperties(termProperties))
+		let termProperties = await get<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`)
+		setEntity(thingFromProperties(termProperties))
 	}
 
 	fetchOntology()
-	fetchTerm()
+	fetchEntity()
 
     }, [])
 
@@ -52,7 +53,7 @@ export default function EntityPage(props:{ontologyId:string,entityUri:string}) {
 
 function renderTermPage() {
 
-    if(!ontology || !term) {
+    if(!ontology || !entity) {
 	return <Spinner/>
     }
 
@@ -71,17 +72,17 @@ function renderTermPage() {
 				'class': 'Classes',
 				'property': 'Properties',
 				'individual': 'Individuals'
-			})[term.getType()]
+			})[entity.getType()]
 		}
 		</Typography>
-		<Typography color="textPrimary">{term.getName()}</Typography>
+		<Typography color="textPrimary">{entity.getName()}</Typography>
 	</Breadcrumbs>
 
-	<h1>{term!.getName()}</h1>
+	<h1>{entity!.getName()}</h1>
 
 	<Box>
 		<p>
-		{term!.getDescription()}
+		{entity!.getDescription()}
 		</p>
 	</Box>
 <br/>
@@ -112,8 +113,8 @@ function renderTermPage() {
 			'class': 'classes',
 			'property': 'properties',
 			'individual': 'individuals'
-		})[term.getType()]} 
-		startingNode={term}
+		})[entity.getType()]} 
+		startingNode={entity}
 		/>
 		: <div/>
 	}
@@ -126,8 +127,4 @@ function renderTermPage() {
 
 }
 
-
-function entityFromProperties(termProperties: any): React.SetStateAction<Entity | undefined> {
-	throw new Error('Function not implemented.')
-}
 
