@@ -166,8 +166,17 @@ public class OwlTranslator implements StreamRDF {
         writer.name("uri");
         writer.value(ontologyNode.uri);
 
-        writer.name("ontologyConfig");
-        new Gson().toJson(new Gson().toJsonTree(config).getAsJsonObject(), writer);
+        for(String configKey : config.keySet()) {
+            Object configVal = config.get(configKey);
+
+            // we include this as ontologyId so it doesn't clash with downstream id fields in neo4j/solr
+            if(configKey.equals("id"))
+                continue;
+
+            // everything else from the config is stored as a normal property
+            writer.name(configKey); 
+            writeGenericValue(writer, configVal);
+        }
 
         writeProperties(writer, ontologyNode.properties.properties, Set.of("ontology"));
 
@@ -581,6 +590,36 @@ public class OwlTranslator implements StreamRDF {
             return node.getBlankNodeId().toString();
         }
         throw new RuntimeException("unknown node type");
+    }
+
+
+
+    private static void writeGenericValue(JsonWriter writer, Object val) throws IOException {
+
+        if(val instanceof Collection) {
+            writer.beginArray();
+            for(Object entry : ((Collection<Object>) val)) {
+                writeGenericValue(writer, entry);
+            }
+            writer.endArray();
+        } else if(val instanceof Map) {
+            Map<String,Object> map = new TreeMap<String,Object> ( (Map<String,Object>) val );
+            writer.beginObject();
+            for(String k : map.keySet()) {
+                writer.name(k);
+                writeGenericValue(writer, map.get(k));
+            }
+            writer.endObject();
+        } else if(val instanceof String) {
+            writer.value((String) val);
+        } else if(val instanceof Long) {
+            writer.value((Long) val);
+        } else if(val instanceof Boolean) {
+            writer.value((Boolean) val);
+        } else {
+            throw new RuntimeException("Unknown value type");
+        }
+
     }
 
 

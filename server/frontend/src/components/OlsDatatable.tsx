@@ -61,7 +61,9 @@ export default function OlsDatatable(props:Props) {
 
         setLoading(true)
 
-        let data = (await getPaginated<any>(endpoint + `?page=${page}&size=${rowsPerPage}`))
+	let search = filter ? '&search=' + filter : ''
+
+        let data = (await getPaginated<any>(endpoint + `?page=${page}&size=${rowsPerPage}${search}`))
             .map(o => instantiateRow(o))
 
         setData(data)

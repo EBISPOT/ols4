@@ -1,7 +1,7 @@
 {
   "ontologies": [
     {
-      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl\",\"imported\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"4\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"2\",\"ontologyConfig\":{\"id\":\"individuals-anonymous-types-with-inverse\",\"preferredPrefix\":\"individuals-anonymous-types-with-inverse\",\"ontology_purl\":\"./testcases/individuals/anonymous-types-with-inverse.owl\"},\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl\"}",
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl\",\"imported\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"4\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"2\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"ontology_purl\":\"./testcases/individuals/anonymous-types-with-inverse.owl\",\"preferredPrefix\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl\"}",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
       "imported": "false",
@@ -10,6 +10,8 @@
       "numberOfIndividuals": "1",
       "numberOfProperties": "2",
       "ontologyId": "individuals-anonymous-types-with-inverse",
+      "ontology_purl": "./testcases/individuals/anonymous-types-with-inverse.owl",
+      "preferredPrefix": "individuals-anonymous-types-with-inverse",
       "type": [
         "ontology"
       ],

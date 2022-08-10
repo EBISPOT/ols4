@@ -3,11 +3,8 @@
     {
       "ontologyId": "owl2primer-minimal",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-minimal",
-        "preferredPrefix": "owl2primer-minimal",
-        "ontology_purl": "./testcases/owl2-primer/minimal.owl"
-      },
+      "preferredPrefix": "owl2primer-minimal",
+      "ontology_purl": "./testcases/owl2-primer/minimal.owl",
       "type": [
         "ontology"
       ],
@@ -26,11 +23,8 @@
     {
       "ontologyId": "owl2primer-class",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-class",
-        "preferredPrefix": "owl2primer-class",
-        "ontology_purl": "./testcases/owl2-primer/class.owl"
-      },
+      "preferredPrefix": "owl2primer-class",
+      "ontology_purl": "./testcases/owl2-primer/class.owl",
       "type": [
         "ontology"
       ],
@@ -65,11 +59,8 @@
     {
       "ontologyId": "owl2primer-individual",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-individual",
-        "preferredPrefix": "owl2primer-individual",
-        "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl"
-      },
+      "preferredPrefix": "owl2primer-individual",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl",
       "type": [
         "ontology"
       ],
@@ -103,11 +94,8 @@
     {
       "ontologyId": "owl2primer-subClassOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-subClassOf",
-        "preferredPrefix": "owl2primer-subClassOf",
-        "ontology_purl": "./testcases/owl2-primer/subClassOf.owl"
-      },
+      "preferredPrefix": "owl2primer-subClassOf",
+      "ontology_purl": "./testcases/owl2-primer/subClassOf.owl",
       "type": [
         "ontology"
       ],
@@ -174,11 +162,8 @@
     {
       "ontologyId": "owl2primer-equivalentClass",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-equivalentClass",
-        "preferredPrefix": "owl2primer-equivalentClass",
-        "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl"
-      },
+      "preferredPrefix": "owl2primer-equivalentClass",
+      "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl",
       "type": [
         "ontology"
       ],
@@ -229,11 +214,8 @@
     {
       "ontologyId": "owl2primer-disjointClasses",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-disjointClasses",
-        "preferredPrefix": "owl2primer-disjointClasses",
-        "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl"
-      },
+      "preferredPrefix": "owl2primer-disjointClasses",
+      "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl",
       "type": [
         "ontology"
       ],
@@ -300,11 +282,8 @@
     {
       "ontologyId": "owl2primer-subObjectPropertyOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
-      "ontologyConfig": {
-        "id": "owl2primer-subObjectPropertyOf",
-        "preferredPrefix": "owl2primer-subObjectPropertyOf",
-        "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl"
-      },
+      "preferredPrefix": "owl2primer-subObjectPropertyOf",
+      "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl",
       "type": [
         "ontology"
       ],
@@ -404,11 +383,8 @@
     {
       "ontologyId": "owl2primer-domain-range-restriction",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-domain-range-restriction",
-        "preferredPrefix": "owl2primer-domain-range-restriction",
-        "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl"
-      },
+      "preferredPrefix": "owl2primer-domain-range-restriction",
+      "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl",
       "type": [
         "ontology"
       ],
@@ -494,11 +470,8 @@
     {
       "ontologyId": "owl2primer-objectProperty-assertionProperty",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-objectProperty-assertionProperty",
-        "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
-        "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl"
-      },
+      "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl",
       "type": [
         "ontology"
       ],
@@ -612,11 +585,8 @@
     {
       "ontologyId": "owl2primer-objectProperty-negativePropertyAssertion",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-objectProperty-negativePropertyAssertion",
-        "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
-        "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl"
-      },
+      "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
       "type": [
         "ontology"
       ],
@@ -729,11 +699,8 @@
     {
       "ontologyId": "owl2primer-namedIndividual-sameAs",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-namedIndividual-sameAs",
-        "preferredPrefix": "owl2primer-namedIndividual-sameAs",
-        "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl"
-      },
+      "preferredPrefix": "owl2primer-namedIndividual-sameAs",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl",
       "type": [
         "ontology"
       ],
@@ -782,11 +749,8 @@
     {
       "ontologyId": "owl2primer-namedIndividual-differentFrom",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-namedIndividual-differentFrom",
-        "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
-        "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl"
-      },
+      "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
       "type": [
         "ontology"
       ],
@@ -834,11 +798,8 @@
     {
       "ontologyId": "owl2primer-datatypes",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-datatypes",
-        "preferredPrefix": "owl2primer-datatypes",
-        "ontology_purl": "./testcases/owl2-primer/datatypes.owl"
-      },
+      "preferredPrefix": "owl2primer-datatypes",
+      "ontology_purl": "./testcases/owl2-primer/datatypes.owl",
       "type": [
         "ontology"
       ],
@@ -910,11 +871,8 @@
     {
       "ontologyId": "owl2primer-intersectionOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-intersectionOf",
-        "preferredPrefix": "owl2primer-intersectionOf",
-        "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl"
-      },
+      "preferredPrefix": "owl2primer-intersectionOf",
+      "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl",
       "type": [
         "ontology"
       ],
@@ -987,11 +945,8 @@
     {
       "ontologyId": "owl2primer-disjointUnionOf.",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-disjointUnionOf.",
-        "preferredPrefix": "owl2primer-disjointUnionOf.",
-        "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl"
-      },
+      "preferredPrefix": "owl2primer-disjointUnionOf.",
+      "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl",
       "type": [
         "ontology"
       ],
@@ -1060,11 +1015,8 @@
     {
       "ontologyId": "owl2primer-unionOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-unionOf",
-        "preferredPrefix": "owl2primer-unionOf",
-        "ontology_purl": "./testcases/owl2-primer/unionOf.owl"
-      },
+      "preferredPrefix": "owl2primer-unionOf",
+      "ontology_purl": "./testcases/owl2-primer/unionOf.owl",
       "type": [
         "ontology"
       ],
@@ -1133,11 +1085,8 @@
     {
       "ontologyId": "owl2primer-equivalent-intersectionOf-complementOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-equivalent-intersectionOf-complementOf",
-        "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
-        "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl"
-      },
+      "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl",
       "type": [
         "ontology"
       ],
@@ -1214,11 +1163,8 @@
     {
       "ontologyId": "owl2primer-subClassOf-intersectionOf",
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
-      "ontologyConfig": {
-        "id": "owl2primer-subClassOf-intersectionOf",
-        "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
-        "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl"
-      },
+      "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
+      "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl",
       "type": [
         "ontology"
       ],
