@@ -394,6 +394,10 @@ public class JSON2Flattened {
             writer.value((String) val);
         } else if(val instanceof Long) {
             writer.value((Long) val);
+        } else if(val instanceof Integer) {
+            writer.value((Integer) val);
+        } else if(val instanceof Double) {
+            writer.value((Double) val);
         } else if(val instanceof Boolean) {
             writer.value((Boolean) val);
         } else {
