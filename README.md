@@ -27,6 +27,8 @@ The `dataload` directory contains the code which turns OWL ontologies into JSON 
 
 The `server` directory contains (1) a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances; and (2) a React frontend built upon the OLS API.
 
+![OLS4 overview](docs/overview.svg)
+
 ## Running Solr and Neo4j using Docker
 
 Update the config in `docker_config.json` to your liking. Then:
