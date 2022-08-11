@@ -7,6 +7,7 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 
 * Much faster dataload (hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
+* Automated CI testing of the dataload with minimal testcase ontologies
 * A lossless data representation: everything in the OWL is preserved in the databases
 * Support for the latest Solr and Neo4j (no embedded databases, no MongoDB)
 * React frontend
@@ -22,9 +23,11 @@ This repository contains both the dataloader (`dataload` directory) and the API/
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
 It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph database. 
 
-The `dataload` directory contains the code which turns OWL ontologies into datasets which can be loaded into Solr and Neo4j.
+The `dataload` directory contains the code which turns OWL ontologies into JSON and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with loading them.
 
 The `server` directory contains (1) a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances; and (2) a React frontend built upon the OLS API.
+
+![OLS4 overview](docs/overview.png)
 
 ## Running Solr and Neo4j using Docker
 
