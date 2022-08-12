@@ -621,6 +621,8 @@ public class OwlTranslator implements StreamRDF {
             writer.value((Long) val);
         } else if(val instanceof Boolean) {
             writer.value((Boolean) val);
+        } else if(val == null) {
+            writer.nullValue();
         } else {
             throw new RuntimeException("Unknown value type");
         }
