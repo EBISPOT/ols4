@@ -1,4 +1,5 @@
 package uk.ac.ebi.owl2json;
+import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 
 import java.util.*;
@@ -56,16 +57,34 @@ public class OwlNode {
             }
         }
 
-        public void annotateProperty(String predicate, Node value, String predicate2, Node value2) {
+        public void annotateProperty(String predicate, Node value, String predicate2, Node value2, OwlTranslator translator) {
+
             List<Property> props = properties.get(predicate);
+
             Property prop = null;
+
             if (props != null) {
-                for(Property p : props) {
-                    if(p.value.equals(value)) {
-                        prop = p;
-                        break;
-                    }
-                }
+
+		if(value.isBlank()) {
+			// bnode case, look for an isomorphic bnode
+			for(Property p : props) {
+				Node existingValue = p.value;
+				if(existingValue.isBlank()) {
+					if(translator.areSubgraphsIsomorphic(existingValue, p.value)) {
+						prop = p;
+						break;
+					}
+				}
+			}
+		} else {
+			// simple case, look for an equal value to reify
+			for(Property p : props) {
+				if(p.value.equals(value)) {
+					prop = p;
+					break;
+				}
+			}
+		}
                 if(prop == null) {
                     prop = new Property(value);
                     props.add(prop);

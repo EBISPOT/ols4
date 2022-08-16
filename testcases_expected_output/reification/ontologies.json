@@ -40,25 +40,17 @@
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "value": {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
               "propertyLabels": {}
             },
-            {
-              "value": {
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-                "propertyLabels": {}
-              },
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
-              "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
-              "propertyLabels": {}
-            }
-          ],
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
+            "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
+            "propertyLabels": {}
+          },
           "imported": "false",
           "isRoot": "false",
           "ontologyId": "reified-bnode",

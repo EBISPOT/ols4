@@ -630,6 +630,45 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
+    public boolean areSubgraphsIsomorphic(Node rootNodeA, Node rootNodeB) {
+
+	OwlNode a = nodes.get(nodeId(rootNodeA));
+	OwlNode b = nodes.get(nodeId(rootNodeB));
+
+	Map<String, List<OwlNode.Property>> propertiesA = a.properties.properties;
+	Map<String, List<OwlNode.Property>> propertiesB = b.properties.properties;
+
+	if(! propertiesA.keySet().equals( propertiesB.keySet() )) {
+		return false;
+	}
+
+	for(String predicate : propertiesA.keySet()) {
+		List<OwlNode.Property> valuesA = propertiesA.get(predicate);
+		List<OwlNode.Property> valuesB = propertiesB.get(predicate);
+
+		if(valuesA.size() != valuesB.size())
+			return false;
+
+		for(int n = 0; n < valuesA.size(); ++ n) {
+			Node valueA = valuesA.get(n).value;
+			Node valueB = valuesB.get(n).value;
+
+			if(!valueA.isBlank()) {
+				// non bnode value, simple case
+				return valueA.equals(valueB);
+			} 
+
+			// bnode value
+			if(!valueB.isBlank())
+				return false;
+
+			if(!areSubgraphsIsomorphic(valueA, valueB))
+				return false;
+		}
+	}
+
+	return true;
+    }
 
 
 }

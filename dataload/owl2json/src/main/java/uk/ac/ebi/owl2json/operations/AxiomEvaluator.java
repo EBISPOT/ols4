@@ -39,7 +39,7 @@ public class AxiomEvaluator {
 				if(!p2.equals("http://www.w3.org/2002/07/owl#annotatedSource")
 					&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedProperty")
 					&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedTarget")) {
-				    sourceNode.properties.annotateProperty(property, target, p2, prop.value);
+				    sourceNode.properties.annotateProperty(property, target, p2, prop.value, translator);
 				}
 			    }
 			}
