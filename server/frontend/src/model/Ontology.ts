@@ -9,19 +9,15 @@ export default class Ontology extends Thing {
         return this.properties['ontologyId']
     }
 
-    getConfig():any {
-	return this.properties['ontologyConfig']
-    }
-
     getName():string {
         return this.properties["http://purl.org/dc/elements/1.1/title"] 
-			|| this.getConfig()['title']
+			|| this.properties['title']
 			|| ''
     }
 
     getDescription():string {
         return this.properties["http://purl.org/dc/elements/1.1/description"]
-			|| this.getConfig()['description']
+			|| this.properties['description']
 			|| ''
     }
 
@@ -42,10 +38,7 @@ export default class Ontology extends Thing {
     }
 
     getLogoURL():string {
-
-	let config = this.getConfig()
-
-	return config['depicted_by'] || undefined
+	return this.properties['depicted_by'] || undefined
     }
 
 
