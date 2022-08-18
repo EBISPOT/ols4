@@ -34,7 +34,7 @@ public class SynonymAnnotator {
 				continue;
 
 			for(String prop : synonymProperties) {
-				List<PropertyValue> values = c.properties.properties.get(prop);
+				List<PropertyValue> values = c.properties.getPropertyValues(prop);
 				if(values != null) {
 					for(PropertyValue value : values) {
 						c.properties.addProperty("synonym", value);

@@ -2,8 +2,6 @@ package uk.ac.ebi.owl2json.transforms;
 
 import java.util.List;
 
-import org.apache.jena.graph.Node;
-
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
 import uk.ac.ebi.owl2json.properties.PropertyValue;
@@ -25,7 +23,7 @@ public class ClassExpressionEvaluator {
 		if(c.uri == null)
 			continue;
 
-			List<PropertyValue> types = c.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+			List<PropertyValue> types = c.properties.getPropertyValues("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
 
             if(types != null) {
                 for(PropertyValue type : types) {
@@ -51,19 +49,19 @@ public class ClassExpressionEvaluator {
 
 	if(typeNode != null && typeNode.types.contains(OwlNode.NodeType.RESTRICTION)) {
 
-		List<PropertyValue> hasValue = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#hasValue");
+		List<PropertyValue> hasValue = typeNode.properties.getPropertyValues("http://www.w3.org/2002/07/owl#hasValue");
 		if(hasValue != null && hasValue.size() > 0) {
 			evaluateTypeExpression(translator, node, hasValue.get(0));
 			return;
 		}
 
-		List<PropertyValue> someValuesFrom = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#someValuesFrom");
+		List<PropertyValue> someValuesFrom = typeNode.properties.getPropertyValues("http://www.w3.org/2002/07/owl#someValuesFrom");
 		if(someValuesFrom != null && someValuesFrom.size() > 0) {
 			evaluateTypeExpression(translator, node, someValuesFrom.get(0));
 			return;
 		}
 
-		List<PropertyValue> allValuesFrom = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#allValuesFrom");
+		List<PropertyValue> allValuesFrom = typeNode.properties.getPropertyValues("http://www.w3.org/2002/07/owl#allValuesFrom");
 		if(allValuesFrom != null && allValuesFrom.size() > 0) {
 			evaluateTypeExpression(translator, node, allValuesFrom.get(0));
 			return;
@@ -71,7 +69,7 @@ public class ClassExpressionEvaluator {
 
 	} else if(typeNode != null && typeNode.types.contains(OwlNode.NodeType.CLASS)) {
 
-		List<PropertyValue> oneOf = typeNode.properties.properties.get("http://www.w3.org/2002/07/owl#oneOf");
+		List<PropertyValue> oneOf = typeNode.properties.getPropertyValues("http://www.w3.org/2002/07/owl#oneOf");
 		if(oneOf != null && oneOf.size() > 0) {
 			for(PropertyValue prop : oneOf) {
 				evaluateTypeExpression(translator, node, prop);

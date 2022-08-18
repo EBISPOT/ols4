@@ -112,7 +112,7 @@ public class OwlTranslator implements StreamRDF {
     for(String id : nodes.keySet()) {
         OwlNode c = nodes.get(id);
         if(c.uri != null) {
-            if(!c.properties.properties.containsKey("imported")) {
+            if(!c.properties.hasProperty("imported")) {
                 c.properties.addProperty("imported", PropertyValueLiteral.fromString("true"));
             }
         }
@@ -180,7 +180,7 @@ public class OwlTranslator implements StreamRDF {
             writeGenericValue(writer, configVal);
         }
 
-        writeProperties(writer, ontologyNode.properties.properties, Set.of("ontology"));
+        writeProperties(writer, ontologyNode.properties, Set.of("ontology"));
 
         writer.name("classes");
         writer.beginArray();
@@ -246,19 +246,17 @@ public class OwlTranslator implements StreamRDF {
 
             for(OwlNode cur = c;;) {
 
-                List<PropertyValue> first = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
-                assert(first != null && first.size() == 1);
-                writePropertyValue(writer, first.get(0), null);
+                PropertyValue first = cur.properties.getPropertyValue("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
+                writePropertyValue(writer, first, null);
 
-                List<PropertyValue> rest = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
-                assert(rest != null && rest.size() == 1);
+                PropertyValue rest = cur.properties.getPropertyValue("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
 
-                if(rest.get(0).getType() == PropertyValue.Type.URI &&
-                        ((PropertyValueURI) rest.get(0)).getUri().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
+                if(rest.getType() == PropertyValue.Type.URI &&
+                        ((PropertyValueURI) rest).getUri().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
                     break;
                 }
 
-                cur = nodes.get(nodeIdFromPropertyValue(rest.get(0)));
+                cur = nodes.get(nodeIdFromPropertyValue(rest));
             }
 
             writer.endArray();
@@ -272,12 +270,12 @@ public class OwlTranslator implements StreamRDF {
                 writer.value(c.uri);
             }
 
-            writeProperties(writer, c.properties.properties, types);
+            writeProperties(writer, c.properties, types);
             writer.endObject();
         }
     }
 
-    private void writeProperties(JsonWriter writer, Map<String, List<PropertyValue>> properties, Set<String> types) throws IOException {
+    private void writeProperties(JsonWriter writer, PropertySet properties, Set<String> types) throws IOException {
 
         if(types != null) {
             writer.name("type");
@@ -289,9 +287,9 @@ public class OwlTranslator implements StreamRDF {
         }
 
         // TODO: sort keys, rdf:type should be first ideally
-        for (String predicate : properties.keySet()) {
+        for (String predicate : properties.getPropertyPredicates()) {
 
-            List<PropertyValue> values = properties.get(predicate);
+            List<PropertyValue> values = properties.getPropertyValues(predicate);
 
 //            String name = predicate
 //                    .replace("http://www.w3.org/2002/07/owl#", "owl:")
@@ -316,14 +314,14 @@ public class OwlTranslator implements StreamRDF {
         writer.name("propertyLabels");
         writer.beginObject();
 
-        for(String k : properties.keySet()) {
+        for(String k : properties.getPropertyPredicates()) {
 
             OwlNode labelNode = nodes.get(k);
             if(labelNode == null) {
                 continue;
             }
 
-            List<PropertyValue> labelProps = labelNode.properties.properties.get("http://www.w3.org/2000/01/rdf-schema#label");
+            List<PropertyValue> labelProps = labelNode.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#label");
 
             if(labelProps != null && labelProps.size() > 0) {
                 for (PropertyValue prop : labelProps) {
@@ -353,7 +351,7 @@ public class OwlTranslator implements StreamRDF {
             writer.beginObject();
             writer.name("value");
             writeValue(writer, value);
-            writeProperties(writer, value.properties.properties, types);
+            writeProperties(writer, value.properties, types);
             writer.endObject();
         } else {
             // not reified
@@ -651,16 +649,13 @@ public class OwlTranslator implements StreamRDF {
 	OwlNode a = nodes.get(nodeIdFromPropertyValue(rootNodeA));
 	OwlNode b = nodes.get(nodeIdFromPropertyValue(rootNodeB));
 
-	Map<String, List<PropertyValue>> propertiesA = a.properties.properties;
-	Map<String, List<PropertyValue>> propertiesB = b.properties.properties;
-
-	if(! propertiesA.keySet().equals( propertiesB.keySet() )) {
+	if(! a.properties.getPropertyPredicates().equals( b.properties.getPropertyPredicates() )) {
 		return false;
 	}
 
-	for(String predicate : propertiesA.keySet()) {
-		List<PropertyValue> valuesA = propertiesA.get(predicate);
-		List<PropertyValue> valuesB = propertiesB.get(predicate);
+	for(String predicate : a.properties.getPropertyPredicates()) {
+		List<PropertyValue> valuesA = a.properties.getPropertyValues(predicate);
+		List<PropertyValue> valuesB = b.properties.getPropertyValues(predicate);
 
 		if(valuesA.size() != valuesB.size())
 			return false;

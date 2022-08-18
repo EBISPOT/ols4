@@ -22,8 +22,8 @@ public class AxiomEvaluator {
 
 				OwlNode sourceNode = translator.nodes.get(translator.nodeIdFromPropertyValue(source));
 
-				for (String p2 : c.properties.properties.keySet()) {
-					List<PropertyValue> v2 = c.properties.properties.get(p2);
+				for (String p2 : c.properties.getPropertyPredicates()) {
+					List<PropertyValue> v2 = c.properties.getPropertyValues(p2);
 					for (PropertyValue prop : v2) {
 						if (!p2.equals("http://www.w3.org/2002/07/owl#annotatedSource")
 								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedProperty")

@@ -36,7 +36,7 @@ public class DefinitionAnnotator {
 				continue;
 
 			for(String prop : definitionProperties) {
-				List<PropertyValue> values = c.properties.properties.get(prop);
+				List<PropertyValue> values = c.properties.getPropertyValues(prop);
 				if(values != null) {
 					for(PropertyValue value : values) {
 						c.properties.addProperty("definition", value);

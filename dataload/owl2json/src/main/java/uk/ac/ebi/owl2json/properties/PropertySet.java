@@ -3,13 +3,14 @@ package uk.ac.ebi.owl2json.properties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import uk.ac.ebi.owl2json.OwlTranslator;
 
 public class PropertySet {
 
-    public Map<String, List<PropertyValue>> properties = new TreeMap<>();
+    private Map<String, List<PropertyValue>> properties = new TreeMap<>();
 
     public void addProperty(String predicate, PropertyValue value) {
         List<PropertyValue> props = properties.get(predicate);
@@ -28,6 +29,10 @@ public class PropertySet {
             props.add(value);
             properties.put(predicate, props);
         }
+    }
+
+    public boolean hasProperty(String predicate) {
+        return properties.containsKey(predicate);
     }
 
     public void annotateProperty(String predicate, PropertyValue value, String predicate2, PropertyValue value2,
@@ -74,6 +79,10 @@ public class PropertySet {
         }
 
         prop.properties.addProperty(predicate2, value2);
+    }
+
+    public Set<String> getPropertyPredicates() {
+        return properties.keySet();
     }
 
     public List<PropertyValue> getPropertyValues(String predicate) {
