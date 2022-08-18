@@ -1,8 +1,9 @@
-package uk.ac.ebi.owl2json.operations;
+package uk.ac.ebi.owl2json.transforms;
 import java.util.*;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
+import uk.ac.ebi.owl2json.properties.PropertyValue;
 
 public class SynonymAnnotator {
 
@@ -33,10 +34,10 @@ public class SynonymAnnotator {
 				continue;
 
 			for(String prop : synonymProperties) {
-				List<OwlNode.Property> values = c.properties.properties.get(prop);
+				List<PropertyValue> values = c.properties.properties.get(prop);
 				if(values != null) {
-					for(OwlNode.Property value : values) {
-						c.properties.addProperty("synonym", value.value);
+					for(PropertyValue value : values) {
+						c.properties.addProperty("synonym", value);
 					}
 				}
 			}

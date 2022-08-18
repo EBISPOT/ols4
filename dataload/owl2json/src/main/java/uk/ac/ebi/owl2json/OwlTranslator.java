@@ -3,9 +3,10 @@ package uk.ac.ebi.owl2json;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
-import org.apache.jena.riot.Lang;
-import uk.ac.ebi.owl2json.operations.*;
+import uk.ac.ebi.owl2json.properties.*;
+import uk.ac.ebi.owl2json.transforms.*;
 
+import org.apache.jena.riot.Lang;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
@@ -94,7 +95,7 @@ public class OwlTranslator implements StreamRDF {
         for(String id : nodes.keySet()) {
             OwlNode c = nodes.get(id);
             if(c.uri != null) {
-                c.properties.addProperty("imported", NodeFactory.createLiteral("false"));
+                c.properties.addProperty("imported", PropertyValueLiteral.fromString("false"));
             }
         }
 
@@ -112,29 +113,29 @@ public class OwlTranslator implements StreamRDF {
         OwlNode c = nodes.get(id);
         if(c.uri != null) {
             if(!c.properties.properties.containsKey("imported")) {
-                c.properties.addProperty("imported", NodeFactory.createLiteral("true"));
+                c.properties.addProperty("imported", PropertyValueLiteral.fromString("true"));
             }
         }
     }
 
 	ontologyNode.properties.addProperty(
-		"numberOfEntities", NodeFactory.createLiteral(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
+		"numberOfEntities", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
 
 	ontologyNode.properties.addProperty(
-		"numberOfClasses", NodeFactory.createLiteral(Integer.toString(numberOfClasses)));
+		"numberOfClasses", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses)));
 
 	ontologyNode.properties.addProperty(
-		"numberOfProperties", NodeFactory.createLiteral(Integer.toString(numberOfProperties)));
+		"numberOfProperties", PropertyValueLiteral.fromString(Integer.toString(numberOfProperties)));
 
 	ontologyNode.properties.addProperty(
-		"numberOfIndividuals", NodeFactory.createLiteral(Integer.toString(numberOfIndividuals)));
+		"numberOfIndividuals", PropertyValueLiteral.fromString(Integer.toString(numberOfIndividuals)));
 
 
     if(!noDates) {
         String now = java.time.LocalDateTime.now().toString();
 
         ontologyNode.properties.addProperty(
-            "loaded", NodeFactory.createLiteral(now));
+            "loaded", PropertyValueLiteral.fromString(now));
     }
 
 
@@ -245,19 +246,19 @@ public class OwlTranslator implements StreamRDF {
 
             for(OwlNode cur = c;;) {
 
-                List<OwlNode.Property> first = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
+                List<PropertyValue> first = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
                 assert(first != null && first.size() == 1);
                 writePropertyValue(writer, first.get(0), null);
 
-                List<OwlNode.Property> rest = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
+                List<PropertyValue> rest = cur.properties.properties.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
                 assert(rest != null && rest.size() == 1);
 
-                if(rest.get(0).value.isURI() &&
-                        rest.get(0).value.getURI().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
+                if(rest.get(0).getType() == PropertyValue.Type.URI &&
+                        ((PropertyValueURI) rest.get(0)).getUri().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
                     break;
                 }
 
-                cur = nodes.get(nodeId(rest.get(0).value));
+                cur = nodes.get(nodeIdFromPropertyValue(rest.get(0)));
             }
 
             writer.endArray();
@@ -276,7 +277,7 @@ public class OwlTranslator implements StreamRDF {
         }
     }
 
-    private void writeProperties(JsonWriter writer, Map<String, List<OwlNode.Property>> properties, Set<String> types) throws IOException {
+    private void writeProperties(JsonWriter writer, Map<String, List<PropertyValue>> properties, Set<String> types) throws IOException {
 
         if(types != null) {
             writer.name("type");
@@ -290,7 +291,7 @@ public class OwlTranslator implements StreamRDF {
         // TODO: sort keys, rdf:type should be first ideally
         for (String predicate : properties.keySet()) {
 
-            List<OwlNode.Property> values = properties.get(predicate);
+            List<PropertyValue> values = properties.get(predicate);
 
 //            String name = predicate
 //                    .replace("http://www.w3.org/2002/07/owl#", "owl:")
@@ -302,7 +303,7 @@ public class OwlTranslator implements StreamRDF {
                 writePropertyValue(writer, values.get(0), null);
             } else {
                 writer.beginArray();
-                for (OwlNode.Property value : values) {
+                for (PropertyValue value : values) {
                     writePropertyValue(writer, value, null);
                 }
                 writer.endArray();
@@ -322,21 +323,21 @@ public class OwlTranslator implements StreamRDF {
                 continue;
             }
 
-            List<OwlNode.Property> labelProps = labelNode.properties.properties.get("http://www.w3.org/2000/01/rdf-schema#label");
+            List<PropertyValue> labelProps = labelNode.properties.properties.get("http://www.w3.org/2000/01/rdf-schema#label");
 
             if(labelProps != null && labelProps.size() > 0) {
-                for (OwlNode.Property prop : labelProps) {
+                for (PropertyValue prop : labelProps) {
 
-                    if(!prop.value.isLiteral())
+                    if(prop.getType() != PropertyValue.Type.LITERAL)
                         continue;
 
-                    String lang = prop.value.getLiteralLanguage();
+                    String lang = ((PropertyValueLiteral) prop).getLang();
 
                     if(lang==null||lang.equals(""))
                         lang="en";
 
                     writer.name(lang+"+"+k);
-                    writer.value(prop.value.getLiteralLexicalForm());
+                    writer.value( ((PropertyValueLiteral) prop).getValue() );
                 }
             }
 
@@ -346,7 +347,7 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    public void writePropertyValue(JsonWriter writer, OwlNode.Property value, Set<String> types) throws IOException {
+    public void writePropertyValue(JsonWriter writer, PropertyValue value, Set<String> types) throws IOException {
         if (value.properties != null) {
             // reified
             writer.beginObject();
@@ -361,39 +362,45 @@ public class OwlTranslator implements StreamRDF {
 
     }
 
-    public void writeValue(JsonWriter writer, OwlNode.Property value) throws IOException {
+    public void writeValue(JsonWriter writer, PropertyValue value) throws IOException {
         assert (value.properties == null);
 
-        Node v = value.value;
-
-        if(v.isBlank()) {
-            OwlNode c = nodes.get(v.getBlankNodeId().toString());
-            if(c == null) {
-                writer.value("?");
-            } else {
-                writeNode(writer, c, null);
-            }
-        } else if(v.isURI()) {
-            writer.value(v.getURI());
-        } else if(v.isLiteral()) {
-            if(v.getLiteralDatatypeURI().equals("http://www.w3.org/2001/XMLSchema#string") &&
-                    v.getLiteralLanguage().equals("")
-            ) {
-                writer.value(v.toString(false));
-            } else {
-                writer.beginObject();
-                writer.name("datatype");
-                writer.value(v.getLiteralDatatypeURI());
-                writer.name("value");
-                writer.value(v.getLiteralLexicalForm());
-                if(!v.getLiteralLanguage().equals("")) {
-                    writer.name("lang");
-                    writer.value(v.getLiteralLanguage());
+        switch(value.getType()) {
+            case BNODE:
+                OwlNode c = nodes.get(((PropertyValueBNode) value).getId());
+                if (c == null) {
+                    writer.value("?");
+                } else {
+                    writeNode(writer, c, null);
                 }
-                writer.endObject();
-            }
-        } else {
-            writer.value("?");
+                break;
+            case ID:
+                break;
+            case LITERAL:
+                PropertyValueLiteral literal = (PropertyValueLiteral) value;
+                if(literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string") &&
+                        literal.getLang().equals("")
+                ) {
+                    writer.value(literal.getValue());
+                } else {
+                    writer.beginObject();
+                    writer.name("datatype");
+                    writer.value(literal.getDatatype());
+                    writer.name("value");
+                    writer.value(literal.getValue());
+                    if(!literal.getLang().equals("")) {
+                        writer.name("lang");
+                        writer.value(literal.getLang());
+                    }
+                    writer.endObject();
+                }
+                break;
+            case URI:
+                writer.value(((PropertyValueURI) value).getUri());
+                break;
+            default:
+                writer.value("?");
+                break;
         }
     }
 
@@ -406,7 +413,7 @@ public class OwlTranslator implements StreamRDF {
     OwlNode ontologyNode = null;
 
     private OwlNode getOrCreateNode(Node node) {
-        String id = nodeId(node);
+        String id = nodeIdFromJenaNode(node);
         OwlNode term = nodes.get(id);
         if (term != null) {
             return term;
@@ -442,7 +449,7 @@ public class OwlTranslator implements StreamRDF {
 
     public void handleLiteralTriple(Triple triple) {
 
-        String subjId = nodeId(triple.getSubject());
+        String subjId = nodeIdFromJenaNode(triple.getSubject());
         OwlNode subjNode = getOrCreateNode(triple.getSubject());
 
         String lang = triple.getObject().getLiteralLanguage();
@@ -450,7 +457,7 @@ public class OwlTranslator implements StreamRDF {
             languages.add(lang);
         }
 
-        subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
+        subjNode.properties.addProperty(triple.getPredicate().getURI(), PropertyValue.fromJenaNode(triple.getObject()));
 
     }
 
@@ -512,7 +519,7 @@ public class OwlTranslator implements StreamRDF {
                 break;
         }
 
-        subjNode.properties.addProperty(triple.getPredicate().getURI(), triple.getObject());
+        subjNode.properties.addProperty(triple.getPredicate().getURI(), PropertyValue.fromJenaNode(triple.getObject()));
 
 
     }
@@ -582,13 +589,22 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-
-    public String nodeId(Node node)  {
+    public String nodeIdFromJenaNode(Node node)  {
         if(node.isURI()) {
             return node.getURI();
         }
         if(node.isBlank()) {
             return node.getBlankNodeId().toString();
+        }
+        throw new RuntimeException("unknown node type");
+    }
+
+    public String nodeIdFromPropertyValue(PropertyValue node)  {
+        if(node.getType() == PropertyValue.Type.URI) {
+            return ((PropertyValueURI) node).getUri();
+        }
+        if(node.getType() == PropertyValue.Type.BNODE) {
+            return ((PropertyValueBNode) node).getId();
         }
         throw new RuntimeException("unknown node type");
     }
@@ -630,36 +646,37 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    public boolean areSubgraphsIsomorphic(Node rootNodeA, Node rootNodeB) {
+    public boolean areSubgraphsIsomorphic(PropertyValue rootNodeA, PropertyValue rootNodeB) {
 
-	OwlNode a = nodes.get(nodeId(rootNodeA));
-	OwlNode b = nodes.get(nodeId(rootNodeB));
+	OwlNode a = nodes.get(nodeIdFromPropertyValue(rootNodeA));
+	OwlNode b = nodes.get(nodeIdFromPropertyValue(rootNodeB));
 
-	Map<String, List<OwlNode.Property>> propertiesA = a.properties.properties;
-	Map<String, List<OwlNode.Property>> propertiesB = b.properties.properties;
+	Map<String, List<PropertyValue>> propertiesA = a.properties.properties;
+	Map<String, List<PropertyValue>> propertiesB = b.properties.properties;
 
 	if(! propertiesA.keySet().equals( propertiesB.keySet() )) {
 		return false;
 	}
 
 	for(String predicate : propertiesA.keySet()) {
-		List<OwlNode.Property> valuesA = propertiesA.get(predicate);
-		List<OwlNode.Property> valuesB = propertiesB.get(predicate);
+		List<PropertyValue> valuesA = propertiesA.get(predicate);
+		List<PropertyValue> valuesB = propertiesB.get(predicate);
 
 		if(valuesA.size() != valuesB.size())
 			return false;
 
 		for(int n = 0; n < valuesA.size(); ++ n) {
-			Node valueA = valuesA.get(n).value;
-			Node valueB = valuesB.get(n).value;
+			PropertyValue valueA = valuesA.get(n);
+			PropertyValue valueB = valuesB.get(n);
 
-			if(!valueA.isBlank()) {
+			if(valueA.getType() != PropertyValue.Type.BNODE) {
 				// non bnode value, simple case
 				return valueA.equals(valueB);
 			} 
 
 			// bnode value
-			if(!valueB.isBlank())
+
+			if(valueB.getType() != PropertyValue.Type.BNODE)
 				return false;
 
 			if(!areSubgraphsIsomorphic(valueA, valueB))

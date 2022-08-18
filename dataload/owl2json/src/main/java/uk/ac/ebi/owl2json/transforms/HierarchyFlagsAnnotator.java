@@ -1,8 +1,9 @@
-package uk.ac.ebi.owl2json.operations;
+package uk.ac.ebi.owl2json.transforms;
 
 import org.apache.jena.graph.NodeFactory;
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
+import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,14 +29,14 @@ public class HierarchyFlagsAnnotator {
 
                 c.properties.addProperty("hasChildren",
                         translator.hasChildren.contains(c.uri) ?
-                            NodeFactory.createLiteral("true") :
-                            NodeFactory.createLiteral("false")
+                            PropertyValueLiteral.fromString("true") :
+                            PropertyValueLiteral.fromString("false")
                 );
 
                 c.properties.addProperty("isRoot",
                         translator.hasParents.contains(c.uri) ?
-                                NodeFactory.createLiteral("false") :
-                                NodeFactory.createLiteral("true")
+                                PropertyValueLiteral.fromString("false") :
+                                PropertyValueLiteral.fromString("true")
                 );
             }
         }

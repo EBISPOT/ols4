@@ -1,4 +1,4 @@
-package uk.ac.ebi.owl2json.operations;
+package uk.ac.ebi.owl2json.transforms;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -8,6 +8,7 @@ import org.apache.jena.graph.NodeFactory;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
+import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 public class OntologyIdAnnotator {
 
@@ -31,7 +32,7 @@ public class OntologyIdAnnotator {
 	
 			c.properties.addProperty(
 				"ontologyId",
-					NodeFactory.createLiteral(
+					PropertyValueLiteral.fromString(
 						ontologyId
 					));
 		    }

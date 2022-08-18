@@ -1,4 +1,4 @@
-package uk.ac.ebi.owl2json.operations;
+package uk.ac.ebi.owl2json.transforms;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -8,6 +8,7 @@ import org.apache.jena.graph.NodeFactory;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlTranslator;
+import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 public class ShortFormAnnotator {
 
@@ -47,7 +48,7 @@ public class ShortFormAnnotator {
 	
 			c.properties.addProperty(
 				"shortForm",
-					NodeFactory.createLiteral(
+					PropertyValueLiteral.fromString(
 						getShortForm(translator, ontologyBaseUris, preferredPrefix, c)
 					));
 		    }
