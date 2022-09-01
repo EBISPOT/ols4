@@ -181,7 +181,6 @@ public class OwlTranslator implements StreamRDF {
 
             // everything else from the config is stored as a normal property
             writer.name(configKey); 
-            System.out.println(configKey);
             writeGenericValue(writer, configVal);
         }
 
