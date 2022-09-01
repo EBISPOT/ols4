@@ -173,6 +173,11 @@ public class OwlTranslator implements StreamRDF {
             // we include this as ontologyId so it doesn't clash with downstream id fields in neo4j/solr
             if(configKey.equals("id"))
                 continue;
+                
+            // don't print the uri from the config, we already printed the one from the OWL
+            // TODO: which one to keep, or should we keep both?
+            if(configKey.equals("uri"))
+                continue;
 
             // everything else from the config is stored as a normal property
             writer.name(configKey); 
