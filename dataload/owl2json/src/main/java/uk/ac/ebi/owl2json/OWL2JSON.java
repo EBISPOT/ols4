@@ -210,6 +210,8 @@ public class OWL2JSON {
         writer.endObject();
 
         writer.close();
+
+        System.out.println("Total time spent waiting for downloads: " + (OwlTranslator.STATS_TOTAL_DOWNLOAD_TIME / 1000 / 1000 / 1000) + "s");
     }
 
 

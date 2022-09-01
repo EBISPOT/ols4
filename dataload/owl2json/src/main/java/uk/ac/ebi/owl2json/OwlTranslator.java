@@ -34,6 +34,10 @@ public class OwlTranslator implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
+
+    public static long STATS_TOTAL_DOWNLOAD_TIME = 0;
+
+
     private RDFParserBuilder createParser() {
 
         return RDFParser.create()
@@ -44,6 +48,8 @@ public class OwlTranslator implements StreamRDF {
 
     private void parseRDF(String url)  {
 
+        long begin = System.nanoTime();
+
 	    if(loadLocalFiles && !url.contains("://")) {
 		    try {
 			    createParser().source(new FileInputStream(url)).parse(this);
@@ -53,6 +59,11 @@ public class OwlTranslator implements StreamRDF {
 	    } else {
 		    createParser().source(url).parse(this);
 	    }
+
+        long end = System.nanoTime();
+
+        System.out.println("Downloading " + url + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
+        STATS_TOTAL_DOWNLOAD_TIME += (end - begin);
     }
 
 
