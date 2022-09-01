@@ -7,6 +7,11 @@ import org.apache.commons.cli.*;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OWL2JSON {
 
@@ -14,9 +19,9 @@ public class OWL2JSON {
 
         Options options = new Options();
 
-        Option optConfig = new Option(null, "config", true, "config JSON filename");
-        optConfig.setRequired(true);
-        options.addOption(optConfig);
+        Option optConfigs = new Option(null, "config", true, "config JSON filename(s) separated by a comma. subsequent configs are merged with/override previous ones.");
+        optConfigs.setRequired(true);
+        options.addOption(optConfigs);
 
         Option output = new Option(null, "output", true, "JSON output filename");
         output.setRequired(true);
@@ -44,30 +49,60 @@ public class OWL2JSON {
             return;
         }
 
-        String configFilePath = cmd.getOptionValue("config");
+        List<String> configFilePaths = Arrays.asList(cmd.getOptionValue("config").split(","));
         String outputFilePath = cmd.getOptionValue("output");
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
         boolean bNoDates = cmd.hasOption("noDates");
 
 
-        System.out.println("Config: " + configFilePath);
+        System.out.println("Configs: " + configFilePaths);
         System.out.println("Output: " + outputFilePath);
 
         Gson gson = new Gson();
 
-	InputStream inputStream;
+        List<InputJson> configs = configFilePaths.stream().map(configPath -> {
 
-	if(configFilePath.contains("://")) {
-		inputStream = new URL(configFilePath).openStream();
-	} else {
-		inputStream = new FileInputStream(configFilePath);
-	}
+            InputStream inputStream;
 
-        JsonReader reader = new JsonReader(
-                new InputStreamReader(inputStream)
-        );
+            try {
+                if (configPath.contains("://")) {
+                    inputStream = new URL(configPath).openStream();
+                } else {
+                    inputStream = new FileInputStream(configPath);
+                }
+            } catch(IOException e) {
+                throw new RuntimeException("Error loading config file: " + configPath);
+            }
 
-        InputJson config = gson.fromJson(reader, InputJson.class);
+            JsonReader reader = new JsonReader(
+                    new InputStreamReader(inputStream));
+
+            return (InputJson) gson.fromJson(reader, InputJson.class);
+
+        }).collect(Collectors.toList());
+
+
+        LinkedHashMap<String, Map<String,Object>> mergedConfigs = new LinkedHashMap<>();
+
+        for(InputJson config : configs) {
+
+            for(Map<String,Object> ontologyConfig : config.ontologies) {
+
+                String ontologyId = (String) ontologyConfig.get("id");
+
+                Map<String,Object> existingConfig = mergedConfigs.get(ontologyId);
+
+                if(existingConfig == null) {
+                    mergedConfigs.put(ontologyId, ontologyConfig);
+                    continue;
+                }
+
+                // override existing config for this ontology with new config
+                for(String key : ontologyConfig.keySet()) {
+                    existingConfig.put(key, ontologyConfig.get(key));
+                }
+            }
+        }
 
         JsonWriter writer = new JsonWriter(new FileWriter(outputFilePath));
         writer.setIndent("  ");
@@ -76,7 +111,7 @@ public class OWL2JSON {
         writer.name("ontologies");
         writer.beginArray();
 
-        for(var ontoConfig : config.ontologies) {
+        for(var ontoConfig : mergedConfigs.values()) {
             System.out.println("--- Loading ontology: " + (String)ontoConfig.get("id"));
             try {
                 OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates);
