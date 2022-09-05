@@ -1,0 +1,46 @@
+{
+  "_embedded" : {
+    "ontologies" : [ {
+      "imported" : "false",
+      "lang" : "en",
+      "loaded" : "2022-09-05T21:06:58.412992",
+      "numberOfClasses" : "2",
+      "numberOfEntities" : "6",
+      "numberOfIndividuals" : "3",
+      "numberOfProperties" : "1",
+      "ontologyId" : "punning-class-individual",
+      "ontology_purl" : "./testcases/punning/class-individual.owl",
+      "preferredPrefix" : "punning-class-individual",
+      "propertyLabels" : { },
+      "type" : [ "ontology" ],
+      "uri" : "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/punning/v.0.0.1/class-individual.owl",
+      "_links" : {
+        "self" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual?lang=en"
+        },
+        "terms" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/terms"
+        },
+        "properties" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/properties"
+        },
+        "individuals" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/individuals"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 1,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}

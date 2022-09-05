@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  login:
+  testDataload:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,7 +15,13 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn clean package
-      - name: Run tests
-        run: ./test.sh
+      - name: Run dataload tests
+        run: ./test_dataload.sh
+  testApi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run API tests
+        run: ./test_api.sh
 
 

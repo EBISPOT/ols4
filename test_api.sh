@@ -14,14 +14,12 @@ export OLS4_CONFIG=$f
 export OLS4_APITEST_OUTDIR=$(pwd)/testcases_output_api/$TEST_FOLDER
 export BUILDKIT_PROGRESS=plain
 
-docker-compose up --build --force-recreate run-api-tests 
-
-
-exit
+docker-compose up --force-recreate run-api-tests 
 
 done
 
-#diff --brief --recursive testcases_output testcases_expected_output/
+diff --brief --recursive testcases_output_api testcases_expected_output_api/
+
 
 
 
