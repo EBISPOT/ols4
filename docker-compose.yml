@@ -5,7 +5,7 @@ services:
       volumes:
         - ols4-solr-data:/opt/solr/server/solr/ols4:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
-        - ./docker_config.json:/mnt/config.json:ro
+        - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config.json:ro
           #- ./docker_out:/tmp/out:rw
     ols4-solr:
       image: solr:9
@@ -44,6 +44,15 @@ services:
       links:
         - ols4-solr
         - ols4-neo4j 
+    run-api-tests:
+      profiles: ["run-api-tests"]
+      build:
+        context: .
+        dockerfile: apitest.Dockerfile
+      depends_on:
+        - ols4-server
+      links:
+        - ols4-server
 volumes:
     ols4-solr-data:
     ols4-neo4j-data:
