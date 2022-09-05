@@ -8,6 +8,7 @@ services:
         - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config.json:ro
         - ./testcases:/opt/dataload/testcases:ro
           #- ./docker_out:/tmp/out:rw
+      command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS}
     ols4-solr:
       image: solr:9
       environment:

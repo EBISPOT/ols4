@@ -28,7 +28,6 @@ RUN mkdir /opt/dataload
 COPY . /opt/dataload/ 
 RUN cd /opt/dataload && mvn clean package
 
-
 # Copy the OLS4 Solr config into our temporary Solr server
 #
 RUN cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4
@@ -39,17 +38,6 @@ RUN mkdir /tmp/out
 
 WORKDIR /opt/dataload
 
-CMD bash -c "\
-echo Loading data... && \
-./create_datafiles.sh file:///mnt/config.json /tmp/out && \
-./load_into_neo4j.sh /opt/neo4j /tmp/out && \
-rm -rf /opt/solr/server/solr/ols4/* && \
-cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4 && \
-./load_into_solr.sh /opt/solr /tmp/out && \
-./create_neo4j_indexes.sh /opt/neo4j && \
-chmod -R 777 /opt/solr && \
-chmod -R 777 /opt/neo4j \
-"
-
+CMD ./dataload.dockersh
 
 

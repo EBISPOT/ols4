@@ -6,7 +6,7 @@ if [ $# == 0 ]; then
 fi
 
 $1/bin/neo4j start
-sleep 10
+sleep 20
 
 echo Creating neo4j indexes...
 
