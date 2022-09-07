@@ -21,7 +21,7 @@ docker-compose up --force-recreate run-api-tests
 
 done
 
-diff --brief --recursive --exclude=.gitkeep testcases_output_api testcases_expected_output_api/
+diff --recursive --exclude=.gitkeep testcases_output_api testcases_expected_output_api/
 
 
 
