@@ -13,7 +13,7 @@ mkdir ./testcases_output/$TEST_FOLDER
 ./dataload/create_datafiles.sh $f ./testcases_output/$TEST_FOLDER --loadLocalFiles --noDates
 done
 
-diff --brief --recursive testcases_output testcases_expected_output/
+diff --brief --recursive --exclude=.gitkeep testcases_output testcases_expected_output/
 
 
 
