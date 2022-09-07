@@ -7,12 +7,16 @@ import static org.neo4j.driver.Values.parameters;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Component
 public class Neo4jQueryHelper {
+
+	@Autowired
+	Neo4jClient neo4jClient;
 
     public Page<OntologyEntity> getAll(String type, Pageable pageable) {
 
@@ -22,7 +26,7 @@ public class Neo4jQueryHelper {
 		String query = "MATCH (a:" + type + ") RETURN a";
 		String countQuery = "MATCH (a:" + type + ") RETURN count(a)";
 
-		return Neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type), pageable);
+		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type), pageable);
     }
 
 
@@ -31,17 +35,17 @@ public class Neo4jQueryHelper {
 		String query = "MATCH (a:" + type + ") WHERE a.ontology_id = $ontologyId RETURN a";
 		String countQuery = "MATCH (a:" + type + ") RETURN count(a)";
 
-		return Neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "ontologyId", ontologyId), pageable);
+		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "ontologyId", ontologyId), pageable);
 	}
 
 	public OntologyEntity getOne(String type, String field, String value) {
 
 	String query = "MATCH (a:" + type + ") WHERE a." + field + "= $val RETURN a";
 
-	return Neo4jClient.queryOne(query, "a", parameters("type", type, "val", value));
+	return neo4jClient.queryOne(query, "a", parameters("type", type, "val", value));
     }
 
-    public static Page<OntologyEntity> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<OntologyEntity> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -59,7 +63,7 @@ public class Neo4jQueryHelper {
 
 		System.out.println(query);
 
-		return Neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
+		return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
     public Page<OntologyEntity> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
@@ -76,10 +80,10 @@ public class Neo4jQueryHelper {
 	+ "WHERE a.id = $id "
 	+ "RETURN count(distinct b)";
 
-	return Neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
+	return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public static Page<OntologyEntity> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<OntologyEntity> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -95,7 +99,7 @@ public class Neo4jQueryHelper {
 	+ "OPTIONAL MATCH (a)-[:" + edge + " *]->(ancestor) "
 	+ "RETURN count(ancestor)";
 
-	return Neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
+	return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
     public Page<OntologyEntity> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
@@ -114,7 +118,7 @@ public class Neo4jQueryHelper {
 	+ "OPTIONAL MATCH (a)<-[:" + edge + " *]-(descendant) "
 	+ "RETURN count(descendant)";
 
-	return Neo4jClient.queryPaginated(query, "c", countQuery, parameters("id", id), pageable);
+	return neo4jClient.queryPaginated(query, "c", countQuery, parameters("id", id), pageable);
     }
 
 

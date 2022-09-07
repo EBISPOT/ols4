@@ -22,6 +22,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 import uk.ac.ebi.spot.ols.service.ClassJsTreeBuilder;
 import uk.ac.ebi.spot.ols.service.ViewMode;
+import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -48,6 +49,9 @@ public class V1OntologyTermController {
     
     @Autowired
     ClassJsTreeBuilder jsTreeBuilder;
+
+    @Autowired
+    Neo4jClient neo4jClient;
 
 
     @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE, 
@@ -367,7 +371,7 @@ public class V1OntologyTermController {
         try {
             String decodedTermId = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTree(ontologyId, decodedTermId, siblings, ViewMode.getFromShortName(viewMode));
+            Object object= jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decodedTermId, siblings, ViewMode.getFromShortName(viewMode));
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
@@ -390,7 +394,7 @@ public class V1OntologyTermController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTreeChildren(ontologyId, decoded, lang, nodeId);
+            Object object= jsTreeBuilder.getJsTreeChildren(neo4jClient, ontologyId, decoded, lang, nodeId);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {

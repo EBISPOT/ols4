@@ -25,15 +25,15 @@ public class Neo4jClient {
 
 	@NotNull
 	@org.springframework.beans.factory.annotation.Value("${ols.neo4j.host:bolt://localhost:7687}")
-	private static String host = "bolt://localhost:7687";
+	private String host;
 
 
 
-	private static Gson gson = new Gson();
+	private Gson gson = new Gson();
 
-	private static Driver driver;
+	private Driver driver;
 
-	public static Driver getDriver() {
+	public Driver getDriver() {
 
 		if(driver == null) {
 			driver = GraphDatabase.driver(host);
@@ -43,7 +43,7 @@ public class Neo4jClient {
 
 	}
 
-	public static Session getSession() {
+	public Session getSession() {
 
 		return getDriver().session(SessionConfig.forDatabase("neo4j"));
 
@@ -51,7 +51,7 @@ public class Neo4jClient {
 
 
 
-	public static List<OntologyEntity> query(String query, String resVar) {
+	public List<OntologyEntity> query(String query, String resVar) {
 
 		Session session = getSession();
 
@@ -64,7 +64,7 @@ public class Neo4jClient {
 					.collect(Collectors.toList());
 	}
 
-	public static Page<OntologyEntity> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
+	public Page<OntologyEntity> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
 
@@ -115,7 +115,7 @@ public class Neo4jClient {
 				pageable, count);
 	}
 
-	public static OntologyEntity queryOne(String query, String resVar, Value parameters) {
+	public OntologyEntity queryOne(String query, String resVar, Value parameters) {
 
 		Session session = getSession();
 

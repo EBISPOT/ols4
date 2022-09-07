@@ -33,7 +33,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return Neo4jQueryHelper.getParents("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jQueryHelper.getParents("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
 			.map(record -> new V1Property(record, ontology, lang));
     }
 
@@ -64,7 +64,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return Neo4jQueryHelper.getAncestors("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jQueryHelper.getAncestors("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
             .map(record -> new V1Property(record, ontology, lang));
     }
 

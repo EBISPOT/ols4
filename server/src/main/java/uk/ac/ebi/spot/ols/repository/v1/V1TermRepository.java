@@ -38,6 +38,9 @@ public class V1TermRepository {
     @Autowired
     Neo4jQueryHelper neo4jQueryHelper;
 
+    @Autowired
+    Neo4jClient neo4jClient;
+
 
 //    @Query(
 //            countQuery = "MATCH (n:Class)-[:SUBCLASSOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct parent)",
@@ -281,7 +284,7 @@ public class V1TermRepository {
 
     public Object getGraphJson(String ontologyName, String iri, int distance) {
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
 
         Map<String, Object> paramt = new HashMap<>();
         paramt.put("0", ontologyName);

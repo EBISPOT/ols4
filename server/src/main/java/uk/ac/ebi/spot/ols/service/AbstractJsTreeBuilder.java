@@ -39,9 +39,9 @@ public abstract class AbstractJsTreeBuilder {
     abstract String getJsTreeRoots(ViewMode viewMode);
 
 
-    public Object getJsTree(String ontologyName, String iri, boolean sibling) {
+    public Object getJsTree(Neo4jClient neo4jClient, String ontologyName, String iri, boolean sibling) {
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
 
         logger.debug("ontologyName = " + ontologyName);
         logger.debug("iri = " + iri);
@@ -61,9 +61,9 @@ public abstract class AbstractJsTreeBuilder {
         return jsTreeObject;
     }
 
-    public Object getJsTree(String ontologyName, String iri, boolean sibling, ViewMode viewMode) {
+    public Object getJsTree(Neo4jClient neo4jClient, String ontologyName, String iri, boolean sibling, ViewMode viewMode) {
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
 
         logger.debug("ontologyName = " + ontologyName);
         logger.debug("iri = " + iri);
@@ -83,7 +83,7 @@ public abstract class AbstractJsTreeBuilder {
         if (!result.hasNext()) {
             result = session.run(getJsTreeRoots(viewMode), paramt);
         }
-        cacheRoots(ontologyName, viewMode);
+        cacheRoots(neo4jClient, ontologyName, viewMode);
         setRootName(getRootName());
         Object jsTreeObject = getJsTreeObject(ontologyName, iri, result, viewMode);
 
@@ -91,9 +91,9 @@ public abstract class AbstractJsTreeBuilder {
         return jsTreeObject;
     }
 
-    public Object getJsTreeChildren(String ontologyName, String iri, String parentNodeId, String lang) {
+    public Object getJsTreeChildren(Neo4jClient neo4jClient, String ontologyName, String iri, String parentNodeId, String lang) {
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
 
         logger.debug("ontologyName = " + ontologyName);
         logger.debug("iri = " + iri);
@@ -130,23 +130,23 @@ public abstract class AbstractJsTreeBuilder {
         return treeObjects;
     }
 
-    private void cacheRoots(String ontologyName, ViewMode viewMode) {
+    private void cacheRoots(Neo4jClient neo4jClient, String ontologyName, ViewMode viewMode) {
         switch (viewMode){
             case ALL:
                 break;
             case PREFERRED_ROOTS:
-                cachePreferredRoots(ontologyName);
+                cachePreferredRoots(neo4jClient, ontologyName);
                 break;
             default:
                 logger.error("Unknown viewMode = " + viewMode);
         }
     }
 
-    private void cachePreferredRoots(String ontologyName) {
+    private void cachePreferredRoots(Neo4jClient neo4jClient, String ontologyName) {
 
         if (!ontologyPreferredRoots.containsKey(ontologyName)) {
 
-            Session session = Neo4jClient.getSession();
+            Session session = neo4jClient.getSession();
 
             Set<String> preferredRootsSet = new HashSet<>();
 

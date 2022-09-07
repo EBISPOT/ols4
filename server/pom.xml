@@ -143,6 +143,14 @@
 		<version>2.3.1</version>
 	</dependency>
 
+
+    <!-- java.lang.ClassNotFoundException: com.sun.activation.registries.LogSupport -->
+   <dependency>
+         <groupId>com.sun.activation</groupId>
+         <artifactId>jakarta.activation</artifactId>
+         <version>1.2.1</version>
+     </dependency>
+
     </dependencies>
 
     <build>

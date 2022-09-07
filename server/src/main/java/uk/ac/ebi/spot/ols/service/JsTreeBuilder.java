@@ -99,25 +99,25 @@ public class JsTreeBuilder {
         this.rootName = rootName;
     }
 
-    public Object getIndividualJsTree(String ontologyName, String iri) {
+    public Object getIndividualJsTree(Neo4jClient neo4jClient, String ontologyName, String iri) {
         Map<String, Object> paramt = new HashMap<>();
         paramt.put("0", ontologyName);
         paramt.put("1", iri);
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
         Result res = session.run(individualParentTreeQuery, paramt);
 
         setRootName("Thing");
         return getJsTreeObject(ontologyName, iri, res);
     }
 
-    public Object getPropertyJsTree(String ontologyName, String iri, boolean siblings) {
+    public Object getPropertyJsTree(Neo4jClient neo4jClient, String ontologyName, String iri, boolean siblings) {
         Map<String, Object> paramt = new HashMap<>();
         paramt.put("0", ontologyName);
         paramt.put("1", iri);
         String query = siblings ? propertyParentSiblingTreeQuery : propertyParentTreeQuery;
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
         Result res = session.run(query, paramt);
 
         setRootName("TopObjectProperty");
@@ -125,28 +125,28 @@ public class JsTreeBuilder {
     }
 
 
-    public Object getClassJsTree(String ontologyName, String iri, boolean siblings) {
+    public Object getClassJsTree(Neo4jClient neo4jClient, String ontologyName, String iri, boolean siblings) {
         Map<String, Object> paramt = new HashMap<>();
         paramt.put("0", ontologyName);
         paramt.put("1", iri);
         String query = siblings ? parentSiblingTreeQuery : parentTreeQuery;
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
         Result res = session.run(query, paramt);
 
         setRootName("Thing");
         return getJsTreeObject(ontologyName, iri, res);
     }
 
-    public Object getJsTreeClassChildren(String ontologyName, String iri, String parentNodeId) {
-        return getJsTreeChildren("term", ontologyName, iri, parentNodeId);
+    public Object getJsTreeClassChildren(Neo4jClient neo4jClient, String ontologyName, String iri, String parentNodeId) {
+        return getJsTreeChildren(neo4jClient, "term", ontologyName, iri, parentNodeId);
     }
 
-    public Object getJsTreePropertyChildren(String ontologyName, String iri, String parentNodeId) {
-        return getJsTreeChildren("property", ontologyName, iri, parentNodeId);
+    public Object getJsTreePropertyChildren(Neo4jClient neo4jClient, String ontologyName, String iri, String parentNodeId) {
+        return getJsTreeChildren(neo4jClient, "property", ontologyName, iri, parentNodeId);
     }
 
-    private Object getJsTreeChildren(String type,String ontologyName, String iri, String parentNodeId) {
+    private Object getJsTreeChildren(Neo4jClient neo4jClient, String type,String ontologyName, String iri, String parentNodeId) {
         Map<String, Object> paramt = new HashMap<>();
         paramt.put("0", ontologyName);
         paramt.put("1", iri);
@@ -155,7 +155,7 @@ public class JsTreeBuilder {
             query = getJsTreePropertyChildren;
         }
 
-        Session session = Neo4jClient.getSession();
+        Session session = neo4jClient.getSession();
         Result res = session.run(query, paramt);
 
         List<JsTreeObject> treeObjects = new ArrayList<>();

@@ -23,6 +23,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.service.PropertyJsTreeBuilder;
 import uk.ac.ebi.spot.ols.service.ViewMode;
+import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -40,6 +41,9 @@ public class V1OntologyPropertyController {
 
     @Autowired
     PropertyJsTreeBuilder jsTreeBuilder;
+
+    @Autowired
+    Neo4jClient neo4jClient;
 
     @RequestMapping(path = "/{onto}/properties", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedResources<V1Property>> getAllPropertiesByOntology(
@@ -200,7 +204,7 @@ public class V1OntologyPropertyController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTreeChildren(ontologyId, decoded, nodeId, lang);
+            Object object= jsTreeBuilder.getJsTreeChildren(neo4jClient, ontologyId, decoded, nodeId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
@@ -225,7 +229,7 @@ public class V1OntologyPropertyController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTree(ontologyId, decoded, siblings, ViewMode.getFromShortName(viewMode));
+            Object object= jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decoded, siblings, ViewMode.getFromShortName(viewMode));
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {

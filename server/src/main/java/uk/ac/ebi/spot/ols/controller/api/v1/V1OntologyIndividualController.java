@@ -24,6 +24,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1IndividualRepository;
 import uk.ac.ebi.spot.ols.service.IndividualJsTreeBuilder;
+import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -49,6 +50,9 @@ public class V1OntologyIndividualController {
 
     @Autowired
     IndividualJsTreeBuilder jsTreeBuilder;
+
+    @Autowired
+    Neo4jClient neo4jClient;
 
     @RequestMapping(path = "/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedResources<V1Individual>> getAllIndividualsByOntology(
@@ -151,7 +155,7 @@ public class V1OntologyIndividualController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object = jsTreeBuilder.getJsTree(ontologyId, decoded, false);
+            Object object = jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decoded, false);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
