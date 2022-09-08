@@ -51,7 +51,7 @@ public class V2OntologyRepository {
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
         query.addFilterQuery("type:ontology");
-        query.addFilterQuery("ontologyId:" + ontologyId);
+        query.addFilterQuery("ontologyId:\"" + ontologyId + "\"");
 
         return new V2Ontology(this.solrQueryHelper.getOne(query), lang);
     }

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 apt-get update && apt-get install -y curl jq
 
 # https://gist.github.com/eisenreich/195ab1f05715ec86e300f75d007d711c
@@ -23,19 +21,26 @@ echo Waiting for OLS4 server to become available...
 wait-for-url http://ols4-server:8080/api/v2/ontologies
 
 echo Calling endpoints...
-curl http://ols4-server:8080/api/ontologies > /mnt/out/ontologies.json
-curl http://ols4-server:8080/api/v2/ontologies > /mnt/out/v2/ontologies.json
+
+echo /api/ontologies
+curl http://ols4-server:8080/api/ontologies | tee /mnt/out/ontologies.json
+
+echo /api/v2/ontologies
+curl http://ols4-server:8080/api/v2/ontologies | tee /mnt/out/v2/ontologies.json
 
 mkdir /mnt/out/ontologies
 mkdir /mnt/out/v2/ontologies
 
 for ontologyId in $(cat /mnt/out/v2/ontologies.json | jq -r ._embedded.ontologies[].ontologyId); do
 
-	curl http://ols4-server:8080/api/ontologies/$ontologyId > /mnt/out/ontologies/$ontologyId.json
-	curl http://ols4-server:8080/api/v2/ontologies/$ontologyId > /mnt/out/v2/ontologies/$ontologyId.json
+    echo /api/ontologies/$ontologyId
+	curl http://ols4-server:8080/api/ontologies/$ontologyId | tee /mnt/out/ontologies/$ontologyId.json
 
-	mkdir /mnt/out/$ontologyId
-	mkdir /mnt/out/v2/$ontologyId
+    echo /api/v2/ontologies/$ontologyId
+	curl http://ols4-server:8080/api/v2/ontologies/$ontologyId | tee /mnt/out/v2/ontologies/$ontologyId.json
+
+	mkdir /mnt/out/ontologies/$ontologyId
+	mkdir /mnt/out/v2/ontologies/$ontologyId
 
 done
 

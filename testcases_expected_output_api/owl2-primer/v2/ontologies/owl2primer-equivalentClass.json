@@ -1,1 +1,30 @@
-{"timestamp":1662634975745,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-equivalentClass"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "2",
+  "numberOfEntities" : "2",
+  "numberOfIndividuals" : "0",
+  "numberOfProperties" : "0",
+  "ontologyId" : "owl2primer-equivalentClass",
+  "ontology_purl" : "./testcases/owl2-primer/equivalentClass.owl",
+  "preferredPrefix" : "owl2primer-equivalentClass",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentClass?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentClass/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentClass/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentClass/individuals"
+    }
+  }
+}

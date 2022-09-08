@@ -772,7 +772,7 @@
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-disjointUnionOf.",
+      "ontologyId" : "owl2primer-disjointUnionOf",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -784,10 +784,10 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-disjointUnionOf.",
+        "id" : "owl2primer-disjointUnionOf",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
         "namespace" : null,
-        "preferredPrefix" : "owl2primer-disjointUnionOf.",
+        "preferredPrefix" : "owl2primer-disjointUnionOf",
         "title" : null,
         "description" : null,
         "homepage" : null,
@@ -813,16 +813,16 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf.?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf./terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf./properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf./individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/individuals"
         }
       }
     }, {

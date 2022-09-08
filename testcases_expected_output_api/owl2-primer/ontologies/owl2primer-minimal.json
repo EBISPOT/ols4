@@ -1,1 +1,56 @@
-{"timestamp":1662634975477,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/ontologies/owl2primer-minimal"}
+{
+  "lang" : "en",
+  "ontologyId" : "owl2primer-minimal",
+  "loaded" : null,
+  "updated" : null,
+  "status" : "LOADED",
+  "message" : "",
+  "version" : null,
+  "fileHash" : null,
+  "loadAttempts" : 0,
+  "numberOfTerms" : 0,
+  "numberOfProperties" : 0,
+  "numberOfIndividuals" : 0,
+  "config" : {
+    "id" : "owl2primer-minimal",
+    "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
+    "namespace" : null,
+    "preferredPrefix" : "owl2primer-minimal",
+    "title" : null,
+    "description" : null,
+    "homepage" : null,
+    "version" : null,
+    "mailingList" : null,
+    "tracker" : null,
+    "logo" : null,
+    "creators" : [ ],
+    "annotations" : null,
+    "fileLocation" : null,
+    "oboSlims" : false,
+    "labelProperty" : null,
+    "definitionProperties" : [ ],
+    "synonymProperties" : [ ],
+    "hierarchicalProperties" : [ ],
+    "baseUris" : [ ],
+    "hiddenProperties" : [ ],
+    "preferredRootTerms" : [ ],
+    "isSkos" : false,
+    "allowDownload" : true,
+    "internalMetadataProperties" : { }
+  },
+  "baseUris" : [ ],
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/ontologies/owl2primer-minimal?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/ontologies/owl2primer-minimal/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/ontologies/owl2primer-minimal/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/ontologies/owl2primer-minimal/individuals"
+    }
+  }
+}

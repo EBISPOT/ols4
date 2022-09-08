@@ -1,1 +1,30 @@
-{"timestamp":1662634976499,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-datatypes"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "1",
+  "numberOfEntities" : "3",
+  "numberOfIndividuals" : "1",
+  "numberOfProperties" : "1",
+  "ontologyId" : "owl2primer-datatypes",
+  "ontology_purl" : "./testcases/owl2-primer/datatypes.owl",
+  "preferredPrefix" : "owl2primer-datatypes",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/individuals"
+    }
+  }
+}

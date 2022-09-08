@@ -1,1 +1,30 @@
-{"timestamp":1662634975921,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-domain-range-restriction"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "3",
+  "numberOfEntities" : "4",
+  "numberOfIndividuals" : "0",
+  "numberOfProperties" : "1",
+  "ontologyId" : "owl2primer-domain-range-restriction",
+  "ontology_purl" : "./testcases/owl2-primer/domain-range-restriction.owl",
+  "preferredPrefix" : "owl2primer-domain-range-restriction",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/individuals"
+    }
+  }
+}

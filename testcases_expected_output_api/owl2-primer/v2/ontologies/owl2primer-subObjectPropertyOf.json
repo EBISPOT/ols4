@@ -1,1 +1,30 @@
-{"timestamp":1662634975858,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-subObjectPropertyOf"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "3",
+  "numberOfEntities" : "5",
+  "numberOfIndividuals" : "0",
+  "numberOfProperties" : "2",
+  "ontologyId" : "owl2primer-subObjectPropertyOf",
+  "ontology_purl" : "./testcases/owl2-primer/subObjectPropertyOf.owl",
+  "preferredPrefix" : "owl2primer-subObjectPropertyOf",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subObjectPropertyOf?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subObjectPropertyOf/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subObjectPropertyOf/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subObjectPropertyOf/individuals"
+    }
+  }
+}

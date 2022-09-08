@@ -1,1 +1,30 @@
-{"timestamp":1662634976331,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-namedIndividual-sameAs"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "0",
+  "numberOfEntities" : "2",
+  "numberOfIndividuals" : "2",
+  "numberOfProperties" : "0",
+  "ontologyId" : "owl2primer-namedIndividual-sameAs",
+  "ontology_purl" : "./testcases/owl2-primer/namedIndividual-sameAs.owl",
+  "preferredPrefix" : "owl2primer-namedIndividual-sameAs",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/individuals"
+    }
+  }
+}

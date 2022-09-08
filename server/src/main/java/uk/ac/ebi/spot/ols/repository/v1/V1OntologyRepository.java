@@ -26,7 +26,7 @@ public class V1OntologyRepository {
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
         query.addFilterQuery("type:ontology");
-        query.addFilterQuery("ontologyId:" + id);
+        query.addFilterQuery("ontologyId:\"" + id + "\"");
 
         return new V1Ontology(solrQueryHelper.getOne(query), lang);
     }

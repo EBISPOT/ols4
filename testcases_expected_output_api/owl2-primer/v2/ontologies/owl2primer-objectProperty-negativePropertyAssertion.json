@@ -1,1 +1,30 @@
-{"timestamp":1662634976253,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"No message available","path":"/api/v2/ontologies/owl2primer-objectProperty-negativePropertyAssertion"}
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "3",
+  "numberOfEntities" : "6",
+  "numberOfIndividuals" : "2",
+  "numberOfProperties" : "1",
+  "ontologyId" : "owl2primer-objectProperty-negativePropertyAssertion",
+  "ontology_purl" : "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
+  "preferredPrefix" : "owl2primer-objectProperty-negativePropertyAssertion",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectProperty-negativePropertyAssertion?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectProperty-negativePropertyAssertion/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectProperty-negativePropertyAssertion/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectProperty-negativePropertyAssertion/individuals"
+    }
+  }
+}
