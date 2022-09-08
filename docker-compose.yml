@@ -10,7 +10,7 @@ services:
           #- ./docker_out:/tmp/out:rw
       command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS}
     ols4-solr:
-      image: solr:9
+      image: solr:9.0.0
       environment:
         - SOLR_HOME=/mnt/ols4-solr-data
       ports:
@@ -48,11 +48,11 @@ services:
         - ols4-neo4j 
     run-api-tests:
       profiles: ["run-api-tests"]
-      build:
-        context: .
-        dockerfile: apitest.Dockerfile
+      image: ubuntu:20.04
       volumes:
         - ${OLS4_APITEST_OUTDIR}:/mnt/out:rw
+        - ./apitest.dockersh:/apitest.sh:ro
+      command: /apitest.sh
       depends_on:
         - ols4-server
       links:
