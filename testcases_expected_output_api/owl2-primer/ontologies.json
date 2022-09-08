@@ -990,17 +990,136 @@
           "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf-intersectionOf/individuals"
         }
       }
+    }, {
+      "lang" : "en",
+      "ontologyId" : "owl2primer-dataProperty-hasKey",
+      "loaded" : null,
+      "updated" : null,
+      "status" : "LOADED",
+      "message" : "",
+      "version" : null,
+      "fileHash" : null,
+      "loadAttempts" : 0,
+      "numberOfTerms" : 1,
+      "numberOfProperties" : 2,
+      "numberOfIndividuals" : 2,
+      "config" : {
+        "id" : "owl2primer-dataProperty-hasKey",
+        "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
+        "namespace" : null,
+        "preferredPrefix" : "owl2primer-dataProperty-hasKey",
+        "title" : null,
+        "description" : null,
+        "homepage" : null,
+        "version" : null,
+        "mailingList" : null,
+        "tracker" : null,
+        "logo" : null,
+        "creators" : [ ],
+        "annotations" : null,
+        "fileLocation" : null,
+        "oboSlims" : false,
+        "labelProperty" : null,
+        "definitionProperties" : [ ],
+        "synonymProperties" : [ ],
+        "hierarchicalProperties" : [ ],
+        "baseUris" : [ ],
+        "hiddenProperties" : [ ],
+        "preferredRootTerms" : [ ],
+        "isSkos" : false,
+        "allowDownload" : true,
+        "internalMetadataProperties" : { }
+      },
+      "baseUris" : [ ],
+      "_links" : {
+        "self" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey?lang=en"
+        },
+        "terms" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/terms"
+        },
+        "properties" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/properties"
+        },
+        "individuals" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/individuals"
+        }
+      }
+    }, {
+      "lang" : "en",
+      "ontologyId" : "owl2primer-equivalentObjectProperty",
+      "loaded" : null,
+      "updated" : null,
+      "status" : "LOADED",
+      "message" : "",
+      "version" : null,
+      "fileHash" : null,
+      "loadAttempts" : 0,
+      "numberOfTerms" : 0,
+      "numberOfProperties" : 2,
+      "numberOfIndividuals" : 2,
+      "config" : {
+        "id" : "owl2primer-equivalentObjectProperty",
+        "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
+        "namespace" : null,
+        "preferredPrefix" : "owl2primer-equivalentObjectProperty",
+        "title" : null,
+        "description" : null,
+        "homepage" : null,
+        "version" : null,
+        "mailingList" : null,
+        "tracker" : null,
+        "logo" : null,
+        "creators" : [ ],
+        "annotations" : null,
+        "fileLocation" : null,
+        "oboSlims" : false,
+        "labelProperty" : null,
+        "definitionProperties" : [ ],
+        "synonymProperties" : [ ],
+        "hierarchicalProperties" : [ ],
+        "baseUris" : [ ],
+        "hiddenProperties" : [ ],
+        "preferredRootTerms" : [ ],
+        "isSkos" : false,
+        "allowDownload" : true,
+        "internalMetadataProperties" : { }
+      },
+      "baseUris" : [ ],
+      "_links" : {
+        "self" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty?lang=en"
+        },
+        "terms" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/terms"
+        },
+        "properties" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/properties"
+        },
+        "individuals" : {
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/individuals"
+        }
+      }
     } ]
   },
   "_links" : {
+    "first" : {
+      "href" : "http://ols4-server:8080/api/ontologies?page=0&size=20"
+    },
     "self" : {
       "href" : "http://ols4-server:8080/api/ontologies"
+    },
+    "next" : {
+      "href" : "http://ols4-server:8080/api/ontologies?page=1&size=20"
+    },
+    "last" : {
+      "href" : "http://ols4-server:8080/api/ontologies?page=2&size=20"
     }
   },
   "page" : {
     "size" : 20,
-    "totalElements" : 18,
-    "totalPages" : 1,
+    "totalElements" : 44,
+    "totalPages" : 3,
     "number" : 0
   }
 }

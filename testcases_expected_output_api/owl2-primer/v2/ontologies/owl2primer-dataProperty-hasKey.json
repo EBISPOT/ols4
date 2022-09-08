@@ -1,0 +1,30 @@
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "1",
+  "numberOfEntities" : "5",
+  "numberOfIndividuals" : "2",
+  "numberOfProperties" : "2",
+  "ontologyId" : "owl2primer-dataProperty-hasKey",
+  "ontology_purl" : "./testcases/owl2-primer/dataProperty-hasKey.owl",
+  "preferredPrefix" : "owl2primer-dataProperty-hasKey",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/individuals"
+    }
+  }
+}

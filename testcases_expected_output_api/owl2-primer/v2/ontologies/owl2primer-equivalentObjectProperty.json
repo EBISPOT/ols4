@@ -1,0 +1,30 @@
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "0",
+  "numberOfEntities" : "4",
+  "numberOfIndividuals" : "2",
+  "numberOfProperties" : "2",
+  "ontologyId" : "owl2primer-equivalentObjectProperty",
+  "ontology_purl" : "./testcases/owl2-primer/equivalentObjectProperty.owl",
+  "preferredPrefix" : "owl2primer-equivalentObjectProperty",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentObjectProperty?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentObjectProperty/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentObjectProperty/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentObjectProperty/individuals"
+    }
+  }
+}

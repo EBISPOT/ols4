@@ -1,0 +1,30 @@
+{
+  "imported" : "false",
+  "lang" : "en",
+  "numberOfClasses" : "1",
+  "numberOfEntities" : "4",
+  "numberOfIndividuals" : "1",
+  "numberOfProperties" : "2",
+  "ontologyId" : "individuals-anonymous-types-with-inverse",
+  "ontology_purl" : "./testcases/individuals/anonymous-types-with-inverse.owl",
+  "preferredPrefix" : "individuals-anonymous-types-with-inverse",
+  "propertyLabels" : { },
+  "type" : [ "ontology" ],
+  "uri" : "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
+  "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
+  "_links" : {
+    "self" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse?lang=en"
+    },
+    "terms" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/terms"
+    },
+    "properties" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/properties"
+    },
+    "individuals" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/individuals"
+    }
+  }
+}
