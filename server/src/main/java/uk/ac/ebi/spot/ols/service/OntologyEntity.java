@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OntologyEntity {
 
@@ -41,8 +42,23 @@ public class OntologyEntity {
     }
 
 
+    public boolean containsKey(String k) {
+        return record.containsKey(k);
+    }
+
     public String getString(String predicate) {
         return objectToString( this.record.get(predicate) );
+    }
+
+    public List<String> getStrings(String predicate) {
+
+        List<Object> arr = (List<Object>) this.record.get(predicate);
+
+        if(arr == null) {
+            return new ArrayList<>();
+        }
+
+        return arr.stream().map(obj -> objectToString(obj)).collect(Collectors.toList());
     }
 
     private static String objectToString(Object value) {

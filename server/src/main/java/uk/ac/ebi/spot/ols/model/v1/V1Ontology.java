@@ -25,45 +25,42 @@ public class V1Ontology {
 
         ontologyId = localizedNode.getString("ontologyId");
 
-        Map<String,Object> ontologyConfig = (Map<String,Object>)
-                localizedNode.asMap().get("ontologyConfig");
-
         config = new V1OntologyConfig();
         config.id = localizedNode.getString("ontologyId");
         config.versionIri = localizedNode.getString("http://www.w3.org/2002/07/owl#versionIRI");
         config.namespace = localizedNode.getString("id"); // TODO ??
         config.version = localizedNode.getString("http://www.w3.org/2002/07/owl#versionInfo");
-        config.preferredPrefix = (String)ontologyConfig.get("preferredPrefix");
-        config.title = (String)ontologyConfig.get("title");
-        config.description = (String)ontologyConfig.get("description");
-        config.homepage = (String)ontologyConfig.get("homepage");
-        config.version = (String)ontologyConfig.get("version");
-        config.mailingList = (String)ontologyConfig.get("mailingList");
-        config.tracker = (String)ontologyConfig.get("tracker");
-        config.logo = (String)ontologyConfig.get("logo");
-        config.creators = (Collection<String>) ontologyConfig.get("creators");
-        config.annotations = ontologyConfig.get("annotations");
-        config.fileLocation = (String)ontologyConfig.get("fileLocation");
+        config.preferredPrefix = localizedNode.getString("preferredPrefix");
+        config.title = localizedNode.getString("title");
+        config.description = localizedNode.getString("description");
+        config.homepage = localizedNode.getString("homepage");
+        config.version = localizedNode.getString("version");
+        config.mailingList = localizedNode.getString("mailingList");
+        config.tracker = localizedNode.getString("tracker");
+        config.logo = localizedNode.getString("logo");
+        config.creators = localizedNode.getStrings("creators");
+        config.annotations = localizedNode.asMap().get("annotations");
+        config.fileLocation = localizedNode.getString("fileLocation");
 
-        config.oboSlims = ontologyConfig.containsKey ("oboSlims") ?
-                (boolean) ontologyConfig.get("oboSlims") : false;
+        config.oboSlims = localizedNode.asMap().containsKey("oboSlims") ?
+                (boolean) localizedNode.asMap().get("oboSlims") : false;
 
-        config.labelProperty = (String)ontologyConfig.get("labelProperty");
-        config.definitionProperties = (Collection<String>) ontologyConfig.get("definitionProperties");
-        config.synonymProperties = (Collection<String>) ontologyConfig.get("synonymProperties");
-        config.hierarchicalProperties = (Collection<String>) ontologyConfig.get("hierarchicalProperties");
-        config.baseUris = (Collection<String>) ontologyConfig.get("baseUris");
-        config.hiddenProperties = (Collection<String>) ontologyConfig.get("hiddenProperties");
-        config.preferredRootTerms = (Collection<String>) ontologyConfig.get("preferredRootTerms");
+        config.labelProperty = localizedNode.getString("labelProperty");
+        config.definitionProperties = localizedNode.getStrings("definitionProperties");
+        config.synonymProperties = localizedNode.getStrings("synonymProperties");
+        config.hierarchicalProperties = localizedNode.getStrings("hierarchicalProperties");
+        config.baseUris = localizedNode.getStrings("baseUris");
+        config.hiddenProperties = localizedNode.getStrings("hiddenProperties");
+        config.preferredRootTerms = localizedNode.getStrings("preferredRootTerms");
 
-        config.isSkos = ontologyConfig.containsKey("isSkos") ?
-                (boolean) ontologyConfig.get("isSkos") : false;
+        config.isSkos = localizedNode.asMap().containsKey("isSkos") ?
+                (boolean) localizedNode.asMap().get("isSkos") : false;
 
-        config.allowDownload = ontologyConfig.containsKey("allowDownload") ?
-                (boolean) ontologyConfig.get("allowDownload") : true;
+        config.allowDownload = localizedNode.asMap().containsKey("allowDownload") ?
+                (boolean) localizedNode.asMap().get("allowDownload") : true;
 
-        config.internalMetadataProperties = ontologyConfig.containsKey("internalMetadataProperties") ?
-                ontologyConfig.get("internalMetadataProperties") : new HashMap<String,Object>();
+        config.internalMetadataProperties = localizedNode.asMap().containsKey("internalMetadataProperties") ?
+                localizedNode.asMap().get("internalMetadataProperties") : new HashMap<String,Object>();
 
         status = "LOADED";
 
