@@ -12,7 +12,7 @@
     
 
 
-    <!-- 
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -20,7 +20,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://example.com/owl2primer#Human -->
@@ -28,7 +28,7 @@
     <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human">
         <owl:equivalentClass rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person"/>
     </owl:Class>
-    
+
 
 
     <!-- http://example.com/owl2primer#Person -->

@@ -1,0 +1,6 @@
+":START_ID",":TYPE",":END_ID","_json","http__//www.w3.org/2000/01/rdf-schema#comment:string[]","propertyLabels:string[]","http__//www.w3.org/1999/02/22-rdf-syntax-ns#type:string[]"
+"reified-bnode+ontology+http://example.com/reified-bnode","uri","reified-bnode+ontology+http://example.com/reified-bnode","{}","","",""
+"reified-bnode+class+http://example.com/reified-bnode#cell","uri","reified-bnode+class+http://example.com/reified-bnode#cell","{}","","",""
+"reified-bnode+class+http://example.com/reified-bnode#cell_part","http://www.w3.org/2000/01/rdf-schema#subClassOf","reified-bnode+class+http://example.com/reified-bnode#cell","{""http://www.w3.org/1999/02/22-rdf-syntax-ns#type"":""http://www.w3.org/2002/07/owl#Axiom"",""http://www.w3.org/2000/01/rdf-schema#comment"":""This is an annotation on a property with a bnode value"",""propertyLabels"":{},""value"":""http://example.com/reified-bnode#cell""}","This is an annotation on a property with a bnode value","{}","http://www.w3.org/2002/07/owl#Axiom"
+"reified-bnode+class+http://example.com/reified-bnode#cell_part","uri","reified-bnode+class+http://example.com/reified-bnode#cell_part","{}","","",""
+"reified-bnode+property+http://example.com/reified-bnode#part_of","uri","reified-bnode+property+http://example.com/reified-bnode#part_of","{}","","",""
