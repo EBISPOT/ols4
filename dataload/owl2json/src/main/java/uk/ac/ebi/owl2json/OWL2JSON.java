@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
+
+import uk.ac.ebi.owl2json.downloader.BulkOntologyDownloader;
+
 import org.apache.commons.cli.*;
 
 import java.io.*;
@@ -31,6 +34,10 @@ public class OWL2JSON {
         Option optMergeOutputWith = new Option(null, "mergeOutputWith", true, "JSON file to merge our output with. Any existing ontologies not indexed this time will be kept.");
         optMergeOutputWith.setRequired(false);
         options.addOption(optMergeOutputWith);
+
+        Option optDownloadPath = new Option(null, "downloadPath", false, "Download path to (temporarily) store downloaded ontologies");
+        optDownloadPath.setRequired(true);
+        options.addOption(optDownloadPath);
 
         Option output = new Option(null, "output", true, "JSON output filename");
         output.setRequired(true);
@@ -63,6 +70,7 @@ public class OWL2JSON {
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
         boolean bNoDates = cmd.hasOption("noDates");
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
+        String downloadPath = cmd.getOptionValue("downloadPath");
 
 
         System.out.println("Configs: " + configFilePaths);
@@ -114,6 +122,43 @@ public class OWL2JSON {
             }
         }
 
+
+        for(Map<String,Object> config : mergedConfigs.values()) {
+
+            String url = (String) config.get("ontology_purl");
+
+            if(url == null) {
+
+                Collection<Map<String,Object>> products =
+                    (Collection<Map<String,Object>>) config.get("products");
+
+                for(Map<String,Object> product : products) {
+
+                    String purl = (String) product.get("ontology_purl");
+
+                    if(purl != null && purl.endsWith(".owl")) {
+                        url = purl;
+                        break;
+                    }
+
+                }
+
+            }
+
+            config.put("url", url);
+        }
+
+
+        List<String> ontologyUrls = mergedConfigs.values().stream().map(config -> {
+            return (String) config.get("url");
+        }).collect(Collectors.toList());
+            
+        BulkOntologyDownloader downloader = new BulkOntologyDownloader(ontologyUrls, downloadPath, bLoadLocalFiles);
+
+        downloader.downloadAll();
+
+
+
         JsonWriter writer = new JsonWriter(new FileWriter(outputFilePath));
         writer.setIndent("  ");
 
@@ -131,7 +176,7 @@ public class OWL2JSON {
 
             try {
 
-                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates);
+                OwlTranslator translator = new OwlTranslator(ontoConfig, downloadPath, bLoadLocalFiles, bNoDates);
                 translator.write(writer);
 
                 loadedOntologyIds.add(ontologyId);
@@ -210,8 +255,6 @@ public class OWL2JSON {
         writer.endObject();
 
         writer.close();
-
-        System.out.println("Total time spent waiting for downloads: " + (OwlTranslator.STATS_TOTAL_DOWNLOAD_TIME / 1000 / 1000 / 1000) + "s");
     }
 
 

@@ -34,8 +34,9 @@ public class OwlTranslator implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
+    String downloadedPath;
 
-    public static long STATS_TOTAL_DOWNLOAD_TIME = 0;
+    boolean loadLocalFiles;
 
 
     private RDFParserBuilder createParser() {
@@ -46,32 +47,31 @@ public class OwlTranslator implements StreamRDF {
                 .checking(false);
     }
 
-    private void parseRDF(String url)  {
+    private void loadPredownloadedRDF(String url)  {
 
-        long begin = System.nanoTime();
-
-	    if(loadLocalFiles && !url.contains("://")) {
 		    try {
-			    createParser().source(new FileInputStream(url)).parse(this);
+                if (loadLocalFiles && !url.contains("://")) {
+                    createParser().source(new FileInputStream(url)).parse(this);
+                } else {
+                    String filename = downloadedPath + "/" + urlToFilename(url);
+                    createParser().source(new FileInputStream(filename)).parse(this);
+                }
 		    } catch(FileNotFoundException e) {
 			    throw new RuntimeException(e);
 		    }
-	    } else {
-		    createParser().source(url).parse(this);
-	    }
 
-        long end = System.nanoTime();
+    }
 
-        System.out.println("Downloading " + url + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
-        STATS_TOTAL_DOWNLOAD_TIME += (end - begin);
+    private String urlToFilename(String url) {
+        return url.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
     }
 
 
-    private boolean loadLocalFiles;
+    OwlTranslator(Map<String, Object> config, String downloadedPath, boolean loadLocalFiles, boolean noDates) {
 
-    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles, boolean noDates) {
+        this.loadLocalFiles = loadLocalFiles;
 
-	this.loadLocalFiles = loadLocalFiles;
+        this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();
 
@@ -79,28 +79,10 @@ public class OwlTranslator implements StreamRDF {
 
         languages.add("en");
 
-        String url = (String) config.get("ontology_purl");
 
-        if(url == null) {
-
-            Collection<Map<String,Object>> products =
-                (Collection<Map<String,Object>>) config.get("products");
-
-            for(Map<String,Object> product : products) {
-
-                String purl = (String) product.get("ontology_purl");
-
-                if(purl != null && purl.endsWith(".owl")) {
-                    url = purl;
-                    break;
-                }
-
-            }
-
-        }
-
+        String url = (String) config.get("url");
         System.out.println("load ontology from: " + url);
-        parseRDF(url);
+        loadPredownloadedRDF(url);
 
         // Before we evaluate imports, mark all the nodes so far as not imported
         for(String id : nodes.keySet()) {
@@ -116,7 +98,7 @@ public class OwlTranslator implements StreamRDF {
 		importUrls.remove(0);
 
 		System.out.println("import: " + importUrl);
-        parseRDF(importUrl);
+        loadPredownloadedRDF(importUrl);
 	}
 
         // Now the imports are done, mark everything else as imported
