@@ -3,6 +3,7 @@
 TEST_CONFIGS=$(find testcases | grep json)
 
 rm -rf testcases_output_api/*
+mkdir testcases_output_api
 
 IS_FIRST_RUN=1
 

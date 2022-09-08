@@ -3,6 +3,7 @@
 TEST_CONFIGS=$(find testcases | grep json)
 
 rm -rf testcases_output/*
+mkdir testcases_output
 
 for f in $TEST_CONFIGS
 do
