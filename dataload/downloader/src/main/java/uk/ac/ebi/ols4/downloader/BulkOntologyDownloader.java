@@ -1,5 +1,5 @@
 
-package uk.ac.ebi.owl2json.downloader;
+package uk.ac.ebi.ols4.downloader;
 
 import java.util.HashSet;
 import java.util.List;
@@ -10,11 +10,13 @@ public class BulkOntologyDownloader {
     static final int NUM_THREADS = 16;
 
     List<String> ontologyUrls;
+    Set<String> alreadyStarted;
     String downloadPath;
     boolean loadLocalFiles;
 
     public BulkOntologyDownloader(List<String> ontologyUrls, String downloadPath, boolean loadLocalFiles) {
         this.ontologyUrls = ontologyUrls;
+	this.alreadyStarted = new HashSet<>();
         this.downloadPath = downloadPath;
         this.loadLocalFiles = loadLocalFiles;
     }
@@ -25,10 +27,12 @@ public class BulkOntologyDownloader {
 
         while(ontologyUrls.size() > 0) {
 
-            while(threads.size() < NUM_THREADS) {
+            while(threads.size() < NUM_THREADS && ontologyUrls.size() > 0) {
 
                 String nextUrl = ontologyUrls.get(0);
                 ontologyUrls.remove(0);
+
+		alreadyStarted.add(nextUrl);
 
                 OntologyDownloaderThread t =
                     new OntologyDownloaderThread(this, nextUrl, downloadPath, loadLocalFiles);
@@ -47,7 +51,11 @@ public class BulkOntologyDownloader {
                     e.printStackTrace();
                 }
 
-                ontologyUrls.addAll(thread.getImports());
+		for(String url : thread.getImports()) {
+			if(!alreadyStarted.contains(url)) {
+				ontologyUrls.add(url);
+			}
+		}
             }
         }
 

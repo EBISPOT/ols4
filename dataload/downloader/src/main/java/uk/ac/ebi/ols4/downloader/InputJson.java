@@ -1,4 +1,4 @@
-package uk.ac.ebi.owl2json;
+package uk.ac.ebi.ols4.downloader;
 import java.util.List;
 import java.util.Map;
 

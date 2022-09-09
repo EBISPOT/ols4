@@ -1,17 +1,25 @@
 
-package uk.ac.ebi.owl2json.downloader;
+package uk.ac.ebi.ols4.downloader;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.TeeInputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFParser;
@@ -33,49 +41,37 @@ public class OntologyDownloaderThread extends Thread implements StreamRDF {
         this.ontologyUrl = ontologyUrl;
         this.downloadPath = downloadPath;
         this.loadLocalFiles = loadLocalFiles;
+	this.importUrls = new ArrayList<>();
     }
 
     public void run() {
 
+	if(!ontologyUrl.contains("://")) {
+		// Nothing to download, this is a local file already
+		return;
+	}
+
+	String path = downloadPath + "/" + urlToFilename(ontologyUrl);
+
+	System.out.println("Starting download for " + ontologyUrl + " to " + path);
+
         long begin = System.nanoTime();
 
-        InputStream inputStream = null;
+	try {
 
-	    if(!ontologyUrl.contains("://")) {
+		downloadURL(ontologyUrl, path);
 
-            // Nothing to do, this is a local file already
-            return;
+		// parse to look for imports only
+		createParser().source(new FileInputStream(path)).parse(this);
 
-	    } else {
-            try {
-                inputStream = new URL(ontologyUrl).openStream();
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-	    }
+	} catch (IOException e) {
 
-        if(inputStream != null) {
-
-            String path = downloadPath + "/" + urlToFilename(ontologyUrl);
-
-            try {
-                FileUtils.copyInputStreamToFile(inputStream, new File(path));
-
-                // parse to look for imports only
-                createParser().source(new FileInputStream(path)).parse(this);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+		e.printStackTrace();
+	}
 
         long end = System.nanoTime();
 
-        System.out.println("Downloading " + ontologyUrl + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
+        System.out.println("Downloading and parsing for imports " + ontologyUrl + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
     }
 
     private String urlToFilename(String url) {
@@ -132,5 +128,22 @@ public class OntologyDownloaderThread extends Thread implements StreamRDF {
         // TODO Auto-generated method stub
         
     }
+
+
+
+    private static void downloadURL(String url, String filename) throws FileNotFoundException, IOException {
+
+	HttpClient client = HttpClientBuilder.create().build();
+
+	HttpGet request = new HttpGet(url);
+	HttpResponse response = client.execute(request);
+	HttpEntity entity = response.getEntity();
+	if (entity != null) {
+		entity.writeTo(new FileOutputStream(filename));
+	}
+
+	
+    }
+
 
 }
