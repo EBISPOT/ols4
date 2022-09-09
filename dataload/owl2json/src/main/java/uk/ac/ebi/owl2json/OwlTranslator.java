@@ -35,6 +35,7 @@ public class OwlTranslator implements StreamRDF {
     public int numberOfIndividuals = 0;
 
 
+
     public static long STATS_TOTAL_DOWNLOAD_TIME = 0;
 
 
@@ -50,15 +51,23 @@ public class OwlTranslator implements StreamRDF {
 
         long begin = System.nanoTime();
 
-	    if(loadLocalFiles && !url.contains("://")) {
-		    try {
-			    createParser().source(new FileInputStream(url)).parse(this);
-		    } catch(FileNotFoundException e) {
-			    throw new RuntimeException(e);
-		    }
-	    } else {
-		    createParser().source(url).parse(this);
-	    }
+	try {
+		if (loadLocalFiles && !url.contains("://")) {
+			System.out.println("Using local file for " + url);
+			createParser().source(new FileInputStream(url)).parse(this);
+		} else {
+			if (downloadedPath != null) {
+				System.out.println("Using predownloaded file for " + url);
+				String existingDownload = downloadedPath + "/" + urlToFilename(url);
+				createParser().source(new FileInputStream(existingDownload)).parse(this);
+			} else {
+				System.out.println("Downloading (not predownloaded) " + url);
+				createParser().source(url).parse(this);
+			}
+		}
+	} catch (FileNotFoundException e) {
+		throw new RuntimeException(e);
+	}
 
         long end = System.nanoTime();
 
@@ -66,12 +75,20 @@ public class OwlTranslator implements StreamRDF {
         STATS_TOTAL_DOWNLOAD_TIME += (end - begin);
     }
 
+    private String urlToFilename(String url) {
+        return url.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+    }
+
 
     private boolean loadLocalFiles;
 
-    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles, boolean noDates) {
+    String downloadedPath;
+
+
+    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) {
 
 	this.loadLocalFiles = loadLocalFiles;
+	this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();
 
@@ -116,7 +133,7 @@ public class OwlTranslator implements StreamRDF {
 		importUrls.remove(0);
 
 		System.out.println("import: " + importUrl);
-        parseRDF(importUrl);
+		parseRDF(importUrl);
 	}
 
         // Now the imports are done, mark everything else as imported

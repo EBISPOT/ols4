@@ -8,6 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
+		<module>downloader</module>
 		<module>owl2json</module>
 		<module>json2flattened</module>
 		<module>json2neo</module>
@@ -15,4 +16,3 @@
     </modules>
 
 </project>
-

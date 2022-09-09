@@ -28,6 +28,10 @@ public class OWL2JSON {
         optConfigs.setRequired(true);
         options.addOption(optConfigs);
 
+        Option optDownloadedPath = new Option(null, "downloadedPath", true, "Optional path of predownloaded ontologies from downloader jar");
+        optDownloadedPath.setRequired(true);
+        options.addOption(optDownloadedPath);
+
         Option optMergeOutputWith = new Option(null, "mergeOutputWith", true, "JSON file to merge our output with. Any existing ontologies not indexed this time will be kept.");
         optMergeOutputWith.setRequired(false);
         options.addOption(optMergeOutputWith);
@@ -60,6 +64,8 @@ public class OWL2JSON {
 
         List<String> configFilePaths = Arrays.asList(cmd.getOptionValue("config").split(","));
         String outputFilePath = cmd.getOptionValue("output");
+
+	String downloadedPath = cmd.getOptionValue("downloadedPath");
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
         boolean bNoDates = cmd.hasOption("noDates");
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
@@ -131,7 +137,7 @@ public class OWL2JSON {
 
             try {
 
-                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates);
+                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
                 translator.write(writer);
 
                 loadedOntologyIds.add(ontologyId);
