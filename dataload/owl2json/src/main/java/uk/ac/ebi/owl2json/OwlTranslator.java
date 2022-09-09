@@ -164,8 +164,8 @@ public class OwlTranslator implements StreamRDF {
     }
 
 
-    static final Set<String> classTypes = new TreeSet<>(Set.of("entity", "term", "class"));
-    static final Set<String> propertyTypes = new TreeSet<>(Set.of("entity", "term", "property"));
+    static final Set<String> classTypes = new TreeSet<>(Set.of("entity", "class"));
+    static final Set<String> propertyTypes = new TreeSet<>(Set.of("entity", "property"));
     static final Set<String> individualTypes = new TreeSet<>(Set.of("entity", "individual"));
 
     public void write(JsonWriter writer) throws IOException {
@@ -427,18 +427,18 @@ public class OwlTranslator implements StreamRDF {
 
     private OwlNode getOrCreateNode(Node node) {
         String id = nodeIdFromJenaNode(node);
-        OwlNode term = nodes.get(id);
-        if (term != null) {
-            return term;
+        OwlNode entity = nodes.get(id);
+        if (entity != null) {
+            return entity;
         }
 
-        term = new OwlNode();
+        entity = new OwlNode();
 
         if(!node.isBlank())
-            term.uri = id;
+            entity.uri = id;
 
-        nodes.put(id, term);
-        return term;
+        nodes.put(id, entity);
+        return entity;
     }
 
     @Override

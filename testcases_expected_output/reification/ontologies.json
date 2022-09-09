@@ -20,8 +20,7 @@
           "uri": "http://example.com/reified-bnode#cell",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -35,8 +34,7 @@
           "uri": "http://example.com/reified-bnode#cell_part",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -63,8 +61,7 @@
           "uri": "http://example.com/reified-bnode#part_of",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",

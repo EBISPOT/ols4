@@ -219,7 +219,7 @@ public class JSON2Solr {
 
                         Map<String, Object> flattenedOntology = new TreeMap<>();
 
-                        // don't want to store a copy of all the terms in here too
+                        // don't want to store a copy of all the entities in here too
                         Map<String, Object> ontologyJsonObj = new TreeMap<>();
                         for(String k : ontology.keySet()) {
                             if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))

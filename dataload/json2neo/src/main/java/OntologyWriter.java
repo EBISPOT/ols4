@@ -50,18 +50,18 @@ public class OntologyWriter {
 
         writeOntology();
 
-        writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-                "OntologyEntity|OntologyTerm|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
+                "OntologyEntity|OntologyClass", "class", ontologyScannerResult.allClassProperties);
 
         reader.nextName(); // properties
 
-        writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-                "OntologyEntity|OntologyTerm|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
+                "OntologyEntity|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
 
         reader.nextName(); // individuals
 
-        writeTerms(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-                "OntologyEntity|OntologyTerm|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
+                "OntologyEntity|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
 
         reader.endObject(); // ontology
 
@@ -110,9 +110,9 @@ public class OntologyWriter {
         printer.close(true);
     }
 
-    public void writeTerms(String outName, String ontologyId, String nodeLabels, String type, Set<String> allTermProperties) throws IOException {
+    public void writeEntities(String outName, String ontologyId, String nodeLabels, String type, Set<String> allEntityProperties) throws IOException {
 
-        List<String> properties = new ArrayList<String>(allTermProperties);
+        List<String> properties = new ArrayList<String>(allEntityProperties);
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
@@ -122,20 +122,20 @@ public class OntologyWriter {
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
 
-        reader.beginArray(); // terms
+        reader.beginArray(); // entities
 
         while(reader.peek() != JsonToken.END_ARRAY) {
 
-            Map<String, Object> term = gson.fromJson(reader, Map.class);
+            Map<String, Object> entity = gson.fromJson(reader, Map.class);
 
             String[] row = new String[csvHeader.size()];
             int n = 0;
 
-            row[n++] = ontologyId + "+" + type + "+" + (String) term.get("uri");
+            row[n++] = ontologyId + "+" + type + "+" + (String) entity.get("uri");
             row[n++] = nodeLabels;
 
             for (String column : properties) {
-                row[n++] = serializeValue(term, column);
+                row[n++] = serializeValue(entity, column);
             }
 
             printer.printRecord(row);
@@ -299,18 +299,18 @@ public class OntologyWriter {
         return headers;
     }
 
-    private String serializeValue(Map<String,Object> termProperties, String column) throws IOException {
+    private String serializeValue(Map<String,Object> entityProperties, String column) throws IOException {
 
         if(column.indexOf('+') != -1) {
             String lang = column.substring(0, column.indexOf('+'));
             String predicate = column.substring(column.indexOf('+')+1);
 
-            return valueToCsv(getLocalizedValue(termProperties, predicate, lang));
+            return valueToCsv(getLocalizedValue(entityProperties, predicate, lang));
         }
 
-        Object value = termProperties.get(column);
+        Object value = entityProperties.get(column);
 
-        String uri = (String)termProperties.get("uri");
+        String uri = (String)entityProperties.get("uri");
 
         // BNodes subjects don't get edges in the graph, so only write if there
         // is a URI

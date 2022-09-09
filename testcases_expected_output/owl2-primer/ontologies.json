@@ -41,8 +41,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -112,8 +111,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -128,8 +126,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -143,8 +140,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -180,8 +176,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -196,8 +191,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -232,8 +226,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -248,8 +241,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -263,8 +255,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -300,8 +291,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -317,8 +307,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -332,8 +321,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -350,8 +338,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -365,8 +352,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -401,8 +387,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -418,8 +403,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -433,8 +417,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -451,8 +434,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -488,8 +470,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -505,8 +486,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -520,8 +500,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -538,8 +517,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -603,8 +581,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -620,8 +597,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -635,8 +611,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -653,8 +628,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -816,8 +790,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -833,8 +806,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
@@ -889,8 +861,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -912,8 +883,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -927,8 +897,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -963,8 +932,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -978,8 +946,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -993,8 +960,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1033,8 +999,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1048,8 +1013,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1063,8 +1027,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1103,8 +1066,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1130,8 +1092,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1145,8 +1106,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1181,8 +1141,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1204,8 +1163,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1219,8 +1177,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1255,8 +1212,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1275,8 +1231,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
@@ -1291,8 +1246,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
@@ -1359,8 +1313,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1375,8 +1328,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1440,8 +1392,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1463,8 +1414,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1478,8 +1428,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1514,8 +1463,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1535,8 +1483,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1552,8 +1499,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1587,8 +1533,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1608,8 +1553,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1625,8 +1569,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1660,8 +1603,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1686,8 +1628,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1721,8 +1662,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1738,8 +1678,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1810,8 +1749,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1827,8 +1765,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1899,8 +1836,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1916,8 +1852,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -1988,8 +1923,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -2005,8 +1939,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2075,8 +2008,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -2164,8 +2096,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2180,8 +2111,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2215,8 +2145,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -2230,8 +2159,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -2256,8 +2184,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2292,8 +2219,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2331,8 +2257,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2370,8 +2295,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2409,8 +2333,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2425,8 +2348,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2461,8 +2383,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2500,8 +2421,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2539,8 +2459,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2578,8 +2497,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2617,8 +2535,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -2656,8 +2573,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2675,8 +2591,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2711,8 +2626,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",

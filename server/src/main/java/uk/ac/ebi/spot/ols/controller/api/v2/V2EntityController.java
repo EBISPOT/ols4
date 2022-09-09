@@ -46,12 +46,12 @@ public class V2EntityController implements
 
     @Override
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
-        resource.add(ControllerLinkBuilder.linkTo(V2EntityController.class).withRel("terms"));
+        resource.add(ControllerLinkBuilder.linkTo(V2EntityController.class).withRel("entities"));
         return resource;
     }
 
     @RequestMapping(path = "/entities", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<PagedResources<V2Entity>> getTerms(
+    public HttpEntity<PagedResources<V2Entity>> getEntities(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -82,7 +82,7 @@ public class V2EntityController implements
     }
 
     @RequestMapping(path = "/ontologies/{onto}/entities/{entity}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<Resource<V2Entity>> getTerm(
+    public HttpEntity<Resource<V2Entity>> getEntity(
             @PathVariable("onto") String ontologyId,
             @PathVariable("entity") String uri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang

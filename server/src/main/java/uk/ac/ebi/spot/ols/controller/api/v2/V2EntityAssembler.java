@@ -23,7 +23,7 @@ public class V2EntityAssembler implements ResourceAssembler<V2Entity, Resource<V
         try {
             String id = UriUtils.encode(entity.get("uri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
-                    ControllerLinkBuilder.methodOn(V2EntityController.class).getTerm(entity.get("ontologyId"), id, entity.get("lang")));
+                    ControllerLinkBuilder.methodOn(V2EntityController.class).getEntity(entity.get("ontologyId"), id, entity.get("lang")));
 
             resource.add(lb.withSelfRel());
 
