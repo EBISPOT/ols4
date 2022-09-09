@@ -25,7 +25,8 @@ public class V2OntologyAssembler implements ResourceAssembler<V2Ontology, Resour
 
         resource.add(lb.withSelfRel());
 
-        resource.add(lb.slash("terms").withRel("terms"));
+        resource.add(lb.slash("entities").withRel("entities"));
+        resource.add(lb.slash("classes").withRel("classes"));
         resource.add(lb.slash("properties").withRel("properties"));
         resource.add(lb.slash("individuals").withRel("individuals"));
         return resource;

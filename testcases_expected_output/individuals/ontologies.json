@@ -21,8 +21,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -44,8 +43,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -61,8 +59,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",

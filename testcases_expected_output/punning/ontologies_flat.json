@@ -18,7 +18,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"Quantity\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"Quantity\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -27,13 +27,12 @@
           "shortForm": "Quantity",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#NamedIndividual\"],\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"ThermodynamicTemperature\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#NamedIndividual\"],\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"ThermodynamicTemperature\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature\"}",
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -47,15 +46,14 @@
           "shortForm": "ThermodynamicTemperature",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"commonlyHasUnit\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"punning-class-individual\",\"propertyLabels\":{},\"shortForm\":\"commonlyHasUnit\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
@@ -65,8 +63,7 @@
           "shortForm": "commonlyHasUnit",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit"
         }

@@ -38,7 +38,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-class\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/class#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-class\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/class#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -47,8 +47,7 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person"
         }
@@ -109,7 +108,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
@@ -119,13 +118,12 @@
           "shortForm": "Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -134,13 +132,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
@@ -150,8 +147,7 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
         }
@@ -177,7 +173,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Human\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Human\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
@@ -187,13 +183,12 @@
           "shortForm": "Human",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -202,8 +197,7 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person"
         }
@@ -229,7 +223,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
@@ -239,13 +233,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -254,13 +247,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-disjointClasses\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
@@ -270,8 +262,7 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman"
         }
@@ -297,7 +288,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
@@ -308,13 +299,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -323,13 +313,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
@@ -339,15 +328,14 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -356,13 +344,12 @@
           "shortForm": "hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subObjectPropertyOf\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
@@ -372,8 +359,7 @@
           "shortForm": "hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife"
         }
@@ -398,7 +384,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
@@ -409,13 +395,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -424,13 +409,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
@@ -440,15 +424,14 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-domain-range-restriction\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
@@ -459,8 +442,7 @@
           "shortForm": "hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife"
         }
@@ -485,7 +467,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
@@ -496,13 +478,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -511,13 +492,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
@@ -527,15 +507,14 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-assertionProperty\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -544,8 +523,7 @@
           "shortForm": "hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife"
         }
@@ -600,7 +578,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"http://www.w3.org/2002/07/owl#disjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
@@ -611,13 +589,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\"}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\"}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -626,13 +603,12 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person\",\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
@@ -642,15 +618,14 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-negativePropertyAssertion\",\"propertyLabels\":{},\"shortForm\":\"hasWife\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -659,8 +634,7 @@
           "shortForm": "hasWife",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife"
         }
@@ -813,7 +787,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -822,15 +796,14 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.w3.org/2001/XMLSchema#integer\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.w3.org/2001/XMLSchema#integer\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
@@ -841,8 +814,7 @@
           "shortForm": "hasAge",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge"
         }
@@ -883,7 +855,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOfOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOfOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": [],
@@ -893,13 +865,12 @@
           "shortForm": "Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -908,13 +879,12 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -923,8 +893,7 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
         }
@@ -950,7 +919,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -959,13 +928,12 @@
           "shortForm": "Father",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -974,13 +942,12 @@
           "shortForm": "Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#disjointUnionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\",\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#disjointUnionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father\",\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-disjointUnionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#disjointUnionOf": [
@@ -993,8 +960,7 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
         }
@@ -1020,7 +986,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1029,13 +995,12 @@
           "shortForm": "Father",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1044,13 +1009,12 @@
           "shortForm": "Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#unionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\",\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#unionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\",\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#unionOf": [
@@ -1063,8 +1027,7 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent"
         }
@@ -1090,7 +1053,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#complementOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\",\"propertyLabels\":{}}],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"ChildlessPerson\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#complementOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\",\"propertyLabels\":{}}],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"ChildlessPerson\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": [],
@@ -1100,13 +1063,12 @@
           "shortForm": "ChildlessPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1115,13 +1077,12 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf-complementOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1130,8 +1091,7 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
         }
@@ -1157,7 +1117,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\",\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Grandfather\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\",\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Grandfather\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": [],
@@ -1167,13 +1127,12 @@
           "shortForm": "Grandfather",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Man\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1182,13 +1141,12 @@
           "shortForm": "Man",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subClassOf-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1197,8 +1155,7 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
         }
@@ -1224,7 +1181,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#hasKey\":[\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#hasKey\":[\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#hasKey": [
@@ -1236,15 +1193,14 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"hasSSN\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"hasSSN\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person",
@@ -1254,13 +1210,12 @@
           "shortForm": "hasSSN",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#AnnotationProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"hasSSN\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#AnnotationProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-dataProperty-hasKey\",\"propertyLabels\":{},\"shortForm\":\"hasSSN\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": "false",
@@ -1269,8 +1224,7 @@
           "shortForm": "hasSSN",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN"
         }
@@ -1328,7 +1282,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#equivalentProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentObjectProperty\",\"propertyLabels\":{},\"shortForm\":\"hasLifePartner\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#equivalentProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentObjectProperty\",\"propertyLabels\":{},\"shortForm\":\"hasLifePartner\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#equivalentProperty": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
@@ -1338,13 +1292,12 @@
           "shortForm": "hasLifePartner",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentObjectProperty\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentObjectProperty\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1353,8 +1306,7 @@
           "shortForm": "hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse"
         }
@@ -1409,7 +1361,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": [],
@@ -1419,13 +1371,12 @@
           "shortForm": "Mother",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1434,13 +1385,12 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1449,8 +1399,7 @@
           "shortForm": "Woman",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
         }
@@ -1476,7 +1425,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person",
@@ -1486,13 +1435,12 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1501,15 +1449,14 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-someValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1518,8 +1465,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild"
         }
@@ -1544,7 +1490,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#allValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"HappyPerson\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#allValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"HappyPerson\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson",
@@ -1554,13 +1500,12 @@
           "shortForm": "HappyPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1569,15 +1514,14 @@
           "shortForm": "Person",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-allValuesFrom\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1586,8 +1530,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild"
         }
@@ -1612,7 +1555,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasSelf\":{\"datatype\":\"http://www.w3.org/2001/XMLSchema#boolean\",\"value\":\"true\"},\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"NarcisticPerson\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasSelf\":{\"datatype\":\"http://www.w3.org/2001/XMLSchema#boolean\",\"value\":\"true\"},\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"NarcisticPerson\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1621,15 +1564,14 @@
           "shortForm": "NarcisticPerson",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"loves\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"loves\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1638,8 +1580,7 @@
           "shortForm": "loves",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves"
         }
@@ -1664,7 +1605,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-maxQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-maxQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1673,15 +1614,14 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-maxQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-maxQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1690,8 +1630,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild"
         }
@@ -1733,7 +1672,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-minQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-minQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1742,15 +1681,14 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-minQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-minQualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1759,8 +1697,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild"
         }
@@ -1802,7 +1739,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-qualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-qualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1811,15 +1748,14 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-qualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-qualifiedCardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1828,8 +1764,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild"
         }
@@ -1871,7 +1806,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-cardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-cardinality\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -1880,15 +1815,14 @@
           "shortForm": "Parent",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-cardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-propertyRestriction-cardinality\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -1897,8 +1831,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild"
         }
@@ -1940,7 +1873,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#oneOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass-collection\",\"propertyLabels\":{},\"shortForm\":\"MyBirthdayGuests\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#oneOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary\"],\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalentClass-collection\",\"propertyLabels\":{},\"shortForm\":\"MyBirthdayGuests\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": [
@@ -1954,8 +1887,7 @@
           "shortForm": "MyBirthdayGuests",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
         }
@@ -2025,7 +1957,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
@@ -2035,13 +1967,12 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -2050,8 +1981,7 @@
           "shortForm": "hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent"
         }
@@ -2076,7 +2006,7 @@
       "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"Dead\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"Dead\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -2085,13 +2015,12 @@
           "shortForm": "Dead",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#allValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead\",\"http://www.w3.org/2002/07/owl#onProperty\":{\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild\",\"propertyLabels\":{}},\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"Orphan\",\"type\":[\"class\",\"entity\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#allValuesFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead\",\"http://www.w3.org/2002/07/owl#onProperty\":{\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild\",\"propertyLabels\":{}},\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"Orphan\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
@@ -2101,15 +2030,14 @@
           "shortForm": "Orphan",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan"
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverse-withoutAssignedName\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -2118,8 +2046,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild"
         }
@@ -2145,7 +2072,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#SymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-symmetric\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#SymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-symmetric\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2157,8 +2084,7 @@
           "shortForm": "hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse"
         }
@@ -2184,7 +2110,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#SymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-symmetric-1\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#SymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-symmetric-1\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2196,8 +2122,7 @@
           "shortForm": "hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse"
         }
@@ -2223,7 +2148,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#AsymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-asymmetric\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#AsymmetricProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-asymmetric\",\"propertyLabels\":{},\"shortForm\":\"hasChild\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2235,8 +2160,7 @@
           "shortForm": "hasChild",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild"
         }
@@ -2262,7 +2186,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#propertyDisjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-disjoint\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#propertyDisjointWith\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-disjoint\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#propertyDisjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
@@ -2272,13 +2196,12 @@
           "shortForm": "hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-disjoint\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-disjoint\",\"propertyLabels\":{},\"shortForm\":\"hasSpouse\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -2287,8 +2210,7 @@
           "shortForm": "hasSpouse",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse"
         }
@@ -2314,7 +2236,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#ReflexiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-reflexive\",\"propertyLabels\":{},\"shortForm\":\"hasRelative\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#ReflexiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-reflexive\",\"propertyLabels\":{},\"shortForm\":\"hasRelative\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2326,8 +2248,7 @@
           "shortForm": "hasRelative",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative"
         }
@@ -2353,7 +2274,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#IrreflexiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-irreflexive\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#IrreflexiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-irreflexive\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2365,8 +2286,7 @@
           "shortForm": "hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent"
         }
@@ -2392,7 +2312,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#FunctionalProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-functional\",\"propertyLabels\":{},\"shortForm\":\"hasHusband\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#FunctionalProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-functional\",\"propertyLabels\":{},\"shortForm\":\"hasHusband\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2404,8 +2324,7 @@
           "shortForm": "hasHusband",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband"
         }
@@ -2431,7 +2350,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#InverseFunctionalProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverseFunctional\",\"propertyLabels\":{},\"shortForm\":\"hasHusband\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#InverseFunctionalProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-inverseFunctional\",\"propertyLabels\":{},\"shortForm\":\"hasHusband\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2443,8 +2362,7 @@
           "shortForm": "hasHusband",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband"
         }
@@ -2470,7 +2388,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#TransitiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-transitive\",\"propertyLabels\":{},\"shortForm\":\"hasAncestor\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#TransitiveProperty\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-transitive\",\"propertyLabels\":{},\"shortForm\":\"hasAncestor\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
@@ -2482,8 +2400,7 @@
           "shortForm": "hasAncestor",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor"
         }
@@ -2509,7 +2426,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#propertyChainAxiom\":[\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\",\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-propertyChain\",\"propertyLabels\":{},\"shortForm\":\"hasGrandParent\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#propertyChainAxiom\":[\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\",\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\"],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-propertyChain\",\"propertyLabels\":{},\"shortForm\":\"hasGrandParent\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
@@ -2522,13 +2439,12 @@
           "shortForm": "hasGrandParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-propertyChain\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-objectProperty-propertyChain\",\"propertyLabels\":{},\"shortForm\":\"hasParent\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
@@ -2537,8 +2453,7 @@
           "shortForm": "hasParent",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent"
         }
@@ -2564,7 +2479,7 @@
       "classes": [],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#personAge\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatype-minmax\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"entity\",\"property\",\"term\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#personAge\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatype-minmax\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#personAge",
@@ -2574,8 +2489,7 @@
           "shortForm": "hasAge",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge"
         }

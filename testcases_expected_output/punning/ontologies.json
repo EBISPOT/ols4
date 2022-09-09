@@ -21,8 +21,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -36,8 +35,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
           "type": [
             "class",
-            "entity",
-            "term"
+            "entity"
           ],
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
@@ -58,8 +56,7 @@
           "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
           "type": [
             "entity",
-            "property",
-            "term"
+            "property"
           ],
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",

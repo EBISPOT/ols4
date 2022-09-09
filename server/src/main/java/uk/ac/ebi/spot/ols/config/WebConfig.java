@@ -36,17 +36,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     }
 
-    @Bean
-    MaintenanceInterceptor getMaintenanceInterceptor() {
-        return new MaintenanceInterceptor();
-    }
+//     @Bean
+//     MaintenanceInterceptor getMaintenanceInterceptor() {
+//         return new MaintenanceInterceptor();
+//     }
 
-    @Autowired
-    MaintenanceInterceptor interceptor;
-    @Override
-     public void addInterceptors(InterceptorRegistry registry) {
-         registry.addInterceptor(interceptor);
-     }
+//     @Autowired
+//     MaintenanceInterceptor interceptor;
+//     @Override
+//      public void addInterceptors(InterceptorRegistry registry) {
+//          registry.addInterceptor(interceptor);
+//      }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
