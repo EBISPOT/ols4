@@ -2,64 +2,77 @@
 package uk.ac.ebi.ols4.downloader;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
+import java.util.LinkedHashSet;
 
 public class BulkOntologyDownloader {
 
     static final int NUM_THREADS = 16;
 
-    List<String> ontologyUrls;
-    Set<String> alreadyStarted;
+    Set<String> urlsToDownload;
+    Set<String> urlsAlreadyProcessed;
     String downloadPath;
     boolean loadLocalFiles;
 
+    Set<OntologyDownloaderThread> threads = new HashSet<>();
+
     public BulkOntologyDownloader(List<String> ontologyUrls, String downloadPath, boolean loadLocalFiles) {
-        this.ontologyUrls = ontologyUrls;
-	this.alreadyStarted = new HashSet<>();
+        this.urlsToDownload = new LinkedHashSet<String>(ontologyUrls);
+        this.urlsAlreadyProcessed = new HashSet<>();
         this.downloadPath = downloadPath;
         this.loadLocalFiles = loadLocalFiles;
     }
 
     public void downloadAll() {
 
-        Set<OntologyDownloaderThread> threads = new HashSet<>();
+	while(urlsToDownload.size() > 0) {
 
-        while(ontologyUrls.size() > 0) {
+		List<Thread> threads = new ArrayList<>();
+		Set<String> imports = new LinkedHashSet<>();
 
-            while(threads.size() < NUM_THREADS && ontologyUrls.size() > 0) {
+		for(int i = 0; i < NUM_THREADS; ++ i) {
 
-                String nextUrl = ontologyUrls.get(0);
-                ontologyUrls.remove(0);
+			if(urlsToDownload.size() == 0) {
+				break;
+			}
 
-		alreadyStarted.add(nextUrl);
+			Iterator<String> it = urlsToDownload.iterator();
+			String nextUrl = it.next();
+			it.remove();
 
-                OntologyDownloaderThread t =
-                    new OntologyDownloaderThread(this, nextUrl, downloadPath, loadLocalFiles);
+			urlsAlreadyProcessed.add(nextUrl);
 
-                threads.add(t);
+			OntologyDownloaderThread downloader =
+				new OntologyDownloaderThread(this, nextUrl, importUrls -> {
+					imports.addAll(importUrls);
+				});
 
-                t.run();
-            }
+			Thread t = new Thread(downloader, "Downloader thread " + i);
+			threads.add(t);
 
-            for (OntologyDownloaderThread thread : threads) {
+			t.start();
+		}
 
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-		for(String url : thread.getImports()) {
-			if(!alreadyStarted.contains(url)) {
-				ontologyUrls.add(url);
+		for(Thread t : threads) {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-            }
-        }
+
+		for(String importUrl : imports) {
+			if(!urlsAlreadyProcessed.contains(importUrl)) {
+				urlsAlreadyProcessed.add(importUrl);
+				urlsToDownload.add(importUrl);
+			}
+		}
+	}
 
     }
 
-    
 }

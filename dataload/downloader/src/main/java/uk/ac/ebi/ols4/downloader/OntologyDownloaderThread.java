@@ -10,7 +10,12 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.TeeInputStream;
@@ -18,7 +23,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.Lang;
@@ -27,23 +31,23 @@ import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
-public class OntologyDownloaderThread extends Thread implements StreamRDF {
+public class OntologyDownloaderThread implements Runnable {
 
     BulkOntologyDownloader downloader;
     String ontologyUrl;
-    String downloadPath;
-    boolean loadLocalFiles;
-    List<String> importUrls;
+    Consumer<Collection<String>> consumeImports;
 
+    public OntologyDownloaderThread(BulkOntologyDownloader downloader, String ontologyUrl, Consumer<Collection<String>> consumeImports) {
 
-    public OntologyDownloaderThread(BulkOntologyDownloader downloader, String ontologyUrl, String downloadPath, boolean loadLocalFiles) {
+        super();
+
         this.downloader = downloader;
         this.ontologyUrl = ontologyUrl;
-        this.downloadPath = downloadPath;
-        this.loadLocalFiles = loadLocalFiles;
-	this.importUrls = new ArrayList<>();
+	this.consumeImports = consumeImports;
     }
 
+
+    @Override
     public void run() {
 
 	if(!ontologyUrl.contains("://")) {
@@ -51,27 +55,43 @@ public class OntologyDownloaderThread extends Thread implements StreamRDF {
 		return;
 	}
 
-	String path = downloadPath + "/" + urlToFilename(ontologyUrl);
+	String path = downloader.downloadPath + "/" + urlToFilename(ontologyUrl);
 
-	System.out.println("Starting download for " + ontologyUrl + " to " + path);
+	System.out.println(Thread.currentThread().getName() + " Starting download for " + ontologyUrl + " to " + path);
+
+	Set<String> importUrls = new LinkedHashSet<>();
 
         long begin = System.nanoTime();
 
-	try {
+        try {
 
-		downloadURL(ontologyUrl, path);
+            downloadURL(ontologyUrl, path);
 
-		// parse to look for imports only
-		createParser().source(new FileInputStream(path)).parse(this);
+            // parse to look for imports only
+            createParser().source(new FileInputStream(path)).parse(new StreamRDF() {
+                public void start() {}
+                public void quad(Quad quad) {}
+                public void base(String base) {}
+                public void prefix(String prefix, String iri) {}
+                public void finish() {}
+                public void triple(Triple triple) {
 
-	} catch (IOException e) {
+                    if (triple.getPredicate().getURI().equals("http://www.w3.org/2002/07/owl#imports")) {
+                        importUrls.add(triple.getObject().getURI());
+                    }
+                }
+            });
 
-		e.printStackTrace();
-	}
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
 
         long end = System.nanoTime();
 
-        System.out.println("Downloading and parsing for imports " + ontologyUrl + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
+        System.out.println(Thread.currentThread().getName() + " Downloading and parsing for imports " + ontologyUrl + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
+
+        consumeImports.accept(importUrls);
     }
 
     private String urlToFilename(String url) {
@@ -86,63 +106,16 @@ public class OntologyDownloaderThread extends Thread implements StreamRDF {
                 .checking(false);
     }
 
-
-    public List<String> getImports() {
-        return importUrls;
-    }
-
-    @Override
-    public void start() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void triple(Triple triple) {
-        
-        if (triple.getPredicate().getURI().equals("http://www.w3.org/2002/07/owl#imports")) {
-            importUrls.add(triple.getObject().getURI());
-        }
-    }
-
-    @Override
-    public void quad(Quad quad) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void base(String base) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void prefix(String prefix, String iri) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void finish() {
-        // TODO Auto-generated method stub
-        
-    }
-
-
-
     private static void downloadURL(String url, String filename) throws FileNotFoundException, IOException {
 
-	HttpClient client = HttpClientBuilder.create().build();
+        HttpClient client = HttpClientBuilder.create().build();
 
-	HttpGet request = new HttpGet(url);
-	HttpResponse response = client.execute(request);
-	HttpEntity entity = response.getEntity();
-	if (entity != null) {
-		entity.writeTo(new FileOutputStream(filename));
-	}
-
-	
+        HttpGet request = new HttpGet(url);
+        HttpResponse response = client.execute(request);
+        HttpEntity entity = response.getEntity();
+        if (entity != null) {
+            entity.writeTo(new FileOutputStream(filename));
+        }
     }
 
 

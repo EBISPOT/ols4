@@ -103,17 +103,24 @@ public class OwlTranslator implements StreamRDF {
             Collection<Map<String,Object>> products =
                 (Collection<Map<String,Object>>) config.get("products");
 
-            for(Map<String,Object> product : products) {
+            if(products != null) {
+                for(Map<String,Object> product : products) {
 
-                String purl = (String) product.get("ontology_purl");
+                    String purl = (String) product.get("ontology_purl");
 
-                if(purl != null && purl.endsWith(".owl")) {
-                    url = purl;
-                    break;
+                    if(purl != null && purl.endsWith(".owl")) {
+                        url = purl;
+                        break;
+                    }
+
                 }
-
             }
 
+        }
+
+        if(url == null) {
+            System.out.println("Could not determine URL for ontology " + (String)config.get("id"));
+            return;
         }
 
         System.out.println("load ontology from: " + url);

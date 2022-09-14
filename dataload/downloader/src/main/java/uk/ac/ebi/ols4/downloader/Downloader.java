@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -106,6 +107,8 @@ public class Downloader {
         }
 
 
+        Set<String> ontologyUrls = new LinkedHashSet<>();
+
         for(Map<String,Object> config : mergedConfigs.values()) {
 
             String url = (String) config.get("ontology_purl");
@@ -115,28 +118,26 @@ public class Downloader {
                 Collection<Map<String,Object>> products =
                     (Collection<Map<String,Object>>) config.get("products");
 
-                for(Map<String,Object> product : products) {
+                if(products != null) {
+                    for(Map<String,Object> product : products) {
 
-                    String purl = (String) product.get("ontology_purl");
+                        String purl = (String) product.get("ontology_purl");
 
-                    if(purl != null && purl.endsWith(".owl")) {
-                        url = purl;
-                        break;
+                        if(purl != null && purl.endsWith(".owl")) {
+                            url = purl;
+                            break;
+                        }
+
                     }
-
                 }
-
             }
 
-            config.put("url", url);
+            if(url != null)
+                ontologyUrls.add(url);
         }
 
-
-        List<String> ontologyUrls = mergedConfigs.values().stream().map(config -> {
-            return (String) config.get("url");
-        }).collect(Collectors.toList());
             
-        BulkOntologyDownloader downloader = new BulkOntologyDownloader(ontologyUrls, downloadPath, bLoadLocalFiles);
+        BulkOntologyDownloader downloader = new BulkOntologyDownloader(List.copyOf(ontologyUrls), downloadPath, bLoadLocalFiles);
 
         downloader.downloadAll();
 
