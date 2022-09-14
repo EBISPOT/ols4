@@ -29,7 +29,7 @@ public class OWL2JSON {
         options.addOption(optConfigs);
 
         Option optDownloadedPath = new Option(null, "downloadedPath", true, "Optional path of predownloaded ontologies from downloader jar");
-        optDownloadedPath.setRequired(true);
+        optDownloadedPath.setRequired(false);
         options.addOption(optDownloadedPath);
 
         Option optMergeOutputWith = new Option(null, "mergeOutputWith", true, "JSON file to merge our output with. Any existing ontologies not indexed this time will be kept.");
