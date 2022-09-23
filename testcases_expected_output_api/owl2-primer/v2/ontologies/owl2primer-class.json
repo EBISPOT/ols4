@@ -17,8 +17,11 @@
     "self" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/classes"
     },
     "properties" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/properties"

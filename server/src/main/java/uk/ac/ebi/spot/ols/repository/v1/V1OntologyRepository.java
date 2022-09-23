@@ -25,8 +25,8 @@ public class V1OntologyRepository {
         Validation.validateOntologyId(id);
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
-        query.addFilterQuery("type:ontology");
-        query.addFilterQuery("ontologyId:\"" + id + "\"");
+        query.addFilterQuery("str_type:ontology");
+        query.addFilterQuery("str_ontologyId:\"" + id + "\"");
 
         return new V1Ontology(solrQueryHelper.getOne(query), lang);
     }
@@ -36,7 +36,7 @@ public class V1OntologyRepository {
         Validation.validateLang(lang);
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
-        query.addFilterQuery("type:ontology");
+        query.addFilterQuery("str_type:ontology");
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(res -> new V1Ontology(res, lang));

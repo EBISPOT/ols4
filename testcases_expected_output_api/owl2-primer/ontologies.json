@@ -167,7 +167,7 @@
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-subClassOf",
+      "ontologyId" : "owl2primer-subclassof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -179,7 +179,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-subClassOf",
+        "id" : "owl2primer-subclassof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-subClassOf",
@@ -208,21 +208,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-equivalentClass",
+      "ontologyId" : "owl2primer-equivalentclass",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -234,7 +234,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-equivalentClass",
+        "id" : "owl2primer-equivalentclass",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-equivalentClass",
@@ -263,21 +263,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentClass?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentclass?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentClass/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentclass/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentClass/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentclass/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentClass/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentclass/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-disjointClasses",
+      "ontologyId" : "owl2primer-disjointclasses",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -289,7 +289,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-disjointClasses",
+        "id" : "owl2primer-disjointclasses",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-disjointClasses",
@@ -318,21 +318,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointClasses?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointclasses?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointClasses/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointclasses/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointClasses/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointclasses/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointClasses/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointclasses/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-subObjectPropertyOf",
+      "ontologyId" : "owl2primer-subobjectpropertyof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -344,7 +344,7 @@
       "numberOfProperties" : 2,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-subObjectPropertyOf",
+        "id" : "owl2primer-subobjectpropertyof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-subObjectPropertyOf",
@@ -373,16 +373,16 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subObjectPropertyOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subobjectpropertyof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subObjectPropertyOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subobjectpropertyof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subObjectPropertyOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subobjectpropertyof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subObjectPropertyOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subobjectpropertyof/individuals"
         }
       }
     }, {
@@ -442,7 +442,7 @@
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-objectProperty-assertionProperty",
+      "ontologyId" : "owl2primer-objectproperty-assertionproperty",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -454,7 +454,7 @@
       "numberOfProperties" : 1,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-objectProperty-assertionProperty",
+        "id" : "owl2primer-objectproperty-assertionproperty",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-objectProperty-assertionProperty",
@@ -483,21 +483,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-assertionProperty?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-assertionproperty?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-assertionProperty/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-assertionproperty/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-assertionProperty/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-assertionproperty/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-assertionProperty/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-assertionproperty/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-objectProperty-negativePropertyAssertion",
+      "ontologyId" : "owl2primer-objectproperty-negativepropertyassertion",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -509,7 +509,7 @@
       "numberOfProperties" : 1,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-objectProperty-negativePropertyAssertion",
+        "id" : "owl2primer-objectproperty-negativepropertyassertion",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-objectProperty-negativePropertyAssertion",
@@ -538,21 +538,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-negativePropertyAssertion?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-negativepropertyassertion?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-negativePropertyAssertion/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-negativepropertyassertion/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-negativePropertyAssertion/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectProperty-negativePropertyAssertion/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-namedIndividual-sameAs",
+      "ontologyId" : "owl2primer-namedindividual-sameas",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -564,7 +564,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-namedIndividual-sameAs",
+        "id" : "owl2primer-namedindividual-sameas",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-namedIndividual-sameAs",
@@ -593,21 +593,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-sameAs?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-sameas?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-sameAs/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-sameas/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-sameAs/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-sameas/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-sameAs/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-sameas/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-namedIndividual-differentFrom",
+      "ontologyId" : "owl2primer-namedindividual-differentfrom",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -619,7 +619,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-namedIndividual-differentFrom",
+        "id" : "owl2primer-namedindividual-differentfrom",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-namedIndividual-differentFrom",
@@ -648,16 +648,16 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-differentFrom?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-differentfrom?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-differentFrom/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-differentfrom/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-differentFrom/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-differentfrom/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedIndividual-differentFrom/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-namedindividual-differentfrom/individuals"
         }
       }
     }, {
@@ -717,7 +717,7 @@
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-intersectionOf",
+      "ontologyId" : "owl2primer-intersectionof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -729,7 +729,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-intersectionOf",
+        "id" : "owl2primer-intersectionof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-intersectionOf",
@@ -758,21 +758,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-intersectionof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-disjointUnionOf",
+      "ontologyId" : "owl2primer-disjointunionof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -784,7 +784,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-disjointUnionOf",
+        "id" : "owl2primer-disjointunionof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-disjointUnionOf",
@@ -813,21 +813,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointunionof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointunionof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointunionof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointUnionOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-disjointunionof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-unionOf",
+      "ontologyId" : "owl2primer-unionof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -839,7 +839,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-unionOf",
+        "id" : "owl2primer-unionof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-unionOf",
@@ -868,21 +868,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-unionof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-equivalent-intersectionOf-complementOf",
+      "ontologyId" : "owl2primer-equivalent-intersectionof-complementof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -894,7 +894,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-equivalent-intersectionOf-complementOf",
+        "id" : "owl2primer-equivalent-intersectionof-complementof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-equivalent-intersectionOf-complementOf",
@@ -923,21 +923,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionOf-complementOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionof-complementof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionOf-complementOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionof-complementof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionOf-complementOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionof-complementof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionOf-complementOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-subClassOf-intersectionOf",
+      "ontologyId" : "owl2primer-subclassof-intersectionof",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -949,7 +949,7 @@
       "numberOfProperties" : 0,
       "numberOfIndividuals" : 0,
       "config" : {
-        "id" : "owl2primer-subClassOf-intersectionOf",
+        "id" : "owl2primer-subclassof-intersectionof",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-subClassOf-intersectionOf",
@@ -978,21 +978,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf-intersectionOf?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof-intersectionof?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf-intersectionOf/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf-intersectionOf/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof-intersectionof/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subClassOf-intersectionOf/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-subclassof-intersectionof/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-dataProperty-hasKey",
+      "ontologyId" : "owl2primer-dataproperty-haskey",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -1004,7 +1004,7 @@
       "numberOfProperties" : 2,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-dataProperty-hasKey",
+        "id" : "owl2primer-dataproperty-haskey",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-dataProperty-hasKey",
@@ -1033,21 +1033,21 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataproperty-haskey?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataproperty-haskey/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataproperty-haskey/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataProperty-hasKey/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-dataproperty-haskey/individuals"
         }
       }
     }, {
       "lang" : "en",
-      "ontologyId" : "owl2primer-equivalentObjectProperty",
+      "ontologyId" : "owl2primer-equivalentobjectproperty",
       "loaded" : null,
       "updated" : null,
       "status" : "LOADED",
@@ -1059,7 +1059,7 @@
       "numberOfProperties" : 2,
       "numberOfIndividuals" : 2,
       "config" : {
-        "id" : "owl2primer-equivalentObjectProperty",
+        "id" : "owl2primer-equivalentobjectproperty",
         "versionIri" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
         "namespace" : null,
         "preferredPrefix" : "owl2primer-equivalentObjectProperty",
@@ -1088,16 +1088,16 @@
       "baseUris" : [ ],
       "_links" : {
         "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty?lang=en"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentobjectproperty?lang=en"
         },
         "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/terms"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentobjectproperty/terms"
         },
         "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/properties"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentobjectproperty/properties"
         },
         "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentObjectProperty/individuals"
+          "href" : "http://ols4-server:8080/api/ontologies/owl2primer-equivalentobjectproperty/individuals"
         }
       }
     } ]

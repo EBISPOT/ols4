@@ -38,7 +38,7 @@ public class V2IndividualRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:individual");
+        query.addFilterQuery("str_type:individual");
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Individual(result, lang));
@@ -55,8 +55,8 @@ public class V2IndividualRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:individual");
-        query.addFilterQuery("ontologyId:" + ontologyId);
+        query.addFilterQuery("str_type:individual");
+        query.addFilterQuery("str_ontologyId:" + ontologyId);
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Individual(result, lang));

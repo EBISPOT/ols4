@@ -5,7 +5,7 @@
   "numberOfEntities" : "2",
   "numberOfIndividuals" : "2",
   "numberOfProperties" : "0",
-  "ontologyId" : "owl2primer-namedIndividual-sameAs",
+  "ontologyId" : "owl2primer-namedindividual-sameas",
   "ontology_purl" : "./testcases/owl2-primer/namedIndividual-sameAs.owl",
   "preferredPrefix" : "owl2primer-namedIndividual-sameAs",
   "propertyLabels" : { },
@@ -15,16 +15,19 @@
   "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
   "_links" : {
     "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs?lang=en"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/classes"
     },
     "properties" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/properties"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/properties"
     },
     "individuals" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-sameAs/individuals"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/individuals"
     }
   }
 }

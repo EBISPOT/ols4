@@ -5,7 +5,7 @@
   "numberOfEntities" : "5",
   "numberOfIndividuals" : "2",
   "numberOfProperties" : "2",
-  "ontologyId" : "owl2primer-dataProperty-hasKey",
+  "ontologyId" : "owl2primer-dataproperty-haskey",
   "ontology_purl" : "./testcases/owl2-primer/dataProperty-hasKey.owl",
   "preferredPrefix" : "owl2primer-dataProperty-hasKey",
   "propertyLabels" : { },
@@ -15,16 +15,19 @@
   "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
   "_links" : {
     "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey?lang=en"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/classes"
     },
     "properties" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/properties"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/properties"
     },
     "individuals" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataProperty-hasKey/individuals"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/individuals"
     }
   }
 }

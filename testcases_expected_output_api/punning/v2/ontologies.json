@@ -19,8 +19,11 @@
         "self" : {
           "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual?lang=en"
         },
-        "terms" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/terms"
+        "entities" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/entities"
+        },
+        "classes" : {
+          "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/classes"
         },
         "properties" : {
           "href" : "http://ols4-server:8080/api/v2/ontologies/punning-class-individual/properties"

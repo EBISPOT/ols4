@@ -104,7 +104,7 @@ public class OWL2JSON {
 
             for(Map<String,Object> ontologyConfig : config.ontologies) {
 
-                String ontologyId = (String) ontologyConfig.get("id");
+                String ontologyId = ((String) ontologyConfig.get("id")).toLowerCase();
 
                 Map<String,Object> existingConfig = mergedConfigs.get(ontologyId);
 
@@ -132,7 +132,7 @@ public class OWL2JSON {
 
         for(var ontoConfig : mergedConfigs.values()) {
 
-            String ontologyId = (String)ontoConfig.get("id");
+            String ontologyId = ((String)ontoConfig.get("id")).toLowerCase();
             System.out.println("--- Loading ontology: " + ontologyId);
 
             try {
@@ -181,7 +181,7 @@ public class OWL2JSON {
                             throw new RuntimeException("mergeOutputWith does not look like owl2json output?");
                         }
 
-                        String ontologyId = scanReader.nextString();
+                        String ontologyId = scanReader.nextString().toLowerCase();
 
                         if(!loadedOntologyIds.contains(ontologyId)) {
 

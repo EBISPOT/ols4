@@ -39,7 +39,7 @@ public class V2PropertyRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:property");
+        query.addFilterQuery("str_type:property");
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
@@ -57,8 +57,8 @@ public class V2PropertyRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:property");
-        query.addFilterQuery("ontologyId:" + ontologyId);
+        query.addFilterQuery("str_type:property");
+        query.addFilterQuery("str_ontologyId:" + ontologyId);
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)

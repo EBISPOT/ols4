@@ -17,8 +17,11 @@
     "self" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/classes"
     },
     "properties" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/properties"

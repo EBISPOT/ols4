@@ -38,7 +38,7 @@ public class V2OntologyRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:ontology");
+        query.addFilterQuery("str_type:ontology");
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Ontology(result, lang));
@@ -50,8 +50,8 @@ public class V2OntologyRepository {
         Validation.validateLang(lang);
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
-        query.addFilterQuery("type:ontology");
-        query.addFilterQuery("ontologyId:\"" + ontologyId + "\"");
+        query.addFilterQuery("str_type:ontology");
+        query.addFilterQuery("str_ontologyId:\"" + ontologyId + "\"");
 
         return new V2Ontology(this.solrQueryHelper.getOne(query), lang);
     }

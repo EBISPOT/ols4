@@ -5,7 +5,7 @@
   "numberOfEntities" : "5",
   "numberOfIndividuals" : "0",
   "numberOfProperties" : "0",
-  "ontologyId" : "owl2primer-disjointClasses",
+  "ontologyId" : "owl2primer-disjointclasses",
   "ontology_purl" : "./testcases/owl2-primer/allDisjointClasses.owl",
   "preferredPrefix" : "owl2primer-disjointClasses",
   "propertyLabels" : { },
@@ -15,16 +15,19 @@
   "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
   "_links" : {
     "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointClasses?lang=en"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointClasses/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/classes"
     },
     "properties" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointClasses/properties"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/properties"
     },
     "individuals" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointClasses/individuals"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/individuals"
     }
   }
 }

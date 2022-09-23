@@ -35,7 +35,7 @@ public class V2EntityRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:entity");
+        query.addFilterQuery("str_type:entity");
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)
@@ -53,8 +53,8 @@ public class V2EntityRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:entity");
-        query.addFilterQuery("ontologyId:" + ontologyId);
+        query.addFilterQuery("str_type:entity");
+        query.addFilterQuery("str_ontologyId:" + ontologyId);
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return this.solrQueryHelper.searchSolrPaginated(query, pageable)

@@ -41,7 +41,7 @@ public class V2ClassRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:class");
+        query.addFilterQuery("str_type:class");
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
@@ -59,8 +59,8 @@ public class V2ClassRepository {
         }
 
         SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("type:class");
-        query.addFilterQuery("ontologyId:" + ontologyId);
+        query.addFilterQuery("str_type:class");
+        query.addFilterQuery("str_ontologyId:" + ontologyId);
         solrQueryHelper.addDynamicFilterProperties(query, properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)

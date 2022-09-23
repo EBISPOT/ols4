@@ -90,7 +90,7 @@ public class Downloader {
 
             for(Map<String,Object> ontologyConfig : config.ontologies) {
 
-                String ontologyId = (String) ontologyConfig.get("id");
+                String ontologyId = ((String) ontologyConfig.get("id")).toLowerCase();
 
                 Map<String,Object> existingConfig = mergedConfigs.get(ontologyId);
 

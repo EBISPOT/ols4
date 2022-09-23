@@ -197,7 +197,7 @@ public class OwlTranslator implements StreamRDF {
         writer.beginObject();
 
         writer.name("ontologyId");
-        writer.value((String) config.get("id"));
+        writer.value(((String) config.get("id")).toLowerCase());
 
         writer.name("uri");
         writer.value(ontologyNode.uri);
@@ -205,7 +205,9 @@ public class OwlTranslator implements StreamRDF {
         for(String configKey : config.keySet()) {
             Object configVal = config.get(configKey);
 
-            // we include this as ontologyId so it doesn't clash with downstream id fields in neo4j/solr
+            // we include this (lowercased) as "ontologyId" rather than "id",
+	    // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
+	    //
             if(configKey.equals("id"))
                 continue;
                 

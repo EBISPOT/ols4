@@ -5,7 +5,7 @@
   "numberOfEntities" : "2",
   "numberOfIndividuals" : "2",
   "numberOfProperties" : "0",
-  "ontologyId" : "owl2primer-namedIndividual-differentFrom",
+  "ontologyId" : "owl2primer-namedindividual-differentfrom",
   "ontology_purl" : "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
   "preferredPrefix" : "owl2primer-namedIndividual-differentFrom",
   "propertyLabels" : { },
@@ -15,16 +15,19 @@
   "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
   "_links" : {
     "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-differentFrom?lang=en"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-differentFrom/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/classes"
     },
     "properties" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-differentFrom/properties"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/properties"
     },
     "individuals" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedIndividual-differentFrom/individuals"
+      "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/individuals"
     }
   }
 }

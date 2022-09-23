@@ -16,8 +16,11 @@
     "self" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode?lang=en"
     },
-    "terms" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/terms"
+    "entities" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/entities"
+    },
+    "classes" : {
+      "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/classes"
     },
     "properties" : {
       "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/properties"

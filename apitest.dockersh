@@ -22,22 +22,22 @@ wait-for-url http://ols4-server:8080/api/v2/ontologies
 
 echo Calling endpoints...
 
+mkdir /mnt/out/ontologies
+mkdir /mnt/out/v2/ontologies
+
 echo /api/ontologies
 curl http://ols4-server:8080/api/ontologies | tee /mnt/out/ontologies.json
 
 echo /api/v2/ontologies
 curl http://ols4-server:8080/api/v2/ontologies | tee /mnt/out/v2/ontologies.json
 
-mkdir /mnt/out/ontologies
-mkdir /mnt/out/v2/ontologies
-
 for ontologyId in $(cat /mnt/out/v2/ontologies.json | jq -r ._embedded.ontologies[].ontologyId); do
 
     echo /api/ontologies/$ontologyId
-	curl http://ols4-server:8080/api/ontologies/$ontologyId | tee /mnt/out/ontologies/$ontologyId.json
+	curl "http://ols4-server:8080/api/ontologies/$ontologyId" | tee /mnt/out/ontologies/$ontologyId.json
 
     echo /api/v2/ontologies/$ontologyId
-	curl http://ols4-server:8080/api/v2/ontologies/$ontologyId | tee /mnt/out/v2/ontologies/$ontologyId.json
+	curl "http://ols4-server:8080/api/v2/ontologies/$ontologyId" | tee /mnt/out/v2/ontologies/$ontologyId.json
 
 	mkdir /mnt/out/ontologies/$ontologyId
 	mkdir /mnt/out/v2/ontologies/$ontologyId

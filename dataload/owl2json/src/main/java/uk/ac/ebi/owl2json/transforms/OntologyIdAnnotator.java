@@ -33,7 +33,7 @@ public class OntologyIdAnnotator {
 			c.properties.addProperty(
 				"ontologyId",
 					PropertyValueLiteral.fromString(
-						ontologyId
+						ontologyId.toLowerCase()
 					));
 		    }
 		}
