@@ -31,45 +31,51 @@ The `server` directory contains (1) a Spring Boot application which hosts the OL
 
 ## Running Solr and Neo4j using Docker
 
-Update the config in `docker_config.json` to your liking. Then:
+You will need a config file, which configures the ontologies to load into OLS. You can provide this to `docker compose` using the `OLS4_CONFIG` environment variable. For example:
+
+	export OLS4_CONFIG=./dataload/configs/efo.json
+
+Then, build and run OLS4:
 
     docker compose build --no-cache docker compose build --no-cache
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-neo4j ols4-solr
 
-This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server and frontend for development.
-
-For the API server, you can set the following environment variables to point it at your local Solr and Neo4j servers:
+This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server Spring Boot application located in `server` and frontend for development.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
 
     OLS_SOLR_HOST=http://localhost:8983
     OLS_NEO4J_HOST=bolt://localhost:7687
 
-
+The frontend is a React application in `server/frontend`. TODO instructions!
 
 ## Updating `testcases_expected_output`
 
 If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks like), the CI on this repo will fail.
 
-To fix this, you need to replace the `testcases_expected_output` folder with the new expected output. **You should do this in the same commit as your code/test changes because then we can track exactly what changed in the output.**
+To fix this, you need to replace the `testcases_expected_output` and `testcases_expected_output_api` folders with the new expected output. **You should do this in the same commit as your code/test changes because then we can track exactly what changed in the output.**
 
 First make sure all the JARs are up to date:
 
     mvn clean package
 
-Then run the script:
+Then run the test scripts. `./test_dataload.sh` (~1 minute) will test the dataload locally, updating `testcases_expected_output`. `./test_api.sh` (~15 mins) will test the entire OLS4 stack for each testcase using Docker compose. You need to have Docker and Docker compose installed.
 
-    ./test.sh
+    ./test_dataload.sh
+    ./test_api.sh
 
-Remove the existing expected output:
+Now remove the existing expected output:
 
     rm -rf testcases_expected_output
+    rm -rf testcases_expected_output_api
 
-Copy your new output to `testcases_expected_output`:
+Copy your new output to the respective directories:
 
     cp -r testcases_output testcases_expected_output
+    cp -r testcases_output_api testcases_expected_output_api
 
 You can now add it to your commit:
 
     git add -A testcases_expected_output
+    git add -A testcases_expected_output_api
 
 
 
