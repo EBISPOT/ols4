@@ -35,11 +35,11 @@ You will need a config file, which configures the ontologies to load into OLS. Y
 
 	export OLS4_CONFIG=./dataload/configs/efo.json
 
-Then, build and run OLS4:
+Then, build and run Solr and Neo4j:
 
-    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-neo4j ols4-solr
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j
 
-This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 7474 and 8983, respectively.  Now you can run the API server Spring Boot application located in `server` and frontend for development.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
+This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 8983 and 7474, respectively.  Now you can run the API server Spring Boot application located in `server` and frontend for development.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
 
     OLS_SOLR_HOST=http://localhost:8983
     OLS_NEO4J_HOST=bolt://localhost:7687
