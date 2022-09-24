@@ -40,7 +40,10 @@ for ontologyId in $(cat /mnt/out/v2/ontologies.json | jq -r ._embedded.ontologie
 	curl "http://ols4-server:8080/api/v2/ontologies/$ontologyId" | tee /mnt/out/v2/ontologies/$ontologyId.json
 
 	mkdir /mnt/out/ontologies/$ontologyId
+	touch /mnt/out/ontologies/$ontologyId/.gitkeep
+
 	mkdir /mnt/out/v2/ontologies/$ontologyId
+	touch /mnt/out/v2/ontologies/$ontologyId/.gitkeep
 
 done
 

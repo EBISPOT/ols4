@@ -16,6 +16,7 @@ do
     echo Test folder: $TEST_FOLDER
 
     mkdir ./testcases_output_api/$TEST_FOLDER
+    touch ./testcases_output_api/$TEST_FOLDER/.gitkeep
 
     export OLS4_CONFIG=$f
     export OLS4_APITEST_OUTDIR=$(pwd)/testcases_output_api/$TEST_FOLDER
