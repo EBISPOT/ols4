@@ -1,665 +1,1586 @@
-{
-  "_embedded" : {
-    "ontologies" : [ {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "0",
-      "numberOfEntities" : "0",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-minimal",
-      "ontology_purl" : "./testcases/owl2-primer/minimal.owl",
-      "preferredPrefix" : "owl2primer-minimal",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-minimal/individuals"
-        }
+[
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-class/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-class/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-class/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-class/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-class?lang=en"
       }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "1",
-      "numberOfEntities" : "1",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-class",
-      "ontology_purl" : "./testcases/owl2-primer/class.owl",
-      "preferredPrefix" : "owl2primer-class",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-class/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "0",
-      "numberOfEntities" : "1",
-      "numberOfIndividuals" : "1",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-individual",
-      "ontology_purl" : "./testcases/owl2-primer/namedIndividual.owl",
-      "preferredPrefix" : "owl2primer-individual",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-individual?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-individual/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-individual/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-individual/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-individual/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "3",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-subclassof",
-      "ontology_purl" : "./testcases/owl2-primer/subClassOf.owl",
-      "preferredPrefix" : "owl2primer-subClassOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "2",
-      "numberOfEntities" : "2",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-equivalentclass",
-      "ontology_purl" : "./testcases/owl2-primer/equivalentClass.owl",
-      "preferredPrefix" : "owl2primer-equivalentClass",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentclass?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentclass/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentclass/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentclass/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentclass/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "5",
-      "numberOfEntities" : "5",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-disjointclasses",
-      "ontology_purl" : "./testcases/owl2-primer/allDisjointClasses.owl",
-      "preferredPrefix" : "owl2primer-disjointClasses",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointclasses/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "5",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "2",
-      "ontologyId" : "owl2primer-subobjectpropertyof",
-      "ontology_purl" : "./testcases/owl2-primer/subObjectPropertyOf.owl",
-      "preferredPrefix" : "owl2primer-subObjectPropertyOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subobjectpropertyof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subobjectpropertyof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subobjectpropertyof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subobjectpropertyof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subobjectpropertyof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "4",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "1",
-      "ontologyId" : "owl2primer-domain-range-restriction",
-      "ontology_purl" : "./testcases/owl2-primer/domain-range-restriction.owl",
-      "preferredPrefix" : "owl2primer-domain-range-restriction",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-domain-range-restriction/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "6",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "1",
-      "ontologyId" : "owl2primer-objectproperty-assertionproperty",
-      "ontology_purl" : "./testcases/owl2-primer/objectProperty-assertionProperty.owl",
-      "preferredPrefix" : "owl2primer-objectProperty-assertionProperty",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-assertionproperty?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "6",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "1",
-      "ontologyId" : "owl2primer-objectproperty-negativepropertyassertion",
-      "ontology_purl" : "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
-      "preferredPrefix" : "owl2primer-objectProperty-negativePropertyAssertion",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "0",
-      "numberOfEntities" : "2",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-namedindividual-sameas",
-      "ontology_purl" : "./testcases/owl2-primer/namedIndividual-sameAs.owl",
-      "preferredPrefix" : "owl2primer-namedIndividual-sameAs",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-sameas/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "0",
-      "numberOfEntities" : "2",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-namedindividual-differentfrom",
-      "ontology_purl" : "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
-      "preferredPrefix" : "owl2primer-namedIndividual-differentFrom",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-namedindividual-differentfrom/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "1",
-      "numberOfEntities" : "3",
-      "numberOfIndividuals" : "1",
-      "numberOfProperties" : "1",
-      "ontologyId" : "owl2primer-datatypes",
-      "ontology_purl" : "./testcases/owl2-primer/datatypes.owl",
-      "preferredPrefix" : "owl2primer-datatypes",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-datatypes/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "4",
-      "numberOfEntities" : "4",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-intersectionof",
-      "ontology_purl" : "./testcases/owl2-primer/intersectionOf.owl",
-      "preferredPrefix" : "owl2primer-intersectionOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-intersectionof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-intersectionof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-intersectionof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-intersectionof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-intersectionof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "3",
-      "numberOfEntities" : "3",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-disjointunionof",
-      "ontology_purl" : "./testcases/owl2-primer/disjointUnionOf.owl",
-      "preferredPrefix" : "owl2primer-disjointUnionOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointunionof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointunionof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointunionof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointunionof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-disjointunionof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "5",
-      "numberOfEntities" : "5",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-unionof",
-      "ontology_purl" : "./testcases/owl2-primer/unionOf.owl",
-      "preferredPrefix" : "owl2primer-unionOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "5",
-      "numberOfEntities" : "5",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-equivalent-intersectionof-complementof",
-      "ontology_purl" : "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl",
-      "preferredPrefix" : "owl2primer-equivalent-intersectionOf-complementOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "4",
-      "numberOfEntities" : "4",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "0",
-      "ontologyId" : "owl2primer-subclassof-intersectionof",
-      "ontology_purl" : "./testcases/owl2-primer/subClassOf-intersectionOf.owl",
-      "preferredPrefix" : "owl2primer-subClassOf-intersectionOf",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof-intersectionof?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof-intersectionof/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof-intersectionof/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof-intersectionof/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-subclassof-intersectionof/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "1",
-      "numberOfEntities" : "5",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "2",
-      "ontologyId" : "owl2primer-dataproperty-haskey",
-      "ontology_purl" : "./testcases/owl2-primer/dataProperty-hasKey.owl",
-      "preferredPrefix" : "owl2primer-dataProperty-hasKey",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-dataproperty-haskey/individuals"
-        }
-      }
-    }, {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "0",
-      "numberOfEntities" : "4",
-      "numberOfIndividuals" : "2",
-      "numberOfProperties" : "2",
-      "ontologyId" : "owl2primer-equivalentobjectproperty",
-      "ontology_purl" : "./testcases/owl2-primer/equivalentObjectProperty.owl",
-      "preferredPrefix" : "owl2primer-equivalentObjectProperty",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "http://www.w3.org/2002/07/owl#versionIRI" : "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentobjectproperty?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentobjectproperty/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentobjectproperty/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentobjectproperty/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/owl2primer-equivalentobjectproperty/individuals"
-        }
-      }
-    } ]
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-class",
+    "ontology_purl": "./testcases/owl2-primer/class.owl",
+    "preferredPrefix": "owl2primer-class",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl"
   },
-  "_links" : {
-    "first" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies?page=0&size=20"
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-dataproperty-haskey/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-dataproperty-haskey/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-dataproperty-haskey/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-dataproperty-haskey/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-dataproperty-haskey?lang=en"
+      }
     },
-    "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies"
-    },
-    "next" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies?page=1&size=20"
-    },
-    "last" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies?page=2&size=20"
-    }
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-hasKey.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-dataproperty-haskey",
+    "ontology_purl": "./testcases/owl2-primer/dataProperty-hasKey.owl",
+    "preferredPrefix": "owl2primer-dataProperty-hasKey",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#"
   },
-  "page" : {
-    "size" : 20,
-    "totalElements" : 44,
-    "totalPages" : 3,
-    "number" : 0
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-enumeration/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-enumeration/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-enumeration/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-enumeration/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-enumeration?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-datatype-enumeration",
+    "ontology_purl": "./testcases/owl2-primer/datatype-enumeration.owl",
+    "preferredPrefix": "owl2primer-datatype-enumeration",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-exclusion/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-exclusion/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-exclusion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-exclusion/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-exclusion?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-datatype-exclusion",
+    "ontology_purl": "./testcases/owl2-primer/datatype-exclusion.owl",
+    "preferredPrefix": "owl2primer-datatype-exclusion",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-minmax/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-minmax/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-minmax/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-minmax/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatype-minmax?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-minmax.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-datatype-minmax",
+    "ontology_purl": "./testcases/owl2-primer/datatype-minmax.owl",
+    "preferredPrefix": "owl2primer-datatype-minmax",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatypes/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatypes/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatypes/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatypes/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-datatypes?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-datatypes",
+    "ontology_purl": "./testcases/owl2-primer/datatypes.owl",
+    "preferredPrefix": "owl2primer-datatypes",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointclasses/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointclasses/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointclasses/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointclasses/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointclasses?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "5",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-disjointclasses",
+    "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl",
+    "preferredPrefix": "owl2primer-disjointClasses",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointunionof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointunionof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointunionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointunionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-disjointunionof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-disjointunionof",
+    "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl",
+    "preferredPrefix": "owl2primer-disjointUnionOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-domain-range-restriction/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-domain-range-restriction/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-domain-range-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-domain-range-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-domain-range-restriction?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-domain-range-restriction",
+    "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl",
+    "preferredPrefix": "owl2primer-domain-range-restriction",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof-complementof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "5",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+    "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl",
+    "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-intersectionof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "4",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-equivalent-intersectionof",
+    "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf.owl",
+    "preferredPrefix": "owl2primer-equivalent-intersectionOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-allValuesFrom.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+    "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-allValuesFrom.owl",
+    "preferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-hasSelf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+    "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-hasSelf.owl",
+    "preferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-someValuesFrom.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+    "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-someValuesFrom.owl",
+    "preferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass-collection/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass-collection/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass-collection/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass-collection/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass-collection?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass-collection.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "3",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-equivalentclass-collection",
+    "ontology_purl": "./testcases/owl2-primer/equivalentClass-collection.owl",
+    "preferredPrefix": "owl2primer-equivalentClass-collection",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-equivalentclass",
+    "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl",
+    "preferredPrefix": "owl2primer-equivalentClass",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentobjectproperty/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentobjectproperty/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentobjectproperty/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentobjectproperty/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentobjectproperty?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-equivalentobjectproperty",
+    "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
+    "preferredPrefix": "owl2primer-equivalentObjectProperty",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-individual/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-individual/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-individual/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-individual/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-individual?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-individual",
+    "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl",
+    "preferredPrefix": "owl2primer-individual",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-intersectionof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-intersectionof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-intersectionof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "4",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-intersectionof",
+    "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl",
+    "preferredPrefix": "owl2primer-intersectionOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-minimal/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-minimal/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-minimal/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-minimal/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-minimal?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-minimal",
+    "ontology_purl": "./testcases/owl2-primer/minimal.owl",
+    "preferredPrefix": "owl2primer-minimal",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-differentfrom/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-differentfrom/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-differentfrom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-differentfrom/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-differentfrom?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-namedindividual-differentfrom",
+    "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
+    "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-sameas/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-sameas/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-sameas/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-sameas/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-namedindividual-sameas?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-sameAs.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-namedindividual-sameas",
+    "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl",
+    "preferredPrefix": "owl2primer-namedIndividual-sameAs",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-assertionproperty/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-assertionproperty?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-assertionProperty.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "6",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-assertionproperty",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl",
+    "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-asymmetric/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-asymmetric/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-asymmetric/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-asymmetric/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-asymmetric?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-asymmetric.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-asymmetric",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-asymmetric.owl",
+    "preferredPrefix": "owl2primer-objectProperty-asymmetric",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-disjoint/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-disjoint/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-disjoint/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-disjoint/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-disjoint?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-disjoint.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-objectproperty-disjoint",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-disjoint.owl",
+    "preferredPrefix": "owl2primer-objectProperty-disjoint",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-functional/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-functional/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-functional/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-functional/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-functional?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-functional.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-functional",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-functional.owl",
+    "preferredPrefix": "owl2primer-objectProperty-functional",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverse-withoutAssignedName.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse-withoutAssignedName.owl",
+    "preferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inverse?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverse.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-objectproperty-inverse",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse.owl",
+    "preferredPrefix": "owl2primer-objectProperty-inverse",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inversefunctional/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inversefunctional/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inversefunctional/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inversefunctional/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-inversefunctional?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverseFunctional.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-inversefunctional",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-inverseFunctional.owl",
+    "preferredPrefix": "owl2primer-objectProperty-inverseFunctional",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-irreflexive/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-irreflexive/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-irreflexive/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-irreflexive/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-irreflexive?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-irreflexive.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-irreflexive",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-irreflexive.owl",
+    "preferredPrefix": "owl2primer-objectProperty-irreflexive",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "6",
+    "numberOfIndividuals": "2",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
+    "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-propertychain/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-propertychain/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-propertychain/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-propertychain/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-propertychain?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-propertyChain.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-objectproperty-propertychain",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-propertyChain.owl",
+    "preferredPrefix": "owl2primer-objectProperty-propertyChain",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-reflexive/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-reflexive/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-reflexive/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-reflexive/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-reflexive?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-reflexive.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-reflexive",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-reflexive.owl",
+    "preferredPrefix": "owl2primer-objectProperty-reflexive",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric-1/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric-1/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric-1/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric-1/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric-1?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-symmetric-1.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-symmetric-1",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric-1.owl",
+    "preferredPrefix": "owl2primer-objectProperty-symmetric-1",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-symmetric?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-symmetric.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-symmetric",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric.owl",
+    "preferredPrefix": "owl2primer-objectProperty-symmetric",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-transitive/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-transitive/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-transitive/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-transitive/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-objectproperty-transitive?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-transitive.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "0",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-objectproperty-transitive",
+    "ontology_purl": "./testcases/owl2-primer/objectProperty-transitive.owl",
+    "preferredPrefix": "owl2primer-objectProperty-transitive",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-cardinality/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-cardinality/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-cardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-cardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-cardinality?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-cardinality.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-propertyrestriction-cardinality",
+    "ontology_purl": "./testcases/owl2-primer/propertyRestriction-cardinality.owl",
+    "preferredPrefix": "owl2primer-propertyRestriction-cardinality",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-maxQualifiedCardinality.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+    "ontology_purl": "./testcases/owl2-primer/propertyRestriction-maxQualifiedCardinality.owl",
+    "preferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-minQualifiedCardinality.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+    "ontology_purl": "./testcases/owl2-primer/propertyRestriction-minQualifiedCardinality.owl",
+    "preferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-qualifiedCardinality.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "1",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "1",
+    "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+    "ontology_purl": "./testcases/owl2-primer/propertyRestriction-qualifiedCardinality.owl",
+    "preferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof-intersectionof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof-intersectionof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof-intersectionof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "4",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-subclassof-intersectionof",
+    "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl",
+    "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subclassof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-subclassof",
+    "ontology_purl": "./testcases/owl2-primer/subClassOf.owl",
+    "preferredPrefix": "owl2primer-subClassOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subobjectpropertyof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subobjectpropertyof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subobjectpropertyof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subobjectpropertyof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-subobjectpropertyof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subObjectPropertyOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "3",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "2",
+    "ontologyId": "owl2primer-subobjectpropertyof",
+    "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl",
+    "preferredPrefix": "owl2primer-subObjectPropertyOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf"
+  },
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/owl2primer-unionof/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/owl2primer-unionof/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/owl2primer-unionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/owl2primer-unionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-unionof?lang=en"
+      }
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "5",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "owl2primer-unionof",
+    "ontology_purl": "./testcases/owl2-primer/unionOf.owl",
+    "preferredPrefix": "owl2primer-unionOf",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl"
   }
-}
+]

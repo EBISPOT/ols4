@@ -1,0 +1,81 @@
+Waiting for API to become available...
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+GET http://ols4-server:8080/api/ontologies
+Got 1 ontologies
+GET http://ols4-server:8080/api/v2/ontologies
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/individuals
+GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/entities
+GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes
+GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/properties
+GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/individuals
+In output but not expected: /ontologies/individuals-anonymous-types-with-inverse/individuals.json
+In output but not expected: /ontologies/individuals-anonymous-types-with-inverse/properties.json
+In output but not expected: /ontologies/individuals-anonymous-types-with-inverse/terms.json
+In output but not expected: /v2/ontologies/individuals-anonymous-types-with-inverse/classes.json
+In output but not expected: /v2/ontologies/individuals-anonymous-types-with-inverse/entities.json
+In output but not expected: /v2/ontologies/individuals-anonymous-types-with-inverse/individuals.json
+In output but not expected: /v2/ontologies/individuals-anonymous-types-with-inverse/properties.json
+In expected but not output: /ontologies/individuals-anonymous-types-with-inverse.json
+In expected but not output: /v2/ontologies/individuals-anonymous-types-with-inverse.json
+/mnt/out/ontologies.json differed from /mnt/compare/ontologies.json
+/mnt/out/v2/ontologies.json differed from /mnt/compare/v2/ontologies.json

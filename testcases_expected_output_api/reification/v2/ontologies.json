@@ -1,47 +1,37 @@
-{
-  "_embedded" : {
-    "ontologies" : [ {
-      "imported" : "false",
-      "lang" : "en",
-      "numberOfClasses" : "2",
-      "numberOfEntities" : "3",
-      "numberOfIndividuals" : "0",
-      "numberOfProperties" : "1",
-      "ontologyId" : "reified-bnode",
-      "ontology_purl" : "./testcases/reification/reified-bnode.owl",
-      "preferredPrefix" : "reified-bnode",
-      "propertyLabels" : { },
-      "type" : [ "ontology" ],
-      "uri" : "http://example.com/reified-bnode",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : "http://www.w3.org/2002/07/owl#Ontology",
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode?lang=en"
-        },
-        "entities" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/entities"
-        },
-        "classes" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/classes"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/v2/ontologies/reified-bnode/individuals"
-        }
+[
+  {
+    "_links": {
+      "classes": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/classes"
+      },
+      "entities": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/entities"
+      },
+      "individuals": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/properties"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/reified-bnode?lang=en"
       }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "http://ols4-server:8080/api/v2/ontologies"
-    }
-  },
-  "page" : {
-    "size" : 20,
-    "totalElements" : 1,
-    "totalPages" : 1,
-    "number" : 0
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": "false",
+    "lang": "en",
+    "loaded": "<loaded>",
+    "numberOfClasses": "2",
+    "numberOfEntities": "3",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "1",
+    "ontologyId": "reified-bnode",
+    "ontology_purl": "./testcases/reification/reified-bnode.owl",
+    "preferredPrefix": "reified-bnode",
+    "propertyLabels": {},
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://example.com/reified-bnode"
   }
-}
+]

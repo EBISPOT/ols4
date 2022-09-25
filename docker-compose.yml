@@ -48,11 +48,11 @@ services:
         - ols4-neo4j 
     run-api-tests:
       profiles: ["run-api-tests"]
-      image: ubuntu:20.04
+      build: ./apitester4
       volumes:
-        - ${OLS4_APITEST_OUTDIR:-./apitest}:/mnt/out:rw
-        - ./apitest.dockersh:/apitest.sh:ro
-      command: /apitest.sh
+        - ${OLS4_APITEST_OUTDIR:-./to_be_filled_by_script_outdir}:/mnt/out:rw
+        - ${OLS4_APITEST_COMPAREDIR:-./to_be_filled_by_script_comparedir}:/mnt/compare:rw
+      command: ["bash", "-c", "java -jar /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url http://ols4-server:8080 --outDir /mnt/out --compareDir /mnt/compare > /mnt/out/apitester4.log"]
       depends_on:
         - ols4-server
       links:

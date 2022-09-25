@@ -1,71 +1,44 @@
-{
-  "_embedded" : {
-    "ontologies" : [ {
-      "lang" : "en",
-      "ontologyId" : "reified-bnode",
-      "loaded" : null,
-      "updated" : null,
-      "status" : "LOADED",
-      "message" : "",
-      "version" : null,
-      "fileHash" : null,
-      "loadAttempts" : 0,
-      "numberOfTerms" : 2,
-      "numberOfProperties" : 1,
-      "numberOfIndividuals" : 0,
-      "config" : {
-        "id" : "reified-bnode",
-        "versionIri" : null,
-        "namespace" : null,
-        "preferredPrefix" : "reified-bnode",
-        "title" : null,
-        "description" : null,
-        "homepage" : null,
-        "version" : null,
-        "mailingList" : null,
-        "tracker" : null,
-        "logo" : null,
-        "creators" : [ ],
-        "annotations" : null,
-        "fileLocation" : null,
-        "oboSlims" : false,
-        "labelProperty" : null,
-        "definitionProperties" : [ ],
-        "synonymProperties" : [ ],
-        "hierarchicalProperties" : [ ],
-        "baseUris" : [ ],
-        "hiddenProperties" : [ ],
-        "preferredRootTerms" : [ ],
-        "isSkos" : false,
-        "allowDownload" : true,
-        "internalMetadataProperties" : { }
+[
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/reified-bnode/individuals"
       },
-      "baseUris" : [ ],
-      "_links" : {
-        "self" : {
-          "href" : "http://ols4-server:8080/api/ontologies/reified-bnode?lang=en"
-        },
-        "terms" : {
-          "href" : "http://ols4-server:8080/api/ontologies/reified-bnode/terms"
-        },
-        "properties" : {
-          "href" : "http://ols4-server:8080/api/ontologies/reified-bnode/properties"
-        },
-        "individuals" : {
-          "href" : "http://ols4-server:8080/api/ontologies/reified-bnode/individuals"
-        }
+      "properties": {
+        "href": "<base>/api/ontologies/reified-bnode/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/reified-bnode?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/reified-bnode/terms"
       }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "http://ols4-server:8080/api/ontologies"
-    }
-  },
-  "page" : {
-    "size" : 20,
-    "totalElements" : 1,
-    "totalPages" : 1,
-    "number" : 0
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": true,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "reified-bnode",
+      "internalMetadataProperties": {},
+      "isSkos": false,
+      "oboSlims": false,
+      "preferredPrefix": "reified-bnode",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "reified-bnode",
+    "status": "LOADED",
+    "updated": "<updated>"
   }
-}
+]
