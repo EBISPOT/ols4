@@ -31,7 +31,9 @@ The `server` directory contains (1) a Spring Boot application which hosts the OL
 
 ## Running Solr and Neo4j using Docker
 
-You will need a config file, which configures the ontologies to load into OLS. You can provide this to `docker compose` using the `OLS4_CONFIG` environment variable. For example:
+First install the latest version of Docker Desktop if you are on Mac or Windows. This now includes the `docker compose` command. If you are on Linux, make sure you have the `docker compose` plugin installed (`apt install docker.io docker-compose-plugin` on Ubuntu).
+
+You will need a config file, which configures the ontologies to load into OLS4. You can provide this to `docker compose` using the `OLS4_CONFIG` environment variable. For example:
 
 	export OLS4_CONFIG=./dataload/configs/efo.json
 
