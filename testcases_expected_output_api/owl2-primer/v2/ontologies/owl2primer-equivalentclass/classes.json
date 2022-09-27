@@ -1,0 +1,49 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Human/graph"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Human?lang=en"
+      }
+    },
+    "hasChildren": "false",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+    "imported": "false",
+    "isRoot": "true",
+    "lang": "en",
+    "ontologyId": "owl2primer-equivalentclass",
+    "propertyLabels": {},
+    "shortForm": "Human",
+    "type": [
+      "class",
+      "entity"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human"
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Person/graph"
+      },
+      "self": {
+        "href": "<base>/api/v2/ontologies/owl2primer-equivalentclass/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Person?lang=en"
+      }
+    },
+    "hasChildren": "false",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": "false",
+    "isRoot": "true",
+    "lang": "en",
+    "ontologyId": "owl2primer-equivalentclass",
+    "propertyLabels": {},
+    "shortForm": "Person",
+    "type": [
+      "class",
+      "entity"
+    ],
+    "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person"
+  }
+]
