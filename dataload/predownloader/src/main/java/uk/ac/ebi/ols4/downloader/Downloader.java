@@ -1,4 +1,4 @@
-package uk.ac.ebi.ols4.downloader;
+package uk.ac.ebi.ols4.predownloader;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

@@ -1,4 +1,4 @@
-package uk.ac.ebi.ols4.downloader;
+package uk.ac.ebi.ols4.predownloader;
 import java.util.List;
 import java.util.Map;
 
