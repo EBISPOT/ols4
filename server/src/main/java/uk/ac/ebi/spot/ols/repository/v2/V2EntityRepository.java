@@ -9,6 +9,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 
@@ -30,15 +31,13 @@ public class V2EntityRepository {
 
         Validation.validateLang(lang);
 
-        if(search != null && searchFields == null) {
-            searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
-        }
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "entity", true);
+        query.addDynamicFilterProperties(properties);
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:entity");
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
-
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Entity(result, lang));
     }
 
@@ -48,16 +47,14 @@ public class V2EntityRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        if(search != null && searchFields == null) {
-            searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
-        }
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "class", true);
+	query.addFilter("ontologyId", ontologyId, true);
+        query.addDynamicFilterProperties(properties);
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:entity");
-        query.addFilterQuery("str_ontologyId:" + ontologyId);
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
-
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Entity(result, lang));
     }
 
@@ -66,13 +63,13 @@ public class V2EntityRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        // TODO: change to query by ontologyid and uri separately instead of by id because we don't know the type to
-        // make an id string. there may be multiple results tho??
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "entity", true);
+	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("uri", uri, true);
 
-        throw new RuntimeException("not implemented rn");
-//        String id = ontologyId + "+" + uri;
-//
-//        return new V2Term(this.neo4jQueryHelper.getOne("OntologyTerm", "id", id), lang);
+        return new V2Entity(solrQueryHelper.getOne(query), lang);
 
     }
 

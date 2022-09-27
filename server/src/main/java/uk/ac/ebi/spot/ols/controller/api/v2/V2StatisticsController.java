@@ -51,7 +51,7 @@ public class V2StatisticsController {
         query.addFacetField("type");
         query.setRows(0);
 
-        QueryResponse qr = solrQueryHelper.runSolrQuery(query);
+        QueryResponse qr = solrQueryHelper.runSolrQuery(query, null);
 
         Map<String,Integer> counts = new HashMap<>();
 

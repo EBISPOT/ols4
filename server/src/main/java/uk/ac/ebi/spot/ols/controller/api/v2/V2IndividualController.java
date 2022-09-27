@@ -24,6 +24,7 @@ import uk.ac.ebi.spot.ols.repository.v2.V2IndividualRepository;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/api/v2")
@@ -57,7 +58,7 @@ public class V2IndividualController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Individual> document = individualRepository.find(pageable, lang, search, searchFields);
+        Page<V2Individual> document = individualRepository.find(pageable, lang, search, searchFields, Map.of());
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
@@ -72,7 +73,7 @@ public class V2IndividualController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Individual> document = individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields);
+        Page<V2Individual> document = individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, Map.of());
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }

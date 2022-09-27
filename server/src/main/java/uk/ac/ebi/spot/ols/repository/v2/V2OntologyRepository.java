@@ -12,11 +12,13 @@ import org.springframework.validation.annotation.Validated;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Map;
 
 @Component
 public class V2OntologyRepository {
@@ -29,7 +31,7 @@ public class V2OntologyRepository {
 
 
     public Page<V2Ontology> find(
-            Pageable pageable, String lang, String search, String searchFields) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -37,8 +39,11 @@ public class V2OntologyRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:ontology");
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "ontology", true);
+        query.addDynamicFilterProperties(properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Ontology(result, lang));
@@ -49,11 +54,12 @@ public class V2OntologyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, null, null);
-        query.addFilterQuery("str_type:ontology");
-        query.addFilterQuery("str_ontologyId:\"" + ontologyId + "\"");
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "ontology", true);
+	query.addFilter("ontologyId", ontologyId, true);
 
-        return new V2Ontology(this.solrQueryHelper.getOne(query), lang);
+        return new V2Ontology(solrQueryHelper.getOne(query), lang);
     }
 
 

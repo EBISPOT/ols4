@@ -12,11 +12,14 @@ import org.springframework.validation.annotation.Validated;
 import uk.ac.ebi.spot.ols.model.v2.V2Individual;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Component
 public class V2IndividualRepository {
@@ -29,7 +32,7 @@ public class V2IndividualRepository {
 
 
     public Page<V2Individual> find(
-            Pageable pageable, String lang, String search, String searchFields) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -37,15 +40,18 @@ public class V2IndividualRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:individual");
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "individual", true);
+        query.addDynamicFilterProperties(properties);
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Individual(result, lang));
     }
 
     public Page<V2Individual> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, Map<String,String> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -54,12 +60,16 @@ public class V2IndividualRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:individual");
-        query.addFilterQuery("str_ontologyId:" + ontologyId);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "individual", true);
+	query.addFilter("ontologyId", ontologyId, true);
+        query.addDynamicFilterProperties(properties);
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Individual(result, lang));
+
     }
 
     public V2Individual getByOntologyIdAndUri(String ontologyId, String uri, String lang) throws ResourceNotFoundException {
@@ -67,10 +77,13 @@ public class V2IndividualRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+individual+" + uri;
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "individual", true);
+	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("uri", uri, true);
 
-        return new V2Individual(this.neo4jQueryHelper.getOne("OntologyIndividual", "id", id), lang);
-
+        return new V2Individual(solrQueryHelper.getOne(query), lang);
     }
 
 
