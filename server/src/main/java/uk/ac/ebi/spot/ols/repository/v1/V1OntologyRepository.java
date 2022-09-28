@@ -33,7 +33,7 @@ public class V1OntologyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, true);
 	query.addFilter("type", "ontology", true);
-	query.addFilter("id", ontologyId, true);
+	query.addFilter("ontologyId", ontologyId, true);
 
         return new V1Ontology(solrQueryHelper.getOne(query), lang);
     }

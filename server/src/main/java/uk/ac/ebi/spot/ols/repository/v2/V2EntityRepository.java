@@ -50,7 +50,7 @@ public class V2EntityRepository {
         OlsSolrQuery query = new OlsSolrQuery();
 	query.setSearch(search, searchFields);
 	query.addFilter("lang", lang, true);
-	query.addFilter("type", "class", true);
+	query.addFilter("type", "entity", true);
 	query.addFilter("ontologyId", ontologyId, true);
         query.addDynamicFilterProperties(properties);
 

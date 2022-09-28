@@ -59,7 +59,7 @@ public class SolrQueryHelper {
         QueryResponse qr = runSolrQuery(query, null);
 
         if(qr.getResults().getNumFound() != 1) {
-            throw new RuntimeException("Expected exactly 1 result for solr getOne");
+            throw new RuntimeException("Expected exactly 1 result for solr getOne, but got " + qr.getResults().getNumFound());
         }
 
         return solrDocumentToOntologyEntity(qr.getResults().get(0));
