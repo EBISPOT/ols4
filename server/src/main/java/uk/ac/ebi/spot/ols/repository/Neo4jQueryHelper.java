@@ -6,10 +6,14 @@ import uk.ac.ebi.spot.ols.service.Neo4jClient;
 import static org.neo4j.driver.Values.parameters;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Component
@@ -18,32 +22,43 @@ public class Neo4jQueryHelper {
 	@Autowired
 	Neo4jClient neo4jClient;
 
-    public Page<OntologyEntity> getAll(String type, Pageable pageable) {
+    public Page<OntologyEntity> getAll(String type, Map<String,String> properties, Pageable pageable) {
+
+		String query = "MATCH (a:" + type + ")";
+
+		if(properties.size() > 0) {
+			query += " WHERE ";
+			boolean isFirst = true;
+			for(String property : properties.keySet()) {
+				if(isFirst)
+					isFirst = false;
+				else
+					query += " AND ";
+
+				// TODO escape value
+				query += "a." + property + " = \"" + properties.get(property) + "\"";
+			}
+		}
+	
+		String getQuery = query + " RETURN a";
+		String countQuery = query + " RETURN count(a)";
 
 		// TODO: can we just return _json ?
 		// seems to break the neo4j client to return a string
 		//
-		String query = "MATCH (a:" + type + ") RETURN a";
-		String countQuery = "MATCH (a:" + type + ") RETURN count(a)";
-
-		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type), pageable);
-    }
-
-
-	public Page<OntologyEntity> getAllInOntology(String ontologyId, String type, Pageable pageable) {
-
-		String query = "MATCH (a:" + type + ") WHERE a.ontology_id = $ontologyId RETURN a";
-		String countQuery = "MATCH (a:" + type + ") RETURN count(a)";
-
-		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "ontologyId", ontologyId), pageable);
+		return neo4jClient.queryPaginated(getQuery, "a", countQuery, parameters("type", type), pageable);
 	}
 
-	public OntologyEntity getOne(String type, String field, String value) {
+	public OntologyEntity getOne(String type, Map<String,String> properties) {
 
-	String query = "MATCH (a:" + type + ") WHERE a." + field + "= $val RETURN a";
+		Page<OntologyEntity> results = getAll(type, properties, new PageRequest(0, 2, Sort.DEFAULT_DIRECTION));
 
-	return neo4jClient.queryOne(query, "a", parameters("type", type, "val", value));
-    }
+		if(results.getTotalElements() != 1) {
+			throw new RuntimeException("expected exactly one result for neo4j getOne");
+		}
+
+		return results.getContent().iterator().next();
+	}
 
     public Page<OntologyEntity> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
 

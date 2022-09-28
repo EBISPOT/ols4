@@ -41,13 +41,13 @@ do
 	--exit-code-from run-api-tests \
 	run-api-tests 
 
-    cat $OLS4_APITEST_OUTDIR/apitester4.log
-
     if [[ "$?" != "0" ]]
     then
         EXIT_CODE=1
         echo Test $TEST_FOLDER returned a non-zero exit code, so the API tests will report failure
     fi
+
+    cat $OLS4_APITEST_OUTDIR/apitester4.log
 
     docker-compose down -t 120 -v
 

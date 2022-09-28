@@ -13,6 +13,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 
@@ -40,9 +41,11 @@ public class V2ClassRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:class");
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "class", true);
+        query.addDynamicFilterProperties(properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Class(result, lang));
@@ -58,10 +61,12 @@ public class V2ClassRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:class");
-        query.addFilterQuery("str_ontologyId:" + ontologyId);
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "class", true);
+	query.addFilter("ontologyId", ontologyId, true);
+        query.addDynamicFilterProperties(properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Class(result, lang));
@@ -72,10 +77,13 @@ public class V2ClassRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+class+" + uri;
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "class", true);
+	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("uri", uri, true);
 
-        return new V2Class(this.neo4jQueryHelper.getOne("OntologyClass", "id", id), lang);
-
+        return new V2Class(solrQueryHelper.getOne(query), lang);
     }
 
     public Page<V2Class> getChildrenByOntologyId(String ontologyId, Pageable pageable, String uri, String lang) {

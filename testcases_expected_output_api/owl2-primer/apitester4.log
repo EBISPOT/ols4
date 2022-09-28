@@ -26,20 +26,10 @@ GET http://ols4-server:8080/api/ontologies
 GET http://ols4-server:8080/api/ontologies
 GET http://ols4-server:8080/api/ontologies
 GET http://ols4-server:8080/api/ontologies
-GET http://ols4-server:8080/api/ontologies?page=1&size=20
-GET http://ols4-server:8080/api/ontologies?page=2&size=20
 GET http://ols4-server:8080/api/ontologies
-GET http://ols4-server:8080/api/ontologies?page=1&size=20
-GET http://ols4-server:8080/api/ontologies?page=2&size=20
 GET http://ols4-server:8080/api/ontologies
-GET http://ols4-server:8080/api/ontologies?page=1&size=20
-GET http://ols4-server:8080/api/ontologies?page=2&size=20
 GET http://ols4-server:8080/api/ontologies
-GET http://ols4-server:8080/api/ontologies?page=1&size=20
-GET http://ols4-server:8080/api/ontologies?page=2&size=20
 GET http://ols4-server:8080/api/ontologies
-GET http://ols4-server:8080/api/ontologies?page=1&size=20
-GET http://ols4-server:8080/api/ontologies?page=2&size=20
 GET http://ols4-server:8080/api/ontologies
 GET http://ols4-server:8080/api/ontologies?page=1&size=20
 GET http://ols4-server:8080/api/ontologies?page=2&size=20
@@ -439,353 +429,316 @@ GET http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/entities
 GET http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/classes
 GET http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/properties
 GET http://ols4-server:8080/api/v2/ontologies/owl2primer-unionof/individuals
-In output but not expected: /ontologies/owl2primer-class/individuals.json
-In output but not expected: /ontologies/owl2primer-class/properties.json
-In output but not expected: /ontologies/owl2primer-class/terms.json
-In output but not expected: /ontologies/owl2primer-dataproperty-haskey/individuals.json
-In output but not expected: /ontologies/owl2primer-dataproperty-haskey/properties.json
-In output but not expected: /ontologies/owl2primer-dataproperty-haskey/terms.json
-In output but not expected: /ontologies/owl2primer-datatype-enumeration/individuals.json
-In output but not expected: /ontologies/owl2primer-datatype-enumeration/properties.json
-In output but not expected: /ontologies/owl2primer-datatype-enumeration/terms.json
-In output but not expected: /ontologies/owl2primer-datatype-exclusion/individuals.json
-In output but not expected: /ontologies/owl2primer-datatype-exclusion/properties.json
-In output but not expected: /ontologies/owl2primer-datatype-exclusion/terms.json
-In output but not expected: /ontologies/owl2primer-datatype-minmax/individuals.json
-In output but not expected: /ontologies/owl2primer-datatype-minmax/properties.json
-In output but not expected: /ontologies/owl2primer-datatype-minmax/terms.json
-In output but not expected: /ontologies/owl2primer-datatypes/individuals.json
-In output but not expected: /ontologies/owl2primer-datatypes/properties.json
-In output but not expected: /ontologies/owl2primer-datatypes/terms.json
-In output but not expected: /ontologies/owl2primer-disjointclasses/individuals.json
-In output but not expected: /ontologies/owl2primer-disjointclasses/properties.json
-In output but not expected: /ontologies/owl2primer-disjointclasses/terms.json
-In output but not expected: /ontologies/owl2primer-disjointunionof/individuals.json
-In output but not expected: /ontologies/owl2primer-disjointunionof/properties.json
-In output but not expected: /ontologies/owl2primer-disjointunionof/terms.json
-In output but not expected: /ontologies/owl2primer-domain-range-restriction/individuals.json
-In output but not expected: /ontologies/owl2primer-domain-range-restriction/properties.json
-In output but not expected: /ontologies/owl2primer-domain-range-restriction/terms.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof/properties.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof/terms.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json
-In output but not expected: /ontologies/owl2primer-equivalent-intersectionof-complementof/terms.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/terms.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-hasself/terms.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json
-In output but not expected: /ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/terms.json
-In output but not expected: /ontologies/owl2primer-equivalentclass/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalentclass/properties.json
-In output but not expected: /ontologies/owl2primer-equivalentclass/terms.json
-In output but not expected: /ontologies/owl2primer-equivalentclass-collection/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalentclass-collection/properties.json
-In output but not expected: /ontologies/owl2primer-equivalentclass-collection/terms.json
-In output but not expected: /ontologies/owl2primer-equivalentobjectproperty/individuals.json
-In output but not expected: /ontologies/owl2primer-equivalentobjectproperty/properties.json
-In output but not expected: /ontologies/owl2primer-equivalentobjectproperty/terms.json
-In output but not expected: /ontologies/owl2primer-individual/individuals.json
-In output but not expected: /ontologies/owl2primer-individual/properties.json
-In output but not expected: /ontologies/owl2primer-individual/terms.json
-In output but not expected: /ontologies/owl2primer-intersectionof/individuals.json
-In output but not expected: /ontologies/owl2primer-intersectionof/properties.json
-In output but not expected: /ontologies/owl2primer-intersectionof/terms.json
-In output but not expected: /ontologies/owl2primer-minimal/individuals.json
-In output but not expected: /ontologies/owl2primer-minimal/properties.json
-In output but not expected: /ontologies/owl2primer-minimal/terms.json
-In output but not expected: /ontologies/owl2primer-namedindividual-differentfrom/individuals.json
-In output but not expected: /ontologies/owl2primer-namedindividual-differentfrom/properties.json
-In output but not expected: /ontologies/owl2primer-namedindividual-differentfrom/terms.json
-In output but not expected: /ontologies/owl2primer-namedindividual-sameas/individuals.json
-In output but not expected: /ontologies/owl2primer-namedindividual-sameas/properties.json
-In output but not expected: /ontologies/owl2primer-namedindividual-sameas/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-assertionproperty/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-assertionproperty/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-assertionproperty/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-asymmetric/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-asymmetric/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-asymmetric/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-disjoint/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-disjoint/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-disjoint/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-functional/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-functional/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-functional/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inverse-withoutassignedname/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inversefunctional/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inversefunctional/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-inversefunctional/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-irreflexive/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-irreflexive/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-irreflexive/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-negativepropertyassertion/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-propertychain/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-propertychain/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-propertychain/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-reflexive/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-reflexive/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-reflexive/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric-1/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric-1/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-symmetric-1/terms.json
-In output but not expected: /ontologies/owl2primer-objectproperty-transitive/individuals.json
-In output but not expected: /ontologies/owl2primer-objectproperty-transitive/properties.json
-In output but not expected: /ontologies/owl2primer-objectproperty-transitive/terms.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-cardinality/individuals.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-cardinality/properties.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-cardinality/terms.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/terms.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/terms.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json
-In output but not expected: /ontologies/owl2primer-propertyrestriction-qualifiedcardinality/terms.json
-In output but not expected: /ontologies/owl2primer-subclassof/individuals.json
-In output but not expected: /ontologies/owl2primer-subclassof/properties.json
-In output but not expected: /ontologies/owl2primer-subclassof/terms.json
-In output but not expected: /ontologies/owl2primer-subclassof-intersectionof/individuals.json
-In output but not expected: /ontologies/owl2primer-subclassof-intersectionof/properties.json
-In output but not expected: /ontologies/owl2primer-subclassof-intersectionof/terms.json
-In output but not expected: /ontologies/owl2primer-subobjectpropertyof/individuals.json
-In output but not expected: /ontologies/owl2primer-subobjectpropertyof/properties.json
-In output but not expected: /ontologies/owl2primer-subobjectpropertyof/terms.json
-In output but not expected: /ontologies/owl2primer-unionof/individuals.json
-In output but not expected: /ontologies/owl2primer-unionof/properties.json
-In output but not expected: /ontologies/owl2primer-unionof/terms.json
-In output but not expected: /v2/ontologies/owl2primer-class/classes.json
-In output but not expected: /v2/ontologies/owl2primer-class/entities.json
-In output but not expected: /v2/ontologies/owl2primer-class/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-class/properties.json
-In output but not expected: /v2/ontologies/owl2primer-dataproperty-haskey/classes.json
-In output but not expected: /v2/ontologies/owl2primer-dataproperty-haskey/entities.json
-In output but not expected: /v2/ontologies/owl2primer-dataproperty-haskey/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-dataproperty-haskey/properties.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-enumeration/classes.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-enumeration/entities.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-enumeration/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-enumeration/properties.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-exclusion/classes.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-exclusion/entities.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-exclusion/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-exclusion/properties.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-minmax/classes.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-minmax/entities.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-minmax/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-datatype-minmax/properties.json
-In output but not expected: /v2/ontologies/owl2primer-datatypes/classes.json
-In output but not expected: /v2/ontologies/owl2primer-datatypes/entities.json
-In output but not expected: /v2/ontologies/owl2primer-datatypes/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-datatypes/properties.json
-In output but not expected: /v2/ontologies/owl2primer-disjointclasses/classes.json
-In output but not expected: /v2/ontologies/owl2primer-disjointclasses/entities.json
-In output but not expected: /v2/ontologies/owl2primer-disjointclasses/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-disjointclasses/properties.json
-In output but not expected: /v2/ontologies/owl2primer-disjointunionof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-disjointunionof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-disjointunionof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-disjointunionof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-domain-range-restriction/classes.json
-In output but not expected: /v2/ontologies/owl2primer-domain-range-restriction/entities.json
-In output but not expected: /v2/ontologies/owl2primer-domain-range-restriction/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-domain-range-restriction/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof-complementof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof-complementof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass-collection/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass-collection/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass-collection/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentclass-collection/properties.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentobjectproperty/classes.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentobjectproperty/entities.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentobjectproperty/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-equivalentobjectproperty/properties.json
-In output but not expected: /v2/ontologies/owl2primer-individual/classes.json
-In output but not expected: /v2/ontologies/owl2primer-individual/entities.json
-In output but not expected: /v2/ontologies/owl2primer-individual/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-individual/properties.json
-In output but not expected: /v2/ontologies/owl2primer-intersectionof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-intersectionof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-intersectionof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-intersectionof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-minimal/classes.json
-In output but not expected: /v2/ontologies/owl2primer-minimal/entities.json
-In output but not expected: /v2/ontologies/owl2primer-minimal/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-minimal/properties.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-differentfrom/classes.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-differentfrom/entities.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-differentfrom/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-differentfrom/properties.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-sameas/classes.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-sameas/entities.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-sameas/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-namedindividual-sameas/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-assertionproperty/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-assertionproperty/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-assertionproperty/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-assertionproperty/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-asymmetric/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-asymmetric/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-asymmetric/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-asymmetric/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-disjoint/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-disjoint/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-disjoint/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-disjoint/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-functional/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-functional/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-functional/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-functional/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inversefunctional/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inversefunctional/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inversefunctional/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-inversefunctional/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-irreflexive/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-irreflexive/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-irreflexive/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-irreflexive/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-propertychain/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-propertychain/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-propertychain/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-propertychain/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-reflexive/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-reflexive/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-reflexive/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-reflexive/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric-1/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric-1/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric-1/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-symmetric-1/properties.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-transitive/classes.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-transitive/entities.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-transitive/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-objectproperty-transitive/properties.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-cardinality/classes.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-cardinality/entities.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-cardinality/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-cardinality/properties.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/classes.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/entities.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/classes.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/entities.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/classes.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/entities.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof-intersectionof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof-intersectionof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof-intersectionof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-subclassof-intersectionof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-subobjectpropertyof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-subobjectpropertyof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-subobjectpropertyof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-subobjectpropertyof/properties.json
-In output but not expected: /v2/ontologies/owl2primer-unionof/classes.json
-In output but not expected: /v2/ontologies/owl2primer-unionof/entities.json
-In output but not expected: /v2/ontologies/owl2primer-unionof/individuals.json
-In output but not expected: /v2/ontologies/owl2primer-unionof/properties.json
-In expected but not output: /ontologies/owl2primer-class.json
-In expected but not output: /ontologies/owl2primer-dataproperty-haskey.json
-In expected but not output: /ontologies/owl2primer-datatypes.json
-In expected but not output: /ontologies/owl2primer-disjointclasses.json
-In expected but not output: /ontologies/owl2primer-disjointunionof.json
-In expected but not output: /ontologies/owl2primer-domain-range-restriction.json
-In expected but not output: /ontologies/owl2primer-equivalent-intersectionof-complementof.json
-In expected but not output: /ontologies/owl2primer-equivalentclass.json
-In expected but not output: /ontologies/owl2primer-equivalentobjectproperty.json
-In expected but not output: /ontologies/owl2primer-individual.json
-In expected but not output: /ontologies/owl2primer-intersectionof.json
-In expected but not output: /ontologies/owl2primer-minimal.json
-In expected but not output: /ontologies/owl2primer-namedindividual-differentfrom.json
-In expected but not output: /ontologies/owl2primer-namedindividual-sameas.json
-In expected but not output: /ontologies/owl2primer-objectproperty-assertionproperty.json
-In expected but not output: /ontologies/owl2primer-objectproperty-negativepropertyassertion.json
-In expected but not output: /ontologies/owl2primer-subclassof-intersectionof.json
-In expected but not output: /ontologies/owl2primer-subclassof.json
-In expected but not output: /ontologies/owl2primer-subobjectpropertyof.json
-In expected but not output: /ontologies/owl2primer-unionof.json
-In expected but not output: /v2/ontologies/owl2primer-class.json
-In expected but not output: /v2/ontologies/owl2primer-dataproperty-haskey.json
-In expected but not output: /v2/ontologies/owl2primer-datatypes.json
-In expected but not output: /v2/ontologies/owl2primer-disjointclasses.json
-In expected but not output: /v2/ontologies/owl2primer-disjointunionof.json
-In expected but not output: /v2/ontologies/owl2primer-domain-range-restriction.json
-In expected but not output: /v2/ontologies/owl2primer-equivalent-intersectionof-complementof.json
-In expected but not output: /v2/ontologies/owl2primer-equivalentclass.json
-In expected but not output: /v2/ontologies/owl2primer-equivalentobjectproperty.json
-In expected but not output: /v2/ontologies/owl2primer-individual.json
-In expected but not output: /v2/ontologies/owl2primer-intersectionof.json
-In expected but not output: /v2/ontologies/owl2primer-minimal.json
-In expected but not output: /v2/ontologies/owl2primer-namedindividual-differentfrom.json
-In expected but not output: /v2/ontologies/owl2primer-namedindividual-sameas.json
-In expected but not output: /v2/ontologies/owl2primer-objectproperty-assertionproperty.json
-In expected but not output: /v2/ontologies/owl2primer-objectproperty-negativepropertyassertion.json
-In expected but not output: /v2/ontologies/owl2primer-subclassof-intersectionof.json
-In expected but not output: /v2/ontologies/owl2primer-subclassof.json
-In expected but not output: /v2/ontologies/owl2primer-subobjectpropertyof.json
-In expected but not output: /v2/ontologies/owl2primer-unionof.json
-/mnt/out/ontologies.json differed from /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies.json differed from /mnt/compare/v2/ontologies.json
+Ols4ApiTester.test() reported success
+/mnt/out/ontologies/owl2primer-class/individuals.json was equal to /mnt/compare/ontologies/owl2primer-class/individuals.json
+/mnt/out/ontologies/owl2primer-class/properties.json was equal to /mnt/compare/ontologies/owl2primer-class/properties.json
+/mnt/out/ontologies/owl2primer-class/terms.json was equal to /mnt/compare/ontologies/owl2primer-class/terms.json
+/mnt/out/ontologies/owl2primer-dataproperty-haskey/individuals.json was equal to /mnt/compare/ontologies/owl2primer-dataproperty-haskey/individuals.json
+/mnt/out/ontologies/owl2primer-dataproperty-haskey/properties.json was equal to /mnt/compare/ontologies/owl2primer-dataproperty-haskey/properties.json
+/mnt/out/ontologies/owl2primer-dataproperty-haskey/terms.json was equal to /mnt/compare/ontologies/owl2primer-dataproperty-haskey/terms.json
+/mnt/out/ontologies/owl2primer-datatype-enumeration/individuals.json was equal to /mnt/compare/ontologies/owl2primer-datatype-enumeration/individuals.json
+/mnt/out/ontologies/owl2primer-datatype-enumeration/properties.json was equal to /mnt/compare/ontologies/owl2primer-datatype-enumeration/properties.json
+/mnt/out/ontologies/owl2primer-datatype-enumeration/terms.json was equal to /mnt/compare/ontologies/owl2primer-datatype-enumeration/terms.json
+/mnt/out/ontologies/owl2primer-datatype-exclusion/individuals.json was equal to /mnt/compare/ontologies/owl2primer-datatype-exclusion/individuals.json
+/mnt/out/ontologies/owl2primer-datatype-exclusion/properties.json was equal to /mnt/compare/ontologies/owl2primer-datatype-exclusion/properties.json
+/mnt/out/ontologies/owl2primer-datatype-exclusion/terms.json was equal to /mnt/compare/ontologies/owl2primer-datatype-exclusion/terms.json
+/mnt/out/ontologies/owl2primer-datatype-minmax/individuals.json was equal to /mnt/compare/ontologies/owl2primer-datatype-minmax/individuals.json
+/mnt/out/ontologies/owl2primer-datatype-minmax/properties.json was equal to /mnt/compare/ontologies/owl2primer-datatype-minmax/properties.json
+/mnt/out/ontologies/owl2primer-datatype-minmax/terms.json was equal to /mnt/compare/ontologies/owl2primer-datatype-minmax/terms.json
+/mnt/out/ontologies/owl2primer-datatypes/individuals.json was equal to /mnt/compare/ontologies/owl2primer-datatypes/individuals.json
+/mnt/out/ontologies/owl2primer-datatypes/properties.json was equal to /mnt/compare/ontologies/owl2primer-datatypes/properties.json
+/mnt/out/ontologies/owl2primer-datatypes/terms.json was equal to /mnt/compare/ontologies/owl2primer-datatypes/terms.json
+/mnt/out/ontologies/owl2primer-disjointclasses/individuals.json was equal to /mnt/compare/ontologies/owl2primer-disjointclasses/individuals.json
+/mnt/out/ontologies/owl2primer-disjointclasses/properties.json was equal to /mnt/compare/ontologies/owl2primer-disjointclasses/properties.json
+/mnt/out/ontologies/owl2primer-disjointclasses/terms.json was equal to /mnt/compare/ontologies/owl2primer-disjointclasses/terms.json
+/mnt/out/ontologies/owl2primer-disjointunionof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-disjointunionof/individuals.json
+/mnt/out/ontologies/owl2primer-disjointunionof/properties.json was equal to /mnt/compare/ontologies/owl2primer-disjointunionof/properties.json
+/mnt/out/ontologies/owl2primer-disjointunionof/terms.json was equal to /mnt/compare/ontologies/owl2primer-disjointunionof/terms.json
+/mnt/out/ontologies/owl2primer-domain-range-restriction/individuals.json was equal to /mnt/compare/ontologies/owl2primer-domain-range-restriction/individuals.json
+/mnt/out/ontologies/owl2primer-domain-range-restriction/properties.json was equal to /mnt/compare/ontologies/owl2primer-domain-range-restriction/properties.json
+/mnt/out/ontologies/owl2primer-domain-range-restriction/terms.json was equal to /mnt/compare/ontologies/owl2primer-domain-range-restriction/terms.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof/individuals.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof/properties.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof/terms.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json
+/mnt/out/ontologies/owl2primer-equivalent-intersectionof-complementof/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-intersectionof-complementof/terms.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/terms.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-hasself/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-hasself/terms.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json
+/mnt/out/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/terms.json
+/mnt/out/ontologies/owl2primer-equivalentclass/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass/individuals.json
+/mnt/out/ontologies/owl2primer-equivalentclass/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass/properties.json
+/mnt/out/ontologies/owl2primer-equivalentclass/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass/terms.json
+/mnt/out/ontologies/owl2primer-equivalentclass-collection/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass-collection/individuals.json
+/mnt/out/ontologies/owl2primer-equivalentclass-collection/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass-collection/properties.json
+/mnt/out/ontologies/owl2primer-equivalentclass-collection/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalentclass-collection/terms.json
+/mnt/out/ontologies/owl2primer-equivalentobjectproperty/individuals.json was equal to /mnt/compare/ontologies/owl2primer-equivalentobjectproperty/individuals.json
+/mnt/out/ontologies/owl2primer-equivalentobjectproperty/properties.json was equal to /mnt/compare/ontologies/owl2primer-equivalentobjectproperty/properties.json
+/mnt/out/ontologies/owl2primer-equivalentobjectproperty/terms.json was equal to /mnt/compare/ontologies/owl2primer-equivalentobjectproperty/terms.json
+/mnt/out/ontologies/owl2primer-individual/individuals.json was equal to /mnt/compare/ontologies/owl2primer-individual/individuals.json
+/mnt/out/ontologies/owl2primer-individual/properties.json was equal to /mnt/compare/ontologies/owl2primer-individual/properties.json
+/mnt/out/ontologies/owl2primer-individual/terms.json was equal to /mnt/compare/ontologies/owl2primer-individual/terms.json
+/mnt/out/ontologies/owl2primer-intersectionof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-intersectionof/individuals.json
+/mnt/out/ontologies/owl2primer-intersectionof/properties.json was equal to /mnt/compare/ontologies/owl2primer-intersectionof/properties.json
+/mnt/out/ontologies/owl2primer-intersectionof/terms.json was equal to /mnt/compare/ontologies/owl2primer-intersectionof/terms.json
+/mnt/out/ontologies/owl2primer-minimal/individuals.json was equal to /mnt/compare/ontologies/owl2primer-minimal/individuals.json
+/mnt/out/ontologies/owl2primer-minimal/properties.json was equal to /mnt/compare/ontologies/owl2primer-minimal/properties.json
+/mnt/out/ontologies/owl2primer-minimal/terms.json was equal to /mnt/compare/ontologies/owl2primer-minimal/terms.json
+/mnt/out/ontologies/owl2primer-namedindividual-differentfrom/individuals.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-differentfrom/individuals.json
+/mnt/out/ontologies/owl2primer-namedindividual-differentfrom/properties.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-differentfrom/properties.json
+/mnt/out/ontologies/owl2primer-namedindividual-differentfrom/terms.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-differentfrom/terms.json
+/mnt/out/ontologies/owl2primer-namedindividual-sameas/individuals.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-sameas/individuals.json
+/mnt/out/ontologies/owl2primer-namedindividual-sameas/properties.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-sameas/properties.json
+/mnt/out/ontologies/owl2primer-namedindividual-sameas/terms.json was equal to /mnt/compare/ontologies/owl2primer-namedindividual-sameas/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-assertionproperty/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-assertionproperty/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-assertionproperty/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-assertionproperty/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-assertionproperty/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-assertionproperty/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-asymmetric/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-asymmetric/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-asymmetric/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-asymmetric/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-asymmetric/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-asymmetric/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-disjoint/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-disjoint/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-disjoint/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-disjoint/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-disjoint/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-disjoint/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-functional/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-functional/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-functional/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-functional/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-functional/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-functional/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-inversefunctional/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inversefunctional/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-inversefunctional/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inversefunctional/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-inversefunctional/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-inversefunctional/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-irreflexive/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-irreflexive/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-irreflexive/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-irreflexive/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-irreflexive/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-irreflexive/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-negativepropertyassertion/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-negativepropertyassertion/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-propertychain/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-propertychain/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-propertychain/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-propertychain/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-propertychain/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-propertychain/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-reflexive/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-reflexive/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-reflexive/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-reflexive/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-reflexive/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-reflexive/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric-1/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric-1/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric-1/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric-1/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-symmetric-1/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-symmetric-1/terms.json
+/mnt/out/ontologies/owl2primer-objectproperty-transitive/individuals.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-transitive/individuals.json
+/mnt/out/ontologies/owl2primer-objectproperty-transitive/properties.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-transitive/properties.json
+/mnt/out/ontologies/owl2primer-objectproperty-transitive/terms.json was equal to /mnt/compare/ontologies/owl2primer-objectproperty-transitive/terms.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-cardinality/individuals.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-cardinality/individuals.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-cardinality/properties.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-cardinality/properties.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-cardinality/terms.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-cardinality/terms.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/terms.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/terms.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/terms.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/terms.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json
+/mnt/out/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/terms.json was equal to /mnt/compare/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/terms.json
+/mnt/out/ontologies/owl2primer-subclassof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-subclassof/individuals.json
+/mnt/out/ontologies/owl2primer-subclassof/properties.json was equal to /mnt/compare/ontologies/owl2primer-subclassof/properties.json
+/mnt/out/ontologies/owl2primer-subclassof/terms.json was equal to /mnt/compare/ontologies/owl2primer-subclassof/terms.json
+/mnt/out/ontologies/owl2primer-subclassof-intersectionof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-subclassof-intersectionof/individuals.json
+/mnt/out/ontologies/owl2primer-subclassof-intersectionof/properties.json was equal to /mnt/compare/ontologies/owl2primer-subclassof-intersectionof/properties.json
+/mnt/out/ontologies/owl2primer-subclassof-intersectionof/terms.json was equal to /mnt/compare/ontologies/owl2primer-subclassof-intersectionof/terms.json
+/mnt/out/ontologies/owl2primer-subobjectpropertyof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-subobjectpropertyof/individuals.json
+/mnt/out/ontologies/owl2primer-subobjectpropertyof/properties.json was equal to /mnt/compare/ontologies/owl2primer-subobjectpropertyof/properties.json
+/mnt/out/ontologies/owl2primer-subobjectpropertyof/terms.json was equal to /mnt/compare/ontologies/owl2primer-subobjectpropertyof/terms.json
+/mnt/out/ontologies/owl2primer-unionof/individuals.json was equal to /mnt/compare/ontologies/owl2primer-unionof/individuals.json
+/mnt/out/ontologies/owl2primer-unionof/properties.json was equal to /mnt/compare/ontologies/owl2primer-unionof/properties.json
+/mnt/out/ontologies/owl2primer-unionof/terms.json was equal to /mnt/compare/ontologies/owl2primer-unionof/terms.json
+/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
+/mnt/out/v2/ontologies/owl2primer-class/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-class/classes.json
+/mnt/out/v2/ontologies/owl2primer-class/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-class/entities.json
+/mnt/out/v2/ontologies/owl2primer-class/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-class/individuals.json
+/mnt/out/v2/ontologies/owl2primer-class/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-class/properties.json
+/mnt/out/v2/ontologies/owl2primer-dataproperty-haskey/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-dataproperty-haskey/classes.json
+/mnt/out/v2/ontologies/owl2primer-dataproperty-haskey/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-dataproperty-haskey/entities.json
+/mnt/out/v2/ontologies/owl2primer-dataproperty-haskey/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-dataproperty-haskey/individuals.json
+/mnt/out/v2/ontologies/owl2primer-dataproperty-haskey/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-dataproperty-haskey/properties.json
+/mnt/out/v2/ontologies/owl2primer-datatype-enumeration/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-enumeration/classes.json
+/mnt/out/v2/ontologies/owl2primer-datatype-enumeration/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-enumeration/entities.json
+/mnt/out/v2/ontologies/owl2primer-datatype-enumeration/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-enumeration/individuals.json
+/mnt/out/v2/ontologies/owl2primer-datatype-enumeration/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-enumeration/properties.json
+/mnt/out/v2/ontologies/owl2primer-datatype-exclusion/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-exclusion/classes.json
+/mnt/out/v2/ontologies/owl2primer-datatype-exclusion/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-exclusion/entities.json
+/mnt/out/v2/ontologies/owl2primer-datatype-exclusion/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-exclusion/individuals.json
+/mnt/out/v2/ontologies/owl2primer-datatype-exclusion/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-exclusion/properties.json
+/mnt/out/v2/ontologies/owl2primer-datatype-minmax/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-minmax/classes.json
+/mnt/out/v2/ontologies/owl2primer-datatype-minmax/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-datatype-minmax/entities.json
+/mnt/out/v2/ontologies/owl2primer-datatype-minmax/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-minmax/individuals.json
+/mnt/out/v2/ontologies/owl2primer-datatype-minmax/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatype-minmax/properties.json
+/mnt/out/v2/ontologies/owl2primer-datatypes/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatypes/classes.json
+/mnt/out/v2/ontologies/owl2primer-datatypes/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-datatypes/entities.json
+/mnt/out/v2/ontologies/owl2primer-datatypes/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatypes/individuals.json
+/mnt/out/v2/ontologies/owl2primer-datatypes/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-datatypes/properties.json
+/mnt/out/v2/ontologies/owl2primer-disjointclasses/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointclasses/classes.json
+/mnt/out/v2/ontologies/owl2primer-disjointclasses/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointclasses/entities.json
+/mnt/out/v2/ontologies/owl2primer-disjointclasses/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointclasses/individuals.json
+/mnt/out/v2/ontologies/owl2primer-disjointclasses/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointclasses/properties.json
+/mnt/out/v2/ontologies/owl2primer-disjointunionof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointunionof/classes.json
+/mnt/out/v2/ontologies/owl2primer-disjointunionof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointunionof/entities.json
+/mnt/out/v2/ontologies/owl2primer-disjointunionof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointunionof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-disjointunionof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-disjointunionof/properties.json
+/mnt/out/v2/ontologies/owl2primer-domain-range-restriction/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-domain-range-restriction/classes.json
+/mnt/out/v2/ontologies/owl2primer-domain-range-restriction/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-domain-range-restriction/entities.json
+/mnt/out/v2/ontologies/owl2primer-domain-range-restriction/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-domain-range-restriction/individuals.json
+/mnt/out/v2/ontologies/owl2primer-domain-range-restriction/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-domain-range-restriction/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-intersectionof-complementof/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-hasself/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass-collection/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass-collection/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass-collection/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-equivalentclass-collection/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass-collection/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass-collection/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalentclass-collection/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentclass-collection/properties.json
+/mnt/out/v2/ontologies/owl2primer-equivalentobjectproperty/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentobjectproperty/classes.json
+/mnt/out/v2/ontologies/owl2primer-equivalentobjectproperty/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-equivalentobjectproperty/entities.json
+/mnt/out/v2/ontologies/owl2primer-equivalentobjectproperty/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentobjectproperty/individuals.json
+/mnt/out/v2/ontologies/owl2primer-equivalentobjectproperty/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-equivalentobjectproperty/properties.json
+/mnt/out/v2/ontologies/owl2primer-individual/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-individual/classes.json
+/mnt/out/v2/ontologies/owl2primer-individual/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-individual/entities.json
+/mnt/out/v2/ontologies/owl2primer-individual/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-individual/individuals.json
+/mnt/out/v2/ontologies/owl2primer-individual/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-individual/properties.json
+/mnt/out/v2/ontologies/owl2primer-intersectionof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-intersectionof/classes.json
+/mnt/out/v2/ontologies/owl2primer-intersectionof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-intersectionof/entities.json
+/mnt/out/v2/ontologies/owl2primer-intersectionof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-intersectionof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-intersectionof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-intersectionof/properties.json
+/mnt/out/v2/ontologies/owl2primer-minimal/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-minimal/classes.json
+/mnt/out/v2/ontologies/owl2primer-minimal/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-minimal/entities.json
+/mnt/out/v2/ontologies/owl2primer-minimal/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-minimal/individuals.json
+/mnt/out/v2/ontologies/owl2primer-minimal/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-minimal/properties.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-differentfrom/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-differentfrom/classes.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-differentfrom/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-namedindividual-differentfrom/entities.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-differentfrom/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-differentfrom/individuals.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-differentfrom/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-differentfrom/properties.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-sameas/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-sameas/classes.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-sameas/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-namedindividual-sameas/entities.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-sameas/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-sameas/individuals.json
+/mnt/out/v2/ontologies/owl2primer-namedindividual-sameas/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-namedindividual-sameas/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-assertionproperty/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-assertionproperty/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-assertionproperty/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-assertionproperty/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-assertionproperty/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-assertionproperty/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-assertionproperty/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-assertionproperty/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-asymmetric/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-asymmetric/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-asymmetric/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-asymmetric/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-asymmetric/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-asymmetric/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-asymmetric/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-asymmetric/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-disjoint/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-disjoint/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-disjoint/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-disjoint/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-disjoint/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-disjoint/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-disjoint/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-disjoint/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-functional/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-functional/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-functional/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-functional/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-functional/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-functional/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-functional/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-functional/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inversefunctional/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inversefunctional/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inversefunctional/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-inversefunctional/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inversefunctional/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inversefunctional/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-inversefunctional/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-inversefunctional/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-irreflexive/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-irreflexive/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-irreflexive/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-irreflexive/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-irreflexive/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-irreflexive/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-irreflexive/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-irreflexive/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-negativepropertyassertion/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-propertychain/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-propertychain/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-propertychain/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-propertychain/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-propertychain/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-propertychain/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-propertychain/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-propertychain/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-reflexive/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-reflexive/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-reflexive/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-reflexive/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-reflexive/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-reflexive/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-reflexive/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-reflexive/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric-1/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric-1/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric-1/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric-1/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric-1/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric-1/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-symmetric-1/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-symmetric-1/properties.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-transitive/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-transitive/classes.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-transitive/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-objectproperty-transitive/entities.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-transitive/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-transitive/individuals.json
+/mnt/out/v2/ontologies/owl2primer-objectproperty-transitive/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-objectproperty-transitive/properties.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-cardinality/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-cardinality/classes.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-cardinality/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-cardinality/entities.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-cardinality/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-cardinality/individuals.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-cardinality/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-cardinality/properties.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/classes.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/entities.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/classes.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/entities.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/classes.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/entities.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals.json
+/mnt/out/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties.json
+/mnt/out/v2/ontologies/owl2primer-subclassof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof/classes.json
+/mnt/out/v2/ontologies/owl2primer-subclassof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof/entities.json
+/mnt/out/v2/ontologies/owl2primer-subclassof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-subclassof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof/properties.json
+/mnt/out/v2/ontologies/owl2primer-subclassof-intersectionof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof-intersectionof/classes.json
+/mnt/out/v2/ontologies/owl2primer-subclassof-intersectionof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof-intersectionof/entities.json
+/mnt/out/v2/ontologies/owl2primer-subclassof-intersectionof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof-intersectionof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-subclassof-intersectionof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-subclassof-intersectionof/properties.json
+/mnt/out/v2/ontologies/owl2primer-subobjectpropertyof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-subobjectpropertyof/classes.json
+/mnt/out/v2/ontologies/owl2primer-subobjectpropertyof/entities.json differed from /mnt/compare/v2/ontologies/owl2primer-subobjectpropertyof/entities.json
+/mnt/out/v2/ontologies/owl2primer-subobjectpropertyof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-subobjectpropertyof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-subobjectpropertyof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-subobjectpropertyof/properties.json
+/mnt/out/v2/ontologies/owl2primer-unionof/classes.json was equal to /mnt/compare/v2/ontologies/owl2primer-unionof/classes.json
+/mnt/out/v2/ontologies/owl2primer-unionof/entities.json was equal to /mnt/compare/v2/ontologies/owl2primer-unionof/entities.json
+/mnt/out/v2/ontologies/owl2primer-unionof/individuals.json was equal to /mnt/compare/v2/ontologies/owl2primer-unionof/individuals.json
+/mnt/out/v2/ontologies/owl2primer-unionof/properties.json was equal to /mnt/compare/v2/ontologies/owl2primer-unionof/properties.json
+/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
+RecursiveJsonDiff.diff() reported failure
+apitester reported failure; exit code 1

@@ -66,7 +66,7 @@ public class V2OntologyController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields);
+        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, Map.of());
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }

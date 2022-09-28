@@ -12,11 +12,13 @@ import org.springframework.validation.annotation.Validated;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component
@@ -38,9 +40,11 @@ public class V2PropertyRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:property");
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "property", true);
+        query.addDynamicFilterProperties(properties);
 
         return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Property(result, lang));
@@ -56,12 +60,14 @@ public class V2PropertyRepository {
             searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
         }
 
-        SolrQuery query = solrQueryHelper.createSolrQuery(lang, search, searchFields);
-        query.addFilterQuery("str_type:property");
-        query.addFilterQuery("str_ontologyId:" + ontologyId);
-        solrQueryHelper.addDynamicFilterProperties(query, properties);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.setSearch(search, searchFields);
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "property", true);
+	query.addFilter("ontologyId", ontologyId, true);
+        query.addDynamicFilterProperties(properties);
 
-        return this.solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Property(result, lang));
     }
 
@@ -70,10 +76,13 @@ public class V2PropertyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+property+" + uri;
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "property", true);
+	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("uri", uri, true);
 
-        return new V2Property(this.neo4jQueryHelper.getOne("OntologyProperty", "id", id), lang);
-
+        return new V2Property(solrQueryHelper.getOne(query), lang);
     }
 
 

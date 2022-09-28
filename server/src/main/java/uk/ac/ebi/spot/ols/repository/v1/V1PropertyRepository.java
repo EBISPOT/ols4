@@ -1,6 +1,8 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +12,8 @@ import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
+import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 
 /**
  * @author Simon Jupp
@@ -19,6 +23,9 @@ import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
 //@RepositoryRestResource(collectionResourceRel = "properties", exported = false)
 @Component
 public class V1PropertyRepository {
+
+    @Autowired
+    SolrQueryHelper solrQueryHelper;
 
     @Autowired
     Neo4jQueryHelper neo4jQueryHelper;
@@ -73,8 +80,13 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return new V1Property(this.neo4jQueryHelper.getOne("OntologyTerm", "id", ontologyId + "+" + iri), ontology, lang);
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "property", true);
+	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("uri", iri, true);
 
+        return new V1Property(solrQueryHelper.getOne(query), ontology, lang);
     }
 
 //    @Query (
@@ -84,8 +96,13 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getAllInOntology(ontologyId, "OntologyTerm", pageable)
-            .map(record -> new V1Property(record, ontology, lang));
+        OlsSolrQuery query = new OlsSolrQuery();
+	query.addFilter("lang", lang, true);
+	query.addFilter("type", "property", true);
+	query.addFilter("ontologyId", ontologyId, true);
+
+        return solrQueryHelper.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Property(result, ontology, lang));
     }
 
 //    @Query (value = "MATCH (n:Property) WHERE n.ontology_name = {0} AND n.short_form = {1} RETURN n")

@@ -1,3 +1,28 @@
-{
-  "error": "<html><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id='created'>Mon Sep 26 22:34:38 GMT 2022</div><div>There was an unexpected error (type=Internal Server Error, status=500).</div><div>No message available</div></body></html>"
-}
+[
+  {
+    "_links": {
+      "alltypes": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523a/alltypes"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523a/jstree"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523a"
+      },
+      "types": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523a/types"
+      }
+    },
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "obo_id": "a",
+    "ontology_iri": "individuals-anonymous-types-with-inverse",
+    "ontology_name": "individuals-anonymous-types-with-inverse",
+    "ontology_prefix": "individuals-anonymous-types-with-inverse",
+    "short_form": "a"
+  }
+]

@@ -32,9 +32,9 @@ public class SolrQueryHelper {
 
     private Gson gson = new Gson();
 
-    public Collection<OntologyEntity> searchSolr(SolrQuery query) {
+    public Collection<OntologyEntity> searchSolr(OlsSolrQuery query) {
 
-        QueryResponse qr = runSolrQuery(query);
+        QueryResponse qr = runSolrQuery(query, null);
 
         return qr.getResults()
                 .stream()
@@ -42,12 +42,9 @@ public class SolrQueryHelper {
                 .collect(Collectors.toList());
     }
 
-    public Page<OntologyEntity> searchSolrPaginated(SolrQuery query, Pageable pageable) {
+    public Page<OntologyEntity> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
-        query.setStart(pageable.getOffset());
-        query.setRows(pageable.getPageSize());
-
-        QueryResponse qr = runSolrQuery(query);
+        QueryResponse qr = runSolrQuery(query, pageable);
 
         return new PageImpl<OntologyEntity>(
                 qr.getResults()
@@ -57,12 +54,12 @@ public class SolrQueryHelper {
                 pageable, qr.getResults().getNumFound());
     }
 
-    public OntologyEntity getOne(SolrQuery query) {
+    public OntologyEntity getOne(OlsSolrQuery query) {
 
-        QueryResponse qr = runSolrQuery(query);
+        QueryResponse qr = runSolrQuery(query, null);
 
         if(qr.getResults().getNumFound() != 1) {
-            throw new RuntimeException("Expected exactly 1 result for solr getOne");
+            throw new RuntimeException("Expected exactly 1 result for solr getOne, but got " + qr.getResults().getNumFound());
         }
 
         return solrDocumentToOntologyEntity(qr.getResults().get(0));
@@ -74,7 +71,16 @@ public class SolrQueryHelper {
         );
     }
 
-    public QueryResponse runSolrQuery(SolrQuery query) {
+    public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
+	return runSolrQuery(query.constructQuery(), pageable);
+    }
+
+    public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
+
+	if(pageable != null) {
+		query.setStart(pageable.getOffset());
+		query.setRows(pageable.getPageSize());
+	}
 
         System.out.println("solr query: " + query.toQueryString());
         System.out.println("solr host: " + host);
@@ -91,35 +97,6 @@ public class SolrQueryHelper {
         }
 
         return qr;
-    }
-
-    public SolrQuery createSolrQuery(String lang, String search, String searchFields) {
-
-        SolrQuery query = new SolrQuery();
-
-        query.set("defType", "edismax");
-        query.addFilterQuery("lang:" + lang);
-
-        if(search != null) {
-            query.setQuery(search);
-            query.set("qf", searchFields.replace(":", "__"));
-        } else {
-            query.setQuery("*:*");
-        }
-
-        return query;
-    }
-
-    public void addDynamicFilterProperties(SolrQuery query, Map<String,String> properties) {
-
-        for(String k : properties.keySet()) {
-
-            String value = properties.get(k);
-
-            k = k.replace(":", "__");
-
-            query.addFilterQuery(ClientUtils.escapeQueryChars(k) + ":" + ClientUtils.escapeQueryChars(value));
-        }
     }
 
 

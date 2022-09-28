@@ -68,14 +68,15 @@ GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/entities
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/classes
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/properties
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/individuals
-In output but not expected: /ontologies/punning-class-individual/individuals.json
-In output but not expected: /ontologies/punning-class-individual/properties.json
-In output but not expected: /ontologies/punning-class-individual/terms.json
-In output but not expected: /v2/ontologies/punning-class-individual/classes.json
-In output but not expected: /v2/ontologies/punning-class-individual/entities.json
-In output but not expected: /v2/ontologies/punning-class-individual/individuals.json
-In output but not expected: /v2/ontologies/punning-class-individual/properties.json
-In expected but not output: /ontologies/punning-class-individual.json
-In expected but not output: /v2/ontologies/punning-class-individual.json
-/mnt/out/ontologies.json differed from /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies.json differed from /mnt/compare/v2/ontologies.json
+Ols4ApiTester.test() reported success
+/mnt/out/ontologies/punning-class-individual/individuals.json was equal to /mnt/compare/ontologies/punning-class-individual/individuals.json
+/mnt/out/ontologies/punning-class-individual/properties.json was equal to /mnt/compare/ontologies/punning-class-individual/properties.json
+/mnt/out/ontologies/punning-class-individual/terms.json was equal to /mnt/compare/ontologies/punning-class-individual/terms.json
+/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
+/mnt/out/v2/ontologies/punning-class-individual/classes.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/classes.json
+/mnt/out/v2/ontologies/punning-class-individual/entities.json differed from /mnt/compare/v2/ontologies/punning-class-individual/entities.json
+/mnt/out/v2/ontologies/punning-class-individual/individuals.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/individuals.json
+/mnt/out/v2/ontologies/punning-class-individual/properties.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/properties.json
+/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
+RecursiveJsonDiff.diff() reported failure
+apitester reported failure; exit code 1

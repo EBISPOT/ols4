@@ -68,14 +68,15 @@ GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/entities
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/classes
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/properties
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/individuals
-In output but not expected: /ontologies/reified-bnode/individuals.json
-In output but not expected: /ontologies/reified-bnode/properties.json
-In output but not expected: /ontologies/reified-bnode/terms.json
-In output but not expected: /v2/ontologies/reified-bnode/classes.json
-In output but not expected: /v2/ontologies/reified-bnode/entities.json
-In output but not expected: /v2/ontologies/reified-bnode/individuals.json
-In output but not expected: /v2/ontologies/reified-bnode/properties.json
-In expected but not output: /ontologies/reified-bnode.json
-In expected but not output: /v2/ontologies/reified-bnode.json
-/mnt/out/ontologies.json differed from /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies.json differed from /mnt/compare/v2/ontologies.json
+Ols4ApiTester.test() reported success
+/mnt/out/ontologies/reified-bnode/individuals.json was equal to /mnt/compare/ontologies/reified-bnode/individuals.json
+/mnt/out/ontologies/reified-bnode/properties.json was equal to /mnt/compare/ontologies/reified-bnode/properties.json
+/mnt/out/ontologies/reified-bnode/terms.json was equal to /mnt/compare/ontologies/reified-bnode/terms.json
+/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
+/mnt/out/v2/ontologies/reified-bnode/classes.json was equal to /mnt/compare/v2/ontologies/reified-bnode/classes.json
+/mnt/out/v2/ontologies/reified-bnode/entities.json differed from /mnt/compare/v2/ontologies/reified-bnode/entities.json
+/mnt/out/v2/ontologies/reified-bnode/individuals.json was equal to /mnt/compare/v2/ontologies/reified-bnode/individuals.json
+/mnt/out/v2/ontologies/reified-bnode/properties.json was equal to /mnt/compare/v2/ontologies/reified-bnode/properties.json
+/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
+RecursiveJsonDiff.diff() reported failure
+apitester reported failure; exit code 1
