@@ -1,15 +1,15 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import Header from "../../components/Header";
 import HelpSection from "./HelpSection";
 
-export default function Help(props) {
-    return <Fragment>
-        <Header section='help' />
-        <main>
-
-<HelpSection title="Using the API"></HelpSection>
-</main>
-
+export default function Help() {
+  document.title = "Ontology Lookup Service (OLS)";
+  return (
+    <Fragment>
+      <Header section="help" />
+      <main>
+        <HelpSection title="Using the API"></HelpSection>
+      </main>
     </Fragment>
+  );
 }
-

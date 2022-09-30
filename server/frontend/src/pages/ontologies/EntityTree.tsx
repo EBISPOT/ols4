@@ -1,259 +1,266 @@
-
-
-
-import React, { useEffect, useState } from "react";
-import OlsDatatable, { Column } from "../../components/OlsDatatable";
-import { getPaginated } from "../../api";
-import Entity from "../../model/Entity";
-import Spinner from "../../components/Spinner";
 import { Link } from "@mui/material";
-import { Set as ImmutableSet, Map as ImmutableMap } from 'immutable'
-import Multimap from 'multimap'
-import assert from "assert";
+import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
+import { useEffect, useState } from "react";
+import { getPaginated } from "../../app/api";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Spinner from "../../components/Spinner";
+import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import extractEntityHierarchy from "./extractEntityHierarchy";
+import { getAncestors, getRootEntities } from "./ontologiesSlice";
 
 interface TreeNode {
+  // the URIs of this node and its ancestors delimited by a ;
+  absoluteIdentity: string;
 
-	// the URIs of this node and its ancestors delimited by a ;
-	absoluteIdentity:string
+  uri: string;
+  title: string;
+  expandable: boolean;
 
-	uri:string
-	title:string
-	expandable:boolean
-
-	entity:Entity
+  entity: Entity;
 }
 
-export default function EntityTree(props:{
-	ontologyId:string
-	selectedEntity?:Entity,
-	entityType:'entities'|'classes'|'properties'|'individuals'
+export default function EntityTree(props: {
+  ontologyId: string;
+  selectedEntity?: Entity;
+  entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
-	let { ontologyId, entityType, selectedEntity } = props
+  const dispatch = useAppDispatch();
+  const ancestors = useAppSelector((state) => state.ontologies.ancestors);
+  const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
 
-	let [ rootNodes, setRootNodes ] = useState<TreeNode[]>()
-	let [ nodeChildren, setNodeChildren ] = useState<ImmutableMap<String,TreeNode[]>>(ImmutableMap())
+  let { ontologyId, entityType, selectedEntity } = props;
 
-	let [ expandedNodes, setExpandedNodes ] = useState<ImmutableSet<String>>(ImmutableSet())
+  let [rootNodes, setRootNodes] = useState<TreeNode[]>();
+  let [nodeChildren, setNodeChildren] = useState<
+    ImmutableMap<String, TreeNode[]>
+  >(ImmutableMap());
 
-	useEffect(() => {
+  let [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
+    ImmutableSet()
+  );
 
-		async function fetchTree() {
+  useEffect(() => {
+    if (selectedEntity) {
+      let entityUri = selectedEntity.getUri();
+      dispatch(getAncestors({ ontologyId, entityType, entityUri }));
+    } else {
+      dispatch(getRootEntities({ ontologyId, entityType }));
+    }
+  }, [entityType]);
 
-			if(selectedEntity) {
+  useEffect(() => {
+    if (selectedEntity) {
+      populateTreeFromEntities([selectedEntity, ...ancestors]);
+    }
+  }, [ancestors]);
 
-				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(selectedEntity.getUri()))
+  useEffect(() => {
+    setRootNodes(
+      rootEntities.map((entity) => {
+        return {
+          uri: entity.getUri(),
+          absoluteIdentity: entity.getUri(),
+          title: entity.getName(),
+          expandable: entity.hasChildren(),
+          entity: entity,
+        };
+      })
+    );
+  }, [rootEntities]);
 
-				let ancestorsPage = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams({
-					size: '100'
-				})}`)
-				
-				let ancestors = ancestorsPage.elements.map(obj => thingFromProperties(obj))
+  function populateTreeFromEntities(entities: Entity[]) {
+    let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities);
 
-				populateTreeFromEntities([ selectedEntity, ...ancestors ])
+    let newNodeChildren = new Map<String, TreeNode[]>();
+    let newExpandedNodes = new Set<String>();
 
-			} else {
+    setRootNodes(rootEntities.map((rootEntity) => createTreeNode(rootEntity)));
 
-				let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-					isRoot: 'true',
-					size: '100'
-				})}`)
+    setNodeChildren(ImmutableMap(newNodeChildren));
+    setExpandedNodes(ImmutableSet(newExpandedNodes));
 
-				let rootEntities = page.elements.map(obj => thingFromProperties(obj))
+    function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
+      let childNodes = uriToChildNodes.get(node.getUri()) || [];
 
-				setRootNodes(rootEntities.map(entity => {
-					return {
-						uri: entity.getUri(),
-						absoluteIdentity: entity.getUri(),
-						title: entity.getName(),
-						expandable: entity.hasChildren(),
-						entity: entity
-					}
-				}))
-				
+      let treeNode: TreeNode = {
+        absoluteIdentity: parent
+          ? parent.absoluteIdentity + ";" + node.getUri()
+          : node.getUri(),
+        uri: node.getUri(),
+        title: node.getName(),
+        expandable: node.hasChildren(),
+        entity: node,
+      };
 
-			}
-		}
+      newNodeChildren.set(
+        treeNode.absoluteIdentity,
+        childNodes.map((childNode) => createTreeNode(childNode, treeNode))
+      );
 
-		fetchTree()
-		
-	}, [ entityType ])
+      if (treeNode.uri !== selectedEntity?.getUri()) {
+        newExpandedNodes.add(treeNode.absoluteIdentity);
+      }
 
-	function populateTreeFromEntities(entities: Entity[]) {
+      return treeNode;
+    }
+  }
+  async function toggleNode(node) {
+    if (expandedNodes.has(node.absoluteIdentity)) {
+      // closing a node
 
-		let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities)
+      setExpandedNodes(expandedNodes.delete(node.absoluteIdentity));
+    } else {
+      // opening a node
 
-		let newNodeChildren = new Map<String, TreeNode[]>()
-		let newExpandedNodes = new Set<String>()
+      setExpandedNodes(expandedNodes.add(node.absoluteIdentity));
 
-		setRootNodes(
-			rootEntities.map((rootEntity) => createTreeNode(rootEntity))
-		)
+      let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.uri));
 
-		setNodeChildren(ImmutableMap(newNodeChildren))
-		setExpandedNodes(ImmutableSet(newExpandedNodes))
+      let page = await getPaginated<any>(
+        `/api/v2/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${doubleEncodedUri}/children?${new URLSearchParams(
+          {
+            size: "100",
+          }
+        )}`
+      );
 
-		function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
+      let childTerms = page.elements.map((obj) => thingFromProperties(obj));
 
-			let childNodes = uriToChildNodes.get(node.getUri()) || []
+      setNodeChildren(
+        nodeChildren.set(
+          node.absoluteIdentity,
+          childTerms.map((term) => {
+            return {
+              uri: term.getUri(),
+              absoluteIdentity: node.absoluteIdentity + ";" + term.getUri(),
+              title: term.getName(),
+              expandable: term.hasChildren(),
+              entity: term,
+            };
+          })
+        )
+      );
+    }
+  }
 
-			let treeNode: TreeNode = {
-				absoluteIdentity: parent ? parent.absoluteIdentity + ';' + node.getUri() : node.getUri(),
-				uri: node.getUri(),
-				title: node.getName(),
-				expandable: node.hasChildren(),
-				entity: node
-			}
+  if (!rootNodes) {
+    return <Spinner />;
+  }
 
-			newNodeChildren.set(
-				treeNode.absoluteIdentity,
-				childNodes.map(childNode => createTreeNode(childNode, treeNode))
-			)
+  return (
+    <div id="term-tree" className="jstree jstree-1 jstree-proton" role="tree">
+      <ul
+        className="jstree-container-ul jstree-children jstree-no-icons"
+        role="group"
+      >
+        {rootNodes.map((node, i) => {
+          let isLast = i == rootNodes!.length - 1;
+          let isExpanded = expandedNodes.has(node.absoluteIdentity);
+          let termUrl = encodeURIComponent(encodeURIComponent(node.uri));
+          let highlight =
+            (selectedEntity && node.uri === selectedEntity.getUri()) || false;
+          return (
+            <TreeNode
+              expandable={node.expandable}
+              expanded={isExpanded}
+              highlight={highlight}
+              isLast={isLast}
+              onClick={() => toggleNode(node)}
+            >
+              <Link
+                href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}
+              >
+                {node.title}
+              </Link>
+              {isExpanded && renderNodeChildren(node)}
+            </TreeNode>
+          );
+        })}
+      </ul>
+    </div>
+  );
 
-			if(treeNode.uri !== selectedEntity?.getUri()) {
-				newExpandedNodes.add(treeNode.absoluteIdentity)
-			}
+  function renderNodeChildren(node: TreeNode) {
+    let children = nodeChildren.get(node.absoluteIdentity);
 
-			return treeNode
+    if (children === undefined) {
+      return <Spinner />;
+    }
 
-		}
-
-	}
-	async function toggleNode(node) {
-
-		if(expandedNodes.has(node.absoluteIdentity)) {
-
-			// closing a node
-
-			setExpandedNodes(expandedNodes.delete(node.absoluteIdentity))
-
-		} else {
-
-			// opening a node
-
-			setExpandedNodes(expandedNodes.add(node.absoluteIdentity))
-
-			let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.uri))
-
-			let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${doubleEncodedUri}/children?${new URLSearchParams({
-				size: '100'
-			})}`)
-
-			let childTerms = page.elements.map(obj => thingFromProperties(obj))
-
-			setNodeChildren(
-				nodeChildren.set(node.absoluteIdentity, childTerms.map(term => {
-					return {
-						uri: term.getUri(),
-						absoluteIdentity: node.absoluteIdentity + ';' + term.getUri(),
-						title: term.getName(),
-						expandable: term.hasChildren(),
-						entity: term
-					}
-				}))
-			)
-		}
-	}
-
-	if(!rootNodes) {
-		return <Spinner/>
-	}
-
-	return 	<div id="term-tree" className="jstree jstree-1 jstree-proton" role="tree">
-	<ul className="jstree-container-ul jstree-children jstree-no-icons" role="group">
-		{rootNodes.map((node, i) => {
-			let isLast = i == (rootNodes!.length - 1)
-			let isExpanded = expandedNodes.has(node.absoluteIdentity)
-			let termUrl = encodeURIComponent(encodeURIComponent(node.uri))
-			let highlight = ( selectedEntity && (node.uri === selectedEntity.getUri()) ) || false
-			return <TreeNode
-				expandable={node.expandable}
-				expanded={isExpanded}
-				highlight={highlight}
-				isLast={isLast}
-				onClick={() => toggleNode(node)}
-				>
-					<Link href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}>
-					{node.title}
-					</Link>
-					{ isExpanded && renderNodeChildren(node) }
-				</TreeNode>
-		})}
-	</ul>
-	</div>
-
-	function renderNodeChildren(node:TreeNode) {
-
-		let children = nodeChildren.get(node.absoluteIdentity)
-
-		if(children === undefined) {
-			return <Spinner/>
-		}
-
- 		return <ul role="group" className="jstree-children" style={{}}>
-			{
-				children.map((childNode:TreeNode, i) => {
-					let isExpanded = expandedNodes.has(childNode.absoluteIdentity)
-					console.log('node ' + childNode.absoluteIdentity + ' expanded ' + isExpanded)
-					let isLast = i == (children!.length - 1)
-					let termUrl = encodeURIComponent(encodeURIComponent(childNode.uri))
-					let highlight = ( selectedEntity && ( childNode.uri === selectedEntity.getUri() ) ) || false
-					return <TreeNode
-						expandable={childNode.expandable}
-						expanded={isExpanded}
-						highlight={highlight}
-						isLast={isLast}
-						onClick={() => toggleNode(childNode)}
-						>
-							{/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
-							<Link href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}>
-								{childNode.title}
-							</Link>
-							{ isExpanded && renderNodeChildren(childNode) }
-						</TreeNode>
-				})
-			}
-		</ul>
-	}
+    return (
+      <ul role="group" className="jstree-children" style={{}}>
+        {children.map((childNode: TreeNode, i) => {
+          let isExpanded = expandedNodes.has(childNode.absoluteIdentity);
+          console.log(
+            "node " + childNode.absoluteIdentity + " expanded " + isExpanded
+          );
+          let isLast = i == children!.length - 1;
+          let termUrl = encodeURIComponent(encodeURIComponent(childNode.uri));
+          let highlight =
+            (selectedEntity && childNode.uri === selectedEntity.getUri()) ||
+            false;
+          return (
+            <TreeNode
+              expandable={childNode.expandable}
+              expanded={isExpanded}
+              highlight={highlight}
+              isLast={isLast}
+              onClick={() => toggleNode(childNode)}
+            >
+              {/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
+              <Link
+                href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}
+              >
+                {childNode.title}
+              </Link>
+              {isExpanded && renderNodeChildren(childNode)}
+            </TreeNode>
+          );
+        })}
+      </ul>
+    );
+  }
 }
 
-function TreeNode(props:{
-	expandable:boolean,
-	expanded:boolean,
-	highlight:boolean,
-	isLast:boolean,
-	children:any,
-	onClick:()=>void
+function TreeNode(props: {
+  expandable: boolean;
+  expanded: boolean;
+  highlight: boolean;
+  isLast: boolean;
+  children: any;
+  onClick: () => void;
 }) {
+  let { expandable, expanded, highlight, isLast, children, onClick } = props;
 
-	let { expandable, expanded, highlight, isLast, children, onClick } = props
+  let classes: string[] = ["jstree-node"];
 
-	let classes:string[] = [ 'jstree-node' ]
+  if (expanded) {
+    classes.push("jstree-open");
+  } else {
+    classes.push("jstree-closed");
+  }
 
-	if(expanded) {
-		classes.push('jstree-open')
-	} else {
-		classes.push('jstree-closed')
-	}
+  if (!expandable) {
+    classes.push("jstree-leaf");
+  }
 
-	if(!expandable) {
-		classes.push('jstree-leaf')
-	}
+  if (isLast) {
+    classes.push("jstree-last");
+  }
 
-	if(isLast) {
-		classes.push('jstree-last')
-	}
+  if (highlight) {
+    children = <span className="jstree-clicked">{children}</span>;
+  }
 
-	if(highlight) {
-		children = <span className="jstree-clicked">{children}</span>
-	}
-
-	return <li role="treeitem" className={classes.join(' ')}>
-		<i className="jstree-icon jstree-ocl" role="presentation" onClick={onClick} />
-		{children}
-	</li>
+  return (
+    <li role="treeitem" className={classes.join(" ")}>
+      <i
+        className="jstree-icon jstree-ocl"
+        role="presentation"
+        onClick={onClick}
+      />
+      {children}
+    </li>
+  );
 }
-
-
-

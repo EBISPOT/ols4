@@ -1,126 +1,102 @@
-
-import Cytoscape from 'cytoscape';
-import CytoscapeComponent from 'react-cytoscapejs';
-import Entity from '../../model/Entity';
-
-import ColaLayout from 'cytoscape-cola'
-import { useEffect, useRef, useState } from 'react';
-import { getPaginated } from '../../api';
-import { thingFromProperties } from '../../model/fromProperties';
-import extractEntityHierarchy from './extractEntityHierarchy';
-import Spinner from '../../components/Spinner';
+import Cytoscape from "cytoscape";
+import ColaLayout from "cytoscape-cola";
+import { useEffect, useRef, useState } from "react";
+import CytoscapeComponent from "react-cytoscapejs";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Spinner from "../../components/Spinner";
+import Entity from "../../model/Entity";
+import extractEntityHierarchy from "./extractEntityHierarchy";
+import { getAncestors, getRootEntities } from "./ontologiesSlice";
 Cytoscape.use(ColaLayout);
 
-export default function EntityGraph(props:{
-	ontologyId:string
-	selectedEntity?:Entity,
-	entityType:'entities'|'classes'|'properties'|'individuals'
+export default function EntityGraph(props: {
+  ontologyId: string;
+  selectedEntity?: Entity;
+  entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
+  const dispatch = useAppDispatch();
+  const ancestors = useAppSelector((state) => state.ontologies.ancestors);
+  // const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
 
-	let { ontologyId, selectedEntity, entityType } = props
+  let { ontologyId, selectedEntity, entityType } = props;
+  let [elements, setElements] = useState<any[]>([]);
+  let cyRef = useRef<Cytoscape.Core>();
 
-	let [ elements, setElements ] = useState<any[]>([])
+  useEffect(() => {
+    if (selectedEntity) {
+      let entityUri = selectedEntity.getUri();
+      dispatch(getAncestors({ ontologyId, entityType, entityUri }));
+    } else {
+      dispatch(getRootEntities({ ontologyId, entityType }));
 
-	let cyRef = useRef<Cytoscape.Core>();
+      // setRootNodes(rootEntities.map(entity => {
+      // 	return {
+      // 		uri: entity.getUri(),
+      // 		absoluteIdentity: entity.getUri(),
+      // 		title: entity.getName(),
+      // 		expandable: entity.hasChildren(),
+      // 		entity: entity
+      // 	}
+      // }))
+    }
+  }, [entityType]);
 
-	useEffect(() => {
+  useEffect(() => {
+    if (selectedEntity) {
+      populateGraphFromEntities([selectedEntity, ...ancestors]);
+    }
+  }, [ancestors]);
 
-		async function fetchTree() {
+  function populateGraphFromEntities(entities: Entity[]) {
+    let { uriToChildNodes } = extractEntityHierarchy(entities);
 
-			if(selectedEntity) {
+    let nodes: any[] = entities.map((entity) => {
+      return {
+        data: {
+          id: entity.getUri(),
+          label: entity.getName(),
+          position: {
+            x: 50,
+            y: 50,
+          },
+        },
+      };
+    });
 
-				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(selectedEntity.getUri()))
+    let edges: any[] = [];
 
-				let ancestorsPage = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams({
-					size: '100'
-				})}`)
-				
-				let ancestors = ancestorsPage.elements.map(obj => thingFromProperties(obj))
+    for (let parentUri of Array.from(uriToChildNodes.keys())) {
+      for (let childEntity of uriToChildNodes.get(parentUri)) {
+        edges.push({
+          data: {
+            source: parentUri,
+            target: childEntity.getUri(),
+            label: "parent",
+          },
+        });
+      }
+    }
 
-				populateGraphFromEntities([ selectedEntity, ...ancestors ])
+    setElements([...nodes, ...edges]);
+  }
 
-			} else {
+  if (!elements) {
+    return <Spinner />;
+  }
 
-				let page = await getPaginated<any>(`/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-					isRoot: 'true',
-					size: '100'
-				})}`)
+  return (
+    <CytoscapeComponent
+      layout={{ name: "cola" }}
+      cy={(cy): void => {
+        cy.on("add", "node", (_evt) => {
+          cy.layout({ name: "cola" }).run();
+          cy.fit();
+        });
 
-				let rootEntities = page.elements.map(obj => thingFromProperties(obj))
-
-				// setRootNodes(rootEntities.map(entity => {
-				// 	return {
-				// 		uri: entity.getUri(),
-				// 		absoluteIdentity: entity.getUri(),
-				// 		title: entity.getName(),
-				// 		expandable: entity.hasChildren(),
-				// 		entity: entity
-				// 	}
-				// }))
-				
-
-			}
-		}
-
-		fetchTree()
-		
-	}, [ entityType ])
-
-	function populateGraphFromEntities(entities:Entity[]) {
-
-		let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities)
-
-		let nodes:any[] = entities.map(entity => {
-			return {
-				data: {
-					id: entity.getUri(),
-					label: entity.getName(),
-					position: {
-						x: 50,
-						y: 50
-					}
-				}
-			}
-		})
-
-		let edges:any[] = []
-
-		for(let parentUri of Array.from(uriToChildNodes.keys())) {
-			for(let childEntity of uriToChildNodes.get(parentUri)) {
-				edges.push({
-					data: {
-						source: parentUri,
-						target: childEntity.getUri(),
-						label: 'parent'
-					}
-				})
-			}
-		}
-
-		setElements([ ...nodes, ...edges ])
-	}
-	
-	if(!elements) {
-		return <Spinner/>
-	}
-
-	return <CytoscapeComponent
-		layout={{ name: 'cola' }}
-		cy={(cy): void => {
-
-			cy.on('add', 'node', _evt => {
-				cy.layout({ name: 'cola' }).run()
-				cy.fit()
-			      })
-
-			cyRef.current = cy
-		
-		}}
-		elements={elements}
-		style={{ width: '600px', height: '600px' }}
-	/>
-
+        cyRef.current = cy;
+      }}
+      elements={elements}
+      style={{ width: "600px", height: "600px" }}
+    />
+  );
 }
-
-
-
