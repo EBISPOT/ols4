@@ -5,8 +5,8 @@ import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 
 export interface HomeState {
-  searchOptions: Thing[];
-  loadingSearchOptions: boolean;
+  searchResult: Thing[];
+  loadingSearchResult: boolean;
   stats: Stats | null;
 }
 export interface Stats {
@@ -16,16 +16,16 @@ export interface Stats {
   numberOfIndividuals: number;
 }
 const initialState: HomeState = {
-  searchOptions: [],
-  loadingSearchOptions: false,
+  searchResult: [],
+  loadingSearchResult: false,
   stats: null,
 };
 
-export const getStats = createAsyncThunk("home/stats", async () => {
+export const getStats = createAsyncThunk("home_stats", async () => {
   return await get<Stats>(`/api/v2/stats`);
 });
 export const getSearchOptions = createAsyncThunk(
-  "home/search/options",
+  "home_search_options",
   async (query: string) => {
     let search = "*" + query + "*";
 
@@ -65,15 +65,15 @@ const homeSlice = createSlice({
     builder.addCase(
       getSearchOptions.fulfilled,
       (state, action: PayloadAction<Thing[]>) => {
-        state.searchOptions = action.payload;
-        state.loadingSearchOptions = false;
+        state.searchResult = action.payload;
+        state.loadingSearchResult = false;
       }
     );
     builder.addCase(getSearchOptions.pending, (state) => {
-      state.loadingSearchOptions = true;
+      state.loadingSearchResult = true;
     });
     builder.addCase(getSearchOptions.rejected, (state) => {
-      state.loadingSearchOptions = false;
+      state.loadingSearchResult = false;
     });
   },
 });

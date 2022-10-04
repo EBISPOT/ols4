@@ -8,7 +8,7 @@ export default function OntologiesPage() {
   return (
     <Fragment>
       <Header section="ontologies" />
-      <main>
+      <main className="container mx-auto">
         <Box>
           <OntologyList />
         </Box>

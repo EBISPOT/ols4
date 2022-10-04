@@ -7,7 +7,7 @@ export default function Help() {
   return (
     <Fragment>
       <Header section="help" />
-      <main>
+      <main className="container mx-auto">
         <HelpSection title="Using the API"></HelpSection>
       </main>
     </Fragment>

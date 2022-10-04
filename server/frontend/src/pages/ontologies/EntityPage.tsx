@@ -37,7 +37,7 @@ export default function EntityPage(props: {
   return (
     <Fragment>
       <Header section="ontologies" />
-      <main>{renderTermPage()}</main>
+      <main className="container mx-auto">{renderTermPage()}</main>
     </Fragment>
   );
 

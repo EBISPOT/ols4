@@ -6,7 +6,7 @@ export default function About() {
   return (
     <Fragment>
       <Header section="about" />
-      <main>About OLS</main>
+      <main className="container mx-auto">About OLS</main>
     </Fragment>
   );
 }
