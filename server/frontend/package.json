@@ -19,6 +19,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
+    "concurrently": "^7.4.0",
     "cytoscape": "3.22.1",
     "cytoscape-cola": "^2.5.1",
     "date-fns": "^2.19.0",
@@ -40,8 +41,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "bash -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
+    "start": "concurrently -n 'React,Tailwind' 'react-scripts start' 'yarn watch:css'",
+    "watch:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify --watch",
+    "build": "yarn build:css && bash -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
+    "build:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify",
     "build:sandbox": "REACT_APP_ENV=sandbox npm run build",
     "build:prod": "REACT_APP_ENV=prod npm run build",
     "test": "react-scripts test",
@@ -65,5 +68,8 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.2.3",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
 }

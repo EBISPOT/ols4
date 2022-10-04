@@ -12,20 +12,19 @@ import { getSearchOptions } from "./homeSlice";
 
 export default function HomeSearchBox() {
   const dispatch = useAppDispatch();
-  const options = useAppSelector((state) => state.home.searchOptions);
-  const loading = useAppSelector((state) => state.home.loadingSearchOptions);
+  const results = useAppSelector((state) => state.home.searchResult);
+  const loading = useAppSelector((state) => state.home.loadingSearchResult);
 
   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
-    dispatch(getSearchOptions(query))
+    dispatch(getSearchOptions(query));
   }, [query]);
 
   return (
     <Autocomplete
       id="asynchronous-demo"
-      style={{ width: 500 }}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -33,7 +32,6 @@ export default function HomeSearchBox() {
       onClose={() => {
         setOpen(false);
       }}
-      onChange={(e, option) => {}}
       // getOptionSelected={(option:OlsSearchResult, value:OlsSearchResult) => option.iri === value.iri}
       getOptionLabel={(option: Thing) => option.getId()}
       renderOption={(props, option: Thing) => (
@@ -43,7 +41,6 @@ export default function HomeSearchBox() {
           //   alignItems="center"
         >
           <span>{truncate(option.getName(), 40)}</span>
-
           {!(option instanceof Ontology) && (
             <span
               style={{
@@ -65,11 +62,12 @@ export default function HomeSearchBox() {
         </Stack>
       )}
       filterOptions={(x) => x}
-      options={options}
+      options={results}
       loading={loading}
       renderInput={(params) => (
         <TextField
           {...params}
+          style={{ backgroundColor: "white" }}
           label="Search..."
           variant="outlined"
           value={query}

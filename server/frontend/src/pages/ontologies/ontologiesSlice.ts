@@ -18,14 +18,14 @@ const initialState: OntologiesState = {
 };
 
 export const getOntology = createAsyncThunk(
-  "ontologies/ontology",
+  "ontologies_ontology",
   async (ontologyId: string) => {
     let ontologyProperties = await get<any>(`/api/v2/ontologies/${ontologyId}`);
     return new Ontology(ontologyProperties);
   }
 );
 export const getEntity = createAsyncThunk(
-  "ontologies/entity",
+  "ontologies_entity",
   async ({ ontologyId, entityType, entityUri }: any) => {
     let doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityUri)
@@ -37,7 +37,7 @@ export const getEntity = createAsyncThunk(
   }
 );
 export const getAncestors = createAsyncThunk(
-  "ontologies/ancestors",
+  "ontologies_ancestors",
   async ({ ontologyId, entityType, entityUri }: any) => {
     let doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityUri));
     let ancestorsPage = await getPaginated<any>(
@@ -49,7 +49,7 @@ export const getAncestors = createAsyncThunk(
   }
 );
 export const getRootEntities = createAsyncThunk(
-  "ontologies/roots",
+  "ontologies_roots",
   async ({ ontologyId, entityType }: any) => {
     let rootsPage = await getPaginated<any>(
       `/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({

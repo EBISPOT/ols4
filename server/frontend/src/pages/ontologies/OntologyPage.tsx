@@ -37,7 +37,7 @@ export default function OntologyPage(props: { ontologyId: string }) {
   return (
     <Fragment>
       <Header section="ontologies" />
-      <main>{renderOntologyPage()}</main>
+      <main className="container mx-auto">{renderOntologyPage()}</main>
     </Fragment>
   );
 
