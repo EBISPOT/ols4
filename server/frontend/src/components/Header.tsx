@@ -5,7 +5,7 @@ export default function Header(props: { section: string; projectId?: string }) {
 
   return (
     <div
-      className="px-4 pt-4 pb-0 bg-black bg-right bg-cover"
+      className="px-4 pt-8 pb-0 bg-black bg-right bg-cover"
       style={{
         backgroundImage:
           "url('" + process.env.PUBLIC_URL + "/embl-ebi-background-4.jpg')",
