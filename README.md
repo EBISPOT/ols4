@@ -58,7 +58,12 @@ First make sure all the JARs are up to date:
 
     mvn clean package
 
-Then run the test scripts. `./test_dataload.sh` (~1 minute) will test the dataload locally, updating `testcases_expected_output`. `./test_api.sh` (~15 mins) will test the entire OLS4 stack for each testcase using Docker compose. You need to have Docker and Docker compose installed.
+Then run the test scripts:
+
+* `./test_dataload.sh` (~1 minute) will test the dataload locally, updating `testcases_expected_output`. All you need is Java and Maven.
+* `./test_api.sh` (~15 mins) will test the entire OLS4 stack (dataload → neo4j and solr → api server) using Docker compose to bring up and tear down all the services for each testcase, updating `testcases_expected_output_api`. You need to have Docker and Docker compose installed.
+
+To run both:
 
     ./test_dataload.sh
     ./test_api.sh
