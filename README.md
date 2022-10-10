@@ -10,7 +10,7 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 * Automated CI testing of the dataload with minimal testcase ontologies
 * A lossless data representation: everything in the OWL is preserved in the databases
 * Support for the latest Solr and Neo4j (no embedded databases, no MongoDB)
-* React frontend
+* React frontend using Redux and Tailwind
 * Backwards compatibility with the OLS3 API
 
 This repository contains both the dataloader (`dataload` directory) and the API/webapp server (`server` directory).
