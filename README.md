@@ -16,6 +16,9 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 This repository contains both the dataloader (`dataload` directory) and the API/webapp server (`server` directory).
 
 
+# Deploying OLS4
+
+Deployment instructions will go here. OLS4 is still under heavy development, so currently we only have instructions for developers below.
 
 
 # Developing OLS4
@@ -61,7 +64,7 @@ First make sure all the JARs are up to date:
 Then run the test scripts:
 
 * `./test_dataload.sh` (~1 minute) will test the dataload locally, updating `testcases_expected_output`. All you need is Java and Maven.
-* `./test_api.sh` (~15 mins) will test the entire OLS4 stack (dataload → neo4j and solr → api server) using Docker compose to bring up and tear down all the services for each testcase, updating `testcases_expected_output_api`. You need to have Docker and Docker compose installed.
+* `./test_api.sh` (~15 mins) will test the entire OLS4 stack (dataload → solr/neo4j → api server) using Docker compose to bring up and tear down all the services for each testcase, updating `testcases_expected_output_api`. You need to have Docker and Docker compose installed.
 
 To run both:
 
