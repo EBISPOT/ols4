@@ -5,7 +5,7 @@ Work in progress
 
 Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 
-* Much faster dataload (hours instead of days)
+* Much faster dataload (load the OBO foundry in hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
 * Automated CI testing of the dataload with minimal testcase ontologies
 * A lossless data representation: everything in the OWL is preserved in the databases
