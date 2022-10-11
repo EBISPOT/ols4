@@ -9,8 +9,9 @@ export async function request(
     });
 
     return await res.json();
-  } catch (e) {
-    console.dir(e);
+  } catch (error) {
+    console.dir(error);
+    throw error;
     // window.location.href = '/login'
   }
 }
