@@ -31,16 +31,16 @@ export const getStats = createAsyncThunk(
   async (arg, { rejectWithValue }) => {
     try {
       return await get<Stats>(`/api/v2/stats`);
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
 export const getSearchOptions = createAsyncThunk(
   "home_search_options",
   async (query: string, { rejectWithValue }) => {
+    const search = "*" + query + "*";
     try {
-      const search = "*" + query + "*";
       const [entities, ontologies] = await Promise.all([
         getPaginated<any>(
           `/api/v2/entities?${new URLSearchParams({
@@ -59,8 +59,8 @@ export const getSearchOptions = createAsyncThunk(
         ...ontologies.elements.map((obj) => new Ontology(obj)),
         ...entities.elements.map((obj) => thingFromProperties(obj)),
       ];
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );

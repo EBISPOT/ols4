@@ -56,8 +56,8 @@ export const getOntologies = createAsyncThunk(
         )
       ).map((o) => new Ontology(o));
       return data.elements;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -71,8 +71,8 @@ export const getEntities = createAsyncThunk(
         )
       ).map((e) => thingFromProperties(e));
       return data.elements;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -141,7 +141,7 @@ const ontologiesSlice = createSlice({
       state.loadingOntologies = true;
     });
     builder.addCase(getOntologies.rejected, (state) => {
-      state.ontologies = [];
+      state.ontologies = initialState.ontologies;
       state.loadingOntologies = false;
     });
     builder.addCase(
@@ -155,7 +155,7 @@ const ontologiesSlice = createSlice({
       state.loadingEntities = true;
     });
     builder.addCase(getEntities.rejected, (state) => {
-      state.entities = [];
+      state.entities = initialState.entities;
       state.loadingEntities = false;
     });
   },
