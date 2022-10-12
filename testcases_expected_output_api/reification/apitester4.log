@@ -64,19 +64,26 @@ GET http://ols4-server:8080/api/v2/ontologies
 GET http://ols4-server:8080/api/ontologies/reified-bnode/terms
 GET http://ols4-server:8080/api/ontologies/reified-bnode/properties
 GET http://ols4-server:8080/api/ontologies/reified-bnode/individuals
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/parents
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/ancestors
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/hierarchicalParents
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/hierarchicalAncestors
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/children
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/descendants
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/hierarchicalChildren
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/hierarchicalDescendants
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/parents
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/ancestors
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalParents
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalAncestors
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/children
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/descendants
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalChildren
+GET http://ols4-server:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalDescendants
+GET http://ols4-server:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/entities
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/classes
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/properties
 GET http://ols4-server:8080/api/v2/ontologies/reified-bnode/individuals
-Ols4ApiTester.test() reported success
-/mnt/out/ontologies/reified-bnode/individuals.json was equal to /mnt/compare/ontologies/reified-bnode/individuals.json
-/mnt/out/ontologies/reified-bnode/properties.json was equal to /mnt/compare/ontologies/reified-bnode/properties.json
-/mnt/out/ontologies/reified-bnode/terms.json was equal to /mnt/compare/ontologies/reified-bnode/terms.json
-/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies/reified-bnode/classes.json was equal to /mnt/compare/v2/ontologies/reified-bnode/classes.json
-/mnt/out/v2/ontologies/reified-bnode/entities.json differed from /mnt/compare/v2/ontologies/reified-bnode/entities.json
-/mnt/out/v2/ontologies/reified-bnode/individuals.json was equal to /mnt/compare/v2/ontologies/reified-bnode/individuals.json
-/mnt/out/v2/ontologies/reified-bnode/properties.json was equal to /mnt/compare/v2/ontologies/reified-bnode/properties.json
-/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
-RecursiveJsonDiff.diff() reported failure
-apitester reported failure; exit code 1

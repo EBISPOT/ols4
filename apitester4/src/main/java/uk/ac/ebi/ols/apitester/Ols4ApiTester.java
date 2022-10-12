@@ -1,21 +1,12 @@
 
 package uk.ac.ebi.ols.apitester;
 
-import java.io.File;
-import java.net.HttpURLConnection;
+import java.io.*;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.Files;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -95,6 +86,63 @@ public class Ols4ApiTester {
 			JsonElement individuals = getAll(url + "/api/ontologies/" + ontologyId + "/individuals");
 			write(outDir + "/ontologies/" + ontologyId + "/individuals.json", individuals);
 
+			for(JsonElement _class : classes.getAsJsonArray()) {
+
+				String iri = _class.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + ".json", classJson);
+
+				JsonElement parentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents.json", parentsJson);
+
+				JsonElement ancestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors.json", ancestorsJson);
+
+				JsonElement hierarchicalParentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents.json", hierarchicalParentsJson);
+
+				JsonElement hierarchicalAncestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors.json", hierarchicalAncestorsJson);
+
+				JsonElement childrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children.json", childrenJson);
+
+				JsonElement descendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants.json", descendantsJson);
+
+				JsonElement hierarchicalChildrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren.json", hierarchicalChildrenJson);
+
+				JsonElement hierarchicalDescendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants");
+				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants.json", hierarchicalDescendantsJson);
+			}
+
+			for(JsonElement property : properties.getAsJsonArray()) {
+
+				String iri = property.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement propertyJson = get(url + "/api/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri + ".json", propertyJson);
+
+				// TODO
+			}
+
+			for(JsonElement individual : individuals.getAsJsonArray()) {
+
+				String iri = individual.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement individualJson = get(url + "/api/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri + ".json", individualJson);
+
+				// TODO
+			}
+
+
+
 
 			/// v2
 
@@ -110,6 +158,50 @@ public class Ols4ApiTester {
 			JsonElement v2Individuals = getAll(url + "/api/v2/ontologies/" + ontologyId + "/individuals");
 			write(outDir + "/v2/ontologies/" + ontologyId + "/individuals.json", v2Individuals);
 
+
+			for(JsonElement v2Entity : v2Entities.getAsJsonArray()) {
+
+				String iri = v2Entity.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement entityJson = get(url + "/api/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri + ".json", entityJson);
+
+				// TODO
+			}
+
+			for(JsonElement v2Class : v2Classes.getAsJsonArray()) {
+
+				String iri = v2Class.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + ".json", classJson);
+
+				// TODO
+			}
+
+			for(JsonElement v2Property : v2Properties.getAsJsonArray()) {
+
+				String iri = v2Property.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement propertyJson = get(url + "/api/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri + ".json", propertyJson);
+
+				// TODO
+			}
+
+			for(JsonElement v2Individual : v2Individuals.getAsJsonArray()) {
+
+				String iri = v2Individual.getAsJsonObject().get("iri").getAsString();
+				String doubleEncodedIri = doubleEncode(iri);
+
+				JsonElement individualJson = get(url + "/api/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri);
+				write(outDir + "/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri + ".json", individualJson);
+
+				// TODO
+			}
 		}
 
 		return true;
@@ -328,11 +420,15 @@ public class Ols4ApiTester {
 		}
 
 		return url.substring(url.length());
-	}
+	}*/
 
 	public String doubleEncode(String iri) throws UnsupportedEncodingException {
 
 		return URLEncoder.encode(URLEncoder.encode(iri, "utf-8"), "utf-8");
-	}*/
+	}
+
+	public String sanitizeFilename(String filename) {
+		return filename.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
+	}
 
 }

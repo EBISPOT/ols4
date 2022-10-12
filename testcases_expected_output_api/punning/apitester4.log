@@ -64,19 +64,29 @@ GET http://ols4-server:8080/api/v2/ontologies
 GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms
 GET http://ols4-server:8080/api/ontologies/punning-class-individual/properties
 GET http://ols4-server:8080/api/ontologies/punning-class-individual/individuals
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/parents
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/ancestors
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalParents
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalAncestors
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/children
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/descendants
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalChildren
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalDescendants
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/parents
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/ancestors
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalParents
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalAncestors
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/children
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/descendants
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalChildren
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalDescendants
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523commonlyHasUnit
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523terakelvin
+GET http://ols4-server:8080/api/ontologies/punning-class-individual/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523thermodynamicTemperatureOfTheTriplePointOfWater
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/entities
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/classes
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/properties
 GET http://ols4-server:8080/api/v2/ontologies/punning-class-individual/individuals
-Ols4ApiTester.test() reported success
-/mnt/out/ontologies/punning-class-individual/individuals.json was equal to /mnt/compare/ontologies/punning-class-individual/individuals.json
-/mnt/out/ontologies/punning-class-individual/properties.json was equal to /mnt/compare/ontologies/punning-class-individual/properties.json
-/mnt/out/ontologies/punning-class-individual/terms.json was equal to /mnt/compare/ontologies/punning-class-individual/terms.json
-/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies/punning-class-individual/classes.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/classes.json
-/mnt/out/v2/ontologies/punning-class-individual/entities.json differed from /mnt/compare/v2/ontologies/punning-class-individual/entities.json
-/mnt/out/v2/ontologies/punning-class-individual/individuals.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/individuals.json
-/mnt/out/v2/ontologies/punning-class-individual/properties.json was equal to /mnt/compare/v2/ontologies/punning-class-individual/properties.json
-/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
-RecursiveJsonDiff.diff() reported failure
-apitester reported failure; exit code 1

@@ -64,19 +64,19 @@ GET http://ols4-server:8080/api/v2/ontologies
 GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms
 GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties
 GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/individuals
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/parents
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/ancestors
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalParents
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalAncestors
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/children
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/descendants
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalChildren
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalDescendants
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523inverseRelation
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation
+GET http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523a
 GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/entities
 GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes
 GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/properties
 GET http://ols4-server:8080/api/v2/ontologies/individuals-anonymous-types-with-inverse/individuals
-Ols4ApiTester.test() reported success
-/mnt/out/ontologies/individuals-anonymous-types-with-inverse/individuals.json was equal to /mnt/compare/ontologies/individuals-anonymous-types-with-inverse/individuals.json
-/mnt/out/ontologies/individuals-anonymous-types-with-inverse/properties.json was equal to /mnt/compare/ontologies/individuals-anonymous-types-with-inverse/properties.json
-/mnt/out/ontologies/individuals-anonymous-types-with-inverse/terms.json was equal to /mnt/compare/ontologies/individuals-anonymous-types-with-inverse/terms.json
-/mnt/out/ontologies.json was equal to /mnt/compare/ontologies.json
-/mnt/out/v2/ontologies/individuals-anonymous-types-with-inverse/classes.json was equal to /mnt/compare/v2/ontologies/individuals-anonymous-types-with-inverse/classes.json
-/mnt/out/v2/ontologies/individuals-anonymous-types-with-inverse/entities.json differed from /mnt/compare/v2/ontologies/individuals-anonymous-types-with-inverse/entities.json
-/mnt/out/v2/ontologies/individuals-anonymous-types-with-inverse/individuals.json was equal to /mnt/compare/v2/ontologies/individuals-anonymous-types-with-inverse/individuals.json
-/mnt/out/v2/ontologies/individuals-anonymous-types-with-inverse/properties.json was equal to /mnt/compare/v2/ontologies/individuals-anonymous-types-with-inverse/properties.json
-/mnt/out/v2/ontologies.json was equal to /mnt/compare/v2/ontologies.json
-RecursiveJsonDiff.diff() reported failure
-apitester reported failure; exit code 1
