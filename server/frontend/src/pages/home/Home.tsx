@@ -25,7 +25,7 @@ export default function Home() {
       <main className="container mx-auto h-fit">
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-3">
-            <div className="bg-gradient-to-r from-grey-50 to-white rounded-lg my-8 p-8">
+            <div className="bg-gradient-to-r from-grey-50 to-grey-1 rounded-lg my-8 p-8">
               <div className="text-3xl mb-4 text-grey-2 font-semibold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
@@ -39,16 +39,26 @@ export default function Home() {
 								}}/> */}
               <div className="grid grid-cols-2">
                 <div>Examples: diabetes, GO:0098743</div>
-                <div className="text-right">
-                  Looking for a particular ontology?
+                <div className="text-grey-2 text-right">
+                  <a
+                    href="ontologies"
+                    className="underline underline-offset-4 decoration-dotted"
+                  >
+                    Looking for a particular ontology?
+                  </a>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-8">
-              <div>
-                <div className="text-2xl mb-2 text-grey-2">
+              <div className="px-2">
+                <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-browse icon-spacer text-yellow-600" />
-                  <a href="about">About OLS</a>
+                  <a
+                    href="about"
+                    className="underline underline-offset-4 decoration-dotted"
+                  >
+                    About OLS
+                  </a>
                 </div>
                 <p>
                   The Ontology Lookup Service (OLS) is a repository for
@@ -59,10 +69,13 @@ export default function Home() {
                   Phenotypes and Ontologies Team (SPOT) at EMBL-EBI.
                 </p>
               </div>
-              <div>
-                <div className="text-2xl mb-2 text-grey-2">
+              <div className="px-2">
+                <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-tool icon-spacer text-yellow-600" />
-                  <a href="https://www.ebi.ac.uk/spot/ontology/">
+                  <a
+                    href="https://www.ebi.ac.uk/spot/ontology/"
+                    className="underline underline-offset-4 decoration-dotted"
+                  >
                     Related Tools
                   </a>
                 </div>
@@ -74,10 +87,13 @@ export default function Home() {
                   tool for building ontologies from spreadsheets.
                 </p>
               </div>
-              <div>
-                <div className="text-2xl mb-2 text-grey-2">
+              <div className="px-2">
+                <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-600" />
-                  <a href="https://github.com/EBISPOT/OLS/issues">
+                  <a
+                    href="https://github.com/EBISPOT/OLS/issues"
+                    className="underline underline-offset-4 decoration-dotted"
+                  >
                     Report an Issue
                   </a>
                 </div>
@@ -91,13 +107,13 @@ export default function Home() {
             </div>
           </div>
           <div className="col-span-1">
-            <div className="my-8">
+            <div className="bg-gradient-to-r from-grey-1 to-white rounded-lg my-8 p-4">
               <div className="text-2xl text-grey-2 mb-2">
                 <i className="icon icon-common icon-analyse-graph icon-spacer" />
                 <span>Data Content</span>
               </div>
               {stats ? (
-                <ul className="list-disc list-inside">
+                <ul className="list-disc list-inside pl-2">
                   <li>
                     {stats.numberOfOntologies.toLocaleString()} ontologies
                   </li>
@@ -113,7 +129,7 @@ export default function Home() {
                 <Spinner />
               )}
             </div>
-            <div className="h-fit">
+            <div>
               <Timeline
                 dataSource={{
                   sourceType: "profile",

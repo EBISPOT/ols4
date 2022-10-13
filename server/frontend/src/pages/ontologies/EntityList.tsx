@@ -1,31 +1,38 @@
-
-
-
-import React from "react";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import OlsDatatable, { Column } from "../../components/OlsDatatable";
 import Entity from "../../model/Entity";
-import { thingFromProperties } from "../../model/fromProperties";
+import { getEntities } from "./ontologiesSlice";
 
-
-export default function EntityList(props:{
-	ontologyId:string
-	entityType:'entities'|'classes'|'properties'|'individuals'
+export default function EntityList(props: {
+  ontologyId: string;
+  entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
-	let { ontologyId, entityType } = props
+  const dispatch = useAppDispatch();
+  const entities = useAppSelector((state) => state.ontologies.entities);
+  const loading = useAppSelector((state) => state.ontologies.loadingEntities);
 
-        return <OlsDatatable
-            columns={columns}
-            endpoint={`/api/v2/ontologies/${ontologyId}/${entityType}`}
-            instantiateRow={(row) => thingFromProperties(row)}
-	    onClickRow={(entity:Entity) => {
-	    }}
-        />
+  let { ontologyId, entityType } = props;
+
+  useEffect(() => {
+    dispatch(getEntities({ ontologyId, entityType }));
+  }, [ontologyId, entityType]);
+
+  return (
+    <OlsDatatable
+      columns={columns}
+      data={entities}
+      onSelectRow={(row) => {
+        console.log(JSON.stringify(row));
+      }}
+    />
+  );
 }
 
 const columns: readonly Column[] = [
-	{
-		name: 'Name',
-		sortable: true,
-		selector: (entity:Entity) => entity.getName(),
-	}
-]
+  {
+    name: "Name",
+    sortable: true,
+    selector: (entity: Entity) => entity.getName(),
+  },
+];

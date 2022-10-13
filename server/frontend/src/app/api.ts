@@ -2,17 +2,16 @@ export async function request(
   path: string,
   init?: RequestInit | undefined
 ): Promise<any> {
-  try {
-    let res = await fetch(`${process.env.REACT_APP_APIURL}${path}`, {
-      ...(init ? init : {}),
-      //headers: { ...(init?.headers || {}), ...getAuthHeaders() }
-    });
-
-    return await res.json();
-  } catch (e) {
-    console.dir(e);
-    // window.location.href = '/login'
+  const res = await fetch(`${process.env.REACT_APP_APIURL}${path}`, {
+    ...(init ? init : {}),
+    //headers: { ...(init?.headers || {}), ...getAuthHeaders() }
+  });
+  if (!res.ok) {
+    const message = `Failure in accesing ${res.url} with status ${res.status} (${res.statusText})`;
+    console.dir(message);
+    throw new Error(message);
   }
+  return await res.json();
 }
 
 export class Page<T> {
@@ -38,17 +37,19 @@ export class Page<T> {
 export async function getPaginated<ResType>(
   path: string
 ): Promise<Page<ResType>> {
-  let res = await get<any>(path);
+  const res = await get<any>(path);
 
-  let elements = res["_embedded"]
-    ? res["_embedded"][Object.keys(res["_embedded"])[0]]
-    : [];
-
+  let elements = [];
+  if (res) {
+    elements = res["_embedded"]
+      ? res["_embedded"][Object.keys(res["_embedded"])[0]]
+      : [];
+  }
   return new Page<ResType>(
-    res.page.size,
-    res.page.totalElements,
-    res.page.totalPages,
-    res.page.number,
+    res?.page?.size ? res.page.size : 0,
+    res?.page?.totalElements ? res.page.totalElements : 0,
+    res?.page?.totalPages ? res.page.totalPages : 0,
+    res?.page?.number ? res.page.number : 0,
     elements
   );
 }

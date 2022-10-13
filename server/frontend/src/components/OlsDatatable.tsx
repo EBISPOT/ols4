@@ -1,14 +1,6 @@
 import Search from "@mui/icons-material/Search";
-import { Grid, Input, InputAdornment, TableHead } from "@mui/material";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
+import { InputAdornment, TextField } from "@mui/material";
 import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { Fragment, useEffect, useState } from "react";
-import { getPaginated, Page } from "../app/api";
-import Spinner from "./Spinner";
 
 export interface Column {
   name: string;
@@ -20,123 +12,116 @@ export interface Column {
 
 export interface Props {
   columns: readonly Column[];
-  endpoint: string;
-  instantiateRow: (any) => any;
-  onClickRow?: (any) => void;
+  data: any[];
+  onSelectRow: (row: any) => void;
+  page?: number;
+  rowsPerPage?: number;
+  onPageChange?: (page: number) => void;
+  onRowsPerPageChange?: (rowsPerPage: number) => void;
+  onFilter?: (key: string) => void;
 }
 
-export default function OlsDatatable(props: Props) {
-  let { columns, endpoint, instantiateRow, onClickRow } = props;
-
-  let [page, setPage] = useState<number>(0);
-  let [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  let [sortColumn, setSortColumn] = useState<string>("");
-  let [sortDirection, setSortDirection] = useState<string>("asc");
-  let [filter, setFilter] = useState<string>("");
-  let [loading, setLoading] = useState<boolean>(false);
-  let [data, setData] = useState<Page<any> | null>(null);
-
-  useEffect(() => {
-    fetchData();
-  }, [page, rowsPerPage, filter, columns, endpoint]);
-
-  async function fetchData() {
-    if (loading) return;
-
-    setLoading(true);
-
-    let search = filter ? "&search=" + filter : "";
-
-    let data = (
-      await getPaginated<any>(
-        endpoint + `?page=${page}&size=${rowsPerPage}${search}`
-      )
-    ).map((o) => instantiateRow(o));
-
-    setData(data);
-    setLoading(false);
-  }
-
-  if (!data) {
-    return <Spinner />;
-  }
+export default function OlsDatatable({
+  columns,
+  data,
+  onSelectRow,
+  page,
+  rowsPerPage,
+  onPageChange,
+  onRowsPerPageChange,
+  onFilter,
+}: Props) {
+  // const [sortColumn, setSortColumn] = useState<string>("");
+  // const [sortDirection, setSortDirection] = useState<string>("asc");
 
   return (
-    <Fragment>
-      <Grid container>
-        <Grid item xs={6}>
-          <Input
-            startAdornment={
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            }
-            onChange={(e) => {
-              setFilter(e.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item xs={6} container>
-          <TablePagination
-            rowsPerPageOptions={[]}
-            // rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={data.totalElements}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={async (ev, page) => {
-              console.log("Set page to " + page);
+    <div>
+      <div className="grid grid-cols-2 mb-4">
+        {onFilter != undefined ? (
+          <div className="w-3/4 px-4">
+            <TextField
+              fullWidth
+              size="small"
+              margin="dense"
+              onChange={(e) => {
+                onFilter(e.target.value);
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            ></TextField>
+          </div>
+        ) : null}
+        {page != undefined &&
+        page >= 0 &&
+        onPageChange != undefined &&
+        rowsPerPage != undefined &&
+        rowsPerPage > 0 &&
+        onRowsPerPageChange != undefined ? (
+          <div>
+            <TablePagination
+              rowsPerPageOptions={[]}
+              // rowsPerPageOptions={[10, 25, 100]}
+              component="div"
+              count={data.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={(e, page) => {
+                console.log("Set page to " + page);
+                onPageChange(page);
+              }}
+              onRowsPerPageChange={(e) => {
+                const newRowsPerPage = parseInt(e.target.value);
+                console.log("Set rows per page to " + newRowsPerPage);
+                onRowsPerPageChange(newRowsPerPage);
+              }}
+            />
+          </div>
+        ) : null}
+      </div>
 
-              setPage(page);
-            }}
-            onRowsPerPageChange={async (ev) => {
-              let newRowsPerPage = parseInt(ev.target.value);
-              console.log("Set rows per page to " + newRowsPerPage);
-
-              setRowsPerPage(newRowsPerPage);
-            }}
-          />
-        </Grid>
-      </Grid>
-
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table size="small" stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
+      <div className="m-6">
+        <table className="border-collapse border-spacing-1">
+          <thead>
+            <tr className="border-b-2 border-grey-300">
               {columns.map((column) => (
-                <TableCell
+                <td
+                  className="text-lg text-left font-semibold py-2 px-4"
                   key={column.name}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
                 >
                   {column.name}
-                </TableCell>
+                </td>
               ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.elements.map((row) => {
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row: any) => {
               return (
-                <TableRow
-                  hover
+                <tr
                   tabIndex={-1}
                   key={row.code}
-                  onClick={onClickRow && (() => onClickRow!(row))}
-                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    onSelectRow(row);
+                  }}
+                  className="even:bg-grey-50 cursor-pointer"
                 >
-                  {columns.map((column) => {
+                  {columns.map((column: any) => {
                     return (
-                      <TableCell key={column.name} align={column.align}>
+                      <td className="text-lg py-2 px-4" key={column.name}>
                         {column.selector(row)}
-                      </TableCell>
+                      </td>
                     );
                   })}
-                </TableRow>
+                </tr>
               );
             })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Fragment>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }

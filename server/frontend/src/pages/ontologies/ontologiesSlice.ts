@@ -9,12 +9,20 @@ export interface OntologiesState {
   entity: Entity | undefined;
   ancestors: Entity[];
   rootEntities: Entity[];
+  ontologies: Ontology[];
+  loadingOntologies: boolean;
+  entities: Entity[];
+  loadingEntities: boolean;
 }
 const initialState: OntologiesState = {
   ontology: undefined,
   entity: undefined,
   ancestors: [],
   rootEntities: [],
+  ontologies: [],
+  loadingOntologies: false,
+  entities: [],
+  loadingEntities: false,
 };
 
 export const getOntology = createAsyncThunk(
@@ -34,6 +42,38 @@ export const getEntity = createAsyncThunk(
       `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
     );
     return thingFromProperties(termProperties);
+  }
+);
+export const getOntologies = createAsyncThunk(
+  "ontologies_ontologies",
+  async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
+    try {
+      const data = (
+        await getPaginated<any>(
+          `/api/v2/ontologies?page=${page}&size=${rowsPerPage}${
+            search != undefined ? "&search=" + search : ""
+          }`
+        )
+      ).map((o) => new Ontology(o));
+      return data.elements;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const getEntities = createAsyncThunk(
+  "ontologies_entities",
+  async ({ ontologyId, entityType }: any, { rejectWithValue }) => {
+    try {
+      const data = (
+        await getPaginated<any>(
+          `/api/v2/ontologies/${ontologyId}/${entityType}`
+        )
+      ).map((e) => thingFromProperties(e));
+      return data.elements;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 export const getAncestors = createAsyncThunk(
@@ -90,6 +130,34 @@ const ontologiesSlice = createSlice({
         state.rootEntities = action.payload;
       }
     );
+    builder.addCase(
+      getOntologies.fulfilled,
+      (state, action: PayloadAction<Ontology[]>) => {
+        state.ontologies = action.payload;
+        state.loadingOntologies = false;
+      }
+    );
+    builder.addCase(getOntologies.pending, (state) => {
+      state.loadingOntologies = true;
+    });
+    builder.addCase(getOntologies.rejected, (state) => {
+      state.ontologies = initialState.ontologies;
+      state.loadingOntologies = false;
+    });
+    builder.addCase(
+      getEntities.fulfilled,
+      (state, action: PayloadAction<Entity[]>) => {
+        state.entities = action.payload;
+        state.loadingEntities = false;
+      }
+    );
+    builder.addCase(getEntities.pending, (state) => {
+      state.loadingEntities = true;
+    });
+    builder.addCase(getEntities.rejected, (state) => {
+      state.entities = initialState.entities;
+      state.loadingEntities = false;
+    });
   },
 });
 
