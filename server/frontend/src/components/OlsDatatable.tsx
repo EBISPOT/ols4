@@ -1,12 +1,6 @@
 import Search from "@mui/icons-material/Search";
-import { Grid, Input, InputAdornment, TableHead } from "@mui/material";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
+import { InputAdornment, TextField } from "@mui/material";
 import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { Fragment } from "react";
 
 export interface Column {
   name: string;
@@ -41,21 +35,26 @@ export default function OlsDatatable({
   // const [sortDirection, setSortDirection] = useState<string>("asc");
 
   return (
-    <Fragment>
-      <Grid container>
+    <div>
+      <div className="grid grid-cols-2 mb-4">
         {onFilter != undefined ? (
-          <Grid item xs={6}>
-            <Input
-              startAdornment={
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              }
+          <div className="w-3/4 px-4">
+            <TextField
+              fullWidth
+              size="small"
+              margin="dense"
               onChange={(e) => {
                 onFilter(e.target.value);
               }}
-            />
-          </Grid>
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            ></TextField>
+          </div>
         ) : null}
         {page != undefined &&
         page >= 0 &&
@@ -63,7 +62,7 @@ export default function OlsDatatable({
         rowsPerPage != undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange != undefined ? (
-          <Grid item xs={6} container>
+          <div>
             <TablePagination
               rowsPerPageOptions={[]}
               // rowsPerPageOptions={[10, 25, 100]}
@@ -76,55 +75,53 @@ export default function OlsDatatable({
                 onPageChange(page);
               }}
               onRowsPerPageChange={(e) => {
-                let newRowsPerPage = parseInt(e.target.value);
+                const newRowsPerPage = parseInt(e.target.value);
                 console.log("Set rows per page to " + newRowsPerPage);
                 onRowsPerPageChange(newRowsPerPage);
               }}
             />
-          </Grid>
+          </div>
         ) : null}
-      </Grid>
+      </div>
 
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table size="small" stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
+      <div className="m-6">
+        <table className="border-collapse border-spacing-1">
+          <thead>
+            <tr className="border-b-2 border-grey-300">
               {columns.map((column) => (
-                <TableCell
+                <td
+                  className="text-lg text-left font-semibold py-2 px-4"
                   key={column.name}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
                 >
                   {column.name}
-                </TableCell>
+                </td>
               ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
+            </tr>
+          </thead>
+          <tbody>
             {data.map((row: any) => {
               return (
-                <TableRow
-                  hover
+                <tr
                   tabIndex={-1}
                   key={row.code}
                   onClick={() => {
                     onSelectRow(row);
                   }}
-                  style={{ cursor: "pointer" }}
+                  className="even:bg-grey-50 cursor-pointer"
                 >
                   {columns.map((column: any) => {
                     return (
-                      <TableCell key={column.name} align={column.align}>
+                      <td className="text-lg py-2 px-4" key={column.name}>
                         {column.selector(row)}
-                      </TableCell>
+                      </td>
                     );
                   })}
-                </TableRow>
+                </tr>
               );
             })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Fragment>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }

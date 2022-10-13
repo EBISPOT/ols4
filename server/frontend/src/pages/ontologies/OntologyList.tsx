@@ -13,12 +13,12 @@ const columns: readonly Column[] = [
   //     selector: (ontology:Ontology) => JSON.stringify(ontology),
   //     wrap: true
   // },
-  {
-    name: "",
-    sortable: false,
-    selector: (ontology: Ontology) =>
-      ontology.getLogoURL() && <img width={50} src={ontology.getLogoURL()} />,
-  },
+  // {
+  //   name: "",
+  //   sortable: false,
+  //   selector: (ontology: Ontology) =>
+  //     ontology.getLogoURL() && <img width={50} src={ontology.getLogoURL()} />,
+  // },
   {
     name: "Name",
     sortable: true,
