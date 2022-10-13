@@ -1,18 +1,14 @@
-import ReactLoadingOverlay from "react-loading-overlay";
+export interface Props {
+  message?: string;
+}
 
-export default function LoadingOverlay(props: { active: boolean }) {
+export default function LoadingOverlay({ message }: Props) {
   return (
-    <ReactLoadingOverlay
-      active={props.active}
-      spinner
-      text="Saving..."
-      fadeSpeed={100}
-      styles={{
-        overlay: (base: any) => ({
-          ...base,
-          background: "rgba(0, 0, 0, 0.2)",
-        }),
-      }}
-    ></ReactLoadingOverlay>
+    <div className="fixed top-0 left-0 w-full h-full z-50 backdrop-blur-sm">
+      <div className="absolute top-1/2 left-1/2 ">
+        <div className="overlay-spinner"></div>
+        <div>{message}</div>
+      </div>
+    </div>
   );
 }

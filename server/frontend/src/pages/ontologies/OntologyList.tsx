@@ -53,7 +53,7 @@ export default function OntologyList() {
 
   return (
     <div>
-      {loading ? <LoadingOverlay active={true} /> : null}
+      {loading ? <LoadingOverlay /> : null}
       <OlsDatatable
         columns={columns}
         data={ontologies}
