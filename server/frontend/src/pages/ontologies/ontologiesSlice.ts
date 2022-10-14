@@ -108,53 +108,53 @@ const ontologiesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       getOntology.fulfilled,
-      (state, action: PayloadAction<Ontology>) => {
+      (state: OntologiesState, action: PayloadAction<Ontology>) => {
         state.ontology = action.payload;
       }
     );
     builder.addCase(
       getEntity.fulfilled,
-      (state, action: PayloadAction<Entity>) => {
+      (state: OntologiesState, action: PayloadAction<Entity>) => {
         state.entity = action.payload;
       }
     );
     builder.addCase(
       getAncestors.fulfilled,
-      (state, action: PayloadAction<Entity[]>) => {
+      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
         state.ancestors = action.payload;
       }
     );
     builder.addCase(
       getRootEntities.fulfilled,
-      (state, action: PayloadAction<Entity[]>) => {
+      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
         state.rootEntities = action.payload;
       }
     );
     builder.addCase(
       getOntologies.fulfilled,
-      (state, action: PayloadAction<Ontology[]>) => {
+      (state: OntologiesState, action: PayloadAction<Ontology[]>) => {
         state.ontologies = action.payload;
         state.loadingOntologies = false;
       }
     );
-    builder.addCase(getOntologies.pending, (state) => {
+    builder.addCase(getOntologies.pending, (state: OntologiesState) => {
       state.loadingOntologies = true;
     });
-    builder.addCase(getOntologies.rejected, (state) => {
+    builder.addCase(getOntologies.rejected, (state: OntologiesState) => {
       state.ontologies = initialState.ontologies;
       state.loadingOntologies = false;
     });
     builder.addCase(
       getEntities.fulfilled,
-      (state, action: PayloadAction<Entity[]>) => {
+      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
         state.entities = action.payload;
         state.loadingEntities = false;
       }
     );
-    builder.addCase(getEntities.pending, (state) => {
+    builder.addCase(getEntities.pending, (state: OntologiesState) => {
       state.loadingEntities = true;
     });
-    builder.addCase(getEntities.rejected, (state) => {
+    builder.addCase(getEntities.rejected, (state: OntologiesState) => {
       state.entities = initialState.entities;
       state.loadingEntities = false;
     });

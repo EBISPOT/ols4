@@ -39,12 +39,11 @@ export async function getPaginated<ResType>(
 ): Promise<Page<ResType>> {
   const res = await get<any>(path);
 
-  let elements = [];
-  if (res) {
-    elements = res["_embedded"]
+  let elements =
+    res && res["_embedded"]
       ? res["_embedded"][Object.keys(res["_embedded"])[0]]
       : [];
-  }
+
   return new Page<ResType>(
     res?.page?.size ? res.page.size : 0,
     res?.page?.totalElements ? res.page.totalElements : 0,

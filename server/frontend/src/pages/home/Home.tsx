@@ -50,7 +50,7 @@ export default function Home() {
               </div>
             </div>
             <div className="grid grid-cols-3 gap-8">
-              <div className="px-2">
+              <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-browse icon-spacer text-yellow-600" />
                   <a
@@ -69,7 +69,7 @@ export default function Home() {
                   Phenotypes and Ontologies Team (SPOT) at EMBL-EBI.
                 </p>
               </div>
-              <div className="px-2">
+              <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-tool icon-spacer text-yellow-600" />
                   <a
@@ -87,7 +87,7 @@ export default function Home() {
                   tool for building ontologies from spreadsheets.
                 </p>
               </div>
-              <div className="px-2">
+              <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-grey-2">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-600" />
                   <a
@@ -129,7 +129,7 @@ export default function Home() {
                 <Spinner />
               )}
             </div>
-            <div>
+            <div className="mb-4">
               <Timeline
                 dataSource={{
                   sourceType: "profile",
