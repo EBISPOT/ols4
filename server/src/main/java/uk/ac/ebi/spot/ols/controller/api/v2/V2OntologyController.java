@@ -68,7 +68,7 @@ public class V2OntologyController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-	Map<String,String> properties = Map.of("isObsolete", "false");
+	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
         Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
