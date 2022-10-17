@@ -17,7 +17,7 @@ public class IsDefiningOntologyAnnotator {
 
         Set<String> ontologyBaseUris = new HashSet<String>();
 
-        Object configBaseUris = graph.config.get("baseUris");
+        Object configBaseUris = graph.config.get("base_uri");
 
         if(configBaseUris instanceof Collection<?>) {
             ontologyBaseUris.addAll((Collection<String>) configBaseUris);
@@ -44,6 +44,7 @@ public class IsDefiningOntologyAnnotator {
                 for(String baseUri : ontologyBaseUris) {
                     if(c.uri.startsWith(baseUri)) {
                         isDefining = true;
+                        break;
                     }
                 }
                 c.properties.addProperty(
@@ -54,7 +55,7 @@ public class IsDefiningOntologyAnnotator {
             }
         }
         long endTime3 = System.nanoTime();
-        System.out.println("annotate isDefiningOntology: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        System.out.println("annotate isDefiningOntology with baseUris " + ontologyBaseUris + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
     }
