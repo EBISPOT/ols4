@@ -5,6 +5,7 @@ import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.annotators.helpers.ClassExpressionIRIExtractor;
 import uk.ac.ebi.owl2json.properties.PropertyValue;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
+import uk.ac.ebi.owl2json.properties.PropertyValueURI;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,18 +33,23 @@ public class HierarchyFlagsAnnotator {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 
+                boolean hasDirectParent = false;
+
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
+                        if(parent.getType().equals(PropertyValue.Type.URI)) {
 
-                        Set<String> iris = ClassExpressionIRIExtractor.extractIRIsFromClassExpression(graph, parent);
+                            String iri = ((PropertyValueURI) parent).getUri();
 
-                        for(String iri : iris) {
                             if(!iri.equals("http://www.w3.org/2002/07/owl#Thing")) {
+                                hasDirectParent = true;
                                 hasChildren.add(iri);
                             }
                         }
                     }
                 }
+
+                c.properties.addProperty("isRoot", PropertyValueLiteral.fromString(hasDirectParent ? "false" : "true"));
             }
         }
 
