@@ -22,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.controller.api.v2.V2OntologyAssembler;
+import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
@@ -63,10 +64,14 @@ public class V2OntologyController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, Map.of());
+	Map<String,String> properties = Map.of("isObsolete", "false");
+	properties.putAll(searchProperties);
+
+        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
