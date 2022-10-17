@@ -1,10 +1,11 @@
 {
   "ontologies": [
     {
-      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl\",\"imported\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"4\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"2\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"ontology_purl\":\"./testcases/individuals/anonymous-types-with-inverse.owl\",\"preferredPrefix\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl\"}",
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl\",\"imported\":\"false\",\"isObsolete\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"4\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"2\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"ontology_purl\":\"./testcases/individuals/anonymous-types-with-inverse.owl\",\"preferredPrefix\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl\"}",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
       "imported": "false",
+      "isObsolete": "false",
       "numberOfClasses": "1",
       "numberOfEntities": "4",
       "numberOfIndividuals": "1",
@@ -18,12 +19,15 @@
       "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasValue\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\",\"propertyLabels\":{}},\"imported\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"A\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A\"}",
+          "_json": "{\"hasChildren\":\"false\",\"hierarchicalParent\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasValue\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasValue\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"A\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A\"}",
           "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
           "imported": "false",
-          "isRoot": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
           "shortForm": "A",
           "type": [
@@ -35,12 +39,14 @@
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.w3.org/2002/07/owl#topObjectProperty\",\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"inverseRelation\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.w3.org/2002/07/owl#topObjectProperty\",\"http://www.w3.org/2002/07/owl#inverseOf\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\",\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"inverseRelation\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
           "shortForm": "inverseRelation",
@@ -51,11 +57,13 @@
           "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation"
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.w3.org/2002/07/owl#topObjectProperty\",\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"relation\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#subPropertyOf\":\"http://www.w3.org/2002/07/owl#topObjectProperty\",\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"relation\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
           "shortForm": "relation",
@@ -68,16 +76,17 @@
       ],
       "individuals": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#NamedIndividual\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A\",\"propertyLabels\":{}}],\"imported\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"relatedTo\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A\",\"shortForm\":\"a\",\"type\":[\"entity\",\"individual\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#NamedIndividual\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A\",\"isObsolete\":\"false\",\"propertyLabels\":{}}],\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"individuals-anonymous-types-with-inverse\",\"propertyLabels\":{},\"shortForm\":\"a\",\"type\":[\"entity\",\"individual\"],\"uri\":\"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a\"}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A"
           ],
           "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
-          "relatedTo": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
           "shortForm": "a",
           "type": [
             "entity",
