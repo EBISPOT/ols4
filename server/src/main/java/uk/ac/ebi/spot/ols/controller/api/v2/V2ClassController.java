@@ -58,9 +58,12 @@ public class V2ClassController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
-            @RequestParam Map<String,String> properties,
+            @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
+
+	Map<String,String> properties = Map.of("isObsolete", "false");
+	properties.putAll(searchProperties);
 
         Page<V2Class> document = classRepository.find(pageable, lang, search, searchFields,  DynamicQueryHelper.filterProperties(properties));
 
@@ -74,9 +77,12 @@ public class V2ClassController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
-            @RequestParam Map<String,String> properties,
+            @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
+
+	Map<String,String> properties = Map.of("isObsolete", "false");
+	properties.putAll(searchProperties);
 
         Page<V2Class> document = classRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields,  DynamicQueryHelper.filterProperties(properties));
 

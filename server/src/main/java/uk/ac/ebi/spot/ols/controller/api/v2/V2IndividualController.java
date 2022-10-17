@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.model.v2.V2Individual;
 import uk.ac.ebi.spot.ols.repository.v2.V2IndividualRepository;
 
@@ -55,10 +57,14 @@ public class V2IndividualController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Individual> document = individualRepository.find(pageable, lang, search, searchFields, Map.of());
+	Map<String,String> properties = Map.of("isObsolete", "false");
+	properties.putAll(searchProperties);
+
+        Page<V2Individual> document = individualRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
@@ -70,10 +76,14 @@ public class V2IndividualController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-        Page<V2Individual> document = individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, Map.of());
+	Map<String,String> properties = Map.of("isObsolete", "false");
+	properties.putAll(searchProperties);
+
+        Page<V2Individual> document = individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
