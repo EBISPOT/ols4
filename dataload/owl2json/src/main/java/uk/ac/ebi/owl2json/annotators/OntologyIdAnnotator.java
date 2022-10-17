@@ -1,27 +1,21 @@
-package uk.ac.ebi.owl2json.transforms;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.apache.jena.graph.NodeFactory;
+package uk.ac.ebi.owl2json.annotators;
 
 import uk.ac.ebi.owl2json.OwlNode;
-import uk.ac.ebi.owl2json.OwlTranslator;
+import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 public class OntologyIdAnnotator {
 
-	public static void annotateOntologyIds(OwlTranslator translator) {
+	public static void annotateOntologyIds(OwlGraph graph) {
 
 		long startTime3 = System.nanoTime();
 
 
-		String ontologyId = (String) translator.config.get("id");
+		String ontologyId = (String) graph.config.get("id");
 
 
-		for(String id : translator.nodes.keySet()) {
-		    OwlNode c = translator.nodes.get(id);
+		for(String id : graph.nodes.keySet()) {
+		    OwlNode c = graph.nodes.get(id);
 		    if (c.types.contains(OwlNode.NodeType.CLASS) ||
 				c.types.contains(OwlNode.NodeType.PROPERTY) ||
 				c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {

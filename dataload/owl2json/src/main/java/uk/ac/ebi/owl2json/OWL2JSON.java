@@ -137,8 +137,8 @@ public class OWL2JSON {
 
             try {
 
-                OwlTranslator translator = new OwlTranslator(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
-                translator.write(writer);
+                OwlGraph graph = new OwlGraph(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
+                graph.write(writer);
 
                 loadedOntologyIds.add(ontologyId);
 
@@ -217,7 +217,7 @@ public class OWL2JSON {
 
         writer.close();
 
-        System.out.println("Total time spent waiting for downloads: " + (OwlTranslator.STATS_TOTAL_DOWNLOAD_TIME / 1000 / 1000 / 1000) + "s");
+        System.out.println("Total time spent waiting for downloads: " + (OwlGraph.STATS_TOTAL_DOWNLOAD_TIME / 1000 / 1000 / 1000) + "s");
     }
 
 

@@ -1,16 +1,13 @@
 package uk.ac.ebi.owl2json;
 
-import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
+import uk.ac.ebi.owl2json.annotators.*;
 import uk.ac.ebi.owl2json.properties.*;
-import uk.ac.ebi.owl2json.transforms.*;
 
 import org.apache.jena.riot.Lang;
 import org.apache.jena.graph.Node;
-import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
-import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
@@ -21,14 +18,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class OwlTranslator implements StreamRDF {
+public class OwlGraph implements StreamRDF {
 
     public Map<String, Object> config;
     public List<String> importUrls = new ArrayList<>();
     public Set<String> languages = new TreeSet<>();
-
-    public Set<String> hasChildren = new HashSet<>();
-    public Set<String> hasParents = new HashSet<>();
 
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
@@ -85,7 +79,7 @@ public class OwlTranslator implements StreamRDF {
     String downloadedPath;
 
 
-    OwlTranslator(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) {
+    OwlGraph(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) {
 
 	this.loadLocalFiles = loadLocalFiles;
 	this.downloadedPath = downloadedPath;
@@ -177,13 +171,17 @@ public class OwlTranslator implements StreamRDF {
     long endTime = System.nanoTime();
     System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
 
+    DirectParentsAnnotator.annotateDirectParents(this);
+    HierarchicalParentsAnnotator.annotateHierarchicalParents(this);
 	ShortFormAnnotator.annotateShortForms(this);
 	DefinitionAnnotator.annotateDefinitions(this);
 	SynonymAnnotator.annotateSynonyms(this);
-	AxiomEvaluator.evaluateAxioms(this);
-	ClassExpressionEvaluator.evaluateClassExpressions(this);
+	ReifiedPropertyAnnotator.annotateReifiedProperties(this);
     OntologyIdAnnotator.annotateOntologyIds(this);
     HierarchyFlagsAnnotator.annotateHierarchyFlags(this);
+    IsObsoleteAnnotator.annotateIsObsolete(this);
+    IsDefiningOntologyAnnotator.annotateIsDefiningOntology(this);
+    LabelAnnotator.annotateLabels(this);
 
     }
 
@@ -538,23 +536,6 @@ public class OwlTranslator implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#imports":
                 importUrls.add(triple.getObject().getURI());
-                break;
-
-            case "http://www.w3.org/2000/01/rdf-schema#subClassOf":
-
-                boolean top = triple.getObject().isURI() &&
-                        triple.getObject().getURI().equals("http://www.w3.org/2002/07/owl#Thing");
-
-                if(!top) {
-
-                    if(subjNode.uri != null)
-                        hasParents.add(subjNode.uri);
-
-                    if(triple.getObject().isURI())
-                        hasChildren.add(triple.getObject().getURI());
-
-                }
-
                 break;
         }
 
