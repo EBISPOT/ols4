@@ -26,6 +26,7 @@ import uk.ac.ebi.spot.ols.repository.v2.V2IndividualRepository;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -61,7 +62,7 @@ public class V2IndividualController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-	Map<String,String> properties = Map.of("isObsolete", "false");
+	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
         Page<V2Individual> document = individualRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
@@ -80,7 +81,7 @@ public class V2IndividualController implements
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
 
-	Map<String,String> properties = Map.of("isObsolete", "false");
+	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
         Page<V2Individual> document = individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
