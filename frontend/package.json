@@ -47,6 +47,7 @@
     "build:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify",
     "build:sandbox": "REACT_APP_ENV=sandbox npm run build",
     "build:prod": "REACT_APP_ENV=prod npm run build",
+    "build:docker": "REACT_APP_ENV=docker npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
