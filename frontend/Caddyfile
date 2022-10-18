@@ -1,0 +1,11 @@
+{
+	auto_https off
+}
+
+:8080 {
+    root * /opt/ols-www
+    try_files {path} /
+    file_server
+}
+
+

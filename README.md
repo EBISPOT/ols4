@@ -13,12 +13,23 @@ Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 * React frontend using Redux and Tailwind
 * Backwards compatibility with the OLS3 API
 
-This repository contains both the dataloader (`dataload` directory) and the API/webapp server (`server` directory).
+This repository contains three projects:
 
+* The dataloader (`dataload` directory)
+* The API server (`backend` directory)
+* The React frontend (`frontend` directory)
 
 # Deploying OLS4
 
-Deployment instructions will go here. OLS4 is still under heavy development, so currently we only have instructions for developers below.
+Deployment instructions will go here. OLS4 is still under heavy development, so currently we only have detailed instructions for developers below.
+
+However, if you just want to try it out, this should get you going:
+
+    export OLS4_CONFIG=./dataload/configs/efo.json
+    docker-compose up
+
+You should now be able to access the OLS4 frontend at `http://localhost:8080`.
+
 
 
 # Developing OLS4
@@ -26,13 +37,15 @@ Deployment instructions will go here. OLS4 is still under heavy development, so 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
 It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph database. 
 
-The `dataload` directory contains the code which turns OWL ontologies into JSON and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with loading them.
-
-The `server` directory contains (1) a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances; and (2) a React frontend built upon the OLS API.
+* The `dataload` directory contains the code which turns OWL ontologies into JSON and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with loading them.
+* The `backend` directory contains a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances
+* The `frontend` directory contains the React frontend built upon the `backend` above.
 
 ![OLS4 overview](docs/overview.png)
 
-## Running Solr and Neo4j using Docker
+## Running OLS4 using Docker
+
+You can run OLS4, or any combination of its consistuent parts (dataload, backend, frontend) in Docker. When developing, it is often useful to run, for example, just Solr and Neo4j in Docker, while running the API server locally; or to run Solr, Neo4j, and the backend API server in Docker while running the frontend locally.
 
 First install the latest version of Docker Desktop if you are on Mac or Windows. This now includes the `docker compose` command. If you are on Linux, make sure you have the `docker compose` plugin installed (`apt install docker.io docker-compose-plugin` on Ubuntu).
 
@@ -40,16 +53,38 @@ You will need a config file, which configures the ontologies to load into OLS4. 
 
 	export OLS4_CONFIG=./dataload/configs/efo.json
 
-Then, build and run Solr and Neo4j:
+Then, start up the components you would like to run. For example, Solr and Neo4j only (to develop the backend API server and/or frontend):
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j
 
-This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 8983 and 7474, respectively.  Now you can run the API server Spring Boot application located in `server` and frontend for development.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
+This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 8983 and 7474, respectively.  To start Solr and Neo4j **AND** the backend API server (to develop the frontend):
+
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend
+
+To start everything, including the frontend:
+
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
+
+## Running OLS4 locally
+
+Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development.
+
+### Running the dataload locally
+
+TODO
+
+### Running the API server backend locally
+
+The API server Spring Boot application located in `backend`.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
 
     OLS_SOLR_HOST=http://localhost:8983
     OLS_NEO4J_HOST=bolt://localhost:7687
 
+
+### Running the frontend locally
+
 The frontend is a React application in `server/frontend`. TODO instructions!
+
 
 ## Updating `testcases_expected_output`
 

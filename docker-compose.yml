@@ -33,8 +33,8 @@ services:
       depends_on:
         ols4-dataload:
           condition: service_completed_successfully
-    ols4-server:
-      build: ./server
+    ols4-backend:
+      build: ./backend
       ports:
         - 8080:8080
       environment:
@@ -46,17 +46,26 @@ services:
       links:
         - ols4-solr
         - ols4-neo4j 
+    ols4-frontend:
+      build:
+        context: ./frontend
+      ports:
+        - 8081:8080
+      depends_on:
+        - ols4-backend
+      links:
+        - ols4-backend
     run-api-tests:
       profiles: ["run-api-tests"]
       build: ./apitester4
       volumes:
         - ${OLS4_APITEST_OUTDIR:-./to_be_filled_by_script_outdir}:/mnt/out:rw
         - ${OLS4_APITEST_COMPAREDIR:-./to_be_filled_by_script_comparedir}:/mnt/compare:rw
-      command: ["bash", "-c", "java -jar /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url http://ols4-server:8080 --outDir /mnt/out --compareDir /mnt/compare > /mnt/out/apitester4.log"]
+      command: ["bash", "-c", "java -jar /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url http://ols4-backend:8080 --outDir /mnt/out --compareDir /mnt/compare > /mnt/out/apitester4.log"]
       depends_on:
-        - ols4-server
+        - ols4-backend
       links:
-        - ols4-server
+        - ols4-backend
 volumes:
     ols4-solr-data:
     ols4-neo4j-data:
