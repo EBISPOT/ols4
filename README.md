@@ -28,7 +28,7 @@ However, if you just want to try it out, this should get you going:
     export OLS4_CONFIG=./dataload/configs/efo.json
     docker-compose up
 
-You should now be able to access the OLS4 frontend at `http://localhost:8080`.
+You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
 
 
@@ -64,16 +64,17 @@ This will build and run the dataload, and start up Solr and Neo4j with your new 
 To start everything, including the frontend:
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
+    
 
-## Running OLS4 locally
+## Running OLS4 locally
 
 Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development.
 
-### Running the dataload locally
+### Running the dataload locally
 
 TODO
 
-### Running the API server backend locally
+### Running the API server backend locally
 
 The API server Spring Boot application located in `backend`.  Set the following environment variables to point it at your local (Dockerized) Solr and Neo4j servers:
 
@@ -83,7 +84,7 @@ The API server Spring Boot application located in `backend`.  Set the following 
 
 ### Running the frontend locally
 
-The frontend is a React application in `server/frontend`. TODO instructions!
+The frontend is a React application in `frontend`. TODO instructions!
 
 
 ## Updating `testcases_expected_output`
