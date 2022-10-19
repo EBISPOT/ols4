@@ -59,6 +59,7 @@ public class BulkOntologyDownloader {
 		for(Thread t : threads) {
 			try {
 				t.join();
+				System.out.println(t.getName() + " finished");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

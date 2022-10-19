@@ -22,7 +22,9 @@ import org.apache.commons.io.input.TeeInputStream;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.Lang;
@@ -108,7 +110,12 @@ public class OntologyDownloaderThread implements Runnable {
 
     private static void downloadURL(String url, String filename) throws FileNotFoundException, IOException {
 
-        HttpClient client = HttpClientBuilder.create().build();
+	RequestConfig config = RequestConfig.custom()
+			.setConnectTimeout(5000)
+			.setConnectionRequestTimeout(5000)
+			.setSocketTimeout(5000).build();
+
+	CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
         HttpGet request = new HttpGet(url);
         HttpResponse response = client.execute(request);
