@@ -1,19 +1,16 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import com.google.gson.Gson;
-import org.apache.solr.client.solrj.SolrServerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.*;
-import org.springframework.hateoas.core.Relation;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -21,14 +18,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import uk.ac.ebi.spot.ols.controller.api.v2.V2OntologyAssembler;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
-import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +57,7 @@ public class V2OntologyController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
@@ -71,7 +65,7 @@ public class V2OntologyController implements
 	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
-        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }

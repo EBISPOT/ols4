@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository;
+package uk.ac.ebi.spot.ols.repository.neo4j;
 
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
@@ -17,7 +17,7 @@ import org.springframework.data.domain.Sort;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Component
-public class Neo4jQueryHelper {
+public class OlsNeo4jClient {
 
 	@Autowired
 	Neo4jClient neo4jClient;

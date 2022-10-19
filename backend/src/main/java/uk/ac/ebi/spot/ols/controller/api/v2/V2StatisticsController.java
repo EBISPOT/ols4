@@ -4,29 +4,20 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.PagedResources;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,7 +25,7 @@ import java.util.Map;
 public class V2StatisticsController {
 
     @Autowired
-    SolrQueryHelper solrQueryHelper;
+    OlsSolrClient solrClient;
 
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
@@ -51,7 +42,7 @@ public class V2StatisticsController {
         query.addFacetField("type");
         query.setRows(0);
 
-        QueryResponse qr = solrQueryHelper.runSolrQuery(query, null);
+        QueryResponse qr = solrClient.runSolrQuery(query, null);
 
         Map<String,Integer> counts = new HashMap<>();
 

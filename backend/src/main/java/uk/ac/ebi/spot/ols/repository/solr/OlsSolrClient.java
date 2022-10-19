@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository;
+package uk.ac.ebi.spot.ols.repository.solr;
 
 import com.google.gson.Gson;
 import org.apache.solr.client.solrj.SolrClient;
@@ -6,13 +6,13 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 
 @Component
-public class SolrQueryHelper {
+public class OlsSolrClient {
 
 
     @NotNull
@@ -85,7 +85,7 @@ public class SolrQueryHelper {
         System.out.println("solr query: " + query.toQueryString());
         System.out.println("solr host: " + host);
 
-        SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
 
         QueryResponse qr = null;
         try {
@@ -95,6 +95,8 @@ public class SolrQueryHelper {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println("solr query had " + qr.getResults().getNumFound() + " result(s)");
 
         return qr;
     }
