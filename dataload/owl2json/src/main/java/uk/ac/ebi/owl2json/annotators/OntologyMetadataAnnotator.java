@@ -4,14 +4,16 @@ import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
-public class OntologyIdAnnotator {
+public class OntologyMetadataAnnotator {
 
-	public static void annotateOntologyIds(OwlGraph graph) {
+	public static void annotateOntologyMetadata(OwlGraph graph) {
 
 		long startTime3 = System.nanoTime();
 
 
-		String ontologyId = (String) graph.config.get("id");
+		String ontologyId = ((String) graph.config.get("id")).toLowerCase();
+		String ontologyPreferredPrefix = (String) graph.config.get("preferredPrefix");
+		String ontologyIri = (String) graph.ontologyNode.uri;
 
 
 		for(String id : graph.nodes.keySet()) {
@@ -24,11 +26,9 @@ public class OntologyIdAnnotator {
 			if(c.uri == null)
 				continue;
 	
-			c.properties.addProperty(
-				"ontologyId",
-					PropertyValueLiteral.fromString(
-						ontologyId.toLowerCase()
-					));
+			c.properties.addProperty("ontologyId", PropertyValueLiteral.fromString(ontologyId));
+			c.properties.addProperty("ontologyPreferredPrefix", PropertyValueLiteral.fromString(ontologyPreferredPrefix));
+			c.properties.addProperty("ontologyIri", PropertyValueLiteral.fromString(ontologyIri));
 		    }
 		}
 		long endTime3 = System.nanoTime();

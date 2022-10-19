@@ -173,15 +173,16 @@ public class OwlGraph implements StreamRDF {
 
     DirectParentsAnnotator.annotateDirectParents(this);
     HierarchicalParentsAnnotator.annotateHierarchicalParents(this);
-	ShortFormAnnotator.annotateShortForms(this);
-	DefinitionAnnotator.annotateDefinitions(this);
-	SynonymAnnotator.annotateSynonyms(this);
-	ReifiedPropertyAnnotator.annotateReifiedProperties(this);
-    OntologyIdAnnotator.annotateOntologyIds(this);
+    ShortFormAnnotator.annotateShortForms(this);
+    DefinitionAnnotator.annotateDefinitions(this);
+    SynonymAnnotator.annotateSynonyms(this);
+    ReifiedPropertyAnnotator.annotateReifiedProperties(this);
+    OntologyMetadataAnnotator.annotateOntologyMetadata(this);
     HierarchyFlagsAnnotator.annotateHierarchyFlags(this);
     IsObsoleteAnnotator.annotateIsObsolete(this);
     IsDefiningOntologyAnnotator.annotateIsDefiningOntology(this);
     LabelAnnotator.annotateLabels(this);
+    AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
 
     }
 
@@ -447,7 +448,7 @@ public class OwlGraph implements StreamRDF {
 
 
     public Map<String, OwlNode> nodes = new TreeMap<>();
-    OwlNode ontologyNode = null;
+    public OwlNode ontologyNode = null;
 
     private OwlNode getOrCreateNode(Node node) {
         String id = nodeIdFromJenaNode(node);

@@ -50,6 +50,7 @@ public class V1TermController implements
 
     @RequestMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedResources<V1Term>> getTermsByIri(@PathVariable("id") String termId,
+                                                             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                              Pageable pageable,
                                                              PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
@@ -61,7 +62,7 @@ public class V1TermController implements
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException("Can't decode IRI: " + termId);
         }
-        return getTerms(decoded, null, null,null, pageable, assembler);
+        return getTerms(decoded, null, null,null, lang, pageable, assembler);
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
@@ -70,6 +71,7 @@ public class V1TermController implements
             @RequestParam(value = "short_form", required = false) String shortForm,
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
 
@@ -94,7 +96,7 @@ public class V1TermController implements
             }
         }
         else {
-            terms = termRepository.findAll(pageable);
+            terms = termRepository.findAll(lang, pageable);
             if (terms == null) throw new ResourceNotFoundException("Ontology not found");
         }
 

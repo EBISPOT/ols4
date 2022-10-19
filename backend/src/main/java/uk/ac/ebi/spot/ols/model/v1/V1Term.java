@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
 import org.springframework.hateoas.core.Relation;
-import uk.ac.ebi.spot.ols.service.MetadataExtractor;
+import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 @Relation(collectionRelation = "terms")
@@ -20,7 +20,7 @@ public class V1Term {
 
     public static Gson gson = new Gson();
 
-    public V1Term(OntologyEntity node, V1Ontology ontology, String lang) {
+    public V1Term(OntologyEntity node, String lang) {
 
         if(!node.hasType("class")) {
             throw new IllegalArgumentException("Node has wrong type");
@@ -32,21 +32,20 @@ public class V1Term {
         iri = localizedNode.getString("uri");
 
         ontologyName = localizedNode.getString("ontologyId");
-        ontologyPrefix = ontology.config.preferredPrefix;
-        ontologyIri = ontology.config.id;
+        ontologyPrefix = localizedNode.getString("ontologyPreferredPrefix");
+        ontologyIri = localizedNode.getString("ontologyIri");
 
-        label = localizedNode.getString("http://www.w3.org/2000/01/rdf-schema#label");
 
         shortForm = localizedNode.getString("shortForm");
         oboId = shortForm.replace("_", ":");
 
-        description = MetadataExtractor.extractDescriptions(localizedNode, ontology);
+        label = localizedNode.getString("label");
+        description = localizedNode.getStrings("definition").toArray(new String[0]);
+        synonyms = localizedNode.getStrings("synonym").toArray(new String[0]);
+        annotation = V1AnnotationExtractor.extractAnnotations(localizedNode);
 
         inSubsets = new HashSet<>();
 
-        annotation = MetadataExtractor.extractAnnotations(localizedNode, ontology);
-
-        synonyms = MetadataExtractor.extractSynonyms(localizedNode, ontology);
 
 
         oboDefinitionCitations = new HashSet<>();

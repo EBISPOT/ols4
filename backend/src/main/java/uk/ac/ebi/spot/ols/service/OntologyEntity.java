@@ -52,10 +52,18 @@ public class OntologyEntity {
 
     public List<String> getStrings(String predicate) {
 
-        List<Object> arr = (List<Object>) this.record.get(predicate);
+        Object value = this.record.get(predicate);
 
-        if(arr == null) {
+        if(value == null) {
             return new ArrayList<>();
+        }
+
+        List<Object> arr;
+
+        if(value instanceof List) {
+            arr = (List<Object>) value;
+        } else {
+            arr = List.of(value);
         }
 
         return arr.stream().map(obj -> objectToString(obj)).collect(Collectors.toList());
