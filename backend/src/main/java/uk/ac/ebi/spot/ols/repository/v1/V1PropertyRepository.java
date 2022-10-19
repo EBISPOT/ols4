@@ -1,8 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,9 +9,10 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import org.springframework.beans.factory.annotation.Autowired;
-import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
-import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 
 /**
  * @author Simon Jupp
@@ -25,10 +24,10 @@ import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
 public class V1PropertyRepository {
 
     @Autowired
-    SolrQueryHelper solrQueryHelper;
+    OlsSolrClient solrClient;
 
     @Autowired
-    Neo4jQueryHelper neo4jQueryHelper;
+    OlsNeo4jClient neo4jClient;
 
     @Autowired
     V1OntologyRepository ontologyRepository;
@@ -40,7 +39,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return neo4jQueryHelper.getParents("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jClient.getParents("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
 			.map(record -> new V1Property(record, ontology, lang));
     }
 
@@ -50,7 +49,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getChildren("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return this.neo4jClient.getChildren("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
             .map(record -> new V1Property(record, ontology, lang));
     }
 
@@ -61,7 +60,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getDescendants("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return this.neo4jClient.getDescendants("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
             .map(record -> new V1Property(record, ontology, lang));
     }
 
@@ -71,7 +70,7 @@ public class V1PropertyRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return neo4jQueryHelper.getAncestors("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jClient.getAncestors("OntologyTerm", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
             .map(record -> new V1Property(record, ontology, lang));
     }
 
@@ -81,12 +80,12 @@ public class V1PropertyRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "property", true);
-	query.addFilter("ontologyId", ontologyId, true);
-	query.addFilter("uri", iri, true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "property", Fuzziness.EXACT);
+	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+	query.addFilter("uri", iri, Fuzziness.EXACT);
 
-        return new V1Property(solrQueryHelper.getOne(query), ontology, lang);
+        return new V1Property(solrClient.getOne(query), ontology, lang);
     }
 
 //    @Query (
@@ -97,11 +96,11 @@ public class V1PropertyRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "property", true);
-	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "property", Fuzziness.EXACT);
+	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> new V1Property(result, ontology, lang));
     }
 

@@ -5,17 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
-import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
-import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
-import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
@@ -23,7 +20,7 @@ import uk.ac.ebi.spot.ols.service.OntologyEntity;
 public class V1OntologyRepository {
 
     @Autowired
-    SolrQueryHelper solrQueryHelper;
+    OlsSolrClient solrClient;
 
     public V1Ontology get(String ontologyId, String lang) {
 
@@ -31,11 +28,11 @@ public class V1OntologyRepository {
         Validation.validateOntologyId(ontologyId);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "ontology", true);
-	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "ontology", Fuzziness.EXACT);
+	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return new V1Ontology(solrQueryHelper.getOne(query), lang);
+        return new V1Ontology(solrClient.getOne(query), lang);
     }
 
     public Page<V1Ontology> getAll(String lang, Pageable pageable) {
@@ -43,10 +40,10 @@ public class V1OntologyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "ontology", true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "ontology", Fuzziness.EXACT);
 
-        return solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> new V1Ontology(result, lang));
     }
 

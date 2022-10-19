@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
-import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -15,8 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +46,7 @@ public class V1SearchController {
     private V1OntologyRepository ontologyRepository;
 
     @Autowired
-    private SolrQueryHelper solrQueryHelper;
+    private OlsSolrClient solrClient;
 
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
         resource.add(ControllerLinkBuilder.linkTo(V1SearchController.class).withRel("search"));
@@ -603,7 +601,7 @@ public class V1SearchController {
 //        rawJsonResponseParser.setWriterType("json");
 //        req.setResponseParser(rawJsonResponseParser);
 
-        SolrClient mySolrClient = new HttpSolrClient.Builder(solrQueryHelper.host + "/solr/ols4").build();
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/ols4").build();
 
         QueryResponse qr = mySolrClient.query(query);
 

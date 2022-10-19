@@ -1,22 +1,20 @@
 
 package uk.ac.ebi.spot.ols.repository.v2;
 
-import com.google.gson.Gson;
-import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
-import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
-import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
-import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
+import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
+import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
 
@@ -24,14 +22,14 @@ import java.util.Map;
 public class V2OntologyRepository {
 
     @Autowired
-    SolrQueryHelper solrQueryHelper;
+    OlsSolrClient solrClient;
 
     @Autowired
-    Neo4jQueryHelper neo4jQueryHelper;
+    OlsNeo4jClient neo4jClient;
 
 
     public Page<V2Ontology> find(
-            Pageable pageable, String lang, String search, String searchFields, Map<String,String> properties) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -40,12 +38,14 @@ public class V2OntologyRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.setSearch(search, searchFields);
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "ontology", true);
-        query.addDynamicFilterProperties(properties);
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "ontology", Fuzziness.EXACT);
+        V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
+        V2SearchFieldsParser.addSearchFieldsToQuery(query, boostFields);
+        V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
+        query.setSearchText(search);
 
-        return solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> new V2Ontology(result, lang));
     }
 
@@ -55,11 +55,11 @@ public class V2OntologyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "ontology", true);
-	query.addFilter("ontologyId", ontologyId, true);
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "ontology", Fuzziness.EXACT);
+        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return new V2Ontology(solrQueryHelper.getOne(query), lang);
+        return new V2Ontology(solrClient.getOne(query), lang);
     }
 
 

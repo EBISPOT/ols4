@@ -6,18 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
-import uk.ac.ebi.spot.ols.repository.Neo4jQueryHelper;
-import uk.ac.ebi.spot.ols.repository.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.SolrQueryHelper;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
@@ -38,13 +36,10 @@ public class V1TermRepository {
     V1PropertyRepository propertyRepository;
 
     @Autowired
-    Neo4jQueryHelper neo4jQueryHelper;
+    OlsNeo4jClient neo4jClient;
 
     @Autowired
-    SolrQueryHelper solrQueryHelper;
-
-    @Autowired
-    Neo4jClient neo4jClient;
+    OlsSolrClient solrClient;
 
 
 //    @Query(
@@ -54,7 +49,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getParents("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
 			.map(node -> new V1Term(node, ontology, lang));
     }
 
@@ -69,7 +64,7 @@ public class V1TermRepository {
 	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 	relationURIs.addAll(ontology.config.hierarchicalProperties);
 
-	return this.neo4jQueryHelper.getParents("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
             .map(record -> new V1Term(record, ontology, lang));
     }
 
@@ -84,7 +79,7 @@ public class V1TermRepository {
 	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
         relationURIs.addAll(ontology.config.hierarchicalProperties);
 
-	return this.neo4jQueryHelper.getAncestors("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
             .map(record -> new V1Term(record, ontology, lang));
 
     }
@@ -95,7 +90,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
             .map(record -> new V1Term(record, ontology, lang));
     }
 
@@ -109,7 +104,7 @@ public class V1TermRepository {
 	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 	relationURIs.addAll(ontology.config.hierarchicalProperties);
 
-	return this.neo4jQueryHelper.getChildren("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
             .map(record -> new V1Term(record, ontology, lang));
 
     }
@@ -124,7 +119,7 @@ public class V1TermRepository {
 	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 	relationURIs.addAll(ontology.config.hierarchicalProperties);
 
-	return this.neo4jQueryHelper.getDescendants("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
             .map(record -> new V1Term(record, ontology, lang));
     }
 
@@ -135,7 +130,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getDescendants("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
             .map(record -> new V1Term(record, ontology, lang));
 
     }
@@ -146,7 +141,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getAncestors("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
             .map(record -> new V1Term(record, ontology, lang));
 
     }
@@ -157,7 +152,7 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jQueryHelper.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList(relation), pageable)
+	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList(relation), pageable)
             .map(record -> new V1Term(record, ontology, lang));
 
     }
@@ -168,12 +163,12 @@ public class V1TermRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "class", true);
-	query.addFilter("ontologyId", ontologyId, true);
-	query.addFilter("uri", iri, true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "class", Fuzziness.EXACT);
+	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+	query.addFilter("uri", iri, Fuzziness.EXACT);
 
-        return new V1Term(solrQueryHelper.getOne(query), ontology, lang);
+        return new V1Term(solrClient.getOne(query), ontology, lang);
 
     }
 
@@ -184,11 +179,11 @@ public class V1TermRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, true);
-	query.addFilter("type", "class", true);
-	query.addFilter("ontologyId", ontologyId, true);
+	query.addFilter("lang", lang, Fuzziness.EXACT);
+	query.addFilter("type", "class", Fuzziness.EXACT);
+	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return solrQueryHelper.searchSolrPaginated(query, pageable)
+        return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> new V1Term(result, ontology, lang));
     }
 
@@ -294,16 +289,17 @@ public class V1TermRepository {
 
     public Object getGraphJson(String ontologyName, String iri, int distance) {
 
-        Session session = neo4jClient.getSession();
+//        Session session = neo4jClient.getSession();
+//
+//        Map<String, Object> paramt = new HashMap<>();
+//        paramt.put("0", ontologyName);
+//        paramt.put("1", iri);
+////        paramt.put("2",distance);
+//        Result res = session.run(relatedGraphQuery, paramt);
+//
+//        return res.next().get("result");
 
-        Map<String, Object> paramt = new HashMap<>();
-        paramt.put("0", ontologyName);
-        paramt.put("1", iri);
-//        paramt.put("2",distance);
-        Result res = session.run(relatedGraphQuery, paramt);
-
-        return res.next().get("result");
-
+        throw new RuntimeException("not implemented");
     }
 
 

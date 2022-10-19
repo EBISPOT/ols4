@@ -57,6 +57,7 @@ public class V2PropertyController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
@@ -64,7 +65,7 @@ public class V2PropertyController implements
 	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
-        Page<V2Property> document = propertyRepository.find(pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Property> document = propertyRepository.find(pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
@@ -76,6 +77,7 @@ public class V2PropertyController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam Map<String,String> searchProperties,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException, IOException {
@@ -83,7 +85,7 @@ public class V2PropertyController implements
 	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
 	properties.putAll(searchProperties);
 
-        Page<V2Property> document = propertyRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, DynamicQueryHelper.filterProperties(properties));
+        Page<V2Property> document = propertyRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties));
 
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
