@@ -78,20 +78,20 @@ public class V1TermController implements
         Page<V1Term> terms = null;
 
         if (iri != null) {
-            terms = termRepository.findAllByIri(iri, pageable);
+            terms = termRepository.findAllByIri(iri, lang, pageable);
         }
         else if (shortForm != null) {
-            terms = termRepository.findAllByShortForm(shortForm, pageable);
+            terms = termRepository.findAllByShortForm(shortForm, lang, pageable);
         }
         else if (oboId != null) {
-            terms = termRepository.findAllByOboId(oboId, pageable);
+            terms = termRepository.findAllByOboId(oboId, lang, pageable);
         }
         else if (id != null) {
-            terms = termRepository.findAllByIri(id,pageable);
+            terms = termRepository.findAllByIri(id,lang, pageable);
             if (terms.getContent().isEmpty()) {
-                terms = termRepository.findAllByShortForm(id,pageable);
+                terms = termRepository.findAllByShortForm(id,lang, pageable);
                 if (terms.getContent().isEmpty()) {
-                    terms = termRepository.findAllByOboId(id,pageable);
+                    terms = termRepository.findAllByOboId(id,lang, pageable);
                 }
             }
         }
@@ -105,6 +105,7 @@ public class V1TermController implements
     
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedResources<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("id") String termId,
+                                                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                                  Pageable pageable,
                                                                                  PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
@@ -115,7 +116,7 @@ public class V1TermController implements
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException("Can't decode IRI: " + termId);
         }
-        return getTermsByIdAndIsDefiningOntology(decoded, null, null,null, pageable, assembler);
+        return getTermsByIdAndIsDefiningOntology(decoded, null, null,null, lang, pageable, assembler);
     }    
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
@@ -124,31 +125,32 @@ public class V1TermController implements
             @RequestParam(value = "short_form", required = false) String shortForm,
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
 
         Page<V1Term> terms = null;
 
         if (iri != null) {
-        	terms = termRepository.findAllByIriAndIsDefiningOntology(iri, pageable);
+        	terms = termRepository.findAllByIriAndIsDefiningOntology(iri, lang, pageable);
         }
         else if (shortForm != null) {
-        	terms = termRepository.findAllByShortFormAndIsDefiningOntology(shortForm, pageable);
+        	terms = termRepository.findAllByShortFormAndIsDefiningOntology(shortForm, lang, pageable);
         }
         else if (oboId != null) {
-        	terms = termRepository.findAllByOboIdAndIsDefiningOntology(oboId, pageable);
+        	terms = termRepository.findAllByOboIdAndIsDefiningOntology(oboId, lang, pageable);
         }
         else if (id != null) {
-            terms = termRepository.findAllByIriAndIsDefiningOntology(id,pageable);
+            terms = termRepository.findAllByIriAndIsDefiningOntology(id, lang,pageable);
             if (terms.getContent().isEmpty()) {
-                terms = termRepository.findAllByShortFormAndIsDefiningOntology(id,pageable);
+                terms = termRepository.findAllByShortFormAndIsDefiningOntology(id, lang,pageable);
                 if (terms.getContent().isEmpty()) {
-                    terms = termRepository.findAllByOboIdAndIsDefiningOntology(id,pageable);
+                    terms = termRepository.findAllByOboIdAndIsDefiningOntology(id, lang,pageable);
                 }
             }
         }       
         else {
-        	terms = termRepository.findAllByIsDefiningOntology(pageable);
+        	terms = termRepository.findAllByIsDefiningOntology(lang, pageable);
         	if (terms == null) throw new ResourceNotFoundException("Ontology not found");
         }
         return new ResponseEntity<>( assembler.toResource(terms, termAssembler), HttpStatus.OK);

@@ -128,14 +128,15 @@ public class V1OntologyTermController {
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedResources<V1Term>> getRoots(
             @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false) 
+            @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
-        Page<V1Term> roots = termRepository.getRoots(ontologyId, includeObsoletes, pageable);
+        Page<V1Term> roots = termRepository.getRoots(ontologyId, includeObsoletes, lang, pageable);
         if (roots == null) 
           throw new ResourceNotFoundException("No roots could be found for " + ontologyId );
         return new ResponseEntity<>( assembler.toResource(roots, termAssembler), HttpStatus.OK);
@@ -147,13 +148,14 @@ public class V1OntologyTermController {
             @PathVariable("onto") String ontologyId,
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false) 
               boolean includeObsoletes,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
         Page<V1Term> preferredRoots = termRepository.getPreferredRootTerms(ontologyId,
-            includeObsoletes, pageable);
+            includeObsoletes, lang, pageable);
         
         if (preferredRoots == null) 
           throw new ResourceNotFoundException("No preferred roots could be found for " + ontologyId);

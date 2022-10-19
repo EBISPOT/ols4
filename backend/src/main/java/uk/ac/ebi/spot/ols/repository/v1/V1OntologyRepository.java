@@ -46,22 +46,4 @@ public class V1OntologyRepository {
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> new V1Ontology(result, lang));
     }
-
-    public Map<String, V1Ontology> getOntologyMapForEntities(List<OntologyEntity> entities, String lang) {
-
-	Map<String, V1Ontology> res = new HashMap<>();
-
-	for(OntologyEntity entity : entities) {
-
-		String ontologyId = entity.getString("ontologyId");
-
-		if(res.containsKey(ontologyId)) {
-			continue;
-		}
-
-		res.put(ontologyId, get(ontologyId, lang));
-	}
-
-	return res;
-    }
 }

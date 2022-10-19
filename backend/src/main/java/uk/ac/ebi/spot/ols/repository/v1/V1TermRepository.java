@@ -161,23 +161,49 @@ public class V1TermRepository {
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.short_form = {1} RETURN n")
     public V1Term findByOntologyAndShortForm(String ontologyId, String shortForm, String lang) {
-        throw new RuntimeException();
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+        query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
+
+        return new V1Term(solrClient.getOne(query), lang);
     }
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.obo_id = {1} RETURN n")
     public V1Term findByOntologyAndOboId(String ontologyId, String oboId, String lang) {
-        throw new RuntimeException();
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+        query.addFilter("oboId", oboId, Fuzziness.EXACT);
+
+        return new V1Term(solrClient.getOne(query), lang);
+
     }
 
 //    @Query (countQuery = "MATCH (n:Class)-[SUBCLASSOF]->(r:Root) WHERE r.ontology_name = {0} AND n.is_obsolete = {1}  RETURN count(n)",
 //            value = "MATCH (n:Class)-[SUBCLASSOF]->(r:Root) WHERE r.ontology_name = {0} AND n.is_obsolete = {1}  RETURN n")
-    public Page<V1Term> getRoots(String ontologyId, boolean obsolete, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> getRoots(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+        query.addFilter("isRoot", "true", Fuzziness.EXACT);
+
+        if(!obsolete)
+            query.addFilter("isObsolete", "false", Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN count(n)",
 //            value = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN n")
-    public Page<V1Term> getPreferredRootTerms(String ontologyId, boolean obsolete, Pageable pageable) {
+    public Page<V1Term> getPreferredRootTerms(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
         throw new RuntimeException();
     }
 
@@ -200,47 +226,101 @@ public class V1TermRepository {
     
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.is_defining_ontology = true RETURN count(n)",
 //    		value = "MATCH (n:Class) WHERE n.is_defining_ontology = true RETURN n")
-    public Page<V1Term> findAllByIsDefiningOntology(Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByIsDefiningOntology(String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
+
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.iri = {0} RETURN count(n)",
 //            value = "MATCH (n:Class) WHERE n.iri = {0} RETURN n")
-    public Page<V1Term> findAllByIri(String iri, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByIri(String iri, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("iri", iri, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.iri = {0} AND n.is_defining_ontology = true "
 //    		+ "RETURN count(n)",
 //    		value = "MATCH (n:Class) WHERE n.iri = {0} AND n.is_defining_ontology = true RETURN n")
-    public Page<V1Term> findAllByIriAndIsDefiningOntology(String iri, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
+        query.addFilter("iri", iri, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
     		
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.short_form = {0} RETURN count(n)",
 //            value = "MATCH (n:Class) WHERE n.short_form = {0} RETURN n")
-    public Page<V1Term> findAllByShortForm(String shortForm, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByShortForm(String shortForm, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.short_form = {0} AND n.is_defining_ontology = true"
 //    		+ " RETURN count(n)",
 //    		value = "MATCH (n:Class) WHERE n.short_form = {0} AND n.is_defining_ontology = true RETURN n")
-    public Page<V1Term> findAllByShortFormAndIsDefiningOntology(String shortForm, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
+        query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.obo_id = {0} RETURN count(n)",
 //            value = "MATCH (n:Class) WHERE n.obo_id = {0} RETURN n")
-    public Page<V1Term> findAllByOboId(String oboId, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByOboId(String oboId, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("oboId", oboId, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
+
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.obo_id = {0} AND n.is_defining_ontology = true "
 //    		+ "RETURN count(n)",
 //    		value = "MATCH (n:Class) WHERE n.obo_id = {0} AND n.is_defining_ontology = true RETURN n")
-    public Page<V1Term> findAllByOboIdAndIsDefiningOntology(String oboId, Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+        query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
+        query.addFilter("oboId", oboId, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (i:Individual)-[INSTANCEOF]->(c:Class) WHERE i.ontology_name = {0} AND c.iri = {1} RETURN count(i)",
