@@ -3,7 +3,7 @@ package uk.ac.ebi.spot.ols.model.v1;
 import java.util.Map;
 
 import org.springframework.hateoas.core.Relation;
-import uk.ac.ebi.spot.ols.service.MetadataExtractor;
+import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,14 +30,13 @@ public class V1Property {
         ontologyPrefix = ontology.config.preferredPrefix;
         ontologyIri = ontology.config.id;
 
-        label = localizedNode.getString("http://www.w3.org/2000/01/rdf-schema#label");
-
         shortForm = localizedNode.getString("shortForm");
         oboId = shortForm.replace("_", ":");
 
-        description = MetadataExtractor.extractDescriptions(localizedNode, ontology);
-        annotation = MetadataExtractor.extractAnnotations(localizedNode, ontology);
-        synonyms = MetadataExtractor.extractSynonyms(localizedNode, ontology);
+        label = localizedNode.getString("label");
+        description = localizedNode.getStrings("definition").toArray(new String[0]);
+        synonyms = localizedNode.getStrings("synonym").toArray(new String[0]);
+        annotation = V1AnnotationExtractor.extractAnnotations(localizedNode);
     }
 
     public String iri;

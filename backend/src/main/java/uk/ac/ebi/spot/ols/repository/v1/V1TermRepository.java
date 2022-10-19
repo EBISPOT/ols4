@@ -47,10 +47,8 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)-[:SUBCLASSOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-			.map(node -> new V1Term(node, ontology, lang));
+	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+" + iri, Arrays.asList("directParent"), pageable)
+			.map(node -> new V1Term(node, lang));
     }
 
 //    @Query(
@@ -58,14 +56,10 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)-[:SUBCLASSOF|RelatedTree]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	List<String> relationURIs = new ArrayList<>();
-	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-	relationURIs.addAll(ontology.config.hierarchicalProperties);
+	List<String> relationURIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+            .map(record -> new V1Term(record, lang));
     }
 
 //    @Query(
@@ -73,14 +67,10 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)-[:SUBCLASSOF|RelatedTree*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	List<String> relationURIs = new ArrayList<>();
-	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-        relationURIs.addAll(ontology.config.hierarchicalProperties);
+	List<String> relationURIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+            .map(record -> new V1Term(record, lang));
 
     }
 
@@ -88,24 +78,18 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList("directParent"), pageable)
+            .map(record -> new V1Term(record, lang));
     }
 
 //    @Query( countQuery = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct child)",
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	List<String> relationURIs = new ArrayList<>();
-	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-	relationURIs.addAll(ontology.config.hierarchicalProperties);
+	List<String> relationURIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+            .map(record -> new V1Term(record, lang));
 
     }
 
@@ -113,14 +97,10 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree*]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	List<String> relationURIs = new ArrayList<>();
-	relationURIs.add("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-	relationURIs.addAll(ontology.config.hierarchicalProperties);
+        List<String> relationURIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+" + iri, relationURIs, pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+            .map(record -> new V1Term(record, lang));
     }
 
 
@@ -128,10 +108,8 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF*]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+" + iri, Arrays.asList("directParent"), pageable)
+            .map(record -> new V1Term(record, lang));
 
     }
 
@@ -141,8 +119,8 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+" + iri, Arrays.asList("directParent"), pageable)
+            .map(record -> new V1Term(record, lang));
 
     }
 
@@ -150,17 +128,13 @@ public class V1TermRepository {
 //                value = "MATCH (n:Class)-[r:Related]->(related) WHERE n.ontology_name = {0} AND n.iri = {1} AND r.uri = {2} RETURN distinct related")
     public Page<V1Term> getRelated(String ontologyId, String iri, String lang, String relation, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
 	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+" + iri, Arrays.asList(relation), pageable)
-            .map(record -> new V1Term(record, ontology, lang));
+            .map(record -> new V1Term(record, lang));
 
     }
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN n")
     public V1Term findByOntologyAndIri(String ontologyId, String iri, String lang) {
-
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
@@ -168,7 +142,7 @@ public class V1TermRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("uri", iri, Fuzziness.EXACT);
 
-        return new V1Term(solrClient.getOne(query), ontology, lang);
+        return new V1Term(solrClient.getOne(query), lang);
 
     }
 
@@ -176,15 +150,13 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class {ontology_name : {0}}) RETURN n")
     public Page<V1Term> findAllByOntology(String ontologyId, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "class", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V1Term(result, ontology, lang));
+                .map(result -> new V1Term(result, lang));
     }
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.short_form = {1} RETURN n")
@@ -216,8 +188,14 @@ public class V1TermRepository {
 
 //    @Query (countQuery = "MATCH (n:Class) RETURN count(n)",
 //            value = "MATCH (n:Class) RETURN n")
-    public Page<V1Term> findAll(Pageable pageable) {
-        throw new RuntimeException();
+    public Page<V1Term> findAll(String lang, Pageable pageable) {
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("lang", lang, Fuzziness.EXACT);
+        query.addFilter("type", "class", Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> new V1Term(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.is_defining_ontology = true RETURN count(n)",

@@ -36,28 +36,22 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
     public Page<V1Term> getDirectTypes(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
 	return this.neo4jClient.getParents("OntologyIndividual", ontologyId + "+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), pageable)
-				.map(node -> new V1Term(node, ontology, lang));
+				.map(node -> new V1Term(node, lang));
     }
 
 //    @Query(countQuery = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct parent)",
 //            value = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getAllTypes(String ontologyId, String iri, String lang, Pageable pageable) { 
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
 	return this.neo4jClient.getAncestors("OntologyIndividual", ontologyId + "+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-				.map(node -> new V1Term(node, ontology, lang));
+				.map(node -> new V1Term(node, lang));
     }
 
 //    @Query (value = "MATCH (n:Individual) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN n")
     public V1Individual findByOntologyAndIri(String ontologyId, String iri, String lang) { 
-
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
@@ -65,14 +59,12 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("uri", iri, Fuzziness.EXACT);
 
-        return new V1Individual(solrClient.getOne(query), ontology, lang);
+        return new V1Individual(solrClient.getOne(query), lang);
     }
 
 //    @Query (countQuery = "MATCH (n:Individual {ontology_name : {0}}) RETURN count(n)",
 //            value = "MATCH (n:Individual {ontology_name : {0}}) RETURN n")
     public Page<V1Individual> findAllByOntology(String ontologyId, String lang, Pageable pageable) { 
-
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
@@ -80,13 +72,11 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V1Individual(result, ontology, lang));
+                .map(result -> new V1Individual(result, lang));
     }
 
 //    @Query (value = "MATCH (n:Individual) WHERE n.ontology_name = {0} AND n.short_form = {1} RETURN n")
     public V1Individual findByOntologyAndShortForm(String ontologyId, String lang, String shortForm) { 
-
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
@@ -94,13 +84,11 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
-        return new V1Individual(solrClient.getOne(query), ontology, lang);
+        return new V1Individual(solrClient.getOne(query), lang);
     }
 
 //    @Query (value = "MATCH (n:Individual) WHERE n.ontology_name = {0} AND n.obo_id = {1} RETURN n")
     public V1Individual findByOntologyAndOboId(String ontologyId, String lang, String oboId) { 
-
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("lang", lang, Fuzziness.EXACT);
@@ -108,7 +96,7 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
-        return new V1Individual(solrClient.getOne(query), ontology, lang);
+        return new V1Individual(solrClient.getOne(query), lang);
 
     }
 
@@ -121,10 +109,9 @@ public class V1IndividualRepository {
         query.addFilter("type", "individual", Fuzziness.EXACT);
 
         Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
-	Map<String, V1Ontology> ontologies = ontologyRepository.getOntologyMapForEntities(entities.getContent(), lang);
 
 	return entities.map(result ->
-		new V1Individual(result, ontologies.get(result.getString("ontologyId")), lang));
+		new V1Individual(result, lang));
     }
 
 //    @Query (countQuery = "MATCH (n:Individual) WHERE n.is_defining_ontology = true RETURN count(n)",

@@ -21,7 +21,7 @@ public class JSON2Flattened {
     // in the "_json" string field.
     // 
     public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "propertyLabels", "classes", "properties", "individuals"
+        "propertyLabels", "classes", "properties", "individuals", "annotationPredicate"
     );
 
     public static void main(String[] args) throws IOException {
