@@ -43,7 +43,7 @@ It therefore uses two specialized database servers: [**Solr**](https://solr.apac
 
 ![OLS4 overview](docs/overview.png)
 
-## Running OLS4 using Docker
+## Development: Running OLS4 using Docker
 
 You can run OLS4, or any combination of its consistuent parts (dataload, backend, frontend) in Docker. When developing, it is often useful to run, for example, just Solr and Neo4j in Docker, while running the API server locally; or to run Solr, Neo4j, and the backend API server in Docker while running the frontend locally.
 
@@ -66,7 +66,7 @@ To start everything, including the frontend:
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
     
 
-## Running OLS4 locally
+## Development: Running OLS4 locally
 
 Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development.
 
@@ -87,7 +87,7 @@ The API server Spring Boot application located in `backend`.  Set the following 
 The frontend is a React application in `frontend`. TODO instructions!
 
 
-## Updating `testcases_expected_output`
+## Development: Updating `testcases_expected_output`
 
 If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks like), the CI on this repo will fail.
 
