@@ -16,7 +16,7 @@ public class V1Property {
 
     public static Gson gson = new Gson();
 
-    public V1Property(OntologyEntity node, V1Ontology ontology, String lang) {
+    public V1Property(OntologyEntity node, String lang) {
 
         if(!node.hasType("property")) {
             throw new IllegalArgumentException("Node has wrong type");
@@ -27,8 +27,8 @@ public class V1Property {
         iri = localizedNode.getString("uri");
 
         ontologyName = localizedNode.getString("ontologyId");
-        ontologyPrefix = ontology.config.preferredPrefix;
-        ontologyIri = ontology.config.id;
+        ontologyPrefix = localizedNode.getString("ontologyPreferredPrefix");
+        ontologyIri = localizedNode.getString("ontologyIri");
 
         shortForm = localizedNode.getString("shortForm");
         oboId = shortForm.replace("_", ":");
