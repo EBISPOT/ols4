@@ -2,7 +2,7 @@ name: Build & publish ols4 images
 
 on:
   push:
-    branches: [ "docker-automation" ]
+    branches: [ "main" ]
 
 env:
   REGISTRY: ghcr.io
