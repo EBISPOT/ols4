@@ -2,7 +2,7 @@ name: Build & publish ols4 images
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
 env:
   REGISTRY: ghcr.io
