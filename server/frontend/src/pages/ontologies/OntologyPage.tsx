@@ -1,19 +1,12 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Link,
-  Tab,
-  Tabs,
-  Tooltip,
-} from "@mui/material";
+import { Button, ButtonGroup, Link, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
+import { Tab, Tabs } from "../../components/Tabs";
 import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
@@ -57,35 +50,6 @@ export default function OntologyPage(props: { ontologyId: string }) {
               </div>
             </div>
 
-            <Tabs
-              indicatorColor="primary"
-              textColor="primary"
-              value={tab}
-              onChange={(e, tab) => setTab(tab)}
-            >
-              <Tab
-                label={`Classes (${ontology!
-                  .getNumClasses()
-                  .toLocaleString()})`}
-                value="classes"
-                disabled={ontology!.getNumClasses() == 0}
-              />
-              <Tab
-                label={`Properties (${ontology!
-                  .getNumProperties()
-                  .toLocaleString()})`}
-                value="properties"
-                disabled={ontology!.getNumProperties() == 0}
-              />
-              <Tab
-                label={`Individuals (${ontology!
-                  .getNumIndividuals()
-                  .toLocaleString()})`}
-                value="individuals"
-                disabled={ontology!.getNumIndividuals() == 0}
-              />
-            </Tabs>
-            <br />
             <ButtonGroup
               variant="contained"
               aria-label="outlined primary button group"
@@ -107,14 +71,38 @@ export default function OntologyPage(props: { ontologyId: string }) {
                 </Button>
               </Tooltip>
             </ButtonGroup>
-            <br />
-            <Box py={2}>
-              {viewMode === "list" ? (
-                <EntityList ontologyId={ontologyId} entityType={tab} />
-              ) : (
-                <EntityTree ontologyId={ontologyId} entityType={tab} />
-              )}
-            </Box>
+
+            <Tabs
+              value={tab}
+              onChange={(value: any) => {
+                setTab(value);
+              }}
+            >
+              <Tab
+                label={`Classes (${ontology!
+                  .getNumClasses()
+                  .toLocaleString()})`}
+                value="classes"
+              />
+              <Tab
+                label={`Properties (${ontology!
+                  .getNumProperties()
+                  .toLocaleString()})`}
+                value="properties"
+              />
+              <Tab
+                label={`Individuals (${ontology!
+                  .getNumIndividuals()
+                  .toLocaleString()})`}
+                value="individuals"
+              />
+            </Tabs>
+
+            {viewMode === "list" ? (
+              <EntityList ontologyId={ontologyId} entityType={tab} />
+            ) : (
+              <EntityTree ontologyId={ontologyId} entityType={tab} />
+            )}
           </div>
         ) : (
           <Spinner />

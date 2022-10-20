@@ -113,7 +113,7 @@ export default function OlsDatatable({
                   {columns.map((column: any) => {
                     return (
                       <td
-                        className="text-md align-top py-2 px-4"
+                        className="text-sm align-top py-2 px-4"
                         key={column.selector(row)}
                       >
                         {column.selector(row)}

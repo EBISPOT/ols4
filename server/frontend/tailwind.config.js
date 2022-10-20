@@ -74,7 +74,15 @@ module.exports = {
           800: "#8a6a14",
           900: "#5c470d",
         },
+        // other colours
         "embl-green": "#5e801a",
+        link: {
+          default: "#3b6fb6",
+          black: "#1a1c1a",
+          hover: "#193f90",
+          visited: "#734595",
+          tab: "#54585a",
+        },
       },
     },
   },
