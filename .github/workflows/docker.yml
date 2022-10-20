@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build dataload docker image
-      run:
-        - cd dataload
-        - docker build -t ols4-dataload .
+      run: |
+        cd dataload
+        docker build -t ols4-dataload .
 
