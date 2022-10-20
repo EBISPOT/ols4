@@ -1,6 +1,7 @@
 import Search from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
 import TablePagination from "@mui/material/TablePagination";
+import Thing from "../model/Thing";
 
 export interface Column {
   name: string;
@@ -99,11 +100,11 @@ export default function OlsDatatable({
             </tr>
           </thead>
           <tbody>
-            {data.map((row: any) => {
+            {data.map((row: Thing) => {
               return (
                 <tr
                   tabIndex={-1}
-                  key={row.code}
+                  key={row.getUri()}
                   onClick={() => {
                     onSelectRow(row);
                   }}
@@ -111,7 +112,10 @@ export default function OlsDatatable({
                 >
                   {columns.map((column: any) => {
                     return (
-                      <td className="text-lg py-2 px-4" key={column.name}>
+                      <td
+                        className="text-sm align-top py-2 px-4"
+                        key={column.selector(row)}
+                      >
                         {column.selector(row)}
                       </td>
                     );

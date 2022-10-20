@@ -7,6 +7,10 @@ export const store = configureStore({
     home: homeReducer,
     ontologies: ontologiesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
