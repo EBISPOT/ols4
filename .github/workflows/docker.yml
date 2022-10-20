@@ -29,7 +29,7 @@ jobs:
         run: |
           cd dataload
           docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }} .
-          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.head_ref }}
+          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.ref_name }}
           docker push --all-tags ghcr.io/ebispot/ols4-dataload
 
 
