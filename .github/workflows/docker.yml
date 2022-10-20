@@ -11,18 +11,9 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - dockerfile: ./dataload/Dockerfile
-            image: ghcr.io/EBISPOT/ols4-dataload
-          - dockerfile: ./backend/Dockerfile
-            image: ghcr.io/EBISPOT/ols4-backend
     permissions:
       contents: read
       packages: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -34,19 +25,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: ${{ matrix.image }}
+      - name: Build and push ols4 dataload Docker image
+        run: |
+          cd dataload
+          docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }}
+          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.head_ref }}
+          docker push --all-tags ghcr.io/ebispot/ols4-dataload
 
-      - name: Build and push Docker image Drill4Net.Agent.Service
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: .
-          file: ${{ matrix.dockerfile }}
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
 
 
