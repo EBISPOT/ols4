@@ -3,7 +3,7 @@
 }
 
 :8080 {
-    root * /opt/ols-www
+    root * /opt/ols4-frontend/build
     try_files {path} /
     file_server
 }
