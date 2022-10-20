@@ -1,20 +1,37 @@
 
 
-FROM node:16 AS build
+FROM ubuntu:22.04
+
+RUN apt update && apt install -y curl gpg
+
+# node
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
+
+# caddy
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+
+# yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 
-RUN mkdir /opt/ols-frontend
-COPY . /opt/ols-frontend
 
-WORKDIR /opt/ols-frontend
+RUN apt update && apt install -y nodejs yarn caddy
 
+RUN mkdir /opt/ols4-frontend
+
+
+WORKDIR /opt/ols4-frontend
+
+
+COPY package.json yarn.lock .yarn .yarnrc.yml /opt/ols4-frontend/
 RUN yarn install
 
-RUN npm run build:docker
+COPY . /opt/ols4-frontend/
 
-FROM caddy:2-alpine
+RUN chmod +x /opt/ols4-frontend/entrypoint.dockersh
 
-COPY --from=build /opt/ols-frontend/build /opt/ols-www
-COPY Caddyfile /etc/caddy/Caddyfile
+CMD ["/opt/ols4-frontend/entrypoint.dockersh"]
 
 
