@@ -1,0 +1,48 @@
+name: Build & publish ols4 images
+
+on:
+  push:
+    branches: [ "docker-automation" ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push ols4 dataload Docker image
+        run: |
+          cd dataload
+          docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }} .
+          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.ref_name }}
+          docker push --all-tags ghcr.io/ebispot/ols4-dataload
+
+      - name: Build and push ols4 backend Docker image
+        run: |
+          cd backend
+          docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} .
+          docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.ref_name }}
+          docker push --all-tags ghcr.io/ebispot/ols4-backend
+
+      - name: Build and push ols4 frontend Docker image
+        run: |
+          cd frontend
+          docker build -t ghcr.io/ebispot/ols4-frontend:${{ github.sha }} .
+          docker tag ghcr.io/ebispot/ols4-frontend:${{github.sha}} ghcr.io/ebispot/ols4-frontend:${{ github.ref_name }}
+          docker push --all-tags ghcr.io/ebispot/ols4-frontend
+

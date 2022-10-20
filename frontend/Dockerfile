@@ -25,7 +25,7 @@ RUN mkdir /opt/ols4-frontend
 WORKDIR /opt/ols4-frontend
 
 
-COPY package.json yarn.lock .yarn .yarnrc.yml /opt/ols4-frontend/
+COPY package.json yarn.lock .yarnrc.yml /opt/ols4-frontend/
 RUN yarn install
 
 COPY . /opt/ols4-frontend/
