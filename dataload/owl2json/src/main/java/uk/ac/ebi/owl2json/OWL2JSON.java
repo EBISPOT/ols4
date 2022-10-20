@@ -138,6 +138,12 @@ public class OWL2JSON {
             try {
 
                 OwlGraph graph = new OwlGraph(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
+
+                if(graph.ontologyNode == null) {
+                    System.out.println("No Ontology node found; nothing will be written");
+                    continue;
+                }
+
                 graph.write(writer);
 
                 loadedOntologyIds.add(ontologyId);
