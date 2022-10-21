@@ -82,7 +82,20 @@ module.exports = {
           hover: "#193f90",
           visited: "#734595",
           tab: "#54585a",
+          button: "#707372",
         },
+      },
+      boxShadow: {
+        button: "8px 8px 0 #193f90, -5px -5px rgba(0,0,0,0)",
+        "button-hover":
+          "4px 4px 0 #193f90, 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+        "button-active":
+          "0px 0px 0 #193f90, 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+        "button-dark": "8px 8px 0 #54585a, -5px -5px rgba(0,0,0,0)",
+        "button-dark-hover":
+          "4px 4px 0 #54585a, 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+        "button-dark-active":
+          "0px 0px 0 #54585a, 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
       },
     },
   },

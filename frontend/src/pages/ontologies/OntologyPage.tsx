@@ -1,6 +1,6 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Button, ButtonGroup, Link, Tooltip } from "@mui/material";
+import { Link, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -39,38 +39,16 @@ export default function OntologyPage(props: { ontologyId: string }) {
                 </Link>
               </span>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-semibold">{ontology!.getName()}</span>
+              <span className="font-bold">{ontology!.getName()}</span>
             </div>
             <div className="bg-gradient-to-r from-grey-1 to-white rounded-lg p-8 mb-4">
-              <div className="text-2xl font-semibold text-grey-3 mb-4">
+              <div className="text-2xl font-bold text-grey-3 mb-4">
                 {ontology!.getName()}
               </div>
               <div>
                 <p>{ontology!.getDescription()}</p>
               </div>
             </div>
-
-            <ButtonGroup
-              variant="contained"
-              aria-label="outlined primary button group"
-            >
-              <Tooltip title="Tree view" placement="top">
-                <Button
-                  variant={viewMode === "tree" ? "contained" : "outlined"}
-                  onClick={() => setViewMode("tree")}
-                >
-                  <AccountTree />
-                </Button>
-              </Tooltip>
-              <Tooltip title="List view" placement="top">
-                <Button
-                  variant={viewMode === "list" ? "contained" : "outlined"}
-                  onClick={() => setViewMode("list")}
-                >
-                  <FormatListBulletedIcon />
-                </Button>
-              </Tooltip>
-            </ButtonGroup>
 
             <Tabs
               value={tab}
@@ -83,21 +61,49 @@ export default function OntologyPage(props: { ontologyId: string }) {
                   .getNumClasses()
                   .toLocaleString()})`}
                 value="classes"
+                disabled={ontology!.getNumClasses() <= 0}
               />
               <Tab
                 label={`Properties (${ontology!
                   .getNumProperties()
                   .toLocaleString()})`}
                 value="properties"
+                disabled={ontology!.getNumProperties() <= 0}
               />
               <Tab
                 label={`Individuals (${ontology!
                   .getNumIndividuals()
                   .toLocaleString()})`}
                 value="individuals"
+                disabled={ontology!.getNumIndividuals() <= 0}
               />
             </Tabs>
-
+            <div className="p-2 mb-1">
+              <Tooltip title="Tree view" placement="top">
+                <button
+                  className={`button-primary font-bold mr-3 ${
+                    viewMode === "tree"
+                      ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                      : ""
+                  }`}
+                  onClick={() => setViewMode("tree")}
+                >
+                  <AccountTree fontSize="small" />
+                </button>
+              </Tooltip>
+              <Tooltip title="List view" placement="top">
+                <button
+                  className={`button-primary font-bold ${
+                    viewMode === "list"
+                      ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                      : ""
+                  }`}
+                  onClick={() => setViewMode("list")}
+                >
+                  <FormatListBulletedIcon fontSize="small" />
+                </button>
+              </Tooltip>
+            </div>
             {viewMode === "list" ? (
               <EntityList ontologyId={ontologyId} entityType={tab} />
             ) : (
