@@ -36,7 +36,7 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
     public Page<V1Term> getDirectTypes(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	return this.neo4jClient.getParents("OntologyIndividual", ontologyId + "+" + iri,
+	return this.neo4jClient.getParents("OntologyIndividual", ontologyId + "+individual+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), pageable)
 				.map(node -> new V1Term(node, lang));
     }
@@ -45,7 +45,7 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getAllTypes(String ontologyId, String iri, String lang, Pageable pageable) { 
 
-	return this.neo4jClient.getAncestors("OntologyIndividual", ontologyId + "+" + iri,
+	return this.neo4jClient.getAncestors("OntologyIndividual", ontologyId + "+individual+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
 				.map(node -> new V1Term(node, lang));
     }
