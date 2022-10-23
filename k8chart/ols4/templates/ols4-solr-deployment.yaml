@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-solr
+  labels:
+    app: {{ .Release.Name }}-solr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-solr
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-solr
+    spec:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+        fsGroupChangePolicy: Always
+      containers:
+        - name: solr
+        #   image: solr:9.0.0
+          image: ebispot/solr9-ubuntu18
+        #   args: ["echo Downloading data && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /var/solr/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          command: ["/bin/bash", "-c"]
+          args: ["echo Downloading data && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /opt/solr/server/solr/ && echo Starting solr && /entrypoint.dockersh"]
+          env:
+            - name: SOLR_TARBALL_URL
+              value: {{.Values.solrTarballUrl}}
+          ports:
+            - containerPort: 8983

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: {{ .Release.Name }}-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-backend
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-backend
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/ebispot/ols4-backend:{{.Values.imageTag}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: OLS_SOLR_HOST
+              value: http://{{ .Release.Name }}-solr:8983
+            - name: OLS_NEO4J_HOST
+              value: bolt://{{ .Release.Name }}-neo4j:7687

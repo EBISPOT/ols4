@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: dataserver
+          image: caddy:2.6.2-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: {{.Release.Name}}-data
+              mountPath: "/usr/share/caddy"
+      volumes:
+      - name: {{.Release.Name}}-data
+        persistentVolumeClaim:
+          claimName: {{.Release.Name}}-data
