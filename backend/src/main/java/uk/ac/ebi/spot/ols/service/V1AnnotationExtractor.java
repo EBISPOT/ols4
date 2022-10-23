@@ -4,6 +4,7 @@ package uk.ac.ebi.spot.ols.service;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class V1AnnotationExtractor {
 
@@ -20,10 +21,24 @@ public class V1AnnotationExtractor {
 
             // All anno values must be an array in OLS API
             if(! (value instanceof List)) {
-                List<Object> arrList = new ArrayList<>();
-                arrList.add(value);
-                value = arrList;
+                value = List.of(value);
             }
+
+            // flatten values (removing annotations on the annotations) for OLS3
+            //
+            List<Object> flattenedValues = ((List<Object>) value).stream().map(entry -> {
+
+                while(entry instanceof Map) {
+                    Map<String,Object> entryAsMap = (Map<String,Object>) entry;
+                    Object embeddedValue = entryAsMap.get("value");
+                    if(embeddedValue == null)
+                        break;
+                    entry = embeddedValue;
+                }
+
+                return entry;
+
+            }).collect(Collectors.toList());
 
             String localPart = predicate.substring(
                     Math.max(
@@ -32,7 +47,7 @@ public class V1AnnotationExtractor {
                     ) + 1
             );
 
-            annotation.put(localPart, value);
+            annotation.put(localPart, flattenedValues);
         }
 
         return annotation;
