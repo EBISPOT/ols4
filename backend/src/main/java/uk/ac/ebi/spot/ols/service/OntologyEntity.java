@@ -51,6 +51,14 @@ public class OntologyEntity {
     }
 
     public List<String> getStrings(String predicate) {
+        return getObjects(predicate).stream().map(obj -> objectToString(obj)).collect(Collectors.toList());
+    }
+
+    public Object getObject(String predicate) {
+        return this.record.get(predicate);
+    }
+
+    public List<Object> getObjects(String predicate) {
 
         Object value = this.record.get(predicate);
 
@@ -58,15 +66,11 @@ public class OntologyEntity {
             return new ArrayList<>();
         }
 
-        List<Object> arr;
-
         if(value instanceof List) {
-            arr = (List<Object>) value;
-        } else {
-            arr = List.of(value);
+            return (List<Object>) value;
         }
 
-        return arr.stream().map(obj -> objectToString(obj)).collect(Collectors.toList());
+        return List.of(value);
     }
 
     private static String objectToString(Object value) {

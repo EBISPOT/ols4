@@ -48,9 +48,9 @@ public class V1Term {
 
 
 
-        oboDefinitionCitations = new HashSet<>();
-        oboXrefs = new HashSet<>();
-        oboSynonyms = new HashSet<>();
+        oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedNode);
+        oboXrefs = V1OboXref.extractFromEntity(localizedNode);
+        oboSynonyms = V1OboSynonym.extractFromEntity(localizedNode);
         isPreferredRoot = false;
         related = new HashSet<>();
 
@@ -106,16 +106,13 @@ public class V1Term {
     public Map<String,Object> annotation;
 
     @JsonProperty(value = OBO_DEFINITION_CITATION)
-    @JsonRawValue
-    public Set<String> oboDefinitionCitations;
+    public List<V1OboDefinitionCitation> oboDefinitionCitations;
 
     @JsonProperty(value = OBO_XREF)
-    @JsonRawValue
-    public Set<String> oboXrefs;
+    public List<V1OboXref> oboXrefs;
 
     @JsonProperty(value = OBO_SYNONYM)
-    @JsonRawValue
-    public Set<String> oboSynonyms;
+    public List<V1OboSynonym> oboSynonyms;
 
     @JsonProperty(value = IS_PREFERRED_ROOT)
     public boolean isPreferredRoot;
