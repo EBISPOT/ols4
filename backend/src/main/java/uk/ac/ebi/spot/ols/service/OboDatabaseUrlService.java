@@ -76,6 +76,9 @@ public class OboDatabaseUrlService {
         if(db == null)
             return null;
 
+        if(id == null)
+            return null; // or db url?
+
         return db.getUrlForId(id);
     }
 

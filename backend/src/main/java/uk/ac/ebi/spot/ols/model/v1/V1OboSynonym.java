@@ -44,7 +44,7 @@ public class V1OboSynonym {
 
         synonym.name = (String)synonymMap.get("value");
         synonym.scope = scope;
-        // TODO type
+        synonym.type = (String)synonymMap.get("oboSynonymTypeName");
 
         Object xrefs = synonymMap.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
 

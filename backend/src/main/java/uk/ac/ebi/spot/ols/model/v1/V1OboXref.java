@@ -20,11 +20,16 @@ public class V1OboXref {
 
         String[] tokens = oboXref.split(":");
 
+        if(tokens.length < 2) {
+            V1OboXref xref = new V1OboXref();
+            xref.database = tokens[0];
+            return xref;
+        }
+
         V1OboXref xref = new V1OboXref();
         xref.database = tokens[0];
         xref.id = tokens[1];
         xref.url = oboDbUrls.getUrlForId(xref.database, xref.id);
-
         return xref;
     }
 

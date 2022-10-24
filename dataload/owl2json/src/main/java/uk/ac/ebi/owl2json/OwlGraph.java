@@ -171,6 +171,7 @@ public class OwlGraph implements StreamRDF {
     long endTime = System.nanoTime();
     System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
 
+    OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
     DirectParentsAnnotator.annotateDirectParents(this);
     HierarchicalParentsAnnotator.annotateHierarchicalParents(this);
     ShortFormAnnotator.annotateShortForms(this);
