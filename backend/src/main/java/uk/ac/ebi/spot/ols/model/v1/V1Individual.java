@@ -7,6 +7,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 
@@ -17,27 +18,23 @@ import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 public class V1Individual {
 
 
-    public V1Individual(OntologyEntity node, String lang) {
+    public V1Individual(Map<String,Object> jsonObj, String lang) {
 
-        if(!node.hasType("individual")) {
-            throw new IllegalArgumentException("Node has wrong type");
-        }
+        OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
 
-        OntologyEntity localizedNode = new OntologyEntity(node, lang);
-
-        iri = localizedNode.getString("uri");
+        iri = localizedObj.getString("uri");
         lang = "en";
 
-        ontologyName = localizedNode.getString("ontologyId");
-        ontologyPrefix = localizedNode.getString("ontologyPreferredPrefix");
-        ontologyIri = localizedNode.getString("ontologyIri");
+        ontologyName = localizedObj.getString("ontologyId");
+        ontologyPrefix = localizedObj.getString("ontologyPreferredPrefix");
+        ontologyIri = localizedObj.getString("ontologyIri");
 
-        label = localizedNode.getString("label");
-        description = localizedNode.getStrings("definition").toArray(new String[0]);
-        synonyms = localizedNode.getStrings("synonym").toArray(new String[0]);
-        annotation = V1AnnotationExtractor.extractAnnotations(localizedNode);
+        label = localizedObj.getString("label");
+        description = localizedObj.getStrings("definition").toArray(new String[0]);
+        synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
+        annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
 
-        shortForm = localizedNode.getString("shortForm");
+        shortForm = localizedObj.getString("shortForm");
         oboId = shortForm.replace("_", ":");
     }
 

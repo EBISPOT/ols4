@@ -6,22 +6,13 @@ import org.springframework.hateoas.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
+import java.util.Map;
+
 @Relation(collectionRelation = "terms")
-public class V2Entity extends DynamicJsonObject {
+public class V2Entity extends V2DynamicJsonResult {
 
-    public V2Entity(OntologyEntity node, String lang) {
-
-        if(!node.hasType("entity")) {
-            throw new IllegalArgumentException("Node has wrong type");
-        }
-
-        put("lang", lang);
-
-        for(String k : node.asMap().keySet()) {
-            Object v = node.asMap().get(k);
-            put(k, GenericLocalizer.localize(v, lang));
-        }
-
+    public V2Entity(Map<String,Object> jsonObj, String lang) {
+        super(GenericLocalizer.localize(jsonObj, lang));
     }
 
 }

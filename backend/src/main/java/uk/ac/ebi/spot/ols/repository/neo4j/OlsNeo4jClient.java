@@ -22,7 +22,7 @@ public class OlsNeo4jClient {
 	@Autowired
 	Neo4jClient neo4jClient;
 
-    public Page<OntologyEntity> getAll(String type, Map<String,String> properties, Pageable pageable) {
+    public Page<Map<String, Object>> getAll(String type, Map<String,String> properties, Pageable pageable) {
 
 		String query = "MATCH (a:" + type + ")";
 
@@ -49,9 +49,9 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(getQuery, "a", countQuery, parameters("type", type), pageable);
 	}
 
-	public OntologyEntity getOne(String type, Map<String,String> properties) {
+	public Map<String, Object> getOne(String type, Map<String,String> properties) {
 
-		Page<OntologyEntity> results = getAll(type, properties, new PageRequest(0, 2, Sort.DEFAULT_DIRECTION));
+		Page<Map<String, Object>> results = getAll(type, properties, new PageRequest(0, 2, Sort.DEFAULT_DIRECTION));
 
 		if(results.getTotalElements() != 1) {
 			throw new RuntimeException("expected exactly one result for neo4j getOne");
@@ -60,7 +60,7 @@ public class OlsNeo4jClient {
 		return results.getContent().iterator().next();
 	}
 
-    public Page<OntologyEntity> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -81,7 +81,7 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<OntologyEntity> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -98,7 +98,7 @@ public class OlsNeo4jClient {
 	return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<OntologyEntity> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 
@@ -117,7 +117,7 @@ public class OlsNeo4jClient {
 	return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<OntologyEntity> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
 
 	String edge = makeEdge(relationURIs);
 

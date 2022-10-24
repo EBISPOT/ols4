@@ -108,7 +108,7 @@ public class V1IndividualRepository {
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
     }
@@ -122,7 +122,7 @@ public class V1IndividualRepository {
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
 
@@ -138,7 +138,7 @@ public class V1IndividualRepository {
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
     }
@@ -154,7 +154,7 @@ public class V1IndividualRepository {
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
 
@@ -169,7 +169,7 @@ public class V1IndividualRepository {
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
 
@@ -187,7 +187,7 @@ public class V1IndividualRepository {
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
     }
@@ -201,7 +201,7 @@ public class V1IndividualRepository {
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
     }
@@ -217,7 +217,7 @@ public class V1IndividualRepository {
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
-        Page<OntologyEntity> entities = solrClient.searchSolrPaginated(query, pageable);
+        Page<Map<String,Object>> entities = solrClient.searchSolrPaginated(query, pageable);
 
         return entities.map(result -> new V1Individual(result, lang));
     }

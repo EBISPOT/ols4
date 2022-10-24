@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
@@ -20,41 +21,37 @@ public class V1Term {
 
     public static Gson gson = new Gson();
 
-    public V1Term(OntologyEntity node, String lang) {
+    public V1Term(Map<String,Object> jsonObj, String lang) {
 
-        if(!node.hasType("class")) {
-            throw new IllegalArgumentException("Node has wrong type");
-        }
-
-        OntologyEntity localizedNode = new OntologyEntity(node, lang);
+        OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
 
         this.lang = lang;
-        iri = localizedNode.getString("uri");
+        iri = localizedObj.getString("uri");
 
-        ontologyName = localizedNode.getString("ontologyId");
-        ontologyPrefix = localizedNode.getString("ontologyPreferredPrefix");
-        ontologyIri = localizedNode.getString("ontologyIri");
+        ontologyName = localizedObj.getString("ontologyId");
+        ontologyPrefix = localizedObj.getString("ontologyPreferredPrefix");
+        ontologyIri = localizedObj.getString("ontologyIri");
 
 
-        shortForm = localizedNode.getString("shortForm");
+        shortForm = localizedObj.getString("shortForm");
         oboId = shortForm.replace("_", ":");
 
-        label = localizedNode.getString("label");
-        description = localizedNode.getStrings("definition").toArray(new String[0]);
-        synonyms = localizedNode.getStrings("synonym").toArray(new String[0]);
-        annotation = V1AnnotationExtractor.extractAnnotations(localizedNode);
+        label = localizedObj.getString("label");
+        description = localizedObj.getStrings("definition").toArray(new String[0]);
+        synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
+        annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
 
         inSubsets = new HashSet<>();
 
 
 
-        oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedNode);
-        oboXrefs = V1OboXref.extractFromEntity(localizedNode);
-        oboSynonyms = V1OboSynonym.extractFromEntity(localizedNode);
+        oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedObj);
+        oboXrefs = V1OboXref.extractFromEntity(localizedObj);
+        oboSynonyms = V1OboSynonym.extractFromEntity(localizedObj);
         isPreferredRoot = false;
         related = new HashSet<>();
 
-        isDefiningOntology = !Boolean.parseBoolean(localizedNode.getString("imported"));
+        isDefiningOntology = !Boolean.parseBoolean(localizedObj.getString("imported"));
 
 
     }

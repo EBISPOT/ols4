@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.solr;
 
 import com.google.gson.Gson;
-import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -32,29 +30,29 @@ public class OlsSolrClient {
 
     private Gson gson = new Gson();
 
-    public Collection<OntologyEntity> searchSolr(OlsSolrQuery query) {
+    public Collection<Map<String,Object>> searchSolr(OlsSolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query, null);
 
         return qr.getResults()
                 .stream()
-                .map(res -> new OntologyEntity(solrDocumentToOntologyEntity(res)))
+                .map(res -> getOlsEntityFromSolrResult(res))
                 .collect(Collectors.toList());
     }
 
-    public Page<OntologyEntity> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
+    public Page<Map<String,Object>> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
         QueryResponse qr = runSolrQuery(query, pageable);
 
-        return new PageImpl<OntologyEntity>(
+        return new PageImpl<Map<String,Object>>(
                 qr.getResults()
                         .stream()
-                        .map(res -> new OntologyEntity(solrDocumentToOntologyEntity(res)))
+                        .map(res -> getOlsEntityFromSolrResult(res))
                         .collect(Collectors.toList()),
                 pageable, qr.getResults().getNumFound());
     }
 
-    public OntologyEntity getOne(OlsSolrQuery query) {
+    public Map<String,Object> getOne(OlsSolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query, null);
 
@@ -62,13 +60,11 @@ public class OlsSolrClient {
             throw new RuntimeException("Expected exactly 1 result for solr getOne, but got " + qr.getResults().getNumFound());
         }
 
-        return solrDocumentToOntologyEntity(qr.getResults().get(0));
+        return getOlsEntityFromSolrResult(qr.getResults().get(0));
     }
 
-    private OntologyEntity solrDocumentToOntologyEntity(SolrDocument doc) {
-        return new OntologyEntity(
-                gson.fromJson((String) doc.get("_json"), Map.class)
-        );
+    private Map<String,Object> getOlsEntityFromSolrResult(SolrDocument doc) {
+        return gson.fromJson((String) doc.get("_json"), Map.class);
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {

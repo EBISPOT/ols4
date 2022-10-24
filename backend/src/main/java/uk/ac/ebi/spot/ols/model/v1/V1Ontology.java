@@ -5,6 +5,7 @@ import java.util.*;
 
 import com.google.gson.Gson;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 
@@ -14,78 +15,74 @@ public class V1Ontology {
 
     public static Gson gson = new Gson();
 
-    public V1Ontology(OntologyEntity node, String lang) {
+    public V1Ontology(Map<String,Object> jsonObj, String lang) {
 
-        if(!node.hasType("ontology")) {
-            throw new IllegalArgumentException("Node has wrong type");
-        }
-
-        OntologyEntity localizedNode = new OntologyEntity(node, lang);
+        OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
         this.lang =lang;
 
-        ontologyId = localizedNode.getString("ontologyId");
+        ontologyId = localizedObj.getString("ontologyId");
 
         config = new V1OntologyConfig();
-        config.id = localizedNode.getString("ontologyId");
-        config.versionIri = localizedNode.getString("http://www.w3.org/2002/07/owl#versionIRI");
-        config.namespace = localizedNode.getString("id"); // TODO ??
-        config.version = localizedNode.getString("http://www.w3.org/2002/07/owl#versionInfo");
-        config.preferredPrefix = localizedNode.getString("preferredPrefix");
-        config.title = localizedNode.getString("title");
-        config.description = localizedNode.getString("description");
-        config.homepage = localizedNode.getString("homepage");
-        config.version = localizedNode.getString("version");
-        config.mailingList = localizedNode.getString("mailingList");
-        config.tracker = localizedNode.getString("tracker");
-        config.logo = localizedNode.getString("logo");
-        config.creators = localizedNode.getStrings("creators");
-        config.annotations = localizedNode.asMap().get("annotations");
-        config.fileLocation = localizedNode.getString("fileLocation");
+        config.id = localizedObj.getString("ontologyId");
+        config.versionIri = localizedObj.getString("http://www.w3.org/2002/07/owl#versionIRI");
+        config.namespace = localizedObj.getString("id"); // TODO ??
+        config.version = localizedObj.getString("http://www.w3.org/2002/07/owl#versionInfo");
+        config.preferredPrefix = localizedObj.getString("preferredPrefix");
+        config.title = localizedObj.getString("title");
+        config.description = localizedObj.getString("description");
+        config.homepage = localizedObj.getString("homepage");
+        config.version = localizedObj.getString("version");
+        config.mailingList = localizedObj.getString("mailingList");
+        config.tracker = localizedObj.getString("tracker");
+        config.logo = localizedObj.getString("logo");
+        config.creators = localizedObj.getStrings("creators");
+        config.annotations = localizedObj.asMap().get("annotations");
+        config.fileLocation = localizedObj.getString("fileLocation");
 
-        config.oboSlims = localizedNode.asMap().containsKey("oboSlims") ?
-                (boolean) localizedNode.asMap().get("oboSlims") : false;
+        config.oboSlims = localizedObj.asMap().containsKey("oboSlims") ?
+                (boolean) localizedObj.asMap().get("oboSlims") : false;
 
-        config.labelProperty = localizedNode.getString("labelProperty");
-        config.definitionProperties = localizedNode.getStrings("definitionProperties");
-        config.synonymProperties = localizedNode.getStrings("synonymProperties");
-        config.hierarchicalProperties = localizedNode.getStrings("hierarchicalProperties");
-        config.baseUris = localizedNode.getStrings("baseUris");
-        config.hiddenProperties = localizedNode.getStrings("hiddenProperties");
-        config.preferredRootTerms = localizedNode.getStrings("preferredRootTerms");
+        config.labelProperty = localizedObj.getString("labelProperty");
+        config.definitionProperties = localizedObj.getStrings("definitionProperties");
+        config.synonymProperties = localizedObj.getStrings("synonymProperties");
+        config.hierarchicalProperties = localizedObj.getStrings("hierarchicalProperties");
+        config.baseUris = localizedObj.getStrings("baseUris");
+        config.hiddenProperties = localizedObj.getStrings("hiddenProperties");
+        config.preferredRootTerms = localizedObj.getStrings("preferredRootTerms");
 
-        config.isSkos = localizedNode.asMap().containsKey("isSkos") ?
-                (boolean) localizedNode.asMap().get("isSkos") : false;
+        config.isSkos = localizedObj.asMap().containsKey("isSkos") ?
+                (boolean) localizedObj.asMap().get("isSkos") : false;
 
-        config.allowDownload = localizedNode.asMap().containsKey("allowDownload") ?
-                (boolean) localizedNode.asMap().get("allowDownload") : true;
+        config.allowDownload = localizedObj.asMap().containsKey("allowDownload") ?
+                (boolean) localizedObj.asMap().get("allowDownload") : true;
 
-        config.internalMetadataProperties = localizedNode.asMap().containsKey("internalMetadataProperties") ?
-                localizedNode.asMap().get("internalMetadataProperties") : new HashMap<String,Object>();
+        config.internalMetadataProperties = localizedObj.asMap().containsKey("internalMetadataProperties") ?
+                localizedObj.asMap().get("internalMetadataProperties") : new HashMap<String,Object>();
 
         status = "LOADED";
 
-        numberOfTerms = Integer.parseInt(localizedNode.getString("numberOfClasses"));
-        numberOfProperties = Integer.parseInt(localizedNode.getString("numberOfProperties"));
-        numberOfIndividuals = Integer.parseInt(localizedNode.getString("numberOfIndividuals"));
+        numberOfTerms = Integer.parseInt(localizedObj.getString("numberOfClasses"));
+        numberOfProperties = Integer.parseInt(localizedObj.getString("numberOfProperties"));
+        numberOfIndividuals = Integer.parseInt(localizedObj.getString("numberOfIndividuals"));
 
         // TODO just setting these to the same thing for now, as we don't keep track of when ontologies change
         // there is currently no way to set updated (everything gets updated every time we index now anyway)
         //
-        loaded = localizedNode.getString("loaded");
-        updated = localizedNode.getString("loaded");
+        loaded = localizedObj.getString("loaded");
+        updated = localizedObj.getString("loaded");
 
 
         message = "";
         loadAttempts = 0;
 
 
-        String embeddedTitle = localizedNode.getString("http://purl.org/dc/elements/1.1/title");
+        String embeddedTitle = localizedObj.getString("http://purl.org/dc/elements/1.1/title");
 
         if(embeddedTitle != null) {
             config.title = embeddedTitle;
         }
 
-        String embeddedDesc = localizedNode.getString("http://purl.org/dc/elements/1.1/description");
+        String embeddedDesc = localizedObj.getString("http://purl.org/dc/elements/1.1/description");
 
         if(embeddedDesc != null) {
             config.description = embeddedDesc;

@@ -51,7 +51,7 @@ public class Neo4jClient {
 
 
 
-	public List<OntologyEntity> query(String query, String resVar) {
+	public List<Map<String, Object>> query(String query, String resVar) {
 
 		Session session = getSession();
 
@@ -59,12 +59,11 @@ public class Neo4jClient {
 
 		return result.list().stream()
 					.map(r -> r.get(resVar).get("_json").asString())
-					.map(r -> gson.fromJson(r, Map.class))
-					.map(r -> new OntologyEntity(r))
+					.map(r -> (Map<String,Object>) gson.fromJson(r, Map.class))
 					.collect(Collectors.toList());
 	}
 
-	public Page<OntologyEntity> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
+	public Page<Map<String, Object>> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
 
@@ -107,15 +106,14 @@ public class Neo4jClient {
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
 
-		return new PageImpl<OntologyEntity>(
+		return new PageImpl<Map<String,Object>>(
 				result.list().stream()
-						.map(r -> gson.fromJson(r.get(resVar).get("_json").asString(), Map.class))
-						.map(r -> new OntologyEntity(r))
+						.map(r -> (Map<String,Object>) gson.fromJson(r.get(resVar).get("_json").asString(), Map.class))
 						.collect(Collectors.toList()),
 				pageable, count);
 	}
 
-	public OntologyEntity queryOne(String query, String resVar, Value parameters) {
+	public Map<String,Object> queryOne(String query, String resVar, Value parameters) {
 
 		Session session = getSession();
 
@@ -133,9 +131,7 @@ public class Neo4jClient {
 			throw new ResourceNotFoundException();
 		}
 
-		return new OntologyEntity(
-				gson.fromJson(v.asString(), Map.class)
-		);
+		return (Map<String,Object>)gson.fromJson(v.asString(), Map.class);
 	}
 
 

@@ -10,7 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class DynamicJsonObject {
+public class V2DynamicJsonResult {
+
+
+    // jsonObj = the original json from owl2json
+    public V2DynamicJsonResult(Map<String,Object> jsonObj) {
+        this.properties.putAll(jsonObj);
+    }
 
     protected Gson gson = new Gson();
 
@@ -36,10 +42,6 @@ public class DynamicJsonObject {
 
     @JsonIgnore
     private TreeMap<String,Object> properties = new TreeMap<>(keySort);
-
-    public void put(String k, Object v) {
-        properties.put(k, v);
-    }
 
     @JsonAnyGetter
     public Map<String, Object> any() {
