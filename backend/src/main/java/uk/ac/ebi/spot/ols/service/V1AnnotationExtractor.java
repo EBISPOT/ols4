@@ -13,6 +13,8 @@ public class V1AnnotationExtractor {
         TreeSet<String> annotationPredicates = new TreeSet<>(node.getStrings("annotationPredicate"));
 
         Map<String, Object> record = node.asMap();
+        Map<String,String> propertyLabels = (Map<String,String>) record.get("propertyLabels");
+
         Map<String, Object> annotation = new TreeMap<>();
 
         for(String predicate : annotationPredicates) {
@@ -40,14 +42,18 @@ public class V1AnnotationExtractor {
 
             }).collect(Collectors.toList());
 
-            String localPart = predicate.substring(
-                    Math.max(
-                            predicate.lastIndexOf('#'),
-                            predicate.lastIndexOf('/')
-                    ) + 1
-            );
+            String label = propertyLabels.get(predicate);
 
-            annotation.put(localPart, flattenedValues);
+            if(label == null) {
+                label = predicate.substring(
+                        Math.max(
+                                predicate.lastIndexOf('#'),
+                                predicate.lastIndexOf('/')
+                        ) + 1
+                );
+            }
+
+            annotation.put(label, flattenedValues);
         }
 
         return annotation;
