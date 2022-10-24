@@ -16,7 +16,7 @@ public class SynonymAnnotator {
 				)
 		);
 
-		Object configSynonymProperties = graph.config.get("definition_property");
+		Object configSynonymProperties = graph.config.get("synonym_property");
 
 		if(configSynonymProperties instanceof Collection<?>) {
 			synonymProperties.addAll((Collection<String>) configSynonymProperties);
