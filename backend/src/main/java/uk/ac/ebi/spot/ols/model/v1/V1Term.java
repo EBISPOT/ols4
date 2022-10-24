@@ -13,6 +13,7 @@ import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
 import org.springframework.hateoas.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
+import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
@@ -21,7 +22,7 @@ public class V1Term {
 
     public static Gson gson = new Gson();
 
-    public V1Term(Map<String,Object> jsonObj, String lang) {
+    public V1Term(Map<String,Object> jsonObj, String lang, OboDatabaseUrlService oboDbUrls) {
 
         OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
 
@@ -45,9 +46,9 @@ public class V1Term {
 
 
 
-        oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedObj);
-        oboXrefs = V1OboXref.extractFromEntity(localizedObj);
-        oboSynonyms = V1OboSynonym.extractFromEntity(localizedObj);
+        oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedObj, oboDbUrls);
+        oboXrefs = V1OboXref.extractFromEntity(localizedObj, oboDbUrls);
+        oboSynonyms = V1OboSynonym.extractFromEntity(localizedObj, oboDbUrls);
         isPreferredRoot = false;
         related = new HashSet<>();
 

@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
+import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class V1OboDefinitionCitation {
     public List<V1OboXref> oboXrefs;
 
 
-    public static List<V1OboDefinitionCitation> extractFromEntity(OntologyEntity entity) {
+    public static List<V1OboDefinitionCitation> extractFromEntity(OntologyEntity entity, OboDatabaseUrlService oboDbUrls) {
 
         List<Object> definitions = entity.getObjects("definition");
         List<V1OboDefinitionCitation> res = new ArrayList<>();
@@ -31,7 +32,7 @@ public class V1OboDefinitionCitation {
 
                     V1OboDefinitionCitation citation = new V1OboDefinitionCitation();
                     citation.definition = definition;
-                    citation.oboXrefs = xrefList.stream().map(xref -> V1OboXref.fromString((String) xref)).collect(Collectors.toList());
+                    citation.oboXrefs = xrefList.stream().map(xref -> V1OboXref.fromString((String) xref, oboDbUrls)).collect(Collectors.toList());
                     res.add(citation);
                 }
             }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
+import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import java.util.List;
@@ -13,23 +14,23 @@ public class V1OboSynonym {
     public String type;
     public List<V1OboXref> xrefs;
 
-    public static List<V1OboSynonym> extractFromEntity(OntologyEntity entity) {
+    public static List<V1OboSynonym> extractFromEntity(OntologyEntity entity, OboDatabaseUrlService oboDbUrls) {
 
         List<Object> exact = entity.getObjects("http://www.geneontology.org/formats/oboInOwl#hasExactSynonym");
         List<Object> related = entity.getObjects("http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym");
 
         List<V1OboSynonym> synonyms =
-                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym"))
+                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", oboDbUrls))
                                 .collect(Collectors.toList());
 
         synonyms.addAll(
-                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym")).collect(Collectors.toList())
+                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls)).collect(Collectors.toList())
         );
 
         return synonyms;
     }
 
-    private static V1OboSynonym fromSynonymObject(Object synonymObj, String scope) {
+    private static V1OboSynonym fromSynonymObject(Object synonymObj, String scope, OboDatabaseUrlService oboDbUrls) {
 
         if(synonymObj instanceof String) {
             V1OboSynonym synonym = new V1OboSynonym();
@@ -53,7 +54,7 @@ public class V1OboSynonym {
             }
 
             synonym.xrefs =
-                    ((List<Object>) xrefs).stream().map(xref -> V1OboXref.fromString((String) xref))
+                    ((List<Object>) xrefs).stream().map(xref -> V1OboXref.fromString((String) xref, oboDbUrls))
                             .collect(Collectors.toList());
         }
 

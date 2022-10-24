@@ -16,6 +16,7 @@ import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 //@RepositoryRestResource(collectionResourceRel = "individuals", exported = false)
@@ -31,6 +32,9 @@ public class V1IndividualRepository {
     @Autowired
     OlsNeo4jClient neo4jClient;
 
+    @Autowired
+    OboDatabaseUrlService oboDbUrls;
+
 //    @Query(
 //            countQuery = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(parent)",
 //            value = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
@@ -38,7 +42,7 @@ public class V1IndividualRepository {
 
 	return this.neo4jClient.getParents("OntologyIndividual", ontologyId + "+individual+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), pageable)
-				.map(node -> new V1Term(node, lang));
+				.map(node -> new V1Term(node, lang, oboDbUrls));
     }
 
 //    @Query(countQuery = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct parent)",
@@ -47,7 +51,7 @@ public class V1IndividualRepository {
 
 	return this.neo4jClient.getAncestors("OntologyIndividual", ontologyId + "+individual+" + iri,
 			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
-				.map(node -> new V1Term(node, lang));
+				.map(node -> new V1Term(node, lang, oboDbUrls));
     }
 
 //    @Query (value = "MATCH (n:Individual) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN n")
