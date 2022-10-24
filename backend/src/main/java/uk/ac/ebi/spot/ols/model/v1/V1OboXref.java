@@ -32,6 +32,11 @@ public class V1OboXref {
 
         return xrefs.stream().map(xref -> {
 
+            if(xref instanceof String) {
+                V1OboXref xrefObj = V1OboXref.fromString((String) xref);
+                return xrefObj;
+            }
+
             Map<String,Object> xrefMap = (Map<String,Object>) xref;
 
             V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"));
