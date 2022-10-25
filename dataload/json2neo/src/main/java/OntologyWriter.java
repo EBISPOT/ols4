@@ -189,6 +189,10 @@ public class OntologyWriter {
 
     private void printEdge(String ontologyId, String aUri, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
+	// don't create lots of "iri" edges pointing from each node to itself
+	if(predicate.equals("iri"))
+		return;
+
         // In the case of punning, the same URI can have multiple types. In this case
         // it is ambiguous which of the types the edge points to/from. For example, if
         // a URI points to a node which is both a Class and an Individual, does it point
