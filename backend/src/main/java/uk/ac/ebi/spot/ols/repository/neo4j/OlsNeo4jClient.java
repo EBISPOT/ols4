@@ -60,9 +60,9 @@ public class OlsNeo4jClient {
 		return results.getContent().iterator().next();
 	}
 
-    public Page<Map<String, Object>> getParents(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getParents(String type, String id, List<String> relationIRIs, Pageable pageable) {
 
-	String edge = makeEdge(relationURIs);
+	String edge = makeEdge(relationIRIs);
 
 	// TODO fix injection
 
@@ -81,9 +81,9 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getChildren(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getChildren(String type, String id, List<String> relationIRIs, Pageable pageable) {
 
-	String edge = makeEdge(relationURIs);
+	String edge = makeEdge(relationIRIs);
 
 	String query =
 	  "MATCH (a:" + type + ")<-[:" + edge + "]-(b) "
@@ -98,9 +98,9 @@ public class OlsNeo4jClient {
 	return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getAncestors(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getAncestors(String type, String id, List<String> relationIRIs, Pageable pageable) {
 
-	String edge = makeEdge(relationURIs);
+	String edge = makeEdge(relationIRIs);
 
 	String query =
 	  "MATCH (c:" + type + ") WHERE c.id = $id "
@@ -117,9 +117,9 @@ public class OlsNeo4jClient {
 	return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getDescendants(String type, String id, List<String> relationURIs, Pageable pageable) {
+    public Page<Map<String, Object>> getDescendants(String type, String id, List<String> relationIRIs, Pageable pageable) {
 
-	String edge = makeEdge(relationURIs);
+	String edge = makeEdge(relationIRIs);
 
 	String query =
 	  "MATCH (a:" + type + ") WHERE a.id = $id "
@@ -138,16 +138,16 @@ public class OlsNeo4jClient {
 
 
 
-	private static String makeEdge(List<String> relationURIs) {
+	private static String makeEdge(List<String> relationIRIs) {
 
 		String edge = "";
 
-		for(String uri : relationURIs) {
+		for(String iri : relationIRIs) {
 			if(edge != "") {
 				edge += "|";
 			}
 
-			edge += "`" + uri + "`";
+			edge += "`" + iri + "`";
 		}
 
 		return edge;

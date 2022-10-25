@@ -21,7 +21,7 @@ public class V1Property {
 
         OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
 
-        iri = localizedObj.getString("uri");
+        iri = localizedObj.getString("iri");
 
         ontologyName = localizedObj.getString("ontologyId");
         ontologyPrefix = localizedObj.getString("ontologyPreferredPrefix");

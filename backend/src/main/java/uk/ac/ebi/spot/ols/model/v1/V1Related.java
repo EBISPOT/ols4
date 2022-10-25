@@ -11,7 +11,7 @@ public class V1Related {
 
     Long id;
 
-    String uri;
+    String iri;
     String label;
 
     @JsonProperty(value = "ontology_name")
@@ -28,8 +28,8 @@ public class V1Related {
         return relatedTo;
     }
 
-    public String getUri() {
-        return uri;
+    public String getIri() {
+        return iri;
     }
 
     public String getLabel() {

@@ -93,17 +93,17 @@ public class V2EntityController implements
     @RequestMapping(path = "/ontologies/{onto}/entities/{entity}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<Resource<V2Entity>> getEntity(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("entity") String uri,
+            @PathVariable("entity") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
         try {
-            uri = UriUtils.decode(uri, "UTF-8");
+            iri = UriUtils.decode(iri, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException();
         }
 
-        V2Entity document = entityRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Entity document = entityRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }

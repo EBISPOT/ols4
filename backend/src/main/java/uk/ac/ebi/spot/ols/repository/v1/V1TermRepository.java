@@ -60,9 +60,9 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)-[:SUBCLASSOF|RelatedTree]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	List<String> relationURIs = List.of("hierarchicalParent");
+	List<String> relationIRIs = List.of("hierarchicalParent");
 
-	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+class+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getParents("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, pageable)
             .map(record -> new V1Term(record, lang, oboDbUrls));
     }
 
@@ -71,9 +71,9 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)-[:SUBCLASSOF|RelatedTree*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	List<String> relationURIs = List.of("hierarchicalParent");
+	List<String> relationIRIs = List.of("hierarchicalParent");
 
-	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+class+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getAncestors("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, pageable)
             .map(record -> new V1Term(record, lang, oboDbUrls));
 
     }
@@ -90,9 +90,9 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	List<String> relationURIs = List.of("hierarchicalParent");
+	List<String> relationIRIs = List.of("hierarchicalParent");
 
-	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+class+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, pageable)
             .map(record -> new V1Term(record, lang, oboDbUrls));
 
     }
@@ -101,9 +101,9 @@ public class V1TermRepository {
 //            value = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree*]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationURIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of("hierarchicalParent");
 
-	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+class+" + iri, relationURIs, pageable)
+	return this.neo4jClient.getDescendants("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, pageable)
             .map(record -> new V1Term(record, lang, oboDbUrls));
     }
 
@@ -128,8 +128,8 @@ public class V1TermRepository {
 
     }
 
-//    @Query(countQuery = "MATCH (n:Class)-[r:Related]->(related) WHERE n.ontology_name = {0} AND n.iri = {1} AND r.uri = {2} RETURN count(distinct related)",
-//                value = "MATCH (n:Class)-[r:Related]->(related) WHERE n.ontology_name = {0} AND n.iri = {1} AND r.uri = {2} RETURN distinct related")
+//    @Query(countQuery = "MATCH (n:Class)-[r:Related]->(related) WHERE n.ontology_name = {0} AND n.iri = {1} AND r.iri = {2} RETURN count(distinct related)",
+//                value = "MATCH (n:Class)-[r:Related]->(related) WHERE n.ontology_name = {0} AND n.iri = {1} AND r.iri = {2} RETURN distinct related")
     public Page<V1Term> getRelated(String ontologyId, String iri, String lang, String relation, Pageable pageable) {
 
 	return this.neo4jClient.getChildren("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList(relation), pageable)
@@ -144,7 +144,7 @@ public class V1TermRepository {
 	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "class", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-	query.addFilter("uri", iri, Fuzziness.EXACT);
+	query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V1Term(solrClient.getOne(query), lang, oboDbUrls);
 
@@ -342,7 +342,7 @@ public class V1TermRepository {
             "UNWIND nodes(path) as p\n" +
             "UNWIND rels(path) as r1\n" +
             "RETURN {nodes: collect( distinct {iri: p.iri, label: p.label})[0..200], " +
-            "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, label: r1.label, uri: r1.uri}  )[0..200]} as result";
+            "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, label: r1.label, iri: r1.iri}  )[0..200]} as result";
 
     public Object getGraphJson(String ontologyName, String iri) {
         return getGraphJson(ontologyName, iri, 1);

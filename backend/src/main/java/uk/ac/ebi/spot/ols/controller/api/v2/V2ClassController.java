@@ -95,17 +95,17 @@ public class V2ClassController implements
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<Resource<V2Class>> getClass(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("class") String uri,
+            @PathVariable("class") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
         try {
-            uri = UriUtils.decode(uri, "UTF-8");
+            iri = UriUtils.decode(iri, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException();
         }
 
-        V2Class document = classRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Class document = classRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }
@@ -114,18 +114,18 @@ public class V2ClassController implements
     public HttpEntity<PagedResources<V2Class>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
-            @PathVariable("class") String uri,
+            @PathVariable("class") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
 
         try {
-            uri = UriUtils.decode(uri, "UTF-8");
+            iri = UriUtils.decode(iri, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException();
         }
 
-        Page<V2Class> document = classRepository.getChildrenByOntologyId(ontologyId, pageable, uri, lang);
+        Page<V2Class> document = classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, lang);
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 
@@ -133,18 +133,18 @@ public class V2ClassController implements
     public HttpEntity<PagedResources<V2Class>> getAncestorsByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
-            @PathVariable("class") String uri,
+            @PathVariable("class") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
 
         try {
-            uri = UriUtils.decode(uri, "UTF-8");
+            iri = UriUtils.decode(iri, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new ResourceNotFoundException();
         }
 
-        Page<V2Class> document = classRepository.getAncestorsByOntologyId(ontologyId, pageable, uri, lang);
+        Page<V2Class> document = classRepository.getAncestorsByOntologyId(ontologyId, pageable, iri, lang);
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
 }

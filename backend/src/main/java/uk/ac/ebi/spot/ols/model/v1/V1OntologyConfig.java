@@ -40,7 +40,7 @@ public class V1OntologyConfig {
     @SerializedName("hierarchical_property")
     public  Collection<String> hierarchicalProperties;
 
-    @SerializedName("base_uri")
+    @SerializedName("base_iri")
     public  Collection<String> baseUris;
 
 

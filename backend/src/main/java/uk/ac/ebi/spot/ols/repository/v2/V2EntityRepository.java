@@ -64,7 +64,7 @@ public class V2EntityRepository {
                 .map(result -> new V2Entity(result, lang));
     }
 
-    public V2Entity getByOntologyIdAndUri(String ontologyId, String uri, String lang) throws ResourceNotFoundException {
+    public V2Entity getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -73,7 +73,7 @@ public class V2EntityRepository {
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "entity", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("uri", uri, Fuzziness.EXACT);
+        query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V2Entity(solrClient.getOne(query), lang);
 

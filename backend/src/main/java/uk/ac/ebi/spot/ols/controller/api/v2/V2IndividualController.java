@@ -94,11 +94,11 @@ public class V2IndividualController implements
     @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<Resource<V2Individual>> getIndividual(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("individual") String uri,
+            @PathVariable("individual") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
-        V2Individual document = individualRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Individual document = individualRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }

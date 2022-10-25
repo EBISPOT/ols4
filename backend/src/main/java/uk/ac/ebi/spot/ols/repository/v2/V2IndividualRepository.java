@@ -73,7 +73,7 @@ public class V2IndividualRepository {
 
     }
 
-    public V2Individual getByOntologyIdAndUri(String ontologyId, String uri, String lang) throws ResourceNotFoundException {
+    public V2Individual getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -82,7 +82,7 @@ public class V2IndividualRepository {
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("uri", uri, Fuzziness.EXACT);
+        query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V2Individual(solrClient.getOne(query), lang);
     }

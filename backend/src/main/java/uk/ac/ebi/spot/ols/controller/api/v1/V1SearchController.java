@@ -54,9 +54,9 @@ public class V1SearchController {
     }
 
     // In OLS3, Solr contained fields such as "synonym_s" which were mapped from their OWL properties at index time.
-    // In OLS4, we store the OWL properties directly in Solr by URI.
+    // In OLS4, we store the OWL properties directly in Solr by IRI.
     //
-    // In order to perform a search we therefore need to map OLS3 field names to the appropriate predicate URIs.
+    // In order to perform a search we therefore need to map OLS3 field names to the appropriate predicate IRIs.
     //
     // nb. sometimes a field name maps to more than one predicate.
     //
@@ -86,7 +86,7 @@ public class V1SearchController {
             }
 
             if (legacyFieldName.equals("iri")) {
-                newFields.add(prefix + "uri" + suffix);
+                newFields.add(prefix + "iri" + suffix);
                 continue;
             }
 
@@ -119,8 +119,8 @@ public class V1SearchController {
 
         // escape special characters in field names for solr query
         //
-        newFields = newFields.stream().map(uri -> {
-            return uri.replace(":", "__");
+        newFields = newFields.stream().map(iri -> {
+            return iri.replace(":", "__");
         }).collect(Collectors.toList());
 
         return newFields.toArray(new String[0]);
@@ -232,7 +232,7 @@ public class V1SearchController {
         }
 
         if (groupField != null) {
-            solrQuery.addFilterQuery("{!collapse field=uri}");
+            solrQuery.addFilterQuery("{!collapse field=iri}");
             solrQuery.add("expand=true", "true");
             solrQuery.add("expand.rows", "100");
 
@@ -289,7 +289,7 @@ public class V1SearchController {
             Map<String,Object> outDoc = new HashMap<>();
 
             outDoc.put("id", res.get("id"));
-            outDoc.put("iri", ((Collection<String>) res.get("uri")).toArray()[0]);
+            outDoc.put("iri", ((Collection<String>) res.get("iri")).toArray()[0]);
             outDoc.put("ontology_name", ((Collection<String>) res.get("ontology_id")).toArray()[0]);
 
             Collection<String> labels = (Collection<String>) res.get("http__//www.w3.org/2000/01/rdf-schema#label");

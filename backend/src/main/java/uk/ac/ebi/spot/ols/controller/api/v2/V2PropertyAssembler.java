@@ -24,7 +24,7 @@ public class V2PropertyAssembler implements ResourceAssembler<V2Property, Resour
     public Resource<V2Property> toResource(V2Property _property) {
         Resource<V2Property> resource = new Resource<V2Property>(_property);
         try {
-            String id = UriUtils.encode(_property.get("uri"), "UTF-8");
+            String id = UriUtils.encode(_property.get("iri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
                     ControllerLinkBuilder.methodOn(V2PropertyController.class).getProperty(_property.get("ontologyId"), id, _property.get("lang")));
 

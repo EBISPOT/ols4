@@ -55,7 +55,7 @@ public class V1TermAssembler implements ResourceAssembler<V1Term, Resource<V1Ter
             Collection<String> relation = new HashSet<>();
             for (V1Related related : term.related) {
                 if (!relation.contains(related.getLabel())) {
-                    String relationId = UriUtils.encode(related.getUri(), "UTF-8");
+                    String relationId = UriUtils.encode(related.getIri(), "UTF-8");
 
                     resource.add(lb.slash(relationId).withRel(related.getLabel().replaceAll(" ", "_")));
                 }

@@ -21,7 +21,7 @@ public class V2DynamicJsonResult {
     protected Gson gson = new Gson();
 
 
-    // non URI properties first for readability
+    // non IRI properties first for readability
     //
     final Comparator<String> keySort =
             new Comparator<String>() {

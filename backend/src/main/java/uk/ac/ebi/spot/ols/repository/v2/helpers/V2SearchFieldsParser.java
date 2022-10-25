@@ -14,7 +14,7 @@ public class V2SearchFieldsParser {
     public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
 
         if(searchFields == null) {
-            searchFields = "label^5 synonym^3 definition shortForm^2 uri"; // TODO check with OLS3
+            searchFields = "label^5 synonym^3 definition shortForm^2 iri"; // TODO check with OLS3
         }
 
         for(ParsedField field : parseFieldsString(searchFields)) {

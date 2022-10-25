@@ -22,7 +22,7 @@ public class V1Individual {
 
         OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
 
-        iri = localizedObj.getString("uri");
+        iri = localizedObj.getString("iri");
         lang = "en";
 
         ontologyName = localizedObj.getString("ontologyId");

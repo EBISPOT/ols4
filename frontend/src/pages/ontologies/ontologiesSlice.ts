@@ -34,12 +34,12 @@ export const getOntology = createAsyncThunk(
 );
 export const getEntity = createAsyncThunk(
   "ontologies_entity",
-  async ({ ontologyId, entityType, entityUri }: any) => {
-    let doubleEncodedTermUri = encodeURIComponent(
-      encodeURIComponent(entityUri)
+  async ({ ontologyId, entityType, entityIri }: any) => {
+    let doubleEncodedTermIri = encodeURIComponent(
+      encodeURIComponent(entityIri)
     );
     let termProperties = await get<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
+      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermIri}`
     );
     return thingFromProperties(termProperties);
   }
@@ -78,10 +78,10 @@ export const getEntities = createAsyncThunk(
 );
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
-  async ({ ontologyId, entityType, entityUri }: any) => {
-    let doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityUri));
+  async ({ ontologyId, entityType, entityIri }: any) => {
+    let doubleEncodedIri = encodeURIComponent(encodeURIComponent(entityIri));
     let ancestorsPage = await getPaginated<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
+      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedIri}/ancestors?${new URLSearchParams(
         { size: "100" }
       )}`
     );

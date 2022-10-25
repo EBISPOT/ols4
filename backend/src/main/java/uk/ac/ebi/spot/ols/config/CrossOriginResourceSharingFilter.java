@@ -37,7 +37,7 @@ public class CrossOriginResourceSharingFilter implements Filter {
         if (httpRequest.getHeader("Origin") != null) {
             String origin = httpRequest.getHeader("Origin");
             String requestURI = httpRequest.getRequestURI();
-            getLog().trace("Possible cross-origin request received from '" + origin + "' to URI: " +
+            getLog().trace("Possible cross-origin request received from '" + origin + "' to IRI: " +
                                    "'" + requestURI + "'.  Enabling CORS.");
 
             // add CORS "pre-flight" request headers

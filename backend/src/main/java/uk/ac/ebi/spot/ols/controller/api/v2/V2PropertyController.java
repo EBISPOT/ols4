@@ -93,11 +93,11 @@ public class V2PropertyController implements
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<Resource<V2Property>> getProperty(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("property") String uri,
+            @PathVariable("property") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
-        V2Property document = propertyRepository.getByOntologyIdAndUri(ontologyId, uri, lang);
+        V2Property document = propertyRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
     }

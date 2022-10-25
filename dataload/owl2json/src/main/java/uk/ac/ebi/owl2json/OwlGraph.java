@@ -199,7 +199,7 @@ public class OwlGraph implements StreamRDF {
         writer.name("ontologyId");
         writer.value(((String) config.get("id")).toLowerCase());
 
-        writer.name("uri");
+        writer.name("iri");
         writer.value(ontologyNode.uri);
 
         for(String configKey : config.keySet()) {
@@ -307,7 +307,7 @@ public class OwlGraph implements StreamRDF {
             writer.beginObject();
 
             if (c.uri != null) {
-                writer.name("uri");
+                writer.name("iri");
                 writer.value(c.uri);
             }
 

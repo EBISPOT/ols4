@@ -51,7 +51,7 @@ public class OntologyScanner {
                         String property = reader.nextName();
                         res.allClassProperties.add(property);
 
-                        if(property.equals("uri")) {
+                        if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.CLASS);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
@@ -73,7 +73,7 @@ public class OntologyScanner {
                         String property = reader.nextName();
                         res.allPropertyProperties.add(property);
 
-                        if(property.equals("uri")) {
+                        if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.PROPERTY);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
@@ -95,7 +95,7 @@ public class OntologyScanner {
                         String property = reader.nextName();
                         res.allIndividualProperties.add(property);
 
-                        if(property.equals("uri")) {
+                        if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.INDIVIDUAL);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
@@ -110,7 +110,7 @@ public class OntologyScanner {
 
             res.allOntologyProperties.add(name);
 
-            if(name.equals("uri")) {
+            if(name.equals("iri")) {
                 res.ontologyUri = reader.nextString();
                 addType(res, res.ontologyUri, NodeType.ONTOLOGY);
             } else if(name.equals("ontologyId")) {

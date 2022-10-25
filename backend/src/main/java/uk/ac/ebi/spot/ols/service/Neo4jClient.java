@@ -80,7 +80,7 @@ public class Neo4jClient {
 				sort += order.getDirection() == Sort.Direction.ASC ? "ASC" : " DESC";
 			}
 		} else {
-			sort = "ORDER BY " + resVar + ".uri ASC";
+			sort = "ORDER BY " + resVar + ".iri ASC";
 		}
 
 		String queryToRun = query

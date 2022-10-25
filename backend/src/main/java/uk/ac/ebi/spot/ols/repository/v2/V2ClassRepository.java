@@ -73,7 +73,7 @@ public class V2ClassRepository {
                 .map(result -> new V2Class(result, lang));
     }
 
-    public V2Class getByOntologyIdAndUri(String ontologyId, String uri, String lang) throws ResourceNotFoundException {
+    public V2Class getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -82,28 +82,28 @@ public class V2ClassRepository {
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("uri", uri, Fuzziness.EXACT);
+        query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V2Class(solrClient.getOne(query), lang);
     }
 
-    public Page<V2Class> getChildrenByOntologyId(String ontologyId, Pageable pageable, String uri, String lang) {
+    public Page<V2Class> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+class+" + uri;
+        String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.getChildren("OntologyClass", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
             .map(record -> new V2Class(record, lang));
     }
 
-    public Page<V2Class> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String uri, String lang) {
+    public Page<V2Class> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+class+" + uri;
+        String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.getAncestors("OntologyTerm", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
                 .map(record -> new V2Class(record, lang));

@@ -73,7 +73,7 @@ public class V1PropertyRepository {
 	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "property", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-	query.addFilter("uri", iri, Fuzziness.EXACT);
+	query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V1Property(solrClient.getOne(query), lang);
     }

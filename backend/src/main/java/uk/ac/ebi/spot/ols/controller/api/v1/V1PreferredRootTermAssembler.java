@@ -60,7 +60,7 @@ public class V1PreferredRootTermAssembler implements ResourceAssembler<V1Term, R
             Collection<String> relation = new HashSet<>();
             for (V1Related related : term.related) {
                 if (!relation.contains(related.getLabel())) {
-                    String relationId = UriUtils.encode(related.getUri(), "UTF-8");
+                    String relationId = UriUtils.encode(related.getIri(), "UTF-8");
 
                     resource.add(lb.slash(relationId).withRel(related.getLabel().replaceAll(" ", "_")));
                 }

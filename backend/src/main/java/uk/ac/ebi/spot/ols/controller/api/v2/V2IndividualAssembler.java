@@ -24,7 +24,7 @@ public class V2IndividualAssembler implements ResourceAssembler<V2Individual, Re
     public Resource<V2Individual> toResource(V2Individual _individual) {
         Resource<V2Individual> resource = new Resource<V2Individual>(_individual);
         try {
-            String id = UriUtils.encode(_individual.get("uri"), "UTF-8");
+            String id = UriUtils.encode(_individual.get("iri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
                     ControllerLinkBuilder.methodOn(V2IndividualController.class).getIndividual(_individual.get("ontologyId"), id, _individual.get("lang")));
 

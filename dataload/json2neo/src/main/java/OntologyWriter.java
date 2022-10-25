@@ -99,7 +99,7 @@ public class OntologyWriter {
         String[] row = new String[csvHeader.size()];
         int n = 0;
 
-        row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+ontology+" + (String) ontologyProperties.get("uri");
+        row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+ontology+" + (String) ontologyProperties.get("iri");
         row[n++] = "Ontology";
 
         for (String column : properties) {
@@ -131,7 +131,7 @@ public class OntologyWriter {
             String[] row = new String[csvHeader.size()];
             int n = 0;
 
-            row[n++] = ontologyId + "+" + type + "+" + (String) entity.get("uri");
+            row[n++] = ontologyId + "+" + type + "+" + (String) entity.get("iri");
             row[n++] = nodeLabels;
 
             for (String column : properties) {
@@ -289,8 +289,8 @@ public class OntologyWriter {
 
             if(k.equals("_json")) {
                 headers.add("_json");
-            } else if(k.equals("uri")) {
-                headers.add("uri");
+            } else if(k.equals("iri")) {
+                headers.add("iri");
             } else {
                 headers.add(k.replace(":", "__") + ":string[]");
             }
@@ -310,7 +310,7 @@ public class OntologyWriter {
 
         Object value = entityProperties.get(column);
 
-        String uri = (String)entityProperties.get("uri");
+        String uri = (String)entityProperties.get("iri");
 
         // BNodes subjects don't get edges in the graph, so only write if there
         // is a URI

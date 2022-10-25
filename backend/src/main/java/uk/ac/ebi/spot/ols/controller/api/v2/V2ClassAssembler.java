@@ -29,7 +29,7 @@ public class V2ClassAssembler implements ResourceAssembler<V2Class, Resource<V2C
     public Resource<V2Class> toResource(V2Class _class) {
         Resource<V2Class> resource = new Resource<V2Class>(_class);
         try {
-            String id = UriUtils.encode(_class.get("uri"), "UTF-8");
+            String id = UriUtils.encode(_class.get("iri"), "UTF-8");
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
                     ControllerLinkBuilder.methodOn(V2ClassController.class).getClass(_class.get("ontologyId"), id, _class.get("lang")));
 
@@ -58,7 +58,7 @@ public class V2ClassAssembler implements ResourceAssembler<V2Class, Resource<V2C
 //            Collection<String> relation = new HashSet<>();
 //            for (V2Related related : class.related) {
 //                if (!relation.contains(related.getLabel())) {
-//                    String relationId = UriUtils.encode(related.getUri(), "UTF-8");
+//                    String relationId = UriUtils.encode(related.getIri(), "UTF-8");
 //
 //                    resource.add(lb.slash(relationId).withRel(related.getLabel().replaceAll(" ", "_")));
 //                }
