@@ -161,7 +161,7 @@ public class Ols4ApiTester {
 
 			for(JsonElement v2Entity : v2Entities.getAsJsonArray()) {
 
-				String iri = v2Entity.getAsJsonObject().get("uri").getAsString();
+				String iri = v2Entity.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
 				JsonElement entityJson = get(url + "/api/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri);
@@ -172,7 +172,7 @@ public class Ols4ApiTester {
 
 			for(JsonElement v2Class : v2Classes.getAsJsonArray()) {
 
-				String iri = v2Class.getAsJsonObject().get("uri").getAsString();
+				String iri = v2Class.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
 				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri);
@@ -183,7 +183,7 @@ public class Ols4ApiTester {
 
 			for(JsonElement v2Property : v2Properties.getAsJsonArray()) {
 
-				String iri = v2Property.getAsJsonObject().get("uri").getAsString();
+				String iri = v2Property.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
 				JsonElement propertyJson = get(url + "/api/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri);
@@ -194,7 +194,7 @@ public class Ols4ApiTester {
 
 			for(JsonElement v2Individual : v2Individuals.getAsJsonArray()) {
 
-				String iri = v2Individual.getAsJsonObject().get("uri").getAsString();
+				String iri = v2Individual.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
 				JsonElement individualJson = get(url + "/api/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri);
