@@ -6,7 +6,7 @@
   "annotation": {},
   "ontology_name": "owl2primer-class",
   "ontology_prefix": "owl2primer-class",
-  "ontology_iri": "owl2primer-class",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
   "is_obsolete": false,
   "is_defining_ontology": true,
   "has_children": false,
@@ -20,25 +20,25 @@
   "is_preferred_root": false,
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person?lang=en"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person?lang=en"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/ancestors"
     },
     "hierarchicalParents": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/hierarchicalParents"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/hierarchicalParents"
     },
     "hierarchicalAncestors": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/hierarchicalAncestors"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/hierarchicalAncestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/jstree"
     },
     "graph": {
-      "href": "http://ols4-server:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/graph"
+      "href": "http://ols4-backend:8080/api/ontologies/owl2primer-class/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fclass%2523Person/graph"
     }
   }
 }

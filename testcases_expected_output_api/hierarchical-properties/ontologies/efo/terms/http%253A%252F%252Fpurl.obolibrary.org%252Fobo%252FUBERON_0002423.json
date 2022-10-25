@@ -7,7 +7,7 @@
   "label": "hepatobiliary system",
   "ontology_name": "efo",
   "ontology_prefix": "EFO",
-  "ontology_iri": "efo",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
   "is_obsolete": false,
   "is_defining_ontology": true,
   "has_children": false,
@@ -21,25 +21,25 @@
   "is_preferred_root": false,
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423?lang=en"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423?lang=en"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/ancestors"
     },
     "hierarchicalParents": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/hierarchicalParents"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/hierarchicalParents"
     },
     "hierarchicalAncestors": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/hierarchicalAncestors"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/hierarchicalAncestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/jstree"
     },
     "graph": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/graph"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0002423/graph"
     }
   }
 }

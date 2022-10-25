@@ -3,10 +3,14 @@
   "lang": "en",
   "description": [],
   "synonyms": [],
-  "annotation": {},
+  "annotation": {
+    "commonlyHasUnit": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
+    ]
+  },
   "ontology_name": "punning-class-individual",
   "ontology_prefix": "punning-class-individual",
-  "ontology_iri": "punning-class-individual",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
   "is_obsolete": false,
   "is_defining_ontology": true,
   "has_children": false,
@@ -20,25 +24,25 @@
   "is_preferred_root": false,
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature?lang=en"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature?lang=en"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/ancestors"
     },
     "hierarchicalParents": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalParents"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalParents"
     },
     "hierarchicalAncestors": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalAncestors"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalAncestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/jstree"
     },
     "graph": {
-      "href": "http://ols4-server:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/graph"
+      "href": "http://ols4-backend:8080/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/graph"
     }
   }
 }

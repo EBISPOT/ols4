@@ -1,9 +1,10 @@
 {
   "ontologies": [
     {
-      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"imported\":\"false\",\"isObsolete\":\"false\",\"numberOfClasses\":\"2\",\"numberOfEntities\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"1\",\"ontologyId\":\"reified-bnode\",\"ontology_purl\":\"./testcases/reification/reified-bnode.owl\",\"preferredPrefix\":\"reified-bnode\",\"propertyLabels\":{},\"type\":[\"ontology\"],\"uri\":\"http://example.com/reified-bnode\"}",
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"imported\":\"false\",\"iri\":\"http://example.com/reified-bnode\",\"isObsolete\":\"false\",\"numberOfClasses\":\"2\",\"numberOfEntities\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"1\",\"ontologyId\":\"reified-bnode\",\"ontology_purl\":\"./testcases/reification/reified-bnode.owl\",\"preferredPrefix\":\"reified-bnode\",\"propertyLabels\":{},\"type\":[\"ontology\"]}",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "imported": "false",
+      "iri": "http://example.com/reified-bnode",
       "isObsolete": "false",
       "numberOfClasses": "2",
       "numberOfEntities": "3",
@@ -15,33 +16,28 @@
       "type": [
         "ontology"
       ],
-      "uri": "http://example.com/reified-bnode",
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"cell\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://example.com/reified-bnode#cell\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://example.com/reified-bnode#cell\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"ontologyIri\":\"http://example.com/reified-bnode\",\"ontologyPreferredPrefix\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"cell\",\"type\":[\"class\",\"entity\"]}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
+          "iri": "http://example.com/reified-bnode#cell",
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "cell",
           "type": [
             "class",
             "entity"
-          ],
-          "uri": "http://example.com/reified-bnode#cell"
+          ]
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"hierarchicalParent\":{\"value\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://example.com/reified-bnode#part_of\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://example.com/reified-bnode#cell\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Axiom\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"This is an annotation on a property with a bnode value\",\"propertyLabels\":{}},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"value\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://example.com/reified-bnode#part_of\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://example.com/reified-bnode#cell\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Axiom\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"This is an annotation on a property with a bnode value\",\"propertyLabels\":{}},\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"cell_part\",\"type\":[\"class\",\"entity\"],\"uri\":\"http://example.com/reified-bnode#cell_part\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"value\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://example.com/reified-bnode#part_of\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://example.com/reified-bnode#cell\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Axiom\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"This is an annotation on a property with a bnode value\",\"propertyLabels\":{}},\"imported\":\"false\",\"iri\":\"http://example.com/reified-bnode#cell_part\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"ontologyIri\":\"http://example.com/reified-bnode\",\"ontologyPreferredPrefix\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"cell_part\",\"type\":[\"class\",\"entity\"]}",
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
-            "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
-            "propertyLabels": {},
-            "value": "http://example.com/reified-bnode#cell"
-          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
@@ -50,34 +46,38 @@
             "value": "http://example.com/reified-bnode#cell"
           },
           "imported": "false",
+          "iri": "http://example.com/reified-bnode#cell_part",
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "cell_part",
           "type": [
             "class",
             "entity"
-          ],
-          "uri": "http://example.com/reified-bnode#cell_part"
+          ]
         }
       ],
       "properties": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"part_of\",\"type\":[\"entity\",\"property\"],\"uri\":\"http://example.com/reified-bnode#part_of\"}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"iri\":\"http://example.com/reified-bnode#part_of\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"reified-bnode\",\"ontologyIri\":\"http://example.com/reified-bnode\",\"ontologyPreferredPrefix\":\"reified-bnode\",\"propertyLabels\":{},\"shortForm\":\"part_of\",\"type\":[\"entity\",\"property\"]}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
+          "iri": "http://example.com/reified-bnode#part_of",
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "part_of",
           "type": [
             "entity",
             "property"
-          ],
-          "uri": "http://example.com/reified-bnode#part_of"
+          ]
         }
       ],
       "individuals": []

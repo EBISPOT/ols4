@@ -2,7 +2,7 @@
   "ontologies": [
     {
       "ontologyId": "owl2primer-minimal",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
       "preferredPrefix": "owl2primer-minimal",
       "ontology_purl": "./testcases/owl2-primer/minimal.owl",
       "type": [
@@ -23,7 +23,7 @@
     },
     {
       "ontologyId": "owl2primer-class",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
       "preferredPrefix": "owl2primer-class",
       "ontology_purl": "./testcases/owl2-primer/class.owl",
       "type": [
@@ -40,7 +40,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class#Person",
           "type": [
             "class",
             "entity"
@@ -52,6 +52,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-class",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+          "ontologyPreferredPrefix": "owl2primer-class",
           "shortForm": "Person",
           "propertyLabels": {}
         }
@@ -61,7 +63,7 @@
     },
     {
       "ontologyId": "owl2primer-individual",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
       "preferredPrefix": "owl2primer-individual",
       "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl",
       "type": [
@@ -80,7 +82,7 @@
       "properties": [],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary",
           "type": [
             "entity",
             "individual"
@@ -92,6 +94,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl",
+          "ontologyPreferredPrefix": "owl2primer-individual",
           "shortForm": "Mary",
           "propertyLabels": {}
         }
@@ -99,7 +103,7 @@
     },
     {
       "ontologyId": "owl2primer-subclassof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
       "preferredPrefix": "owl2primer-subClassOf",
       "ontology_purl": "./testcases/owl2-primer/subClassOf.owl",
       "type": [
@@ -116,7 +120,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
           "type": [
             "class",
             "entity"
@@ -131,11 +135,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Mother",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "type": [
             "class",
             "entity"
@@ -147,11 +153,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
           "type": [
             "class",
             "entity"
@@ -166,6 +174,8 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
@@ -175,7 +185,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalentclass",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
       "preferredPrefix": "owl2primer-equivalentClass",
       "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl",
       "type": [
@@ -192,7 +202,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
           "type": [
             "class",
             "entity"
@@ -205,11 +215,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass",
           "shortForm": "Human",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
           "type": [
             "class",
             "entity"
@@ -221,6 +233,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass",
           "shortForm": "Person",
           "propertyLabels": {}
         }
@@ -230,7 +244,7 @@
     },
     {
       "ontologyId": "owl2primer-disjointclasses",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
       "preferredPrefix": "owl2primer-disjointClasses",
       "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl",
       "type": [
@@ -247,7 +261,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
           "type": [
             "class",
             "entity"
@@ -262,11 +276,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "type": [
             "class",
             "entity"
@@ -278,11 +294,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
           "type": [
             "class",
             "entity"
@@ -297,6 +315,8 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
@@ -306,7 +326,7 @@
     },
     {
       "ontologyId": "owl2primer-subobjectpropertyof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
       "preferredPrefix": "owl2primer-subObjectPropertyOf",
       "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl",
       "type": [
@@ -323,7 +343,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
           "type": [
             "class",
             "entity"
@@ -339,11 +359,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-subobjectpropertyof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+          "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
           "type": [
             "class",
             "entity"
@@ -355,11 +377,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subobjectpropertyof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+          "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
           "type": [
             "class",
             "entity"
@@ -374,13 +398,15 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-subobjectpropertyof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+          "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
           "type": [
             "entity",
             "property"
@@ -392,11 +418,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subobjectpropertyof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+          "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "hasSpouse",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
           "type": [
             "entity",
             "property"
@@ -409,6 +437,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subobjectpropertyof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
+          "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "hasWife",
           "propertyLabels": {}
         }
@@ -417,7 +447,7 @@
     },
     {
       "ontologyId": "owl2primer-domain-range-restriction",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
       "preferredPrefix": "owl2primer-domain-range-restriction",
       "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl",
       "type": [
@@ -434,7 +464,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
           "type": [
             "class",
             "entity"
@@ -450,11 +480,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
           "type": [
             "class",
             "entity"
@@ -466,11 +498,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
           "type": [
             "class",
             "entity"
@@ -485,13 +519,15 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
           "type": [
             "entity",
             "property"
@@ -505,6 +541,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "hasWife",
           "propertyLabels": {}
         }
@@ -513,7 +551,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-assertionproperty",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
       "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl",
       "type": [
@@ -530,7 +568,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
           "type": [
             "class",
             "entity"
@@ -546,11 +584,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
           "type": [
             "class",
             "entity"
@@ -562,11 +602,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
           "type": [
             "class",
             "entity"
@@ -581,13 +623,15 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
           "type": [
             "entity",
             "property"
@@ -599,17 +643,20 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "hasWife",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#John",
           "type": [
             "entity",
             "individual"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife",
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -618,11 +665,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "John",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
           "type": [
             "entity",
             "individual"
@@ -634,6 +683,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-assertionproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Mary",
           "propertyLabels": {}
         }
@@ -641,7 +692,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
       "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
       "type": [
@@ -658,7 +709,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
           "type": [
             "class",
             "entity"
@@ -674,11 +725,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
           "type": [
             "class",
             "entity"
@@ -690,11 +743,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Person",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
           "type": [
             "class",
             "entity"
@@ -709,13 +764,15 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
           "type": [
             "entity",
             "property"
@@ -727,13 +784,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "hasWife",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill",
           "type": [
             "entity",
             "individual"
@@ -745,11 +804,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Bill",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
           "type": [
             "entity",
             "individual"
@@ -761,6 +822,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Mary",
           "propertyLabels": {}
         }
@@ -768,7 +831,7 @@
     },
     {
       "ontologyId": "owl2primer-namedindividual-sameas",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
       "preferredPrefix": "owl2primer-namedIndividual-sameAs",
       "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl",
       "type": [
@@ -787,7 +850,7 @@
       "properties": [],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James",
           "type": [
             "entity",
             "individual"
@@ -800,11 +863,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-namedindividual-sameas",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-sameAs",
           "shortForm": "James",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
           "type": [
             "entity",
             "individual"
@@ -816,6 +881,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-namedindividual-sameas",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-sameAs",
           "shortForm": "Jim",
           "propertyLabels": {}
         }
@@ -823,7 +890,7 @@
     },
     {
       "ontologyId": "owl2primer-namedindividual-differentfrom",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
       "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
       "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
       "type": [
@@ -842,7 +909,7 @@
       "properties": [],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
           "type": [
             "entity",
             "individual"
@@ -854,11 +921,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-namedindividual-differentfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
           "shortForm": "Bill",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
           "type": [
             "entity",
             "individual"
@@ -870,6 +939,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-namedindividual-differentfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
           "shortForm": "John",
           "propertyLabels": {}
         }
@@ -877,7 +948,7 @@
     },
     {
       "ontologyId": "owl2primer-datatypes",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
       "preferredPrefix": "owl2primer-datatypes",
       "ontology_purl": "./testcases/owl2-primer/datatypes.owl",
       "type": [
@@ -894,7 +965,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
           "type": [
             "class",
             "entity"
@@ -906,13 +977,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "Person",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
           "type": [
             "entity",
             "property"
@@ -926,17 +999,20 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "hasAge",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
           "type": [
             "entity",
             "individual"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": {
             "datatype": "http://www.w3.org/2001/XMLSchema#integer",
@@ -948,6 +1024,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "Jack",
           "propertyLabels": {}
         }
@@ -955,7 +1033,7 @@
     },
     {
       "ontologyId": "owl2primer-intersectionof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
       "preferredPrefix": "owl2primer-intersectionOf",
       "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl",
       "type": [
@@ -972,7 +1050,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
           "type": [
             "class",
             "entity"
@@ -992,11 +1070,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-intersectionOf",
           "shortForm": "Mother",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
           "type": [
             "class",
             "entity"
@@ -1008,11 +1088,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-intersectionOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
           "type": [
             "class",
             "entity"
@@ -1024,6 +1106,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-intersectionOf",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
@@ -1033,7 +1117,7 @@
     },
     {
       "ontologyId": "owl2primer-disjointunionof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
       "preferredPrefix": "owl2primer-disjointUnionOf",
       "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl",
       "type": [
@@ -1050,7 +1134,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
           "type": [
             "class",
             "entity"
@@ -1062,11 +1146,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-disjointunionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Father",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
           "type": [
             "class",
             "entity"
@@ -1078,11 +1164,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-disjointunionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Mother",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
           "type": [
             "class",
             "entity"
@@ -1098,6 +1186,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-disjointunionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
@@ -1107,7 +1197,7 @@
     },
     {
       "ontologyId": "owl2primer-unionof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
       "preferredPrefix": "owl2primer-unionOf",
       "ontology_purl": "./testcases/owl2-primer/unionOf.owl",
       "type": [
@@ -1124,7 +1214,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
           "type": [
             "class",
             "entity"
@@ -1136,11 +1226,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Father",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
           "type": [
             "class",
             "entity"
@@ -1152,11 +1244,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Mother",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
           "type": [
             "class",
             "entity"
@@ -1172,6 +1266,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
@@ -1181,7 +1277,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
       "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
       "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl",
       "type": [
@@ -1198,7 +1294,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
           "type": [
             "class",
             "entity"
@@ -1222,11 +1318,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "ChildlessPerson",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
           "type": [
             "class",
             "entity"
@@ -1238,11 +1336,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "type": [
             "class",
             "entity"
@@ -1254,6 +1354,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "Person",
           "propertyLabels": {}
         }
@@ -1263,7 +1365,7 @@
     },
     {
       "ontologyId": "owl2primer-subclassof-intersectionof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
       "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
       "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl",
       "type": [
@@ -1280,20 +1382,12 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#intersectionOf": [
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-            ],
-            "propertyLabels": {}
-          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -1308,11 +1402,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subclassof-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf-intersectionOf",
           "shortForm": "Grandfather",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
           "type": [
             "class",
             "entity"
@@ -1324,11 +1420,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subclassof-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf-intersectionOf",
           "shortForm": "Man",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
           "type": [
             "class",
             "entity"
@@ -1340,6 +1438,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-subclassof-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf-intersectionOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
@@ -1349,7 +1449,7 @@
     },
     {
       "ontologyId": "owl2primer-dataproperty-haskey",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
       "preferredPrefix": "owl2primer-dataProperty-hasKey",
       "ontology_purl": "./testcases/owl2-primer/dataProperty-hasKey.owl",
       "type": [
@@ -1366,7 +1466,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person",
           "type": [
             "class",
             "entity"
@@ -1381,13 +1481,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-dataproperty-haskey",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+          "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Person",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN",
           "type": [
             "entity",
             "property"
@@ -1400,11 +1502,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-dataproperty-haskey",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+          "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "hasSSN",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN",
           "type": [
             "entity",
             "property"
@@ -1416,16 +1520,22 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-dataproperty-haskey",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+          "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "hasSSN",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#Anne",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#Anne",
           "type": [
             "entity",
             "individual"
+          ],
+          "annotationPredicate": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN",
+            "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN"
           ],
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN": "1234",
@@ -1436,15 +1546,18 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-dataproperty-haskey",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+          "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Anne",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Annie",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Annie",
           "type": [
             "entity",
             "individual"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN",
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey#hasSSN": "1234",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -1453,6 +1566,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-dataproperty-haskey",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
+          "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Annie",
           "propertyLabels": {}
         }
@@ -1460,7 +1575,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalentobjectproperty",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
       "preferredPrefix": "owl2primer-equivalentObjectProperty",
       "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
       "type": [
@@ -1478,7 +1593,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
           "type": [
             "entity",
             "property"
@@ -1491,11 +1606,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "hasLifePartner",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
           "type": [
             "entity",
             "property"
@@ -1507,13 +1624,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "hasSpouse",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
           "type": [
             "entity",
             "individual"
@@ -1525,15 +1644,18 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "John",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
           "type": [
             "entity",
             "individual"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
           "hasChildren": "false",
           "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -1542,6 +1664,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "Mary",
           "propertyLabels": {}
         }
@@ -1549,7 +1673,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalent-intersectionof",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
       "preferredPrefix": "owl2primer-equivalent-intersectionOf",
       "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf.owl",
       "type": [
@@ -1566,7 +1690,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother",
           "type": [
             "class",
             "entity"
@@ -1586,11 +1710,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Mother",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -1602,11 +1728,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Parent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
           "type": [
             "class",
             "entity"
@@ -1618,6 +1746,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-intersectionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Woman",
           "propertyLabels": {}
         }
@@ -1627,7 +1757,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
       "preferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
       "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-someValuesFrom.owl",
       "type": [
@@ -1644,7 +1774,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -1663,11 +1793,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
           "shortForm": "Parent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person",
           "type": [
             "class",
             "entity"
@@ -1679,13 +1811,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
           "shortForm": "Person",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -1697,6 +1831,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
@@ -1705,7 +1841,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
       "preferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
       "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-allValuesFrom.owl",
       "type": [
@@ -1722,7 +1858,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#HappyPerson",
           "type": [
             "class",
             "entity"
@@ -1741,11 +1877,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
           "shortForm": "HappyPerson",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person",
           "type": [
             "class",
             "entity"
@@ -1757,13 +1895,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
           "shortForm": "Person",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -1775,6 +1915,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
@@ -1783,7 +1925,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
       "preferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
       "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-hasSelf.owl",
       "type": [
@@ -1800,7 +1942,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson",
           "type": [
             "class",
             "entity"
@@ -1822,13 +1964,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
           "shortForm": "NarcisticPerson",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves",
           "type": [
             "entity",
             "property"
@@ -1840,6 +1984,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
           "shortForm": "loves",
           "propertyLabels": {}
         }
@@ -1848,7 +1994,7 @@
     },
     {
       "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
       "preferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
       "ontology_purl": "./testcases/owl2-primer/propertyRestriction-maxQualifiedCardinality.owl",
       "type": [
@@ -1865,7 +2011,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -1877,13 +2023,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -1895,13 +2043,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#John",
           "type": [
             "entity",
             "individual"
@@ -1926,6 +2076,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
           "shortForm": "John",
           "propertyLabels": {}
         }
@@ -1933,7 +2085,7 @@
     },
     {
       "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
       "preferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
       "ontology_purl": "./testcases/owl2-primer/propertyRestriction-minQualifiedCardinality.owl",
       "type": [
@@ -1950,7 +2102,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -1962,13 +2114,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -1980,13 +2134,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#John",
           "type": [
             "entity",
             "individual"
@@ -2011,6 +2167,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "John",
           "propertyLabels": {}
         }
@@ -2018,7 +2176,7 @@
     },
     {
       "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
       "preferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
       "ontology_purl": "./testcases/owl2-primer/propertyRestriction-qualifiedCardinality.owl",
       "type": [
@@ -2035,7 +2193,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -2047,13 +2205,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -2065,13 +2225,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#John",
           "type": [
             "entity",
             "individual"
@@ -2096,6 +2258,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "John",
           "propertyLabels": {}
         }
@@ -2103,7 +2267,7 @@
     },
     {
       "ontologyId": "owl2primer-propertyrestriction-cardinality",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
       "preferredPrefix": "owl2primer-propertyRestriction-cardinality",
       "ontology_purl": "./testcases/owl2-primer/propertyRestriction-cardinality.owl",
       "type": [
@@ -2120,7 +2284,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent",
           "type": [
             "class",
             "entity"
@@ -2132,13 +2296,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-cardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "Parent",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -2150,13 +2316,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-cardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#John",
           "type": [
             "entity",
             "individual"
@@ -2180,6 +2348,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-propertyrestriction-cardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "John",
           "propertyLabels": {}
         }
@@ -2187,7 +2357,7 @@
     },
     {
       "ontologyId": "owl2primer-equivalentclass-collection",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
       "preferredPrefix": "owl2primer-equivalentClass-collection",
       "ontology_purl": "./testcases/owl2-primer/equivalentClass-collection.owl",
       "type": [
@@ -2204,7 +2374,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
           "type": [
             "class",
             "entity"
@@ -2225,6 +2395,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass-collection",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "MyBirthdayGuests",
           "propertyLabels": {}
         }
@@ -2232,7 +2404,7 @@
       "properties": [],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill",
           "type": [
             "entity",
             "individual"
@@ -2244,11 +2416,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass-collection",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "Bill",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
           "type": [
             "entity",
             "individual"
@@ -2260,11 +2434,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass-collection",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "John",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
           "type": [
             "entity",
             "individual"
@@ -2276,6 +2452,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-equivalentclass-collection",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "Mary",
           "propertyLabels": {}
         }
@@ -2283,7 +2461,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-inverse",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
       "preferredPrefix": "owl2primer-objectProperty-inverse",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse.owl",
       "type": [
@@ -2301,7 +2479,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -2314,11 +2492,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse",
           "shortForm": "hasChild",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
           "type": [
             "entity",
             "property"
@@ -2330,6 +2510,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse",
           "shortForm": "hasParent",
           "propertyLabels": {}
         }
@@ -2338,7 +2520,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
       "preferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse-withoutAssignedName.owl",
       "type": [
@@ -2355,7 +2537,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
           "type": [
             "class",
             "entity"
@@ -2367,11 +2549,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "Dead",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
           "type": [
             "class",
             "entity"
@@ -2394,13 +2578,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "Orphan",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -2412,6 +2598,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
@@ -2420,7 +2608,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-symmetric",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl",
       "preferredPrefix": "owl2primer-objectProperty-symmetric",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric.owl",
       "type": [
@@ -2438,7 +2626,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl#hasSpouse",
           "type": [
             "entity",
             "property"
@@ -2453,6 +2641,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-symmetric",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-symmetric",
           "shortForm": "hasSpouse",
           "propertyLabels": {}
         }
@@ -2461,7 +2651,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-symmetric-1",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl",
       "preferredPrefix": "owl2primer-objectProperty-symmetric-1",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric-1.owl",
       "type": [
@@ -2479,7 +2669,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl#hasSpouse",
           "type": [
             "entity",
             "property"
@@ -2494,6 +2684,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-symmetric-1",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-symmetric-1.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-symmetric-1",
           "shortForm": "hasSpouse",
           "propertyLabels": {}
         }
@@ -2502,7 +2694,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-asymmetric",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl",
       "preferredPrefix": "owl2primer-objectProperty-asymmetric",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-asymmetric.owl",
       "type": [
@@ -2520,7 +2712,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild",
           "type": [
             "entity",
             "property"
@@ -2535,6 +2727,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-asymmetric",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-asymmetric",
           "shortForm": "hasChild",
           "propertyLabels": {}
         }
@@ -2543,7 +2737,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-disjoint",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
       "preferredPrefix": "owl2primer-objectProperty-disjoint",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-disjoint.owl",
       "type": [
@@ -2561,7 +2755,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent",
           "type": [
             "entity",
             "property"
@@ -2574,11 +2768,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-disjoint",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
           "shortForm": "hasParent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
           "type": [
             "entity",
             "property"
@@ -2590,6 +2786,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-disjoint",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
           "shortForm": "hasSpouse",
           "propertyLabels": {}
         }
@@ -2598,7 +2796,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-reflexive",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl",
       "preferredPrefix": "owl2primer-objectProperty-reflexive",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-reflexive.owl",
       "type": [
@@ -2616,7 +2814,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl#hasRelative",
           "type": [
             "entity",
             "property"
@@ -2631,6 +2829,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-reflexive",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-reflexive.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-reflexive",
           "shortForm": "hasRelative",
           "propertyLabels": {}
         }
@@ -2639,7 +2839,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-irreflexive",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
       "preferredPrefix": "owl2primer-objectProperty-irreflexive",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-irreflexive.owl",
       "type": [
@@ -2657,7 +2857,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent",
           "type": [
             "entity",
             "property"
@@ -2672,6 +2872,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-irreflexive",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-irreflexive",
           "shortForm": "hasParent",
           "propertyLabels": {}
         }
@@ -2680,7 +2882,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-functional",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl",
       "preferredPrefix": "owl2primer-objectProperty-functional",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-functional.owl",
       "type": [
@@ -2698,7 +2900,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband",
           "type": [
             "entity",
             "property"
@@ -2713,6 +2915,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-functional",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-functional",
           "shortForm": "hasHusband",
           "propertyLabels": {}
         }
@@ -2721,7 +2925,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-inversefunctional",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl",
       "preferredPrefix": "owl2primer-objectProperty-inverseFunctional",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-inverseFunctional.owl",
       "type": [
@@ -2739,7 +2943,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl#hasHusband",
           "type": [
             "entity",
             "property"
@@ -2754,6 +2958,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-inversefunctional",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverseFunctional.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverseFunctional",
           "shortForm": "hasHusband",
           "propertyLabels": {}
         }
@@ -2762,7 +2968,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-transitive",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl",
       "preferredPrefix": "owl2primer-objectProperty-transitive",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-transitive.owl",
       "type": [
@@ -2780,7 +2986,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl#hasAncestor",
           "type": [
             "entity",
             "property"
@@ -2795,6 +3001,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-transitive",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-transitive.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-transitive",
           "shortForm": "hasAncestor",
           "propertyLabels": {}
         }
@@ -2803,7 +3011,7 @@
     },
     {
       "ontologyId": "owl2primer-objectproperty-propertychain",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
       "preferredPrefix": "owl2primer-objectProperty-propertyChain",
       "ontology_purl": "./testcases/owl2-primer/objectProperty-propertyChain.owl",
       "type": [
@@ -2821,7 +3029,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasGrandParent",
           "type": [
             "entity",
             "property"
@@ -2837,11 +3045,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-propertychain",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-propertyChain",
           "shortForm": "hasGrandParent",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent",
           "type": [
             "entity",
             "property"
@@ -2853,6 +3063,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-objectproperty-propertychain",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-propertyChain",
           "shortForm": "hasParent",
           "propertyLabels": {}
         }
@@ -2861,7 +3073,7 @@
     },
     {
       "ontologyId": "owl2primer-datatype-minmax",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
       "preferredPrefix": "owl2primer-datatype-minmax",
       "ontology_purl": "./testcases/owl2-primer/datatype-minmax.owl",
       "type": [
@@ -2879,7 +3091,7 @@
       "classes": [],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge",
           "type": [
             "entity",
             "property"
@@ -2892,6 +3104,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "owl2primer-datatype-minmax",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatype-minmax",
           "shortForm": "hasAge",
           "propertyLabels": {}
         }
@@ -2900,7 +3114,7 @@
     },
     {
       "ontologyId": "owl2primer-datatype-exclusion",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
       "preferredPrefix": "owl2primer-datatype-exclusion",
       "ontology_purl": "./testcases/owl2-primer/datatype-exclusion.owl",
       "type": [
@@ -2921,7 +3135,7 @@
     },
     {
       "ontologyId": "owl2primer-datatype-enumeration",
-      "uri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
       "preferredPrefix": "owl2primer-datatype-enumeration",
       "ontology_purl": "./testcases/owl2-primer/datatype-enumeration.owl",
       "type": [

@@ -2,7 +2,7 @@
   "ontologies": [
     {
       "ontologyId": "reified-bnode",
-      "uri": "http://example.com/reified-bnode",
+      "iri": "http://example.com/reified-bnode",
       "preferredPrefix": "reified-bnode",
       "ontology_purl": "./testcases/reification/reified-bnode.owl",
       "type": [
@@ -18,7 +18,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://example.com/reified-bnode#cell",
+          "iri": "http://example.com/reified-bnode#cell",
           "type": [
             "class",
             "entity"
@@ -30,28 +30,18 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "cell",
           "propertyLabels": {}
         },
         {
-          "uri": "http://example.com/reified-bnode#cell_part",
+          "iri": "http://example.com/reified-bnode#cell_part",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "value": {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
-            "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
-            "propertyLabels": {}
-          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "value": {
@@ -70,13 +60,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "cell_part",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://example.com/reified-bnode#part_of",
+          "iri": "http://example.com/reified-bnode#part_of",
           "type": [
             "entity",
             "property"
@@ -88,6 +80,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "part_of",
           "propertyLabels": {}
         }

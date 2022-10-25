@@ -2,7 +2,7 @@
   "ontologies": [
     {
       "ontologyId": "punning-class-individual",
-      "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
       "preferredPrefix": "punning-class-individual",
       "ontology_purl": "./testcases/punning/class-individual.owl",
       "type": [
@@ -19,7 +19,7 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "type": [
             "class",
             "entity"
@@ -31,15 +31,18 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "Quantity",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
           "type": [
             "class",
             "entity"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
           "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "hasChildren": "false",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
@@ -54,13 +57,15 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "ThermodynamicTemperature",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
           "type": [
             "entity",
             "property"
@@ -73,17 +78,20 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "commonlyHasUnit",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
           "type": [
             "entity",
             "individual"
           ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
           "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "hasChildren": "false",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
@@ -98,11 +106,13 @@
           "isObsolete": "false",
           "isRoot": "false",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "ThermodynamicTemperature",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
           "type": [
             "entity",
             "individual"
@@ -114,11 +124,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "terakelvin",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
+          "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
           "type": [
             "entity",
             "individual"
@@ -133,6 +145,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "punning-class-individual",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+          "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "thermodynamicTemperatureOfTheTriplePointOfWater",
           "propertyLabels": {}
         }

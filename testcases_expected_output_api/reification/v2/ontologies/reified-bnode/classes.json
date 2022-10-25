@@ -1,26 +1,37 @@
 [
   {
     "_links": {
-      "ancestors": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/ancestors"
+      "graph": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/graph"
       },
+      "self": {
+        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell"
+      }
+    },
+    "hasChildren": "false",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": "false",
+    "iri": "http://example.com/reified-bnode#cell",
+    "isDefiningOntology": "false",
+    "isObsolete": "false",
+    "isRoot": "true",
+    "ontologyId": "reified-bnode",
+    "ontologyIri": "http://example.com/reified-bnode",
+    "ontologyPreferredPrefix": "reified-bnode",
+    "propertyLabels": {},
+    "shortForm": "cell",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "_links": {
       "graph": {
         "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/graph"
       },
-      "hierarchicalAncestors": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalAncestors"
-      },
-      "hierarchicalParents": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/hierarchicalParents"
-      },
-      "jstree": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/jstree"
-      },
-      "parents": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/parents"
-      },
       "self": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part?lang=en"
+        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part"
       }
     },
     "hasChildren": "false",
@@ -33,42 +44,23 @@
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
         "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
         "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+        "isObsolete": "false",
         "propertyLabels": {}
       }
     },
     "imported": "false",
-    "isRoot": "false",
-    "lang": "en",
+    "iri": "http://example.com/reified-bnode#cell_part",
+    "isDefiningOntology": "false",
+    "isObsolete": "false",
+    "isRoot": "true",
     "ontologyId": "reified-bnode",
+    "ontologyIri": "http://example.com/reified-bnode",
+    "ontologyPreferredPrefix": "reified-bnode",
     "propertyLabels": {},
     "shortForm": "cell_part",
     "type": [
       "class",
       "entity"
-    ],
-    "uri": "http://example.com/reified-bnode#cell_part"
-  },
-  {
-    "_links": {
-      "graph": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell/graph"
-      },
-      "self": {
-        "href": "<base>/api/v2/ontologies/reified-bnode/classes/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell?lang=en"
-      }
-    },
-    "hasChildren": "false",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "imported": "false",
-    "isRoot": "true",
-    "lang": "en",
-    "ontologyId": "reified-bnode",
-    "propertyLabels": {},
-    "shortForm": "cell",
-    "type": [
-      "class",
-      "entity"
-    ],
-    "uri": "http://example.com/reified-bnode#cell"
+    ]
   }
 ]

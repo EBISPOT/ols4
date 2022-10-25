@@ -2,7 +2,7 @@
   "ontologies": [
     {
       "ontologyId": "individuals-anonymous-types-with-inverse",
-      "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+      "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
       "preferredPrefix": "individuals-anonymous-types-with-inverse",
       "ontology_purl": "./testcases/individuals/anonymous-types-with-inverse.owl",
       "type": [
@@ -19,19 +19,12 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
+          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
@@ -45,13 +38,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+          "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
           "shortForm": "A",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
           "type": [
             "entity",
             "property"
@@ -65,11 +60,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+          "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
           "shortForm": "inverseRelation",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "type": [
             "entity",
             "property"
@@ -82,13 +79,15 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+          "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
           "shortForm": "relation",
           "propertyLabels": {}
         }
       ],
       "individuals": [
         {
-          "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
           "type": [
             "entity",
             "individual"
@@ -109,6 +108,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "individuals-anonymous-types-with-inverse",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+          "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
           "shortForm": "a",
           "propertyLabels": {}
         }

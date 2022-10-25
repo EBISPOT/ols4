@@ -14,13 +14,14 @@
         "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/properties"
       },
       "self": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse?lang=en"
+        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse"
       }
     },
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
     "imported": "false",
-    "lang": "en",
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "isObsolete": "false",
     "loaded": "<loaded>",
     "numberOfClasses": "1",
     "numberOfEntities": "4",
@@ -32,7 +33,6 @@
     "propertyLabels": {},
     "type": [
       "ontology"
-    ],
-    "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl"
+    ]
   }
 ]

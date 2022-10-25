@@ -5,7 +5,7 @@
   "annotation": {},
   "ontology_name": "reified-bnode",
   "ontology_prefix": "reified-bnode",
-  "ontology_iri": "reified-bnode",
+  "ontology_iri": "http://example.com/reified-bnode",
   "is_obsolete": false,
   "is_defining_ontology": false,
   "has_children": false,
@@ -14,16 +14,16 @@
   "obo_id": "part:of",
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of"
+      "href": "http://ols4-backend:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/ancestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/reified-bnode/properties/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of/jstree"
     }
   }
 }

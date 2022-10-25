@@ -14,12 +14,13 @@
         "href": "<base>/api/v2/ontologies/reified-bnode/properties"
       },
       "self": {
-        "href": "<base>/api/v2/ontologies/reified-bnode?lang=en"
+        "href": "<base>/api/v2/ontologies/reified-bnode"
       }
     },
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": "false",
-    "lang": "en",
+    "iri": "http://example.com/reified-bnode",
+    "isObsolete": "false",
     "loaded": "<loaded>",
     "numberOfClasses": "2",
     "numberOfEntities": "3",
@@ -31,7 +32,6 @@
     "propertyLabels": {},
     "type": [
       "ontology"
-    ],
-    "uri": "http://example.com/reified-bnode"
+    ]
   }
 ]

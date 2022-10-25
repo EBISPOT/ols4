@@ -7,7 +7,7 @@
   "label": "blood vessel",
   "ontology_name": "efo",
   "ontology_prefix": "EFO",
-  "ontology_iri": "efo",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
   "is_obsolete": false,
   "is_defining_ontology": true,
   "has_children": false,
@@ -21,25 +21,25 @@
   "is_preferred_root": false,
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981?lang=en"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981?lang=en"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/ancestors"
     },
     "hierarchicalParents": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalParents"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalParents"
     },
     "hierarchicalAncestors": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalAncestors"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalAncestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/jstree"
     },
     "graph": {
-      "href": "http://ols4-server:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/graph"
+      "href": "http://ols4-backend:8080/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/graph"
     }
   }
 }

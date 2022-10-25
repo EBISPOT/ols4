@@ -5,7 +5,7 @@
   "annotation": {},
   "ontology_name": "individuals-anonymous-types-with-inverse",
   "ontology_prefix": "individuals-anonymous-types-with-inverse",
-  "ontology_iri": "individuals-anonymous-types-with-inverse",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
   "is_obsolete": false,
   "is_defining_ontology": false,
   "has_children": false,
@@ -14,16 +14,16 @@
   "obo_id": "relation",
   "_links": {
     "self": {
-      "href": "http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation"
+      "href": "http://ols4-backend:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation"
     },
     "parents": {
-      "href": "http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/parents"
+      "href": "http://ols4-backend:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/parents"
     },
     "ancestors": {
-      "href": "http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/ancestors"
+      "href": "http://ols4-backend:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/ancestors"
     },
     "jstree": {
-      "href": "http://ols4-server:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/jstree"
+      "href": "http://ols4-backend:8080/api/ontologies/individuals-anonymous-types-with-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523relation/jstree"
     }
   }
 }

@@ -2,7 +2,7 @@
   "ontologies": [
     {
       "ontologyId": "efo",
-      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "iri": "http://www.ebi.ac.uk/efo/efo.owl",
       "preferredPrefix": "EFO",
       "title": "Experimental Factor Ontology",
       "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
@@ -25,19 +25,13 @@
       "propertyLabels": {},
       "classes": [
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "true",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "anatomical system",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -53,11 +47,13 @@
           "isRoot": "true",
           "label": "anatomical system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000467",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
           "type": [
             "class",
             "entity"
@@ -71,23 +67,19 @@
           "isRoot": "true",
           "label": "multicellular organism",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000468",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0000483",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000483",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "true",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "epithelium",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -103,31 +95,21 @@
           "isRoot": "true",
           "label": "epithelium",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000483",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0000916",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
           "hierarchicalParent": [
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000468",
+            "http://purl.obolibrary.org/obo/UBERON_0002100"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "abdomen",
@@ -153,11 +135,13 @@
           "isRoot": "true",
           "label": "abdomen",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000916",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0000949",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
           "type": [
             "class",
             "entity"
@@ -179,11 +163,13 @@
           "isRoot": "false",
           "label": "endocrine system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000949",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001007",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001007",
           "type": [
             "class",
             "entity"
@@ -204,11 +190,13 @@
           "isRoot": "false",
           "label": "digestive system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001007",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001009",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001009",
           "type": [
             "class",
             "entity"
@@ -226,11 +214,13 @@
           "isRoot": "false",
           "label": "circulatory system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001009",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001193",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001193",
           "type": [
             "class",
             "entity"
@@ -239,20 +229,8 @@
           "hasChildren": "false",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001637",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "http://purl.obolibrary.org/obo/UBERON_0004647"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "hepatic artery",
@@ -279,11 +257,13 @@
           "isRoot": "false",
           "label": "hepatic artery",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001193",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001281",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001281",
           "type": [
             "class",
             "entity"
@@ -296,48 +276,12 @@
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001982",
             "http://purl.obolibrary.org/obo/UBERON_0001986",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000916",
+            "http://purl.obolibrary.org/obo/UBERON_0001981",
+            "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "http://purl.obolibrary.org/obo/UBERON_0004535",
+            "http://purl.obolibrary.org/obo/UBERON_0004647"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "hepatic sinusoid",
@@ -393,11 +337,13 @@
           "isRoot": "false",
           "label": "hepatic sinusoid",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001281",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001637",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001637",
           "type": [
             "class",
             "entity"
@@ -414,11 +360,13 @@
           "isRoot": "false",
           "label": "artery",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001637",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001638",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001638",
           "type": [
             "class",
             "entity"
@@ -435,11 +383,13 @@
           "isRoot": "false",
           "label": "vein",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001638",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001639",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001639",
           "type": [
             "class",
             "entity"
@@ -448,20 +398,8 @@
           "hasChildren": "false",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "http://purl.obolibrary.org/obo/UBERON_0004647"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "hepatic portal vein",
@@ -488,11 +426,13 @@
           "isRoot": "false",
           "label": "hepatic portal vein",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001639",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "type": [
             "class",
             "entity"
@@ -506,11 +446,13 @@
           "isRoot": "true",
           "label": "blood vessel",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001981",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001982",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001982",
           "type": [
             "class",
             "entity"
@@ -519,13 +461,7 @@
           "hasChildren": "true",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001981",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0002049"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "capillary",
@@ -545,11 +481,13 @@
           "isRoot": "false",
           "label": "capillary",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001982",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0001986",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0001986",
           "type": [
             "class",
             "entity"
@@ -566,11 +504,13 @@
           "isRoot": "false",
           "label": "endothelium",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001986",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002049",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002049",
           "type": [
             "class",
             "entity"
@@ -584,31 +524,21 @@
           "isRoot": "true",
           "label": "vasculature",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002049",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002100",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002100",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
           "hierarchicalParent": [
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000468",
+            "http://purl.obolibrary.org/obo/UBERON_0013702"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "trunk",
@@ -634,11 +564,13 @@
           "isRoot": "true",
           "label": "trunk",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002100",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002107",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002107",
           "type": [
             "class",
             "entity"
@@ -647,48 +579,12 @@
           "hasChildren": "false",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0002368",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000467",
+            "http://purl.obolibrary.org/obo/UBERON_0000916",
+            "http://purl.obolibrary.org/obo/UBERON_0000949",
+            "http://purl.obolibrary.org/obo/UBERON_0001007",
+            "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "liver",
@@ -743,11 +639,13 @@
           "isRoot": "false",
           "label": "liver",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002107",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002368",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
           "type": [
             "class",
             "entity"
@@ -756,13 +654,7 @@
           "hasChildren": "true",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0002530",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000949"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "endocrine gland",
@@ -796,31 +688,21 @@
           "isRoot": "false",
           "label": "endocrine gland",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002368",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002423",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002423",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
           "hierarchicalParent": [
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000467",
+            "http://purl.obolibrary.org/obo/UBERON_0001007"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "hepatobiliary system",
@@ -846,23 +728,19 @@
           "isRoot": "true",
           "label": "hepatobiliary system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002423",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0002530",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "true",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "gland",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -878,11 +756,13 @@
           "isRoot": "true",
           "label": "gland",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002530",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0004535",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0004535",
           "type": [
             "class",
             "entity"
@@ -891,13 +771,7 @@
           "hasChildren": "false",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0000467",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0001009"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "cardiovascular system",
@@ -917,23 +791,19 @@
           "isRoot": "false",
           "label": "cardiovascular system",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0004535",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0004647",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0004647",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0002107",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "liver lobule",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -949,11 +819,13 @@
           "isRoot": "true",
           "label": "liver lobule",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0004647",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0006841",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0006841",
           "type": [
             "class",
             "entity"
@@ -962,34 +834,10 @@
           "hasChildren": "false",
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            },
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": "false",
-              "propertyLabels": {}
-            }
+            "http://purl.obolibrary.org/obo/UBERON_0000916",
+            "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "http://purl.obolibrary.org/obo/UBERON_0004647"
           ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "central vein of liver",
@@ -1030,23 +878,19 @@
           "isRoot": "false",
           "label": "central vein of liver",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0006841",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBERON_0013702",
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0013702",
           "type": [
             "class",
             "entity"
           ],
           "hasChildren": "false",
-          "hierarchicalParent": {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": "false",
-            "propertyLabels": {}
-          },
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": "body proper",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -1062,16 +906,32 @@
           "isRoot": "true",
           "label": "body proper",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0013702",
           "propertyLabels": {}
         }
       ],
       "properties": [
         {
-          "uri": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
           "type": [
             "entity",
             "property"
+          ],
+          "annotationPredicate": [
+            "http://purl.obolibrary.org/obo/IAO_0000111",
+            "http://purl.obolibrary.org/obo/IAO_0000112",
+            "http://purl.obolibrary.org/obo/IAO_0000116",
+            "http://purl.obolibrary.org/obo/IAO_0000118",
+            "http://purl.obolibrary.org/obo/RO_0001900",
+            "http://purl.obolibrary.org/obo/RO_0040042",
+            "http://www.ebi.ac.uk/efo/EFO_URI",
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+            "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+            "http://www.geneontology.org/formats/oboInOwl#id",
+            "http://www.geneontology.org/formats/oboInOwl#inSubset",
+            "http://www.geneontology.org/formats/oboInOwl#shorthand"
           ],
           "definition": [
             "For continuants: C part_of C' if and only if: given any c that instantiates C at a time t, there is some c' such that c' instantiates C' at time t, and c *part_of* c' at t. For processes: P part_of P' if and only if: given any p that instantiates P at a time t, there is some p' such that p' instantiates P' at time t, and p *part_of* p' at t. (Here *part_of* is the instance-level part-relation.)",
@@ -1220,15 +1080,22 @@
             "part_of"
           ],
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "BFO_0000050",
           "synonym": "part of",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
           "type": [
             "entity",
             "property"
+          ],
+          "annotationPredicate": [
+            "http://www.ebi.ac.uk/efo/EFO_URI",
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+            "http://www.geneontology.org/formats/oboInOwl#shorthand"
           ],
           "hasChildren": "false",
           "http://www.ebi.ac.uk/efo/EFO_URI": "http://www.ebi.ac.uk/efo/has_part",
@@ -1251,11 +1118,13 @@
             "has_part"
           ],
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "BFO_0000051",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000111",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
           "type": [
             "entity",
             "property"
@@ -1267,11 +1136,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000111",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000112",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
           "type": [
             "entity",
             "property"
@@ -1283,11 +1154,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000112",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000115",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
           "type": [
             "entity",
             "property"
@@ -1299,11 +1172,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000115",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000116",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
           "type": [
             "entity",
             "property"
@@ -1315,11 +1190,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000116",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000118",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
           "type": [
             "entity",
             "property"
@@ -1331,11 +1208,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000118",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/IAO_0000232",
+          "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
           "type": [
             "entity",
             "property"
@@ -1347,11 +1226,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000232",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/RO_0001900",
+          "iri": "http://purl.obolibrary.org/obo/RO_0001900",
           "type": [
             "entity",
             "property"
@@ -1363,11 +1244,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0001900",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/RO_0002174",
+          "iri": "http://purl.obolibrary.org/obo/RO_0002174",
           "type": [
             "entity",
             "property"
@@ -1379,11 +1262,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0002174",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/RO_0040042",
+          "iri": "http://purl.obolibrary.org/obo/RO_0040042",
           "type": [
             "entity",
             "property"
@@ -1395,11 +1280,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0040042",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000001",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000001",
           "type": [
             "entity",
             "property"
@@ -1411,11 +1298,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000001",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000002",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000002",
           "type": [
             "entity",
             "property"
@@ -1427,11 +1316,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000002",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000003",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000003",
           "type": [
             "entity",
             "property"
@@ -1443,11 +1334,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000003",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000007",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000007",
           "type": [
             "entity",
             "property"
@@ -1459,11 +1352,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000007",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000008",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000008",
           "type": [
             "entity",
             "property"
@@ -1475,11 +1370,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000008",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000009",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000009",
           "type": [
             "entity",
             "property"
@@ -1491,11 +1388,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000009",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000010",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000010",
           "type": [
             "entity",
             "property"
@@ -1507,11 +1406,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000010",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000012",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000012",
           "type": [
             "entity",
             "property"
@@ -1523,11 +1424,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000012",
           "propertyLabels": {}
         },
         {
-          "uri": "http://purl.obolibrary.org/obo/UBPROP_0000202",
+          "iri": "http://purl.obolibrary.org/obo/UBPROP_0000202",
           "type": [
             "entity",
             "property"
@@ -1539,11 +1442,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000202",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.ebi.ac.uk/efo/EFO_URI",
+          "iri": "http://www.ebi.ac.uk/efo/EFO_URI",
           "type": [
             "entity",
             "property"
@@ -1555,11 +1460,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "EFO_URI",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#date_retrieved",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#date_retrieved",
           "type": [
             "entity",
             "property"
@@ -1571,11 +1478,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "date_retrieved",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#external_class",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#external_class",
           "type": [
             "entity",
             "property"
@@ -1587,11 +1496,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "external_class",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#external_ontology",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#external_ontology",
           "type": [
             "entity",
             "property"
@@ -1603,11 +1514,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "external_ontology",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
           "type": [
             "entity",
             "property"
@@ -1619,11 +1532,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasAlternativeId",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
           "type": [
             "entity",
             "property"
@@ -1635,11 +1550,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasBroadSynonym",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
           "type": [
             "entity",
             "property"
@@ -1651,11 +1568,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasDbXref",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
           "type": [
             "entity",
             "property"
@@ -1667,11 +1586,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasExactSynonym",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
           "type": [
             "entity",
             "property"
@@ -1683,11 +1604,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasOBONamespace",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
           "type": [
             "entity",
             "property"
@@ -1699,11 +1622,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasRelatedSynonym",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
           "type": [
             "entity",
             "property"
@@ -1715,11 +1640,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasSynonymType",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#id",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#id",
           "type": [
             "entity",
             "property"
@@ -1731,11 +1658,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "id",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
           "type": [
             "entity",
             "property"
@@ -1747,11 +1676,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "inSubset",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#notes",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#notes",
           "type": [
             "entity",
             "property"
@@ -1763,11 +1694,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "notes",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#ontology",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#ontology",
           "type": [
             "entity",
             "property"
@@ -1779,11 +1712,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "ontology",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
           "type": [
             "entity",
             "property"
@@ -1795,11 +1730,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "shorthand",
           "propertyLabels": {}
         },
         {
-          "uri": "http://www.geneontology.org/formats/oboInOwl#source",
+          "iri": "http://www.geneontology.org/formats/oboInOwl#source",
           "type": [
             "entity",
             "property"
@@ -1811,11 +1748,13 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "source",
           "propertyLabels": {}
         },
         {
-          "uri": "http://xmlns.com/foaf/0.1/depicted_by",
+          "iri": "http://xmlns.com/foaf/0.1/depicted_by",
           "type": [
             "entity",
             "property"
@@ -1827,6 +1766,8 @@
           "isObsolete": "false",
           "isRoot": "true",
           "ontologyId": "efo",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "EFO",
           "shortForm": "depicted_by",
           "propertyLabels": {}
         }

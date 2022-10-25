@@ -20,10 +20,13 @@
         "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/parents"
       },
       "self": {
-        "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature?lang=en"
+        "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature"
       }
     },
+    "annotationPredicate": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+    "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
     "hasChildren": "false",
+    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
     "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://www.w3.org/2002/07/owl#Class",
@@ -31,16 +34,19 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
     "imported": "false",
+    "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+    "isDefiningOntology": "false",
+    "isObsolete": "false",
     "isRoot": "false",
-    "lang": "en",
     "ontologyId": "punning-class-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+    "ontologyPreferredPrefix": "punning-class-individual",
     "propertyLabels": {},
     "shortForm": "ThermodynamicTemperature",
     "type": [
       "class",
       "entity"
-    ],
-    "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+    ]
   },
   {
     "_links": {
@@ -60,21 +66,24 @@
         "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalDescendants"
       },
       "self": {
-        "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity?lang=en"
+        "href": "<base>/api/v2/ontologies/punning-class-individual/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity"
       }
     },
     "hasChildren": "true",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "imported": "false",
+    "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "isDefiningOntology": "false",
+    "isObsolete": "false",
     "isRoot": "true",
-    "lang": "en",
     "ontologyId": "punning-class-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+    "ontologyPreferredPrefix": "punning-class-individual",
     "propertyLabels": {},
     "shortForm": "Quantity",
     "type": [
       "class",
       "entity"
-    ],
-    "uri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ]
   }
 ]

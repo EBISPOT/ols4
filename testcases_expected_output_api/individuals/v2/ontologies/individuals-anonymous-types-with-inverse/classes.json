@@ -1,26 +1,11 @@
 [
   {
     "_links": {
-      "ancestors": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/ancestors"
-      },
       "graph": {
         "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/graph"
       },
-      "hierarchicalAncestors": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalAncestors"
-      },
-      "hierarchicalParents": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/hierarchicalParents"
-      },
-      "jstree": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/jstree"
-      },
-      "parents": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A/parents"
-      },
       "self": {
-        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A?lang=en"
+        "href": "<base>/api/v2/ontologies/individuals-anonymous-types-with-inverse/classes/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A"
       }
     },
     "hasChildren": "false",
@@ -29,18 +14,22 @@
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
       "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
       "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "isObsolete": "false",
       "propertyLabels": {}
     },
     "imported": "false",
-    "isRoot": "false",
-    "lang": "en",
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
+    "isDefiningOntology": "false",
+    "isObsolete": "false",
+    "isRoot": "true",
     "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
     "propertyLabels": {},
     "shortForm": "A",
     "type": [
       "class",
       "entity"
-    ],
-    "uri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A"
+    ]
   }
 ]
