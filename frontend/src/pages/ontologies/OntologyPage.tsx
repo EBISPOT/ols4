@@ -1,6 +1,7 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Link, Tooltip } from "@mui/material";
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -49,66 +50,104 @@ export default function OntologyPage(props: { ontologyId: string }) {
                 <p>{ontology!.getDescription()}</p>
               </div>
             </div>
-
-            <Tabs
-              value={tab}
-              onChange={(value: any) => {
-                setTab(value);
-              }}
-            >
-              <Tab
-                label={`Classes (${ontology!
-                  .getNumClasses()
-                  .toLocaleString()})`}
-                value="classes"
-                disabled={ontology!.getNumClasses() <= 0}
-              />
-              <Tab
-                label={`Properties (${ontology!
-                  .getNumProperties()
-                  .toLocaleString()})`}
-                value="properties"
-                disabled={ontology!.getNumProperties() <= 0}
-              />
-              <Tab
-                label={`Individuals (${ontology!
-                  .getNumIndividuals()
-                  .toLocaleString()})`}
-                value="individuals"
-                disabled={ontology!.getNumIndividuals() <= 0}
-              />
-            </Tabs>
-            <div className="p-2 mb-1">
-              <Tooltip title="Tree view" placement="top">
-                <button
-                  className={`button-primary font-bold mr-3 ${
-                    viewMode === "tree"
-                      ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                      : ""
-                  }`}
-                  onClick={() => setViewMode("tree")}
+            <div className="grid grid-cols-3 gap-8">
+              <div className="col-span-2">
+                <Tabs
+                  value={tab}
+                  onChange={(value: any) => {
+                    setTab(value);
+                  }}
                 >
-                  <AccountTree fontSize="small" />
-                </button>
-              </Tooltip>
-              <Tooltip title="List view" placement="top">
-                <button
-                  className={`button-primary font-bold ${
-                    viewMode === "list"
-                      ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                      : ""
-                  }`}
-                  onClick={() => setViewMode("list")}
-                >
-                  <FormatListBulletedIcon fontSize="small" />
-                </button>
-              </Tooltip>
+                  <Tab
+                    label={`Classes (${ontology!
+                      .getNumClasses()
+                      .toLocaleString()})`}
+                    value="classes"
+                    disabled={ontology!.getNumClasses() <= 0}
+                  />
+                  <Tab
+                    label={`Properties (${ontology!
+                      .getNumProperties()
+                      .toLocaleString()})`}
+                    value="properties"
+                    disabled={ontology!.getNumProperties() <= 0}
+                  />
+                  <Tab
+                    label={`Individuals (${ontology!
+                      .getNumIndividuals()
+                      .toLocaleString()})`}
+                    value="individuals"
+                    disabled={ontology!.getNumIndividuals() <= 0}
+                  />
+                </Tabs>
+                <div className="p-2 mb-1">
+                  <Tooltip title="Tree view" placement="top">
+                    <button
+                      className={`button-primary font-bold mr-3 ${
+                        viewMode === "tree"
+                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                          : ""
+                      }`}
+                      onClick={() => setViewMode("tree")}
+                    >
+                      <AccountTree fontSize="small" />
+                    </button>
+                  </Tooltip>
+                  <Tooltip title="List view" placement="top">
+                    <button
+                      className={`button-primary font-bold ${
+                        viewMode === "list"
+                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                          : ""
+                      }`}
+                      onClick={() => setViewMode("list")}
+                    >
+                      <FormatListBulletedIcon fontSize="small" />
+                    </button>
+                  </Tooltip>
+                </div>
+                {viewMode === "list" ? (
+                  <EntityList ontologyId={ontologyId} entityType={tab} />
+                ) : (
+                  <EntityTree ontologyId={ontologyId} entityType={tab} />
+                )}
+              </div>
+              <div className="col-span-1">
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-link-rule text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                    Ontology Information
+                  </summary>
+                  <div className="p-2 break-words space-y-2">
+                    <div>
+                      <span className="font-bold">Ontology IRI: </span>
+                      {ontology.getUri() || ontology.getOntologyPurl()}
+                    </div>
+                    <div>
+                      <span className="font-bold">Version IRI: </span>
+                      {ontology.getVersionIri()}
+                    </div>
+                    <div>
+                      <span className="font-bold">Ontology ID: </span>
+                      {ontology.getOntologyId()}
+                    </div>
+                    <div>
+                      <span className="font-bold">Version: </span>
+                      {ontology.getVersion()}
+                    </div>
+                    <div>
+                      <span className="font-bold">Number of terms: </span>
+                      {ontology.getNumEntities()}
+                    </div>
+                    <div>
+                      <span className="font-bold">Last loaded: </span>
+                      {moment(ontology.getLoaded()).format(
+                        "D MMM YYYY ddd HH:mm:SSZ"
+                      )}
+                    </div>
+                  </div>
+                </details>
+              </div>
             </div>
-            {viewMode === "list" ? (
-              <EntityList ontologyId={ontologyId} entityType={tab} />
-            ) : (
-              <EntityTree ontologyId={ontologyId} entityType={tab} />
-            )}
           </div>
         ) : (
           <Spinner />
