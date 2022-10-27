@@ -51,7 +51,7 @@ public class OlsNeo4jClient {
 
 	public Map<String, Object> getOne(String type, Map<String,String> properties) {
 
-		Page<Map<String, Object>> results = getAll(type, properties, new PageRequest(0, 2, Sort.DEFAULT_DIRECTION));
+		Page<Map<String, Object>> results = getAll(type, properties, null);
 
 		if(results.getTotalElements() != 1) {
 			throw new RuntimeException("expected exactly one result for neo4j getOne");
@@ -102,19 +102,21 @@ public class OlsNeo4jClient {
 
 	String edge = makeEdge(relationIRIs);
 
+	String typeArg = type != null ? "c:" + type : "c";
+
 	String query =
-	  "MATCH (c:" + type + ") WHERE c.id = $id "
+	  "MATCH (" + typeArg + ") WHERE c.id = $id "
 	+ "WITH c "
 	+ "OPTIONAL MATCH (c)-[:" + edge + " *]->(ancestor) "
 	+ "RETURN ancestor AS a";
 
 	String countQuery =
-	  "MATCH (a:" + type + ") WHERE a.id = $id "
-	+ "WITH a "
-	+ "OPTIONAL MATCH (a)-[:" + edge + " *]->(ancestor) "
+	  "MATCH (" + typeArg + ") WHERE c.id = $id "
+	+ "WITH c "
+	+ "OPTIONAL MATCH (c)-[:" + edge + " *]->(ancestor) "
 	+ "RETURN count(ancestor)";
 
-	return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
+	return neo4jClient.queryPaginated(query, "c", countQuery, parameters("type", type, "id", id), pageable);
     }
 
     public Page<Map<String, Object>> getDescendants(String type, String id, List<String> relationIRIs, Pageable pageable) {

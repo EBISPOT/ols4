@@ -69,24 +69,25 @@ public class Neo4jClient {
 
 
 		String sort = "";
+		String queryToRun;
 
-		if(pageable.getSort() != null) {
-			for (Sort.Order order : pageable.getSort()) {
-				if (sort.length() > 0) {
-					sort += ", ";
+		if(pageable != null) {
+			if(pageable.getSort() != null) {
+				for (Sort.Order order : pageable.getSort()) {
+					 if (sort.length() > 0) {
+						  sort += ", ";
+					 }
+					 sort += order.getProperty();
+					 sort += " ";
+					 sort += order.getDirection() == Sort.Direction.ASC ? "ASC" : " DESC";
 				}
-				sort += order.getProperty();
-				sort += " ";
-				sort += order.getDirection() == Sort.Direction.ASC ? "ASC" : " DESC";
-			}
+			 } else {
+				   sort = "ORDER BY " + resVar + ".iri ASC";
+			 }
+			queryToRun = query + " " + sort + " SKIP " + pageable.getOffset() + " LIMIT " + pageable.getPageSize();
 		} else {
-			sort = "ORDER BY " + resVar + ".iri ASC";
+			queryToRun = query;
 		}
-
-		String queryToRun = query
-				+ " " + sort
-		+ " SKIP " + pageable.getOffset()
-						+ " LIMIT " + pageable.getPageSize();
 
 		System.out.println(queryToRun);
 		System.out.println(gson.toJson(parameters.asMap()));
@@ -97,7 +98,7 @@ public class Neo4jClient {
 
 		    parameters
 		);
-		System.out.println("Neo4j run paginted query: " + timer.stop());
+		System.out.println("Neo4j run paginated query: " + timer.stop());
 
 		Stopwatch timer2 = Stopwatch.createStarted();
 		Result countResult = session.run(countQuery, parameters);

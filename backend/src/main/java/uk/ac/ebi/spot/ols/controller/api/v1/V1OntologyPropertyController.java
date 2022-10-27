@@ -20,8 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
-import uk.ac.ebi.spot.ols.service.PropertyJsTreeBuilder;
 import uk.ac.ebi.spot.ols.service.ViewMode;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
@@ -40,7 +40,7 @@ public class V1OntologyPropertyController {
     V1PropertyAssembler termAssembler;
 
     @Autowired
-    PropertyJsTreeBuilder jsTreeBuilder;
+    V1JsTreeRepository jsTreeRepository;
 
     @Autowired
     Neo4jClient neo4jClient;
@@ -204,7 +204,7 @@ public class V1OntologyPropertyController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTreeChildren(neo4jClient, ontologyId, decoded, nodeId, lang);
+            Object object= jsTreeRepository.getJsTreeChildrenForClass(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
@@ -222,14 +222,15 @@ public class V1OntologyPropertyController {
             @PathVariable("onto") String ontologyId,
             @PathVariable("id") String termId,
             @RequestParam(value = "siblings", defaultValue = "false", required = false) boolean siblings,
-            @RequestParam(value = "viewMode", defaultValue = "PreferredRoots", required = false) String viewMode)
+            @RequestParam(value = "viewMode", defaultValue = "PreferredRoots", required = false) String viewMode,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang)
     {
         ontologyId = ontologyId.toLowerCase();
 
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decoded, siblings, ViewMode.getFromShortName(viewMode));
+            Object object= jsTreeRepository.getJsTreeForProperty(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
