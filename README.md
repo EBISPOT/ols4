@@ -84,7 +84,8 @@ The API server Spring Boot application located in `backend`.  Set the following 
 
 ### Running the frontend locally
 
-The frontend is a React application in `frontend`. TODO instructions!
+The frontend is a React application in `frontend`. See [frontend docs](frontend/README.md) 
+for details on how to run the frontend.
 
 
 ## Development: Updating `testcases_expected_output`
