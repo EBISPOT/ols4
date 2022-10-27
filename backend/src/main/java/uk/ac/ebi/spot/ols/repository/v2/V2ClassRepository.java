@@ -57,7 +57,7 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
+            searchFields = "label^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -94,7 +94,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.getChildren("OntologyClass", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+        return this.neo4jClient.getChildren("OntologyClass", id, Arrays.asList("directParent"), pageable)
             .map(record -> new V2Class(record, lang));
     }
 
@@ -105,7 +105,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.getAncestors("OntologyTerm", id, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+        return this.neo4jClient.getAncestors("OntologyClass", id, Arrays.asList("directParent"), pageable)
                 .map(record -> new V2Class(record, lang));
     }
 }

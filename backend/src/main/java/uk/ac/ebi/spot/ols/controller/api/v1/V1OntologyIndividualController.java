@@ -23,7 +23,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Individual;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1IndividualRepository;
-import uk.ac.ebi.spot.ols.service.IndividualJsTreeBuilder;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,10 +49,10 @@ public class V1OntologyIndividualController {
     V1TermAssembler termAssembler;
 
     @Autowired
-    IndividualJsTreeBuilder jsTreeBuilder;
+    Neo4jClient neo4jClient;
 
     @Autowired
-    Neo4jClient neo4jClient;
+    V1JsTreeRepository jsTreeRepository;
 
     @RequestMapping(path = "/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedResources<V1Individual>> getAllIndividualsByOntology(
@@ -155,7 +155,7 @@ public class V1OntologyIndividualController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object = jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decoded, false);
+            Object object = jsTreeRepository.getJsTreeForIndividual(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {

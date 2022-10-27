@@ -19,9 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
-import uk.ac.ebi.spot.ols.service.ClassJsTreeBuilder;
-import uk.ac.ebi.spot.ols.service.ViewMode;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +47,7 @@ public class V1OntologyTermController {
     V1PreferredRootTermAssembler preferredRootTermAssembler;
     
     @Autowired
-    ClassJsTreeBuilder jsTreeBuilder;
+    V1JsTreeRepository jsTreeRepository;
 
     @Autowired
     Neo4jClient neo4jClient;
@@ -372,8 +371,7 @@ public class V1OntologyTermController {
 
         try {
             String decodedTermId = UriUtils.decode(termId, "UTF-8");
-
-            Object object= jsTreeBuilder.getJsTree(neo4jClient, ontologyId, decodedTermId, siblings, ViewMode.getFromShortName(viewMode));
+            Object object= jsTreeRepository.getJsTreeForClass(decodedTermId, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
@@ -396,7 +394,7 @@ public class V1OntologyTermController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeBuilder.getJsTreeChildren(neo4jClient, ontologyId, decoded, lang, nodeId);
+            Object object= jsTreeRepository.getJsTreeChildrenForClass(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
