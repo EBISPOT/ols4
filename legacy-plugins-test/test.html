@@ -1,0 +1,80 @@
+
+
+<html>
+<head>
+
+<link rel="stylesheet" href="bootstrap.css"/>
+<link rel="stylesheet" href="ols-colors.css"/>
+<link rel="stylesheet" href="ols.css"/>
+<link rel="stylesheet" href="typeaheadjs.css"/>
+<link rel="stylesheet" href="proton/style.min.css"/>
+<link rel="stylesheet" href="awesomeplete.css"/>
+<link rel="stylesheet" href="OLS-graphview.css"/>
+<link rel="stylesheet" href="vis.min.css"/>
+
+
+</head>
+<body>
+
+
+<h1>Autocomplete</h1>
+<input style="font-weight: normal" size="35" type="text" name="q" data-olswidget="select" data-olsontology="" data-selectpath="https://www.ebi.ac.uk/ols/" olstype="" id="local-searchbox" placeholder="Enter the term you are looking for" class="ac_input"></input>
+
+<h1>Tree View</h1>
+<div id="term-tree" style="overflow: scroll; height:400px; width:1000px; border:1px solid black;"></div>
+
+<h1>Graph View</h1>
+<div id="ontology_vis">
+</div>
+
+
+
+
+
+<script src="jquery.min.js"></script>
+<script src="jstree.min.js"></script>
+<script src="typeahead.bundle.min.js"></script>
+<script src="handlebars.min.js"></script>
+<script src="ols-autocomplete.js"></script>
+<script src="ols-graphview.js"></script>
+<script src="ols-treeview.js"></script>
+
+<script>
+
+
+$(document).ready(function() {
+  var app = require("ols-autocomplete");
+  var instance = new app();
+  instance.start()
+});
+
+$(document).ready(function() {
+
+  var app = require("ols-treeview");
+  var instance = new app();
+  instance.draw($("#term-tree"), false, "efo", "terms", "http://www.ebi.ac.uk/efo/EFO_0000400", "https://www.ebi.ac.uk/ols/", {});
+
+});
+
+
+</script>
+
+
+<script>
+var tmpnetworkOptions={ webservice : {URL: "https://www.ebi.ac.uk/ols/api/ontologies/efo/terms?iri=", OLSschema:true}}
+var term="http://www.ebi.ac.uk/efo/EFO_0000400"
+
+var app = require("ols-graphview");
+var instance = new app();
+
+instance.visstart("ontology_vis", term, tmpnetworkOptions,{})
+</script>
+
+
+
+</body>
+
+
+
+</html>
+
