@@ -6,7 +6,7 @@ import assert from "assert";
 
 /* Unflattens a list of entities into:
  *	- A list of root entities
- * 	- A mapping of IRI to list of child entities
+ * 	- A mapping of URI to list of child entities
  * 
  * Used by EntityTree and EntityGraph
  */
@@ -14,14 +14,14 @@ export default function extractEntityHierarchy(
 	entities:Entity[]
 ):({
 	rootEntities:Entity[],
-	iriToChildNodes:Multimap<string, Entity>
+	uriToChildNodes:Multimap<string, Entity>
 }) {
-	let iriToNode: Map<string, Entity> = new Map()
-	let iriToChildNodes: Multimap<string, Entity> = new Multimap()
-	let iriToParentNodes: Multimap<string, Entity> = new Multimap()
+	let uriToNode: Map<string, Entity> = new Map()
+	let uriToChildNodes: Multimap<string, Entity> = new Multimap()
+	let uriToParentNodes: Multimap<string, Entity> = new Multimap()
 
 	for (let entity of entities) {
-		iriToNode.set(entity.getIri(), entity)
+		uriToNode.set(entity.getUri(), entity)
 	}
 
 	for (let entity of entities) {
@@ -29,21 +29,21 @@ export default function extractEntityHierarchy(
 		let parents = entity.getParents()
 			// not interested in bnode subclassofs like restrictions etc
 			.filter(parent => typeof parent === 'string')
-			.map(parentIri => iriToNode.get(parentIri))
+			.map(parentUri => uriToNode.get(parentUri))
 			.filter(parent => parent !== undefined)
 
 		for (let parent of parents) {
 			assert(parent)
-			iriToChildNodes.set(parent.getIri(), entity)
-			iriToParentNodes.set(entity.getIri(), parent)
+			uriToChildNodes.set(parent.getUri(), entity)
+			uriToParentNodes.set(entity.getUri(), parent)
 		}
 	}
 
 	let rootEntities = entities.filter((node) => {
-		return (iriToParentNodes.get(node.getIri()) || []).length === 0
+		return (uriToParentNodes.get(node.getUri()) || []).length === 0
 	})
 
-	return { rootEntities, iriToChildNodes }
+	return { rootEntities, uriToChildNodes }
 }
 
 

@@ -26,7 +26,7 @@ export default function Home() {
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-3">
             <div className="bg-gradient-to-r from-grey-50 to-grey-1 rounded-lg my-8 p-8">
-              <div className="text-3xl mb-4 text-grey-2 font-semibold">
+              <div className="text-3xl mb-4 text-grey-2 font-bold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="mb-4">

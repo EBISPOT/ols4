@@ -74,15 +74,43 @@ module.exports = {
           800: "#8a6a14",
           900: "#5c470d",
         },
+        orange: {
+          default: "#ffac1b",
+          50: "#ffe6ba",
+          100: "#ffd58d",
+          200: "#ffcd76",
+          300: "#ffc45f",
+          400: "#ffbc48",
+          500: "#ffb431",
+          600: "#cc8915",
+          700: "#b27812",
+          800: "#996710",
+          900: "#66440a",
+        },
+        link: {
+          default: "#00827c", // #3b6fb6
+          black: "#1a1c1a",
+          hover: "#025064", // #193f90
+          visited: "#4974a5", // #73459
+          tab: "#54585a",
+          button: "#707372",
+          rule: "#d8d8d8",
+        },
         // other colours
         "embl-green": "#5e801a",
-        link: {
-          default: "#3b6fb6",
-          black: "#1a1c1a",
-          hover: "#193f90",
-          visited: "#734595",
-          tab: "#54585a",
-        },
+      },
+      boxShadow: {
+        button: "8px 8px 0 theme('colors.link.hover'), -5px -5px rgba(0,0,0,0)",
+        "button-hover":
+          "4px 4px 0 theme('colors.link.hover'), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+        "button-active":
+          "0px 0px 0 theme('colors.link.hover'), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+        "button-dark":
+          "8px 8px 0 theme('colors.link.tab'), -5px -5px rgba(0,0,0,0)",
+        "button-dark-hover":
+          "4px 4px 0 theme('colors.link.tab'), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+        "button-dark-active":
+          "0px 0px 0 theme('colors.link.tab'), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
       },
     },
   },

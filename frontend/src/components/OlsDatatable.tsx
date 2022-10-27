@@ -91,7 +91,7 @@ export default function OlsDatatable({
             <tr className="border-b-2 border-grey-300">
               {columns.map((column) => (
                 <td
-                  className="text-lg text-left font-semibold py-2 px-4"
+                  className="text-lg text-left font-bold py-2 px-4"
                   key={column.name}
                 >
                   {column.name}
