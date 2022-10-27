@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.model.v2.V2Individual;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
@@ -16,6 +17,7 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 @Component
@@ -86,6 +88,7 @@ public class V2IndividualRepository {
 
         return new V2Individual(solrClient.getOne(query), lang);
     }
+
 
 
 }

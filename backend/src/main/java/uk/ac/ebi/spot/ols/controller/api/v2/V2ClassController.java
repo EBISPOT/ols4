@@ -147,5 +147,27 @@ public class V2ClassController implements
         Page<V2Class> document = classRepository.getAncestorsByOntologyId(ontologyId, pageable, iri, lang);
         return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
     }
+
+
+    // The ancestors of individuals are classes. So, the /ancestors endpoint is part of the Class controller.
+    //
+    @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<PagedResources<V2Class>> getIndividualAncestorsByOntology(
+            @PageableDefault(size = 20, page = 0) Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("individual") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler
+    ) throws ResourceNotFoundException {
+
+        try {
+            iri = UriUtils.decode(iri, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceNotFoundException();
+        }
+
+        Page<V2Class> document = classRepository.getIndividualAncestorsByOntologyId(ontologyId, pageable, iri, lang);
+        return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
+    }
 }
 

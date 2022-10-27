@@ -28,6 +28,12 @@ public class V2IndividualAssembler implements ResourceAssembler<V2Individual, Re
             final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
                     ControllerLinkBuilder.methodOn(V2IndividualController.class).getIndividual(_individual.get("ontologyId"), id, _individual.get("lang")));
 
+            String isRoot = _individual.get("isRoot");
+
+            if (isRoot != null && !isRoot.equals("true")) {
+                resource.add(lb.slash("ancestors").withRel("ancestors"));
+            }
+
             resource.add(lb.withSelfRel());
 
         } catch (UnsupportedEncodingException e) {

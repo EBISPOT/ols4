@@ -108,4 +108,15 @@ public class V2ClassRepository {
         return this.neo4jClient.getAncestors("OntologyClass", id, Arrays.asList("directParent"), pageable)
                 .map(record -> new V2Class(record, lang));
     }
+
+    public Page<V2Class> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+individual+" + iri;
+
+        return this.neo4jClient.getAncestors("OntologyEntity", id, Arrays.asList("directParent"), pageable)
+                .map(record -> new V2Class(record, lang));
+    }
 }
