@@ -7,9 +7,12 @@ import uk.ac.ebi.owl2json.properties.PropertyValue;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.owl2json.properties.PropertyValueURI;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class HierarchyFlagsAnnotator {
 
@@ -31,21 +34,22 @@ public class HierarchyFlagsAnnotator {
                 if(c.uri == null)
                     continue;
 
-                List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+                List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
 
                 boolean hasDirectParent = false;
 
                 if(parents != null) {
-                    for(PropertyValue parent : parents) {
-                        if(parent.getType().equals(PropertyValue.Type.URI)) {
+                    for (PropertyValue parent : parents) {
 
-                            String iri = ((PropertyValueURI) parent).getUri();
+                        String iri = ((PropertyValueURI) parent).getUri();
 
-                            if(!iri.equals("http://www.w3.org/2002/07/owl#Thing")) {
-                                hasDirectParent = true;
-                                hasChildren.add(iri);
-                            }
+                        if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
+                                iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
+                                    continue;
                         }
+
+                        hasDirectParent = true;
+                        hasChildren.add(iri);
                     }
                 }
 
