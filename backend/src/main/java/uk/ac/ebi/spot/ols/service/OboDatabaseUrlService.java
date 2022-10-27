@@ -40,7 +40,7 @@ public class OboDatabaseUrlService {
                     inputStream = new FileInputStream(xrefUrl);
                 }
             } catch(IOException e) {
-                System.out.println("db-xrefs.yaml failed to load. URLs will be missing in OLS3 API OBO xrefs.")
+                System.out.println("db-xrefs.yaml failed to load. URLs will be missing in OLS3 API OBO xrefs.");
                 continue;
             }
 
