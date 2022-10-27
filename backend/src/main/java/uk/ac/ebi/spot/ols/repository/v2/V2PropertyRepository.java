@@ -34,7 +34,7 @@ public class V2PropertyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
+            searchFields = "label^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -56,7 +56,7 @@ public class V2PropertyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "http://www.w3.org/2000/01/rdf-schema#label^100 definition";
+            searchFields = "label^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();

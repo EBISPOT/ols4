@@ -36,10 +36,8 @@ public class V1AncestorsJsTreeBuilder {
 
             Map<String,Object> entity = entityIriToEntity.get(entityIri);
 
-            List<String> parents = (List<String>) entity.get("directParents");
-
-            for(String parent : parents) {
-                entityIriToChildIris.put((String) entity.get("iri"), parent);
+            for (String parentIri : getEntityParentIRIs(entity)) {
+                entityIriToChildIris.put(parentIri, (String) entity.get("iri"));
             }
         }
     }
@@ -49,10 +47,10 @@ public class V1AncestorsJsTreeBuilder {
         // 1. establish roots (entities with no parents)
 
         List<Map<String,Object>> roots = entities.stream()
-                .filter(entity -> getEntityParentIRIs(entity, parentRelationIRIs).size() == 0)
+                .filter(entity -> getEntityParentIRIs(entity).size() == 0)
                 .collect(Collectors.toList());
 
-        // 2. build jstree entries
+        // 2. build jstree entries starting with roots
 
         List<Map<String,Object>> jstree = new ArrayList<>();
 
@@ -102,6 +100,11 @@ public class V1AncestorsJsTreeBuilder {
 
             Map<String,Object> child = entityIriToEntity.get(childIri);
 
+            if(child == null) {
+                // child is not in this tree (i.e. cousin of the node requested, will not be displayed)
+                continue;
+            }
+
             if(concatenatedParentIris != null) {
                 createJsTreeEntries(jstree, child, concatenatedParentIris + ";" + entity.get("iri"));
             } else {
@@ -110,18 +113,43 @@ public class V1AncestorsJsTreeBuilder {
         }
     }
 
-    private Set<String> getEntityParentIRIs(Map<String,Object> entity, List<String> parentRelationIRIs) {
+    private Set<String> getEntityParentIRIs(Map<String,Object> entity) {
 
-        Set<String> parents = new LinkedHashSet<>();
+        Set<Object> parents = new LinkedHashSet<>();
 
-        for(String predicate : parentRelationIRIs) {
-            Object parent = entity.get(predicate);
-            if(parent != null && parent instanceof String) {
-                parents.add((String) parent);
+        for(String parentRelationIri : parentRelationIRIs) {
+
+            Object parent = entity.get(parentRelationIri);
+
+            if(parent != null) {
+                if(parent instanceof List) {
+                    parents.addAll((List<Object>) parent);
+                } else {
+                    parents.add(parent);
+                }
             }
         }
 
-        return parents;
+        Set<String> parentIris = new LinkedHashSet<>();
+
+        for (Object parent : parents) {
+
+            // extract value from reified parents
+            while(parent instanceof Map) {
+                parent = ((Map<String,Object>) parent).get("value");
+            }
+
+            String parentIri = (String) parent;
+
+            if(parentIri.equals("http://www.w3.org/2002/07/owl#Thing")
+                    || parentIri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
+                continue;
+            }
+
+            parentIris.add(parentIri);
+        }
+
+        return parentIris;
     }
 }
 
