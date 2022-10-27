@@ -8,13 +8,16 @@
 <link rel="stylesheet" href="ols.css"/>
 <link rel="stylesheet" href="typeaheadjs.css"/>
 <link rel="stylesheet" href="proton/style.min.css"/>
-<link rel="stylesheet" href="awesomeplete.css"/>
+<link rel="stylesheet" href="awesomplete.css"/>
 <link rel="stylesheet" href="OLS-graphview.css"/>
 <link rel="stylesheet" href="vis.min.css"/>
 
 
 </head>
 <body>
+
+<button id="testols3">Test OLS3 (ebi.ac.uk/ols)</button>
+<button id="testols4">Test OLS4 (localhost:8080)</button>
 
 
 <h1>Autocomplete</h1>
@@ -41,33 +44,42 @@
 
 <script>
 
+    $('#testols3').click(function() {
+            init('https://www.ebi.ac.uk/ols', 'http://www.ebi.ac.uk/efo/EFO_0000400')
+    })
+    $('#testols4').click(function() {
+            init('http://localhost:8080', 'http://www.ebi.ac.uk/efo/EFO_0000400')
+    })
 
-$(document).ready(function() {
-  var app = require("ols-autocomplete");
-  var instance = new app();
-  instance.start()
-});
+    function init(olsurl, termiri) {
 
-$(document).ready(function() {
+        (function() {
+          var app = require("ols-autocomplete");
+          var instance = new app();
+          instance.start()
+        })();
 
-  var app = require("ols-treeview");
-  var instance = new app();
-  instance.draw($("#term-tree"), false, "efo", "terms", "http://www.ebi.ac.uk/efo/EFO_0000400", "https://www.ebi.ac.uk/ols/", {});
+        (function() {
 
-});
+          var app = require("ols-treeview");
+          var instance = new app();
+          instance.draw($("#term-tree"), false, "efo", "terms", termiri, olsurl, {});
 
+        })();
 
-</script>
+        (function() {
 
+            var tmpnetworkOptions={ webservice : {URL: olsurl + "/api/ontologies/efo/terms?iri=", OLSschema:true}}
+            var term=termiri
 
-<script>
-var tmpnetworkOptions={ webservice : {URL: "https://www.ebi.ac.uk/ols/api/ontologies/efo/terms?iri=", OLSschema:true}}
-var term="http://www.ebi.ac.uk/efo/EFO_0000400"
+            var app = require("ols-graphview");
+            var instance = new app();
 
-var app = require("ols-graphview");
-var instance = new app();
+            instance.visstart("ontology_vis", term, tmpnetworkOptions,{})
 
-instance.visstart("ontology_vis", term, tmpnetworkOptions,{})
+        })();
+    }
+
 </script>
 
 
