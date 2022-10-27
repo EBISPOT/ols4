@@ -184,6 +184,7 @@ public class OwlGraph implements StreamRDF {
     IsDefiningOntologyAnnotator.annotateIsDefiningOntology(this);
     LabelAnnotator.annotateLabels(this);
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
+    PreferredRootsAnnotator.annotatePreferredRoots(this);
 
     }
 
