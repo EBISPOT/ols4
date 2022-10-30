@@ -68,7 +68,51 @@ To start everything, including the frontend:
 
 ## Development: Running OLS4 locally
 
-Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development.
+Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development. Software 
+requirements are as follows:
+1. Java 11. Later versions of Java are probably fine, though the Neo4j we use only works with Java 11. 
+2. Maven 3.x.x
+3. Neo4J 4.4.7 
+4. Solr 9.0.0
+5. Your favourite Git client
+6. Yarn 1.22.X
+
+
+### Acquire source and build
+
+Clone repo:
+
+    git clone git@github.com:EBISPOT/ols4.git
+
+Build backend:
+
+    mvn clean package
+
+Build frontend: 
+
+    yarn install
+
+### Test testcases from dataload to UI
+The scripts below assume you have the following environment variables set:
+
+`NEO4J_HOME`
+
+`SOLR_HOME`
+
+`OLS4_HOME` - this should point to the root folder where you have the OLS4 code.
+
+
+Change the directory to $OLS4_HOME.
+
+    cd $OLS4_HOME
+
+To load the testcases and start Neo4J, Solr, the backend and the frontend, run:
+
+    ./teststack.sh
+
+Once you are done testing, to stop everything:
+
+    ./stopall.sh
 
 ### Running the dataload locally
 
