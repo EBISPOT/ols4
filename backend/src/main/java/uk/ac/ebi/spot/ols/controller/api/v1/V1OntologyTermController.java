@@ -386,7 +386,7 @@ public class V1OntologyTermController {
     HttpEntity<String> graphJsTreeChildren(
             @PathVariable("onto") String ontologyId,
             @PathVariable("id") String termId,
-            @PathVariable("nodeid") String nodeId,
+            @PathVariable("nodeid") String jstreeId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();
@@ -394,7 +394,7 @@ public class V1OntologyTermController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeRepository.getJsTreeChildrenForClass(decoded, ontologyId, lang);
+            Object object= jsTreeRepository.getJsTreeChildrenForClass(decoded, jstreeId, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {

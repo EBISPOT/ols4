@@ -1,17 +1,18 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class V1ChildrenJsTreeBuilder {
 
-    String thisEntityJsTreeId;
+    String thisEntityJsTreeIdDecoded;
     Map<String,Object> thisEntity;
     List<String> parentRelationIRIs;
     List<Map<String,Object>> children;
 
     public V1ChildrenJsTreeBuilder(String thisEntityJsTreeId, Map<String,Object> thisEntity, List<Map<String,Object>> children) {
 
-        this.thisEntityJsTreeId = thisEntityJsTreeId;
+        this.thisEntityJsTreeIdDecoded = base64Decode(thisEntityJsTreeId);
         this.thisEntity = thisEntity;
         this.parentRelationIRIs = parentRelationIRIs;
         this.children = children;
@@ -25,8 +26,8 @@ public class V1ChildrenJsTreeBuilder {
         for(Map<String,Object> child : children) {
 
             Map<String,Object> jstreeEntry = new LinkedHashMap<>();
-            jstreeEntry.put("id", thisEntityJsTreeId + ";" + child.get("iri"));
-            jstreeEntry.put("parent", thisEntityJsTreeId);
+            jstreeEntry.put("id", base64Encode(thisEntityJsTreeIdDecoded + ";" + child.get("iri")));
+            jstreeEntry.put("parent", base64Encode(thisEntityJsTreeIdDecoded));
             jstreeEntry.put("iri", child.get("iri"));
             jstreeEntry.put("text", child.get("label"));
             jstreeEntry.put("state", Map.of("opened", false));
@@ -40,9 +41,19 @@ public class V1ChildrenJsTreeBuilder {
             jstreeEntry.put("a_attr", attrObj);
 
             jstreeEntry.put("ontology_name", child.get("ontologyId"));
+            jstree.add(jstreeEntry);
         }
 
         return jstree;
     }
+
+    static String base64Encode(String str) {
+        return Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8));
+    }
+
+    static String base64Decode(String str) {
+        return new String(Base64.getDecoder().decode(str), StandardCharsets.UTF_8);
+    }
+
 }
 

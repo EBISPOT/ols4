@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.repository.v1;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -66,10 +67,10 @@ public class V1AncestorsJsTreeBuilder {
         Map<String,Object> jstreeEntry = new LinkedHashMap<>();
 
         if(concatenatedParentIris != null) {
-            jstreeEntry.put("id", concatenatedParentIris + ";" + entity.get("iri"));
-            jstreeEntry.put("parent", concatenatedParentIris);
+            jstreeEntry.put("id", base64Encode(concatenatedParentIris + ";" + entity.get("iri")));
+            jstreeEntry.put("parent", base64Encode(concatenatedParentIris));
         } else {
-            jstreeEntry.put("id", entity.get("iri"));
+            jstreeEntry.put("id", base64Encode((String) entity.get("iri")));
             jstreeEntry.put("parent", "#");
         }
 
@@ -78,12 +79,25 @@ public class V1AncestorsJsTreeBuilder {
 
         Collection<String> childIris = entityIriToChildIris.get((String) entity.get("iri"));
 
-        if(entity.get("iri").equals(this.thisEntity.get("iri"))) {
-            jstreeEntry.put("state", Map.of("opened", childIris.size() > 0, "selected", true));
-        } else {
-            jstreeEntry.put("state", Map.of("opened", childIris.size() > 0));
+        // only the leaf node is selected (= highlighted in the tree)
+        boolean selected = thisEntity.get("iri").equals(entity.get("iri"));
+
+        // only nodes that aren't the leaf node are marked as opened (expanded)
+        boolean opened = (!selected);
+
+        // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
+        boolean children = (!opened) && entity.get("hasChildren").equals("true");
+        //boolean children = childIris.size() > 0;
+
+        Map<String,Boolean> state = new LinkedHashMap<>();
+        state.put("opened", opened);
+
+        if(selected) {
+            state.put("selected", true);
         }
-        jstreeEntry.put("children", childIris.size() > 0);
+
+        jstreeEntry.put("state", state);
+        jstreeEntry.put("children", children);
 
         Map<String,Object> attrObj = new LinkedHashMap<>();
         attrObj.put("iri", entity.get("iri"));
@@ -150,6 +164,10 @@ public class V1AncestorsJsTreeBuilder {
         }
 
         return parentIris;
+    }
+
+    static String base64Encode(String str) {
+        return Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8));
     }
 }
 
