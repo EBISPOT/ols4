@@ -1,11 +1,15 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,7 +50,7 @@ public class V1GraphRepository {
                 + "UNWIND relationships(path) as r1\n"
                 + "RETURN {nodes: collect( distinct {iri: p.iri, label: head(p.label)})[0..200],\n"
                         // TODO put labels on edges in OLS4 database
-                + "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, label: type(r1), uri: type(r1)}  )[0..200]} as result\n";
+                + "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, label: \"is a\", uri: type(r1)}  )[0..200]} as result\n";
 
         List<Map<String,Object>> res = neo4jClient.rawQuery(query, "result");
 
