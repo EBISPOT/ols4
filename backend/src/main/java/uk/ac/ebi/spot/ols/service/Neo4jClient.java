@@ -50,6 +50,15 @@ public class Neo4jClient {
 	}
 
 
+	// only used by OLS3 graph repo, remove at some point
+	public List<Map<String,Object>> rawQuery(String query, String resVar) {
+
+		Session session = getSession();
+
+		Result result = session.run(query);
+
+		return result.stream().map(r -> r.asMap()).collect(Collectors.toList());
+	}
 
 	public List<Map<String, Object>> query(String query, String resVar) {
 

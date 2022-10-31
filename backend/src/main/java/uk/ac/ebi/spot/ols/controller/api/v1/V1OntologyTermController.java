@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
+import uk.ac.ebi.spot.ols.repository.v1.V1GraphRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
@@ -48,6 +49,9 @@ public class V1OntologyTermController {
     
     @Autowired
     V1JsTreeRepository jsTreeRepository;
+
+    @Autowired
+    V1GraphRepository graphRepository;
 
     @Autowired
     Neo4jClient neo4jClient;
@@ -416,7 +420,7 @@ public class V1OntologyTermController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= termRepository.getGraphJson(ontologyId, decoded);
+            Object object= graphRepository.getGraphForClass(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (UnsupportedEncodingException e) {

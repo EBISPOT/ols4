@@ -333,37 +333,4 @@ public class V1TermRepository {
         throw new RuntimeException();
     }
 
-
-
-
-
-    String relatedGraphQuery = "MATCH path = (n:Class)-[r:SUBCLASSOF|Related]-(parent)\n"+
-            "WHERE n.ontology_name = {0} AND n.iri = {1}\n"+
-            "UNWIND nodes(path) as p\n" +
-            "UNWIND rels(path) as r1\n" +
-            "RETURN {nodes: collect( distinct {iri: p.iri, label: p.label})[0..200], " +
-            "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, label: r1.label, iri: r1.iri}  )[0..200]} as result";
-
-    public Object getGraphJson(String ontologyName, String iri) {
-        return getGraphJson(ontologyName, iri, 1);
-    }
-
-
-    public Object getGraphJson(String ontologyName, String iri, int distance) {
-
-//        Session session = neo4jClient.getSession();
-//
-//        Map<String, Object> paramt = new HashMap<>();
-//        paramt.put("0", ontologyName);
-//        paramt.put("1", iri);
-////        paramt.put("2",distance);
-//        Result res = session.run(relatedGraphQuery, paramt);
-//
-//        return res.next().get("result");
-
-        throw new RuntimeException("not implemented");
-    }
-
-
-
 }
