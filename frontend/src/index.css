@@ -4,12 +4,84 @@
 
 @layer components {
   .button-primary {
-    @apply text-white px-4 py-2 rounded-md bg-link-default border-4 border-link-default shadow-button transition-all ease-linear hover:shadow-button-hover hover:translate-x-1 hover:translate-y-1 active:shadow-button-active active:translate-x-2 active:translate-y-2 disabled:shadow disabled:shadow-link-black disabled:transition-none disabled:translate-x-0 disabled:translate-y-0;
+    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-link-default border-4 border-link-default shadow-button transition-all ease-linear
+    hover:shadow-button-hover
+    hover:translate-x-1
+    hover:translate-y-1
+    active:shadow-button-active
+    active:translate-x-2
+    active:translate-y-2
+    disabled:shadow
+    disabled:shadow-neutral-black
+    disabled:transition-none
+    disabled:translate-x-0
+    disabled:translate-y-0
+    disabled:cursor-not-allowed
+    disabled:m-1;
   }
   .button-secondary {
-    @apply text-link-default px-4 py-2Ø rounded-md bg-white border-4 border-link-default shadow-button transition-all ease-linear hover:shadow-button-hover hover:translate-x-1 hover:translate-y-1 active:shadow-button-active active:translate-x-2 active:translate-y-2 disabled:shadow disabled:shadow-link-black disabled:transition-none disabled:translate-x-0 disabled:translate-y-0;
+    @apply text-link-default px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-white border-4 border-link-default shadow-button transition-all ease-linear
+    hover:shadow-button-hover
+    hover:translate-x-1
+    hover:translate-y-1
+    active:shadow-button-active
+    active:translate-x-2
+    active:translate-y-2
+    disabled:shadow
+    disabled:shadow-neutral-black
+    disabled:transition-none
+    disabled:translate-x-0
+    disabled:translate-y-0
+    disabled:cursor-not-allowed
+    disabled:m-1;
   }
   .button-tertiary {
-    @apply text-white px-4 py-2 rounded-md bg-link-button border-4 border-link-button shadow-button-dark transition-all ease-linear hover:shadow-button-dark-hover hover:translate-x-1 hover:translate-y-1 active:shadow-button-dark-active active:translate-x-2 active:translate-y-2 disabled:shadow disabled:shadow-link-black disabled:transition-none disabled:translate-x-0 disabled:translate-y-0;
+    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-neutral-default border-4 border-neutral-default shadow-button-dark transition-all ease-linear
+    hover:shadow-button-dark-hover
+    hover:translate-x-1
+    hover:translate-y-1
+    active:shadow-button-dark-active
+    active:translate-x-2
+    active:translate-y-2
+    disabled:shadow
+    disabled:shadow-neutral-black
+    disabled:transition-none
+    disabled:translate-x-0
+    disabled:translate-y-0
+    disabled:cursor-not-allowed
+    disabled:m-1;
+  }
+  .input-default {
+    @apply block box-border w-full h-fit bg-white p-2 rounded-md border-2 border-neutral-default
+    hover:shadow-input
+    hover:border-neutral-dark
+    focus:outline-0
+    focus:shadow-input
+    focus:border-neutral-dark
+    focus-visible:outline-0
+    focus-visible:shadow-input
+    focus-visible:border-neutral-dark
+    disabled:bg-neutral-light
+    disabled:cursor-not-allowed;
+  }
+  .link-default {
+    @apply text-link-default cursor-pointer
+    hover:text-link-hover
+    hover:underline
+    visited:text-link-visited;
+  }
+}
+
+@layer utilities {
+  .spinner-default {
+    min-width: 1rem;
+    min-height: 1rem;
+    display: inline-block;
+    border-width: 0.25rem;
+    border-color: rgba(0, 0, 0, 0.05);
+    border-top-color: theme("colors.green.default");
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    border-style: solid;
   }
 }
