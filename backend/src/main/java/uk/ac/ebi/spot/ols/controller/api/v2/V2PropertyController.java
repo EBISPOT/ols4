@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
@@ -25,6 +26,7 @@ import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,6 +98,12 @@ public class V2PropertyController implements
             @PathVariable("property") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
+
+        try {
+            iri = UriUtils.decode(iri, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceNotFoundException();
+        }
 
         V2Property document = propertyRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();

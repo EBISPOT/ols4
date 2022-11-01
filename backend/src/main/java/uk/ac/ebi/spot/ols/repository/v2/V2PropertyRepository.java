@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
@@ -16,6 +17,7 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 @Component

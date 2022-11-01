@@ -101,6 +101,12 @@ public class V2IndividualController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
 
+        try {
+            iri = UriUtils.decode(iri, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceNotFoundException();
+        }
+
         V2Individual document = individualRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
