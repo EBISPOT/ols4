@@ -1,11 +1,6 @@
-import {
-  Autocomplete,
-  CircularProgress,
-  Stack,
-  TextField
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { randomString } from "../../app/util";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 import { getSearchOptions } from "./homeSlice";
@@ -13,7 +8,7 @@ import { getSearchOptions } from "./homeSlice";
 export default function HomeSearchBox() {
   const dispatch = useAppDispatch();
   const results = useAppSelector((state) => state.home.searchResult);
-  const loading = useAppSelector((state) => state.home.loadingSearchResult);
+  // const loading = useAppSelector((state) => state.home.loadingSearchResult);
 
   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
@@ -23,78 +18,59 @@ export default function HomeSearchBox() {
   }, [query]);
 
   return (
-    <Autocomplete
-      id="asynchronous-demo"
-      open={open}
-      onOpen={() => {
-        setOpen(true);
-      }}
-      onClose={() => {
-        setOpen(false);
-      }}
-      // getOptionSelected={(option:OlsSearchResult, value:OlsSearchResult) => option.iri === value.iri}
-      getOptionLabel={(option: Thing) => option.getId()}
-      renderOption={(props, option: Thing) => (
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          //   alignItems="center"
-        >
-          <span>{truncate(option.getName(), 40)}</span>
-          {!(option instanceof Ontology) && (
-            <span
-              style={{
-                backgroundColor: "#1976d2",
-                padding: "0 10px",
-                lineHeight: "1.5",
-                fontSize: ".875rem",
-                color: "#fff",
-                verticalAlign: "middle",
-                whiteSpace: "nowrap",
-                textAlign: "center",
-                borderRadius: "0.6rem",
-                textTransform: "uppercase",
-              }}
-            >
-              {option.getOntologyId()}
-            </span>
-          )}
-        </Stack>
-      )}
-      filterOptions={(x) => x}
-      options={results}
-      loading={loading}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          style={{ backgroundColor: "white" }}
-          label="Search..."
-          variant="outlined"
+    <div className="flex flex-nowrap gap-4 my-2">
+      <div className="relative w-full self-center">
+        <input
+          type="text"
+          placeholder="Search OLS..."
+          className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm"
+          onFocus={() => {
+            setOpen(true);
+          }}
+          onBlur={() => {
+            setOpen(false);
+          }}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
           }}
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <React.Fragment>
-                {loading ? (
-                  <CircularProgress color="inherit" size={20} />
-                ) : null}
-                {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
-          }}
         />
-      )}
-    />
+        <ul
+          id="home-search"
+          className={
+            open
+              ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-50"
+              : "hidden"
+          }
+          aria-labelledby="searchitem"
+        >
+          {results.length == 0 ? (
+            <span className="px-2 py-4 text-lg leading-loose">No options</span>
+          ) : (
+            results.map((option: Thing) => {
+              if (option instanceof Ontology) return null;
+              else
+                return (
+                  <li
+                    key={randomString()}
+                    className="flex justify-between p-2 hover:bg-link-light hover:cursor-pointer"
+                    role="option"
+                  >
+                    <span className="truncate self-center">
+                      {option.getName()}
+                    </span>
+                    <span className="self-center bg-link-default px-3 py-1 rounded-lg text-white uppercase text-right">
+                      {option.getOntologyId()}
+                    </span>
+                  </li>
+                );
+            })
+          )}
+        </ul>
+      </div>
+      <button className="button-primary text-lg font-bold self-center">
+        Search
+      </button>
+    </div>
   );
-}
-
-function truncate(str, len) {
-  if (str.length > len) {
-    return str.substr(0, len) + "...";
-  } else {
-    return str;
-  }
 }

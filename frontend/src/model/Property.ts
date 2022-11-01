@@ -1,15 +1,14 @@
-import asArray from "../asArray";
+import { asArray } from "../app/util";
 import Entity from "./Entity";
 
 export default class Property extends Entity {
+  constructor(properties: any) {
+    super(properties);
+  }
 
-	constructor(properties:any) {
-	    super(properties)
-	}
-    
-	getParents() {
-	    return asArray(this.properties['http://www.w3.org/2000/01/rdf-schema#subPropertyOf'])
-	}
-    
-    
-    }
+  getParents() {
+    return asArray(
+      this.properties["http://www.w3.org/2000/01/rdf-schema#subPropertyOf"]
+    );
+  }
+}

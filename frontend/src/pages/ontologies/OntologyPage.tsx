@@ -42,8 +42,8 @@ export default function OntologyPage(props: { ontologyId: string }) {
               <span className="px-2 text-sm">&gt;</span>
               <span className="font-bold">{ontology!.getName()}</span>
             </div>
-            <div className="bg-gradient-to-r from-grey-1 to-white rounded-lg p-8 mb-4">
-              <div className="text-2xl font-bold text-grey-3 mb-4">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4">
+              <div className="text-2xl font-bold text-neutral-dark mb-4">
                 {ontology!.getName()}
               </div>
               <div>
@@ -114,7 +114,7 @@ export default function OntologyPage(props: { ontologyId: string }) {
               </div>
               <div className="col-span-1">
                 <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-link-rule text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <summary className="p-2 mb-2 border-b-2 border-neutral-light text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
                     Ontology Information
                   </summary>
                   <div className="p-2 break-words space-y-2">

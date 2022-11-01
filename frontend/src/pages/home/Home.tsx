@@ -1,6 +1,6 @@
 import { Theme } from "@mui/material";
 import { createStyles, makeStyles } from "@mui/styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
@@ -14,6 +14,8 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const stats = useAppSelector((state) => state.home.stats);
 
+  const [openList, setOpenList] = useState<boolean>(false);
+
   useEffect(() => {
     dispatch(getStats());
   }, []);
@@ -25,8 +27,8 @@ export default function Home() {
       <main className="container mx-auto h-fit">
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-3">
-            <div className="bg-gradient-to-r from-grey-50 to-grey-1 rounded-lg my-8 p-8">
-              <div className="text-3xl mb-4 text-grey-2 font-bold">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg my-8 p-8">
+              <div className="text-3xl mb-4 text-neutral-default font-bold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="mb-4">
@@ -39,10 +41,10 @@ export default function Home() {
 								}}/> */}
               <div className="grid grid-cols-2">
                 <div>Examples: diabetes, GO:0098743</div>
-                <div className="text-grey-2 text-right">
+                <div className="text-neutral-default text-right">
                   <a
                     href="ontologies"
-                    className="underline underline-offset-4 decoration-dotted"
+                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
                   >
                     Looking for a particular ontology?
                   </a>
@@ -51,11 +53,11 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="px-2 mb-4">
-                <div className="text-2xl mb-3 text-grey-2">
+                <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-browse icon-spacer text-yellow-600" />
                   <a
                     href="about"
-                    className="underline underline-offset-4 decoration-dotted"
+                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
                   >
                     About OLS
                   </a>
@@ -70,11 +72,11 @@ export default function Home() {
                 </p>
               </div>
               <div className="px-2 mb-4">
-                <div className="text-2xl mb-3 text-grey-2">
+                <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-tool icon-spacer text-yellow-600" />
                   <a
                     href="https://www.ebi.ac.uk/spot/ontology/"
-                    className="underline underline-offset-4 decoration-dotted"
+                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
                   >
                     Related Tools
                   </a>
@@ -88,11 +90,11 @@ export default function Home() {
                 </p>
               </div>
               <div className="px-2 mb-4">
-                <div className="text-2xl mb-3 text-grey-2">
+                <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-600" />
                   <a
                     href="https://github.com/EBISPOT/OLS/issues"
-                    className="underline underline-offset-4 decoration-dotted"
+                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
                   >
                     Report an Issue
                   </a>
@@ -107,8 +109,8 @@ export default function Home() {
             </div>
           </div>
           <div className="col-span-1">
-            <div className="bg-gradient-to-r from-grey-1 to-white rounded-lg my-8 p-4">
-              <div className="text-2xl text-grey-2 mb-2">
+            <div className="shadow-card border-b-8 border-link-default rounded-md my-8 p-4">
+              <div className="text-2xl text-neutral-black font-bold mb-3">
                 <i className="icon icon-common icon-analyse-graph icon-spacer" />
                 <span>Data Content</span>
               </div>
