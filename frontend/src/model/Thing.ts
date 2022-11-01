@@ -11,8 +11,8 @@ export default abstract class Thing {
 		return this.properties['id']
 	}
 
-	getUri():string {
-		return this.properties['uri']
+	getIri():string {
+		return this.properties['iri']
 	}
 
 	getType():'ontology'|'class'|'property'|'individual' {
@@ -44,7 +44,7 @@ export default abstract class Thing {
 
 	getName():string {
 	    return this.properties['http://www.w3.org/2000/01/rdf-schema#label']
-			|| this.getUri()
+			|| this.getIri()
 	}
 
 	getDescription():string {

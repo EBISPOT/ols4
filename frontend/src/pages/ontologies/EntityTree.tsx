@@ -3,6 +3,7 @@ import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
 import { useEffect, useState } from "react";
 import { getPaginated } from "../../app/api";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { randomString } from "../../app/util";
 import Spinner from "../../components/Spinner";
 import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
@@ -10,10 +11,10 @@ import extractEntityHierarchy from "./extractEntityHierarchy";
 import { getAncestors, getRootEntities } from "./ontologiesSlice";
 
 interface TreeNode {
-  // the URIs of this node and its ancestors delimited by a ;
+  // the IRIs of this node and its ancestors delimited by a ;
   absoluteIdentity: string;
 
-  uri: string;
+  iri: string;
   title: string;
   expandable: boolean;
 
@@ -42,7 +43,7 @@ export default function EntityTree(props: {
 
   useEffect(() => {
     if (selectedEntity) {
-      let entityUri = selectedEntity.getUri();
+      let entityUri = selectedEntity.getIri();
       dispatch(getAncestors({ ontologyId, entityType, entityUri }));
     } else {
       dispatch(getRootEntities({ ontologyId, entityType }));
@@ -57,10 +58,10 @@ export default function EntityTree(props: {
 
   useEffect(() => {
     setRootNodes(
-      rootEntities.map((entity) => {
+      rootEntities.map((entity: Entity) => {
         return {
-          uri: entity.getUri(),
-          absoluteIdentity: entity.getUri(),
+          iri: entity.getIri(),
+          absoluteIdentity: entity.getIri(),
           title: entity.getName(),
           expandable: entity.hasChildren(),
           entity: entity,
@@ -81,13 +82,13 @@ export default function EntityTree(props: {
     setExpandedNodes(ImmutableSet(newExpandedNodes));
 
     function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
-      let childNodes = uriToChildNodes.get(node.getUri()) || [];
+      let childNodes = uriToChildNodes.get(node.getIri()) || [];
 
       let treeNode: TreeNode = {
         absoluteIdentity: parent
-          ? parent.absoluteIdentity + ";" + node.getUri()
-          : node.getUri(),
-        uri: node.getUri(),
+          ? parent.absoluteIdentity + ";" + node.getIri()
+          : node.getIri(),
+        iri: node.getIri(),
         title: node.getName(),
         expandable: node.hasChildren(),
         entity: node,
@@ -98,7 +99,7 @@ export default function EntityTree(props: {
         childNodes.map((childNode) => createTreeNode(childNode, treeNode))
       );
 
-      if (treeNode.uri !== selectedEntity?.getUri()) {
+      if (treeNode.iri !== selectedEntity?.getIri()) {
         newExpandedNodes.add(treeNode.absoluteIdentity);
       }
 
@@ -115,7 +116,7 @@ export default function EntityTree(props: {
 
       setExpandedNodes(expandedNodes.add(node.absoluteIdentity));
 
-      let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.uri));
+      let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.iri));
 
       let page = await getPaginated<any>(
         `/api/v2/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${doubleEncodedUri}/children?${new URLSearchParams(
@@ -132,8 +133,8 @@ export default function EntityTree(props: {
           node.absoluteIdentity,
           childTerms.map((term) => {
             return {
-              uri: term.getUri(),
-              absoluteIdentity: node.absoluteIdentity + ";" + term.getUri(),
+              iri: term.getIri(),
+              absoluteIdentity: node.absoluteIdentity + ";" + term.getIri(),
               title: term.getName(),
               expandable: term.hasChildren(),
               entity: term,
@@ -157,9 +158,9 @@ export default function EntityTree(props: {
         {rootNodes.map((node, i) => {
           let isLast = i == rootNodes!.length - 1;
           let isExpanded = expandedNodes.has(node.absoluteIdentity);
-          let termUrl = encodeURIComponent(encodeURIComponent(node.uri));
+          let termUrl = encodeURIComponent(encodeURIComponent(node.iri));
           let highlight =
-            (selectedEntity && node.uri === selectedEntity.getUri()) || false;
+            (selectedEntity && node.iri === selectedEntity.getIri()) || false;
           return (
             <TreeNode
               expandable={node.expandable}
@@ -167,6 +168,7 @@ export default function EntityTree(props: {
               highlight={highlight}
               isLast={isLast}
               onClick={() => toggleNode(node)}
+              key={randomString()}
             >
               <Link
                 href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}
@@ -196,9 +198,9 @@ export default function EntityTree(props: {
             "node " + childNode.absoluteIdentity + " expanded " + isExpanded
           );
           let isLast = i == children!.length - 1;
-          let termUrl = encodeURIComponent(encodeURIComponent(childNode.uri));
+          let termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
           let highlight =
-            (selectedEntity && childNode.uri === selectedEntity.getUri()) ||
+            (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
             false;
           return (
             <TreeNode
