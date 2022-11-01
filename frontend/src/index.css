@@ -64,4 +64,24 @@
     disabled:bg-neutral-light
     disabled:cursor-not-allowed;
   }
+  .link-default {
+    @apply text-link-default cursor-pointer
+    hover:text-link-hover
+    hover:underline
+    visited:text-link-visited;
+  }
+}
+
+@layer utilities {
+  .spinner-default {
+    min-width: 1rem;
+    min-height: 1rem;
+    display: inline-block;
+    border-width: 0.25rem;
+    border-color: rgba(0, 0, 0, 0.05);
+    border-top-color: theme("colors.green.default");
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    border-style: solid;
+  }
 }

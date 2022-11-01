@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,css}"],
   theme: {
     extend: {
       colors: {
@@ -144,7 +144,6 @@ module.exports = {
             dark: "#A6093D",
           },
         },
-        "embl-green": "#5e801a",
       },
       boxShadow: {
         button: "8px 8px 0 theme(colors.link.hover), -5px -5px rgba(0,0,0,0)",

@@ -28,7 +28,7 @@ export default function Home() {
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-3">
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg my-8 p-8">
-              <div className="text-3xl mb-4 text-neutral-default font-bold">
+              <div className="text-3xl mb-4 text-neutral-black font-bold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="mb-4">
@@ -40,12 +40,20 @@ export default function Home() {
 										adornedStart: classes.adornedStart
 								}}/> */}
               <div className="grid grid-cols-2">
-                <div>Examples: diabetes, GO:0098743</div>
-                <div className="text-neutral-default text-right">
-                  <a
-                    href="ontologies"
-                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
-                  >
+                <div className="text-neutral-black">
+                  <span>
+                    Examples:&nbsp;
+                    <a href="#" className="link-default">
+                      diabetes
+                    </a>
+                    &#44;&nbsp;
+                    <a href="#" className="link-default">
+                      GO:0098743
+                    </a>
+                  </span>
+                </div>
+                <div className="text-right">
+                  <a href="ontologies" className="link-default">
                     Looking for a particular ontology?
                   </a>
                 </div>
@@ -54,11 +62,8 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-8">
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-browse icon-spacer text-yellow-600" />
-                  <a
-                    href="about"
-                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
-                  >
+                  <i className="icon icon-common icon-browse icon-spacer text-orange-default" />
+                  <a href="about" className="link-default">
                     About OLS
                   </a>
                 </div>
@@ -73,10 +78,10 @@ export default function Home() {
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-tool icon-spacer text-yellow-600" />
+                  <i className="icon icon-common icon-tool icon-spacer text-orange-default" />
                   <a
                     href="https://www.ebi.ac.uk/spot/ontology/"
-                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
+                    className="link-default"
                   >
                     Related Tools
                   </a>
@@ -91,10 +96,10 @@ export default function Home() {
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-600" />
+                  <i className="icon icon-common icon-exclamation-triangle icon-spacer text-orange-default" />
                   <a
                     href="https://github.com/EBISPOT/OLS/issues"
-                    className="text-link-default cursor-pointer hover:text-link-hover hover:underline visited:text-link-visited"
+                    className="link-default"
                   >
                     Report an Issue
                   </a>
@@ -115,7 +120,7 @@ export default function Home() {
                 <span>Data Content</span>
               </div>
               {stats ? (
-                <ul className="list-disc list-inside pl-2">
+                <ul className="list-disc list-inside pl-2 text-neutral-black">
                   <li>
                     {stats.numberOfOntologies.toLocaleString()} ontologies
                   </li>
