@@ -8,6 +8,10 @@ public class PropertyValueURI extends PropertyValue {
         this.uri = uri;
     }
 
+    static public PropertyValueURI fromUri(String uri) {
+        return new PropertyValueURI(uri);
+    }
+
     public String getUri() {
         return this.uri;
     }

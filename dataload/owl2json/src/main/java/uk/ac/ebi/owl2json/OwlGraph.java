@@ -185,6 +185,7 @@ public class OwlGraph implements StreamRDF {
     LabelAnnotator.annotateLabels(this);
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
+    RelatedAnnotator.annotateRelated(this);
 
     }
 
@@ -708,4 +709,15 @@ public class OwlGraph implements StreamRDF {
     }
 
 
+    public OwlNode getNodeForPropertyValue(PropertyValue value) {
+
+        switch(value.getType()) {
+            case URI:
+                return nodes.get( ((PropertyValueURI) value).getUri() );
+            case BNODE:
+                return nodes.get( ((PropertyValueBNode) value).getId() );
+            default:
+                throw new RuntimeException("not a node");
+        }
+    }
 }
