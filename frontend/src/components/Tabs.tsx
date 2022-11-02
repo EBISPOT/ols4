@@ -27,10 +27,10 @@ export function Tabs({
                   e.preventDefault();
                   handleActiveTab(child.props.value);
                 }}
-                className={`text-link-tab border-b-2 border-b-black py-2 px-4 text-lg font-bold disabled:pb-2.5 disabled:text-link-tab disabled:border-b-2 disabled:cursor-not-allowed ${
+                className={`text-neutral-dark border-b-2 border-b-black py-2 px-4 text-lg font-bold disabled:pb-2.5 disabled:text-neutral-dark disabled:border-b-2 disabled:cursor-not-allowed ${
                   child.props.value === activeTab
                     ? "text-link-default border-b-4 border-b-link-default"
-                    : "pb-2.5 hover:pb-2 hover:text-black hover:border-b-4 hover:border-b-link-tab"
+                    : "pb-2.5 hover:pb-2 hover:text-black hover:border-b-4 hover:border-b-neutral-dark"
                 }`}
                 key={child.props.value}
                 disabled={child.props.disabled}

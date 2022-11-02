@@ -15,18 +15,6 @@ code {
   display: inline-block;
 }
 
-.overlay-spinner {
-  width: 75px;
-  height: 75px;
-  display: inline-block;
-  border-width: 2px;
-  border-color: rgba(0, 0, 0, 0.05);
-  border-top-color: #666666;
-  animation: spin 1s infinite linear;
-  border-radius: 100%;
-  border-style: solid;
-}
-
 @keyframes spin {
   100% {
     transform: rotate(360deg);

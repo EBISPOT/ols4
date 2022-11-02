@@ -116,6 +116,10 @@ public class Neo4jClient {
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
 
+		if(!result.hasNext() || result.peek().values().get(0).isNull()) {
+			return new PageImpl<>(List.of(), pageable, count);
+		}
+
 		return new PageImpl<Map<String,Object>>(
 				result.list().stream()
 						.map(r -> (Map<String,Object>) gson.fromJson(r.get(resVar).get("_json").asString(), Map.class))

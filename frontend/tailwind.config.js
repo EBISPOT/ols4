@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,css}"],
   theme: {
     extend: {
       colors: {
@@ -33,9 +33,6 @@ module.exports = {
           900: "#003848",
         },
         grey: {
-          1: "#eaeaea", // neutral light
-          2: "#666666", // neutral default
-          3: "#292929", // neutral dark
           default: "#c3c0ab",
           50: "#edece5",
           100: "#e1dfd5",
@@ -87,30 +84,81 @@ module.exports = {
           800: "#996710",
           900: "#66440a",
         },
+        neutral: {
+          default: "#666666",
+          light: "#eaeaea",
+          dark: "#525252",
+          black: "#292929",
+        },
         link: {
           default: "#00827c", // #3b6fb6
-          black: "#1a1c1a",
-          hover: "#025064", // #193f90
-          visited: "#4974a5", // #73459
-          tab: "#54585a",
-          button: "#707372",
-          rule: "#d8d8d8",
+          light: "#6eaba6",
+          dark: "#155552",
+          hover: "#106462", // #193f90
+          visited: "#2185a9", // #73459
         },
         // other colours
-        "embl-green": "#5e801a",
+        embl: {
+          green: {
+            default: "#18974C",
+            lightest: "#D0DEBB",
+            light: "#6CC24A",
+            dark: "#007B53",
+            darkest: "#0A5032",
+          },
+          grey: {
+            default: "#707372",
+            lightest: "D0D0CE",
+            light: "#A8A99E",
+            dark: "#54585A",
+            darkest: "#373A36",
+          },
+          blue: {
+            default: "#3B6FB6",
+            light: "#8BB8E8",
+            dark: "#193F90",
+          },
+          purple: {
+            default: "#734595",
+            light: "#CBA3D8",
+            dark: "#563D82",
+          },
+          orange: {
+            default: "#F49E17",
+            light: "#EFC06E",
+            dark: "#B65417",
+          },
+          yellow: {
+            default: "#F4C61F",
+            light: "#FDD757",
+            dark: "#FDD757",
+          },
+          lime: {
+            default: "#A1BE1F",
+            light: "#E2E868",
+            dark: "#7FB428",
+          },
+          red: {
+            default: "#D41645",
+            light: "#E58F9E",
+            dark: "#A6093D",
+          },
+        },
       },
       boxShadow: {
-        button: "8px 8px 0 theme('colors.link.hover'), -5px -5px rgba(0,0,0,0)",
+        button: "8px 8px 0 theme(colors.link.hover), -5px -5px rgba(0,0,0,0)",
         "button-hover":
-          "4px 4px 0 theme('colors.link.hover'), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+          "4px 4px 0 theme(colors.link.hover), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
         "button-active":
-          "0px 0px 0 theme('colors.link.hover'), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+          "0px 0px 0 theme(colors.link.hover), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
         "button-dark":
-          "8px 8px 0 theme('colors.link.tab'), -5px -5px rgba(0,0,0,0)",
+          "8px 8px 0 theme(colors.neutral.dark), -5px -5px rgba(0,0,0,0)",
         "button-dark-hover":
-          "4px 4px 0 theme('colors.link.tab'), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+          "4px 4px 0 theme(colors.neutral.dark), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
         "button-dark-active":
-          "0px 0px 0 theme('colors.link.tab'), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+          "0px 0px 0 theme(colors.neutral.dark), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+        card: "0px 2px 6px theme(colors.neutral.dark / 50%)",
+        input: "0 0 0 1px theme(colors.neutral.dark)"
       },
     },
   },
