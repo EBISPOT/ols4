@@ -75,6 +75,13 @@ public class RelatedAnnotator {
 			annotateRelated_Class_subClassOf_ClassExpr_oneOf(classNode, oneOf, graph);
 			return;
 		}
+
+		PropertyValue intersectionOf = fillerClassExpr.properties.getPropertyValue("http://www.w3.org/2002/07/owl#intersectionOf");
+		if(intersectionOf != null)  {
+			// This is an intersectionOf class expression (anonymous conjunction)
+			annotateRelated_Class_subClassOf_ClassExpr_intersectionOf(classNode, intersectionOf, graph);
+			return;
+		}
 	}
 
 	private static void annotateRelated_Class_subClassOf_ClassExpr_oneOf(OwlNode classNode, PropertyValue filler, OwlGraph graph) {
@@ -92,6 +99,24 @@ public class RelatedAnnotator {
 		for(OwlNode individualNode : fillerIndividuals) {
 			classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(individualNode.uri));
 			individualNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
+		}
+	}
+
+	private static void annotateRelated_Class_subClassOf_ClassExpr_intersectionOf(OwlNode classNode, PropertyValue filler, OwlGraph graph) {
+
+		// The filler is an RDF list of Classes
+
+		OwlNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
+
+		List<OwlNode> fillerClasses =
+				RdfListEvaluator.evaluateRdfList(fillerNode, graph)
+						.stream()
+						.map(propertyValue -> graph.nodes.get( ((PropertyValueURI) propertyValue).getUri() ))
+						.collect(Collectors.toList());
+
+		for(OwlNode fillerClassNode : fillerClasses) {
+			classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(fillerClassNode.uri));
+			fillerClassNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
 		}
 	}
 
@@ -155,17 +180,11 @@ public class RelatedAnnotator {
 
 			OwlNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
 
-			// subClassOf (some (oneOf ...))
-
-			PropertyValue oneOf = fillerNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#oneOf");
-			if(oneOf != null)  {
-
-				// evaluate it the same as subClassOf (oneOf ...)
-				// TODO : this ignores the propertyUri
-				//
-				annotateRelated_Class_subClassOf_ClassExpr_oneOf(classNode, oneOf, graph);
-			}
-
+			// Evaluate this e.g. (subClassOf (some (oneOf...)) the same as (subClassOf (oneOf...))
+			// This seems to be what OLS3 does.
+			// (TODO: it ignores the propertyUri; does OLS3 use the property anywhere in this case?)
+			//
+			annotateRelated_Class_subClassOf_ClassExpr(classNode, fillerNode, hierarchicalProperties, ontologyBaseUris, preferredPrefix, graph);
 		}
 
 	}
