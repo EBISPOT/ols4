@@ -12,11 +12,6 @@ import java.util.stream.Collectors;
 
 public class RelatedAnnotator {
 
-	/*
-	 *  Add shortcut annotations for the form   (a subClassOf (some b))
-	 *
-	 */
-
     public static void annotateRelated(OwlGraph graph) {
 
 		Set<String> hierarchicalProperties = HierarchicalParentsAnnotator.getHierarchicalProperties(graph);
