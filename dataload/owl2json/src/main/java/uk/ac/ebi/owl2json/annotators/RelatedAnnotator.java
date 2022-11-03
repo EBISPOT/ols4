@@ -92,8 +92,8 @@ public class RelatedAnnotator {
 						.collect(Collectors.toList());
 
 		for(OwlNode individualNode : fillerIndividuals) {
-			classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(individualNode.uri));
 			individualNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
+			individualNode.properties.addProperty("relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf", PropertyValueURI.fromUri(classNode.uri));
 		}
 	}
 
@@ -110,8 +110,9 @@ public class RelatedAnnotator {
 						.collect(Collectors.toList());
 
 		for(OwlNode fillerClassNode : fillerClasses) {
-			classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(fillerClassNode.uri));
 			fillerClassNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
+			fillerClassNode.properties.addProperty("relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf", PropertyValueURI.fromUri(classNode.uri));
+
 		}
 	}
 
@@ -157,13 +158,8 @@ public class RelatedAnnotator {
 
 					OwlNode fillerNode = graph.nodes.get(fillerUri);
 
-					// = addRelatedChildTerm in OLS3
-					// TODO: check this is the right way around
-					//
 					fillerNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
-//					fillerNode.properties.addProperty("related+"+propertyUri, PropertyValueURI.fromUri(c.uri));
-					classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(fillerUri));
-//					classNode.properties.addProperty("related+"+propertyUri, PropertyValueURI.fromUri(fillerUri));
+					fillerNode.properties.addProperty("relatedTo+" + propertyUri, PropertyValueURI.fromUri(classNode.uri));
 				}
 			}
 
@@ -190,8 +186,8 @@ public class RelatedAnnotator {
 
 		OwlNode individualNode = graph.nodes.get( ((PropertyValueURI) filler).getUri() );
 
-		classNode.properties.addProperty("relatedFrom", PropertyValueURI.fromUri(individualNode.uri));
 		individualNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
+		individualNode.properties.addProperty("relatedTo+" + propertyUri, PropertyValueURI.fromUri(classNode.uri));
 	}
 
 
