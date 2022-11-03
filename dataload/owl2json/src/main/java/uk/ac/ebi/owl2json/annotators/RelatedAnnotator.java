@@ -106,13 +106,16 @@ public class RelatedAnnotator {
 		List<OwlNode> fillerClasses =
 				RdfListEvaluator.evaluateRdfList(fillerNode, graph)
 						.stream()
-						.map(propertyValue -> graph.nodes.get( ((PropertyValueURI) propertyValue).getUri() ))
+						.map(propertyValue -> graph.getNodeForPropertyValue(propertyValue))
 						.collect(Collectors.toList());
 
 		for(OwlNode fillerClassNode : fillerClasses) {
-			fillerClassNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
-			fillerClassNode.properties.addProperty("relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf", PropertyValueURI.fromUri(classNode.uri));
 
+			// Named nodes only. TODO what to do about bnodes in this case?
+			if(fillerClassNode.uri != null) {
+				fillerClassNode.properties.addProperty("relatedTo", PropertyValueURI.fromUri(classNode.uri));
+				fillerClassNode.properties.addProperty("relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf", PropertyValueURI.fromUri(classNode.uri));
+			}
 		}
 	}
 
