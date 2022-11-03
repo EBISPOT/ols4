@@ -16,14 +16,6 @@ public class JSON2Flattened {
 
     static Gson gson = new Gson();
 
-    // Fields that we never want to query, so shouldn't be added to the flattened
-    // objects. We can still access them via the API because they will be stored
-    // in the "_json" string field.
-    // 
-    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "propertyLabels", "classes", "properties", "individuals", "annotationPredicate"
-    );
-
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -190,129 +182,12 @@ public class JSON2Flattened {
         writer.value(gson.toJson(obj));
 
 
-        Map<String,Object> objFlattened = (Map<String,Object>) flatten(obj);
+        Map<String,Object> objFlattened = (Map<String,Object>) Flattener.flatten(obj);
 
         for (String k : objFlattened.keySet()) {
             writer.name(k);
             writeGenericValue(writer, objFlattened.get(k));
         }
-    }
-
-    public static Object flatten(Object obj) {
-
-        if (obj instanceof Collection) {
-            List<Object> flattenedList = new ArrayList<>();
-            for (Object entry : ((Collection<Object>) obj)) {
-                Object flattened = flatten(entry);
-                if(flattened != null)
-                    flattenedList.add(flattened);
-            }
-            return flattenedList;
-        }
-
-        // If this is not a Map {} it's a plain old literal value so we have
-        // nothing to do.
-        // 
-        if (! (obj instanceof Map)) {
-            return obj;
-        }
-
-
-        Map<String, Object> dict = new LinkedHashMap<String,Object>( (Map<String, Object>) obj );
-
-        if (dict.containsKey("value")) {
-
-            if(dict.containsKey("datatype") && !dict.containsKey("lang")) {
-
-                return flatten(dict.get("value"));
-
-            } else {
-
-                Object flattened = flatten(dict.get("value"));
-
-                if(flattened == null)
-                    return null;
-
-                Map<String, Object> res = new LinkedHashMap<>(dict);
-                res.put("value", flattened);
-                return res;
-            }
-
-        } else {
-
-            // This is a class
-
-            return flattenClass(dict);
-            
-        }
-    }
-
-
-    private static Object flattenClass(Map<String, Object> _class) {
-
-        Collection<Object> types = asCollection(_class.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
-
-        if(!types.contains("http://www.w3.org/2002/07/owl#Class")) {
-            throw new RuntimeException("flattenClass called with something that isn't an owl:Class");
-        }
-
-        if(_class.containsKey("iri")) {
-
-            // This Class is a named entity.
-
-        }
-
-        Collection<Object> oneOf = asCollection(_class.get("http://www.w3.org/2002/07/owl#oneOf"));
-
-        if(oneOf != null && oneOf.size() > 0) {
-            return oneOf.stream()
-                        .map(obj -> flatten(obj))
-                        .filter(obj -> obj != null)
-                        .collect(Collectors.toList());
-        }
-
-        Collection<Object> intersectionOf = asCollection(_class.get("http://www.w3.org/2002/07/owl#intersectionOf"));
-
-        if(intersectionOf != null && intersectionOf.size() > 0) {
-            return intersectionOf.stream()
-                        .map(obj -> flatten(obj))
-                        .filter(obj -> obj != null)
-                        .collect(Collectors.toList());
-        }
-
-        Collection<Object> unionOf = asCollection(_class.get("http://www.w3.org/2002/07/owl#unionOf"));
-
-        if(unionOf != null && unionOf.size() > 0) {
-            return unionOf.stream()
-                        .map(obj -> flatten(obj))
-                        .filter(obj -> obj != null)
-                        .collect(Collectors.toList());
-        }
-
-    }
-
-    // Could be: cardinality, complementOf, any others we don't deal with yet...
-    //
-    return null;
-
-        //throw new RuntimeException("Unknown class expression: " + gson.toJson(expr, Map.class));
-    }
-
-
-    public static String objToString(Object obj) {
-        if(obj instanceof String) {
-            return (String)obj;
-        } else {
-            return gson.toJson(obj);
-        }
-    }
-
-    private static Collection<Object> asCollection(Object val) {
-
-        if(val instanceof Collection)
-            return (Collection<Object>) val;
-        else
-            return Arrays.asList(val);
     }
 
     private static void writeGenericValue(JsonWriter writer, Object val) throws IOException {
@@ -348,6 +223,7 @@ public class JSON2Flattened {
         }
 
     }
+
 
 }
 

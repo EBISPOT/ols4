@@ -278,7 +278,7 @@ public class JSON2Solr {
 
     }
 
-    // There are two cases when the object can be a Map {} instead of a literal.
+    // There are 4 cases when the object can be a Map {} instead of a literal.
     //
     //  (1) It's a value with type information { datatype: ..., value: ... }
     //
@@ -287,7 +287,7 @@ public class JSON2Solr {
     //  (3) It's a localization, which is a specific case of (1) where a
     //      language and localized value are provided.
     //
-    //  (4) It's reification { type: Axiom, ....,  value: ... }
+    //  (4) It's reification { type: Axiom|Restriction, ....,  value: ... }
     // 
     // The JSON provided to json2solr has been preprocessed by the flattener,
     // so (1) and (2) have already been evaluated. However, (3) and (4) are up
