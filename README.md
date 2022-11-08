@@ -72,7 +72,7 @@ Alternatively, you can run OLS4 or any of its constituent parts locally, which i
 requirements are as follows:
 1. Java 11. Later versions of Java are probably fine, though the Neo4j we use only works with Java 11. 
 2. Maven 3.x.x
-3. Neo4J 4.4.7 
+3. Neo4J 4.4.x
 4. Solr 9.0.0
 5. Your favourite Git client
 6. Yarn 1.22.X
@@ -106,9 +106,22 @@ Change the directory to $OLS4_HOME.
 
     cd $OLS4_HOME
 
-To load the testcases and start Neo4J, Solr, the backend and the frontend, run:
+To load a testcase and start Neo4J and Solr, run:
 
-    ./teststack.sh
+    ./dev-testing/teststack.sh <rel_configurl> <rel_outdir>
+where `<rel_configurl>` is the a JSON config file, and `<rel_outdir>` the output directory, both relative from 
+$OLS4_HOME, i.e.:
+
+    ./dev-testing/teststack.sh ./testcases/owl2-primer/minimal.json output/
+
+
+Once Neo4J and Solr is up, to start the backend (REST API) you can run:
+
+    ./dev-testing/start-backend.sh
+
+Once the backend is up, you can start the frontend with:
+
+    ./dev-testing/start-frontend.sh
 
 Once you are done testing, to stop everything:
 
