@@ -16,14 +16,6 @@ public class JSON2Flattened {
 
     static Gson gson = new Gson();
 
-    // Fields that we never want to query, so shouldn't be added to the flattened
-    // objects. We can still access them via the API because they will be stored
-    // in the "_json" string field.
-    // 
-    public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-        "propertyLabels", "classes", "properties", "individuals", "annotationPredicate"
-    );
-
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -189,189 +181,13 @@ public class JSON2Flattened {
         writer.name("_json");
         writer.value(gson.toJson(obj));
 
-        for (String k : obj.keySet()) {
 
-            if(DONT_INDEX_FIELDS.contains(k))
-                continue;
+        Map<String,Object> objFlattened = (Map<String,Object>) Flattener.flatten(obj);
 
-            Object v = flatten(obj.get(k));
-            if(v == null) {
-                continue;
-            }
-
+        for (String k : objFlattened.keySet()) {
             writer.name(k);
-            writeGenericValue(writer, v);
+            writeGenericValue(writer, objFlattened.get(k));
         }
-    }
-
-    // There are four cases when the object can be a Map {} instead of a literal.
-    //
-    //  (1) It's a value with type information { datatype: ..., value: ... }
-    //
-    //  (2) It's a class expression
-    //
-    //  (3) It's a localization, which is a specific case of (1) where a
-    //      language and localized value are provided.
-    //
-    //  (4) It's reification { type: Axiom, ....,  value: ... }
-    //
-    // The job of this flattener is to ditch all of the metadata associated with
-    // (1) and (2), leaving just the raw value. The metadata is preserved in a
-    // field called "_json", which stores the entire object prior to flattening,
-    // so the original information can still be returned by the API.
-    //
-    // The reason we ditch it is because it would be problematic in both Neo4j
-    // and Solr: if it's a complex JSON object we can't query the values. So we
-    // want to leave the values and nothing more.
-    //
-    // The reason we don't deal with (3) and (4) is that Neo4j and Solr deal
-    // with them in different ways. Neo4j wants reification info for edge
-    // properties, and both Solr and Neo4j need the localized strings.
-    //
-    //
-    public static Object flatten(Object obj) {
-
-        if (obj instanceof Collection) {
-            List<Object> flattenedList = new ArrayList<>();
-            for (Object entry : ((Collection<Object>) obj)) {
-                Object flattened = flatten(entry);
-                if(flattened != null)
-                    flattenedList.add(flattened);
-            }
-            return flattenedList;
-        }
-
-        // If this is not a Map {} it's a plain old literal value so we have
-        // nothing to do.
-        // 
-        if (! (obj instanceof Map)) {
-            return obj;
-        }
-
-
-        Map<String, Object> dict = new TreeMap<String,Object>( (Map<String, Object>) obj );
-
-        // Does the Map have a field called `value`? If so, it's one of:
-        //
-        // (1) A value with type information { datatype: ..., value: ... }
-        // (3) A localization
-        // (4) Reification
-        //
-        // But it's _not_   (2) A class expression
-        //
-        if (dict.containsKey("value")) {
-
-            if(dict.containsKey("datatype") && !dict.containsKey("lang")) {
-
-                // This is (1) A value with type information.
-                // Just return the value with any metadata discarded.
-
-                return flatten(dict.get("value"));
-
-            } else {
-
-                // This is (3) a localization or (4) reification. We do not
-                // process these in the flattener. However, we still need
-                // to recursively process the value.
-                //  
-                Object flattened = flatten(dict.get("value"));
-
-                if(flattened == null)
-                    return null;
-
-                Map<String, Object> res = new TreeMap<>(dict);
-                res.put("value", flattened);
-                return res;
-            }
-
-        } else {
-
-            // This is (2) A class expression
-            // Let's flatten it!
-
-            return flattenClassExpression(dict);
-            
-        }
-    }
-
-
-    private static Object flattenClassExpression(Map<String, Object> expr) {
-
-        Collection<Object> types = asCollection(expr.get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
-
-        if(types.contains("http://www.w3.org/2002/07/owl#Restriction")) {
-
-            Object hasValue = expr.get("http://www.w3.org/2002/07/owl#hasValue");
-
-            if(hasValue != null) {
-                return flatten(hasValue);
-            }
-
-            Object someValuesFrom = expr.get("http://www.w3.org/2002/07/owl#someValuesFrom");
-
-            if(someValuesFrom != null) {
-                return flatten(someValuesFrom);
-            }
-
-            Object allValuesFrom = expr.get("http://www.w3.org/2002/07/owl#allValuesFrom");
-
-            if(allValuesFrom != null) {
-                return flatten(allValuesFrom);
-            }
-
-        } else if(types.contains("http://www.w3.org/2002/07/owl#Class")) {
-
-            Collection<Object> oneOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#oneOf"));
-
-            if(oneOf != null && oneOf.size() > 0) {
-                return oneOf.stream()
-                            .map(obj -> flatten(obj))
-                            .filter(obj -> obj != null)
-                            .collect(Collectors.toList());
-            }
-
-            Collection<Object> intersectionOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#intersectionOf"));
-
-            if(intersectionOf != null && intersectionOf.size() > 0) {
-                return intersectionOf.stream()
-                            .map(obj -> flatten(obj))
-                            .filter(obj -> obj != null)
-                            .collect(Collectors.toList());
-            }
-
-            Collection<Object> unionOf = asCollection(expr.get("http://www.w3.org/2002/07/owl#unionOf"));
-
-            if(unionOf != null && unionOf.size() > 0) {
-                return unionOf.stream()
-                            .map(obj -> flatten(obj))
-                            .filter(obj -> obj != null)
-                            .collect(Collectors.toList());
-            }
-
-        }
-
-        // Could be: cardinality, complementOf, any others we don't deal with yet...
-        //
-        return null;
-
-        //throw new RuntimeException("Unknown class expression: " + gson.toJson(expr, Map.class));
-    }
-
-
-    public static String objToString(Object obj) {
-        if(obj instanceof String) {
-            return (String)obj;
-        } else {
-            return gson.toJson(obj);
-        }
-    }
-
-    private static Collection<Object> asCollection(Object val) {
-
-        if(val instanceof Collection)
-            return (Collection<Object>) val;
-        else
-            return Arrays.asList(val);
     }
 
     private static void writeGenericValue(JsonWriter writer, Object val) throws IOException {
@@ -407,6 +223,7 @@ public class JSON2Flattened {
         }
 
     }
+
 
 }
 

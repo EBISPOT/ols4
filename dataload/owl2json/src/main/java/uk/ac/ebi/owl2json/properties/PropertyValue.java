@@ -1,6 +1,8 @@
 package uk.ac.ebi.owl2json.properties;
 
 import org.apache.jena.graph.Node;
+import uk.ac.ebi.owl2json.OwlGraph;
+import uk.ac.ebi.owl2json.OwlNode;
 
 public abstract class PropertyValue {
 
@@ -34,5 +36,6 @@ public abstract class PropertyValue {
 
     public abstract Type getType();
     public abstract boolean equals(PropertyValue other);
+
 }
 

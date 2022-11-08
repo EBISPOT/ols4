@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-TEST_CONFIGS=$(find testcases | grep json)
-#TEST_CONFIGS=./testcases/hierarchical-properties/config.json
+#TEST_CONFIGS=$(find testcases | grep json)
+TEST_CONFIGS=./dataload/configs/fbbt.json
 
 rm -rf testcases_output/*
 mkdir testcases_output

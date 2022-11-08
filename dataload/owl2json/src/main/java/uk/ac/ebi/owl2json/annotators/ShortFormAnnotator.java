@@ -6,6 +6,8 @@ import java.util.Set;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlGraph;
+import uk.ac.ebi.owl2json.annotators.helpers.OntologyBaseUris;
+import uk.ac.ebi.owl2json.annotators.helpers.ShortFormExtractor;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 public class ShortFormAnnotator {
@@ -14,25 +16,8 @@ public class ShortFormAnnotator {
 
 		long startTime3 = System.nanoTime();
 
-
-		Set<String> ontologyBaseUris = new HashSet<String>();
-
-
-
-		Object configBaseUris = graph.config.get("baseUris");
-
-		if(configBaseUris instanceof Collection<?>) {
-			ontologyBaseUris.addAll((Collection<String>) configBaseUris);
-		}
-
-
-
+		Set<String> ontologyBaseUris = OntologyBaseUris.getOntologyBaseUris(graph);
 		String preferredPrefix = (String)graph.config.get("preferredPrefix");
-
-		if(preferredPrefix != null) {
-			ontologyBaseUris.add("http://purl.obolibrary.org/obo/" + preferredPrefix + "_");
-		}
-
 
 		for(String id : graph.nodes.keySet()) {
 		    OwlNode c = graph.nodes.get(id);
@@ -47,7 +32,7 @@ public class ShortFormAnnotator {
 			c.properties.addProperty(
 				"shortForm",
 					PropertyValueLiteral.fromString(
-						getShortForm(graph, ontologyBaseUris, preferredPrefix, c)
+						ShortFormExtractor.extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri)
 					));
 		    }
 		}
@@ -58,34 +43,4 @@ public class ShortFormAnnotator {
 	}
 	
 
-	private static String getShortForm(OwlGraph graph, Set<String> ontologyBaseUris, String preferredPrefix, OwlNode node) {
-
-		String uri = node.uri;
-
-		if(uri.startsWith("urn:")) {
-			return uri.substring(4);
-		}
-
-		if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
-			return uri.substring("http://purl.obolibrary.org/obo/".length());
-		}
-
-		for (String baseUri :ontologyBaseUris) {
-			if (uri.startsWith(baseUri) && preferredPrefix != null) {
-			    return preferredPrefix + "_" + uri.substring(baseUri.length());
-			}
-		    }
-	
-		int lastHash = uri.lastIndexOf('#');
-		if(lastHash != -1) {
-			return uri.substring(lastHash + 1);
-		}
-	
-		int lastSlash = uri.lastIndexOf('/');
-		if(lastSlash != -1) {
-			return uri.substring(lastSlash + 1);
-		}
-
-		return uri;
-	}
 }

@@ -1,8 +1,10 @@
 package uk.ac.ebi.owl2json;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.google.gson.stream.JsonWriter;
 
 import uk.ac.ebi.owl2json.annotators.*;
+import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
 
 import org.apache.jena.riot.Lang;
@@ -185,6 +187,7 @@ public class OwlGraph implements StreamRDF {
     LabelAnnotator.annotateLabels(this);
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
+    RelatedAnnotator.annotateRelated(this);
 
     }
 
@@ -286,19 +289,8 @@ public class OwlGraph implements StreamRDF {
 
             writer.beginArray();
 
-            for(OwlNode cur = c;;) {
-
-                PropertyValue first = cur.properties.getPropertyValue("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
-                writePropertyValue(writer, first, null);
-
-                PropertyValue rest = cur.properties.getPropertyValue("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
-
-                if(rest.getType() == PropertyValue.Type.URI &&
-                        ((PropertyValueURI) rest).getUri().equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")) {
-                    break;
-                }
-
-                cur = nodes.get(nodeIdFromPropertyValue(rest));
+            for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(c, this)) {
+                writePropertyValue(writer, listEntry, null);
             }
 
             writer.endArray();
@@ -708,4 +700,15 @@ public class OwlGraph implements StreamRDF {
     }
 
 
+    public OwlNode getNodeForPropertyValue(PropertyValue value) {
+
+        switch(value.getType()) {
+            case URI:
+                return nodes.get( ((PropertyValueURI) value).getUri() );
+            case BNODE:
+                return nodes.get( ((PropertyValueBNode) value).getId() );
+            default:
+                throw new RuntimeException("not a node");
+        }
+    }
 }
