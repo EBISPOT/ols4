@@ -1,15 +1,37 @@
-import Thing from "./Thing"
+import { asArray } from "../app/util";
+import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
+  constructor(properties: any) {
+    super(properties);
+  }
 
-	constructor(properties:any) {
-		super(properties)
-	}
+  abstract getParents(): any[];
 
+  hasChildren(): boolean {
+    return this.properties["hasChildren"] === "true";
+  }
 
-	hasChildren():boolean {
-	    return this.properties['hasChildren'] === "true"
-	}
+  getSynonyms() {
+    return asArray(this.properties["synonym"]);
+  }
 
-	abstract getParents():any[]
+  getXRefs() {
+    return asArray(
+      this.properties["http://www.geneontology.org/formats/oboInOwl#hasDbXref"]
+    );
+  }
+
+  getAnnotationPredicate() {
+    return asArray(this.properties["annotationPredicate"]);
+  }
+
+  getPropertyLabel(id: string) {
+    const propertyLabels = this.properties["propertyLabels"];
+    return propertyLabels[id];
+  }
+
+  getAnnotationById(id: string) {
+    return asArray(this.properties[id]);
+  }
 }

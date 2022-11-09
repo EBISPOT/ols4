@@ -209,6 +209,7 @@ export default function EntityTree(props: {
               highlight={highlight}
               isLast={isLast}
               onClick={() => toggleNode(childNode)}
+              key={randomString()}
             >
               {/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
               <Link

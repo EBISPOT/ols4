@@ -34,8 +34,13 @@ export default function OntologyPage(props: { ontologyId: string }) {
         {ontology ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <span className="underline underline-offset-1">
-                <Link color="inherit" component={RouterLink} to="/ontologies">
+              <span className="link-default">
+                <Link
+                  color="inherit"
+                  style={{ textDecoration: "inherit" }}
+                  component={RouterLink}
+                  to="/ontologies"
+                >
                   Ontologies
                 </Link>
               </span>
@@ -80,7 +85,7 @@ export default function OntologyPage(props: { ontologyId: string }) {
                     disabled={ontology!.getNumIndividuals() <= 0}
                   />
                 </Tabs>
-                <div className="p-2 mb-1">
+                <div className="py-2 mb-1">
                   <Tooltip title="Tree view" placement="top">
                     <button
                       className={`button-primary font-bold mr-3 ${
