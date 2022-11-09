@@ -34,16 +34,21 @@ export default function OntologyPage(props: { ontologyId: string }) {
         {ontology ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <span className="underline underline-offset-1">
-                <Link color="inherit" component={RouterLink} to="/ontologies">
+              <span className="link-default">
+                <Link
+                  color="inherit"
+                  style={{ textDecoration: "inherit" }}
+                  component={RouterLink}
+                  to="/ontologies"
+                >
                   Ontologies
                 </Link>
               </span>
               <span className="px-2 text-sm">&gt;</span>
               <span className="font-bold">{ontology!.getName()}</span>
             </div>
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4">
-              <div className="text-2xl font-bold text-neutral-dark mb-4">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+              <div className="text-2xl font-bold mb-4">
                 {ontology!.getName()}
               </div>
               <div>
@@ -80,7 +85,7 @@ export default function OntologyPage(props: { ontologyId: string }) {
                     disabled={ontology!.getNumIndividuals() <= 0}
                   />
                 </Tabs>
-                <div className="p-2 mb-1">
+                <div className="py-2 mb-1">
                   <Tooltip title="Tree view" placement="top">
                     <button
                       className={`button-primary font-bold mr-3 ${
@@ -114,13 +119,13 @@ export default function OntologyPage(props: { ontologyId: string }) {
               </div>
               <div className="col-span-1">
                 <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-neutral-light text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
                     Ontology Information
                   </summary>
                   <div className="p-2 break-words space-y-2">
                     <div>
                       <span className="font-bold">Ontology IRI: </span>
-                      {ontology.getUri() || ontology.getOntologyPurl()}
+                      {ontology.getIri() || ontology.getOntologyPurl()}
                     </div>
                     <div>
                       <span className="font-bold">Version IRI: </span>

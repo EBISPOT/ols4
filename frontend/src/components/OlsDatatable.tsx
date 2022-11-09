@@ -1,6 +1,7 @@
 import Search from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
 import TablePagination from "@mui/material/TablePagination";
+import { randomString } from "../app/util";
 import Thing from "../model/Thing";
 
 export interface Column {
@@ -88,7 +89,7 @@ export default function OlsDatatable({
       <div className="m-6">
         <table className="border-collapse border-spacing-1">
           <thead>
-            <tr className="border-b-2 border-grey-300">
+            <tr key={randomString()} className="border-b-2 border-grey-default">
               {columns.map((column) => (
                 <td
                   className="text-lg text-left font-bold py-2 px-4"
@@ -104,7 +105,7 @@ export default function OlsDatatable({
               return (
                 <tr
                   tabIndex={-1}
-                  key={row.getUri()}
+                  key={randomString()}
                   onClick={() => {
                     onSelectRow(row);
                   }}

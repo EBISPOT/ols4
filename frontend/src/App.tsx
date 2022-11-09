@@ -31,13 +31,13 @@ class App extends React.Component {
 
           <Route
             exact
-            path={`/ontologies/:id/classes/:uri`}
+            path={`/ontologies/:id/classes/:iri`}
             component={(props: any) => (
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="classes"
                 entityUri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.uri)
+                  decodeURIComponent(props.match.params.iri)
                 )}
               />
             )}
@@ -45,13 +45,13 @@ class App extends React.Component {
 
           <Route
             exact
-            path={`/ontologies/:id/properties/:uri`}
+            path={`/ontologies/:id/properties/:iri`}
             component={(props: any) => (
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="properties"
                 entityUri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.uri)
+                  decodeURIComponent(props.match.params.iri)
                 )}
               />
             )}
@@ -59,13 +59,13 @@ class App extends React.Component {
 
           <Route
             exact
-            path={`/ontologies/:id/individuals/:uri`}
+            path={`/ontologies/:id/individuals/:iri`}
             component={(props: any) => (
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="individuals"
                 entityUri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.uri)
+                  decodeURIComponent(props.match.params.iri)
                 )}
               />
             )}

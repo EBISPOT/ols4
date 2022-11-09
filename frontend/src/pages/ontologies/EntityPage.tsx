@@ -1,18 +1,12 @@
 import { AccountTree, Share } from "@mui/icons-material";
-import {
-  Box,
-  Breadcrumbs,
-  Button,
-  ButtonGroup,
-  Link,
-  Tooltip,
-  Typography
-} from "@mui/material";
-import { Fragment, useEffect, useState } from "react";
+import { Link, Tooltip } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { randomString } from "../../app/util";
 import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
+import Class from "../../model/Class";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
@@ -34,102 +28,197 @@ export default function EntityPage(props: {
     dispatch(getEntity({ ontologyId, entityType, entityUri }));
   }, []);
 
-  return (
-    <Fragment>
-      <Header section="ontologies" />
-      <main className="container mx-auto">{renderTermPage()}</main>
-    </Fragment>
-  );
-
-  function renderTermPage() {
-    if (!ontology || !entity) {
-      return <Spinner />;
-    }
-
-    document.title = entity.getName();
-    return (
-      <Fragment>
-        <Breadcrumbs>
-          <Link color="inherit" component={RouterLink} to="/ontologies">
-            Ontologies
-          </Link>
-          <Link
-            color="inherit"
-            component={RouterLink}
-            to={"/ontologies/" + ontologyId}
-          >
-            {ontology.getName()}
-          </Link>
-          <Typography color="textPrimary">
-            {
-              {
-                class: "Classes",
-                property: "Properties",
-                individual: "Individuals",
-              }[entity.getType()]
-            }
-          </Typography>
-          <Typography color="textPrimary">{entity.getName()}</Typography>
-        </Breadcrumbs>
-
-        <h1>{entity!.getName()}</h1>
-
-        <Box>
-          <p>{entity!.getDescription()}</p>
-        </Box>
-        <br />
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group"
-        >
-          <Tooltip title="Tree view" placement="top">
-            <Button
-              variant={viewMode === "tree" ? "contained" : "outlined"}
-              onClick={() => setViewMode("tree")}
-            >
-              <AccountTree />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Graph view" placement="top">
-            <Button
-              variant={viewMode === "graph" ? "contained" : "outlined"}
-              onClick={() => setViewMode("graph")}
-            >
-              <Share />
-            </Button>
-          </Tooltip>
-        </ButtonGroup>
-
-        <br />
-
-        <Box py={2}>
-          {viewMode === "tree" ? (
-            <EntityTree
-              ontologyId={ontologyId}
-              entityType={
-                {
-                  class: "classes",
-                  property: "properties",
-                  individual: "individuals",
-                }[entity.getType()]
-              }
-              selectedEntity={entity}
-            />
-          ) : (
-            <EntityGraph
-              ontologyId={ontologyId}
-              entityType={
-                {
-                  class: "classes",
-                  property: "properties",
-                  individual: "individuals",
-                }[entity.getType()]
-              }
-              selectedEntity={entity}
-            />
-          )}
-        </Box>
-      </Fragment>
-    );
+  if (!ontology || !entity) {
+    return <Spinner />;
   }
+  document.title = entity.getName();
+  return (
+    <div>
+      <Header section="ontologies" />
+      <main className="container mx-auto">
+        <div className="my-8 mx-2">
+          <div className="px-2 mb-4">
+            <span className="link-default">
+              <Link
+                color="inherit"
+                style={{ textDecoration: "inherit" }}
+                component={RouterLink}
+                to="/ontologies"
+              >
+                Ontologies
+              </Link>
+            </span>
+            <span className="px-2 text-sm">&gt;</span>
+            <span className="link-default">
+              <Link
+                color="inherit"
+                style={{ textDecoration: "inherit" }}
+                component={RouterLink}
+                to={"/ontologies/" + ontologyId}
+              >
+                {ontology.getName()}
+              </Link>
+            </span>
+            <span className="px-2 text-sm">&gt;</span>
+            <span className="capitalize">{entity!.getType()}</span>
+            <span className="px-2 text-sm">&gt;</span>
+            <span className="font-bold">{entity!.getName()}</span>
+          </div>
+          <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+            <div className="text-2xl font-bold mb-4">{entity!.getName()}</div>
+            <div>
+              <p>{entity!.getDescription()}</p>
+            </div>
+            {entity!.getSynonyms() && entity.getSynonyms().length !== 0 ? (
+              <div>
+                <div className="font-bold my-4">Synonym</div>
+                {entity.getSynonyms().map((synonym) => {
+                  return (
+                    <span
+                      key={randomString()}
+                      className="bg-grey-default rounded-sm font-mono p-1 mr-2 text-sm"
+                    >
+                      {synonym}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
+          <div className="grid grid-cols-3 gap-8">
+            <div className="col-span-2">
+              <div className="p-2 mb-1">
+                <Tooltip title="Tree view" placement="top">
+                  <button
+                    className={`button-primary font-bold mr-3 ${
+                      viewMode === "tree"
+                        ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                        : ""
+                    }`}
+                    onClick={() => setViewMode("tree")}
+                  >
+                    <AccountTree fontSize="small" />
+                  </button>
+                </Tooltip>
+                <Tooltip title="List view" placement="top">
+                  <button
+                    className={`button-primary font-bold ${
+                      viewMode === "graph"
+                        ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                        : ""
+                    }`}
+                    onClick={() => setViewMode("graph")}
+                  >
+                    <Share fontSize="small" />
+                  </button>
+                </Tooltip>
+              </div>
+              {viewMode === "graph" ? (
+                <EntityGraph
+                  ontologyId={ontologyId}
+                  entityType={
+                    {
+                      class: "classes",
+                      property: "properties",
+                      individual: "individuals",
+                    }[entity.getType()]
+                  }
+                  selectedEntity={entity}
+                />
+              ) : (
+                <EntityTree
+                  ontologyId={ontologyId}
+                  entityType={
+                    {
+                      class: "classes",
+                      property: "properties",
+                      individual: "individuals",
+                    }[entity.getType()]
+                  }
+                  selectedEntity={entity}
+                />
+              )}
+            </div>
+            <div className="col-span-1">
+              <details open className="p-2">
+                <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <span className="capitalize">
+                    {entity!.getType()} Information
+                  </span>
+                </summary>
+                <div className="py-2 break-words space-y-2">
+                  {entity!.getAnnotationPredicate() &&
+                  entity.getAnnotationPredicate().length !== 0
+                    ? entity
+                        .getAnnotationPredicate()
+                        .map((annotationPredicate) => {
+                          return (
+                            <div>
+                              <div className="font-bold capitalize">
+                                {entity.getPropertyLabel(annotationPredicate)
+                                  ? entity
+                                      .getPropertyLabel(annotationPredicate)
+                                      .replaceAll("_", " ")
+                                  : annotationPredicate
+                                      .substring(
+                                        annotationPredicate.lastIndexOf("/") + 1
+                                      )
+                                      .substring(
+                                        annotationPredicate.lastIndexOf("#") + 1
+                                      )
+                                      .replaceAll("_", " ")}
+                              </div>
+                              <ul className="list-disc list-inside">
+                                {entity
+                                  .getAnnotationById(annotationPredicate)
+                                  .map((annotation: any) => {
+                                    if (
+                                      typeof annotation === "object" &&
+                                      annotation !== null
+                                    ) {
+                                      return (
+                                        <li key={randomString()}>
+                                          {annotation.value}
+                                        </li>
+                                      );
+                                    }
+                                    return (
+                                      <li key={randomString()}>{annotation}</li>
+                                    );
+                                  })}
+                              </ul>
+                            </div>
+                          );
+                        })
+                    : null}
+                </div>
+              </details>
+              <details open className="p-2">
+                <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <span className="capitalize">
+                    {entity!.getType()} Relations
+                  </span>
+                </summary>
+                <div className="py-2 break-words space-y-2">
+                  {entity instanceof Class ? (
+                    <div>
+                      <div className="font-bold">Subclass of</div>
+                      <ul className="list-disc list-inside">
+                        {entity.getParents().map((parent) => {
+                          if (typeof parent === "object" && parent !== null) {
+                            return <li key={randomString()}>{parent.value}</li>;
+                          }
+                          return <li key={randomString()}>{parent}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 }

@@ -21,7 +21,7 @@ export default function extractEntityHierarchy(
 	let uriToParentNodes: Multimap<string, Entity> = new Multimap()
 
 	for (let entity of entities) {
-		uriToNode.set(entity.getUri(), entity)
+		uriToNode.set(entity.getIri(), entity)
 	}
 
 	for (let entity of entities) {
@@ -34,13 +34,13 @@ export default function extractEntityHierarchy(
 
 		for (let parent of parents) {
 			assert(parent)
-			uriToChildNodes.set(parent.getUri(), entity)
-			uriToParentNodes.set(entity.getUri(), parent)
+			uriToChildNodes.set(parent.getIri(), entity)
+			uriToParentNodes.set(entity.getIri(), parent)
 		}
 	}
 
 	let rootEntities = entities.filter((node) => {
-		return (uriToParentNodes.get(node.getUri()) || []).length === 0
+		return (uriToParentNodes.get(node.getIri()) || []).length === 0
 	})
 
 	return { rootEntities, uriToChildNodes }

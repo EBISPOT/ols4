@@ -24,7 +24,7 @@ export default function EntityGraph(props: {
 
   useEffect(() => {
     if (selectedEntity) {
-      let entityUri = selectedEntity.getUri();
+      let entityUri = selectedEntity.getIri();
       dispatch(getAncestors({ ontologyId, entityType, entityUri }));
     } else {
       dispatch(getRootEntities({ ontologyId, entityType }));
@@ -53,7 +53,7 @@ export default function EntityGraph(props: {
     let nodes: any[] = entities.map((entity) => {
       return {
         data: {
-          id: entity.getUri(),
+          id: entity.getIri(),
           label: entity.getName(),
           position: {
             x: 50,
@@ -70,7 +70,7 @@ export default function EntityGraph(props: {
         edges.push({
           data: {
             source: parentUri,
-            target: childEntity.getUri(),
+            target: childEntity.getIri(),
             label: "parent",
           },
         });

@@ -1,9 +1,10 @@
 export function asArray<T>(obj: T | T[]): T[] {
   if (Array.isArray(obj)) {
     return obj;
-  } else {
+  } else if (obj) {
     return [obj];
   }
+  return []
 }
 
 export function randomString() {
