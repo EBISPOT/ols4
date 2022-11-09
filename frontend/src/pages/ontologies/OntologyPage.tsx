@@ -125,29 +125,32 @@ export default function OntologyPage(props: { ontologyId: string }) {
                   <div className="p-2 break-words space-y-2">
                     <div>
                       <span className="font-bold">Ontology IRI: </span>
-                      {ontology.getIri() || ontology.getOntologyPurl()}
+                        <a id="ontologyIri" href={ontology.getIri() || ontology.getOntologyPurl()}>
+                            {ontology.getIri() || ontology.getOntologyPurl()}</a>
                     </div>
                     <div>
                       <span className="font-bold">Version IRI: </span>
-                      {ontology.getVersionIri()}
+                        <a id="versionIri" href={ontology.getVersionIri()}>{ontology.getVersionIri()}</a>
                     </div>
                     <div>
                       <span className="font-bold">Ontology ID: </span>
-                      {ontology.getOntologyId()}
+                      <span id="ontologyId">{ontology.getOntologyId()}</span>
                     </div>
                     <div>
                       <span className="font-bold">Version: </span>
-                      {ontology.getVersion()}
+                      <span id="version">{ontology.getVersion()}</span>
                     </div>
                     <div>
                       <span className="font-bold">Number of terms: </span>
-                      {ontology.getNumEntities()}
+                      <span id="numberOfEntities">{ontology.getNumEntities()}</span>
                     </div>
                     <div>
                       <span className="font-bold">Last loaded: </span>
-                      {moment(ontology.getLoaded()).format(
-                        "D MMM YYYY ddd HH:mm:SSZ"
-                      )}
+                      <span id='lastLoaded'>
+                          {moment(ontology.getLoaded()).format(
+                            "D MMM YYYY ddd HH:mm:SSZ"
+                          )}
+                      </span>
                     </div>
                   </div>
                 </details>
