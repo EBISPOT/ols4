@@ -4,7 +4,7 @@ export function asArray<T>(obj: T | T[]): T[] {
   } else if (obj) {
     return [obj];
   }
-  return []
+  return [];
 }
 
 export function randomString() {

@@ -8,16 +8,25 @@ export interface OntologiesState {
   ontology: Ontology | undefined;
   entity: Entity | undefined;
   ancestors: Entity[];
+  nodeChildren: Map<String, TreeNode[]>;
   rootEntities: Entity[];
   ontologies: Ontology[];
   loadingOntologies: boolean;
   entities: Entity[];
   loadingEntities: boolean;
 }
+export interface TreeNode {
+  absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
+  iri: string;
+  title: string;
+  expandable: boolean;
+  entity: Entity;
+}
 const initialState: OntologiesState = {
   ontology: undefined,
   entity: undefined,
   ancestors: [],
+  nodeChildren: new Map<String, TreeNode[]>(),
   rootEntities: [],
   ontologies: [],
   loadingOntologies: false,
@@ -28,17 +37,19 @@ const initialState: OntologiesState = {
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
   async (ontologyId: string) => {
-    let ontologyProperties = await get<any>(`/api/v2/ontologies/${ontologyId}`);
+    const ontologyProperties = await get<any>(
+      `/api/v2/ontologies/${ontologyId}`
+    );
     return new Ontology(ontologyProperties);
   }
 );
 export const getEntity = createAsyncThunk(
   "ontologies_entity",
-  async ({ ontologyId, entityType, entityUri }: any) => {
-    let doubleEncodedTermUri = encodeURIComponent(
-      encodeURIComponent(entityUri)
+  async ({ ontologyId, entityType, entityIri }: any) => {
+    const doubleEncodedTermUri = encodeURIComponent(
+      encodeURIComponent(entityIri)
     );
-    let termProperties = await get<any>(
+    const termProperties = await get<any>(
       `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
     );
     return thingFromProperties(termProperties);
@@ -78,9 +89,9 @@ export const getEntities = createAsyncThunk(
 );
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
-  async ({ ontologyId, entityType, entityUri }: any) => {
-    let doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityUri));
-    let ancestorsPage = await getPaginated<any>(
+  async ({ ontologyId, entityType, entityIri }: any) => {
+    const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    const ancestorsPage = await getPaginated<any>(
       `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
         { size: "100" }
       )}`
@@ -88,10 +99,44 @@ export const getAncestors = createAsyncThunk(
     return ancestorsPage.elements.map((obj) => thingFromProperties(obj));
   }
 );
+export const getNodeChildren = createAsyncThunk(
+  "ontologies_node_children",
+  async ({
+    ontologyId,
+    entityTypePlural,
+    entityIri,
+    absoluteIdentity,
+  }: any) => {
+    const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    const childrenPage = await getPaginated<any>(
+      `/api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
+        {
+          size: "100",
+        }
+      )}`
+    );
+    return new Map([
+      [
+        absoluteIdentity,
+        childrenPage.elements
+          .map((obj) => thingFromProperties(obj))
+          .map((term) => {
+            return {
+              iri: term.getIri(),
+              absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
+              title: term.getName(),
+              expandable: term.hasChildren(),
+              entity: term,
+            };
+          }),
+      ],
+    ]);
+  }
+);
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
   async ({ ontologyId, entityType }: any) => {
-    let rootsPage = await getPaginated<any>(
+    const rootsPage = await getPaginated<any>(
       `/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
         isRoot: "true",
         size: "100",
@@ -122,6 +167,15 @@ const ontologiesSlice = createSlice({
       getAncestors.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
         state.ancestors = action.payload;
+      }
+    );
+    builder.addCase(
+      getNodeChildren.fulfilled,
+      (
+        state: OntologiesState,
+        action: PayloadAction<Map<String, TreeNode[]>>
+      ) => {
+        state.nodeChildren = action.payload;
       }
     );
     builder.addCase(

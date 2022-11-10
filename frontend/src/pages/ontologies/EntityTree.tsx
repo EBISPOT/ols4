@@ -1,25 +1,17 @@
 import { Link } from "@mui/material";
 import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
 import { useEffect, useState } from "react";
-import { getPaginated } from "../../app/api";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import Spinner from "../../components/Spinner";
 import Entity from "../../model/Entity";
-import { thingFromProperties } from "../../model/fromProperties";
 import extractEntityHierarchy from "./extractEntityHierarchy";
-import { getAncestors, getRootEntities } from "./ontologiesSlice";
-
-interface TreeNode {
-  // the IRIs of this node and its ancestors delimited by a ;
-  absoluteIdentity: string;
-
-  iri: string;
-  title: string;
-  expandable: boolean;
-
-  entity: Entity;
-}
+import {
+  getAncestors,
+  getNodeChildren,
+  getRootEntities,
+  TreeNode
+} from "./ontologiesSlice";
 
 export default function EntityTree(props: {
   ontologyId: string;
@@ -28,23 +20,24 @@ export default function EntityTree(props: {
 }) {
   const dispatch = useAppDispatch();
   const ancestors = useAppSelector((state) => state.ontologies.ancestors);
+  const children = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
 
-  let { ontologyId, entityType, selectedEntity } = props;
+  const { ontologyId, entityType, selectedEntity } = props;
 
-  let [rootNodes, setRootNodes] = useState<TreeNode[]>();
-  let [nodeChildren, setNodeChildren] = useState<
+  const [rootNodes, setRootNodes] = useState<TreeNode[]>();
+  const [nodeChildren, setNodeChildren] = useState<
     ImmutableMap<String, TreeNode[]>
   >(ImmutableMap());
 
-  let [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
+  const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
     ImmutableSet()
   );
 
   useEffect(() => {
     if (selectedEntity) {
-      let entityUri = selectedEntity.getIri();
-      dispatch(getAncestors({ ontologyId, entityType, entityUri }));
+      const entityIri = selectedEntity.getIri();
+      dispatch(getAncestors({ ontologyId, entityType, entityIri }));
     } else {
       dispatch(getRootEntities({ ontologyId, entityType }));
     }
@@ -55,6 +48,10 @@ export default function EntityTree(props: {
       populateTreeFromEntities([selectedEntity, ...ancestors]);
     }
   }, [ancestors]);
+
+  useEffect(() => {
+    setNodeChildren(nodeChildren.merge(children));
+  }, [children]);
 
   useEffect(() => {
     setRootNodes(
@@ -71,10 +68,10 @@ export default function EntityTree(props: {
   }, [rootEntities]);
 
   function populateTreeFromEntities(entities: Entity[]) {
-    let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities);
+    const { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities);
 
-    let newNodeChildren = new Map<String, TreeNode[]>();
-    let newExpandedNodes = new Set<String>();
+    const newNodeChildren = new Map<String, TreeNode[]>();
+    const newExpandedNodes = new Set<String>();
 
     setRootNodes(rootEntities.map((rootEntity) => createTreeNode(rootEntity)));
 
@@ -82,9 +79,9 @@ export default function EntityTree(props: {
     setExpandedNodes(ImmutableSet(newExpandedNodes));
 
     function createTreeNode(node: Entity, parent?: TreeNode): TreeNode {
-      let childNodes = uriToChildNodes.get(node.getIri()) || [];
+      const childNodes = uriToChildNodes.get(node.getIri()) || [];
 
-      let treeNode: TreeNode = {
+      const treeNode: TreeNode = {
         absoluteIdentity: parent
           ? parent.absoluteIdentity + ";" + node.getIri()
           : node.getIri(),
@@ -106,41 +103,23 @@ export default function EntityTree(props: {
       return treeNode;
     }
   }
-  async function toggleNode(node) {
+  function toggleNode(node: any) {
     if (expandedNodes.has(node.absoluteIdentity)) {
       // closing a node
-
       setExpandedNodes(expandedNodes.delete(node.absoluteIdentity));
     } else {
       // opening a node
-
       setExpandedNodes(expandedNodes.add(node.absoluteIdentity));
-
-      let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.iri));
-
-      let page = await getPaginated<any>(
-        `/api/v2/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${doubleEncodedUri}/children?${new URLSearchParams(
-          {
-            size: "100",
-          }
-        )}`
-      );
-
-      let childTerms = page.elements.map((obj) => thingFromProperties(obj));
-
-      setNodeChildren(
-        nodeChildren.set(
-          node.absoluteIdentity,
-          childTerms.map((term) => {
-            return {
-              iri: term.getIri(),
-              absoluteIdentity: node.absoluteIdentity + ";" + term.getIri(),
-              title: term.getName(),
-              expandable: term.hasChildren(),
-              entity: term,
-            };
-          })
-        )
+      const entityTypePlural = node.entity.getTypePlural();
+      const entityIri = node.iri;
+      const absoluteIdentity = node.absoluteIdentity;
+      dispatch(
+        getNodeChildren({
+          ontologyId,
+          entityTypePlural,
+          entityIri,
+          absoluteIdentity,
+        })
       );
     }
   }
@@ -156,18 +135,20 @@ export default function EntityTree(props: {
         role="group"
       >
         {rootNodes.map((node, i) => {
-          let isLast = i == rootNodes!.length - 1;
-          let isExpanded = expandedNodes.has(node.absoluteIdentity);
-          let termUrl = encodeURIComponent(encodeURIComponent(node.iri));
-          let highlight =
+          const isLast = i == rootNodes!.length - 1;
+          const isExpanded = expandedNodes.has(node.absoluteIdentity);
+          const termUrl = encodeURIComponent(encodeURIComponent(node.iri));
+          const highlight =
             (selectedEntity && node.iri === selectedEntity.getIri()) || false;
           return (
-            <TreeNode
+            <JsTreeNode
               expandable={node.expandable}
               expanded={isExpanded}
               highlight={highlight}
               isLast={isLast}
-              onClick={() => toggleNode(node)}
+              onClick={() => {
+                toggleNode(node);
+              }}
               key={randomString()}
             >
               <Link
@@ -176,7 +157,7 @@ export default function EntityTree(props: {
                 {node.title}
               </Link>
               {isExpanded && renderNodeChildren(node)}
-            </TreeNode>
+            </JsTreeNode>
           );
         })}
       </ul>
@@ -184,7 +165,7 @@ export default function EntityTree(props: {
   );
 
   function renderNodeChildren(node: TreeNode) {
-    let children = nodeChildren.get(node.absoluteIdentity);
+    const children = nodeChildren.get(node.absoluteIdentity);
 
     if (children === undefined) {
       return <Spinner />;
@@ -193,22 +174,24 @@ export default function EntityTree(props: {
     return (
       <ul role="group" className="jstree-children" style={{}}>
         {children.map((childNode: TreeNode, i) => {
-          let isExpanded = expandedNodes.has(childNode.absoluteIdentity);
+          const isExpanded = expandedNodes.has(childNode.absoluteIdentity);
           console.log(
             "node " + childNode.absoluteIdentity + " expanded " + isExpanded
           );
-          let isLast = i == children!.length - 1;
-          let termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
-          let highlight =
+          const isLast = i == children!.length - 1;
+          const termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
+          const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
             false;
           return (
-            <TreeNode
+            <JsTreeNode
               expandable={childNode.expandable}
               expanded={isExpanded}
               highlight={highlight}
               isLast={isLast}
-              onClick={() => toggleNode(childNode)}
+              onClick={() => {
+                toggleNode(childNode);
+              }}
               key={randomString()}
             >
               {/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
@@ -218,7 +201,7 @@ export default function EntityTree(props: {
                 {childNode.title}
               </Link>
               {isExpanded && renderNodeChildren(childNode)}
-            </TreeNode>
+            </JsTreeNode>
           );
         })}
       </ul>
@@ -226,7 +209,7 @@ export default function EntityTree(props: {
   }
 }
 
-function TreeNode(props: {
+function JsTreeNode(props: {
   expandable: boolean;
   expanded: boolean;
   highlight: boolean;
@@ -234,9 +217,10 @@ function TreeNode(props: {
   children: any;
   onClick: () => void;
 }) {
-  let { expandable, expanded, highlight, isLast, children, onClick } = props;
+  const { expandable, expanded, highlight, isLast, onClick } = props;
+  let { children } = props;
 
-  let classes: string[] = ["jstree-node"];
+  const classes: string[] = ["jstree-node"];
 
   if (expanded) {
     classes.push("jstree-open");

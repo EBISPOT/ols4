@@ -18,14 +18,14 @@ export default function EntityGraph(props: {
   const ancestors = useAppSelector((state) => state.ontologies.ancestors);
   // const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
 
-  let { ontologyId, selectedEntity, entityType } = props;
-  let [elements, setElements] = useState<any[]>([]);
-  let cyRef = useRef<Cytoscape.Core>();
+  const { ontologyId, selectedEntity, entityType } = props;
+  const [elements, setElements] = useState<any[]>([]);
+  const cyRef = useRef<Cytoscape.Core>();
 
   useEffect(() => {
     if (selectedEntity) {
-      let entityUri = selectedEntity.getIri();
-      dispatch(getAncestors({ ontologyId, entityType, entityUri }));
+      const entityIri = selectedEntity.getIri();
+      dispatch(getAncestors({ ontologyId, entityType, entityIri }));
     } else {
       dispatch(getRootEntities({ ontologyId, entityType }));
 
@@ -48,9 +48,9 @@ export default function EntityGraph(props: {
   }, [ancestors]);
 
   function populateGraphFromEntities(entities: Entity[]) {
-    let { uriToChildNodes } = extractEntityHierarchy(entities);
+    const { uriToChildNodes } = extractEntityHierarchy(entities);
 
-    let nodes: any[] = entities.map((entity) => {
+    const nodes: any[] = entities.map((entity) => {
       return {
         data: {
           id: entity.getIri(),
@@ -63,10 +63,10 @@ export default function EntityGraph(props: {
       };
     });
 
-    let edges: any[] = [];
+    const edges: any[] = [];
 
-    for (let parentUri of Array.from(uriToChildNodes.keys())) {
-      for (let childEntity of uriToChildNodes.get(parentUri)) {
+    for (const parentUri of Array.from(uriToChildNodes.keys())) {
+      for (const childEntity of uriToChildNodes.get(parentUri)) {
         edges.push({
           data: {
             source: parentUri,

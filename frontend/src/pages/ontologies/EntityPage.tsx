@@ -13,19 +13,19 @@ import { getEntity, getOntology } from "./ontologiesSlice";
 
 export default function EntityPage(props: {
   ontologyId: string;
-  entityUri: string;
+  entityIri: string;
   entityType: "classes" | "properties" | "individuals";
 }) {
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
 
-  let { ontologyId, entityUri, entityType } = props;
-  let [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
+  const { ontologyId, entityIri, entityType } = props;
+  const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
 
   useEffect(() => {
     dispatch(getOntology(ontologyId));
-    dispatch(getEntity({ ontologyId, entityType, entityUri }));
+    dispatch(getEntity({ ontologyId, entityType, entityIri }));
   }, []);
 
   if (!ontology || !entity) {
@@ -153,7 +153,7 @@ export default function EntityPage(props: {
                         .getAnnotationPredicate()
                         .map((annotationPredicate) => {
                           return (
-                            <div>
+                            <div key={randomString()}>
                               <div className="font-bold capitalize">
                                 {entity.getPropertyLabel(annotationPredicate)
                                   ? entity
@@ -164,7 +164,13 @@ export default function EntityPage(props: {
                                         annotationPredicate.lastIndexOf("/") + 1
                                       )
                                       .substring(
-                                        annotationPredicate.lastIndexOf("#") + 1
+                                        annotationPredicate
+                                          .substring(
+                                            annotationPredicate.lastIndexOf(
+                                              "/"
+                                            ) + 1
+                                          )
+                                          .lastIndexOf("#") + 1
                                       )
                                       .replaceAll("_", " ")}
                               </div>
@@ -205,10 +211,9 @@ export default function EntityPage(props: {
                       <div className="font-bold">Subclass of</div>
                       <ul className="list-disc list-inside">
                         {entity.getParents().map((parent) => {
-                          if (typeof parent === "object" && parent !== null) {
-                            return <li key={randomString()}>{parent.value}</li>;
-                          }
-                          return <li key={randomString()}>{parent}</li>;
+                          return parent ? (
+                            <li key={randomString()}>{parent}</li>
+                          ) : null;
                         })}
                       </ul>
                     </div>

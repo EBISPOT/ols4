@@ -13,7 +13,14 @@ export default abstract class Entity extends Thing {
   }
 
   getSynonyms() {
-    return asArray(this.properties["synonym"]);
+    const synonym = this.properties["synonym"];
+    if (synonym && typeof synonym === "object")
+      return asArray(
+        synonym.value && typeof synonym.value === "object"
+          ? null // TODO handle when "value" is also an object
+          : synonym.value
+      );
+    return asArray(synonym);
   }
 
   getXRefs() {
