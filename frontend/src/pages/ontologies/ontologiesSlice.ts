@@ -14,6 +14,7 @@ export interface OntologiesState {
   loadingOntologies: boolean;
   entities: Entity[];
   loadingEntities: boolean;
+  loadingNodeChildren: boolean;
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -32,6 +33,7 @@ const initialState: OntologiesState = {
   loadingOntologies: false,
   entities: [],
   loadingEntities: false,
+  loadingNodeChildren: false,
 };
 
 export const getOntology = createAsyncThunk(
@@ -176,8 +178,12 @@ const ontologiesSlice = createSlice({
         action: PayloadAction<Map<String, TreeNode[]>>
       ) => {
         state.nodeChildren = action.payload;
+        state.loadingNodeChildren = false;
       }
     );
+    builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
+      state.loadingNodeChildren = true;
+    });
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {

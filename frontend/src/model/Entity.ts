@@ -23,12 +23,6 @@ export default abstract class Entity extends Thing {
     return asArray(synonym);
   }
 
-  getXRefs() {
-    return asArray(
-      this.properties["http://www.geneontology.org/formats/oboInOwl#hasDbXref"]
-    );
-  }
-
   getAnnotationPredicate() {
     return asArray(this.properties["annotationPredicate"]);
   }

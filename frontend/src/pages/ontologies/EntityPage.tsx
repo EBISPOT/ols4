@@ -3,7 +3,7 @@ import { Link, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString } from "../../app/util";
+import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
 import Class from "../../model/Class";
@@ -72,16 +72,19 @@ export default function EntityPage(props: {
             {entity!.getSynonyms() && entity.getSynonyms().length !== 0 ? (
               <div>
                 <div className="font-bold my-4">Synonym</div>
-                {entity.getSynonyms().map((synonym) => {
-                  return (
-                    <span
-                      key={randomString()}
-                      className="bg-grey-default rounded-sm font-mono p-1 mr-2 text-sm"
-                    >
-                      {synonym}
-                    </span>
-                  );
-                })}
+                {entity
+                  .getSynonyms()
+                  .map((synonym) => {
+                    return (
+                      <span
+                        key={synonym.toString().toUpperCase() + randomString()}
+                        className="bg-grey-default rounded-sm font-mono p-1 mr-2 text-sm"
+                      >
+                        {synonym}
+                      </span>
+                    );
+                  })
+                  .sort((a, b) => sortByKeys(a, b))}
               </div>
             ) : null}
           </div>
@@ -152,50 +155,59 @@ export default function EntityPage(props: {
                     ? entity
                         .getAnnotationPredicate()
                         .map((annotationPredicate) => {
+                          const title = entity.getPropertyLabel(
+                            annotationPredicate
+                          )
+                            ? entity
+                                .getPropertyLabel(annotationPredicate)
+                                .replaceAll("_", " ")
+                            : annotationPredicate
+                                .substring(
+                                  annotationPredicate.lastIndexOf("/") + 1
+                                )
+                                .substring(
+                                  annotationPredicate
+                                    .substring(
+                                      annotationPredicate.lastIndexOf("/") + 1
+                                    )
+                                    .lastIndexOf("#") + 1
+                                )
+                                .replaceAll("_", " ");
                           return (
-                            <div key={randomString()}>
+                            <div
+                              key={
+                                title.toString().toUpperCase() + randomString()
+                              }
+                            >
                               <div className="font-bold capitalize">
-                                {entity.getPropertyLabel(annotationPredicate)
-                                  ? entity
-                                      .getPropertyLabel(annotationPredicate)
-                                      .replaceAll("_", " ")
-                                  : annotationPredicate
-                                      .substring(
-                                        annotationPredicate.lastIndexOf("/") + 1
-                                      )
-                                      .substring(
-                                        annotationPredicate
-                                          .substring(
-                                            annotationPredicate.lastIndexOf(
-                                              "/"
-                                            ) + 1
-                                          )
-                                          .lastIndexOf("#") + 1
-                                      )
-                                      .replaceAll("_", " ")}
+                                {title}
                               </div>
                               <ul className="list-disc list-inside">
                                 {entity
                                   .getAnnotationById(annotationPredicate)
                                   .map((annotation: any) => {
-                                    if (
-                                      typeof annotation === "object" &&
-                                      annotation !== null
-                                    ) {
-                                      return (
-                                        <li key={randomString()}>
-                                          {annotation.value}
-                                        </li>
-                                      );
-                                    }
+                                    const value =
+                                      annotation &&
+                                      typeof annotation === "object"
+                                        ? annotation.value
+                                        : annotation;
                                     return (
-                                      <li key={randomString()}>{annotation}</li>
+                                      <li
+                                        key={
+                                          value.toString().toUpperCase() +
+                                          randomString()
+                                        }
+                                      >
+                                        {value}
+                                      </li>
                                     );
-                                  })}
+                                  })
+                                  .sort((a, b) => sortByKeys(a, b))}
                               </ul>
                             </div>
                           );
                         })
+                        .sort((a, b) => sortByKeys(a, b))
                     : null}
                 </div>
               </details>

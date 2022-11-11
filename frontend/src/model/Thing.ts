@@ -53,10 +53,13 @@ export default abstract class Thing {
 
   getDescription(): string {
     const definition = this.properties["definition"];
-    if (definition && typeof definition === "object")
+    if (Array.isArray(definition) && definition.length > 0) {
+      return definition.join(" ");
+    } else if (definition && typeof definition === "object") {
       return definition.value && typeof definition.value === "object"
         ? null // TODO handle when "value" is also an object
         : definition.value;
+    }
     return definition || "";
   }
 

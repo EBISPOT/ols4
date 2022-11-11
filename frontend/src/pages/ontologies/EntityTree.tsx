@@ -3,7 +3,7 @@ import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
-import Spinner from "../../components/Spinner";
+import LoadingOverlay from "../../components/LoadingOverlay";
 import Entity from "../../model/Entity";
 import extractEntityHierarchy from "./extractEntityHierarchy";
 import {
@@ -22,6 +22,9 @@ export default function EntityTree(props: {
   const ancestors = useAppSelector((state) => state.ontologies.ancestors);
   const children = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
+  const loading = useAppSelector(
+    (state) => state.ontologies.loadingNodeChildren
+  );
 
   const { ontologyId, entityType, selectedEntity } = props;
 
@@ -124,61 +127,35 @@ export default function EntityTree(props: {
     }
   }
 
-  if (!rootNodes) {
-    return <Spinner />;
-  }
-
   return (
-    <div id="term-tree" className="jstree jstree-1 jstree-proton" role="tree">
-      <ul
-        className="jstree-container-ul jstree-children jstree-no-icons"
-        role="group"
-      >
-        {rootNodes.map((node, i) => {
-          const isLast = i == rootNodes!.length - 1;
-          const isExpanded = expandedNodes.has(node.absoluteIdentity);
-          const termUrl = encodeURIComponent(encodeURIComponent(node.iri));
-          const highlight =
-            (selectedEntity && node.iri === selectedEntity.getIri()) || false;
-          return (
-            <JsTreeNode
-              expandable={node.expandable}
-              expanded={isExpanded}
-              highlight={highlight}
-              isLast={isLast}
-              onClick={() => {
-                toggleNode(node);
-              }}
-              key={randomString()}
-            >
-              <Link
-                href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}
-              >
-                {node.title}
-              </Link>
-              {isExpanded && renderNodeChildren(node)}
-            </JsTreeNode>
-          );
-        })}
-      </ul>
+    <div>
+      {rootNodes ? (
+        <div
+          id="term-tree"
+          className="jstree jstree-1 jstree-proton"
+          role="tree"
+        >
+          {renderNodeChildren(rootNodes)}
+        </div>
+      ) : null}
+      {loading ? <LoadingOverlay message="Loading children..." /> : null}
     </div>
   );
-
-  function renderNodeChildren(node: TreeNode) {
-    const children = nodeChildren.get(node.absoluteIdentity);
-
-    if (children === undefined) {
-      return <Spinner />;
-    }
-
+  function renderNodeChildren(children: TreeNode[]) {
+    const sortedChildren = [...children];
+    sortedChildren.sort((a, b) => {
+      const titleA = a?.title ? a.title.toString().toUpperCase() : "";
+      const titleB = b?.title ? b.title.toString().toUpperCase() : "";
+      return titleA == titleB ? 0 : titleA > titleB ? 1 : -1;
+    });
     return (
-      <ul role="group" className="jstree-children" style={{}}>
-        {children.map((childNode: TreeNode, i) => {
+      <ul
+        role="group"
+        className="jstree-container-ul jstree-children jstree-no-icons"
+      >
+        {sortedChildren.map((childNode: TreeNode, i) => {
           const isExpanded = expandedNodes.has(childNode.absoluteIdentity);
-          console.log(
-            "node " + childNode.absoluteIdentity + " expanded " + isExpanded
-          );
-          const isLast = i == children!.length - 1;
+          const isLast = i === sortedChildren!.length - 1;
           const termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
@@ -194,13 +171,15 @@ export default function EntityTree(props: {
               }}
               key={randomString()}
             >
-              {/* <Link href={`/ontologies/${ontologyId}/${termType}/${termUrl}`}> */}
               <Link
-                href={`/ontologies/${ontologyId}/${node.entity.getTypePlural()}/${termUrl}`}
+                href={`/ontologies/${ontologyId}/${childNode.entity.getTypePlural()}/${termUrl}`}
               >
                 {childNode.title}
               </Link>
-              {isExpanded && renderNodeChildren(childNode)}
+              {isExpanded &&
+                renderNodeChildren(
+                  nodeChildren.get(childNode.absoluteIdentity) || []
+                )}
             </JsTreeNode>
           );
         })}
