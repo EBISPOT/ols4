@@ -36,7 +36,7 @@ class App extends React.Component {
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="classes"
-                entityUri={decodeURIComponent(
+                entityIri={decodeURIComponent(
                   decodeURIComponent(props.match.params.iri)
                 )}
               />
@@ -50,7 +50,7 @@ class App extends React.Component {
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="properties"
-                entityUri={decodeURIComponent(
+                entityIri={decodeURIComponent(
                   decodeURIComponent(props.match.params.iri)
                 )}
               />
@@ -64,7 +64,7 @@ class App extends React.Component {
               <EntityPage
                 ontologyId={props.match.params.id}
                 entityType="individuals"
-                entityUri={decodeURIComponent(
+                entityIri={decodeURIComponent(
                   decodeURIComponent(props.match.params.iri)
                 )}
               />

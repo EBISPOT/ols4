@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
-import Spinner from "../../components/Spinner";
 import HomeSearchBox from "./HomeSearchBox";
 import { getStats } from "./homeSlice";
 
@@ -14,7 +13,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const stats = useAppSelector((state) => state.home.stats);
 
-  const [openList, setOpenList] = useState<boolean>(false);
+  // const [openList, setOpenList] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(getStats());
@@ -132,9 +131,7 @@ export default function Home() {
                     {stats.numberOfIndividuals.toLocaleString()} individuals
                   </li>
                 </ul>
-              ) : (
-                <Spinner />
-              )}
+              ) : null}
             </div>
             <div className="mb-4">
               <Timeline

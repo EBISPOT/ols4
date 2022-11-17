@@ -54,7 +54,7 @@ export default function OntologyList() {
   return (
     <div>
       {loading ? (
-        <LoadingOverlay message="Loading..."/>
+        <LoadingOverlay message="Loading ontologies..." />
       ) : (
         <OlsDatatable
           columns={columns}

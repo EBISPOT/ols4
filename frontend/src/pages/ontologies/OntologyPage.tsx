@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
-import Spinner from "../../components/Spinner";
+import LoadingOverlay from "../../components/LoadingOverlay";
 import { Tab, Tabs } from "../../components/Tabs";
 import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
@@ -15,6 +15,7 @@ import { getOntology } from "./ontologiesSlice";
 export default function OntologyPage(props: { ontologyId: string }) {
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
+  const loading = useAppSelector((state) => state.ontologies.loadingOntology);
 
   const { ontologyId } = props;
   const [tab, setTab] = useState<
@@ -154,9 +155,8 @@ export default function OntologyPage(props: { ontologyId: string }) {
               </div>
             </div>
           </div>
-        ) : (
-          <Spinner />
-        )}
+        ) : null}
+        {loading ? <LoadingOverlay message="Loading ontology..." /> : null}
       </main>
     </div>
   );

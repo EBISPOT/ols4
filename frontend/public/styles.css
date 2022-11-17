@@ -10,11 +10,6 @@ code {
     monospace;
 }
 
-.spinner > * {
-  margin: auto;
-  display: inline-block;
-}
-
 @keyframes spin {
   100% {
     transform: rotate(360deg);
