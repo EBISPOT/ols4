@@ -54,7 +54,16 @@ export default abstract class Thing {
   getDescription(): string {
     const definition = this.properties["definition"];
     if (Array.isArray(definition) && definition.length > 0) {
-      return definition.join(" ");
+      return definition
+        .map((def) => {
+          if (def && typeof def === "object" && !Array.isArray(def)) {
+            return def.value || "";
+          } else if (def && typeof def === "string") {
+            return def;
+          }
+          return "";
+        })
+        .join(" ");
     } else if (definition && typeof definition === "object") {
       return definition.value && typeof definition.value === "object"
         ? null // TODO handle when "value" is also an object

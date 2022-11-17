@@ -7,6 +7,7 @@ import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Class from "../../model/Class";
+import Property from "../../model/Property";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
@@ -220,9 +221,12 @@ export default function EntityPage(props: {
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
-                    {entity instanceof Class ? (
+                    {(entity instanceof Class || entity instanceof Property) &&
+                    entity?.getParents()?.length > 0 ? (
                       <div>
-                        <div className="font-bold">Subclass of</div>
+                        <div className="font-bold">
+                          Sub{entity.getType().toString().toLowerCase()} of
+                        </div>
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent) => {
                             return parent ? (
