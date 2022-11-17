@@ -92,7 +92,7 @@ export default function EntityPage(props: {
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
-                <div className="p-2 mb-1">
+                <div className="py-2 mb-1">
                   <Tooltip title="Tree view" placement="top">
                     <button
                       className={`button-primary font-bold mr-3 ${
@@ -242,7 +242,7 @@ export default function EntityPage(props: {
             </div>
           </div>
         ) : null}
-        {!ontology && loading ? (
+        {!ontology || loading ? (
           <LoadingOverlay message="Loading entity..." />
         ) : null}
       </main>
