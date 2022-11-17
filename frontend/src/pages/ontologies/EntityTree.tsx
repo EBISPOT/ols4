@@ -126,21 +126,6 @@ export default function EntityTree(props: {
       );
     }
   }
-
-  return (
-    <div>
-      {rootNodes ? (
-        <div
-          id="term-tree"
-          className="jstree jstree-1 jstree-proton"
-          role="tree"
-        >
-          {renderNodeChildren(rootNodes)}
-        </div>
-      ) : null}
-      {loading ? <LoadingOverlay message="Loading children..." /> : null}
-    </div>
-  );
   function renderNodeChildren(children: TreeNode[]) {
     const sortedChildren = [...children];
     sortedChildren.sort((a, b) => {
@@ -186,6 +171,21 @@ export default function EntityTree(props: {
       </ul>
     );
   }
+
+  return (
+    <div>
+      {rootNodes ? (
+        <div
+          id="term-tree"
+          className="jstree jstree-1 jstree-proton"
+          role="tree"
+        >
+          {renderNodeChildren(rootNodes)}
+        </div>
+      ) : null}
+      {loading ? <LoadingOverlay message="Loading children..." /> : null}
+    </div>
+  );
 }
 
 function JsTreeNode(props: {

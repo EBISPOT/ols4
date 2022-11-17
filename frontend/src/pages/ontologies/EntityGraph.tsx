@@ -3,7 +3,6 @@ import ColaLayout from "cytoscape-cola";
 import { useEffect, useRef, useState } from "react";
 import CytoscapeComponent from "react-cytoscapejs";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import Spinner from "../../components/Spinner";
 import Entity from "../../model/Entity";
 import extractEntityHierarchy from "./extractEntityHierarchy";
 import { getAncestors, getRootEntities } from "./ontologiesSlice";
@@ -80,23 +79,23 @@ export default function EntityGraph(props: {
     setElements([...nodes, ...edges]);
   }
 
-  if (!elements) {
-    return <Spinner />;
-  }
-
   return (
-    <CytoscapeComponent
-      layout={{ name: "cola" }}
-      cy={(cy): void => {
-        cy.on("add", "node", (_evt) => {
-          cy.layout({ name: "cola" }).run();
-          cy.fit();
-        });
+    <div>
+      {elements ? (
+        <CytoscapeComponent
+          layout={{ name: "cola" }}
+          cy={(cy): void => {
+            cy.on("add", "node", (_evt) => {
+              cy.layout({ name: "cola" }).run();
+              cy.fit();
+            });
 
-        cyRef.current = cy;
-      }}
-      elements={elements}
-      style={{ width: "600px", height: "600px" }}
-    />
+            cyRef.current = cy;
+          }}
+          elements={elements}
+          style={{ width: "600px", height: "600px" }}
+        />
+      ) : null}
+    </div>
   );
 }
