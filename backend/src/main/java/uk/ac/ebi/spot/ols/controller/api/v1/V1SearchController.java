@@ -8,7 +8,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryLinksResource;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.MediaType.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * @author Simon Jupp
@@ -49,7 +49,7 @@ public class V1SearchController {
     private OlsSolrClient solrClient;
 
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
-        resource.add(ControllerLinkBuilder.linkTo(V1SearchController.class).withRel("search"));
+        resource.add(WebMvcLinkBuilder.linkTo(V1SearchController.class).withRel("search"));
         return resource;
     }
 

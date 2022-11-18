@@ -1,12 +1,15 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
 
-import java.util.*;
-
 import com.google.gson.Gson;
-import org.springframework.hateoas.core.Relation;
+import org.springframework.hateoas.server.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 @Relation(collectionRelation = "ontologies")

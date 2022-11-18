@@ -1,6 +1,6 @@
 package uk.ac.ebi.spot.ols.config;
 
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.tuckey.web.filters.urlrewrite.UrlRewriteFilter;

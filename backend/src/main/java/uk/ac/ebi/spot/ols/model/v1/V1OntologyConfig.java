@@ -1,10 +1,9 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
-import uk.ac.ebi.spot.ols.config.OntologyDefaults;
-
-import java.util.*;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 public class V1OntologyConfig {
 
