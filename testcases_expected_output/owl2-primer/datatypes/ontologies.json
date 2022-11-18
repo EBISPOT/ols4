@@ -1,0 +1,91 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-datatypes",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+      "preferredPrefix": "owl2primer-datatypes",
+      "ontology_purl": "./testcases/owl2-primer/datatypes.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "1",
+      "numberOfEntities": "3",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "hasAge",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "value": "51"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "Jack",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

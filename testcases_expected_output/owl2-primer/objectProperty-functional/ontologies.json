@@ -1,0 +1,48 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-objectproperty-functional",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl",
+      "preferredPrefix": "owl2primer-objectProperty-functional",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-functional.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-functional.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "0",
+      "numberOfEntities": "1",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl#hasHusband",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#ObjectProperty",
+            "http://www.w3.org/2002/07/owl#FunctionalProperty"
+          ],
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-functional",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-functional.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-functional",
+          "shortForm": "hasHusband",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}
