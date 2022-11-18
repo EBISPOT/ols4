@@ -1,0 +1,62 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-namedindividual-differentfrom",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+      "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual-differentFrom.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "0",
+      "numberOfEntities": "2",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "0",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedindividual-differentfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "Bill",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-namedindividual-differentfrom",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
+          "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
+          "shortForm": "John",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

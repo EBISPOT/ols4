@@ -1,0 +1,68 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-typed-individual",
+      "iri": "http://example.com/owl2primer",
+      "preferredPrefix": "owl2primer-typed-individual",
+      "ontology_purl": "./testcases/owl2-primer/typed-individual.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://example.com/owl2primer/v.0.0.1",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "1",
+      "numberOfEntities": "2",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "0",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://example.com/owl2primer#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-typed-individual",
+          "ontologyIri": "http://example.com/owl2primer",
+          "ontologyPreferredPrefix": "owl2primer-typed-individual",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": [
+        {
+          "iri": "http://example.com/owl2primer#Mary",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "directParent": "http://example.com/owl2primer#Person",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "http://example.com/owl2primer#Person"
+          ],
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-typed-individual",
+          "ontologyIri": "http://example.com/owl2primer",
+          "ontologyPreferredPrefix": "owl2primer-typed-individual",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

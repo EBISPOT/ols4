@@ -1,0 +1,97 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "reified-bnode",
+      "iri": "http://example.com/reified-bnode",
+      "preferredPrefix": "reified-bnode",
+      "ontology_purl": "./testcases/reification/reified-bnode.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "2",
+      "numberOfEntities": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://example.com/reified-bnode#cell",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
+          "relatedTo": "http://example.com/reified-bnode#cell_part",
+          "relatedTo+http://example.com/reified-bnode#part_of": "http://example.com/reified-bnode#cell_part",
+          "shortForm": "cell",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://example.com/reified-bnode#cell_part",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "value": {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+              "isObsolete": "false",
+              "propertyLabels": {}
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
+            "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
+            "propertyLabels": {}
+          },
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
+          "shortForm": "cell_part",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://example.com/reified-bnode#part_of",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "reified-bnode",
+          "ontologyIri": "http://example.com/reified-bnode",
+          "ontologyPreferredPrefix": "reified-bnode",
+          "shortForm": "part_of",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

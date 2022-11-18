@@ -1,0 +1,87 @@
+{
+  "ontologies": [
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl\",\"isObsolete\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"3\",\"numberOfIndividuals\":\"1\",\"numberOfProperties\":\"1\",\"ontologyId\":\"owl2primer-datatypes\",\"ontology_purl\":\"./testcases/owl2-primer/datatypes.owl\",\"preferredPrefix\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"type\":[\"ontology\"]}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatypes.owl",
+      "imported": "false",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+      "isObsolete": "false",
+      "numberOfClasses": "1",
+      "numberOfEntities": "3",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "1",
+      "ontologyId": "owl2primer-datatypes",
+      "ontology_purl": "./testcases/owl2-primer/datatypes.owl",
+      "preferredPrefix": "owl2primer-datatypes",
+      "type": [
+        "ontology"
+      ],
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl\",\"ontologyPreferredPrefix\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "Person",
+          "type": [
+            "class",
+            "entity"
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#DatatypeProperty\",\"http://www.w3.org/2000/01/rdf-schema#domain\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person\",\"http://www.w3.org/2000/01/rdf-schema#range\":\"http://www.w3.org/2001/XMLSchema#integer\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl\",\"ontologyPreferredPrefix\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"hasAge\",\"type\":[\"entity\",\"property\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "hasAge",
+          "type": [
+            "entity",
+            "property"
+          ]
+        }
+      ],
+      "individuals": [
+        {
+          "_json": "{\"annotationPredicate\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\",\"hasChildren\":\"false\",\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge\":{\"datatype\":\"http://www.w3.org/2001/XMLSchema#integer\",\"value\":\"51\"},\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-datatypes\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl\",\"ontologyPreferredPrefix\":\"owl2primer-datatypes\",\"propertyLabels\":{},\"shortForm\":\"Jack\",\"type\":[\"entity\",\"individual\"]}",
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#hasAge": "51",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Jack",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-datatypes",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
+          "ontologyPreferredPrefix": "owl2primer-datatypes",
+          "shortForm": "Jack",
+          "type": [
+            "entity",
+            "individual"
+          ]
+        }
+      ]
+    }
+  ]
+}

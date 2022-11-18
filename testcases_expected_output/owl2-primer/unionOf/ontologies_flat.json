@@ -1,0 +1,87 @@
+{
+  "ontologies": [
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl\",\"isObsolete\":\"false\",\"numberOfClasses\":\"5\",\"numberOfEntities\":\"5\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"ontologyId\":\"owl2primer-unionof\",\"ontology_purl\":\"./testcases/owl2-primer/unionOf.owl\",\"preferredPrefix\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"type\":[\"ontology\"]}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl",
+      "imported": "false",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+      "isObsolete": "false",
+      "numberOfClasses": "5",
+      "numberOfEntities": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "ontologyId": "owl2primer-unionof",
+      "ontology_purl": "./testcases/owl2-primer/unionOf.owl",
+      "preferredPrefix": "owl2primer-unionOf",
+      "type": [
+        "ontology"
+      ],
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Father\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
+          "shortForm": "Father",
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
+          "shortForm": "Mother",
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#unionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother\",\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father\"],\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-unionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-unionOf\",\"propertyLabels\":{},\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#unionOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
+          ],
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-unionof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-unionOf",
+          "shortForm": "Parent",
+          "type": [
+            "class",
+            "entity"
+          ]
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}
