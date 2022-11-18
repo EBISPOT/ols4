@@ -1,15 +1,14 @@
 
 package uk.ac.ebi.spot.ols.model.v1;
 
-import java.util.Set;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.springframework.hateoas.core.Relation;
+import org.springframework.hateoas.server.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
+
+import java.util.Map;
+import java.util.Set;
 
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 

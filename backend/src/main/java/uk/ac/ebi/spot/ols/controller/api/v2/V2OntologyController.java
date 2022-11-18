@@ -10,14 +10,20 @@ import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.*;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.server.RepresentationModelProcessor;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
@@ -29,7 +35,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/api/v2/ontologies")
 public class V2OntologyController implements
-        ResourceProcessor<RepositoryLinksResource> {
+        RepresentationModelProcessor<RepositoryLinksResource> {
 
     private Gson gson = new Gson();
 
@@ -47,12 +53,12 @@ public class V2OntologyController implements
 
     @Override
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
-        resource.add(ControllerLinkBuilder.linkTo(V2OntologyController.class).withRel("ontologies"));
+        resource.add(WebMvcLinkBuilder.linkTo(V2OntologyController.class).withRel("ontologies"));
         return resource;
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<PagedResources<V2Ontology>> getOntologies(
+    public HttpEntity<PagedModel<V2Ontology>> getOntologies(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -67,16 +73,16 @@ public class V2OntologyController implements
 
         Page<V2Ontology> document = ontologyRepository.find(pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties));
 
-        return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
+        return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<Resource<V2Ontology>> getOntology(
+    public HttpEntity<EntityModel<V2Ontology>> getOntology(
             @PathVariable("onto") String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
         V2Ontology document = ontologyRepository.getById(ontologyId, lang);
         if (document == null) throw new ResourceNotFoundException();
-        return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
+        return new ResponseEntity<>( documentAssembler.toModel(document), HttpStatus.OK);
     }
 }
