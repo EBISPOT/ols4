@@ -127,20 +127,24 @@ export default function EntityTree(props: {
     }
   }
   function renderNodeChildren(children: TreeNode[]) {
-    const sortedChildren = [...children];
-    sortedChildren.sort((a, b) => {
+    const childrenCopy = [...children];
+    childrenCopy.sort((a, b) => {
       const titleA = a?.title ? a.title.toString().toUpperCase() : "";
       const titleB = b?.title ? b.title.toString().toUpperCase() : "";
       return titleA == titleB ? 0 : titleA > titleB ? 1 : -1;
     });
+    const childrenSorted = childrenCopy.filter(
+      (child, i, arr) =>
+        !i || child.absoluteIdentity !== arr[i - 1].absoluteIdentity
+    );
     return (
       <ul
         role="group"
         className="jstree-container-ul jstree-children jstree-no-icons"
       >
-        {sortedChildren.map((childNode: TreeNode, i) => {
+        {childrenSorted.map((childNode: TreeNode, i) => {
           const isExpanded = expandedNodes.has(childNode.absoluteIdentity);
-          const isLast = i === sortedChildren!.length - 1;
+          const isLast = i === childrenSorted!.length - 1;
           const termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
@@ -177,7 +181,7 @@ export default function EntityTree(props: {
       {rootNodes ? (
         <div
           id="term-tree"
-          className="jstree jstree-1 jstree-proton"
+          className="px-3 jstree jstree-1 jstree-proton"
           role="tree"
         >
           {renderNodeChildren(rootNodes)}
