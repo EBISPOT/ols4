@@ -1,0 +1,66 @@
+{
+  "ontologies": [
+    {
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-hasSelf.owl\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl\",\"isObsolete\":\"false\",\"numberOfClasses\":\"1\",\"numberOfEntities\":\"2\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"1\",\"ontologyId\":\"owl2primer-equivalent-propertyrestriction-hasself\",\"ontology_purl\":\"./testcases/owl2-primer/equivalent-propertyRestriction-hasSelf.owl\",\"preferredPrefix\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"type\":[\"ontology\"]}",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-hasSelf.owl",
+      "imported": "false",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+      "isObsolete": "false",
+      "numberOfClasses": "1",
+      "numberOfEntities": "2",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-hasSelf.owl",
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
+      "type": [
+        "ontology"
+      ],
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#hasSelf\":{\"datatype\":\"http://www.w3.org/2001/XMLSchema#boolean\",\"value\":\"true\"},\"http://www.w3.org/2002/07/owl#onProperty\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\",\"isObsolete\":\"false\",\"propertyLabels\":{}},\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyrestriction-hasself\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"NarcisticPerson\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#equivalentClass": null,
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
+          "shortForm": "NarcisticPerson",
+          "type": [
+            "class",
+            "entity"
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-propertyrestriction-hasself\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-propertyRestriction-hasSelf\",\"propertyLabels\":{},\"shortForm\":\"loves\",\"type\":[\"entity\",\"property\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalent-propertyrestriction-hasself",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
+          "shortForm": "loves",
+          "type": [
+            "entity",
+            "property"
+          ]
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

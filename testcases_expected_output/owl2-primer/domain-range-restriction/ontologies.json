@@ -1,0 +1,112 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-domain-range-restriction",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+      "preferredPrefix": "owl2primer-domain-range-restriction",
+      "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/domain-range-restriction.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "3",
+      "numberOfEntities": "4",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#hasWife",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
+          "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-domain-range-restriction",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
+          "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

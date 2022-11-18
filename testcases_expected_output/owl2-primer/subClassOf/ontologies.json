@@ -1,0 +1,89 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-subclassof",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+      "preferredPrefix": "owl2primer-subClassOf",
+      "ontology_purl": "./testcases/owl2-primer/subClassOf.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "3",
+      "numberOfEntities": "3",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
+          "shortForm": "Mother",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "hasChildren": "true",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-subclassof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+          "ontologyPreferredPrefix": "owl2primer-subClassOf",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-equivalentobjectproperty",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+      "preferredPrefix": "owl2primer-equivalentObjectProperty",
+      "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "0",
+      "numberOfEntities": "4",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "2",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2002/07/owl#equivalentProperty": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+          "shortForm": "hasLifePartner",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+          "shortForm": "hasSpouse",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+          "shortForm": "John",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "annotationPredicate": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+          "hasChildren": "false",
+          "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+          "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

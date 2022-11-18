@@ -1,0 +1,147 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+      "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-negativePropertyAssertion.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "3",
+      "numberOfEntities": "6",
+      "numberOfIndividuals": "2",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#hasWife",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "hasWife",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Bill",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Bill",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-negativepropertyassertion",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+          "shortForm": "Mary",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

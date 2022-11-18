@@ -1,0 +1,48 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-objectproperty-irreflexive",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
+      "preferredPrefix": "owl2primer-objectProperty-irreflexive",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-irreflexive.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-irreflexive.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "0",
+      "numberOfEntities": "1",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#ObjectProperty",
+            "http://www.w3.org/2002/07/owl#IrreflexiveProperty"
+          ],
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-objectproperty-irreflexive",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
+          "ontologyPreferredPrefix": "owl2primer-objectProperty-irreflexive",
+          "shortForm": "hasParent",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

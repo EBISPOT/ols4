@@ -1,0 +1,115 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "related-oneof",
+      "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+      "preferredPrefix": "related-oneOf",
+      "ontology_purl": "./testcases/related/oneOf.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/oneOf.xml",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "2",
+      "numberOfEntities": "5",
+      "numberOfIndividuals": "3",
+      "numberOfProperties": "0",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#oneOf": [
+              "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+              "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+              "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
+            ],
+            "propertyLabels": {}
+          },
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "related-oneof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+          "ontologyPreferredPrefix": "related-oneOf",
+          "shortForm": "A",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "related-oneof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+          "ontologyPreferredPrefix": "related-oneOf",
+          "relatedTo": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "shortForm": "b1",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "related-oneof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+          "ontologyPreferredPrefix": "related-oneOf",
+          "relatedTo": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "shortForm": "b2",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "related-oneof",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+          "ontologyPreferredPrefix": "related-oneOf",
+          "relatedTo": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+          "shortForm": "b3",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

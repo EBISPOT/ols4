@@ -1,0 +1,97 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+      "preferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+      "ontology_purl": "./testcases/owl2-primer/propertyRestriction-qualifiedCardinality.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-qualifiedCardinality.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "1",
+      "numberOfEntities": "3",
+      "numberOfIndividuals": "1",
+      "numberOfProperties": "1",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+          "shortForm": "Parent",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+          "shortForm": "hasChild",
+          "propertyLabels": {}
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#John",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onClass": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild",
+              "http://www.w3.org/2002/07/owl#qualifiedCardinality": {
+                "datatype": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+                "value": "2"
+              },
+              "isObsolete": "false",
+              "propertyLabels": {}
+            }
+          ],
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
+          "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+          "shortForm": "John",
+          "propertyLabels": {}
+        }
+      ]
+    }
+  ]
+}

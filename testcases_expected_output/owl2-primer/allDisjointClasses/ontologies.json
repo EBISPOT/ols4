@@ -1,0 +1,89 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-disjointclasses",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+      "preferredPrefix": "owl2primer-disjointClasses",
+      "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "5",
+      "numberOfEntities": "5",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "propertyLabels": {},
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
+          "shortForm": "Man",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
+          "shortForm": "Person",
+          "propertyLabels": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "ontologyId": "owl2primer-disjointclasses",
+          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+          "ontologyPreferredPrefix": "owl2primer-disjointClasses",
+          "shortForm": "Woman",
+          "propertyLabels": {}
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}
