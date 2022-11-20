@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ebi.ac.uk/efo/efo.owl#"
+     xml:base="http://www.ebi.ac.uk/efo/efo.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:efo="http://www.ebi.ac.uk/efo/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:core="http://purl.obolibrary.org/obo/uberon/core#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:obo1="http://purl.obolibrary.org/obo#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:chebi="http://purl.obolibrary.org/obo/chebi/"
+     xmlns:mondo="http://purl.obolibrary.org/obo/mondo#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:chebi2="http://purl.obolibrary.org/obo/chebi#"
+     xmlns:chebi3="http://purl.obolibrary.org/obo/chebi#2"
+     xmlns:chebi4="http://purl.obolibrary.org/obo/chebi#3"
+     xmlns:chebi5="http://purl.obolibrary.org/obo/chebi#1"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:patterns="http://www.co-ode.org/patterns#"
+     xmlns:ncbitaxon="http://purl.obolibrary.org/obo/ncbitaxon#">
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/efo/efo.owl">
+        <owl:versionIRI rdf:resource="http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl"/>
+        <obo:format-version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.4</obo:format-version>
+        <dc:creator>Gautier Koscielny</dc:creator>
+        <dc:creator>Laura Huerta Martinez</dc:creator>
+        <dc:creator>Olamidipupo Ajigboye</dc:creator>
+        <dc:creator>Paola Roncaglia</dc:creator>
+        <dc:creator>Trish Whetzel</dc:creator>
+        <dc:creator>Zoe May Pendlington</dc:creator>
+        <dc:rights rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Copyright [2014] EMBL - European Bioinformatics Institute
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the
+License. </dc:rights>
+        <terms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.apache.org/licenses/LICENSE-2.0</terms:license>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Catherine Leroy</efo:creator>
+        <efo:creator>Dani Welter</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drashtti Vasant</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ele Holloway</efo:creator>
+        <efo:creator>Eleanor Williams</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emma Kate Hastings</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Helen Parkinson</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">James Malone</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jon Ison</efo:creator>
+        <efo:creator>Natalja Kurbatova</efo:creator>
+        <efo:creator>Simon Jupp</efo:creator>
+        <efo:creator>Sirarat Sarntivijai</efo:creator>
+        <efo:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tomasz Adamusiak</efo:creator>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2022-05-16</rdfs:comment>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.42.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
+        <rdfs:comment>Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+        <rdfs:label xml:lang="en">realized in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000051">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has part</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_part</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OGMS_0000063">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GO_0008150"/>
+        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disease course</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0006807">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nitrogen compound metabolic process</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000400">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OGMS_0000063"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GO_0008152"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+

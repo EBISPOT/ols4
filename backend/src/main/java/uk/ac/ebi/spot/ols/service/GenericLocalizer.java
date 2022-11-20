@@ -37,8 +37,8 @@ public class GenericLocalizer {
 
             for (String k : src.keySet()) {
 
-                if(k.equals("propertyLabels")) {
-                    res.put(k, localizePropertyLabels(src.get(k), lang));
+                if(k.equals("iriToLabel")) {
+                    res.put(k, localizeIriToLabel(src.get(k), lang));
                 } else {
                     res.put(k, localizeObj(src.get(k), lang));
                 }
@@ -54,12 +54,12 @@ public class GenericLocalizer {
 
     }
 
-    private static Object localizePropertyLabels(Object object, String lang) {
+    private static Object localizeIriToLabel(Object object, String lang) {
 
-        Map<String,Object> propertyLabels = (Map<String, Object>) object;
-        Map<String,Object> localizedPropertyLabels = new TreeMap<>();
+        Map<String,Object> labels = (Map<String, Object>) object;
+        Map<String,Object> localizedlabels = new TreeMap<>();
 
-        for(String k : propertyLabels.keySet()) {
+        for(String k : labels.keySet()) {
 
             if(! (k.startsWith(lang + "+"))) {
                 continue;
@@ -67,10 +67,10 @@ public class GenericLocalizer {
 
             String predicate = k.substring(lang.length() + 1);
 
-            localizedPropertyLabels.put(predicate, propertyLabels.get(k));
+            localizedlabels.put(predicate, labels.get(k));
         }
 
-        return localizedPropertyLabels;
+        return localizedlabels;
     }
 
 }

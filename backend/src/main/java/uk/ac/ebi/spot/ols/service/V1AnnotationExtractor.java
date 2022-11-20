@@ -13,7 +13,7 @@ public class V1AnnotationExtractor {
         TreeSet<String> annotationPredicates = new TreeSet<>(node.getStrings("annotationPredicate"));
 
         Map<String, Object> record = node.asMap();
-        Map<String,String> propertyLabels = (Map<String,String>) record.get("propertyLabels");
+        Map<String,String> labels = (Map<String,String>) record.get("iriToLabel");
 
         Map<String, Object> annotation = new TreeMap<>();
 
@@ -42,7 +42,7 @@ public class V1AnnotationExtractor {
 
             }).collect(Collectors.toList());
 
-            String label = propertyLabels.get(predicate);
+            String label = labels.get(predicate);
 
             if(label == null) {
                 label = predicate.substring(

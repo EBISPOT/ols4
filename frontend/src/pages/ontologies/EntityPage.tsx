@@ -33,6 +33,9 @@ export default function EntityPage(props: {
   }, []);
 
   if (entity) document.title = entity.getName();
+
+  let iriToLabel = entity ? entity.getIriToLabel() : {}
+
   return (
     <div>
       <Header section="ontologies" />
@@ -159,11 +162,11 @@ export default function EntityPage(props: {
                       ? entity
                           .getAnnotationPredicate()
                           .map((annotationPredicate) => {
-                            const title = entity.getPropertyLabel(
+                            const title = entity.getLabelForIri(
                               annotationPredicate
                             )
                               ? entity
-                                  .getPropertyLabel(annotationPredicate)
+                                  .getLabelForIri(annotationPredicate)
                                   .replaceAll("_", " ")
                               : annotationPredicate
                                   .substring(
@@ -234,7 +237,7 @@ export default function EntityPage(props: {
 
 				// TODO: display parent.metadata somewhere
 
-				return <li key={randomString()}><ClassExpression expr={parent.value} /></li>
+				return <li key={randomString()}><ClassExpression expr={parent.value} iriToLabel={iriToLabel} /></li>
                           })}
                         </ul>
                       </div>

@@ -28,12 +28,17 @@ export default abstract class Entity extends Thing {
     return asArray(this.properties["annotationPredicate"]);
   }
 
-  getPropertyLabel(id: string) {
-    const propertyLabels = this.properties["propertyLabels"];
-    return propertyLabels[id];
+  getLabelForIri(id: string) {
+    const iriToLabel = this.properties["iriToLabel"];
+    return iriToLabel[id];
   }
 
   getAnnotationById(id: string) {
     return asArray(this.properties[id]);
   }
+
+  getIriToLabel():any {
+	return this.properties['iriToLabel']
+  }
+
 }

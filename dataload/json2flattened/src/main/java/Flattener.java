@@ -11,7 +11,7 @@ public class Flattener {
     // in the "_json" string field.
     //
     public static final Set<String> DONT_INDEX_FIELDS = Set.of(
-            "propertyLabels", "classes", "properties", "individuals", "annotationPredicate"
+            "iriToLabel", "classes", "properties", "individuals", "annotationPredicate"
     );
 
     public static Object flatten(Object obj) {

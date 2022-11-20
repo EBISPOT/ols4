@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonWriter;
 import uk.ac.ebi.owl2json.annotators.*;
 import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
+import uk.ac.ebi.owl2json.properties.PropertyValue.Type;
 
 import org.apache.jena.riot.Lang;
 import org.apache.jena.graph.Node;
@@ -345,16 +346,37 @@ public class OwlGraph implements StreamRDF {
 
         // Labels for rendering the properties in the frontend (or for API consumers)
         //
-        writer.name("propertyLabels");
+        writer.name("iriToLabel");
         writer.beginObject();
 
-        for(String k : properties.getPropertyPredicates()) {
+	Set<String> urisToGetLabelsFor = new LinkedHashSet<>();
+	urisToGetLabelsFor.addAll(properties.getPropertyPredicates()); // need labels for all the predicates
+	
+	for(String predicate : properties.getPropertyPredicates()) {
+		for(PropertyValue val : properties.getPropertyValues(predicate)) { // need labels for any IRI values
+			if(val.getType() == Type.URI) {
+				urisToGetLabelsFor.add( ((PropertyValueURI) val).getUri() );
+			} else if(val.getType() == Type.BNODE) {
+                OwlNode bnode = getNodeForPropertyValue(val);
+                if(bnode.types.contains(OwlNode.NodeType.RDF_LIST)) {
+                    for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(bnode, this)) {
+                        if(listEntry.getType() == Type.URI) {
+                            urisToGetLabelsFor.add( ((PropertyValueURI) listEntry).getUri() );
+                        }
+                    }
+                }
+            }
+		}
+	}
+
+        for(String k : urisToGetLabelsFor) {
 
             OwlNode labelNode = nodes.get(k);
             if(labelNode == null) {
                 continue;
             }
 
+	    // TODO: any other label props to look for?
             List<PropertyValue> labelProps = labelNode.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#label");
 
             if(labelProps != null && labelProps.size() > 0) {
