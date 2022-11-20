@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
+import ClassExpression from "../../components/ClassExpression";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Class from "../../model/Class";
 import Property from "../../model/Property";
+import Reified from "../../model/Reified";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
@@ -228,10 +230,11 @@ export default function EntityPage(props: {
                           Sub{entity.getType().toString().toLowerCase()} of
                         </div>
                         <ul className="list-disc list-inside">
-                          {entity.getParents().map((parent) => {
-                            return parent ? (
-                              <li key={randomString()}>{parent}</li>
-                            ) : null;
+                          {entity.getParents().map((parent:Reified<any>) => {
+
+				// TODO: display parent.metadata somewhere
+
+				return <li key={randomString()}><ClassExpression expr={parent.value} /></li>
                           })}
                         </ul>
                       </div>

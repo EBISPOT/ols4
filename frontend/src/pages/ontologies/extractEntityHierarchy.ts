@@ -27,6 +27,7 @@ export default function extractEntityHierarchy(
 	for (let entity of entities) {
 
 		let parents = entity.getParents()
+			.map(parent => parent.value)
 			// not interested in bnode subclassofs like restrictions etc
 			.filter(parent => typeof parent === 'string')
 			.map(parentUri => uriToNode.get(parentUri))

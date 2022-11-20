@@ -66,7 +66,7 @@ export default abstract class Thing {
         .join(" ");
     } else if (definition && typeof definition === "object") {
       return definition.value && typeof definition.value === "object"
-        ? null // TODO handle when "value" is also an object
+        ? null // TODO handle when "value" is also an object: (This function should actually return Reified)
         : definition.value;
     }
     return definition || "";
