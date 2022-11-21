@@ -1,0 +1,230 @@
+{
+  "ontologies": [
+    {
+      "_json": "{\"http://purl.obolibrary.org/obo/format-version\":\"1.4\",\"http://purl.org/dc/elements/1.1/creator\":[\"Gautier Koscielny\",\"Laura Huerta Martinez\",\"Olamidipupo Ajigboye\",\"Paola Roncaglia\",\"Trish Whetzel\",\"Zoe May Pendlington\"],\"http://purl.org/dc/elements/1.1/rights\":\"Copyright [2014] EMBL - European Bioinformatics Institute\\nLicensed under the Apache License, Version 2.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \\\"AS IS\\\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\\nLicense. \",\"http://purl.org/dc/terms/license\":\"www.apache.org/licenses/LICENSE-2.0\",\"http://www.ebi.ac.uk/efo/creator\":[\"Catherine Leroy\",\"Dani Welter\",\"Drashtti Vasant\",\"Ele Holloway\",\"Eleanor Williams\",\"Emma Kate Hastings\",\"Helen Parkinson\",\"James Malone\",\"Jon Ison\",\"Natalja Kurbatova\",\"Simon Jupp\",\"Sirarat Sarntivijai\",\"Tomasz Adamusiak\"],\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"2022-05-16\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl\",\"http://www.w3.org/2002/07/owl#versionInfo\":\"3.42.0\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"iriToLabel\":{},\"isObsolete\":\"false\",\"numberOfClasses\":\"4\",\"numberOfEntities\":\"6\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"2\",\"ontologyId\":\"efo-iri-labels\",\"ontology_purl\":\"./testcases/iri-labels/efo-iri-labels.owl\",\"preferredPrefix\":\"efo-iri-labels\",\"type\":[\"ontology\"]}",
+      "http://purl.obolibrary.org/obo/format-version": "1.4",
+      "http://purl.org/dc/elements/1.1/creator": [
+        "Gautier Koscielny",
+        "Laura Huerta Martinez",
+        "Olamidipupo Ajigboye",
+        "Paola Roncaglia",
+        "Trish Whetzel",
+        "Zoe May Pendlington"
+      ],
+      "http://purl.org/dc/elements/1.1/rights": "Copyright [2014] EMBL - European Bioinformatics Institute\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\nLicense. ",
+      "http://purl.org/dc/terms/license": "www.apache.org/licenses/LICENSE-2.0",
+      "http://www.ebi.ac.uk/efo/creator": [
+        "Catherine Leroy",
+        "Dani Welter",
+        "Drashtti Vasant",
+        "Ele Holloway",
+        "Eleanor Williams",
+        "Emma Kate Hastings",
+        "Helen Parkinson",
+        "James Malone",
+        "Jon Ison",
+        "Natalja Kurbatova",
+        "Simon Jupp",
+        "Sirarat Sarntivijai",
+        "Tomasz Adamusiak"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2000/01/rdf-schema#comment": "2022-05-16",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl",
+      "http://www.w3.org/2002/07/owl#versionInfo": "3.42.0",
+      "imported": "false",
+      "iri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "isObsolete": "false",
+      "numberOfClasses": "4",
+      "numberOfEntities": "6",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "2",
+      "ontologyId": "efo-iri-labels",
+      "ontology_purl": "./testcases/iri-labels/efo-iri-labels.owl",
+      "preferredPrefix": "efo-iri-labels",
+      "type": [
+        "ontology"
+      ],
+      "classes": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#label\":\"nitrogen compound metabolic process\",\"imported\":\"false\",\"iri\":\"http://purl.obolibrary.org/obo/GO_0006807\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"label\":\"nitrogen compound metabolic process\",\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"shortForm\":\"GO_0006807\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": "nitrogen compound metabolic process",
+          "imported": "false",
+          "iri": "http://purl.obolibrary.org/obo/GO_0006807",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "label": "nitrogen compound metabolic process",
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "GO_0006807",
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        {
+          "_json": "{\"definition\":\"The totality of all processes through which a given disease instance is realized.\",\"directParent\":\"http://purl.obolibrary.org/obo/GO_0008150\",\"hasChildren\":\"false\",\"hierarchicalParent\":\"http://purl.obolibrary.org/obo/GO_0008150\",\"http://purl.obolibrary.org/obo/IAO_0000115\":\"The totality of all processes through which a given disease instance is realized.\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#label\":\"disease course\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://purl.obolibrary.org/obo/GO_0008150\",\"imported\":\"false\",\"iri\":\"http://purl.obolibrary.org/obo/OGMS_0000063\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"label\":\"disease course\",\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"relatedTo\":\"http://www.ebi.ac.uk/efo/EFO_0000400\",\"relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/efo/EFO_0000400\",\"shortForm\":\"OGMS_0000063\",\"type\":[\"class\",\"entity\"]}",
+          "definition": "The totality of all processes through which a given disease instance is realized.",
+          "directParent": "http://purl.obolibrary.org/obo/GO_0008150",
+          "hasChildren": "false",
+          "hierarchicalParent": "http://purl.obolibrary.org/obo/GO_0008150",
+          "http://purl.obolibrary.org/obo/IAO_0000115": "The totality of all processes through which a given disease instance is realized.",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": "disease course",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
+          "imported": "false",
+          "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "false",
+          "label": "disease course",
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "relatedTo": "http://www.ebi.ac.uk/efo/EFO_0000400",
+          "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/efo/EFO_0000400",
+          "shortForm": "OGMS_0000063",
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://purl.obolibrary.org/obo/BFO_0000054\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://purl.obolibrary.org/obo/OGMS_0000063\",{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Restriction\",\"http://www.w3.org/2002/07/owl#onProperty\":\"http://purl.obolibrary.org/obo/BFO_0000051\",\"http://www.w3.org/2002/07/owl#someValuesFrom\":\"http://purl.obolibrary.org/obo/GO_0008152\",\"isObsolete\":\"false\",\"iriToLabel\":{\"en+http://purl.obolibrary.org/obo/BFO_0000051\":\"has_part\"}}],\"iriToLabel\":{\"en+http://purl.obolibrary.org/obo/OGMS_0000063\":\"disease course\"}},\"isObsolete\":\"false\",\"iriToLabel\":{\"en+http://purl.obolibrary.org/obo/BFO_0000054\":\"realized in\"}},\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/efo/EFO_0000400\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"shortForm\":\"EFO_0000400\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "false",
+          "http://purl.obolibrary.org/obo/BFO_0000054": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000054",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://purl.obolibrary.org/obo/OGMS_0000063",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+                  "iriToLabel": {
+                    "en+http://purl.obolibrary.org/obo/BFO_0000051": "has_part"
+                  },
+                  "isObsolete": "false"
+                }
+              ],
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/OGMS_0000063": "disease course"
+              }
+            },
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000054": "realized in"
+            },
+            "isObsolete": "false",
+            "value": {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://purl.obolibrary.org/obo/OGMS_0000063",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+                  "iriToLabel": {
+                    "en+http://purl.obolibrary.org/obo/BFO_0000051": "has_part"
+                  },
+                  "isObsolete": "false"
+                }
+              ],
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/OGMS_0000063": "disease course"
+              }
+            }
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": null,
+          "imported": "false",
+          "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "EFO_0000400",
+          "type": [
+            "class",
+            "entity"
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":[\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2002/07/owl#TransitiveProperty\"],\"http://www.w3.org/2000/01/rdf-schema#label\":[\"has part\",\"has_part\"],\"imported\":\"false\",\"iri\":\"http://purl.obolibrary.org/obo/BFO_0000051\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"label\":[\"has part\",\"has_part\"],\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"shortForm\":\"BFO_0000051\",\"type\":[\"entity\",\"property\"]}",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#ObjectProperty",
+            "http://www.w3.org/2002/07/owl#TransitiveProperty"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": [
+            "has part",
+            "has_part"
+          ],
+          "imported": "false",
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "label": [
+            "has part",
+            "has_part"
+          ],
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "BFO_0000051",
+          "type": [
+            "entity",
+            "property"
+          ]
+        },
+        {
+          "_json": "{\"definition\":\"Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process\",\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#ObjectProperty\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process\",\"http://www.w3.org/2000/01/rdf-schema#isDefinedBy\":\"http://purl.obolibrary.org/obo/bfo.owl\",\"http://www.w3.org/2000/01/rdf-schema#label\":{\"datatype\":\"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString\",\"value\":\"realized in\",\"lang\":\"en\"},\"imported\":\"false\",\"iri\":\"http://purl.obolibrary.org/obo/BFO_0000054\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"label\":{\"datatype\":\"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString\",\"value\":\"realized in\",\"lang\":\"en\"},\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"shortForm\":\"BFO_0000054\",\"type\":[\"entity\",\"property\"]}",
+          "definition": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+          "hasChildren": "false",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#comment": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+          "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "value": "realized in"
+          },
+          "imported": "false",
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "value": "realized in"
+          },
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "BFO_0000054",
+          "type": [
+            "entity",
+            "property"
+          ]
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "2",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [],
       "properties": [],
       "individuals": [
@@ -37,7 +37,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
           "ontologyPreferredPrefix": "owl2primer-namedIndividual-sameAs",
           "shortForm": "James",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim",
@@ -55,7 +55,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs.owl",
           "ontologyPreferredPrefix": "owl2primer-namedIndividual-sameAs",
           "shortForm": "Jim",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

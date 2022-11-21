@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#NarcisticPerson",
@@ -34,7 +34,7 @@
             },
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl#loves",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -45,7 +45,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
           "shortForm": "NarcisticPerson",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -66,7 +66,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-hasSelf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
           "shortForm": "loves",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

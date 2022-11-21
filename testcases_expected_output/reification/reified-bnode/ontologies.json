@@ -15,7 +15,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://example.com/reified-bnode#cell",
@@ -36,7 +36,7 @@
           "relatedTo": "http://example.com/reified-bnode#cell_part",
           "relatedTo+http://example.com/reified-bnode#part_of": "http://example.com/reified-bnode#cell_part",
           "shortForm": "cell",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://example.com/reified-bnode#cell_part",
@@ -52,11 +52,11 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {}
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Axiom",
             "http://www.w3.org/2000/01/rdf-schema#comment": "This is an annotation on a property with a bnode value",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -67,7 +67,7 @@
           "ontologyIri": "http://example.com/reified-bnode",
           "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "cell_part",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -88,7 +88,7 @@
           "ontologyIri": "http://example.com/reified-bnode",
           "ontologyPreferredPrefix": "reified-bnode",
           "shortForm": "part_of",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

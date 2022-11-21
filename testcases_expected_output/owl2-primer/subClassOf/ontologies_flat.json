@@ -1,7 +1,7 @@
 {
   "ontologies": [
     {
-      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"isObsolete\":\"false\",\"numberOfClasses\":\"3\",\"numberOfEntities\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"ontologyId\":\"owl2primer-subclassof\",\"ontology_purl\":\"./testcases/owl2-primer/subClassOf.owl\",\"preferredPrefix\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"type\":[\"ontology\"]}",
+      "_json": "{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"iriToLabel\":{},\"isObsolete\":\"false\",\"numberOfClasses\":\"3\",\"numberOfEntities\":\"3\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"0\",\"ontologyId\":\"owl2primer-subclassof\",\"ontology_purl\":\"./testcases/owl2-primer/subClassOf.owl\",\"preferredPrefix\":\"owl2primer-subClassOf\",\"type\":[\"ontology\"]}",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
       "imported": "false",
@@ -19,7 +19,7 @@
       ],
       "classes": [
         {
-          "_json": "{\"directParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"hasChildren\":\"false\",\"hierarchicalParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"]}",
+          "_json": "{\"directParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"hasChildren\":\"false\",\"hierarchicalParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"]}",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
           "hasChildren": "false",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
@@ -41,7 +41,7 @@
           ]
         },
         {
-          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"]}",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"shortForm\":\"Person\",\"type\":[\"class\",\"entity\"]}",
           "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
@@ -60,7 +60,7 @@
           ]
         },
         {
-          "_json": "{\"directParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"hasChildren\":\"true\",\"hierarchicalParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"propertyLabels\":{},\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"]}",
+          "_json": "{\"directParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"hasChildren\":\"true\",\"hierarchicalParent\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-subclassof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-subClassOf\",\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"]}",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "hasChildren": "true",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",

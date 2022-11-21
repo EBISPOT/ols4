@@ -22,7 +22,7 @@
       "numberOfEntities": "64",
       "numberOfIndividuals": "0",
       "numberOfProperties": "38",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
@@ -39,7 +39,12 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+              "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -61,7 +66,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0002530"
           ],
           "shortForm": "UBERON_0000467",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002530": "gland"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
@@ -96,7 +106,13 @@
             "http://purl.obolibrary.org/obo/UBERON_0013702"
           ],
           "shortForm": "UBERON_0000468",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000483": "epithelium",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk",
+            "en+http://purl.obolibrary.org/obo/UBERON_0013702": "body proper"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000483",
@@ -113,7 +129,12 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+              "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -125,7 +146,9 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0000483",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
@@ -146,14 +169,24 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk"
+              }
             }
           ],
           "imported": "false",
@@ -176,7 +209,13 @@
             "http://purl.obolibrary.org/obo/UBERON_0006841"
           ],
           "shortForm": "UBERON_0000916",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0006841": "central vein of liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
@@ -213,7 +252,14 @@
             "http://purl.obolibrary.org/obo/UBERON_0002368"
           ],
           "shortForm": "UBERON_0000949",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001007": "digestive system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001009": "circulatory system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002368": "endocrine gland"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001007",
@@ -249,7 +295,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
           "shortForm": "UBERON_0001007",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001009": "circulatory system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001009",
@@ -276,7 +327,11 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0004535",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0004535",
           "shortForm": "UBERON_0001009",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004535": "cardiovascular system"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001193",
@@ -300,14 +355,24 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+              }
             }
           ],
           "imported": "false",
@@ -320,7 +385,11 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001193",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001637": "artery",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001281",
@@ -353,42 +422,72 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0001981": "blood vessel"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0004535": "cardiovascular system"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+              }
             }
           ],
           "imported": "false",
@@ -401,7 +500,16 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001281",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001982": "capillary",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001986": "endothelium",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001981": "blood vessel",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004535": "cardiovascular system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001637",
@@ -425,7 +533,9 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001637",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001981": "blood vessel"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001638",
@@ -449,7 +559,9 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001638",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001981": "blood vessel"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001639",
@@ -473,14 +585,24 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+              }
             }
           ],
           "imported": "false",
@@ -493,7 +615,11 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001639",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001638": "vein",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001981",
@@ -516,7 +642,9 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0001281",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0001281",
           "shortForm": "UBERON_0001981",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001982",
@@ -539,7 +667,12 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002049": "vasculature"
+              }
             }
           ],
           "imported": "false",
@@ -552,7 +685,10 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001982",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001981": "blood vessel",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002049": "vasculature"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0001986",
@@ -576,7 +712,9 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0001986",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000483": "epithelium"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002049",
@@ -599,7 +737,9 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0001982",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0001982",
           "shortForm": "UBERON_0002049",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001982": "capillary"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002100",
@@ -620,14 +760,24 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0013702": "body proper"
+              }
             }
           ],
           "imported": "false",
@@ -652,7 +802,14 @@
             "http://purl.obolibrary.org/obo/UBERON_0006841"
           ],
           "shortForm": "UBERON_0002100",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism",
+            "en+http://purl.obolibrary.org/obo/UBERON_0013702": "body proper",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0006841": "central vein of liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002107",
@@ -680,42 +837,72 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000949": "endocrine system"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0001007": "digestive system"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system"
+              }
             }
           ],
           "imported": "false",
@@ -742,7 +929,20 @@
             "http://purl.obolibrary.org/obo/UBERON_0006841"
           ],
           "shortForm": "UBERON_0002107",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0002368": "endocrine gland",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000949": "endocrine system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001007": "digestive system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002423": "hepatobiliary system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001193": "hepatic artery",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001639": "hepatic portal vein",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule",
+            "en+http://purl.obolibrary.org/obo/UBERON_0006841": "central vein of liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
@@ -765,7 +965,12 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000949": "endocrine system"
+              }
             }
           ],
           "http://www.w3.org/2002/07/owl#equivalentClass": {
@@ -777,10 +982,17 @@
                 "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
                 "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
                 "isObsolete": "false",
-                "propertyLabels": {}
+                "iriToLabel": {
+                  "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                  "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                  "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                  "en+http://purl.obolibrary.org/obo/UBERON_0000949": "endocrine system"
+                }
               }
             ],
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/UBERON_0002530": "gland"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -792,7 +1004,10 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002368",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0002530": "gland",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000949": "endocrine system"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002423",
@@ -813,14 +1028,24 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0001007": "digestive system"
+              }
             }
           ],
           "imported": "false",
@@ -835,7 +1060,11 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0002107",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0002107",
           "shortForm": "UBERON_0002423",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001007": "digestive system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
@@ -852,7 +1081,12 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+              "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -864,7 +1098,9 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0002530",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0004535",
@@ -887,7 +1123,12 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0001009": "circulatory system"
+              }
             }
           ],
           "imported": "false",
@@ -902,7 +1143,11 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0001281",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0001281",
           "shortForm": "UBERON_0004535",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000467": "anatomical system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001009": "circulatory system",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0004647",
@@ -919,7 +1164,12 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+              "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -943,7 +1193,13 @@
             "http://purl.obolibrary.org/obo/UBERON_0006841"
           ],
           "shortForm": "UBERON_0004647",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001193": "hepatic artery",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001281": "hepatic sinusoid",
+            "en+http://purl.obolibrary.org/obo/UBERON_0001639": "hepatic portal vein",
+            "en+http://purl.obolibrary.org/obo/UBERON_0006841": "central vein of liver"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0006841",
@@ -969,28 +1225,48 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver"
+              }
             },
             {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+                "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+                "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+              }
             }
           ],
           "imported": "false",
@@ -1003,7 +1279,13 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBERON_0006841",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0001638": "vein",
+            "en+http://purl.obolibrary.org/obo/UBERON_0000916": "abdomen",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002107": "liver",
+            "en+http://purl.obolibrary.org/obo/UBERON_0004647": "liver lobule"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0013702",
@@ -1020,7 +1302,12 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part of",
+              "en+http://purl.obolibrary.org/obo/BFO_0000050": "part_of",
+              "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism"
+            }
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -1034,7 +1321,10 @@
           "relatedTo": "http://purl.obolibrary.org/obo/UBERON_0002100",
           "relatedTo+http://purl.obolibrary.org/obo/BFO_0000050": "http://purl.obolibrary.org/obo/UBERON_0002100",
           "shortForm": "UBERON_0013702",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/UBERON_0000468": "multicellular organism",
+            "en+http://purl.obolibrary.org/obo/UBERON_0002100": "trunk"
+          }
         }
       ],
       "properties": [
@@ -1210,7 +1500,10 @@
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "BFO_0000050",
           "synonym": "part of",
-          "propertyLabels": {}
+          "iriToLabel": {
+            "en+http://purl.obolibrary.org/obo/BFO_0000051": "has part",
+            "en+http://purl.obolibrary.org/obo/BFO_0000051": "has_part"
+          }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
@@ -1248,7 +1541,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "BFO_0000051",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
@@ -1267,7 +1560,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000111",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -1286,7 +1579,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000112",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -1305,7 +1598,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000115",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
@@ -1324,7 +1617,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000116",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
@@ -1343,7 +1636,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000118",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
@@ -1362,7 +1655,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "IAO_0000232",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0001900",
@@ -1381,7 +1674,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0001900",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0002174",
@@ -1400,7 +1693,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0002174",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0040042",
@@ -1419,7 +1712,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "RO_0040042",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000001",
@@ -1438,7 +1731,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000001",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000002",
@@ -1457,7 +1750,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000002",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000003",
@@ -1476,7 +1769,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000003",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000007",
@@ -1495,7 +1788,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000007",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000008",
@@ -1514,7 +1807,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000008",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000009",
@@ -1533,7 +1826,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000009",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000010",
@@ -1552,7 +1845,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000010",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000012",
@@ -1571,7 +1864,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000012",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000202",
@@ -1590,7 +1883,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "UBPROP_0000202",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/efo/EFO_URI",
@@ -1609,7 +1902,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "EFO_URI",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#date_retrieved",
@@ -1628,7 +1921,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "date_retrieved",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#external_class",
@@ -1647,7 +1940,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "external_class",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#external_ontology",
@@ -1666,7 +1959,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "external_ontology",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
@@ -1685,7 +1978,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasAlternativeId",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
@@ -1704,7 +1997,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasBroadSynonym",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
@@ -1723,7 +2016,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasDbXref",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
@@ -1742,7 +2035,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasExactSynonym",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
@@ -1761,7 +2054,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasOBONamespace",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
@@ -1780,7 +2073,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasRelatedSynonym",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
@@ -1799,7 +2092,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "hasSynonymType",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#id",
@@ -1818,7 +2111,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "id",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
@@ -1837,7 +2130,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "inSubset",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#notes",
@@ -1856,7 +2149,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "notes",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#ontology",
@@ -1875,7 +2168,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "ontology",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
@@ -1894,7 +2187,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "shorthand",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
@@ -1913,7 +2206,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "source",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://xmlns.com/foaf/0.1/depicted_by",
@@ -1932,7 +2225,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "EFO",
           "shortForm": "depicted_by",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

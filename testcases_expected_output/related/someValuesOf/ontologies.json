@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A",
@@ -31,7 +31,7 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -42,7 +42,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf",
           "shortForm": "A",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
@@ -61,7 +61,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf",
           "shortForm": "B",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -82,7 +82,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf",
           "shortForm": "r",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

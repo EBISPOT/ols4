@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Father",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
@@ -54,7 +54,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Mother",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
@@ -77,7 +77,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-unionOf",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

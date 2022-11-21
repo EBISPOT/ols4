@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
@@ -36,7 +36,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass",
           "shortForm": "Human",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
@@ -55,7 +55,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

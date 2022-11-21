@@ -16,7 +16,7 @@
       "numberOfEntities": "4",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother",
@@ -32,7 +32,7 @@
               "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
               "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
             ],
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -43,7 +43,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Mother",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
@@ -62,7 +62,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
@@ -81,7 +81,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

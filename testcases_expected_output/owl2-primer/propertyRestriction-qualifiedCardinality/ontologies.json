@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "1",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -56,7 +56,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "hasChild",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -78,7 +78,7 @@
                 "value": "2"
               },
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {}
             }
           ],
           "imported": "false",
@@ -89,7 +89,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

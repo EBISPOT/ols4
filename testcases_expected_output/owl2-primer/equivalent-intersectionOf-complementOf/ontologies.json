@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson",
@@ -33,10 +33,10 @@
               {
                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
                 "http://www.w3.org/2002/07/owl#complementOf": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
-                "propertyLabels": {}
+                "iriToLabel": {}
               }
             ],
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -47,7 +47,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "ChildlessPerson",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
@@ -66,7 +66,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
@@ -85,7 +85,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

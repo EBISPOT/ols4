@@ -16,7 +16,7 @@
       "numberOfEntities": "6",
       "numberOfIndividuals": "3",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "Quantity",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
@@ -62,7 +62,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "ThermodynamicTemperature",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -84,7 +84,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "commonlyHasUnit",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -113,7 +113,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "ThermodynamicTemperature",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
@@ -131,7 +131,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "terakelvin",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
@@ -153,7 +153,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
           "ontologyPreferredPrefix": "punning-class-individual",
           "shortForm": "thermodynamicTemperatureOfTheTriplePointOfWater",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

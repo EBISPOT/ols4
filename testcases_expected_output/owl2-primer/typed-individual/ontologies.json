@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "1",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://example.com/owl2primer#Person",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://example.com/owl2primer",
           "ontologyPreferredPrefix": "owl2primer-typed-individual",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],
@@ -60,7 +60,7 @@
           "ontologyIri": "http://example.com/owl2primer",
           "ontologyPreferredPrefix": "owl2primer-typed-individual",
           "shortForm": "Mary",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

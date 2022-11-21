@@ -19,7 +19,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#A",
@@ -35,7 +35,7 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#A",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -46,7 +46,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-hierarchical-relatedToSelf",
           "shortForm": "A",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -67,7 +67,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-hierarchical-relatedToSelf",
           "shortForm": "r",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

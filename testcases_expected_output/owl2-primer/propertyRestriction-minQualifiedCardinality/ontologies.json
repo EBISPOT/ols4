@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "1",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -56,7 +56,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "hasChild",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -78,7 +78,7 @@
               "http://www.w3.org/2002/07/owl#onClass": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
               "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {}
             }
           ],
           "imported": "false",
@@ -89,7 +89,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

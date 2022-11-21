@@ -16,7 +16,7 @@
       "numberOfEntities": "6",
       "numberOfIndividuals": "2",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Man",
@@ -39,7 +39,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Man",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Person",
@@ -58,7 +58,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Woman",
@@ -80,7 +80,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -101,7 +101,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "hasWife",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -121,7 +121,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Bill",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion#Mary",
@@ -139,7 +139,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-negativePropertyAssertion.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
           "shortForm": "Mary",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

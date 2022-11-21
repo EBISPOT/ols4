@@ -16,7 +16,7 @@
       "numberOfEntities": "6",
       "numberOfIndividuals": "2",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Man",
@@ -39,7 +39,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Man",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Person",
@@ -58,7 +58,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Woman",
@@ -80,7 +80,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -101,7 +101,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "hasWife",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -123,7 +123,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty#Mary",
@@ -141,7 +141,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-assertionProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-assertionProperty",
           "shortForm": "Mary",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

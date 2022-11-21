@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
@@ -35,10 +35,10 @@
                 "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
                 "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C"
               ],
-              "propertyLabels": {}
+              "iriToLabel": {}
             },
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -49,7 +49,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousConjunction",
           "shortForm": "A",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
@@ -70,7 +70,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
           "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
           "shortForm": "B",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
@@ -91,7 +91,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
           "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
           "shortForm": "C",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -112,7 +112,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousConjunction",
           "shortForm": "r",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

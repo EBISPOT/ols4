@@ -19,7 +19,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
@@ -35,7 +35,7 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
             "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -46,7 +46,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-hierarchical",
           "shortForm": "A",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
@@ -67,7 +67,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
           "relatedTo+http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
           "shortForm": "B",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -88,7 +88,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-hierarchical",
           "shortForm": "r",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

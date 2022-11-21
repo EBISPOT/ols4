@@ -16,7 +16,7 @@
       "numberOfEntities": "4",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Man",
@@ -39,7 +39,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
           "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Man",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Person",
@@ -58,7 +58,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
           "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction#Woman",
@@ -80,7 +80,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
           "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -103,7 +103,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/domain-range-restriction.owl",
           "ontologyPreferredPrefix": "owl2primer-domain-range-restriction",
           "shortForm": "hasWife",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

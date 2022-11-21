@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "2",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [],
       "properties": [],
       "individuals": [
@@ -36,7 +36,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
           "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
           "shortForm": "Bill",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
@@ -54,7 +54,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl",
           "ontologyPreferredPrefix": "owl2primer-namedIndividual-differentFrom",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Father",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
@@ -54,7 +54,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Mother",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
@@ -77,7 +77,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

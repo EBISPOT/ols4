@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "Dead",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
@@ -51,10 +51,10 @@
             "http://www.w3.org/2002/07/owl#onProperty": {
               "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {}
             },
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -65,7 +65,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "Orphan",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -86,7 +86,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
           "shortForm": "hasChild",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "1",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "Parent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -56,7 +56,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "hasChild",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -77,7 +77,7 @@
               },
               "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
               "isObsolete": "false",
-              "propertyLabels": {}
+              "iriToLabel": {}
             }
           ],
           "imported": "false",
@@ -88,7 +88,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
           "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

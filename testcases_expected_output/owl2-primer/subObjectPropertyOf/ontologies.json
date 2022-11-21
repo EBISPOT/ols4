@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Man",
@@ -39,7 +39,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Man",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Person",
@@ -58,7 +58,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#Woman",
@@ -80,7 +80,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -101,7 +101,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "hasSpouse",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasWife",
@@ -121,7 +121,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
           "shortForm": "hasWife",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

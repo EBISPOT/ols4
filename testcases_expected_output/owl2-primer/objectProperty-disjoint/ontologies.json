@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [],
       "properties": [
         {
@@ -37,7 +37,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
           "shortForm": "hasParent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
@@ -56,7 +56,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
           "shortForm": "hasSpouse",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "2",
       "numberOfProperties": "2",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Person",
@@ -38,7 +38,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
           "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -60,7 +60,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
           "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "hasSSN",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#hasSSN",
@@ -79,7 +79,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
           "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "hasSSN",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -105,7 +105,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
           "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Anne",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#Annie",
@@ -125,7 +125,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-hasKey.owl#",
           "ontologyPreferredPrefix": "owl2primer-dataProperty-hasKey",
           "shortForm": "Annie",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

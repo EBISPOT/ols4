@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "3",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
@@ -33,7 +33,7 @@
               "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
               "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary"
             ],
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -44,7 +44,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "MyBirthdayGuests",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],
@@ -65,7 +65,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "Bill",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
@@ -83,7 +83,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
@@ -101,7 +101,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentClass-collection",
           "shortForm": "Mary",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

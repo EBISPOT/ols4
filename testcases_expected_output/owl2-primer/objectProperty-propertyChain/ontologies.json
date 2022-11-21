@@ -16,7 +16,7 @@
       "numberOfEntities": "2",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [],
       "properties": [
         {
@@ -40,7 +40,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-propertyChain",
           "shortForm": "hasGrandParent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl#hasParent",
@@ -59,7 +59,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-propertyChain.owl",
           "ontologyPreferredPrefix": "owl2primer-objectProperty-propertyChain",
           "shortForm": "hasParent",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": []

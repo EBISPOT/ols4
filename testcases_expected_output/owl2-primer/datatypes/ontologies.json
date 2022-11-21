@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "1",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes#Person",
@@ -35,7 +35,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
           "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -58,7 +58,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
           "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "hasAge",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -83,7 +83,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatypes.owl",
           "ontologyPreferredPrefix": "owl2primer-datatypes",
           "shortForm": "Jack",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

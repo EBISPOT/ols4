@@ -16,7 +16,7 @@
       "numberOfEntities": "6",
       "numberOfIndividuals": "3",
       "numberOfProperties": "1",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
@@ -36,10 +36,10 @@
                 "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
                 "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
               ],
-              "propertyLabels": {}
+              "iriToLabel": {}
             },
             "isObsolete": "false",
-            "propertyLabels": {}
+            "iriToLabel": {}
           },
           "imported": "false",
           "isDefiningOntology": "false",
@@ -50,7 +50,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-oneOf",
           "shortForm": "A",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [
@@ -71,7 +71,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl",
           "ontologyPreferredPrefix": "related-someValuesOf-oneOf",
           "shortForm": "r",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -93,7 +93,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "shortForm": "b1",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
@@ -113,7 +113,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "shortForm": "b2",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
@@ -133,7 +133,7 @@
           "relatedTo": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "relatedTo+http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
           "shortForm": "b3",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

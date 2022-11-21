@@ -16,7 +16,7 @@
       "numberOfEntities": "5",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
@@ -38,7 +38,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Man",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
@@ -57,7 +57,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
@@ -79,7 +79,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
           "ontologyPreferredPrefix": "owl2primer-disjointClasses",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],

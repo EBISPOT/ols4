@@ -16,7 +16,7 @@
       "numberOfEntities": "4",
       "numberOfIndividuals": "2",
       "numberOfProperties": "2",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [],
       "properties": [
         {
@@ -37,7 +37,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "hasLifePartner",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
@@ -56,7 +56,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "hasSpouse",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "individuals": [
@@ -76,7 +76,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "John",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
@@ -96,7 +96,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
           "shortForm": "Mary",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ]
     }

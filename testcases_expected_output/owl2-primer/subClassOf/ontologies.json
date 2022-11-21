@@ -16,7 +16,7 @@
       "numberOfEntities": "3",
       "numberOfIndividuals": "0",
       "numberOfProperties": "0",
-      "propertyLabels": {},
+      "iriToLabel": {},
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Mother",
@@ -38,7 +38,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
           "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Mother",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
@@ -57,7 +57,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
           "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Person",
-          "propertyLabels": {}
+          "iriToLabel": {}
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
@@ -79,7 +79,7 @@
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
           "ontologyPreferredPrefix": "owl2primer-subClassOf",
           "shortForm": "Woman",
-          "propertyLabels": {}
+          "iriToLabel": {}
         }
       ],
       "properties": [],
