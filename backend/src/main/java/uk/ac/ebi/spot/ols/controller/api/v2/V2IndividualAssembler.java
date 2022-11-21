@@ -1,10 +1,10 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityLinks;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.ResourceAssembler;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.EntityLinks;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.RepresentationModelAssembler;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.V2IndividualController;
@@ -15,30 +15,25 @@ import java.util.Collection;
 import java.util.HashSet;
 
 @Component
-public class V2IndividualAssembler implements ResourceAssembler<V2Individual, Resource<V2Individual>> {
+public class V2IndividualAssembler implements RepresentationModelAssembler<V2Individual, EntityModel<V2Individual>> {
 
     @Autowired
     EntityLinks entityLinks;
 
     @Override
-    public Resource<V2Individual> toResource(V2Individual _individual) {
-        Resource<V2Individual> resource = new Resource<V2Individual>(_individual);
-        try {
-            String id = UriUtils.encode(_individual.get("iri"), "UTF-8");
-            final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
-                    ControllerLinkBuilder.methodOn(V2IndividualController.class).getIndividual(_individual.get("ontologyId"), id, _individual.get("lang")));
+    public EntityModel<V2Individual> toModel(V2Individual _individual) {
+        EntityModel<V2Individual> resource = EntityModel.of(_individual);
+        String id = UriUtils.encode(_individual.get("iri"), "UTF-8");
+        final WebMvcLinkBuilder lb = WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(V2IndividualController.class).getIndividual(_individual.get("ontologyId"), id, _individual.get("lang")));
 
-            String isRoot = _individual.get("isRoot");
+        String isRoot = _individual.get("isRoot");
 
-            if (isRoot != null && !isRoot.equals("true")) {
-                resource.add(lb.slash("ancestors").withRel("ancestors"));
-            }
-
-            resource.add(lb.withSelfRel());
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        if (isRoot != null && !isRoot.equals("true")) {
+            resource.add(lb.slash("ancestors").withRel("ancestors"));
         }
+
+        resource.add(lb.withSelfRel());
 
         return resource;
     }

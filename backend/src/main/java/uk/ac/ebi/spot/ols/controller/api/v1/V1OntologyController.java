@@ -9,8 +9,12 @@ import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.*;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.server.ExposesResourceFor;
+import org.springframework.hateoas.server.RepresentationModelProcessor;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,7 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api/ontologies")
 @ExposesResourceFor(V1Ontology.class)
 public class V1OntologyController implements
-        ResourceProcessor<RepositoryLinksResource> {
+        RepresentationModelProcessor<RepositoryLinksResource> {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -50,36 +54,34 @@ public class V1OntologyController implements
 
     @Override
     public RepositoryLinksResource process(RepositoryLinksResource resource) {
-        resource.add(ControllerLinkBuilder.linkTo(V1OntologyController.class).withRel("ontologies"));
+        resource.add(WebMvcLinkBuilder.linkTo(V1OntologyController.class).withRel("ontologies"));
         return resource;
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedResources<V1Ontology>> getOntologies(
+    HttpEntity<PagedModel<V1Ontology>> getOntologies(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         Page<V1Ontology> document = ontologyRepository.getAll(lang, pageable);
-        return new ResponseEntity<>( assembler.toResource(document, documentAssembler), HttpStatus.OK);
+        return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
     }
 
 
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<Resource<V1Ontology>> getOntology(
+    HttpEntity<EntityModel<V1Ontology>> getOntology(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @PathVariable("onto") String ontologyId) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
         V1Ontology document = ontologyRepository.get(ontologyId, lang);
         if (document == null) throw new ResourceNotFoundException();
-        return new ResponseEntity<>( documentAssembler.toResource(document), HttpStatus.OK);
+        return new ResponseEntity<>( documentAssembler.toModel(document), HttpStatus.OK);
     }
 
-    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Resource not found")
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
     }
-
-
 
 }

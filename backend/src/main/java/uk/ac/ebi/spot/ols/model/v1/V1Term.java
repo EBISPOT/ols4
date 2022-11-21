@@ -1,21 +1,21 @@
 
 package uk.ac.ebi.spot.ols.model.v1;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRawValue;
-
 import com.google.gson.Gson;
-
-import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
-
-import org.springframework.hateoas.core.Relation;
+import org.springframework.hateoas.server.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
-import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
+import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
 @Relation(collectionRelation = "terms")
 public class V1Term {

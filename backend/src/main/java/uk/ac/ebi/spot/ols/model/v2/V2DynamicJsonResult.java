@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 

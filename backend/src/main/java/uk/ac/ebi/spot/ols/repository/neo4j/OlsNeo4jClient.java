@@ -1,20 +1,15 @@
 package uk.ac.ebi.spot.ols.repository.neo4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
-
-import static org.neo4j.driver.Values.parameters;
 
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
+import static org.neo4j.driver.Values.parameters;
 
 @Component
 public class OlsNeo4jClient {

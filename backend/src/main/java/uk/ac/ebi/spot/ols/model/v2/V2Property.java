@@ -2,9 +2,8 @@
 
 package uk.ac.ebi.spot.ols.model.v2;
 
-import org.springframework.hateoas.core.Relation;
+import org.springframework.hateoas.server.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import java.util.Map;
 

@@ -1,10 +1,10 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityLinks;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.ResourceAssembler;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.EntityLinks;
+import org.springframework.hateoas.server.RepresentationModelAssembler;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 
@@ -14,16 +14,16 @@ import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Component
-public class V1OntologyAssembler implements ResourceAssembler<V1Ontology, Resource<V1Ontology>> {
+public class V1OntologyAssembler implements RepresentationModelAssembler<V1Ontology, EntityModel<V1Ontology>> {
 
     @Autowired
     EntityLinks entityLinks;
 
     @Override
-    public Resource<V1Ontology> toResource(V1Ontology document) {
-        Resource<V1Ontology> resource = new Resource<V1Ontology>(document);
-        final ControllerLinkBuilder lb = ControllerLinkBuilder.linkTo(
-                ControllerLinkBuilder.methodOn(V1OntologyController.class).getOntology(document.lang, document.ontologyId));
+    public EntityModel<V1Ontology> toModel(V1Ontology document) {
+        EntityModel<V1Ontology> resource = EntityModel.of(document);
+        final WebMvcLinkBuilder lb = WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(V1OntologyController.class).getOntology(document.lang, document.ontologyId));
 
         resource.add(lb.withSelfRel());
 

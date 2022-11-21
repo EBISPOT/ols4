@@ -74,7 +74,7 @@ public class OlsSolrClient {
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
 
 	if(pageable != null) {
-		query.setStart(pageable.getOffset());
+		query.setStart((int)pageable.getOffset());
 		query.setRows(pageable.getPageSize());
 	}
 
