@@ -27,7 +27,7 @@ public class OntologyTest {
      * @param ontologyId
      */
     @Test
-    void getOntologyTest(String ontologyId) {
+    void getOntologyTest(/*String ontologyId*/) {
 //        String requestURL = BACKEND_URL + ONTOLOGIES_API_REQUEST + "/" + ontologyId;
         String requestURL = BACKEND_URL + ONTOLOGIES_API_REQUEST + "/owl2primer-minimal";
 
