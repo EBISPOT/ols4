@@ -31,7 +31,7 @@ export default class Reified<T> {
 				let metadata:any = {}
 
 				for(let k of Object.keys(value)) {
-					if(k === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+					if(k === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' || k === 'value')
 						continue
 					metadata[k] = value[k]
 				}
