@@ -12,17 +12,6 @@ export interface Column {
   sortable: boolean;
 }
 
-export interface Props {
-  columns: readonly Column[];
-  data: any[];
-  onSelectRow: (row: any) => void;
-  page?: number;
-  rowsPerPage?: number;
-  onPageChange?: (page: number) => void;
-  onRowsPerPageChange?: (rowsPerPage: number) => void;
-  onFilter?: (key: string) => void;
-}
-
 export default function OlsDatatable({
   columns,
   data,
@@ -32,7 +21,16 @@ export default function OlsDatatable({
   onPageChange,
   onRowsPerPageChange,
   onFilter,
-}: Props) {
+}: {
+  columns: readonly Column[];
+  data: any[];
+  onSelectRow: (row: any) => void;
+  page?: number;
+  rowsPerPage?: number;
+  onPageChange?: (page: number) => void;
+  onRowsPerPageChange?: (rowsPerPage: number) => void;
+  onFilter?: (key: string) => void;
+}) {
   // const [sortColumn, setSortColumn] = useState<string>("");
   // const [sortDirection, setSortDirection] = useState<string>("asc");
 
@@ -87,7 +85,7 @@ export default function OlsDatatable({
       </div>
 
       <div className="m-6">
-        <table className="border-collapse border-spacing-1">
+        <table className="border-collapse border-spacing-1 w-full">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">
               {columns.map((column) => (
@@ -117,7 +115,7 @@ export default function OlsDatatable({
                         className="text-sm align-top py-2 px-4"
                         key={column.selector(row)}
                       >
-                        {column.selector(row)}
+                        {column.selector(row) ? column.selector(row) : "(no data)"}
                       </td>
                     );
                   })}

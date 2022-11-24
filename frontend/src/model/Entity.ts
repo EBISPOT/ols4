@@ -1,6 +1,6 @@
 import { asArray } from "../app/util";
-import Thing from "./Thing";
 import Reified from "./Reified";
+import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
   constructor(properties: any) {
@@ -37,8 +37,7 @@ export default abstract class Entity extends Thing {
     return asArray(this.properties[id]);
   }
 
-  getIriToLabel():any {
-	return this.properties['iriToLabel']
+  getIriToLabel(): any {
+    return this.properties["iriToLabel"];
   }
-
 }
