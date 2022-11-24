@@ -1,197 +1,251 @@
-import { Fragment } from "react"
-import { asArray } from "../app/util"
+import { asArray } from "../app/util";
 
-export default function ClassExpression(props:{ expr:any, iriToLabel:any }) {
+export default function ClassExpression({
+  expr,
+  iriToLabel,
+}: {
+  expr: any;
+  iriToLabel: any;
+}) {
+  if (typeof expr !== "object") {
+    // expr is just an IRI
+    const label = iriToLabel[expr];
+    return (
+      <a href={expr} className="link-default">
+        {label ? label : expr.substring(expr.lastIndexOf("/") + 1)}
+      </a>
+    );
+  }
 
-	let { expr, iriToLabel } = props
+  iriToLabel = { ...iriToLabel, ...expr.iriToLabel };
 
-	if(typeof(expr) !== 'object') {
+  ///
+  /// 1. owl:Class expressions
+  ///
+  const intersectionOf = asArray(
+    expr["http://www.w3.org/2002/07/owl#intersectionOf"]
+  );
+  if (intersectionOf.length > 0) {
+    let nodes: JSX.Element[] = [
+      <span className="text-neutral-default">&lpar;</span>,
+    ];
 
-		// expr is just an IRI
-		//
+    for (const subExpr of intersectionOf) {
+      if (nodes.length > 1) {
+        nodes.push(
+          <span className="px-1 text-neutral-default italic">and</span>
+        );
+      }
+      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+    }
 
-		let label = iriToLabel[expr]
+    nodes.push(<span className="text-neutral-default">&rpar;</span>);
 
-		if(label) {
-			return <div className="classExpressionIri">{label}</div>
-		} else {
-			return <div className="classExpressionIri">{expr}</div>
-		}
-	}
+    return <span>{nodes}</span>;
+  }
 
-	iriToLabel = { ...iriToLabel, ...expr.iriToLabel }
+  const unionOf = asArray(expr["http://www.w3.org/2002/07/owl#unionOf"]);
+  if (unionOf.length > 0) {
+    let nodes: JSX.Element[] = [
+      <span className="text-neutral-default">&lpar;</span>,
+    ];
 
-	///
-	/// 1. owl:Class expressions
-	///
-	let intersectionOf = asArray(expr['http://www.w3.org/2002/07/owl#intersectionOf'])
-	if(intersectionOf.length > 0) {
+    for (const subExpr of intersectionOf) {
+      if (nodes.length > 1) {
+        nodes.push(
+          <span className="px-1 text-neutral-default italic">or</span>
+        );
+      }
+      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+    }
 
-		let nodes:JSX.Element[] = [
-			<div className="classExpressionIntersectionStart">(</div>
-		]
+    nodes.push(<span className="text-neutral-default">&rpar;</span>);
 
-		for(let subExpr of intersectionOf) {
-			if(nodes.length > 1) {
-				nodes.push(  <div className="classExpressionIntersection">and</div> )
-			}
-			nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />)
-		}
+    return <span>{nodes}</span>;
+  }
 
-		nodes.push( <div className="classExpressionIntersectionEnd">)</div> )
+  const complementOf = asArray(
+    expr["http://www.w3.org/2002/07/owl#complementOf"]
+  )[0];
+  if (complementOf) {
+    return (
+      <span>
+        <span className="pr-1 text-neutral-default italic">not</span>
+        <ClassExpression expr={complementOf} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-		return <Fragment>{nodes}</Fragment>
-	}
+  const oneOf = asArray(expr["http://www.w3.org/2002/07/owl#oneOf"]);
+  if (oneOf.length > 0) {
+    let nodes: JSX.Element[] = [
+      <span className="text-neutral-default">&lbrace;</span>,
+    ];
 
-	let unionOf = asArray(expr['http://www.w3.org/2002/07/owl#unionOf'])
-	if(unionOf.length > 0) {
-		
-		let nodes:JSX.Element[] = [
-			<div className="classExpressionUnionStart">(</div>
-		]
+    for (const subExpr of intersectionOf) {
+      if (nodes.length > 1) {
+        nodes.push(<span className="text-neutral-default">&comma;&nbsp;</span>);
+      }
+      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+    }
 
-		for(let subExpr of intersectionOf) {
-			if(nodes.length > 1) {
-				nodes.push(  <div className="classExpressionUnion">or</div> )
-			}
-			nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />)
-		}
+    nodes.push(<span className="text-neutral-default">&rbrace;</span>);
 
-		nodes.push( <div className="classExpressionUnionEnd">)</div> )
+    return <span>{nodes}</span>;
+  }
 
-		return <Fragment>{nodes}</Fragment>
-	}
+  ///
+  /// 2. owl:Restriction expressions
+  ///
+  const onProperty = expr["http://www.w3.org/2002/07/owl#onProperty"];
+  // let onProperties = expr['http://www.w3.org/2002/07/owl#onProperties'])
 
-	let complementOf = asArray(expr['http://www.w3.org/2002/07/owl#complementOf'])[0]
-	if(complementOf) {
+  if (!onProperty) {
+    return (
+      <span className="text-embl-red-default italic">
+        unknown class expression
+      </span>
+    );
+  }
 
-		return <Fragment>
-			<div className="classExpressionNot">not</div>
-			<ClassExpression expr={complementOf} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
+  const someValuesFrom = asArray(
+    expr["http://www.w3.org/2002/07/owl#someValuesFrom"]
+  )[0];
 
-	let oneOf = asArray(expr['http://www.w3.org/2002/07/owl#oneOf'])
-	if(oneOf.length > 0) {
-		
-		let nodes:JSX.Element[] = [
-			<div className="classExpressionOneOfStart">&lbrace;</div>
-		]
+  if (someValuesFrom) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">some</span>
+        <ClassExpression expr={someValuesFrom} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-		for(let subExpr of intersectionOf) {
-			if(nodes.length > 1) {
-				nodes.push(  <div className="classExpressionOneOfDelimiter">, </div> )
-			}
-			nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />)
-		}
+  const allValuesFrom = asArray(
+    expr["http://www.w3.org/2002/07/owl#allValuesFrom"]
+  )[0];
+  if (allValuesFrom) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">only</span>
+        <ClassExpression expr={allValuesFrom} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-		nodes.push(
-			<div className="classExpressionOneOfEnd">&rbrace;</div>
-		)
+  const hasValue = asArray(expr["http://www.w3.org/2002/07/owl#hasValue"])[0];
+  if (hasValue) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">value</span>
+        <ClassExpression expr={hasValue} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-		return <Fragment>{nodes}</Fragment>
-	}
+  const minCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#minCardinality"]
+  )[0];
+  if (minCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">min</span>
+        <ClassExpression expr={minCardinality} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-	///
-	/// 2. owl:Restriction expressions
-	///
-	let onProperty = expr['http://www.w3.org/2002/07/owl#onProperty']
-	// let onProperties = expr['http://www.w3.org/2002/07/owl#onProperties'])
+  let maxCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#maxCardinality"]
+  )[0];
+  if (maxCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">max</span>
+        <ClassExpression expr={maxCardinality} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-	if(!onProperty) {
-		return <div>unknown class expression</div>
-	}
+  let minQualifiedCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#minQualifiedCardinality"]
+  )[0];
+  if (minQualifiedCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">min</span>
+        <ClassExpression
+          expr={minQualifiedCardinality}
+          iriToLabel={iriToLabel}
+        />
+      </span>
+    );
+  }
 
-	let someValuesFrom = asArray(expr['http://www.w3.org/2002/07/owl#someValuesFrom'])[0]
+  let maxQualifiedCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#maxQualifiedCardinality"]
+  )[0];
+  if (maxQualifiedCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">max</span>
+        <ClassExpression
+          expr={maxQualifiedCardinality}
+          iriToLabel={iriToLabel}
+        />
+      </span>
+    );
+  }
 
-	if(someValuesFrom) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionSome">some</div>
-			<ClassExpression expr={someValuesFrom} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
+  let exactCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#exactCardinality"]
+  )[0];
+  if (exactCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">exactly</span>
+        <ClassExpression expr={exactCardinality} iriToLabel={iriToLabel} />
+      </span>
+    );
+  }
 
-	let allValuesFrom = asArray(expr['http://www.w3.org/2002/07/owl#allValuesFrom'])[0]
-	if(allValuesFrom) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionAll">only</div>
-			<ClassExpression expr={allValuesFrom} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
+  let exactQualifiedCardinality = asArray(
+    expr["http://www.w3.org/2002/07/owl#exactQualifiedCardinality"]
+  )[0];
+  if (exactQualifiedCardinality) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">exactly</span>
+        <ClassExpression
+          expr={exactQualifiedCardinality}
+          iriToLabel={iriToLabel}
+        />
+      </span>
+    );
+  }
 
-	let hasValue = asArray(expr['http://www.w3.org/2002/07/owl#hasValue'])[0]
-	if(hasValue) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionHasValue">value</div>
-			<ClassExpression expr={hasValue} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
+  let hasSelf = asArray(expr["http://www.w3.org/2002/07/owl#hasSelf"])[0];
+  if (hasSelf) {
+    return (
+      <span>
+        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <span className="px-1 text-embl-purple-default italic">Self</span>
+      </span>
+    );
+  }
 
-	let minCardinality = asArray(expr['http://www.w3.org/2002/07/owl#minCardinality'])[0]
-	if(minCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionMin">min</div>
-			<ClassExpression expr={minCardinality} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
-
-	let maxCardinality = asArray(expr['http://www.w3.org/2002/07/owl#maxCardinality'])[0]
-	if(maxCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionMax">max</div>
-			<ClassExpression expr={maxCardinality} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
-
-	let minQualifiedCardinality = asArray(expr['http://www.w3.org/2002/07/owl#minQualifiedCardinality'])[0]
-	if(minQualifiedCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionMin">min</div>
-			<ClassExpression expr={minQualifiedCardinality} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
-
-	let maxQualifiedCardinality = asArray(expr['http://www.w3.org/2002/07/owl#maxQualifiedCardinality'])[0]
-	if(maxQualifiedCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionMax">max</div>
-			<ClassExpression expr={maxQualifiedCardinality} iriToLabel={iriToLabel}/>
-		</Fragment>
-	}
-
-	let exactCardinality = asArray(expr['http://www.w3.org/2002/07/owl#exactCardinality'])[0]
-	if(exactCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionExact">exactly</div>
-			<ClassExpression expr={exactCardinality} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
-
-	let exactQualifiedCardinality = asArray(expr['http://www.w3.org/2002/07/owl#exactQualifiedCardinality'])[0]
-	if(exactQualifiedCardinality) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionExact">exactly</div>
-			<ClassExpression expr={exactQualifiedCardinality} iriToLabel={iriToLabel} />
-		</Fragment>
-	}
-
-	let hasSelf = asArray(expr['http://www.w3.org/2002/07/owl#hasSelf'])[0]
-	if(hasSelf) {
-		return <Fragment>
-			<ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
-			<div className="classExpressionSelf">Self</div>
-		</Fragment>
-	}
-
-	return <div>unknown class expression</div>
+  return (
+    <span className="text-embl-red-default italic">
+      unknown class expression
+    </span>
+  );
 }
-

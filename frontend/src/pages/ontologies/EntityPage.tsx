@@ -14,7 +14,11 @@ import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
 
-export default function EntityPage(props: {
+export default function EntityPage({
+  ontologyId,
+  entityIri,
+  entityType,
+}: {
   ontologyId: string;
   entityIri: string;
   entityType: "classes" | "properties" | "individuals";
@@ -24,8 +28,8 @@ export default function EntityPage(props: {
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
 
-  const { ontologyId, entityIri, entityType } = props;
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
+  const iriToLabel = entity ? entity.getIriToLabel() : {};
 
   useEffect(() => {
     if (!ontology) dispatch(getOntology(ontologyId));
@@ -33,9 +37,6 @@ export default function EntityPage(props: {
   }, []);
 
   if (entity) document.title = entity.getName();
-
-  let iriToLabel = entity ? entity.getIriToLabel() : {}
-
   return (
     <div>
       <Header section="ontologies" />
@@ -61,7 +62,9 @@ export default function EntityPage(props: {
                   component={RouterLink}
                   to={"/ontologies/" + ontologyId}
                 >
-                  {ontology.getName()}
+                  {ontology.getName()
+                    ? ontology.getName()
+                    : ontology.getOntologyId()}
                 </Link>
               </span>
               <span className="px-2 text-sm">&gt;</span>
@@ -233,11 +236,16 @@ export default function EntityPage(props: {
                           Sub{entity.getType().toString().toLowerCase()} of
                         </div>
                         <ul className="list-disc list-inside">
-                          {entity.getParents().map((parent:Reified<any>) => {
-
-				// TODO: display parent.metadata somewhere
-
-				return <li key={randomString()}><ClassExpression expr={parent.value} iriToLabel={iriToLabel} /></li>
+                          {entity.getParents().map((parent: Reified<any>) => {
+                            // TODO: display parent.metadata somewhere
+                            return (
+                              <li key={randomString()}>
+                                <ClassExpression
+                                  expr={parent.value}
+                                  iriToLabel={iriToLabel}
+                                />
+                              </li>
+                            );
                           })}
                         </ul>
                       </div>

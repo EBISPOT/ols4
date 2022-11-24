@@ -13,7 +13,11 @@ import {
   TreeNode
 } from "./ontologiesSlice";
 
-export default function EntityTree(props: {
+export default function EntityTree({
+  ontologyId,
+  entityType,
+  selectedEntity,
+}: {
   ontologyId: string;
   selectedEntity?: Entity;
   entityType: "entities" | "classes" | "properties" | "individuals";
@@ -25,8 +29,6 @@ export default function EntityTree(props: {
   const loading = useAppSelector(
     (state) => state.ontologies.loadingNodeChildren
   );
-
-  const { ontologyId, entityType, selectedEntity } = props;
 
   const [rootNodes, setRootNodes] = useState<TreeNode[]>();
   const [nodeChildren, setNodeChildren] = useState<

@@ -12,12 +12,11 @@ import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage(props: { ontologyId: string }) {
+export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
 
-  const { ontologyId } = props;
   const [tab, setTab] = useState<
     "entities" | "classes" | "properties" | "individuals"
   >("classes");
@@ -27,7 +26,7 @@ export default function OntologyPage(props: { ontologyId: string }) {
     dispatch(getOntology(ontologyId));
   }, []);
 
-  document.title = ontology ? ontology.getName() : "";
+  document.title = ontology?.getName() ? ontology.getName() : ontologyId;
   return (
     <div>
       <Header section="ontologies" />
@@ -46,14 +45,22 @@ export default function OntologyPage(props: { ontologyId: string }) {
                 </Link>
               </span>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold">{ontology!.getName()}</span>
+              <span className="font-bold">
+                {ontology.getName()
+                  ? ontology.getName()
+                  : ontology.getOntologyId()}
+              </span>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">
-                {ontology!.getName()}
+                {ontology.getName()
+                  ? ontology.getName()
+                  : ontology.getOntologyId()}
               </div>
               <div>
-                <p>{ontology!.getDescription()}</p>
+                <p>
+                  {ontology.getDescription() ? ontology.getDescription() : ""}
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-8">
@@ -69,21 +76,21 @@ export default function OntologyPage(props: { ontologyId: string }) {
                       .getNumClasses()
                       .toLocaleString()})`}
                     value="classes"
-                    disabled={ontology!.getNumClasses() <= 0}
+                    disabled={!(ontology.getNumClasses() > 0)} // !(value) handles NaN
                   />
                   <Tab
                     label={`Properties (${ontology!
                       .getNumProperties()
                       .toLocaleString()})`}
                     value="properties"
-                    disabled={ontology!.getNumProperties() <= 0}
+                    disabled={!(ontology.getNumProperties() > 0)}
                   />
                   <Tab
                     label={`Individuals (${ontology!
                       .getNumIndividuals()
                       .toLocaleString()})`}
                     value="individuals"
-                    disabled={ontology!.getNumIndividuals() <= 0}
+                    disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
                 <div className="py-2 mb-1">
@@ -126,12 +133,18 @@ export default function OntologyPage(props: { ontologyId: string }) {
                   <div className="p-2 break-words space-y-2">
                     <div>
                       <span className="font-bold">Ontology IRI: </span>
-                        <a id="ontologyIri" href={ontology.getIri() || ontology.getOntologyPurl()}>
-                            {ontology.getIri() || ontology.getOntologyPurl()}</a>
+                      <a
+                        id="ontologyIri"
+                        href={ontology.getIri() || ontology.getOntologyPurl()}
+                      >
+                        {ontology.getIri() || ontology.getOntologyPurl()}
+                      </a>
                     </div>
                     <div>
                       <span className="font-bold">Version IRI: </span>
-                        <a id="versionIri" href={ontology.getVersionIri()}>{ontology.getVersionIri()}</a>
+                      <a id="versionIri" href={ontology.getVersionIri()}>
+                        {ontology.getVersionIri()}
+                      </a>
                     </div>
                     <div>
                       <span className="font-bold">Ontology ID: </span>
@@ -143,14 +156,16 @@ export default function OntologyPage(props: { ontologyId: string }) {
                     </div>
                     <div>
                       <span className="font-bold">Number of terms: </span>
-                      <span id="numberOfEntities">{ontology.getNumEntities()}</span>
+                      <span id="numberOfEntities">
+                        {ontology.getNumEntities()}
+                      </span>
                     </div>
                     <div>
                       <span className="font-bold">Last loaded: </span>
-                      <span id='lastLoaded'>
-                          {moment(ontology.getLoaded()).format(
-                            "D MMM YYYY ddd HH:mm:SSZ"
-                          )}
+                      <span id="lastLoaded">
+                        {moment(ontology.getLoaded()).format(
+                          "D MMM YYYY ddd HH:mm:SSZ"
+                        )}
                       </span>
                     </div>
                   </div>

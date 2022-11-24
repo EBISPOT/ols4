@@ -49,32 +49,28 @@ export default function OntologyList() {
     dispatch(getOntologies({ page, rowsPerPage, filter }));
   }, [page, rowsPerPage, filter]);
 
-  let history = useHistory();
-
+  const history = useHistory();
   return (
     <div>
-      {loading ? (
-        <LoadingOverlay message="Loading ontologies..." />
-      ) : (
-        <OlsDatatable
-          columns={columns}
-          data={ontologies}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          onPageChange={(page: number) => {
-            setPage(page);
-          }}
-          onRowsPerPageChange={(rows: number) => {
-            setRowsPerPage(rows);
-          }}
-          onSelectRow={(row: Ontology) => {
-            history.push("/ontologies/" + row.getOntologyId());
-          }}
-          onFilter={(key: string) => {
-            setFilter(key);
-          }}
-        />
-      )}
+      <OlsDatatable
+        columns={columns}
+        data={ontologies}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        onPageChange={(page: number) => {
+          setPage(page);
+        }}
+        onRowsPerPageChange={(rows: number) => {
+          setRowsPerPage(rows);
+        }}
+        onSelectRow={(row: Ontology) => {
+          history.push("/ontologies/" + row.getOntologyId());
+        }}
+        onFilter={(key: string) => {
+          setFilter(key);
+        }}
+      />
+      {loading ? <LoadingOverlay message="Loading ontologies..." /> : null}
     </div>
   );
 }
