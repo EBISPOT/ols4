@@ -80,21 +80,24 @@ export default function EntityPage({
               {entity.getSynonyms() && entity.getSynonyms().length !== 0 ? (
                 <div>
                   <div className="font-bold my-4">Synonym</div>
-                  {entity
-                    .getSynonyms()
-                    .map((synonym) => {
-                      return (
-                        <span
-                          key={
-                            synonym.toString().toUpperCase() + randomString()
-                          }
-                          className="bg-grey-default rounded-sm font-mono p-1 mr-2 text-sm"
-                        >
-                          {synonym}
-                        </span>
-                      );
-                    })
-                    .sort((a, b) => sortByKeys(a, b))}
+                  <div className="flex flex-row flex-wrap">
+                    {entity
+                      .getSynonyms()
+                      .map((synonym) => {
+                        return (
+                          <div
+                            key={
+                              synonym.value.toString().toUpperCase() +
+                              randomString()
+                            }
+                            className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
+                          >
+                            {synonym.value}
+                          </div>
+                        );
+                      })
+                      .sort((a, b) => sortByKeys(a, b))}
+                  </div>
                 </div>
               ) : null}
             </div>
