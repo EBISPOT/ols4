@@ -56,7 +56,7 @@ export default abstract class Thing {
   getDescription(): string {
     const definition = Reified.fromJson<any>(this.properties["definition"]);
     if (definition.length > 0) {
-      return definition.map((def) => def.value).join(" ");
+      return definition.map((def) => def.value || "").join(" ");
     }
     return "";
   }

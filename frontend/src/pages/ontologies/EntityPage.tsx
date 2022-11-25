@@ -83,16 +83,38 @@ export default function EntityPage({
                   <div className="flex flex-row flex-wrap">
                     {entity
                       .getSynonyms()
-                      .map((synonym) => {
+                      .map((synonym: Reified<any>) => {
                         return (
                           <div
                             key={
                               synonym.value.toString().toUpperCase() +
                               randomString()
                             }
-                            className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
                           >
-                            {synonym.value}
+                            <Tooltip
+                              title={
+                                synonym?.metadata?.iriToLabel &&
+                                Object.keys(synonym.metadata).length > 0 &&
+                                Object.keys(synonym.metadata.iriToLabel)
+                                  .length > 0
+                                  ? Object.keys(synonym.metadata)
+                                      .map((key) => {
+                                        if (synonym.metadata.iriToLabel[key])
+                                          return (
+                                            synonym.metadata.iriToLabel[key] +
+                                            ": " +
+                                            synonym.metadata[key]
+                                          );
+                                      })
+                                      .join("\n")
+                                  : ""
+                              }
+                              placement="top"
+                            >
+                              <div className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm">
+                                {synonym.value}
+                              </div>
+                            </Tooltip>
                           </div>
                         );
                       })
@@ -116,7 +138,7 @@ export default function EntityPage({
                       <AccountTree fontSize="small" />
                     </button>
                   </Tooltip>
-                  <Tooltip title="List view" placement="top">
+                  <Tooltip title="Graph view" placement="top">
                     <button
                       className={`button-primary font-bold ${
                         viewMode === "graph"
