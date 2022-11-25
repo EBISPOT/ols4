@@ -264,7 +264,7 @@ public class Ols4ApiTester {
 		}
 	}
 
-	public JsonElement get(String url) throws IOException {
+	public static JsonElement get(String url) throws IOException {
 
 		System.out.println("GET " + url);
 
@@ -372,7 +372,7 @@ public class Ols4ApiTester {
 		return element.deepCopy();
 	}
 
-	public JsonElement removeDates(JsonElement element) {
+	public static JsonElement removeDates(JsonElement element) {
 
 		if(element.isJsonArray()) {
 
@@ -422,12 +422,12 @@ public class Ols4ApiTester {
 		return url.substring(url.length());
 	}*/
 
-	public String doubleEncode(String iri) throws UnsupportedEncodingException {
+	public static String doubleEncode(String iri) throws UnsupportedEncodingException {
 
 		return URLEncoder.encode(URLEncoder.encode(iri, "utf-8"), "utf-8");
 	}
 
-	public String sanitizeFilename(String filename) {
+	public static String sanitizeFilename(String filename) {
 		return filename.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
 	}
 

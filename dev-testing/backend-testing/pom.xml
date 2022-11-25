@@ -15,6 +15,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>uk.ac.ebi.ols.apitester</groupId>
+            <artifactId>apitester</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.junit.jupiter</groupId>-->
 <!--            <artifactId>junit-jupiter-params</artifactId>-->

@@ -108,12 +108,15 @@ Change the directory to $OLS4_HOME.
 
 To load a testcase and start Neo4J and Solr, run:
 
-    ./dev-testing/teststack.sh <rel_configurl> <rel_outdir>
-where `<rel_configurl>` is the a JSON config file, and `<rel_outdir>` the output directory, both relative from 
-$OLS4_HOME, i.e.:
+    ./dev-testing/teststack.sh <rel_json_config_url> <rel_output_dir>
+where `<rel_json_config_url>` can be a JSON config file or a directory with JSON file, and `<rel_outdir>` 
+the output directory, both relative from $OLS4_HOME, i.e.:
 
-    ./dev-testing/teststack.sh ./testcases/owl2-primer/minimal.json output/
+    ./dev-testing/teststack.sh ./testcases/owl2-primer/minimal.json ./output
 
+or if you want to load all testcases, you can use 
+
+    ./dev-testing/teststack.sh ./testcases ./output
 
 Once Neo4J and Solr is up, to start the backend (REST API) you can run:
 
