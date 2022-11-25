@@ -5,9 +5,6 @@ if [ $# == 0 ]; then
     exit 1
 fi
 
-$SOLR_HOME/bin/solr start
-sleep 10
-
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $1/ontologies.jsonl \
     http://localhost:8983/solr/ols4/update/json/docs?commit=true
 

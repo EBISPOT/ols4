@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import com.google.gson.*;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
+import uk.ac.ebi.ols.apitester.Ols4ApiTester;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +33,7 @@ public class OntologyTest {
         String requestURL = BACKEND_URL + ONTOLOGIES_API_REQUEST + "/owl2primer-minimal";
 
         try {
-            JsonElement jsonResponse = get(requestURL);
+            JsonElement jsonResponse = Ols4ApiTester.get(requestURL);
             int i = 0;
         } catch (Throwable t) {
             t.printStackTrace();
