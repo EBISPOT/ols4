@@ -30,7 +30,7 @@ export const getStats = createAsyncThunk(
   "home_stats",
   async (arg, { rejectWithValue }) => {
     try {
-      return await get<Stats>(`/api/v2/stats`);
+      return await get<Stats>(`api/v2/stats`);
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -43,13 +43,13 @@ export const getSearchOptions = createAsyncThunk(
     try {
       const [entities, ontologies] = await Promise.all([
         getPaginated<any>(
-          `/api/v2/entities?${new URLSearchParams({
+          `api/v2/entities?${new URLSearchParams({
             search: search,
             size: "10",
           })}`
         ),
         getPaginated<any>(
-          `/api/v2/ontologies?${new URLSearchParams({
+          `api/v2/ontologies?${new URLSearchParams({
             search: search,
             size: "3",
           })}`
