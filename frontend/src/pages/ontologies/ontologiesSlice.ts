@@ -44,7 +44,7 @@ export const getOntology = createAsyncThunk(
   "ontologies_ontology",
   async (ontologyId: string) => {
     const ontologyProperties = await get<any>(
-      `/api/v2/ontologies/${ontologyId}`
+      `api/v2/ontologies/${ontologyId}`
     );
     return new Ontology(ontologyProperties);
   }
@@ -56,7 +56,7 @@ export const getEntity = createAsyncThunk(
       encodeURIComponent(entityIri)
     );
     const termProperties = await get<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
+      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
     );
     return thingFromProperties(termProperties);
   }
@@ -67,7 +67,7 @@ export const getOntologies = createAsyncThunk(
     try {
       const data = (
         await getPaginated<any>(
-          `/api/v2/ontologies?page=${page}&size=${rowsPerPage}${
+          `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
             search != undefined ? "&search=" + search : ""
           }`
         )
@@ -84,7 +84,7 @@ export const getEntities = createAsyncThunk(
     try {
       const data = (
         await getPaginated<any>(
-          `/api/v2/ontologies/${ontologyId}/${entityType}`
+          `api/v2/ontologies/${ontologyId}/${entityType}`
         )
       ).map((e) => thingFromProperties(e));
       return data.elements;
@@ -98,7 +98,7 @@ export const getAncestors = createAsyncThunk(
   async ({ ontologyId, entityType, entityIri }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     const ancestorsPage = await getPaginated<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
+      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
         { size: "100" }
       )}`
     );
@@ -115,7 +115,7 @@ export const getNodeChildren = createAsyncThunk(
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     const childrenPage = await getPaginated<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
+      `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
         {
           size: "100",
         }
@@ -143,7 +143,7 @@ export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
   async ({ ontologyId, entityType }: any) => {
     const rootsPage = await getPaginated<any>(
-      `/api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
+      `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
         isRoot: "true",
         size: "100",
       })}`
