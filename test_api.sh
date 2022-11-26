@@ -26,15 +26,15 @@ do
     export OLS4_DATALOAD_ARGS="--loadLocalFiles"
     export BUILDKIT_PROGRESS=plain
 
-    docker-compose down -t 120 -v --rmi all
+    docker compose down -t 120 -v --rmi all
 
     if [[ "$IS_FIRST_RUN" == "1" ]]
     then
-        docker-compose build --no-cache
+        docker compose build --no-cache
         IS_FIRST_RUN=0
     fi
 
-    docker-compose --profile run-api-tests \
+    docker compose --profile run-api-tests \
     	up \
 	--force-recreate \
 	--always-recreate-deps \
@@ -50,7 +50,7 @@ do
 
     cat $OLS4_APITEST_OUTDIR/apitester4.log
 
-    docker-compose down -t 120 -v
+    docker compose down -t 120 -v
 
 done
 
