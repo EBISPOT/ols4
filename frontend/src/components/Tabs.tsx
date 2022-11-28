@@ -12,10 +12,13 @@ export function Tabs({
   const firstTab = children ? children[0].props.value : "";
   const initialTab = value ? value : firstTab;
   const [activeTab, setActiveTab] = useState(initialTab);
-  const handleActiveTab = useCallback((val) => {
-    setActiveTab(val);
-    if (onChange) onChange(val);
-  }, []);
+  const handleActiveTab = useCallback(
+    (val) => {
+      setActiveTab(val);
+      if (onChange) onChange(val);
+    },
+    [onChange]
+  );
 
   return (
     <div>

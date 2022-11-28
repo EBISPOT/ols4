@@ -10,13 +10,13 @@ export default function EntityList(props: {
 }) {
   const dispatch = useAppDispatch();
   const entities = useAppSelector((state) => state.ontologies.entities);
-  const loading = useAppSelector((state) => state.ontologies.loadingEntities);
+  // const loading = useAppSelector((state) => state.ontologies.loadingEntities);
 
   let { ontologyId, entityType } = props;
 
   useEffect(() => {
     dispatch(getEntities({ ontologyId, entityType }));
-  }, [ontologyId, entityType]);
+  }, [dispatch, ontologyId, entityType]);
 
   return (
     <OlsDatatable

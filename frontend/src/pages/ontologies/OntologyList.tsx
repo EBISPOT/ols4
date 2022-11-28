@@ -47,7 +47,7 @@ export default function OntologyList() {
 
   useEffect(() => {
     dispatch(getOntologies({ page, rowsPerPage, filter }));
-  }, [page, rowsPerPage, filter]);
+  }, [dispatch, page, rowsPerPage, filter]);
 
   const history = useHistory();
   return (

@@ -34,7 +34,7 @@ export default function EntityPage({
   useEffect(() => {
     if (!ontology) dispatch(getOntology(ontologyId));
     dispatch(getEntity({ ontologyId, entityType, entityIri }));
-  }, []);
+  }, [dispatch, ontology, ontologyId, entityType, entityIri]);
 
   if (entity) document.title = entity.getName();
   return (
@@ -99,12 +99,14 @@ export default function EntityPage({
                                   .length > 0
                                   ? Object.keys(synonym.metadata)
                                       .map((key) => {
-                                        if (synonym.metadata.iriToLabel[key])
+                                        if (synonym.metadata.iriToLabel[key]) {
                                           return (
                                             synonym.metadata.iriToLabel[key] +
                                             ": " +
                                             synonym.metadata[key]
                                           );
+                                        }
+                                        return "";
                                       })
                                       .join("\n")
                                   : ""
@@ -273,7 +275,9 @@ export default function EntityPage({
                                       .length > 0
                                       ? Object.keys(parent.metadata)
                                           .map((key) => {
-                                            if (parent.metadata.iriToLabel[key])
+                                            if (
+                                              parent.metadata.iriToLabel[key]
+                                            ) {
                                               return (
                                                 parent.metadata.iriToLabel[
                                                   key
@@ -281,6 +285,8 @@ export default function EntityPage({
                                                 ": " +
                                                 parent.metadata[key]
                                               );
+                                            }
+                                            return "";
                                           })
                                           .join("\n")
                                       : ""

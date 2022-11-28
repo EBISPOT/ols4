@@ -1,9 +1,6 @@
 import Thing from "./Thing";
-export default class Ontology extends Thing {
-  constructor(properties: any) {
-    super(properties);
-  }
 
+export default class Ontology extends Thing {
   getOntologyId(): string {
     return this.properties["ontologyId"];
   }

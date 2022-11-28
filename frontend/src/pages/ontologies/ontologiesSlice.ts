@@ -68,7 +68,7 @@ export const getOntologies = createAsyncThunk(
       const data = (
         await getPaginated<any>(
           `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
-            search != undefined ? "&search=" + search : ""
+            search !== undefined ? "&search=" + search : ""
           }`
         )
       ).map((o) => new Ontology(o));
@@ -83,9 +83,7 @@ export const getEntities = createAsyncThunk(
   async ({ ontologyId, entityType }: any, { rejectWithValue }) => {
     try {
       const data = (
-        await getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/${entityType}`
-        )
+        await getPaginated<any>(`api/v2/ontologies/${ontologyId}/${entityType}`)
       ).map((e) => thingFromProperties(e));
       return data.elements;
     } catch (error: any) {

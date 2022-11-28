@@ -14,5 +14,5 @@ export function randomString() {
 export function sortByKeys(a: any, b: any) {
   const keyA = a.key.toUpperCase();
   const keyB = b.key.toUpperCase();
-  return keyA == keyB ? 0 : keyA > keyB ? 1 : -1;
+  return keyA === keyB ? 0 : keyA > keyB ? 1 : -1;
 }

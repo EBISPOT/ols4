@@ -24,7 +24,7 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
 
   useEffect(() => {
     dispatch(getOntology(ontologyId));
-  }, []);
+  }, [dispatch, ontologyId]);
 
   document.title = ontology?.getName() ? ontology.getName() : ontologyId;
   return (

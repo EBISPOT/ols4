@@ -38,13 +38,13 @@ export default function EntityGraph(props: {
       // 	}
       // }))
     }
-  }, [entityType]);
+  }, [dispatch, entityType, selectedEntity, ontologyId]);
 
   useEffect(() => {
     if (selectedEntity) {
       populateGraphFromEntities([selectedEntity, ...ancestors]);
     }
-  }, [ancestors]);
+  }, [selectedEntity, ancestors]);
 
   function populateGraphFromEntities(entities: Entity[]) {
     const { uriToChildNodes } = extractEntityHierarchy(entities);

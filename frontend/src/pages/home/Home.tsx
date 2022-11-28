@@ -1,13 +1,9 @@
-import { Theme } from "@mui/material";
-import { createStyles, makeStyles } from "@mui/styles";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import HomeSearchBox from "./HomeSearchBox";
 import { getStats } from "./homeSlice";
-
-const useStyles: any = makeStyles((theme: Theme) => createStyles({}));
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -17,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getStats());
-  }, []);
+  }, [dispatch]);
 
   document.title = "Ontology Lookup Service (OLS)";
   return (
@@ -33,11 +29,6 @@ export default function Home() {
               <div className="mb-4">
                 <HomeSearchBox />
               </div>
-              {/* <TextField fullWidth size="small" label="Search OLS..." inputProps={{
-									startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
-									classes: {
-										adornedStart: classes.adornedStart
-								}}/> */}
               <div className="grid grid-cols-2">
                 <div className="text-neutral-black">
                   <span>
@@ -147,14 +138,4 @@ export default function Home() {
       </main>
     </div>
   );
-  // return <div>
-  //     {/* <div>Logged in as {getToken().authEmail} with token {getToken().auth}</div> */}
-  //         <Breadcrumbs>
-  //             <Link color="inherit" href="/">
-  //                 Projects
-  //             </Link>
-  //         </Breadcrumbs>
-  //     <h2>Projects</h2>
-  //     <ProjectList />
-  // </div>
 }

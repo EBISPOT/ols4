@@ -3,10 +3,6 @@ import Reified from "./Reified";
 import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
-  constructor(properties: any) {
-    super(properties);
-  }
-
   abstract getParents(): Reified<any>[];
 
   hasChildren(): boolean {
