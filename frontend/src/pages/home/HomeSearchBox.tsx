@@ -15,7 +15,7 @@ export default function HomeSearchBox() {
 
   useEffect(() => {
     dispatch(getSearchOptions(query));
-  }, [query]);
+  }, [dispatch, query]);
 
   return (
     <div className="flex flex-nowrap gap-4 my-2">
@@ -50,7 +50,7 @@ export default function HomeSearchBox() {
               : "hidden"
           }
         >
-          {results.length == 0 ? (
+          {results.length === 0 ? (
             <span className="px-2 py-4 text-lg leading-loose">No options</span>
           ) : (
             results.map((option: Thing) => {
@@ -60,7 +60,6 @@ export default function HomeSearchBox() {
                   <li
                     key={randomString()}
                     className="flex justify-between p-2 hover:bg-link-light hover:cursor-pointer"
-                    role="option"
                   >
                     <span className="truncate self-center">
                       {option.getName()}

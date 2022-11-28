@@ -1,4 +1,4 @@
-import { asArray } from "../app/util";
+import { asArray, randomString } from "../app/util";
 
 export default function ClassExpression({
   expr,
@@ -27,19 +27,36 @@ export default function ClassExpression({
   );
   if (intersectionOf.length > 0) {
     let nodes: JSX.Element[] = [
-      <span className="text-neutral-default">&lpar;</span>,
+      <span key={randomString()} className="text-neutral-default">
+        &#40;
+      </span>,
     ];
 
     for (const subExpr of intersectionOf) {
       if (nodes.length > 1) {
         nodes.push(
-          <span className="px-1 text-neutral-default italic">and</span>
+          <span
+            key={randomString()}
+            className="px-1 text-neutral-default italic"
+          >
+            and
+          </span>
         );
       }
-      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+      nodes.push(
+        <ClassExpression
+          key={randomString()}
+          expr={subExpr}
+          iriToLabel={iriToLabel}
+        />
+      );
     }
 
-    nodes.push(<span className="text-neutral-default">&rpar;</span>);
+    nodes.push(
+      <span key={randomString()} className="text-neutral-default">
+        &#41;
+      </span>
+    );
 
     return <span>{nodes}</span>;
   }
@@ -47,19 +64,36 @@ export default function ClassExpression({
   const unionOf = asArray(expr["http://www.w3.org/2002/07/owl#unionOf"]);
   if (unionOf.length > 0) {
     let nodes: JSX.Element[] = [
-      <span className="text-neutral-default">&lpar;</span>,
+      <span key={randomString()} className="text-neutral-default">
+        &#40;
+      </span>,
     ];
 
-    for (const subExpr of intersectionOf) {
+    for (const subExpr of unionOf) {
       if (nodes.length > 1) {
         nodes.push(
-          <span className="px-1 text-neutral-default italic">or</span>
+          <span
+            key={randomString()}
+            className="px-1 text-neutral-default italic"
+          >
+            or
+          </span>
         );
       }
-      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+      nodes.push(
+        <ClassExpression
+          key={randomString()}
+          expr={subExpr}
+          iriToLabel={iriToLabel}
+        />
+      );
     }
 
-    nodes.push(<span className="text-neutral-default">&rpar;</span>);
+    nodes.push(
+      <span key={randomString()} className="text-neutral-default">
+        &#41;
+      </span>
+    );
 
     return <span>{nodes}</span>;
   }
@@ -79,17 +113,33 @@ export default function ClassExpression({
   const oneOf = asArray(expr["http://www.w3.org/2002/07/owl#oneOf"]);
   if (oneOf.length > 0) {
     let nodes: JSX.Element[] = [
-      <span className="text-neutral-default">&lbrace;</span>,
+      <span key={randomString()} className="text-neutral-default">
+        &#123;
+      </span>,
     ];
 
-    for (const subExpr of intersectionOf) {
+    for (const subExpr of oneOf) {
       if (nodes.length > 1) {
-        nodes.push(<span className="text-neutral-default">&comma;&nbsp;</span>);
+        nodes.push(
+          <span key={randomString()} className="text-neutral-default">
+            &#44;&nbsp;
+          </span>
+        );
       }
-      nodes.push(<ClassExpression expr={subExpr} iriToLabel={iriToLabel} />);
+      nodes.push(
+        <ClassExpression
+          key={randomString()}
+          expr={subExpr}
+          iriToLabel={iriToLabel}
+        />
+      );
     }
 
-    nodes.push(<span className="text-neutral-default">&rbrace;</span>);
+    nodes.push(
+      <span key={randomString()} className="text-neutral-default">
+        &#125;
+      </span>
+    );
 
     return <span>{nodes}</span>;
   }
@@ -111,7 +161,6 @@ export default function ClassExpression({
   const someValuesFrom = asArray(
     expr["http://www.w3.org/2002/07/owl#someValuesFrom"]
   )[0];
-
   if (someValuesFrom) {
     return (
       <span>

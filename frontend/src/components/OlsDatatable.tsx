@@ -37,7 +37,7 @@ export default function OlsDatatable({
   return (
     <div>
       <div className="grid grid-cols-2 mb-4">
-        {onFilter != undefined ? (
+        {onFilter !== undefined ? (
           <div className="w-3/4 px-4">
             <TextField
               fullWidth
@@ -56,12 +56,12 @@ export default function OlsDatatable({
             ></TextField>
           </div>
         ) : null}
-        {page != undefined &&
+        {page !== undefined &&
         page >= 0 &&
-        onPageChange != undefined &&
-        rowsPerPage != undefined &&
+        onPageChange !== undefined &&
+        rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
-        onRowsPerPageChange != undefined ? (
+        onRowsPerPageChange !== undefined ? (
           <div>
             <TablePagination
               rowsPerPageOptions={[]}
@@ -113,9 +113,11 @@ export default function OlsDatatable({
                     return (
                       <td
                         className="text-sm align-top py-2 px-4"
-                        key={column.selector(row)}
+                        key={randomString()}
                       >
-                        {column.selector(row) ? column.selector(row) : "(no data)"}
+                        {column.selector(row)
+                          ? column.selector(row)
+                          : "(no data)"}
                       </td>
                     );
                   })}

@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function Header(props: { section: string; projectId?: string }) {
-  let { section, projectId } = props;
-
+export default function Header({
+  section,
+}: // projectId,
+{
+  section: string;
+  // projectId?: string;
+}) {
   return (
     <div
       className="px-4 pt-8 pb-0 bg-black bg-right bg-cover"
@@ -15,6 +19,7 @@ export default function Header(props: { section: string; projectId?: string }) {
         <div className="mb-4">
           <a href={process.env.PUBLIC_URL}>
             <img
+              alt="OLS logo"
               className="h-24 inline-block"
               src={process.env.PUBLIC_URL + "/logo.png"}
             />
