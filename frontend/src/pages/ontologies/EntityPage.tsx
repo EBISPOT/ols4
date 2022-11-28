@@ -80,21 +80,47 @@ export default function EntityPage({
               {entity.getSynonyms() && entity.getSynonyms().length !== 0 ? (
                 <div>
                   <div className="font-bold my-4">Synonym</div>
-                  {entity
-                    .getSynonyms()
-                    .map((synonym) => {
-                      return (
-                        <span
-                          key={
-                            synonym.toString().toUpperCase() + randomString()
-                          }
-                          className="bg-grey-default rounded-sm font-mono p-1 mr-2 text-sm"
-                        >
-                          {synonym}
-                        </span>
-                      );
-                    })
-                    .sort((a, b) => sortByKeys(a, b))}
+                  <div className="flex flex-row flex-wrap">
+                    {entity
+                      .getSynonyms()
+                      .map((synonym: Reified<any>) => {
+                        return (
+                          <div
+                            key={
+                              synonym.value.toString().toUpperCase() +
+                              randomString()
+                            }
+                          >
+                            <Tooltip
+                              title={
+                                synonym?.metadata?.iriToLabel &&
+                                Object.keys(synonym.metadata).length > 0 &&
+                                Object.keys(synonym.metadata.iriToLabel)
+                                  .length > 0
+                                  ? Object.keys(synonym.metadata)
+                                      .map((key) => {
+                                        if (synonym.metadata.iriToLabel[key])
+                                          return (
+                                            synonym.metadata.iriToLabel[key] +
+                                            ": " +
+                                            synonym.metadata[key]
+                                          );
+                                      })
+                                      .join("\n")
+                                  : ""
+                              }
+                              placement="top"
+                              arrow
+                            >
+                              <div className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm">
+                                {synonym.value}
+                              </div>
+                            </Tooltip>
+                          </div>
+                        );
+                      })
+                      .sort((a, b) => sortByKeys(a, b))}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -113,7 +139,7 @@ export default function EntityPage({
                       <AccountTree fontSize="small" />
                     </button>
                   </Tooltip>
-                  <Tooltip title="List view" placement="top">
+                  <Tooltip title="Graph view" placement="top">
                     <button
                       className={`button-primary font-bold ${
                         viewMode === "graph"
@@ -237,13 +263,38 @@ export default function EntityPage({
                         </div>
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent: Reified<any>) => {
-                            // TODO: display parent.metadata somewhere
                             return (
                               <li key={randomString()}>
-                                <ClassExpression
-                                  expr={parent.value}
-                                  iriToLabel={iriToLabel}
-                                />
+                                <Tooltip
+                                  title={
+                                    parent?.metadata?.iriToLabel &&
+                                    Object.keys(parent.metadata).length > 0 &&
+                                    Object.keys(parent.metadata.iriToLabel)
+                                      .length > 0
+                                      ? Object.keys(parent.metadata)
+                                          .map((key) => {
+                                            if (parent.metadata.iriToLabel[key])
+                                              return (
+                                                parent.metadata.iriToLabel[
+                                                  key
+                                                ] +
+                                                ": " +
+                                                parent.metadata[key]
+                                              );
+                                          })
+                                          .join("\n")
+                                      : ""
+                                  }
+                                  placement="top"
+                                  arrow
+                                >
+                                  <span>
+                                    <ClassExpression
+                                      expr={parent.value}
+                                      iriToLabel={iriToLabel}
+                                    />
+                                  </span>
+                                </Tooltip>
                               </li>
                             );
                           })}
