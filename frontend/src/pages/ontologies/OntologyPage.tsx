@@ -152,7 +152,11 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                     </div>
                     <div>
                       <span className="font-bold">Version: </span>
-                      <span id="version">{ontology.getVersion()}</span>
+                      <span id="version">
+                        {ontology.getVersion()
+                          ? ontology.getVersion()
+                          : ontology.getVersionFromIri()}
+                      </span>
                     </div>
                     <div>
                       <span className="font-bold">Number of terms: </span>

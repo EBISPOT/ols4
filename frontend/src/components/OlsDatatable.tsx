@@ -113,7 +113,7 @@ export default function OlsDatatable({
                     return (
                       <td
                         className="text-sm align-top py-2 px-4"
-                        key={column.selector(row)}
+                        key={randomString()}
                       >
                         {column.selector(row)
                           ? column.selector(row)
