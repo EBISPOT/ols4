@@ -110,6 +110,7 @@ export default function EntityPage({
                                   : ""
                               }
                               placement="top"
+                              arrow
                             >
                               <div className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm">
                                 {synonym.value}
@@ -262,13 +263,38 @@ export default function EntityPage({
                         </div>
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent: Reified<any>) => {
-                            // TODO: display parent.metadata somewhere
                             return (
                               <li key={randomString()}>
-                                <ClassExpression
-                                  expr={parent.value}
-                                  iriToLabel={iriToLabel}
-                                />
+                                <Tooltip
+                                  title={
+                                    parent?.metadata?.iriToLabel &&
+                                    Object.keys(parent.metadata).length > 0 &&
+                                    Object.keys(parent.metadata.iriToLabel)
+                                      .length > 0
+                                      ? Object.keys(parent.metadata)
+                                          .map((key) => {
+                                            if (parent.metadata.iriToLabel[key])
+                                              return (
+                                                parent.metadata.iriToLabel[
+                                                  key
+                                                ] +
+                                                ": " +
+                                                parent.metadata[key]
+                                              );
+                                          })
+                                          .join("\n")
+                                      : ""
+                                  }
+                                  placement="top"
+                                  arrow
+                                >
+                                  <span>
+                                    <ClassExpression
+                                      expr={parent.value}
+                                      iriToLabel={iriToLabel}
+                                    />
+                                  </span>
+                                </Tooltip>
                               </li>
                             );
                           })}
