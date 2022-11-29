@@ -5,10 +5,9 @@ metadata:
   labels:
     app: {{ .Release.Name }}-frontend
 spec:
+  type: NodePort
   ports:
-      - port: 8081
-        targetPort: 8081
-        name: http
-        protocol: TCP
+  - name: "application"
+    port: 8080
   selector:
     app: {{ .Release.Name }}-frontend
