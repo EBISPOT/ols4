@@ -11,17 +11,18 @@ const columns: readonly Column[] = [
     name: "Ontology",
     sortable: true,
     selector: (ontology: Ontology) => {
-      return (
-        <div>
-          {ontology?.getLogoURL() ? (
-            <img
-              className="h-16 object-contain mb-3"
-              src={ontology.getLogoURL()}
-            />
-          ) : null}
-          <div>{ontology.getName()}</div>
-        </div>
-      );
+      const name = ontology.getName();
+      const logo = ontology.getLogoURL();
+      if (name || logo) {
+        return (
+          <div>
+            {logo ? (
+              <img className="h-16 object-contain mb-3" src={logo} />
+            ) : null}
+            {name ? <div>{name}</div> : null}
+          </div>
+        );
+      } else return ontology.getOntologyId();
     },
   },
   {
