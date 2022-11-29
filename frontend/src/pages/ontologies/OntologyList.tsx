@@ -13,16 +13,22 @@ const columns: readonly Column[] = [
     selector: (ontology: Ontology) => {
       const name = ontology.getName();
       const logo = ontology.getLogoURL();
+      const ontoId = ontology.getOntologyId();
       if (name || logo) {
         return (
           <div>
             {logo ? (
-              <img className="h-16 object-contain mb-3" src={logo} />
+              <img
+                alt={`${ontoId.toUpperCase()} logo`}
+                title={`${ontoId.toUpperCase()} logo`}
+                className="h-16 object-contain bg-white rounded-md p-1 mb-3"
+                src={logo}
+              />
             ) : null}
             {name ? <div>{name}</div> : null}
           </div>
         );
-      } else return ontology.getOntologyId();
+      } else return ontoId;
     },
   },
   {
@@ -46,6 +52,12 @@ const columns: readonly Column[] = [
 export default function OntologyList() {
   const dispatch = useAppDispatch();
   const ontologies = useAppSelector((state) => state.ontologies.ontologies);
+  const ontologiesSorted = [...ontologies];
+  ontologiesSorted.sort((a, b) => {
+    const ontoIdA = a.getOntologyId() ? a.getOntologyId().toUpperCase() : "";
+    const ontoIdB = b.getOntologyId() ? b.getOntologyId().toUpperCase() : "";
+    return ontoIdA === ontoIdB ? 0 : ontoIdA > ontoIdB ? 1 : -1;
+  });
   const loading = useAppSelector((state) => state.ontologies.loadingOntologies);
 
   const [page, setPage] = useState<number>(0);
@@ -61,7 +73,7 @@ export default function OntologyList() {
     <div>
       <OlsDatatable
         columns={columns}
-        data={ontologies}
+        data={ontologiesSorted}
         page={page}
         rowsPerPage={rowsPerPage}
         onPageChange={(page: number) => {
