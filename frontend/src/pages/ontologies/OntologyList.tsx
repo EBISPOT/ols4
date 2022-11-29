@@ -7,27 +7,33 @@ import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
 
 const columns: readonly Column[] = [
-  // {
-  //     name: 'Debug',
-  //     sortable: true,
-  //     selector: (ontology:Ontology) => JSON.stringify(ontology),
-  //     wrap: true
-  // },
-  // {
-  //   name: "",
-  //   sortable: false,
-  //   selector: (ontology: Ontology) =>
-  //     ontology.getLogoURL() && <img width={50} src={ontology.getLogoURL()} />,
-  // },
   {
-    name: "Name",
+    name: "Ontology",
     sortable: true,
-    selector: (ontology: Ontology) => ontology.getName(),
+    selector: (ontology: Ontology) => {
+      return (
+        <div>
+          {ontology?.getLogoURL() ? (
+            <img
+              className="h-16 object-contain mb-3"
+              src={ontology.getLogoURL()}
+            />
+          ) : null}
+          <div>{ontology.getName()}</div>
+        </div>
+      );
+    },
   },
   {
     name: "ID",
     sortable: true,
-    selector: (ontology: Ontology) => ontology.getOntologyId().toUpperCase(),
+    selector: (ontology: Ontology) => {
+      return (
+        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold">
+          {ontology.getOntologyId().toUpperCase()}
+        </div>
+      );
+    },
   },
   {
     name: "Description",
