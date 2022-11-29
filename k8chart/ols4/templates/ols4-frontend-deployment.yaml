@@ -18,6 +18,10 @@ spec:
         - name: web
           image: ghcr.io/ebispot/ols4-frontend:{{.Values.imageTag}}
           imagePullPolicy: Always
+          resources:
+              requests:
+                cpu: 2
+                memory: 4G          
           ports:
             - containerPort: 8080
           env:
