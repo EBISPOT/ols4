@@ -5,6 +5,10 @@ import Thing from "./Thing";
 export default abstract class Entity extends Thing {
   abstract getParents(): Reified<any>[];
 
+  getDescriptionAsArray(): Reified<any>[] {
+    return Reified.fromJson<any>(this.properties["definition"]);
+  }
+
   hasChildren(): boolean {
     return this.properties["hasChildren"] === "true";
   }
