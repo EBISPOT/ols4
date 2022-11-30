@@ -75,7 +75,45 @@ export default function EntityPage({
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">{entity.getName()}</div>
               <div>
-                <p>{entity.getDescription()}</p>
+                <p>
+                  {entity
+                    .getDescriptionAsArray()
+                    .map((definition: Reified<any>) => {
+                      const hasMetadata =
+                        definition.metadata?.iriToLabel &&
+                        Object.keys(definition.metadata).length > 0 &&
+                        Object.keys(definition.metadata.iriToLabel).length > 0;
+                      return (
+                        <span key={randomString()}>
+                          {definition.value}
+                          {hasMetadata ? (
+                            <Tooltip
+                              title={Object.keys(definition.metadata)
+                                .map((key) => {
+                                  if (definition.metadata.iriToLabel[key]) {
+                                    return (
+                                      "*" +
+                                      definition.metadata[key] +
+                                      " (" +
+                                      definition.metadata.iriToLabel[
+                                        key
+                                      ].replaceAll("_", " ") +
+                                      ")"
+                                    );
+                                  }
+                                  return "";
+                                })
+                                .join("\n")}
+                              placement="top"
+                              arrow
+                            >
+                              <i className="icon icon-common icon-info text-neutral-default text-sm ml-1 mr-2" />
+                            </Tooltip>
+                          ) : null}
+                        </span>
+                      );
+                    })}
+                </p>
               </div>
               {entity.getSynonyms() && entity.getSynonyms().length !== 0 ? (
                 <div>
@@ -84,40 +122,43 @@ export default function EntityPage({
                     {entity
                       .getSynonyms()
                       .map((synonym: Reified<any>) => {
+                        const hasMetadata =
+                          synonym.metadata?.iriToLabel &&
+                          Object.keys(synonym.metadata).length > 0 &&
+                          Object.keys(synonym.metadata.iriToLabel).length > 0;
                         return (
                           <div
                             key={
                               synonym.value.toString().toUpperCase() +
                               randomString()
                             }
+                            className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
                           >
-                            <Tooltip
-                              title={
-                                synonym?.metadata?.iriToLabel &&
-                                Object.keys(synonym.metadata).length > 0 &&
-                                Object.keys(synonym.metadata.iriToLabel)
-                                  .length > 0
-                                  ? Object.keys(synonym.metadata)
-                                      .map((key) => {
-                                        if (synonym.metadata.iriToLabel[key]) {
-                                          return (
-                                            synonym.metadata.iriToLabel[key] +
-                                            ": " +
-                                            synonym.metadata[key]
-                                          );
-                                        }
-                                        return "";
-                                      })
-                                      .join("\n")
-                                  : ""
-                              }
-                              placement="top"
-                              arrow
-                            >
-                              <div className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm">
-                                {synonym.value}
-                              </div>
-                            </Tooltip>
+                            {synonym.value}
+                            {hasMetadata ? (
+                              <Tooltip
+                                title={Object.keys(synonym.metadata)
+                                  .map((key) => {
+                                    if (synonym.metadata.iriToLabel[key]) {
+                                      return (
+                                        "*" +
+                                        synonym.metadata[key] +
+                                        " (" +
+                                        synonym.metadata.iriToLabel[
+                                          key
+                                        ].replaceAll("_", " ") +
+                                        ")"
+                                      );
+                                    }
+                                    return "";
+                                  })
+                                  .join("\n")}
+                                placement="top"
+                                arrow
+                              >
+                                <i className="icon icon-common icon-info text-neutral-default ml-1" />
+                              </Tooltip>
+                            ) : null}
                           </div>
                         );
                       })
@@ -265,42 +306,41 @@ export default function EntityPage({
                         </div>
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent: Reified<any>) => {
+                            const hasMetadata =
+                              parent.metadata?.iriToLabel &&
+                              Object.keys(parent.metadata).length > 0 &&
+                              Object.keys(parent.metadata.iriToLabel).length >
+                                0;
                             return (
                               <li key={randomString()}>
-                                <Tooltip
-                                  title={
-                                    parent?.metadata?.iriToLabel &&
-                                    Object.keys(parent.metadata).length > 0 &&
-                                    Object.keys(parent.metadata.iriToLabel)
-                                      .length > 0
-                                      ? Object.keys(parent.metadata)
-                                          .map((key) => {
-                                            if (
-                                              parent.metadata.iriToLabel[key]
-                                            ) {
-                                              return (
-                                                parent.metadata.iriToLabel[
-                                                  key
-                                                ] +
-                                                ": " +
-                                                parent.metadata[key]
-                                              );
-                                            }
-                                            return "";
-                                          })
-                                          .join("\n")
-                                      : ""
-                                  }
-                                  placement="top"
-                                  arrow
-                                >
-                                  <span>
-                                    <ClassExpression
-                                      expr={parent.value}
-                                      iriToLabel={iriToLabel}
-                                    />
-                                  </span>
-                                </Tooltip>
+                                <ClassExpression
+                                  expr={parent.value}
+                                  iriToLabel={iriToLabel}
+                                />
+                                {hasMetadata ? (
+                                  <Tooltip
+                                    title={Object.keys(parent.metadata)
+                                      .map((key) => {
+                                        if (parent.metadata.iriToLabel[key]) {
+                                          return (
+                                            "*" +
+                                            parent.metadata[key] +
+                                            " (" +
+                                            parent.metadata.iriToLabel[
+                                              key
+                                            ].replaceAll("_", " ") +
+                                            ")"
+                                          );
+                                        }
+                                        return "";
+                                      })
+                                      .join("\n")}
+                                    placement="top"
+                                    arrow
+                                  >
+                                    <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+                                  </Tooltip>
+                                ) : null}
                               </li>
                             );
                           })}
