@@ -3,7 +3,7 @@
 }
 
 :8080 {
-    handle_path {$PUBLIC_URL} {
+    handle_path {$PUBLIC_URL}* {
         root * /opt/ols4-frontend/build
         try_files {path} /
         file_server
