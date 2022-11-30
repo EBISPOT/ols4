@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriUtils;
+import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
@@ -18,6 +19,7 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.Map;
 
 @Component
@@ -88,6 +90,27 @@ public class V2PropertyRepository {
         return new V2Property(solrClient.getOne(query), lang);
     }
 
+    public Page<V2Property> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+property+" + iri;
+
+        return this.neo4jClient.getChildren("OntologyProperty", id, Arrays.asList("directParent"), pageable)
+                .map(record -> new V2Property(record, lang));
+    }
+
+    public Page<V2Property> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+property+" + iri;
+
+        return this.neo4jClient.getAncestors("OntologyProperty", id, Arrays.asList("directParent"), pageable)
+                .map(record -> new V2Property(record, lang));
+    }
 
 }
 

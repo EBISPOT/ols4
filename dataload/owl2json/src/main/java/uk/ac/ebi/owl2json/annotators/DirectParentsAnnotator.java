@@ -18,13 +18,14 @@ public class DirectParentsAnnotator {
 
         long startTime3 = System.nanoTime();
         for(String id : graph.nodes.keySet()) {
-            OwlNode c = graph.nodes.get(id);
-            if (c.types.contains(OwlNode.NodeType.CLASS) ||
-                    c.types.contains(OwlNode.NodeType.PROPERTY)) {
 
-                // skip bnodes
-                if(c.uri == null)
-                    continue;
+            OwlNode c = graph.nodes.get(id);
+
+            // skip bnodes
+            if(c.uri == null)
+                continue;
+
+            if (c.types.contains(OwlNode.NodeType.CLASS)) {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 
@@ -35,11 +36,20 @@ public class DirectParentsAnnotator {
                         }
                     }
                 }
-            } else if (c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
 
-                // skip bnodes
-                if(c.uri == null)
-                    continue;
+	    } else if( c.types.contains(OwlNode.NodeType.PROPERTY)) {
+
+                List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
+
+                if(parents != null) {
+                    for(PropertyValue parent : parents) {
+                        if(parent.getType() == PropertyValue.Type.URI) {
+                            c.properties.addProperty("directParent", parent);
+                        }
+                    }
+                }
+
+            } else if (c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
 
                 // The type of individuals becomes their parent in OLS
                 //

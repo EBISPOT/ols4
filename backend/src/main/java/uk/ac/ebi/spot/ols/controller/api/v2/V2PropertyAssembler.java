@@ -26,6 +26,19 @@ public class V2PropertyAssembler implements RepresentationModelAssembler<V2Prope
 
         resource.add(lb.withSelfRel());
 
+        String isRoot = _property.get("isRoot");
+        String hasChildren = _property.get("hasChildren");
+
+        if (isRoot != null && !isRoot.equals("true")) {
+            resource.add(lb.slash("parents").withRel("parents"));
+            resource.add(lb.slash("ancestors").withRel("ancestors"));
+        }
+
+        if (hasChildren != null && hasChildren.equals("true")) {
+            resource.add(lb.slash("children").withRel("children"));
+            resource.add(lb.slash("descendants").withRel("descendants"));
+        }
+
         return resource;
     }
 }

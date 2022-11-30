@@ -21,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
+import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
 
@@ -106,6 +107,37 @@ public class V2PropertyController implements
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toModel(document), HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/children", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<PagedModel<V2Property>> getChildrenByOntology(
+            @PageableDefault(size = 20, page = 0) Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("property") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        Page<V2Property> document = propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, lang);
+        return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<PagedModel<V2Property>> getAncestorsByOntology(
+            @PageableDefault(size = 20, page = 0) Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("property") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        Page<V2Property> document = propertyRepository.getAncestorsByOntologyId(ontologyId, pageable, iri, lang);
+        return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
+    }
+
 }
 
 
