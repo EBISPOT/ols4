@@ -25,3 +25,6 @@ spec:
               value: http://{{ .Release.Name }}-solr:8983
             - name: OLS_NEO4J_HOST
               value: bolt://{{ .Release.Name }}-neo4j:7687
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: /ols4
+              
