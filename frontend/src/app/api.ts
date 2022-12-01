@@ -3,7 +3,7 @@ export async function request(
   init?: RequestInit | undefined
 ): Promise<any> {
   const url = process.env.REACT_APP_APIURL + path;
-  const res = await fetch(url.replace(/(?<!:)\/+/gm, "/"), {
+  const res = await fetch(url.replace(/([^:]\/)\/+/g, "$1"), {
     ...(init ? init : {}),
     //headers: { ...(init?.headers || {}), ...getAuthHeaders() }
   });
