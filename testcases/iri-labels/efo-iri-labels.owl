@@ -64,7 +64,9 @@ License. </dc:rights>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has part</rdfs:label>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_part</rdfs:label>
     </owl:ObjectProperty>
-    
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0008150"/>
+
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OGMS_0000063">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GO_0008150"/>
         <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
