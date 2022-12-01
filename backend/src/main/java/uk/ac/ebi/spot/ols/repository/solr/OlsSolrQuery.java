@@ -40,7 +40,11 @@ public class OlsSolrQuery {
 
 		if(searchText != null) {
 
-			query.setQuery(searchText);
+			if (searchText.contains("*")) {
+				query.setQuery(searchText);
+			} else {
+				query.setQuery("*" + searchText + "*");
+			}
 
 			StringBuilder qf = new StringBuilder();
 
