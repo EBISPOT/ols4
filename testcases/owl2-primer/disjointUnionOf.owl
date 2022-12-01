@@ -23,19 +23,23 @@
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father -->
+    <!-- http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father"/>
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"/>
+    </owl:Class>
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother -->
+    <!-- http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"/>
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"/>
+    </owl:Class>
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent -->
+    <!-- http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent -->
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent">
         <owl:disjointUnionOf rdf:parseType="Collection">
