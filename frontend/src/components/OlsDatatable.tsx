@@ -1,5 +1,3 @@
-import Search from "@mui/icons-material/Search";
-import { InputAdornment, TextField } from "@mui/material";
 import TablePagination from "@mui/material/TablePagination";
 import { randomString } from "../app/util";
 import Thing from "../model/Thing";
@@ -36,33 +34,14 @@ export default function OlsDatatable({
 
   return (
     <div>
-      <div className="grid grid-cols-2 mb-4">
-        {onFilter !== undefined ? (
-          <div className="w-3/4 px-4">
-            <TextField
-              fullWidth
-              size="small"
-              margin="dense"
-              onChange={(e) => {
-                onFilter(e.target.value);
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search />
-                  </InputAdornment>
-                ),
-              }}
-            ></TextField>
-          </div>
-        ) : null}
+      <div className="grid grid-cols-2">
         {page !== undefined &&
         page >= 0 &&
         onPageChange !== undefined &&
         rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
-          <div>
+          <div className="justify-self-start">
             <TablePagination
               rowsPerPageOptions={[]}
               // rowsPerPageOptions={[10, 25, 100]}
@@ -82,9 +61,24 @@ export default function OlsDatatable({
             />
           </div>
         ) : null}
+        {onFilter !== undefined ? (
+          <div className="group justify-self-end relative w-3/4 px-4">
+            <input
+              type="text"
+              placeholder="Search ontologies..."
+              className="input-default text-sm pl-8"
+              onChange={(e) => {
+                onFilter(e.target.value);
+              }}
+            />
+            <div className="absolute left-7 top-2 z-10">
+              <i className="icon icon-common icon-search text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark" />
+            </div>
+          </div>
+        ) : null}
       </div>
 
-      <div className="m-6">
+      <div className="mx-4">
         <table className="border-collapse border-spacing-1 w-full">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">

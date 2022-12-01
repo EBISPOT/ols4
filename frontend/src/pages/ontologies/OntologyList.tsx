@@ -62,11 +62,11 @@ export default function OntologyList() {
 
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [filter, setFilter] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    dispatch(getOntologies({ page, rowsPerPage, filter }));
-  }, [dispatch, page, rowsPerPage, filter]);
+    dispatch(getOntologies({ page, rowsPerPage, search }));
+  }, [dispatch, page, rowsPerPage, search]);
 
   const history = useHistory();
   return (
@@ -86,7 +86,7 @@ export default function OntologyList() {
           history.push("/ontologies/" + row.getOntologyId());
         }}
         onFilter={(key: string) => {
-          setFilter(key);
+          setSearch(key);
         }}
       />
       {loading ? <LoadingOverlay message="Loading ontologies..." /> : null}

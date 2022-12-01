@@ -64,11 +64,12 @@ export const getEntity = createAsyncThunk(
 export const getOntologies = createAsyncThunk(
   "ontologies_ontologies",
   async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
+    console.log(search);
     try {
       const data = (
         await getPaginated<any>(
           `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
-            search !== undefined ? "&search=" + search : ""
+            search ? "&search=" + search : ""
           }`
         )
       ).map((o) => new Ontology(o));
