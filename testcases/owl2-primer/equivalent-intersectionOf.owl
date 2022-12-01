@@ -34,6 +34,8 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"/>
     </owl:Class>
     
 
