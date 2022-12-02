@@ -40,8 +40,8 @@
       "http://www.w3.org/2002/07/owl#versionInfo": "3.42.0",
       "imported": "false",
       "isObsolete": "false",
-      "numberOfClasses": "4",
-      "numberOfEntities": "6",
+      "numberOfClasses": "5",
+      "numberOfEntities": "7",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
       "iriToLabel": {},
@@ -65,6 +65,25 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "efo-iri-labels",
           "shortForm": "GO_0006807",
+          "iriToLabel": {}
+        },
+        {
+          "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "GO_0008150",
           "iriToLabel": {}
         },
         {

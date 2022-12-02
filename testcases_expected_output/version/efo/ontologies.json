@@ -1,0 +1,25 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "ontology-annotations-version-efo",
+      "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/efo.owl",
+      "preferredPrefix": "ontology-annotations-version-efo",
+      "ontology_purl": "./testcases/ontology-annotations/version/efo.owl",
+      "type": [
+        "ontology"
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/releases/v3.23.11/efo.owl",
+      "imported": "false",
+      "isObsolete": "false",
+      "numberOfClasses": "0",
+      "numberOfEntities": "0",
+      "numberOfIndividuals": "0",
+      "numberOfProperties": "0",
+      "iriToLabel": {},
+      "classes": [],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}

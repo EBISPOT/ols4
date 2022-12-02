@@ -21,9 +21,10 @@
       "properties": [],
       "individuals": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedindividual-differentfrom\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl\",\"ontologyPreferredPrefix\":\"owl2primer-namedIndividual-differentFrom\",\"shortForm\":\"Bill\",\"type\":[\"entity\",\"individual\"]}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"http://www.w3.org/2002/07/owl#differentFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedindividual-differentfrom\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl\",\"ontologyPreferredPrefix\":\"owl2primer-namedIndividual-differentFrom\",\"shortForm\":\"Bill\",\"type\":[\"entity\",\"individual\"]}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/2002/07/owl#differentFrom": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
           "imported": "false",
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
           "isDefiningOntology": "false",
@@ -39,9 +40,10 @@
           ]
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedindividual-differentfrom\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl\",\"ontologyPreferredPrefix\":\"owl2primer-namedIndividual-differentFrom\",\"shortForm\":\"John\",\"type\":[\"entity\",\"individual\"]}",
+          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#NamedIndividual\",\"http://www.w3.org/2002/07/owl#differentFrom\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-namedindividual-differentfrom\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom.owl\",\"ontologyPreferredPrefix\":\"owl2primer-namedIndividual-differentFrom\",\"shortForm\":\"John\",\"type\":[\"entity\",\"individual\"]}",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/2002/07/owl#differentFrom": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#Bill",
           "imported": "false",
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-differentFrom#John",
           "isDefiningOntology": "false",

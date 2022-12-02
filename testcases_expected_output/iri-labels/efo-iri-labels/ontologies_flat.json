@@ -1,7 +1,7 @@
 {
   "ontologies": [
     {
-      "_json": "{\"http://purl.obolibrary.org/obo/format-version\":\"1.4\",\"http://purl.org/dc/elements/1.1/creator\":[\"Gautier Koscielny\",\"Laura Huerta Martinez\",\"Olamidipupo Ajigboye\",\"Paola Roncaglia\",\"Trish Whetzel\",\"Zoe May Pendlington\"],\"http://purl.org/dc/elements/1.1/rights\":\"Copyright [2014] EMBL - European Bioinformatics Institute\\nLicensed under the Apache License, Version 2.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \\\"AS IS\\\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\\nLicense. \",\"http://purl.org/dc/terms/license\":\"www.apache.org/licenses/LICENSE-2.0\",\"http://www.ebi.ac.uk/efo/creator\":[\"Catherine Leroy\",\"Dani Welter\",\"Drashtti Vasant\",\"Ele Holloway\",\"Eleanor Williams\",\"Emma Kate Hastings\",\"Helen Parkinson\",\"James Malone\",\"Jon Ison\",\"Natalja Kurbatova\",\"Simon Jupp\",\"Sirarat Sarntivijai\",\"Tomasz Adamusiak\"],\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"2022-05-16\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl\",\"http://www.w3.org/2002/07/owl#versionInfo\":\"3.42.0\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"iriToLabel\":{},\"isObsolete\":\"false\",\"numberOfClasses\":\"4\",\"numberOfEntities\":\"6\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"2\",\"ontologyId\":\"efo-iri-labels\",\"ontology_purl\":\"./testcases/iri-labels/efo-iri-labels.owl\",\"preferredPrefix\":\"efo-iri-labels\",\"type\":[\"ontology\"]}",
+      "_json": "{\"http://purl.obolibrary.org/obo/format-version\":\"1.4\",\"http://purl.org/dc/elements/1.1/creator\":[\"Gautier Koscielny\",\"Laura Huerta Martinez\",\"Olamidipupo Ajigboye\",\"Paola Roncaglia\",\"Trish Whetzel\",\"Zoe May Pendlington\"],\"http://purl.org/dc/elements/1.1/rights\":\"Copyright [2014] EMBL - European Bioinformatics Institute\\nLicensed under the Apache License, Version 2.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \\\"AS IS\\\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\\nLicense. \",\"http://purl.org/dc/terms/license\":\"www.apache.org/licenses/LICENSE-2.0\",\"http://www.ebi.ac.uk/efo/creator\":[\"Catherine Leroy\",\"Dani Welter\",\"Drashtti Vasant\",\"Ele Holloway\",\"Eleanor Williams\",\"Emma Kate Hastings\",\"Helen Parkinson\",\"James Malone\",\"Jon Ison\",\"Natalja Kurbatova\",\"Simon Jupp\",\"Sirarat Sarntivijai\",\"Tomasz Adamusiak\"],\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Ontology\",\"http://www.w3.org/2000/01/rdf-schema#comment\":\"2022-05-16\",\"http://www.w3.org/2002/07/owl#versionIRI\":\"http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl\",\"http://www.w3.org/2002/07/owl#versionInfo\":\"3.42.0\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"iriToLabel\":{},\"isObsolete\":\"false\",\"numberOfClasses\":\"5\",\"numberOfEntities\":\"7\",\"numberOfIndividuals\":\"0\",\"numberOfProperties\":\"2\",\"ontologyId\":\"efo-iri-labels\",\"ontology_purl\":\"./testcases/iri-labels/efo-iri-labels.owl\",\"preferredPrefix\":\"efo-iri-labels\",\"type\":[\"ontology\"]}",
       "http://purl.obolibrary.org/obo/format-version": "1.4",
       "http://purl.org/dc/elements/1.1/creator": [
         "Gautier Koscielny",
@@ -35,8 +35,8 @@
       "imported": "false",
       "iri": "http://www.ebi.ac.uk/efo/efo.owl",
       "isObsolete": "false",
-      "numberOfClasses": "4",
-      "numberOfEntities": "6",
+      "numberOfClasses": "5",
+      "numberOfEntities": "7",
       "numberOfIndividuals": "0",
       "numberOfProperties": "2",
       "ontologyId": "efo-iri-labels",
@@ -62,6 +62,25 @@
           "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
           "ontologyPreferredPrefix": "efo-iri-labels",
           "shortForm": "GO_0006807",
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        {
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://purl.obolibrary.org/obo/GO_0008150\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"efo-iri-labels\",\"ontologyIri\":\"http://www.ebi.ac.uk/efo/efo.owl\",\"ontologyPreferredPrefix\":\"efo-iri-labels\",\"shortForm\":\"GO_0008150\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "true",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": "false",
+          "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+          "isDefiningOntology": "false",
+          "isObsolete": "false",
+          "isPreferredRoot": "false",
+          "isRoot": "true",
+          "ontologyId": "efo-iri-labels",
+          "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+          "ontologyPreferredPrefix": "efo-iri-labels",
+          "shortForm": "GO_0008150",
           "type": [
             "class",
             "entity"

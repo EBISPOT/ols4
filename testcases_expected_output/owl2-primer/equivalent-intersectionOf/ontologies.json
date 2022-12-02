@@ -24,8 +24,20 @@
             "class",
             "entity"
           ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "hasChildren": "false",
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "http://www.w3.org/2002/07/owl#equivalentClass": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
             "http://www.w3.org/2002/07/owl#intersectionOf": [
@@ -38,7 +50,7 @@
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isPreferredRoot": "false",
-          "isRoot": "true",
+          "isRoot": "false",
           "ontologyId": "owl2primer-equivalent-intersectionof",
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
@@ -51,7 +63,7 @@
             "class",
             "entity"
           ],
-          "hasChildren": "false",
+          "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
           "isDefiningOntology": "false",
@@ -70,7 +82,7 @@
             "class",
             "entity"
           ],
-          "hasChildren": "false",
+          "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
           "isDefiningOntology": "false",

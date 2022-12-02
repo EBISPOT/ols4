@@ -19,9 +19,21 @@
       ],
       "classes": [
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"iriToLabel\":{}},\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"]}",
+          "_json": "{\"directParent\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"hasChildren\":\"false\",\"hierarchicalParent\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2000/01/rdf-schema#subClassOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"http://www.w3.org/2002/07/owl#equivalentClass\":{\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"http://www.w3.org/2002/07/owl#intersectionOf\":[\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\"],\"iriToLabel\":{}},\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"false\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Mother\",\"type\":[\"class\",\"entity\"]}",
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "hasChildren": "false",
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ],
           "http://www.w3.org/2002/07/owl#equivalentClass": [
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
@@ -31,7 +43,7 @@
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isPreferredRoot": "false",
-          "isRoot": "true",
+          "isRoot": "false",
           "ontologyId": "owl2primer-equivalent-intersectionof",
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
           "ontologyPreferredPrefix": "owl2primer-equivalent-intersectionOf",
@@ -42,8 +54,8 @@
           ]
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"]}",
-          "hasChildren": "false",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Parent\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
@@ -61,8 +73,8 @@
           ]
         },
         {
-          "_json": "{\"hasChildren\":\"false\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"]}",
-          "hasChildren": "false",
+          "_json": "{\"hasChildren\":\"true\",\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\":\"http://www.w3.org/2002/07/owl#Class\",\"imported\":\"false\",\"iri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman\",\"iriToLabel\":{},\"isDefiningOntology\":\"false\",\"isObsolete\":\"false\",\"isPreferredRoot\":\"false\",\"isRoot\":\"true\",\"ontologyId\":\"owl2primer-equivalent-intersectionof\",\"ontologyIri\":\"http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl\",\"ontologyPreferredPrefix\":\"owl2primer-equivalent-intersectionOf\",\"shortForm\":\"Woman\",\"type\":[\"class\",\"entity\"]}",
+          "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": "false",
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",

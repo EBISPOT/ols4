@@ -90,7 +90,7 @@
             "entity",
             "property"
           ],
-          "hasChildren": "false",
+          "hasChildren": "true",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": "false",
           "isDefiningOntology": "false",
@@ -109,6 +109,7 @@
             "entity",
             "property"
           ],
+          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
           "hasChildren": "false",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf#hasSpouse",
@@ -116,7 +117,7 @@
           "isDefiningOntology": "false",
           "isObsolete": "false",
           "isPreferredRoot": "false",
-          "isRoot": "true",
+          "isRoot": "false",
           "ontologyId": "owl2primer-subobjectpropertyof",
           "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subObjectPropertyOf",
           "ontologyPreferredPrefix": "owl2primer-subObjectPropertyOf",
