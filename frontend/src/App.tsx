@@ -8,11 +8,6 @@ import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
 
 class App extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
