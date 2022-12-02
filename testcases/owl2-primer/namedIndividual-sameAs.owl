@@ -33,7 +33,9 @@
 
     <!-- http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim -->
 
-    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim"/>
+    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#Jim">
+        <owl:sameAs rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual-sameAs#James"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
