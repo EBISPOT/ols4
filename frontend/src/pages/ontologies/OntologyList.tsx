@@ -90,7 +90,10 @@ export default function OntologyList() {
           history.push("/ontologies/" + row.getOntologyId());
         }}
         onFilter={(key: string) => {
-          setSearch(key);
+          setSearch((prev) => {
+            if (key !== prev) setPage(0);
+            return key;
+          });
         }}
       />
       {loading ? <LoadingOverlay message="Loading ontologies..." /> : null}
