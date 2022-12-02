@@ -80,11 +80,14 @@ export default function OntologyList() {
         dataCount={totalOntologies}
         page={page}
         rowsPerPage={rowsPerPage}
-        onPageChange={(page: number) => {
-          setPage(page);
+        onPageChange={(pg: number) => {
+          setPage(pg);
         }}
         onRowsPerPageChange={(rows: number) => {
-          setRowsPerPage(rows);
+          setRowsPerPage((prev) => {
+            if (rows !== prev) setPage(0);
+            return rows;
+          });
         }}
         onSelectRow={(row: Ontology) => {
           history.push("/ontologies/" + row.getOntologyId());

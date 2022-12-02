@@ -45,8 +45,7 @@ export default function OlsDatatable({
         onRowsPerPageChange !== undefined ? (
           <div className="justify-self-start">
             <TablePagination
-              rowsPerPageOptions={[]}
-              // rowsPerPageOptions={[10, 25, 100]}
+              rowsPerPageOptions={[10, 25, 100]}
               component="div"
               count={dataCount}
               rowsPerPage={rowsPerPage}
