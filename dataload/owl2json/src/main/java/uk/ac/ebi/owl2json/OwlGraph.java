@@ -189,6 +189,7 @@ public class OwlGraph implements StreamRDF {
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     RelatedAnnotator.annotateRelated(this);
+    DisjointWithAnnotator.annotateDisjointWith(this);
 
     }
 
@@ -601,6 +602,16 @@ public class OwlGraph implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#Restriction":
                 subjNode.types.add(OwlNode.NodeType.RESTRICTION);
+                break;
+
+            case "http://www.w3.org/2002/07/owl#AllDisjointClasses":
+                subjNode.types.add(OwlNode.NodeType.ALL_DISJOINT_CLASSES);
+                break;
+            case "http://www.w3.org/2002/07/owl#AllDisjointProperties":
+                subjNode.types.add(OwlNode.NodeType.ALL_DISJOINT_PROPERTIES);
+                break;
+            case "http://www.w3.org/2002/07/owl#AllDifferent":
+                subjNode.types.add(OwlNode.NodeType.ALL_DIFFERENT);
                 break;
         }
     }

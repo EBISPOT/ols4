@@ -14,7 +14,10 @@ public class OwlNode {
         ANNOTATION,
         AXIOM,
         RESTRICTION,
-        RDF_LIST
+        RDF_LIST,
+	ALL_DISJOINT_CLASSES,
+	ALL_DIFFERENT,
+	ALL_DISJOINT_PROPERTIES
     }
 
     public String uri;
