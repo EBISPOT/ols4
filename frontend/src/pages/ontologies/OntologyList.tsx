@@ -52,6 +52,9 @@ const columns: readonly Column[] = [
 export default function OntologyList() {
   const dispatch = useAppDispatch();
   const ontologies = useAppSelector((state) => state.ontologies.ontologies);
+  const totalOntologies = useAppSelector(
+    (state) => state.ontologies.totalOntologies
+  );
   const ontologiesSorted = [...ontologies];
   ontologiesSorted.sort((a, b) => {
     const ontoIdA = a.getOntologyId() ? a.getOntologyId().toUpperCase() : "";
@@ -74,6 +77,7 @@ export default function OntologyList() {
       <OlsDatatable
         columns={columns}
         data={ontologiesSorted}
+        dataCount={totalOntologies}
         page={page}
         rowsPerPage={rowsPerPage}
         onPageChange={(page: number) => {

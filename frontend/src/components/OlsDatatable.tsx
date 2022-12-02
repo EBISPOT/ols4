@@ -13,6 +13,7 @@ export interface Column {
 export default function OlsDatatable({
   columns,
   data,
+  dataCount,
   onSelectRow,
   page,
   rowsPerPage,
@@ -22,6 +23,7 @@ export default function OlsDatatable({
 }: {
   columns: readonly Column[];
   data: any[];
+  dataCount: number;
   onSelectRow: (row: any) => void;
   page?: number;
   rowsPerPage?: number;
@@ -46,7 +48,7 @@ export default function OlsDatatable({
               rowsPerPageOptions={[]}
               // rowsPerPageOptions={[10, 25, 100]}
               component="div"
-              count={data.length}
+              count={dataCount}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={(e, page) => {
@@ -77,7 +79,6 @@ export default function OlsDatatable({
           </div>
         ) : null}
       </div>
-
       <div className="mx-4">
         <table className="border-collapse border-spacing-1 w-full">
           <thead>

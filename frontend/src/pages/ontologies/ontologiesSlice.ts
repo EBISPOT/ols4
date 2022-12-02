@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { get, getPaginated } from "../../app/api";
+import { get, getPaginated, Page } from "../../app/api";
 import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
@@ -11,6 +11,7 @@ export interface OntologiesState {
   nodeChildren: Map<String, TreeNode[]>;
   rootEntities: Entity[];
   ontologies: Ontology[];
+  totalOntologies: number;
   entities: Entity[];
   loadingOntologies: boolean;
   loadingEntities: boolean;
@@ -32,6 +33,7 @@ const initialState: OntologiesState = {
   nodeChildren: new Map<String, TreeNode[]>(),
   rootEntities: [],
   ontologies: [],
+  totalOntologies: 0,
   entities: [],
   loadingOntologies: false,
   loadingEntities: false,
@@ -64,7 +66,6 @@ export const getEntity = createAsyncThunk(
 export const getOntologies = createAsyncThunk(
   "ontologies_ontologies",
   async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
-    console.log(search);
     try {
       const data = (
         await getPaginated<any>(
@@ -73,7 +74,7 @@ export const getOntologies = createAsyncThunk(
           }`
         )
       ).map((o) => new Ontology(o));
-      return data.elements;
+      return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -203,8 +204,9 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(
       getOntologies.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Ontology[]>) => {
-        state.ontologies = action.payload;
+      (state: OntologiesState, action: PayloadAction<Page<Ontology>>) => {
+        state.ontologies = action.payload.elements;
+        state.totalOntologies = action.payload.totalElements;
         state.loadingOntologies = false;
       }
     );
