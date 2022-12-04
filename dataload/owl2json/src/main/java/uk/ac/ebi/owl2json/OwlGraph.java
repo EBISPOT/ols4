@@ -359,10 +359,12 @@ public class OwlGraph implements StreamRDF {
 				urisToGetLabelsFor.add( ((PropertyValueURI) val).getUri() );
 			} else if(val.getType() == Type.BNODE) {
                 OwlNode bnode = getNodeForPropertyValue(val);
-                if(bnode.types.contains(OwlNode.NodeType.RDF_LIST)) {
-                    for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(bnode, this)) {
-                        if(listEntry.getType() == Type.URI) {
-                            urisToGetLabelsFor.add( ((PropertyValueURI) listEntry).getUri() );
+                if(bnode != null) { // empty bnode values present in some ontologies, see issue #116
+                    if(bnode.types.contains(OwlNode.NodeType.RDF_LIST)) {
+                        for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(bnode, this)) {
+                            if(listEntry.getType() == Type.URI) {
+                                urisToGetLabelsFor.add( ((PropertyValueURI) listEntry).getUri() );
+                            }
                         }
                     }
                 }
@@ -424,7 +426,8 @@ public class OwlGraph implements StreamRDF {
             case BNODE:
                 OwlNode c = nodes.get(((PropertyValueBNode) value).getId());
                 if (c == null) {
-                    writer.value("?");
+                    // empty bnode values present in some ontologies, see issue #116
+                    writer.value("");
                 } else {
                     writeNode(writer, c, null);
                 }
