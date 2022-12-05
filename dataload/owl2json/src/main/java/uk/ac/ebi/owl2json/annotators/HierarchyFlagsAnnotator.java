@@ -2,7 +2,6 @@ package uk.ac.ebi.owl2json.annotators;
 
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlGraph;
-import uk.ac.ebi.owl2json.annotators.helpers.ClassExpressionIRIExtractor;
 import uk.ac.ebi.owl2json.properties.PropertyValue;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.owl2json.properties.PropertyValueURI;
