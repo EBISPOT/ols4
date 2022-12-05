@@ -77,6 +77,7 @@ public class OntologyWriter {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         String outName = outputFilePath + "/" + (String) ontologyScannerResult.ontologyId + "_ontologies.csv";
@@ -101,6 +102,7 @@ public class OntologyWriter {
 
         row[n++] = ((String) ontologyProperties.get("ontologyId")) + "+ontology+" + (String) ontologyProperties.get("iri");
         row[n++] = "Ontology";
+	row[n++] = gson.toJson(ontologyProperties);
 
         for (String column : properties) {
             row[n++] = serializeValue(ontologyProperties, column);
@@ -117,6 +119,7 @@ public class OntologyWriter {
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
+        csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
@@ -133,6 +136,7 @@ public class OntologyWriter {
 
             row[n++] = ontologyId + "+" + type + "+" + (String) entity.get("iri");
             row[n++] = nodeLabels;
+	    row[n++] = gson.toJson(entity);
 
             for (String column : properties) {
                 row[n++] = serializeValue(entity, column);
@@ -266,8 +270,8 @@ public class OntologyWriter {
 
         if(value instanceof Map) {
 
-            // could be an axiom or a langString, but we are writing the value
-            // itself as a property directly in this case; the rest of the axiom
+            // could be a reification or a localisation, but we are writing the value
+            // itself as a property directly in this case; the rest of the reification
             // properties or localized strings are preserved in the _json field
 
             Map<String, Object> mapValue = (Map<String, Object>) value;
@@ -276,6 +280,11 @@ public class OntologyWriter {
                 Object val = mapValue.get("value");
                 return valueToCsv(val);
             }
+
+	    // probably a class expression; wouldn't result in anything queryable
+	    // so store nothing in the field
+	    //
+	    return "";
         }
 
         return replaceNeo4jSpecialCharsValue(gson.toJson(value));
@@ -291,9 +300,7 @@ public class OntologyWriter {
 
         for(String k : fieldNames) {
 
-            if(k.equals("_json")) {
-                headers.add("_json");
-            } else if(k.equals("iri")) {
+            if(k.equals("iri")) {
                 headers.add("iri");
             } else {
                 headers.add(k.replace(":", "__") + ":string[]");
@@ -305,7 +312,7 @@ public class OntologyWriter {
 
     private String serializeValue(Map<String,Object> entityProperties, String column) throws IOException {
 
-        if(column.indexOf('+') != -1) {
+        if(column.indexOf('+') != -1 && !column.startsWith("related")) {
             String lang = column.substring(0, column.indexOf('+'));
             String predicate = column.substring(column.indexOf('+')+1);
 

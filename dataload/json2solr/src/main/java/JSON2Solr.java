@@ -106,6 +106,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedClass = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedClass.put("_json", gson.toJson(_class));
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("id", lang + "_" + ontologyId + "+class+" + (String) _class.get("iri"));
 
@@ -145,6 +146,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedProperty = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedProperty.put("_json", gson.toJson(property));
                                     flattenedProperty.put("lang", lang);
                                     flattenedProperty.put("id", lang + "_" + ontologyId + "+property+" + (String) property.get("iri"));
 
@@ -186,6 +188,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedIndividual = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedIndividual.put("_json", gson.toJson(individual));
                                     flattenedIndividual.put("lang", lang);
                                     flattenedIndividual.put("id", lang + "_" + ontologyId + "+individual+" + (String) individual.get("iri"));
 
@@ -227,6 +230,7 @@ public class JSON2Solr {
                             ontologyJsonObj.put(k, ontology.get(k));
                         }
 
+                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
                         flattenedOntology.put("id", lang + "_" + ontologyId + "+ontology+" + ontology.get("iri"));
                         flattenedOntology.put("lang", lang);
 
