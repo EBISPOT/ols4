@@ -10,7 +10,8 @@ public abstract class PropertyValue {
         LITERAL,
         URI,
         BNODE,
-        ID
+        ID,
+	RELATED
     }
 
     // further properties (for reification)

@@ -14,6 +14,7 @@ import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
+import org.apache.jena.shacl.sys.C;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
@@ -455,6 +456,13 @@ public class OwlGraph implements StreamRDF {
                 break;
             case URI:
                 writer.value(((PropertyValueURI) value).getUri());
+                break;
+            case RELATED:
+                writer.beginObject();
+                writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
+                writer.name("value");
+                writer.value(((PropertyValueRelated) value).getRelated().uri);
+                writer.endObject();
                 break;
             default:
                 writer.value("?");
