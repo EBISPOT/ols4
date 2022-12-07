@@ -26,7 +26,7 @@ export function Pagination({
           onPageChange(page - 1);
         }}
         disabled={page === 0}
-        className={`px-4 py-1 text-neutral-default hov ${
+        className={`px-4 py-1 text-neutral-default ${
           page === 0
             ? "cursor-not-allowed"
             : "hover:bg-neutral-default hover:rounded-md hover:text-white"
@@ -38,7 +38,7 @@ export function Pagination({
         <button
           className={`px-4 py-1 ${
             page === 0
-              ? "bg-neutral-default rounded-md text-white"
+              ? "bg-neutral-default rounded-md text-white cursor-default"
               : "text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
           }`}
           onClick={() => {
@@ -72,7 +72,7 @@ export function Pagination({
         </button>
       ) : null}
       {page > 0 && page < pageCount - 1 ? (
-        <span className="px-4 py-1 bg-neutral-default rounded-md text-white">
+        <span className="px-4 py-1 bg-neutral-default rounded-md text-white cursor-default">
           {page + 1}
         </span>
       ) : null}
@@ -103,7 +103,7 @@ export function Pagination({
         <button
           className={`px-4 py-1 ${
             page === pageCount - 1
-              ? "bg-neutral-default rounded-md text-white"
+              ? "bg-neutral-default rounded-md text-white cursor-default"
               : "text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
           }`}
           onClick={() => {

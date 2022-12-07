@@ -28,20 +28,13 @@ export default function OlsDatatable({
   dataCount: number;
   onSelectRow: (row: any) => void;
   page?: number;
-  rowsPerPage: number;
+  rowsPerPage?: number;
   onPageChange?: (page: number) => void;
   onRowsPerPageChange?: (rowsPerPage: number) => void;
   onFilter?: (key: string) => void;
 }) {
   // const [sortColumn, setSortColumn] = useState<string>("");
   // const [sortDirection, setSortDirection] = useState<string>("asc");
-  const [pageCount, setPageCount] = useState<number>(
-    Math.ceil(dataCount / rowsPerPage) || 1
-  );
-
-  useEffect(() => {
-    setPageCount(Math.ceil(dataCount / rowsPerPage));
-  }, [rowsPerPage, dataCount]);
 
   return (
     <div>
@@ -53,7 +46,7 @@ export default function OlsDatatable({
             <div className="flex group relative text-md">
               <label className="self-center px-3">Show</label>
               <select
-                className="input-default appearance-none pr-8"
+                className="input-default appearance-none pr-7 z-20 bg-transparent"
                 onChange={(e) => {
                   onRowsPerPageChange(parseInt(e.target.value));
                 }}
