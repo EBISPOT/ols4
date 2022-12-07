@@ -36,7 +36,7 @@ const columns: readonly Column[] = [
     sortable: true,
     selector: (ontology: Ontology) => {
       return (
-        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold">
+        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
           {ontology.getOntologyId().toUpperCase()}
         </div>
       );
@@ -80,17 +80,23 @@ export default function OntologyList() {
         dataCount={totalOntologies}
         page={page}
         rowsPerPage={rowsPerPage}
-        onPageChange={(page: number) => {
-          setPage(page);
+        onPageChange={(pg: number) => {
+          setPage(pg);
         }}
         onRowsPerPageChange={(rows: number) => {
-          setRowsPerPage(rows);
+          setRowsPerPage((prev) => {
+            if (rows !== prev) setPage(0);
+            return rows;
+          });
         }}
         onSelectRow={(row: Ontology) => {
           history.push("/ontologies/" + row.getOntologyId());
         }}
         onFilter={(key: string) => {
-          setSearch(key);
+          setSearch((prev) => {
+            if (key !== prev) setPage(0);
+            return key;
+          });
         }}
       />
       {loading ? <LoadingOverlay message="Loading ontologies..." /> : null}

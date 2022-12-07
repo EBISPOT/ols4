@@ -22,6 +22,7 @@ export default function EntityList(props: {
     <OlsDatatable
       columns={columns}
       data={entities}
+      rowsPerPage={10}
       dataCount={entities.length}
       onSelectRow={(row) => {
         console.log(JSON.stringify(row));
