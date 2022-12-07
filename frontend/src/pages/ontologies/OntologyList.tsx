@@ -36,7 +36,7 @@ const columns: readonly Column[] = [
     sortable: true,
     selector: (ontology: Ontology) => {
       return (
-        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold">
+        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
           {ontology.getOntologyId().toUpperCase()}
         </div>
       );
