@@ -2,6 +2,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { randomString } from "../app/util";
 import Thing from "../model/Thing";
+import { Pagination } from "./Pagination";
 
 export interface Column {
   name: string;
@@ -49,10 +50,10 @@ export default function OlsDatatable({
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
           <div className="justify-self-start px-4">
-            <div className="flex group relative">
+            <div className="flex group relative text-md">
               <label className="self-center px-3">Show</label>
               <select
-                className="input-default text-md appearance-none pr-8"
+                className="input-default appearance-none pr-8"
                 onChange={(e) => {
                   onRowsPerPageChange(parseInt(e.target.value));
                 }}
@@ -130,113 +131,12 @@ export default function OlsDatatable({
         onPageChange !== undefined &&
         rowsPerPage !== undefined &&
         rowsPerPage > 0 ? (
-          <div className="flex justify-center p-2 gap-2">
-            <button
-              onClick={() => {
-                onPageChange(page - 1);
-              }}
-              disabled={page === 0}
-              className={`px-4 py-1 text-neutral-default hov ${
-                page === 0
-                  ? "cursor-not-allowed"
-                  : "hover:bg-neutral-default hover:rounded-md hover:text-white"
-              }`}
-            >
-              Previous
-            </button>
-            {pageCount > 0 ? (
-              <button
-                className={`px-4 py-1 ${
-                  page === 0
-                    ? "bg-neutral-default rounded-md text-white"
-                    : "text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                }`}
-                onClick={() => {
-                  onPageChange(0);
-                }}
-              >
-                1
-              </button>
-            ) : null}
-            {pageCount > 2 && page === 0 ? (
-              <button
-                className="px-4 py-1 text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                onClick={() => {
-                  onPageChange(1);
-                }}
-              >
-                2
-              </button>
-            ) : null}
-            {page <= pageCount - 1 && page - 1 > 1 ? (
-              <span className="py-1 text-neutral-default">...</span>
-            ) : null}
-            {page + 1 <= pageCount - 1 && page - 1 > 0 ? (
-              <button
-                className="px-4 py-1 text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                onClick={() => {
-                  onPageChange(page - 1);
-                }}
-              >
-                {page}
-              </button>
-            ) : null}
-            {page > 0 && page < pageCount - 1 ? (
-              <span className="px-4 py-1 bg-neutral-default rounded-md text-white">
-                {page + 1}
-              </span>
-            ) : null}
-            {page >= 1 && page + 1 < pageCount - 1 ? (
-              <button
-                className="px-4 py-1 text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                onClick={() => {
-                  onPageChange(page + 1);
-                }}
-              >
-                {page + 2}
-              </button>
-            ) : null}
-            {page >= 0 && page + 1 < pageCount - 2 ? (
-              <span className="py-1 text-neutral-default">...</span>
-            ) : null}
-            {pageCount > 2 && page === pageCount - 1 ? (
-              <button
-                className="px-4 py-1 text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                onClick={() => {
-                  onPageChange(pageCount - 2);
-                }}
-              >
-                {pageCount - 1}
-              </button>
-            ) : null}
-            {pageCount > 1 ? (
-              <button
-                className={`px-4 py-1 ${
-                  page === pageCount - 1
-                    ? "bg-neutral-default rounded-md text-white"
-                    : "text-neutral-default hover:bg-neutral-default hover:rounded-md hover:text-white"
-                }`}
-                onClick={() => {
-                  onPageChange(pageCount - 1);
-                }}
-              >
-                {pageCount}
-              </button>
-            ) : null}
-            <button
-              onClick={() => {
-                onPageChange(page + 1);
-              }}
-              disabled={page === pageCount - 1}
-              className={`px-4 py-1 text-neutral-default ${
-                page === pageCount - 1
-                  ? "cursor-not-allowed"
-                  : "hover:bg-neutral-default hover:rounded-md hover:text-white"
-              }`}
-            >
-              Next
-            </button>
-          </div>
+          <Pagination
+            page={page}
+            onPageChange={onPageChange}
+            rowsPerPage={rowsPerPage}
+            dataCount={dataCount}
+          ></Pagination>
         ) : null}
       </div>
     </div>
