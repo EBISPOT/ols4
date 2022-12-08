@@ -1,5 +1,4 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
-import { useEffect, useState } from "react";
 import { randomString } from "../app/util";
 import Thing from "../model/Thing";
 import { Pagination } from "./Pagination";

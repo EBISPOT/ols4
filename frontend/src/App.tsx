@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import About from "./pages/About";
 import Help from "./pages/help/HelpPage";
 import Home from "./pages/home/Home";
+import SearchResult from "./pages/home/SearchResult";
 import EntityPage from "./pages/ontologies/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
@@ -13,17 +14,23 @@ class App extends React.Component {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path={`/`} component={Home} />
+          <Route exact path={`/home`} component={Home} />
+          <Route
+            exact
+            path={`/home/search/:key`}
+            component={(props: any) => (
+              <SearchResult search={props.match.params.key} />
+            )}
+          />
 
           <Route exact path={`/ontologies`} component={OntologiesPage} />
-
           <Route
             exact
             path={`/ontologies/:id`}
             component={(props: any) => (
               <OntologyPage ontologyId={props.match.params.id} />
             )}
-          ></Route>
-
+          />
           <Route
             exact
             path={`/ontologies/:id/classes/:iri`}
@@ -36,8 +43,7 @@ class App extends React.Component {
                 )}
               />
             )}
-          ></Route>
-
+          />
           <Route
             exact
             path={`/ontologies/:id/properties/:iri`}
@@ -50,8 +56,7 @@ class App extends React.Component {
                 )}
               />
             )}
-          ></Route>
-
+          />
           <Route
             exact
             path={`/ontologies/:id/individuals/:iri`}
@@ -64,19 +69,11 @@ class App extends React.Component {
                 )}
               />
             )}
-          ></Route>
+          />
 
-          <Route
-            exact
-            path={`/help`}
-            component={(props: any) => <Help />}
-          ></Route>
+          <Route exact path={`/help`} component={(props: any) => <Help />} />
 
-          <Route
-            exact
-            path={`/about`}
-            component={(props: any) => <About />}
-          ></Route>
+          <Route exact path={`/about`} component={(props: any) => <About />} />
         </Switch>
       </BrowserRouter>
     );

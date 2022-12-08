@@ -188,7 +188,6 @@ export default function EntityTree({
     <div>
       {rootNodes ? (
         <div
-          id="term-tree"
           className="px-3 jstree jstree-1 jstree-proton"
           role="tree"
         >
