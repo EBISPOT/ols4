@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
+import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 import { getSearchOptions } from "./homeSlice";
@@ -17,18 +19,29 @@ export default function HomeSearchBox() {
     dispatch(getSearchOptions(query));
   }, [dispatch, query]);
 
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  });
+
   return (
     <div className="flex flex-nowrap gap-4 my-2">
       <div className="relative w-full self-center">
         <input
+          id="home-search"
           type="text"
           placeholder="Search OLS..."
-          className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm"
+          className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm pl-3"
           onFocus={() => {
             setOpen(true);
           }}
           onBlur={() => {
-            setOpen(false);
+            setTimeout(function () {
+              if (mounted.current) setOpen(false);
+            }, 500);
           }}
           value={query}
           onChange={(e) => {
@@ -43,32 +56,55 @@ export default function HomeSearchBox() {
           }
         />
         <ul
-          id="home-search"
           className={
             open
               ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
               : "hidden"
           }
+          onClick={() => {
+            setOpen(false);
+          }}
         >
           {results.length === 0 ? (
-            <span className="px-2 py-4 text-lg leading-loose">No options</span>
+            <div className="py-1 px-3 text-lg leading-loose">No options</div>
           ) : (
             results.map((option: Thing) => {
-              if (option instanceof Ontology) return null;
-              else
-                return (
-                  <li
-                    key={randomString()}
-                    className="flex justify-between p-2 hover:bg-link-light hover:cursor-pointer"
-                  >
-                    <span className="truncate self-center">
-                      {option.getName()}
-                    </span>
-                    <span className="self-center bg-link-default px-3 py-1 rounded-lg text-white uppercase text-right">
-                      {option.getOntologyId()}
-                    </span>
-                  </li>
-                );
+              const termUrl = encodeURIComponent(
+                encodeURIComponent(option.getIri())
+              );
+              return (
+                <li
+                  key={randomString()}
+                  className="py-2 px-3 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                >
+                  {option instanceof Entity ? (
+                    <Link
+                      to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
+                    >
+                      <div className="flex justify-between">
+                        <span className="truncate">{option.getName()}</span>
+                        <span className="ml-2 text-right">
+                          <span className="mr-2 truncate bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase">
+                            {option.getOntologyId()}
+                          </span>
+                          <span className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase">
+                            {option.getShortForm()}
+                          </span>
+                        </span>
+                      </div>
+                    </Link>
+                  ) : null}
+                  {option instanceof Ontology ? (
+                    <Link to={"/ontologies/" + option.getOntologyId()}>
+                      <div className="flex">
+                        <span className="truncate text-link-dark font-bold">
+                          {option.getName() || option.getOntologyId()}
+                        </span>
+                      </div>
+                    </Link>
+                  ) : null}
+                </li>
+              );
             })
           )}
         </ul>
