@@ -1,6 +1,8 @@
-import TablePagination from "@mui/material/TablePagination";
+import { KeyboardArrowDown } from "@mui/icons-material";
+import { useEffect, useState } from "react";
 import { randomString } from "../app/util";
 import Thing from "../model/Thing";
+import { Pagination } from "./Pagination";
 
 export interface Column {
   name: string;
@@ -36,51 +38,47 @@ export default function OlsDatatable({
 
   return (
     <div>
-      <div className="grid grid-cols-2">
-        {page !== undefined &&
-        page >= 0 &&
-        onPageChange !== undefined &&
-        rowsPerPage !== undefined &&
+      <div className="grid grid-cols-2 mb-2">
+        {rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
-          <div className="justify-self-start">
-            <TablePagination
-              rowsPerPageOptions={[]}
-              // rowsPerPageOptions={[10, 25, 100]}
-              component="div"
-              count={dataCount}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={(e, page) => {
-                console.log("Set page to " + page);
-                onPageChange(page);
-              }}
-              onRowsPerPageChange={(e) => {
-                const newRowsPerPage = parseInt(e.target.value);
-                console.log("Set rows per page to " + newRowsPerPage);
-                onRowsPerPageChange(newRowsPerPage);
-              }}
-            />
+          <div className="justify-self-start px-4">
+            <div className="flex group relative text-md">
+              <label className="self-center px-3">Show</label>
+              <select
+                className="input-default appearance-none pr-7 z-20 bg-transparent"
+                onChange={(e) => {
+                  onRowsPerPageChange(parseInt(e.target.value));
+                }}
+              >
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={100}>100</option>
+              </select>
+              <div className="absolute right-2 top-2 z-10 text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark">
+                <KeyboardArrowDown fontSize="medium" />
+              </div>
+            </div>
           </div>
         ) : null}
         {onFilter !== undefined ? (
-          <div className="group justify-self-end relative w-3/4 px-4">
+          <div className="justify-self-end group relative w-3/4 px-4">
             <input
               type="text"
               placeholder="Search ontologies..."
-              className="input-default text-sm pl-8"
+              className="input-default text-md pl-10"
               onChange={(e) => {
                 onFilter(e.target.value);
               }}
             />
             <div className="absolute left-7 top-2 z-10">
-              <i className="icon icon-common icon-search text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark" />
+              <i className="icon icon-common icon-search text-xl text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark" />
             </div>
           </div>
         ) : null}
       </div>
       <div className="mx-4">
-        <table className="border-collapse border-spacing-1 w-full">
+        <table className="border-collapse border-spacing-1 w-full mb-2">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">
               {columns.map((column) => (
@@ -121,6 +119,18 @@ export default function OlsDatatable({
             })}
           </tbody>
         </table>
+        {page !== undefined &&
+        page >= 0 &&
+        onPageChange !== undefined &&
+        rowsPerPage !== undefined &&
+        rowsPerPage > 0 ? (
+          <Pagination
+            page={page}
+            onPageChange={onPageChange}
+            rowsPerPage={rowsPerPage}
+            dataCount={dataCount}
+          ></Pagination>
+        ) : null}
       </div>
     </div>
   );

@@ -12,49 +12,275 @@
   },
   "ontologies": [
     {
-      "activity_status": "active",
-      "build": {
-        "checkout": "git clone https://github.com/EBISPOT/duo.git",
-        "path": ".",
-        "system": "git"
-      },
-      "contact": {
-        "email": "mcourtot@gmail.com",
-        "github": "mcourtot",
-        "label": "Melanie Courtot"
-      },
-      "dependencies": [
-        {
-          "id": "iao"
-        },
-        {
-          "id": "bfo"
-        }
-      ],
-      "description": "DUO is an ontology which represent data use conditions.",
-      "homepage": "https://github.com/EBISPOT/DUO",
-      "id": "duo",
-      "jobs": [
-        {
-          "id": "https://travis-ci.org/EBISPOT/DUO",
-          "type": "travis-ci"
-        }
-      ],
-      "layout": "ontology_detail",
-      "license": {
-        "label": "CC-BY",
-        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
-        "url": "http://creativecommons.org/licenses/by/3.0/"
-      },
-      "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl",
-      "products": [
-        {
-          "id": "duo.owl",
-          "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl"
-        }
-      ],
-      "title": "Data Use Ontology",
-      "tracker": "https://github.com/EBISPOT/DUO/issues"
+      "id": "related-hasValue",
+      "preferredPrefix": "related-hasValue",
+      "ontology_purl": "./testcases/related/hasValue.owl"
+    },
+    {
+      "id": "related-oneOf",
+      "preferredPrefix": "related-oneOf",
+      "ontology_purl": "./testcases/related/oneOf.owl"
+    },
+    {
+      "id": "related-someValuesOf",
+      "preferredPrefix": "related-someValuesOf",
+      "ontology_purl": "./testcases/related/someValuesOf.owl"
+    },
+    {
+      "id": "related-someValuesOf-fillerAnonymousConjunction",
+      "preferredPrefix": "related-someValuesOf-fillerAnonymousConjunction",
+      "ontology_purl": "./testcases/related/someValuesOf-fillerAnonymousConjunction.owl"
+    },
+    {
+      "id": "related-someValuesOf-hierarchical",
+      "preferredPrefix": "related-someValuesOf-hierarchical",
+      "ontology_purl": "./testcases/related/someValuesOf-hierarchical.owl",
+      "hierarchical_property": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+      ]
+    },
+    {
+      "id": "related-someValuesOf-hierarchical-relatedToSelf",
+      "preferredPrefix": "related-someValuesOf-hierarchical-relatedToSelf",
+      "ontology_purl": "./testcases/related/someValuesOf-hierarchical-relatedToSelf.owl",
+      "hierarchical_property": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r"
+      ]
+    },
+    {
+      "id": "related-someValuesOf-oneOf",
+      "preferredPrefix": "related-someValuesOf-oneOf",
+      "ontology_purl": "./testcases/related/someValuesOf-oneOf.owl"
+    },
+    {
+      "id": "owl2primer-disjointClasses",
+      "preferredPrefix": "owl2primer-disjointClasses",
+      "ontology_purl": "./testcases/owl2-primer/allDisjointClasses.owl"
+    },
+    {
+      "id": "owl2primer-class",
+      "preferredPrefix": "owl2primer-class",
+      "ontology_purl": "./testcases/owl2-primer/class.owl"
+    },
+    {
+      "id": "owl2primer-dataProperty-functional",
+      "preferredPrefix": "owl2primer-dataProperty-functional",
+      "ontology_purl": "./testcases/owl2-primer/dataProperty-functional.owl"
+    },
+    {
+      "id": "owl2primer-dataProperty-hasKey",
+      "preferredPrefix": "owl2primer-dataProperty-hasKey",
+      "ontology_purl": "./testcases/owl2-primer/dataProperty-hasKey.owl"
+    },
+    {
+      "id": "owl2primer-datatype-enumeration",
+      "preferredPrefix": "owl2primer-datatype-enumeration",
+      "ontology_purl": "./testcases/owl2-primer/datatype-enumeration.owl"
+    },
+    {
+      "id": "owl2primer-datatype-exclusion",
+      "preferredPrefix": "owl2primer-datatype-exclusion",
+      "ontology_purl": "./testcases/owl2-primer/datatype-exclusion.owl"
+    },
+    {
+      "id": "owl2primer-datatype-minmax",
+      "preferredPrefix": "owl2primer-datatype-minmax",
+      "ontology_purl": "./testcases/owl2-primer/datatype-minmax.owl"
+    },
+    {
+      "id": "owl2primer-datatypes",
+      "preferredPrefix": "owl2primer-datatypes",
+      "ontology_purl": "./testcases/owl2-primer/datatypes.owl"
+    },
+    {
+      "id": "owl2primer-disjointUnionOf",
+      "preferredPrefix": "owl2primer-disjointUnionOf",
+      "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl"
+    },
+    {
+      "id": "owl2primer-domain-range-restriction",
+      "preferredPrefix": "owl2primer-domain-range-restriction",
+      "ontology_purl": "./testcases/owl2-primer/domain-range-restriction.owl"
+    },
+    {
+      "id": "owl2primer-equivalent-intersectionOf",
+      "preferredPrefix": "owl2primer-equivalent-intersectionOf",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf.owl"
+    },
+    {
+      "id": "owl2primer-equivalent-intersectionOf-complementOf",
+      "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl"
+    },
+    {
+      "id": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-allValuesFrom.owl"
+    },
+    {
+      "id": "owl2primer-equivalent-propertyRestriction-hasSelf",
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-hasSelf",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-hasSelf.owl"
+    },
+    {
+      "id": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
+      "ontology_purl": "./testcases/owl2-primer/equivalent-propertyRestriction-someValuesFrom.owl"
+    },
+    {
+      "id": "owl2primer-equivalentClass",
+      "preferredPrefix": "owl2primer-equivalentClass",
+      "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl"
+    },
+    {
+      "id": "owl2primer-equivalentClass-collection",
+      "preferredPrefix": "owl2primer-equivalentClass-collection",
+      "ontology_purl": "./testcases/owl2-primer/equivalentClass-collection.owl"
+    },
+    {
+      "id": "owl2primer-equivalentObjectProperty",
+      "preferredPrefix": "owl2primer-equivalentObjectProperty",
+      "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl"
+    },
+    {
+      "id": "owl2primer-intersectionOf",
+      "preferredPrefix": "owl2primer-intersectionOf",
+      "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl"
+    },
+    {
+      "id": "owl2primer-minimal",
+      "preferredPrefix": "owl2primer-minimal",
+      "ontology_purl": "./testcases/owl2-primer/minimal.owl"
+    },
+    {
+      "id": "owl2primer-individual",
+      "preferredPrefix": "owl2primer-individual",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual.owl"
+    },
+    {
+      "id": "owl2primer-namedIndividual-differentFrom",
+      "preferredPrefix": "owl2primer-namedIndividual-differentFrom",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual-differentFrom.owl"
+    },
+    {
+      "id": "owl2primer-namedIndividual-sameAs",
+      "preferredPrefix": "owl2primer-namedIndividual-sameAs",
+      "ontology_purl": "./testcases/owl2-primer/namedIndividual-sameAs.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-assertionProperty",
+      "preferredPrefix": "owl2primer-objectProperty-assertionProperty",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-assertionProperty.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-asymmetric",
+      "preferredPrefix": "owl2primer-objectProperty-asymmetric",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-asymmetric.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-disjoint",
+      "preferredPrefix": "owl2primer-objectProperty-disjoint",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-disjoint.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-functional",
+      "preferredPrefix": "owl2primer-objectProperty-functional",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-functional.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-inverse",
+      "preferredPrefix": "owl2primer-objectProperty-inverse",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-inverse-withoutAssignedName",
+      "preferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-inverse-withoutAssignedName.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-inverseFunctional",
+      "preferredPrefix": "owl2primer-objectProperty-inverseFunctional",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-inverseFunctional.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-irreflexive",
+      "preferredPrefix": "owl2primer-objectProperty-irreflexive",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-irreflexive.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-negativePropertyAssertion",
+      "preferredPrefix": "owl2primer-objectProperty-negativePropertyAssertion",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-negativePropertyAssertion.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-propertyChain",
+      "preferredPrefix": "owl2primer-objectProperty-propertyChain",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-propertyChain.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-reflexive",
+      "preferredPrefix": "owl2primer-objectProperty-reflexive",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-reflexive.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-symmetric",
+      "preferredPrefix": "owl2primer-objectProperty-symmetric",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-symmetric-1",
+      "preferredPrefix": "owl2primer-objectProperty-symmetric-1",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-symmetric-1.owl"
+    },
+    {
+      "id": "owl2primer-objectProperty-transitive",
+      "preferredPrefix": "owl2primer-objectProperty-transitive",
+      "ontology_purl": "./testcases/owl2-primer/objectProperty-transitive.owl"
+    },
+    {
+      "id": "owl2primer-propertyRestriction-cardinality",
+      "preferredPrefix": "owl2primer-propertyRestriction-cardinality",
+      "ontology_purl": "./testcases/owl2-primer/propertyRestriction-cardinality.owl"
+    },
+    {
+      "id": "owl2primer-propertyRestriction-maxQualifiedCardinality",
+      "preferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
+      "ontology_purl": "./testcases/owl2-primer/propertyRestriction-maxQualifiedCardinality.owl"
+    },
+    {
+      "id": "owl2primer-propertyRestriction-minQualifiedCardinality",
+      "preferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+      "ontology_purl": "./testcases/owl2-primer/propertyRestriction-minQualifiedCardinality.owl"
+    },
+    {
+      "id": "owl2primer-propertyRestriction-qualifiedCardinality",
+      "preferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+      "ontology_purl": "./testcases/owl2-primer/propertyRestriction-qualifiedCardinality.owl"
+    },
+    {
+      "id": "owl2primer-subClassOf",
+      "preferredPrefix": "owl2primer-subClassOf",
+      "ontology_purl": "./testcases/owl2-primer/subClassOf.owl"
+    },
+    {
+      "id": "owl2primer-subClassOf-intersectionOf",
+      "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
+      "ontology_purl": "./testcases/owl2-primer/subClassOf-intersectionOf.owl"
+    },
+    {
+      "id": "owl2primer-subObjectPropertyOf",
+      "preferredPrefix": "owl2primer-subObjectPropertyOf",
+      "ontology_purl": "./testcases/owl2-primer/subObjectPropertyOf.owl"
+    },
+    {
+      "id": "owl2primer-typed-individual",
+      "preferredPrefix": "owl2primer-typed-individual",
+      "ontology_purl": "./testcases/owl2-primer/typed-individual.owl"
+    },
+    {
+      "id": "owl2primer-unionOf",
+      "preferredPrefix": "owl2primer-unionOf",
+      "ontology_purl": "./testcases/owl2-primer/unionOf.owl"
     }
   ]
 }

@@ -26,7 +26,7 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
     dispatch(getOntology(ontologyId));
   }, [dispatch, ontologyId]);
 
-  document.title = ontology?.getName() ? ontology.getName() : ontologyId;
+  document.title = ontology?.getName() || ontologyId;
   return (
     <div>
       <Header section="ontologies" />
@@ -46,16 +46,12 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
               </span>
               <span className="px-2 text-sm">&gt;</span>
               <span className="font-bold">
-                {ontology.getName()
-                  ? ontology.getName()
-                  : ontology.getOntologyId()}
+                {ontology.getName() || ontology.getOntologyId()}
               </span>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">
-                {ontology.getName()
-                  ? ontology.getName()
-                  : ontology.getOntologyId()}
+                {ontology.getName() || ontology.getOntologyId()}
               </div>
               <div>
                 <p>
