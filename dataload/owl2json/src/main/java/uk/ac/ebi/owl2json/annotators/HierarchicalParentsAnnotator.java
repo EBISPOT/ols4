@@ -50,17 +50,35 @@ public class HierarchicalParentsAnnotator {
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
 
-			if(parent.getType() == PropertyValue.Type.URI) {
+                        if (parent.getType() == PropertyValue.Type.URI) {
 
-				// Direct parent; these are also considered hierarchical parents
+                            // Direct parent; these are also considered hierarchical parents
 
-				c.properties.addProperty("hierarchicalParent", parent);
+                            c.properties.addProperty("hierarchicalParent", parent);
 
-			} else if(parent.getType() == PropertyValue.Type.BNODE) {
+                        }
+                    }
+                }
 
-				OwlNode parentNode = graph.nodes.get( ((PropertyValueBNode) parent).getId() );
+                // any non direct parents have already been interpreted by RelatedAnnotator, so we
+                // can find their values in relatedTo
+                //
+                List<PropertyValue> relatedTo = (List<PropertyValue>) c.properties.getPropertyValues("relatedTo");
 
-				visitBNodeParent(graph, c, parentNode, hierarchicalProperties);
+                if(relatedTo != null) {
+                    for(PropertyValue related : relatedTo) {
+
+                        if(related.getType() == PropertyValue.Type.RELATED) {
+
+                            if(hierarchicalProperties.contains(  ((PropertyValueRelated) related).getProperty()  )) {
+
+                                c.properties.addProperty("hierarchicalParent",
+                                    new PropertyValueURI(
+                                        ((PropertyValueRelated) related).getFiller().uri
+                                    )
+                                );
+
+                            }
                         }
                     }
                 }
@@ -68,44 +86,6 @@ public class HierarchicalParentsAnnotator {
         }
         long endTime3 = System.nanoTime();
         System.out.println("annotate hierarchical parents: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
-    }
-
-    private static void visitBNodeParent(OwlGraph graph, OwlNode node, OwlNode parent, Set<String> hierarchicalProperties) {
-
-	if(parent.types.contains(OwlNode.NodeType.RESTRICTION)) {
-
-		PropertyValue onProperty = parent.properties.getPropertyValue("http://www.w3.org/2002/07/owl#onProperty");
-		if(onProperty != null) {
-
-			String predicate = ((PropertyValueURI) onProperty).getUri();
-
-			if(!hierarchicalProperties.contains(predicate)) {
-				// Not one of the specified hierarchical properties
-				return;
-			}
-		}
-
-		PropertyValue hasValue = parent.properties.getPropertyValue("http://www.w3.org/2002/07/owl#hasValue");
-		if(hasValue != null) {
-			node.properties.addProperty("hierarchicalParent", hasValue);
-			return;
-		}
-
-		PropertyValue someValuesFrom = parent.properties.getPropertyValue("http://www.w3.org/2002/07/owl#someValuesFrom");
-		if(someValuesFrom != null) {
-			node.properties.addProperty("hierarchicalParent", someValuesFrom);
-			return;
-		}
-
-		PropertyValue allValuesFrom = parent.properties.getPropertyValue("http://www.w3.org/2002/07/owl#allValuesFrom");
-		if(allValuesFrom != null) {
-			node.properties.addProperty("hierarchicalParent", allValuesFrom);
-			return;
-		}
-
-	}  
-
-
     }
 
 

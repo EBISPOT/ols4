@@ -2,7 +2,9 @@ package uk.ac.ebi.spot.ols.repository.neo4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
@@ -46,7 +48,7 @@ public class OlsNeo4jClient {
 
 	public Map<String, Object> getOne(String type, Map<String,String> properties) {
 
-		Page<Map<String, Object>> results = getAll(type, properties, null);
+		Page<Map<String, Object>> results = getAll(type, properties, PageRequest.of(0, 10));
 
 		if(results.getTotalElements() != 1) {
 			throw new RuntimeException("expected exactly one result for neo4j getOne, but got " + results.getTotalElements());

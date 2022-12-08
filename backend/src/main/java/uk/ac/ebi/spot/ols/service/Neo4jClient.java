@@ -51,7 +51,7 @@ public class Neo4jClient {
 
 
 	// only used by OLS3 graph repo, remove at some point
-	public List<Map<String,Object>> rawQuery(String query, String resVar) {
+	public List<Map<String,Object>> rawQuery(String query) {
 
 		Session session = getSession();
 

@@ -162,7 +162,7 @@ public class OntologyScanner {
 
                 } else {
 
-                    // reification (owl:Axiom or owl:Restriction after preprocessing by json2flattened)
+                    // reification (owl:Axiom or relatedTo)
                     
                     // predicates used to describe the edge itself
                     for(String edgePredicate : mapValue.keySet()) {

@@ -16,15 +16,9 @@ Use owl2json to download all the OWL files, resolve imports, and export JSON fil
      
 Now (after about 15 min) you should have a huge file called `foundry_out.json` that contains not only the original config for each ontology loaded from `foundry.json`, but also the ontologies themselves represented in an intermediate JSON format! (Note: the intermediate JSON format is a non-standardised application format totally specific to this tool and is subject to change.)
 
-## Step 2: JSON to flattened JSON
-
-The JSON you got from owl2json is probably full of datatyped values and class expressions, which aren't searchable in Neo4j and Solr. Before we create the databases, we flatten these values and expressions into just the values using a program called `json2flattened`.
-
-     java -jar json2flattened/target/json2flattened-1.0-SNAPSHOT.jar --input foundry_out.json --output foundry_out_flat.json
-
 ## Step 2: JSON to CSV *for Neo4j*
 
-You can now convert this huge, flattened JSON file to a CSV file ready for Neo4j, using json2neo:
+You can now convert this huge JSON file to a CSV file ready for Neo4j, using json2neo:
 
     rm -rf output_csv && mkdir output_csv
     java -jar json2neo/target/json2neo-1.0-SNAPSHOT.jar --input foundry_out_flat.json --outDir output_csv

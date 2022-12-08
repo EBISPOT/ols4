@@ -106,6 +106,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedClass = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedClass.put("_json", gson.toJson(_class));
                                     flattenedClass.put("lang", lang);
                                     flattenedClass.put("id", lang + "_" + ontologyId + "+class+" + (String) _class.get("iri"));
 
@@ -145,6 +146,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedProperty = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedProperty.put("_json", gson.toJson(property));
                                     flattenedProperty.put("lang", lang);
                                     flattenedProperty.put("id", lang + "_" + ontologyId + "+property+" + (String) property.get("iri"));
 
@@ -186,6 +188,7 @@ public class JSON2Solr {
                                     Map<String, Object> flattenedIndividual = new TreeMap<>();
 
                                     String ontologyId = (String) ontology.get("ontologyId");
+                                    flattenedIndividual.put("_json", gson.toJson(individual));
                                     flattenedIndividual.put("lang", lang);
                                     flattenedIndividual.put("id", lang + "_" + ontologyId + "+individual+" + (String) individual.get("iri"));
 
@@ -227,6 +230,7 @@ public class JSON2Solr {
                             ontologyJsonObj.put(k, ontology.get(k));
                         }
 
+                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
                         flattenedOntology.put("id", lang + "_" + ontologyId + "+ontology+" + ontology.get("iri"));
                         flattenedOntology.put("lang", lang);
 
@@ -289,9 +293,11 @@ public class JSON2Solr {
     //
     //  (4) It's reification { type: Axiom|Restriction, ....,  value: ... }
     // 
-    // The JSON provided to json2solr has been preprocessed by the flattener,
-    // so (1) and (2) have already been evaluated. However, (3) and (4) are up
-    // to us.
+    // In the case of (1), we discard the datatype and keep the value
+    //
+    // In the case of (2), we don't store anything in solr fields. Class
+    // expressions should // already have been evaluated into separate "related"
+    // fields by the RelatedAnnotator in owl2json.
     //
     // In the case of (3), we create a Solr document for each language (see 
     // above), and the language is passed into this function so we know which
@@ -307,14 +313,19 @@ public class JSON2Solr {
             Map<String, Object> dict = (Map<String, Object>) obj;
             if (dict.containsKey("value")) {
                 if(dict.containsKey("lang")) {
+		    // (3) localisation
                     String valLang = (String)dict.get("lang");
                     assert(valLang != null);
                     if(! (valLang.equals(lang))) {
                         return null;
                     }
                 }
+		// (1) datatyped or (4) reification
                 return discardMetadata(dict.get("value"), lang);
-            }
+            } else {
+		// (2) class expression
+		return null;
+	    }
         }
 
         return obj;

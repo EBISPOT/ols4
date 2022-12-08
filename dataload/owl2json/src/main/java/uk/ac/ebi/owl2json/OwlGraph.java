@@ -14,6 +14,7 @@ import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
+import org.apache.jena.shacl.sys.C;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
@@ -176,7 +177,8 @@ public class OwlGraph implements StreamRDF {
 
     OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
     DirectParentsAnnotator.annotateDirectParents(this);
-    HierarchicalParentsAnnotator.annotateHierarchicalParents(this);
+    RelatedAnnotator.annotateRelated(this);
+    HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
     ShortFormAnnotator.annotateShortForms(this);
     DefinitionAnnotator.annotateDefinitions(this);
     SynonymAnnotator.annotateSynonyms(this);
@@ -188,7 +190,6 @@ public class OwlGraph implements StreamRDF {
     LabelAnnotator.annotateLabels(this);
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
-    RelatedAnnotator.annotateRelated(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
 
     }
@@ -455,6 +456,15 @@ public class OwlGraph implements StreamRDF {
                 break;
             case URI:
                 writer.value(((PropertyValueURI) value).getUri());
+                break;
+            case RELATED:
+                writer.beginObject();
+                writer.name("property");
+                writer.value(((PropertyValueRelated) value).getProperty());
+                writer.name("value");
+                writer.value(((PropertyValueRelated) value).getFiller().uri);
+                writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
+                writer.endObject();
                 break;
             default:
                 writer.value("?");
