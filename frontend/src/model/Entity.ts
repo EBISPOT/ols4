@@ -33,4 +33,8 @@ export default abstract class Entity extends Thing {
   getIriToLabel(): any {
     return this.properties["iriToLabel"];
   }
+
+  getShortForm(): string {
+    return this.properties["shortForm"];
+  }
 }

@@ -45,19 +45,19 @@ export const getSearchOptions = createAsyncThunk(
         getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
             search: search,
-            size: "10",
+            size: "5",
           })}`
         ),
         getPaginated<any>(
           `api/v2/ontologies?${new URLSearchParams({
             search: search,
-            size: "3",
+            size: "5",
           })}`
         ),
       ]);
       return [
-        ...ontologies.elements.map((obj) => new Ontology(obj)),
         ...entities.elements.map((obj) => thingFromProperties(obj)),
+        ...ontologies.elements.map((obj) => new Ontology(obj)),
       ];
     } catch (error: any) {
       return rejectWithValue(error.message);

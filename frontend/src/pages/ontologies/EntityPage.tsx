@@ -62,9 +62,7 @@ export default function EntityPage({
                   component={RouterLink}
                   to={"/ontologies/" + ontologyId}
                 >
-                  {ontology.getName()
-                    ? ontology.getName()
-                    : ontology.getOntologyId()}
+                  {ontology.getName() || ontology.getOntologyId()}
                 </Link>
               </span>
               <span className="px-2 text-sm">&gt;</span>
