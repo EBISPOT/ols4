@@ -177,7 +177,8 @@ public class OwlGraph implements StreamRDF {
 
     OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
     DirectParentsAnnotator.annotateDirectParents(this);
-    HierarchicalParentsAnnotator.annotateHierarchicalParents(this);
+    RelatedAnnotator.annotateRelated(this);
+    HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
     ShortFormAnnotator.annotateShortForms(this);
     DefinitionAnnotator.annotateDefinitions(this);
     SynonymAnnotator.annotateSynonyms(this);
@@ -189,7 +190,6 @@ public class OwlGraph implements StreamRDF {
     LabelAnnotator.annotateLabels(this);
     AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
-    RelatedAnnotator.annotateRelated(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
 
     }
@@ -459,9 +459,11 @@ public class OwlGraph implements StreamRDF {
                 break;
             case RELATED:
                 writer.beginObject();
-                writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
+                writer.name("property");
+                writer.value(((PropertyValueRelated) value).getProperty());
                 writer.name("value");
-                writer.value(((PropertyValueRelated) value).getRelated().uri);
+                writer.value(((PropertyValueRelated) value).getFiller().uri);
+                writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
                 writer.endObject();
                 break;
             default:

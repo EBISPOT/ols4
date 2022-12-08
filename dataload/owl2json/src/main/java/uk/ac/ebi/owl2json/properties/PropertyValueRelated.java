@@ -4,25 +4,26 @@ import uk.ac.ebi.owl2json.OwlNode;
 
 public class PropertyValueRelated extends PropertyValue {
 
-    // the class expression or Restriction from which the Related relation was derived
-    //
     OwlNode classExpression;
+    String property;
+    OwlNode filler;
 
-    // the established related thing
-    //
-    OwlNode related;
-
-    public PropertyValueRelated(OwlNode classExpression, OwlNode related) {
+    public PropertyValueRelated(OwlNode classExpression, String property, OwlNode filler) {
         this.classExpression = classExpression;
-	this.related = related;
+        this.property = property;
+        this.filler = filler;
     }
 
     public OwlNode getClassExpression() {
         return this.classExpression;
     }
 
-    public OwlNode getRelated() {
-        return this.related;
+    public String getProperty() {
+        return this.property;
+    }
+
+    public OwlNode getFiller() {
+        return this.filler;
     }
 
     public Type getType() {
@@ -32,6 +33,7 @@ public class PropertyValueRelated extends PropertyValue {
     public boolean equals(PropertyValue other) {
         return other.getType() == Type.RELATED 
 		&& ((PropertyValueRelated) other).classExpression.equals(classExpression)
-		&& ((PropertyValueRelated) other).related.equals(related);
+		&& ((PropertyValueRelated) other).property.equals(property)
+		&& ((PropertyValueRelated) other).filler.equals(filler);
     }
 }

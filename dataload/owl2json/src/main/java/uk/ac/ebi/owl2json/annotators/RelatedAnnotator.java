@@ -14,7 +14,6 @@ public class RelatedAnnotator {
 
     public static void annotateRelated(OwlGraph graph) {
 
-		Set<String> hierarchicalProperties = HierarchicalParentsAnnotator.getHierarchicalProperties(graph);
 		Set<String> ontologyBaseUris = OntologyBaseUris.getOntologyBaseUris(graph);
 		String preferredPrefix = (String)graph.config.get("preferredPrefix");
 
@@ -45,10 +44,10 @@ public class RelatedAnnotator {
 
 						if(onProperty == null) {
 							annotateRelated_Class_subClassOf_ClassExpr(
-									c, parentClassExprOrRestriction, hierarchicalProperties, ontologyBaseUris, preferredPrefix, graph);
+									c, parentClassExprOrRestriction, ontologyBaseUris, preferredPrefix, graph);
 						} else {
 							annotateRelated_Class_subClassOf_Restriction(
-									c, onProperty, parentClassExprOrRestriction, hierarchicalProperties, ontologyBaseUris, preferredPrefix, graph);
+									c, onProperty, parentClassExprOrRestriction, ontologyBaseUris, preferredPrefix, graph);
 						}
 
 					}
@@ -62,7 +61,7 @@ public class RelatedAnnotator {
     }
 
 	private static void annotateRelated_Class_subClassOf_ClassExpr(
-			OwlNode classNode, OwlNode fillerClassExpr, Set<String> hierarchicalProperties, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
+			OwlNode classNode, OwlNode fillerClassExpr, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
 
 		PropertyValue oneOf = fillerClassExpr.properties.getPropertyValue("http://www.w3.org/2002/07/owl#oneOf");
 		if(oneOf != null)  {
@@ -92,7 +91,8 @@ public class RelatedAnnotator {
 						.collect(Collectors.toList());
 
 		for(OwlNode individualNode : fillerIndividuals) {
-			individualNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerClassExpr, classNode));
+			classNode.properties.addProperty("relatedTo",
+				new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", individualNode));
 			// classNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerClassExpr, individualNode));
 		}
 	}
@@ -113,7 +113,10 @@ public class RelatedAnnotator {
 
 			// Named nodes only. TODO what to do about bnodes in this case?
 			if(fillerClassNode.uri != null) {
-				fillerClassNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerClassExpr, classNode));
+
+				classNode.properties.addProperty("relatedTo",
+					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", fillerClassNode));
+
 				// classNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerClassExpr, fillerClassNode));
 			}
 		}
@@ -121,7 +124,7 @@ public class RelatedAnnotator {
 
 
 	private static void annotateRelated_Class_subClassOf_Restriction(
-				OwlNode classNode, PropertyValue property, OwlNode fillerRestriction, Set<String> hierarchicalProperties, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
+				OwlNode classNode, PropertyValue property, OwlNode fillerRestriction, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
 
 		if(property.getType() != PropertyValue.Type.URI) {
 			// We can't do anything with anonymous properties.
@@ -134,7 +137,7 @@ public class RelatedAnnotator {
 		if(someValuesFrom != null)  {
 			// This is a someValuesFrom restriction
 			annotateRelated_Class_subClassOf_Restriction_someValuesFrom(
-					classNode, propertyUri, fillerRestriction, someValuesFrom, hierarchicalProperties, ontologyBaseUris, preferredPrefix, graph);
+					classNode, propertyUri, fillerRestriction, someValuesFrom, ontologyBaseUris, preferredPrefix, graph);
 			return;
 		}
 
@@ -147,23 +150,19 @@ public class RelatedAnnotator {
 	}
 
 	private static void annotateRelated_Class_subClassOf_Restriction_someValuesFrom(
-			OwlNode classNode, String propertyUri, OwlNode fillerRestriction, PropertyValue filler, Set<String> hierarchicalProperties, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
+			OwlNode classNode, String propertyUri, OwlNode fillerRestriction, PropertyValue filler, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
 
 		if(filler.getType() == PropertyValue.Type.URI) {
 
 			String fillerUri = ((PropertyValueURI) filler).getUri();
-
-			// If the property is hierarchical or partOf
-			if(hierarchicalProperties.contains(propertyUri) || isPartOf(graph, ontologyBaseUris, preferredPrefix, propertyUri)) {
 
 				// Is the filler different from the entity we are annotating?
 				if(!fillerUri.equals(classNode.uri)) {
 
 					OwlNode fillerNode = graph.nodes.get(fillerUri);
 
-					fillerNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, classNode));
+					classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
 				}
-			}
 
 			return;
 
@@ -177,7 +176,7 @@ public class RelatedAnnotator {
 			// This seems to be what OLS3 does.
 			// (TODO: it ignores the propertyUri; does OLS3 use the property anywhere in this case?)
 			//
-			annotateRelated_Class_subClassOf_ClassExpr(classNode, fillerNode, hierarchicalProperties, ontologyBaseUris, preferredPrefix, graph);
+			annotateRelated_Class_subClassOf_ClassExpr(classNode, fillerNode, ontologyBaseUris, preferredPrefix, graph);
 		}
 
 	}
@@ -188,16 +187,7 @@ public class RelatedAnnotator {
 
 		OwlNode individualNode = graph.nodes.get( ((PropertyValueURI) filler).getUri() );
 
-		individualNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, classNode));
+		individualNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
 	}
 
-
-	//
-	// below methods adapted from OLS3
-	//
-
-	private static boolean isPartOf(OwlGraph graph, Set<String> ontologyBaseUris, String preferredPrefix, String uri) {
-		String shortForm = ShortFormExtractor.extractShortForm(graph, ontologyBaseUris, preferredPrefix, uri);
-		return shortForm.toLowerCase().replaceAll("_", "").equals("partof");
-	}
 }
