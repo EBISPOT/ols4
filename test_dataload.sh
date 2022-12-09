@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#TEST_CONFIGS=$(find testcases | grep json)
-TEST_CONFIGS=./dataload/configs/efo.json
+TEST_CONFIGS=$(find testcases | grep json)
+#TEST_CONFIGS=./dataload/configs/efo.json
 
 rm -rf testcases_output/*
 mkdir testcases_output
@@ -19,7 +19,7 @@ mkdir ./testcases_output/$TEST_FOLDER
 ./dataload/create_datafiles.sh $f ./testcases_output/$TEST_FOLDER --loadLocalFiles --noDates
 done
 
-#diff --recursive --exclude=.gitkeep testcases_output testcases_expected_output/
+diff --recursive --exclude=.gitkeep testcases_output testcases_expected_output/
 
 
 
