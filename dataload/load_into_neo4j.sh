@@ -12,6 +12,7 @@ $1/bin/neo4j-admin import \
         --ignore-empty-strings=true \
         --legacy-style-quoting=false \
         --multiline-fields=true \
+        --read-buffer-size=16777216 \
         --array-delimiter="|" \
         --database=neo4j \
         --processors=16 \
