@@ -13,8 +13,8 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const stats = useAppSelector((state) => state.home.stats);
-  const results = useAppSelector((state) => state.home.searchResult);
-  const loading = useAppSelector((state) => state.home.loadingSearchResult);
+  const suggestions = useAppSelector((state) => state.home.searchOptions);
+  const loading = useAppSelector((state) => state.home.loadingSearchOptions);
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
   const [open, setOpen] = useState<boolean>(false);
@@ -80,12 +80,12 @@ export default function Home() {
                         : "hidden"
                     }
                   >
-                    {results.length === 0 ? (
+                    {suggestions.length === 0 ? (
                       <div className="py-1 px-3 text-lg leading-loose">
                         No options
                       </div>
                     ) : (
-                      results.map((option: Thing) => {
+                      suggestions.map((option: Thing) => {
                         const termUrl = encodeURIComponent(
                           encodeURIComponent(option.getIri())
                         );
@@ -133,7 +133,12 @@ export default function Home() {
                                 to={"/ontologies/" + option.getOntologyId()}
                               >
                                 <div className="flex">
-                                  <span className="truncate text-link-dark font-bold">
+                                  <span
+                                    className="truncate text-link-dark font-bold"
+                                    title={
+                                      option.getName() || option.getOntologyId()
+                                    }
+                                  >
                                     {option.getName() || option.getOntologyId()}
                                   </span>
                                 </div>
