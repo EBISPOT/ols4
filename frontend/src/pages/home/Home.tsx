@@ -92,7 +92,7 @@ export default function Home() {
                         return (
                           <li
                             key={randomString()}
-                            className="py-2 px-3 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                            className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
                           >
                             {option instanceof Entity ? (
                               <Link
@@ -102,17 +102,26 @@ export default function Home() {
                                 to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
                               >
                                 <div className="flex justify-between">
-                                  <span className="truncate">
+                                  <div
+                                    className="truncate flex-auto"
+                                    title={option.getName()}
+                                  >
                                     {option.getName()}
-                                  </span>
-                                  <span className="ml-2 text-right">
-                                    <span className="mr-2 truncate bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase">
+                                  </div>
+                                  <div className="truncate flex-initial ml-2 text-right">
+                                    <span
+                                      className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                                      title={option.getOntologyId()}
+                                    >
                                       {option.getOntologyId()}
                                     </span>
-                                    <span className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase">
+                                    <span
+                                      className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                                      title={option.getShortForm()}
+                                    >
                                       {option.getShortForm()}
                                     </span>
-                                  </span>
+                                  </div>
                                 </div>
                               </Link>
                             ) : null}
@@ -139,7 +148,9 @@ export default function Home() {
                 <button
                   className="button-primary text-lg font-bold self-center"
                   onClick={() => {
-                    history.push("/home/search/" + homeSearch.value);
+                    if (homeSearch?.value) {
+                      history.push("/home/search/" + homeSearch.value);
+                    }
                   }}
                 >
                   Search
