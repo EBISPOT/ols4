@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { get, getPaginated } from "../../app/api";
+import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 
 export interface HomeState {
-  searchResult: Thing[];
-  loadingSearchResult: boolean;
+  searchOptions: Thing[];
+  loadingSearchOptions: boolean;
+  searchResults: Entity[];
+  loadingSearchResults: boolean;
   stats: Stats;
 }
 export interface Stats {
@@ -16,14 +19,16 @@ export interface Stats {
   numberOfIndividuals: number;
 }
 const initialState: HomeState = {
-  searchResult: [],
-  loadingSearchResult: false,
+  searchResults: [],
+  loadingSearchResults: false,
   stats: {
     numberOfOntologies: 0,
     numberOfClasses: 0,
     numberOfProperties: 0,
     numberOfIndividuals: 0,
   },
+  searchOptions: [],
+  loadingSearchOptions: false,
 };
 
 export const getStats = createAsyncThunk(
@@ -64,6 +69,25 @@ export const getSearchOptions = createAsyncThunk(
     }
   }
 );
+export const getSearchResults = createAsyncThunk(
+  "home_search_results",
+  async (query: string, { rejectWithValue }) => {
+    const search = "*" + query + "*";
+    try {
+      const data = (
+        await getPaginated<any>(
+          `api/v2/entities?${new URLSearchParams({
+            search: search,
+            size: "10",
+          })}`
+        )
+      ).map((e) => thingFromProperties(e));
+      return data.elements;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const homeSlice = createSlice({
   name: "home",
@@ -82,16 +106,30 @@ const homeSlice = createSlice({
     builder.addCase(
       getSearchOptions.fulfilled,
       (state: HomeState, action: PayloadAction<Thing[]>) => {
-        state.searchResult = action.payload;
-        state.loadingSearchResult = false;
+        state.searchOptions = action.payload;
+        state.loadingSearchOptions = false;
       }
     );
     builder.addCase(getSearchOptions.pending, (state: HomeState) => {
-      state.loadingSearchResult = true;
+      state.loadingSearchOptions = true;
     });
     builder.addCase(getSearchOptions.rejected, (state: HomeState) => {
-      state.loadingSearchResult = false;
-      state.searchResult = initialState.searchResult;
+      state.loadingSearchOptions = false;
+      state.searchOptions = initialState.searchOptions;
+    });
+    builder.addCase(
+      getSearchResults.fulfilled,
+      (state: HomeState, action: PayloadAction<Entity[]>) => {
+        state.searchResults = action.payload;
+        state.loadingSearchResults = false;
+      }
+    );
+    builder.addCase(getSearchResults.pending, (state: HomeState) => {
+      state.loadingSearchResults = true;
+    });
+    builder.addCase(getSearchResults.rejected, (state: HomeState) => {
+      state.loadingSearchResults = false;
+      state.searchResults = initialState.searchResults;
     });
   },
 });
