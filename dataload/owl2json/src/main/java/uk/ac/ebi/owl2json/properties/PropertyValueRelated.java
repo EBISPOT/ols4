@@ -12,6 +12,11 @@ public class PropertyValueRelated extends PropertyValue {
         this.classExpression = classExpression;
         this.property = property;
         this.filler = filler;
+
+        if(filler == null) {
+            throw new RuntimeException("filler was null");
+        }
+
     }
 
     public OwlNode getClassExpression() {

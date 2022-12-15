@@ -162,7 +162,10 @@ public class RelatedAnnotator {
 
 					OwlNode fillerNode = graph.nodes.get(fillerUri);
 
-					classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+					if(fillerNode != null) { // sometimes filler not included in ontology, e.g. "subClassOf some xsd:float" in cdao
+
+						  classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+					}
 				}
 
 			return;
