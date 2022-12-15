@@ -55,11 +55,17 @@ public class OwlGraph implements StreamRDF {
 			createParser().source(new FileInputStream(url)).parse(this);
 		} else {
 			if (downloadedPath != null) {
-				System.out.println("Using predownloaded file for " + url);
 				String existingDownload = downloadedPath + "/" + urlToFilename(url);
-				createParser().source(new FileInputStream(existingDownload)).parse(this);
+				try {
+					FileInputStream is = new FileInputStream(existingDownload);
+					System.out.println("Using predownloaded file for " + url);
+					createParser().source(is).parse(this);
+				} catch (FileNotFoundException e) {
+					System.out.println("Downloading (not predownloaded) " + url);
+					createParser().source(url).parse(this);
+				}
 			} else {
-				System.out.println("Downloading (not predownloaded) " + url);
+				System.out.println("Downloading (no predownload path provided) " + url);
 				createParser().source(url).parse(this);
 			}
 		}
