@@ -3,32 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import Header from "../../components/Header";
-import { Column } from "../../components/OlsDatatable";
+import { Pagination } from "../../components/Pagination";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 import { getSearchOptions, getSearchResults } from "./homeSlice";
-
-const columns: readonly Column[] = [
-  {
-    name: "Entity",
-    sortable: true,
-    selector: (entity: Entity) => {
-      return <div>{entity.getName() || entity.getShortForm()}</div>;
-    },
-  },
-  {
-    name: "Ontology",
-    sortable: true,
-    selector: (entity: Entity) => {
-      return (
-        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-          {entity.getOntologyId().toUpperCase()}
-        </div>
-      );
-    },
-  },
-];
 
 export default function SearchResults({ search }: { search: string }) {
   const dispatch = useAppDispatch();
@@ -38,9 +17,12 @@ export default function SearchResults({ search }: { search: string }) {
   );
   const suggestions = useAppSelector((state) => state.home.searchOptions);
   const results = useAppSelector((state) => state.home.searchResults);
+  const totalResults = useAppSelector((state) => state.home.totalSearchResults);
 
   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
+  const [page, setPage] = useState<number>(0);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
@@ -48,8 +30,8 @@ export default function SearchResults({ search }: { search: string }) {
     dispatch(getSearchOptions(query));
   }, [dispatch, query]);
   useEffect(() => {
-    dispatch(getSearchResults(search));
-  }, [dispatch, search]);
+    dispatch(getSearchResults({page, rowsPerPage, search}));
+  }, [dispatch, page, rowsPerPage, search]);
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
@@ -174,42 +156,46 @@ export default function SearchResults({ search }: { search: string }) {
             Search
           </button>
         </div>
-        <table className="border-collapse border-spacing-1 w-full mb-2">
-          <tbody>
-            {results.map((row: Entity) => {
-              return (
-                <tr
-                  tabIndex={-1}
-                  key={randomString()}
-                  onClick={() => {
-                    history.push(
-                      "/ontologies/" +
-                        row.getOntologyId() +
-                        "/" +
-                        row.getTypePlural() +
-                        "/" +
-                        encodeURIComponent(encodeURIComponent(row.getIri()))
-                    );
-                  }}
-                  className="even:bg-grey-50 cursor-pointer"
+        {results.map((entity: Entity) => {
+          return (
+            <div key={randomString()}>
+              <div>
+                <a
+                  href={
+                    "/ontologies/" +
+                    entity.getOntologyId() +
+                    "/" +
+                    entity.getTypePlural() +
+                    "/" +
+                    encodeURIComponent(encodeURIComponent(entity.getIri()))
+                  }
+                  className="link-default"
                 >
-                  {columns.map((column: any) => {
-                    return (
-                      <td
-                        className="text-sm align-top py-2 px-4"
-                        key={randomString()}
-                      >
-                        {column.selector(row)
-                          ? column.selector(row)
-                          : "(no data)"}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                  {entity.getName()}
+                </a>
+                &nbsp;
+                <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                  {entity.getShortForm()}
+                </span>
+              </div>
+              <div>{entity.getIri()}</div>
+              <div>{entity.getDescription()}</div>
+              <div>
+                <span className="font-bold">Ontology:</span>
+                &nbsp;
+                <span className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                  {entity.getOntologyId().toUpperCase()}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+        <Pagination
+          page={page}
+          onPageChange={setPage}
+          dataCount={totalResults}
+          rowsPerPage={rowsPerPage}
+        />
       </main>
     </div>
   );

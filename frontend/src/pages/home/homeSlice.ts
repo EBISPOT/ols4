@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { get, getPaginated } from "../../app/api";
+import { get, getPaginated, Page } from "../../app/api";
 import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
@@ -10,6 +10,7 @@ export interface HomeState {
   loadingSearchOptions: boolean;
   searchResults: Entity[];
   loadingSearchResults: boolean;
+  totalSearchResults: number;
   stats: Stats;
 }
 export interface Stats {
@@ -21,6 +22,7 @@ export interface Stats {
 const initialState: HomeState = {
   searchResults: [],
   loadingSearchResults: false,
+  totalSearchResults: 0,
   stats: {
     numberOfOntologies: 0,
     numberOfClasses: 0,
@@ -71,18 +73,19 @@ export const getSearchOptions = createAsyncThunk(
 );
 export const getSearchResults = createAsyncThunk(
   "home_search_results",
-  async (query: string, { rejectWithValue }) => {
-    const search = "*" + query + "*";
+  async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
+    const query = "*" + search + "*";
     try {
       const data = (
         await getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
             search: search,
-            size: "10",
+            size: rowsPerPage,
+            page: page,
           })}`
         )
       ).map((e) => thingFromProperties(e));
-      return data.elements;
+      return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -119,8 +122,9 @@ const homeSlice = createSlice({
     });
     builder.addCase(
       getSearchResults.fulfilled,
-      (state: HomeState, action: PayloadAction<Entity[]>) => {
-        state.searchResults = action.payload;
+      (state: HomeState, action: PayloadAction<Page<Entity>>) => {
+        state.searchResults = action.payload.elements;
+        state.totalSearchResults = action.payload.totalElements;
         state.loadingSearchResults = false;
       }
     );
