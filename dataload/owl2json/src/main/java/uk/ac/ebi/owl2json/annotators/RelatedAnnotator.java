@@ -143,7 +143,8 @@ public class RelatedAnnotator {
 
 		PropertyValue hasValue = fillerRestriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#hasValue");
 		if(hasValue != null)  {
-			// This is a hasValue restriction
+			// This is a hasValue restriction. The value can be either an individual or a literal data value.
+			//
 			annotateRelated_Class_subClassOf_Restriction_hasValue(classNode, propertyUri, fillerRestriction, hasValue, graph);
 			return;
 		}
@@ -183,11 +184,21 @@ public class RelatedAnnotator {
 
 	private static void annotateRelated_Class_subClassOf_Restriction_hasValue(OwlNode classNode, String propertyUri, OwlNode fillerRestriction, PropertyValue filler, OwlGraph graph) {
 
-		// The filler is an Individual
+		// The filler can be either an individual or a literal data value.
 
-		OwlNode individualNode = graph.nodes.get( ((PropertyValueURI) filler).getUri() );
+		if(filler.getType() == PropertyValue.Type.URI) {
 
-		individualNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+			OwlNode fillerNode = graph.nodes.get( ((PropertyValueURI) filler).getUri() );
+
+			if(fillerNode.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
+				// fillerNode is an individual
+				fillerNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+			}
+
+			return;
+		} 
+
+		// TODO: what to do with data values?
 	}
 
 }
