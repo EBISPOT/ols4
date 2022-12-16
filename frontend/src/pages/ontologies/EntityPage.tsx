@@ -1,7 +1,7 @@
 import { AccountTree, Share } from "@mui/icons-material";
-import { Link, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
@@ -44,27 +44,13 @@ export default function EntityPage({
         {ontology && entity ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <span className="link-default">
-                <Link
-                  color="inherit"
-                  style={{ textDecoration: "inherit" }}
-                  component={RouterLink}
-                  to="/ontologies"
-                >
-                  Ontologies
-                </Link>
-              </span>
+              <Link className="link-default" to="/ontologies">
+                Ontologies
+              </Link>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="link-default">
-                <Link
-                  color="inherit"
-                  style={{ textDecoration: "inherit" }}
-                  component={RouterLink}
-                  to={"/ontologies/" + ontologyId}
-                >
-                  {ontology.getName() || ontology.getOntologyId()}
-                </Link>
-              </span>
+              <Link className="link-default" to={"/ontologies/" + ontologyId}>
+                {ontology.getName() || ontology.getOntologyId()}
+              </Link>
               <span className="px-2 text-sm">&gt;</span>
               <span className="capitalize">{entity.getType()}</span>
               <span className="px-2 text-sm">&gt;</span>
