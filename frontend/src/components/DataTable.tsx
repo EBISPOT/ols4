@@ -11,7 +11,7 @@ export interface Column {
   sortable: boolean;
 }
 
-export default function OlsDatatable({
+export default function DataTable({
   columns,
   data,
   dataCount,
@@ -77,7 +77,7 @@ export default function OlsDatatable({
         ) : null}
       </div>
       <div className="mx-4">
-        <table className="border-collapse border-spacing-1 w-full mb-2">
+        <table className="table-auto border-collapse border-spacing-1 w-full mb-2">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">
               {columns.map((column) => (

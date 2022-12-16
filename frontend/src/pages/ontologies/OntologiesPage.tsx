@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
-import OlsDatatable, { Column } from "../../components/OlsDatatable";
+import DataTable, { Column } from "../../components/DataTable";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
 
@@ -37,7 +37,7 @@ const columns: readonly Column[] = [
     sortable: true,
     selector: (ontology: Ontology) => {
       return (
-        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
           {ontology.getOntologyId().toUpperCase()}
         </div>
       );
@@ -78,7 +78,7 @@ export default function OntologiesPage() {
     <div>
       <Header section="ontologies" />
       <main className="container mx-auto my-8">
-        <OlsDatatable
+        <DataTable
           columns={columns}
           data={ontologiesSorted}
           dataCount={totalOntologies}

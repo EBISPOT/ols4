@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import OlsDatatable, { Column } from "../../components/OlsDatatable";
+import DataTable, { Column } from "../../components/DataTable";
 import Entity from "../../model/Entity";
 import { getEntities } from "./ontologiesSlice";
 
@@ -19,7 +19,7 @@ export default function EntityList(props: {
   }, [dispatch, ontologyId, entityType]);
 
   return (
-    <OlsDatatable
+    <DataTable
       columns={columns}
       data={entities}
       dataCount={entities.length}
