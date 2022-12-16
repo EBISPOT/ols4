@@ -1,3 +1,4 @@
+import { KeyboardArrowDown } from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -30,7 +31,7 @@ export default function SearchResults({ search }: { search: string }) {
     dispatch(getSearchOptions(query));
   }, [dispatch, query]);
   useEffect(() => {
-    dispatch(getSearchResults({page, rowsPerPage, search}));
+    dispatch(getSearchResults({ page, rowsPerPage, search }));
   }, [dispatch, page, rowsPerPage, search]);
   const mounted = useRef(false);
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function SearchResults({ search }: { search: string }) {
     <div>
       <Header section="home" />
       <main className="container mx-auto h-fit my-8">
-        <div className="flex flex-nowrap gap-4 mb-4">
+        <div className="flex flex-nowrap gap-4 mb-6">
           <div className="relative w-full self-center">
             <input
               id="home-search"
@@ -156,46 +157,82 @@ export default function SearchResults({ search }: { search: string }) {
             Search
           </button>
         </div>
-        {results.map((entity: Entity) => {
-          return (
-            <div key={randomString()}>
-              <div>
-                <a
-                  href={
-                    "/ontologies/" +
-                    entity.getOntologyId() +
-                    "/" +
-                    entity.getTypePlural() +
-                    "/" +
-                    encodeURIComponent(encodeURIComponent(entity.getIri()))
-                  }
-                  className="link-default"
-                >
-                  {entity.getName()}
-                </a>
-                &nbsp;
-                <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-                  {entity.getShortForm()}
-                </span>
-              </div>
-              <div>{entity.getIri()}</div>
-              <div>{entity.getDescription()}</div>
-              <div>
-                <span className="font-bold">Ontology:</span>
-                &nbsp;
-                <span className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-                  {entity.getOntologyId().toUpperCase()}
-                </span>
+        <div className="grid grid-cols-4 mb-4">
+          <div className="justify-self-start col-span-3 self-center text-2xl font-bold text-neutral-dark">
+            Search results for: {search}
+          </div>
+          <div className="justify-self-end col-span-1">
+            <div className="flex group relative text-md">
+              <label className="self-center px-3">Show</label>
+              <select
+                className="input-default appearance-none pr-7 z-20 bg-transparent"
+                onChange={(e) => {
+                  setRowsPerPage(parseInt(e.target.value));
+                }}
+              >
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={100}>100</option>
+              </select>
+              <div className="absolute right-2 top-2 z-10 text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark">
+                <KeyboardArrowDown fontSize="medium" />
               </div>
             </div>
-          );
-        })}
-        <Pagination
-          page={page}
-          onPageChange={setPage}
-          dataCount={totalResults}
-          rowsPerPage={rowsPerPage}
-        />
+          </div>
+        </div>
+        {results.length > 0 ? (
+          <div>
+            <Pagination
+              page={page}
+              onPageChange={setPage}
+              dataCount={totalResults}
+              rowsPerPage={rowsPerPage}
+            />
+            {results.map((entity: Entity) => {
+              return (
+                <div key={randomString()} className="my-4">
+                  <div className="mb-1 leading-loose truncate">
+                    <a
+                      href={
+                        "/ontologies/" +
+                        entity.getOntologyId() +
+                        "/" +
+                        entity.getTypePlural() +
+                        "/" +
+                        encodeURIComponent(encodeURIComponent(entity.getIri()))
+                      }
+                      className="link-default text-xl mr-2"
+                    >
+                      {entity.getName()}
+                    </a>
+                    <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                      {entity.getShortForm()}
+                    </span>
+                  </div>
+                  <div className="mb-1 leading-relaxed text-sm text-neutral-default">
+                    {entity.getIri()}
+                  </div>
+                  <div className="mb-1 leading-relaxed">
+                    {entity.getDescription()}
+                  </div>
+                  <div className="leading-loose">
+                    <span className="font-bold">Ontology:</span>
+                    &nbsp;
+                    <span className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                      {entity.getOntologyId().toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+            <Pagination
+              page={page}
+              onPageChange={setPage}
+              dataCount={totalResults}
+              rowsPerPage={rowsPerPage}
+            />
+          </div>
+        ) : <div className="text-xl text-neutral-black font-bold">No results!</div>}
       </main>
     </div>
   );

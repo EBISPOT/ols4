@@ -79,7 +79,7 @@ export const getSearchResults = createAsyncThunk(
       const data = (
         await getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
-            search: search,
+            search: query,
             size: rowsPerPage,
             page: page,
           })}`
