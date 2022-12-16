@@ -52,7 +52,7 @@
     disabled:m-1;
   }
   .input-default {
-    @apply box-border w-full h-fit bg-white p-2 rounded-md border-2 border-neutral-default
+    @apply outline-none w-full h-fit bg-white p-2 rounded-md border-2 border-neutral-default
     hover:shadow-input
     hover:border-neutral-dark
     focus:outline-0
