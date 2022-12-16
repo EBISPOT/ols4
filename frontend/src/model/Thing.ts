@@ -47,10 +47,12 @@ export default abstract class Thing {
   }
 
   getName(): string {
-    return (
-      this.properties["http://www.w3.org/2000/01/rdf-schema#label"] ||
-      this.getIri()
-    );
+    const label = this.properties["http://www.w3.org/2000/01/rdf-schema#label"];
+    if (typeof label !== "object") {
+      return label || this.getIri();
+    } else {
+      return label.value || this.getIri();
+    }
   }
 
   getDescription(): string {
