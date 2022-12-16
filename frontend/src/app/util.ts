@@ -16,3 +16,11 @@ export function sortByKeys(a: any, b: any) {
   const keyB = b.key.toUpperCase();
   return keyA === keyB ? 0 : keyA > keyB ? 1 : -1;
 }
+
+export async function copyToClipboard(text: string) {
+  if ("clipboard" in navigator) {
+    return await navigator.clipboard.writeText(text);
+  } else {
+    return document.execCommand("copy", true, text);
+  }
+}

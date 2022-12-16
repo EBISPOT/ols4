@@ -1,9 +1,9 @@
 import { AccountTree, Share } from "@mui/icons-material";
-import { Link, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString, sortByKeys } from "../../app/util";
+import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
@@ -31,12 +31,41 @@ export default function EntityPage({
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const iriToLabel = entity ? entity.getIriToLabel() : {};
 
+  const [isShortFormCopied, setIsShortFormCopied] = useState(false);
+  const copyShortForm = (text: string) => {
+    copyToClipboard(text)
+      .then(() => {
+        setIsShortFormCopied(true);
+        // revert after a few seconds
+        setTimeout(() => {
+          setIsShortFormCopied(false);
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const [isIriCopied, setIsIriCopied] = useState(false);
+  const copyIri = (text: string) => {
+    copyToClipboard(text)
+      .then(() => {
+        setIsIriCopied(true);
+        // revert after a few seconds
+        setTimeout(() => {
+          setIsIriCopied(false);
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     if (!ontology) dispatch(getOntology(ontologyId));
     dispatch(getEntity({ ontologyId, entityType, entityIri }));
   }, [dispatch, ontology, ontologyId, entityType, entityIri]);
 
-  if (entity) document.title = entity.getName();
+  if (entity) document.title = entity.getShortForm() || entity.getName();
   return (
     <div>
       <Header section="ontologies" />
@@ -44,35 +73,49 @@ export default function EntityPage({
         {ontology && entity ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <span className="link-default">
-                <Link
-                  color="inherit"
-                  style={{ textDecoration: "inherit" }}
-                  component={RouterLink}
-                  to="/ontologies"
-                >
-                  Ontologies
-                </Link>
-              </span>
+              <Link className="link-default" to="/ontologies">
+                Ontologies
+              </Link>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="link-default">
-                <Link
-                  color="inherit"
-                  style={{ textDecoration: "inherit" }}
-                  component={RouterLink}
-                  to={"/ontologies/" + ontologyId}
-                >
-                  {ontology.getName() || ontology.getOntologyId()}
-                </Link>
-              </span>
+              <Link className="link-default" to={"/ontologies/" + ontologyId}>
+                {ontology.getName() || ontology.getOntologyId()}
+              </Link>
               <span className="px-2 text-sm">&gt;</span>
               <span className="capitalize">{entity.getType()}</span>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold">{entity.getName()}</span>
+              <span className="font-bold">
+                {entity.getShortForm() || entity.getName()}
+              </span>
+              <span className="ml-3 text-sm text-neutral-default">
+                <button
+                  onClick={() => {
+                    copyShortForm(entity.getShortForm() || entity.getName());
+                  }}
+                >
+                  <i className="icon icon-common icon-copy icon-spacer" />
+                  <span>{isShortFormCopied ? "Copied!" : "Copy"}</span>
+                </button>
+              </span>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">{entity.getName()}</div>
-              <div>
+              <div className="mb-1 leading-relaxed text-sm text-neutral-default">
+                <span>
+                  <a href={entity.getIri()}>
+                    <i className="icon icon-common icon-external-link-alt icon-spacer" />
+                  </a>
+                </span>
+                <span className="mr-3">{entity.getIri()}</span>
+                <button
+                  onClick={() => {
+                    copyIri(entity.getIri());
+                  }}
+                >
+                  <i className="icon icon-common icon-copy icon-spacer" />
+                  <span>{isIriCopied ? "Copied!" : "Copy"}</span>
+                </button>
+              </div>
+              <div className="mb-4">
                 <p>
                   {entity
                     .getDescriptionAsArray()
@@ -115,7 +158,7 @@ export default function EntityPage({
               </div>
               {entity.getSynonyms() && entity.getSynonyms().length !== 0 ? (
                 <div>
-                  <div className="font-bold my-4">Synonym</div>
+                  <div className="font-bold mb-4">Synonym</div>
                   <div className="flex flex-row flex-wrap">
                     {entity
                       .getSynonyms()

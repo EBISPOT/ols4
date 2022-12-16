@@ -1,9 +1,9 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Link, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
@@ -34,16 +34,9 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
         {ontology ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <span className="link-default">
-                <Link
-                  color="inherit"
-                  style={{ textDecoration: "inherit" }}
-                  component={RouterLink}
-                  to="/ontologies"
-                >
-                  Ontologies
-                </Link>
-              </span>
+              <Link className="link-default" to="/ontologies">
+                Ontologies
+              </Link>
               <span className="px-2 text-sm">&gt;</span>
               <span className="font-bold">
                 {ontology.getName() || ontology.getOntologyId()}

@@ -196,8 +196,8 @@ export default function SearchResults({ search }: { search: string }) {
               return (
                 <div key={randomString()} className="my-4">
                   <div className="mb-1 leading-loose truncate">
-                    <a
-                      href={
+                    <Link
+                      to={
                         "/ontologies/" +
                         entity.getOntologyId() +
                         "/" +
@@ -208,7 +208,7 @@ export default function SearchResults({ search }: { search: string }) {
                       className="link-default text-xl mr-2"
                     >
                       {entity.getName()}
-                    </a>
+                    </Link>
                     <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
                       {entity.getShortForm()}
                     </span>

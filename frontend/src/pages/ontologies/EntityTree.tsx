@@ -1,6 +1,6 @@
-import { Link } from "@mui/material";
 import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import LoadingOverlay from "../../components/LoadingOverlay";
@@ -170,7 +170,7 @@ export default function EntityTree({
               key={randomString()}
             >
               <Link
-                href={`/ontologies/${ontologyId}/${childNode.entity.getTypePlural()}/${termUrl}`}
+                to={`/ontologies/${ontologyId}/${childNode.entity.getTypePlural()}/${termUrl}`}
               >
                 {childNode.title}
               </Link>
