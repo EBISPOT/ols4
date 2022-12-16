@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import Header from "../../components/Header";
+import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
@@ -17,6 +18,9 @@ export default function SearchResults({ search }: { search: string }) {
     (state) => state.home.loadingSearchOptions
   );
   const suggestions = useAppSelector((state) => state.home.searchOptions);
+  const loadingResults = useAppSelector(
+    (state) => state.home.loadingSearchResults
+  );
   const results = useAppSelector((state) => state.home.searchResults);
   const totalResults = useAppSelector((state) => state.home.totalSearchResults);
 
@@ -232,7 +236,14 @@ export default function SearchResults({ search }: { search: string }) {
               rowsPerPage={rowsPerPage}
             />
           </div>
-        ) : <div className="text-xl text-neutral-black font-bold">No results!</div>}
+        ) : (
+          <div className="text-xl text-neutral-black font-bold">
+            No results!
+          </div>
+        )}
+        {loadingResults ? (
+          <LoadingOverlay message="Search results loading..." />
+        ) : null}
       </main>
     </div>
   );
