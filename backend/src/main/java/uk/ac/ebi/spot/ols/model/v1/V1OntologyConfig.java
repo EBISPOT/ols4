@@ -48,8 +48,4 @@ public class V1OntologyConfig {
     public boolean isSkos;
 
     public boolean allowDownload;
-
-    // these are any metadata properties for the ontology, such as title or definition that are included in the ontology as OWL ontology annotation
-    //public Collection<String> internalMetadataProperties;
-    public Object  internalMetadataProperties;
 }

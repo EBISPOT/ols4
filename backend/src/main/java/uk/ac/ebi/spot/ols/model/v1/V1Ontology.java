@@ -24,11 +24,13 @@ public class V1Ontology {
         this.lang =lang;
 
         ontologyId = localizedObj.getString("ontologyId");
+        fileHash = localizedObj.getString("fileHash");
 
         config = new V1OntologyConfig();
+
         config.id = localizedObj.getString("ontologyId");
+        config.namespace = config.id;
         config.versionIri = localizedObj.getString("http://www.w3.org/2002/07/owl#versionIRI");
-        config.namespace = localizedObj.getString("id"); // TODO ??
         config.version = localizedObj.getString("http://www.w3.org/2002/07/owl#versionInfo");
         config.preferredPrefix = localizedObj.getString("preferredPrefix");
         config.title = localizedObj.getString("title");
@@ -40,14 +42,17 @@ public class V1Ontology {
         config.logo = localizedObj.getString("logo");
         config.creators = localizedObj.getStrings("creators");
         config.annotations = localizedObj.asMap().get("annotations");
-
-        // TODO
-//        config.fileLocation = localizedObj.getString("fileLocation");
+        config.fileLocation = localizedObj.getString("ontology_purl");
 
         config.oboSlims = localizedObj.asMap().containsKey("oboSlims") ?
                 (boolean) localizedObj.asMap().get("oboSlims") : false;
 
         config.labelProperty = localizedObj.getString("label_property");
+
+        if(config.labelProperty == null) {
+            config.labelProperty = "http://www.w3.org/2000/01/rdf-schema#label";
+        }
+
         config.definitionProperties = localizedObj.getStrings("definition_property");
         config.synonymProperties = localizedObj.getStrings("synonym_property");
         config.hierarchicalProperties = localizedObj.getStrings("hierarchical_property");
@@ -60,9 +65,6 @@ public class V1Ontology {
 
         config.allowDownload = localizedObj.asMap().containsKey("allowDownload") ?
                 (boolean) localizedObj.asMap().get("allowDownload") : true;
-
-        config.internalMetadataProperties = localizedObj.asMap().containsKey("internalMetadataProperties") ?
-                localizedObj.asMap().get("internalMetadataProperties") : new HashMap<String,Object>();
 
         status = "LOADED";
 
@@ -78,6 +80,7 @@ public class V1Ontology {
 
 
         version = localizedObj.getString("http://www.w3.org/2002/07/owl#versionInfo");
+        config.version = version;
 
         message = "";
         loadAttempts = 0;
