@@ -35,22 +35,24 @@ public class V1Ontology {
         config.description = localizedObj.getString("description");
         config.homepage = localizedObj.getString("homepage");
         config.version = localizedObj.getString("version");
-        config.mailingList = localizedObj.getString("mailingList");
+        config.mailingList = localizedObj.getString("mailing_list");
         config.tracker = localizedObj.getString("tracker");
         config.logo = localizedObj.getString("logo");
         config.creators = localizedObj.getStrings("creators");
         config.annotations = localizedObj.asMap().get("annotations");
-        config.fileLocation = localizedObj.getString("fileLocation");
+
+        // TODO
+//        config.fileLocation = localizedObj.getString("fileLocation");
 
         config.oboSlims = localizedObj.asMap().containsKey("oboSlims") ?
                 (boolean) localizedObj.asMap().get("oboSlims") : false;
 
-        config.labelProperty = localizedObj.getString("labelProperty");
-        config.definitionProperties = localizedObj.getStrings("definitionProperties");
-        config.synonymProperties = localizedObj.getStrings("synonymProperties");
-        config.hierarchicalProperties = localizedObj.getStrings("hierarchicalProperties");
-        config.baseUris = localizedObj.getStrings("baseUris");
-        config.hiddenProperties = localizedObj.getStrings("hiddenProperties");
+        config.labelProperty = localizedObj.getString("label_property");
+        config.definitionProperties = localizedObj.getStrings("definition_property");
+        config.synonymProperties = localizedObj.getStrings("synonym_property");
+        config.hierarchicalProperties = localizedObj.getStrings("hierarchical_property");
+        config.baseUris = localizedObj.getStrings("base_uri");
+        config.hiddenProperties = localizedObj.getStrings("hidden_property");
         config.preferredRootTerms = localizedObj.getStrings("preferredRootTerms");
 
         config.isSkos = localizedObj.asMap().containsKey("isSkos") ?
@@ -74,6 +76,8 @@ public class V1Ontology {
         loaded = localizedObj.getString("loaded");
         updated = localizedObj.getString("loaded");
 
+
+        version = localizedObj.getString("http://www.w3.org/2002/07/owl#versionInfo");
 
         message = "";
         loadAttempts = 0;
