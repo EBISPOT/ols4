@@ -35,7 +35,14 @@ public class V1Term {
 
 
         shortForm = localizedObj.getString("shortForm");
-        oboId = shortForm.replace("_", ":");
+
+
+        int lastUnderscore = shortForm.lastIndexOf("_");
+        if(lastUnderscore != -1) {
+            oboId = shortForm.substring(0, lastUnderscore) + ":"  + shortForm.substring(lastUnderscore + 1);
+        } else {
+            oboId = shortForm;
+        }
 
         label = localizedObj.getString("label");
         description = localizedObj.getStrings("definition").toArray(new String[0]);
