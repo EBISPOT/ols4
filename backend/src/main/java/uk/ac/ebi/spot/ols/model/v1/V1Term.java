@@ -59,7 +59,7 @@ public class V1Term {
         isPreferredRoot = false;
         related = new HashSet<>();
 
-        isDefiningOntology = !Boolean.parseBoolean(localizedObj.getString("imported"));
+        isDefiningOntology = Boolean.parseBoolean(localizedObj.getString("isDefiningOntology"));
 
 
     }
