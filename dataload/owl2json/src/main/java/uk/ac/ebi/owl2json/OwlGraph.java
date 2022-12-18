@@ -177,6 +177,10 @@ public class OwlGraph implements StreamRDF {
             "loaded", PropertyValueLiteral.fromString(now));
     }
 
+    for(String language : languages) {
+        ontologyNode.properties.addProperty("language", PropertyValueLiteral.fromString(language));
+    }
+
 
     long endTime = System.nanoTime();
     System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
@@ -527,7 +531,7 @@ public class OwlGraph implements StreamRDF {
         OwlNode subjNode = getOrCreateNode(triple.getSubject());
 
         String lang = triple.getObject().getLiteralLanguage();
-        if(lang != null) {
+        if(lang != null && !lang.equals("")) {
             languages.add(lang);
         }
 

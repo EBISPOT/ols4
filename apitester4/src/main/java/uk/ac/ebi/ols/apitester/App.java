@@ -26,9 +26,25 @@ public class App
         optOutDir.setRequired(true);
         options.addOption(optOutDir);
 
-        Option optCompareDir = new Option(null, "compareDir", true, "Directory to compare output with");
-        optCompareDir.setRequired(false);
+        Option optCompareUrl = new Option(null, "compareUrl", true, "URL of a second OLS4 instance to compare with (mutually exclusive with --compareDir)");
+        optCompareUrl.setRequired(false);
+        options.addOption(optCompareUrl);
+
+        Option optCompareDir = new Option(null, "compareDir", true, "Directory to compare output with. If --compareUrl is specified files will be downloaded here.");
+        optCompareDir.setRequired(true);
         options.addOption(optCompareDir);
+
+        Option optOLS3only = new Option(null, "ols3-only", false, "Set to only test OLS3 endpoints, not OLS4 (useful if one or both of the instances is OLS3)");
+        optOLS3only.setRequired(false);
+        options.addOption(optOLS3only);
+
+        Option optOntology = new Option(null, "ontology", true, "Optionally a specific ontology ID to test, rather than testing everything");
+        optOntology.setRequired(false);
+        options.addOption(optOntology);
+
+        Option optDeep = new Option(null, "deep", false, "Set to retrieve every entity individually");
+        optDeep.setRequired(false);
+        options.addOption(optDeep);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -45,15 +61,28 @@ public class App
 
         String url = cmd.getOptionValue("url");
         String outDir = cmd.getOptionValue("outDir");
+        String compareUrl = cmd.getOptionValue("compareUrl");
         String compareDir = cmd.getOptionValue("compareDir");
+        boolean ols3only = cmd.hasOption("ols3-only");
+	boolean deep = cmd.hasOption("deep");
+	String ontology = cmd.getOptionValue("ontology");
 
         boolean success = true;
 
-        if(!new Ols4ApiTester(url, outDir).test()) {
+        if(!new Ols4ApiTester(url, outDir, ols3only, deep, ontology).test()) {
 	    System.out.println("Ols4ApiTester.test() reported failure");
             success = false;
         } else {
 	    System.out.println("Ols4ApiTester.test() reported success");
+	}
+
+	if(compareUrl != null) {
+		if(!new Ols4ApiTester(compareUrl, compareDir, ols3only, deep, ontology).test()) {
+		System.out.println("Ols4ApiTester.test() reported failure for compareUrl");
+		success = false;
+		} else {
+		System.out.println("Ols4ApiTester.test() reported success for compareUrl");
+		}
 	}
 
         if(compareDir != null) {

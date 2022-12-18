@@ -20,11 +20,16 @@ import org.apache.commons.io.IOUtils;
 
 public class Ols4ApiTester {
 
+	int size = 1000;
+
 
 	Gson gson;
 	String url, outDir;
+	boolean ols3only;
+	boolean deep;
+	String ontologyId;
 
-	public Ols4ApiTester(String url, String outDir) {
+	public Ols4ApiTester(String url, String outDir, boolean ols3only, boolean deep, String ontologyId) {
 
 		gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
@@ -34,6 +39,9 @@ public class Ols4ApiTester {
 
 		this.url = url;
 		this.outDir = outDir;
+		this.ols3only = ols3only;
+		this.deep = deep;
+		this.ontologyId = ontologyId;
 	}
 
 	public boolean test() throws MalformedURLException, IOException {
@@ -47,75 +55,104 @@ public class Ols4ApiTester {
 		for(int nRetries = 0; nRetries < MAX_RETRIES; ++ nRetries) {
 
 			ontologies = getAll(url + "/api/ontologies");
-			write(outDir + "/ontologies.json", ontologies);
 
 			if(!ontologies.isJsonArray()) {
 				try {
-					Thread.sleep(1000);
+					System.out.println("Result of /api/ontologies was not an array; waiting 5 seconds and trying again");
+					Thread.sleep(5000);
 				} catch(InterruptedException e) {}
 
 				continue;
+			} else {
+				break;
 			}
 		}
 
-		if(ontologies == null || !ontologies.isJsonArray()) {
-			System.out.println("No ontologies returned! :-(");
-			return false;
+		System.out.println("API is available now");
+
+		if(ontologyId != null) {
+			System.out.println("Testing only ontologyId " + ontologyId);
+			return testOntology(ontologyId);
 		} else {
-			System.out.println("Got " + ontologies.getAsJsonArray().size() + " ontologies");
+			System.out.println("Testing all ontologies");
+
+			write(outDir + "/ontologies.json", ontologies);
+
+			if(ontologies == null || !ontologies.isJsonArray()) {
+				System.out.println("No ontologies returned! :-(");
+				return false;
+			} else {
+				System.out.println("Got " + ontologies.getAsJsonArray().size() + " ontologies");
+			}
+
+			if(!ols3only) {
+				JsonElement v2Ontologies = getAll(url + "/api/v2/ontologies");
+				write(outDir + "/v2/ontologies.json", v2Ontologies);
+			}
+
+			List<String> ontologyIds = new ArrayList();
+			for(JsonElement ontology : ontologies.getAsJsonArray()) {
+				ontologyIds.add(ontology.getAsJsonObject().get("ontologyId").getAsString());
+			}
+
+			boolean success = true;
+
+			for(String ontologyId : ontologyIds) {
+				if(!testOntology(ontologyId)) {
+					success = false;
+				}
+			}
+
+			return success;
 		}
 
-		JsonElement v2Ontologies = getAll(url + "/api/v2/ontologies");
-		write(outDir + "/v2/ontologies.json", v2Ontologies);
+	}
 
-		List<String> ontologyIds = new ArrayList();
-		for(JsonElement ontology : ontologies.getAsJsonArray()) {
-			ontologyIds.add(ontology.getAsJsonObject().get("ontologyId").getAsString());
-		}
+	public boolean testOntology(String ontologyId) throws IOException{
 
-		for(String ontologyId : ontologyIds) {
 
-			/// v1
+		/// v1
 
-			JsonElement classes = getAll(url + "/api/ontologies/" + ontologyId + "/terms");
-			write(outDir + "/ontologies/" + ontologyId + "/terms.json", classes);
+		JsonElement classes = getAll(url + "/api/ontologies/" + ontologyId + "/terms?size=" + size);
+		write(outDir + "/ontologies/" + ontologyId + "/terms.json", classes);
 
-			JsonElement properties = getAll(url + "/api/ontologies/" + ontologyId + "/properties");
-			write(outDir + "/ontologies/" + ontologyId + "/properties.json", properties);
+		JsonElement properties = getAll(url + "/api/ontologies/" + ontologyId + "/properties?size=" + size);
+		write(outDir + "/ontologies/" + ontologyId + "/properties.json", properties);
 
-			JsonElement individuals = getAll(url + "/api/ontologies/" + ontologyId + "/individuals");
-			write(outDir + "/ontologies/" + ontologyId + "/individuals.json", individuals);
+		JsonElement individuals = getAll(url + "/api/ontologies/" + ontologyId + "/individuals?size=" + size);
+		write(outDir + "/ontologies/" + ontologyId + "/individuals.json", individuals);
 
+		if(deep) {
 			for(JsonElement _class : classes.getAsJsonArray()) {
 
 				String iri = _class.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
-				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri);
+				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + ".json", classJson);
 
-				JsonElement parentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents");
+				JsonElement parentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents.json", parentsJson);
 
-				JsonElement ancestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors");
+				JsonElement ancestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors.json", ancestorsJson);
 
-				JsonElement hierarchicalParentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents");
+				JsonElement hierarchicalParentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents.json", hierarchicalParentsJson);
 
-				JsonElement hierarchicalAncestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors");
+				JsonElement hierarchicalAncestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors.json", hierarchicalAncestorsJson);
 
-				JsonElement childrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children");
+				JsonElement childrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children.json", childrenJson);
 
-				JsonElement descendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants");
+				JsonElement descendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants.json", descendantsJson);
 
-				JsonElement hierarchicalChildrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren");
+				JsonElement hierarchicalChildrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren.json", hierarchicalChildrenJson);
 
-				JsonElement hierarchicalDescendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants");
+				JsonElement hierarchicalDescendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants.json", hierarchicalDescendantsJson);
 			}
 
@@ -140,25 +177,30 @@ public class Ols4ApiTester {
 
 				// TODO
 			}
+		}
+
+		if(ols3only) {
+			return true;
+		}
 
 
 
+		/// v2
 
-			/// v2
+		JsonElement v2Entities = getAll(url + "/api/v2/ontologies/" + ontologyId + "/entities?size=" + size);
+		write(outDir + "/v2/ontologies/" + ontologyId + "/entities.json", v2Entities);
 
-			JsonElement v2Entities = getAll(url + "/api/v2/ontologies/" + ontologyId + "/entities");
-			write(outDir + "/v2/ontologies/" + ontologyId + "/entities.json", v2Entities);
+		JsonElement v2Classes = getAll(url + "/api/v2/ontologies/" + ontologyId + "/classes?size=" + size);
+		write(outDir + "/v2/ontologies/" + ontologyId + "/classes.json", v2Classes);
 
-			JsonElement v2Classes = getAll(url + "/api/v2/ontologies/" + ontologyId + "/classes");
-			write(outDir + "/v2/ontologies/" + ontologyId + "/classes.json", v2Classes);
+		JsonElement v2Properties = getAll(url + "/api/v2/ontologies/" + ontologyId + "/properties?size=" + size);
+		write(outDir + "/v2/ontologies/" + ontologyId + "/properties.json", v2Properties);
 
-			JsonElement v2Properties = getAll(url + "/api/v2/ontologies/" + ontologyId + "/properties");
-			write(outDir + "/v2/ontologies/" + ontologyId + "/properties.json", v2Properties);
-
-			JsonElement v2Individuals = getAll(url + "/api/v2/ontologies/" + ontologyId + "/individuals");
-			write(outDir + "/v2/ontologies/" + ontologyId + "/individuals.json", v2Individuals);
+		JsonElement v2Individuals = getAll(url + "/api/v2/ontologies/" + ontologyId + "/individuals?size=" + size);
+		write(outDir + "/v2/ontologies/" + ontologyId + "/individuals.json", v2Individuals);
 
 
+		if(deep) {
 			for(JsonElement v2Entity : v2Entities.getAsJsonArray()) {
 
 				String iri = v2Entity.getAsJsonObject().get("iri").getAsString();
@@ -205,7 +247,6 @@ public class Ols4ApiTester {
 		}
 
 		return true;
-
 	}
 
 	public void write(String path, JsonElement element) throws FileNotFoundException, IOException {
@@ -249,14 +290,18 @@ public class Ols4ApiTester {
 				JsonElement nextObj = links.get("next");
 
 				if(nextObj == null) {
+					System.out.println("no next link, we are done");
 					break;
 				}
 
 				String next = nextObj.getAsJsonObject().get("href").getAsString();
 
+				System.out.println("next link is " + next);
+
 				res = get(next).getAsJsonObject();
 			}
 
+			System.out.println("sorting and returning result...");
 			return deepSort(removeDates(normalizeURLs(allEntries))).getAsJsonArray();
 
 		} catch(Exception e) {

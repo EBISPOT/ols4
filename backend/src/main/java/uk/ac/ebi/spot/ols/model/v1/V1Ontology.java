@@ -6,10 +6,7 @@ import org.springframework.hateoas.server.core.Relation;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 @Relation(collectionRelation = "ontologies")
@@ -25,6 +22,7 @@ public class V1Ontology {
 
         ontologyId = localizedObj.getString("ontologyId");
         fileHash = localizedObj.getString("fileHash");
+        languages = localizedObj.getStrings("language");
 
         config = new V1OntologyConfig();
 
@@ -98,6 +96,8 @@ public class V1Ontology {
             config.description = embeddedDesc;
         }
     }
+
+    public List<String> languages;
 
     public String lang;
 
