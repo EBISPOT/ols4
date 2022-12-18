@@ -25,7 +25,9 @@ public class V1OboSynonym {
                                 .collect(Collectors.toList());
 
         synonyms.addAll(
-                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls)).collect(Collectors.toList())
+                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls))
+                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
+                        .collect(Collectors.toList())
         );
 
         return synonyms.size() > 0 ? synonyms : null;
