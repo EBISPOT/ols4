@@ -60,7 +60,8 @@ public class V1Term {
         related = new HashSet<>();
 
         isDefiningOntology = Boolean.parseBoolean(localizedObj.getString("isDefiningOntology"));
-
+        hasChildren = Boolean.parseBoolean(localizedObj.getString("hasChildren"));
+        
 
     }
 
