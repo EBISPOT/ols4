@@ -42,7 +42,7 @@ public class V1Term {
         synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
         annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
 
-        inSubsets = new HashSet<>();
+        inSubsets = null;
 
 
 

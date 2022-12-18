@@ -38,6 +38,10 @@ public class V1OboDefinitionCitation {
             }
         }
 
+        if(res.size() == 0) {
+            return null;
+        }
+
         return res;
     }
 }

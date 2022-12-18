@@ -21,13 +21,14 @@ public class V1OboSynonym {
 
         List<V1OboSynonym> synonyms =
                 exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", oboDbUrls))
+                                .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                                 .collect(Collectors.toList());
 
         synonyms.addAll(
                 related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls)).collect(Collectors.toList())
         );
 
-        return synonyms;
+        return synonyms.size() > 0 ? synonyms : null;
     }
 
     private static V1OboSynonym fromSynonymObject(Object synonymObj, String scope, OboDatabaseUrlService oboDbUrls) {

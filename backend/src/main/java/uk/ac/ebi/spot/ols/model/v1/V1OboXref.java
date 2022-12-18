@@ -37,7 +37,7 @@ public class V1OboXref {
 
         List<Object> xrefs = entity.getObjects("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
 
-        return xrefs.stream().map(xref -> {
+        List<V1OboXref> res =  xrefs.stream().map(xref -> {
 
             if(xref instanceof String) {
                 V1OboXref xrefObj = V1OboXref.fromString((String) xref, oboDbUrls);
@@ -62,5 +62,7 @@ public class V1OboXref {
             return xrefObj;
 
         }).collect(Collectors.toList());
+
+        return res.size() > 0 ? res : null;
     }
 }

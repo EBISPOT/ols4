@@ -13,10 +13,14 @@ public class GenericLocalizer {
 
         if (object instanceof Collection) {
 
-            return ((Collection<Object>) object)
-                    .stream()
-                    .map(obj -> GenericLocalizer.localizeObj(obj, lang))
-                    .collect(Collectors.toList());
+            return Arrays.asList(
+                    new LinkedHashSet<Object>(
+                        ((Collection<Object>) object)
+                        .stream()
+                        .map(obj -> GenericLocalizer.localizeObj(obj, lang))
+                        .collect(Collectors.toList())
+                    ).toArray()
+            );
 
         } else if (object instanceof Map) {
 
