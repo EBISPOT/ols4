@@ -1,12 +1,12 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
@@ -37,7 +37,7 @@ public class V1PropertyRepository {
 //            value = "MATCH (n:Property)-[:SUBPROPERTYOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
     public Page<V1Property> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	return neo4jClient.getParents("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jClient.traverseOutgoingEdges("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), Map.of(), pageable)
 			.map(record -> new V1Property(record, lang));
     }
 
@@ -45,7 +45,7 @@ public class V1PropertyRepository {
 //            value = "MATCH (n:Property)<-[:SUBPROPERTYOF]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN child")
     public Page<V1Property> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	return this.neo4jClient.getChildren("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return this.neo4jClient.traverseIncomingEdges("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), Map.of(), pageable)
             .map(record -> new V1Property(record, lang));
     }
 
@@ -54,7 +54,7 @@ public class V1PropertyRepository {
 //            value = "MATCH (n:Property)<-[:SUBPROPERTYOF*]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct child")
     public Page<V1Property> getDescendants(String ontologyId, String iri, String lang, Pageable pageable)  {
 
-	return this.neo4jClient.getDescendants("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), Map.of(), pageable)
             .map(record -> new V1Property(record, lang));
     }
 
@@ -62,7 +62,7 @@ public class V1PropertyRepository {
 //            value = "MATCH (n:Property)-[:SUBPROPERTYOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Property> getAncestors(String ontologyId, String iri, String lang, Pageable pageable)  {
 
-	return neo4jClient.getAncestors("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), pageable)
+	return neo4jClient.recursivelyTraverseOutgoingEdges("OntologyTerm", ontologyId + "+property+" + iri, Arrays.asList("http://www.w3.org/2000/01/rdf-schema#subPropertyOf"), Map.of(), pageable)
             .map(record -> new V1Property(record, lang));
     }
 

@@ -94,7 +94,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.getChildren("OntologyClass", id, Arrays.asList("directParent"), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
             .map(record -> new V2Class(record, lang));
     }
 
@@ -105,7 +105,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.getAncestors("OntologyClass", id, Arrays.asList("directParent"), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
                 .map(record -> new V2Class(record, lang));
     }
 
@@ -116,7 +116,7 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+individual+" + iri;
 
-        return this.neo4jClient.getAncestors("OntologyEntity", id, Arrays.asList("directParent"), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id, Arrays.asList("directParent"), Map.of(), pageable)
                 .map(record -> new V2Class(record, lang));
     }
 }

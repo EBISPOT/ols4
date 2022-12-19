@@ -26,8 +26,8 @@ import java.util.HashSet;
 @Component
 public class V1PreferredRootTermAssembler implements RepresentationModelAssembler<V1Term, EntityModel<V1Term>> {
 
-    @Autowired
-    EntityLinks entityLinks;
+//    @Autowired
+//    EntityLinks entityLinks;
 
     @Override
     public EntityModel<V1Term> toModel(V1Term term) {
@@ -57,12 +57,12 @@ public class V1PreferredRootTermAssembler implements RepresentationModelAssemble
 
         Collection<String> relation = new HashSet<>();
         for (V1Related related : term.related) {
-            if (!relation.contains(related.getLabel())) {
-                String relationId = UriUtils.encode(related.getIri(), "UTF-8");
+            if (!relation.contains(related.label)) {
+                String relationId = UriUtils.encode(related.relatedToIri, "UTF-8");
 
-                resource.add(lb.slash(relationId).withRel(related.getLabel().replaceAll(" ", "_")));
+                resource.add(lb.slash(relationId).withRel(related.label.replaceAll(" ", "_")));
             }
-            relation.add(related.getLabel());
+            relation.add(related.label);
         }
 
 //        resource.add(lb.slash("related").withRel("related"));

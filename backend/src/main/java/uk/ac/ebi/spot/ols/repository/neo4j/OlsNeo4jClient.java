@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
@@ -57,20 +56,32 @@ public class OlsNeo4jClient {
 		return results.getContent().iterator().next();
 	}
 
-    public Page<Map<String, Object>> getParents(String type, String id, List<String> relationIRIs, Pageable pageable) {
+	private String makeEdgePropsClause(Map<String,String> edgeProps) {
 
-	String edge = makeEdge(relationIRIs);
+		String where = "";
+
+		for(String prop : edgeProps.keySet()) {
+			String value = edgeProps.get(prop);
+			where += " AND \"" + value + "\" IN edge.`" + prop + "` ";
+		}
+
+		return where;
+	}
+
+    public Page<Map<String, Object>> traverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+
+	String edge = makeEdgesList(edgeIRIs, edgeProps);
 
 	// TODO fix injection
 
 	String query =
-	  "MATCH (a:" + type+ ")-[:" + edge + "]->(b) "
-	+ "WHERE a.id = $id "
+	  "MATCH (a:" + type+ ")-[edge:" + edge + "]->(b) "
+	+ "WHERE a.id = $id " + makeEdgePropsClause(edgeProps)
 	+ "RETURN distinct b";
 
 	String countQuery =
-	  "MATCH (a:" + type + ")-[:" + edge + "]->(b) "
-	+ "WHERE a.id = $id "
+	  "MATCH (a:" + type + ")-[edge:" + edge + "]->(b) "
+	+ "WHERE a.id = $id " + makeEdgePropsClause(edgeProps)
 	+ "RETURN count(distinct b)";
 
 		System.out.println(query);
@@ -78,56 +89,56 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getChildren(String type, String id, List<String> relationIRIs, Pageable pageable) {
+    public Page<Map<String, Object>> traverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
-	String edge = makeEdge(relationIRIs);
+	String edge = makeEdgesList(edgeIRIs, Map.of());
 
 	String query =
-	  "MATCH (a:" + type + ")<-[:" + edge + "]-(b) "
+	  "MATCH (a:" + type + ")<-[edge:" + edge + "]-(b) "
 	+ "WHERE a.id = $id "
 	+ "RETURN distinct b";
 
 	String countQuery =
-	  "MATCH (a:" + type + ")<-[:" + edge + "]-(b) "
+	  "MATCH (a:" + type + ")<-[edge:" + edge + "]-(b) "
 	+ "WHERE a.id = $id "
 	+ "RETURN count(distinct b)";
 
 	return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getAncestors(String type, String id, List<String> relationIRIs, Pageable pageable) {
+    public Page<Map<String, Object>> recursivelyTraverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
-		String edge = makeEdge(relationIRIs);
+		String edge = makeEdgesList(edgeIRIs, Map.of());
 
 		String query =
 				"MATCH (c:" + type + ") WHERE c.id = $id "
 						+ "WITH c "
-						+ "OPTIONAL MATCH (c)-[:" + edge + " *]->(ancestor) "
+						+ "OPTIONAL MATCH (c)-[edge:" + edge + " *]->(ancestor) "
 						+ "RETURN ancestor AS a";
 
 		String countQuery =
 				"MATCH (a:" + type + ") WHERE a.id = $id "
 						+ "WITH a "
-						+ "OPTIONAL MATCH (a)-[:" + edge + " *]->(ancestor) "
+						+ "OPTIONAL MATCH (a)-[edge:" + edge + " *]->(ancestor) "
 						+ "RETURN count(ancestor)";
 
 		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> getDescendants(String type, String id, List<String> relationIRIs, Pageable pageable) {
+    public Page<Map<String, Object>> recursivelyTraverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
-	String edge = makeEdge(relationIRIs);
+	String edge = makeEdgesList(edgeIRIs, Map.of());
 
 	String query =
 	  "MATCH (a:" + type + ") WHERE a.id = $id "
 	+ "WITH a "
-	+ "OPTIONAL MATCH (a)<-[:" + edge + " *]-(descendant) "
+	+ "OPTIONAL MATCH (a)<-[edge:" + edge + " *]-(descendant) "
 	+ "RETURN descendant AS c";
 
 	String countQuery =
 	  "MATCH (a:" + type + ") WHERE a.id = $id "
 	+ "WITH a "
-	+ "OPTIONAL MATCH (a)<-[:" + edge + " *]-(descendant) "
+	+ "OPTIONAL MATCH (a)<-[edge:" + edge + " *]-(descendant) "
 	+ "RETURN count(descendant)";
 
 	return neo4jClient.queryPaginated(query, "c", countQuery, parameters("id", id), pageable);
@@ -135,11 +146,11 @@ public class OlsNeo4jClient {
 
 
 
-	private static String makeEdge(List<String> relationIRIs) {
+	private static String makeEdgesList(List<String> edgeIRIs, Map<String,String> edgeProperties) {
 
 		String edge = "";
 
-		for(String iri : relationIRIs) {
+		for(String iri : edgeIRIs) {
 			if(edge != "") {
 				edge += "|";
 			}

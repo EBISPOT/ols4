@@ -6,8 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriUtils;
-import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.model.v2.V2Property;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
@@ -18,7 +16,6 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -97,7 +94,7 @@ public class V2PropertyRepository {
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.neo4jClient.getChildren("OntologyProperty", id, Arrays.asList("directParent"), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyProperty", id, Arrays.asList("directParent"), Map.of(), pageable)
                 .map(record -> new V2Property(record, lang));
     }
 
@@ -108,7 +105,7 @@ public class V2PropertyRepository {
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.neo4jClient.getAncestors("OntologyProperty", id, Arrays.asList("directParent"), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyProperty", id, Arrays.asList("directParent"), Map.of(), pageable)
                 .map(record -> new V2Property(record, lang));
     }
 

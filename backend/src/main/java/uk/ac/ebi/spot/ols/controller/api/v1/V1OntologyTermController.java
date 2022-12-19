@@ -388,7 +388,7 @@ public class V1OntologyTermController {
 
         String decodedTerm = UriUtils.decode(termId, "UTF-8");
         String decodedRelation = UriUtils.decode(relation, "UTF-8");
-        Page<V1Term> related = termRepository.getRelated(ontologyId, decodedTerm, decodedRelation, lang, pageable);
+        Page<V1Term> related = termRepository.getRelated(ontologyId, decodedTerm, lang, decodedRelation, pageable);
 
         return new ResponseEntity<>( assembler.toModel(related, termAssembler), HttpStatus.OK);
     }

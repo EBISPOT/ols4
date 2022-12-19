@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -38,7 +37,7 @@ public class V1JsTreeRepository {
         thisEntity = GenericLocalizer.localize(thisEntity, lang);
 
         List<Map<String,Object>> ancestors =
-                neo4jClient.getAncestors(neo4jType, thisEntityId, parentRelationIRIs, PageRequest.ofSize(100))
+                neo4jClient.recursivelyTraverseOutgoingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         ancestors = ancestors.stream().map(ancestor -> GenericLocalizer.localize(ancestor, lang)).collect(Collectors.toList());
 
@@ -67,7 +66,7 @@ public class V1JsTreeRepository {
         thisEntity = GenericLocalizer.localize(thisEntity, lang);
 
         List<Map<String,Object>> children =
-                neo4jClient.getChildren(neo4jType, thisEntityId, parentRelationIRIs, null)
+                neo4jClient.traverseIncomingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), null)
                         .getContent();
         children = children.stream().map(child -> GenericLocalizer.localize(child, lang)).collect(Collectors.toList());
 

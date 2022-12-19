@@ -10,10 +10,7 @@ import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
@@ -61,7 +58,32 @@ public class V1Term {
 
         isDefiningOntology = Boolean.parseBoolean(localizedObj.getString("isDefiningOntology"));
         hasChildren = Boolean.parseBoolean(localizedObj.getString("hasChildren"));
-        
+
+
+
+        Map<String,String> iriToLabel = (Map<String,String>) localizedObj.getObject("iriToLabel");
+
+        related = new LinkedHashSet<>();
+
+        for(Object _relatedTo : localizedObj.getObjects("relatedTo")) {
+
+            Map<String,Object> relatedTo = (Map<String,Object>) _relatedTo;
+
+            String predicate = (String) relatedTo.get("property");
+            String label = iriToLabel.get(predicate);
+
+            V1Related relatedObj = new V1Related();
+            relatedObj.iri = predicate;
+            relatedObj.label = label;
+            relatedObj.ontologyName = ontologyName;
+            relatedObj.relatedFromIri = iri;
+            relatedObj.relatedToIri = (String) relatedTo.get("value");
+            related.add(relatedObj);
+        }
+
+
+
+
 
     }
 

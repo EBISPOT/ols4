@@ -9,15 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
-import uk.ac.ebi.spot.ols.service.Neo4jClient;
 import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 //@RepositoryRestResource(collectionResourceRel = "individuals", exported = false)
 @Component
@@ -40,8 +37,8 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
     public Page<V1Term> getDirectTypes(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	return this.neo4jClient.getParents("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), pageable)
+	return this.neo4jClient.traverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
+			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), Map.of(), pageable)
 				.map(node -> new V1Term(node, lang, oboDbUrls));
     }
 
@@ -49,8 +46,8 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getAllTypes(String ontologyId, String iri, String lang, Pageable pageable) { 
 
-	return this.neo4jClient.getAncestors("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), pageable)
+	return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
+			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), Map.of(), pageable)
 				.map(node -> new V1Term(node, lang, oboDbUrls));
     }
 

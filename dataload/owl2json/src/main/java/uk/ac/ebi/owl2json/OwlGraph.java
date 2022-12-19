@@ -379,7 +379,9 @@ public class OwlGraph implements StreamRDF {
                         }
                     }
                 }
-            }
+            } else if(val.getType() == Type.RELATED) {
+			urisToGetLabelsFor.add(((PropertyValueRelated) val).getProperty());
+	    }
 		}
 	}
 
