@@ -30,6 +30,10 @@ public class V2StatisticsController {
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
 
+        Map<String,Object> coreStatus = solrClient.getCoreStatus();
+        Map<String,Object> indexStatus = (Map<String,Object>) coreStatus.get("index");
+        String lastModified = (String) indexStatus.get("lastModified");
+
         SolrQuery query = new SolrQuery();
 
         // TODO: we're just counting the english ones
@@ -51,6 +55,7 @@ public class V2StatisticsController {
         }
 
         V2Statistics stats = new V2Statistics();
+        stats.lastModified = lastModified;
         stats.numberOfOntologies = counts.containsKey("ontology") ? counts.get("ontology") : 0;
         stats.numberOfClasses = counts.containsKey("class") ? counts.get("class") : 0;
         stats.numberOfIndividuals = counts.containsKey("individual") ? counts.get("individual") : 0;

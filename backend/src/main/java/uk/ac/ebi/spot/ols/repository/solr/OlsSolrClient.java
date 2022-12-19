@@ -1,6 +1,12 @@
 package uk.ac.ebi.spot.ols.repository.solr;
 
 import com.google.gson.Gson;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -29,6 +35,22 @@ public class OlsSolrClient {
 
 
     private Gson gson = new Gson();
+
+    public Map<String,Object> getCoreStatus() throws IOException {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet request = new HttpGet(host + "/solr/admin/cores?wt=json");
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                HttpEntity entity = response.getEntity();
+                if(entity == null) {
+                    return null;
+                }
+                Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
+                Map<String,Object> status = (Map<String,Object>) obj.get("status");
+                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4");
+                return coreStatus;
+            }
+        }
+    }
 
     public Collection<Map<String,Object>> searchSolr(OlsSolrQuery query) {
 
