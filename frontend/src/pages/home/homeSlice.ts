@@ -18,6 +18,7 @@ export interface Stats {
   numberOfClasses: number;
   numberOfProperties: number;
   numberOfIndividuals: number;
+  lastModified: string;
 }
 const initialState: HomeState = {
   searchResults: [],
@@ -28,6 +29,7 @@ const initialState: HomeState = {
     numberOfClasses: 0,
     numberOfProperties: 0,
     numberOfIndividuals: 0,
+    lastModified: ""
   },
   searchOptions: [],
   loadingSearchOptions: false,

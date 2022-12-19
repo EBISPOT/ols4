@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
@@ -242,18 +243,26 @@ export default function Home() {
                 <span>Data Content</span>
               </div>
               {stats ? (
-                <ul className="list-disc list-inside pl-2 text-neutral-black">
-                  <li>
-                    {stats.numberOfOntologies.toLocaleString()} ontologies
-                  </li>
-                  <li>{stats.numberOfClasses.toLocaleString()} classes</li>
-                  <li>
-                    {stats.numberOfProperties.toLocaleString()} properties
-                  </li>
-                  <li>
-                    {stats.numberOfIndividuals.toLocaleString()} individuals
-                  </li>
-                </ul>
+                <div className="text-neutral-black">
+                  <div className="mb-2 text-sm italic">
+                    Updated&nbsp;
+                      {moment(stats.lastModified).format(
+                        "D MMM YYYY ddd HH:mm(Z)"
+                      )}
+                  </div>
+                  <ul className="list-disc list-inside pl-2">
+                    <li>
+                      {stats.numberOfOntologies.toLocaleString()} ontologies
+                    </li>
+                    <li>{stats.numberOfClasses.toLocaleString()} classes</li>
+                    <li>
+                      {stats.numberOfProperties.toLocaleString()} properties
+                    </li>
+                    <li>
+                      {stats.numberOfIndividuals.toLocaleString()} individuals
+                    </li>
+                  </ul>
+                </div>
               ) : null}
             </div>
             <div className="mb-4">
