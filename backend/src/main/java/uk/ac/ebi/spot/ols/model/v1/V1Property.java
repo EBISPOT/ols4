@@ -19,6 +19,7 @@ public class V1Property {
     public V1Property(Map<String,Object> jsonObj, String lang) {
 
         OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
+        this.lang = lang;
 
         iri = localizedObj.getString("iri");
 

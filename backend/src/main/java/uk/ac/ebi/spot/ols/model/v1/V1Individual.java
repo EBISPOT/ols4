@@ -20,9 +20,9 @@ public class V1Individual {
     public V1Individual(Map<String,Object> jsonObj, String lang) {
 
         OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
+        this.lang = lang;
 
         iri = localizedObj.getString("iri");
-        lang = "en";
 
         ontologyName = localizedObj.getString("ontologyId");
         ontologyPrefix = localizedObj.getString("ontologyPreferredPrefix");
