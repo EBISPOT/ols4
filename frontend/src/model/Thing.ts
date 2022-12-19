@@ -47,12 +47,13 @@ export default abstract class Thing {
   }
 
   getName(): string {
-    const label = this.properties["http://www.w3.org/2000/01/rdf-schema#label"];
-    if (typeof label !== "object") {
-      return label || this.getIri();
-    } else {
-      return label.value || this.getIri();
+    const label = Reified.fromJson<any>(
+      this.properties["http://www.w3.org/2000/01/rdf-schema#label"]
+    );
+    if (label && label.length > 0) {
+      return label[0].value;
     }
+    return this.getIri();
   }
 
   getDescription(): string {
