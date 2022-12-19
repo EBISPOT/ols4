@@ -1,7 +1,6 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip } from "@mui/material";
-import moment from "moment";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -151,14 +150,6 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                       <span className="font-bold">Number of terms: </span>
                       <span id="numberOfEntities">
                         {ontology.getNumEntities()}
-                      </span>
-                    </div>
-                    <div>
-                      <span className="font-bold">Last loaded: </span>
-                      <span id="lastLoaded">
-                        {moment(ontology.getLoaded()).format(
-                          "D MMM YYYY ddd HH:mm:SSZ"
-                        )}
                       </span>
                     </div>
                   </div>

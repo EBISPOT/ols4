@@ -83,10 +83,10 @@ export default function EntityPage({
               <span className="px-2 text-sm">&gt;</span>
               <span className="capitalize">{entity.getType()}</span>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold">
+              <span className="font-bold mr-3">
                 {entity.getShortForm() || entity.getName()}
               </span>
-              <span className="ml-3 text-sm text-neutral-default">
+              <span className="text-sm text-neutral-default">
                 <button
                   onClick={() => {
                     copyShortForm(entity.getShortForm() || entity.getName());
@@ -99,7 +99,7 @@ export default function EntityPage({
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">{entity.getName()}</div>
-              <div className="mb-1 leading-relaxed text-sm text-neutral-default">
+              <div className="mb-4 leading-relaxed text-sm text-neutral-default">
                 <span>
                   <a href={entity.getIri()}>
                     <i className="icon icon-common icon-external-link-alt icon-spacer" />
