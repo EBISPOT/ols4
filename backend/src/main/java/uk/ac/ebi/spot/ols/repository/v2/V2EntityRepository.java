@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
@@ -28,8 +29,8 @@ public class V2EntityRepository {
     OlsNeo4jClient neo4jClient;
 
 
-    public Page<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
+    public OlsFacetedResultsPage<V2Entity> find(
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -38,6 +39,7 @@ public class V2EntityRepository {
         query.addFilter("type", "entity", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
+        V2SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
         query.setSearchText(search);
 
@@ -45,8 +47,8 @@ public class V2EntityRepository {
                 .map(result -> new V2Entity(result, lang));
     }
 
-    public Page<V2Entity> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
+    public OlsFacetedResultsPage<V2Entity> findByOntologyId(
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, Map<String,String> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -57,6 +59,7 @@ public class V2EntityRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
+        V2SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
         query.setSearchText(search);
 

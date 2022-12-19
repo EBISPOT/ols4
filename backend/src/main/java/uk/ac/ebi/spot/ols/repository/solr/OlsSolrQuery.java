@@ -12,6 +12,7 @@ public class OlsSolrQuery {
 	String searchText = null;
 	List<SearchField> searchFields = new ArrayList<>();
 	List<SearchField> boostFields = new ArrayList<>();
+	List<String> facetFields = new ArrayList<>();
 	List<Filter> filters = new ArrayList<>();
 
 	public OlsSolrQuery() {
@@ -27,6 +28,10 @@ public class OlsSolrQuery {
 
 	public void addBoostField(String propertyName, int weight, Fuzziness fuzziness) {
 		this.boostFields.add(new SearchField(propertyName, weight, fuzziness));
+	}
+
+	public void addFacetField(String propertyName) {
+		this.facetFields.add(propertyName);
 	}
 
 	public void addFilter(String propertyName, String propertyValue, Fuzziness fuzziness) {
@@ -83,6 +88,10 @@ public class OlsSolrQuery {
 			query.addFilterQuery(
 				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.fuzziness))
 					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, f.fuzziness)) + "\"");
+		}
+
+		if(facetFields.size() > 0) {
+			query.addFacetField(facetFields.toArray(new String[0]));
 		}
 
 		return query;

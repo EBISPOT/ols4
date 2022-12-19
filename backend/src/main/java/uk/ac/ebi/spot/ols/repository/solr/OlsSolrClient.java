@@ -10,17 +10,15 @@ import org.apache.http.util.EntityUtils;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
-import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -52,26 +50,33 @@ public class OlsSolrClient {
         }
     }
 
-    public Collection<Map<String,Object>> searchSolr(OlsSolrQuery query) {
-
-        QueryResponse qr = runSolrQuery(query, null);
-
-        return qr.getResults()
-                .stream()
-                .map(res -> getOlsEntityFromSolrResult(res))
-                .collect(Collectors.toList());
-    }
-
-    public Page<Map<String,Object>> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
+    public OlsFacetedResultsPage<Map<String,Object>> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
         QueryResponse qr = runSolrQuery(query, pageable);
 
-        return new PageImpl<Map<String,Object>>(
+        Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
+
+        if(qr.getFacetFields() != null) {
+            for(FacetField facetField : qr.getFacetFields()) {
+
+                Map<String, Long> valueToCount = new LinkedHashMap<>();
+
+                for(FacetField.Count count : facetField.getValues()) {
+                    valueToCount.put(count.getName(), count.getCount());
+                }
+
+                facetFieldToCounts.put(facetField.getName(), valueToCount);
+            }
+        }
+
+       return new OlsFacetedResultsPage<Map<String,Object>>(
                 qr.getResults()
                         .stream()
                         .map(res -> getOlsEntityFromSolrResult(res))
                         .collect(Collectors.toList()),
-                pageable, qr.getResults().getNumFound());
+                facetFieldToCounts,
+                pageable,
+                qr.getResults().getNumFound());
     }
 
     public Map<String,Object> getOne(OlsSolrQuery query) {

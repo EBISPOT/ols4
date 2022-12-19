@@ -17,20 +17,22 @@ export async function request(
 
 export class Page<T> {
   constructor(
-    public size: number,
-    public totalElements: number,
+    public page: number,
+    public numElements: number,
     public totalPages: number,
-    public number: number,
-    public elements: T[]
+    public totalElements: number,
+    public elements: T[],
+    public facetFieldsToCounts: Map<string, Map<string, number>>
   ) {}
 
   map<NewType>(fn: (T) => NewType) {
     return new Page<NewType>(
-      this.size,
-      this.totalElements,
+      this.page,
+      this.numElements,
       this.totalPages,
-      this.number,
-      this.elements.map(fn)
+      this.totalElements,
+      this.elements.map(fn),
+      this.facetFieldsToCounts
     );
   }
 }
@@ -40,17 +42,13 @@ export async function getPaginated<ResType>(
 ): Promise<Page<ResType>> {
   const res = await get<any>(path);
 
-  let elements =
-    res && res["_embedded"]
-      ? res["_embedded"][Object.keys(res["_embedded"])[0]]
-      : [];
-
   return new Page<ResType>(
-    res?.page?.size ? res.page.size : 0,
-    res?.page?.totalElements ? res.page.totalElements : 0,
-    res?.page?.totalPages ? res.page.totalPages : 0,
-    res?.page?.number ? res.page.number : 0,
-    elements
+	res.page || 0,
+	res.numElements || 0,
+	res.totalPages || 0,
+	res.totalElements || 0,
+	res.elements || [],
+	res.facetFieldsToCounts || new Map()
   );
 }
 

@@ -33,6 +33,15 @@ public class V2SearchFieldsParser {
         }
     }
 
+    public static void addFacetFieldsToQuery(OlsSolrQuery query, String facetFields) {
+
+        if(facetFields != null) {
+            for(ParsedField field : parseFieldsString(facetFields)) {
+                query.addFacetField(field.property);
+            }
+        }
+    }
+
     private static Collection<ParsedField> parseFieldsString(String searchFields) {
 
         List<ParsedField> parsed = new ArrayList<>();

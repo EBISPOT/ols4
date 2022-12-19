@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v2.V2Class;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
@@ -29,7 +30,7 @@ public class V2ClassRepository {
     OlsNeo4jClient neo4jClient;
 
 
-    public Page<V2Class> find(
+    public OlsFacetedResultsPage<V2Class> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
@@ -50,7 +51,7 @@ public class V2ClassRepository {
                 .map(result -> new V2Class(result, lang));
     }
 
-    public Page<V2Class> findByOntologyId(
+    public OlsFacetedResultsPage<V2Class> findByOntologyId(
             String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
