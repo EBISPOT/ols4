@@ -22,7 +22,7 @@ public class V1OboXref {
 
         if(tokens.length < 2) {
             V1OboXref xref = new V1OboXref();
-            xref.database = tokens[0];
+            xref.id = tokens[0];
             return xref;
         }
 
