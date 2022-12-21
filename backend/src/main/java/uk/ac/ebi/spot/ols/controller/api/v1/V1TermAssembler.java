@@ -52,12 +52,15 @@ public class V1TermAssembler implements RepresentationModelAssembler<V1Term, Ent
 
         Collection<String> relation = new HashSet<>();
         for (V1Related related : term.related) {
-            if (!relation.contains(related.label)) {
-                String relationId = UriUtils.encode(related.iri, "UTF-8");
+            if(!related.iri.equals("http://www.w3.org/2000/01/rdf-schema#subClassOf")
+                    && related.label != null) {
+                if (!relation.contains(related.label)) {
+                    String relationId = UriUtils.encode(related.iri, "UTF-8");
 
-                resource.add(lb.slash(relationId).withRel(related.label.replaceAll(" ", "_")));
+                    resource.add(lb.slash(relationId).withRel(related.label.replaceAll(" ", "_")));
+                }
+                relation.add(related.label);
             }
-            relation.add(related.label);
         }
 
 //        resource.add(lb.slash("related").withRel("related"));

@@ -124,6 +124,10 @@ public class OWL2JSON {
         writer.setIndent("  ");
 
         writer.beginObject();
+
+	// writer.name("loaded");
+	// writer.value(java.time.LocalDateTime.now().toString());
+
         writer.name("ontologies");
         writer.beginArray();
 
