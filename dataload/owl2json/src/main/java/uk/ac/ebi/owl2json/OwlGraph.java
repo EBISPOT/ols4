@@ -358,7 +358,7 @@ public class OwlGraph implements StreamRDF {
 
         // Labels for rendering the properties in the frontend (or for API consumers)
         //
-        writer.name("iriToLabel");
+        writer.name("iriToLabels");
         writer.beginObject();
 
 	Set<String> urisToGetLabelsFor = new LinkedHashSet<>();
@@ -387,13 +387,14 @@ public class OwlGraph implements StreamRDF {
 
         for(String k : urisToGetLabelsFor) {
 
-            OwlNode labelNode = nodes.get(k);
-            if(labelNode == null) {
+            OwlNode labelledNode = nodes.get(k);
+            if(labelledNode == null) {
                 continue;
             }
 
 	    // TODO: any other label props to look for?
-            List<PropertyValue> labelProps = labelNode.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#label");
+            List<PropertyValue> labelProps = labelledNode.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#label");
+	    Map<String, TreeSet<String>> langToLabels = new HashMap<>();
 
             if(labelProps != null && labelProps.size() > 0) {
                 for (PropertyValue prop : labelProps) {
@@ -406,10 +407,31 @@ public class OwlGraph implements StreamRDF {
                     if(lang==null||lang.equals(""))
                         lang="en";
 
-                    writer.name(lang+"+"+k);
-                    writer.value( ((PropertyValueLiteral) prop).getValue() );
+		    TreeSet<String> labels = langToLabels.get(lang);
+		    if(labels == null) {
+			labels = new TreeSet<>();
+			langToLabels.put(lang, labels);
+		    }
+
+		    labels.add( ((PropertyValueLiteral) prop).getValue() );
                 }
             }
+
+	    for(String lang : langToLabels.keySet()) {
+
+		TreeSet<String> labels = langToLabels.get(lang);
+
+		writer.name(lang+"+"+k);
+		if(labels.size() > 0 ){
+			writer.beginArray();
+			for(String label : labels) {
+				writer.value(label);
+			}
+			writer.endArray();
+		} else {
+			writer.value(labels.iterator().next());
+		}
+	    }
 
         }
 

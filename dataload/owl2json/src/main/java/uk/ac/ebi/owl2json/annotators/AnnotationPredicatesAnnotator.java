@@ -49,11 +49,15 @@ public class AnnotationPredicatesAnnotator {
                     if(!predicate.contains("://"))
                         continue;
 
-		    // anything in the rdf, rdfs, owl namespaces aren't considered annotations
+		    // anything in the rdf, rdfs, owl namespaces aren't considered annotations...
                     if(predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
 			predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
                             predicate.startsWith("http://www.w3.org/2002/07/owl#")) {
-                        continue;
+
+			// ...apart from rdfs:comment for some reason
+			if(!predicate.equals("http://www.w3.org/2000/01/rdf-schema#comment")) {
+				continue;
+			}
                     }
 
 		    // things we already parsed aren't considered annotations

@@ -13,6 +13,7 @@ import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 import java.util.*;
 
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
+import java.util.Collection;
 
 @Relation(collectionRelation = "terms")
 public class V1Term {
@@ -61,7 +62,7 @@ public class V1Term {
 
 
 
-        Map<String,String> iriToLabel = (Map<String,String>) localizedObj.getObject("iriToLabel");
+        Map<String,Object> iriToLabels = (Map<String,Object>) localizedObj.getObject("iriToLabels");
 
         related = new LinkedHashSet<>();
 
@@ -70,7 +71,15 @@ public class V1Term {
             Map<String,Object> relatedTo = (Map<String,Object>) _relatedTo;
 
             String predicate = (String) relatedTo.get("property");
-            String label = iriToLabel.get(predicate);
+
+            Object labels = iriToLabels.get(predicate);
+            String label;
+            if(labels instanceof Collection) {
+                label = ((Collection<String>) labels).iterator().next();
+            } else {
+                label = (String) labels;
+            }
+
 
             V1Related relatedObj = new V1Related();
             relatedObj.iri = predicate;

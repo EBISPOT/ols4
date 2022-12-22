@@ -41,8 +41,8 @@ public class GenericLocalizer {
 
             for (String k : src.keySet()) {
 
-                if(k.equals("iriToLabel")) {
-                    res.put(k, localizeIriToLabel(src.get(k), lang));
+                if(k.equals("iriToLabels")) {
+                    res.put(k, localizeIriToLabels(src.get(k), lang));
                 } else {
                     res.put(k, localizeObj(src.get(k), lang));
                 }
@@ -58,7 +58,7 @@ public class GenericLocalizer {
 
     }
 
-    private static Object localizeIriToLabel(Object object, String lang) {
+    private static Object localizeIriToLabels(Object object, String lang) {
 
         Map<String,Object> labels = (Map<String, Object>) object;
         Map<String,Object> localizedlabels = new TreeMap<>();

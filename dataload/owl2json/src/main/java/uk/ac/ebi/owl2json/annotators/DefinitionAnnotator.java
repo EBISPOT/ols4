@@ -10,7 +10,6 @@ public class DefinitionAnnotator {
 		Set<String> definitionProperties = new TreeSet<>(
 				List.of(
 						"http://www.w3.org/2000/01/rdf-schema#description",
-						"http://www.w3.org/2000/01/rdf-schema#comment",
 						"http://purl.obolibrary.org/obo/IAO_0000115"
 				)
 		);

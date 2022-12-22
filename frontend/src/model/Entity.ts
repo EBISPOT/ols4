@@ -22,16 +22,16 @@ export default abstract class Entity extends Thing {
   }
 
   getLabelForIri(id: string) {
-    const iriToLabel = this.properties["iriToLabel"];
-    return iriToLabel[id];
+    const iriToLabels = this.properties["iriToLabels"];
+    return iriToLabels[id][0];
   }
 
   getAnnotationById(id: string) {
     return asArray(this.properties[id]);
   }
 
-  getIriToLabel(): any {
-    return this.properties["iriToLabel"];
+  getiriToLabels(): any {
+    return this.properties["iriToLabels"];
   }
 
   getShortForm(): string {

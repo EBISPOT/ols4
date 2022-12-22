@@ -58,7 +58,32 @@ public class OntologyEntity {
     private static String objectToString(Object value) {
 
         if (value instanceof Collection) {
-            return objectToString(  ((Collection<Object>) value).toArray()[0] );
+
+            Collection<Object> coll = (Collection<Object>) value;
+
+            /* We only want 1 string if we call this method. For example, we call
+             * this method with "label" but there are multiple labels, yet we only
+             * want 1 label. There is no correct behaviour in this situation because
+             * there is no metadata telling us which label is preferred.
+             *
+             * To make this semi-deterministic, we alphabetically sort the values if
+             * they are all strings before returning the first one. If they are not
+             * all strings, we just return the first value in the list.
+             */
+            boolean isAllStrings = true;
+            for(Object o : coll) {
+                if(! (o instanceof String)) {
+                    isAllStrings = false;
+                }
+            }
+            if(isAllStrings) {
+                String[] strings = coll.toArray(new String[0]);
+                Arrays.sort(strings);
+                return objectToString(strings[0]);
+            } else {
+                return objectToString(  ((Collection<Object>) value).toArray()[0] );
+            }
+
         } else if(value instanceof Map) {
             return objectToString( ((Map<String,Object>) value).get("value") );
         } else {

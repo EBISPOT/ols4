@@ -1,0 +1,127 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "build": {
+        "checkout": "git clone https://github.com/oborel/obo-relations.git",
+        "infallible": 1,
+        "method": "vcs",
+        "system": "git"
+      },
+      "canonical": "ro.owl",
+      "contact": {
+        "email": "cjmungall@lbl.gov",
+        "github": "cmungall",
+        "label": "Chris Mungall",
+        "orcid": "0000-0002-6601-2165"
+      },
+      "description": "Relationship types shared across multiple ontologies",
+      "documentation": "https://oborel.github.io/obo-relations/",
+      "domain": "upper",
+      "homepage": "https://oborel.github.io/",
+      "id": "ro",
+      "jobs": [
+        {
+          "id": "https://travis-ci.org/oborel/obo-relations",
+          "type": "travis-ci"
+        }
+      ],
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC0 1.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/cc-zero.png",
+        "url": "http://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "mailing_list": "https://groups.google.com/forum/#!forum/obo-relations",
+      "ontology_purl": "http://purl.obolibrary.org/obo/ro.owl",
+      "preferredPrefix": "RO",
+      "products": [
+        {
+          "description": "Canonical edition",
+          "id": "ro.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro.owl",
+          "title": "Relation Ontology"
+        },
+        {
+          "description": "The obo edition is less expressive than the OWL, and has imports merged in",
+          "id": "ro.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro.obo",
+          "title": "Relation Ontology in obo format"
+        },
+        {
+          "id": "ro.json",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro.json",
+          "title": "Relation Ontology in obojson format"
+        },
+        {
+          "description": "Minimal subset intended to work with BFO-classes",
+          "id": "ro/core.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro/core.owl",
+          "page": "https://github.com/oborel/obo-relations/wiki/ROCore",
+          "title": "RO Core relations"
+        },
+        {
+          "description": "Axioms defined within RO and to be used in imports for other ontologies",
+          "id": "ro/ro-base.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro/ro-base.owl",
+          "page": "https://github.com/INCATools/ontology-development-kit/issues/50",
+          "title": "RO base ontology"
+        },
+        {
+          "description": "For use in ecology and environmental science",
+          "id": "ro/subsets/ro-interaction.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro/subsets/ro-interaction.owl",
+          "title": "Interaction relations"
+        },
+        {
+          "id": "ro/subsets/ro-eco.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro/subsets/ro-eco.owl",
+          "title": "Ecology subset"
+        },
+        {
+          "description": "For use in neuroscience",
+          "id": "ro/subsets/ro-neuro.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ro/subsets/ro-neuro.owl",
+          "page": "http://bioinformatics.oxfordjournals.org/content/28/9/1262.long",
+          "title": "Neuroscience subset"
+        }
+      ],
+      "repository": "https://github.com/oborel/obo-relations",
+      "tags": [
+        "relations"
+      ],
+      "title": "Relation Ontology",
+      "tracker": "https://github.com/oborel/obo-relations/issues",
+      "usages": [
+        {
+          "description": "RO is used for annotation extensions in the GO and GO Causal Activity Models.",
+          "examples": [
+            {
+              "description": "wg_biogenesis_FlyBase",
+              "url": "http://model.geneontology.org/56d1143000003402"
+            }
+          ],
+          "publications": [
+            {
+              "id": "https://www.ncbi.nlm.nih.gov/pubmed/24885854",
+              "title": "A method for increasing expressivity of Gene Ontology annotations using a compositional approach"
+            }
+          ],
+          "type": "annotation",
+          "user": "http://geneontology.org"
+        }
+      ]
+    }
+  ]
+}

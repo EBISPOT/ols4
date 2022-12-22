@@ -2,14 +2,14 @@ import { asArray, randomString } from "../app/util";
 
 export default function ClassExpression({
   expr,
-  iriToLabel,
+  iriToLabels,
 }: {
   expr: any;
-  iriToLabel: any;
+  iriToLabels: any;
 }) {
   if (typeof expr !== "object") {
     // expr is just an IRI
-    const label = iriToLabel[expr];
+    const label = iriToLabels[expr][0];
     return (
       <a href={expr} className="link-default">
         {label ? label : expr.substring(expr.lastIndexOf("/") + 1)}
@@ -17,7 +17,7 @@ export default function ClassExpression({
     );
   }
 
-  iriToLabel = { ...iriToLabel, ...expr.iriToLabel };
+  iriToLabels = { ...iriToLabels, ...expr.iriToLabels };
 
   ///
   /// 1. owl:Class expressions
@@ -47,7 +47,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       );
     }
@@ -84,7 +84,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       );
     }
@@ -105,7 +105,7 @@ export default function ClassExpression({
     return (
       <span>
         <span className="pr-1 text-neutral-default italic">not</span>
-        <ClassExpression expr={complementOf} iriToLabel={iriToLabel} />
+        <ClassExpression expr={complementOf} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -130,7 +130,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       );
     }
@@ -164,9 +164,9 @@ export default function ClassExpression({
   if (someValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">some</span>
-        <ClassExpression expr={someValuesFrom} iriToLabel={iriToLabel} />
+        <ClassExpression expr={someValuesFrom} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -177,9 +177,9 @@ export default function ClassExpression({
   if (allValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">only</span>
-        <ClassExpression expr={allValuesFrom} iriToLabel={iriToLabel} />
+        <ClassExpression expr={allValuesFrom} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -188,9 +188,9 @@ export default function ClassExpression({
   if (hasValue) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">value</span>
-        <ClassExpression expr={hasValue} iriToLabel={iriToLabel} />
+        <ClassExpression expr={hasValue} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -201,9 +201,9 @@ export default function ClassExpression({
   if (minCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">min</span>
-        <ClassExpression expr={minCardinality} iriToLabel={iriToLabel} />
+        <ClassExpression expr={minCardinality} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -214,9 +214,9 @@ export default function ClassExpression({
   if (maxCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">max</span>
-        <ClassExpression expr={maxCardinality} iriToLabel={iriToLabel} />
+        <ClassExpression expr={maxCardinality} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -227,11 +227,11 @@ export default function ClassExpression({
   if (minQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">min</span>
         <ClassExpression
           expr={minQualifiedCardinality}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       </span>
     );
@@ -243,11 +243,11 @@ export default function ClassExpression({
   if (maxQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">max</span>
         <ClassExpression
           expr={maxQualifiedCardinality}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       </span>
     );
@@ -259,9 +259,9 @@ export default function ClassExpression({
   if (exactCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
-        <ClassExpression expr={exactCardinality} iriToLabel={iriToLabel} />
+        <ClassExpression expr={exactCardinality} iriToLabels={iriToLabels} />
       </span>
     );
   }
@@ -272,11 +272,11 @@ export default function ClassExpression({
   if (exactQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
         <ClassExpression
           expr={exactQualifiedCardinality}
-          iriToLabel={iriToLabel}
+          iriToLabels={iriToLabels}
         />
       </span>
     );
@@ -286,7 +286,7 @@ export default function ClassExpression({
   if (hasSelf) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabel={iriToLabel} />
+        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
         <span className="px-1 text-embl-purple-default italic">Self</span>
       </span>
     );

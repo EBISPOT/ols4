@@ -29,7 +29,7 @@ export default function EntityPage({
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
-  const iriToLabel = entity ? entity.getIriToLabel() : {};
+  const iriToLabels = entity ? entity.getiriToLabels() : {};
 
   const [isShortFormCopied, setIsShortFormCopied] = useState(false);
   const copyShortForm = (text: string) => {
@@ -121,9 +121,9 @@ export default function EntityPage({
                     .getDescriptionAsArray()
                     .map((definition: Reified<any>) => {
                       const hasMetadata =
-                        definition.metadata?.iriToLabel &&
+                        definition.metadata?.iriToLabels &&
                         Object.keys(definition.metadata).length > 0 &&
-                        Object.keys(definition.metadata.iriToLabel).length > 0;
+                        Object.keys(definition.metadata.iriToLabels).length > 0;
                       return (
                         <span key={randomString()}>
                           {definition.value}
@@ -131,14 +131,14 @@ export default function EntityPage({
                             <Tooltip
                               title={Object.keys(definition.metadata)
                                 .map((key) => {
-                                  if (definition.metadata.iriToLabel[key]) {
+                                  if (definition.metadata.iriToLabels[key]) {
                                     return (
                                       "*" +
                                       definition.metadata[key] +
                                       " (" +
-                                      definition.metadata.iriToLabel[
+                                      definition.metadata.iriToLabels[
                                         key
-                                      ].replaceAll("_", " ") +
+                                      ][0].replaceAll("_", " ") +
                                       ")"
                                     );
                                   }
@@ -164,9 +164,9 @@ export default function EntityPage({
                       .getSynonyms()
                       .map((synonym: Reified<any>) => {
                         const hasMetadata =
-                          synonym.metadata?.iriToLabel &&
+                          synonym.metadata?.iriToLabels &&
                           Object.keys(synonym.metadata).length > 0 &&
-                          Object.keys(synonym.metadata.iriToLabel).length > 0;
+                          Object.keys(synonym.metadata.iriToLabels).length > 0;
                         return (
                           <div
                             key={
@@ -180,14 +180,14 @@ export default function EntityPage({
                               <Tooltip
                                 title={Object.keys(synonym.metadata)
                                   .map((key) => {
-                                    if (synonym.metadata.iriToLabel[key]) {
+                                    if (synonym.metadata.iriToLabels[key]) {
                                       return (
                                         "*" +
                                         synonym.metadata[key] +
                                         " (" +
-                                        synonym.metadata.iriToLabel[
+                                        synonym.metadata.iriToLabels[
                                           key
-                                        ].replaceAll("_", " ") +
+                                        ][0].replaceAll("_", " ") +
                                         ")"
                                       );
                                     }
@@ -348,28 +348,28 @@ export default function EntityPage({
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent: Reified<any>) => {
                             const hasMetadata =
-                              parent.metadata?.iriToLabel &&
+                              parent.metadata?.iriToLabels &&
                               Object.keys(parent.metadata).length > 0 &&
-                              Object.keys(parent.metadata.iriToLabel).length >
+                              Object.keys(parent.metadata.iriToLabels).length >
                                 0;
                             return (
                               <li key={randomString()}>
                                 <ClassExpression
                                   expr={parent.value}
-                                  iriToLabel={iriToLabel}
+                                  iriToLabels={iriToLabels}
                                 />
                                 {hasMetadata ? (
                                   <Tooltip
                                     title={Object.keys(parent.metadata)
                                       .map((key) => {
-                                        if (parent.metadata.iriToLabel[key]) {
+                                        if (parent.metadata.iriToLabels[key]) {
                                           return (
                                             "*" +
                                             parent.metadata[key] +
                                             " (" +
-                                            parent.metadata.iriToLabel[
+                                            parent.metadata.iriToLabels[
                                               key
-                                            ].replaceAll("_", " ") +
+                                            ][0].replaceAll("_", " ") +
                                             ")"
                                           );
                                         }

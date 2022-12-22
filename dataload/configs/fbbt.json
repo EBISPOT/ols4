@@ -1,0 +1,134 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "browsers": [
+        {
+          "label": "FB",
+          "title": "FlyBase Browser",
+          "url": "http://flybase.org/.bin/cvreport.html?cvterm=FBbt:10000000"
+        },
+        {
+          "label": "VFB",
+          "title": "Virtual Fly Brain",
+          "url": "http://www.virtualflybrain.org/site/stacks/index.htm?add=FBbt:00007401"
+        },
+        {
+          "label": "BioPortal",
+          "title": "BioPortal Browser",
+          "url": "http://bioportal.bioontology.org/ontologies/FB-BT?p=classes"
+        }
+      ],
+      "build": {
+        "checkout": "git clone https://github.com/FlyBase/drosophila-anatomy-developmental-ontology.git",
+        "path": ".",
+        "system": "git"
+      },
+      "contact": {
+        "email": "cp390@cam.ac.uk",
+        "github": "Clare72",
+        "label": "Clare Pilgrim",
+        "orcid": "0000-0002-1373-1705"
+      },
+      "description": "An ontology representing the gross anatomy of Drosophila melanogaster.",
+      "domain": "anatomy and development",
+      "homepage": "http://purl.obolibrary.org/obo/fbbt",
+      "id": "fbbt",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/fbbt.owl",
+      "preferredPrefix": "FBbt",
+      "products": [
+        {
+          "id": "fbbt.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fbbt.owl"
+        },
+        {
+          "id": "fbbt.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fbbt.obo"
+        },
+        {
+          "id": "fbbt.json",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fbbt.json"
+        },
+        {
+          "id": "fbbt/fbbt-simple.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fbbt/fbbt-simple.owl"
+        },
+        {
+          "id": "fbbt/fbbt-simple.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fbbt/fbbt-simple.obo"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/24139062",
+          "title": "The Drosophila anatomy ontology"
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/22402613",
+          "title": "A strategy for building neuroanatomy ontologies"
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/22180411",
+          "title": "The Virtual Fly Brain Browser and Query Interface"
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/16381917",
+          "title": "FlyBase: anatomical data, images and queries"
+        }
+      ],
+      "repository": "https://github.com/FlyBase/drosophila-anatomy-developmental-ontology",
+      "tags": [
+        "Drosophilid anatomy"
+      ],
+      "taxon": {
+        "id": "NCBITaxon:7227",
+        "label": "Drosophila"
+      },
+      "title": "Drosophila gross anatomy",
+      "tracker": "http://purl.obolibrary.org/obo/fbbt/tracker",
+      "usages": [
+        {
+          "description": "VFB uses FBbt to annotate brain images",
+          "examples": [
+            {
+              "description": "Ring neuron R2 in VFB",
+              "url": "http://www.virtualflybrain.org/site/stacks/index.htm?id=FBbt_00003651"
+            },
+            {
+              "description": "genes expressed in ring neuron R2 in VFB",
+              "url": "http://www.virtualflybrain.org/do/gene_list.html?action=geneex&id=FBbt:00003651"
+            }
+          ],
+          "user": "http://www.virtualflybrain.org/"
+        },
+        {
+          "description": "Flybase uses FBbt for expression and phenotype data annotation in Drosophila",
+          "examples": [
+            {
+              "description": "alleles, constructs and insertions annotated to neuron in FlyBase",
+              "url": "http://flybase.org/cgi-bin/cvreport.html?rel=is_a&id=FBbt:00005106"
+            }
+          ],
+          "user": "http://flybase.org"
+        }
+      ]
+    }
+  ]
+}

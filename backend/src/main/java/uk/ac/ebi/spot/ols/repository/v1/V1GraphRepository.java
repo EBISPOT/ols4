@@ -97,9 +97,14 @@ public class V1GraphRepository {
 
             String propertyLabel = "is a";
 
-            Map<String, Object> iriToLabel = (Map<String, Object>) ontologyEdgeObject.get("iriToLabel");
-            if (iriToLabel != null) {
-                String label = (String) iriToLabel.get(uri);
+            Map<String, Object> iriToLabels = (Map<String, Object>) ontologyEdgeObject.get("iriToLabels");
+            if (iriToLabels != null) {
+		String label;
+		if(iriToLabels instanceof Collection) {
+			label = ((Collection<String>) iriToLabels).iterator().next();
+		} else {
+                	label = (String) iriToLabels.get(uri);
+		}
                 if (label != null) {
                     propertyLabel = label;
                 }

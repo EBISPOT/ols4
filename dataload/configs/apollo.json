@@ -1,0 +1,51 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "contact": {
+        "email": "hoganwr@ufl.edu",
+        "github": "hoganwr",
+        "label": "William Hogan",
+        "orcid": "0000-0002-9881-1017"
+      },
+      "description": "Defines terms and relations necessary for interoperation between epidemic models and public health application software that interface with these models",
+      "domain": "health",
+      "homepage": "https://github.com/ApolloDev/apollo-sv",
+      "id": "apollo_sv",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/apollo_sv.owl",
+      "preferredPrefix": "APOLLO_SV",
+      "products": [
+        {
+          "id": "apollo_sv.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://doi.org/10.1186/s13326-016-0092-y",
+          "title": "The Apollo Structured Vocabulary: an OWL2 ontology of phenomena in infectious disease epidemiology and population biology for use in epidemic simulation"
+        }
+      ],
+      "repository": "https://github.com/ApolloDev/apollo-sv",
+      "title": "Apollo Structured Vocabulary",
+      "tracker": "https://github.com/ApolloDev/apollo-sv/issues"
+    }
+  ]
+}
