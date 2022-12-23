@@ -4,6 +4,7 @@ import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -37,32 +38,36 @@ public class V1OboXref {
 
         List<Object> xrefs = entity.getObjects("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
 
-        List<V1OboXref> res =  xrefs.stream().map(xref -> {
+        List<V1OboXref> res = new ArrayList<>();
+      
+        for(Object xref : xrefs) {
 
             if(xref instanceof String) {
                 V1OboXref xrefObj = V1OboXref.fromString((String) xref, oboDbUrls);
-                return xrefObj;
+                res.add(xrefObj);
+                continue;
             }
 
             Map<String,Object> xrefMap = (Map<String,Object>) xref;
 
-            V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-
             Object source = xrefMap.get("http://www.geneontology.org/formats/oboInOwl#source");
 
             if(source instanceof List) {
-                // TODO I don't even think OLS3 handles this; how can we be backwards compatible?
-                xrefObj.description = ((List<Object>) source).stream().map(src -> src.toString()).collect(Collectors.joining("; "));
+                for(String src : (List<String>) source) {
+                    V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
+                    xrefObj.description = src;
+                    res.add(xrefObj);
+                }
             } else {
+                V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
                 xrefObj.description = (String) source;
+                res.add(xrefObj);
             }
 
             // TODO url?
-
-            return xrefObj;
-
-        }).collect(Collectors.toList());
+        }
 
         return res.size() > 0 ? res : null;
     }
+
 }
