@@ -21,6 +21,7 @@ public class HierarchyFlagsAnnotator {
 
         // Set of IRIs that have children
         Set<String> hasChildren = new HashSet<>();
+        Set<String> hasHierarchicalChildren = new HashSet<>();
 
         for(String id : graph.nodes.keySet()) {
             OwlNode c = graph.nodes.get(id);
@@ -32,6 +33,10 @@ public class HierarchyFlagsAnnotator {
                 // skip bnodes
                 if(c.uri == null)
                     continue;
+
+
+		// 1. Direct parents (subClassOf)
+		//
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
 
@@ -52,7 +57,31 @@ public class HierarchyFlagsAnnotator {
                     }
                 }
 
-                c.properties.addProperty("isRoot", PropertyValueLiteral.fromString(hasDirectParent ? "false" : "true"));
+                c.properties.addProperty("hasDirectParent", PropertyValueLiteral.fromString(hasDirectParent ? "true" : "false"));
+
+		// 2. Hierarchical parents
+		//
+
+                List<PropertyValue> hierarchicalParents = c.properties.getPropertyValues("hierarchicalParent");
+
+                boolean hasHierarchicalParent = false;
+
+                if(hierarchicalParents != null) {
+                    for (PropertyValue parent : hierarchicalParents) {
+
+                        String iri = ((PropertyValueURI) parent).getUri();
+
+                        if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
+                                iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
+                                    continue;
+                        }
+
+                        hasHierarchicalParent = true;
+                        hasHierarchicalChildren.add(iri);
+                    }
+                }
+
+                c.properties.addProperty("hasHierarchicalParent", PropertyValueLiteral.fromString(hasHierarchicalParent ? "true" : "false"));
             }
         }
 
@@ -68,9 +97,15 @@ public class HierarchyFlagsAnnotator {
                     continue;
 
                 if(hasChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("true"));
                 } else {
-                    c.properties.addProperty("hasChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("false"));
+                }
+
+                if(hasHierarchicalChildren.contains(c.uri)) {
+                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("true"));
+                } else {
+                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("false"));
                 }
             }
         }

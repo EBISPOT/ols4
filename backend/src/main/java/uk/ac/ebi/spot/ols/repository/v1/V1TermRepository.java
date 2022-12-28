@@ -197,7 +197,8 @@ public class V1TermRepository {
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("isRoot", "true", Fuzziness.EXACT);
+        query.addFilter("hasDirectParent", "false", Fuzziness.EXACT);
+        query.addFilter("hasHierarchicalParent", "false", Fuzziness.EXACT);
 
         if(!obsolete)
             query.addFilter("isObsolete", "false", Fuzziness.EXACT);

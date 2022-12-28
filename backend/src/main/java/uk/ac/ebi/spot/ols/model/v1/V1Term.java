@@ -46,10 +46,7 @@ public class V1Term {
         description = localizedObj.getStrings("definition").toArray(new String[0]);
         synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
         annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
-
-        inSubsets = null;
-
-
+        inSubsets = V1AnnotationExtractor.extractSubsets(localizedObj);
 
         oboDefinitionCitations = V1OboDefinitionCitation.extractFromEntity(localizedObj, oboDbUrls);
         oboXrefs = V1OboXref.extractFromEntity(localizedObj, oboDbUrls);
@@ -58,8 +55,18 @@ public class V1Term {
         related = new HashSet<>();
 
         isDefiningOntology = Boolean.parseBoolean(localizedObj.getString("isDefiningOntology"));
-        hasChildren = Boolean.parseBoolean(localizedObj.getString("hasChildren"));
 
+        hasChildren = Boolean.parseBoolean(localizedObj.getString("hasDirectChildren"))
+                || Boolean.parseBoolean(localizedObj.getString("hasHierarchicalChildren"));
+
+        isRoot = !(
+                Boolean.parseBoolean(localizedObj.getString("hasDirectParent")) ||
+                        Boolean.parseBoolean(localizedObj.getString("hasHierarchicalParent"))
+        );
+
+        isObsolete = Boolean.parseBoolean(localizedObj.getString("isObsolete"));
+
+        termReplacedBy = localizedObj.getString("http://purl.obolibrary.org/obo/IAO_0100001");
 
 
         Map<String,Object> iriToLabels = (Map<String,Object>) localizedObj.getObject("iriToLabels");
@@ -138,7 +145,7 @@ public class V1Term {
     public String oboId;
 
     @JsonProperty(value = IN_SUBSET)
-    public Set<String> inSubsets;
+    public List<String> inSubsets;
 
     public Map<String,Object> annotation;
 

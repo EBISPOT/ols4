@@ -86,7 +86,9 @@ public class V1AncestorsJsTreeBuilder {
         boolean opened = (!selected);
 
         // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
-        boolean children = (!opened) && entity.get("hasChildren").equals("true");
+        boolean children = (!opened) && 
+		(entity.get("hasDirectChildren").equals("true") || entity.get("hasHierarchicalChildren").equals("true"));
+
         //boolean children = childIris.size() > 0;
 
         Map<String,Boolean> state = new LinkedHashMap<>();

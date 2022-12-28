@@ -198,7 +198,7 @@ public class OntologyWriter {
 		return;
 
 	// these properties are informational and should not create edges
-	if(predicate.equals("annotationPredicate"))
+	if(predicate.equals("hierarchicalProperty") || predicate.equals("definitionProperty") || predicate.equals("synonymProperty"))
 		return;
 
         // In the case of punning, the same URI can have multiple types. In this case

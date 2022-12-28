@@ -131,7 +131,7 @@ export const getNodeChildren = createAsyncThunk(
               iri: term.getIri(),
               absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
               title: term.getName(),
-              expandable: term.hasChildren(),
+              expandable: term.hasDirectChildren(),
               entity: term,
             };
           }),
@@ -144,7 +144,7 @@ export const getRootEntities = createAsyncThunk(
   async ({ ontologyId, entityType }: any) => {
     const rootsPage = await getPaginated<any>(
       `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-        isRoot: "true",
+        hasDirectParent: "false",
         size: "100",
       })}`
     );

@@ -34,6 +34,7 @@ public class V1Property {
         description = localizedObj.getStrings("definition").toArray(new String[0]);
         synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
         annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
+//        inSubsets = V1AnnotationExtractor.extractSubsets(localizedObj);
     }
 
     public String iri;

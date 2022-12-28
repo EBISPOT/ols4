@@ -7,6 +7,7 @@ import uk.ac.ebi.spot.ols.service.GenericLocalizer;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,6 +33,7 @@ public class V1Individual {
         description = localizedObj.getStrings("definition").toArray(new String[0]);
         synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
         annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
+        inSubsets = V1AnnotationExtractor.extractSubsets(localizedObj);
 
         shortForm = localizedObj.getString("shortForm");
         oboId = shortForm.replace("_", ":");
@@ -75,7 +77,7 @@ public class V1Individual {
     public String oboId;
 
     @JsonProperty(value = IN_SUBSET)
-    public Set<String> inSubsets;
+    public List<String> inSubsets;
 
     public Map<String,Object> annotation;
 

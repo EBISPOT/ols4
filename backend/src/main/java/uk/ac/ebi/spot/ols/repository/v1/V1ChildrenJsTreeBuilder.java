@@ -31,7 +31,10 @@ public class V1ChildrenJsTreeBuilder {
             jstreeEntry.put("iri", child.get("iri"));
             jstreeEntry.put("text", child.get("label"));
             jstreeEntry.put("state", Map.of("opened", false));
-            jstreeEntry.put("children", child.get("hasChildren").equals("true"));
+            jstreeEntry.put("children",
+	    	child.get("hasDirectChildren").equals("true")
+		|| child.get("hasHierarchicalChildren").equals("true")
+	    );
 
             Map<String,Object> attrObj = new LinkedHashMap<>();
             attrObj.put("iri", child.get("iri"));

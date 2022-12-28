@@ -194,11 +194,11 @@ public class OwlGraph implements StreamRDF {
     SynonymAnnotator.annotateSynonyms(this);
     ReifiedPropertyAnnotator.annotateReifiedProperties(this);
     OntologyMetadataAnnotator.annotateOntologyMetadata(this);
-    HierarchyFlagsAnnotator.annotateHierarchyFlags(this); // must run after DirectParentsAnnotator
+    HierarchyFlagsAnnotator.annotateHierarchyFlags(this); // must run after DirectParentsAnnotator and HierarchicalParentsAnnotator
     IsObsoleteAnnotator.annotateIsObsolete(this);
     IsDefiningOntologyAnnotator.annotateIsDefiningOntology(this);
     LabelAnnotator.annotateLabels(this);
-    AnnotationPredicatesAnnotator.annotateAnnotationPredicates(this);
+    ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
 

@@ -9,8 +9,12 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["definition"]);
   }
 
-  hasChildren(): boolean {
-    return this.properties["hasChildren"] === "true";
+  hasDirectChildren(): boolean {
+    return this.properties["hasDirectChildren"] === "true";
+  }
+
+  hasHierarchicalChildren(): boolean {
+    return this.properties["hasHierarchicalChildren"] === "true";
   }
 
   getSynonyms() {
