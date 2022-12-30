@@ -23,17 +23,25 @@ public class V1OboDefinitionCitation {
             if(def instanceof Map) {
                 Map<String,Object> defAsMap = (Map<String,Object>) def;
 
-                if(defAsMap.containsKey("http://www.geneontology.org/formats/oboInOwl#hasDbXref")) {
+                if(defAsMap.containsKey("axioms")) {
 
-                    Object xrefs = defAsMap.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
-                    List<Object> xrefList = xrefs instanceof List ? (List<Object>)xrefs : List.of(xrefs);
+                    List<Map<String,Object>> axioms = (List<Map<String,Object>>) defAsMap.get("axioms");
 
-                    String definition = (String)defAsMap.get("value");
+                    for(Map<String,Object> axiom : axioms) {
 
-                    V1OboDefinitionCitation citation = new V1OboDefinitionCitation();
-                    citation.definition = definition;
-                    citation.oboXrefs = xrefList.stream().map(xref -> V1OboXref.fromString((String) xref, oboDbUrls)).collect(Collectors.toList());
-                    res.add(citation);
+                        Object xrefs = axiom.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
+
+                        if(xrefs != null) {
+                            List<Object> xrefList = xrefs instanceof List ? (List<Object>)xrefs : List.of(xrefs);
+
+                            String definition = (String)defAsMap.get("value");
+
+                            V1OboDefinitionCitation citation = new V1OboDefinitionCitation();
+                            citation.definition = definition;
+                            citation.oboXrefs = xrefList.stream().map(xref -> V1OboXref.fromString((String) xref, oboDbUrls)).collect(Collectors.toList());
+                            res.add(citation);
+                        }
+                    }
                 }
             }
         }

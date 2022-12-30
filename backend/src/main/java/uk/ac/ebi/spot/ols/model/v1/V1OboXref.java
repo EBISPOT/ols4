@@ -19,6 +19,25 @@ public class V1OboXref {
     // e.g. Orphanet:1037
     public static V1OboXref fromString(String oboXref, OboDatabaseUrlService oboDbUrls) {
 
+        if(oboXref.startsWith("http:") || oboXref.startsWith("https:")) {
+            V1OboXref xref = new V1OboXref();
+            xref.id = oboXref;
+            xref.url = oboXref;
+            return xref;
+        }
+
+        if(oboXref.contains("://")) {
+            if(oboXref.matches("^[A-Z]+:.+")) {
+                    // e.g. DOI:https://doi.org/10.1378/chest.12-2762
+                    V1OboXref xref = new V1OboXref();
+                    xref.id = oboXref;
+    //                xref.database = oboXref.split(":")[0];
+    //                xref.id = oboXref.substring(oboXref.indexOf(':') + 1);
+    //                xref.url = oboXref.substring(oboXref.indexOf(':') + 1);
+                    return xref;
+            }
+        }
+
         String[] tokens = oboXref.split(":");
 
         if(tokens.length < 2) {
@@ -50,18 +69,23 @@ public class V1OboXref {
 
             Map<String,Object> xrefMap = (Map<String,Object>) xref;
 
-            Object source = xrefMap.get("http://www.geneontology.org/formats/oboInOwl#source");
+            List<Map<String,Object>> axioms = (List<Map<String,Object>>) xrefMap.get("axioms");
 
-            if(source instanceof List) {
-                for(String src : (List<String>) source) {
+            for(Map<String,Object> axiom : axioms) {
+
+                Object source = axiom.get("http://www.geneontology.org/formats/oboInOwl#source");
+
+                if(source instanceof List) {
+                    for(String src : (List<String>) source) {
+                        V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
+                        xrefObj.description = src;
+                        res.add(xrefObj);
+                    }
+                } else {
                     V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-                    xrefObj.description = src;
+                    xrefObj.description = (String) source;
                     res.add(xrefObj);
                 }
-            } else {
-                V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-                xrefObj.description = (String) source;
-                res.add(xrefObj);
             }
 
             // TODO url?
