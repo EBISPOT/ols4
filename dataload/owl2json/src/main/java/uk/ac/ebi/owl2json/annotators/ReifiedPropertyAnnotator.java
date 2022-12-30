@@ -22,16 +22,20 @@ public class ReifiedPropertyAnnotator {
 
 				OwlNode sourceNode = graph.nodes.get(graph.nodeIdFromPropertyValue(source));
 
+				PropertySet axiom = new PropertySet();
+
 				for (String p2 : c.properties.getPropertyPredicates()) {
 					List<PropertyValue> v2 = c.properties.getPropertyValues(p2);
 					for (PropertyValue prop : v2) {
 						if (!p2.equals("http://www.w3.org/2002/07/owl#annotatedSource")
 								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedProperty")
 								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedTarget")) {
-							sourceNode.properties.annotateProperty(propertyUri, target, p2, prop, graph);
+							axiom.addProperty(p2, prop);
 						}
 					}
 				}
+
+				sourceNode.properties.annotatePropertyWithAxiom(propertyUri, target, axiom, graph);
 			}
 		}
 		long endTime3 = System.nanoTime();

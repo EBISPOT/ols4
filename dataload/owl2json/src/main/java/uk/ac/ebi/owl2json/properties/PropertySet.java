@@ -35,8 +35,7 @@ public class PropertySet {
         return properties.containsKey(predicate);
     }
 
-    public void annotateProperty(String predicate, PropertyValue value, String predicate2, PropertyValue value2,
-            OwlGraph graph) {
+    public void annotatePropertyWithAxiom(String predicate, PropertyValue value, PropertySet axiom, OwlGraph graph) {
 
         List<PropertyValue> props = properties.get(predicate);
 
@@ -74,11 +73,7 @@ public class PropertySet {
             properties.put(predicate, props);
         }
 
-        if (prop.properties == null) {
-            prop.properties = new PropertySet();
-        }
-
-        prop.properties.addProperty(predicate2, value2);
+        prop.axioms.add(axiom);
     }
 
     public Set<String> getPropertyPredicates() {

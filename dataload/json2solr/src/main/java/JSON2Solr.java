@@ -284,19 +284,19 @@ public class JSON2Solr {
 
     // There are 4 cases when the object can be a Map {} instead of a literal.
     //
-    //  (1) It's a value with type information { datatype: ..., value: ... }
+    //  (1) It's a literal with type information { datatype: ..., value: ... }
     //
     //  (2) It's a class expression
     //
     //  (3) It's a localization, which is a specific case of (1) where a
     //      language and localized value are provided.
     //
-    //  (4) It's reification { type: Axiom|Restriction, ....,  value: ... }
+    //  (4) It's reification { type: reification|related, ....,  value: ... }
     // 
     // In the case of (1), we discard the datatype and keep the value
     //
     // In the case of (2), we don't store anything in solr fields. Class
-    // expressions should // already have been evaluated into separate "related"
+    // expressions should already have been evaluated into separate "related"
     // fields by the RelatedAnnotator in owl2json.
     //
     // In the case of (3), we create a Solr document for each language (see 
@@ -310,8 +310,17 @@ public class JSON2Solr {
     public static Object discardMetadata(Object obj, String lang) {
 
         if (obj instanceof Map) {
+
             Map<String, Object> dict = (Map<String, Object>) obj;
-            if (dict.containsKey("value")) {
+	    List<String> types = (List<String>) dict.get("type");
+
+	    if(types == null) {
+		// (2) class expression
+		return null;
+	    }
+
+	    if(types.contains("literal")) {
+
                 if(dict.containsKey("lang")) {
 		    // (3) localisation
                     String valLang = (String)dict.get("lang");
@@ -320,15 +329,23 @@ public class JSON2Solr {
                         return null;
                     }
                 }
-		// (1) datatyped or (4) reification
-                return discardMetadata(dict.get("value"), lang);
-            } else {
-		// (2) class expression
-		return null;
-	    }
-        }
 
-        return obj;
+		// (1) typed literal
+                return discardMetadata(dict.get("value"), lang);
+
+	    } else if(types.contains("reification") || types.contains("related")) {
+
+		// (4) reification
+                return discardMetadata(dict.get("value"), lang);
+
+	    } else {
+		throw new RuntimeException("???");
+	    }
+
+        } else {
+	
+		return obj;
+	}
     }
 
     // Gather all of the lang: attributes from an object and all of its descendants

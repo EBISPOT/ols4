@@ -121,22 +121,22 @@ export default function EntityPage({
                     .getDescriptionAsArray()
                     .map((definition: Reified<any>) => {
                       const hasMetadata =
-                        definition.metadata?.iriToLabels &&
-                        Object.keys(definition.metadata).length > 0 &&
-                        Object.keys(definition.metadata.iriToLabels).length > 0;
+                        definition.getMetadata()?.iriToLabels &&
+                        Object.keys(definition.getMetadata()).length > 0 &&
+                        Object.keys(definition.getMetadata().iriToLabels).length > 0;
                       return (
                         <span key={randomString()}>
                           {definition.value}
                           {hasMetadata ? (
                             <Tooltip
-                              title={Object.keys(definition.metadata)
+                              title={Object.keys(definition.getMetadata())
                                 .map((key) => {
-                                  if (definition.metadata.iriToLabels[key]) {
+                                  if (definition.getMetadata().iriToLabels[key]) {
                                     return (
                                       "*" +
-                                      definition.metadata[key] +
+                                      definition.getMetadata()[key] +
                                       " (" +
-                                      definition.metadata.iriToLabels[
+                                      definition.getMetadata().iriToLabels[
                                         key
                                       ][0].replaceAll("_", " ") +
                                       ")"
@@ -164,9 +164,9 @@ export default function EntityPage({
                       .getSynonyms()
                       .map((synonym: Reified<any>) => {
                         const hasMetadata =
-                          synonym.metadata?.iriToLabels &&
-                          Object.keys(synonym.metadata).length > 0 &&
-                          Object.keys(synonym.metadata.iriToLabels).length > 0;
+                          synonym.getMetadata()?.iriToLabels &&
+                          Object.keys(synonym.getMetadata()).length > 0 &&
+                          Object.keys(synonym.getMetadata().iriToLabels).length > 0;
                         return (
                           <div
                             key={
@@ -178,14 +178,14 @@ export default function EntityPage({
                             {synonym.value}
                             {hasMetadata ? (
                               <Tooltip
-                                title={Object.keys(synonym.metadata)
+                                title={Object.keys(synonym.getMetadata())
                                   .map((key) => {
-                                    if (synonym.metadata.iriToLabels[key]) {
+                                    if (synonym.getMetadata().iriToLabels[key]) {
                                       return (
                                         "*" +
-                                        synonym.metadata[key] +
+                                        synonym.getMetadata()[key] +
                                         " (" +
-                                        synonym.metadata.iriToLabels[
+                                        synonym.getMetadata().iriToLabels[
                                           key
                                         ][0].replaceAll("_", " ") +
                                         ")"
@@ -348,9 +348,9 @@ export default function EntityPage({
                         <ul className="list-disc list-inside">
                           {entity.getParents().map((parent: Reified<any>) => {
                             const hasMetadata =
-                              parent.metadata?.iriToLabels &&
-                              Object.keys(parent.metadata).length > 0 &&
-                              Object.keys(parent.metadata.iriToLabels).length >
+                              parent.getMetadata()?.iriToLabels &&
+                              Object.keys(parent.getMetadata()).length > 0 &&
+                              Object.keys(parent.getMetadata().iriToLabels).length >
                                 0;
                             return (
                               <li key={randomString()}>
@@ -360,14 +360,14 @@ export default function EntityPage({
                                 />
                                 {hasMetadata ? (
                                   <Tooltip
-                                    title={Object.keys(parent.metadata)
+                                    title={Object.keys(parent.getMetadata())
                                       .map((key) => {
-                                        if (parent.metadata.iriToLabels[key]) {
+                                        if (parent.getMetadata().iriToLabels[key]) {
                                           return (
                                             "*" +
-                                            parent.metadata[key] +
+                                            parent.getMetadata()[key] +
                                             " (" +
-                                            parent.metadata.iriToLabels[
+                                            parent.getMetadata().iriToLabels[
                                               key
                                             ][0].replaceAll("_", " ") +
                                             ")"

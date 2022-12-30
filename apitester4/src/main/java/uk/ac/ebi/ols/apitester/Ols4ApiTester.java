@@ -7,11 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.google.gson.*;
@@ -379,16 +375,11 @@ public class Ols4ApiTester {
 				elems[i] = deepSort(arr.get(i));
 			}
 			
-			Arrays.sort(elems, new Comparator<JsonElement>() {
-
-				public int compare(JsonElement a, JsonElement b) {
-					return gson.toJson(a).compareTo(gson.toJson(b));
-				}
-			});
+			Arrays.sort(elems, Comparator.comparing(elem -> gson.toJson(elem)));
 
 			JsonArray res = new JsonArray();
 
-			for(int i = 0; i < arr.size(); ++ i) {
+			for(int i = 0; i < elems.length; ++ i) {
 				res.add(elems[i]);
 			}
 
@@ -398,11 +389,7 @@ public class Ols4ApiTester {
 
 			JsonObject obj = element.getAsJsonObject();
 
-			TreeSet<String> sortedKeys = new TreeSet<String>();
-
-			for(String key : obj.keySet()) {
-				sortedKeys.add(key);
-			}
+			TreeSet<String> sortedKeys = new TreeSet<String>(obj.keySet());
 
 			JsonObject res = new JsonObject();
 

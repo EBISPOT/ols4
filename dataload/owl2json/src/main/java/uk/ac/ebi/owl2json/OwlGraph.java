@@ -440,12 +440,23 @@ public class OwlGraph implements StreamRDF {
 
 
     public void writePropertyValue(JsonWriter writer, PropertyValue value, Set<String> types) throws IOException {
-        if (value.properties != null) {
+        if (value.axioms.size() > 0) {
             // reified
             writer.beginObject();
+            writer.name("type");
+	    writer.beginArray();
+	    writer.value("reification");
+	    writer.endArray();
             writer.name("value");
             writeValue(writer, value);
-            writeProperties(writer, value.properties, types);
+            writer.name("axioms");
+	    writer.beginArray();
+	    for(PropertySet axiom : value.axioms) {
+		writer.beginObject();
+		writeProperties(writer, axiom, null);
+		writer.endObject();
+	    }
+	    writer.endArray();
             writer.endObject();
         } else {
             // not reified
@@ -455,7 +466,7 @@ public class OwlGraph implements StreamRDF {
     }
 
     public void writeValue(JsonWriter writer, PropertyValue value) throws IOException {
-        assert (value.properties == null);
+        assert (value.axioms == null);
 
         switch(value.getType()) {
             case BNODE:
@@ -477,6 +488,10 @@ public class OwlGraph implements StreamRDF {
                     writer.value(literal.getValue());
                 } else {
                     writer.beginObject();
+                    writer.name("type");
+                    writer.beginArray();
+		    writer.value("literal");
+                    writer.endArray();
                     writer.name("datatype");
                     writer.value(literal.getDatatype());
                     writer.name("value");

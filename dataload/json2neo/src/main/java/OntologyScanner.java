@@ -129,6 +129,10 @@ public class OntologyScanner {
 
     private static void visitValue(String predicate, Object value, Set<String> outProps, Set<String> outEdgeProps) {
 
+        if(predicate.equals("iriToLabels")) {
+            return;
+        }
+
         if(value instanceof String) {
 
         } else if(value instanceof List) {
@@ -140,14 +144,20 @@ public class OntologyScanner {
 
         } else if(value instanceof Map) {
 
-            // either reification, or a bnode (anon. class or restriction)
+            // could be a typed literal, a relatedTo object, reification, or a bnode
 
             Map<String, Object> mapValue = new TreeMap<String,Object>((Map<String, Object>) value);
 
-            if(mapValue.containsKey("value")) {
+	    List<String> types = (List<String>) mapValue.get("type");
 
-                // either reification (an owl axiom) OR a langString
+	    if(types == null) {
+		// bnode (anon. class)
+		return;
+	    }
 
+	    if(types.contains("literal")) {
+
+		// is this a localization?
                 if(mapValue.containsKey("lang")) {
 
                     String lang = (String)mapValue.get("lang");
@@ -159,27 +169,34 @@ public class OntologyScanner {
                     if(!lang.equals("en")) {
                         outProps.add(lang + "+" + predicate);
                     }
+		}
 
-                } else {
+	    } else if(types.contains("related")) {
 
-                    // reification (owl:Axiom or relatedTo)
-                    
+                visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);
+
+	    } else if(types.contains("reification")) {
+
+		List<Object> axioms = (List<Object>) mapValue.get("axioms");
+
+		for(Object axiomObj : axioms) {
+
+		    Map<String,Object> axiom = (Map<String,Object>) axiomObj;
+
                     // predicates used to describe the edge itself
-                    for(String edgePredicate : mapValue.keySet()) {
+                    for(String edgePredicate : axiom.keySet()) {
 
-                        if(edgePredicate.equals("value"))
+                        if(edgePredicate.equals("type"))
                             continue;
 
                         outEdgeProps.add(edgePredicate);
                     }
-                }
+		}
 
                 visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);
 
             } else {
-
-                // bnode (anon. class or restriction)
-
+		throw new RuntimeException("???");
             }
 
         }

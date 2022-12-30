@@ -164,23 +164,32 @@ public class OntologyWriter {
         for(Object v : values) {
 
             if (v instanceof Map) {
-                // maybe axiom
+
                 Map<String, Object> mapValue = (Map<String, Object>) v;
-                if (mapValue.containsKey("value") && !mapValue.containsKey("lang")) {
-                    // axiom
-                    Object axiomValue = mapValue.get("value");
-                    assert (axiomValue instanceof String);
+		List<String> types = (List<String>) mapValue.get("type");
+
+		if(types != null && types.contains("reification")) {
+
+                    // reification 
+                    Object reifiedValue = mapValue.get("value");
+                    assert (reifiedValue instanceof String);
+
+		    List<Map<String,Object>> axioms = (List<Map<String,Object>>) mapValue.get("axioms");
+		    assert(axioms != null);
 
                     // is the value the URI of something that exists in the ontology?
-                    if (ontologyScannerResult.uriToTypes.containsKey(axiomValue)) {
-                        printEdge(ontologyId, subject, property, axiomValue, mapValue);
+                    if (ontologyScannerResult.uriToTypes.containsKey(reifiedValue)) {
+			// create one edge for each axiom
+			for(Map<String,Object> axiom : axioms) {
+				printEdge(ontologyId, subject, property, reifiedValue, axiom);
+			}
                     }
                 }
             } else if (v instanceof String) {
 
                 // is the value the URI of something that exists in the ontology?
                 if (ontologyScannerResult.uriToTypes.containsKey(v)) {
-                    printEdge(ontologyId, subject, property, v, new TreeMap<>());
+                    printEdge(ontologyId, subject, property, v, Map.of());
                 }
 
             } else {
@@ -209,8 +218,7 @@ public class OntologyWriter {
         // In the hacky approach below, we just make multiple edges: in the above example,
         // one edge would point to the Class and another would point to the Individual.
         //
-        // TODO: We should instead look up "predicate" and find out what the semantics
-        // of the property are.
+        // TODO: fix
         //
         Set<OntologyScanner.NodeType> aTypes = ontologyScannerResult.uriToTypes.get(aUri);
         Set<OntologyScanner.NodeType> bTypes = ontologyScannerResult.uriToTypes.get(bUri);

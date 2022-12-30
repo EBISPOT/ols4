@@ -1,10 +1,10 @@
 export default class Reified<T> {
   value: T;
-  metadata: any | null;
+  axioms: any[]|null
 
-  private constructor(value: T, metadata: any) {
+  private constructor(value: T, axioms: any[]|null) {
     this.value = value;
-    this.metadata = metadata;
+    this.axioms = axioms
   }
 
   public static fromJson<T>(jsonNode: any): Reified<T>[] {
@@ -17,26 +17,36 @@ export default class Reified<T> {
     }
 
     return jsonNode.map((value: any) => {
-      // is this a reification?
-      if (typeof value === "object" && value.value !== undefined) {
-        // yes, separate out the metadata from the value
-        let theValue = value.value;
-        let metadata: any = {};
 
-        for (let k of Object.keys(value)) {
-          if (
-            k === "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ||
-            k === "value"
-          )
-            continue;
-          metadata[k] = value[k];
-        }
+	if(value.type.contains("reification")) {
+		return new Reified<T>(value.value, value.axioms)
+	} else {
+		return new Reified<T>(value, null)
+	}
 
-        return new Reified<T>(theValue, metadata);
-      } else {
-        // no, just return the value
-        return new Reified<T>(value, null);
-      }
     });
+  }
+
+  getMetadata():any|null {
+
+	if(!this.axioms) {
+		return null;
+	}
+
+	let metadata:any = {}
+
+	for(let axiom of this.axioms) {
+		for(let k of Object.keys(axiom)) {
+			let v = axiom[k]
+			let existing:any[]|undefined = metadata[k]
+			if(existing !== undefined) {
+				existing.push(v)
+			} else {
+				metadata[k] = [v]
+			}
+		}
+	}
+
+	return metadata;
   }
 }
