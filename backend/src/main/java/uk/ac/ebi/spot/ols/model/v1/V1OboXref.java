@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
+import com.google.common.collect.Lists;
 import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
@@ -76,11 +77,22 @@ public class V1OboXref {
                 Object source = axiom.get("http://www.geneontology.org/formats/oboInOwl#source");
 
                 if(source instanceof List) {
-                    for(String src : (List<String>) source) {
-                        V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-                        xrefObj.description = src;
-                        res.add(xrefObj);
-                    }
+
+//                    for(String src : (List<String>) source) {
+//                        V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
+//                        xrefObj.description = src;
+//                        res.add(xrefObj);
+//                    }
+
+                    // OLS3 only keeps one of the sources.
+                    // Specifically, it keeps the LAST source, alphabetically. This is because this loop in OLS3:
+                    // https://github.com/EBISPOT/OLS/blob/6f9a98d564c2759f767d1e01bbe70897cbe9aa82/ontology-tools/src/main/java/uk/ac/ebi/spot/ols/loader/AbstractOWLOntologyLoader.java#L1404-L1406
+                    // overwrites the source for each annotation (so the last one in the list wins)
+                    //
+                    V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
+                    xrefObj.description = Lists.reverse(((List<String>) source)).iterator().next();
+                    res.add(xrefObj);
+
                 } else {
                     V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
                     xrefObj.description = (String) source;

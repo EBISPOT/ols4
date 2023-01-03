@@ -23,27 +23,27 @@ public class V1OboSynonym {
         List<V1OboSynonym> synonyms =
                 exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", oboDbUrls))
                                 .flatMap(Collection::stream)
-                                .filter(synonym -> synonym.type != null || synonym.xrefs != null)
+//                                .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                                 .collect(Collectors.toList());
 
         synonyms.addAll(
                 related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls))
                         .flatMap(Collection::stream)
-                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
+//                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
                 narrow.stream().map(synonym -> fromSynonymObject(synonym, "hasNarrowSynonym", oboDbUrls))
                         .flatMap(Collection::stream)
-                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
+//                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
                 broad.stream().map(synonym -> fromSynonymObject(synonym, "hasBroadSynonym", oboDbUrls))
                         .flatMap(Collection::stream)
-                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
+//                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
@@ -83,10 +83,15 @@ public class V1OboSynonym {
     private static List<V1OboSynonym> fromSynonymObject(Object synonymObj, String scope, OboDatabaseUrlService oboDbUrls) {
 
         if(synonymObj instanceof String) {
-            V1OboSynonym synonym = new V1OboSynonym();
-            synonym.name = (String)synonymObj;
-            synonym.scope = scope;
-            return new ArrayList<>(List.of(synonym));
+
+            // These are ignored in OLS3 for some reason
+            // They will still be present in synonyms but not obo synonyms
+
+//            V1OboSynonym synonym = new V1OboSynonym();
+//            synonym.name = (String)synonymObj;
+//            synonym.scope = scope;
+//            return new ArrayList<>(List.of(synonym));
+            return new ArrayList<>(List.of());
         }
 
         List<V1OboSynonym> synonyms = new ArrayList<>();
@@ -103,6 +108,11 @@ public class V1OboSynonym {
 
             Map<String,Object> axiom = (Map<String,Object>) axiomObj;
 
+            V1OboSynonym synonym = new V1OboSynonym();
+            synonym.name = (String)synonymMap.get("value");
+            synonym.scope = scope;
+            synonym.type = (String)axiom.get("oboSynonymTypeName");
+
             Object xrefs = axiom.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
 
             if(xrefs != null) {
@@ -114,15 +124,14 @@ public class V1OboSynonym {
                         ((List<Object>) xrefs).stream().map(xref -> V1OboXref.fromString((String) xref, oboDbUrls))
                                 .collect(Collectors.toList());
 
-                V1OboSynonym synonym = new V1OboSynonym();
-
-                synonym.name = (String)synonymMap.get("value");
-                synonym.scope = scope;
-                synonym.type = (String)axiom.get("oboSynonymTypeName");
                 synonym.xrefs = xrefObjs;
 
-                synonyms.add(synonym);
+            } else  {
+                synonym.xrefs = List.of();
             }
+
+
+            synonyms.add(synonym);
         }
 
         return synonyms;
