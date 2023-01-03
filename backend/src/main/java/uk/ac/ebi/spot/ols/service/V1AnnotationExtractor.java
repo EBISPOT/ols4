@@ -39,8 +39,9 @@ public class V1AnnotationExtractor {
                     predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
                     predicate.startsWith("http://www.w3.org/2002/07/owl#")) {
 
-                // ...apart from rdfs:comment for some reason
-                if(!predicate.equals("http://www.w3.org/2000/01/rdf-schema#comment")) {
+                // ...apart from these ones
+                if(!predicate.equals("http://www.w3.org/2000/01/rdf-schema#comment")
+                        && !predicate.equals("http://www.w3.org/2000/01/rdf-schema#seeAlso")) {
                     continue;
                 }
             }
