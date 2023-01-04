@@ -23,6 +23,6 @@ public class LabelAnnotator {
     }
 
     public static void annotateLabels(OwlGraph graph) {
-        PropertyCollator.collateProperties(graph, "label", getLabelProperties(graph));
+        PropertyCollator.collateProperties(graph, "label", getLabelProperties(graph), List.of("shortForm"));
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PropertyCollator {
 
-    public static void collateProperties(OwlGraph graph, String destProp, Collection<String> sourceProps) {
+    public static void collateProperties(OwlGraph graph, String destProp, Collection<String> sourceProps, Collection<String> fallbackProps) {
 
         long startTime3 = System.nanoTime();
 
@@ -24,19 +24,33 @@ public class PropertyCollator {
                 if(c.uri == null)
                     continue;
 
+		boolean annotated = false;
+
                 for(String prop : sourceProps) {
                     List<PropertyValue> values = c.properties.getPropertyValues(prop);
                     if(values != null) {
                         for(PropertyValue value : values) {
                             c.properties.addProperty(destProp, value);
+			    annotated = true;
                         }
                     }
                 }
+
+		if(!annotated) {
+			for(String prop : fallbackProps) {
+				List<PropertyValue> values = c.properties.getPropertyValues(prop);
+				if (values != null) {
+					for (PropertyValue value : values) {
+						c.properties.addProperty(destProp, value);
+					}
+				}
+			}
+		}
             }
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("collate properties from " + sourceProps + " into " + destProp + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        System.out.println("collate properties from " + sourceProps + " and fallback " + fallbackProps + " into " + destProp + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
     }

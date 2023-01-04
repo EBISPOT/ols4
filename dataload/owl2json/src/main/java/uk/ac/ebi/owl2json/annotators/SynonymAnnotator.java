@@ -26,6 +26,6 @@ public class SynonymAnnotator {
 	}
 
 	public static void annotateSynonyms(OwlGraph graph) {
-		PropertyCollator.collateProperties(graph, "synonym", getSynonymProperties(graph));
+		PropertyCollator.collateProperties(graph, "synonym", getSynonymProperties(graph), List.of());
 	}
 }

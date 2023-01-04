@@ -24,6 +24,6 @@ public class DefinitionAnnotator {
 	}
 
 	public static void annotateDefinitions(OwlGraph graph) {
-		PropertyCollator.collateProperties(graph, "definition", getDefinitionProperties(graph));
+		PropertyCollator.collateProperties(graph, "definition", getDefinitionProperties(graph), List.of());
 	}
 }
