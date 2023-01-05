@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import org.springframework.hateoas.server.core.Relation;
-import uk.ac.ebi.spot.ols.service.GenericLocalizer;
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
-import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
+import uk.ac.ebi.spot.ols.service.*;
 
 import java.util.*;
 
@@ -67,7 +64,9 @@ public class V1Term {
         isObsolete = Boolean.parseBoolean(localizedObj.getString("isObsolete"));
 
         termReplacedBy = localizedObj.getString("http://purl.obolibrary.org/obo/IAO_0100001");
-
+        if(termReplacedBy != null) {
+            termReplacedBy = ShortFormExtractor.extractShortForm(termReplacedBy);
+        }
 
         Map<String,Object> iriToLabels = (Map<String,Object>) localizedObj.getObject("iriToLabels");
 
@@ -96,12 +95,8 @@ public class V1Term {
             relatedObj.relatedToIri = (String) relatedTo.get("value");
             related.add(relatedObj);
         }
-
-
-
-
-
     }
+
 
     public String iri;
 
