@@ -18,8 +18,12 @@ export default class Reified<T> {
 
     return jsonNode.map((value: any) => {
 
-	if(value.type.contains("reification")) {
+	if(typeof value === 'object' &&
+		Array.isArray(value.type) &&
+		value.type.indexOf("reification") !== -1) {
+
 		return new Reified<T>(value.value, value.axioms)
+
 	} else {
 		return new Reified<T>(value, null)
 	}
@@ -27,26 +31,37 @@ export default class Reified<T> {
     });
   }
 
+  // Combine all of the axioms into one metadata object for the property.
+  //
+  // note: This means that if the same property is reified multiple times with
+  // different metadata, it will all be combined in the UI. Whether this is
+  // the desired behaviour is TBD.
+  //
   getMetadata():any|null {
 
 	if(!this.axioms) {
 		return null;
 	}
 
-	let metadata:any = {}
+	let properties:any = {}
+	let iriToLabels:any = {}
 
 	for(let axiom of this.axioms) {
 		for(let k of Object.keys(axiom)) {
 			let v = axiom[k]
-			let existing:any[]|undefined = metadata[k]
-			if(existing !== undefined) {
-				existing.push(v)
+			if(k === 'iriToLabels') {
+				iriToLabels = { ...iriToLabels, ...v }
 			} else {
-				metadata[k] = [v]
+				let existing:any[]|undefined = properties[k]
+				if(existing !== undefined) {
+					existing.push(v)
+				} else {
+					properties[k] = [v]
+				}
 			}
 		}
 	}
 
-	return metadata;
+	return { ...properties, iriToLabels };
   }
 }
