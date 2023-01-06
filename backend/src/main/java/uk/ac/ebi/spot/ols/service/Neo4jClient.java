@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import com.google.common.base.Stopwatch;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
 import org.neo4j.driver.exceptions.NoSuchRecordException;
@@ -60,7 +62,7 @@ public class Neo4jClient {
 		return result.stream().map(r -> r.asMap()).collect(Collectors.toList());
 	}
 
-	public List<Map<String, Object>> query(String query, String resVar) {
+	public List<JsonElement> query(String query, String resVar) {
 
 		Session session = getSession();
 
@@ -68,11 +70,11 @@ public class Neo4jClient {
 
 		return result.list().stream()
 					.map(r -> r.get(resVar).get("_json").asString())
-					.map(r -> (Map<String,Object>) gson.fromJson(r, Map.class))
+					.map(JsonParser::parseString)
 					.collect(Collectors.toList());
 	}
 
-	public Page<Map<String, Object>> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
+	public Page<JsonElement> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
 
@@ -120,14 +122,14 @@ public class Neo4jClient {
 			return new PageImpl<>(List.of(), pageable, count);
 		}
 
-		return new PageImpl<Map<String,Object>>(
+		return new PageImpl<>(
 				result.list().stream()
-						.map(r -> (Map<String,Object>) gson.fromJson(r.get(resVar).get("_json").asString(), Map.class))
+						.map(r -> JsonParser.parseString(r.get(resVar).get("_json").asString()))
 						.collect(Collectors.toList()),
 				pageable, count);
 	}
 
-	public Map<String,Object> queryOne(String query, String resVar, Value parameters) {
+	public JsonElement queryOne(String query, String resVar, Value parameters) {
 
 		Session session = getSession();
 
@@ -145,7 +147,7 @@ public class Neo4jClient {
 			throw new ResourceNotFoundException();
 		}
 
-		return (Map<String,Object>)gson.fromJson(v.asString(), Map.class);
+		return JsonParser.parseString(v.asString());
 	}
 
 

@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
@@ -15,8 +14,7 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse;
-import uk.ac.ebi.spot.ols.model.v2.V2Property;
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
 
 import javax.validation.constraints.NotNull;
@@ -32,7 +30,7 @@ public class V2PropertyController {
     V2PropertyRepository propertyRepository;
 
     @RequestMapping(path = "/properties", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Property>> getProperties(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getProperties(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -52,7 +50,7 @@ public class V2PropertyController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/properties", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Property>> getProperties(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getProperties(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") @NotNull String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -73,7 +71,7 @@ public class V2PropertyController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2Property> getProperty(
+    public HttpEntity<V2Entity> getProperty(
             @PathVariable("onto") String ontologyId,
             @PathVariable("property") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
@@ -81,13 +79,13 @@ public class V2PropertyController {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        V2Property entity = propertyRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
+        V2Entity entity = propertyRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/children", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Property>> getChildrenByOntology(
+    public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("property") String iri,
@@ -104,7 +102,7 @@ public class V2PropertyController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Property>> getAncestorsByOntology(
+    public HttpEntity<V2PagedResponse<V2Entity>> getAncestorsByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("property") String iri,

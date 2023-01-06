@@ -2,14 +2,13 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.JsonElement;
 import org.springframework.hateoas.server.core.Relation;
-import uk.ac.ebi.spot.ols.service.GenericLocalizer;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
-import uk.ac.ebi.spot.ols.service.V1AnnotationExtractor;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.AnnotationExtractor;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 
@@ -18,26 +17,6 @@ import static uk.ac.ebi.spot.ols.model.v1.V1NodePropertyNameConstants.*;
 public class V1Individual {
 
 
-    public V1Individual(Map<String,Object> jsonObj, String lang) {
-
-        OntologyEntity localizedObj = new OntologyEntity(GenericLocalizer.localize(jsonObj, lang));
-        this.lang = lang;
-
-        iri = localizedObj.getString("iri");
-
-        ontologyName = localizedObj.getString("ontologyId");
-        ontologyPrefix = localizedObj.getString("ontologyPreferredPrefix");
-        ontologyIri = localizedObj.getString("ontologyIri");
-
-        label = localizedObj.getString("label");
-        description = localizedObj.getStrings("definition").toArray(new String[0]);
-        synonyms = localizedObj.getStrings("synonym").toArray(new String[0]);
-        annotation = V1AnnotationExtractor.extractAnnotations(localizedObj);
-        inSubsets = V1AnnotationExtractor.extractSubsets(localizedObj);
-
-        shortForm = localizedObj.getString("shortForm");
-        oboId = shortForm.replace("_", ":");
-    }
 
         public String iri;
 

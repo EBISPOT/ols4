@@ -26,8 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
-import uk.ac.ebi.spot.ols.model.v2.V2Individual;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 import uk.ac.ebi.spot.ols.repository.v2.V2IndividualRepository;
 
 import javax.validation.constraints.NotNull;
@@ -43,7 +44,7 @@ public class V2IndividualController {
     V2IndividualRepository individualRepository;
 
     @RequestMapping(path = "/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Individual>> getIndividuals(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getIndividuals(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -63,7 +64,7 @@ public class V2IndividualController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Individual>> getIndividuals(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getIndividuals(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") @NotNull String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -84,7 +85,7 @@ public class V2IndividualController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<V2Individual> getIndividual(
+    public HttpEntity<V2Entity> getIndividual(
             @PathVariable("onto") String ontologyId,
             @PathVariable("individual") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
@@ -92,7 +93,7 @@ public class V2IndividualController {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        V2Individual entity = individualRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
+        V2Entity entity = individualRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }

@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.service;
+package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
 import org.apache.solr.common.StringUtils;
 

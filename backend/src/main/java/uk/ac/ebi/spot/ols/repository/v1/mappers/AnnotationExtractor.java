@@ -1,25 +1,30 @@
 
-package uk.ac.ebi.spot.ols.service;
+package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class V1AnnotationExtractor {
+public class AnnotationExtractor {
 
-    public static Map<String,Object> extractAnnotations(OntologyEntity node) {
+    private static Gson gson = new Gson();
 
-        TreeSet<String> definitionProperties = new TreeSet<>(node.getStrings("definitionProperty"));
-        TreeSet<String> synonymProperties = new TreeSet<>(node.getStrings("synonymProperty"));
-        TreeSet<String> hierarchicalProperties = new TreeSet<>(node.getStrings("hierarchicalProperty"));
+    public static Map<String,Object> extractAnnotations(JsonObject json) {
 
-        Map<String, Object> record = node.asMap();
-        Map<String ,Object> labels = (Map<String,Object>) record.get("iriToLabels");
+        TreeSet<String> definitionProperties = new TreeSet<>(JsonHelper.getStrings(json, "definitionProperty"));
+        TreeSet<String> synonymProperties = new TreeSet<>(JsonHelper.getStrings(json, "synonymProperty"));
+        TreeSet<String> hierarchicalProperties = new TreeSet<>(JsonHelper.getStrings(json, "hierarchicalProperty"));
+
+        JsonObject labels = json.get("iriToLabels").getAsJsonObject();
 
         Map<String, Object> annotation = new TreeMap<>();
 
-        for(String predicate : node.asMap().keySet()) {
+        for(String predicate : json.keySet()) {
 
             // properties without an IRI are things that were added by owl2json so should not
             // be included as annotations
@@ -52,36 +57,32 @@ public class V1AnnotationExtractor {
                 continue;
             }
 
-            Object value = record.get(predicate);
-
-            // All anno values must be an array in OLS API
-            if(! (value instanceof List)) {
-                value = List.of(value);
-            }
-
             // flatten values (removing annotations on the annotations) for OLS3
             //
-            List<Object> flattenedValues = ((List<Object>) value).stream().map(entry -> {
+            JsonArray flattenedValues = new JsonArray();
 
-                while(entry instanceof Map) {
-                    Map<String,Object> entryAsMap = (Map<String,Object>) entry;
-                    Object embeddedValue = entryAsMap.get("value");
+            for(JsonElement entry : JsonHelper.getValues(json, predicate)) {
+
+                while(entry.isJsonObject()) {
+                    JsonElement embeddedValue = entry.getAsJsonObject().get("value");
                     if(embeddedValue == null)
                         break;
                     entry = embeddedValue;
                 }
 
-                return entry;
+                flattenedValues.add(entry);
+            }
 
-            }).collect(Collectors.toList());
-
-            Object labelObj = labels.get(predicate);
+            JsonElement labelObj = labels.get(predicate);
 
             String label = null;
-            if(labelObj instanceof String) {
-                label = (String) labelObj;
-            } else if(labelObj instanceof Collection) {
-                label = ((Collection<String>) labelObj).iterator().next();
+
+            if(labelObj != null) {
+                if(labelObj.isJsonPrimitive()) {
+                    label = labelObj.getAsString();
+                } else if(labelObj.isJsonArray()) {
+                    label = labelObj.getAsJsonArray().get(0).getAsString();
+                }
             }
 
             if(label == null) {
@@ -93,17 +94,27 @@ public class V1AnnotationExtractor {
                 );
             }
 
-            annotation.put(label, flattenedValues);
+            Set<Object> annos = (Set<Object>) annotation.get(label);
+
+            if(annos == null) {
+                annos = new LinkedHashSet<>();
+                annotation.put(label, annos);
+            }
+
+            for(Object obj : gson.fromJson(flattenedValues, List.class)) {
+                annos.add(obj);
+            }
+
         }
 
         return annotation;
 
     }
 
-    public static List<String> extractSubsets(OntologyEntity node) {
+    public static List<String> extractSubsets(JsonObject json) {
 
         TreeSet<String> subsetUris = new TreeSet<>(
-                node.getStrings("http://www.geneontology.org/formats/oboInOwl#inSubset"));
+                JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
 
         if(subsetUris.size() == 0) {
             return null;

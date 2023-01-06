@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
-import uk.ac.ebi.spot.ols.model.v2.V2Ontology;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class V2OntologyController {
     V2OntologyRepository ontologyRepository;
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Ontology>> getOntologies(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getOntologies(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -54,11 +55,11 @@ public class V2OntologyController {
     }
 
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2Ontology> getOntology(
+    public HttpEntity<V2Entity> getOntology(
             @PathVariable("onto") String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
-        V2Ontology entity = ontologyRepository.getById(ontologyId, lang);
+        V2Entity entity = ontologyRepository.getById(ontologyId, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }

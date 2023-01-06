@@ -1,6 +1,8 @@
 package uk.ac.ebi.spot.ols.repository.solr;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -50,7 +52,7 @@ public class OlsSolrClient {
         }
     }
 
-    public OlsFacetedResultsPage<Map<String,Object>> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
+    public OlsFacetedResultsPage<JsonElement> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
         QueryResponse qr = runSolrQuery(query, pageable);
 
@@ -69,7 +71,7 @@ public class OlsSolrClient {
             }
         }
 
-       return new OlsFacetedResultsPage<Map<String,Object>>(
+       return new OlsFacetedResultsPage<>(
                 qr.getResults()
                         .stream()
                         .map(res -> getOlsEntityFromSolrResult(res))
@@ -79,7 +81,7 @@ public class OlsSolrClient {
                 qr.getResults().getNumFound());
     }
 
-    public Map<String,Object> getOne(OlsSolrQuery query) {
+    public JsonElement getOne(OlsSolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query, null);
 
@@ -90,8 +92,8 @@ public class OlsSolrClient {
         return getOlsEntityFromSolrResult(qr.getResults().get(0));
     }
 
-    private Map<String,Object> getOlsEntityFromSolrResult(SolrDocument doc) {
-        return gson.fromJson((String) doc.get("_json"), Map.class);
+    private JsonElement getOlsEntityFromSolrResult(SolrDocument doc) {
+        return JsonParser.parseString((String) doc.get("_json"));
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
