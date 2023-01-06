@@ -123,7 +123,8 @@ export default function EntityPage({
                       const hasMetadata =
                         definition.getMetadata()?.iriToLabels &&
                         Object.keys(definition.getMetadata()).length > 0 &&
-                        Object.keys(definition.getMetadata().iriToLabels).length > 0;
+                        Object.keys(definition.getMetadata().iriToLabels)
+                          .length > 0;
                       return (
                         <span key={randomString()}>
                           {definition.value}
@@ -131,14 +132,19 @@ export default function EntityPage({
                             <Tooltip
                               title={Object.keys(definition.getMetadata())
                                 .map((key) => {
-                                  if (definition.getMetadata().iriToLabels[key]) {
+                                  if (
+                                    definition.getMetadata().iriToLabels[key]
+                                  ) {
                                     return (
                                       "*" +
                                       definition.getMetadata()[key] +
                                       " (" +
-                                      definition.getMetadata().iriToLabels[
-                                        key
-                                      ][0].replaceAll("_", " ") +
+                                      definition
+                                        .getMetadata()
+                                        .iriToLabels[key][0].replaceAll(
+                                          "_",
+                                          " "
+                                        ) +
                                       ")"
                                     );
                                   }
@@ -166,7 +172,8 @@ export default function EntityPage({
                         const hasMetadata =
                           synonym.getMetadata()?.iriToLabels &&
                           Object.keys(synonym.getMetadata()).length > 0 &&
-                          Object.keys(synonym.getMetadata().iriToLabels).length > 0;
+                          Object.keys(synonym.getMetadata().iriToLabels)
+                            .length > 0;
                         return (
                           <div
                             key={
@@ -180,14 +187,19 @@ export default function EntityPage({
                               <Tooltip
                                 title={Object.keys(synonym.getMetadata())
                                   .map((key) => {
-                                    if (synonym.getMetadata().iriToLabels[key]) {
+                                    if (
+                                      synonym.getMetadata().iriToLabels[key]
+                                    ) {
                                       return (
                                         "*" +
                                         synonym.getMetadata()[key] +
                                         " (" +
-                                        synonym.getMetadata().iriToLabels[
-                                          key
-                                        ][0].replaceAll("_", " ") +
+                                        synonym
+                                          .getMetadata()
+                                          .iriToLabels[key][0].replaceAll(
+                                            "_",
+                                            " "
+                                          ) +
                                         ")"
                                       );
                                     }
@@ -340,6 +352,62 @@ export default function EntityPage({
                   </summary>
                   <div className="py-2 break-words space-y-2">
                     {(entity instanceof Class || entity instanceof Property) &&
+                    entity?.getEquivalents()?.length > 0 ? (
+                      <div>
+                        <div className="font-bold">Equivalent to</div>
+                        <ul className="list-disc list-inside">
+                          {entity
+                            .getEquivalents()
+                            .map((eqClass: Reified<any>) => {
+                              const hasMetadata =
+                                eqClass.getMetadata()?.iriToLabels &&
+                                Object.keys(eqClass.getMetadata()).length > 0 &&
+                                Object.keys(eqClass.getMetadata().iriToLabels)
+                                  .length > 0;
+                              return (
+                                <li key={randomString()}>
+                                  <ClassExpression
+                                    expr={eqClass.value}
+                                    iriToLabels={iriToLabels}
+                                  />
+                                  {hasMetadata ? (
+                                    <Tooltip
+                                      title={Object.keys(eqClass.getMetadata())
+                                        .map((key) => {
+                                          if (
+                                            eqClass.getMetadata().iriToLabels[
+                                              key
+                                            ]
+                                          ) {
+                                            return (
+                                              "*" +
+                                              eqClass.getMetadata()[key] +
+                                              " (" +
+                                              eqClass
+                                                .getMetadata()
+                                                .iriToLabels[key][0].replaceAll(
+                                                  "_",
+                                                  " "
+                                                ) +
+                                              ")"
+                                            );
+                                          }
+                                          return "";
+                                        })
+                                        .join("\n")}
+                                      placement="top"
+                                      arrow
+                                    >
+                                      <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+                                    </Tooltip>
+                                  ) : null}
+                                </li>
+                              );
+                            })}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {(entity instanceof Class || entity instanceof Property) &&
                     entity?.getParents()?.length > 0 ? (
                       <div>
                         <div className="font-bold">
@@ -350,8 +418,8 @@ export default function EntityPage({
                             const hasMetadata =
                               parent.getMetadata()?.iriToLabels &&
                               Object.keys(parent.getMetadata()).length > 0 &&
-                              Object.keys(parent.getMetadata().iriToLabels).length >
-                                0;
+                              Object.keys(parent.getMetadata().iriToLabels)
+                                .length > 0;
                             return (
                               <li key={randomString()}>
                                 <ClassExpression
@@ -362,14 +430,19 @@ export default function EntityPage({
                                   <Tooltip
                                     title={Object.keys(parent.getMetadata())
                                       .map((key) => {
-                                        if (parent.getMetadata().iriToLabels[key]) {
+                                        if (
+                                          parent.getMetadata().iriToLabels[key]
+                                        ) {
                                           return (
                                             "*" +
                                             parent.getMetadata()[key] +
                                             " (" +
-                                            parent.getMetadata().iriToLabels[
-                                              key
-                                            ][0].replaceAll("_", " ") +
+                                            parent
+                                              .getMetadata()
+                                              .iriToLabels[key][0].replaceAll(
+                                                "_",
+                                                " "
+                                              ) +
                                             ")"
                                           );
                                         }

@@ -4,6 +4,7 @@ import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
   abstract getParents(): Reified<any>[];
+  abstract getEquivalents(): Reified<any>[];
 
   getDescriptionAsArray(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["definition"]);
