@@ -9,7 +9,7 @@ export default function ClassExpression({
 }) {
   if (typeof expr !== "object") {
     // expr is just an IRI
-    const label = iriToLabels[expr][0];
+    const label = expr;
     return (
       <a href={expr} className="link-default">
         {label ? label : expr.substring(expr.lastIndexOf("/") + 1)}

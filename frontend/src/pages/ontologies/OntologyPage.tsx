@@ -60,53 +60,55 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                   }}
                 >
                   <Tab
-                    label={`Classes (${ontology!
+                    label={`Classes (${ontology
                       .getNumClasses()
                       .toLocaleString()})`}
                     value="classes"
                     disabled={!(ontology.getNumClasses() > 0)} // !(value) handles NaN
                   />
                   <Tab
-                    label={`Properties (${ontology!
+                    label={`Properties (${ontology
                       .getNumProperties()
                       .toLocaleString()})`}
                     value="properties"
                     disabled={!(ontology.getNumProperties() > 0)}
                   />
                   <Tab
-                    label={`Individuals (${ontology!
+                    label={`Individuals (${ontology
                       .getNumIndividuals()
                       .toLocaleString()})`}
                     value="individuals"
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                <div className="py-2 mb-1">
-                  <Tooltip title="Tree view" placement="top">
-                    <button
-                      className={`button-primary font-bold mr-3 ${
-                        viewMode === "tree"
-                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                          : ""
-                      }`}
-                      onClick={() => setViewMode("tree")}
-                    >
-                      <AccountTree fontSize="small" />
-                    </button>
-                  </Tooltip>
-                  <Tooltip title="List view" placement="top">
-                    <button
-                      className={`button-primary font-bold ${
-                        viewMode === "list"
-                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                          : ""
-                      }`}
-                      onClick={() => setViewMode("list")}
-                    >
-                      <FormatListBulletedIcon fontSize="small" />
-                    </button>
-                  </Tooltip>
-                </div>
+                {tab !== "classes" || ontology.getNumClasses() > 0 ? (
+                  <div className="py-2 mb-1">
+                    <Tooltip title="Tree view" placement="top">
+                      <button
+                        className={`button-primary font-bold mr-3 ${
+                          viewMode === "tree"
+                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                            : ""
+                        }`}
+                        onClick={() => setViewMode("tree")}
+                      >
+                        <AccountTree fontSize="small" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="List view" placement="top">
+                      <button
+                        className={`button-primary font-bold ${
+                          viewMode === "list"
+                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                            : ""
+                        }`}
+                        onClick={() => setViewMode("list")}
+                      >
+                        <FormatListBulletedIcon fontSize="small" />
+                      </button>
+                    </Tooltip>
+                  </div>
+                ) : null}
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={tab} />
                 ) : (

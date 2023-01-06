@@ -7,4 +7,9 @@ export default class Property extends Entity {
       this.properties["http://www.w3.org/2000/01/rdf-schema#subPropertyOf"]
     );
   }
+  getEquivalents(): Reified<any>[] {
+    return Reified.fromJson<any>(
+      this.properties["http://www.w3.org/2002/07/owl#equivalentProperty"]
+    );
+  }
 }
