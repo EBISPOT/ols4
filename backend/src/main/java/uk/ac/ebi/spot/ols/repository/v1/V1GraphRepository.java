@@ -1,22 +1,18 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.service.GenericLocalizer;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
-import javax.management.relation.Relation;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Component
 public class V1GraphRepository {
@@ -70,7 +66,7 @@ public class V1GraphRepository {
 
         List<Map<String,Object>> nodes = allNodes.stream().map(node -> {
 
-            Map<String, Object> ontologyNodeObject = getOntologyNodeJson(node, lang);
+            JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
             nodeRes.put("iri", ontologyNodeObject.get("iri"));
@@ -87,9 +83,9 @@ public class V1GraphRepository {
             edgeRes.put("source", result.get("source"));
             edgeRes.put("target", result.get("target"));
 
-            Map<String, Object> ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
+            JsonObject ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
 
-            String uri = (String) ontologyEdgeObject.get("property");
+            String uri = ontologyEdgeObject.get("property").getAsString();
             if (uri == null) {
                 uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
             }
@@ -97,14 +93,10 @@ public class V1GraphRepository {
 
             String propertyLabel = "is a";
 
-            Map<String, Object> iriToLabels = (Map<String, Object>) ontologyEdgeObject.get("iriToLabels");
+            JsonObject iriToLabels = ontologyEdgeObject.get("iriToLabels").getAsJsonObject();
+
             if (iriToLabels != null) {
-		String label;
-		if(iriToLabels instanceof Collection) {
-			label = ((Collection<String>) iriToLabels).iterator().next();
-		} else {
-                	label = (String) iriToLabels.get(uri);
-		}
+                String label = iriToLabels.get("iri").getAsString();
                 if (label != null) {
                     propertyLabel = label;
                 }
@@ -151,20 +143,18 @@ public class V1GraphRepository {
     }
 
 
-    Map<String, Object> getOntologyNodeJson(Node node, String lang) {
+    JsonObject getOntologyNodeJson(Node node, String lang) {
 
-        Map<String, Object> ontologyNodeObject = (Map<String, Object>)
-                gson.fromJson((String) node.asMap().get("_json"), Object.class);
+        JsonElement ontologyNodeObject = JsonParser.parseString((String) node.asMap().get("_json"));
 
-        return GenericLocalizer.localize(ontologyNodeObject, lang);
+        return LocalizationTransform.transform(ontologyNodeObject, lang).getAsJsonObject();
     }
 
-    Map<String, Object> getOntologyEdgeJson(Relationship r, String lang) {
+    JsonObject getOntologyEdgeJson(Relationship r, String lang) {
 
-        Map<String, Object> ontologyEdgeObject = (Map<String, Object>)
-                gson.fromJson((String) r.asMap().get("_json"), Object.class);
+        JsonElement ontologyEdgeObject = JsonParser.parseString((String) r.asMap().get("_json"));
 
-        return GenericLocalizer.localize(ontologyEdgeObject, lang);
+        return LocalizationTransform.transform(ontologyEdgeObject, lang).getAsJsonObject();
     }
 
 }

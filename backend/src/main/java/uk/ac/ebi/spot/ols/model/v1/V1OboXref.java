@@ -1,13 +1,8 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
-import com.google.common.collect.Lists;
 import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
-import uk.ac.ebi.spot.ols.service.OntologyEntity;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class V1OboXref {
 
@@ -54,56 +49,17 @@ public class V1OboXref {
         return xref;
     }
 
-    public static List<V1OboXref> extractFromEntity(OntologyEntity entity, OboDatabaseUrlService oboDbUrls) {
 
-        List<Object> xrefs = entity.getObjects("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
+    @Override
+    public boolean equals(Object other) {
 
-        List<V1OboXref> res = new ArrayList<>();
-      
-        for(Object xref : xrefs) {
-
-            if(xref instanceof String) {
-                V1OboXref xrefObj = V1OboXref.fromString((String) xref, oboDbUrls);
-                res.add(xrefObj);
-                continue;
-            }
-
-            Map<String,Object> xrefMap = (Map<String,Object>) xref;
-
-            List<Map<String,Object>> axioms = (List<Map<String,Object>>) xrefMap.get("axioms");
-
-            for(Map<String,Object> axiom : axioms) {
-
-                Object source = axiom.get("http://www.geneontology.org/formats/oboInOwl#source");
-
-                if(source instanceof List) {
-
-//                    for(String src : (List<String>) source) {
-//                        V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-//                        xrefObj.description = src;
-//                        res.add(xrefObj);
-//                    }
-
-                    // OLS3 only keeps one of the sources.
-                    // Specifically, it keeps the LAST source, alphabetically. This is because this loop in OLS3:
-                    // https://github.com/EBISPOT/OLS/blob/6f9a98d564c2759f767d1e01bbe70897cbe9aa82/ontology-tools/src/main/java/uk/ac/ebi/spot/ols/loader/AbstractOWLOntologyLoader.java#L1404-L1406
-                    // overwrites the source for each annotation (so the last one in the list wins)
-                    //
-                    V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-                    xrefObj.description = Lists.reverse(((List<String>) source)).iterator().next();
-                    res.add(xrefObj);
-
-                } else {
-                    V1OboXref xrefObj = V1OboXref.fromString((String) xrefMap.get("value"), oboDbUrls);
-                    xrefObj.description = (String) source;
-                    res.add(xrefObj);
-                }
-            }
-
-            // TODO url?
+        if(! (other instanceof V1OboXref)) {
+            return false;
         }
 
-        return res.size() > 0 ? res : null;
+        return Objects.equals(((V1OboXref) other).id, this.id) &&
+                Objects.equals(((V1OboXref) other).description, this.description)  &&
+                Objects.equals(((V1OboXref) other).database, this.database)  &&
+                Objects.equals(((V1OboXref) other).url, this.url);
     }
-
 }

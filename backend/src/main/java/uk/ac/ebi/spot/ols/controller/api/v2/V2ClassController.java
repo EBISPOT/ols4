@@ -22,9 +22,10 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse;
-import uk.ac.ebi.spot.ols.model.v2.V2Class;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.v2.V2ClassRepository;
+import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class V2ClassController {
     V2ClassRepository classRepository;
 
     @RequestMapping(path = "/classes", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Class>> getClasses(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false) String search,
@@ -60,7 +61,7 @@ public class V2ClassController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<V2PagedAndFacetedResponse<V2Class>> getClasses(
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") @NotNull String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -81,7 +82,7 @@ public class V2ClassController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2Class> getClass(
+    public HttpEntity<V2Entity> getClass(
             @PathVariable("onto") String ontologyId,
             @PathVariable("class") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
@@ -89,13 +90,13 @@ public class V2ClassController {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        V2Class entity = classRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
+        V2Entity entity = classRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/children", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Class>> getChildrenByOntology(
+    public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("class") String iri,
@@ -112,7 +113,7 @@ public class V2ClassController {
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Class>> getAncestorsByOntology(
+    public HttpEntity<V2PagedResponse<V2Entity>> getAncestorsByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("class") String iri,
@@ -133,7 +134,7 @@ public class V2ClassController {
     // The ancestors of individuals are classes. So, the /ancestors endpoint is part of the Class controller.
     //
     @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Class>> getIndividualAncestorsByOntology(
+    public HttpEntity<V2PagedResponse<V2Entity>> getIndividualAncestorsByOntology(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("individual") String iri,

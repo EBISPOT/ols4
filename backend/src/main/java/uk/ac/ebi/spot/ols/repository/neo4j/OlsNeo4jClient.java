@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.neo4j;
 
+import com.google.gson.JsonElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,7 +19,7 @@ public class OlsNeo4jClient {
 	@Autowired
 	Neo4jClient neo4jClient;
 
-    public Page<Map<String, Object>> getAll(String type, Map<String,String> properties, Pageable pageable) {
+    public Page<JsonElement> getAll(String type, Map<String,String> properties, Pageable pageable) {
 
 		String query = "MATCH (a:" + type + ")";
 
@@ -45,9 +46,9 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(getQuery, "a", countQuery, parameters("type", type), pageable);
 	}
 
-	public Map<String, Object> getOne(String type, Map<String,String> properties) {
+	public JsonElement getOne(String type, Map<String,String> properties) {
 
-		Page<Map<String, Object>> results = getAll(type, properties, PageRequest.of(0, 10));
+		Page<JsonElement> results = getAll(type, properties, PageRequest.of(0, 10));
 
 		if(results.getTotalElements() != 1) {
 			throw new RuntimeException("expected exactly one result for neo4j getOne, but got " + results.getTotalElements());
@@ -68,7 +69,7 @@ public class OlsNeo4jClient {
 		return where;
 	}
 
-    public Page<Map<String, Object>> traverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+    public Page<JsonElement> traverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
 	String edge = makeEdgesList(edgeIRIs, edgeProps);
 
@@ -89,7 +90,7 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> traverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+    public Page<JsonElement> traverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
 	String edge = makeEdgesList(edgeIRIs, Map.of());
 
@@ -106,7 +107,7 @@ public class OlsNeo4jClient {
 	return neo4jClient.queryPaginated(query, "b", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> recursivelyTraverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+    public Page<JsonElement> recursivelyTraverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
 		String edge = makeEdgesList(edgeIRIs, Map.of());
 
@@ -125,7 +126,7 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
 
-    public Page<Map<String, Object>> recursivelyTraverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+    public Page<JsonElement> recursivelyTraverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
 
 	String edge = makeEdgesList(edgeIRIs, Map.of());
 

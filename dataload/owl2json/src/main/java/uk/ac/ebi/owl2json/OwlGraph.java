@@ -482,26 +482,22 @@ public class OwlGraph implements StreamRDF {
                 break;
             case LITERAL:
                 PropertyValueLiteral literal = (PropertyValueLiteral) value;
-                if(literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string") &&
-                        literal.getLang().equals("")
-                ) {
-                    writer.value(literal.getValue());
-                } else {
-                    writer.beginObject();
-                    writer.name("type");
-                    writer.beginArray();
-		    writer.value("literal");
-                    writer.endArray();
-                    writer.name("datatype");
-                    writer.value(literal.getDatatype());
-                    writer.name("value");
-                    writer.value(literal.getValue());
-                    if(!literal.getLang().equals("")) {
-                        writer.name("lang");
-                        writer.value(literal.getLang());
-                    }
-                    writer.endObject();
-                }
+		writer.beginObject();
+		writer.name("type");
+		writer.beginArray();
+		writer.value("literal");
+		writer.endArray();
+		if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+			writer.name("datatype");
+			writer.value(literal.getDatatype());
+		}
+		writer.name("value");
+		writer.value(literal.getValue());
+		if(!literal.getLang().equals("")) {
+			writer.name("lang");
+			writer.value(literal.getLang());
+		}
+		writer.endObject();
                 break;
             case URI:
                 writer.value(((PropertyValueURI) value).getUri());

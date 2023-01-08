@@ -19,7 +19,7 @@ public class App
 	Options options = new Options();
 
         Option optUrl = new Option(null, "url", true, "URL of a running OLS4 instance");
-        optUrl.setRequired(true);
+        optUrl.setRequired(false);
         options.addOption(optUrl);
 
         Option optOutDir = new Option(null, "outDir", true, "Directory to write output to");
@@ -69,11 +69,13 @@ public class App
 
         boolean success = true;
 
-        if(!new Ols4ApiTester(url, outDir, ols3only, deep, ontology).test()) {
-	    System.out.println("Ols4ApiTester.test() reported failure");
-            success = false;
-        } else {
-	    System.out.println("Ols4ApiTester.test() reported success");
+	if (url != null) {
+		if (!new Ols4ApiTester(url, outDir, ols3only, deep, ontology).test()) {
+			System.out.println("Ols4ApiTester.test() reported failure");
+			success = false;
+		} else {
+			System.out.println("Ols4ApiTester.test() reported success");
+		}
 	}
 
 	if(compareUrl != null) {

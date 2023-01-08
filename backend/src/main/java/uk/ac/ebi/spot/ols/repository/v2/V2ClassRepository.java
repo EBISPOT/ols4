@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.model.v2.V2Class;
+import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
@@ -30,7 +30,7 @@ public class V2ClassRepository {
     OlsNeo4jClient neo4jClient;
 
 
-    public OlsFacetedResultsPage<V2Class> find(
+    public OlsFacetedResultsPage<V2Entity> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
@@ -48,10 +48,10 @@ public class V2ClassRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Class(result, lang));
+                .map(result -> new V2Entity(result, lang));
     }
 
-    public OlsFacetedResultsPage<V2Class> findByOntologyId(
+    public OlsFacetedResultsPage<V2Entity> findByOntologyId(
             String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
@@ -71,10 +71,10 @@ public class V2ClassRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Class(result, lang));
+                .map(result -> new V2Entity(result, lang));
     }
 
-    public V2Class getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
+    public V2Entity getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -85,10 +85,10 @@ public class V2ClassRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        return new V2Class(solrClient.getOne(query), lang);
+        return new V2Entity(solrClient.getOne(query), lang);
     }
 
-    public Page<V2Class> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -96,10 +96,10 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-            .map(record -> new V2Class(record, lang));
+            .map(record -> new V2Entity(record, lang));
     }
 
-    public Page<V2Class> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -107,10 +107,10 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Class(record, lang));
+                .map(record -> new V2Entity(record, lang));
     }
 
-    public Page<V2Class> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -118,6 +118,6 @@ public class V2ClassRepository {
         String id = ontologyId + "+individual+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Class(record, lang));
+                .map(record -> new V2Entity(record, lang));
     }
 }

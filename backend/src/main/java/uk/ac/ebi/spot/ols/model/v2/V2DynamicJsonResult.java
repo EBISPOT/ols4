@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.model.v2;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -11,10 +12,8 @@ import java.util.TreeMap;
 
 public class V2DynamicJsonResult {
 
-
-    // jsonObj = the original json from owl2json
-    public V2DynamicJsonResult(Map<String,Object> jsonObj) {
-        this.properties.putAll(jsonObj);
+    public V2DynamicJsonResult(JsonElement jsonObj) {
+        this.properties.putAll((Map<String,Object>) gson.fromJson(jsonObj, Map.class));
     }
 
     protected Gson gson = new Gson();
@@ -47,15 +46,15 @@ public class V2DynamicJsonResult {
         return properties;
     }
 
-    public String get(String predicate) {
-
-        Object value = this.properties.get(predicate);
-
-        if(value instanceof Collection) {
-            return (String) ((Collection<Object>) value).toArray()[0];
-        } else {
-            return (String) value;
-        }
-
-    }
+//    public String get(String predicate) {
+//
+//        Object value = this.properties.get(predicate);
+//
+//        if(value instanceof Collection) {
+//            return (String) ((Collection<Object>) value).toArray()[0];
+//        } else {
+//            return (String) value;
+//        }
+//
+//    }
 }

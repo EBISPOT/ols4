@@ -1,16 +1,18 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
+import com.google.gson.JsonElement;
+
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class V1ChildrenJsTreeBuilder {
 
     String thisEntityJsTreeIdDecoded;
-    Map<String,Object> thisEntity;
+    JsonElement thisEntity;
     List<String> parentRelationIRIs;
-    List<Map<String,Object>> children;
+    List<JsonElement> children;
 
-    public V1ChildrenJsTreeBuilder(String thisEntityJsTreeId, Map<String,Object> thisEntity, List<Map<String,Object>> children) {
+    public V1ChildrenJsTreeBuilder(String thisEntityJsTreeId, JsonElement thisEntity, List<JsonElement> children) {
 
         this.thisEntityJsTreeIdDecoded = base64Decode(thisEntityJsTreeId);
         this.thisEntity = thisEntity;
@@ -23,27 +25,27 @@ public class V1ChildrenJsTreeBuilder {
 
         List<Map<String,Object>> jstree = new ArrayList<>();
 
-        for(Map<String,Object> child : children) {
+        for(JsonElement child : children) {
 
             Map<String,Object> jstreeEntry = new LinkedHashMap<>();
-            jstreeEntry.put("id", base64Encode(thisEntityJsTreeIdDecoded + ";" + child.get("iri")));
+            jstreeEntry.put("id", base64Encode(thisEntityJsTreeIdDecoded + ";" + child.getAsJsonObject().get("iri").getAsString()));
             jstreeEntry.put("parent", base64Encode(thisEntityJsTreeIdDecoded));
-            jstreeEntry.put("iri", child.get("iri"));
-            jstreeEntry.put("text", child.get("label"));
+            jstreeEntry.put("iri", child.getAsJsonObject().get("iri").getAsString());
+            jstreeEntry.put("text", child.getAsJsonObject().get("label").getAsString());
             jstreeEntry.put("state", Map.of("opened", false));
             jstreeEntry.put("children",
-	    	child.get("hasDirectChildren").equals("true")
-		|| child.get("hasHierarchicalChildren").equals("true")
+	    	child.getAsJsonObject().get("hasDirectChildren").getAsString().equals("true")
+		|| child.getAsJsonObject().get("hasHierarchicalChildren").getAsString().equals("true")
 	    );
 
             Map<String,Object> attrObj = new LinkedHashMap<>();
-            attrObj.put("iri", child.get("iri"));
-            attrObj.put("ontology_name", child.get("ontologyId"));
-            attrObj.put("title", child.get("iri"));
+            attrObj.put("iri", child.getAsJsonObject().get("iri").getAsString());
+            attrObj.put("ontology_name", child.getAsJsonObject().get("ontologyId").getAsString());
+            attrObj.put("title", child.getAsJsonObject().get("iri").getAsString());
             attrObj.put("class", "is_a");
             jstreeEntry.put("a_attr", attrObj);
 
-            jstreeEntry.put("ontology_name", child.get("ontologyId"));
+            jstreeEntry.put("ontology_name", child.getAsJsonObject().get("ontologyId"));
             jstree.add(jstreeEntry);
         }
 
