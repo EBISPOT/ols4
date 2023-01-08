@@ -227,10 +227,14 @@ public class OwlGraph implements StreamRDF {
 	    //
             if(configKey.equals("id"))
                 continue;
+
+	    // already included explicitly above
+            if(configKey.equals("ontologyId"))
+                continue;
                 
-            // don't print the uri from the config, we already printed the one from the OWL
+            // don't print the iri from the config, we already printed the one from the OWL
             // TODO: which one to keep, or should we keep both?
-            if(configKey.equals("uri"))
+            if(configKey.equals("iri"))
                 continue;
 
             // everything else from the config is stored as a normal property
@@ -335,6 +339,16 @@ public class OwlGraph implements StreamRDF {
 
         // TODO: sort keys, rdf:type should be first ideally
         for (String predicate : properties.getPropertyPredicates()) {
+
+		if(types != null && types.contains("ontology") && predicate.equals("ontologyId")) {
+			// hack to workaround a punning issue.
+			// if the Ontology is also a Class it will have an ontologyId added by
+			// the OntologyMetadataAnnotator, but there is already an ontologyId field
+			// printed as part of the ontology object, so skip this one...
+			// TODO: fix this as part of the punning refactoring
+			//
+			continue;
+		}
 
             List<PropertyValue> values = properties.getPropertyValues(predicate);
 
