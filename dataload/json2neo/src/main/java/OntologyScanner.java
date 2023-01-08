@@ -144,16 +144,19 @@ public class OntologyScanner {
 
         } else if(value instanceof Map) {
 
-            // could be a typed literal, a relatedTo object, reification, or a bnode
+            // could be a typed literal, a relatedTo object, reification, a bnode,
+	    // or some json junk from the ontology config
 
             Map<String, Object> mapValue = new TreeMap<String,Object>((Map<String, Object>) value);
 
-	    List<String> types = (List<String>) mapValue.get("type");
+	    Object type = mapValue.get("type");
 
-	    if(types == null) {
-		// bnode (anon. class)
+	    if(type == null || ! (type instanceof List)) {
+		// bnode (anon. class) or json junk
 		return;
 	    }
+
+	    List<String> types = (List<String>) type;
 
 	    if(types.contains("literal")) {
 

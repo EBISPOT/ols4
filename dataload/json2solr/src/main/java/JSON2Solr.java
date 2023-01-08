@@ -282,7 +282,7 @@ public class JSON2Solr {
 
     }
 
-    // There are 4 cases when the object can be a Map {} instead of a literal.
+    // There are 5 cases when the object can be a Map {} instead of a literal.
     //
     //  (1) It's a literal with type information { datatype: ..., value: ... }
     //
@@ -292,6 +292,8 @@ public class JSON2Solr {
     //      language and localized value are provided.
     //
     //  (4) It's reification { type: reification|related, ....,  value: ... }
+    //
+    //  (5) it's some random json object from the ontology config
     // 
     // In the case of (1), we discard the datatype and keep the value
     //
@@ -305,6 +307,9 @@ public class JSON2Solr {
     //
     // In the case of (4), we discard any metadata (in Neo4j the metadata is
     // preserved for edges, but in Solr we don't care about it).
+    // 
+    // In the case of (5) we discard it in solr because json objects won't be
+    // querable anyway.
     //
     //  
     public static Object discardMetadata(Object obj, String lang) {
@@ -312,12 +317,15 @@ public class JSON2Solr {
         if (obj instanceof Map) {
 
             Map<String, Object> dict = (Map<String, Object>) obj;
-	    List<String> types = (List<String>) dict.get("type");
 
-	    if(types == null) {
-		// (2) class expression
+	    Object type = dict.get("type");
+
+	    if(type == null || !(type instanceof List)) {
+		// (2) class expression  or  json junk from the ontology config
 		return null;
 	    }
+
+	    List<String> types = (List<String>) type;
 
 	    if(types.contains("literal")) {
 

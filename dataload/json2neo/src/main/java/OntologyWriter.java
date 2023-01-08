@@ -166,9 +166,16 @@ public class OntologyWriter {
             if (v instanceof Map) {
 
                 Map<String, Object> mapValue = (Map<String, Object>) v;
-		List<String> types = (List<String>) mapValue.get("type");
 
-		if(types != null && types.contains("reification")) {
+		Object type = mapValue.get("type");
+
+		if(type == null || ! (type instanceof List)) {
+			continue;
+		}
+
+		List<String> types = (List<String>) type;
+
+		if(types.contains("reification")) {
 
                     // reification 
                     Object reifiedValue = mapValue.get("value");
@@ -295,6 +302,7 @@ public class OntologyWriter {
 
 	    // probably a class expression; wouldn't result in anything queryable
 	    // so store nothing in the field
+	    // could also be json junk from the ontology config
 	    //
 	    return "";
         }
