@@ -7,10 +7,7 @@ import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class V1TermMapper {
 
@@ -47,7 +44,6 @@ public class V1TermMapper {
         term.oboXrefs = V1OboXrefExtractor.extractFromJson(localizedJson, oboDbUrls);
         term.oboSynonyms = V1OboSynonymExtractor.extractFromJson(localizedJson, oboDbUrls);
         term.isPreferredRoot = false;
-        term.related = new HashSet<>();
 
         term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "isDefiningOntology"));
 
@@ -82,7 +78,7 @@ public class V1TermMapper {
 
         JsonObject iriToLabels = localizedJson.getAsJsonObject("iriToLabels");
 
-        term.related = new LinkedHashSet<>();
+        term.related = new ArrayList<>();
 
         for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, "relatedTo")) {
 

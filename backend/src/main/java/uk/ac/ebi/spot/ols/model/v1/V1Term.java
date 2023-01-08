@@ -71,6 +71,6 @@ public class V1Term {
     public boolean isPreferredRoot;
 
     @JsonIgnore
-    public Set<V1Related> related;
+    public List<V1Related> related;
 }
 

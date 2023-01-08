@@ -31,22 +31,12 @@ public class JsonHelper {
              * there is no metadata telling us which label is preferred.
              *
              * To make this semi-deterministic, we alphabetically sort the values if
-             * they are all strings before returning the first one. If they are not
-             * all strings, we just return the first value in the list.
+             * they are all strings before returning the first one.
              */
-            List<JsonElement> elements = getArrayElements(arr);
+            List<String> elements =
+                    getArrayElements(arr).stream().map(JsonHelper::objectToString).sorted().collect(Collectors.toList());
 
-            boolean isAllStrings = true;
-            for(JsonElement elem : elements) {
-                if(!elem.isJsonPrimitive()) {
-                    isAllStrings = false;
-                }
-            }
-            if(isAllStrings) {
-                return elements.stream().map(JsonElement::getAsString).sorted().iterator().next();
-            } else {
-                return objectToString(elements.get(0));
-            }
+            return elements.get(0);
 
         } else if(value.isJsonObject()) {
             return objectToString(value.getAsJsonObject().get("value"));
