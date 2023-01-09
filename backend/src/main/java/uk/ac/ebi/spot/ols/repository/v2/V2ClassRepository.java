@@ -13,6 +13,8 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
@@ -28,7 +30,6 @@ public class V2ClassRepository {
 
     @Autowired
     OlsNeo4jClient neo4jClient;
-
 
     public OlsFacetedResultsPage<V2Entity> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, Map<String,String> properties) throws IOException {
@@ -48,7 +49,9 @@ public class V2ClassRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Entity(result, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public OlsFacetedResultsPage<V2Entity> findByOntologyId(
@@ -71,7 +74,9 @@ public class V2ClassRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Entity(result, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public V2Entity getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
@@ -85,7 +90,14 @@ public class V2ClassRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        return new V2Entity(solrClient.getOne(query), lang);
+        return new V2Entity(
+                LocalizationTransform.transform(
+                    RemoveLiteralDatatypesTransform.transform(
+                            solrClient.getOne(query)
+                    ),
+                    lang
+                )
+        );
     }
 
     public Page<V2Entity> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
@@ -96,7 +108,9 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-            .map(record -> new V2Entity(record, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public Page<V2Entity> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
@@ -107,7 +121,9 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Entity(record, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
@@ -118,6 +134,8 @@ public class V2ClassRepository {
         String id = ontologyId + "+individual+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Entity(record, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 }

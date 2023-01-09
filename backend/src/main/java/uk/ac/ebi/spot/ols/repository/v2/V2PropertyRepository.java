@@ -13,6 +13,8 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
@@ -48,7 +50,9 @@ public class V2PropertyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Entity(result, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public OlsFacetedResultsPage<V2Entity> findByOntologyId(
@@ -71,7 +75,9 @@ public class V2PropertyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Entity(result, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public V2Entity getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
@@ -85,7 +91,14 @@ public class V2PropertyRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        return new V2Entity(solrClient.getOne(query), lang);
+        return new V2Entity(
+                LocalizationTransform.transform(
+                        RemoveLiteralDatatypesTransform.transform(
+                                solrClient.getOne(query)
+                        ),
+                        lang
+                )
+        );
     }
 
     public Page<V2Entity> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
@@ -96,7 +109,9 @@ public class V2PropertyRepository {
         String id = ontologyId + "+property+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyProperty", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Entity(record, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public Page<V2Entity> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
@@ -107,7 +122,9 @@ public class V2PropertyRepository {
         String id = ontologyId + "+property+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyProperty", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(record -> new V2Entity(record, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
 }

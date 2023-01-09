@@ -7,10 +7,8 @@ import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 
 public class V2Entity extends V2DynamicJsonResult {
 
-    public V2Entity(JsonElement jsonObj, String lang) {
-        super(
-                LocalizationTransform.transform(jsonObj, lang)
-        );
+    public V2Entity(JsonElement jsonObj) {
+        super(jsonObj);
     }
 
 }

@@ -13,6 +13,8 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
@@ -47,7 +49,9 @@ public class V2OntologyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> new V2Entity(result, lang));
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(V2Entity::new);
     }
 
     public V2Entity getById(String ontologyId, String lang) throws ResourceNotFoundException {
@@ -60,7 +64,14 @@ public class V2OntologyRepository {
         query.addFilter("type", "ontology", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return new V2Entity(solrClient.getOne(query), lang);
+        return new V2Entity(
+                LocalizationTransform.transform(
+                        RemoveLiteralDatatypesTransform.transform(
+                                solrClient.getOne(query)
+                        ),
+                        lang
+                )
+        );
     }
 
 
