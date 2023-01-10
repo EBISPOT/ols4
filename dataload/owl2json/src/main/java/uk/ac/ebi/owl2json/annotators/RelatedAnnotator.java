@@ -93,7 +93,8 @@ public class RelatedAnnotator {
 		for(OwlNode individualNode : fillerIndividuals) {
 			classNode.properties.addProperty("relatedTo",
 				new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", individualNode));
-			// classNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerClassExpr, individualNode));
+			individualNode.properties.addProperty("relatedFrom",
+				new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 		}
 	}
 
@@ -117,7 +118,8 @@ public class RelatedAnnotator {
 				classNode.properties.addProperty("relatedTo",
 					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", fillerClassNode));
 
-				// classNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerClassExpr, fillerClassNode));
+				fillerClassNode.properties.addProperty("relatedFrom",
+					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 			}
 		}
 	}
@@ -165,6 +167,8 @@ public class RelatedAnnotator {
 					if(fillerNode != null) { // sometimes filler not included in ontology, e.g. "subClassOf some xsd:float" in cdao
 
 						  classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+						  fillerNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+
 					}
 				}
 
@@ -196,6 +200,7 @@ public class RelatedAnnotator {
 			if(fillerNode.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
 				// fillerNode is an individual
 				fillerNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+				classNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
 			}
 
 			return;
