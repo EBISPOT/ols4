@@ -27,10 +27,15 @@ public class RemoveLiteralDatatypesTransform {
 
             if(obj.has("type")) {
 
-                JsonArray types = obj.get("type").getAsJsonArray();
+                JsonElement type = obj.get("type");
 
-                if(types.contains(new JsonPrimitive("literal"))) {
-                    return transform(obj.get("value"));
+                if(type.isJsonArray()) {
+
+                    JsonArray types = type.getAsJsonArray();
+
+                    if(types.contains(new JsonPrimitive("literal"))) {
+                        return transform(obj.get("value"));
+                    }
                 }
             }
 
