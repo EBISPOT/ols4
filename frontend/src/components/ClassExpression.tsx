@@ -9,10 +9,13 @@ export default function ClassExpression({
 }) {
   if (typeof expr !== "object") {
     // expr is just an IRI
-    const label = iriToLabels[expr];
+    const label =
+      iriToLabels[expr] && Array.isArray(iriToLabels[expr])
+        ? iriToLabels[expr][0]
+        : expr.substring(expr.lastIndexOf("/") + 1);
     return (
       <a href={expr} className="link-default">
-        {label ? label : expr.substring(expr.lastIndexOf("/") + 1)}
+        {label}
       </a>
     );
   }
