@@ -28,7 +28,14 @@ class App extends React.Component {
             exact
             path={`/ontologies/:id`}
             component={(props: any) => (
-              <OntologyPage ontologyId={props.match.params.id} />
+              <OntologyPage ontologyId={props.match.params.id} tab='classes' />
+            )}
+          />
+          <Route
+            exact
+            path={`/ontologies/:id/classes`}
+            component={(props: any) => (
+              <OntologyPage ontologyId={props.match.params.id} tab='classes' />
             )}
           />
           <Route
@@ -46,6 +53,13 @@ class App extends React.Component {
           />
           <Route
             exact
+            path={`/ontologies/:id/properties`}
+            component={(props: any) => (
+              <OntologyPage ontologyId={props.match.params.id} tab='properties' />
+            )}
+          />
+          <Route
+            exact
             path={`/ontologies/:id/properties/:iri`}
             component={(props: any) => (
               <EntityPage
@@ -55,6 +69,13 @@ class App extends React.Component {
                   decodeURIComponent(props.match.params.iri)
                 )}
               />
+            )}
+          />
+          <Route
+            exact
+            path={`/ontologies/:id/individuals`}
+            component={(props: any) => (
+              <OntologyPage ontologyId={props.match.params.id} tab='individuals' />
             )}
           />
           <Route

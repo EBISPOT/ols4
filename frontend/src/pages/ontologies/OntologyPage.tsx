@@ -13,14 +13,15 @@ import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
+export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, tab:'classes'|'properties'|'individuals' }) {
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
 
-  const [tab, setTab] = useState<
-    "entities" | "classes" | "properties" | "individuals"
-  >("classes");
+  const [currentTab, setTab] = useState<
+   "classes" | "properties" | "individuals"
+  >(tab || "classes");
+
   const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
                 <Tabs
-                  value={tab}
+                  value={currentTab}
                   onChange={(value: any) => {
                     setTab(value);
                   }}
@@ -83,7 +84,7 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                {tab !== "classes" || ontology.getNumClasses() > 0 ? (
+                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
                   <div className="py-2 mb-1">
                     <Tooltip title="Tree view" placement="top">
                       <button
@@ -112,9 +113,9 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                   </div>
                 ) : null}
                 {viewMode === "list" ? (
-                  <EntityList ontologyId={ontologyId} entityType={tab} />
+                  <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (
-                  <EntityTree ontologyId={ontologyId} entityType={tab} />
+                  <EntityTree ontologyId={ontologyId} entityType={currentTab} />
                 )}
               </div>
               <div className="col-span-1">

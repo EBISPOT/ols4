@@ -6,6 +6,7 @@ import LoadingOverlay from "../../components/LoadingOverlay";
 import DataTable, { Column } from "../../components/DataTable";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
+import { Link } from "@mui/material";
 
 const columns: readonly Column[] = [
   {
@@ -47,6 +48,18 @@ const columns: readonly Column[] = [
     name: "Description",
     sortable: true,
     selector: (ontology: Ontology) => ontology.getDescription(),
+  },
+  {
+    name: "Actions",
+    sortable: false,
+    selector: (ontology: Ontology) => {
+	return <div>
+		<Link href={`/ontologies/${ontology.getOntologyId()}`}>Search</Link><br/>
+		<Link href={`/ontologies/${ontology.getOntologyId()}/classes`}>Classes</Link><br/>
+		<Link href={`/ontologies/${ontology.getOntologyId()}/properties`}>Properties</Link><br/>
+		<Link href={`/ontologies/${ontology.getOntologyId()}/individuals`}>Individuals</Link>
+	</div>
+    }
   },
 ];
 
