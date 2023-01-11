@@ -1,3 +1,4 @@
+import { asArray } from "../app/util";
 import Entity from "./Entity";
 import Reified from "./Reified";
 
@@ -12,4 +13,10 @@ export default class Property extends Entity {
       this.properties["http://www.w3.org/2002/07/owl#equivalentProperty"]
     );
   }
+
+
+  getDisjointWith() {
+	return asArray(this.properties['http://www.w3.org/2002/07/owl#propertyDisjointWith'])
+  }
+
 }

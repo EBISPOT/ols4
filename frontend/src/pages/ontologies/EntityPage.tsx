@@ -189,6 +189,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                   <div className="py-2 break-words space-y-2">
 			<IndividualSameAsSection entity={entity} iriToLabels={iriToLabels} />
 			<IndividualDifferentFromSection entity={entity} iriToLabels={iriToLabels} />
+			<PropertyDisjointWithSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityRelatedFromSection entity={entity} iriToLabels={iriToLabels} />
@@ -560,4 +561,35 @@ function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, ir
 
 }
 
+function PropertyDisjointWithSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Property)) {
+		return <Fragment/>
+	}
+
+	let disjointWiths = entity.getDisjointWith()
+
+	if(!disjointWiths || disjointWiths.length === 0) {
+		return <Fragment/>
+	}
+
+	return <div>
+	<div className="font-bold">
+		Disjoint with
+	</div>
+	<ul className="list-disc list-inside">
+		{
+			disjointWiths.map(disjointWith => {
+					let label = iriToLabels[disjointWith]
+					return <li>
+						<a href={disjointWith} className="link-default">
+						{label || disjointWith}
+						</a>
+					</li>
+				})
+		}
+	</ul>
+	</div>
+
+}
 
