@@ -632,19 +632,31 @@ public class OwlGraph implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#Class":
                 subjNode.types.add(OwlNode.NodeType.CLASS);
-                ++ numberOfClasses;
+
+		if(subjNode.uri != null) {
+			++ numberOfClasses;
+		}
+
                 break;
 
             case "http://www.w3.org/2002/07/owl#AnnotationProperty":
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
                 subjNode.types.add(OwlNode.NodeType.PROPERTY);
-                ++ numberOfProperties;
+
+		if(subjNode.uri != null) {
+			++ numberOfProperties;
+		}
+
                 break;
 
             case "http://www.w3.org/2002/07/owl#NamedIndividual":
                 subjNode.types.add(OwlNode.NodeType.NAMED_INDIVIDUAL);
-                ++ numberOfIndividuals;
+
+		if(subjNode.uri != null) {
+			++ numberOfIndividuals;
+		}
+
                 break;
 
             case "http://www.w3.org/2002/07/owl#Axiom":
