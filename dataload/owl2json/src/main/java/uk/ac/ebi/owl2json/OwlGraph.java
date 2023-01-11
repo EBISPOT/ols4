@@ -201,6 +201,7 @@ public class OwlGraph implements StreamRDF {
     ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
+    EquivalenceAnnotator.annotateEquivalance(this);
 
     }
 
@@ -588,29 +589,6 @@ public class OwlGraph implements StreamRDF {
         subjNode.properties.addProperty(triple.getPredicate().getURI(), PropertyValue.fromJenaNode(triple.getObject()));
 
     }
-
-
-//        <owl:equivalentClass>
-//            <owl:Restriction>
-//                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
-//                <owl:someValuesFrom>
-//                    <owl:Class>
-//                        <owl:intersectionOf rdf:parseType="Collection">
-//                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0001509"/>
-//                            <owl:Restriction>
-//                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
-//                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001255"/>
-//                            </owl:Restriction>
-//                            <owl:Restriction>
-//                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002573"/>
-//                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0000460"/>
-//                            </owl:Restriction>
-//                        </owl:intersectionOf>
-//                    </owl:Class>
-//                </owl:someValuesFrom>
-//            </owl:Restriction>
-//        </owl:equivalentClass>
-
 
     public void handleNamedNodeTriple(Triple triple) {
 
