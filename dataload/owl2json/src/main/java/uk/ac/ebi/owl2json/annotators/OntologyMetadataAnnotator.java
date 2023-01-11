@@ -27,7 +27,10 @@ public class OntologyMetadataAnnotator {
 				continue;
 	
 			c.properties.addProperty("ontologyId", PropertyValueLiteral.fromString(ontologyId));
-			c.properties.addProperty("ontologyPreferredPrefix", PropertyValueLiteral.fromString(ontologyPreferredPrefix));
+
+			if(ontologyPreferredPrefix != null)
+				c.properties.addProperty("ontologyPreferredPrefix", PropertyValueLiteral.fromString(ontologyPreferredPrefix));
+
 			c.properties.addProperty("ontologyIri", PropertyValueLiteral.fromString(ontologyIri));
 		    }
 		}
