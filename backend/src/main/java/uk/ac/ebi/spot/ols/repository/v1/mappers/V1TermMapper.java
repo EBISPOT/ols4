@@ -76,14 +76,17 @@ public class V1TermMapper {
             }
         }
 
-        JsonObject iriToLabels = localizedJson.getAsJsonObject("iriToLabels");
+        JsonObject referencedEntities = localizedJson.getAsJsonObject("referencedEntities");
 
         term.related = new ArrayList<>();
 
         for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, "relatedTo")) {
 
             String predicate = relatedTo.getAsJsonPrimitive("property").getAsString();
-            String label = JsonHelper.getString(iriToLabels, predicate);
+
+	    JsonElement referencedEntity = referencedEntities.getAsJsonObject().get(predicate);
+            String label = referencedEntity != null ?
+	    	JsonHelper.getString(referencedEntity.getAsJsonObject(), "label") : ShortFormExtractor.extractShortForm(predicate);
 
             V1Related relatedObj = new V1Related();
             relatedObj.iri = predicate;

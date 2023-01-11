@@ -129,7 +129,7 @@ public class OntologyScanner {
 
     private static void visitValue(String predicate, Object value, Set<String> outProps, Set<String> outEdgeProps) {
 
-        if(predicate.equals("iriToLabels")) {
+        if(predicate.equals("referencedEntities")) {
             return;
         }
 

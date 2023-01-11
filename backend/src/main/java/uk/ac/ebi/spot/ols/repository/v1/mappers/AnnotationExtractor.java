@@ -20,7 +20,7 @@ public class AnnotationExtractor {
         TreeSet<String> synonymProperties = new TreeSet<>(JsonHelper.getStrings(json, "synonymProperty"));
         TreeSet<String> hierarchicalProperties = new TreeSet<>(JsonHelper.getStrings(json, "hierarchicalProperty"));
 
-        JsonObject labels = json.get("iriToLabels").getAsJsonObject();
+        JsonObject referencedEntities = json.get("referencedEntities").getAsJsonObject();
 
         Map<String, Object> annotation = new TreeMap<>();
 
@@ -73,26 +73,23 @@ public class AnnotationExtractor {
                 flattenedValues.add(entry);
             }
 
-            JsonElement labelObj = labels.get(predicate);
+	    String label = predicate.substring(
+		Math.max(
+			predicate.lastIndexOf('#'),
+			predicate.lastIndexOf('/')
+		) + 1
+	); 
 
-            String label = null;
+            JsonElement referencedEntityObj = referencedEntities.get(predicate);
 
-            if(labelObj != null) {
-                if(labelObj.isJsonPrimitive()) {
-                    label = labelObj.getAsString();
-                } else if(labelObj.isJsonArray()) {
-                    label = labelObj.getAsJsonArray().get(0).getAsString();
-                }
-            }
+	    if(referencedEntityObj != null) {
 
-            if(label == null) {
-                label = predicate.substring(
-                        Math.max(
-                                predicate.lastIndexOf('#'),
-                                predicate.lastIndexOf('/')
-                        ) + 1
-                );
-            }
+		String definedLabel = JsonHelper.getString(referencedEntityObj.getAsJsonObject(), "label");
+
+		if(definedLabel != null) {
+			label = definedLabel;
+		}
+	}
 
             Set<Object> annos = (Set<Object>) annotation.get(label);
 

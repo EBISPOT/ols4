@@ -202,6 +202,7 @@ public class OwlGraph implements StreamRDF {
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
     EquivalenceAnnotator.annotateEquivalance(this);
+    ReferencedEntitiesAnnotator.annotateReferencedEntities(this); // should come last so it finds all the entities
 
     }
 
@@ -353,10 +354,6 @@ public class OwlGraph implements StreamRDF {
 
             List<PropertyValue> values = properties.getPropertyValues(predicate);
 
-//            String name = predicate
-//                    .replace("http://www.w3.org/2002/07/owl#", "owl:")
-//                    .replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
-
             writer.name(predicate);
 
             if(values.size() == 1) {
@@ -369,89 +366,6 @@ public class OwlGraph implements StreamRDF {
                 writer.endArray();
             }
         }
-
-
-        // Labels for rendering the properties in the frontend (or for API consumers)
-        //
-        writer.name("iriToLabels");
-        writer.beginObject();
-
-	Set<String> urisToGetLabelsFor = new LinkedHashSet<>();
-	urisToGetLabelsFor.addAll(properties.getPropertyPredicates()); // need labels for all the predicates
-	
-	for(String predicate : properties.getPropertyPredicates()) {
-		for(PropertyValue val : properties.getPropertyValues(predicate)) { // need labels for any IRI values
-			if(val.getType() == Type.URI) {
-				urisToGetLabelsFor.add( ((PropertyValueURI) val).getUri() );
-			} else if(val.getType() == Type.BNODE) {
-                OwlNode bnode = getNodeForPropertyValue(val);
-                if(bnode != null) { // empty bnode values present in some ontologies, see issue #116
-                    if(bnode.types.contains(OwlNode.NodeType.RDF_LIST)) {
-                        for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(bnode, this)) {
-                            if(listEntry.getType() == Type.URI) {
-                                urisToGetLabelsFor.add( ((PropertyValueURI) listEntry).getUri() );
-                            }
-                        }
-                    }
-                }
-            } else if(val.getType() == Type.RELATED) {
-			urisToGetLabelsFor.add(((PropertyValueRelated) val).getProperty());
-			urisToGetLabelsFor.add(((PropertyValueRelated) val).getFiller().uri);
-	    }
-		}
-	}
-
-        for(String k : urisToGetLabelsFor) {
-
-            OwlNode labelledNode = nodes.get(k);
-            if(labelledNode == null) {
-                continue;
-            }
-
-	    // TODO: any other label props to look for?
-            List<PropertyValue> labelProps = labelledNode.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#label");
-	    Map<String, TreeSet<String>> langToLabels = new HashMap<>();
-
-            if(labelProps != null && labelProps.size() > 0) {
-                for (PropertyValue prop : labelProps) {
-
-                    if(prop.getType() != PropertyValue.Type.LITERAL)
-                        continue;
-
-                    String lang = ((PropertyValueLiteral) prop).getLang();
-
-                    if(lang==null||lang.equals(""))
-                        lang="en";
-
-		    TreeSet<String> labels = langToLabels.get(lang);
-		    if(labels == null) {
-			labels = new TreeSet<>();
-			langToLabels.put(lang, labels);
-		    }
-
-		    labels.add( ((PropertyValueLiteral) prop).getValue() );
-                }
-            }
-
-	    for(String lang : langToLabels.keySet()) {
-
-		TreeSet<String> labels = langToLabels.get(lang);
-
-		writer.name(lang+"+"+k);
-		if(labels.size() > 0 ){
-			writer.beginArray();
-			for(String label : labels) {
-				writer.value(label);
-			}
-			writer.endArray();
-		} else {
-			writer.value(labels.iterator().next());
-		}
-	    }
-
-        }
-
-        writer.endObject();
     }
 
 
@@ -525,6 +439,18 @@ public class OwlGraph implements StreamRDF {
                 writer.name("value");
                 writer.value(((PropertyValueRelated) value).getFiller().uri);
                 writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
+                writer.endObject();
+                break;
+	    case REFERENCED_ENTITIES:
+	        PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
+                writer.beginObject();
+		for(String referencedEntityIri : referencedEntities.getEntityIriToProperties().keySet()) {
+			PropertySet properties = referencedEntities.getEntityIriToProperties().get(referencedEntityIri);
+			writer.name(referencedEntityIri);
+			writer.beginObject();
+			writeProperties(writer, properties, null);
+			writer.endObject();
+		}
                 writer.endObject();
                 break;
             default:

@@ -1,18 +1,16 @@
 import { asArray, randomString } from "../app/util";
+import ReferencedEntities from "../model/ReferencedEntities";
 
 export default function ClassExpression({
   expr,
-  iriToLabels,
+  referencedEntities,
 }: {
   expr: any;
-  iriToLabels: any;
+  referencedEntities:ReferencedEntities;
 }) {
   if (typeof expr !== "object") {
     // expr is just an IRI
-    const label =
-      iriToLabels[expr] && Array.isArray(iriToLabels[expr])
-        ? iriToLabels[expr][0]
-        : expr.substring(expr.lastIndexOf("/") + 1);
+    const label = referencedEntities.getLabelForIri(expr) || expr.substring(expr.lastIndexOf("/") + 1);
     return (
       <a href={expr} className="link-default">
         {label}
@@ -20,7 +18,7 @@ export default function ClassExpression({
     );
   }
 
-  iriToLabels = { ...iriToLabels, ...expr.iriToLabels };
+  referencedEntities = referencedEntities.mergeWith(expr.referencedEntities)
 
   ///
   /// 1. owl:Class expressions
@@ -50,7 +48,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       );
     }
@@ -87,7 +85,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       );
     }
@@ -108,7 +106,7 @@ export default function ClassExpression({
     return (
       <span>
         <span className="pr-1 text-neutral-default italic">not</span>
-        <ClassExpression expr={complementOf} iriToLabels={iriToLabels} />
+        <ClassExpression expr={complementOf} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -133,7 +131,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
           expr={subExpr}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       );
     }
@@ -167,9 +165,9 @@ export default function ClassExpression({
   if (someValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">some</span>
-        <ClassExpression expr={someValuesFrom} iriToLabels={iriToLabels} />
+        <ClassExpression expr={someValuesFrom} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -180,9 +178,9 @@ export default function ClassExpression({
   if (allValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">only</span>
-        <ClassExpression expr={allValuesFrom} iriToLabels={iriToLabels} />
+        <ClassExpression expr={allValuesFrom} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -191,9 +189,9 @@ export default function ClassExpression({
   if (hasValue) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">value</span>
-        <ClassExpression expr={hasValue} iriToLabels={iriToLabels} />
+        <ClassExpression expr={hasValue} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -204,9 +202,9 @@ export default function ClassExpression({
   if (minCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
-        <ClassExpression expr={minCardinality} iriToLabels={iriToLabels} />
+        <ClassExpression expr={minCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -217,9 +215,9 @@ export default function ClassExpression({
   if (maxCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
-        <ClassExpression expr={maxCardinality} iriToLabels={iriToLabels} />
+        <ClassExpression expr={maxCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -230,11 +228,11 @@ export default function ClassExpression({
   if (minQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
         <ClassExpression
           expr={minQualifiedCardinality}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       </span>
     );
@@ -246,11 +244,11 @@ export default function ClassExpression({
   if (maxQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
         <ClassExpression
           expr={maxQualifiedCardinality}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       </span>
     );
@@ -262,9 +260,9 @@ export default function ClassExpression({
   if (exactCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
-        <ClassExpression expr={exactCardinality} iriToLabels={iriToLabels} />
+        <ClassExpression expr={exactCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -275,11 +273,11 @@ export default function ClassExpression({
   if (exactQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
         <ClassExpression
           expr={exactQualifiedCardinality}
-          iriToLabels={iriToLabels}
+          referencedEntities={referencedEntities}
         />
       </span>
     );
@@ -289,7 +287,7 @@ export default function ClassExpression({
   if (hasSelf) {
     return (
       <span>
-        <ClassExpression expr={onProperty} iriToLabels={iriToLabels} />
+        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">Self</span>
       </span>
     );

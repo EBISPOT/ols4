@@ -30,12 +30,7 @@ public class LocalizationTransform {
             JsonObject res = new JsonObject();
 
             for (String k : obj.keySet()) {
-
-                if(k.equals("iriToLabels")) {
-                    res.add(k, localize_iriToLabels(obj.get(k).getAsJsonObject(), lang));
-                } else {
-                    res.add(k, transform(obj.get(k), lang));
-                }
+		res.add(k, transform(obj.get(k), lang));
             }
 
             return res;
@@ -47,23 +42,6 @@ public class LocalizationTransform {
         }
     }
 
-    private static JsonObject localize_iriToLabels(JsonObject labels, String lang) {
-
-        JsonObject localizedLabels = new JsonObject();
-
-        for(String k : labels.keySet()) {
-
-            if(! (k.startsWith(lang + "+"))) {
-                continue;
-            }
-
-            String predicate = k.substring(lang.length() + 1);
-
-            localizedLabels.add(predicate, labels.get(k));
-        }
-
-        return localizedLabels;
-    }
 
 }
 

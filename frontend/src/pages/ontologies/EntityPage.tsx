@@ -15,6 +15,7 @@ import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
 import Individual from "../../model/Individual";
+import ReferencedEntities from "../../model/ReferencedEntities";
 
 export default function EntityPage({ontologyId, entityIri, entityType}:({ ontologyId: string, entityIri: string, entityType: "classes" | "properties" | "individuals" })) {
 
@@ -24,7 +25,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
-  const iriToLabels = entity ? entity.getiriToLabels() : {};
+  const referencedEntities = entity ? entity.getReferencedEntities() : new ReferencedEntities({})
 
   const [isShortFormCopied, setIsShortFormCopied] = useState(false);
   const copyShortForm = (text: string) => {
@@ -111,9 +112,9 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                 </button>
               </div>
               <div className="mb-4">
-		<EntityDescriptionSection entity={entity} />
+		<EntityDescriptionSection entity={entity} referencedEntities={referencedEntities} />
               </div>
-	      <EntitySynonymsSection entity={entity} />
+	      <EntitySynonymsSection entity={entity} referencedEntities={referencedEntities} />
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
@@ -187,13 +188,13 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
-			<IndividualTypesSection entity={entity} iriToLabels={iriToLabels} />
-			<IndividualSameAsSection entity={entity} iriToLabels={iriToLabels} />
-			<IndividualDifferentFromSection entity={entity} iriToLabels={iriToLabels} />
-			<DisjointWithSection entity={entity} iriToLabels={iriToLabels} />
-			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
-			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
-			<EntityRelatedFromSection entity={entity} iriToLabels={iriToLabels} />
+			<IndividualTypesSection entity={entity} referencedEntities={referencedEntities} />
+			<IndividualSameAsSection entity={entity} referencedEntities={referencedEntities} />
+			<IndividualDifferentFromSection entity={entity} referencedEntities={referencedEntities} />
+			<DisjointWithSection entity={entity} referencedEntities={referencedEntities} />
+			<EntityEquivalentsSection entity={entity} referencedEntities={referencedEntities} />
+			<EntityParentsSection entity={entity} referencedEntities={referencedEntities} />
+			<EntityRelatedFromSection entity={entity} referencedEntities={referencedEntities} />
                   </div>
                 </details>
               </div>
@@ -208,17 +209,13 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
   );
 }
 
-function EntityDescriptionSection({entity}:{entity:Entity}) {
+function EntityDescriptionSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	return <p>
                   {entity
                     .getDescriptionAsArray()
                     .map((definition: Reified<any>) => {
-                      const hasMetadata =
-                        definition.getMetadata()?.iriToLabels &&
-                        Object.keys(definition.getMetadata()).length > 0 &&
-                        Object.keys(definition.getMetadata().iriToLabels)
-                          .length > 0;
+                      const hasMetadata = definition.hasMetadata()
                       return (
                         <span key={randomString()}>
                           {definition.value}
@@ -226,16 +223,13 @@ function EntityDescriptionSection({entity}:{entity:Entity}) {
                             <Tooltip
                               title={Object.keys(definition.getMetadata())
                                 .map((key) => {
-                                  if (
-                                    definition.getMetadata().iriToLabels[key]
-                                  ) {
+					let label = referencedEntities.getLabelForIri(key)
+                                  if ( label) {
                                     return (
                                       "*" +
                                       definition.getMetadata()[key] +
                                       " (" +
-                                      definition
-                                        .getMetadata()
-                                        .iriToLabels[key][0].replaceAll(
+                                        label.replaceAll(
                                           "_",
                                           " "
                                         ) +
@@ -318,7 +312,7 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 		}</Fragment>
 }
 
-function EntitySynonymsSection({entity}:{entity:Entity}) {
+function EntitySynonymsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	let synonyms = entity.getSynonyms()
 
@@ -330,11 +324,7 @@ function EntitySynonymsSection({entity}:{entity:Entity}) {
 		<div className="font-bold mb-4">Synonym</div>
 		<div className="flex flex-row flex-wrap">
 		{synonyms.map((synonym: Reified<any>) => {
-		const hasMetadata =
-			synonym.getMetadata()?.iriToLabels &&
-			Object.keys(synonym.getMetadata()).length > 0 &&
-			Object.keys(synonym.getMetadata().iriToLabels)
-			.length > 0;
+		const hasMetadata = synonym.hasMetadata()
 		return (
 			<div
 			key={
@@ -344,7 +334,7 @@ function EntitySynonymsSection({entity}:{entity:Entity}) {
 			className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
 			>
 			{synonym.value}
-			{hasMetadata && <MetadataTooltip metadata={synonym.getMetadata()} /> }
+			{hasMetadata && <MetadataTooltip metadata={synonym.getMetadata()} referencedEntities={referencedEntities} /> }
 			</div>
 		);
 		})
@@ -353,7 +343,7 @@ function EntitySynonymsSection({entity}:{entity:Entity}) {
 	</div>
 }
 
-function EntityEquivalentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function EntityEquivalentsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Class || entity instanceof Property)) {
 		return <Fragment/>
@@ -369,18 +359,14 @@ function EntityEquivalentsSection({entity, iriToLabels}:{entity:Entity, iriToLab
 	<div className="font-bold">Equivalent to</div>
 	<ul className="list-disc list-inside">
 		{equivalents.map((eqClass: Reified<any>) => {
-		const hasMetadata =
-		eqClass.getMetadata()?.iriToLabels &&
-		Object.keys(eqClass.getMetadata()).length > 0 &&
-		Object.keys(eqClass.getMetadata().iriToLabels)
-			.length > 0;
+		const hasMetadata = eqClass.hasMetadata()
 		return (
 		<li key={randomString()}>
 			<ClassExpression
 			expr={eqClass.value}
-			iriToLabels={iriToLabels}
+			referencedEntities={referencedEntities}
 			/>
-			{hasMetadata && <MetadataTooltip metadata={eqClass.getMetadata()} /> }
+			{hasMetadata && <MetadataTooltip metadata={eqClass.getMetadata()} referencedEntities={referencedEntities} /> }
 		</li>
 		);
 		})}
@@ -389,7 +375,7 @@ function EntityEquivalentsSection({entity, iriToLabels}:{entity:Entity, iriToLab
 }
 
 
-function EntityParentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function EntityParentsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Class || entity instanceof Property)) {
 		return <Fragment/>
@@ -408,18 +394,14 @@ function EntityParentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:
 	</div>
 	<ul className="list-disc list-inside">
 		{parents.map((parent: Reified<any>) => {
-		const hasMetadata =
-		parent.getMetadata()?.iriToLabels &&
-		Object.keys(parent.getMetadata()).length > 0 &&
-		Object.keys(parent.getMetadata().iriToLabels)
-		.length > 0;
+		const hasMetadata = parent.hasMetadata()
 		return (
 		<li key={randomString()}>
 		<ClassExpression
 			expr={parent.value}
-			iriToLabels={iriToLabels}
+			referencedEntities={referencedEntities}
 		/>
-		{hasMetadata && <MetadataTooltip metadata={parent.getMetadata()} /> }
+		{hasMetadata && <MetadataTooltip metadata={parent.getMetadata()} referencedEntities={referencedEntities} /> }
 		</li>
 		);
 		})}
@@ -427,7 +409,7 @@ function EntityParentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:
 	</div>
 }
 
-function EntityRelatedFromSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function EntityRelatedFromSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Class || entity instanceof Property)) {
 		return <Fragment/>
@@ -447,7 +429,7 @@ function EntityRelatedFromSection({entity, iriToLabels}:{entity:Entity, iriToLab
 	</div>
 	{ predicates.map(p => {
 
-		let label = iriToLabels[p]
+		let label = referencedEntities.getLabelForIri(p)
 		return <div>
 			<div>
 				<i>{label || p}</i>
@@ -459,7 +441,7 @@ function EntityRelatedFromSection({entity, iriToLabels}:{entity:Entity, iriToLab
 						.filter(relatedFrom => relatedFrom.value.property === p)
 						.map(relatedFrom => {
 							let relatedIri = relatedFrom.value.value
-							let label = iriToLabels[relatedIri]
+							let label = referencedEntities.getLabelForIri(relatedIri)
 							return <li>
 								<a href={relatedIri} className="link-default">
 								{label || relatedIri}
@@ -478,14 +460,15 @@ function EntityRelatedFromSection({entity, iriToLabels}:{entity:Entity, iriToLab
 }
 
 
-function MetadataTooltip({metadata}:{metadata:any}) {
+function MetadataTooltip({metadata, referencedEntities}:{metadata:any, referencedEntities:ReferencedEntities }) {
 
 	return <Tooltip
 		title={Object.keys(metadata)
 		.map((key) => {
-		if ( metadata.iriToLabels[key]) {
+			let label = referencedEntities.getLabelForIri(key) || key
+		if (label) {
 			return ("*" + metadata[key] + " (" +
-					metadata.iriToLabels[key][0].replaceAll( "_", " ") + ")");
+					label.replaceAll( "_", " ") + ")");
 		}
 		return "";
 		})
@@ -497,7 +480,7 @@ function MetadataTooltip({metadata}:{metadata:any}) {
 		</Tooltip>
 }
 
-function IndividualTypesSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function IndividualTypesSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Individual)) {
 		return <Fragment/>
@@ -516,7 +499,7 @@ function IndividualTypesSection({entity, iriToLabels}:{entity:Entity, iriToLabel
 	<ul className="list-disc list-inside">
 		{
 			types.map(type => {
-					let label = iriToLabels[type]
+					let label = referencedEntities.getLabelForIri(type)
 					return <li>
 						<a href={type} className="link-default">
 						{label || type}
@@ -529,7 +512,7 @@ function IndividualTypesSection({entity, iriToLabels}:{entity:Entity, iriToLabel
 
 }
 
-function IndividualSameAsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function IndividualSameAsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Individual)) {
 		return <Fragment/>
@@ -548,7 +531,7 @@ function IndividualSameAsSection({entity, iriToLabels}:{entity:Entity, iriToLabe
 	<ul className="list-disc list-inside">
 		{
 			sameAses.map(sameAs => {
-					let label = iriToLabels[sameAs]
+					let label = referencedEntities.getLabelForIri(sameAs)
 					return <li>
 						<a href={sameAs} className="link-default">
 						{label || sameAs}
@@ -561,7 +544,7 @@ function IndividualSameAsSection({entity, iriToLabels}:{entity:Entity, iriToLabe
 
 }
 
-function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function IndividualDifferentFromSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Individual)) {
 		return <Fragment/>
@@ -580,7 +563,7 @@ function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, ir
 	<ul className="list-disc list-inside">
 		{
 			differentFroms.map(differentFrom => {
-					let label = iriToLabels[differentFrom]
+					let label = referencedEntities.getLabelForIri(differentFrom)
 					return <li>
 						<a href={differentFrom} className="link-default">
 						{label || differentFrom}
@@ -593,7 +576,7 @@ function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, ir
 
 }
 
-function DisjointWithSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function DisjointWithSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	if(! (entity instanceof Property)
 		&& ! (entity instanceof Class)) {
@@ -613,7 +596,7 @@ function DisjointWithSection({entity, iriToLabels}:{entity:Entity, iriToLabels:a
 	<ul className="list-disc list-inside">
 		{
 			disjointWiths.map(disjointWith => {
-					let label = iriToLabels[disjointWith]
+					let label = referencedEntities.getLabelForIri(disjointWith)
 					return <li>
 						<a href={disjointWith} className="link-default">
 						{label || disjointWith}

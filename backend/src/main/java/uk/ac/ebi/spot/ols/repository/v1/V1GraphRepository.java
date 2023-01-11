@@ -93,10 +93,10 @@ public class V1GraphRepository {
 
             String propertyLabel = "is a";
 
-            JsonObject iriToLabels = ontologyEdgeObject.get("iriToLabels").getAsJsonObject();
+            JsonObject referencedEntities = ontologyEdgeObject.get("referencedEntities").getAsJsonObject();
 
-            if (iriToLabels != null) {
-                String label = iriToLabels.get("iri").getAsString();
+            if (referencedEntities != null) {
+                String label = referencedEntities.get(uri).getAsString();
                 if (label != null) {
                     propertyLabel = label;
                 }
