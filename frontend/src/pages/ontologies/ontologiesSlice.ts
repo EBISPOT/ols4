@@ -13,6 +13,7 @@ export interface OntologiesState {
   ontologies: Ontology[];
   totalOntologies: number;
   entities: Entity[];
+  totalEntities:number;
   loadingOntologies: boolean;
   loadingEntities: boolean;
   loadingNodeChildren: boolean;
@@ -35,6 +36,7 @@ const initialState: OntologiesState = {
   ontologies: [],
   totalOntologies: 0,
   entities: [],
+  totalEntities: 0,
   loadingOntologies: false,
   loadingEntities: false,
   loadingNodeChildren: false,
@@ -82,12 +84,14 @@ export const getOntologies = createAsyncThunk(
 );
 export const getEntities = createAsyncThunk(
   "ontologies_entities",
-  async ({ ontologyId, entityType }: any, { rejectWithValue }) => {
+  async ({ ontologyId, entityType, page, rowsPerPage, search }: any, { rejectWithValue }) => {
     try {
       const data = (
-        await getPaginated<any>(`api/v2/ontologies/${ontologyId}/${entityType}`)
+        await getPaginated<any>(`api/v2/ontologies/${ontologyId}/${entityType}?page=${page}&size=${rowsPerPage}${
+            search ? "&search=" + search : ""
+	}`)
       ).map((e) => thingFromProperties(e));
-      return data.elements;
+      return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -219,8 +223,9 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(
       getEntities.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        state.entities = action.payload;
+      (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
+        state.entities = action.payload.elements;
+        state.totalEntities = action.payload.totalElements;
         state.loadingEntities = false;
       }
     );
