@@ -187,6 +187,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
+			<IndividualSameAsSection entity={entity} iriToLabels={iriToLabels} />
 			<IndividualDifferentFromSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
@@ -495,6 +496,37 @@ function MetadataTooltip({metadata}:{metadata:any}) {
 }
 
 
+function IndividualSameAsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Individual)) {
+		return <Fragment/>
+	}
+
+	let sameAses = entity.getSameAs()
+
+	if(!sameAses || sameAses.length === 0) {
+		return <Fragment/>
+	}
+
+	return <div>
+	<div className="font-bold">
+		Same as
+	</div>
+	<ul className="list-disc list-inside">
+		{
+			sameAses.map(sameAs => {
+					let label = iriToLabels[sameAs]
+					return <li>
+						<a href={sameAs} className="link-default">
+						{label || sameAs}
+						</a>
+					</li>
+				})
+		}
+	</ul>
+	</div>
+
+}
 
 function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
 
