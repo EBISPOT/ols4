@@ -1,12 +1,14 @@
 import { AccountTree } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Tab, Tabs } from "../../components/Tabs";
+import Ontology from "../../model/Ontology";
 import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
@@ -154,6 +156,7 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
                         {ontology.getNumEntities()}
                       </span>
                     </div>
+		    <OntologyAnnotationsSection ontology={ontology} />
                   </div>
                 </details>
               </div>
@@ -164,4 +167,65 @@ export default function OntologyPage({ ontologyId }: { ontologyId: string }) {
       </main>
     </div>
   );
+}
+
+function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
+
+	let annotationPredicates = ontology.getAnnotationPredicates()
+
+	return <Fragment>
+		 {annotationPredicates.map((annotationPredicate) => {
+			const title = ontology.getLabelForIri(annotationPredicate)
+			? ontology
+				.getLabelForIri(annotationPredicate)
+				.replaceAll("_", " ")
+			: annotationPredicate
+				.substring(
+				annotationPredicate.lastIndexOf("/") + 1
+				)
+				.substring(
+				annotationPredicate
+				.substring(
+				annotationPredicate.lastIndexOf("/") + 1
+				)
+				.lastIndexOf("#") + 1
+				)
+				.replaceAll("_", " ");
+			return (
+			<div
+			key={
+				title.toString().toUpperCase() +
+				randomString()
+			}
+			>
+			<div className="font-bold capitalize">
+				{title}
+			</div>
+			<ul className="list-disc list-inside">
+				{ontology
+				.getAnnotationById(annotationPredicate)
+				.map((annotation: any) => {
+				const value =
+				annotation &&
+				typeof annotation === "object"
+					? annotation.value
+					: annotation;
+				return (
+				<li
+					key={
+					value.toString().toUpperCase() +
+					randomString()
+					}
+				>
+					{value}
+				</li>
+				);
+				})
+				.sort((a, b) => sortByKeys(a, b))}
+			</ul>
+			</div>
+			);
+			})
+			.sort((a, b) => sortByKeys(a, b))
+		}</Fragment>
 }

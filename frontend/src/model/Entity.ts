@@ -28,20 +28,6 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
-  getLabelForIri(id: string) {
-    const iriToLabels = this.properties["iriToLabels"];
-    let labels = iriToLabels[id]
-    if(labels) {
-	return labels[0]
-    } else {
-	return undefined
-    }
-  }
-
-  getAnnotationById(id: string) {
-    return asArray(this.properties[id]);
-  }
-
   getiriToLabels(): any {
     return this.properties["iriToLabels"];
   }

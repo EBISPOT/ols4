@@ -59,4 +59,20 @@ export default class Ontology extends Thing {
   getLoaded(): string {
     return this.properties["loaded"];
   }
+  getAnnotationPredicates():string[] {
+
+	  let annotationPredicates = new Set()
+
+	  for (let predicate of Object.keys(this.properties)) {
+
+		  // properties without an IRI are things that were added by owl2json so should not
+		  // be included as annotations
+		  if (predicate.indexOf('://') === -1)
+			  continue;
+
+		  annotationPredicates.add(predicate)
+	  }
+
+	  return Array.from(annotationPredicates) as string[]
+  }
 }

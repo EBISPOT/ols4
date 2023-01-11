@@ -1,3 +1,4 @@
+import { asArray } from "../app/util";
 import Reified from "./Reified";
 
 export default abstract class Thing {
@@ -67,4 +68,19 @@ export default abstract class Thing {
   getOntologyId(): string {
     return this.properties["ontologyId"];
   }
+
+  getLabelForIri(id: string) {
+    const iriToLabels = this.properties["iriToLabels"];
+    let labels = iriToLabels[id]
+    if(labels) {
+	return labels[0]
+    } else {
+	return undefined
+    }
+  }
+
+  getAnnotationById(id: string) {
+    return asArray(this.properties[id]);
+  }
+
 }
