@@ -6,6 +6,12 @@ export default abstract class Entity extends Thing {
   abstract getParents(): Reified<any>[];
   abstract getEquivalents(): Reified<any>[];
 
+  getRelatedFrom(): Reified<any>[] {
+    return Reified.fromJson<any>(
+      this.properties["relatedFrom"]
+    );
+  }
+
   getDescriptionAsArray(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["definition"]);
   }

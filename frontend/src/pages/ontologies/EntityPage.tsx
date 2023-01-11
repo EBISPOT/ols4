@@ -1,6 +1,6 @@
 import { AccountTree, Share } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
@@ -10,19 +10,13 @@ import LoadingOverlay from "../../components/LoadingOverlay";
 import Class from "../../model/Class";
 import Property from "../../model/Property";
 import Reified from "../../model/Reified";
+import Entity from "../../model/Entity";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
 
-export default function EntityPage({
-  ontologyId,
-  entityIri,
-  entityType,
-}: {
-  ontologyId: string;
-  entityIri: string;
-  entityType: "classes" | "properties" | "individuals";
-}) {
+export default function EntityPage({ontologyId, entityIri, entityType}:({ ontologyId: string, entityIri: string, entityType: "classes" | "properties" | "individuals" })) {
+
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
@@ -162,63 +156,7 @@ export default function EntityPage({
                     })}
                 </p>
               </div>
-              {entity.getSynonyms() && entity.getSynonyms().length !== 0 ? (
-                <div>
-                  <div className="font-bold mb-4">Synonym</div>
-                  <div className="flex flex-row flex-wrap">
-                    {entity
-                      .getSynonyms()
-                      .map((synonym: Reified<any>) => {
-                        const hasMetadata =
-                          synonym.getMetadata()?.iriToLabels &&
-                          Object.keys(synonym.getMetadata()).length > 0 &&
-                          Object.keys(synonym.getMetadata().iriToLabels)
-                            .length > 0;
-                        return (
-                          <div
-                            key={
-                              synonym.value.toString().toUpperCase() +
-                              randomString()
-                            }
-                            className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
-                          >
-                            {synonym.value}
-                            {hasMetadata ? (
-                              <Tooltip
-                                title={Object.keys(synonym.getMetadata())
-                                  .map((key) => {
-                                    if (
-                                      synonym.getMetadata().iriToLabels[key]
-                                    ) {
-                                      return (
-                                        "*" +
-                                        synonym.getMetadata()[key] +
-                                        " (" +
-                                        synonym
-                                          .getMetadata()
-                                          .iriToLabels[key][0].replaceAll(
-                                            "_",
-                                            " "
-                                          ) +
-                                        ")"
-                                      );
-                                    }
-                                    return "";
-                                  })
-                                  .join("\n")}
-                                placement="top"
-                                arrow
-                              >
-                                <i className="icon icon-common icon-info text-neutral-default ml-1" />
-                              </Tooltip>
-                            ) : null}
-                          </div>
-                        );
-                      })
-                      .sort((a, b) => sortByKeys(a, b))}
-                  </div>
-                </div>
-              ) : null}
+	      <EntitySynonymsSection entity={entity} />
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
@@ -351,116 +289,9 @@ export default function EntityPage({
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
-                    {(entity instanceof Class || entity instanceof Property) &&
-                    entity?.getEquivalents()?.length > 0 ? (
-                      <div>
-                        <div className="font-bold">Equivalent to</div>
-                        <ul className="list-disc list-inside">
-                          {entity
-                            .getEquivalents()
-                            .map((eqClass: Reified<any>) => {
-                              const hasMetadata =
-                                eqClass.getMetadata()?.iriToLabels &&
-                                Object.keys(eqClass.getMetadata()).length > 0 &&
-                                Object.keys(eqClass.getMetadata().iriToLabels)
-                                  .length > 0;
-                              return (
-                                <li key={randomString()}>
-                                  <ClassExpression
-                                    expr={eqClass.value}
-                                    iriToLabels={iriToLabels}
-                                  />
-                                  {hasMetadata ? (
-                                    <Tooltip
-                                      title={Object.keys(eqClass.getMetadata())
-                                        .map((key) => {
-                                          if (
-                                            eqClass.getMetadata().iriToLabels[
-                                              key
-                                            ]
-                                          ) {
-                                            return (
-                                              "*" +
-                                              eqClass.getMetadata()[key] +
-                                              " (" +
-                                              eqClass
-                                                .getMetadata()
-                                                .iriToLabels[key][0].replaceAll(
-                                                  "_",
-                                                  " "
-                                                ) +
-                                              ")"
-                                            );
-                                          }
-                                          return "";
-                                        })
-                                        .join("\n")}
-                                      placement="top"
-                                      arrow
-                                    >
-                                      <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
-                                    </Tooltip>
-                                  ) : null}
-                                </li>
-                              );
-                            })}
-                        </ul>
-                      </div>
-                    ) : null}
-                    {(entity instanceof Class || entity instanceof Property) &&
-                    entity?.getParents()?.length > 0 ? (
-                      <div>
-                        <div className="font-bold">
-                          Sub{entity.getType().toString().toLowerCase()} of
-                        </div>
-                        <ul className="list-disc list-inside">
-                          {entity.getParents().map((parent: Reified<any>) => {
-                            const hasMetadata =
-                              parent.getMetadata()?.iriToLabels &&
-                              Object.keys(parent.getMetadata()).length > 0 &&
-                              Object.keys(parent.getMetadata().iriToLabels)
-                                .length > 0;
-                            return (
-                              <li key={randomString()}>
-                                <ClassExpression
-                                  expr={parent.value}
-                                  iriToLabels={iriToLabels}
-                                />
-                                {hasMetadata ? (
-                                  <Tooltip
-                                    title={Object.keys(parent.getMetadata())
-                                      .map((key) => {
-                                        if (
-                                          parent.getMetadata().iriToLabels[key]
-                                        ) {
-                                          return (
-                                            "*" +
-                                            parent.getMetadata()[key] +
-                                            " (" +
-                                            parent
-                                              .getMetadata()
-                                              .iriToLabels[key][0].replaceAll(
-                                                "_",
-                                                " "
-                                              ) +
-                                            ")"
-                                          );
-                                        }
-                                        return "";
-                                      })
-                                      .join("\n")}
-                                    placement="top"
-                                    arrow
-                                  >
-                                    <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
-                                  </Tooltip>
-                                ) : null}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    ) : null}
+			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
+			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
+			<EntityRelatedFromSection entity={entity} iriToLabels={iriToLabels} />
                   </div>
                 </details>
               </div>
@@ -474,3 +305,183 @@ export default function EntityPage({
     </div>
   );
 }
+
+function EntitySynonymsSection({entity}:{entity:Entity}) {
+
+	let synonyms = entity.getSynonyms()
+
+	if(!synonyms || synonyms.length === 0) {
+		return <Fragment/>
+	}
+
+	return <div>
+		<div className="font-bold mb-4">Synonym</div>
+		<div className="flex flex-row flex-wrap">
+		{synonyms.map((synonym: Reified<any>) => {
+		const hasMetadata =
+			synonym.getMetadata()?.iriToLabels &&
+			Object.keys(synonym.getMetadata()).length > 0 &&
+			Object.keys(synonym.getMetadata().iriToLabels)
+			.length > 0;
+		return (
+			<div
+			key={
+			synonym.value.toString().toUpperCase() +
+			randomString()
+			}
+			className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
+			>
+			{synonym.value}
+			{hasMetadata && <MetadataTooltip metadata={synonym.getMetadata()} /> }
+			</div>
+		);
+		})
+		.sort((a, b) => sortByKeys(a, b))}
+		</div>
+	</div>
+}
+
+function EntityEquivalentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Class || entity instanceof Property)) {
+		return <Fragment/>
+	}
+
+	let equivalents = entity?.getEquivalents()
+
+	if(!equivalents || equivalents.length === 0) {
+		return <Fragment/>
+	}
+
+	return <div>
+	<div className="font-bold">Equivalent to</div>
+	<ul className="list-disc list-inside">
+		{equivalents.map((eqClass: Reified<any>) => {
+		const hasMetadata =
+		eqClass.getMetadata()?.iriToLabels &&
+		Object.keys(eqClass.getMetadata()).length > 0 &&
+		Object.keys(eqClass.getMetadata().iriToLabels)
+			.length > 0;
+		return (
+		<li key={randomString()}>
+			<ClassExpression
+			expr={eqClass.value}
+			iriToLabels={iriToLabels}
+			/>
+			{hasMetadata && <MetadataTooltip metadata={eqClass.getMetadata()} /> }
+		</li>
+		);
+		})}
+	</ul>
+	</div>
+}
+
+
+function EntityParentsSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Class || entity instanceof Property)) {
+		return <Fragment/>
+	}
+
+	let parents = entity?.getParents()
+
+	if(!parents || parents.length === 0) {
+		return <Fragment/>
+	}
+
+
+	return <div>
+	<div className="font-bold">
+		Sub{entity.getType().toString().toLowerCase()} of
+	</div>
+	<ul className="list-disc list-inside">
+		{parents.map((parent: Reified<any>) => {
+		const hasMetadata =
+		parent.getMetadata()?.iriToLabels &&
+		Object.keys(parent.getMetadata()).length > 0 &&
+		Object.keys(parent.getMetadata().iriToLabels)
+		.length > 0;
+		return (
+		<li key={randomString()}>
+		<ClassExpression
+			expr={parent.value}
+			iriToLabels={iriToLabels}
+		/>
+		{hasMetadata && <MetadataTooltip metadata={parent.getMetadata()} /> }
+		</li>
+		);
+		})}
+	</ul>
+	</div>
+}
+
+function EntityRelatedFromSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Class || entity instanceof Property)) {
+		return <Fragment/>
+	}
+
+	let relatedFroms = entity?.getRelatedFrom()
+
+	if(!relatedFroms || relatedFroms.length === 0) {
+		return <Fragment/>
+	}
+
+	let predicates = Array.from( new Set( relatedFroms.map(relatedFrom => relatedFrom.value.property) ) )
+
+	return <div>
+	<div className="font-bold">
+		Related from
+	</div>
+	{ predicates.map(p => {
+
+		let label = iriToLabels[p]
+		return <div>
+			<div>
+				<i>{label || p}</i>
+			</div>
+			<div className="pl-4">
+			<ul className="list-disc list-inside">
+				{
+					relatedFroms
+						.filter(relatedFrom => relatedFrom.value.property === p)
+						.map(relatedFrom => {
+							let relatedIri = relatedFrom.value.value
+							let label = iriToLabels[relatedIri]
+							return <li>
+								<a href={relatedIri} className="link-default">
+								{label || relatedIri}
+								</a>
+							</li>
+						})
+				}
+			</ul>
+			</div>
+		</div>
+	}) }
+
+	<ul className="list-disc list-inside">
+	</ul>
+	</div>
+}
+
+
+function MetadataTooltip({metadata}:{metadata:any}) {
+
+	return <Tooltip
+		title={Object.keys(metadata)
+		.map((key) => {
+		if ( metadata.iriToLabels[key]) {
+			return ("*" + metadata[key] + " (" +
+					metadata.iriToLabels[key][0].replaceAll( "_", " ") + ")");
+		}
+		return "";
+		})
+		.join("\n")}
+		placement="top"
+		arrow
+		>
+		<i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+		</Tooltip>
+}
+
