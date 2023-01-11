@@ -190,7 +190,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
 			<IndividualTypesSection entity={entity} iriToLabels={iriToLabels} />
 			<IndividualSameAsSection entity={entity} iriToLabels={iriToLabels} />
 			<IndividualDifferentFromSection entity={entity} iriToLabels={iriToLabels} />
-			<PropertyDisjointWithSection entity={entity} iriToLabels={iriToLabels} />
+			<DisjointWithSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityRelatedFromSection entity={entity} iriToLabels={iriToLabels} />
@@ -593,9 +593,10 @@ function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, ir
 
 }
 
-function PropertyDisjointWithSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+function DisjointWithSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
 
-	if(! (entity instanceof Property)) {
+	if(! (entity instanceof Property)
+		&& ! (entity instanceof Class)) {
 		return <Fragment/>
 	}
 
