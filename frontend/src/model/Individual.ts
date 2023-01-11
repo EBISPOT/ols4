@@ -1,3 +1,4 @@
+import { asArray } from "../app/util";
 import Entity from "./Entity";
 
 export default class Individual extends Entity {
@@ -6,5 +7,10 @@ export default class Individual extends Entity {
   }
   getEquivalents() {
     return [];
+  }
+
+
+  getDifferentFrom() {
+	return asArray(this.properties['http://www.w3.org/2002/07/owl#differentFrom'])
   }
 }

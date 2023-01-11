@@ -14,6 +14,7 @@ import Entity from "../../model/Entity";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
+import Individual from "../../model/Individual";
 
 export default function EntityPage({ontologyId, entityIri, entityType}:({ ontologyId: string, entityIri: string, entityType: "classes" | "properties" | "individuals" })) {
 
@@ -110,51 +111,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                 </button>
               </div>
               <div className="mb-4">
-                <p>
-                  {entity
-                    .getDescriptionAsArray()
-                    .map((definition: Reified<any>) => {
-                      const hasMetadata =
-                        definition.getMetadata()?.iriToLabels &&
-                        Object.keys(definition.getMetadata()).length > 0 &&
-                        Object.keys(definition.getMetadata().iriToLabels)
-                          .length > 0;
-                      return (
-                        <span key={randomString()}>
-                          {definition.value}
-                          {hasMetadata ? (
-                            <Tooltip
-                              title={Object.keys(definition.getMetadata())
-                                .map((key) => {
-                                  if (
-                                    definition.getMetadata().iriToLabels[key]
-                                  ) {
-                                    return (
-                                      "*" +
-                                      definition.getMetadata()[key] +
-                                      " (" +
-                                      definition
-                                        .getMetadata()
-                                        .iriToLabels[key][0].replaceAll(
-                                          "_",
-                                          " "
-                                        ) +
-                                      ")"
-                                    );
-                                  }
-                                  return "";
-                                })
-                                .join("\n")}
-                              placement="top"
-                              arrow
-                            >
-                              <i className="icon icon-common icon-info text-neutral-default text-sm ml-1 mr-2" />
-                            </Tooltip>
-                          ) : null}
-                        </span>
-                      );
-                    })}
-                </p>
+		<EntityDescriptionSection entity={entity} />
               </div>
 	      <EntitySynonymsSection entity={entity} />
             </div>
@@ -230,6 +187,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
+			<IndividualDifferentFromSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityEquivalentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityParentsSection entity={entity} iriToLabels={iriToLabels} />
 			<EntityRelatedFromSection entity={entity} iriToLabels={iriToLabels} />
@@ -245,6 +203,55 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
       </main>
     </div>
   );
+}
+
+function EntityDescriptionSection({entity}:{entity:Entity}) {
+
+	return <p>
+                  {entity
+                    .getDescriptionAsArray()
+                    .map((definition: Reified<any>) => {
+                      const hasMetadata =
+                        definition.getMetadata()?.iriToLabels &&
+                        Object.keys(definition.getMetadata()).length > 0 &&
+                        Object.keys(definition.getMetadata().iriToLabels)
+                          .length > 0;
+                      return (
+                        <span key={randomString()}>
+                          {definition.value}
+                          {hasMetadata ? (
+                            <Tooltip
+                              title={Object.keys(definition.getMetadata())
+                                .map((key) => {
+                                  if (
+                                    definition.getMetadata().iriToLabels[key]
+                                  ) {
+                                    return (
+                                      "*" +
+                                      definition.getMetadata()[key] +
+                                      " (" +
+                                      definition
+                                        .getMetadata()
+                                        .iriToLabels[key][0].replaceAll(
+                                          "_",
+                                          " "
+                                        ) +
+                                      ")"
+                                    );
+                                  }
+                                  return "";
+                                })
+                                .join("\n")}
+                              placement="top"
+                              arrow
+                            >
+                              <i className="icon icon-common icon-info text-neutral-default text-sm ml-1 mr-2" />
+                            </Tooltip>
+                          ) : null}
+                        </span>
+                      );
+                    })}
+                </p>
 }
 
 function EntityAnnotationsSection({entity}:{entity:Entity}) {
@@ -486,4 +493,39 @@ function MetadataTooltip({metadata}:{metadata:any}) {
 		<i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
 		</Tooltip>
 }
+
+
+
+function IndividualDifferentFromSection({entity, iriToLabels}:{entity:Entity, iriToLabels:any}) {
+
+	if(! (entity instanceof Individual)) {
+		return <Fragment/>
+	}
+
+	let differentFroms = entity.getDifferentFrom()
+
+	if(!differentFroms || differentFroms.length === 0) {
+		return <Fragment/>
+	}
+
+	return <div>
+	<div className="font-bold">
+		Different from
+	</div>
+	<ul className="list-disc list-inside">
+		{
+			differentFroms.map(differentFrom => {
+					let label = iriToLabels[differentFrom]
+					return <li>
+						<a href={differentFrom} className="link-default">
+						{label || differentFrom}
+						</a>
+					</li>
+				})
+		}
+	</ul>
+	</div>
+
+}
+
 
