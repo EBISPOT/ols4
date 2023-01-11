@@ -220,66 +220,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
-                    {entity.getAnnotationPredicate() &&
-                    entity.getAnnotationPredicate().length !== 0
-                      ? entity
-                          .getAnnotationPredicate()
-                          .map((annotationPredicate) => {
-                            const title = entity.getLabelForIri(
-                              annotationPredicate
-                            )
-                              ? entity
-                                  .getLabelForIri(annotationPredicate)
-                                  .replaceAll("_", " ")
-                              : annotationPredicate
-                                  .substring(
-                                    annotationPredicate.lastIndexOf("/") + 1
-                                  )
-                                  .substring(
-                                    annotationPredicate
-                                      .substring(
-                                        annotationPredicate.lastIndexOf("/") + 1
-                                      )
-                                      .lastIndexOf("#") + 1
-                                  )
-                                  .replaceAll("_", " ");
-                            return (
-                              <div
-                                key={
-                                  title.toString().toUpperCase() +
-                                  randomString()
-                                }
-                              >
-                                <div className="font-bold capitalize">
-                                  {title}
-                                </div>
-                                <ul className="list-disc list-inside">
-                                  {entity
-                                    .getAnnotationById(annotationPredicate)
-                                    .map((annotation: any) => {
-                                      const value =
-                                        annotation &&
-                                        typeof annotation === "object"
-                                          ? annotation.value
-                                          : annotation;
-                                      return (
-                                        <li
-                                          key={
-                                            value.toString().toUpperCase() +
-                                            randomString()
-                                          }
-                                        >
-                                          {value}
-                                        </li>
-                                      );
-                                    })
-                                    .sort((a, b) => sortByKeys(a, b))}
-                                </ul>
-                              </div>
-                            );
-                          })
-                          .sort((a, b) => sortByKeys(a, b))
-                      : null}
+			<EntityAnnotationsSection entity={entity} />
                   </div>
                 </details>
                 <details open className="p-2">
@@ -304,6 +245,67 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
       </main>
     </div>
   );
+}
+
+function EntityAnnotationsSection({entity}:{entity:Entity}) {
+
+	let annotationPredicates = entity.getAnnotationPredicates()
+
+	return <Fragment>
+		 {annotationPredicates.map((annotationPredicate) => {
+			const title = entity.getLabelForIri(annotationPredicate)
+			? entity
+				.getLabelForIri(annotationPredicate)
+				.replaceAll("_", " ")
+			: annotationPredicate
+				.substring(
+				annotationPredicate.lastIndexOf("/") + 1
+				)
+				.substring(
+				annotationPredicate
+				.substring(
+				annotationPredicate.lastIndexOf("/") + 1
+				)
+				.lastIndexOf("#") + 1
+				)
+				.replaceAll("_", " ");
+			return (
+			<div
+			key={
+				title.toString().toUpperCase() +
+				randomString()
+			}
+			>
+			<div className="font-bold capitalize">
+				{title}
+			</div>
+			<ul className="list-disc list-inside">
+				{entity
+				.getAnnotationById(annotationPredicate)
+				.map((annotation: any) => {
+				const value =
+				annotation &&
+				typeof annotation === "object"
+					? annotation.value
+					: annotation;
+				return (
+				<li
+					key={
+					value.toString().toUpperCase() +
+					randomString()
+					}
+				>
+					{value}
+				</li>
+				);
+				})
+				.sort((a, b) => sortByKeys(a, b))}
+			</ul>
+			</div>
+			);
+			})
+			.sort((a, b) => sortByKeys(a, b))
+		}</Fragment>
 }
 
 function EntitySynonymsSection({entity}:{entity:Entity}) {
