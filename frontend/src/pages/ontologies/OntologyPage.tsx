@@ -192,6 +192,10 @@ function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
 				.lastIndexOf("#") + 1
 				)
 				.replaceAll("_", " ");
+
+			let annotations = ontology
+			.getAnnotationById(annotationPredicate)
+
 			return (
 			<div
 			key={
@@ -202,31 +206,32 @@ function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
 			<div className="font-bold capitalize">
 				{title}
 			</div>
+			{annotations.length === 1 ?
+			<p>{getAnnotationValue(annotations[0])}</p>
+			:
 			<ul className="list-disc list-inside">
-				{ontology
-				.getAnnotationById(annotationPredicate)
+				{annotations
 				.map((annotation: any) => {
-				const value =
-				annotation &&
-				typeof annotation === "object"
-					? annotation.value
-					: annotation;
+				const value = getAnnotationValue(annotation)
 				return (
 				<li
 					key={
 					value.toString().toUpperCase() +
 					randomString()
-					}
-				>
+					}>
 					{value}
 				</li>
 				);
 				})
 				.sort((a, b) => sortByKeys(a, b))}
-			</ul>
+			</ul>}
 			</div>
 			);
 			})
 			.sort((a, b) => sortByKeys(a, b))
 		}</Fragment>
+
+	function getAnnotationValue(annotation) {
+		return annotation && typeof annotation === "object" ? annotation.value : annotation;
+	}
 }
