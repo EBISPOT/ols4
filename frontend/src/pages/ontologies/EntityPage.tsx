@@ -16,6 +16,7 @@ import EntityTree from "./EntityTree";
 import { getEntity, getOntology } from "./ontologiesSlice";
 import Individual from "../../model/Individual";
 import ReferencedEntities from "../../model/ReferencedEntities";
+import EntityLink from "../../components/EntityLink";
 
 export default function EntityPage({ontologyId, entityIri, entityType}:({ ontologyId: string, entityIri: string, entityType: "classes" | "properties" | "individuals" })) {
 
@@ -445,9 +446,7 @@ function EntityRelatedFromSection({entity, referencedEntities}:{entity:Entity, r
 							let relatedIri = relatedFrom.value.value
 							let label = referencedEntities.getLabelForIri(relatedIri)
 							return <li>
-								<a href={relatedIri} className="link-default">
-								{label || relatedIri}
-								</a>
+								<EntityLink ontologyId={entity.getOntologyId()} entityType={'classes'} iri={relatedIri} referencedEntities={referencedEntities} />
 							</li>
 						})
 				}
@@ -501,11 +500,8 @@ function IndividualTypesSection({entity, referencedEntities}:{entity:Entity, ref
 	<ul className="list-disc list-inside">
 		{
 			types.map(type => {
-					let label = referencedEntities.getLabelForIri(type)
 					return <li>
-						<a href={type} className="link-default">
-						{label || type}
-						</a>
+						<EntityLink ontologyId={entity.getOntologyId()} entityType={'classes'} iri={type} referencedEntities={referencedEntities} />
 					</li>
 				})
 		}
@@ -533,11 +529,8 @@ function IndividualSameAsSection({entity, referencedEntities}:{entity:Entity, re
 	<ul className="list-disc list-inside">
 		{
 			sameAses.map(sameAs => {
-					let label = referencedEntities.getLabelForIri(sameAs)
 					return <li>
-						<a href={sameAs} className="link-default">
-						{label || sameAs}
-						</a>
+						<EntityLink ontologyId={entity.getOntologyId()} entityType={'individuals'} iri={sameAs} referencedEntities={referencedEntities} />
 					</li>
 				})
 		}
@@ -565,11 +558,8 @@ function IndividualDifferentFromSection({entity, referencedEntities}:{entity:Ent
 	<ul className="list-disc list-inside">
 		{
 			differentFroms.map(differentFrom => {
-					let label = referencedEntities.getLabelForIri(differentFrom)
 					return <li>
-						<a href={differentFrom} className="link-default">
-						{label || differentFrom}
-						</a>
+						<EntityLink ontologyId={entity.getOntologyId()} entityType={'individuals'} iri={differentFrom} referencedEntities={referencedEntities} />
 					</li>
 				})
 		}
@@ -600,9 +590,9 @@ function DisjointWithSection({entity, referencedEntities}:{entity:Entity, refere
 			disjointWiths.map(disjointWith => {
 					let label = referencedEntities.getLabelForIri(disjointWith)
 					return <li>
-						<a href={disjointWith} className="link-default">
-						{label || disjointWith}
-						</a>
+						<EntityLink ontologyId={entity.getOntologyId()} entityType={
+							entity.getType() === 'property' ? 'properties': 'classes'
+							} iri={disjointWith} referencedEntities={referencedEntities} />
 					</li>
 				})
 		}
