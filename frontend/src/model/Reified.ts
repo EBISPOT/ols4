@@ -1,3 +1,5 @@
+import ReferencedEntities from "./ReferencedEntities";
+
 export default class Reified<T> {
   value: T;
   axioms: any[]|null
@@ -31,6 +33,10 @@ export default class Reified<T> {
     });
   }
 
+  hasMetadata() {
+	return this.axioms != null
+  }
+
   // Combine all of the axioms into one metadata object for the property.
   //
   // note: This means that if the same property is reified multiple times with
@@ -44,24 +50,19 @@ export default class Reified<T> {
 	}
 
 	let properties:any = {}
-	let iriToLabels:any = {}
 
 	for(let axiom of this.axioms) {
 		for(let k of Object.keys(axiom)) {
 			let v = axiom[k]
-			if(k === 'iriToLabels') {
-				iriToLabels = { ...iriToLabels, ...v }
+			let existing:any[]|undefined = properties[k]
+			if(existing !== undefined) {
+				existing.push(v)
 			} else {
-				let existing:any[]|undefined = properties[k]
-				if(existing !== undefined) {
-					existing.push(v)
-				} else {
-					properties[k] = [v]
-				}
+				properties[k] = [v]
 			}
 		}
 	}
 
-	return { ...properties, iriToLabels };
+	return properties
   }
 }

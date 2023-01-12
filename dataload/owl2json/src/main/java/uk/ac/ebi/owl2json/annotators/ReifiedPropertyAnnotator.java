@@ -29,7 +29,8 @@ public class ReifiedPropertyAnnotator {
 					for (PropertyValue prop : v2) {
 						if (!p2.equals("http://www.w3.org/2002/07/owl#annotatedSource")
 								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedProperty")
-								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedTarget")) {
+								&& !p2.equals("http://www.w3.org/2002/07/owl#annotatedTarget")
+								&& !p2.equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")) {
 							axiom.addProperty(p2, prop);
 						}
 					}

@@ -74,10 +74,10 @@ export default abstract class Thing {
   }
 
   getLabelForIri(id: string) {
-    const iriToLabels = this.properties["iriToLabels"];
-    let labels = iriToLabels[id]
+    const referencedEntities = this.properties["referencedEntities"];
+    let labels = referencedEntities[id]?.label
     if(labels) {
-	return labels[0]
+	return Array.isArray(labels) ? labels[0] : labels
     } else {
 	return undefined
     }
