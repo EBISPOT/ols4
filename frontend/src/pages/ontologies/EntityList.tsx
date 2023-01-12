@@ -23,7 +23,9 @@ export default function EntityList(props: {
   let { ontologyId, entityType } = props;
 
   useEffect(() => {
-    dispatch(getEntities({ ontologyId, entityType, page, rowsPerPage, search }));
+    dispatch(
+      getEntities({ ontologyId, entityType, page, rowsPerPage, search })
+    );
   }, [dispatch, ontologyId, entityType, page, rowsPerPage, search]);
 
   const history = useHistory();
@@ -33,28 +35,31 @@ export default function EntityList(props: {
       columns={columns}
       data={entities}
       dataCount={totalEntities}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          onPageChange={(pg: number) => {
-            setPage(pg);
-          }}
-          onRowsPerPageChange={(rows: number) => {
-            setRowsPerPage((prev) => {
-              if (rows !== prev) setPage(0);
-              return rows;
-            });
-          }}
-      onSelectRow={(row) => {
-	const termUrl = encodeURIComponent(encodeURIComponent(row.properties.iri));
-	history.push(`/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`)
-        console.log(JSON.stringify(row));
+      page={page}
+      rowsPerPage={rowsPerPage}
+      onPageChange={(pg: number) => {
+        setPage(pg);
       }}
-          onFilter={(key: string) => {
-            setSearch((prev) => {
-              if (key !== prev) setPage(0);
-              return key;
-            });
-          }}
+      onRowsPerPageChange={(rows: number) => {
+        setRowsPerPage((prev) => {
+          if (rows !== prev) setPage(0);
+          return rows;
+        });
+      }}
+      onSelectRow={(row) => {
+        const termUrl = encodeURIComponent(
+          encodeURIComponent(row.properties.iri)
+        );
+        history.push(
+          `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
+        );
+      }}
+      onFilter={(key: string) => {
+        setSearch((prev) => {
+          if (key !== prev) setPage(0);
+          return key;
+        });
+      }}
     />
   );
 }
