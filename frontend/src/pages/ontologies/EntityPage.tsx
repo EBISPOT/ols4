@@ -274,6 +274,9 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 				.lastIndexOf("#") + 1
 				)
 				.replaceAll("_", " ");
+
+			let annotations = entity.getAnnotationById(annotationPredicate)
+
 			return (
 			<div
 			key={
@@ -284,33 +287,34 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 			<div className="font-bold capitalize">
 				{title}
 			</div>
+
+			{ annotations.length === 1 ?
+				<p>{getAnnotationValue(annotations[0])}</p> :
 			<ul className="list-disc list-inside">
-				{entity
-				.getAnnotationById(annotationPredicate)
-				.map((annotation: any) => {
-				const value =
-				annotation &&
-				typeof annotation === "object"
-					? annotation.value
-					: annotation;
+				{annotations.map((annotation: any) => {
 				return (
 				<li
 					key={
-					value.toString().toUpperCase() +
+					getAnnotationValue(annotation).toString().toUpperCase() +
 					randomString()
 					}
 				>
-					{value}
+					{getAnnotationValue(annotation)}
 				</li>
 				);
 				})
 				.sort((a, b) => sortByKeys(a, b))}
 			</ul>
+		 }
 			</div>
 			);
 			})
 			.sort((a, b) => sortByKeys(a, b))
 		}</Fragment>
+
+	function getAnnotationValue(annotation) {
+		return annotation && typeof annotation === "object" ? annotation.value : annotation;
+	}
 }
 
 function EntitySynonymsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
@@ -394,9 +398,18 @@ function EntityParentsSection({entity, referencedEntities}:{entity:Entity, refer
 	<div className="font-bold">
 		Sub{entity.getType().toString().toLowerCase()} of
 	</div>
+	{ parents.length === 1 ?
+		<p key={randomString()}>
+		<ClassExpression
+			ontologyId={entity.getOntologyId()}
+			expr={parents[0].value}
+			referencedEntities={referencedEntities}
+		/>
+		{parents[0].hasMetadata() && <MetadataTooltip metadata={parents[0].getMetadata()} referencedEntities={referencedEntities} /> }
+		</p>
+	:
 	<ul className="list-disc list-inside">
 		{parents.map((parent: Reified<any>) => {
-		const hasMetadata = parent.hasMetadata()
 		return (
 		<li key={randomString()}>
 		<ClassExpression
@@ -404,11 +417,11 @@ function EntityParentsSection({entity, referencedEntities}:{entity:Entity, refer
 			expr={parent.value}
 			referencedEntities={referencedEntities}
 		/>
-		{hasMetadata && <MetadataTooltip metadata={parent.getMetadata()} referencedEntities={referencedEntities} /> }
+		{parent.hasMetadata() && <MetadataTooltip metadata={parent.getMetadata()} referencedEntities={referencedEntities} /> }
 		</li>
 		);
 		})}
-	</ul>
+	</ul>}
 	</div>
 }
 
@@ -497,6 +510,10 @@ function IndividualTypesSection({entity, referencedEntities}:{entity:Entity, ref
 	<div className="font-bold">
 		Type
 	</div>
+	{ types.length === 1 ?
+	<p>
+		<EntityLink ontologyId={entity.getOntologyId()} entityType={'classes'} iri={types[0]} referencedEntities={referencedEntities} />
+	</p> :
 	<ul className="list-disc list-inside">
 		{
 			types.map(type => {
@@ -505,7 +522,7 @@ function IndividualTypesSection({entity, referencedEntities}:{entity:Entity, ref
 					</li>
 				})
 		}
-	</ul>
+	</ul>}
 	</div>
 
 }
@@ -526,6 +543,11 @@ function IndividualSameAsSection({entity, referencedEntities}:{entity:Entity, re
 	<div className="font-bold">
 		Same as
 	</div>
+	{sameAses.length === 1 ?
+	<p>
+	<EntityLink ontologyId={entity.getOntologyId()} entityType={'individuals'} iri={sameAses[0]} referencedEntities={referencedEntities} />
+	</p>
+	:
 	<ul className="list-disc list-inside">
 		{
 			sameAses.map(sameAs => {
@@ -534,7 +556,7 @@ function IndividualSameAsSection({entity, referencedEntities}:{entity:Entity, re
 					</li>
 				})
 		}
-	</ul>
+	</ul>}
 	</div>
 
 }
@@ -555,6 +577,10 @@ function IndividualDifferentFromSection({entity, referencedEntities}:{entity:Ent
 	<div className="font-bold">
 		Different from
 	</div>
+	{differentFroms.length === 1 ?
+	<p>
+		<EntityLink ontologyId={entity.getOntologyId()} entityType={'individuals'} iri={differentFroms[0]} referencedEntities={referencedEntities} />
+	</p> :
 	<ul className="list-disc list-inside">
 		{
 			differentFroms.map(differentFrom => {
@@ -563,7 +589,7 @@ function IndividualDifferentFromSection({entity, referencedEntities}:{entity:Ent
 					</li>
 				})
 		}
-	</ul>
+	</ul>}
 	</div>
 
 }
@@ -585,10 +611,16 @@ function DisjointWithSection({entity, referencedEntities}:{entity:Entity, refere
 	<div className="font-bold">
 		Disjoint with
 	</div>
+	{disjointWiths.length === 1 ?
+	<p>
+						<EntityLink ontologyId={entity.getOntologyId()} entityType={
+							entity.getType() === 'property' ? 'properties': 'classes'
+							} iri={disjointWiths[0]} referencedEntities={referencedEntities} />
+	</p>
+	:
 	<ul className="list-disc list-inside">
 		{
 			disjointWiths.map(disjointWith => {
-					let label = referencedEntities.getLabelForIri(disjointWith)
 					return <li>
 						<EntityLink ontologyId={entity.getOntologyId()} entityType={
 							entity.getType() === 'property' ? 'properties': 'classes'
@@ -597,6 +629,7 @@ function DisjointWithSection({entity, referencedEntities}:{entity:Entity, refere
 				})
 		}
 	</ul>
+}
 	</div>
 
 }
