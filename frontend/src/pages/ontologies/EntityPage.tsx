@@ -363,6 +363,7 @@ function EntityEquivalentsSection({entity, referencedEntities}:{entity:Entity, r
 		return (
 		<li key={randomString()}>
 			<ClassExpression
+			ontologyId={entity.getOntologyId()}
 			expr={eqClass.value}
 			referencedEntities={referencedEntities}
 			/>
@@ -398,6 +399,7 @@ function EntityParentsSection({entity, referencedEntities}:{entity:Entity, refer
 		return (
 		<li key={randomString()}>
 		<ClassExpression
+			ontologyId={entity.getOntologyId()}
 			expr={parent.value}
 			referencedEntities={referencedEntities}
 		/>

@@ -1,21 +1,23 @@
 import { asArray, randomString } from "../app/util";
 import ReferencedEntities from "../model/ReferencedEntities";
+import EntityLink from "./EntityLink";
 
 export default function ClassExpression({
+	ontologyId,
   expr,
+  entityType,
   referencedEntities,
 }: {
+	ontologyId:string,
   expr: any;
+  entityType?:'classes'|'properties'|'individuals',
   referencedEntities:ReferencedEntities;
 }) {
+	entityType = entityType || 'classes'
+
   if (typeof expr !== "object") {
     // expr is just an IRI
-    const label = referencedEntities.getLabelForIri(expr) || expr.substring(expr.lastIndexOf("/") + 1);
-    return (
-      <a href={expr} className="link-default">
-        {label}
-      </a>
-    );
+    return <EntityLink ontologyId={ontologyId} entityType={entityType} iri={expr} referencedEntities={referencedEntities} />
   }
 
   referencedEntities = referencedEntities.mergeWith(expr.referencedEntities)
@@ -47,6 +49,8 @@ export default function ClassExpression({
       nodes.push(
         <ClassExpression
           key={randomString()}
+	  ontologyId={ontologyId}
+	  entityType={'classes'}
           expr={subExpr}
           referencedEntities={referencedEntities}
         />
@@ -84,6 +88,8 @@ export default function ClassExpression({
       nodes.push(
         <ClassExpression
           key={randomString()}
+	  ontologyId={ontologyId}
+	  entityType={'classes'}
           expr={subExpr}
           referencedEntities={referencedEntities}
         />
@@ -106,7 +112,11 @@ export default function ClassExpression({
     return (
       <span>
         <span className="pr-1 text-neutral-default italic">not</span>
-        <ClassExpression expr={complementOf} referencedEntities={referencedEntities} />
+        <ClassExpression
+	  ontologyId={ontologyId}
+	  entityType={'classes'}
+	  expr={complementOf}
+	  referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -130,6 +140,8 @@ export default function ClassExpression({
       nodes.push(
         <ClassExpression
           key={randomString()}
+	  ontologyId={ontologyId}
+	  entityType={'individuals'}
           expr={subExpr}
           referencedEntities={referencedEntities}
         />
@@ -165,9 +177,9 @@ export default function ClassExpression({
   if (someValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">some</span>
-        <ClassExpression expr={someValuesFrom} referencedEntities={referencedEntities} />
+        <ClassExpression ontologyId={ontologyId} entityType={'classes'} expr={someValuesFrom} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -178,9 +190,9 @@ export default function ClassExpression({
   if (allValuesFrom) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">only</span>
-        <ClassExpression expr={allValuesFrom} referencedEntities={referencedEntities} />
+        <ClassExpression ontologyId={ontologyId} entityType={'classes'} expr={allValuesFrom} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -189,9 +201,9 @@ export default function ClassExpression({
   if (hasValue) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">value</span>
-        <ClassExpression expr={hasValue} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'individuals'} expr={hasValue} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -202,9 +214,9 @@ export default function ClassExpression({
   if (minCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
-        <ClassExpression expr={minCardinality} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={minCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -215,9 +227,9 @@ export default function ClassExpression({
   if (maxCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
-        <ClassExpression expr={maxCardinality} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={maxCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -228,9 +240,10 @@ export default function ClassExpression({
   if (minQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
         <ClassExpression
+	 ontologyId={ontologyId} entityType={'classes'}
           expr={minQualifiedCardinality}
           referencedEntities={referencedEntities}
         />
@@ -244,9 +257,10 @@ export default function ClassExpression({
   if (maxQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
         <ClassExpression
+	 ontologyId={ontologyId} entityType={'classes'}
           expr={maxQualifiedCardinality}
           referencedEntities={referencedEntities}
         />
@@ -260,9 +274,9 @@ export default function ClassExpression({
   if (exactCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
-        <ClassExpression expr={exactCardinality} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={exactCardinality} referencedEntities={referencedEntities} />
       </span>
     );
   }
@@ -273,9 +287,10 @@ export default function ClassExpression({
   if (exactQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
         <ClassExpression
+	 ontologyId={ontologyId} entityType={'classes'}
           expr={exactQualifiedCardinality}
           referencedEntities={referencedEntities}
         />
@@ -287,7 +302,7 @@ export default function ClassExpression({
   if (hasSelf) {
     return (
       <span>
-        <ClassExpression expr={onProperty} referencedEntities={referencedEntities} />
+        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} referencedEntities={referencedEntities} />
         <span className="px-1 text-embl-purple-default italic">Self</span>
       </span>
     );
