@@ -13,20 +13,11 @@ import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 
 import java.util.*;
 
-/**
- * @author Simon Jupp
- * @date 30/04/2015
- * Samples, Phenotypes and Ontologies Team, EMBL-EBI
- */
-//@RepositoryRestResource(collectionResourceRel = "terms", exported = false)
 @Component
 public class V1TermRepository {
-//        extends GraphRepository<Term> {
-
 
     @Autowired
     V1OntologyRepository ontologyRepository;
@@ -40,9 +31,6 @@ public class V1TermRepository {
     @Autowired
     OlsSolrClient solrClient;
 
-    @Autowired
-    OboDatabaseUrlService oboDbUrls;
-
 
 //    @Query(
 //            countQuery = "MATCH (n:Class)-[:SUBCLASSOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct parent)",
@@ -50,7 +38,7 @@ public class V1TermRepository {
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
 	return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
-			.map(node -> V1TermMapper.mapTerm(node, lang, oboDbUrls));
+			.map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
 //    @Query(
@@ -61,7 +49,7 @@ public class V1TermRepository {
 	List<String> relationIRIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 //    @Query(
@@ -72,7 +60,7 @@ public class V1TermRepository {
 	List<String> relationIRIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
 
@@ -81,7 +69,7 @@ public class V1TermRepository {
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
 	return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 //    @Query( countQuery = "MATCH (n:Class)<-[:SUBCLASSOF|RelatedTree]-(child) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN count(distinct child)",
@@ -91,7 +79,7 @@ public class V1TermRepository {
 	List<String> relationIRIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
 
@@ -102,7 +90,7 @@ public class V1TermRepository {
         List<String> relationIRIs = List.of("hierarchicalParent");
 
 	return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 
@@ -111,7 +99,7 @@ public class V1TermRepository {
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
 	return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
 
@@ -122,7 +110,7 @@ public class V1TermRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
 	return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
 
@@ -135,7 +123,7 @@ public class V1TermRepository {
                     Arrays.asList("relatedTo"),
                     Map.of("property", relation),
                     pageable)
-            .map(record -> V1TermMapper.mapTerm(record, lang, oboDbUrls));
+            .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
 
@@ -148,7 +136,7 @@ public class V1TermRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        return V1TermMapper.mapTerm(solrClient.getOne(query), lang, oboDbUrls);
+        return V1TermMapper.mapTerm(solrClient.getOne(query), lang);
 
     }
 
@@ -162,7 +150,7 @@ public class V1TermRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.short_form = {1} RETURN n")
@@ -174,7 +162,7 @@ public class V1TermRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
-        return V1TermMapper.mapTerm(solrClient.getOne(query), lang, oboDbUrls);
+        return V1TermMapper.mapTerm(solrClient.getOne(query), lang);
     }
 
 //    @Query (value = "MATCH (n:Class) WHERE n.ontology_name = {0} AND n.obo_id = {1} RETURN n")
@@ -186,7 +174,7 @@ public class V1TermRepository {
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
-        return V1TermMapper.mapTerm(solrClient.getOne(query), lang, oboDbUrls);
+        return V1TermMapper.mapTerm(solrClient.getOne(query), lang);
 
     }
 
@@ -205,7 +193,7 @@ public class V1TermRepository {
             query.addFilter("isObsolete", "false", Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN count(n)",
@@ -228,7 +216,7 @@ public class V1TermRepository {
         query.addFilter("type", "class", Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.is_defining_ontology = true RETURN count(n)",
@@ -241,7 +229,7 @@ public class V1TermRepository {
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
 
     }
 
@@ -255,7 +243,7 @@ public class V1TermRepository {
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.iri = {0} AND n.is_defining_ontology = true "
@@ -270,7 +258,7 @@ public class V1TermRepository {
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
     		
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.short_form = {0} RETURN count(n)",
@@ -283,7 +271,7 @@ public class V1TermRepository {
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.short_form = {0} AND n.is_defining_ontology = true"
@@ -298,7 +286,7 @@ public class V1TermRepository {
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (n:Class) WHERE n.obo_id = {0} RETURN count(n)",
@@ -311,7 +299,7 @@ public class V1TermRepository {
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
 
     }
 
@@ -327,7 +315,7 @@ public class V1TermRepository {
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(result -> V1TermMapper.mapTerm(result, lang, oboDbUrls));
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
     
 //    @Query (countQuery = "MATCH (i:Individual)-[INSTANCEOF]->(c:Class) WHERE i.ontology_name = {0} AND c.iri = {1} RETURN count(i)",

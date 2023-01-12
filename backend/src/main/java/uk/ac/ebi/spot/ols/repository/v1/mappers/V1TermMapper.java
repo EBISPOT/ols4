@@ -5,13 +5,12 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.model.v1.*;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 
 import java.util.*;
 
 public class V1TermMapper {
 
-    public static V1Term mapTerm(JsonElement json, String lang, OboDatabaseUrlService oboDbUrls) {
+    public static V1Term mapTerm(JsonElement json, String lang) {
 
         V1Term term = new V1Term();
 
@@ -40,9 +39,9 @@ public class V1TermMapper {
         term.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         term.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 
-        term.oboDefinitionCitations = V1OboDefinitionCitationExtractor.extractFromJson(localizedJson, oboDbUrls);
-        term.oboXrefs = V1OboXrefExtractor.extractFromJson(localizedJson, oboDbUrls);
-        term.oboSynonyms = V1OboSynonymExtractor.extractFromJson(localizedJson, oboDbUrls);
+        term.oboDefinitionCitations = V1OboDefinitionCitationExtractor.extractFromJson(localizedJson);
+        term.oboXrefs = V1OboXrefExtractor.extractFromJson(localizedJson);
+        term.oboSynonyms = V1OboSynonymExtractor.extractFromJson(localizedJson);
         term.isPreferredRoot = false;
 
         term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "isDefiningOntology"));

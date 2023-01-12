@@ -13,9 +13,9 @@ public class ShortFormExtractor {
             return uri.substring(4);
         }
 
-        if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
-            return uri.substring("http://purl.obolibrary.org/obo/".length());
-        }
+//        if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
+//            return uri.substring("http://purl.obolibrary.org/obo/".length());
+//        }
 
         for (String baseUri :ontologyBaseUris) {
             if (uri.startsWith(baseUri) && preferredPrefix != null) {
@@ -23,17 +23,19 @@ public class ShortFormExtractor {
             }
         }
 
-        int lastHash = uri.lastIndexOf('#');
-        if(lastHash != -1) {
-            return uri.substring(lastHash + 1);
-        }
+	if(uri.contains("/") || uri.contains("#")) {
 
-        int lastSlash = uri.lastIndexOf('/');
-        if(lastSlash != -1) {
-            return uri.substring(lastSlash + 1);
-        }
+		return uri.substring(
+			Math.max(
+				uri.lastIndexOf('/'),
+				uri.lastIndexOf('#')
+			) + 1
+		);
 
-        return uri;
+	} else {
+
+		return uri;
+	}
     }
 
 

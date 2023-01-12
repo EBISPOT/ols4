@@ -1,7 +1,6 @@
-package uk.ac.ebi.spot.ols.service;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+package uk.ac.ebi.owl2json;
+
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -10,21 +9,22 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-@Component
 public class OboDatabaseUrlService {
 
-    @Value("${ols.obo_xrefs_url:}")
     private String xrefUrls;
 
     Map<String, OboDatabase> databases = new HashMap<>();
 
     public OboDatabaseUrlService() {
+        this("https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml");
+    }
 
-        if(xrefUrls == null) {
-            xrefUrls = "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml";
-        }
+    public OboDatabaseUrlService(String xrefUrls) {
+
+        this.xrefUrls = xrefUrls;
 
         for(String xrefUrl : xrefUrls.split(";")) {
 
@@ -59,7 +59,7 @@ public class OboDatabaseUrlService {
                             db.databaseId = databaseId;
                             db.databaseName = databaseName;
                             db.urlSyntax = (String) entityMap.get("url_syntax");
-                            databases.put(databaseId, db);
+                            databases.put(databaseId.toLowerCase(Locale.ROOT), db);
                         }
                     }
                 }
@@ -69,7 +69,7 @@ public class OboDatabaseUrlService {
 
     public String getUrlForId(String databaseId, String id) {
 
-        OboDatabase db = databases.get(databaseId);
+        OboDatabase db = databases.get(databaseId.toLowerCase(Locale.ROOT));
 
         if(db == null)
             return null;

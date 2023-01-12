@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.model.v1.V1OboDefinitionCitation;
 import uk.ac.ebi.spot.ols.model.v1.V1OboXref;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class V1OboDefinitionCitationExtractor {
 
-    public static List<V1OboDefinitionCitation> extractFromJson(JsonObject json, OboDatabaseUrlService oboDbUrls) {
+    public static List<V1OboDefinitionCitation> extractFromJson(JsonObject json) {
 
         List<JsonElement> definitions = JsonHelper.getValues(json, "definition");
         List<V1OboDefinitionCitation> res = new ArrayList<>();
@@ -36,7 +35,7 @@ public class V1OboDefinitionCitationExtractor {
 
                         V1OboDefinitionCitation citation = new V1OboDefinitionCitation();
                         citation.definition = definition;
-                        citation.oboXrefs = xrefs.stream().map(xref -> V1OboXref.fromString(JsonHelper.objectToString(xref), oboDbUrls)).collect(Collectors.toList());
+                        citation.oboXrefs = xrefs.stream().map(V1OboXref::fromJson).collect(Collectors.toList());
                         res.add(citation);
                     }
                 }

@@ -1,6 +1,9 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.Objects;
 
@@ -12,41 +15,70 @@ public class V1OboXref {
     public String url;
 
 
-    // e.g. Orphanet:1037
-    public static V1OboXref fromString(String oboXref, OboDatabaseUrlService oboDbUrls) {
+    public static V1OboXref fromJson(JsonElement oboXref) {
 
-        if(oboXref.startsWith("http:") || oboXref.startsWith("https:")) {
-            V1OboXref xref = new V1OboXref();
-            xref.id = oboXref;
-            xref.url = oboXref;
-            return xref;
-        }
+        if(oboXref.isJsonPrimitive()) {
 
-        if(oboXref.contains("://")) {
-            if(oboXref.matches("^[A-Z]+:.+")) {
-                    // e.g. DOI:https://doi.org/10.1378/chest.12-2762
-                    V1OboXref xref = new V1OboXref();
-                    xref.id = oboXref;
-    //                xref.database = oboXref.split(":")[0];
-    //                xref.id = oboXref.substring(oboXref.indexOf(':') + 1);
-    //                xref.url = oboXref.substring(oboXref.indexOf(':') + 1);
-                    return xref;
+            String value = oboXref.getAsString();
+
+            if(value.startsWith("http:") || value.startsWith("https:")) {
+                V1OboXref xref = new V1OboXref();
+                xref.id = value;
+                xref.url = value;
+                return xref;
             }
-        }
 
-        String[] tokens = oboXref.split(":");
+            if(value.contains("://")) {
+                if(value.matches("^[A-Z]+:.+")) {
+                        // e.g. DOI:https://doi.org/10.1378/chest.12-2762
+                        V1OboXref xref = new V1OboXref();
+                        xref.id = value;
+        //                xref.database = oboXref.split(":")[0];
+        //                xref.id = oboXref.substring(oboXref.indexOf(':') + 1);
+        //                xref.url = oboXref.substring(oboXref.indexOf(':') + 1);
+                        return xref;
+                }
+            }
 
-        if(tokens.length < 2) {
+            String[] tokens = value.split(":");
+
+            if(tokens.length < 2) {
+                V1OboXref xref = new V1OboXref();
+                xref.id = tokens[0];
+                return xref;
+            }
+
             V1OboXref xref = new V1OboXref();
-            xref.id = tokens[0];
+            xref.database = tokens[0];
+            xref.id = tokens[1];
             return xref;
+
+        } else if(oboXref.isJsonObject()) {
+
+            JsonObject oboXrefObj = oboXref.getAsJsonObject();
+
+            V1OboXref xref = fromJson(oboXrefObj.get("value"));
+
+            if(oboXrefObj.has("url")) {
+                xref.url = oboXrefObj.get("url").getAsString();
+            }
+
+            if(oboXrefObj.has("axioms")) {
+                JsonArray axioms = oboXrefObj.getAsJsonArray("axioms");
+                for(JsonElement axiom : axioms) {
+                    JsonObject axiomObj = axiom.getAsJsonObject();
+                    if(axiomObj.has("url")) {
+                        xref.url = JsonHelper.getString(axiomObj, "url");
+                        break;
+                    }
+                }
+            }
+
+            return xref;
+        } else {
+            throw new RuntimeException("unknown xref type");
         }
 
-        V1OboXref xref = new V1OboXref();
-        xref.database = tokens[0];
-        xref.id = tokens[1];
-        xref.url = oboDbUrls.getUrlForId(xref.database, xref.id);
-        return xref;
     }
 
 

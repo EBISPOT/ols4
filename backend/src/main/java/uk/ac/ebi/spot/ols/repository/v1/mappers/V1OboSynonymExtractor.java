@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.model.v1.V1OboSynonym;
 import uk.ac.ebi.spot.ols.model.v1.V1OboXref;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
-import uk.ac.ebi.spot.ols.service.OboDatabaseUrlService;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class V1OboSynonymExtractor {
 
-    public static List<V1OboSynonym> extractFromJson(JsonObject json, OboDatabaseUrlService oboDbUrls) {
+    public static List<V1OboSynonym> extractFromJson(JsonObject json) {
 
         List<JsonElement> exact = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym");
         List<JsonElement> related = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym");
@@ -23,27 +22,27 @@ public class V1OboSynonymExtractor {
         List<JsonElement> broad = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym");
 
         List<V1OboSynonym> synonyms =
-                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", oboDbUrls))
+                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym"))
                         .flatMap(Collection::stream)
 //                                .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList());
 
         synonyms.addAll(
-                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", oboDbUrls))
+                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym"))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
-                narrow.stream().map(synonym -> fromSynonymObject(synonym, "hasNarrowSynonym", oboDbUrls))
+                narrow.stream().map(synonym -> fromSynonymObject(synonym, "hasNarrowSynonym"))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
-                broad.stream().map(synonym -> fromSynonymObject(synonym, "hasBroadSynonym", oboDbUrls))
+                broad.stream().map(synonym -> fromSynonymObject(synonym, "hasBroadSynonym"))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
@@ -82,7 +81,7 @@ public class V1OboSynonymExtractor {
 //        return result;
 //    }
 
-    private static List<V1OboSynonym> fromSynonymObject(JsonElement synonymObj, String scope, OboDatabaseUrlService oboDbUrls) {
+    private static List<V1OboSynonym> fromSynonymObject(JsonElement synonymObj, String scope) {
 
         if(synonymObj.isJsonPrimitive()) {
 
@@ -107,8 +106,8 @@ public class V1OboSynonymExtractor {
             synonym.scope = scope;
             synonym.type = JsonHelper.getString(axiom, "oboSynonymTypeName");
 
-            synonym.xrefs = JsonHelper.getStrings(axiom, "http://www.geneontology.org/formats/oboInOwl#hasDbXref")
-                .stream().map(xref -> V1OboXref.fromString(xref, oboDbUrls))
+            synonym.xrefs = JsonHelper.getValues(axiom, "http://www.geneontology.org/formats/oboInOwl#hasDbXref")
+                .stream().map(V1OboXref::fromJson)
                         .collect(Collectors.toList());
 
             synonyms.add(synonym);
