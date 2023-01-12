@@ -115,13 +115,13 @@ public class OlsNeo4jClient {
 				"MATCH (c:" + type + ") WHERE c.id = $id "
 						+ "WITH c "
 						+ "OPTIONAL MATCH (c)-[edge:" + edge + " *]->(ancestor) "
-						+ "RETURN ancestor AS a";
+						+ "RETURN DISTINCT ancestor AS a";
 
 		String countQuery =
 				"MATCH (a:" + type + ") WHERE a.id = $id "
 						+ "WITH a "
 						+ "OPTIONAL MATCH (a)-[edge:" + edge + " *]->(ancestor) "
-						+ "RETURN count(ancestor)";
+						+ "RETURN count(DISTINCT ancestor)";
 
 		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id), pageable);
     }
@@ -134,13 +134,13 @@ public class OlsNeo4jClient {
 	  "MATCH (a:" + type + ") WHERE a.id = $id "
 	+ "WITH a "
 	+ "OPTIONAL MATCH (a)<-[edge:" + edge + " *]-(descendant) "
-	+ "RETURN descendant AS c";
+	+ "RETURN DISTINCT descendant AS c";
 
 	String countQuery =
 	  "MATCH (a:" + type + ") WHERE a.id = $id "
 	+ "WITH a "
 	+ "OPTIONAL MATCH (a)<-[edge:" + edge + " *]-(descendant) "
-	+ "RETURN count(descendant)";
+	+ "RETURN count(DISTINCT descendant)";
 
 	return neo4jClient.queryPaginated(query, "c", countQuery, parameters("id", id), pageable);
     }
