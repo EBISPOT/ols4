@@ -47,6 +47,21 @@ export default function SearchResults({ search }: { search: string }) {
     },
     [ontologyFacetSelected, setOntologyFacetSelected]
   );
+  const typeFacets =
+    facets && Object.keys(facets).length > 0 ? facets["type"] : {};
+  const [typeFacetSelected, setTypeFacetSelected] = useState<string[]>([]);
+  const handleTypeFacet = useCallback(
+    (checked, key) => {
+      let selected: string[] = typeFacetSelected;
+      if (checked) {
+        selected = [...selected, key];
+      } else {
+        selected = selected.filter((facet) => facet !== key);
+      }
+      setTypeFacetSelected(selected);
+    },
+    [typeFacetSelected, setTypeFacetSelected]
+  );
 
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
@@ -60,9 +75,17 @@ export default function SearchResults({ search }: { search: string }) {
         rowsPerPage,
         search,
         ontologyId: ontologyFacetSelected,
+        type: typeFacetSelected,
       })
     );
-  }, [dispatch, page, rowsPerPage, search, ontologyFacetSelected]);
+  }, [
+    dispatch,
+    page,
+    rowsPerPage,
+    search,
+    ontologyFacetSelected,
+    typeFacetSelected,
+  ]);
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
@@ -189,7 +212,53 @@ export default function SearchResults({ search }: { search: string }) {
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 text-neutral-black">
+              <div className="font-bold text-lg mb-2">Type</div>
+              <fieldset className="mb-4">
+                {typeFacets && Object.keys(typeFacets).length > 0
+                  ? Object.keys(typeFacets).map((key) => {
+                      if (key !== "entity" && typeFacets[key] > 0) {
+                        return (
+                          <label
+                            key={key}
+                            htmlFor={key}
+                            className="block p-1 w-fit"
+                          >
+                            <input
+                              type="checkbox"
+                              id={key}
+                              className="invisible hidden peer"
+                              onChange={(e) => {
+                                handleTypeFacet(e.target.checked, key);
+                              }}
+                            />
+                            <span
+                              className="mr-4 leading-8 px-4 py-1 bg-white rounded relative outline outline-neutral-default outline-2
+                                hover:outline-[3px]
+                                hover:outline-neutral-dark
+                                peer-checked:bg-link-default
+                                after:absolute
+                                peer-checked:after:border-white
+                                after:border-transparent
+                                after:border-r-4
+                                after:border-b-4
+                                after:rotate-45
+                                after:w-2
+                                after:h-4
+                                after:top-1
+                                after:left-3
+                                "
+                            />
+                            <span className="capitalize mr-4">
+                              {key} &#40;{typeFacets[key]}&#41;
+                            </span>
+                          </label>
+                        );
+                      } else return null;
+                    })
+                  : null}
+              </fieldset>
+              <div className="font-bold text-lg mb-2">Ontology</div>
               <fieldset>
                 {ontologyFacets && Object.keys(ontologyFacets).length > 0
                   ? Object.keys(ontologyFacets).map((key) => {
@@ -198,7 +267,7 @@ export default function SearchResults({ search }: { search: string }) {
                           <label
                             key={key}
                             htmlFor={key}
-                            className="block p-1 w-fit text-neutral-black"
+                            className="block p-1 w-fit"
                           >
                             <input
                               type="checkbox"

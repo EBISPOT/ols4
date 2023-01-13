@@ -78,7 +78,7 @@ export const getSearchOptions = createAsyncThunk(
 export const getSearchResults = createAsyncThunk(
   "home_search_results",
   async (
-    { page, rowsPerPage, search, ontologyId }: any,
+    { page, rowsPerPage, search, ontologyId, type }: any,
     { rejectWithValue }
   ) => {
     try {
@@ -88,6 +88,7 @@ export const getSearchResults = createAsyncThunk(
         page,
         facetFields: "ontologyId type",
         ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
+        type: type.length > 0 ? type[0] : null,
       };
       for (const param in query) {
         if (
