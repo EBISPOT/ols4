@@ -193,7 +193,7 @@ export default function EntityPage({
                       {entity.getType()} Information
                     </span>
                   </summary>
-                  <div className="py-2 break-words space-y-2">
+                  <div className="py-2 break-words space-y-4">
                     <EntityAnnotationsSection entity={entity} />
                   </div>
                 </details>
@@ -203,7 +203,7 @@ export default function EntityPage({
                       {entity.getType()} Relations
                     </span>
                   </summary>
-                  <div className="py-2 break-words space-y-2">
+                  <div className="py-2 break-words space-y-4">
                     <IndividualTypesSection
                       entity={entity}
                       referencedEntities={referencedEntities}

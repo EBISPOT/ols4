@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 export function asArray<T>(obj: T | T[]): T[] {
   if (Array.isArray(obj)) {
     return obj;
@@ -23,4 +25,12 @@ export async function copyToClipboard(text: string) {
   } else {
     return document.execCommand("copy", true, text);
   }
+}
+
+export function usePrevious(value: any) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
