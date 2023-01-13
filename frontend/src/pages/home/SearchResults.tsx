@@ -2,7 +2,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString } from "../../app/util";
+import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
@@ -24,6 +24,7 @@ export default function SearchResults({ search }: { search: string }) {
   const results = useAppSelector((state) => state.home.searchResults);
   const totalResults = useAppSelector((state) => state.home.totalSearchResults);
   const facets = useAppSelector((state) => state.home.facets);
+  const prevSearch = usePrevious(search);
 
   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
@@ -43,7 +44,10 @@ export default function SearchResults({ search }: { search: string }) {
       } else {
         selected = selected.filter((facet) => facet !== key);
       }
-      setOntologyFacetSelected(selected);
+      setOntologyFacetSelected((prev) => {
+        if (selected !== prev) setPage(0);
+        return selected;
+      });
     },
     [ontologyFacetSelected, setOntologyFacetSelected]
   );
@@ -58,7 +62,10 @@ export default function SearchResults({ search }: { search: string }) {
       } else {
         selected = selected.filter((facet) => facet !== key);
       }
-      setTypeFacetSelected(selected);
+      setTypeFacetSelected((prev) => {
+        if (selected !== prev) setPage(0);
+        return selected;
+      });
     },
     [typeFacetSelected, setTypeFacetSelected]
   );
@@ -80,14 +87,15 @@ export default function SearchResults({ search }: { search: string }) {
     );
   }, [
     dispatch,
+    search,
     page,
     rowsPerPage,
-    search,
     ontologyFacetSelected,
     typeFacetSelected,
   ]);
   const mounted = useRef(false);
   useEffect(() => {
+    if (prevSearch !== search) setPage(0);
     mounted.current = true;
     return () => {
       mounted.current = false;
@@ -232,23 +240,7 @@ export default function SearchResults({ search }: { search: string }) {
                                 handleTypeFacet(e.target.checked, key);
                               }}
                             />
-                            <span
-                              className="mr-4 leading-8 px-4 py-1 bg-white rounded relative outline outline-neutral-default outline-2
-                                hover:outline-[3px]
-                                hover:outline-neutral-dark
-                                peer-checked:bg-link-default
-                                after:absolute
-                                peer-checked:after:border-white
-                                after:border-transparent
-                                after:border-r-4
-                                after:border-b-4
-                                after:rotate-45
-                                after:w-2
-                                after:h-4
-                                after:top-1
-                                after:left-3
-                                "
-                            />
+                            <span className="input-checkbox mr-4" />
                             <span className="capitalize mr-4">
                               {key} &#40;{typeFacets[key]}&#41;
                             </span>
@@ -277,23 +269,7 @@ export default function SearchResults({ search }: { search: string }) {
                                 handleOntologyFacet(e.target.checked, key);
                               }}
                             />
-                            <span
-                              className="mr-4 leading-8 px-4 py-1 bg-white rounded relative outline outline-neutral-default outline-2
-                                hover:outline-[3px]
-                                hover:outline-neutral-dark
-                                peer-checked:bg-link-default
-                                after:absolute
-                                peer-checked:after:border-white
-                                after:border-transparent
-                                after:border-r-4
-                                after:border-b-4
-                                after:rotate-45
-                                after:w-2
-                                after:h-4
-                                after:top-1
-                                after:left-3
-                                "
-                            />
+                            <span className="input-checkbox mr-4" />
                             <span className="uppercase mr-4">
                               {key} &#40;{ontologyFacets[key]}&#41;
                             </span>
