@@ -457,7 +457,7 @@ function EntityParentsSection({
         Sub{entity.getType().toString().toLowerCase()} of
       </div>
       {parents.length === 1 ? (
-        <p key={randomString()}>
+        <p>
           <ClassExpression
             ontologyId={entity.getOntologyId()}
             expr={parents[0].value}
@@ -605,24 +605,40 @@ function IndividualTypesSection({
       <div className="font-bold">Type</div>
       {types.length === 1 ? (
         <p>
-          <EntityLink
-            ontologyId={entity.getOntologyId()}
-            entityType={"classes"}
-            iri={types[0]}
-            referencedEntities={referencedEntities}
-          />
+          {typeof types[0] === "object" && !Array.isArray(types[0]) ? (
+            <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              expr={types[0]}
+              referencedEntities={referencedEntities}
+            />
+          ) : (
+            <EntityLink
+              ontologyId={entity.getOntologyId()}
+              entityType={"classes"}
+              iri={types[0]}
+              referencedEntities={referencedEntities}
+            />
+          )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
           {types.map((type) => {
             return (
-              <li>
-                <EntityLink
-                  ontologyId={entity.getOntologyId()}
-                  entityType={"classes"}
-                  iri={type}
-                  referencedEntities={referencedEntities}
-                />
+              <li key={randomString()}>
+                {typeof type === "object" && !Array.isArray(type) ? (
+                  <ClassExpression
+                    ontologyId={entity.getOntologyId()}
+                    expr={type}
+                    referencedEntities={referencedEntities}
+                  />
+                ) : (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    entityType={"classes"}
+                    iri={type}
+                    referencedEntities={referencedEntities}
+                  />
+                )}
               </li>
             );
           })}
@@ -654,24 +670,40 @@ function IndividualSameAsSection({
       <div className="font-bold">Same as</div>
       {sameAses.length === 1 ? (
         <p>
-          <EntityLink
-            ontologyId={entity.getOntologyId()}
-            entityType={"individuals"}
-            iri={sameAses[0]}
-            referencedEntities={referencedEntities}
-          />
+          {typeof sameAses[0] === "object" && !Array.isArray(sameAses[0]) ? (
+            <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              expr={sameAses[0]}
+              referencedEntities={referencedEntities}
+            />
+          ) : (
+            <EntityLink
+              ontologyId={entity.getOntologyId()}
+              entityType={"individuals"}
+              iri={sameAses[0]}
+              referencedEntities={referencedEntities}
+            />
+          )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
           {sameAses.map((sameAs) => {
             return (
-              <li>
-                <EntityLink
-                  ontologyId={entity.getOntologyId()}
-                  entityType={"individuals"}
-                  iri={sameAs}
-                  referencedEntities={referencedEntities}
-                />
+              <li key={randomString()}>
+                {typeof sameAs === "object" && !Array.isArray(sameAs) ? (
+                  <ClassExpression
+                    ontologyId={entity.getOntologyId()}
+                    expr={sameAs}
+                    referencedEntities={referencedEntities}
+                  />
+                ) : (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    entityType={"individuals"}
+                    iri={sameAs}
+                    referencedEntities={referencedEntities}
+                  />
+                )}
               </li>
             );
           })}
@@ -703,24 +735,42 @@ function IndividualDifferentFromSection({
       <div className="font-bold">Different from</div>
       {differentFroms.length === 1 ? (
         <p>
-          <EntityLink
-            ontologyId={entity.getOntologyId()}
-            entityType={"individuals"}
-            iri={differentFroms[0]}
-            referencedEntities={referencedEntities}
-          />
+          {typeof differentFroms[0] === "object" &&
+          !Array.isArray(differentFroms[0]) ? (
+            <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              expr={differentFroms[0]}
+              referencedEntities={referencedEntities}
+            />
+          ) : (
+            <EntityLink
+              ontologyId={entity.getOntologyId()}
+              entityType={"individuals"}
+              iri={differentFroms[0]}
+              referencedEntities={referencedEntities}
+            />
+          )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
           {differentFroms.map((differentFrom) => {
             return (
-              <li>
-                <EntityLink
-                  ontologyId={entity.getOntologyId()}
-                  entityType={"individuals"}
-                  iri={differentFrom}
-                  referencedEntities={referencedEntities}
-                />
+              <li key={randomString()}>
+                {typeof differentFrom === "object" &&
+                !Array.isArray(differentFrom) ? (
+                  <ClassExpression
+                    ontologyId={entity.getOntologyId()}
+                    expr={differentFrom}
+                    referencedEntities={referencedEntities}
+                  />
+                ) : (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    entityType={"individuals"}
+                    iri={differentFrom}
+                    referencedEntities={referencedEntities}
+                  />
+                )}
               </li>
             );
           })}
@@ -752,28 +802,46 @@ function DisjointWithSection({
       <div className="font-bold">Disjoint with</div>
       {disjointWiths.length === 1 ? (
         <p>
-          <EntityLink
-            ontologyId={entity.getOntologyId()}
-            entityType={
-              entity.getType() === "property" ? "properties" : "classes"
-            }
-            iri={disjointWiths[0]}
-            referencedEntities={referencedEntities}
-          />
+          {typeof disjointWiths[0] === "object" &&
+          !Array.isArray(disjointWiths[0]) ? (
+            <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              expr={disjointWiths[0]}
+              referencedEntities={referencedEntities}
+            />
+          ) : (
+            <EntityLink
+              ontologyId={entity.getOntologyId()}
+              entityType={
+                entity.getType() === "property" ? "properties" : "classes"
+              }
+              iri={disjointWiths[0]}
+              referencedEntities={referencedEntities}
+            />
+          )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
           {disjointWiths.map((disjointWith) => {
             return (
-              <li>
-                <EntityLink
-                  ontologyId={entity.getOntologyId()}
-                  entityType={
-                    entity.getType() === "property" ? "properties" : "classes"
-                  }
-                  iri={disjointWith}
-                  referencedEntities={referencedEntities}
-                />
+              <li key={randomString()}>
+                {typeof disjointWith === "object" &&
+                !Array.isArray(disjointWith) ? (
+                  <ClassExpression
+                    ontologyId={entity.getOntologyId()}
+                    expr={disjointWith}
+                    referencedEntities={referencedEntities}
+                  />
+                ) : (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    entityType={
+                      entity.getType() === "property" ? "properties" : "classes"
+                    }
+                    iri={disjointWith}
+                    referencedEntities={referencedEntities}
+                  />
+                )}
               </li>
             );
           })}

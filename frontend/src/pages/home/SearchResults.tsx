@@ -93,9 +93,11 @@ export default function SearchResults({ search }: { search: string }) {
     ontologyFacetSelected,
     typeFacetSelected,
   ]);
-  const mounted = useRef(false);
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
+  }, [search, prevSearch]);
+  const mounted = useRef(false);
+  useEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
@@ -220,65 +222,74 @@ export default function SearchResults({ search }: { search: string }) {
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 text-neutral-black">
-              <div className="font-bold text-lg mb-2">Type</div>
-              <fieldset className="mb-4">
-                {typeFacets && Object.keys(typeFacets).length > 0
-                  ? Object.keys(typeFacets).map((key) => {
-                      if (key !== "entity" && typeFacets[key] > 0) {
-                        return (
-                          <label
-                            key={key}
-                            htmlFor={key}
-                            className="block p-1 w-fit"
-                          >
-                            <input
-                              type="checkbox"
-                              id={key}
-                              className="invisible hidden peer"
-                              onChange={(e) => {
-                                handleTypeFacet(e.target.checked, key);
-                              }}
-                            />
-                            <span className="input-checkbox mr-4" />
-                            <span className="capitalize mr-4">
-                              {key} &#40;{typeFacets[key]}&#41;
-                            </span>
-                          </label>
-                        );
-                      } else return null;
-                    })
-                  : null}
-              </fieldset>
-              <div className="font-bold text-lg mb-2">Ontology</div>
-              <fieldset>
-                {ontologyFacets && Object.keys(ontologyFacets).length > 0
-                  ? Object.keys(ontologyFacets).map((key) => {
-                      if (ontologyFacets[key] > 0) {
-                        return (
-                          <label
-                            key={key}
-                            htmlFor={key}
-                            className="block p-1 w-fit"
-                          >
-                            <input
-                              type="checkbox"
-                              id={key}
-                              className="invisible hidden peer"
-                              onChange={(e) => {
-                                handleOntologyFacet(e.target.checked, key);
-                              }}
-                            />
-                            <span className="input-checkbox mr-4" />
-                            <span className="uppercase mr-4">
-                              {key} &#40;{ontologyFacets[key]}&#41;
-                            </span>
-                          </label>
-                        );
-                      } else return null;
-                    })
-                  : null}
-              </fieldset>
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8">
+              <div className="font-bold text-neutral-dark text-sm mb-4">
+                {`Showing ${
+                  totalResults > rowsPerPage ? rowsPerPage : totalResults
+                } from a total of ${totalResults}`}
+              </div>
+              {totalResults > 0 ? (
+                <div className="text-neutral-black">
+                  <div className="font-semibold text-lg mb-2">Type</div>
+                  <fieldset className="mb-4">
+                    {typeFacets && Object.keys(typeFacets).length > 0
+                      ? Object.keys(typeFacets).map((key) => {
+                          if (key !== "entity" && typeFacets[key] > 0) {
+                            return (
+                              <label
+                                key={key}
+                                htmlFor={key}
+                                className="block p-1 w-fit"
+                              >
+                                <input
+                                  type="checkbox"
+                                  id={key}
+                                  className="invisible hidden peer"
+                                  onChange={(e) => {
+                                    handleTypeFacet(e.target.checked, key);
+                                  }}
+                                />
+                                <span className="input-checkbox mr-4" />
+                                <span className="capitalize mr-4">
+                                  {key} &#40;{typeFacets[key]}&#41;
+                                </span>
+                              </label>
+                            );
+                          } else return null;
+                        })
+                      : null}
+                  </fieldset>
+                  <div className="font-semibold text-lg mb-2">Ontology</div>
+                  <fieldset>
+                    {ontologyFacets && Object.keys(ontologyFacets).length > 0
+                      ? Object.keys(ontologyFacets).map((key) => {
+                          if (ontologyFacets[key] > 0) {
+                            return (
+                              <label
+                                key={key}
+                                htmlFor={key}
+                                className="block p-1 w-fit"
+                              >
+                                <input
+                                  type="checkbox"
+                                  id={key}
+                                  className="invisible hidden peer"
+                                  onChange={(e) => {
+                                    handleOntologyFacet(e.target.checked, key);
+                                  }}
+                                />
+                                <span className="input-checkbox mr-4" />
+                                <span className="uppercase mr-4">
+                                  {key} &#40;{ontologyFacets[key]}&#41;
+                                </span>
+                              </label>
+                            );
+                          } else return null;
+                        })
+                      : null}
+                  </fieldset>
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="col-span-3">
