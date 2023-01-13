@@ -12,6 +12,7 @@ export interface HomeState {
   loadingSearchResults: boolean;
   totalSearchResults: number;
   stats: Stats;
+  facets: Object;
 }
 export interface Stats {
   numberOfOntologies: number;
@@ -29,8 +30,9 @@ const initialState: HomeState = {
     numberOfClasses: 0,
     numberOfProperties: 0,
     numberOfIndividuals: 0,
-    lastModified: ""
+    lastModified: "",
   },
+  facets: Object.create(null),
   searchOptions: [],
   loadingSearchOptions: false,
 };
@@ -75,17 +77,29 @@ export const getSearchOptions = createAsyncThunk(
 );
 export const getSearchResults = createAsyncThunk(
   "home_search_results",
-  async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
-    const query = "*" + search + "*";
+  async (
+    { page, rowsPerPage, search, ontologyId }: any,
+    { rejectWithValue }
+  ) => {
     try {
+      let query = {
+        search: "*" + search + "*",
+        size: rowsPerPage,
+        page,
+        facetFields: "ontologyId type",
+        ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
+      };
+      for (const param in query) {
+        if (
+          query[param] === undefined ||
+          query[param] === null ||
+          query[param] === ""
+        ) {
+          delete query[param];
+        }
+      }
       const data = (
-        await getPaginated<any>(
-          `api/v2/entities?${new URLSearchParams({
-            search: query,
-            size: rowsPerPage,
-            page: page,
-          })}`
-        )
+        await getPaginated<any>(`api/v2/entities?${new URLSearchParams(query)}`)
       ).map((e) => thingFromProperties(e));
       return data;
     } catch (error: any) {
@@ -127,6 +141,7 @@ const homeSlice = createSlice({
       (state: HomeState, action: PayloadAction<Page<Entity>>) => {
         state.searchResults = action.payload.elements;
         state.totalSearchResults = action.payload.totalElements;
+        state.facets = action.payload.facetFieldsToCounts;
         state.loadingSearchResults = false;
       }
     );
@@ -136,6 +151,7 @@ const homeSlice = createSlice({
     builder.addCase(getSearchResults.rejected, (state: HomeState) => {
       state.loadingSearchResults = false;
       state.searchResults = initialState.searchResults;
+      state.facets = initialState.facets;
     });
   },
 });

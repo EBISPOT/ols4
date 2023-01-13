@@ -1,5 +1,5 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
@@ -23,11 +23,30 @@ export default function SearchResults({ search }: { search: string }) {
   );
   const results = useAppSelector((state) => state.home.searchResults);
   const totalResults = useAppSelector((state) => state.home.totalSearchResults);
+  const facets = useAppSelector((state) => state.home.facets);
 
   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
+
+  const ontologyFacets =
+    facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
+  const [ontologyFacetSelected, setOntologyFacetSelected] = useState<string[]>(
+    []
+  );
+  const handleOntologyFacet = useCallback(
+    (checked, key) => {
+      let selected: string[] = ontologyFacetSelected;
+      if (checked) {
+        selected = [...selected, key];
+      } else {
+        selected = selected.filter((facet) => facet !== key);
+      }
+      setOntologyFacetSelected(selected);
+    },
+    [ontologyFacetSelected, setOntologyFacetSelected]
+  );
 
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
@@ -35,8 +54,15 @@ export default function SearchResults({ search }: { search: string }) {
     dispatch(getSearchOptions(query));
   }, [dispatch, query]);
   useEffect(() => {
-    dispatch(getSearchResults({ page, rowsPerPage, search }));
-  }, [dispatch, page, rowsPerPage, search]);
+    dispatch(
+      getSearchResults({
+        page,
+        rowsPerPage,
+        search,
+        ontologyId: ontologyFacetSelected,
+      })
+    );
+  }, [dispatch, page, rowsPerPage, search, ontologyFacetSelected]);
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
@@ -162,7 +188,54 @@ export default function SearchResults({ search }: { search: string }) {
           </button>
         </div>
         <div className="grid grid-cols-4 gap-8">
-          <div className="col-span-1">Filters</div>
+          <div className="col-span-1">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8">
+              <fieldset>
+                {ontologyFacets && Object.keys(ontologyFacets).length > 0
+                  ? Object.keys(ontologyFacets).map((key) => {
+                      if (ontologyFacets[key] > 0) {
+                        return (
+                          <label
+                            key={key}
+                            htmlFor={key}
+                            className="block p-1 w-fit text-neutral-black"
+                          >
+                            <input
+                              type="checkbox"
+                              id={key}
+                              className="invisible hidden peer"
+                              onChange={(e) => {
+                                handleOntologyFacet(e.target.checked, key);
+                              }}
+                            />
+                            <span
+                              className="mr-4 leading-8 px-4 py-1 bg-white rounded relative outline outline-neutral-default outline-2
+                                hover:outline-[3px]
+                                hover:outline-neutral-dark
+                                peer-checked:bg-link-default
+                                after:absolute
+                                peer-checked:after:border-white
+                                after:border-transparent
+                                after:border-r-4
+                                after:border-b-4
+                                after:rotate-45
+                                after:w-2
+                                after:h-4
+                                after:top-1
+                                after:left-3
+                                "
+                            />
+                            <span className="uppercase mr-4">
+                              {key} &#40;{ontologyFacets[key]}&#41;
+                            </span>
+                          </label>
+                        );
+                      } else return null;
+                    })
+                  : null}
+              </fieldset>
+            </div>
+          </div>
           <div className="col-span-3">
             <div className="grid grid-cols-4 mb-4">
               <div className="justify-self-start col-span-3 self-center text-2xl font-bold text-neutral-dark">
