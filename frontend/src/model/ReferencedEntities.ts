@@ -26,4 +26,8 @@ export default class ReferencedEntities {
 			}
 		}
 	}
+
+	get(iri:string) {
+		return this.referencedEntities[iri]
+	}
 }

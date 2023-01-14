@@ -1,7 +1,7 @@
 import { AccountTree, Share } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
@@ -70,11 +70,11 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
         {ontology && entity ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to="/ontologies">
+              <Link className="link-default" href="/ontologies">
                 Ontologies
               </Link>
               <span className="px-2 text-sm">&gt;</span>
-              <Link className="link-default" to={"/ontologies/" + ontologyId}>
+              <Link className="link-default" href={"/ontologies/" + ontologyId}>
                 {ontology.getName() || ontology.getOntologyId()}
               </Link>
               <span className="px-2 text-sm">&gt;</span>
@@ -179,7 +179,7 @@ export default function EntityPage({ontologyId, entityIri, entityType}:({ ontolo
                     </span>
                   </summary>
                   <div className="py-2 break-words space-y-2">
-			<EntityAnnotationsSection entity={entity} />
+			<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
                   </div>
                 </details>
                 <details open className="p-2">
@@ -252,7 +252,7 @@ function EntityDescriptionSection({entity, referencedEntities}:{entity:Entity, r
                 </p>
 }
 
-function EntityAnnotationsSection({entity}:{entity:Entity}) {
+function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
 
 	let annotationPredicates = entity.getAnnotationPredicates()
 
@@ -275,7 +275,7 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 				)
 				.replaceAll("_", " ");
 
-			let annotations = entity.getAnnotationById(annotationPredicate)
+			let annotations:Reified<any>[] = entity.getAnnotationById(annotationPredicate)
 
 			return (
 			<div
@@ -289,17 +289,20 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 			</div>
 
 			{ annotations.length === 1 ?
-				<p>{getAnnotationValue(annotations[0])}</p> :
+				<p>
+					{renderAnnotation(annotations[0])}
+					{annotations[0].hasMetadata() && <MetadataTooltip metadata={annotations[0].getMetadata()} referencedEntities={referencedEntities} />}
+				</p> :
 			<ul className="list-disc list-inside">
-				{annotations.map((annotation: any) => {
+				{annotations.map((annotation: Reified<any>) => {
 				return (
 				<li
 					key={
-					getAnnotationValue(annotation).toString().toUpperCase() +
 					randomString()
 					}
 				>
-					{getAnnotationValue(annotation)}
+					{renderAnnotation(annotation)}
+					{annotation.hasMetadata() && <MetadataTooltip metadata={annotation.getMetadata()} referencedEntities={referencedEntities} />}
 				</li>
 				);
 				})
@@ -312,8 +315,30 @@ function EntityAnnotationsSection({entity}:{entity:Entity}) {
 			.sort((a, b) => sortByKeys(a, b))
 		}</Fragment>
 
-	function getAnnotationValue(annotation) {
-		return annotation && typeof annotation === "object" ? annotation.value : annotation;
+
+	function renderAnnotation(value:Reified<any>) {
+
+		let referencedEntity = referencedEntities.get(value.value)
+
+		if(referencedEntity) {
+			// The annotation value refers to an entity.
+			// This may be a CURIE with a URL; or an IRI with label(s)
+
+			if(referencedEntity.url) {
+				// CURIE
+				return <Link href={referencedEntity.url}>{value.value}</Link>
+			} else {
+				// entity IRI in this ontology
+				return <EntityLink
+					ontologyId = {entity.getOntologyId()}
+					entityType = "classes" // TODO
+					iri = {value.value}
+					referencedEntities = {referencedEntities}
+				/>
+			}
+		} else {
+			return value.value
+		}
 	}
 }
 
@@ -472,7 +497,6 @@ function EntityRelatedFromSection({entity, referencedEntities}:{entity:Entity, r
 	</ul>
 	</div>
 }
-
 
 function MetadataTooltip({metadata, referencedEntities}:{metadata:any, referencedEntities:ReferencedEntities }) {
 

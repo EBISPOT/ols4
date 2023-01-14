@@ -14,6 +14,8 @@ public class V1OboXrefExtractor {
 
     public static List<V1OboXref> extractFromJson(JsonObject entity) {
 
+        JsonObject referencedEntities = entity.getAsJsonObject("referencedEntities");
+
         List<JsonElement> xrefs = JsonHelper.getValues(entity, "http://www.geneontology.org/formats/oboInOwl#hasDbXref");
 
         List<V1OboXref> res = new ArrayList<>();
@@ -21,7 +23,7 @@ public class V1OboXrefExtractor {
         for(JsonElement xref : xrefs) {
 
             if(xref.isJsonPrimitive()) {
-                V1OboXref xrefObj = V1OboXref.fromJson(xref);
+                V1OboXref xrefObj = V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities);
                 res.add(xrefObj);
                 continue;
             }
@@ -42,7 +44,7 @@ public class V1OboXrefExtractor {
                         // https://github.com/EBISPOT/OLS/blob/6f9a98d564c2759f767d1e01bbe70897cbe9aa82/ontology-tools/src/main/java/uk/ac/ebi/spot/ols/loader/AbstractOWLOntologyLoader.java#L1404-L1406
                         // overwrites the source for each annotation (so the last one in the list wins)
                         //
-                        V1OboXref xrefObj = V1OboXref.fromJson(xref.getAsJsonObject().get("value"));
+                        V1OboXref xrefObj = V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities);
                         xrefObj.description = JsonHelper.objectToString( Lists.reverse(source).iterator().next() );
 
                         if(url != null) {
@@ -58,7 +60,7 @@ public class V1OboXrefExtractor {
                     List<JsonElement> label = JsonHelper.getValues(axiom, "http://www.w3.org/2000/01/rdf-schema#label");
 
                     if(label.size() > 0) {
-                        V1OboXref xrefObj = V1OboXref.fromJson(xref.getAsJsonObject().get("value"));
+                        V1OboXref xrefObj = V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities);
                         xrefObj.description = JsonHelper.objectToString( Lists.reverse(label).iterator().next() );
 
                         if(url != null) {
@@ -70,7 +72,7 @@ public class V1OboXrefExtractor {
                         continue;
                     }
 
-                    V1OboXref xrefObj = V1OboXref.fromJson(xref.getAsJsonObject().get("value"));
+                    V1OboXref xrefObj = V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities);
 
                     if(url != null) {
                         xrefObj.url = url;
@@ -84,7 +86,7 @@ public class V1OboXrefExtractor {
 
             } else {
 
-                V1OboXref xrefObj = V1OboXref.fromJson(xref.getAsJsonObject().get("value"));
+                V1OboXref xrefObj = V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities);
                 res.add(xrefObj);
 
             }

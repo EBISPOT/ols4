@@ -1,9 +1,7 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.Objects;
 
@@ -15,70 +13,47 @@ public class V1OboXref {
     public String url;
 
 
-    public static V1OboXref fromJson(JsonElement oboXref) {
+    // e.g. Orphanet:1037
+    public static V1OboXref fromString(String oboXref, JsonObject referencedEntities) {
 
-        if(oboXref.isJsonPrimitive()) {
-
-            String value = oboXref.getAsString();
-
-            if(value.startsWith("http:") || value.startsWith("https:")) {
-                V1OboXref xref = new V1OboXref();
-                xref.id = value;
-                xref.url = value;
-                return xref;
-            }
-
-            if(value.contains("://")) {
-                if(value.matches("^[A-Z]+:.+")) {
-                        // e.g. DOI:https://doi.org/10.1378/chest.12-2762
-                        V1OboXref xref = new V1OboXref();
-                        xref.id = value;
-        //                xref.database = oboXref.split(":")[0];
-        //                xref.id = oboXref.substring(oboXref.indexOf(':') + 1);
-        //                xref.url = oboXref.substring(oboXref.indexOf(':') + 1);
-                        return xref;
-                }
-            }
-
-            String[] tokens = value.split(":");
-
-            if(tokens.length < 2) {
-                V1OboXref xref = new V1OboXref();
-                xref.id = tokens[0];
-                return xref;
-            }
-
+        if(oboXref.startsWith("http:") || oboXref.startsWith("https:")) {
             V1OboXref xref = new V1OboXref();
-            xref.database = tokens[0];
-            xref.id = tokens[1];
+            xref.id = oboXref;
+            xref.url = oboXref;
             return xref;
-
-        } else if(oboXref.isJsonObject()) {
-
-            JsonObject oboXrefObj = oboXref.getAsJsonObject();
-
-            V1OboXref xref = fromJson(oboXrefObj.get("value"));
-
-            if(oboXrefObj.has("url")) {
-                xref.url = oboXrefObj.get("url").getAsString();
-            }
-
-            if(oboXrefObj.has("axioms")) {
-                JsonArray axioms = oboXrefObj.getAsJsonArray("axioms");
-                for(JsonElement axiom : axioms) {
-                    JsonObject axiomObj = axiom.getAsJsonObject();
-                    if(axiomObj.has("url")) {
-                        xref.url = JsonHelper.getString(axiomObj, "url");
-                        break;
-                    }
-                }
-            }
-
-            return xref;
-        } else {
-            throw new RuntimeException("unknown xref type");
         }
 
+        if(oboXref.contains("://")) {
+            if(oboXref.matches("^[A-Z]+:.+")) {
+                // e.g. DOI:https://doi.org/10.1378/chest.12-2762
+                V1OboXref xref = new V1OboXref();
+                xref.id = oboXref;
+                //                xref.database = oboXref.split(":")[0];
+                //                xref.id = oboXref.substring(oboXref.indexOf(':') + 1);
+                //                xref.url = oboXref.substring(oboXref.indexOf(':') + 1);
+                return xref;
+            }
+        }
+
+        String[] tokens = oboXref.split(":");
+
+        if(tokens.length < 2) {
+            V1OboXref xref = new V1OboXref();
+            xref.id = tokens[0];
+            return xref;
+        }
+
+        V1OboXref xref = new V1OboXref();
+        xref.database = tokens[0];
+        xref.id = tokens[1];
+
+
+        JsonElement referencedEntityObj = referencedEntities.get(oboXref);
+        if(referencedEntityObj != null && referencedEntityObj.getAsJsonObject().has("url"))  {
+            xref.url = referencedEntityObj.getAsJsonObject().get("url").getAsString();
+        }
+
+        return xref;
     }
 
 
@@ -95,3 +70,4 @@ public class V1OboXref {
                 Objects.equals(((V1OboXref) other).url, this.url);
     }
 }
+

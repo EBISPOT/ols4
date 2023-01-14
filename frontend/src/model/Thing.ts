@@ -83,8 +83,8 @@ export default abstract class Thing {
     }
   }
 
-  getAnnotationById(id: string) {
-    return asArray(this.properties[id]);
+  getAnnotationById(id: string):Reified<any>[] {
+    return Reified.fromJson(asArray(this.properties[id]))
   }
 
 }

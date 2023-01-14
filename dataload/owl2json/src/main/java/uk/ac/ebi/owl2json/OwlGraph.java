@@ -202,7 +202,6 @@ public class OwlGraph implements StreamRDF {
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
     EquivalenceAnnotator.annotateEquivalance(this);
-    OboDatabaseUrlsAnnotator.annotateOboDatabaseUrls(this);
     ReferencedEntitiesAnnotator.annotateReferencedEntities(this); // should come last so it finds all the entities
 
     }

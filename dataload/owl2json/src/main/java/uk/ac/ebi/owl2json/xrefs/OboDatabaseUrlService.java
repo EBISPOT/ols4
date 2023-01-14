@@ -1,5 +1,5 @@
 
-package uk.ac.ebi.owl2json;
+package uk.ac.ebi.owl2json.xrefs;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -65,6 +65,10 @@ public class OboDatabaseUrlService {
                 }
             }
         }
+    }
+
+    public String getXrefUrls() {
+        return xrefUrls;
     }
 
     public String getUrlForId(String databaseId, String id) {
