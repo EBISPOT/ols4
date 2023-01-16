@@ -17,9 +17,9 @@ export default abstract class Thing {
   }
 
   getType(): "ontology" | "class" | "property" | "individual" {
-    let types = this.properties["type"] as string[];
+    const types = this.properties["type"] as string[];
 
-    for (let type of types) {
+    for (const type of types) {
       if (
         ["ontology", "class", "property", "individual"].indexOf(type) !== -1
       ) {
@@ -31,7 +31,7 @@ export default abstract class Thing {
   }
 
   getTypePlural(): "ontologies" | "classes" | "properties" | "individuals" {
-    let type = this.getType();
+    const type = this.getType();
 
     switch (type) {
       case "ontology":
@@ -48,7 +48,9 @@ export default abstract class Thing {
   }
 
   getRdfTypes(): string[] {
-   return this.properties["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"] as string[];
+    return this.properties[
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ] as string[];
   }
 
   getName(): string {
@@ -75,16 +77,15 @@ export default abstract class Thing {
 
   getLabelForIri(id: string) {
     const referencedEntities = this.properties["referencedEntities"];
-    let labels = referencedEntities[id]?.label
-    if(labels) {
-	return Array.isArray(labels) ? labels[0] : labels
+    if (referencedEntities) {
+      const label = referencedEntities[id]?.label;
+      return Array.isArray(label) ? label[0] : label;
     } else {
-	return undefined
+      return undefined;
     }
   }
 
   getAnnotationById(id: string):Reified<any>[] {
     return Reified.fromJson(asArray(this.properties[id]))
   }
-
 }

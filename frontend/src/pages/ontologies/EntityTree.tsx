@@ -44,25 +44,31 @@ export default function EntityTree({
       const { rootEntities, uriToChildNodes } =
         extractEntityHierarchy(entities);
 
-	console.dir('rootEntities')
-	console.dir(rootEntities)
-	console.dir('uriToChildNodes')
-	console.dir(uriToChildNodes)
+      // console.dir("rootEntities");
+      // console.dir(rootEntities);
+      // console.dir("uriToChildNodes");
+      // console.dir(uriToChildNodes);
 
       const newNodeChildren = new Map<String, TreeNode[]>();
       const newExpandedNodes = new Set<String>();
 
       setRootNodes(
-        rootEntities.map((rootEntity) => createTreeNode(rootEntity, undefined, 0))
+        rootEntities.map((rootEntity) =>
+          createTreeNode(rootEntity, undefined, 0)
+        )
       );
 
       setNodeChildren(ImmutableMap(newNodeChildren));
       setExpandedNodes(ImmutableSet(newExpandedNodes));
 
-      function createTreeNode(node: Entity, parent: TreeNode|undefined, debugNumIterations:number): TreeNode {
-	if(debugNumIterations > 100) {
-		throw new Error('probable cyclic tree (createTreeNode)')
-	}
+      function createTreeNode(
+        node: Entity,
+        parent: TreeNode | undefined,
+        debugNumIterations: number
+      ): TreeNode {
+        if (debugNumIterations > 100) {
+          throw new Error("probable cyclic tree (createTreeNode)");
+        }
         const childNodes = uriToChildNodes.get(node.getIri()) || [];
 
         const treeNode: TreeNode = {
@@ -77,8 +83,9 @@ export default function EntityTree({
 
         newNodeChildren.set(
           treeNode.absoluteIdentity,
-          childNodes.map((childNode) => createTreeNode(childNode, treeNode, debugNumIterations +1))
-	
+          childNodes.map((childNode) =>
+            createTreeNode(childNode, treeNode, debugNumIterations + 1)
+          )
         );
 
         if (treeNode.iri !== selectedEntity?.getIri()) {
@@ -144,10 +151,13 @@ export default function EntityTree({
     );
   }, [rootEntities]);
 
-  function renderNodeChildren(children: TreeNode[], debugNumIterations:number) {
-if(debugNumIterations > 100) {
-	throw new Error('probable cyclic tree (renderNodeChildren)')
-}
+  function renderNodeChildren(
+    children: TreeNode[],
+    debugNumIterations: number
+  ) {
+    if (debugNumIterations > 100) {
+      throw new Error("probable cyclic tree (renderNodeChildren)");
+    }
     const childrenCopy = [...children];
     childrenCopy.sort((a, b) => {
       const titleA = a?.title ? a.title.toString().toUpperCase() : "";
@@ -189,7 +199,7 @@ if(debugNumIterations > 100) {
               {isExpanded &&
                 renderNodeChildren(
                   nodeChildren.get(childNode.absoluteIdentity) || [],
-		  debugNumIterations+1
+                  debugNumIterations + 1
                 )}
             </Node>
           );
@@ -200,11 +210,8 @@ if(debugNumIterations > 100) {
   return (
     <div>
       {rootNodes ? (
-        <div
-          className="px-3 jstree jstree-1 jstree-proton"
-          role="tree"
-        >
-          {renderNodeChildren(rootNodes,0)}
+        <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
+          {renderNodeChildren(rootNodes, 0)}
         </div>
       ) : null}
       {loading ? <LoadingOverlay message="Loading children..." /> : null}

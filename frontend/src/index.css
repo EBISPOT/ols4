@@ -64,6 +64,22 @@
     disabled:bg-neutral-light
     disabled:cursor-not-allowed;
   }
+  .input-checkbox {
+    @apply relative leading-8 px-4 py-1 bg-white rounded outline outline-2 outline-neutral-default 
+    hover:outline-[3px]
+    hover:outline-neutral-dark
+    after:absolute
+    after:border-transparent
+    after:border-r-4
+    after:border-b-4
+    after:rotate-45
+    after:w-2
+    after:h-4
+    after:top-1
+    after:left-3
+    peer-checked:bg-link-default
+    peer-checked:after:border-white;
+  }
   .link-default {
     @apply text-link-default cursor-pointer
     hover:text-link-hover
