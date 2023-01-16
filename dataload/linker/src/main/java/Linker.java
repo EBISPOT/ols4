@@ -42,8 +42,13 @@ public class Linker {
 
         LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
 
-
         Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
+
+        System.gc();
+
+        LinkerPass2.LinkerPass2Result pass2Result = LinkerPass2.run(inputFilePath, pass1Result);
+
+        Files.write(Path.of(outputFilePath+ "pass2.json"), gson.toJson(pass2Result).getBytes(StandardCharsets.UTF_8));
     }
 }
 

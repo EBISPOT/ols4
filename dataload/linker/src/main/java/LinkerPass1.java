@@ -1,4 +1,6 @@
 import com.google.common.io.CountingInputStream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
@@ -9,9 +11,11 @@ import java.util.*;
 
 public class LinkerPass1 {
 
+    private static final JsonParser jsonParser = new JsonParser();
+
     public static class LinkerPass1Result {
         Map<String, Ontology> ontologies = new HashMap<>();
-        Map<String, Set<String>> iriToOntologyIds = new HashMap<>();
+        Map<String, Set<LinkerReferencedOntology>> iriToOntologies = new HashMap<>();
 
         public static class Ontology {
             String ontologyId;
@@ -19,6 +23,7 @@ public class LinkerPass1 {
             public long size;
         }
     }
+
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {
 
@@ -31,22 +36,19 @@ public class LinkerPass1 {
         jsonReader.beginObject();
 
         while (jsonReader.peek() != JsonToken.END_OBJECT) {
-
             String name = jsonReader.nextName();
 
             if (name.equals("ontologies")) {
-
                 jsonReader.beginArray();
 
-                long offset = is.getCount();
-
-                while (jsonReader.peek() != JsonToken.END_ARRAY) {
-
+                while(jsonReader.peek() != JsonToken.END_ARRAY) {
+                    long offset = is.getCount();
                     jsonReader.beginObject(); // ontology
+
 
                     String ontologyIdName = jsonReader.nextName();
                     if(!ontologyIdName.equals("ontologyId")) {
-                        throw new RuntimeException("the json is bad; ontologyId should alwyas come first");
+                        throw new RuntimeException("the json is bad; ontologyId should always come first");
                     }
                     String ontologyId = jsonReader.nextString();
 
@@ -54,12 +56,21 @@ public class LinkerPass1 {
                     ontology.ontologyId = ontologyId;
                     ontology.fileOffset = offset;
 
-                    parseObjectProperties(jsonReader, ontologyId, result);
+                    while(jsonReader.peek() != JsonToken.END_OBJECT) {
+                        String key = jsonReader.nextName();
+
+                        if(key.equals("classes")
+                            || key.equals("properties")
+                                || key.equals("individuals")) {
+                            parseEntityArray(jsonReader, ontologyId, result);
+                            continue;
+                        } else {
+                            jsonReader.skipValue();
+                        }
+                    }
 
                     ontology.size = is.getCount() - offset;
-
                     jsonReader.endObject(); // ontology
-
                     result.ontologies.put(ontologyId, ontology);
                 }
 
@@ -78,71 +89,59 @@ public class LinkerPass1 {
         return result;
     }
 
-    public static void parseObjectProperties(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
-
-        while(jsonReader.peek() != JsonToken.END_OBJECT) {
-
-            String propertyName = jsonReader.nextName();
-            addPossibleIri(propertyName, ontologyId, result);
-
-            parseValue(jsonReader, ontologyId, result);
-        }
-    }
-
-    public static void parseValue(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
-
-        switch(jsonReader.peek()) {
-            case BEGIN_ARRAY:
-                parseArray(jsonReader, ontologyId, result);
-                break;
-            case BEGIN_OBJECT:
-                jsonReader.beginObject();
-                parseObjectProperties(jsonReader, ontologyId, result);
-                jsonReader.endObject();
-                break;
-            case STRING:
-                parseString(jsonReader, ontologyId, result);
-                break;
-            case BOOLEAN:
-            case NUMBER:
-            case NULL:
-                jsonReader.skipValue();
-                break;
-            default:
-                throw new RuntimeException("invalid json");
-        }
-    }
-
-    public static void parseArray(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
+    public static void parseEntityArray(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
         jsonReader.beginArray();
+
         while(jsonReader.peek() != JsonToken.END_ARRAY) {
-            parseValue(jsonReader, ontologyId, result);
+            parseEntity(jsonReader, ontologyId, result);
         }
+
         jsonReader.endArray();
     }
 
-    public static void parseString(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
-        String str = jsonReader.nextString();
+    public static void parseEntity(JsonReader jsonReader, String ontologyId, LinkerPass1Result result) throws IOException {
+        jsonReader.beginObject();
 
-        addPossibleIri(str, ontologyId, result);
-    }
+        String iri = null;
+        Boolean isDefining = null;
 
-    public static void addPossibleIri(String str, String ontologyId, LinkerPass1Result result) throws IOException {
+        while(jsonReader.peek() != JsonToken.END_OBJECT) {
+            String key = jsonReader.nextName();
 
-        // Very dumb IRI screening but removes much of the noise
-        if(!str.contains("://")) {
-            return;
+            if(key.equals("iri")) {
+                iri = jsonReader.nextString();
+            } else if(key.equals("isDefiningOntology")) {
+                JsonElement elem = jsonParser.parse(jsonReader);
+                isDefining = elem.getAsJsonObject().get("value").getAsString().equals("true");
+            } else {
+                jsonReader.skipValue();
+            }
         }
 
-        Set<String> found = result.iriToOntologyIds.get(str);
+        if(iri == null) {
+            throw new RuntimeException("entity had no IRI");
+        }
 
-        if(found != null) {
-            found.add(ontologyId);
+        if(isDefining == null) {
+            isDefining = false;
+        }
+
+        LinkerReferencedOntology iriToOntology = new LinkerReferencedOntology();
+        iriToOntology.ontologyId = ontologyId;
+        iriToOntology.isDefiningOntology = isDefining;
+
+        Set<LinkerReferencedOntology> entrySet = result.iriToOntologies.get(iri);
+
+        if(entrySet != null) {
+            entrySet.add(iriToOntology);
         } else {
-            Set<String> s = new HashSet<>();
-            s.add(ontologyId);
-            result.iriToOntologyIds.put(str, s);
+            entrySet = new HashSet<>();
+            entrySet.add(iriToOntology);
+            result.iriToOntologies.put(iri, entrySet);
         }
+
+        jsonReader.endObject();
     }
+
 
 }
