@@ -47,7 +47,16 @@ public class Bioregistry {
         for(var entry : theRegistry.entrySet()) {
             JsonObject db = entry.getValue().getAsJsonObject();
             prefixToDatabase.put(db.get("preferred_prefix").getAsString(), db);
+
+            JsonElement synonyms = db.get("synonyms");
+
+            if(synonyms != null) {
+                for(JsonElement synonym : synonyms.getAsJsonArray()) {
+                    prefixToDatabase.put(synonym.getAsString(), db);
+                }
+            }
         }
+
     }
 
     public String getRegistryUrl() {
@@ -75,7 +84,13 @@ public class Bioregistry {
             return null;
         }
 
-        return db.get("uri_format").getAsString().replace("$1", id);
+        JsonElement uriFormat = db.get("uri_format");
+
+        if(uriFormat == null) {
+            return null;
+        }
+            
+        return uriFormat.getAsString().replace("$1", id);
     }
 
     private Pattern getPattern(String patternStr) {
