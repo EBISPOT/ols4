@@ -9,26 +9,28 @@ export default class Individual extends Entity {
     return [];
   }
 
-
   getDifferentFrom() {
-	return asArray(this.properties['http://www.w3.org/2002/07/owl#differentFrom'])
+    return asArray(
+      this.properties["http://www.w3.org/2002/07/owl#differentFrom"]
+    );
   }
 
   getSameAs() {
-	return asArray(this.properties['http://www.w3.org/2002/07/owl#sameAs'])
+    return asArray(this.properties["http://www.w3.org/2002/07/owl#sameAs"]);
   }
 
-  getIndividualTypes():string[] {
+  getIndividualTypes(): string[] {
+    const rdfTypes: any = this.getRdfTypes();
 
-	let rdfTypes:any = this.getRdfTypes()
+    if (!rdfTypes || !Array.isArray(rdfTypes)) {
+      return [];
+    }
 
-	if(!rdfTypes) {
-		return []
-	}
-
-	return rdfTypes.filter(t => (
-		typeof t === 'string' &&
-			t !== 'http://www.w3.org/2002/07/owl#NamedIndividual' &&
-			!t.startsWith('http://www.w3.org/2000/01/rdf-schema#')));
+    return rdfTypes.filter(
+      (t: any) =>
+        typeof t === "string" &&
+        t !== "http://www.w3.org/2002/07/owl#NamedIndividual" &&
+        !t.startsWith("http://www.w3.org/2000/01/rdf-schema#")
+    );
   }
 }

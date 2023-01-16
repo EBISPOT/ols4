@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import DataTable, { Column } from "../../components/DataTable";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
-import DataTable, { Column } from "../../components/DataTable";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
-import { Link } from "@mui/material";
 
 const columns: readonly Column[] = [
   {
@@ -53,13 +52,38 @@ const columns: readonly Column[] = [
     name: "Actions",
     sortable: false,
     selector: (ontology: Ontology) => {
-	return <div>
-		<Link href={`/ontologies/${ontology.getOntologyId()}`}>Search</Link><br/>
-		<Link href={`/ontologies/${ontology.getOntologyId()}/classes`}>Classes</Link><br/>
-		<Link href={`/ontologies/${ontology.getOntologyId()}/properties`}>Properties</Link><br/>
-		<Link href={`/ontologies/${ontology.getOntologyId()}/individuals`}>Individuals</Link>
-	</div>
-    }
+      return (
+        <div>
+          <a
+            href={`/ontologies/${ontology.getOntologyId()}`}
+            className="link-default"
+          >
+            Search
+          </a>
+          <br />
+          <a
+            href={`/ontologies/${ontology.getOntologyId()}/classes`}
+            className="link-default"
+          >
+            Classes
+          </a>
+          <br />
+          <a
+            href={`/ontologies/${ontology.getOntologyId()}/properties`}
+            className="link-default"
+          >
+            Properties
+          </a>
+          <br />
+          <a
+            href={`/ontologies/${ontology.getOntologyId()}/individuals`}
+            className="link-default"
+          >
+            Individuals
+          </a>
+        </div>
+      );
+    },
   },
 ];
 
@@ -69,12 +93,6 @@ export default function OntologiesPage() {
   const totalOntologies = useAppSelector(
     (state) => state.ontologies.totalOntologies
   );
-  const ontologiesSorted = [...ontologies];
-  ontologiesSorted.sort((a, b) => {
-    const ontoIdA = a.getOntologyId() ? a.getOntologyId().toUpperCase() : "";
-    const ontoIdB = b.getOntologyId() ? b.getOntologyId().toUpperCase() : "";
-    return ontoIdA === ontoIdB ? 0 : ontoIdA > ontoIdB ? 1 : -1;
-  });
   const loading = useAppSelector((state) => state.ontologies.loadingOntologies);
 
   const [page, setPage] = useState<number>(0);
@@ -93,7 +111,7 @@ export default function OntologiesPage() {
       <main className="container mx-auto my-8">
         <DataTable
           columns={columns}
-          data={ontologiesSorted}
+          data={ontologies}
           dataCount={totalOntologies}
           page={page}
           rowsPerPage={rowsPerPage}
