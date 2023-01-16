@@ -28,7 +28,7 @@ public class Bioregistry {
 
     JsonObject theRegistry;
     Map<String, JsonObject> prefixToDatabase = new HashMap<>();
-    Map<String, JsonObject> iriPrefixToDatabase = new HashMap<>();
+    Map<String, String> iriPrefixToDatabase = new HashMap<>();
     Map<String, Pattern> patterns = new HashMap<>();
 
     public Bioregistry() {
@@ -60,7 +60,7 @@ public class Bioregistry {
             JsonElement uriFormat = db.get("uri_format");
             if (uriFormat != null && uriFormat.endsWith("$1) {
                 String uriPrefix = uriFormat.substring(0, uriFormat.length() - 2);                              
-                iriPrefixToDatabase.put(uriPrefix, db);                                                                        
+                iriPrefixToDatabase.put(uriPrefix, entry.getKey());                                                                        
             }  
         }
 
@@ -101,8 +101,18 @@ public class Bioregistry {
     }
                                                         
     public String getCurieForUrl(String url) {
-        // needs to be implemented, ideally using a trie data structure
-        return "";
+        // has known issues with overlapping prefixes, should sort entry set from longest to shortest
+        // alternatively, needs to be re-implemented, with a more efficient trie data structure that
+        // deals with this implicitly
+        for (var entry : iriPrefixToDatabase.entrySet()) {
+          String key = entry.getKey();
+          if (url.startsWith(key)) {
+              // get everything following the 
+              String local_unique_identifier = url.substring(key.length(), url.length())
+              return entry.getValue() + ":" + local_unique_identifier
+          }
+        }
+        return null;
     }
 
     private Pattern getPattern(String patternStr) {
