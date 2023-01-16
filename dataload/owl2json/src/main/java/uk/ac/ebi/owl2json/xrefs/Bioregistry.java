@@ -54,12 +54,14 @@ public class Bioregistry {
         }
 
         for(var entry : theRegistry.entrySet()) {
+            
+            JsonObject db = entry.getValue().getAsJsonObject();
+
             // The key is the canonical Bioregistry prefix, always lowercase
             prefixToDatabase.put(norm(entry.getKey()), db);
-            
+
             // The preferred prefix can have various capitalization,
             // usually is same as canonical
-            JsonObject db = entry.getValue().getAsJsonObject();
             prefixToDatabase.put(norm(db.get("preferred_prefix").getAsString()), db);
 
             JsonElement synonyms = db.get("synonyms");
