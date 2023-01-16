@@ -20,6 +20,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+
+/**
+ * The Bioregistry (https://bioregistry.io) is an open source, community curated registry
+ * of prefixes for biomedical ontologies/vocabularies and their associated metadata. It
+ * can be used to look generate links for prefixes found in xrefs and other components of
+ * ontologies.
+ *
+ * Source code and data is availale under CC0/MIT licenses at https://github.com/biopragmatics/bioregistry
+ */
 public class Bioregistry {
 
     Gson gson = new Gson();
@@ -46,14 +55,21 @@ public class Bioregistry {
         }
 
         for(var entry : theRegistry.entrySet()) {
+            
             JsonObject db = entry.getValue().getAsJsonObject();
-            prefixToDatabase.put(db.get("preferred_prefix").getAsString(), db);
+
+            // The key is the canonical Bioregistry prefix, always lowercase
+            prefixToDatabase.put(norm(entry.getKey()), db);
+
+            // The preferred prefix can have various capitalization,
+            // usually is same as canonical
+            prefixToDatabase.put(norm(db.get("preferred_prefix").getAsString()), db);
 
             JsonElement synonyms = db.get("synonyms");
 
             if(synonyms != null) {
                 for(JsonElement synonym : synonyms.getAsJsonArray()) {
-                    prefixToDatabase.put(synonym.getAsString(), db);
+                    prefixToDatabase.put(norm(synonym.getAsString()), db);
                 }
             }
             
@@ -72,7 +88,7 @@ public class Bioregistry {
 
     public String getUrlForId(String databaseId, String id) {
 
-        JsonObject db = prefixToDatabase.get(databaseId);
+        JsonObject db = prefixToDatabase.get(norm(databaseId));
 
         if(db == null)
             return null;
@@ -113,6 +129,16 @@ public class Bioregistry {
           }
         }
         return null;
+    }
+    
+    private static String norm(String s) {
+        // see https://github.com/biopragmatics/bioregistry/blob/a7424ef4a0d22eaca61d3a86c6175e2059e9c855/src/bioregistry/utils.py#L128-L133
+        s = s.toLowerCase(Locale.ROOT);
+        s = s.replace(".", "");
+        s = s.replace("-", "");
+        s = s.replace("_", "");
+        s = s.replace("/", "");
+        return s;
     }
 
     private Pattern getPattern(String patternStr) {
