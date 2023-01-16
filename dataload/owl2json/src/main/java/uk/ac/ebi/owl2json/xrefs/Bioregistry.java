@@ -28,6 +28,7 @@ public class Bioregistry {
 
     JsonObject theRegistry;
     Map<String, JsonObject> prefixToDatabase = new HashMap<>();
+    Map<String, JsonObject> iriPrefixToDatabase = new HashMap<>();
     Map<String, Pattern> patterns = new HashMap<>();
 
     public Bioregistry() {
@@ -55,6 +56,12 @@ public class Bioregistry {
                     prefixToDatabase.put(synonym.getAsString(), db);
                 }
             }
+            
+            JsonElement uriFormat = db.get("uri_format");
+            if (uriFormat != null && uriFormat.endsWith("$1) {
+                String uriPrefix = uriFormat.substring(0, uriFormat.length() - 2);                              
+                iriPrefixToDatabase.put(uriPrefix, db);                                                                        
+            }  
         }
 
     }
@@ -91,6 +98,11 @@ public class Bioregistry {
         }
             
         return uriFormat.getAsString().replace("$1", id);
+    }
+                                                        
+    public String getCurieForUrl(String url) {
+        // needs to be implemented, ideally using a trie data structure
+        return "";
     }
 
     private Pattern getPattern(String patternStr) {
