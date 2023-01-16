@@ -107,7 +107,7 @@ public class Bioregistry {
         return uriFormat.getAsString().replace("$1", id);
     }
     
-    private static norm(String s) {
+    private static String norm(String s) {
         // see https://github.com/biopragmatics/bioregistry/blob/a7424ef4a0d22eaca61d3a86c6175e2059e9c855/src/bioregistry/utils.py#L128-L133
         s = s.toLowerCase(Locale.ROOT)
         s = s.replace(".", "")
