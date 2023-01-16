@@ -108,8 +108,8 @@ public class Bioregistry {
           String key = entry.getKey();
           if (url.startsWith(key)) {
               // get everything following the 
-              String local_unique_identifier = url.substring(key.length(), url.length())
-              return entry.getValue() + ":" + local_unique_identifier
+              String local_unique_identifier = url.substring(key.length(), url.length());
+              return entry.getValue() + ":" + local_unique_identifier;
           }
         }
         return null;
