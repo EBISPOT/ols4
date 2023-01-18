@@ -34,6 +34,14 @@ public class V1PropertyMapper {
         property.shortForm = JsonHelper.getString(localizedJson, "shortForm");
         property.oboId = property.shortForm.replace("_", ":");
 
+        property.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectChildren"))
+                || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
+
+        property.isRoot = !(
+                Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectParent")) ||
+                        Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
+        );
+
         return property;
     }
 
