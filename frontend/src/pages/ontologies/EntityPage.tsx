@@ -84,15 +84,25 @@ export default function EntityPage({
               </Link>
               <span className="px-2 text-sm">&gt;</span>
               <Link className="link-default" href={"/ontologies/" + ontologyId}>
-                {ontology.getName() || ontology.getOntologyId()}
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={ontologyId}
+		>
+		{ontologyId}
+		</span>
               </Link>
               <span className="px-2 text-sm">&gt;</span>
               <span className="capitalize">{entity.getTypePlural()}</span>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold mr-3">
-                {entity.getShortForm() || entity.getName()}
-              </span>
+		<span
+		className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={entity.getShortForm()}
+		>
+		{entity.getShortForm()}
+		</span>
               <span className="text-sm text-neutral-default">
+		&nbsp;
+		&nbsp;
                 <button
                   onClick={() => {
                     copyShortForm(entity.getShortForm() || entity.getName());

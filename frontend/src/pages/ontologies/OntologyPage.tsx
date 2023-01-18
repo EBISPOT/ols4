@@ -40,9 +40,12 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                 Ontologies
               </Link>
               <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold">
-                {ontology.getName() || ontology.getOntologyId()}
-              </span>
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={ontologyId}
+		>
+		{ontologyId}
+		</span>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">
