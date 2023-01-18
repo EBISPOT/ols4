@@ -312,7 +312,7 @@ public class OntologyWriter {
 
 
     private String replaceNeo4jSpecialCharsValue(String val) {
-        return val.replace("|", "+");
+        return val.replace("|", "\\u007C");
     }
 
     private List<String> propertyHeaders(List<String> fieldNames) {
