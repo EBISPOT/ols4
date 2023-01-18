@@ -37,7 +37,7 @@ public class OwlGraph implements StreamRDF {
     private RDFParserBuilder createParser() {
 
         return RDFParser.create()
-                .forceLang(Lang.RDFXML)
+//                .forceLang(Lang.RDFXML)
                 .strict(false)
                 .checking(false);
     }
