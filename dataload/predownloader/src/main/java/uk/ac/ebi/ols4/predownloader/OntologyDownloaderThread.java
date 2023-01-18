@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -29,6 +31,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
@@ -46,32 +49,32 @@ public class OntologyDownloaderThread implements Runnable {
 
         this.downloader = downloader;
         this.ontologyUrl = ontologyUrl;
-	this.consumeImports = consumeImports;
+        this.consumeImports = consumeImports;
     }
 
 
     @Override
     public void run() {
 
-	if(!ontologyUrl.contains("://")) {
-		// Nothing to download, this is a local file already
-		return;
-	}
+        String path = downloader.downloadPath + "/" + urlToFilename(ontologyUrl);
 
-	String path = downloader.downloadPath + "/" + urlToFilename(ontologyUrl);
+        System.out.println(Thread.currentThread().getName() + " Starting download for " + ontologyUrl + " to " + path);
 
-	System.out.println(Thread.currentThread().getName() + " Starting download for " + ontologyUrl + " to " + path);
-
-	Set<String> importUrls = new LinkedHashSet<>();
+        Set<String> importUrls = new LinkedHashSet<>();
 
         long begin = System.nanoTime();
 
         try {
 
-            downloadURL(ontologyUrl, path);
+            String mimetype = downloadURL(ontologyUrl, path);
+
+            Lang lang = RDFLanguages.contentTypeToLang(mimetype);
+            if(lang == null) {
+                lang = Lang.RDFXML;
+            }
 
             // parse to look for imports only
-            createParser().source(new FileInputStream(path)).parse(new StreamRDF() {
+            createParser(lang).source(new FileInputStream(path)).parse(new StreamRDF() {
                 public void start() {}
                 public void quad(Quad quad) {}
                 public void base(String base) {}
@@ -101,30 +104,32 @@ public class OntologyDownloaderThread implements Runnable {
         return url.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
     }
     
-    private RDFParserBuilder createParser() {
+    private RDFParserBuilder createParser(Lang lang) {
 
         return RDFParser.create()
-//                .forceLang(Lang.RDFXML)
+                .forceLang(lang)
                 .strict(false)
                 .checking(false);
     }
 
-    private static void downloadURL(String url, String filename) throws FileNotFoundException, IOException {
+    private static String downloadURL(String url, String filename) throws FileNotFoundException, IOException {
 
-	RequestConfig config = RequestConfig.custom()
-			.setConnectTimeout(5000)
-			.setConnectionRequestTimeout(5000)
-			.setSocketTimeout(5000).build();
+        RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(5000)
+                .setConnectionRequestTimeout(5000)
+                .setSocketTimeout(5000).build();
 
-	CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+        CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
         HttpGet request = new HttpGet(url);
         HttpResponse response = client.execute(request);
         HttpEntity entity = response.getEntity();
         if (entity != null) {
             entity.writeTo(new FileOutputStream(filename));
-            new FileOutputStream(filename + ".mimetype").write(entity.getContentType().getValue().getBytes(StandardCharsets.UTF_8));
+            Files.write(Paths.get(filename + ".mimetype"), entity.getContentType().getValue().getBytes(StandardCharsets.UTF_8));
         }
+
+        return entity.getContentType().getValue();
     }
 
 
