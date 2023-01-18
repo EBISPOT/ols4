@@ -1,12 +1,10 @@
 package uk.ac.ebi.owl2json;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.google.gson.stream.JsonWriter;
 
 import uk.ac.ebi.owl2json.annotators.*;
 import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
-import uk.ac.ebi.owl2json.properties.PropertyValue.Type;
 
 import org.apache.jena.riot.Lang;
 import org.apache.jena.graph.Node;
@@ -14,7 +12,6 @@ import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
-import org.apache.jena.shacl.sys.C;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
@@ -201,6 +198,7 @@ public class OwlGraph implements StreamRDF {
     ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
+    HasIndividualsAnnotator.annotateHasIndividuals(this);
     EquivalenceAnnotator.annotateEquivalance(this);
     ReferencedEntitiesAnnotator.annotateReferencedEntities(this); // should come last so it finds all the entities
 

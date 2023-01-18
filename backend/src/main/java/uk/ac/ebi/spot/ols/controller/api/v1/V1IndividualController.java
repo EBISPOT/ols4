@@ -126,4 +126,5 @@ public class V1IndividualController implements
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
     }
+
 }
