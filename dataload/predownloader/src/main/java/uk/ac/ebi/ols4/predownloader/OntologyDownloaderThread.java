@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -103,7 +104,7 @@ public class OntologyDownloaderThread implements Runnable {
     private RDFParserBuilder createParser() {
 
         return RDFParser.create()
-                .forceLang(Lang.RDFXML)
+//                .forceLang(Lang.RDFXML)
                 .strict(false)
                 .checking(false);
     }
@@ -122,6 +123,7 @@ public class OntologyDownloaderThread implements Runnable {
         HttpEntity entity = response.getEntity();
         if (entity != null) {
             entity.writeTo(new FileOutputStream(filename));
+            new FileOutputStream(filename + ".mimetype").write(entity.getContentType().getValue().getBytes(StandardCharsets.UTF_8));
         }
     }
 
