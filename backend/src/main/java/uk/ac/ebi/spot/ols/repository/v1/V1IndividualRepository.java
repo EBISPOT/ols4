@@ -60,7 +60,7 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("iri", iri, Fuzziness.EXACT);
 
-        return V1IndividualMapper.mapIndividual(solrClient.getOne(query), lang);
+        return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
     }
 
 //    @Query (countQuery = "MATCH (n:Individual {ontology_name : {0}}) RETURN count(n)",
@@ -85,7 +85,7 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
-        return V1IndividualMapper.mapIndividual(solrClient.getOne(query), lang);
+        return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
     }
 
 //    @Query (value = "MATCH (n:Individual) WHERE n.ontology_name = {0} AND n.obo_id = {1} RETURN n")
@@ -97,7 +97,7 @@ public class V1IndividualRepository {
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
-        return V1IndividualMapper.mapIndividual(solrClient.getOne(query), lang);
+        return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
 
     }
 

@@ -57,12 +57,14 @@ export const getSearchOptions = createAsyncThunk(
           `api/v2/entities?${new URLSearchParams({
             search: search,
             size: "5",
+	    lang: 'all'
           })}`
         ),
         getPaginated<any>(
           `api/v2/ontologies?${new URLSearchParams({
             search: search,
             size: "5",
+	    lang: 'all'
           })}`
         ),
       ]);
@@ -89,6 +91,7 @@ export const getSearchResults = createAsyncThunk(
         facetFields: "ontologyId type",
         ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
         type: type.length > 0 ? type[0] : null,
+	lang: 'all'
       };
       for (const param in query) {
         if (

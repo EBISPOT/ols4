@@ -2,7 +2,6 @@
 package uk.ac.ebi.spot.ols.repository.v2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
@@ -41,7 +40,7 @@ public class V2OntologyRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
+
         query.addFilter("type", "ontology", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, boostFields);
@@ -49,8 +48,8 @@ public class V2OntologyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -60,14 +59,14 @@ public class V2OntologyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
+
         query.addFilter("type", "ontology", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
         return new V2Entity(
                 LocalizationTransform.transform(
                         RemoveLiteralDatatypesTransform.transform(
-                                solrClient.getOne(query)
+                                solrClient.getFirst(query)
                         ),
                         lang
                 )

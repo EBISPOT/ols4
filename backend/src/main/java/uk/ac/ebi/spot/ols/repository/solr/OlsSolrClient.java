@@ -81,12 +81,12 @@ public class OlsSolrClient {
                 qr.getResults().getNumFound());
     }
 
-    public JsonElement getOne(OlsSolrQuery query) {
+    public JsonElement getFirst(OlsSolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query, null);
 
-        if(qr.getResults().getNumFound() != 1) {
-            throw new RuntimeException("Expected exactly 1 result for solr getOne, but got " + qr.getResults().getNumFound());
+        if(qr.getResults().getNumFound() < 1) {
+            throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
         return getOlsEntityFromSolrResult(qr.getResults().get(0));

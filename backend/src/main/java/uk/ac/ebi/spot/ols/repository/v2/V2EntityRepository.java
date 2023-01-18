@@ -2,7 +2,6 @@
 package uk.ac.ebi.spot.ols.repository.v2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
@@ -37,7 +36,7 @@ public class V2EntityRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
+
         query.addFilter("type", "entity", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
@@ -46,8 +45,8 @@ public class V2EntityRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -58,7 +57,7 @@ public class V2EntityRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
+
         query.addFilter("type", "entity", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
@@ -68,8 +67,8 @@ public class V2EntityRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -79,17 +78,17 @@ public class V2EntityRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
+
         query.addFilter("type", "entity", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V2Entity(
-                LocalizationTransform.transform(
-                        RemoveLiteralDatatypesTransform.transform(
-                                solrClient.getOne(query)
-                        ),
-                        lang
+                RemoveLiteralDatatypesTransform.transform(
+                        LocalizationTransform.transform(
+                                solrClient.getFirst(query),
+                                lang
+                        )
                 )
         );
     }

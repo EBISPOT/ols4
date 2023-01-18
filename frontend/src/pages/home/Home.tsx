@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -90,43 +90,51 @@ export default function Home() {
                         const termUrl = encodeURIComponent(
                           encodeURIComponent(option.getIri())
                         );
-                        return (
-                          <li
-                            key={randomString()}
-                            className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                          >
-                            {option instanceof Entity ? (
-                              <Link
-                                onClick={() => {
-                                  setOpen(false);
-                                }}
-                                to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
-                              >
-                                <div className="flex justify-between">
-                                  <div
-                                    className="truncate flex-auto"
-                                    title={option.getName()}
-                                  >
-                                    {option.getName()}
-                                  </div>
-                                  <div className="truncate flex-initial ml-2 text-right">
-                                    <span
-                                      className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                      title={option.getOntologyId()}
-                                    >
-                                      {option.getOntologyId()}
-                                    </span>
-                                    <span
-                                      className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                      title={option.getShortForm()}
-                                    >
-                                      {option.getShortForm()}
-                                    </span>
-                                  </div>
-                                </div>
-                              </Link>
-                            ) : null}
-                            {option instanceof Ontology ? (
+                        return <Fragment>
+				{option instanceof Entity && (
+				option.getNames().map(name => (
+				<li
+					key={randomString()}
+					className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+					>
+				<Link
+					onClick={() => {
+					setOpen(false);
+					}}
+					to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
+				>
+					<div className="flex justify-between">
+					<div
+					className="truncate flex-auto"
+					title={name}
+					>
+					{name}
+					</div>
+					<div className="truncate flex-initial ml-2 text-right">
+					<span
+					className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+					title={option.getOntologyId()}
+					>
+					{option.getOntologyId()}
+					</span>
+					<span
+					className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+					title={option.getShortForm()}
+					>
+					{option.getShortForm()}
+					</span>
+					</div>
+					</div>
+				</Link>
+				</li>
+				)))}
+
+                            {option instanceof Ontology && (
+				option.getNames().map(name => (
+				<li
+					key={randomString()}
+					className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+					>
                               <Link
                                 onClick={() => {
                                   setOpen(false);
@@ -144,9 +152,9 @@ export default function Home() {
                                   </span>
                                 </div>
                               </Link>
-                            ) : null}
-                          </li>
-                        );
+			      </li>
+			)))}
+			</Fragment>
                       })
                     )}
                   </ul>

@@ -13,7 +13,10 @@ public class JsonCollectionHelper {
         JsonArray newArr = new JsonArray(arr.size());
 
         for (JsonElement element : arr) {
-            newArr.add(mapFn.apply(element));
+            JsonElement res = mapFn.apply(element);
+            if(res != null) {
+                newArr.add(res);
+            }
         }
 
         return newArr;
@@ -24,7 +27,10 @@ public class JsonCollectionHelper {
         JsonObject newObj = new JsonObject();
 
         for (String key : obj.keySet()) {
-            newObj.add(key, mapFn.apply(obj.get(key)));
+            JsonElement res = mapFn.apply(obj.get(key));
+            if(res != null) {
+                newObj.add(key, res);
+            }
         }
 
         return newObj;

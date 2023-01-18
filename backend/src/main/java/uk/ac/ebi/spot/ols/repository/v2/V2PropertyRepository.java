@@ -42,7 +42,6 @@ public class V2PropertyRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "property", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
@@ -50,8 +49,8 @@ public class V2PropertyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -66,7 +65,6 @@ public class V2PropertyRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "property", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
@@ -75,8 +73,8 @@ public class V2PropertyRepository {
         query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -86,17 +84,16 @@ public class V2PropertyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "property", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
         return new V2Entity(
-                LocalizationTransform.transform(
-                        RemoveLiteralDatatypesTransform.transform(
-                                solrClient.getOne(query)
-                        ),
-                        lang
+                RemoveLiteralDatatypesTransform.transform(
+                        LocalizationTransform.transform(
+                                solrClient.getFirst(query),
+                                lang
+                        )
                 )
         );
     }
@@ -109,8 +106,8 @@ public class V2PropertyRepository {
         String id = ontologyId + "+property+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyProperty", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 

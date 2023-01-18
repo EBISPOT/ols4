@@ -24,11 +24,10 @@ public class V1OntologyRepository {
         Validation.validateOntologyId(ontologyId);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "ontology", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
-        return V1OntologyMapper.mapOntology(solrClient.getOne(query), lang);
+        return V1OntologyMapper.mapOntology(solrClient.getFirst(query), lang);
     }
 
     public Page<V1Ontology> getAll(String lang, Pageable pageable) {
@@ -36,7 +35,6 @@ public class V1OntologyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "ontology", Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)

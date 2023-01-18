@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.transforms;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.repository.transforms.helpers.JsonCollectionHelper;
@@ -10,7 +11,13 @@ public class LocalizationTransform {
 
         if (object.isJsonArray()) {
 
-            return JsonCollectionHelper.map(object.getAsJsonArray(), element -> transform(element, lang));
+            JsonArray localizedArr = JsonCollectionHelper.map(object.getAsJsonArray(), element -> transform(element, lang));
+
+            if(localizedArr.size() == 0) {
+                localizedArr = JsonCollectionHelper.map(object.getAsJsonArray(), element -> transform(element, "en"));
+            }
+
+            return localizedArr;
 
         } else if (object.isJsonObject()) {
 
@@ -20,7 +27,7 @@ public class LocalizationTransform {
 
                 String objLang = obj.get("lang").getAsString();
 
-                if(objLang.equals(lang)) {
+                if(objLang.equals(lang) || lang.equalsIgnoreCase("all")) {
                     return transform(obj.get("value"), lang);
                 } else {
                     return null;
@@ -30,7 +37,19 @@ public class LocalizationTransform {
             JsonObject res = new JsonObject();
 
             for (String k : obj.keySet()) {
-		res.add(k, transform(obj.get(k), lang));
+                JsonElement localized = transform(obj.get(k), lang);
+                if(localized != null) {
+                    res.add(k, localized);
+                }
+            }
+
+            if(res.size() == 0) {
+                for (String k : obj.keySet()) {
+                    JsonElement localized = transform(obj.get(k), "en");
+                    if(localized != null) {
+                        res.add(k, localized);
+                    }
+                }
             }
 
             return res;
