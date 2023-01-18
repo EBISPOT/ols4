@@ -22,6 +22,7 @@ import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.TeeInputStream;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -126,10 +127,13 @@ public class OntologyDownloaderThread implements Runnable {
         HttpEntity entity = response.getEntity();
         if (entity != null) {
             entity.writeTo(new FileOutputStream(filename));
-            Files.write(Paths.get(filename + ".mimetype"), entity.getContentType().getValue().getBytes(StandardCharsets.UTF_8));
+            Header contentTypeHeader = entity.getContentType();
+            String contentType = contentTypeHeader != null ? contentTypeHeader.getValue() : "";
+            Files.write(Paths.get(filename + ".mimetype"), contentType.getBytes(StandardCharsets.UTF_8));
+            return contentType;
+        } else {
+            return "";
         }
-
-        return entity.getContentType().getValue();
     }
 
 
