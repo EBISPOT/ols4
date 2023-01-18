@@ -154,12 +154,6 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                           : ontology.getVersionFromIri()}
                       </span>
                     </div>
-                    <div>
-                      <span className="font-bold">Number of terms: </span>
-                      <span id="numberOfEntities">
-                        {ontology.getNumEntities()}
-                      </span>
-                    </div>
 		    <OntologyAnnotationsSection ontology={ontology} />
                   </div>
                 </details>
