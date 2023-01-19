@@ -59,9 +59,13 @@ public class OwlGraph implements StreamRDF {
                     String existingDownload = downloadedPath + "/" + urlToFilename(url);
                     try {
                         FileInputStream is = new FileInputStream(existingDownload);
-                        String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
                         System.out.println("Using predownloaded file for " + url);
-                        Lang lang = RDFLanguages.contentTypeToLang(existingDownloadMimeType);
+                        Lang lang = null;
+                        try {
+                            String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
+                            lang = RDFLanguages.contentTypeToLang(existingDownloadMimeType);
+                        } catch(IOException ignored) {
+                        }
                         if(lang == null) {
                             lang = Lang.RDFXML;
                         }
