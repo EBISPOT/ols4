@@ -11,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -129,7 +131,7 @@ public class OntologyDownloaderThread implements Runnable {
             entity.writeTo(new FileOutputStream(filename));
             Header contentTypeHeader = entity.getContentType();
             String contentType = contentTypeHeader != null ? contentTypeHeader.getValue() : "";
-            Files.write(Paths.get(filename + ".mimetype"), contentType.getBytes(StandardCharsets.UTF_8));
+            Files.write(Paths.get(filename + ".mimetype"), contentType.getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
             return contentType;
         } else {
             return "";
