@@ -2,6 +2,7 @@ package uk.ac.ebi.owl2json;
 
 import com.google.gson.stream.JsonWriter;
 
+import org.apache.jena.riot.RDFLanguages;
 import uk.ac.ebi.owl2json.annotators.*;
 import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
@@ -17,6 +18,9 @@ import org.apache.jena.sparql.core.Quad;
 import java.io.IOException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class OwlGraph implements StreamRDF {
@@ -29,51 +33,55 @@ public class OwlGraph implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
+    private RDFParserBuilder createParser(Lang lang) {
 
-
-    public static long STATS_TOTAL_DOWNLOAD_TIME = 0;
-
-
-    private RDFParserBuilder createParser() {
-
-        return RDFParser.create()
-                .forceLang(Lang.RDFXML)
-                .strict(false)
-                .checking(false);
+        if(lang != null) {
+            return RDFParser.create()
+                    .forceLang(lang)
+                    .strict(false)
+                    .checking(false);
+        } else {
+            return RDFParser.create()
+                    .strict(false)
+                    .checking(false);
+        }
     }
 
     private void parseRDF(String url)  {
 
-        long begin = System.nanoTime();
-
-	try {
-		if (loadLocalFiles && !url.contains("://")) {
-			System.out.println("Using local file for " + url);
-			createParser().source(new FileInputStream(url)).parse(this);
-		} else {
-			if (downloadedPath != null) {
-				String existingDownload = downloadedPath + "/" + urlToFilename(url);
-				try {
-					FileInputStream is = new FileInputStream(existingDownload);
-					System.out.println("Using predownloaded file for " + url);
-					createParser().source(is).parse(this);
-				} catch (FileNotFoundException e) {
-					System.out.println("Downloading (not predownloaded) " + url);
-					createParser().source(url).parse(this);
-				}
-			} else {
-				System.out.println("Downloading (no predownload path provided) " + url);
-				createParser().source(url).parse(this);
-			}
-		}
-	} catch (FileNotFoundException e) {
-		throw new RuntimeException(e);
-	}
-
-        long end = System.nanoTime();
-
-        System.out.println("Downloading " + url + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
-        STATS_TOTAL_DOWNLOAD_TIME += (end - begin);
+        try {
+            if (loadLocalFiles && !url.contains("://")) {
+                System.out.println("Using local file for " + url);
+                createParser(RDFLanguages.filenameToLang(url, Lang.RDFXML))
+                        .source(new FileInputStream(url)).parse(this);
+            } else {
+                if (downloadedPath != null) {
+                    String existingDownload = downloadedPath + "/" + urlToFilename(url);
+                    try {
+                        FileInputStream is = new FileInputStream(existingDownload);
+                        System.out.println("Using predownloaded file for " + url);
+                        Lang lang = null;
+                        try {
+                            String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
+                            lang = RDFLanguages.contentTypeToLang(existingDownloadMimeType);
+                        } catch(IOException ignored) {
+                        }
+                        if(lang == null) {
+                            lang = Lang.RDFXML;
+                        }
+                        createParser(lang).source(is).parse(this);
+                    } catch (Exception e) {
+                        System.out.println("Downloading (not predownloaded) " + url);
+                        createParser(null).source(url).parse(this);
+                    }
+                } else {
+                    System.out.println("Downloading (no predownload path provided) " + url);
+                    createParser(null).source(url).parse(this);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String urlToFilename(String url) {
