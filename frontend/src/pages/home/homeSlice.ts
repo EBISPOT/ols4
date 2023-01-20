@@ -3,11 +3,13 @@ import { get, getPaginated, Page } from "../../app/api";
 import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
+import { Suggest } from "../../model/Suggest";
 import Thing from "../../model/Thing";
 
 export interface HomeState {
-  searchOptions: Thing[];
-  loadingSearchOptions: boolean;
+  autocomplete: Suggest|null;
+  jumpTo: Thing[];
+  loadingSuggestions: boolean;
   searchResults: Entity[];
   loadingSearchResults: boolean;
   totalSearchResults: number;
@@ -22,7 +24,10 @@ export interface Stats {
   lastModified: string;
 }
 const initialState: HomeState = {
+  autocomplete: null,
+  jumpTo: [],
   searchResults: [],
+  loadingSuggestions: false,
   loadingSearchResults: false,
   totalSearchResults: 0,
   stats: {
@@ -33,8 +38,6 @@ const initialState: HomeState = {
     lastModified: "",
   },
   facets: Object.create(null),
-  searchOptions: [],
-  loadingSearchOptions: false,
 };
 
 export const getStats = createAsyncThunk(
@@ -47,12 +50,12 @@ export const getStats = createAsyncThunk(
     }
   }
 );
-export const getSearchOptions = createAsyncThunk(
-  "home_search_options",
+export const getSuggestions = createAsyncThunk(
+  "home_search_suggestions",
   async (query: string, { rejectWithValue }) => {
-    const search = "*" + query + "*";
+    const search = query
     try {
-      const [entities, ontologies] = await Promise.all([
+      const [entities, ontologies, autocomplete] = await Promise.all([
         getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
             search: search,
@@ -67,11 +70,16 @@ export const getSearchOptions = createAsyncThunk(
 	    lang: 'all'
           })}`
         ),
+        get<Suggest>(
+          `api/suggest?${new URLSearchParams({
+            q: search
+          })}`
+        ),
       ]);
-      return [
+      return { jumpTo: [
         ...entities.elements.map((obj) => thingFromProperties(obj)),
         ...ontologies.elements.map((obj) => new Ontology(obj)),
-      ];
+      ], autocomplete: autocomplete }
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -85,7 +93,7 @@ export const getSearchResults = createAsyncThunk(
   ) => {
     try {
       let query = {
-        search: "*" + search + "*",
+        search: search,
         size: rowsPerPage,
         page,
         facetFields: "ontologyId type",
@@ -127,18 +135,20 @@ const homeSlice = createSlice({
       state.stats = initialState.stats;
     });
     builder.addCase(
-      getSearchOptions.fulfilled,
-      (state: HomeState, action: PayloadAction<Thing[]>) => {
-        state.searchOptions = action.payload;
-        state.loadingSearchOptions = false;
+      getSuggestions.fulfilled,
+      (state: HomeState, action: PayloadAction<{jumpTo: Thing[], autocomplete:Suggest}>) => {
+        state.jumpTo = action.payload.jumpTo;
+	state.autocomplete = action.payload.autocomplete;
+        state.loadingSuggestions = false;
       }
     );
-    builder.addCase(getSearchOptions.pending, (state: HomeState) => {
-      state.loadingSearchOptions = true;
+    builder.addCase(getSuggestions.pending, (state: HomeState) => {
+      state.loadingSuggestions = true;
     });
-    builder.addCase(getSearchOptions.rejected, (state: HomeState) => {
-      state.loadingSearchOptions = false;
-      state.searchOptions = initialState.searchOptions;
+    builder.addCase(getSuggestions.rejected, (state: HomeState) => {
+      state.loadingSuggestions = false;
+      state.jumpTo = initialState.jumpTo;
+      state.autocomplete = initialState.autocomplete;
     });
     builder.addCase(
       getSearchResults.fulfilled,

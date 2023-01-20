@@ -3,7 +3,7 @@ services:
     ols4-dataload:
       build: ./dataload
       volumes:
-        - ols4-solr-data:/opt/solr/server/solr/ols4:rw
+        - ols4-solr-data:/opt/solr/server/solr:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
         - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config.json:ro
         - ./testcases:/opt/dataload/testcases:ro

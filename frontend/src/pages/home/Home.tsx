@@ -8,14 +8,15 @@ import Header from "../../components/Header";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
-import { getSearchOptions, getStats } from "./homeSlice";
+import { getSuggestions, getStats } from "./homeSlice";
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const stats = useAppSelector((state) => state.home.stats);
-  const suggestions = useAppSelector((state) => state.home.searchOptions);
-  const loading = useAppSelector((state) => state.home.loadingSearchOptions);
+  const autocomplete = useAppSelector((state) => state.home.autocomplete);
+  const jumpTo = useAppSelector((state) => state.home.jumpTo);
+  const loading = useAppSelector((state) => state.home.loadingSuggestions);
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
   const [open, setOpen] = useState<boolean>(false);
@@ -25,7 +26,7 @@ export default function Home() {
     dispatch(getStats());
   }, [dispatch]);
   useEffect(() => {
-    dispatch(getSearchOptions(query));
+    dispatch(getSuggestions(query));
   }, [dispatch, query]);
 
   const mounted = useRef(false);
@@ -81,83 +82,104 @@ export default function Home() {
                         : "hidden"
                     }
                   >
-                    {suggestions.length === 0 ? (
-                      <div className="py-1 px-3 text-lg leading-loose">
-                        No options
-                      </div>
-                    ) : (
-                      suggestions.map((option: Thing) => {
-                        const termUrl = encodeURIComponent(
-                          encodeURIComponent(option.getIri())
-                        );
-                        return <Fragment>
-				{option instanceof Entity && (
-				option.getNames().map(name => (
-				<li
-					key={randomString()}
-					className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-					>
-				<Link
-					onClick={() => {
-					setOpen(false);
-					}}
-					to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
-				>
-					<div className="flex justify-between">
-					<div
-					className="truncate flex-auto"
-					title={name}
-					>
-					{name}
-					</div>
-					<div className="truncate flex-initial ml-2 text-right">
-					<span
-					className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-					title={option.getOntologyId()}
-					>
-					{option.getOntologyId()}
-					</span>
-					<span
-					className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-					title={option.getShortForm()}
-					>
-					{option.getShortForm()}
-					</span>
-					</div>
-					</div>
-				</Link>
-				</li>
-				)))}
 
-                            {option instanceof Ontology && (
-				option.getNames().map(name => (
-				<li
-					key={randomString()}
-					className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-					>
-                              <Link
-                                onClick={() => {
-                                  setOpen(false);
-                                }}
-                                to={"/ontologies/" + option.getOntologyId()}
-                              >
-                                <div className="flex">
+                  {autocomplete?.response.docs &&
+                    autocomplete.response.docs.slice(0, 5).map(autocomplete => {
+                      return <li
+                        key={randomString()}
+                        className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                      >{autocomplete.autosuggest}</li>
+                    })
+                  }
+
+                  {jumpTo && <li className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                  ><b>Jump to</b></li>}
+
+                  {jumpTo && jumpTo.map((jumpToEntry: Thing) => {
+                    const termUrl = encodeURIComponent(
+                      encodeURIComponent(jumpToEntry.getIri())
+                    );
+                    return <Fragment>
+                      {jumpToEntry instanceof Entity && (
+                        jumpToEntry.getNames().map(name => (
+                          <li
+                            key={randomString()}
+                            className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                          >
+                            <Link
+                              onClick={() => {
+                                setOpen(false);
+                              }}
+                              to={`/ontologies/${jumpToEntry.getOntologyId()}/${jumpToEntry.getTypePlural()}/${termUrl}`}
+                            >
+                              <div className="flex justify-between">
+                                <div
+                                  className="truncate flex-auto"
+                                  title={name}
+                                >
+                                  {name}
+                                </div>
+                                <div className="truncate flex-initial ml-2 text-right">
                                   <span
-                                    className="truncate text-link-dark font-bold"
-                                    title={
-                                      option.getName() || option.getOntologyId()
-                                    }
+                                    className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                                    title={jumpToEntry.getOntologyId()}
                                   >
-                                    {option.getName() || option.getOntologyId()}
+                                    {jumpToEntry.getOntologyId()}
+                                  </span>
+                                  <span
+                                    className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                                    title={jumpToEntry.getShortForm()}
+                                  >
+                                    {jumpToEntry.getShortForm()}
                                   </span>
                                 </div>
-                              </Link>
-			      </li>
-			)))}
-			</Fragment>
-                      })
-                    )}
-                  </ul>
+                              </div>
+                            </Link>
+                          </li>
+                        )))}
+                        </Fragment>
+                        })}
+
+                  {jumpTo && jumpTo.map((jumpToEntry: Thing) => {
+                    const termUrl = encodeURIComponent(
+                      encodeURIComponent(jumpToEntry.getIri())
+                    );
+                    return <Fragment>
+                      {jumpToEntry instanceof Ontology && (
+                        jumpToEntry.getNames().map(name => (
+                          <li
+                            key={randomString()}
+                            className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                          >
+                            <Link
+                              onClick={() => {
+                                setOpen(false);
+                              }}
+                              to={"/ontologies/" + jumpToEntry.getOntologyId()}
+                            >
+                              <div className="flex">
+                                <span
+                                  className="truncate text-link-dark font-bold"
+                                  title={
+                                    jumpToEntry.getName() || jumpToEntry.getOntologyId()
+                                  }
+                                >
+                                  {jumpToEntry.getName() || jumpToEntry.getOntologyId()}
+                                </span>
+                              </div>
+                            </Link>
+                          </li>
+                        )))}
+                      </Fragment>
+                  }
+                )}
+
+                <hr />
+                <li
+                  key={randomString()}
+                  className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                >Search OLS for <b>{query}</b></li>
+              </ul>
                 </div>
                 <button
                   className="button-primary text-lg font-bold self-center"
@@ -254,9 +276,9 @@ export default function Home() {
                 <div className="text-neutral-black">
                   <div className="mb-2 text-sm italic">
                     Updated&nbsp;
-                      {moment(stats.lastModified).format(
-                        "D MMM YYYY ddd HH:mm(Z)"
-                      )}
+                    {moment(stats.lastModified).format(
+                      "D MMM YYYY ddd HH:mm(Z)"
+                    )}
                   </div>
                   <ul className="list-disc list-inside pl-2">
                     <li>

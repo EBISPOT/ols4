@@ -9,15 +9,15 @@ import { Pagination } from "../../components/Pagination";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
-import { getSearchOptions, getSearchResults } from "./homeSlice";
+import { getSuggestions, getSearchResults } from "./homeSlice";
 
 export default function SearchResults({ search }: { search: string }) {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const loadingSuggestions = useAppSelector(
-    (state) => state.home.loadingSearchOptions
+    (state) => state.home.loadingSuggestions
   );
-  const suggestions = useAppSelector((state) => state.home.searchOptions);
+  const suggestions = useAppSelector((state) => state.home.jumpTo);
   const loadingResults = useAppSelector(
     (state) => state.home.loadingSearchResults
   );
@@ -73,7 +73,7 @@ export default function SearchResults({ search }: { search: string }) {
   const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
   useEffect(() => {
-    dispatch(getSearchOptions(query));
+    dispatch(getSuggestions(query));
   }, [dispatch, query]);
   useEffect(() => {
     dispatch(

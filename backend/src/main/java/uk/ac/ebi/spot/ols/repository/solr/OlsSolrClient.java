@@ -46,7 +46,7 @@ public class OlsSolrClient {
                 }
                 Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
                 Map<String,Object> status = (Map<String,Object>) obj.get("status");
-                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4");
+                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4_entities");
                 return coreStatus;
             }
         }
@@ -110,7 +110,7 @@ public class OlsSolrClient {
         System.out.println("solr query: " + query.toQueryString());
         System.out.println("solr host: " + host);
 
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
 
         QueryResponse qr = null;
         try {
