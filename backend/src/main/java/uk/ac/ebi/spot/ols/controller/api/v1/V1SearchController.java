@@ -5,6 +5,7 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryLinksResource;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
@@ -281,7 +283,7 @@ public class V1SearchController {
 
         System.out.println(solrQuery.jsonStr());
 
-        QueryResponse qr = dispatchSearch(solrQuery, response);
+        QueryResponse qr = dispatchSearch(solrQuery, "solr_entities");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
@@ -490,7 +492,7 @@ public class V1SearchController {
         solrQuery.addHighlightField("synonym");
 
         //dispatchSearch(solrSearchBuilder.toString(), response.getOutputStream());
-        dispatchSearch(solrQuery, response);
+        dispatchSearch(solrQuery, "ols4_entities");
 
     }
 
@@ -503,105 +505,79 @@ public class V1SearchController {
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 
-
-        final SolrQuery solrQuery = new SolrQuery(); // 1
+        final SolrQuery solrQuery = new SolrQuery();
 
         String queryLc = query.toLowerCase();
-        query = new StringBuilder(queryLc.length() + 2).append('"').append(queryLc).append('"').toString();
+        queryLc = ClientUtils.escapeQueryChars(queryLc);
+        query = new StringBuilder(queryLc.length()+2).append('"').append(queryLc).append('"').toString();
 
-        String q = "http\\://www.w3.org/2000/01/rdf-schema#label:" + query + "^3 OR " +
-                "edge_http\\://www.w3.org/2000/01/rdf-schema#label:" + query + "^2 OR " +
-                "whitespace_edge_http\\://www.w3.org/2000/01/rdf-schema#label:" + query + "^1 OR " +
-                "synonym:" + query + "^3 OR " +
-                "edge_synonym:" + query + "^2 OR " +
-                "whitespace_edge_synonym:" + query + "^1";
-        solrQuery.setQuery(q);
-
-//        solrQuery.set("qf", "autosuggest^3 autosuggest_e^2 autosuggest_wse^1");
-//        solrQuery.set("qf", "http://www.w3.org/2000/01/rdf-schema#label^3 edge_http://www.w3.org/2000/01/rdf-schema#label^2 whitespace_edge_http://www.w3.org/2000/01/rdf-schema#label^1");
+        solrQuery.setQuery(query);
+        solrQuery.set("defType", "edismax");
+        solrQuery.set("qf", "label^10 edge_label^2 whitespace_edge_label^1");
         solrQuery.set("wt", "json");
-//        solrQuery.setFields("autosuggest");
+        solrQuery.setFields("label");
+
+        solrQuery.setSort("score", SolrQuery.ORDER.desc);
 
         if (ontologies != null && !ontologies.isEmpty()) {
-            solrQuery.addFilterQuery("ontology_id: (" + String.join(" OR ", ontologies) + ")");
+
+            for(String ontologyId : ontologies)
+                Validation.validateOntologyId(ontologyId);
+
+            solrQuery.addFilterQuery("ontologyId: (" + String.join(" OR ", ontologies) + ")");
         }
+
 
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
+        solrQuery.add("group", "true");
+        solrQuery.add("group.field", "label");
+        solrQuery.add("group.main", "true");
 
-        // highlighting seems broken for this endpoint in OLS3, so we won't even try
+
+        // broken in OLS3 anyway
 //        solrQuery.setHighlight(true);
 //        solrQuery.add("hl.simple.pre", "<b>");
 //        solrQuery.add("hl.simple.post", "</b>");
-//        solrQuery.addHighlightField("http://www.w3.org/2000/01/rdf-schema#label");
+//        solrQuery.addHighlightField("label");
 
-        // we can't group because all fields in OLS4 have multiple values, and solr can't use this for grouping
-        // not sure it actually matters for this endpoint though
 
-//        solrQuery.add("group", "true");
-//        solrQuery.add("group.field", "http\\://www.w3.org/2000/01/rdf-schema#label");
-//        solrQuery.add("group.main", "true");
-
-        //dispatchSearch(solrSearchBuilder.toString(), response.getOutputStream());
-
-        QueryResponse qr = dispatchSearch(solrQuery, response);
-
+        QueryResponse qr = dispatchSearch(solrQuery, "ols4_autocomplete");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
             Map<String,Object> outDoc = new HashMap<>();
 
-            Collection<String> labels = (Collection<String>) res.get("http__//www.w3.org/2000/01/rdf-schema#label");
-
-            if(labels == null || labels.size() == 0) {
-                labels = (Collection<String>) res.get("synonym");
-            }
-
-            outDoc.put("autosuggest", labels.toArray()[0]);
+            outDoc.put("autosuggest", res.get("label"));
 
             docs.add(outDoc);
         }
 
-
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put("status", 0);
         responseHeader.put("QTime", qr.getQTime());
-
-//        Map<String, Object> responseHeaderParams = new HashMap<>();
-//        responseHeaderParams.put("hl", "true");
-//        responseHeaderParams.put("fl", "autosuggest");
-//        responseHeaderParams.put("start", "0");
-//        responseHeaderParams.put("rows", "10");
-//        responseHeaderParams.put("hl.simple.pre", "<b>");
-//        responseHeaderParams.put("q", query);
-//        responseHeaderParams.put("group.main", "true");
-//        responseHeaderParams.put("hl.simple.post", "</b>");
-//        responseHeaderParams.put("qf", "autosuggest^3 autosuggest_e^2 autosuggest_wse^1");
-//        responseHeaderParams.put("hl.fl", "autosuggest");
-//        responseHeaderParams.put("wt", "json");
-//        responseHeaderParams.put("group.field", "autosuggest");
-//        responseHeaderParams.put("group", "true");
 
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("numFound", qr.getResults().getNumFound());
         responseBody.put("start", 0);
         responseBody.put("docs", docs);
 
+
         Map<String, Object> responseObj = new HashMap<>();
         responseObj.put("responseHeader", responseHeader);
-        responseObj.put("docs", docs);
+        responseObj.put("response", responseBody);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
     }
 
-    private QueryResponse dispatchSearch(SolrQuery query, HttpServletResponse httpresponse) throws IOException, SolrServerException {
+    private QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
 
 //        NoOpResponseParser rawJsonResponseParser = new NoOpResponseParser();
 //        rawJsonResponseParser.setWriterType("json");
 //        req.setResponseParser(rawJsonResponseParser);
 
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/ols4").build();
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/" + core).build();
 
         QueryResponse qr = mySolrClient.query(query);
 

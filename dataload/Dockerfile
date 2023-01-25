@@ -30,8 +30,8 @@ RUN cd /opt/dataload && mvn clean package
 
 # Copy the OLS4 Solr config into our temporary Solr server
 #
-RUN cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4
-
+RUN rm -rf /opt/solr/server/solr
+RUN cp -r /opt/dataload/solr_config /opt/solr/server/solr
 
 RUN mkdir /tmp/out
 

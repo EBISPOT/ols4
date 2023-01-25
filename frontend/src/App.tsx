@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import About from "./pages/About";
 import Help from "./pages/help/HelpPage";
 import Home from "./pages/home/Home";
-import SearchResults from "./pages/home/SearchResults";
+import Search from "./pages/search/Search";
 import EntityPage from "./pages/ontologies/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
@@ -17,9 +17,9 @@ class App extends React.Component {
           <Route exact path={`/home`} component={Home} />
           <Route
             exact
-            path={`/home/search/:key`}
+            path={`/search/:key`}
             component={(props: any) => (
-              <SearchResults search={props.match.params.key} />
+              <Search search={props.match.params.key} />
             )}
           />
 
