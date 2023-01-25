@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
+import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
 import EntityList from "./EntityList";
@@ -51,11 +52,14 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
               <div className="text-2xl font-bold mb-4">
                 {ontology.getName() || ontology.getOntologyId()}
               </div>
-              <div>
+              <div className="mb-4">
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
               </div>
+		<div className="flex flex-nowrap gap-4">
+			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
+		</div>
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">

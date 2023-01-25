@@ -5,37 +5,20 @@ import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import Header from "../../components/Header";
+import SearchBox from "../../components/SearchBox";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
-import { getSuggestions, getStats } from "./homeSlice";
+import { getStats } from "./homeSlice";
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const stats = useAppSelector((state) => state.home.stats);
-  const autocomplete = useAppSelector((state) => state.home.autocomplete);
-  const jumpTo = useAppSelector((state) => state.home.jumpTo);
-  const loading = useAppSelector((state) => state.home.loadingSuggestions);
-  const homeSearch = document.getElementById("home-search") as HTMLInputElement;
-
-  const [open, setOpen] = useState<boolean>(false);
-  const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
     dispatch(getStats());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(getSuggestions(query));
-  }, [dispatch, query]);
-
-  const mounted = useRef(false);
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  });
 
   document.title = "Ontology Lookup Service (OLS)";
   return (
@@ -49,158 +32,17 @@ export default function Home() {
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="flex flex-nowrap gap-4 mb-4">
-                <div className="relative w-full self-center">
-                  <input
-                    id="home-search"
-                    type="text"
-                    placeholder="Search OLS..."
-                    className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm pl-3"
-                    onFocus={() => {
-                      setOpen(true);
-                    }}
-                    onBlur={() => {
-                      setTimeout(function () {
-                        if (mounted.current) setOpen(false);
-                      }, 500);
-                    }}
-                    value={query}
-                    onChange={(e) => {
-                      setQuery(e.target.value);
-                    }}
-                  />
-                  <div
-                    className={
-                      loading
-                        ? "spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"
-                        : "hidden"
-                    }
-                  />
-                  <ul
-                    className={
-                      open
-                        ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
-                        : "hidden"
-                    }
-                  >
-
-                  {autocomplete?.response.docs &&
-                    autocomplete.response.docs.slice(0, 5).map(autocomplete => {
-                      return <li
-                        key={randomString()}
-                        className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                      >{autocomplete.autosuggest}</li>
-                    })
-                  }
-
-                  {jumpTo && <li className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                  ><b>Jump to</b></li>}
-
-                  {jumpTo && jumpTo.map((jumpToEntry: Thing) => {
-                    const termUrl = encodeURIComponent(
-                      encodeURIComponent(jumpToEntry.getIri())
-                    );
-                    return <Fragment>
-                      {jumpToEntry instanceof Entity && (
-                        jumpToEntry.getNames().map(name => (
-                          <li
-                            key={randomString()}
-                            className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                          >
-                            <Link
-                              onClick={() => {
-                                setOpen(false);
-                              }}
-                              to={`/ontologies/${jumpToEntry.getOntologyId()}/${jumpToEntry.getTypePlural()}/${termUrl}`}
-                            >
-                              <div className="flex justify-between">
-                                <div
-                                  className="truncate flex-auto"
-                                  title={name}
-                                >
-                                  {name}
-                                </div>
-                                <div className="truncate flex-initial ml-2 text-right">
-                                  <span
-                                    className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                    title={jumpToEntry.getOntologyId()}
-                                  >
-                                    {jumpToEntry.getOntologyId()}
-                                  </span>
-                                  <span
-                                    className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                    title={jumpToEntry.getShortForm()}
-                                  >
-                                    {jumpToEntry.getShortForm()}
-                                  </span>
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
-                        )))}
-                        </Fragment>
-                        })}
-
-                  {jumpTo && jumpTo.map((jumpToEntry: Thing) => {
-                    const termUrl = encodeURIComponent(
-                      encodeURIComponent(jumpToEntry.getIri())
-                    );
-                    return <Fragment>
-                      {jumpToEntry instanceof Ontology && (
-                        jumpToEntry.getNames().map(name => (
-                          <li
-                            key={randomString()}
-                            className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                          >
-                            <Link
-                              onClick={() => {
-                                setOpen(false);
-                              }}
-                              to={"/ontologies/" + jumpToEntry.getOntologyId()}
-                            >
-                              <div className="flex">
-                                <span
-                                  className="truncate text-link-dark font-bold"
-                                  title={
-                                    jumpToEntry.getName() || jumpToEntry.getOntologyId()
-                                  }
-                                >
-                                  {jumpToEntry.getName() || jumpToEntry.getOntologyId()}
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-                        )))}
-                      </Fragment>
-                  }
-                )}
-
-                <hr />
-                <li
-                  key={randomString()}
-                  className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                >Search OLS for <b>{query}</b></li>
-              </ul>
-                </div>
-                <button
-                  className="button-primary text-lg font-bold self-center"
-                  onClick={() => {
-                    if (homeSearch?.value) {
-                      history.push("/home/search/" + homeSearch.value);
-                    }
-                  }}
-                >
-                  Search
-                </button>
+		<SearchBox />
               </div>
               <div className="grid grid-cols-2">
                 <div className="text-neutral-black">
                   <span>
                     Examples:&nbsp;
-                    <a href="home/search/diabetes" className="link-default">
+                    <a href="search/diabetes" className="link-default">
                       diabetes
                     </a>
                     &#44;&nbsp;
-                    <a href="home/search/GO:0098743" className="link-default">
+                    <a href="search/GO:0098743" className="link-default">
                       GO:0098743
                     </a>
                   </span>
