@@ -93,7 +93,7 @@ export default function Home() {
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-orange-default" />
                   <a
-                    href="https://github.com/EBISPOT/OLS/issues"
+                    href="https://github.com/EBISPOT/ols4/issues"
                     className="link-default"
                   >
                     Report an Issue
