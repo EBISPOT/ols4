@@ -14,22 +14,29 @@ public class V2SearchFieldsParser {
     public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
 
         if(searchFields == null) {
-            searchFields = "label^5 synonym^3 definition shortForm^2 iri"; // TODO check with OLS3
-        }
-
-        for(ParsedField field : parseFieldsString(searchFields)) {
-            query.addSearchField(field.property, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("label", 5, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("synonym", 3, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("definition", 1, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("shortForm", 2, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("iri", 1, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+        } else {
+            for (ParsedField field : parseFieldsString(searchFields)) {
+                query.addSearchField(field.property, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            }
         }
     }
 
     public static void addBoostFieldsToQuery(OlsSolrQuery query, String boostFields) {
 
         if(boostFields == null) {
-            boostFields = "type:ontology^10 isDefiningOntology:true^100"; // TODO check with OLS3
-        }
-
-        for(ParsedField field : parseFieldsString(boostFields)) {
-            query.addBoostField(field.property, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addBoostField("type", "ontology", 10, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addBoostField("isDefiningOntology", "true", 100, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addBoostField("label", query.getSearchText(), 5, Fuzziness.EXACT);
+            query.addBoostField("synonym", query.getSearchText(), 3, Fuzziness.EXACT);
+        } else {
+            for (ParsedField field : parseFieldsString(boostFields)) {
+                query.addBoostField(field.property, field.value, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            }
         }
     }
 
@@ -52,19 +59,28 @@ public class V2SearchFieldsParser {
 
             if(propertyAndWeight.length == 1) {
 
-                // just a property
+                // not weighted
 
-                String property = propertyAndWeight[0];
-                parsed.add(new ParsedField(property, 1));
+                String[] propertyAndMaybeValue = propertyAndWeight[0].split(":");
+                if(propertyAndMaybeValue.length == 2) {
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], propertyAndMaybeValue[1], 1));
+                } else {
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], null, 1));
+                }
 
             } else if(propertyAndWeight.length == 2) {
 
-                // property and weight
+                // weighted
 
                 String property = propertyAndWeight[0];
                 int weight = Integer.parseInt(propertyAndWeight[1]);
 
-                parsed.add(new ParsedField(property, weight));
+                String[] propertyAndMaybeValue = propertyAndWeight[0].split(":");
+                if(propertyAndMaybeValue.length == 2) {
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], propertyAndMaybeValue[1], 1));
+                } else {
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], null, 1));
+                }
 
             } else {
                 throw new IllegalArgumentException("invalid search field specification");
@@ -76,10 +92,12 @@ public class V2SearchFieldsParser {
 
     private static class ParsedField {
         String property;
+        String value;
         int weight;
 
-        public ParsedField(String property, int weight) {
+        public ParsedField(String property, String value, int weight) {
             this.property = property;
+            this.value = value;
             this.weight = weight;
         }
     }

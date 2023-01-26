@@ -11,7 +11,7 @@ public class OlsSolrQuery {
 
 	String searchText = null;
 	List<SearchField> searchFields = new ArrayList<>();
-	List<SearchField> boostFields = new ArrayList<>();
+	List<BoostField> boostFields = new ArrayList<>();
 	List<String> facetFields = new ArrayList<>();
 	List<Filter> filters = new ArrayList<>();
 
@@ -22,12 +22,17 @@ public class OlsSolrQuery {
 		this.searchText = searchText;
 	}
 
+	public String getSearchText() {
+		return this.searchText;
+	}
+
 	public void addSearchField(String propertyName, int weight, Fuzziness fuzziness) {
 		this.searchFields.add(new SearchField(propertyName, weight, fuzziness));
 	}
 
-	public void addBoostField(String propertyName, int weight, Fuzziness fuzziness) {
-		this.boostFields.add(new SearchField(propertyName, weight, fuzziness));
+	public void addBoostField(String propertyName, String propertyValue, int weight, Fuzziness fuzziness) {
+		if(propertyValue.length() > 0)
+			this.boostFields.add(new BoostField(propertyName, propertyValue, weight, fuzziness));
 	}
 
 	public void addFacetField(String propertyName) {
@@ -72,11 +77,13 @@ public class OlsSolrQuery {
 
 			StringBuilder bf = new StringBuilder();
 
-			for(SearchField boostField : boostFields) {
+			for(BoostField boostField : boostFields) {
 				if(bf.length() > 0) {
 					bf.append(" ");
 				}
 				bf.append(getSolrPropertyName(boostField.propertyName, boostField.fuzziness));
+				bf.append(":");
+				bf.append(getSolrPropertyValue(boostField.propertyValue, boostField.fuzziness));
 				bf.append("^");
 				bf.append(boostField.weight);
 			}
@@ -118,6 +125,22 @@ public class OlsSolrQuery {
 
 		public SearchField(String propertyName, int weight, Fuzziness fuzziness) {
 			this.propertyName = propertyName;
+			this.weight = weight;
+			this.fuzziness = fuzziness;
+		}
+
+	}
+
+	private class BoostField {
+
+		String propertyName;
+		String propertyValue;
+		int weight;
+		Fuzziness fuzziness;
+
+		public BoostField(String propertyName, String propertyValue, int weight, Fuzziness fuzziness) {
+			this.propertyName = propertyName;
+			this.propertyValue = propertyValue;
 			this.weight = weight;
 			this.fuzziness = fuzziness;
 		}

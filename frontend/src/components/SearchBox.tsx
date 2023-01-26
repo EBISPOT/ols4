@@ -78,6 +78,7 @@ export default function SearchBox({
 
   }, [ query ])
 
+  let show = open && !!query
 
 	return <Fragment>
 		<div className="relative w-full self-center"> <input
@@ -90,10 +91,9 @@ export default function SearchBox({
 				setOpen(true);
 			}}
 			onBlur={() => {
-				// setTimeout(function () {
-					// if (mounted.current) setOpen(false);
-				// }, 500);
-			setOpen(false);
+				setTimeout(function () {
+					if (mounted.current) setOpen(false);
+				}, 500);
 			}}
 			value={query}
 			onChange={(e) => {
@@ -109,7 +109,7 @@ export default function SearchBox({
 			/>
 			<ul
 				className={
-					open
+					show
 						? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
 						: "hidden"
 				}

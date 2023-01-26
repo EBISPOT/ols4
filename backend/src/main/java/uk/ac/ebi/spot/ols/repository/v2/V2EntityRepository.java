@@ -36,13 +36,12 @@ public class V2EntityRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-
+        query.setSearchText(search);
         query.addFilter("type", "entity", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
@@ -57,6 +56,7 @@ public class V2EntityRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
+        query.setSearchText(search);
 
         query.addFilter("type", "entity", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
@@ -64,7 +64,6 @@ public class V2EntityRepository {
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))

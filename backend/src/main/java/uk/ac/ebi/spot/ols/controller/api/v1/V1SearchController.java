@@ -93,7 +93,7 @@ public class V1SearchController {
             }
 
             if (legacyFieldName.equals("label")) {
-                newFields.add(prefix + "http__//www.w3.org/2000/01/rdf-schema#label" + suffix);
+                newFields.add(prefix + "label" + suffix);
                 continue;
             }
 
@@ -108,7 +108,7 @@ public class V1SearchController {
             }
 
             if (legacyFieldName.equals("description")) {
-                newFields.add(prefix + "http__//www.w3.org/2000/01/rdf-schema#comment" + suffix);
+                newFields.add(prefix + "definition" + suffix);
                 continue;
             }
 
@@ -176,13 +176,13 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "description", "short_form^2", "obo_id^2", "annotations", "logical_description", "iri"};
+                String[] fields = {"label^5", "synonym^3", "definition", "shortForm^2", "oboId^2", /*"annotations", "logical_description",*/ "iri"};
 
                 solrQuery.set("qf", String.join(" ", mapFieldsList(fields)));
 
                 solrQuery.set("bq",
                         "imported:\"false\"^100 " +
-                        "lowercase_http__//www.w3.org/2000/01/rdf-schema#label:\"" + query.toLowerCase() + "\"^5" +
+                        "lowercase_label:\"" + query.toLowerCase() + "\"^5" +
                         "lowercase_synonym:\"" + query.toLowerCase() + "\"^3");
             }
         } else {
@@ -203,12 +203,12 @@ public class V1SearchController {
             fieldList.add("id");
             fieldList.add("iri");
             fieldList.add("label");
-            fieldList.add("short_form");
-            fieldList.add("obo_id");
-            fieldList.add("is_defining_ontology");
-            fieldList.add("ontology_name");
-            fieldList.add("ontology_prefix");
-            fieldList.add("description");
+            fieldList.add("shortForm");
+            fieldList.add("oboId");
+            fieldList.add("isDefiningOntology");
+            fieldList.add("ontologyId");
+            fieldList.add("ontologyPrefix");
+            fieldList.add("definition");
             fieldList.add("type");
         }
 //        solrQuery.setFields(mapFieldsList(fieldList.toArray(new String[fieldList.size()])));
