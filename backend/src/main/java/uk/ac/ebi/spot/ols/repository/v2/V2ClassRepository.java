@@ -42,11 +42,11 @@ public class V2ClassRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 
+        query.setSearchText(search);
         query.addFilter("type", "class", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
@@ -66,12 +66,12 @@ public class V2ClassRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 
+        query.setSearchText(search);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))

@@ -41,11 +41,11 @@ public class V2OntologyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 
+        query.setSearchText(search);
         query.addFilter("type", "ontology", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))

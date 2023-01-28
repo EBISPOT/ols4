@@ -40,12 +40,12 @@ public class V2IndividualRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
+        query.setSearchText(search);
         query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
@@ -64,12 +64,12 @@ public class V2IndividualRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
+        query.setSearchText(search);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))

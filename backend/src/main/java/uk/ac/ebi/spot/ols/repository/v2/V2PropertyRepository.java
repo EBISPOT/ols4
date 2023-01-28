@@ -42,11 +42,11 @@ public class V2PropertyRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
+        query.setSearchText(search);
         query.addFilter("type", "property", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
