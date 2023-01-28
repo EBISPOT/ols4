@@ -45,6 +45,8 @@ export default class Ontology extends Thing {
   getVersionFromIri(): string {
     const versionIri =
       this.properties["http://www.w3.org/2002/07/owl#versionIRI"];
+    if(!versionIri)
+      return ""
     const versionFromDate = versionIri.match(/\d{4}-\d{2}-\d{2}/);
 
     if (versionFromDate && versionFromDate.length > 0) {
