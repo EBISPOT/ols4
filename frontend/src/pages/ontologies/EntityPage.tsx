@@ -82,7 +82,7 @@ export default function EntityPage({
               <Link className="link-default" href="/ontologies">
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
+              <span className="px-2 text-sm">▸</span>
               <Link className="link-default" href={"/ontologies/" + ontologyId}>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
@@ -91,9 +91,9 @@ export default function EntityPage({
 		{ontologyId}
 		</span>
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
+              <span className="px-2 text-sm">▸</span>
               <span className="capitalize">{entity.getTypePlural()}</span>
-              <span className="px-2 text-sm">&gt;</span>
+              <span className="px-2 text-sm">▸</span>
 		<span
 		className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={entity.getShortForm()}

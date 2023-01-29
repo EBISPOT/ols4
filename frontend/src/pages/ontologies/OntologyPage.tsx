@@ -40,7 +40,7 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
               <Link className="link-default" to="/ontologies">
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
+              <span className="px-2 text-sm">▸</span>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={ontologyId}
