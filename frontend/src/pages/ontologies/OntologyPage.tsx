@@ -37,7 +37,7 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
         {ontology ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to="/ontologies">
+              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"}>
                 Ontologies
               </Link>
               <span className="px-2 text-sm">▸</span>
