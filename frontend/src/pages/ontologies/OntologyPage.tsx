@@ -1,4 +1,4 @@
-import { AccountTree } from "@mui/icons-material";
+import { AccountTree, AnchorOutlined } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
@@ -37,10 +37,10 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
         {ontology ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"}>
+              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"} style={{color:'black'}}>
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">▸</span>
+              <span className="px-2 text-sm" style={{color:'grey'}}>▸</span>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={ontologyId}
@@ -91,34 +91,34 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
-                  <div className="py-2 mb-1">
-                    <Tooltip title="Tree view" placement="top">
-                      <button
-                        className={`button-primary font-bold mr-3 ${
-                          viewMode === "tree"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
-                        }`}
-                        onClick={() => setViewMode("tree")}
-                      >
-                        <AccountTree fontSize="small" />
-                      </button>
-                    </Tooltip>
-                    <Tooltip title="List view" placement="top">
-                      <button
-                        className={`button-primary font-bold ${
-                          viewMode === "list"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
-                        }`}
-                        onClick={() => setViewMode("list")}
-                      >
-                        <FormatListBulletedIcon fontSize="small" />
-                      </button>
-                    </Tooltip>
-                  </div>
-                ) : null}
+		{currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
+			<div className="py-2 mb-1 flex justify-between">
+				<div>
+					<Tooltip title="Tree view" placement="top">
+						<button
+							className={`button-primary font-bold mr-3 ${viewMode === "tree"
+									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+									: ""
+								}`}
+							onClick={() => setViewMode("tree")}
+						>
+							<AccountTree fontSize="small" />
+						</button>
+					</Tooltip>
+					<Tooltip title="List view" placement="top">
+						<button
+							className={`button-primary font-bold ${viewMode === "list"
+									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+									: ""
+								}`}
+							onClick={() => setViewMode("list")}
+						>
+							<FormatListBulletedIcon fontSize="small" />
+						</button>
+					</Tooltip>
+				</div>
+			</div>
+		) : null}
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (

@@ -1,3 +1,4 @@
+import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -38,6 +39,7 @@ export default function EntityTree({
   const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
     ImmutableSet()
   );
+  const [preferredRoots, setPreferredRoots] = useState<boolean>(true);
 
   const populateTreeFromEntities = useCallback(
     (entities: Entity[]) => {
@@ -123,9 +125,9 @@ export default function EntityTree({
       const entityIri = selectedEntity.getIri();
       dispatch(getAncestors({ ontologyId, entityType, entityIri }));
     } else {
-      dispatch(getRootEntities({ ontologyId, entityType }));
+      dispatch(getRootEntities({ ontologyId, entityType, preferredRoots }));
     }
-  }, [dispatch, entityType, selectedEntity, ontologyId]);
+  }, [dispatch, entityType, selectedEntity, ontologyId, preferredRoots]);
 
   useEffect(() => {
     if (selectedEntity) {
@@ -208,7 +210,18 @@ export default function EntityTree({
     );
   }
   return (
-    <div>
+    <div style={{position: 'relative'}}>
+	<div style={{position:'absolute', right:0, top:0}}>
+		<FormControl>
+			<RadioGroup
+				name="radio-buttons-group"
+				value={preferredRoots ? "true": "false"}
+			>
+				<FormControlLabel value="true" onClick={() => setPreferredRoots(true)} control={<Radio  />} label="Preferred roots" />
+				<FormControlLabel value="false"  onClick={() => setPreferredRoots(false)}  control={<Radio/>} label="All classes" />
+			</RadioGroup>
+		</FormControl>
+		</div>
       {rootNodes ? (
         <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
           {renderNodeChildren(rootNodes, 0)}

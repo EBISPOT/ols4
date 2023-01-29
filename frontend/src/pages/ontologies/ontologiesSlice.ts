@@ -145,11 +145,19 @@ export const getNodeChildren = createAsyncThunk(
 );
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
-  async ({ ontologyId, entityType }: any) => {
+  async ({ ontologyId, entityType, preferredRoots }: any) => {
     if(entityType === 'individuals') {
 	const rootsPage = await getPaginated<any>(
 	`api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
 		hasIndividuals: "true",
+		size: "100",
+	})}`
+	);
+	return rootsPage.elements.map((obj) => thingFromProperties(obj));
+    } else if(entityType === 'classes' && preferredRoots) {
+	const rootsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
+		isPreferredRoot: "true",
 		size: "100",
 	})}`
 	);

@@ -1,3 +1,4 @@
+import { asArray } from "../app/util";
 import Thing from "./Thing";
 
 export default class Ontology extends Thing {
@@ -76,5 +77,8 @@ export default class Ontology extends Thing {
 	  }
 
 	  return Array.from(annotationPredicates) as string[]
+  }
+  getPreferredRoots():string[] {
+    return asArray( this.properties["preferred_root_term"] );
   }
 }

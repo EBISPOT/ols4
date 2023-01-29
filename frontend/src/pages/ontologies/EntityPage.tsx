@@ -79,10 +79,10 @@ export default function EntityPage({
         {ontology && entity ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"}>
+              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"} style={{color:'black'}}>
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">▸</span>
+              <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
               <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies/" + ontologyId}>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
