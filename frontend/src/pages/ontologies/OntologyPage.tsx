@@ -122,7 +122,7 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (
-                  <EntityTree ontologyId={ontologyId} entityType={currentTab} />
+                  <EntityTree ontology={ontology} entityType={currentTab} />
                 )}
               </div>
               <div className="col-span-1">

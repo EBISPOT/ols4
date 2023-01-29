@@ -1,12 +1,13 @@
 import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Node from "../../components/Node";
 import Entity from "../../model/Entity";
+import Ontology from "../../model/Ontology";
 import extractEntityHierarchy from "./extractEntityHierarchy";
 import {
   getAncestors,
@@ -16,11 +17,11 @@ import {
 } from "./ontologiesSlice";
 
 export default function EntityTree({
-  ontologyId,
+  ontology,
   entityType,
   selectedEntity,
 }: {
-  ontologyId: string;
+  ontology:Ontology,
   selectedEntity?: Entity;
   entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
@@ -39,7 +40,7 @@ export default function EntityTree({
   const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
     ImmutableSet()
   );
-  const [preferredRoots, setPreferredRoots] = useState<boolean>(true);
+  const [preferredRoots, setPreferredRoots] = useState<boolean>(!!ontology.getPreferredRoots());
 
   const populateTreeFromEntities = useCallback(
     (entities: Entity[]) => {
@@ -111,7 +112,7 @@ export default function EntityTree({
       const absoluteIdentity = node.absoluteIdentity;
       dispatch(
         getNodeChildren({
-          ontologyId,
+          ontologyId: ontology.getOntologyId(),
           entityTypePlural,
           entityIri,
           absoluteIdentity,
@@ -123,11 +124,11 @@ export default function EntityTree({
   useEffect(() => {
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
-      dispatch(getAncestors({ ontologyId, entityType, entityIri }));
+      dispatch(getAncestors({ ontologyId: ontology.getOntologyId(), entityType, entityIri }));
     } else {
-      dispatch(getRootEntities({ ontologyId, entityType, preferredRoots }));
+      dispatch(getRootEntities({ ontologyId: ontology.getOntologyId(), entityType, preferredRoots }));
     }
-  }, [dispatch, entityType, selectedEntity, ontologyId, preferredRoots]);
+  }, [dispatch, entityType, selectedEntity, ontology, preferredRoots]);
 
   useEffect(() => {
     if (selectedEntity) {
@@ -194,7 +195,7 @@ export default function EntityTree({
               key={randomString()}
             >
               <Link
-                to={`/ontologies/${ontologyId}/${childNode.entity.getTypePlural()}/${termUrl}`}
+                to={`/ontologies/${ontology.getOntologyId()}/${childNode.entity.getTypePlural()}/${termUrl}`}
               >
                 {childNode.title}
               </Link>
@@ -209,8 +210,9 @@ export default function EntityTree({
       </ul>
     );
   }
-  return (
+  return <Fragment>
     <div style={{position: 'relative'}}>
+	{ontology.getPreferredRoots() &&
 	<div style={{position:'absolute', right:0, top:0}}>
 		<FormControl>
 			<RadioGroup
@@ -221,7 +223,7 @@ export default function EntityTree({
 				<FormControlLabel value="false"  onClick={() => setPreferredRoots(false)}  control={<Radio/>} label="All classes" />
 			</RadioGroup>
 		</FormControl>
-		</div>
+		</div>}
       {rootNodes ? (
         <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
           {renderNodeChildren(rootNodes, 0)}
@@ -229,5 +231,5 @@ export default function EntityTree({
       ) : null}
       {loading ? <LoadingOverlay message="Loading children..." /> : null}
     </div>
-  );
+  </Fragment>
 }

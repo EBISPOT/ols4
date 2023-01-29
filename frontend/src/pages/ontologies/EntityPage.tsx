@@ -184,7 +184,7 @@ export default function EntityPage({
                   />
                 ) : (
                   <EntityTree
-                    ontologyId={ontologyId}
+                    ontology={ontology}
                     entityType={
                       {
                         class: "classes",
