@@ -40,17 +40,20 @@ export default function EntityTree({
   const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
     ImmutableSet()
   );
-  const [preferredRoots, setPreferredRoots] = useState<boolean>(!!ontology.getPreferredRoots());
+  const [preferredRoots, setPreferredRoots] = useState<boolean>(ontology.getPreferredRoots().length > 0);
 
   const populateTreeFromEntities = useCallback(
     (entities: Entity[]) => {
-      const { rootEntities, uriToChildNodes } =
+      let { rootEntities, uriToChildNodes } =
         extractEntityHierarchy(entities);
 
-      // console.dir("rootEntities");
-      // console.dir(rootEntities);
-      // console.dir("uriToChildNodes");
-      // console.dir(uriToChildNodes);
+	if(preferredRoots) {
+		let preferred = ontology.getPreferredRoots()
+		if(preferred.length > 0) {
+			let preferredRootEntities = preferred.map(iri => entities.filter(entity => entity.getIri() === iri)[0])
+			rootEntities = preferredRootEntities.filter(entity => !!entity)
+		}
+	}
 
       const newNodeChildren = new Map<String, TreeNode[]>();
       const newExpandedNodes = new Set<String>();
@@ -98,7 +101,7 @@ export default function EntityTree({
         return treeNode;
       }
     },
-    [selectedEntity]
+    [selectedEntity,preferredRoots]
   );
   const toggleNode = (node: any) => {
     if (expandedNodes.has(node.absoluteIdentity)) {
@@ -212,7 +215,7 @@ export default function EntityTree({
   }
   return <Fragment>
     <div style={{position: 'relative'}}>
-	{ontology.getPreferredRoots() &&
+	{ontology.getPreferredRoots().length > 0 &&
 	<div style={{position:'absolute', right:0, top:0}}>
 		<FormControl>
 			<RadioGroup

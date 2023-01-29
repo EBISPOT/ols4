@@ -79,7 +79,7 @@ export default function EntityPage({
         {ontology && entity ? (
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"} style={{color:'black'}}>
+              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"} >
                 Ontologies
               </Link>
               <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
@@ -91,9 +91,9 @@ export default function EntityPage({
 		{ontologyId}
 		</span>
               </Link>
-              <span className="px-2 text-sm">▸</span>
+              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
               <span className="capitalize">{entity.getTypePlural()}</span>
-              <span className="px-2 text-sm">▸</span>
+              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
 		<span
 		className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={entity.getShortForm()}
