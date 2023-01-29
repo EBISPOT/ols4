@@ -31,7 +31,7 @@ public class OlsSolrQuery {
 	}
 
 	public void addBoostField(String propertyName, String propertyValue, int weight, Fuzziness fuzziness) {
-		if(propertyValue.length() > 0)
+		if(propertyValue != null && propertyValue.length() > 0)
 			this.boostFields.add(new BoostField(propertyName, propertyValue, weight, fuzziness));
 	}
 
