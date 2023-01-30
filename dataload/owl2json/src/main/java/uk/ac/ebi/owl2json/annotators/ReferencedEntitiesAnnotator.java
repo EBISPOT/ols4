@@ -133,6 +133,12 @@ public class ReferencedEntitiesAnnotator {
 					for(PropertyValue listEntry : RdfListEvaluator.evaluateRdfList(bnode, graph)) {
 						potentiallyReferencedEntityIds.addAll(getPossibleIds(listEntry, graph));
 					}
+				} else {
+					for(String predicate2 : bnode.properties.getPropertyPredicates()) {
+						for(PropertyValue val2 : bnode.properties.getPropertyValues(predicate2)) {
+							potentiallyReferencedEntityIds.addAll(getPossibleIds(val2, graph));
+						}
+					}
 				}
 			}
 		} else if(val.getType() == Type.RELATED) {
