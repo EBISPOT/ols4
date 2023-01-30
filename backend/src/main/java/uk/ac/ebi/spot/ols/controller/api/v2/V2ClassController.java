@@ -130,6 +130,42 @@ public class V2ClassController {
         );
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalChildren", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalChildrenByOntology(
+            @PageableDefault(size = 20, page = 0) Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("class") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<>(
+                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, lang)
+                ),
+                HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalAncestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalAncestorsByOntology(
+            @PageableDefault(size = 20, page = 0) Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("class") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<>(
+                        classRepository.getHierarchicalAncestorsByOntologyId(ontologyId, pageable, iri, lang)
+                ),
+                HttpStatus.OK
+        );
+    }
+
+
 
     // The ancestors of individuals are classes. So, the /ancestors endpoint is part of the Class controller.
     //

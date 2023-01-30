@@ -83,7 +83,7 @@ export default function EntityTree({
             : node.getIri(),
           iri: node.getIri(),
           title: node.getName(),
-          expandable: node.hasDirectChildren(),
+          expandable: node.hasChildren(),
           entity: node,
         };
 
@@ -150,7 +150,7 @@ export default function EntityTree({
           iri: entity.getIri(),
           absoluteIdentity: entity.getIri(),
           title: entity.getName(),
-          expandable: entity.hasDirectChildren(),
+          expandable: entity.hasChildren(),
           entity: entity,
         };
       })

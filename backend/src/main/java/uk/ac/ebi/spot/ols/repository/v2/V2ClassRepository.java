@@ -126,6 +126,34 @@ public class V2ClassRepository {
                 .map(V2Entity::new);
     }
 
+
+    public Page<V2Entity> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
+
+    public Page<V2Entity> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
+
+
     public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
         Validation.validateOntologyId(ontologyId);

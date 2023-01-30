@@ -101,11 +101,19 @@ export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
   async ({ ontologyId, entityType, entityIri }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    const ancestorsPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-        { size: "100" }
-      )}`
-    );
+    if(entityType === 'classes') {
+	var ancestorsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}/classes/hierarchicalAncestors?${new URLSearchParams(
+		{ size: "100" }
+	)}`
+	);
+    } else {
+	var ancestorsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
+		{ size: "100" }
+	)}`
+	);
+    }
     return ancestorsPage.elements.map((obj) => thingFromProperties(obj));
   }
 );
@@ -118,13 +126,23 @@ export const getNodeChildren = createAsyncThunk(
     absoluteIdentity,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    const childrenPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
-        {
-          size: "100",
-        }
-      )}`
-    );
+    if(entityTypePlural === 'classes') {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
+		{
+		size: "100",
+		}
+	)}`
+	);
+    } else {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
+		{
+		size: "100",
+		}
+	)}`
+	);
+    }
     return new Map([
       [
         absoluteIdentity,
