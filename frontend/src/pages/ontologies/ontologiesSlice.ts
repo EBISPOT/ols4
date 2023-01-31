@@ -19,6 +19,8 @@ export interface OntologiesState {
   loadingNodeChildren: boolean;
   loadingOntology: boolean;
   loadingEntity: boolean;
+  classInstances:Page<Entity>|null
+  loadingClassInstances:boolean
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -42,6 +44,8 @@ const initialState: OntologiesState = {
   loadingNodeChildren: false,
   loadingOntology: false,
   loadingEntity: false,
+  classInstances: null,
+  loadingClassInstances: false
 };
 
 export const getOntology = createAsyncThunk(
@@ -63,6 +67,18 @@ export const getEntity = createAsyncThunk(
       `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
     );
     return thingFromProperties(termProperties);
+  }
+);
+export const getClassInstances = createAsyncThunk(
+  "ontologies_entity_class_instances",
+  async ({ ontologyId, classIri }: any) => {
+    const doubleEncodedTermUri = encodeURIComponent(
+      encodeURIComponent(classIri)
+    );
+    const instances = (await getPaginated<any>(
+      `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances`
+    )).map(i => thingFromProperties(i));
+    return instances;
   }
 );
 export const getOntologies = createAsyncThunk(
@@ -103,7 +119,7 @@ export const getAncestors = createAsyncThunk(
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     if(entityType === 'classes') {
 	var ancestorsPage = await getPaginated<any>(
-	`api/v2/ontologies/${ontologyId}/${entityType}/classes/hierarchicalAncestors?${new URLSearchParams(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
 		{ size: "100" }
 	)}`
 	);
@@ -129,6 +145,14 @@ export const getNodeChildren = createAsyncThunk(
     if(entityTypePlural === 'classes') {
 	var childrenPage = await getPaginated<any>(
 	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
+		{
+		size: "100",
+		}
+	)}`
+	);
+    } else if(entityTypePlural === 'individuals') {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
 		{
 		size: "100",
 		}
@@ -216,6 +240,16 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getEntity.pending, (state: OntologiesState) => {
       state.loadingEntity = true;
+    });
+    builder.addCase(
+      getClassInstances.fulfilled,
+      (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
+        state.classInstances = action.payload;
+        state.loadingClassInstances = false;
+      }
+    );
+    builder.addCase(getClassInstances.pending, (state: OntologiesState) => {
+      state.loadingClassInstances = true;
     });
     builder.addCase(
       getAncestors.fulfilled,

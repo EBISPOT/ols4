@@ -16,7 +16,8 @@ import ReferencedEntities from "../../model/ReferencedEntities";
 import Reified from "../../model/Reified";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
-import { getEntity, getOntology } from "./ontologiesSlice";
+import { getClassInstances, getEntity, getOntology } from "./ontologiesSlice";
+import { Page } from "../../app/api";
 
 export default function EntityPage({
   ontologyId,
@@ -31,6 +32,8 @@ export default function EntityPage({
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
+  const loadingClassInstances = useAppSelector((state) => state.ontologies.loadingClassInstances);
+  const classInstances = useAppSelector((state) => state.ontologies.classInstances);
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const referencedEntities = entity
@@ -67,8 +70,16 @@ export default function EntityPage({
   };
 
   useEffect(() => {
-    if (!ontology) dispatch(getOntology(ontologyId));
+
+    if (!ontology)
+	dispatch(getOntology(ontologyId));
+
     dispatch(getEntity({ ontologyId, entityType, entityIri }));
+ 
+   if (entityType === 'classes') {
+	dispatch(getClassInstances({ ontologyId, classIri:entityIri }))
+   }
+
   }, [dispatch, ontology, ontologyId, entityType, entityIri]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
@@ -242,6 +253,11 @@ export default function EntityPage({
                       entity={entity}
                       referencedEntities={referencedEntities}
                     />
+		    <ClassInstancesSection 
+		    	entity={entity}
+			classInstances={classInstances}
+                        referencedEntities={referencedEntities}
+		      />
                   </div>
                 </details>
               </div>
@@ -428,6 +444,32 @@ function EntitySynonymsSection({
       </div>
     </div>
   );
+}
+
+function ClassInstancesSection({ entity, classInstances, referencedEntities }: {
+	entity: Entity,
+	classInstances: Page<Entity>|null,
+	referencedEntities: ReferencedEntities
+}) {
+
+if (entity.getType() != 'class')
+	return <Fragment />
+
+  return (
+    <div>
+      <div className="font-bold">Instances</div>
+      <ul className="list-disc list-inside">
+        {classInstances && classInstances.elements.map((instance:Entity) => {
+          return (
+            <li key={randomString()}>
+		<EntityLink ontologyId={entity.getOntologyId()} entityType="individuals" iri={instance.getIri()} referencedEntities={referencedEntities} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+
 }
 
 function EntityEquivalentsSection({

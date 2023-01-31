@@ -98,6 +98,24 @@ public class V2IndividualRepository {
         );
     }
 
+    public OlsFacetedResultsPage<V2Entity> getInstancesOfClass(
+            String ontologyId, String classIri, Pageable pageable, String lang) throws IOException {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("type", "individual", Fuzziness.EXACT);
+        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+        query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", classIri, Fuzziness.EXACT);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+
+    }
+
 
 
 }

@@ -110,13 +110,12 @@ export default function EntityTree({
     } else {
       // opening a node
       setExpandedNodes(expandedNodes.add(node.absoluteIdentity));
-      const entityTypePlural = node.entity.getTypePlural();
       const entityIri = node.iri;
       const absoluteIdentity = node.absoluteIdentity;
       dispatch(
         getNodeChildren({
           ontologyId: ontology.getOntologyId(),
-          entityTypePlural,
+          entityTypePlural: entityType,
           entityIri,
           absoluteIdentity,
         })
