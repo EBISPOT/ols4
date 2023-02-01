@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
 import { randomString } from "../app/util";
 import Entity from "../model/Entity";
@@ -28,7 +28,7 @@ export default function SearchBox({
   const searchForOntologies = ontologyId === undefined
   const showSuggestions = ontologyId === undefined
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const mounted = useRef(false);
   useEffect(() => {
@@ -218,7 +218,7 @@ export default function SearchBox({
 			className="button-primary text-lg font-bold self-center"
 			onClick={() => {
 				if (query) {
-					history.push("/search/" + query)
+					navigate("/search/" + query)
 				}
 			}}
 		>

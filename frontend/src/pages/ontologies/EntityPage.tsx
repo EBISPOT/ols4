@@ -18,22 +18,28 @@ import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import { getClassInstances, getEntity, getOntology } from "./ontologiesSlice";
 import { Page } from "../../app/api";
+import { useParams, useSearchParams } from "react-router-dom";
 
 export default function EntityPage({
-  ontologyId,
-  entityIri,
   entityType,
 }: {
-  ontologyId: string;
-  entityIri: string;
   entityType: "classes" | "properties" | "individuals";
 }) {
+
+  const params = useParams()
+  let ontologyId:string = params.ontologyId as string
+  let entityIri:string = decodeURIComponent(params.entityIri as string)
+
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
   const loadingClassInstances = useAppSelector((state) => state.ontologies.loadingClassInstances);
   const classInstances = useAppSelector((state) => state.ontologies.classInstances);
+
+  const [searchParams] = useSearchParams();
+  let lang = searchParams.get("lang") || "en"
+  console.log('lang is ' + lang)
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const referencedEntities = entity
@@ -72,12 +78,12 @@ export default function EntityPage({
   useEffect(() => {
 
     if (!ontology)
-	dispatch(getOntology(ontologyId));
+	dispatch(getOntology({ontologyId, lang}));
 
-    dispatch(getEntity({ ontologyId, entityType, entityIri }));
+    dispatch(getEntity({ ontologyId, entityType, entityIri, lang }));
  
    if (entityType === 'classes') {
-	dispatch(getClassInstances({ ontologyId, classIri:entityIri }))
+	dispatch(getClassInstances({ ontologyId, classIri:entityIri, lang }))
    }
 
   }, [dispatch, ontology, ontologyId, entityType, entityIri]);

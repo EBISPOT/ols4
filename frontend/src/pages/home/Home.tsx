@@ -1,6 +1,6 @@
 import moment from "moment";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
@@ -13,7 +13,7 @@ import { getStats } from "./homeSlice";
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const stats = useAppSelector((state) => state.home.stats);
 
   useEffect(() => {

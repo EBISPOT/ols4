@@ -86,6 +86,7 @@ public class OlsSolrClient {
         QueryResponse qr = runSolrQuery(query, null);
 
         if(qr.getResults().getNumFound() < 1) {
+            System.out.println(query.constructQuery().jsonStr());
             throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 

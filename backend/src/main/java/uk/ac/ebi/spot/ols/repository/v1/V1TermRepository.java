@@ -108,7 +108,6 @@ public class V1TermRepository {
     public V1Term findByOntologyAndIri(String ontologyId, String iri, String lang) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
@@ -120,7 +119,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByOntology(String ontologyId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
@@ -131,7 +129,6 @@ public class V1TermRepository {
     public V1Term findByOntologyAndShortForm(String ontologyId, String shortForm, String lang) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
@@ -142,7 +139,6 @@ public class V1TermRepository {
     public V1Term findByOntologyAndOboId(String ontologyId, String oboId, String lang) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
@@ -154,7 +150,6 @@ public class V1TermRepository {
     public Page<V1Term> getRoots(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
         query.addFilter("hasDirectParent", "false", Fuzziness.EXACT);
@@ -181,7 +176,6 @@ public class V1TermRepository {
     public Page<V1Term> findAll(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
 
         return solrClient.searchSolrPaginated(query, pageable)
@@ -191,7 +185,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByIsDefiningOntology(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
 
@@ -203,7 +196,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByIri(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
@@ -214,7 +206,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
@@ -226,7 +217,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByShortForm(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
@@ -237,7 +227,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
@@ -249,7 +238,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByOboId(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
@@ -261,7 +249,6 @@ public class V1TermRepository {
     public Page<V1Term> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "class", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);

@@ -2,7 +2,7 @@ import { AccountTree, AnchorOutlined } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
@@ -14,7 +14,11 @@ import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, tab:'classes'|'properties'|'individuals' }) {
+export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'individuals' }) {
+
+  const params = useParams()
+  let ontologyId:string = params.ontologyId as string
+
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
@@ -25,9 +29,13 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
 
   const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
 
+  const [searchParams] = useSearchParams();
+  let lang = searchParams.get("lang") || "en"
+
   useEffect(() => {
-    dispatch(getOntology(ontologyId));
-  }, [dispatch, ontologyId]);
+    dispatch(getOntology({ontologyId, lang}));
+  }, [dispatch, ontologyId, lang]);
+
 
   document.title = ontology?.getName() || ontologyId;
   return (
