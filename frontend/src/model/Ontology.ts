@@ -79,6 +79,6 @@ export default class Ontology extends Thing {
 	  return Array.from(annotationPredicates) as string[]
   }
   getPreferredRoots():string[] {
-    return asArray( this.properties["preferred_root_term"] );
+    return asArray( this.properties["hasPreferredRoot"] );
   }
 }

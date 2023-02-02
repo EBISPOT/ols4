@@ -245,6 +245,10 @@ public class OwlGraph implements StreamRDF {
             if(configKey.equals("iri"))
                 continue;
 
+	    // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
+            if(configKey.equals("preferred_root_term"))
+                continue;
+
             // everything else from the config is stored as a normal property
             writer.name(configKey); 
             writeGenericValue(writer, configVal);
