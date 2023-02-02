@@ -194,6 +194,7 @@ public class OwlGraph implements StreamRDF {
     DirectParentsAnnotator.annotateDirectParents(this);
     RelatedAnnotator.annotateRelated(this);
     HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
+    AncestorsAnnotator.annotateAncestors(this);
     HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
     ShortFormAnnotator.annotateShortForms(this);
     DefinitionAnnotator.annotateDefinitions(this);

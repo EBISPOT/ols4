@@ -27,13 +27,30 @@ public class HierarchyMetricsAnnotator {
             if (c.uri == null)
                 continue;
 
-            if (c.types.contains(OwlNode.NodeType.CLASS)    
-                    || c.types.contains(OwlNode.NodeType.PROPERTY)) {
-                incrementCountInAncestors(c, iriToNumDescendants, "directParent", graph, new HashSet<>());
-            }
-            
             if(c.types.contains(OwlNode.NodeType.CLASS)) {
-                incrementCountInAncestors(c, iriToNumHierarchicalDescendants, "hierarchicalParent", graph, new HashSet<>());
+
+                List<PropertyValue> ancestors = c.properties.getPropertyValues("hierarchicalAncestor");
+                if(ancestors != null) {
+                    for(PropertyValue ancestor : ancestors) {
+                        String uri = ((PropertyValueURI) ancestor).getUri();
+                        if(!uri.equals("http://www.w3.org/2002/07/owl#Thing")) {
+                            Integer existing = iriToNumDescendants.get(uri);
+                            iriToNumHierarchicalDescendants.put(uri, existing != null ? existing + 1 : 1);
+                        }
+                    }
+                }
+
+            }
+
+            List<PropertyValue> ancestors = c.properties.getPropertyValues("directAncestor");
+            if (ancestors != null) {
+                for (PropertyValue ancestor : ancestors) {
+                    String uri = ((PropertyValueURI) ancestor).getUri();
+                    if(!uri.equals("http://www.w3.org/2002/07/owl#Thing")) {
+                        Integer existing = iriToNumDescendants.get(uri);
+                        iriToNumDescendants.put(uri, existing != null ? existing + 1 : 1);
+                    }
+                }
             }
 
         }
@@ -66,34 +83,4 @@ public class HierarchyMetricsAnnotator {
         System.out.println("annotate hierarchy metrics: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 
-    public static void incrementCountInAncestors(OwlNode node, Map<String,Integer> iriToNumDescendants, String hierarchyPredicate, OwlGraph graph, Set<String> visited) {
-
-                List<PropertyValue> parents = node.properties.getPropertyValues(hierarchyPredicate);
-
-                if(parents != null) {
-                    for(PropertyValue parent : parents) {
-                        if(parent.getType() == PropertyValue.Type.URI) {
-                            String uri = ((PropertyValueURI) parent).getUri();
-
-                            Integer existing = iriToNumDescendants.get(uri);
-                            if(existing != null) {
-                                iriToNumDescendants.put(uri, existing+1);
-                            } else {
-                                iriToNumDescendants.put(uri, 1);
-                            }
-
-                            OwlNode parentNode = graph.getNodeForPropertyValue(parent);
-
-                            if(parentNode != null) {
-                                if(!visited.contains(parentNode.uri)) { // prevent cycles
-                                    Set<String> nextVisited = new HashSet<>(visited);
-                                    nextVisited.add(parentNode.uri);
-                                    incrementCountInAncestors(parentNode, iriToNumDescendants, hierarchyPredicate, graph, nextVisited);
-                                }
-                            }
-                        }
-                    }
-                }
-    }
-    
 }
