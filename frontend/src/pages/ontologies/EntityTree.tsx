@@ -85,6 +85,7 @@ export default function EntityTree({
           title: node.getName(),
           expandable: node.hasChildren(),
           entity: node,
+          numDescendants: node.getNumHierarchicalDescendants() || node.getNumDescendants()
         };
 
         newNodeChildren.set(
@@ -151,6 +152,7 @@ export default function EntityTree({
           title: entity.getName(),
           expandable: entity.hasChildren(),
           entity: entity,
+          numDescendants: entity.getNumHierarchicalDescendants() || entity.getNumDescendants()
         };
       })
     );
@@ -201,6 +203,10 @@ export default function EntityTree({
               >
                 {childNode.title}
               </Link>
+              {
+                childNode.numDescendants > 0 &&
+                  <span style={{color:'gray'}}>{' (' + childNode.numDescendants.toLocaleString() + ')'}</span>
+              }
               {isExpanded &&
                 renderNodeChildren(
                   nodeChildren.get(childNode.absoluteIdentity) || [],

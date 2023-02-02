@@ -28,6 +28,7 @@ export interface TreeNode {
   title: string;
   expandable: boolean;
   entity: Entity;
+  numDescendants:number;
 }
 const initialState: OntologiesState = {
   ontology: undefined,
@@ -179,6 +180,7 @@ export const getNodeChildren = createAsyncThunk(
               title: term.getName(),
               expandable: term.hasDirectChildren(),
               entity: term,
+              numDescendants: term.getNumHierarchicalDescendants() || term.getNumDescendants()
             };
           }),
       ],
