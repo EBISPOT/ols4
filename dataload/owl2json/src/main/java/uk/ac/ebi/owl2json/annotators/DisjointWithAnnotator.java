@@ -56,7 +56,10 @@ public class DisjointWithAnnotator {
 				PropertyValue membersList  = c.properties.getPropertyValue("http://www.w3.org/2002/07/owl#distinctMembers");
 				List<PropertyValue> members = RdfListEvaluator.evaluateRdfList(graph.getNodeForPropertyValue(membersList), graph);
 
-				List<OwlNode> individualNodes = members.stream().map(val -> graph.getNodeForPropertyValue(val)).collect(Collectors.toList());
+				List<OwlNode> individualNodes = members.stream()
+					.map(val -> graph.getNodeForPropertyValue(val))
+					.filter(val -> val != null)
+					.collect(Collectors.toList());
 
 				for(OwlNode individualNodeA : individualNodes) {
 					for(OwlNode individualNodeB : individualNodes) {
