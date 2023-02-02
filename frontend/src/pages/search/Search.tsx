@@ -1,6 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
@@ -12,9 +12,13 @@ import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
 import { getSearchResults } from "./searchSlice";
 
-export default function Search({ search }: { search: string }) {
+export default function Search() {
+
+  const params = useParams()
+  let search:string = params.search as string
+
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const loadingResults = useAppSelector(
     (state) => state.search.loadingSearchResults
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import DataTable, { Column } from "../../components/DataTable";
 import Header from "../../components/Header";
@@ -103,7 +103,7 @@ export default function OntologiesPage() {
     dispatch(getOntologies({ page, rowsPerPage, search }));
   }, [dispatch, page, rowsPerPage, search]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <div>
@@ -125,7 +125,7 @@ export default function OntologiesPage() {
             });
           }}
           onSelectRow={(row: Ontology) => {
-            history.push("/ontologies/" + row.getOntologyId());
+            navigate("/ontologies/" + row.getOntologyId());
           }}
           onFilter={(key: string) => {
             setSearch((prev) => {

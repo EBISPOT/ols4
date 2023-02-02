@@ -171,7 +171,6 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByOboId(String oboId, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "property", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
@@ -183,7 +182,6 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "property", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);

@@ -113,9 +113,6 @@
 
 
     <!-- OLS4 -->
-
-    <field name="lang" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-
     <field name="label" type="string" indexed="true" stored="true" required="true" multiValued="false" />
     <field name="ontologyId" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 

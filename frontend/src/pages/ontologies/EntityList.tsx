@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import DataTable, { Column } from "../../components/DataTable";
 import Entity from "../../model/Entity";
@@ -28,7 +28,7 @@ export default function EntityList(props: {
     );
   }, [dispatch, ontologyId, entityType, page, rowsPerPage, search]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <DataTable
@@ -50,7 +50,7 @@ export default function EntityList(props: {
         const termUrl = encodeURIComponent(
           encodeURIComponent(row.properties.iri)
         );
-        history.push(
+        navigate(
           `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
         );
       }}

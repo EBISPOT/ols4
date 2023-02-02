@@ -55,7 +55,6 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndIri(String ontologyId, String iri, String lang) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "individual", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("iri", iri, Fuzziness.EXACT);
@@ -68,7 +67,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOntology(String ontologyId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "individual", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 
@@ -80,7 +78,6 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndShortForm(String ontologyId, String lang, String shortForm) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "individual", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
@@ -92,7 +89,6 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndOboId(String ontologyId, String lang, String oboId) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("lang", lang, Fuzziness.EXACT);
 	query.addFilter("type", "individual", Fuzziness.EXACT);
 	query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
 	query.addFilter("oboId", oboId, Fuzziness.EXACT);
@@ -106,7 +102,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAll(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
@@ -119,7 +114,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIsDefiningOntology(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
 
@@ -135,7 +129,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIri(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
 
@@ -150,7 +143,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("iri", iri, Fuzziness.EXACT);
@@ -166,7 +158,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByShortForm(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
 
@@ -183,7 +174,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("shortForm", shortForm, Fuzziness.EXACT);
@@ -198,7 +188,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOboId(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);
 
@@ -213,7 +202,6 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         query.addFilter("isDefiningOntology", "true", Fuzziness.EXACT);
         query.addFilter("oboId", oboId, Fuzziness.EXACT);

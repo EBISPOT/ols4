@@ -41,7 +41,6 @@ public class V2IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
-        query.addFilter("lang", lang, Fuzziness.EXACT);
         query.addFilter("type", "individual", Fuzziness.EXACT);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);

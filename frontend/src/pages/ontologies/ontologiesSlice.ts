@@ -50,33 +50,33 @@ const initialState: OntologiesState = {
 
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
-  async (ontologyId: string) => {
+  async ({ontologyId, lang}:{ontologyId:string,lang:string}) => {
     const ontologyProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}`
+      `api/v2/ontologies/${ontologyId}`, {lang}
     );
     return new Ontology(ontologyProperties);
   }
 );
 export const getEntity = createAsyncThunk(
   "ontologies_entity",
-  async ({ ontologyId, entityType, entityIri }: any) => {
+  async ({ ontologyId, entityType, entityIri, lang }: any) => {
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityIri)
     );
     const termProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
+      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`, {lang}
     );
     return thingFromProperties(termProperties);
   }
 );
 export const getClassInstances = createAsyncThunk(
   "ontologies_entity_class_instances",
-  async ({ ontologyId, classIri }: any) => {
+  async ({ ontologyId, classIri, lang }: any) => {
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(classIri)
     );
     const instances = (await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances`
+      `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances`, {lang}
     )).map(i => thingFromProperties(i));
     return instances;
   }
