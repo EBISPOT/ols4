@@ -194,6 +194,7 @@ public class OwlGraph implements StreamRDF {
     DirectParentsAnnotator.annotateDirectParents(this);
     RelatedAnnotator.annotateRelated(this);
     HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
+    AncestorsAnnotator.annotateAncestors(this);
     HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
     ShortFormAnnotator.annotateShortForms(this);
     DefinitionAnnotator.annotateDefinitions(this);
@@ -385,19 +386,19 @@ public class OwlGraph implements StreamRDF {
             // reified
             writer.beginObject();
             writer.name("type");
-	    writer.beginArray();
-	    writer.value("reification");
-	    writer.endArray();
+            writer.beginArray();
+            writer.value("reification");
+            writer.endArray();
             writer.name("value");
             writeValue(writer, value);
             writer.name("axioms");
-	    writer.beginArray();
-	    for(PropertySet axiom : value.axioms) {
-		writer.beginObject();
-		writeProperties(writer, axiom, null);
-		writer.endObject();
-	    }
-	    writer.endArray();
+            writer.beginArray();
+            for(PropertySet axiom : value.axioms) {
+                writer.beginObject();
+                writeProperties(writer, axiom, null);
+                writer.endObject();
+            }
+            writer.endArray();
             writer.endObject();
         } else {
             // not reified
@@ -423,22 +424,22 @@ public class OwlGraph implements StreamRDF {
                 break;
             case LITERAL:
                 PropertyValueLiteral literal = (PropertyValueLiteral) value;
-		writer.beginObject();
-		writer.name("type");
-		writer.beginArray();
-		writer.value("literal");
-		writer.endArray();
-		if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
-			writer.name("datatype");
-			writer.value(literal.getDatatype());
-		}
-		writer.name("value");
-		writer.value(literal.getValue());
-		if(!literal.getLang().equals("")) {
-			writer.name("lang");
-			writer.value(literal.getLang());
-		}
-		writer.endObject();
+                writer.beginObject();
+                writer.name("type");
+                writer.beginArray();
+                writer.value("literal");
+                writer.endArray();
+                if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                    writer.name("datatype");
+                    writer.value(literal.getDatatype());
+                }
+                writer.name("value");
+                writer.value(literal.getValue());
+                if(!literal.getLang().equals("")) {
+                    writer.name("lang");
+                    writer.value(literal.getLang());
+                }
+                writer.endObject();
                 break;
             case URI:
                 writer.value(((PropertyValueURI) value).getUri());
@@ -452,17 +453,31 @@ public class OwlGraph implements StreamRDF {
                 writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
                 writer.endObject();
                 break;
-	    case REFERENCED_ENTITIES:
-	        PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
+            case REFERENCED_ENTITIES:
+                PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
                 writer.beginObject();
-		for(String referencedEntityIri : referencedEntities.getEntityIriToProperties().keySet()) {
-			PropertySet properties = referencedEntities.getEntityIriToProperties().get(referencedEntityIri);
-			writer.name(referencedEntityIri);
-			writer.beginObject();
-			writeProperties(writer, properties, null);
-			writer.endObject();
-		}
+                Map<String,PropertySet> entityIriToProperties = referencedEntities.getEntityIriToProperties(this);
+                for(String referencedEntityIri : entityIriToProperties.keySet()) {
+                    PropertySet properties = entityIriToProperties.get(referencedEntityIri);
+                    writer.name(referencedEntityIri);
+                    writer.beginObject();
+                    writeProperties(writer, properties, null);
+                    writer.endObject();
+                }
                 writer.endObject();
+                break;
+            case ANCESTORS:
+                PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
+                Set<String> ancestorIris = ancestors.getAncestors(this);
+                if(ancestorIris.size() == 1) {
+                    writer.value(ancestorIris.iterator().next());
+                } else {
+                    writer.beginArray();
+                    for(String ancestorIri : ancestorIris) {
+                        writer.value(ancestorIri);
+                    }
+                    writer.endArray();
+                }
                 break;
             default:
                 writer.value("?");
