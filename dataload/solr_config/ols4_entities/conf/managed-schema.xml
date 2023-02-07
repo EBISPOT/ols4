@@ -127,7 +127,7 @@
     <!-- OLS4: we are using dynamic fields for everything so no need to specify much of a schema.
 	 however we do need to specify the fields we DON'T want to be indexed
     -->
-    <field name="_json" type="text_general" indexed="false" stored="true" multiValued="false" />
+    <field name="_json" type="string" indexed="false" stored="true" multiValued="false" />
 
 
 
@@ -135,45 +135,13 @@
          because it's very expensive to index everything twice. -->
     <!-- <copyField source="*" dest="_text_"/> -->
 
-    <!-- Dynamic field definitions allow using convention over configuration
-       for fields via the specification of patterns to match field names.
-       EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
-       RESTRICTION: the glob-like pattern in the name attribute must have a "*" only at the start or the end.  -->
-
-    <dynamicField name="*_i"  type="pint"    indexed="true"  stored="true"/>
-    <dynamicField name="*_is" type="pints"    indexed="true"  stored="true"/>
-    <dynamicField name="*_s"  type="string"  indexed="true"  stored="true" />
-    <dynamicField name="*_ss" type="strings"  indexed="true"  stored="true"/>
-    <dynamicField name="*_l"  type="plong"   indexed="true"  stored="true"/>
-    <dynamicField name="*_ls" type="plongs"   indexed="true"  stored="true"/>
-    <dynamicField name="*_t" type="text_general" indexed="true" stored="true" multiValued="false"/>
-    <dynamicField name="*_txt" type="text_general" indexed="true" stored="true"/>
-    <dynamicField name="*_b"  type="boolean" indexed="true" stored="true"/>
-    <dynamicField name="*_bs" type="booleans" indexed="true" stored="true"/>
-    <dynamicField name="*_f"  type="pfloat"  indexed="true"  stored="true"/>
-    <dynamicField name="*_fs" type="pfloats"  indexed="true"  stored="true"/>
-    <dynamicField name="*_d"  type="pdouble" indexed="true"  stored="true"/>
-    <dynamicField name="*_ds" type="pdoubles" indexed="true"  stored="true"/>
-    <dynamicField name="random_*" type="random"/>
-    <dynamicField name="ignored_*" type="ignored"/>
 
     <!-- Type used for data-driven schema, to add a string copy for each text field -->
     <dynamicField name="str_*" type="strings" stored="false" docValues="true" indexed="false" useDocValuesAsStored="false"/>
 
     <!-- ols4 -->
-    <dynamicField name="lowercase_*" type="ols4lowercase" stored="true" indexed="true" multiValued="true" />
-
-    <dynamicField name="*_dt"  type="pdate"    indexed="true"  stored="true"/>
-    <dynamicField name="*_dts" type="pdate"    indexed="true"  stored="true" multiValued="true"/>
-    <dynamicField name="*_p"  type="location" indexed="true" stored="true"/>
-    <dynamicField name="*_srpt"  type="location_rpt" indexed="true" stored="true"/>
-
-    <!-- payloaded dynamic fields -->
-    <dynamicField name="*_dpf" type="delimited_payloads_float" indexed="true"  stored="true"/>
-    <dynamicField name="*_dpi" type="delimited_payloads_int" indexed="true"  stored="true"/>
-    <dynamicField name="*_dps" type="delimited_payloads_string" indexed="true"  stored="true"/>
-
-    <dynamicField name="attr_*" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="lowercase_*" type="ols4lowercase" stored="false" indexed="true" multiValued="true" />
+    <dynamicField name="edge_*" type="ols4edge" stored="false" indexed="true" multiValued="true" />
 
     <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
@@ -337,6 +305,19 @@
         <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter name="lowercase"/>
       </analyzer>
+    </fieldType>
+    <fieldType name="ols4edge" class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="solr.PatternTokenizerFactory" pattern="______" />
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+            <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.PatternTokenizerFactory" pattern="_______" />
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        </analyzer>
     </fieldType>
 
 

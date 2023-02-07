@@ -1,27 +1,26 @@
 package uk.ac.ebi.spot.ols.repository.v2.helpers;
 
-import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public class V2SearchFieldsParser {
 
     public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
 
         if(searchFields == null) {
-            query.addSearchField("label", 5, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addSearchField("synonym", 3, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addSearchField("definition", 1, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addSearchField("shortForm", 2, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addSearchField("iri", 1, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addSearchField("iri", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("ontologyId", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("shortForm", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("label", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("id", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("oboId", 1, SearchType.CASE_INSENSITIVE_TOKENS);
         } else {
             for (ParsedField field : parseFieldsString(searchFields)) {
-                query.addSearchField(field.property, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+                query.addSearchField(field.property, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
             }
         }
     }
@@ -29,13 +28,15 @@ public class V2SearchFieldsParser {
     public static void addBoostFieldsToQuery(OlsSolrQuery query, String boostFields) {
 
         if(boostFields == null) {
-            query.addBoostField("type", "ontology", 10, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addBoostField("isDefiningOntology", "true", 100, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
-            query.addBoostField("label", query.getSearchText(), 5, Fuzziness.EXACT);
-            query.addBoostField("synonym", query.getSearchText(), 3, Fuzziness.EXACT);
+            query.addBoostField("type", "ontology", 10, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addBoostField("isDefiningOntology", "true", 100, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
+            query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
+            query.addBoostField("synonym", query.getSearchText(), 500, SearchType.WHOLE_FIELD);
+//            query.addBoostField("synonym", query.getSearchText(), 100, SearchType.EDGES);
         } else {
             for (ParsedField field : parseFieldsString(boostFields)) {
-                query.addBoostField(field.property, field.value, field.weight, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+                query.addBoostField(field.property, field.value, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
             }
         }
     }

@@ -1005,6 +1005,10 @@
       <lst name="copyField">
         <str name="dest">lowercase_*</str>
       </lst>
+      <lst name="copyField">
+        <str name="dest">edge_*</str>
+        <int name="maxChars">512</int>
+      </lst>
       <!-- Use as default mapping instead of defaultFieldType -->
       <bool name="default">true</bool>
     </lst>

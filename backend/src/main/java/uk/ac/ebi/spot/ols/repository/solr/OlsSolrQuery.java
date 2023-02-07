@@ -2,7 +2,6 @@ package uk.ac.ebi.spot.ols.repository.solr;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.util.ClientUtils;
@@ -26,21 +25,21 @@ public class OlsSolrQuery {
 		return this.searchText;
 	}
 
-	public void addSearchField(String propertyName, int weight, Fuzziness fuzziness) {
-		this.searchFields.add(new SearchField(propertyName, weight, fuzziness));
+	public void addSearchField(String propertyName, int weight, SearchType searchType) {
+		this.searchFields.add(new SearchField(propertyName, weight, searchType));
 	}
 
-	public void addBoostField(String propertyName, String propertyValue, int weight, Fuzziness fuzziness) {
+	public void addBoostField(String propertyName, String propertyValue, int weight, SearchType searchType) {
 		if(propertyValue != null && propertyValue.length() > 0)
-			this.boostFields.add(new BoostField(propertyName, propertyValue, weight, fuzziness));
+			this.boostFields.add(new BoostField(propertyName, propertyValue, weight, searchType));
 	}
 
 	public void addFacetField(String propertyName) {
 		this.facetFields.add(propertyName);
 	}
 
-	public void addFilter(String propertyName, String propertyValue, Fuzziness fuzziness) {
-		this.filters.add(new Filter(propertyName, propertyValue, fuzziness));
+	public void addFilter(String propertyName, String propertyValue, SearchType searchType) {
+		this.filters.add(new Filter(propertyName, propertyValue, searchType));
 	}
 
 	public SolrQuery constructQuery() {
@@ -50,11 +49,11 @@ public class OlsSolrQuery {
 
 		if(searchText != null) {
 
-			if (searchText.contains("*")) {
+//			if (searchText.contains("*")) {
 				query.setQuery(searchText);
-			} else {
-				query.setQuery("*" + searchText + "*");
-			}
+//			} else {
+//				query.setQuery("*" + searchText + "*");
+//			}
 
 			StringBuilder qf = new StringBuilder();
 
@@ -62,7 +61,7 @@ public class OlsSolrQuery {
 				if(qf.length() > 0) {
 					qf.append(" ");
 				}
-				qf.append(getSolrPropertyName(searchField.propertyName, searchField.fuzziness));
+				qf.append(getSolrPropertyName(searchField.propertyName, searchField.searchType));
 				qf.append("^");
 				qf.append(searchField.weight);
 			}
@@ -81,9 +80,9 @@ public class OlsSolrQuery {
 				if(bf.length() > 0) {
 					bf.append(" ");
 				}
-				bf.append(getSolrPropertyName(boostField.propertyName, boostField.fuzziness));
+				bf.append(getSolrPropertyName(boostField.propertyName, boostField.searchType));
 				bf.append(":");
-				bf.append(getSolrPropertyValue(boostField.propertyValue, boostField.fuzziness));
+				bf.append(getSolrPropertyValue(boostField.propertyValue, boostField.searchType));
 				bf.append("^");
 				bf.append(boostField.weight);
 			}
@@ -93,8 +92,8 @@ public class OlsSolrQuery {
 
 		for(Filter f : filters) {
 			query.addFilterQuery(
-				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.fuzziness))
-					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, f.fuzziness)) + "\"");
+				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType))
+					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, f.searchType)) + "\"");
 		}
 
 		if(facetFields.size() > 0) {
@@ -108,12 +107,12 @@ public class OlsSolrQuery {
 
 		String propertyName;
 		String propertyValue;
-		Fuzziness fuzziness;
+		SearchType searchType;
 
-		public Filter(String propertyName, String propertyValue, Fuzziness fuzziness) {
+		public Filter(String propertyName, String propertyValue, SearchType searchType) {
 			this.propertyName = propertyName;
 			this.propertyValue = propertyValue;
-			this.fuzziness = fuzziness;
+			this.searchType = searchType;
 		}
 	}
 
@@ -121,12 +120,12 @@ public class OlsSolrQuery {
 
 		String propertyName;
 		int weight;
-		Fuzziness fuzziness;
+		SearchType searchType;
 
-		public SearchField(String propertyName, int weight, Fuzziness fuzziness) {
+		public SearchField(String propertyName, int weight, SearchType searchType) {
 			this.propertyName = propertyName;
 			this.weight = weight;
-			this.fuzziness = fuzziness;
+			this.searchType = searchType;
 		}
 
 	}
@@ -136,36 +135,39 @@ public class OlsSolrQuery {
 		String propertyName;
 		String propertyValue;
 		int weight;
-		Fuzziness fuzziness;
+		SearchType searchType;
 
-		public BoostField(String propertyName, String propertyValue, int weight, Fuzziness fuzziness) {
+		public BoostField(String propertyName, String propertyValue, int weight, SearchType searchType) {
 			this.propertyName = propertyName;
 			this.propertyValue = propertyValue;
 			this.weight = weight;
-			this.fuzziness = fuzziness;
+			this.searchType = searchType;
 		}
 
 	}
 
-	private String getSolrPropertyName(String propertyName, Fuzziness fuzziness) {
-		switch(fuzziness) {
-			case CASE_INSENSITIVE_SUBSTRING:
+	private String getSolrPropertyName(String propertyName, SearchType searchType) {
+		switch(searchType) {
+			case CASE_INSENSITIVE_TOKENS:
 				return "lowercase_" + propertyName;
-			case CASE_SENSITIVE_SUBSTRING:
+			case CASE_SENSITIVE_TOKENS:
 				return propertyName;
-			case EXACT:
+			case WHOLE_FIELD:
 				return "str_" + propertyName;
+			case EDGES:
+				return "edge_" + propertyName;
 			default:
 				throw new RuntimeException("unknown filter accuracy");
 		}
 	}
 
-	private String getSolrPropertyValue(String propertyValue, Fuzziness fuzziness) {
-		switch(fuzziness) {
-			case CASE_INSENSITIVE_SUBSTRING:
+	private String getSolrPropertyValue(String propertyValue, SearchType searchType) {
+		switch(searchType) {
+			case CASE_INSENSITIVE_TOKENS:
 				return propertyValue.toLowerCase();
-			case CASE_SENSITIVE_SUBSTRING:
-			case EXACT:
+			case CASE_SENSITIVE_TOKENS:
+			case WHOLE_FIELD:
+			case EDGES:
 				return propertyValue;
 			default:
 				throw new RuntimeException("unknown filter accuracy");

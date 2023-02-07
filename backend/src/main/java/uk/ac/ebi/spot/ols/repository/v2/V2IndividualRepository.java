@@ -7,7 +7,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
@@ -41,7 +41,7 @@ public class V2IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
-        query.addFilter("type", "individual", Fuzziness.EXACT);
+        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -64,8 +64,8 @@ public class V2IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
-        query.addFilter("type", "individual", Fuzziness.EXACT);
-        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -83,9 +83,9 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", Fuzziness.EXACT);
-        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("iri", iri, Fuzziness.EXACT);
+        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         return new V2Entity(
                 RemoveLiteralDatatypesTransform.transform(
@@ -104,9 +104,9 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", Fuzziness.EXACT);
-        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", classIri, Fuzziness.EXACT);
+        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", classIri, SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
