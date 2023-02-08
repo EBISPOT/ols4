@@ -191,7 +191,18 @@ public class OntologyWriter {
 				printEdge(ontologyId, subject, property, reifiedValue, axiom);
 			}
                     }
-                }
+
+                } else if(types.contains("related")) {
+
+                    Object relatedValue = mapValue.get("value");
+                    assert (relatedValue instanceof String);
+
+                    // is the value the URI of something that exists in the ontology?
+                    if (ontologyScannerResult.uriToTypes.containsKey(relatedValue)) {
+			printEdge(ontologyId, subject, property, relatedValue, mapValue);
+                    }
+		}
+
             } else if (v instanceof String) {
 
                 // is the value the URI of something that exists in the ontology?

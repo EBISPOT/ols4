@@ -67,7 +67,7 @@ public class V1JsTreeRepository {
         thisEntity = LocalizationTransform.transform(thisEntity, lang);
 
         List<JsonElement> children =
-                neo4jClient.traverseIncomingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), null)
+                neo4jClient.traverseIncomingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         children = children.stream().map(child -> LocalizationTransform.transform(child, lang)).collect(Collectors.toList());
 

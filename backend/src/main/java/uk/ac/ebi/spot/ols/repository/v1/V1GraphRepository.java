@@ -69,8 +69,8 @@ public class V1GraphRepository {
             JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
-            nodeRes.put("iri", ontologyNodeObject.get("iri"));
-            nodeRes.put("label", ontologyNodeObject.get("label"));
+            nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
+            nodeRes.put("label", JsonHelper.getString(ontologyNodeObject, "label"));
             return nodeRes;
 
         }).collect(Collectors.toList());
@@ -85,7 +85,7 @@ public class V1GraphRepository {
 
             JsonObject ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
 
-            String uri = ontologyEdgeObject.get("property").getAsString();
+            String uri = JsonHelper.getString(ontologyEdgeObject, "property");
             if (uri == null) {
                 uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
             }
@@ -93,7 +93,7 @@ public class V1GraphRepository {
 
             String propertyLabel = "is a";
 
-            JsonObject referencedEntities = ontologyEdgeObject.get("referencedEntities").getAsJsonObject();
+            JsonObject referencedEntities = ontologyEdgeObject.getAsJsonObject("referencedEntities");
 
             if (referencedEntities != null) {
                 String label = referencedEntities.get(uri).getAsString();
