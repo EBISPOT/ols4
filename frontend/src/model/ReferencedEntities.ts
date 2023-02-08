@@ -1,3 +1,4 @@
+import Reified from "./Reified"
 
 export default class ReferencedEntities {
 
@@ -16,14 +17,8 @@ export default class ReferencedEntities {
 		let referencedEntity = this.referencedEntities[iri]
 
 		if(referencedEntity) {
-			let label = referencedEntity.label
-			if(label) {
-				if(Array.isArray(label)) {
-					return label[0]
-				} else {
-					return label
-				}
-			}
+			let label = Reified.fromJson<string>( referencedEntity.label )
+			return label[0].value
 		}
 	}
 

@@ -19,6 +19,7 @@ import EntityTree from "./EntityTree";
 import { getClassInstances, getEntity, getOntology } from "./ontologiesSlice";
 import { Page } from "../../app/api";
 import { useParams, useSearchParams } from "react-router-dom";
+import LanguagePicker from "../../components/LanguagePicker";
 
 export default function EntityPage({
   entityType,
@@ -37,7 +38,7 @@ export default function EntityPage({
   const loadingClassInstances = useAppSelector((state) => state.ontologies.loadingClassInstances);
   const classInstances = useAppSelector((state) => state.ontologies.classInstances);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en"
   console.log('lang is ' + lang)
 
@@ -86,14 +87,16 @@ export default function EntityPage({
 	dispatch(getClassInstances({ ontologyId, classIri:entityIri, lang }))
    }
 
-  }, [dispatch, ontology, ontologyId, entityType, entityIri]);
+  }, [dispatch, ontology, ontologyId, entityType, entityIri, searchParams ]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto">
+      <main className="container mx-auto" style={{position: 'relative'}}>
         {ontology && entity ? (
+		<Fragment>
+	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
               <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"} >
@@ -210,6 +213,7 @@ export default function EntityPage({
                       }[entity.getType()]
                     }
                     selectedEntity={entity}
+		    lang={lang}
                   />
                 )}
               </div>
@@ -269,6 +273,7 @@ export default function EntityPage({
               </div>
             </div>
           </div>
+	  </Fragment>
         ) : null}
         {!ontology || loading ? (
           <LoadingOverlay message="Loading entity..." />

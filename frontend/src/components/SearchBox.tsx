@@ -48,7 +48,7 @@ export default function SearchBox({
 				`api/v2/entities?${new URLSearchParams({
 					search: query,
 					size: "5",
-					lang: 'all',
+					lang: 'en',
 					...(ontologyId ? {ontologyId} : {})
 				})}`
 			),
@@ -56,7 +56,7 @@ export default function SearchBox({
 				`api/v2/ontologies?${new URLSearchParams({
 					search: query,
 					size: "5",
-					lang: 'all'
+					lang: 'en'
 				})}`
 			) : null,
 			showSuggestions ? get<Suggest>(
@@ -133,7 +133,8 @@ export default function SearchBox({
 					);
 					return <Fragment>
 						{jumpToEntry instanceof Entity && (
-							jumpToEntry.getNames().map(name => (
+							// TODO which names to show? (multilang = lots of names)
+							jumpToEntry.getNames().splice(0, 1).map(name => (
 								<li
 									key={randomString()}
 									className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"

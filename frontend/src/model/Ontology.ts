@@ -1,4 +1,5 @@
 import { asArray } from "../app/util";
+import Reified from "./Reified";
 import Thing from "./Thing";
 
 export default class Ontology extends Thing {
@@ -6,18 +7,20 @@ export default class Ontology extends Thing {
     return this.properties["ontologyId"];
   }
   getName(): string {
-    return (
+    let names = Reified.fromJson<string>(
       this.properties["http://purl.org/dc/elements/1.1/title"] ||
       this.properties["title"] ||
       ""
     );
+    return names[0].value || this.getOntologyId()
   }
   getDescription(): string {
-    return (
+    let descriptions = Reified.fromJson<string>(
       this.properties["http://purl.org/dc/elements/1.1/description"] ||
       this.properties["description"] ||
       ""
     );
+    return descriptions[0].value || ''
   }
   getNumEntities(): number {
     return parseInt(this.properties["numberOfEntities"]);
@@ -80,5 +83,8 @@ export default class Ontology extends Thing {
   }
   getPreferredRoots():string[] {
     return asArray( this.properties["hasPreferredRoot"] );
+  }
+  getLanguages():string[] {
+    return asArray( this.properties["language"] );
   }
 }

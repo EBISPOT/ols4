@@ -6,6 +6,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
+import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
@@ -29,20 +30,22 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 
   const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en"
 
   useEffect(() => {
     dispatch(getOntology({ontologyId, lang}));
-  }, [dispatch, ontologyId, lang]);
+  }, [dispatch, ontologyId, lang, searchParams]);
 
 
   document.title = ontology?.getName() || ontologyId;
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto">
+      <main className="container mx-auto" style={{position: 'relative'}}>
         {ontology ? (
+		<Fragment>
+	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
               <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"} style={{color:'black'}}>
@@ -130,7 +133,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (
-                  <EntityTree ontology={ontology} entityType={currentTab} />
+                  <EntityTree ontology={ontology} entityType={currentTab} lang={lang} />
                 )}
               </div>
               <div className="col-span-1">
@@ -172,6 +175,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
               </div>
             </div>
           </div>
+	  </Fragment>
         ) : null}
         {loading ? <LoadingOverlay message="Loading ontology..." /> : null}
       </main>

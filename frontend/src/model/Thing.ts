@@ -82,10 +82,10 @@ export default abstract class Thing {
   getLabelForIri(id: string) {
     const referencedEntities = this.properties["referencedEntities"];
     if (referencedEntities) {
-      const label = referencedEntities[id]?.label;
-      return Array.isArray(label) ? label[0] : label;
+      const label:Reified<string>[] = Reified.fromJson<string>( referencedEntities[id]?.label );
+      return label[0]?.value || id
     } else {
-      return undefined;
+      return id;
     }
   }
 
