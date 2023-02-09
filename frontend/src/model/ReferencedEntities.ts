@@ -18,7 +18,9 @@ export default class ReferencedEntities {
 
 		if(referencedEntity) {
 			let label = Reified.fromJson<string>( referencedEntity.label )
-			return label[0].value
+			if(label && label.length > 0) {
+				return label[0].value
+			}
 		}
 	}
 

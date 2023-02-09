@@ -162,8 +162,6 @@ export default function EntityPage({
                 referencedEntities={referencedEntities}
               />
             </div>
-            <div className="grid grid-cols-3 gap-8">
-              <div className="col-span-2">
                 <div className="py-2 mb-1">
                   <Tooltip title="Tree view" placement="top">
                     <button
@@ -190,7 +188,7 @@ export default function EntityPage({
                     </button>
                   </Tooltip>
                 </div>
-                {viewMode === "graph" ? (
+		{ viewMode === 'graph' && 
                   <EntityGraph
                     ontologyId={ontologyId}
                     entityType={
@@ -202,76 +200,79 @@ export default function EntityPage({
                     }
                     selectedEntity={entity}
                   />
-                ) : (
-                  <EntityTree
-                    ontology={ontology}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-		    lang={lang}
-                  />
-                )}
-              </div>
-              <div className="col-span-1">
-                <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-                    <span className="capitalize">
-                      {entity.getType()} Information
-                    </span>
-                  </summary>
-                  <div className="py-2 break-words space-y-4">
-			<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
-                  </div>
-                </details>
-                <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-                    <span className="capitalize">
-                      {entity.getType()} Relations
-                    </span>
-                  </summary>
-                  <div className="py-2 break-words space-y-4">
-                    <IndividualTypesSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <IndividualSameAsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <IndividualDifferentFromSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <DisjointWithSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityEquivalentsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityParentsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityRelatedFromSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-		    <ClassInstancesSection 
-		    	entity={entity}
-			classInstances={classInstances}
-                        referencedEntities={referencedEntities}
-		      />
-                  </div>
-                </details>
-              </div>
-            </div>
+		}
+		{viewMode === 'tree' && 
+			<div className="grid grid-cols-3 gap-8">
+			<div className="col-span-2">
+				<EntityTree
+				ontology={ontology}
+				entityType={
+				{
+					class: "classes",
+					property: "properties",
+					individual: "individuals",
+				}[entity.getType()]
+				}
+				selectedEntity={entity}
+				lang={lang}
+				/>
+			</div>
+			<div className="col-span-1">
+				<details open className="p-2">
+				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+				<span className="capitalize">
+				{entity.getType()} Information
+				</span>
+				</summary>
+				<div className="py-2 break-words space-y-4">
+					<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
+				</div>
+				</details>
+				<details open className="p-2">
+				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+				<span className="capitalize">
+				{entity.getType()} Relations
+				</span>
+				</summary>
+				<div className="py-2 break-words space-y-4">
+				<IndividualTypesSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<IndividualSameAsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<IndividualDifferentFromSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<DisjointWithSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityEquivalentsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityParentsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityRelatedFromSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<ClassInstancesSection 
+					entity={entity}
+					classInstances={classInstances}
+					referencedEntities={referencedEntities}
+				/>
+				</div>
+				</details>
+			</div>
+			</div>
+}
           </div>
 	  </Fragment>
         ) : null}

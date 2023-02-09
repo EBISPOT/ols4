@@ -8,94 +8,29 @@ import extractEntityHierarchy from "./extractEntityHierarchy";
 import { getAncestors, getRootEntities } from "./ontologiesSlice";
 Cytoscape.use(ColaLayout);
 
-export default function EntityGraph(props: {
+export default function EntityGraph({ontologyId, selectedEntity, entityType}: {
   ontologyId: string;
   selectedEntity?: Entity;
   entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
-  const dispatch = useAppDispatch();
-  const ancestors = useAppSelector((state) => state.ontologies.ancestors);
-  // const rootEntities = useAppSelector((state) => state.ontologies.rootEntities);
+	useEffect(() => {
 
-  const { ontologyId, selectedEntity, entityType } = props;
-  const [elements, setElements] = useState<any[]>([]);
-  const cyRef = useRef<Cytoscape.Core>();
+		let iri = selectedEntity?.getIri()
 
-  useEffect(() => {
-    if (selectedEntity) {
-      const entityIri = selectedEntity.getIri();
-      dispatch(getAncestors({ ontologyId, entityType, entityIri }));
-    } else {
-      dispatch(getRootEntities({ ontologyId, entityType }));
+		if(iri) {
 
-      // setRootNodes(rootEntities.map(entity => {
-      // 	return {
-      // 		uri: entity.getUri(),
-      // 		absoluteIdentity: entity.getUri(),
-      // 		title: entity.getName(),
-      // 		expandable: entity.hasChildren(),
-      // 		entity: entity
-      // 	}
-      // }))
-    }
-  }, [dispatch, entityType, selectedEntity, ontologyId]);
+		window['initLegacyGraphView'](
+			process.env.REACT_APP_APIURL
+			  + `api/ontologies/${ontologyId}/terms?iri=`,
+			  iri
+		)
 
-  useEffect(() => {
-    if (selectedEntity) {
-      populateGraphFromEntities([selectedEntity, ...ancestors]);
-    }
-  }, [selectedEntity, ancestors]);
+		}
 
-  function populateGraphFromEntities(entities: Entity[]) {
-    const { uriToChildNodes } = extractEntityHierarchy(entities);
+	}, [ ontologyId, selectedEntity, entityType ]); 
 
-    const nodes: any[] = entities.map((entity) => {
-      return {
-        data: {
-          id: entity.getIri(),
-          label: entity.getName(),
-          position: {
-            x: 50,
-            y: 50,
-          },
-        },
-      };
-    });
 
-    const edges: any[] = [];
+	return <div id="ontology_vis" />
 
-    for (const parentUri of Array.from(uriToChildNodes.keys())) {
-      for (const childEntity of uriToChildNodes.get(parentUri)) {
-        edges.push({
-          data: {
-            source: parentUri,
-            target: childEntity.getIri(),
-            label: "parent",
-          },
-        });
-      }
-    }
-
-    setElements([...nodes, ...edges]);
-  }
-
-  return (
-    <div>
-      {elements ? (
-        <CytoscapeComponent
-          layout={{ name: "cola" }}
-          cy={(cy): void => {
-            cy.on("add", "node", (_evt) => {
-              cy.layout({ name: "cola" }).run();
-              cy.fit();
-            });
-
-            cyRef.current = cy;
-          }}
-          elements={elements}
-          style={{ width: "600px", height: "600px" }}
-        />
-      ) : null}
-    </div>
-  );
 }
+
