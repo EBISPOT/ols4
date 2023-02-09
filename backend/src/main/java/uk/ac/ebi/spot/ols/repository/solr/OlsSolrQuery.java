@@ -61,7 +61,7 @@ public class OlsSolrQuery {
 				if(qf.length() > 0) {
 					qf.append(" ");
 				}
-				qf.append(getSolrPropertyName(searchField.propertyName, searchField.searchType));
+				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName, searchField.searchType)) );
 				qf.append("^");
 				qf.append(searchField.weight);
 			}
@@ -80,9 +80,10 @@ public class OlsSolrQuery {
 				if(bf.length() > 0) {
 					bf.append(" ");
 				}
-				bf.append(getSolrPropertyName(boostField.propertyName, boostField.searchType));
-				bf.append(":");
-				bf.append(getSolrPropertyValue(boostField.propertyValue, boostField.searchType));
+				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(boostField.propertyName, boostField.searchType)) );
+				bf.append(":\"");
+				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyValue(boostField.propertyValue, boostField.searchType)) );
+				bf.append("\"");
 				bf.append("^");
 				bf.append(boostField.weight);
 			}

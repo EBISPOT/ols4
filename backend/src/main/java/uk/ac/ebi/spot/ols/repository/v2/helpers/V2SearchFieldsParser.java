@@ -14,6 +14,8 @@ public class V2SearchFieldsParser {
         if(searchFields == null) {
             query.addSearchField("iri", 1, SearchType.CASE_INSENSITIVE_TOKENS);
             query.addSearchField("ontologyId", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("curie", 1, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addSearchField("curie", 1, SearchType.EDGES);
             query.addSearchField("shortForm", 1, SearchType.CASE_INSENSITIVE_TOKENS);
             query.addSearchField("shortForm", 1, SearchType.EDGES);
             query.addSearchField("label", 1, SearchType.CASE_INSENSITIVE_TOKENS);
@@ -35,6 +37,7 @@ public class V2SearchFieldsParser {
             query.addBoostField("isDefiningOntology", "true", 100, SearchType.CASE_INSENSITIVE_TOKENS);
             query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
+            query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("shortForm", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("synonym", query.getSearchText(), 500, SearchType.WHOLE_FIELD);
 //            query.addBoostField("synonym", query.getSearchText(), 100, SearchType.EDGES);

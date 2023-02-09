@@ -7,7 +7,6 @@ import java.util.Set;
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.annotators.helpers.OntologyBaseUris;
-import uk.ac.ebi.owl2json.annotators.helpers.ShortFormExtractor;
 import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
 
 public class ShortFormAnnotator {
@@ -28,12 +27,13 @@ public class ShortFormAnnotator {
 			// skip bnodes
 			if(c.uri == null)
 				continue;
-	
-			c.properties.addProperty(
-				"shortForm",
-					PropertyValueLiteral.fromString(
-						ShortFormExtractor.extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri)
-					));
+
+
+			String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri);
+			String curie = shortForm.replaceFirst("_", ":");
+
+			c.properties.addProperty("shortForm", PropertyValueLiteral.fromString(shortForm));
+			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
 		    }
 		}
 		long endTime3 = System.nanoTime();
@@ -42,5 +42,34 @@ public class ShortFormAnnotator {
 
 	}
 	
+	private static String extractShortForm(OwlGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
+			String uri) {
+
+		if (uri.startsWith("urn:")) {
+			return uri.substring(4);
+		}
+
+		// if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
+		// return uri.substring("http://purl.obolibrary.org/obo/".length());
+		// }
+
+		for (String baseUri : ontologyBaseUris) {
+			if (uri.startsWith(baseUri) && preferredPrefix != null) {
+				return preferredPrefix + "_" + uri.substring(baseUri.length());
+			}
+		}
+
+		if (uri.contains("/") || uri.contains("#")) {
+
+			return uri.substring(
+					Math.max(
+							uri.lastIndexOf('/'),
+							uri.lastIndexOf('#')) + 1);
+
+		} else {
+
+			return uri;
+		}
+	}
 
 }

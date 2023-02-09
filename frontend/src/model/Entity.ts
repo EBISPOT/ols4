@@ -35,7 +35,7 @@ export default abstract class Entity extends Thing {
   }
 
   getShortForm(): string {
-    return this.properties["shortForm"];
+    return this.properties["curie"] || this.properties["shortForm"];
   }
 
   getAnnotationPredicates(): string[] {
