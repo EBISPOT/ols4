@@ -46,6 +46,7 @@ public class OlsSolrQuery {
 
 		SolrQuery query = new SolrQuery();
 		query.set("defType", "edismax");
+		query.setFields("_json");
 
 		if(searchText != null) {
 
