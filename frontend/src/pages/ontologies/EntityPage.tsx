@@ -1,7 +1,7 @@
 import { AccountTree, Share } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
@@ -99,11 +99,11 @@ export default function EntityPage({
 	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies"} >
+              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"} >
                 Ontologies
               </Link>
               <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
-              <Link className="link-default" href={process.env.PUBLIC_URL + "/ontologies/" + ontologyId}>
+              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies/" + ontologyId}>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={ontologyId}
@@ -400,7 +400,7 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 
 			if(referencedEntity.url) {
 				// CURIE
-				return <Link href={referencedEntity.url}>{value.value}</Link>
+				return <Link to={referencedEntity.url}>{value.value}</Link>
 			} else {
 				// entity IRI in this ontology
 				return <EntityLink

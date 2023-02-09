@@ -1,6 +1,6 @@
 import moment from "moment";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
@@ -38,19 +38,19 @@ export default function Home() {
                 <div className="text-neutral-black">
                   <span>
                     Examples:&nbsp;
-                    <a href="search/diabetes" className="link-default">
+                    <Link to={process.env.PUBLIC_URL + "/search/diabetes"} className="link-default">
                       diabetes
-                    </a>
+                    </Link>
                     &#44;&nbsp;
-                    <a href="search/GO:0098743" className="link-default">
+                    <Link to={process.env.PUBLIC_URL + "/search/GO:0098743"} className="link-default">
                       GO:0098743
-                    </a>
+                    </Link>
                   </span>
                 </div>
                 <div className="text-right">
-                  <a href="ontologies" className="link-default">
+                  <Link to={process.env.PUBLIC_URL + "/ontologies"} className="link-default">
                     Looking for a particular ontology?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -58,17 +58,17 @@ export default function Home() {
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-browse icon-spacer text-orange-default" />
-                  <a href="about" className="link-default">
+                  <Link to={process.env.PUBLIC_URL + "/about"} className="link-default">
                     About OLS
-                  </a>
+                  </Link>
                 </div>
                 <p>
                   The Ontology Lookup Service (OLS) is a repository for
                   biomedical ontologies that aims to provide a single point of
                   access to the latest ontology versions. You can browse the
                   ontologies through the website as well as programmatically via
-                  the OLS API. OLS is developed and maintained by the Samples,
-                  Phenotypes and Ontologies Team (SPOT) at EMBL-EBI.
+                  the OLS API. OLS is developed and maintained by the <a  className="link-default" href="https://www.ebi.ac.uk/spot">Samples,
+                  Phenotypes and Ontologies Team (SPOT)</a> at <a  className="link-default" href="https://www.ebi.ac.uk">EMBL-EBI</a>.
                 </p>
               </div>
               <div className="px-2 mb-4">
@@ -82,11 +82,11 @@ export default function Home() {
                   </a>
                 </div>
                 <p>
-                  In addition to OLS the SPOT team also provides the OxO, Zooma
-                  and Webulous services. OxO provides cross-ontology mappings
-                  between terms from different ontologies. Zooma is a service to
-                  assist in mapping data to ontologies in OLS and Webulous is a
-                  tool for building ontologies from spreadsheets.
+                  In addition to OLS the SPOT team also provides the <a className="link-default" href="https://www.ebi.ac.uk/spot/oxo">OxO</a>
+		  and <a className="link-default" href="https://www.ebi.ac.uk/spot/zooma">ZOOMA</a>
+                  services. OxO provides cross-ontology mappings
+                  between terms from different ontologies. ZOOMA is a service to
+                  assist in mapping data to ontologies in OLS.
                 </p>
               </div>
               <div className="px-2 mb-4">
@@ -101,9 +101,9 @@ export default function Home() {
                 </div>
                 <p>
                   For feedback, enquiries or suggestion about OLS or to request
-                  a new ontology please use our GitHub issue tracker. For
+                  a new ontology please use our <a href="https://github.com/EBISPOT/ols4/issues">GitHub issue tracker</a>. For
                   announcements relating to OLS, such as new releases and new
-                  features sign up to the OLS announce mailing list
+                  features sign up to the OLS announce mailing list.
                 </p>
               </div>
             </div>

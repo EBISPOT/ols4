@@ -1,4 +1,4 @@
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import ReferencedEntities from "../model/ReferencedEntities";
 
 export default function EntityLink({
@@ -16,7 +16,7 @@ export default function EntityLink({
   const label = referencedEntities.getLabelForIri(iri) || iri.split("/").pop();
 
   return (
-    <Link href={process.env.PUBLIC_URL + `/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
+    <Link to={process.env.PUBLIC_URL + `/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
       {label}
     </Link>
   );
