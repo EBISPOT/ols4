@@ -26,7 +26,7 @@ Deployment instructions will go here. OLS4 is still under heavy development, so 
 However, if you just want to try it out, this should get you going:
 
     export OLS4_CONFIG=./dataload/configs/efo.json
-    docker-compose up
+    docker compose up
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
