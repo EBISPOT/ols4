@@ -76,8 +76,15 @@ export default class Ontology extends Thing {
 		  if (predicate.indexOf('://') === -1)
 			  continue;
 
+		// anything in the rdf, rdfs, owl namespaces aren't considered annotations
+		if (! (
+			predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
+			predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
+			predicate.startsWith("http://www.w3.org/2002/07/owl#")
+		)) {
 		  annotationPredicates.add(predicate)
-	  }
+		}
+	}
 
 	  return Array.from(annotationPredicates) as string[]
   }
