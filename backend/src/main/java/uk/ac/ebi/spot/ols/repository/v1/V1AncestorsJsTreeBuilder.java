@@ -66,30 +66,35 @@ public class V1AncestorsJsTreeBuilder {
 
     private void createJsTreeEntries(List<Map<String,Object>> jstree, JsonObject entity, String concatenatedParentIris) {
 
+        String entityIri = JsonHelper.getString(entity, "iri");
+
         Map<String,Object> jstreeEntry = new LinkedHashMap<>();
 
         if(concatenatedParentIris != null) {
-            jstreeEntry.put("id", base64Encode(concatenatedParentIris + ";" + entity.get("iri").getAsString()));
+            jstreeEntry.put("id", base64Encode(concatenatedParentIris + ";" + entityIri));
             jstreeEntry.put("parent", base64Encode(concatenatedParentIris));
         } else {
-            jstreeEntry.put("id", base64Encode(entity.get("iri").getAsString()));
+            jstreeEntry.put("id", base64Encode(entityIri));
             jstreeEntry.put("parent", "#");
         }
 
-        jstreeEntry.put("iri", entity.get("iri").getAsString());
-        jstreeEntry.put("text", entity.get("label").getAsString()); // TODO what in the case of multiple labels?
+        jstreeEntry.put("iri", entityIri);
+        jstreeEntry.put("text", JsonHelper.getString(entity, "label"));
 
-        Collection<String> childIris = entityIriToChildIris.get(entity.get("iri").getAsString());
+        Collection<String> childIris = entityIriToChildIris.get(entityIri);
 
         // only the leaf node is selected (= highlighted in the tree)
-        boolean selected = thisEntity.get("iri").getAsString().equals(entity.get("iri").getAsString());
+        boolean selected = JsonHelper.getString(thisEntity, "iri").equals(entityIri);
 
         // only nodes that aren't the leaf node are marked as opened (expanded)
         boolean opened = (!selected);
 
+
+        boolean hasDirectChildren = Objects.equals(JsonHelper.getString(entity, "hasDirectChildren"), "true");
+        boolean hasHierarchicalChildren = Objects.equals(JsonHelper.getString(entity, "hasHierarchicalChildren"), "true");
+
         // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
-        boolean children = (!opened) && 
-		(entity.get("hasDirectChildren").getAsString().equals("true") || entity.get("hasHierarchicalChildren").getAsString().equals("true"));
+        boolean children = (!opened) && (hasDirectChildren || hasHierarchicalChildren);
 
         //boolean children = childIris.size() > 0;
 
@@ -104,13 +109,13 @@ public class V1AncestorsJsTreeBuilder {
         jstreeEntry.put("children", children);
 
         Map<String,Object> attrObj = new LinkedHashMap<>();
-        attrObj.put("iri", entity.get("iri"));
-        attrObj.put("ontology_name", entity.get("ontologyId"));
-        attrObj.put("title", entity.get("iri"));
+        attrObj.put("iri", JsonHelper.getString(entity, "iri"));
+        attrObj.put("ontology_name", JsonHelper.getString(entity, "ontologyId"));
+        attrObj.put("title", JsonHelper.getString(entity, "iri"));
         attrObj.put("class", "is_a");
         jstreeEntry.put("a_attr", attrObj);
 
-        jstreeEntry.put("ontology_name", entity.get("ontologyId"));
+        jstreeEntry.put("ontology_name", JsonHelper.getString(entity, "ontologyId"));
 
         jstree.add(jstreeEntry);
 
@@ -124,9 +129,9 @@ public class V1AncestorsJsTreeBuilder {
             }
 
             if(concatenatedParentIris != null) {
-                createJsTreeEntries(jstree, child.getAsJsonObject(), concatenatedParentIris + ";" + entity.get("iri"));
+                createJsTreeEntries(jstree, child.getAsJsonObject(), concatenatedParentIris + ";" + entityIri);
             } else {
-                createJsTreeEntries(jstree, child.getAsJsonObject(), entity.getAsJsonObject("iri").getAsString());
+                createJsTreeEntries(jstree, child.getAsJsonObject(), entityIri);
             }
         }
     }

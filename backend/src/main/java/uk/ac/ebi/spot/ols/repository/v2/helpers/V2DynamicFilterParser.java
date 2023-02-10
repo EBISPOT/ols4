@@ -1,6 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.v2.helpers;
 
-import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 
 import java.util.Map;
@@ -14,7 +14,7 @@ public class V2DynamicFilterParser {
             }
             String value = properties.get(k);
             k = k.replace(":", "__");
-            query.addFilter(k, value, Fuzziness.CASE_INSENSITIVE_SUBSTRING);
+            query.addFilter(k, value, SearchType.CASE_INSENSITIVE_TOKENS);
         }
     }
 }

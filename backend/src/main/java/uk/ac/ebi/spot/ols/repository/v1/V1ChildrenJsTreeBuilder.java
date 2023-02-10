@@ -30,22 +30,22 @@ public class V1ChildrenJsTreeBuilder {
             Map<String,Object> jstreeEntry = new LinkedHashMap<>();
             jstreeEntry.put("id", base64Encode(thisEntityJsTreeIdDecoded + ";" + child.getAsJsonObject().get("iri").getAsString()));
             jstreeEntry.put("parent", base64Encode(thisEntityJsTreeIdDecoded));
-            jstreeEntry.put("iri", child.getAsJsonObject().get("iri").getAsString());
-            jstreeEntry.put("text", child.getAsJsonObject().get("label").getAsString());
+            jstreeEntry.put("iri", JsonHelper.getString(child.getAsJsonObject(), "iri"));
+            jstreeEntry.put("text", JsonHelper.getString(child.getAsJsonObject(), "label"));
             jstreeEntry.put("state", Map.of("opened", false));
             jstreeEntry.put("children",
-	    	child.getAsJsonObject().get("hasDirectChildren").getAsString().equals("true")
-		|| child.getAsJsonObject().get("hasHierarchicalChildren").getAsString().equals("true")
+	    	JsonHelper.getString(child.getAsJsonObject(), "hasDirectChildren").equals("true")
+		|| JsonHelper.getString(child.getAsJsonObject(), "hasHierarchicalChildren").equals("true")
 	    );
 
             Map<String,Object> attrObj = new LinkedHashMap<>();
-            attrObj.put("iri", child.getAsJsonObject().get("iri").getAsString());
-            attrObj.put("ontology_name", child.getAsJsonObject().get("ontologyId").getAsString());
-            attrObj.put("title", child.getAsJsonObject().get("iri").getAsString());
+            attrObj.put("iri", JsonHelper.getString(child.getAsJsonObject(), "iri"));
+            attrObj.put("ontology_name",JsonHelper.getString(child.getAsJsonObject(), "ontologyId"));
+            attrObj.put("title", JsonHelper.getString(child.getAsJsonObject(), "iri"));
             attrObj.put("class", "is_a");
             jstreeEntry.put("a_attr", attrObj);
 
-            jstreeEntry.put("ontology_name", child.getAsJsonObject().get("ontologyId"));
+            jstreeEntry.put("ontology_name", JsonHelper.getString(child.getAsJsonObject(), "ontologyId"));
             jstree.add(jstreeEntry);
         }
 

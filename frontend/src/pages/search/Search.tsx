@@ -1,32 +1,33 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
+import SearchBox from "../../components/SearchBox";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import Thing from "../../model/Thing";
-import { getSearchOptions, getSearchResults } from "./homeSlice";
+import { getSearchResults } from "./searchSlice";
 
-export default function SearchResults({ search }: { search: string }) {
+export default function Search() {
+
+  const params = useParams()
+  let search:string = params.search as string
+
   const dispatch = useAppDispatch();
-  const history = useHistory();
-  const loadingSuggestions = useAppSelector(
-    (state) => state.home.loadingSearchOptions
-  );
-  const suggestions = useAppSelector((state) => state.home.searchOptions);
+  const navigate = useNavigate();
   const loadingResults = useAppSelector(
-    (state) => state.home.loadingSearchResults
+    (state) => state.search.loadingSearchResults
   );
-  const results = useAppSelector((state) => state.home.searchResults);
-  const totalResults = useAppSelector((state) => state.home.totalSearchResults);
-  const facets = useAppSelector((state) => state.home.facets);
+  const results = useAppSelector((state) => state.search.searchResults);
+  const totalResults = useAppSelector((state) => state.search.totalSearchResults);
+  const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-  const [open, setOpen] = useState<boolean>(false);
+//   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
@@ -70,11 +71,6 @@ export default function SearchResults({ search }: { search: string }) {
     [typeFacetSelected, setTypeFacetSelected]
   );
 
-  const homeSearch = document.getElementById("home-search") as HTMLInputElement;
-
-  useEffect(() => {
-    dispatch(getSearchOptions(query));
-  }, [dispatch, query]);
   useEffect(() => {
     dispatch(
       getSearchResults({
@@ -108,117 +104,7 @@ export default function SearchResults({ search }: { search: string }) {
       <Header section="home" />
       <main className="container mx-auto h-fit my-8">
         <div className="flex flex-nowrap gap-4 mb-6">
-          <div className="relative w-full self-center">
-            <input
-              id="home-search"
-              type="text"
-              placeholder="Search OLS..."
-              className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm pl-3"
-              onFocus={() => {
-                setOpen(true);
-              }}
-              onBlur={() => {
-                setTimeout(function () {
-                  if (mounted.current) setOpen(false);
-                }, 500);
-              }}
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-            />
-            <div
-              className={
-                loadingSuggestions
-                  ? "spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"
-                  : "hidden"
-              }
-            />
-            <ul
-              className={
-                open
-                  ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
-                  : "hidden"
-              }
-            >
-              {suggestions.length === 0 ? (
-                <div className="py-1 px-3 text-lg leading-loose">
-                  No options
-                </div>
-              ) : (
-                suggestions.map((option: Thing) => {
-                  const termUrl = encodeURIComponent(
-                    encodeURIComponent(option.getIri())
-                  );
-                  return (
-                    <li
-                      key={randomString()}
-                      className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                    >
-                      {option instanceof Entity ? (
-                        <Link
-                          onClick={() => {
-                            setOpen(false);
-                          }}
-                          to={`/ontologies/${option.getOntologyId()}/${option.getTypePlural()}/${termUrl}`}
-                        >
-                          <div className="flex justify-between">
-                            <div
-                              className="truncate flex-auto"
-                              title={option.getName()}
-                            >
-                              {option.getName()}
-                            </div>
-                            <div className="truncate flex-initial ml-2 text-right">
-                              <span
-                                className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                title={option.getOntologyId()}
-                              >
-                                {option.getOntologyId()}
-                              </span>
-                              <span
-                                className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-                                title={option.getShortForm()}
-                              >
-                                {option.getShortForm()}
-                              </span>
-                            </div>
-                          </div>
-                        </Link>
-                      ) : null}
-                      {option instanceof Ontology ? (
-                        <Link
-                          onClick={() => {
-                            setOpen(false);
-                          }}
-                          to={"/ontologies/" + option.getOntologyId()}
-                        >
-                          <div className="flex">
-                            <span
-                              className="truncate text-link-dark font-bold"
-                              title={option.getName() || option.getOntologyId()}
-                            >
-                              {option.getName() || option.getOntologyId()}
-                            </span>
-                          </div>
-                        </Link>
-                      ) : null}
-                    </li>
-                  );
-                })
-              )}
-            </ul>
-          </div>
-          <button
-            className="button-primary text-lg font-bold self-center"
-            onClick={() => {
-              if (homeSearch?.value) {
-                history.push("/home/search/" + homeSearch.value);
-              }
-            }}
-          >
-            Search
-          </button>
+		<SearchBox initialQuery={query} />
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">

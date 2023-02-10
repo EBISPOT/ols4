@@ -191,7 +191,18 @@ public class OntologyWriter {
 				printEdge(ontologyId, subject, property, reifiedValue, axiom);
 			}
                     }
-                }
+
+                } else if(types.contains("related")) {
+
+                    Object relatedValue = mapValue.get("value");
+                    assert (relatedValue instanceof String);
+
+                    // is the value the URI of something that exists in the ontology?
+                    if (ontologyScannerResult.uriToTypes.containsKey(relatedValue)) {
+			printEdge(ontologyId, subject, property, relatedValue, mapValue);
+                    }
+		}
+
             } else if (v instanceof String) {
 
                 // is the value the URI of something that exists in the ontology?
@@ -216,6 +227,10 @@ public class OntologyWriter {
 	// these properties are informational and should not create edges
 	if(predicate.equals("hierarchicalProperty") || predicate.equals("definitionProperty") || predicate.equals("synonymProperty"))
 		return;
+
+    // these are redundant in neo4j as we already have the parent edges and cypher queries can be recursive
+    if(predicate.equals("directAncestor") || predicate.equals("hierarchicalAncestor"))
+        return;
 
         // In the case of punning, the same URI can have multiple types. In this case
         // it is ambiguous which of the types the edge points to/from. For example, if
@@ -312,7 +327,7 @@ public class OntologyWriter {
 
 
     private String replaceNeo4jSpecialCharsValue(String val) {
-        return val.replace("|", "+");
+        return val.replace("|", "\\u007C");
     }
 
     private List<String> propertyHeaders(List<String> fieldNames) {

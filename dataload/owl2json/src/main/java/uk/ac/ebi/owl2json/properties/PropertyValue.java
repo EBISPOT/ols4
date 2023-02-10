@@ -14,8 +14,9 @@ public abstract class PropertyValue {
         URI,
         BNODE,
         ID,
-	RELATED,
-	REFERENCED_ENTITIES
+	    RELATED,
+	    REFERENCED_ENTITIES,
+        ANCESTORS
     }
 
     // reification

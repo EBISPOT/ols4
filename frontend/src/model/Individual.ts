@@ -1,9 +1,12 @@
 import { asArray } from "../app/util";
 import Entity from "./Entity";
+import Reified from "./Reified";
 
 export default class Individual extends Entity {
   getParents() {
-    return [];
+    return Reified.fromJson<any>(
+      this.properties["directParent"]
+    );
   }
   getEquivalents() {
     return [];

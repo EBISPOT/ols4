@@ -36,12 +36,7 @@ public class V2StatisticsController {
 
         SolrQuery query = new SolrQuery();
 
-        // TODO: we're just counting the english ones
-        // this would result in incorrect statistics for an ontology that is only in a non english language
-        // (not that we have any of these currently)
-        //
-        query.setQuery("lang:en");
-
+        query.setQuery("*:*");
         query.setFacet(true);
         query.addFacetField("type");
         query.setRows(0);

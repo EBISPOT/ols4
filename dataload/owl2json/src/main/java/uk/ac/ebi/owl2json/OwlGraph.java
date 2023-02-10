@@ -1,12 +1,11 @@
 package uk.ac.ebi.owl2json;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.google.gson.stream.JsonWriter;
 
+import org.apache.jena.riot.RDFLanguages;
 import uk.ac.ebi.owl2json.annotators.*;
 import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
-import uk.ac.ebi.owl2json.properties.PropertyValue.Type;
 
 import org.apache.jena.riot.Lang;
 import org.apache.jena.graph.Node;
@@ -14,12 +13,14 @@ import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.riot.RDFParserBuilder;
 import org.apache.jena.riot.system.StreamRDF;
-import org.apache.jena.shacl.sys.C;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class OwlGraph implements StreamRDF {
@@ -32,51 +33,55 @@ public class OwlGraph implements StreamRDF {
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
 
+    private RDFParserBuilder createParser(Lang lang) {
 
-
-    public static long STATS_TOTAL_DOWNLOAD_TIME = 0;
-
-
-    private RDFParserBuilder createParser() {
-
-        return RDFParser.create()
-                .forceLang(Lang.RDFXML)
-                .strict(false)
-                .checking(false);
+        if(lang != null) {
+            return RDFParser.create()
+                    .forceLang(lang)
+                    .strict(false)
+                    .checking(false);
+        } else {
+            return RDFParser.create()
+                    .strict(false)
+                    .checking(false);
+        }
     }
 
     private void parseRDF(String url)  {
 
-        long begin = System.nanoTime();
-
-	try {
-		if (loadLocalFiles && !url.contains("://")) {
-			System.out.println("Using local file for " + url);
-			createParser().source(new FileInputStream(url)).parse(this);
-		} else {
-			if (downloadedPath != null) {
-				String existingDownload = downloadedPath + "/" + urlToFilename(url);
-				try {
-					FileInputStream is = new FileInputStream(existingDownload);
-					System.out.println("Using predownloaded file for " + url);
-					createParser().source(is).parse(this);
-				} catch (FileNotFoundException e) {
-					System.out.println("Downloading (not predownloaded) " + url);
-					createParser().source(url).parse(this);
-				}
-			} else {
-				System.out.println("Downloading (no predownload path provided) " + url);
-				createParser().source(url).parse(this);
-			}
-		}
-	} catch (FileNotFoundException e) {
-		throw new RuntimeException(e);
-	}
-
-        long end = System.nanoTime();
-
-        System.out.println("Downloading " + url + " took " + ((end-begin) / 1000 / 1000 / 1000) + "s");
-        STATS_TOTAL_DOWNLOAD_TIME += (end - begin);
+        try {
+            if (loadLocalFiles && !url.contains("://")) {
+                System.out.println("Using local file for " + url);
+                createParser(RDFLanguages.filenameToLang(url, Lang.RDFXML))
+                        .source(new FileInputStream(url)).parse(this);
+            } else {
+                if (downloadedPath != null) {
+                    String existingDownload = downloadedPath + "/" + urlToFilename(url);
+                    try {
+                        FileInputStream is = new FileInputStream(existingDownload);
+                        System.out.println("Using predownloaded file for " + url);
+                        Lang lang = null;
+                        try {
+                            String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
+                            lang = RDFLanguages.contentTypeToLang(existingDownloadMimeType);
+                        } catch(IOException ignored) {
+                        }
+                        if(lang == null) {
+                            lang = Lang.RDFXML;
+                        }
+                        createParser(lang).source(is).parse(this);
+                    } catch (Exception e) {
+                        System.out.println("Downloading (not predownloaded) " + url);
+                        createParser(null).source(url).parse(this);
+                    }
+                } else {
+                    System.out.println("Downloading (no predownload path provided) " + url);
+                    createParser(null).source(url).parse(this);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String urlToFilename(String url) {
@@ -189,6 +194,8 @@ public class OwlGraph implements StreamRDF {
     DirectParentsAnnotator.annotateDirectParents(this);
     RelatedAnnotator.annotateRelated(this);
     HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
+    AncestorsAnnotator.annotateAncestors(this);
+    HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
     ShortFormAnnotator.annotateShortForms(this);
     DefinitionAnnotator.annotateDefinitions(this);
     SynonymAnnotator.annotateSynonyms(this);
@@ -201,6 +208,7 @@ public class OwlGraph implements StreamRDF {
     ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
     PreferredRootsAnnotator.annotatePreferredRoots(this);
     DisjointWithAnnotator.annotateDisjointWith(this);
+    HasIndividualsAnnotator.annotateHasIndividuals(this);
     EquivalenceAnnotator.annotateEquivalance(this);
     ReferencedEntitiesAnnotator.annotateReferencedEntities(this); // should come last so it finds all the entities
 
@@ -237,6 +245,10 @@ public class OwlGraph implements StreamRDF {
             // don't print the iri from the config, we already printed the one from the OWL
             // TODO: which one to keep, or should we keep both?
             if(configKey.equals("iri"))
+                continue;
+
+	    // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
+            if(configKey.equals("preferred_root_term"))
                 continue;
 
             // everything else from the config is stored as a normal property
@@ -374,19 +386,19 @@ public class OwlGraph implements StreamRDF {
             // reified
             writer.beginObject();
             writer.name("type");
-	    writer.beginArray();
-	    writer.value("reification");
-	    writer.endArray();
+            writer.beginArray();
+            writer.value("reification");
+            writer.endArray();
             writer.name("value");
             writeValue(writer, value);
             writer.name("axioms");
-	    writer.beginArray();
-	    for(PropertySet axiom : value.axioms) {
-		writer.beginObject();
-		writeProperties(writer, axiom, null);
-		writer.endObject();
-	    }
-	    writer.endArray();
+            writer.beginArray();
+            for(PropertySet axiom : value.axioms) {
+                writer.beginObject();
+                writeProperties(writer, axiom, null);
+                writer.endObject();
+            }
+            writer.endArray();
             writer.endObject();
         } else {
             // not reified
@@ -412,22 +424,22 @@ public class OwlGraph implements StreamRDF {
                 break;
             case LITERAL:
                 PropertyValueLiteral literal = (PropertyValueLiteral) value;
-		writer.beginObject();
-		writer.name("type");
-		writer.beginArray();
-		writer.value("literal");
-		writer.endArray();
-		if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
-			writer.name("datatype");
-			writer.value(literal.getDatatype());
-		}
-		writer.name("value");
-		writer.value(literal.getValue());
-		if(!literal.getLang().equals("")) {
-			writer.name("lang");
-			writer.value(literal.getLang());
-		}
-		writer.endObject();
+                writer.beginObject();
+                writer.name("type");
+                writer.beginArray();
+                writer.value("literal");
+                writer.endArray();
+                if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                    writer.name("datatype");
+                    writer.value(literal.getDatatype());
+                }
+                writer.name("value");
+                writer.value(literal.getValue());
+                if(!literal.getLang().equals("")) {
+                    writer.name("lang");
+                    writer.value(literal.getLang());
+                }
+                writer.endObject();
                 break;
             case URI:
                 writer.value(((PropertyValueURI) value).getUri());
@@ -441,17 +453,31 @@ public class OwlGraph implements StreamRDF {
                 writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
                 writer.endObject();
                 break;
-	    case REFERENCED_ENTITIES:
-	        PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
+            case REFERENCED_ENTITIES:
+                PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
                 writer.beginObject();
-		for(String referencedEntityIri : referencedEntities.getEntityIriToProperties().keySet()) {
-			PropertySet properties = referencedEntities.getEntityIriToProperties().get(referencedEntityIri);
-			writer.name(referencedEntityIri);
-			writer.beginObject();
-			writeProperties(writer, properties, null);
-			writer.endObject();
-		}
+                Map<String,PropertySet> entityIriToProperties = referencedEntities.getEntityIriToProperties(this);
+                for(String referencedEntityIri : entityIriToProperties.keySet()) {
+                    PropertySet properties = entityIriToProperties.get(referencedEntityIri);
+                    writer.name(referencedEntityIri);
+                    writer.beginObject();
+                    writeProperties(writer, properties, null);
+                    writer.endObject();
+                }
                 writer.endObject();
+                break;
+            case ANCESTORS:
+                PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
+                Set<String> ancestorIris = ancestors.getAncestors(this);
+                if(ancestorIris.size() == 1) {
+                    writer.value(ancestorIris.iterator().next());
+                } else {
+                    writer.beginArray();
+                    for(String ancestorIri : ancestorIris) {
+                        writer.value(ancestorIri);
+                    }
+                    writer.endArray();
+                }
                 break;
             default:
                 writer.value("?");

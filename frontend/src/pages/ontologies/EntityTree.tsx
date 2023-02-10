@@ -1,11 +1,13 @@
+import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import { Map as ImmutableMap, Set as ImmutableSet } from "immutable";
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Node from "../../components/Node";
 import Entity from "../../model/Entity";
+import Ontology from "../../model/Ontology";
 import extractEntityHierarchy from "./extractEntityHierarchy";
 import {
   getAncestors,
@@ -15,13 +17,15 @@ import {
 } from "./ontologiesSlice";
 
 export default function EntityTree({
-  ontologyId,
+  ontology,
   entityType,
   selectedEntity,
+  lang
 }: {
-  ontologyId: string;
+  ontology:Ontology,
   selectedEntity?: Entity;
-  entityType: "entities" | "classes" | "properties" | "individuals";
+  entityType: "entities" | "classes" | "properties" | "individuals",
+  lang:string
 }) {
   const dispatch = useAppDispatch();
   const ancestors = useAppSelector((state) => state.ontologies.ancestors);
@@ -38,16 +42,20 @@ export default function EntityTree({
   const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
     ImmutableSet()
   );
+  const [preferredRoots, setPreferredRoots] = useState<boolean>(ontology.getPreferredRoots().length > 0);
 
   const populateTreeFromEntities = useCallback(
     (entities: Entity[]) => {
-      const { rootEntities, uriToChildNodes } =
+      let { rootEntities, uriToChildNodes } =
         extractEntityHierarchy(entities);
 
-      // console.dir("rootEntities");
-      // console.dir(rootEntities);
-      // console.dir("uriToChildNodes");
-      // console.dir(uriToChildNodes);
+	if(preferredRoots) {
+		let preferred = ontology.getPreferredRoots()
+		if(preferred.length > 0) {
+			let preferredRootEntities = preferred.map(iri => entities.filter(entity => entity.getIri() === iri)[0])
+			rootEntities = preferredRootEntities.filter(entity => !!entity)
+		}
+	}
 
       const newNodeChildren = new Map<String, TreeNode[]>();
       const newExpandedNodes = new Set<String>();
@@ -77,8 +85,9 @@ export default function EntityTree({
             : node.getIri(),
           iri: node.getIri(),
           title: node.getName(),
-          expandable: node.hasDirectChildren(),
+          expandable: node.hasChildren(),
           entity: node,
+          numDescendants: node.getNumHierarchicalDescendants() || node.getNumDescendants()
         };
 
         newNodeChildren.set(
@@ -95,7 +104,7 @@ export default function EntityTree({
         return treeNode;
       }
     },
-    [selectedEntity]
+    [selectedEntity,preferredRoots,lang]
   );
   const toggleNode = (node: any) => {
     if (expandedNodes.has(node.absoluteIdentity)) {
@@ -104,15 +113,15 @@ export default function EntityTree({
     } else {
       // opening a node
       setExpandedNodes(expandedNodes.add(node.absoluteIdentity));
-      const entityTypePlural = node.entity.getTypePlural();
       const entityIri = node.iri;
       const absoluteIdentity = node.absoluteIdentity;
       dispatch(
         getNodeChildren({
-          ontologyId,
-          entityTypePlural,
+          ontologyId: ontology.getOntologyId(),
+          entityTypePlural: entityType,
           entityIri,
           absoluteIdentity,
+	  lang
         })
       );
     }
@@ -121,21 +130,32 @@ export default function EntityTree({
   useEffect(() => {
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
-      dispatch(getAncestors({ ontologyId, entityType, entityIri }));
+      dispatch(getAncestors({ ontologyId: ontology.getOntologyId(), entityType, entityIri, lang }));
     } else {
-      dispatch(getRootEntities({ ontologyId, entityType }));
+      dispatch(getRootEntities({ ontologyId: ontology.getOntologyId(), entityType, preferredRoots, lang }));
     }
-  }, [dispatch, entityType, selectedEntity, ontologyId]);
+    for(let alreadyExpanded of expandedNodes.toArray()) {
+      dispatch(
+        getNodeChildren({
+          ontologyId: ontology.getOntologyId(),
+          entityTypePlural: entityType,
+          entityIri: alreadyExpanded.split(';').pop(),
+          absoluteIdentity: alreadyExpanded,
+	  lang
+        })
+      )
+    }
+  }, [dispatch, entityType, selectedEntity, ontology, preferredRoots, lang]);
 
   useEffect(() => {
     if (selectedEntity) {
       populateTreeFromEntities([selectedEntity, ...ancestors]);
     }
-  }, [populateTreeFromEntities, ancestors, selectedEntity]);
+  }, [populateTreeFromEntities, ancestors, selectedEntity, lang]);
 
   useEffect(() => {
     setNodeChildren(nodeChildren.merge(children));
-  }, [nodeChildren, children]);
+  }, [nodeChildren, children, lang]);
 
   useEffect(() => {
     setRootNodes(
@@ -144,12 +164,13 @@ export default function EntityTree({
           iri: entity.getIri(),
           absoluteIdentity: entity.getIri(),
           title: entity.getName(),
-          expandable: entity.hasDirectChildren(),
+          expandable: entity.hasChildren(),
           entity: entity,
+          numDescendants: entity.getNumHierarchicalDescendants() || entity.getNumDescendants()
         };
       })
     );
-  }, [rootEntities]);
+  }, [rootEntities, lang]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -192,10 +213,14 @@ export default function EntityTree({
               key={randomString()}
             >
               <Link
-                to={`/ontologies/${ontologyId}/${childNode.entity.getTypePlural()}/${termUrl}`}
+                to={`/ontologies/${ontology.getOntologyId()}/${childNode.entity.getTypePlural()}/${termUrl}`}
               >
                 {childNode.title}
               </Link>
+              {
+                childNode.numDescendants > 0 &&
+                  <span style={{color:'gray'}}>{' (' + childNode.numDescendants.toLocaleString() + ')'}</span>
+              }
               {isExpanded &&
                 renderNodeChildren(
                   nodeChildren.get(childNode.absoluteIdentity) || [],
@@ -207,8 +232,20 @@ export default function EntityTree({
       </ul>
     );
   }
-  return (
-    <div>
+  return <Fragment>
+    <div style={{position: 'relative'}}>
+	{ontology.getPreferredRoots().length > 0 &&
+	<div style={{position:'absolute', right:0, top:0}}>
+		<FormControl>
+			<RadioGroup
+				name="radio-buttons-group"
+				value={preferredRoots ? "true": "false"}
+			>
+				<FormControlLabel value="true" onClick={() => setPreferredRoots(true)} control={<Radio  />} label="Preferred roots" />
+				<FormControlLabel value="false"  onClick={() => setPreferredRoots(false)}  control={<Radio/>} label="All classes" />
+			</RadioGroup>
+		</FormControl>
+		</div>}
       {rootNodes ? (
         <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
           {renderNodeChildren(rootNodes, 0)}
@@ -216,5 +253,5 @@ export default function EntityTree({
       ) : null}
       {loading ? <LoadingOverlay message="Loading children..." /> : null}
     </div>
-  );
+  </Fragment>
 }

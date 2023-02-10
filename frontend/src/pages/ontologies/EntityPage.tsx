@@ -1,7 +1,7 @@
 import { AccountTree, Share } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
@@ -16,21 +16,31 @@ import ReferencedEntities from "../../model/ReferencedEntities";
 import Reified from "../../model/Reified";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
-import { getEntity, getOntology } from "./ontologiesSlice";
+import { getClassInstances, getEntity, getOntology } from "./ontologiesSlice";
+import { Page } from "../../app/api";
+import { useParams, useSearchParams } from "react-router-dom";
+import LanguagePicker from "../../components/LanguagePicker";
 
 export default function EntityPage({
-  ontologyId,
-  entityIri,
   entityType,
 }: {
-  ontologyId: string;
-  entityIri: string;
   entityType: "classes" | "properties" | "individuals";
 }) {
+
+  const params = useParams()
+  let ontologyId:string = params.ontologyId as string
+  let entityIri:string = decodeURIComponent(params.entityIri as string)
+
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
+  const loadingClassInstances = useAppSelector((state) => state.ontologies.loadingClassInstances);
+  const classInstances = useAppSelector((state) => state.ontologies.classInstances);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  let lang = searchParams.get("lang") || "en"
+  console.log('lang is ' + lang)
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const referencedEntities = entity
@@ -67,32 +77,52 @@ export default function EntityPage({
   };
 
   useEffect(() => {
-    if (!ontology) dispatch(getOntology(ontologyId));
-    dispatch(getEntity({ ontologyId, entityType, entityIri }));
-  }, [dispatch, ontology, ontologyId, entityType, entityIri]);
+
+    if (!ontology)
+	dispatch(getOntology({ontologyId, lang}));
+
+    dispatch(getEntity({ ontologyId, entityType, entityIri, lang }));
+ 
+   if (entityType === 'classes') {
+	dispatch(getClassInstances({ ontologyId, classIri:entityIri, lang }))
+   }
+
+  }, [dispatch, ontology, ontologyId, entityType, entityIri, searchParams ]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto">
+      <main className="container mx-auto" style={{position: 'relative'}}>
         {ontology && entity ? (
+		<Fragment>
+	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" href="/ontologies">
+              <Link className="link-default" to={"/ontologies"} >
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
-              <Link className="link-default" href={"/ontologies/" + ontologyId}>
-                {ontology.getName() || ontology.getOntologyId()}
+              <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
+              <Link className="link-default" to={"/ontologies/" + ontologyId}>
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={ontologyId}
+		>
+		{ontologyId}
+		</span>
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
+              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
               <span className="capitalize">{entity.getTypePlural()}</span>
-              <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold mr-3">
-                {entity.getShortForm() || entity.getName()}
-              </span>
+              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
+		<span
+		className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={entity.getShortForm()}
+		>
+		{entity.getShortForm()}
+		</span>
               <span className="text-sm text-neutral-default">
+		&nbsp;
+		&nbsp;
                 <button
                   onClick={() => {
                     copyShortForm(entity.getShortForm() || entity.getName());
@@ -132,8 +162,6 @@ export default function EntityPage({
                 referencedEntities={referencedEntities}
               />
             </div>
-            <div className="grid grid-cols-3 gap-8">
-              <div className="col-span-2">
                 <div className="py-2 mb-1">
                   <Tooltip title="Tree view" placement="top">
                     <button
@@ -160,7 +188,7 @@ export default function EntityPage({
                     </button>
                   </Tooltip>
                 </div>
-                {viewMode === "graph" ? (
+		{ viewMode === 'graph' && 
                   <EntityGraph
                     ontologyId={ontologyId}
                     entityType={
@@ -172,71 +200,81 @@ export default function EntityPage({
                     }
                     selectedEntity={entity}
                   />
-                ) : (
-                  <EntityTree
-                    ontologyId={ontologyId}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                  />
-                )}
-              </div>
-              <div className="col-span-1">
-                <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-                    <span className="capitalize">
-                      {entity.getType()} Information
-                    </span>
-                  </summary>
-                  <div className="py-2 break-words space-y-4">
-			<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
-                  </div>
-                </details>
-                <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-                    <span className="capitalize">
-                      {entity.getType()} Relations
-                    </span>
-                  </summary>
-                  <div className="py-2 break-words space-y-4">
-                    <IndividualTypesSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <IndividualSameAsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <IndividualDifferentFromSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <DisjointWithSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityEquivalentsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityParentsSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                    <EntityRelatedFromSection
-                      entity={entity}
-                      referencedEntities={referencedEntities}
-                    />
-                  </div>
-                </details>
-              </div>
-            </div>
+		}
+		{viewMode === 'tree' && 
+			<div className="grid grid-cols-3 gap-8">
+			<div className="col-span-2">
+				<EntityTree
+				ontology={ontology}
+				entityType={
+				{
+					class: "classes",
+					property: "properties",
+					individual: "individuals",
+				}[entity.getType()]
+				}
+				selectedEntity={entity}
+				lang={lang}
+				/>
+			</div>
+			<div className="col-span-1">
+				<details open className="p-2">
+				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+				<span className="capitalize">
+				{entity.getType()} Information
+				</span>
+				</summary>
+				<div className="py-2 break-words space-y-4">
+					<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
+				</div>
+				</details>
+				<details open className="p-2">
+				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+				<span className="capitalize">
+				{entity.getType()} Relations
+				</span>
+				</summary>
+				<div className="py-2 break-words space-y-4">
+				<IndividualTypesSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<IndividualSameAsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<IndividualDifferentFromSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<DisjointWithSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityEquivalentsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityParentsSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<EntityRelatedFromSection
+				entity={entity}
+				referencedEntities={referencedEntities}
+				/>
+				<ClassInstancesSection 
+					entity={entity}
+					classInstances={classInstances}
+					referencedEntities={referencedEntities}
+				/>
+				</div>
+				</details>
+			</div>
+			</div>
+}
           </div>
+	  </Fragment>
         ) : null}
         {!ontology || loading ? (
           <LoadingOverlay message="Loading entity..." />
@@ -363,7 +401,7 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 
 			if(referencedEntity.url) {
 				// CURIE
-				return <Link href={referencedEntity.url}>{value.value}</Link>
+				return <Link className="link-default" to={referencedEntity.url}>{value.value}</Link>
 			} else {
 				// entity IRI in this ontology
 				return <EntityLink
@@ -418,6 +456,35 @@ function EntitySynonymsSection({
       </div>
     </div>
   );
+}
+
+function ClassInstancesSection({ entity, classInstances, referencedEntities }: {
+	entity: Entity,
+	classInstances: Page<Entity>|null,
+	referencedEntities: ReferencedEntities
+}) {
+
+if (entity.getType() != 'class')
+	return <Fragment />
+
+if ( (!classInstances) || classInstances.elements.length === 0)
+	return <Fragment />
+
+  return (
+    <div>
+      <div className="font-bold">Instances</div>
+      <ul className="list-disc list-inside">
+        {classInstances && classInstances.elements.map((instance:Entity) => {
+          return (
+            <li key={randomString()}>
+		<EntityLink ontologyId={entity.getOntologyId()} entityType="individuals" iri={instance.getIri()} referencedEntities={referencedEntities} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+
 }
 
 function EntityEquivalentsSection({

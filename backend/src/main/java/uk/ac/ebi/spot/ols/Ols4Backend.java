@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OlsWebApp {
+public class Ols4Backend {
 
     public static void main(String[] args) {
-        SpringApplication.run(OlsWebApp.class, args);
+        SpringApplication.run(Ols4Backend.class, args);
     }
 
 }

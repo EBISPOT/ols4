@@ -1,19 +1,25 @@
-import { AccountTree } from "@mui/icons-material";
+import { AccountTree, AnchorOutlined } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import Header from "../../components/Header";
+import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
+import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
 import EntityList from "./EntityList";
 import EntityTree from "./EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, tab:'classes'|'properties'|'individuals' }) {
+export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'individuals' }) {
+
+  const params = useParams()
+  let ontologyId:string = params.ontologyId as string
+
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
@@ -24,35 +30,47 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
 
   const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  let lang = searchParams.get("lang") || "en"
+
   useEffect(() => {
-    dispatch(getOntology(ontologyId));
-  }, [dispatch, ontologyId]);
+    dispatch(getOntology({ontologyId, lang}));
+  }, [dispatch, ontologyId, lang, searchParams]);
+
 
   document.title = ontology?.getName() || ontologyId;
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto">
+      <main className="container mx-auto" style={{position: 'relative'}}>
         {ontology ? (
+		<Fragment>
+	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to="/ontologies">
+              <Link className="link-default" to={"/ontologies"} style={{color:'black'}}>
                 Ontologies
               </Link>
-              <span className="px-2 text-sm">&gt;</span>
-              <span className="font-bold">
-                {ontology.getName() || ontology.getOntologyId()}
-              </span>
+              <span className="px-2 text-sm" style={{color:'grey'}}>▸</span>
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		title={ontologyId}
+		>
+		{ontologyId}
+		</span>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">
                 {ontology.getName() || ontology.getOntologyId()}
               </div>
-              <div>
+              <div className="mb-4">
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
               </div>
+		<div className="flex flex-nowrap gap-4">
+			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
+		</div>
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
@@ -84,38 +102,38 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
-                  <div className="py-2 mb-1">
-                    <Tooltip title="Tree view" placement="top">
-                      <button
-                        className={`button-primary font-bold mr-3 ${
-                          viewMode === "tree"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
-                        }`}
-                        onClick={() => setViewMode("tree")}
-                      >
-                        <AccountTree fontSize="small" />
-                      </button>
-                    </Tooltip>
-                    <Tooltip title="List view" placement="top">
-                      <button
-                        className={`button-primary font-bold ${
-                          viewMode === "list"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
-                        }`}
-                        onClick={() => setViewMode("list")}
-                      >
-                        <FormatListBulletedIcon fontSize="small" />
-                      </button>
-                    </Tooltip>
-                  </div>
-                ) : null}
+		{currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
+			<div className="py-2 mb-1 flex justify-between">
+				<div>
+					<Tooltip title="Tree view" placement="top">
+						<button
+							className={`button-primary font-bold mr-3 ${viewMode === "tree"
+									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+									: ""
+								}`}
+							onClick={() => setViewMode("tree")}
+						>
+							<AccountTree fontSize="small" />
+						</button>
+					</Tooltip>
+					<Tooltip title="List view" placement="top">
+						<button
+							className={`button-primary font-bold ${viewMode === "list"
+									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+									: ""
+								}`}
+							onClick={() => setViewMode("list")}
+						>
+							<FormatListBulletedIcon fontSize="small" />
+						</button>
+					</Tooltip>
+				</div>
+			</div>
+		) : null}
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (
-                  <EntityTree ontologyId={ontologyId} entityType={currentTab} />
+                  <EntityTree ontology={ontology} entityType={currentTab} lang={lang} />
                 )}
               </div>
               <div className="col-span-1">
@@ -151,18 +169,13 @@ export default function OntologyPage({ ontologyId, tab }: { ontologyId: string, 
                           : ontology.getVersionFromIri()}
                       </span>
                     </div>
-                    <div>
-                      <span className="font-bold">Number of terms: </span>
-                      <span id="numberOfEntities">
-                        {ontology.getNumEntities()}
-                      </span>
-                    </div>
 		    <OntologyAnnotationsSection ontology={ontology} />
                   </div>
                 </details>
               </div>
             </div>
           </div>
+	  </Fragment>
         ) : null}
         {loading ? <LoadingOverlay message="Loading ontology..." /> : null}
       </main>

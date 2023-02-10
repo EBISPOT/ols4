@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Help from "./pages/help/HelpPage";
 import Home from "./pages/home/Home";
-import SearchResults from "./pages/home/SearchResults";
+import Search from "./pages/search/Search";
 import EntityPage from "./pages/ontologies/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
@@ -12,90 +12,47 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route exact path={`/`} component={Home} />
-          <Route exact path={`/home`} component={Home} />
+        <Routes>
+          <Route path={`/`} element={<Home />} />
+          <Route path={`/home`} element={<Home />} />
           <Route
-            exact
-            path={`/home/search/:key`}
-            component={(props: any) => (
-              <SearchResults search={props.match.params.key} />
-            )}
+            path={`/search/:search`}
+            element={<Search />}
           />
 
-          <Route exact path={`/ontologies`} component={OntologiesPage} />
+          <Route path={`/ontologies`} element={<OntologiesPage />} />
           <Route
-            exact
-            path={`/ontologies/:id`}
-            component={(props: any) => (
-              <OntologyPage ontologyId={props.match.params.id} tab='classes' />
-            )}
+            path={`/ontologies/:ontologyId`}
+            element={<OntologyPage tab="classes" />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/classes`}
-            component={(props: any) => (
-              <OntologyPage ontologyId={props.match.params.id} tab='classes' />
-            )}
+            path={`/ontologies/:ontologyId/classes`}
+            element={<OntologyPage tab='classes' />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/classes/:iri`}
-            component={(props: any) => (
-              <EntityPage
-                ontologyId={props.match.params.id}
-                entityType="classes"
-                entityIri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.iri)
-                )}
-              />
-            )}
+            path={`/ontologies/:ontologyId/classes/:entityIri`}
+            element={<EntityPage entityType="classes" />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/properties`}
-            component={(props: any) => (
-              <OntologyPage ontologyId={props.match.params.id} tab='properties' />
-            )}
+            path={`/ontologies/:ontologyId/properties`}
+            element={<OntologyPage tab='properties' />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/properties/:iri`}
-            component={(props: any) => (
-              <EntityPage
-                ontologyId={props.match.params.id}
-                entityType="properties"
-                entityIri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.iri)
-                )}
-              />
-            )}
+            path={`/ontologies/:ontologyId/properties/:entityIri`}
+            element={<EntityPage entityType="properties" />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/individuals`}
-            component={(props: any) => (
-              <OntologyPage ontologyId={props.match.params.id} tab='individuals' />
-            )}
+            path={`/ontologies/:ontologyId/individuals`}
+            element={<OntologyPage tab='individuals' />}
           />
           <Route
-            exact
-            path={`/ontologies/:id/individuals/:iri`}
-            component={(props: any) => (
-              <EntityPage
-                ontologyId={props.match.params.id}
-                entityType="individuals"
-                entityIri={decodeURIComponent(
-                  decodeURIComponent(props.match.params.iri)
-                )}
-              />
-            )}
+            path={`/ontologies/:ontologyId/individuals/:entityIri`}
+            element={<EntityPage entityType="individuals" />}
           />
 
-          <Route exact path={`/help`} component={(props: any) => <Help />} />
-
-          <Route exact path={`/about`} component={(props: any) => <About />} />
-        </Switch>
+          <Route path={`/help`} element={<Help />} />
+          <Route path={`/about`} element={<About />} />
+        </Routes>
       </BrowserRouter>
     );
   }

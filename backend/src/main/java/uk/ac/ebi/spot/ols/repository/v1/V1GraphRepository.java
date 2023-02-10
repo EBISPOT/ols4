@@ -9,6 +9,7 @@ import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import java.util.*;
@@ -64,16 +65,28 @@ public class V1GraphRepository {
         allEdges.addAll( (List<Map<String,Object>>) parentsAndRelatedTo.get("edges") );
         allEdges.addAll( (List<Map<String,Object>>) relatedFrom.get("edges") );
 
+        Map<String,String> iriToLabel = new HashMap<>();
+
         List<Map<String,Object>> nodes = allNodes.stream().map(node -> {
 
             JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
 
+            JsonObject referencedEntities = ontologyNodeObject.getAsJsonObject("referencedEntities");
+            if(referencedEntities != null) {
+                for(String referencedIri : referencedEntities.keySet()) {
+                    JsonObject reference = referencedEntities.getAsJsonObject(referencedIri);
+                    if(!iriToLabel.containsKey(referencedIri))
+                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, "label"));
+                }
+            }
+
             Map<String, Object> nodeRes = new LinkedHashMap<>();
-            nodeRes.put("iri", ontologyNodeObject.get("iri"));
-            nodeRes.put("label", ontologyNodeObject.get("label"));
+            nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
+            nodeRes.put("label", JsonHelper.getString(ontologyNodeObject, "label"));
             return nodeRes;
 
         }).collect(Collectors.toList());
+
 
         List<Map<String,Object>> edges = allEdges.stream().map(result -> {
 
@@ -85,24 +98,17 @@ public class V1GraphRepository {
 
             JsonObject ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
 
-            String uri = ontologyEdgeObject.get("property").getAsString();
+            String uri = JsonHelper.getString(ontologyEdgeObject, "property");
             if (uri == null) {
                 uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
             }
-            edgeRes.put("uri", uri);
 
-            String propertyLabel = "is a";
-
-            JsonObject referencedEntities = ontologyEdgeObject.get("referencedEntities").getAsJsonObject();
-
-            if (referencedEntities != null) {
-                String label = referencedEntities.get(uri).getAsString();
-                if (label != null) {
-                    propertyLabel = label;
-                }
-            }
+            String propertyLabel = iriToLabel.get(uri);
+            if(propertyLabel == null)
+                propertyLabel = "is a";
 
             edgeRes.put("label", propertyLabel);
+            edgeRes.put("uri", uri);
 
             return edgeRes;
 
@@ -147,14 +153,18 @@ public class V1GraphRepository {
 
         JsonElement ontologyNodeObject = JsonParser.parseString((String) node.asMap().get("_json"));
 
-        return LocalizationTransform.transform(ontologyNodeObject, lang).getAsJsonObject();
+        return RemoveLiteralDatatypesTransform.transform(
+                LocalizationTransform.transform(ontologyNodeObject, lang)
+        ).getAsJsonObject();
     }
 
     JsonObject getOntologyEdgeJson(Relationship r, String lang) {
 
         JsonElement ontologyEdgeObject = JsonParser.parseString((String) r.asMap().get("_json"));
 
-        return LocalizationTransform.transform(ontologyEdgeObject, lang).getAsJsonObject();
+        return RemoveLiteralDatatypesTransform.transform(
+                LocalizationTransform.transform(ontologyEdgeObject, lang)
+        ).getAsJsonObject();
     }
 
 }

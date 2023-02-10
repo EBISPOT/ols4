@@ -1,3 +1,5 @@
+import { asArray } from "../app/util";
+import Reified from "./Reified";
 import Thing from "./Thing";
 
 export default class Ontology extends Thing {
@@ -5,18 +7,20 @@ export default class Ontology extends Thing {
     return this.properties["ontologyId"];
   }
   getName(): string {
-    return (
+    let names = Reified.fromJson<string>(
       this.properties["http://purl.org/dc/elements/1.1/title"] ||
       this.properties["title"] ||
       ""
     );
+    return names[0].value || this.getOntologyId()
   }
   getDescription(): string {
-    return (
+    let descriptions = Reified.fromJson<string>(
       this.properties["http://purl.org/dc/elements/1.1/description"] ||
       this.properties["description"] ||
       ""
     );
+    return descriptions[0].value || ''
   }
   getNumEntities(): number {
     return parseInt(this.properties["numberOfEntities"]);
@@ -45,6 +49,8 @@ export default class Ontology extends Thing {
   getVersionFromIri(): string {
     const versionIri =
       this.properties["http://www.w3.org/2002/07/owl#versionIRI"];
+    if(!versionIri)
+      return ""
     const versionFromDate = versionIri.match(/\d{4}-\d{2}-\d{2}/);
 
     if (versionFromDate && versionFromDate.length > 0) {
@@ -70,9 +76,22 @@ export default class Ontology extends Thing {
 		  if (predicate.indexOf('://') === -1)
 			  continue;
 
+		// anything in the rdf, rdfs, owl namespaces aren't considered annotations
+		if (! (
+			predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
+			predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
+			predicate.startsWith("http://www.w3.org/2002/07/owl#")
+		)) {
 		  annotationPredicates.add(predicate)
-	  }
+		}
+	}
 
 	  return Array.from(annotationPredicates) as string[]
+  }
+  getPreferredRoots():string[] {
+    return asArray( this.properties["hasPreferredRoot"] );
+  }
+  getLanguages():string[] {
+    return asArray( this.properties["language"] );
   }
 }

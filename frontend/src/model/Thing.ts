@@ -54,13 +54,17 @@ export default abstract class Thing {
   }
 
   getName(): string {
-    const label = Reified.fromJson<any>(
-      this.properties["http://www.w3.org/2000/01/rdf-schema#label"]
+	return this.getNames()[0];
+  }
+
+  getNames(): string[] {
+    const labels = Reified.fromJson<any>(
+      this.properties["label"]
     );
-    if (label && label.length > 0) {
-      return label[0].value;
+    if (labels && labels.length > 0) {
+      return labels.map(label => label.value)
     }
-    return this.getIri();
+    return [this.getIri()];
   }
 
   getDescription(): string {
@@ -78,10 +82,10 @@ export default abstract class Thing {
   getLabelForIri(id: string) {
     const referencedEntities = this.properties["referencedEntities"];
     if (referencedEntities) {
-      const label = referencedEntities[id]?.label;
-      return Array.isArray(label) ? label[0] : label;
+      const label:Reified<string>[] = Reified.fromJson<string>( referencedEntities[id]?.label );
+      return label[0]?.value || id
     } else {
-      return undefined;
+      return id;
     }
   }
 

@@ -19,6 +19,8 @@ export interface OntologiesState {
   loadingNodeChildren: boolean;
   loadingOntology: boolean;
   loadingEntity: boolean;
+  classInstances:Page<Entity>|null
+  loadingClassInstances:boolean
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -26,6 +28,7 @@ export interface TreeNode {
   title: string;
   expandable: boolean;
   entity: Entity;
+  numDescendants:number;
 }
 const initialState: OntologiesState = {
   ontology: undefined,
@@ -42,27 +45,41 @@ const initialState: OntologiesState = {
   loadingNodeChildren: false,
   loadingOntology: false,
   loadingEntity: false,
+  classInstances: null,
+  loadingClassInstances: false
 };
 
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
-  async (ontologyId: string) => {
+  async ({ontologyId, lang}:{ontologyId:string,lang:string}) => {
     const ontologyProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}`
+      `api/v2/ontologies/${ontologyId}`, {lang}
     );
     return new Ontology(ontologyProperties);
   }
 );
 export const getEntity = createAsyncThunk(
   "ontologies_entity",
-  async ({ ontologyId, entityType, entityIri }: any) => {
+  async ({ ontologyId, entityType, entityIri, lang }: any) => {
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityIri)
     );
     const termProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`
+      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`, {lang}
     );
     return thingFromProperties(termProperties);
+  }
+);
+export const getClassInstances = createAsyncThunk(
+  "ontologies_entity_class_instances",
+  async ({ ontologyId, classIri, lang }: any) => {
+    const doubleEncodedTermUri = encodeURIComponent(
+      encodeURIComponent(classIri)
+    );
+    const instances = (await getPaginated<any>(
+      `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances`, {lang}
+    )).map(i => thingFromProperties(i));
+    return instances;
   }
 );
 export const getOntologies = createAsyncThunk(
@@ -99,13 +116,21 @@ export const getEntities = createAsyncThunk(
 );
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
-  async ({ ontologyId, entityType, entityIri }: any) => {
+  async ({ ontologyId, entityType, entityIri, lang }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    const ancestorsPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-        { size: "100" }
-      )}`
-    );
+    if(entityType === 'classes') {
+	var ancestorsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
+		{ size: "100", lang }
+	)}`
+	);
+    } else {
+	var ancestorsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
+		{ size: "100", lang }
+	)}`
+	);
+    }
     return ancestorsPage.elements.map((obj) => thingFromProperties(obj));
   }
 );
@@ -116,15 +141,34 @@ export const getNodeChildren = createAsyncThunk(
     entityTypePlural,
     entityIri,
     absoluteIdentity,
+    lang
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    const childrenPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
-        {
-          size: "100",
-        }
-      )}`
-    );
+    if(entityTypePlural === 'classes') {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
+		{
+		size: "100", lang
+		}
+	)}`
+	);
+    } else if(entityTypePlural === 'individuals') {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
+		{
+		size: "100", lang
+		}
+	)}`
+	);
+    } else {
+	var childrenPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
+		{
+		size: "100", lang
+		}
+	)}`
+	);
+    }
     return new Map([
       [
         absoluteIdentity,
@@ -137,6 +181,7 @@ export const getNodeChildren = createAsyncThunk(
               title: term.getName(),
               expandable: term.hasDirectChildren(),
               entity: term,
+              numDescendants: term.getNumHierarchicalDescendants() || term.getNumDescendants()
             };
           }),
       ],
@@ -145,14 +190,35 @@ export const getNodeChildren = createAsyncThunk(
 );
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
-  async ({ ontologyId, entityType }: any) => {
-    const rootsPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-        hasDirectParent: "false",
-        size: "100",
-      })}`
-    );
-    return rootsPage.elements.map((obj) => thingFromProperties(obj));
+  async ({ ontologyId, entityType, preferredRoots, lang }: any) => {
+    if(entityType === 'individuals') {
+	const rootsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
+		hasIndividuals: "true",
+		size: "100",
+		lang
+	})}`
+	);
+	return rootsPage.elements.map((obj) => thingFromProperties(obj));
+    } else if(entityType === 'classes' && preferredRoots) {
+	const rootsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
+		isPreferredRoot: "true",
+		size: "100",
+		lang
+	})}`
+	);
+	return rootsPage.elements.map((obj) => thingFromProperties(obj));
+    } else {
+	const rootsPage = await getPaginated<any>(
+	`api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
+		hasDirectParent: "false",
+		size: "100",
+		lang
+	})}`
+	);
+	return rootsPage.elements.map((obj) => thingFromProperties(obj));
+    }
   }
 );
 
@@ -180,6 +246,16 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getEntity.pending, (state: OntologiesState) => {
       state.loadingEntity = true;
+    });
+    builder.addCase(
+      getClassInstances.fulfilled,
+      (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
+        state.classInstances = action.payload;
+        state.loadingClassInstances = false;
+      }
+    );
+    builder.addCase(getClassInstances.pending, (state: OntologiesState) => {
+      state.loadingClassInstances = true;
     });
     builder.addCase(
       getAncestors.fulfilled,

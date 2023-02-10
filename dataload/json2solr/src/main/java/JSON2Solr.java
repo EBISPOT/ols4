@@ -2,12 +2,8 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import org.apache.commons.cli.*;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.apache.jena.vocabulary.RDF;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.*;
 
 public class JSON2Solr {
@@ -47,17 +43,20 @@ public class JSON2Solr {
         PrintStream classesWriter = null;
         PrintStream propertiesWriter = null;
         PrintStream individualsWriter = null;
+        PrintStream autocompleteWriter = null;
 
 
         String ontologiesOutName = outPath + "/ontologies.jsonl";
         String classesOutName = outPath + "/classes.jsonl";
         String propertiesOutName = outPath + "/properties.jsonl";
         String individualsOutName = outPath + "/individuals.jsonl";
+        String autocompleteOutName = outPath + "/autocomplete.jsonl";
 
         ontologiesWriter = new PrintStream(ontologiesOutName);
         classesWriter = new PrintStream(classesOutName);
         propertiesWriter = new PrintStream(propertiesOutName);
         individualsWriter = new PrintStream(individualsOutName);
+        autocompleteWriter = new PrintStream(autocompleteOutName);
 
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
@@ -90,34 +89,19 @@ public class JSON2Solr {
 
                                 Map<String, Object> _class = gson.fromJson(reader, Map.class);
 
-                                Set<String> languages = new TreeSet<>();
-                                languages.add("en");
-                                for(String k : _class.keySet()) {
-                                    languages.addAll(extractLanguages(_class.get(k)));
-                                }
+				Map<String, Object> flattenedClass = new TreeMap<>();
 
+				String ontologyId = (String) ontology.get("ontologyId");
+				String entityId = ontologyId + "+class+" + (String) _class.get("iri");
 
-                                // Create 1 document per language
-                                //
-                                for(String lang : languages) {
+				flattenedClass.put("_json", gson.toJson(_class));
+				flattenedClass.put("id", entityId);
 
-                                    // Stringify any nested objects
-                                    //
-                                    Map<String, Object> flattenedClass = new TreeMap<>();
+				flattenProperties(_class, flattenedClass);
 
-                                    String ontologyId = (String) ontology.get("ontologyId");
-                                    flattenedClass.put("_json", gson.toJson(_class));
-                                    flattenedClass.put("lang", lang);
-                                    flattenedClass.put("id", lang + "_" + ontologyId + "+class+" + (String) _class.get("iri"));
+				classesWriter.println(gson.toJson(flattenedClass));
 
-                                    flattenProperties(_class, flattenedClass, lang);
-
-                                    classesWriter.println(gson.toJson(flattenedClass));
-
-                                }
-
-
-
+				writeAutocompleteEntries(ontologyId, entityId, flattenedClass, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -130,34 +114,18 @@ public class JSON2Solr {
 
                                 Map<String, Object> property = gson.fromJson(reader, Map.class);
 
-                                Set<String> languages = new TreeSet<>();
-                                languages.add("en");
-                                for(String k : property.keySet()) {
-                                    languages.addAll(extractLanguages(property.get(k)));
-                                }
+				Map<String, Object> flattenedProperty = new TreeMap<>();
 
+				String ontologyId = (String) ontology.get("ontologyId");
+				String entityId = ontologyId + "+property+" + (String) property.get("iri");
+				flattenedProperty.put("_json", gson.toJson(property));
+				flattenedProperty.put("id", entityId);
 
-                                // Create 1 document per language
-                                //
-                                for(String lang : languages) {
+				flattenProperties(property, flattenedProperty);
 
-                                    // Stringify any nested objects
-                                    //
-                                    Map<String, Object> flattenedProperty = new TreeMap<>();
+				propertiesWriter.println(gson.toJson(flattenedProperty));
 
-                                    String ontologyId = (String) ontology.get("ontologyId");
-                                    flattenedProperty.put("_json", gson.toJson(property));
-                                    flattenedProperty.put("lang", lang);
-                                    flattenedProperty.put("id", lang + "_" + ontologyId + "+property+" + (String) property.get("iri"));
-
-                                    flattenProperties(property, flattenedProperty, lang);
-
-                                    propertiesWriter.println(gson.toJson(flattenedProperty));
-
-                                }
-
-
-
+				writeAutocompleteEntries(ontologyId, entityId, flattenedProperty, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -169,37 +137,19 @@ public class JSON2Solr {
                             while (reader.peek() != JsonToken.END_ARRAY) {
 
                                 Map<String, Object> individual = gson.fromJson(reader, Map.class);
-                                //classesWriter.println("{\"index\": {\"_index\": \"owlindividuales\"}}");
 
+				Map<String, Object> flattenedIndividual = new TreeMap<>();
 
-                                Set<String> languages = new TreeSet<>();
-                                languages.add("en");
-                                for(String k : individual.keySet()) {
-                                    languages.addAll(extractLanguages(individual.get(k)));
-                                }
+				String ontologyId = (String) ontology.get("ontologyId");
+				String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
+				flattenedIndividual.put("_json", gson.toJson(individual));
+				flattenedIndividual.put("id", entityId);
 
+				flattenProperties(individual, flattenedIndividual);
 
-                                // Create 1 document per language
-                                //
-                                for(String lang : languages) {
+				individualsWriter.println(gson.toJson(flattenedIndividual));
 
-                                    // Stringify any nested objects
-                                    //
-                                    Map<String, Object> flattenedIndividual = new TreeMap<>();
-
-                                    String ontologyId = (String) ontology.get("ontologyId");
-                                    flattenedIndividual.put("_json", gson.toJson(individual));
-                                    flattenedIndividual.put("lang", lang);
-                                    flattenedIndividual.put("id", lang + "_" + ontologyId + "+individual+" + (String) individual.get("iri"));
-
-                                    flattenProperties(individual, flattenedIndividual, lang);
-
-                                    individualsWriter.println(gson.toJson(flattenedIndividual));
-
-                                }
-
-
-
+				writeAutocompleteEntries(ontologyId, entityId, flattenedIndividual, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -209,16 +159,7 @@ public class JSON2Solr {
                         }
                     }
 
-                    Set<String> languages = new TreeSet<>();
-                    languages.add("en");
-                    for(String k : ontology.keySet()) {
-                        languages.addAll(extractLanguages(ontology.get(k)));
-                    }
-
-                    for(String lang : languages) {
-
                         String ontologyId = (String) ontology.get("ontologyId");
-
 
                         Map<String, Object> flattenedOntology = new TreeMap<>();
 
@@ -231,13 +172,11 @@ public class JSON2Solr {
                         }
 
                         flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
-                        flattenedOntology.put("id", lang + "_" + ontologyId + "+ontology+" + ontology.get("iri"));
-                        flattenedOntology.put("lang", lang);
+                        flattenedOntology.put("id", ontologyId + "+ontology+" + ontology.get("iri"));
 
-                        flattenProperties(ontology, flattenedOntology, lang);
+                        flattenProperties(ontology, flattenedOntology);
 
                         ontologiesWriter.println(gson.toJson(flattenedOntology));
-                    }
 
                     reader.endObject(); // ontology
                 }
@@ -255,11 +194,11 @@ public class JSON2Solr {
         reader.close();
     }
 
-    static private void flattenProperties(Map<String,Object> properties, Map<String,Object> flattened, String lang) {
+    static private void flattenProperties(Map<String,Object> properties, Map<String,Object> flattened) {
 
         for (String k : properties.keySet()) {
 
-            Object v = discardMetadata(properties.get(k), lang);
+            Object v = discardMetadata(properties.get(k));
             if(v == null) {
                 continue;
             }
@@ -269,7 +208,7 @@ public class JSON2Solr {
             if (v instanceof Collection) {
                 List<String> flattenedList = new ArrayList<String>();
                 for (Object entry : ((Collection<Object>) v)) {
-                    Object obj = discardMetadata(entry, lang);
+                    Object obj = discardMetadata(entry);
                     if(obj != null) {
                         flattenedList.add(objToString(obj));
                     }
@@ -312,7 +251,7 @@ public class JSON2Solr {
     // querable anyway.
     //
     //  
-    public static Object discardMetadata(Object obj, String lang) {
+    public static Object discardMetadata(Object obj) {
 
         if (obj instanceof Map) {
 
@@ -329,22 +268,13 @@ public class JSON2Solr {
 
 	    if(types.contains("literal")) {
 
-                if(dict.containsKey("lang")) {
-		    // (3) localisation
-                    String valLang = (String)dict.get("lang");
-                    assert(valLang != null);
-                    if(! (valLang.equals(lang))) {
-                        return null;
-                    }
-                }
-
 		// (1) typed literal
-                return discardMetadata(dict.get("value"), lang);
+                return discardMetadata(dict.get("value"));
 
 	    } else if(types.contains("reification") || types.contains("related")) {
 
 		// (4) reification
-                return discardMetadata(dict.get("value"), lang);
+                return discardMetadata(dict.get("value"));
 
 	    } else {
 		throw new RuntimeException("???");
@@ -356,39 +286,6 @@ public class JSON2Solr {
 	}
     }
 
-    // Gather all of the lang: attributes from an object and all of its descendants
-    //
-    public static Collection<String> extractLanguages(Object obj) {
-
-        Set<String> langs = new TreeSet<>();
-
-        if (obj instanceof Map) {
-
-            Map<String, Object> mapObj = (Map<String, Object>) obj;
-
-            if (mapObj.containsKey("lang")) {
-                langs.add((String) mapObj.get("lang"));
-            }
-
-            for (String k : mapObj.keySet()) {
-
-                Object value = mapObj.get(k);
-
-                langs.addAll(extractLanguages(value));
-            }
-
-            return langs;
-        }
-
-        if(obj instanceof List) {
-            for(Object obj2 : (List<Object>) obj) {
-                langs.addAll(extractLanguages(obj2));
-            }
-        }
-
-        return langs;
-    }
-
     public static String objToString(Object obj) {
         if(obj instanceof String) {
             return (String)obj;
@@ -396,6 +293,37 @@ public class JSON2Solr {
             return gson.toJson(obj);
         }
     }
+
+
+
+
+   static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, PrintStream autocompleteWriter) {
+
+	Object labels = flattenedEntity.get("label");
+
+	if(labels instanceof List) {
+		for(Object label : (List<Object>) labels) {
+			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
+		}
+	}
+
+	Object synonyms = flattenedEntity.get("synonym");
+
+	if(synonyms instanceof List) {
+		for(Object label : (List<Object>) synonyms) {
+			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
+		}
+	}
+   }
+
+    static Map<String,String> makeAutocompleteEntry(String ontologyId, String entityId, String label) {
+	Map<String,String> entry = new LinkedHashMap<>();
+	entry.put("ontologyId", ontologyId);
+	entry.put("id", entityId);
+	entry.put("label", label);
+	return entry;
+    }
+
 
 }
 

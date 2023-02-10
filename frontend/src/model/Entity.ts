@@ -22,6 +22,10 @@ export default abstract class Entity extends Thing {
     return this.properties["hasHierarchicalChildren"] === "true";
   }
 
+  hasChildren(): boolean {
+    return this.hasDirectChildren() || this.hasHierarchicalChildren()
+  }
+
   getSynonyms() {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
@@ -31,7 +35,7 @@ export default abstract class Entity extends Thing {
   }
 
   getShortForm(): string {
-    return this.properties["shortForm"];
+    return this.properties["curie"] || this.properties["shortForm"];
   }
 
   getAnnotationPredicates(): string[] {
@@ -91,5 +95,15 @@ export default abstract class Entity extends Thing {
     // console.dir(Array.from(annotationPredicates));
 
     return Array.from(annotationPredicates) as string[];
+  }
+
+  getNumHierarchicalDescendants():number {
+    return this.properties['numHierarchicalDescendants'] ?
+            parseInt(this.properties['numHierarchicalDescendants']) : 0
+  }
+
+  getNumDescendants():number {
+    return this.properties['numDescendants'] ?
+            parseInt(this.properties['numDescendants']) : 0
   }
 }

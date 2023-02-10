@@ -2,11 +2,13 @@ package uk.ac.ebi.owl2json.annotators;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.OwlNode;
-import uk.ac.ebi.owl2json.properties.PropertyValueLiteral;
+import uk.ac.ebi.owl2json.properties.*;
 
 public class PreferredRootsAnnotator {
     
@@ -20,6 +22,19 @@ public class PreferredRootsAnnotator {
             preferredRoots.addAll((Collection<String>) configPreferredRoots);
         }
 
+        
+        for(String predicate : List.of("http://purl.obolibrary.org/obo/IAO_0000700", "http://www.ebi.ac.uk/ols/vocabulary/hasPreferredRootTerm")) {
+            List<PropertyValue> values = graph.ontologyNode.properties.getPropertyValues(predicate);
+            if(values != null) {
+                preferredRoots.addAll(values.stream()
+                            .filter(prop -> prop.getType() == PropertyValue.Type.URI)
+                            .map(prop -> { return ((PropertyValueURI) prop).getUri(); })
+                            .collect(Collectors.toList())
+                );
+            }
+        }
+
+
         return preferredRoots;
     }
 
@@ -28,6 +43,9 @@ public class PreferredRootsAnnotator {
         long startTime3 = System.nanoTime();
 
         Set<String> preferredRoots = getPreferredRoots(graph);
+
+        for(String root : preferredRoots)
+            graph.ontologyNode.properties.addProperty("hasPreferredRoot", PropertyValueURI.fromUri(root));
 
         for(String id : graph.nodes.keySet()) {
             OwlNode c = graph.nodes.get(id);

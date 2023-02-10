@@ -9,20 +9,27 @@ $1/bin/solr start -force -Djetty.host=127.0.0.1
 sleep 10
 
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $2/ontologies.jsonl \
-    http://127.0.0.1:8983/solr/ols4/update/json/docs?commit=true
+    http://127.0.0.1:8983/solr/ols4_entities/update/json/docs?commit=true
 
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $2/classes.jsonl \
-    http://127.0.0.1:8983/solr/ols4/update/json/docs?commit=true
+    http://127.0.0.1:8983/solr/ols4_entities/update/json/docs?commit=true
 
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $2/properties.jsonl \
-    http://127.0.0.1:8983/solr/ols4/update/json/docs?commit=true
+    http://127.0.0.1:8983/solr/ols4_entities/update/json/docs?commit=true
 
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $2/individuals.jsonl \
-    http://127.0.0.1:8983/solr/ols4/update/json/docs?commit=true
+    http://127.0.0.1:8983/solr/ols4_entities/update/json/docs?commit=true
+
+wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $2/autocomplete.jsonl \
+    http://127.0.0.1:8983/solr/ols4_autocomplete/update/json/docs?commit=true
 
 sleep 5
 
-wget http://localhost:8983/solr/ols4/update?commit=true
+wget http://localhost:8983/solr/ols4_entities/update?commit=true
+
+sleep 5
+
+wget http://localhost:8983/solr/ols4_autocomplete/update?commit=true
 
 sleep 5
 

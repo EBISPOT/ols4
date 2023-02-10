@@ -3,7 +3,6 @@ package uk.ac.ebi.owl2json.annotators;
 import uk.ac.ebi.owl2json.OwlGraph;
 import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.annotators.helpers.OntologyBaseUris;
-import uk.ac.ebi.owl2json.annotators.helpers.ShortFormExtractor;
 import uk.ac.ebi.owl2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.owl2json.properties.*;
 

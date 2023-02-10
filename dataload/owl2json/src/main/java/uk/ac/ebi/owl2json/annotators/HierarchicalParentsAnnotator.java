@@ -25,6 +25,8 @@ public class HierarchicalParentsAnnotator {
 
         if(configHierarchicalProperties instanceof Collection<?>) {
             hierarchicalProperties.addAll((Collection<String>) configHierarchicalProperties);
+        } else {
+            hierarchicalProperties.add("http://purl.obolibrary.org/obo/BFO_0000050");
         }
 
         return hierarchicalProperties;

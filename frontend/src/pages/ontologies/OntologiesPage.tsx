@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import DataTable, { Column } from "../../components/DataTable";
 import Header from "../../components/Header";
@@ -55,28 +55,28 @@ const columns: readonly Column[] = [
       return (
         <div>
           <a
-            href={`/ontologies/${ontology.getOntologyId()}`}
+            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}`}
             className="link-default"
           >
             Search
           </a>
           <br />
           <a
-            href={`/ontologies/${ontology.getOntologyId()}/classes`}
+            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/classes`}
             className="link-default"
           >
             Classes
           </a>
           <br />
           <a
-            href={`/ontologies/${ontology.getOntologyId()}/properties`}
+            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/properties`}
             className="link-default"
           >
             Properties
           </a>
           <br />
           <a
-            href={`/ontologies/${ontology.getOntologyId()}/individuals`}
+            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/individuals`}
             className="link-default"
           >
             Individuals
@@ -103,7 +103,7 @@ export default function OntologiesPage() {
     dispatch(getOntologies({ page, rowsPerPage, search }));
   }, [dispatch, page, rowsPerPage, search]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <div>
@@ -125,7 +125,7 @@ export default function OntologiesPage() {
             });
           }}
           onSelectRow={(row: Ontology) => {
-            history.push("/ontologies/" + row.getOntologyId());
+            navigate("/ontologies/" + row.getOntologyId());
           }}
           onFilter={(key: string) => {
             setSearch((prev) => {

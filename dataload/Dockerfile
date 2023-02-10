@@ -17,7 +17,7 @@ RUN mkdir /opt/neo4j && \
     curl https://dist.neo4j.org/neo4j-community-4.4.9-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
 
 RUN mkdir /opt/solr && \
-    curl https://dlcdn.apache.org/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
+    curl https://archive.apache.org/dist/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
 
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
 
@@ -30,8 +30,8 @@ RUN cd /opt/dataload && mvn clean package
 
 # Copy the OLS4 Solr config into our temporary Solr server
 #
-RUN cp -r /opt/dataload/solr_config/ols4 /opt/solr/server/solr/ols4
-
+RUN rm -rf /opt/solr/server/solr
+RUN cp -r /opt/dataload/solr_config /opt/solr/server/solr
 
 RUN mkdir /tmp/out
 

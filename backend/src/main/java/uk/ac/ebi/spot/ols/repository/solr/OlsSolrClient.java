@@ -46,7 +46,7 @@ public class OlsSolrClient {
                 }
                 Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
                 Map<String,Object> status = (Map<String,Object>) obj.get("status");
-                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4");
+                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4_entities");
                 return coreStatus;
             }
         }
@@ -81,12 +81,13 @@ public class OlsSolrClient {
                 qr.getResults().getNumFound());
     }
 
-    public JsonElement getOne(OlsSolrQuery query) {
+    public JsonElement getFirst(OlsSolrQuery query) {
 
         QueryResponse qr = runSolrQuery(query, null);
 
-        if(qr.getResults().getNumFound() != 1) {
-            throw new RuntimeException("Expected exactly 1 result for solr getOne, but got " + qr.getResults().getNumFound());
+        if(qr.getResults().getNumFound() < 1) {
+            System.out.println(query.constructQuery().jsonStr());
+            throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
         return getOlsEntityFromSolrResult(qr.getResults().get(0));
@@ -110,7 +111,7 @@ public class OlsSolrClient {
         System.out.println("solr query: " + query.toQueryString());
         System.out.println("solr host: " + host);
 
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4").build();
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
 
         QueryResponse qr = null;
         try {

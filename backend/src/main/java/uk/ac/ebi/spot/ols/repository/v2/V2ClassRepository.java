@@ -8,7 +8,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.solr.Fuzziness;
+import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
@@ -41,16 +41,16 @@ public class V2ClassRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
-        query.addFilter("type", "class", Fuzziness.EXACT);
+
+        query.setSearchText(search);
+        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -65,17 +65,17 @@ public class V2ClassRepository {
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
-        query.addFilter("type", "class", Fuzziness.EXACT);
-        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
+
+        query.setSearchText(search);
+        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
-        query.setSearchText(search);
 
         return solrClient.searchSolrPaginated(query, pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -85,17 +85,17 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("lang", lang, Fuzziness.EXACT);
-        query.addFilter("type", "class", Fuzziness.EXACT);
-        query.addFilter("ontologyId", ontologyId, Fuzziness.EXACT);
-        query.addFilter("iri", iri, Fuzziness.EXACT);
+
+        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         return new V2Entity(
-                LocalizationTransform.transform(
-                    RemoveLiteralDatatypesTransform.transform(
-                            solrClient.getOne(query)
-                    ),
-                    lang
+                RemoveLiteralDatatypesTransform.transform(
+                        LocalizationTransform.transform(
+                                solrClient.getFirst(query),
+                                lang
+                        )
                 )
         );
     }
@@ -108,8 +108,8 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
@@ -121,10 +121,38 @@ public class V2ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
+
+
+    public Page<V2Entity> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
+
+    public Page<V2Entity> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
+
 
     public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
 
@@ -134,8 +162,8 @@ public class V2ClassRepository {
         String id = ontologyId + "+individual+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id, Arrays.asList("directParent"), Map.of(), pageable)
-                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 }

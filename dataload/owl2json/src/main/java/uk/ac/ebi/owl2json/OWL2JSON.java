@@ -148,7 +148,11 @@ public class OWL2JSON {
                     continue;
                 }
 
+                long startTime3 = System.nanoTime();
+                System.out.println("Writing ontology: " + ontologyId);
                 graph.write(writer);
+                long endTime3 = System.nanoTime();
+                System.out.println("Write ontology " + ontologyId + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
                 loadedOntologyIds.add(ontologyId);
 
@@ -226,8 +230,6 @@ public class OWL2JSON {
         writer.endObject();
 
         writer.close();
-
-        System.out.println("Total time spent waiting for downloads: " + (OwlGraph.STATS_TOTAL_DOWNLOAD_TIME / 1000 / 1000 / 1000) + "s");
     }
 
 
