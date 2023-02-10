@@ -401,7 +401,7 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 
 			if(referencedEntity.url) {
 				// CURIE
-				return <Link to={referencedEntity.url}>{value.value}</Link>
+				return <Link className="link-default" to={referencedEntity.url}>{value.value}</Link>
 			} else {
 				// entity IRI in this ontology
 				return <EntityLink
@@ -465,6 +465,9 @@ function ClassInstancesSection({ entity, classInstances, referencedEntities }: {
 }) {
 
 if (entity.getType() != 'class')
+	return <Fragment />
+
+if ( (!classInstances) || classInstances.elements.length === 0)
 	return <Fragment />
 
   return (
