@@ -30,7 +30,7 @@ However, if you just want to try it out, this should get you going:
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
-
+If you want to test it with your own ontology, copy the OWL file to the `testcases` folder (which is mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if your ontology is in `testcases/myontology.owl`. Then follow the above steps for efo with the config filename you created.
 
 # Developing OLS4
 
