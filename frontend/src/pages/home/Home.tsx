@@ -38,17 +38,17 @@ export default function Home() {
                 <div className="text-neutral-black">
                   <span>
                     Examples:&nbsp;
-                    <Link to={process.env.PUBLIC_URL + "/search/diabetes"} className="link-default">
+                    <Link to={"/search/diabetes"} className="link-default">
                       diabetes
                     </Link>
                     &#44;&nbsp;
-                    <Link to={process.env.PUBLIC_URL + "/search/GO:0098743"} className="link-default">
+                    <Link to={"/search/GO:0098743"} className="link-default">
                       GO:0098743
                     </Link>
                   </span>
                 </div>
                 <div className="text-right">
-                  <Link to={process.env.PUBLIC_URL + "/ontologies"} className="link-default">
+                  <Link to={"/ontologies"} className="link-default">
                     Looking for a particular ontology?
                   </Link>
                 </div>
@@ -58,7 +58,7 @@ export default function Home() {
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-browse icon-spacer text-orange-default" />
-                  <Link to={process.env.PUBLIC_URL + "/about"} className="link-default">
+                  <Link to={"/about"} className="link-default">
                     About OLS
                   </Link>
                 </div>

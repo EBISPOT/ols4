@@ -99,11 +99,11 @@ export default function EntityPage({
 	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"} >
+              <Link className="link-default" to={"/ontologies"} >
                 Ontologies
               </Link>
               <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
-              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies/" + ontologyId}>
+              <Link className="link-default" to={"/ontologies/" + ontologyId}>
 		<span
 		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={ontologyId}

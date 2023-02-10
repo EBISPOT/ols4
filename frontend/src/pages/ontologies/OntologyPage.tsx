@@ -48,7 +48,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
-              <Link className="link-default" to={process.env.PUBLIC_URL + "/ontologies"} style={{color:'black'}}>
+              <Link className="link-default" to={"/ontologies"} style={{color:'black'}}>
                 Ontologies
               </Link>
               <span className="px-2 text-sm" style={{color:'grey'}}>▸</span>

@@ -16,7 +16,7 @@ export default function EntityLink({
   const label = referencedEntities.getLabelForIri(iri) || iri.split("/").pop();
 
   return (
-    <Link to={process.env.PUBLIC_URL + `/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
+    <Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
       {label}
     </Link>
   );
