@@ -1,49 +1,33 @@
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 public class LinkerPass2 {
 
-    public static class LinkerPass2Result {
-        Map<String, Set<String>> ontologyIdToReferences = new HashMap<>();
-    }
+    private static final JsonParser jsonParser = new JsonParser();
 
-    /* Scan through the JSON again and make a map (ontology ID -> referenced ontology IDs) using O(1) lookups in the map from pass 1
-    *
-    * How do we decide which ontologies are referenced?
-    *
-    *   - For each string:
-    *
-    *        - If it's defined as an entity by the ontology that uses it, NO ontologies are considered referenced.
-    *
-    *        - If it's defined as an entity by an ontology with isDefiningOntology=true, only that SINGLE ontology is considered referenced.
-    *
-    *        - If it's defined as an entity by multiple ontologies, none of which are the ontology which uses it, and none of them
-    *          have isDefiningOntology=true, the FIRST ontology we encounter is considered referenced (not ideal, but
-    *          the best we can do in a bad situation.)
-    *
-    *        - If it's not defined as an entity by any ontologies at all, there is no reference. (This is most strings)
-    *
-    * This ensures that we always have *somewhere* to get the entity metadata from for strings that are entity IRIs.
-    * ALL of the ontologies that define the entity will still be available to pass3 from the pass1 result. The pass2
-    * result is just to establish which ontologie(s) we need to load to get the label/any other metadata that might be
-    * required in the future.
-    */
-    public static LinkerPass2Result run(String inputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
+    public static final Bioregistry bioregistry = new Bioregistry();
 
-        LinkerPass2Result result = new LinkerPass2Result();
+    public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
+        JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
+        jsonWriter.setIndent("  ");
 
-        System.out.println("--- Linker Pass 2: Scanning " + inputJsonFilename + " to construct ontologyId->referencedOntologyId map");
+        System.out.println("--- Linker Pass 2: Processing " + inputJsonFilename);
         int nOntologies = 0;
 
         jsonReader.beginObject();
+        jsonWriter.beginObject();
 
         while (jsonReader.peek() != JsonToken.END_OBJECT) {
 
@@ -64,10 +48,37 @@ public class LinkerPass2 {
                     String ontologyId = jsonReader.nextString();
 
                     ++ nOntologies;
-                    System.out.println("Scanning ontology " + ontologyId + " (" + nOntologies + "/" + pass1Result.ontologies.size() + ")");
+                    System.out.println("Writing ontology " + ontologyId + " (" + nOntologies + ")");
 
+                    Set<String> ontologyGatheredStrings = new TreeSet<>();
 
-                    parseObject(jsonReader, ontologyId, pass1Result, result);
+                    while(jsonReader.peek() != JsonToken.END_OBJECT) {
+                        String key = jsonReader.nextName();
+                        jsonWriter.name(key);
+
+                        if(key.equals("classes")) {
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, pass1Result);
+                            continue;
+                        } else if(key.equals("properties")) {
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, pass1Result);
+                            continue;
+                        } else if(key.equals("individuals")) {
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result);
+                            continue;
+                        } else {
+                            JsonElement someOtherOntologyPropertyValue = jsonParser.parse(jsonReader);
+                            gatherStrings(someOtherOntologyPropertyValue, ontologyGatheredStrings);
+                            com.google.gson.internal.Streams.write(someOtherOntologyPropertyValue, jsonWriter);
+                        }
+                    }
+
+                    JsonObject ontologyLinkedEntities = new JsonObject();
+                    populateLinkedEntitiesUsingGatheredStrings(ontologyLinkedEntities, ontologyGatheredStrings, ontologyId, pass1Result);
+
+                    if(ontologyLinkedEntities.size() > 0) {
+                        jsonWriter.name("linkedEntities");
+                        com.google.gson.internal.Streams.write(ontologyLinkedEntities, jsonWriter);
+                    }
 
                     jsonReader.endObject(); // ontology
                 }
@@ -82,98 +93,201 @@ public class LinkerPass2 {
         }
 
         jsonReader.endObject();
+        jsonWriter.endObject();
         jsonReader.close();
+        jsonWriter.close();
 
         System.out.println("--- Linker Pass 2 complete");
-
-        return result;
     }
 
-    public static void parseObject(JsonReader jsonReader, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result, LinkerPass2Result result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
-        while(jsonReader.peek() != JsonToken.END_OBJECT) {
+        jsonReader.beginArray();
+        jsonWriter.beginArray();
 
-            jsonReader.nextName();
-
-            parseValue(jsonReader, ontologyId, pass1Result, result);
-        }
-    }
-
-    public static void parseValue(JsonReader jsonReader, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result, LinkerPass2Result result) throws IOException {
-
-        switch(jsonReader.peek()) {
-            case BEGIN_ARRAY:
-                jsonReader.beginArray();
-                parseArray(jsonReader, ontologyId, pass1Result, result);
-                jsonReader.endArray();
-                break;
-            case BEGIN_OBJECT:
-                jsonReader.beginObject();
-                parseObject(jsonReader, ontologyId, pass1Result, result);
-                jsonReader.endObject();
-                break;
-            case STRING:
-                parseString(jsonReader, ontologyId, pass1Result, result);
-                break;
-            case BOOLEAN:
-            case NUMBER:
-            case NULL:
-                jsonReader.skipValue();
-                break;
-            default:
-                throw new RuntimeException("invalid json");
-        }
-    }
-
-    public static void parseArray(JsonReader jsonReader, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result, LinkerPass2Result result) throws IOException {
         while(jsonReader.peek() != JsonToken.END_ARRAY) {
-            parseValue(jsonReader, ontologyId, pass1Result, result);
+
+            JsonObject entity = jsonParser.parse(jsonReader).getAsJsonObject();
+
+            Set<String> gatheredStrings = new TreeSet<>();
+            gatherStrings(entity, gatheredStrings);
+
+            JsonObject linkedEntities = new JsonObject();
+            populateLinkedEntitiesUsingGatheredStrings(linkedEntities, gatheredStrings, ontologyId, pass1Result);
+
+            if(linkedEntities.size() > 0) {
+                entity.add("linkedEntities", linkedEntities);
+            }
+
+            com.google.gson.internal.Streams.write(entity, jsonWriter);
+        }
+
+
+        jsonReader.endArray();
+        jsonWriter.endArray();
+    }
+
+    private static void gatherStrings(JsonElement json, Set<String> strings) {
+        if(json.isJsonArray()) {
+            JsonArray arr = json.getAsJsonArray();
+            for(JsonElement el : arr) {
+                gatherStrings(el, strings);
+            }
+        } else if(json.isJsonObject()) {
+            JsonObject obj = json.getAsJsonObject();
+            for(var entry : obj.entrySet()) {
+                strings.add(entry.getKey());
+                gatherStrings(entry.getValue(), strings);
+            }
+        } else if(json.isJsonPrimitive()) {
+            strings.add(json.getAsJsonPrimitive().getAsString());
         }
     }
 
-    public static void parseString(JsonReader jsonReader, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result, LinkerPass2Result result) throws IOException {
 
-        String str = jsonReader.nextString();
+    private static void populateLinkedEntitiesUsingGatheredStrings(JsonObject linkedEntities, Set<String> strings, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) {
 
-        Set<EntityReference> ontologies = pass1Result.iriToOntologies.get(str);
+        for(String str : strings) {
 
-        if(ontologies == null || ontologies.size() == 0) {
-            // If it's not defined as an entity by any ontologies at all, there is no reference. (This is most strings)
-            return;
+            JsonObject linkedEntity = iriToLinkedEntity(str, ontologyId, pass1Result);
+
+            if(linkedEntity == null) {
+
+                // the string didn't map to an entity in OLS. Maybe it's a CURIE?
+                CurieMapResult mappedCurie = mapCurie(str);
+
+                if(mappedCurie != null) {
+
+                    // It was a CURIE. Maybe the IRI the CURIE mapped to maps to an entity in OLS?
+                    linkedEntity = iriToLinkedEntity(mappedCurie.url, ontologyId, pass1Result);
+
+                    if(linkedEntity == null) {
+
+                        // The CURIE resolved to an IRI which did not map to an entity in OLS.
+                        // Add it to linkedEntities as a CURIE->URL reference so it can be turned into a link
+                        //
+                        JsonObject curieMapping = new JsonObject();
+                        curieMapping.addProperty("url", mappedCurie.url);
+                        curieMapping.addProperty("source", mappedCurie.source);
+                        linkedEntity.add(str, curieMapping);
+                        return;
+                    }
+                }
+            }
+
+            // The IRI resolved to an entity in OLS
+            linkedEntities.add(str, linkedEntity);
+        }
+    }
+
+    private static JsonObject iriToLinkedEntity(String iri, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) {
+
+        List<EntityDefinition> definitions = pass1Result.iriToDefinition.get(iri);
+
+        if(definitions == null) {
+            return null;
         }
 
-        // If it's defined by the ontology that uses it, NO ontologies are considered referenced.
-        for(var o : ontologies) {
-            if(o.ontologyId.equals(ontologyId)) {
-                return;
+        JsonObject linkedEntity = new JsonObject();
+
+        JsonArray definedIn = new JsonArray();
+        JsonArray definedBy = new JsonArray();
+        for(EntityDefinition def : definitions) {
+            definedIn.add(def.ontologyId);
+            if(def.isDefiningOntology) {
+                definedBy.add(def.ontologyId);
             }
         }
 
-        // If it's defined by an ontology with isDefiningOntology=true, only that SINGLE ontology is considered referenced.
-        for(var o : ontologies) {
-            if(o.isDefiningOntology) {
-                addReferencedOntology(result, ontologyId, o.ontologyId);
-                return;
-            }
-        }
-
-        // If it's defined as an entity by multiple ontologies, none of which are the ontology which uses it, and none of them
-        // have isDefiningOntology=true, the FIRST ontology we encounter is considered referenced (not ideal, but
-        // the best we can do in a bad situation.)
+        // If there's an isDefiningOntology, set definedBy
+        // Otherwise, set definedIn
         //
-        addReferencedOntology(result, ontologyId, ontologies.iterator().next().ontologyId);
-    }
-
-    private static void addReferencedOntology(LinkerPass2Result result, String ontologyId, String referencedOntologyId) {
-
-        Set<String> found = result.ontologyIdToReferences.get(ontologyId);
-
-        if(found != null) {
-            found.add(referencedOntologyId);
+        if(definedBy.size() > 0) {
+            linkedEntity.add("definedBy", definedBy);
         } else {
-            found = new TreeSet<>();
-            found.add(referencedOntologyId);
-            result.ontologyIdToReferences.put(ontologyId, found);
+            if(definedIn.size() > 0)
+                linkedEntity.add("definedIn", definedIn);
         }
+
+        // 1. Prefer labels from this ontology
+        boolean foundDefinition = false;
+        for(EntityDefinition def2 : definitions) {
+            if(def2.ontologyId.equals(ontologyId)) {
+                linkedEntity.addProperty("ontologyId", def2.ontologyId);
+                linkedEntity.add("label", def2.label);
+                linkedEntity.addProperty("type", def2.entityType);
+                foundDefinition = true;
+                break;
+            }
+        }
+
+        // 2. Look for a defining ontology
+        for(EntityDefinition def3 : definitions) {
+            if(def3.isDefiningOntology) {
+                linkedEntity.addProperty("ontologyId", def3.ontologyId);
+                linkedEntity.addProperty("type", def3.entityType);
+
+                // Only take the label from the defining ontology if it wasn't set in the importing ontology
+                if(!linkedEntity.has("label")) {
+                    linkedEntity.add("label", def3.label);
+                }
+
+                foundDefinition = true;
+                break;
+            }
+        }
+
+        if(!foundDefinition) {
+
+            // 3. Fall back on the first ontology we encounter that defines the IRI
+            //
+            // This only applies if (a) the importing ontology didn't define the entity and (b) no other ontology
+            // had isDefiningOntology=true for that entity
+            //
+            EntityDefinition fallbackDef = definitions.iterator().next();
+            linkedEntity.addProperty("ontologyId", fallbackDef.ontologyId);
+            linkedEntity.addProperty("type", fallbackDef.entityType);
+            linkedEntity.add("label", definitions.iterator().next().label);
+        }
+
+        return linkedEntity;
     }
+
+    private static CurieMapResult mapCurie(String maybeCurie) {
+
+        // No definitions for this string as an IRI in OLS. Maybe it's a CURIE.
+        //
+        if(maybeCurie.matches("^[A-z0-9]+:[A-z0-9]+$")) {
+            String databaseId = maybeCurie.substring(0, maybeCurie.indexOf(':'));
+            String entryId = maybeCurie.substring(maybeCurie.indexOf(':') + 1);
+
+            // check GO db-xrefs
+            String url = dbUrls.getUrlForId(databaseId, entryId);
+
+            if(url != null) {
+                CurieMapResult res = new CurieMapResult();
+                res.url = url;
+                res.source = dbUrls.getXrefUrls();
+                return res;
+            }
+
+            // check bioregistry
+            url = bioregistry.getUrlForId(databaseId, entryId);
+
+            if(url != null) {
+                CurieMapResult res = new CurieMapResult();
+                res.url = url;
+                res.source = bioregistry.getRegistryUrl();
+                return res;
+            }
+        }
+
+        return null;
+    }
+
+    private static class CurieMapResult {
+        public String url;
+        public String source;
+    }
+
 }

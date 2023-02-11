@@ -210,7 +210,6 @@ public class OwlGraph implements StreamRDF {
     DisjointWithAnnotator.annotateDisjointWith(this);
     HasIndividualsAnnotator.annotateHasIndividuals(this);
     EquivalenceAnnotator.annotateEquivalance(this);
-    ReferencedEntitiesAnnotator.annotateReferencedEntities(this); // should come last so it finds all the entities
 
     }
 
@@ -451,19 +450,6 @@ public class OwlGraph implements StreamRDF {
                 writer.name("value");
                 writer.value(((PropertyValueRelated) value).getFiller().uri);
                 writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
-                writer.endObject();
-                break;
-            case REFERENCED_ENTITIES:
-                PropertyValueReferencedEntities referencedEntities = (PropertyValueReferencedEntities) value;
-                writer.beginObject();
-                Map<String,PropertySet> entityIriToProperties = referencedEntities.getEntityIriToProperties(this);
-                for(String referencedEntityIri : entityIriToProperties.keySet()) {
-                    PropertySet properties = entityIriToProperties.get(referencedEntityIri);
-                    writer.name(referencedEntityIri);
-                    writer.beginObject();
-                    writeProperties(writer, properties, null);
-                    writer.endObject();
-                }
                 writer.endObject();
                 break;
             case ANCESTORS:

@@ -14,32 +14,20 @@ public class LinkerPass1 {
     private static final JsonParser jsonParser = new JsonParser();
 
     public static class LinkerPass1Result {
-        Map<String, Ontology> ontologies = new HashMap<>();
-        Map<String, Set<EntityReference>> iriToOntologies = new HashMap<>();
-
-        public static class Ontology {
-            String ontologyId;
-            public long fileOffset;
-            public long size;
-        }
+        Map<String, List<EntityDefinition>> iriToDefinition = new HashMap<>();
     }
 
-    /*
-    Scan through the JSON and make two maps:
-    ontology ID -> (file offset in the JSON to read just that single ontology, ontology size)
-    IRI -> set of ontology IDs that define that IRI and whether or not they are the defining ontology.
-    */
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {
 
         LinkerPass1Result result = new LinkerPass1Result();
 
-        CountingInputStream is = new CountingInputStream(new FileInputStream(inputJsonFilename));
+        FileInputStream is = new FileInputStream(inputJsonFilename);
         InputStreamReader reader = new InputStreamReader(is);
         JsonReader jsonReader = new JsonReader(reader);
 
         int nOntologies = 0;
 
-        System.out.println("--- Linker Pass 1: Scanning " + inputJsonFilename + " to construct IRI->ontologies map");
+        System.out.println("--- Linker Pass 1: Scanning " + inputJsonFilename + " to construct (IRI->ontologies,labels) map");
 
         jsonReader.beginObject();
 
@@ -50,9 +38,8 @@ public class LinkerPass1 {
                 jsonReader.beginArray();
 
                 while(jsonReader.peek() != JsonToken.END_ARRAY) {
-                    long offset = is.getCount();
-                    jsonReader.beginObject(); // ontology
 
+                    jsonReader.beginObject(); // ontology
 
                     String ontologyIdName = jsonReader.nextName();
                     if(!ontologyIdName.equals("ontologyId")) {
@@ -61,11 +48,7 @@ public class LinkerPass1 {
                     String ontologyId = jsonReader.nextString();
 
                     ++ nOntologies;
-                    System.out.println("Scanning ontology: " + ontologyId + " (" + nOntologies + " ontologies and " + result.iriToOntologies.size() + " IRIs so far)");
-
-                    LinkerPass1Result.Ontology ontology = new LinkerPass1Result.Ontology();
-                    ontology.ontologyId = ontologyId;
-                    ontology.fileOffset = offset;
+                    System.out.println("Scanning ontology: " + ontologyId);
 
                     while(jsonReader.peek() != JsonToken.END_OBJECT) {
                         String key = jsonReader.nextName();
@@ -84,13 +67,9 @@ public class LinkerPass1 {
                         }
                     }
 
-                    ontology.size = is.getCount() - offset;
                     jsonReader.endObject(); // ontology
 
-                    System.out.println("Ontology " + ontologyId + " scan complete; file offset " + ontology.fileOffset + ", size " + ontology.size + " bytes");
-                    System.out.println("Now have " + nOntologies + " ontologies and " + result.iriToOntologies.size() + " IRIs");
-
-                    result.ontologies.put(ontologyId, ontology);
+                    System.out.println("Now have " + nOntologies + " ontologies and " + result.iriToDefinition.size() + " distinct IRIs");
                 }
 
                 jsonReader.endArray();
@@ -105,7 +84,7 @@ public class LinkerPass1 {
         jsonReader.endObject();
         jsonReader.close();
 
-        System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToOntologies.size() + " IRIs");
+        System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinition.size() + " distinct IRIs");
 
         return result;
     }
@@ -125,6 +104,7 @@ public class LinkerPass1 {
 
         String iri = null;
         Boolean isDefining = null;
+        JsonElement label = null;
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
@@ -134,6 +114,8 @@ public class LinkerPass1 {
             } else if(key.equals("isDefiningOntology")) {
                 JsonElement elem = jsonParser.parse(jsonReader);
                 isDefining = elem.getAsJsonObject().get("value").getAsString().equals("true");
+            } else if(key.equals("label")) {
+                label = jsonParser.parse(jsonReader);
             } else {
                 jsonReader.skipValue();
             }
@@ -147,19 +129,20 @@ public class LinkerPass1 {
             isDefining = false;
         }
 
-        EntityReference iriToOntology = new EntityReference();
-        iriToOntology.ontologyId = ontologyId;
-        iriToOntology.entityType = entityType;
-        iriToOntology.isDefiningOntology = isDefining;
+        EntityDefinition entityDefinition = new EntityDefinition();
+        entityDefinition.ontologyId = ontologyId;
+        entityDefinition.entityType = entityType;
+        entityDefinition.isDefiningOntology = isDefining;
+        entityDefinition.label = label;
 
-        Set<EntityReference> entrySet = result.iriToOntologies.get(iri);
+        List<EntityDefinition> entrySet = result.iriToDefinition.get(iri);
 
         if(entrySet != null) {
-            entrySet.add(iriToOntology);
+            entrySet.add(entityDefinition);
         } else {
-            entrySet = new HashSet<>();
-            entrySet.add(iriToOntology);
-            result.iriToOntologies.put(iri, entrySet);
+            entrySet = new ArrayList<>();
+            entrySet.add(entityDefinition);
+            result.iriToDefinition.put(iri, entrySet);
         }
 
         jsonReader.endObject();

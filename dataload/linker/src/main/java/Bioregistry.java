@@ -1,6 +1,4 @@
 
-package uk.ac.ebi.owl2json.xrefs;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -54,7 +52,7 @@ public class Bioregistry {
         }
 
         for(var entry : theRegistry.entrySet()) {
-            
+
             JsonObject db = entry.getValue().getAsJsonObject();
 
             // The key is the canonical Bioregistry prefix, always lowercase
@@ -105,10 +103,10 @@ public class Bioregistry {
         if(uriFormat == null) {
             return null;
         }
-            
+
         return uriFormat.getAsString().replace("$1", id);
     }
-    
+
     private static String norm(String s) {
         // see https://github.com/biopragmatics/bioregistry/blob/a7424ef4a0d22eaca61d3a86c6175e2059e9c855/src/bioregistry/utils.py#L128-L133
         s = s.toLowerCase(Locale.ROOT);
