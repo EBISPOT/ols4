@@ -10,14 +10,38 @@ import java.util.*;
 public class LinkerPass2 {
 
     public static class LinkerPass2Result {
-        Map<String, Set<LinkerReferencedOntology>> ontologyIdToReferencedOntologies = new HashMap<>();
+        Map<String, Set<String>> ontologyIdToReferences = new HashMap<>();
     }
 
+    /* Scan through the JSON again and make a map (ontology ID -> referenced ontology IDs) using O(1) lookups in the map from pass 1
+    *
+    * How do we decide which ontologies are referenced?
+    *
+    *   - For each string:
+    *
+    *        - If it's defined as an entity by the ontology that uses it, NO ontologies are considered referenced.
+    *
+    *        - If it's defined as an entity by an ontology with isDefiningOntology=true, only that SINGLE ontology is considered referenced.
+    *
+    *        - If it's defined as an entity by multiple ontologies, none of which are the ontology which uses it, and none of them
+    *          have isDefiningOntology=true, the FIRST ontology we encounter is considered referenced (not ideal, but
+    *          the best we can do in a bad situation.)
+    *
+    *        - If it's not defined as an entity by any ontologies at all, there is no reference. (This is most strings)
+    *
+    * This ensures that we always have *somewhere* to get the entity metadata from for strings that are entity IRIs.
+    * ALL of the ontologies that define the entity will still be available to pass3 from the pass1 result. The pass2
+    * result is just to establish which ontologie(s) we need to load to get the label/any other metadata that might be
+    * required in the future.
+    */
     public static LinkerPass2Result run(String inputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         LinkerPass2Result result = new LinkerPass2Result();
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
+
+        System.out.println("--- Linker Pass 2: Scanning " + inputJsonFilename + " to construct ontologyId->referencedOntologyId map");
+        int nOntologies = 0;
 
         jsonReader.beginObject();
 
@@ -35,9 +59,13 @@ public class LinkerPass2 {
 
                     String ontologyIdName = jsonReader.nextName();
                     if(!ontologyIdName.equals("ontologyId")) {
-                        throw new RuntimeException("the json is bad; ontologyId should alwyas come first");
+                        throw new RuntimeException("the json is not formatted correctly; ontologyId should always come first");
                     }
                     String ontologyId = jsonReader.nextString();
+
+                    ++ nOntologies;
+                    System.out.println("Scanning ontology " + ontologyId + " (" + nOntologies + "/" + pass1Result.ontologies.size() + ")");
+
 
                     parseObject(jsonReader, ontologyId, pass1Result, result);
 
@@ -55,6 +83,8 @@ public class LinkerPass2 {
 
         jsonReader.endObject();
         jsonReader.close();
+
+        System.out.println("--- Linker Pass 2 complete");
 
         return result;
     }
@@ -105,19 +135,45 @@ public class LinkerPass2 {
 
         String str = jsonReader.nextString();
 
-        Set<LinkerReferencedOntology> ontologies = pass1Result.iriToOntologies.get(str);
+        Set<EntityReference> ontologies = pass1Result.iriToOntologies.get(str);
 
-        if(ontologies != null) {
+        if(ontologies == null || ontologies.size() == 0) {
+            // If it's not defined as an entity by any ontologies at all, there is no reference. (This is most strings)
+            return;
+        }
 
-            Set<LinkerReferencedOntology> found = result.ontologyIdToReferencedOntologies.get(ontologyId);
-
-            if(found != null) {
-                found.addAll(ontologies);
-            } else {
-                found = new HashSet<>();
-                found.addAll(ontologies);
-                result.ontologyIdToReferencedOntologies.put(ontologyId, found);
+        // If it's defined by the ontology that uses it, NO ontologies are considered referenced.
+        for(var o : ontologies) {
+            if(o.ontologyId.equals(ontologyId)) {
+                return;
             }
+        }
+
+        // If it's defined by an ontology with isDefiningOntology=true, only that SINGLE ontology is considered referenced.
+        for(var o : ontologies) {
+            if(o.isDefiningOntology) {
+                addReferencedOntology(result, ontologyId, o.ontologyId);
+                return;
+            }
+        }
+
+        // If it's defined as an entity by multiple ontologies, none of which are the ontology which uses it, and none of them
+        // have isDefiningOntology=true, the FIRST ontology we encounter is considered referenced (not ideal, but
+        // the best we can do in a bad situation.)
+        //
+        addReferencedOntology(result, ontologyId, ontologies.iterator().next().ontologyId);
+    }
+
+    private static void addReferencedOntology(LinkerPass2Result result, String ontologyId, String referencedOntologyId) {
+
+        Set<String> found = result.ontologyIdToReferences.get(ontologyId);
+
+        if(found != null) {
+            found.add(referencedOntologyId);
+        } else {
+            found = new TreeSet<>();
+            found.add(referencedOntologyId);
+            result.ontologyIdToReferences.put(ontologyId, found);
         }
     }
 }

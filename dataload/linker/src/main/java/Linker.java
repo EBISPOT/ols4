@@ -40,15 +40,21 @@ public class Linker {
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("output");
 
+//        LinkerPass1.LinkerPass1Result pass1Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.json")), LinkerPass1.LinkerPass1Result.class);
         LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
 
         Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
-
+//
         System.gc();
-
+//
         LinkerPass2.LinkerPass2Result pass2Result = LinkerPass2.run(inputFilePath, pass1Result);
 
         Files.write(Path.of(outputFilePath+ "pass2.json"), gson.toJson(pass2Result).getBytes(StandardCharsets.UTF_8));
+
+//        LinkerPass2.LinkerPass2Result pass2Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.jsonpass2.json")), LinkerPass2.LinkerPass2Result.class);
+
+        LinkerPass3.run(inputFilePath, "/Users/james/ols4/pass3.json", pass1Result, pass2Result);
+
     }
 }
 
