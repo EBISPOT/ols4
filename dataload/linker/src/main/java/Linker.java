@@ -46,7 +46,7 @@ public class Linker {
 //        gson.toJson(pass1Result, new FileWriter(outputFilePath));
 //        Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
 
-        LinkerPass2.run(inputFilePath, "/Users/james/ols4/pass2.json", pass1Result);
+        LinkerPass2.run(inputFilePath, outputFilePath, pass1Result);
 
     }
 }

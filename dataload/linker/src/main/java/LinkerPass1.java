@@ -14,7 +14,7 @@ public class LinkerPass1 {
     private static final JsonParser jsonParser = new JsonParser();
 
     public static class LinkerPass1Result {
-        Map<String, List<EntityDefinition>> iriToDefinition = new HashMap<>();
+        Map<String, EntityDefinitionSet> iriToDefinitions = new HashMap<>();
     }
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {
@@ -69,7 +69,7 @@ public class LinkerPass1 {
 
                     jsonReader.endObject(); // ontology
 
-                    System.out.println("Now have " + nOntologies + " ontologies and " + result.iriToDefinition.size() + " distinct IRIs");
+                    System.out.println("Now have " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
                 }
 
                 jsonReader.endArray();
@@ -84,7 +84,7 @@ public class LinkerPass1 {
         jsonReader.endObject();
         jsonReader.close();
 
-        System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinition.size() + " distinct IRIs");
+        System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
 
         return result;
     }
@@ -135,15 +135,21 @@ public class LinkerPass1 {
         entityDefinition.isDefiningOntology = isDefining;
         entityDefinition.label = label;
 
-        List<EntityDefinition> entrySet = result.iriToDefinition.get(iri);
+        EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);
 
-        if(entrySet != null) {
-            entrySet.add(entityDefinition);
-        } else {
-            entrySet = new ArrayList<>();
-            entrySet.add(entityDefinition);
-            result.iriToDefinition.put(iri, entrySet);
+        if(definitionSet == null) {
+            definitionSet = new EntityDefinitionSet();
+            definitionSet.definitions = new HashSet<>();
+            definitionSet.definingDefinitions = new HashSet<>();
+            definitionSet.ontologyIdToDefinitions = new HashMap<>();
+            result.iriToDefinitions.put(iri, definitionSet);
         }
+
+        definitionSet.definitions.add(entityDefinition);
+        definitionSet.ontologyIdToDefinitions.put(ontologyId, entityDefinition);
+
+        if(entityDefinition.isDefiningOntology)
+            definitionSet.definingDefinitions.add(entityDefinition);
 
         jsonReader.endObject();
     }
