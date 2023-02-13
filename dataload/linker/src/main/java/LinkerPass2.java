@@ -129,6 +129,12 @@ public class LinkerPass2 {
                 }
             }
 
+
+            EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
+            if(defOfThisEntity != null) {
+                writeDefinedByAndDefinedIn(jsonWriter, defOfThisEntity);
+            }
+
             jsonWriter.name("linkedEntities");
             writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, pass1Result);
 
@@ -197,24 +203,7 @@ public class LinkerPass2 {
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
 
-        // If there's an isDefiningOntology, set definedBy
-        // Otherwise, set definedIn
-        //
-        if(definitions.definingDefinitions.size() > 0) {
-            jsonWriter.name("definedBy");
-            jsonWriter.beginArray();
-            for(var def : definitions.definingDefinitions) {
-                jsonWriter.value(def.ontologyId);
-            }
-            jsonWriter.endArray();
-        } else {
-            jsonWriter.name("definedIn");
-            jsonWriter.beginArray();
-            for(var def : definitions.definitions) {
-                jsonWriter.value(def.ontologyId);
-            }
-            jsonWriter.endArray();
-        }
+        writeDefinedByAndDefinedIn(jsonWriter, definitions);
 
         boolean foundDefinition = false;
 
@@ -259,6 +248,27 @@ public class LinkerPass2 {
             jsonWriter.value(fallbackDef.entityType);
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(fallbackDef.label, jsonWriter);
+        }
+    }
+
+    private static void writeDefinedByAndDefinedIn(JsonWriter jsonWriter, EntityDefinitionSet definitions) throws IOException {
+
+        if(definitions.definingDefinitions.size() > 0) {
+            jsonWriter.name("definedBy");
+            jsonWriter.beginArray();
+            for(var def : definitions.definingDefinitions) {
+                jsonWriter.value(def.ontologyId);
+            }
+            jsonWriter.endArray();
+        }
+
+        if(definitions.definitions.size() > 0) {
+            jsonWriter.name("definedIn");
+            jsonWriter.beginArray();
+            for(var def : definitions.definitions) {
+                jsonWriter.value(def.ontologyId);
+            }
+            jsonWriter.endArray();
         }
     }
 
