@@ -16,7 +16,7 @@ public class V1OboSynonymExtractor {
 
     public static List<V1OboSynonym> extractFromJson(JsonObject json) {
 
-        JsonObject referencedEntities = json.getAsJsonObject("referencedEntities");
+        JsonObject linkedEntities = json.getAsJsonObject("linkedEntities");
 
         List<JsonElement> exact = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym");
         List<JsonElement> related = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym");
@@ -24,27 +24,27 @@ public class V1OboSynonymExtractor {
         List<JsonElement> broad = JsonHelper.getValues(json, "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym");
 
         List<V1OboSynonym> synonyms =
-                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", referencedEntities))
+                exact.stream().map(synonym -> fromSynonymObject(synonym, "hasExactSynonym", linkedEntities))
                         .flatMap(Collection::stream)
 //                                .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList());
 
         synonyms.addAll(
-                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", referencedEntities))
+                related.stream().map(synonym -> fromSynonymObject(synonym, "hasRelatedSynonym", linkedEntities))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
-                narrow.stream().map(synonym -> fromSynonymObject(synonym, "hasNarrowSynonym", referencedEntities))
+                narrow.stream().map(synonym -> fromSynonymObject(synonym, "hasNarrowSynonym", linkedEntities))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
         );
 
         synonyms.addAll(
-                broad.stream().map(synonym -> fromSynonymObject(synonym, "hasBroadSynonym", referencedEntities))
+                broad.stream().map(synonym -> fromSynonymObject(synonym, "hasBroadSynonym", linkedEntities))
                         .flatMap(Collection::stream)
 //                        .filter(synonym -> synonym.type != null || synonym.xrefs != null)
                         .collect(Collectors.toList())
@@ -83,7 +83,7 @@ public class V1OboSynonymExtractor {
 //        return result;
 //    }
 
-    private static List<V1OboSynonym> fromSynonymObject(JsonElement synonymObj, String scope, JsonObject referencedEntities) {
+    private static List<V1OboSynonym> fromSynonymObject(JsonElement synonymObj, String scope, JsonObject linkedEntities) {
 
         if(synonymObj.isJsonPrimitive()) {
 
@@ -109,7 +109,7 @@ public class V1OboSynonymExtractor {
             synonym.type = JsonHelper.getString(axiom, "oboSynonymTypeName");
 
             synonym.xrefs = JsonHelper.getValues(axiom, "http://www.geneontology.org/formats/oboInOwl#hasDbXref")
-                .stream().map(xref -> V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities))
+                .stream().map(xref -> V1OboXref.fromString(JsonHelper.objectToString(xref), linkedEntities))
                         .collect(Collectors.toList());
 
             synonyms.add(synonym);

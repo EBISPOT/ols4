@@ -12,7 +12,7 @@ import Class from "../../model/Class";
 import Entity from "../../model/Entity";
 import Individual from "../../model/Individual";
 import Property from "../../model/Property";
-import ReferencedEntities from "../../model/ReferencedEntities";
+import LinkedEntities from "../../model/LinkedEntities";
 import Reified from "../../model/Reified";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
@@ -43,9 +43,9 @@ export default function EntityPage({
   console.log('lang is ' + lang)
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
-  const referencedEntities = entity
-    ? entity.getReferencedEntities()
-    : new ReferencedEntities({});
+  const linkedEntities = entity
+    ? entity.getLinkedEntities()
+    : new LinkedEntities({});
 
   const [isShortFormCopied, setIsShortFormCopied] = useState(false);
   const copyShortForm = (text: string) => {
@@ -154,12 +154,12 @@ export default function EntityPage({
               <div className="mb-4">
                 <EntityDescriptionSection
                   entity={entity}
-                  referencedEntities={referencedEntities}
+                  linkedEntities={linkedEntities}
                 />
               </div>
               <EntitySynonymsSection
                 entity={entity}
-                referencedEntities={referencedEntities}
+                linkedEntities={linkedEntities}
               />
             </div>
                 <div className="py-2 mb-1">
@@ -225,7 +225,7 @@ export default function EntityPage({
 				</span>
 				</summary>
 				<div className="py-2 break-words space-y-4">
-					<EntityAnnotationsSection entity={entity} referencedEntities={referencedEntities} />
+					<EntityAnnotationsSection entity={entity} linkedEntities={linkedEntities} />
 				</div>
 				</details>
 				<details open className="p-2">
@@ -237,36 +237,36 @@ export default function EntityPage({
 				<div className="py-2 break-words space-y-4">
 				<IndividualTypesSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<IndividualSameAsSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<IndividualDifferentFromSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<DisjointWithSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<EntityEquivalentsSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<EntityParentsSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<EntityRelatedFromSection
 				entity={entity}
-				referencedEntities={referencedEntities}
+				linkedEntities={linkedEntities}
 				/>
 				<ClassInstancesSection 
 					entity={entity}
 					classInstances={classInstances}
-					referencedEntities={referencedEntities}
+					linkedEntities={linkedEntities}
 				/>
 				</div>
 				</details>
@@ -286,10 +286,10 @@ export default function EntityPage({
 
 function EntityDescriptionSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   return (
     <p>
@@ -302,7 +302,7 @@ function EntityDescriptionSection({
               <Tooltip
                 title={Object.keys(definition.getMetadata())
                   .map((key) => {
-                    let label = referencedEntities.getLabelForIri(key);
+                    let label = linkedEntities.getLabelForIri(key);
                     if (label) {
                       return (
                         "*" +
@@ -327,7 +327,7 @@ function EntityDescriptionSection({
     </p>
   );
 }
-function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, referencedEntities:ReferencedEntities}) {
+function EntityAnnotationsSection({entity, linkedEntities}:{entity:Entity, linkedEntities:LinkedEntities}) {
 
 	let annotationPredicates = entity.getAnnotationPredicates()
 
@@ -366,7 +366,7 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 			{ annotations.length === 1 ?
 				<p>
 					{renderAnnotation(annotations[0])}
-					{annotations[0].hasMetadata() && <MetadataTooltip metadata={annotations[0].getMetadata()} referencedEntities={referencedEntities} />}
+					{annotations[0].hasMetadata() && <MetadataTooltip metadata={annotations[0].getMetadata()} linkedEntities={linkedEntities} />}
 				</p> :
 			<ul className="list-disc list-inside">
 				{annotations.map((annotation: Reified<any>) => {
@@ -377,7 +377,7 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 					}
 				>
 					{renderAnnotation(annotation)}
-					{annotation.hasMetadata() && <MetadataTooltip metadata={annotation.getMetadata()} referencedEntities={referencedEntities} />}
+					{annotation.hasMetadata() && <MetadataTooltip metadata={annotation.getMetadata()} linkedEntities={linkedEntities} />}
 				</li>
 				);
 				})
@@ -393,22 +393,22 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 
 	function renderAnnotation(value:Reified<any>) {
 
-		let referencedEntity = referencedEntities.get(value.value)
+		let linkedEntity = linkedEntities.get(value.value)
 
-		if(referencedEntity) {
+		if(linkedEntity) {
 			// The annotation value refers to an entity.
 			// This may be a CURIE with a URL; or an IRI with label(s)
 
-			if(referencedEntity.url) {
+			if(linkedEntity.url) {
 				// CURIE
-				return <Link className="link-default" to={referencedEntity.url}>{value.value}</Link>
+				return <Link className="link-default" to={linkedEntity.url}>{value.value}</Link>
 			} else {
 				// entity IRI in this ontology
 				return <EntityLink
 					ontologyId = {entity.getOntologyId()}
 					entityType = "classes" // TODO
 					iri = {value.value}
-					referencedEntities = {referencedEntities}
+					linkedEntities = {linkedEntities}
 				/>
 			}
 		} else {
@@ -419,10 +419,10 @@ function EntityAnnotationsSection({entity, referencedEntities}:{entity:Entity, r
 
 function EntitySynonymsSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   let synonyms = entity.getSynonyms();
 
@@ -446,7 +446,7 @@ function EntitySynonymsSection({
                 {hasMetadata && (
                   <MetadataTooltip
                     metadata={synonym.getMetadata()}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </div>
@@ -458,10 +458,10 @@ function EntitySynonymsSection({
   );
 }
 
-function ClassInstancesSection({ entity, classInstances, referencedEntities }: {
+function ClassInstancesSection({ entity, classInstances, linkedEntities }: {
 	entity: Entity,
 	classInstances: Page<Entity>|null,
-	referencedEntities: ReferencedEntities
+	linkedEntities: LinkedEntities
 }) {
 
 if (entity.getType() != 'class')
@@ -477,7 +477,7 @@ if ( (!classInstances) || classInstances.elements.length === 0)
         {classInstances && classInstances.elements.map((instance:Entity) => {
           return (
             <li key={randomString()}>
-		<EntityLink ontologyId={entity.getOntologyId()} entityType="individuals" iri={instance.getIri()} referencedEntities={referencedEntities} />
+		<EntityLink ontologyId={entity.getOntologyId()} entityType="individuals" iri={instance.getIri()} linkedEntities={linkedEntities} />
             </li>
           );
         })}
@@ -489,10 +489,10 @@ if ( (!classInstances) || classInstances.elements.length === 0)
 
 function EntityEquivalentsSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Class || entity instanceof Property)) {
     return <Fragment />;
@@ -515,12 +515,12 @@ function EntityEquivalentsSection({
               <ClassExpression
                 ontologyId={entity.getOntologyId()}
                 expr={eqClass.value}
-                referencedEntities={referencedEntities}
+                linkedEntities={linkedEntities}
               />
               {hasMetadata && (
                 <MetadataTooltip
                   metadata={eqClass.getMetadata()}
-                  referencedEntities={referencedEntities}
+                  linkedEntities={linkedEntities}
                 />
               )}
             </li>
@@ -533,10 +533,10 @@ function EntityEquivalentsSection({
 
 function EntityParentsSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Class || entity instanceof Property)) {
     return <Fragment />;
@@ -558,12 +558,12 @@ function EntityParentsSection({
           <ClassExpression
             ontologyId={entity.getOntologyId()}
             expr={parents[0].value}
-            referencedEntities={referencedEntities}
+            linkedEntities={linkedEntities}
           />
           {parents[0].hasMetadata() && (
             <MetadataTooltip
               metadata={parents[0].getMetadata()}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           )}
         </p>
@@ -575,12 +575,12 @@ function EntityParentsSection({
                 <ClassExpression
                   ontologyId={entity.getOntologyId()}
                   expr={parent.value}
-                  referencedEntities={referencedEntities}
+                  linkedEntities={linkedEntities}
                 />
                 {parent.hasMetadata() && (
                   <MetadataTooltip
                     metadata={parent.getMetadata()}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </li>
@@ -594,10 +594,10 @@ function EntityParentsSection({
 
 function EntityRelatedFromSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Class || entity instanceof Property)) {
     return <Fragment />;
@@ -617,7 +617,7 @@ function EntityRelatedFromSection({
     <div>
       <div className="font-bold">Related from</div>
       {predicates.map((p) => {
-        let label = referencedEntities.getLabelForIri(p);
+        let label = linkedEntities.getLabelForIri(p);
         return (
           <div key={p + randomString()}>
             <div>
@@ -629,14 +629,14 @@ function EntityRelatedFromSection({
                   .filter((relatedFrom) => relatedFrom.value.property === p)
                   .map((relatedFrom) => {
                     let relatedIri = relatedFrom.value.value;
-                    // let label = referencedEntities.getLabelForIri(relatedIri);
+                    // let label = linkedEntities.getLabelForIri(relatedIri);
                     return (
                       <li key={relatedIri + randomString()}>
                         <EntityLink
                           ontologyId={entity.getOntologyId()}
                           entityType={"classes"}
                           iri={relatedIri}
-                          referencedEntities={referencedEntities}
+                          linkedEntities={linkedEntities}
                         />
                       </li>
                     );
@@ -652,12 +652,12 @@ function EntityRelatedFromSection({
   );
 }
 
-function MetadataTooltip({metadata, referencedEntities}:{metadata:any, referencedEntities:ReferencedEntities }) {
+function MetadataTooltip({metadata, linkedEntities}:{metadata:any, linkedEntities:LinkedEntities }) {
 
 	return <Tooltip
 		title={Object.keys(metadata)
 		.map((key) => {
-			let label = referencedEntities.getLabelForIri(key) || key
+			let label = linkedEntities.getLabelForIri(key) || key
 		if (label) {
 			return ("*" + metadata[key] + " (" +
 					label.replaceAll( "_", " ") + ")");
@@ -674,10 +674,10 @@ function MetadataTooltip({metadata, referencedEntities}:{metadata:any, reference
 
 function IndividualTypesSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Individual)) {
     return <Fragment />;
@@ -698,14 +698,14 @@ function IndividualTypesSection({
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               expr={types[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
               entityType={"classes"}
               iri={types[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           )}
         </p>
@@ -718,14 +718,14 @@ function IndividualTypesSection({
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
                     expr={type}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
                     entityType={"classes"}
                     iri={type}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </li>
@@ -739,10 +739,10 @@ function IndividualTypesSection({
 
 function IndividualSameAsSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Individual)) {
     return <Fragment />;
@@ -763,14 +763,14 @@ function IndividualSameAsSection({
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               expr={sameAses[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
               entityType={"individuals"}
               iri={sameAses[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           )}
         </p>
@@ -783,14 +783,14 @@ function IndividualSameAsSection({
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
                     expr={sameAs}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
                     entityType={"individuals"}
                     iri={sameAs}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </li>
@@ -804,10 +804,10 @@ function IndividualSameAsSection({
 
 function IndividualDifferentFromSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Individual)) {
     return <Fragment />;
@@ -829,14 +829,14 @@ function IndividualDifferentFromSection({
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               expr={differentFroms[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
               entityType={"individuals"}
               iri={differentFroms[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           )}
         </p>
@@ -850,14 +850,14 @@ function IndividualDifferentFromSection({
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
                     expr={differentFrom}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
                     entityType={"individuals"}
                     iri={differentFrom}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </li>
@@ -871,10 +871,10 @@ function IndividualDifferentFromSection({
 
 function DisjointWithSection({
   entity,
-  referencedEntities,
+  linkedEntities,
 }: {
   entity: Entity;
-  referencedEntities: ReferencedEntities;
+  linkedEntities: LinkedEntities;
 }) {
   if (!(entity instanceof Property) && !(entity instanceof Class)) {
     return <Fragment />;
@@ -896,7 +896,7 @@ function DisjointWithSection({
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               expr={disjointWiths[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
@@ -905,7 +905,7 @@ function DisjointWithSection({
                 entity.getType() === "property" ? "properties" : "classes"
               }
               iri={disjointWiths[0]}
-              referencedEntities={referencedEntities}
+              linkedEntities={linkedEntities}
             />
           )}
         </p>
@@ -919,7 +919,7 @@ function DisjointWithSection({
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
                     expr={disjointWith}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
@@ -928,7 +928,7 @@ function DisjointWithSection({
                       entity.getType() === "property" ? "properties" : "classes"
                     }
                     iri={disjointWith}
-                    referencedEntities={referencedEntities}
+                    linkedEntities={linkedEntities}
                   />
                 )}
               </li>

@@ -14,7 +14,7 @@ public class V1OboDefinitionCitationExtractor {
 
     public static List<V1OboDefinitionCitation> extractFromJson(JsonObject json) {
 
-        JsonObject referencedEntities = json.get("referencedEntities").getAsJsonObject();
+        JsonObject linkedEntities = json.get("linkedEntities").getAsJsonObject();
 
         List<JsonElement> definitions = JsonHelper.getValues(json, "definition");
         List<V1OboDefinitionCitation> res = new ArrayList<>();
@@ -37,7 +37,7 @@ public class V1OboDefinitionCitationExtractor {
 
                         V1OboDefinitionCitation citation = new V1OboDefinitionCitation();
                         citation.definition = definition;
-                        citation.oboXrefs = xrefs.stream().map(xref -> V1OboXref.fromString(JsonHelper.objectToString(xref), referencedEntities)).collect(Collectors.toList());
+                        citation.oboXrefs = xrefs.stream().map(xref -> V1OboXref.fromString(JsonHelper.objectToString(xref), linkedEntities)).collect(Collectors.toList());
                         res.add(citation);
                     }
                 }

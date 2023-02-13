@@ -14,7 +14,7 @@ public class V1OboXref {
 
 
     // e.g. Orphanet:1037
-    public static V1OboXref fromString(String oboXref, JsonObject referencedEntities) {
+    public static V1OboXref fromString(String oboXref, JsonObject linkedEntities) {
 
         if(oboXref.startsWith("http:") || oboXref.startsWith("https:")) {
             V1OboXref xref = new V1OboXref();
@@ -48,9 +48,9 @@ public class V1OboXref {
         xref.id = tokens[1];
 
 
-        JsonElement referencedEntityObj = referencedEntities.get(oboXref);
-        if(referencedEntityObj != null && referencedEntityObj.getAsJsonObject().has("url"))  {
-            xref.url = referencedEntityObj.getAsJsonObject().get("url").getAsString();
+        JsonElement linkedEntityObj = linkedEntities.get(oboXref);
+        if(linkedEntityObj != null && linkedEntityObj.getAsJsonObject().has("url"))  {
+            xref.url = linkedEntityObj.getAsJsonObject().get("url").getAsString();
         }
 
         return xref;

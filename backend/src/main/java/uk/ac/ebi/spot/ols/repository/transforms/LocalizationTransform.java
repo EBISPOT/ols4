@@ -52,8 +52,8 @@ public class LocalizationTransform {
 
         for (String k : obj.keySet()) {
 
-            if(k.equals("referencedEntities")) {
-                res.add(k, localizeReferencedEntities(obj.get(k).getAsJsonObject(), lang));
+            if(k.equals("linkedEntities")) {
+                res.add(k, localizeLinkedEntities(obj.get(k).getAsJsonObject(), lang));
             } else {
                 JsonElement localized = localizeValueWithFallbacks( obj.get(k), lang );
 
@@ -172,10 +172,10 @@ public class LocalizationTransform {
         return localized;
     }
 
-    public static JsonObject localizeReferencedEntities(JsonObject referencedEntities, String lang) {
+    public static JsonObject localizeLinkedEntities(JsonObject linkedEntities, String lang) {
         JsonObject res = new JsonObject();
-        for(String entityIri : referencedEntities.keySet()) {
-            JsonObject entityProps = referencedEntities.getAsJsonObject(entityIri);
+        for(String entityIri : linkedEntities.keySet()) {
+            JsonObject entityProps = linkedEntities.getAsJsonObject(entityIri);
             JsonObject entityPropsRes = new JsonObject();
             for(String k : entityProps.keySet()) {
                 entityPropsRes.add(k, localizeValueWithFallbacks(entityProps.get(k), lang));

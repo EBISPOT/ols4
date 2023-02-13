@@ -71,10 +71,10 @@ public class V1GraphRepository {
 
             JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
 
-            JsonObject referencedEntities = ontologyNodeObject.getAsJsonObject("referencedEntities");
-            if(referencedEntities != null) {
-                for(String referencedIri : referencedEntities.keySet()) {
-                    JsonObject reference = referencedEntities.getAsJsonObject(referencedIri);
+            JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
+            if(linkedEntities != null) {
+                for(String referencedIri : linkedEntities.keySet()) {
+                    JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
                     if(!iriToLabel.containsKey(referencedIri))
                         iriToLabel.put(referencedIri, JsonHelper.getString(reference, "label"));
                 }
