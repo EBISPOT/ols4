@@ -85,6 +85,7 @@ public class LinkerPass2 {
                 }
 
                 jsonReader.endArray();
+                jsonWriter.endArray();
 
             } else {
 
@@ -161,7 +162,10 @@ public class LinkerPass2 {
             EntityDefinitionSet iriMapping = pass1Result.iriToDefinitions.get(str);
 
             if(iriMapping != null) {
+                jsonWriter.name(str);
+                jsonWriter.beginObject();
                 writeIriMapping(jsonWriter, iriMapping, ontologyId);
+                jsonWriter.endObject();
                 continue;
             }
 
