@@ -157,6 +157,10 @@ export default function EntityPage({
                   linkedEntities={linkedEntities}
                 />
               </div>
+              <DefiningOntologiesSection
+                entity={entity}
+                linkedEntities={linkedEntities}
+              />
               <EntitySynonymsSection
                 entity={entity}
                 linkedEntities={linkedEntities}
@@ -417,6 +421,56 @@ function EntityAnnotationsSection({entity, linkedEntities}:{entity:Entity, linke
 	}
 }
 
+function DefiningOntologiesSection({
+  entity,
+  linkedEntities,
+}: {
+  entity: Entity;
+  linkedEntities: LinkedEntities;
+}) {
+  let definedBy = entity.getDefinedBy().filter(ontId => ontId !== entity.getOntologyId())
+  let definedIn = entity.getDefinedIn().filter(ontId => ontId !== entity.getOntologyId() && definedBy.indexOf(ontId) === -1);
+
+  return (
+	<Fragment>
+		{definedBy && definedBy.length > 0 &&
+    <div className="mb-2">
+      <span className="font-bold mr-2">Defined by</span>
+        {definedBy
+          .map((definedBy:string) => {
+              return <Link className="link-default" to={"/ontologies/" + definedBy + `/${entity.getTypePlural()}/` + encodeURIComponent(encodeURIComponent(entity.getIri()))}>
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+		title={definedBy}
+		>
+		{definedBy}
+		</span>
+              </Link>
+	  })
+	}
+    </div>
+}
+		{definedIn && definedIn.length > 0 &&
+    <div className="mb-2">
+      <span className="font-bold mr-2">Also defined in</span>
+        {definedIn
+          .map((definedIn:string) => {
+              return <Link className="link-default" to={"/ontologies/" + definedIn + `/${entity.getTypePlural()}/` + encodeURIComponent(encodeURIComponent(entity.getIri()))}>
+		<span
+		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+		title={definedIn}
+		>
+		{definedIn}
+		</span>
+              </Link>
+	  })
+	}
+    </div>
+}
+    </Fragment>
+  );
+}
+
 function EntitySynonymsSection({
   entity,
   linkedEntities,
@@ -431,16 +485,15 @@ function EntitySynonymsSection({
   }
 
   return (
-    <div>
-      <div className="font-bold mb-4">Synonym</div>
-      <div className="flex flex-row flex-wrap">
+    <div className="mb-2">
+      <span className="font-bold mr-2">Synonym</span>
         {synonyms
           .map((synonym: Reified<any>) => {
             const hasMetadata = synonym.hasMetadata();
             return (
-              <div
+              <span
                 key={synonym.value.toString().toUpperCase() + randomString()}
-                className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mb-2 mr-2 text-sm"
+                className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 text-sm"
               >
                 {synonym.value}
                 {hasMetadata && (
@@ -449,11 +502,10 @@ function EntitySynonymsSection({
                     linkedEntities={linkedEntities}
                   />
                 )}
-              </div>
+              </span>
             );
           })
           .sort((a, b) => sortByKeys(a, b))}
-      </div>
     </div>
   );
 }
