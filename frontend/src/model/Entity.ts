@@ -1,4 +1,4 @@
-import ReferencedEntities from "./ReferencedEntities";
+import LinkedEntities from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
 
@@ -30,8 +30,8 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
-  getReferencedEntities(): ReferencedEntities {
-    return new ReferencedEntities(this.properties["referencedEntities"] || {});
+  getLinkedEntities(): LinkedEntities {
+    return new LinkedEntities(this.properties["linkedEntities"] || {});
   }
 
   getShortForm(): string {

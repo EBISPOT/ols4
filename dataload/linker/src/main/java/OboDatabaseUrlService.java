@@ -1,6 +1,4 @@
 
-package uk.ac.ebi.owl2json.xrefs;
-
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;

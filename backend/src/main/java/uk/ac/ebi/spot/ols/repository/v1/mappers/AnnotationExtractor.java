@@ -20,7 +20,7 @@ public class AnnotationExtractor {
         TreeSet<String> synonymProperties = new TreeSet<>(JsonHelper.getStrings(json, "synonymProperty"));
         TreeSet<String> hierarchicalProperties = new TreeSet<>(JsonHelper.getStrings(json, "hierarchicalProperty"));
 
-        JsonObject referencedEntities = json.get("referencedEntities").getAsJsonObject();
+        JsonObject linkedEntities = json.get("linkedEntities").getAsJsonObject();
 
         Map<String, Object> annotation = new TreeMap<>();
 
@@ -80,11 +80,11 @@ public class AnnotationExtractor {
 		) + 1
 	); 
 
-            JsonElement referencedEntityObj = referencedEntities.get(predicate);
+            JsonElement linkedEntityObj = linkedEntities.get(predicate);
 
-	    if(referencedEntityObj != null) {
+	    if(linkedEntityObj != null) {
 
-		String definedLabel = JsonHelper.getString(referencedEntityObj.getAsJsonObject(), "label");
+		String definedLabel = JsonHelper.getString(linkedEntityObj.getAsJsonObject(), "label");
 
 		if(definedLabel != null) {
 			label = definedLabel;

@@ -80,9 +80,9 @@ export default abstract class Thing {
   }
 
   getLabelForIri(id: string) {
-    const referencedEntities = this.properties["referencedEntities"];
-    if (referencedEntities) {
-      const label:Reified<string>[] = Reified.fromJson<string>( referencedEntities[id]?.label );
+    const linkedEntities = this.properties["linkedEntities"];
+    if (linkedEntities) {
+      const label:Reified<string>[] = Reified.fromJson<string>( linkedEntities[id]?.label );
       return label[0]?.value || id
     } else {
       return id;

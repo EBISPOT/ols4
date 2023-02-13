@@ -1,7 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -48,29 +47,41 @@ public class OntologyWriter {
 
         reader.beginObject(); // ontology
 
-        writeOntology();
+	Map<String,Object> ontologyProperties = new LinkedHashMap<>();
 
-        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-                "OntologyEntity|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+	while(reader.peek() != JsonToken.END_OBJECT) {
 
-        reader.nextName(); // properties
+		String name = reader.nextName();
 
-        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-                "OntologyEntity|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+		if(name.equals("classes")) {
+			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
+				"OntologyEntity|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+			continue;
+		}
 
-        reader.nextName(); // individuals
+		if(name.equals("properties")) {
+			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
+				"OntologyEntity|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+			continue;
+		}
 
-        writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-                "OntologyEntity|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+		if(name.equals("individuals")) {
+			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
+				"OntologyEntity|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+			continue;
+		}
 
-        reader.endObject(); // ontology
+		ontologyProperties.put(name, gson.fromJson(reader, Object.class));
+	}
 
+	reader.endObject(); // ontology
 
+	writeOntology(ontologyProperties);
 
         edgesPrinter.close(true);
     }
 
-    public void writeOntology() throws IOException {
+    public void writeOntology(Map<String,Object> ontologyProperties) throws IOException {
 
         List<String> properties = new ArrayList<String>( ontologyScannerResult.allOntologyProperties);
 
@@ -84,18 +95,6 @@ public class OntologyWriter {
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
-
-        Map<String,Object> ontologyProperties = new TreeMap<>();
-
-        while(reader.peek() != JsonToken.END_OBJECT) {
-
-            String propertyName = reader.nextName();
-
-            if(propertyName.equals("classes"))
-                break;
-
-            ontologyProperties.put(propertyName, gson.fromJson(reader, Object.class));
-        }
 
         String[] row = new String[csvHeader.size()];
         int n = 0;
