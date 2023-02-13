@@ -158,7 +158,7 @@ public class LinkerPass2 {
                 continue;
             }
 
-            EntityDefinitionSet iriMapping = pass1Result.iriToDefinitions.get(entityIri);
+            EntityDefinitionSet iriMapping = pass1Result.iriToDefinitions.get(str);
 
             if(iriMapping != null) {
                 writeIriMapping(jsonWriter, iriMapping, ontologyId);
