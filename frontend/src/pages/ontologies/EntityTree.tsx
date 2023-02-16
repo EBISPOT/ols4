@@ -36,7 +36,6 @@ export default function EntityTree({
   lang: string;
 }) {
   const dispatch = useAppDispatch();
-  // const ancestors = useAppSelector((state) => state.ontologies.ancestors);
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
   const loading = useAppSelector(
@@ -49,36 +48,23 @@ export default function EntityTree({
     (state) => state.ontologies.expandedNodes
   );
 
-  // const [rootNodes, setRootNodes] = useState<TreeNode[]>();
-  // const [nodeChildren, setNodeChildren] = useState<
-  //   ImmutableMap<String, TreeNode[]>
-  // >(ImmutableMap());
-  // const [expandedNodes, setExpandedNodes] = useState<ImmutableSet<String>>(
-  //   ImmutableSet()
-  // );
-
   const toggleNode = (node: any) => {
     if (expandedNodes.indexOf(node.absoluteIdentity) !== -1) {
-      // closing a node
       dispatch(closeNode(node));
     } else {
-      // opening a node
       dispatch(openNode(node));
-      const entityIri = node.iri;
-      const absoluteIdentity = node.absoluteIdentity;
-      dispatch(
-        getNodeChildren({
-          ontologyId: ontology.getOntologyId(),
-          entityTypePlural: entityType,
-          entityIri,
-          absoluteIdentity,
-          lang,
-        })
-      );
     }
   };
 
   useEffect(() => {
+	// console.log('!!!! Dispatching resetTree')
+    dispatch(resetTree());
+  }, [ontology.getOntologyId(), entityType, selectedEntity?.getIri()]);
+
+  useEffect(() => {
+
+	// console.log('!!!! Dispatching API call')
+
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
       dispatch(
@@ -100,43 +86,28 @@ export default function EntityTree({
       );
     }
 
-    // for(let alreadyExpanded of expandedNodes.toArray()) {
-    //   dispatch(
-    //     getNodeChildren({
-    //       ontologyId: ontology.getOntologyId(),
-    //       entityTypePlural: entityType,
-    //       entityIri: alreadyExpanded.split(';').pop(),
-    //       absoluteIdentity: alreadyExpanded,
-    // lang
-    //     })
-    //   )
-    // }
-  }, [dispatch, entityType, selectedEntity, ontology, preferredRoots, lang]);
-
-  // useEffect(() => {
-  //   setNodeChildren(nodeChildren.merge(children));
-  // }, [nodeChildren, children, lang]);
-
-  // useEffect(() => {
-  //   setRootNodes(
-  //     rootEntities.map((entity: Entity) => {
-  //       return {
-  //         iri: entity.getIri(),
-  //         absoluteIdentity: entity.getIri(),
-  //         title: entity.getName(),
-  //         expandable: entity.hasChildren(),
-  //         entity: entity,
-  //         numDescendants:
-  //           entity.getNumHierarchicalDescendants() ||
-  //           entity.getNumDescendants(),
-  //       };
-  //     })
-  //   );
-  // }, [rootEntities, lang]);
+  }, [dispatch, entityType, selectedEntity?.getIri(), ontology.getOntologyId(), preferredRoots, lang]);
 
   useEffect(() => {
-    dispatch(resetTree());
-  }, [ontology, selectedEntity]);
+
+	let nodesMissingChildren:string[] = expandedNodes.filter(absoluteIdentity => !nodeChildren[absoluteIdentity]?.length)
+
+	// console.log('!!!! Getting missing node children: ' + nodesMissingChildren.length)
+
+	for(let absId of nodesMissingChildren) {
+		dispatch(
+			getNodeChildren({
+				ontologyId: ontology.getOntologyId(),
+				entityTypePlural: entityType,
+				entityIri: absId.split(';').pop(),
+				absoluteIdentity: absId,
+				lang,
+			})
+		)
+	}
+
+  }, [expandedNodes, nodeChildren]);
+
 
   function renderNodeChildren(
     children: TreeNode[],

@@ -26,7 +26,7 @@ export interface OntologiesState {
   loadingEntity: boolean;
   classInstances: Page<Entity> | null;
   loadingClassInstances: boolean;
-  expandedNodes: String[];
+  expandedNodes: string[];
   preferredRoots: boolean;
 }
 export interface TreeNode {
@@ -290,27 +290,14 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       getAncestors.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        let { rootNodes, nodeChildren } = createTreeFromEntities(
+        let { rootNodes, nodeChildren, expandedNodes } = createTreeFromEntities(
           [state.entity!, ...action.payload],
           state.preferredRoots,
           state.ontology!
         );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
-
-        // let newExpanded = new Set(state.expandedNodes);
-
-        // expandSelectedNodes(rootNodes);
-        // function expandSelectedNodes(nodes: TreeNode[]) {
-        //   for (let node of nodes) {
-        //     if (node.iri === state.entity!.getIri()) {
-        //       newExpanded.add(node.absoluteIdentity);
-        //     }
-        //     let children = nodeChildren[node.absoluteIdentity];
-        //     if (children) expandSelectedNodes(children);
-        //   }
-        // }
-        // state.expandedNodes = Array.from(newExpanded);
+	state.expandedNodes = Array.from(new Set([...state.expandedNodes, ...Array.from(expandedNodes) ]))
       }
     );
     builder.addCase(
@@ -335,13 +322,15 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        let { rootNodes, nodeChildren } = createTreeFromEntities(
-          [state.entity!, ...action.payload],
+        let { allNodes, rootNodes, nodeChildren, expandedNodes } = createTreeFromEntities(
+          action.payload,
           state.preferredRoots,
           state.ontology!
         );
+	// console.log('getRootEntities fulfilled')
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
+	state.expandedNodes = Array.from(new Set([...state.expandedNodes, ...Array.from(expandedNodes) ]))
       }
     );
     builder.addCase(
