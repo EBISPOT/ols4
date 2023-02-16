@@ -43,6 +43,7 @@ export default function EntityTree(props:{
 	let [ expandedNodes, setExpandedNodes ] = useState<ImmutableSet<string>>(ImmutableSet())
 
 	const [preferredRoots, setPreferredRoots] = useState<boolean>(ontology.getPreferredRoots().length > 0);
+	const [loading, setLoading] = useState<boolean>(true)
 
 	useEffect(() => {
 
@@ -51,8 +52,9 @@ export default function EntityTree(props:{
 			if(selectedEntity) {
 
 				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(selectedEntity.getIri()))
+				let ancestorsEndpoint = entityType === 'classes' ? 'hierarchicalAncestors' : 'ancestors'
 
-				let ancestorsPage = await getPaginated<any>(`api/v2/ontologies/${ontology.getOntologyId()}/${entityType}/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams({
+				let ancestorsPage = await getPaginated<any>(`api/v2/ontologies/${ontology.getOntologyId()}/${entityType}/${doubleEncodedUri}/${ancestorsEndpoint}?${new URLSearchParams({
 					size: '100'
 				})}`)
 				
@@ -89,7 +91,7 @@ export default function EntityTree(props:{
 
 				let alreadyExpandedIri = alreadyExpanded.split(';').pop() as string
 				let doubleEncodedUri = encodeURIComponent(encodeURIComponent(alreadyExpandedIri))
-				let childrenEndpoint = entityType === 'classes' ? 'hierarchicalChildren' ? 'children'
+				let childrenEndpoint = entityType === 'classes' ? 'hierarchicalChildren' : 'children'
 
 				let page = await getPaginated<any>(`api/v2/ontologies/${ontology.getOntologyId()}/${entityType}/${doubleEncodedUri}/${childrenEndpoint}?${new URLSearchParams({
 					size: '100'
@@ -110,6 +112,8 @@ export default function EntityTree(props:{
 					}))
 				)
 			}
+
+			setLoading(false)
 		}
 
 		fetchTree()
@@ -177,10 +181,12 @@ export default function EntityTree(props:{
 			// opening a node
 
 			setExpandedNodes(expandedNodes.add(node.absoluteIdentity))
+			setLoading(true)
 
 			let doubleEncodedUri = encodeURIComponent(encodeURIComponent(node.iri))
+			let childrenEndpoint = entityType === 'classes' ? 'hierarchicalChildren' : 'children'
 
-			let page = await getPaginated<any>(`api/v2/ontologies/${ontology.getOntologyId()}/${node.entity.getTypePlural()}/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams({
+			let page = await getPaginated<any>(`api/v2/ontologies/${ontology.getOntologyId()}/${node.entity.getTypePlural()}/${doubleEncodedUri}/${childrenEndpoint}?${new URLSearchParams({
 				size: '100'
 			})}`)
 
@@ -198,11 +204,13 @@ export default function EntityTree(props:{
 					}
 				}))
 			)
+
+			setLoading(false)
 		}
 	}
 
 	if(!rootNodes) {
-		return <LoadingOverlay message="Loading children..." />
+		return  <LoadingOverlay message="Loading tree..." /> 
 	}
 
       function renderNodeChildren(
@@ -285,7 +293,7 @@ export default function EntityTree(props:{
 	    {renderNodeChildren(rootNodes, 0)}
 	  </div>
 	) : null}
-	{/* {loading ? <LoadingOverlay message="Loading children..." /> : null} */}
+	{loading ? <LoadingOverlay message="Loading children..." /> : null}
       </div>
     </Fragment>
 }
