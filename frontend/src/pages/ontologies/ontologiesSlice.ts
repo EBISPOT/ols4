@@ -7,9 +7,6 @@ import Ontology from "../../model/Ontology";
 export interface OntologiesState {
   ontology: Ontology | undefined;
   entity: Entity | undefined;
-  ancestors: Entity[];
-  nodeChildren: Map<String, TreeNode[]>;
-  rootEntities: Entity[];
   ontologies: Ontology[];
   totalOntologies: number;
   entities: Entity[];
@@ -22,20 +19,9 @@ export interface OntologiesState {
   classInstances:Page<Entity>|null
   loadingClassInstances:boolean
 }
-export interface TreeNode {
-  absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
-  iri: string;
-  title: string;
-  expandable: boolean;
-  entity: Entity;
-  numDescendants:number;
-}
 const initialState: OntologiesState = {
   ontology: undefined,
   entity: undefined,
-  ancestors: [],
-  nodeChildren: new Map<String, TreeNode[]>(),
-  rootEntities: [],
   ontologies: [],
   totalOntologies: 0,
   entities: [],
@@ -114,6 +100,7 @@ export const getEntities = createAsyncThunk(
     }
   }
 );
+
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
   async ({ ontologyId, entityType, entityIri, lang }: any) => {
@@ -257,31 +244,6 @@ const ontologiesSlice = createSlice({
     builder.addCase(getClassInstances.pending, (state: OntologiesState) => {
       state.loadingClassInstances = true;
     });
-    builder.addCase(
-      getAncestors.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        state.ancestors = action.payload;
-      }
-    );
-    builder.addCase(
-      getNodeChildren.fulfilled,
-      (
-        state: OntologiesState,
-        action: PayloadAction<Map<String, TreeNode[]>>
-      ) => {
-        state.nodeChildren = action.payload;
-        state.loadingNodeChildren = false;
-      }
-    );
-    builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
-      state.loadingNodeChildren = true;
-    });
-    builder.addCase(
-      getRootEntities.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        state.rootEntities = action.payload;
-      }
-    );
     builder.addCase(
       getOntologies.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Ontology>>) => {
