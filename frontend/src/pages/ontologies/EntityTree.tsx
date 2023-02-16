@@ -134,17 +134,18 @@ export default function EntityTree({
     } else {
       dispatch(getRootEntities({ ontologyId: ontology.getOntologyId(), entityType, preferredRoots, lang }));
     }
-    for(let alreadyExpanded of expandedNodes.toArray()) {
-      dispatch(
-        getNodeChildren({
-          ontologyId: ontology.getOntologyId(),
-          entityTypePlural: entityType,
-          entityIri: alreadyExpanded.split(';').pop(),
-          absoluteIdentity: alreadyExpanded,
-	  lang
-        })
-      )
-    }
+
+    // for(let alreadyExpanded of expandedNodes.toArray()) {
+    //   dispatch(
+    //     getNodeChildren({
+    //       ontologyId: ontology.getOntologyId(),
+    //       entityTypePlural: entityType,
+    //       entityIri: alreadyExpanded.split(';').pop(),
+    //       absoluteIdentity: alreadyExpanded,
+	  // lang
+    //     })
+    //   )
+    // }
   }, [dispatch, entityType, selectedEntity, ontology, preferredRoots, lang]);
 
   useEffect(() => {
