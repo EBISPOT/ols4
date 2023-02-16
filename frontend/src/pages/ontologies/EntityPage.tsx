@@ -26,21 +26,24 @@ export default function EntityPage({
 }: {
   entityType: "classes" | "properties" | "individuals";
 }) {
-
-  const params = useParams()
-  let ontologyId:string = params.ontologyId as string
-  let entityIri:string = decodeURIComponent(params.entityIri as string)
+  const params = useParams();
+  let ontologyId: string = params.ontologyId as string;
+  let entityIri: string = decodeURIComponent(params.entityIri as string);
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
-  const loadingClassInstances = useAppSelector((state) => state.ontologies.loadingClassInstances);
-  const classInstances = useAppSelector((state) => state.ontologies.classInstances);
+  const loadingClassInstances = useAppSelector(
+    (state) => state.ontologies.loadingClassInstances
+  );
+  const classInstances = useAppSelector(
+    (state) => state.ontologies.classInstances
+  );
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let lang = searchParams.get("lang") || "en"
-  console.log('lang is ' + lang)
+  let lang = searchParams.get("lang") || "en";
+  console.log("lang is " + lang);
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const linkedEntities = entity
@@ -77,208 +80,219 @@ export default function EntityPage({
   };
 
   useEffect(() => {
-
-    if (!ontology)
-	dispatch(getOntology({ontologyId, lang}));
+    if (!ontology) dispatch(getOntology({ ontologyId, lang }));
 
     dispatch(getEntity({ ontologyId, entityType, entityIri, lang }));
- 
-   if (entityType === 'classes') {
-	dispatch(getClassInstances({ ontologyId, classIri:entityIri, lang }))
-   }
 
-  }, [dispatch, ontology, ontologyId, entityType, entityIri, searchParams ]);
+    if (entityType === "classes") {
+      dispatch(getClassInstances({ ontologyId, classIri: entityIri, lang }));
+    }
+  }, [dispatch, ontology, ontologyId, entityType, entityIri, searchParams]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto" style={{position: 'relative'}}>
+      <main className="container mx-auto" style={{ position: "relative" }}>
         {ontology && entity ? (
-		<Fragment>
-	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
-          <div className="my-8 mx-2">
-            <div className="px-2 mb-4">
-              <Link className="link-default" to={"/ontologies"} >
-                Ontologies
-              </Link>
-              <span className="px-2 text-sm"  style={{color:'grey'}}>▸</span>
-              <Link className="link-default" to={"/ontologies/" + ontologyId}>
-		<span
-		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-		title={ontologyId}
-		>
-		{ontologyId}
-		</span>
-              </Link>
-              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
-              <span className="capitalize">{entity.getTypePlural()}</span>
-              <span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
-		<span
-		className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
-		title={entity.getShortForm()}
-		>
-		{entity.getShortForm()}
-		</span>
-              <span className="text-sm text-neutral-default">
-		&nbsp;
-		&nbsp;
-                <button
-                  onClick={() => {
-                    copyShortForm(entity.getShortForm() || entity.getName());
-                  }}
-                >
-                  <i className="icon icon-common icon-copy icon-spacer" />
-                  <span>{isShortFormCopied ? "Copied!" : "Copy"}</span>
-                </button>
-              </span>
-            </div>
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
-              <div className="text-2xl font-bold mb-4">{entity.getName()}</div>
-              <div className="mb-4 leading-relaxed text-sm text-neutral-default">
-                <span>
-                  <a href={entity.getIri()}>
-                    <i className="icon icon-common icon-external-link-alt icon-spacer" />
-                  </a>
+          <Fragment>
+            <LanguagePicker
+              ontology={ontology}
+              lang={lang}
+              onChangeLang={(lang) => setSearchParams({ lang: lang })}
+            />
+            <div className="my-8 mx-2">
+              <div className="px-2 mb-4">
+                <Link className="link-default" to={"/ontologies"}>
+                  Ontologies
+                </Link>
+                <span className="px-2 text-sm" style={{ color: "grey" }}>
+                  ▸
                 </span>
-                <span className="mr-3">{entity.getIri()}</span>
-                <button
-                  onClick={() => {
-                    copyIri(entity.getIri());
-                  }}
+                <Link className="link-default" to={"/ontologies/" + ontologyId}>
+                  <span
+                    className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                    title={ontologyId}
+                  >
+                    {ontologyId}
+                  </span>
+                </Link>
+                <span className="px-2 text-sm" style={{ color: "gray" }}>
+                  ▸
+                </span>
+                <span className="capitalize">{entity.getTypePlural()}</span>
+                <span className="px-2 text-sm" style={{ color: "gray" }}>
+                  ▸
+                </span>
+                <span
+                  className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                  title={entity.getShortForm()}
                 >
-                  <i className="icon icon-common icon-copy icon-spacer" />
-                  <span>{isIriCopied ? "Copied!" : "Copy"}</span>
-                </button>
+                  {entity.getShortForm()}
+                </span>
+                <span className="text-sm text-neutral-default">
+                  &nbsp; &nbsp;
+                  <button
+                    onClick={() => {
+                      copyShortForm(entity.getShortForm() || entity.getName());
+                    }}
+                  >
+                    <i className="icon icon-common icon-copy icon-spacer" />
+                    <span>{isShortFormCopied ? "Copied!" : "Copy"}</span>
+                  </button>
+                </span>
               </div>
-              <div className="mb-4">
-                <EntityDescriptionSection
+              <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+                <div className="text-2xl font-bold mb-4">
+                  {entity.getName()}
+                </div>
+                <div className="mb-4 leading-relaxed text-sm text-neutral-default">
+                  <span>
+                    <a href={entity.getIri()}>
+                      <i className="icon icon-common icon-external-link-alt icon-spacer" />
+                    </a>
+                  </span>
+                  <span className="mr-3">{entity.getIri()}</span>
+                  <button
+                    onClick={() => {
+                      copyIri(entity.getIri());
+                    }}
+                  >
+                    <i className="icon icon-common icon-copy icon-spacer" />
+                    <span>{isIriCopied ? "Copied!" : "Copy"}</span>
+                  </button>
+                </div>
+                <div className="mb-4">
+                  <EntityDescriptionSection
+                    entity={entity}
+                    linkedEntities={linkedEntities}
+                  />
+                </div>
+                <DefiningOntologiesSection
+                  entity={entity}
+                  linkedEntities={linkedEntities}
+                />
+                <EntitySynonymsSection
                   entity={entity}
                   linkedEntities={linkedEntities}
                 />
               </div>
-              <DefiningOntologiesSection
-                entity={entity}
-                linkedEntities={linkedEntities}
-              />
-              <EntitySynonymsSection
-                entity={entity}
-                linkedEntities={linkedEntities}
-              />
-            </div>
-                <div className="py-2 mb-1">
-                  <Tooltip title="Tree view" placement="top">
-                    <button
-                      className={`button-primary font-bold mr-3 ${
-                        viewMode === "tree"
-                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                          : ""
-                      }`}
-                      onClick={() => setViewMode("tree")}
-                    >
-                      <AccountTree fontSize="small" />
-                    </button>
-                  </Tooltip>
-                  <Tooltip title="Graph view" placement="top">
-                    <button
-                      className={`button-primary font-bold ${
-                        viewMode === "graph"
-                          ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                          : ""
-                      }`}
-                      onClick={() => setViewMode("graph")}
-                    >
-                      <Share fontSize="small" />
-                    </button>
-                  </Tooltip>
+              <div className="py-2 mb-1">
+                <Tooltip title="Tree view" placement="top">
+                  <button
+                    className={`button-primary font-bold mr-3 ${
+                      viewMode === "tree"
+                        ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                        : ""
+                    }`}
+                    onClick={() => setViewMode("tree")}
+                  >
+                    <AccountTree fontSize="small" />
+                  </button>
+                </Tooltip>
+                <Tooltip title="Graph view" placement="top">
+                  <button
+                    className={`button-primary font-bold ${
+                      viewMode === "graph"
+                        ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                        : ""
+                    }`}
+                    onClick={() => setViewMode("graph")}
+                  >
+                    <Share fontSize="small" />
+                  </button>
+                </Tooltip>
+              </div>
+              {viewMode === "graph" && (
+                <EntityGraph
+                  ontologyId={ontologyId}
+                  entityType={
+                    {
+                      class: "classes",
+                      property: "properties",
+                      individual: "individuals",
+                    }[entity.getType()]
+                  }
+                  selectedEntity={entity}
+                />
+              )}
+              {viewMode === "tree" && (
+                <div className="grid grid-cols-3 gap-8">
+                  <div className="col-span-2">
+                    <EntityTree
+                      ontology={ontology}
+                      entityType={
+                        {
+                          class: "classes",
+                          property: "properties",
+                          individual: "individuals",
+                        }[entity.getType()]
+                      }
+                      selectedEntity={entity}
+                      lang={lang}
+                    />
+                  </div>
+                  <div className="col-span-1">
+                    <details open className="p-2">
+                      <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                        <span className="capitalize">
+                          {entity.getType()} Information
+                        </span>
+                      </summary>
+                      <div className="py-2 break-words space-y-4">
+                        <EntityAnnotationsSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                      </div>
+                    </details>
+                    <details open className="p-2">
+                      <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                        <span className="capitalize">
+                          {entity.getType()} Relations
+                        </span>
+                      </summary>
+                      <div className="py-2 break-words space-y-4">
+                        <IndividualTypesSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <IndividualSameAsSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <IndividualDifferentFromSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <DisjointWithSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <EntityEquivalentsSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <EntityParentsSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <EntityRelatedFromSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <ClassInstancesSection
+                          entity={entity}
+                          classInstances={classInstances}
+                          linkedEntities={linkedEntities}
+                        />
+                      </div>
+                    </details>
+                  </div>
                 </div>
-		{ viewMode === 'graph' && 
-                  <EntityGraph
-                    ontologyId={ontologyId}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                  />
-		}
-		{viewMode === 'tree' && 
-			<div className="grid grid-cols-3 gap-8">
-			<div className="col-span-2">
-				<EntityTree
-				ontology={ontology}
-				entityType={
-				{
-					class: "classes",
-					property: "properties",
-					individual: "individuals",
-				}[entity.getType()]
-				}
-				selectedEntity={entity}
-				lang={lang}
-				/>
-			</div>
-			<div className="col-span-1">
-				<details open className="p-2">
-				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-				<span className="capitalize">
-				{entity.getType()} Information
-				</span>
-				</summary>
-				<div className="py-2 break-words space-y-4">
-					<EntityAnnotationsSection entity={entity} linkedEntities={linkedEntities} />
-				</div>
-				</details>
-				<details open className="p-2">
-				<summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
-				<span className="capitalize">
-				{entity.getType()} Relations
-				</span>
-				</summary>
-				<div className="py-2 break-words space-y-4">
-				<IndividualTypesSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<IndividualSameAsSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<IndividualDifferentFromSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<DisjointWithSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<EntityEquivalentsSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<EntityParentsSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<EntityRelatedFromSection
-				entity={entity}
-				linkedEntities={linkedEntities}
-				/>
-				<ClassInstancesSection 
-					entity={entity}
-					classInstances={classInstances}
-					linkedEntities={linkedEntities}
-				/>
-				</div>
-				</details>
-			</div>
-			</div>
-}
-          </div>
-	  </Fragment>
+              )}
+            </div>
+          </Fragment>
         ) : null}
         {!ontology || loading ? (
           <LoadingOverlay message="Loading entity..." />
@@ -331,94 +345,102 @@ function EntityDescriptionSection({
     </p>
   );
 }
-function EntityAnnotationsSection({entity, linkedEntities}:{entity:Entity, linkedEntities:LinkedEntities}) {
+function EntityAnnotationsSection({
+  entity,
+  linkedEntities,
+}: {
+  entity: Entity;
+  linkedEntities: LinkedEntities;
+}) {
+  let annotationPredicates = entity.getAnnotationPredicates();
 
-	let annotationPredicates = entity.getAnnotationPredicates()
+  return (
+    <Fragment>
+      {annotationPredicates
+        .map((annotationPredicate) => {
+          const title = entity.getLabelForIri(annotationPredicate)
+            ? entity.getLabelForIri(annotationPredicate).replaceAll("_", " ")
+            : annotationPredicate
+                .substring(annotationPredicate.lastIndexOf("/") + 1)
+                .substring(
+                  annotationPredicate
+                    .substring(annotationPredicate.lastIndexOf("/") + 1)
+                    .lastIndexOf("#") + 1
+                )
+                .replaceAll("_", " ");
 
-	return <Fragment>
-		 {annotationPredicates.map((annotationPredicate) => {
-			const title = entity.getLabelForIri(annotationPredicate)
-			? entity
-				.getLabelForIri(annotationPredicate)
-				.replaceAll("_", " ")
-			: annotationPredicate
-				.substring(
-				annotationPredicate.lastIndexOf("/") + 1
-				)
-				.substring(
-				annotationPredicate
-				.substring(
-				annotationPredicate.lastIndexOf("/") + 1
-				)
-				.lastIndexOf("#") + 1
-				)
-				.replaceAll("_", " ");
+          let annotations: Reified<any>[] =
+            entity.getAnnotationById(annotationPredicate);
 
-			let annotations:Reified<any>[] = entity.getAnnotationById(annotationPredicate)
+          return (
+            <div key={title.toString().toUpperCase() + randomString()}>
+              <div className="font-bold capitalize">{title}</div>
 
-			return (
-			<div
-			key={
-				title.toString().toUpperCase() +
-				randomString()
-			}
-			>
-			<div className="font-bold capitalize">
-				{title}
-			</div>
+              {annotations.length === 1 ? (
+                <p>
+                  {renderAnnotation(annotations[0])}
+                  {annotations[0].hasMetadata() && (
+                    <MetadataTooltip
+                      metadata={annotations[0].getMetadata()}
+                      linkedEntities={linkedEntities}
+                    />
+                  )}
+                </p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {annotations
+                    .map((annotation: Reified<any>) => {
+                      return (
+                        <li key={randomString()}>
+                          {renderAnnotation(annotation)}
+                          {annotation.hasMetadata() && (
+                            <MetadataTooltip
+                              metadata={annotation.getMetadata()}
+                              linkedEntities={linkedEntities}
+                            />
+                          )}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+            </div>
+          );
+        })
+        .sort((a, b) => sortByKeys(a, b))}
+    </Fragment>
+  );
 
-			{ annotations.length === 1 ?
-				<p>
-					{renderAnnotation(annotations[0])}
-					{annotations[0].hasMetadata() && <MetadataTooltip metadata={annotations[0].getMetadata()} linkedEntities={linkedEntities} />}
-				</p> :
-			<ul className="list-disc list-inside">
-				{annotations.map((annotation: Reified<any>) => {
-				return (
-				<li
-					key={
-					randomString()
-					}
-				>
-					{renderAnnotation(annotation)}
-					{annotation.hasMetadata() && <MetadataTooltip metadata={annotation.getMetadata()} linkedEntities={linkedEntities} />}
-				</li>
-				);
-				})
-				.sort((a, b) => sortByKeys(a, b))}
-			</ul>
-		 }
-			</div>
-			);
-			})
-			.sort((a, b) => sortByKeys(a, b))
-		}</Fragment>
+  function renderAnnotation(value: Reified<any>) {
+    let linkedEntity = linkedEntities.get(value.value);
 
+    if (linkedEntity) {
+      // The annotation value refers to an entity.
+      // This may be a CURIE with a URL; or an IRI with label(s)
 
-	function renderAnnotation(value:Reified<any>) {
-
-		let linkedEntity = linkedEntities.get(value.value)
-
-		if(linkedEntity) {
-			// The annotation value refers to an entity.
-			// This may be a CURIE with a URL; or an IRI with label(s)
-
-			if(linkedEntity.url) {
-				// CURIE
-				return <Link className="link-default" to={linkedEntity.url}>{value.value}</Link>
-			} else {
-				// entity IRI in this ontology
-				return <EntityLink
-					ontologyId = {entity.getOntologyId()}
-					entityType = "classes" // TODO
-					iri = {value.value}
-					linkedEntities = {linkedEntities}
-				/>
-			}
-		} else {
-			return value.value
-		}
-	}
+      if (linkedEntity.url) {
+        // CURIE
+        return (
+          <Link className="link-default" to={linkedEntity.url}>
+            {value.value}
+          </Link>
+        );
+      } else {
+        // entity IRI in this ontology
+        return (
+          <EntityLink
+            ontologyId={entity.getOntologyId()}
+            entityType="classes" // TODO
+            iri={value.value}
+            linkedEntities={linkedEntities}
+          />
+        );
+      }
+    } else {
+      return value.value;
+    }
+  }
 }
 
 function DefiningOntologiesSection({
@@ -428,45 +450,68 @@ function DefiningOntologiesSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-  let definedBy = entity.getDefinedBy().filter(ontId => ontId !== entity.getOntologyId())
-  let definedIn = entity.getDefinedIn().filter(ontId => ontId !== entity.getOntologyId() && definedBy.indexOf(ontId) === -1);
+  let definedBy = entity
+    .getDefinedBy()
+    .filter((ontId) => ontId !== entity.getOntologyId());
+  let definedIn = entity
+    .getDefinedIn()
+    .filter(
+      (ontId) =>
+        ontId !== entity.getOntologyId() && definedBy.indexOf(ontId) === -1
+    );
 
   return (
-	<Fragment>
-		{definedBy && definedBy.length > 0 &&
-    <div className="mb-2">
-      <span className="font-bold mr-2">Defined by</span>
-        {definedBy
-          .map((definedBy:string) => {
-              return <Link className="link-default" to={"/ontologies/" + definedBy + `/${entity.getTypePlural()}/` + encodeURIComponent(encodeURIComponent(entity.getIri()))}>
-		<span
-		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
-		title={definedBy}
-		>
-		{definedBy}
-		</span>
+    <Fragment>
+      {definedBy && definedBy.length > 0 && (
+        <div className="mb-2">
+          <span className="font-bold mr-2">Defined by</span>
+          {definedBy.map((definedBy: string) => {
+            return (
+              <Link
+                className="link-default"
+                to={
+                  "/ontologies/" +
+                  definedBy +
+                  `/${entity.getTypePlural()}/` +
+                  encodeURIComponent(encodeURIComponent(entity.getIri()))
+                }
+              >
+                <span
+                  className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+                  title={definedBy}
+                >
+                  {definedBy}
+                </span>
               </Link>
-	  })
-	}
-    </div>
-}
-		{definedIn && definedIn.length > 0 &&
-    <div className="mb-2">
-      <span className="font-bold mr-2">Also defined in</span>
-        {definedIn
-          .map((definedIn:string) => {
-              return <Link className="link-default" to={"/ontologies/" + definedIn + `/${entity.getTypePlural()}/` + encodeURIComponent(encodeURIComponent(entity.getIri()))}>
-		<span
-		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
-		title={definedIn}
-		>
-		{definedIn}
-		</span>
+            );
+          })}
+        </div>
+      )}
+      {definedIn && definedIn.length > 0 && (
+        <div className="mb-2">
+          <span className="font-bold mr-2">Also defined in</span>
+          {definedIn.map((definedIn: string) => {
+            return (
+              <Link
+                className="link-default"
+                to={
+                  "/ontologies/" +
+                  definedIn +
+                  `/${entity.getTypePlural()}/` +
+                  encodeURIComponent(encodeURIComponent(entity.getIri()))
+                }
+              >
+                <span
+                  className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+                  title={definedIn}
+                >
+                  {definedIn}
+                </span>
               </Link>
-	  })
-	}
-    </div>
-}
+            );
+          })}
+        </div>
+      )}
     </Fragment>
   );
 }
@@ -487,56 +532,63 @@ function EntitySynonymsSection({
   return (
     <div className="mb-2">
       <span className="font-bold mr-2">Synonym</span>
-        {synonyms
-          .map((synonym: Reified<any>) => {
-            const hasMetadata = synonym.hasMetadata();
-            return (
-              <span
-                key={synonym.value.toString().toUpperCase() + randomString()}
-                className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 text-sm"
-              >
-                {synonym.value}
-                {hasMetadata && (
-                  <MetadataTooltip
-                    metadata={synonym.getMetadata()}
-                    linkedEntities={linkedEntities}
-                  />
-                )}
-              </span>
-            );
-          })
-          .sort((a, b) => sortByKeys(a, b))}
+      {synonyms
+        .map((synonym: Reified<any>) => {
+          const hasMetadata = synonym.hasMetadata();
+          return (
+            <span
+              key={synonym.value.toString().toUpperCase() + randomString()}
+              className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 text-sm"
+            >
+              {synonym.value}
+              {hasMetadata && (
+                <MetadataTooltip
+                  metadata={synonym.getMetadata()}
+                  linkedEntities={linkedEntities}
+                />
+              )}
+            </span>
+          );
+        })
+        .sort((a, b) => sortByKeys(a, b))}
     </div>
   );
 }
 
-function ClassInstancesSection({ entity, classInstances, linkedEntities }: {
-	entity: Entity,
-	classInstances: Page<Entity>|null,
-	linkedEntities: LinkedEntities
+function ClassInstancesSection({
+  entity,
+  classInstances,
+  linkedEntities,
+}: {
+  entity: Entity;
+  classInstances: Page<Entity> | null;
+  linkedEntities: LinkedEntities;
 }) {
+  if (entity.getType() != "class") return <Fragment />;
 
-if (entity.getType() != 'class')
-	return <Fragment />
-
-if ( (!classInstances) || classInstances.elements.length === 0)
-	return <Fragment />
+  if (!classInstances || classInstances.elements.length === 0)
+    return <Fragment />;
 
   return (
     <div>
       <div className="font-bold">Instances</div>
       <ul className="list-disc list-inside">
-        {classInstances && classInstances.elements.map((instance:Entity) => {
-          return (
-            <li key={randomString()}>
-		<EntityLink ontologyId={entity.getOntologyId()} entityType="individuals" iri={instance.getIri()} linkedEntities={linkedEntities} />
-            </li>
-          );
-        })}
+        {classInstances &&
+          classInstances.elements.map((instance: Entity) => {
+            return (
+              <li key={randomString()}>
+                <EntityLink
+                  ontologyId={entity.getOntologyId()}
+                  entityType="individuals"
+                  iri={instance.getIri()}
+                  linkedEntities={linkedEntities}
+                />
+              </li>
+            );
+          })}
       </ul>
     </div>
   );
-
 }
 
 function EntityEquivalentsSection({
@@ -704,24 +756,32 @@ function EntityRelatedFromSection({
   );
 }
 
-function MetadataTooltip({metadata, linkedEntities}:{metadata:any, linkedEntities:LinkedEntities }) {
-
-	return <Tooltip
-		title={Object.keys(metadata)
-		.map((key) => {
-			let label = linkedEntities.getLabelForIri(key) || key
-		if (label) {
-			return ("*" + metadata[key] + " (" +
-					label.replaceAll( "_", " ") + ")");
-		}
-		return "";
-		})
-		.join("\n")}
-		placement="top"
-		arrow
-		>
-		<i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
-		</Tooltip>
+function MetadataTooltip({
+  metadata,
+  linkedEntities,
+}: {
+  metadata: any;
+  linkedEntities: LinkedEntities;
+}) {
+  return (
+    <Tooltip
+      title={Object.keys(metadata)
+        .map((key) => {
+          let label = linkedEntities.getLabelForIri(key) || key;
+          if (label) {
+            return (
+              "*" + metadata[key] + " (" + label.replaceAll("_", " ") + ")"
+            );
+          }
+          return "";
+        })
+        .join("\n")}
+      placement="top"
+      arrow
+    >
+      <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+    </Tooltip>
+  );
 }
 
 function IndividualTypesSection({
