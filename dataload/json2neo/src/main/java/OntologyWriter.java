@@ -231,6 +231,10 @@ public class OntologyWriter {
     if(predicate.equals("directAncestor") || predicate.equals("hierarchicalAncestor"))
         return;
 
+    // this blows up the db
+    if(predicate.equals("definedIn"))
+        return;
+
         // In the case of punning, the same URI can have multiple types. In this case
         // it is ambiguous which of the types the edge points to/from. For example, if
         // a URI points to a node which is both a Class and an Individual, does it point
