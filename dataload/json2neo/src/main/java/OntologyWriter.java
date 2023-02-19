@@ -231,6 +231,10 @@ public class OntologyWriter {
     if(predicate.equals("directAncestor") || predicate.equals("hierarchicalAncestor"))
         return;
 
+    // redundant in neo4j because we already have relatedTo which can be queried in both directions
+    if(predicate.equals("relatedFrom"))
+        return;
+
     // this blows up the db
     if(predicate.equals("definedIn"))
         return;
