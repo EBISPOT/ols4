@@ -260,6 +260,7 @@ public class LinkerPass2 {
                 jsonWriter.value(def.ontologyId);
             }
             jsonWriter.endArray();
+            return; // if there's a definedBy, don't write definedIn
         }
 
         if(definitions.definitions.size() > 0) {
