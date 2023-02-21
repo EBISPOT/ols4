@@ -21,6 +21,25 @@ public class OntologyWriter {
     List<String> edgesProperties;
     CSVPrinter edgesPrinter;
 
+    public static final Set<String> PROPERTY_BLACKLIST = Set.of(
+            // large and doesn't get queried
+            "definedIn"
+    );
+
+    public static final Set<String> EDGE_BLACKLIST = Set.of(
+            // don't create lots of "iri" edges pointing from each node to itself
+            "iri",
+            // these properties are informational and should not create edges
+            "hierarchicalProperty",
+            "definitionProperty",
+            "synonymProperty",
+            // these are redundant in neo4j as we already have the parent edges and cypher queries can be recursive
+            "directAncestor",
+            "hierarchicalAncestor",
+            // redundant in neo4j because we already have relatedTo which can be queried in both directions
+            "relatedFrom"
+    );
+
     public OntologyWriter(JsonReader reader, String outputFilePath, OntologyScanner.Result ontologyScannerResult) {
 
         this.ontologyId = ontologyScannerResult.ontologyId;
@@ -219,17 +238,8 @@ public class OntologyWriter {
 
     private void printEdge(String ontologyId, String aUri, String predicate, Object bUri, Map<String,Object> edgeProps) throws IOException {
 
-	// don't create lots of "iri" edges pointing from each node to itself
-	if(predicate.equals("iri"))
-		return;
-
-	// these properties are informational and should not create edges
-	if(predicate.equals("hierarchicalProperty") || predicate.equals("definitionProperty") || predicate.equals("synonymProperty"))
-		return;
-
-    // these are redundant in neo4j as we already have the parent edges and cypher queries can be recursive
-    if(predicate.equals("directAncestor") || predicate.equals("hierarchicalAncestor"))
-        return;
+        if(EDGE_BLACKLIST.contains(predicate))
+            return;
 
         // In the case of punning, the same URI can have multiple types. In this case
         // it is ambiguous which of the types the edge points to/from. For example, if

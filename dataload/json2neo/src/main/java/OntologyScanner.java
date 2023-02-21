@@ -49,7 +49,9 @@ public class OntologyScanner {
                     while(reader.peek() != JsonToken.END_OBJECT) {
 
                         String property = reader.nextName();
-                        res.allClassProperties.add(property);
+
+                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                            res.allClassProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.CLASS);
@@ -71,7 +73,9 @@ public class OntologyScanner {
                     while(reader.peek() != JsonToken.END_OBJECT) {
 
                         String property = reader.nextName();
-                        res.allPropertyProperties.add(property);
+
+                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                            res.allPropertyProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.PROPERTY);
@@ -93,7 +97,9 @@ public class OntologyScanner {
                     while(reader.peek() != JsonToken.END_OBJECT) {
 
                         String property = reader.nextName();
-                        res.allIndividualProperties.add(property);
+
+                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                            res.allIndividualProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.INDIVIDUAL);
@@ -108,7 +114,8 @@ public class OntologyScanner {
                 continue;
             }
 
-            res.allOntologyProperties.add(name);
+            if(!OntologyWriter.PROPERTY_BLACKLIST.contains(name))
+                res.allOntologyProperties.add(name);
 
             if(name.equals("iri")) {
                 res.ontologyUri = reader.nextString();
@@ -170,7 +177,8 @@ public class OntologyScanner {
                     // (english is the default and doesn't get a prefix)
                     // 
                     if(!lang.equals("en")) {
-                        outProps.add(lang + "+" + predicate);
+                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(predicate))
+                            outProps.add(lang + "+" + predicate);
                     }
 		}
 
@@ -192,7 +200,8 @@ public class OntologyScanner {
                         if(edgePredicate.equals("type"))
                             continue;
 
-                        outEdgeProps.add(edgePredicate);
+                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(edgePredicate))
+                            outEdgeProps.add(edgePredicate);
                     }
 		}
 
