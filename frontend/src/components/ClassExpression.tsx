@@ -3,12 +3,12 @@ import LinkedEntities from "../model/LinkedEntities";
 import EntityLink from "./EntityLink";
 
 export default function ClassExpression({
-	ontologyId,
+  ontologyId,
   expr,
   entityType,
   linkedEntities,
 }: {
-	ontologyId:string,
+  ontologyId:string,
   expr: any;
   entityType?:'classes'|'properties'|'individuals',
   linkedEntities:LinkedEntities;
