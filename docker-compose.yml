@@ -50,7 +50,7 @@ services:
       build:
         context: ./frontend
       environment:
-        - REACT_APP_APIURL=http://localhost:8080
+        - REACT_APP_APIURL=http://localhost:8080/
         - PUBLIC_URL=/
       ports:
         - 8081:8080
