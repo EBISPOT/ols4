@@ -416,18 +416,6 @@ function EntityAnnotationsSection({
     let linkedEntity = linkedEntities.get(value.value);
 
     if (linkedEntity) {
-      // The annotation value refers to an entity.
-      // This may be a CURIE with a URL; or an IRI with label(s)
-
-      if (linkedEntity.url) {
-        // CURIE
-        return (
-          <Link className="link-default" to={linkedEntity.url}>
-            {value.value}
-          </Link>
-        );
-      } else {
-        // entity IRI in this ontology
         return (
           <EntityLink
             ontologyId={entity.getOntologyId()}
@@ -436,9 +424,12 @@ function EntityAnnotationsSection({
             linkedEntities={linkedEntities}
           />
         );
-      }
     } else {
-      return value.value;
+	if(value.value.indexOf("://") !== -1) {
+		return <Link className="link-default" to={value.value}>{value.value}</Link>
+	} else {
+		return <span>{value.value}</span>
+	}
     }
   }
 }
