@@ -83,7 +83,6 @@ public class LinkerPass1 {
 				for(JsonElement baseUri : baseUris) {
 					ontologyBaseUris.add(baseUri.getAsString());
 				}
-				result.ontologyIdToBaseUris.put(ontologyId, ontologyBaseUris);
 
 			} else if(key.equals("preferredPrefix")) {
 
@@ -127,6 +126,8 @@ public class LinkerPass1 {
 		    }
 
                     jsonReader.endObject(); // ontology
+
+		    result.ontologyIdToBaseUris.put(ontologyId, ontologyBaseUris);
 
                     System.out.println("Now have " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
                 }

@@ -3,6 +3,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
@@ -213,7 +214,7 @@ public class LinkerPass2 {
 						for (String ontologyBaseUri : ontologyBaseUris) {
 							String iri = ontologyBaseUri + entryId;
 							EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-									.get(str);
+									.get(iri);
 
 							if (curieIriMapping != null) {
 								foundCurieMatch = true;
@@ -223,11 +224,13 @@ public class LinkerPass2 {
 								jsonWriter.value(iri);
 								writeIriMapping(jsonWriter, curieIriMapping,
 										ontologyId);
+								break;
 							}
-
 						}
-					}
 
+						if(foundCurieMatch)
+							break;
+					}
 				}
 			}
 
@@ -305,7 +308,7 @@ public class LinkerPass2 {
 	}
 
 	jsonWriter.name("numDefinedIn");
-	jsonWriter.value(definitions.definitions.size());
+	jsonWriter.value((long) definitions.definitions.size());
 
 	jsonWriter.name("hasLocalDefinition");
 	jsonWriter.value(definitions.definingOntologyIds.contains(ontologyId));

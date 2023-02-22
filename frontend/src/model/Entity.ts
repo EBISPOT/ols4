@@ -88,10 +88,12 @@ export default abstract class Entity extends Thing {
         }
       }
 
-      // while in general oboInOwl namespace properties are annotations, inSubset is not
+      // while in general oboInOwl namespace properties are annotations, some
+      // of them we don't want to display
       //
       if (
-        predicate === "http://www.geneontology.org/formats/oboInOwl#inSubset"
+        //predicate === "http://www.geneontology.org/formats/oboInOwl#inSubset"
+         predicate === "http://www.geneontology.org/formats/oboInOwl#id"
       ) {
         continue;
       }

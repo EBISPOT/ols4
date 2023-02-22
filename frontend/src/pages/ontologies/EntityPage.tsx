@@ -374,7 +374,7 @@ function EntityAnnotationsSection({
 
           return (
             <div key={title.toString().toUpperCase() + randomString()}>
-              <div className="font-bold capitalize">{title}</div>
+              <div className="font-bold">{title}</div>
 
               {annotations.length === 1 ? (
                 <p>
