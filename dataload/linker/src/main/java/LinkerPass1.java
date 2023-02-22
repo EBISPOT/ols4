@@ -1,4 +1,5 @@
 import com.google.common.io.CountingInputStream;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -8,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class LinkerPass1 {
 
@@ -15,6 +17,9 @@ public class LinkerPass1 {
 
     public static class LinkerPass1Result {
         Map<String, EntityDefinitionSet> iriToDefinitions = new HashMap<>();
+	Map<String, Set<String>> ontologyIriToOntologyIds = new HashMap<>();
+	Map<String, Set<String>> preferredPrefixToOntologyIds = new HashMap<>();
+	Map<String, Set<String>> ontologyIdToBaseUris = new HashMap<>();
     }
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {
@@ -27,7 +32,7 @@ public class LinkerPass1 {
 
         int nOntologies = 0;
 
-        System.out.println("--- Linker Pass 1: Scanning " + inputJsonFilename + " to construct (IRI->ontologies,labels) map");
+        System.out.println("--- Linker Pass 1: Scanning " + inputJsonFilename);
 
         jsonReader.beginObject();
 
@@ -41,31 +46,85 @@ public class LinkerPass1 {
 
                     jsonReader.beginObject(); // ontology
 
-                    String ontologyIdName = jsonReader.nextName();
-                    if(!ontologyIdName.equals("ontologyId")) {
-                        throw new RuntimeException("the json is not formatted correctly; ontologyId should always come first");
-                    }
-                    String ontologyId = jsonReader.nextString();
+		    String ontologyId = null;
+		    Set<String> ontologyBaseUris = new HashSet<>();
 
-                    ++ nOntologies;
-                    System.out.println("Scanning ontology: " + ontologyId);
+		    String key;
 
-                    while(jsonReader.peek() != JsonToken.END_OBJECT) {
-                        String key = jsonReader.nextName();
+		    while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
-                        if(key.equals("classes")) {
-                            parseEntityArray(jsonReader, "class", ontologyId, result);
-                            continue;
-                        } else if(key.equals("properties")) {
-                            parseEntityArray(jsonReader, "property", ontologyId, result);
-                            continue;
-                        } else if(key.equals("individuals")) {
-                            parseEntityArray(jsonReader, "individual", ontologyId, result);
-                            continue;
-                        } else {
-                            jsonReader.skipValue();
-                        }
-                    }
+			key = jsonReader.nextName();
+
+			if(key.equals("ontologyId")) {
+
+				ontologyId = jsonReader.nextString();
+				++nOntologies;
+				System.out.println("Scanning ontology: " + ontologyId);
+
+			} else if(key.equals("iri")) {
+
+				if(ontologyId == null)
+					throw new RuntimeException("missing ontologyId");
+
+				String ontologyIri = jsonReader.nextString();
+
+				Set<String> ids = result.ontologyIriToOntologyIds.get(ontologyIri);
+				if(ids == null) {
+					ids = new HashSet<>();
+					ids.add(ontologyId);
+					result.ontologyIriToOntologyIds.put(ontologyIri, ids);
+				} else {
+					ids.add(ontologyId);
+				}
+
+			} else if(key.equals("base_uri")) {
+
+				JsonArray baseUris = jsonParser.parse(jsonReader).getAsJsonArray();
+				for(JsonElement baseUri : baseUris) {
+					ontologyBaseUris.add(baseUri.getAsString());
+				}
+				result.ontologyIdToBaseUris.put(ontologyId, ontologyBaseUris);
+
+			} else if(key.equals("preferredPrefix")) {
+
+				String preferredPrefix = jsonReader.nextString();
+
+				ontologyBaseUris.add("http://purl.obolibrary.org/obo/" + preferredPrefix + "_");
+
+				Set<String> ids = result.preferredPrefixToOntologyIds.get(preferredPrefix);
+				if(ids == null) {
+					ids = new HashSet<>();
+					ids.add(ontologyId);
+					result.preferredPrefixToOntologyIds.put(preferredPrefix, ids);
+				} else {
+					ids.add(ontologyId);
+				}
+
+			} else if(key.equals("classes")) {
+
+				if(ontologyId == null)
+					throw new RuntimeException("missing ontologyId");
+
+				parseEntityArray(jsonReader, "class", ontologyId, ontologyBaseUris, result);
+
+			} else if(key.equals("properties")) {
+
+				if(ontologyId == null)
+					throw new RuntimeException("missing ontologyId");
+
+				parseEntityArray(jsonReader, "property", ontologyId, ontologyBaseUris, result);
+
+			} else if(key.equals("individuals")) {
+
+				if(ontologyId == null)
+					throw new RuntimeException("missing ontologyId");
+
+				parseEntityArray(jsonReader, "individual", ontologyId, ontologyBaseUris, result);
+
+			}  else {
+				jsonReader.skipValue();
+			}
+		    }
 
                     jsonReader.endObject(); // ontology
 
@@ -84,38 +143,71 @@ public class LinkerPass1 {
         jsonReader.endObject();
         jsonReader.close();
 
+        System.out.println("--- Linker Pass 1: Finished scan. Establishing defining ontologies...");
+
+	// populate EntityDefinitionSet.definingDefinitions for each IRI
+
+	for(var entry : result.iriToDefinitions.entrySet()) {
+
+		// String iri = entry.getKey();
+		EntityDefinitionSet definitions = entry.getValue();
+
+		// definingOntologyIris -> definingOntologyIds
+		for(String ontologyIri : definitions.definingOntologyIris) {
+			for(String ontologyId : result.ontologyIriToOntologyIds.get(ontologyIri)) {
+				definitions.definingOntologyIds.add(ontologyId);
+			}
+		}
+
+		for(EntityDefinition def : definitions.definitions) {
+			if(definitions.definingOntologyIds.contains(def.ontologyId)) {
+				def.isDefiningOntology = true;
+				continue;
+			}
+		}
+
+		definitions.definingDefinitions = definitions.definitions.stream().filter(def -> def.isDefiningOntology).collect(Collectors.toSet());
+	}
+
         System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
 
         return result;
     }
 
-    public static void parseEntityArray(JsonReader jsonReader, String entityType, String ontologyId, LinkerPass1Result result) throws IOException {
+    public static void parseEntityArray(JsonReader jsonReader, String entityType, String ontologyId, Set<String> ontologyBaseUris, LinkerPass1Result result) throws IOException {
         jsonReader.beginArray();
 
         while(jsonReader.peek() != JsonToken.END_ARRAY) {
-            parseEntity(jsonReader, entityType, ontologyId, result);
+            parseEntity(jsonReader, entityType, ontologyId, ontologyBaseUris, result);
         }
 
         jsonReader.endArray();
     }
 
-    public static void parseEntity(JsonReader jsonReader, String entityType, String ontologyId, LinkerPass1Result result) throws IOException {
+    public static void parseEntity(JsonReader jsonReader, String entityType, String ontologyId,  Set<String> ontologyBaseUris,LinkerPass1Result result) throws IOException {
         jsonReader.beginObject();
 
         String iri = null;
-        Boolean isDefining = null;
         JsonElement label = null;
+	Set<String> definedBy = new HashSet<>();
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
 
             if(key.equals("iri")) {
                 iri = jsonReader.nextString();
-            } else if(key.equals("isDefiningOntology")) {
-                JsonElement elem = jsonParser.parse(jsonReader);
-                isDefining = elem.getAsJsonObject().get("value").getAsString().equals("true");
             } else if(key.equals("label")) {
                 label = jsonParser.parse(jsonReader);
+            } else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
+                JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
+		if(jsonDefinedBy.isJsonArray()) {
+			JsonArray arr = jsonDefinedBy.getAsJsonArray();
+			for(JsonElement el : arr) {
+				definedBy.add( el.getAsString() );
+			}
+		} else {
+			definedBy.add(jsonDefinedBy.getAsString());
+		}
             } else {
                 jsonReader.skipValue();
             }
@@ -125,31 +217,27 @@ public class LinkerPass1 {
             throw new RuntimeException("entity had no IRI");
         }
 
-        if(isDefining == null) {
-            isDefining = false;
-        }
-
         EntityDefinition entityDefinition = new EntityDefinition();
         entityDefinition.ontologyId = ontologyId;
         entityDefinition.entityType = entityType;
-        entityDefinition.isDefiningOntology = isDefining;
         entityDefinition.label = label;
 
         EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);
 
         if(definitionSet == null) {
             definitionSet = new EntityDefinitionSet();
-            definitionSet.definitions = new HashSet<>();
-            definitionSet.definingDefinitions = new HashSet<>();
-            definitionSet.ontologyIdToDefinitions = new HashMap<>();
             result.iriToDefinitions.put(iri, definitionSet);
         }
 
         definitionSet.definitions.add(entityDefinition);
         definitionSet.ontologyIdToDefinitions.put(ontologyId, entityDefinition);
+	definitionSet.definingOntologyIris.addAll(definedBy);
 
-        if(entityDefinition.isDefiningOntology)
-            definitionSet.definingDefinitions.add(entityDefinition);
+	for(String baseUri : ontologyBaseUris) {
+		if(iri.startsWith(baseUri)) {
+			definitionSet.definingOntologyIds.add(ontologyId);
+		}
+	}
 
         jsonReader.endObject();
     }

@@ -132,7 +132,27 @@ public class LinkerPass2 {
 
             EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
             if(defOfThisEntity != null) {
-                writeDefinedByAndDefinedIn(jsonWriter, defOfThisEntity);
+
+			jsonWriter.name("isDefiningOntology");
+			jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
+		
+			if (defOfThisEntity.definingDefinitions.size() > 0) {
+				jsonWriter.name("definedBy");
+				jsonWriter.beginArray();
+				for (var def : defOfThisEntity.definingDefinitions) {
+					jsonWriter.value(def.ontologyId);
+				}
+				jsonWriter.endArray();
+			}
+
+			if (defOfThisEntity.definitions.size() > 0) {
+				jsonWriter.name("definedIn");
+				jsonWriter.beginArray();
+				for (var def : defOfThisEntity.definitions) {
+					jsonWriter.value(def.ontologyId);
+				}
+				jsonWriter.endArray();
+			}
             }
 
             jsonWriter.name("linkedEntities");
@@ -175,27 +195,78 @@ public class LinkerPass2 {
                 continue;
             }
 
-            CurieMapResult curieMapping = mapCurie(str);
+	    // maybe it's a CURIE?
+		if (str.matches("^[A-z0-9]+:[A-z0-9]+$")) {
 
-            if(curieMapping != null) {
+			boolean foundCurieMatch = false;
 
-                // It was a CURIE which we were able to map.
-                jsonWriter.name(str);
-                jsonWriter.beginObject();
-                jsonWriter.name("url");
-                jsonWriter.value(curieMapping.url);
-                jsonWriter.name("source");
-                jsonWriter.value(curieMapping.source);
+			String databaseId = str.substring(0, str.indexOf(':'));
+			String entryId = str.substring(str.indexOf(':') + 1);
 
-                // Maybe the IRI the CURIE mapped to maps to an entity in OLS?
-                EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions.get(curieMapping.url);
-                if(curieIriMapping != null) {
-                    writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
-                }
+			// The databaseId might be the preferredPrefix of an ontology in OLS
+			Set<String> ontologyIds = pass1Result.preferredPrefixToOntologyIds.get(databaseId);
+			if (ontologyIds != null) {
+				for (String curieOntologyId : ontologyIds) {
+					Set<String> ontologyBaseUris = pass1Result.ontologyIdToBaseUris
+							.get(curieOntologyId);
+					if (ontologyBaseUris != null) {
+						for (String ontologyBaseUri : ontologyBaseUris) {
+							String iri = ontologyBaseUri + entryId;
+							EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
+									.get(str);
 
-                jsonWriter.endObject();
-            }
+							if (curieIriMapping != null) {
+								foundCurieMatch = true;
+								jsonWriter.name(str);
+								jsonWriter.beginObject();
+								jsonWriter.name("iri");
+								jsonWriter.value(iri);
+								writeIriMapping(jsonWriter, curieIriMapping,
+										ontologyId);
+							}
 
+						}
+					}
+
+				}
+			}
+
+			CurieMapResult curieMapping = mapCurie(databaseId, entryId);
+
+			if (curieMapping != null) {
+
+				// It was a CURIE which we were able to map.
+
+				// Maybe the URL the CURIE mapped to maps to the IRI an entity in OLS?
+				EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
+						.get(curieMapping.url);
+
+				if (!foundCurieMatch) {
+					jsonWriter.name(str);
+					jsonWriter.beginObject();
+				}
+
+				jsonWriter.name("url");
+				jsonWriter.value(curieMapping.url);
+				jsonWriter.name("source");
+				jsonWriter.value(curieMapping.source);
+
+				// If we didn't already write a mapping for an IRI and the URL maps to
+				// an entity in OLS, write that.
+				if ((!foundCurieMatch) && curieIriMapping != null) {
+
+					jsonWriter.name("iri");
+					jsonWriter.value(curieMapping.url);
+
+					writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
+				}
+
+				foundCurieMatch = true;
+			}
+
+			if (foundCurieMatch)
+				jsonWriter.endObject();
+		}
         }
 
         jsonWriter.endObject();
@@ -203,47 +274,67 @@ public class LinkerPass2 {
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
 
-        writeDefinedByAndDefinedIn(jsonWriter, definitions);
+        if(definitions.definingDefinitions.size() > 0) {
+	
+	    // There are ontologies which canonically define this term
 
-        boolean foundDefinition = false;
+            jsonWriter.name("definedBy");
+            jsonWriter.beginArray();
+            for(var def : definitions.definingDefinitions) {
+                jsonWriter.value(def.ontologyId);
+            }
+            jsonWriter.endArray();
 
-        // 1. Prefer labels from this ontology
+        }  else {
+
+		// The term does not have any canonically defining ontologies...
+
+		if(definitions.definingOntologyIds.size() == 1) {
+
+			// ...and is only defined in ONE ontology. Therefore that ontology is the canonical defining ontology as far as OLS is concerned
+			jsonWriter.name("definedBy");
+			jsonWriter.beginArray();
+			jsonWriter.value(definitions.definingOntologyIds.iterator().next());
+			jsonWriter.endArray();
+
+		} else {
+
+			// ...and is defined in multiple ontologies. We cannot establish a defining ontology.
+		}
+
+	}
+
+	jsonWriter.name("numDefinedIn");
+	jsonWriter.value(definitions.definitions.size());
+
+	jsonWriter.name("hasLocalDefinition");
+	jsonWriter.value(definitions.definingOntologyIds.contains(ontologyId));
+
+        // 1. Prefer metadata from this ontology
         EntityDefinition defFromThisOntology = definitions.ontologyIdToDefinitions.get(ontologyId);
         if(defFromThisOntology != null) {
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
             jsonWriter.name("type");
             jsonWriter.value(defFromThisOntology.entityType);
-            foundDefinition = true;
-        }
 
-        // 2. Look for a defining ontology
-        if(definitions.definingDefinitions.size() > 0) {
+	// 2. Look for metadata from a defining ontology
+        } else if(definitions.definingDefinitions.size() > 0) {
 
-            EntityDefinition definingOntology = definitions.definingDefinitions.iterator().next();
+	    EntityDefinition definingOntology = definitions.definingDefinitions.iterator().next();
 
-            jsonWriter.name("ontologyId");
-            jsonWriter.value(definingOntology.ontologyId);
+	    jsonWriter.name("label");
+	    com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
+	    jsonWriter.name("type");
+	    jsonWriter.value(definingOntology.entityType);
 
-            // Only take the label from the defining ontology if it wasn't set in the importing ontology
-            if(!foundDefinition) {
-                jsonWriter.name("label");
-                com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
-            }
-
-            foundDefinition = true;
-        }
-
-        if(!foundDefinition) {
-
-            // 3. Fall back on the first ontology we encounter that defines the IRI
-            //
-            // This only applies if (a) the importing ontology didn't define the entity and (b) no other ontology
-            // had isDefiningOntology=true for that entity
-            //
+	// 3. Fall back on the first ontology we encounter that defines the IRI
+	//
+	// This only applies if (a) the importing ontology didn't define the entity and (b) no other ontology
+	// was considered canonical
+	//
+	} else {
             EntityDefinition fallbackDef = definitions.definitions.iterator().next();
-            jsonWriter.name("ontologyId");
-            jsonWriter.value(fallbackDef.ontologyId);
             jsonWriter.name("type");
             jsonWriter.value(fallbackDef.entityType);
             jsonWriter.name("label");
@@ -251,56 +342,27 @@ public class LinkerPass2 {
         }
     }
 
-    private static void writeDefinedByAndDefinedIn(JsonWriter jsonWriter, EntityDefinitionSet definitions) throws IOException {
+    private static CurieMapResult mapCurie(String databaseId, String entryId) {
 
-        if(definitions.definingDefinitions.size() > 0) {
-            jsonWriter.name("definedBy");
-            jsonWriter.beginArray();
-            for(var def : definitions.definingDefinitions) {
-                jsonWriter.value(def.ontologyId);
-            }
-            jsonWriter.endArray();
-            return; // if there's a definedBy, don't write definedIn
-        }
+	// check GO db-xrefs for an URL
+	String url = dbUrls.getUrlForId(databaseId, entryId);
 
-        if(definitions.definitions.size() > 0) {
-            jsonWriter.name("definedIn");
-            jsonWriter.beginArray();
-            for(var def : definitions.definitions) {
-                jsonWriter.value(def.ontologyId);
-            }
-            jsonWriter.endArray();
-        }
-    }
+	if(url != null) {
+		CurieMapResult res = new CurieMapResult();
+		res.url = url;
+		res.source = dbUrls.getXrefUrls();
+		return res;
+	}
 
-    private static CurieMapResult mapCurie(String maybeCurie) {
+	// check bioregistry for an URL
+	url = bioregistry.getUrlForId(databaseId, entryId);
 
-        // No definitions for this string as an IRI in OLS. Maybe it's a CURIE.
-        //
-        if(maybeCurie.matches("^[A-z0-9]+:[A-z0-9]+$")) {
-            String databaseId = maybeCurie.substring(0, maybeCurie.indexOf(':'));
-            String entryId = maybeCurie.substring(maybeCurie.indexOf(':') + 1);
-
-            // check GO db-xrefs
-            String url = dbUrls.getUrlForId(databaseId, entryId);
-
-            if(url != null) {
-                CurieMapResult res = new CurieMapResult();
-                res.url = url;
-                res.source = dbUrls.getXrefUrls();
-                return res;
-            }
-
-            // check bioregistry
-            url = bioregistry.getUrlForId(databaseId, entryId);
-
-            if(url != null) {
-                CurieMapResult res = new CurieMapResult();
-                res.url = url;
-                res.source = bioregistry.getRegistryUrl();
-                return res;
-            }
-        }
+	if(url != null) {
+		CurieMapResult res = new CurieMapResult();
+		res.url = url;
+		res.source = bioregistry.getRegistryUrl();
+		return res;
+	}
 
         return null;
     }
