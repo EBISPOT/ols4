@@ -82,7 +82,7 @@ export default function EntityLink({
 			} else {
 				// Term is not defined in other ontologies
 				// Show the raw IRI
-				return <Link className="link-default" to={iri}>
+				return <Link className="link-default" to={linkedEntity.url || iri}>
 					{label}
 				</Link>
 			}
