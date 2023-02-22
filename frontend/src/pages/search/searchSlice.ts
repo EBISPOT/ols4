@@ -22,7 +22,7 @@ const initialState: SearchState = {
 export const getSearchResults = createAsyncThunk(
   "search_results",
   async (
-    { page, rowsPerPage, search, ontologyId, type }: any,
+    { page, rowsPerPage, search, ontologyId, type, searchParams }: any,
     { rejectWithValue }
   ) => {
     try {
@@ -33,7 +33,11 @@ export const getSearchResults = createAsyncThunk(
         facetFields: "ontologyId type",
         ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
         type: type.length > 0 ? type[0] : null,
-	lang: 'all'
+	lang: 'all',
+
+	...(
+		Object.fromEntries( (searchParams as URLSearchParams) )
+	)
       };
       for (const param in query) {
         if (

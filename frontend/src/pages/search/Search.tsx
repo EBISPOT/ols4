@@ -1,6 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
@@ -31,6 +31,8 @@ export default function Search() {
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const ontologyFacets =
     facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
@@ -79,6 +81,7 @@ export default function Search() {
         search,
         ontologyId: ontologyFacetSelected,
         type: typeFacetSelected,
+	searchParams
       })
     );
   }, [
@@ -88,6 +91,7 @@ export default function Search() {
     rowsPerPage,
     ontologyFacetSelected,
     typeFacetSelected,
+    searchParams
   ]);
   useEffect(() => {
     if (prevSearch !== search) setPage(0);

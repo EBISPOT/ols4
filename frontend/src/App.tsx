@@ -16,7 +16,7 @@ class App extends React.Component {
           <Route path={`/`} element={<Home />} />
           <Route path={`/home`} element={<Home />} />
           <Route
-            path={`/search/:search`}
+            path={`/search/:search?`}
             element={<Search />}
           />
 
