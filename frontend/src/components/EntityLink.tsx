@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import LinkedEntities from "../model/LinkedEntities";
+import SavedSearchIcon from '@mui/icons-material/SavedSearch';
 
 export default function EntityLink({
   ontologyId,
@@ -52,14 +53,14 @@ export default function EntityLink({
 			{label}
 			</Link>
 			<Link className="link-default" to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>
-			<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1">ICON</span></Link>
+			<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1"><SavedSearchIcon/></span></Link>
 			</Fragment>
 		} else {
 			// Term is not defined in this ontology but is defined in other ontologies
 			// Show <label><ICON> linking to a disambiguation page
 			return <Link className="link-default" to={`/search?iri=${encodedIri}`}>
 				{label}
-			<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1">ICON</span>
+			<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1"><SavedSearchIcon/></span>
 			</Link>
 		}
 	} else {
@@ -77,7 +78,7 @@ export default function EntityLink({
 				// Term is defined in other ontologies
 				// Show <label><ICON> linking to disambiguation page
 				return <Link className="link-default" to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>{label}
-				<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1">ICON</span>
+				<span className="bg-link-default px-2 py-0 rounded-lg text-sm text-white uppercase ml-1"><SavedSearchIcon/></span>
 				</Link>
 			} else {
 				// Term is not defined in other ontologies
