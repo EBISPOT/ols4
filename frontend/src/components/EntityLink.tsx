@@ -14,11 +14,11 @@ export default function EntityLink({
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
-  const encodedIri = encodeURIComponent(encodeURIComponent(iri));
   const label = linkedEntities.getLabelForIri(iri) || iri.split("/").pop();
   const linkedEntity = linkedEntities.get(iri);
 
   let otherDefinedBy = linkedEntity?.definedBy ? linkedEntity.definedBy.filter(db => db !== ontologyId) : []
+  const encodedIri = encodeURIComponent(encodeURIComponent(linkedEntity?.iri || iri));
 
 	if(otherDefinedBy.length === 1) {
 		// Canonical definition in 1 other ontology
