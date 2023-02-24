@@ -216,7 +216,7 @@ function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
 				randomString()
 			}
 			>
-			<div className="font-bold capitalize">
+			<div className="font-bold">
 				{title}
 			</div>
 			{annotations.length === 1 ?
