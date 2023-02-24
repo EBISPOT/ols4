@@ -311,7 +311,7 @@ public class LinkerPass2 {
 	jsonWriter.value((long) definitions.definitions.size());
 
 	jsonWriter.name("hasLocalDefinition");
-	jsonWriter.value(definitions.definingOntologyIds.contains(ontologyId));
+	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));
 
         // 1. Prefer metadata from this ontology
         EntityDefinition defFromThisOntology = definitions.ontologyIdToDefinitions.get(ontologyId);
