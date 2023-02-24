@@ -53,7 +53,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
               </Link>
               <span className="px-2 text-sm" style={{color:'grey'}}>▸</span>
 		<span
-		className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+		className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
 		title={ontologyId}
 		>
 		{ontologyId}

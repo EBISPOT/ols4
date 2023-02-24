@@ -109,9 +109,9 @@ export default function EntityPage({
                 <span className="px-2 text-sm" style={{ color: "grey" }}>
                   ▸
                 </span>
-                <Link className="link-default" to={"/ontologies/" + ontologyId}>
+                <Link to={"/ontologies/" + ontologyId}>
                   <span
-                    className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                    className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
                     title={ontologyId}
                   >
                     {ontologyId}
@@ -125,7 +125,7 @@ export default function EntityPage({
                   ▸
                 </span>
                 <span
-                  className="bg-orange-default px-3 py-1 rounded-lg text-sm text-white uppercase"
+                  className="link-entity px-3 py-1 rounded-lg text-sm text-white uppercase"
                   title={entity.getShortForm()}
                 >
                   {entity.getShortForm()}
@@ -468,7 +468,7 @@ function DefiningOntologiesSection({
                 }
               >
                 <span
-                  className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
                   title={definedBy}
                 >
                   {definedBy}
@@ -484,7 +484,6 @@ function DefiningOntologiesSection({
           {definedIn.map((definedIn: string) => {
             return (
               <Link
-                className="link-default"
                 to={
                   "/ontologies/" +
                   definedIn +
@@ -493,7 +492,7 @@ function DefiningOntologiesSection({
                 }
               >
                 <span
-                  className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
+                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
                   title={definedIn}
                 >
                   {definedIn}
