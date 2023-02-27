@@ -30,8 +30,8 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
-  getDefinedIn():string[] {
-	return (this.properties['definedIn'] || []) as string[]
+  getAppearsIn():string[] {
+	return (this.properties['appearsIn'] || []) as string[]
   }
 
   getDefinedBy():string[] {

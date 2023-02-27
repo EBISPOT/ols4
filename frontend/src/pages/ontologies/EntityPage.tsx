@@ -444,8 +444,8 @@ function DefiningOntologiesSection({
   let definedBy = entity
     .getDefinedBy()
     .filter((ontId) => ontId !== entity.getOntologyId());
-  let definedIn = entity
-    .getDefinedIn()
+  let appearsIn = entity
+    .getAppearsIn()
     .filter(
       (ontId) =>
         ontId !== entity.getOntologyId() && definedBy.indexOf(ontId) === -1
@@ -478,24 +478,24 @@ function DefiningOntologiesSection({
           })}
         </div>
       )}
-      {definedIn && definedIn.length > 0 && (
+      {appearsIn && appearsIn.length > 0 && (
         <div className="mb-2">
           <span className="font-bold mr-2">Also defined in</span>
-          {definedIn.map((definedIn: string) => {
+          {appearsIn.map((appearsIn: string) => {
             return (
               <Link
                 to={
                   "/ontologies/" +
-                  definedIn +
+                  appearsIn +
                   `/${entity.getTypePlural()}/` +
                   encodeURIComponent(encodeURIComponent(entity.getIri()))
                 }
               >
                 <span
                   className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
-                  title={definedIn}
+                  title={appearsIn}
                 >
-                  {definedIn}
+                  {appearsIn}
                 </span>
               </Link>
             );

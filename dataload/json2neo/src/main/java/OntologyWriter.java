@@ -23,7 +23,7 @@ public class OntologyWriter {
 
     public static final Set<String> PROPERTY_BLACKLIST = Set.of(
             // large and doesn't get queried
-            "definedIn"
+            "appearsIn"
     );
 
     public static final Set<String> EDGE_BLACKLIST = Set.of(

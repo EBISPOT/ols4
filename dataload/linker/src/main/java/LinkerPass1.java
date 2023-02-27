@@ -17,9 +17,9 @@ public class LinkerPass1 {
 
     public static class LinkerPass1Result {
         Map<String, EntityDefinitionSet> iriToDefinitions = new HashMap<>();
-	Map<String, Set<String>> ontologyIriToOntologyIds = new HashMap<>();
-	Map<String, Set<String>> preferredPrefixToOntologyIds = new HashMap<>();
-	Map<String, Set<String>> ontologyIdToBaseUris = new HashMap<>();
+		Map<String, Set<String>> ontologyIriToOntologyIds = new HashMap<>();
+		Map<String, Set<String>> preferredPrefixToOntologyIds = new HashMap<>();
+		Map<String, Set<String>> ontologyIdToBaseUris = new HashMap<>();
     }
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {

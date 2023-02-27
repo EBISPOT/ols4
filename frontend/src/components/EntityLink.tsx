@@ -93,15 +93,15 @@ export default function EntityLink({
 		} else {
 			// Term is not defined in this ontology
 
-			if(linkedEntity.numDefinedIn > 0) {
-				// Term is defined in other ontologies
+			if(linkedEntity.numAppearsIn > 0) {
+				// Term appears in other ontologies
 				// Show <label><ICON> linking to disambiguation page
 				return <Fragment>
 					<Link className="link-default" to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>
 						{iri}
 					</Link>
 					<Link to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>
-						<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white"><SearchIcon /> {linkedEntity.numDefinedIn} ontologies</span>
+						<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white"><SearchIcon /> {linkedEntity.numAppearsIn} ontologies</span>
 					</Link>
 				</Fragment>
 			} else {

@@ -147,7 +147,7 @@ public class LinkerPass2 {
 			}
 
 			if (defOfThisEntity.definitions.size() > 0) {
-				jsonWriter.name("definedIn");
+				jsonWriter.name("appearsIn");
 				jsonWriter.beginArray();
 				for (var def : defOfThisEntity.definitions) {
 					jsonWriter.value(def.ontologyId);
@@ -307,8 +307,8 @@ public class LinkerPass2 {
 
 	}
 
-	jsonWriter.name("numDefinedIn");
-	jsonWriter.value((long) definitions.definitions.size());
+	jsonWriter.name("numAppearsIn");
+    jsonWriter.value(Integer.toString(definitions.definitions.size()));
 
 	jsonWriter.name("hasLocalDefinition");
 	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));
