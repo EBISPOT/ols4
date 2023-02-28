@@ -7,7 +7,7 @@ import { Suggest } from "../../model/Suggest";
 import Thing from "../../model/Thing";
 
 export interface HomeState {
-  stats: Stats;
+  stats: Stats|undefined;
 }
 export interface Stats {
   numberOfOntologies: number;
@@ -17,13 +17,7 @@ export interface Stats {
   lastModified: string;
 }
 const initialState: HomeState = {
-  stats: {
-    numberOfOntologies: 0,
-    numberOfClasses: 0,
-    numberOfProperties: 0,
-    numberOfIndividuals: 0,
-    lastModified: "",
-  }
+  stats: undefined
 };
 
 export const getStats = createAsyncThunk(

@@ -13,9 +13,9 @@ export async function request(
     //headers: { ...(init?.headers || {}), ...getAuthHeaders() }
   });
   if (!res.ok) {
-    const message = `Failure in accesing ${res.url} with status ${res.status} (${res.statusText})`;
+    const message = `Failure loading ${res.url} with status ${res.status} (${res.statusText})`;
     console.dir(message);
-    throw new Error(message);
+    return Promise.reject(new Error(message))
   }
   return await res.json();
 }

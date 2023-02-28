@@ -135,7 +135,10 @@ export default function Home() {
                     </li>
                   </ul>
                 </div>
-              ) : null}
+              ) : 
+	      <div className="spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"/>
+		    }
+	      
             </div>
             <div className="mb-4">
               <Timeline
