@@ -265,6 +265,7 @@ const ontologiesSlice = createSlice({
       }
     );
     builder.addCase(getOntology.pending, (state: OntologiesState) => {
+      state.ontology = undefined;
       state.loadingOntology = true;
     });
     builder.addCase(

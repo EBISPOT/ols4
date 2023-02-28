@@ -80,14 +80,17 @@ export default function EntityPage({
   };
 
   useEffect(() => {
-    if (!ontology) dispatch(getOntology({ ontologyId, lang }));
+	  dispatch(getOntology({ ontologyId, lang }));
+  }, [ontologyId])
+
+  useEffect(() => {
 
     dispatch(getEntity({ ontologyId, entityType, entityIri, lang }));
 
     if (entityType === "classes") {
       dispatch(getClassInstances({ ontologyId, classIri: entityIri, lang }));
     }
-  }, [dispatch, ontology, ontologyId, entityType, entityIri, searchParams]);
+  }, [dispatch, ontology, entityType, entityIri, searchParams]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
   return (

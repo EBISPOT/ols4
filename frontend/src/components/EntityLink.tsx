@@ -10,12 +10,17 @@ export default function EntityLink({
   linkedEntities,
 }: {
   ontologyId: string;
-  entityType: "classes" | "properties" | "individuals";
+  entityType: "classes" | "properties" | "individuals" | "ontologies";
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
+
   const label = linkedEntities.getLabelForIri(iri) || iri.split("/").pop() || iri;
   const linkedEntity = linkedEntities.get(iri);
+
+	if(!linkedEntity) {
+		throw new Error('linkedEntities did not have definition for iri ' + iri);
+	}
 
   let otherDefinedBy = linkedEntity?.definedBy ? linkedEntity.definedBy.filter(db => db !== ontologyId) : []
   const encodedIri = encodeURIComponent(encodeURIComponent(linkedEntity?.iri || iri));

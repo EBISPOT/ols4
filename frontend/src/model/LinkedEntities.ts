@@ -5,11 +5,17 @@ export default class LinkedEntities {
 	linkedEntities:any
 
 	constructor(linkedEntities:any) {
-		this.linkedEntities = {...linkedEntities}
+		if(linkedEntities)
+			this.linkedEntities = {...linkedEntities}
+		else
+			this.linkedEntities = {}
 	}
 
 	mergeWith(linkedEntities:any):LinkedEntities {
-		return new LinkedEntities({ ...this.linkedEntities, linkedEntities })
+		if(linkedEntities)
+			return new LinkedEntities({ ...this.linkedEntities, linkedEntities })
+		else
+			return new LinkedEntities({ ...this.linkedEntities })
 	}
 
 	getLabelForIri(iri:string):string|undefined {

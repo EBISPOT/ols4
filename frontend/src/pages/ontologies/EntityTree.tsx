@@ -135,7 +135,6 @@ export default function EntityTree({
           const isExpanded =
             expandedNodes.indexOf(childNode.absoluteIdentity) !== -1;
           const isLast = i === childrenSorted!.length - 1;
-          const termUrl = encodeURIComponent(encodeURIComponent(childNode.iri));
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
             false;
@@ -150,11 +149,7 @@ export default function EntityTree({
               }}
               key={randomString()}
             >
-              <Link
-                to={`/ontologies/${ontology.getOntologyId()}/${childNode.entity.getTypePlural()}/${termUrl}`}
-              >
-                {childNode.title}
-              </Link>
+		<TreeLink ontology={ontology} entity={childNode.entity} title={childNode.title} />
               {childNode.numDescendants > 0 && (
                 <span style={{ color: "gray" }}>
                   {" (" + childNode.numDescendants.toLocaleString() + ")"}
@@ -206,4 +201,32 @@ export default function EntityTree({
       </div>
     </Fragment>
   );
+}
+
+function TreeLink({ontology,entity,title}:{ontology:Ontology,entity:Entity,title:string}) {
+
+          let encodedIri = encodeURIComponent(encodeURIComponent(entity.getIri()));
+
+	  let definedBy:string[] = entity.getDefinedBy()
+
+	  if(definedBy.indexOf(ontology.getOntologyId()) !== -1)
+		definedBy = []; // don't show definedBy links for terms in current ontology
+
+	return <Link
+                to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}`}
+              >
+                {title}
+		{
+			definedBy.length > 0 &&
+				definedBy.map(definingOntology => {
+				return <Link to={`/ontologies/${definingOntology}/${entity.getTypePlural()}/${encodedIri}`}>
+					<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white uppercase ml-1" title={definingOntology} >
+					{definingOntology}
+					</span>
+				</Link>
+
+				})
+		}
+              </Link>
+
 }
