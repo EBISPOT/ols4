@@ -1,15 +1,17 @@
 
 <a href="https://github.com/EBISPOT/ols4/actions/workflows/test.yml"><img src="https://github.com/EBISPOT/ols4/actions/workflows/test.yml/badge.svg"/></a>
 
-Work in progress
+A live testing version of OLS4 is available at <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</b>. Please report any issues to the tracker in this repository.
 
-Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
+---
 
-* Much faster dataload (load the OBO foundry in hours instead of days)
+WIP version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
+
+* Much faster dataload (loads the OBO foundry in hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
 * Automated CI testing of the dataload with minimal testcase ontologies
 * A lossless data representation: everything in the OWL is preserved in the databases
-* Support for the latest Solr and Neo4j (no embedded databases, no MongoDB)
+* Uses updated versions of Solr and Neo4j (no embedded databases, no MongoDB)
 * React frontend using Redux and Tailwind
 * Backwards compatibility with the OLS3 API
 
