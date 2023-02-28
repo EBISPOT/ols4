@@ -15,17 +15,17 @@ export default function Header({
           "url('" + process.env.PUBLIC_URL + "/embl-ebi-background-4.jpg')",
       }}
     >
-      <header className="container mx-auto">
-        <div className="mb-4">
+      <header className="container mx-auto flex flex-row gap-10">
+      <div className="py-6">
           <a href={process.env.PUBLIC_URL}>
             <img
-              alt="OLS logo"
+              alt="OxO logo"
               className="h-24 inline-block"
               src={process.env.PUBLIC_URL + "/logo.png"}
             />
           </a>
         </div>
-        <nav>
+	<nav className="self-center">
           <ul
             className="bg-transparent text-white flex divide-white divide-x"
             data-description="navigational"
@@ -35,8 +35,8 @@ export default function Header({
             <Link to="/">
               <li
                 role="menuitem"
-                className={`px-4 py-3 ${
-                  section === "home" ? "bg-opacity-75 bg-neutral-500" : ""
+                className={`rounded-l-md px-4 py-3  ${
+                  section === "home" ? "bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 Home
@@ -48,7 +48,7 @@ export default function Header({
                 className={`px-4 py-3 ${
                   section === "ontologies"
                     ? " bg-opacity-75 bg-neutral-500"
-                    : ""
+                    : "hover:bg-opacity-50 hover:bg-neutral-500 "
                 }`}
               >
                 Ontologies
@@ -57,8 +57,8 @@ export default function Header({
             <Link to={`/help`}>
               <li
                 role="menuitem"
-                className={`px-4 py-3 ${
-                  section === "help" ? " bg-opacity-75 bg-neutral-500" : ""
+                className={`px-4 py-3  ${
+                  section === "help" ? " bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 Help
@@ -67,8 +67,8 @@ export default function Header({
             <Link to={`/about`}>
               <li
                 role="menuitem"
-                className={`px-4 py-3 ${
-                  section === "about" ? " bg-opacity-75 bg-neutral-500" : ""
+                className={`rounded-r-md px-4 py-3 ${
+                  section === "about" ? " bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 About
