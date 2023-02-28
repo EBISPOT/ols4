@@ -480,7 +480,7 @@ function DefiningOntologiesSection({
       )}
       {appearsIn && appearsIn.length > 0 && (
         <div className="mb-2">
-          <span className="font-bold mr-2">Also defined in</span>
+          <span className="font-bold mr-2">Also appears in</span>
           {appearsIn.map((appearsIn: string) => {
             return (
               <Link
