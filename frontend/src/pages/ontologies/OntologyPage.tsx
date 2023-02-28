@@ -39,6 +39,9 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 
 
   document.title = ontology?.getName() || ontologyId;
+
+  let version = (ontology?.getVersion() ? ontology.getVersion() : ontology?.getVersionFromIri()) || undefined;
+
   return (
     <div>
       <Header section="ontologies" />
@@ -63,6 +66,11 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
               <div className="text-2xl font-bold mb-4">
                 {ontology.getName() || ontology.getOntologyId()}
               </div>
+		{version &&
+			<div className="mb-4">
+				<span className="font-bold">Version {version}</span>
+			</div>
+		}
               <div className="mb-4">
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
@@ -157,18 +165,15 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
                         {ontology.getVersionIri()}
                       </a>
                     </div>
-                    <div>
-                      <span className="font-bold">Ontology ID: </span>
-                      <span id="ontologyId">{ontology.getOntologyId()}</span>
-                    </div>
-                    <div>
-                      <span className="font-bold">Version: </span>
-                      <span id="version">
-                        {ontology.getVersion()
-                          ? ontology.getVersion()
-                          : ontology.getVersionFromIri()}
-                      </span>
-                    </div>
+		    {/* todo remove hack when datarelease has completed; this should always be present */}
+		    {ontology.getSourceFileTimestamp() &&
+			<div>
+			<span className="font-bold">Last loaded: </span>
+			<a id="lastLoaded" href={ontology.getSourceFileTimestamp()}>
+				{ontology.getSourceFileTimestamp()}
+			</a>
+			</div>
+		    }
 		    <OntologyAnnotationsSection ontology={ontology} />
                   </div>
                 </details>

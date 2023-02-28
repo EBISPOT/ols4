@@ -16,6 +16,7 @@ import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
 import java.io.IOException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
@@ -28,6 +29,7 @@ public class OwlGraph implements StreamRDF {
     public Map<String, Object> config;
     public List<String> importUrls = new ArrayList<>();
     public Set<String> languages = new TreeSet<>();
+    public long sourceFileTimestamp;
 
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
@@ -52,6 +54,7 @@ public class OwlGraph implements StreamRDF {
         try {
             if (loadLocalFiles && !url.contains("://")) {
                 System.out.println("Using local file for " + url);
+		sourceFileTimestamp = new File(url).lastModified();
                 createParser(RDFLanguages.filenameToLang(url, Lang.RDFXML))
                         .source(new FileInputStream(url)).parse(this);
             } else {
@@ -60,6 +63,7 @@ public class OwlGraph implements StreamRDF {
                     try {
                         FileInputStream is = new FileInputStream(existingDownload);
                         System.out.println("Using predownloaded file for " + url);
+			sourceFileTimestamp = new File(existingDownload).lastModified();
                         Lang lang = null;
                         try {
                             String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
@@ -72,10 +76,12 @@ public class OwlGraph implements StreamRDF {
                         createParser(lang).source(is).parse(this);
                     } catch (Exception e) {
                         System.out.println("Downloading (not predownloaded) " + url);
+			sourceFileTimestamp = System.currentTimeMillis();
                         createParser(null).source(url).parse(this);
                     }
                 } else {
                     System.out.println("Downloading (no predownload path provided) " + url);
+		    sourceFileTimestamp = System.currentTimeMillis();
                     createParser(null).source(url).parse(this);
                 }
             }
@@ -180,6 +186,9 @@ public class OwlGraph implements StreamRDF {
 
         ontologyNode.properties.addProperty(
             "loaded", PropertyValueLiteral.fromString(now));
+
+        ontologyNode.properties.addProperty(
+            "sourceFileTimestamp", PropertyValueLiteral.fromString(new Date(sourceFileTimestamp).toString()));
     }
 
     for(String language : languages) {

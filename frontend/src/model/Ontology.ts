@@ -22,6 +22,9 @@ export default class Ontology extends Thing {
     );
     return descriptions[0].value || ''
   }
+  getSourceFileTimestamp(): string {
+    return this.properties["sourceFileTimestamp"];
+  }
   getNumEntities(): number {
     return parseInt(this.properties["numberOfEntities"]);
   }
