@@ -19,7 +19,10 @@ export default function EntityLink({
   const linkedEntity = linkedEntities.get(iri);
 
 	if(!linkedEntity) {
-		throw new Error('linkedEntities did not have definition for iri ' + iri);
+		// So far only known occurrence of this branch is for owl:Thing
+		return <Link className="link-default" to={iri}>
+			{label}
+		</Link>
 	}
 
   let otherDefinedBy = linkedEntity?.definedBy ? linkedEntity.definedBy.filter(db => db !== ontologyId) : []
