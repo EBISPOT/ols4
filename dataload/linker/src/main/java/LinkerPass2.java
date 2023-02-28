@@ -313,23 +313,24 @@ public class LinkerPass2 {
 	jsonWriter.name("hasLocalDefinition");
 	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));
 
-        // 1. Prefer metadata from this ontology
         EntityDefinition defFromThisOntology = definitions.ontologyIdToDefinitions.get(ontologyId);
-        if(defFromThisOntology != null) {
-            jsonWriter.name("label");
-            com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
-            jsonWriter.name("type");
-            jsonWriter.value(defFromThisOntology.entityType);
 
-	// 2. Look for metadata from a defining ontology
-        } else if(definitions.definingDefinitions.size() > 0) {
-
+        // 1. Prefer metadata from the defining ontology
+        if(definitions.definingDefinitions.size() > 0) {
 	    EntityDefinition definingOntology = definitions.definingDefinitions.iterator().next();
 
 	    jsonWriter.name("label");
 	    com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
 	    jsonWriter.name("type");
 	    jsonWriter.value(definingOntology.entityType);
+
+	// 2. Else look for metadata from this ontology
+	} else if(defFromThisOntology != null) {
+
+            jsonWriter.name("label");
+            com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
+            jsonWriter.name("type");
+            jsonWriter.value(defFromThisOntology.entityType);
 
 	// 3. Fall back on the first ontology we encounter that defines the IRI
 	//
