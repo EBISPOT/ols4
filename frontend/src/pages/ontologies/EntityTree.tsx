@@ -92,7 +92,7 @@ export default function EntityTree({
 
 	let nodesMissingChildren:string[] = expandedNodes.filter(absoluteIdentity => !nodeChildren[absoluteIdentity]?.length)
 
-	// console.log('!!!! Getting missing node children: ' + nodesMissingChildren.length)
+	// console.log('!!!! Getting missing node children: ' + JSON.stringify(nodesMissingChildren));
 
 	for(let absId of nodesMissingChildren) {
 		dispatch(

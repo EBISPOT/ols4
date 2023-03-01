@@ -26,6 +26,9 @@ export default function extractEntityHierarchy(
 
 	for (let entity of entities) {
 
+		if (isTop(entity.getIri()))
+			continue;
+
 		let parents = entity.getParents()
 			.map(parent => parent.value)
 			// not interested in bnode subclassofs like restrictions etc
@@ -34,17 +37,30 @@ export default function extractEntityHierarchy(
 			.filter(parent => parent !== undefined)
 
 		for (let parent of parents) {
+
 			assert(parent)
+
+			if (isTop(parent.getIri()))
+				continue;
+
 			uriToChildNodes.set(parent.getIri(), entity)
 			uriToParentNodes.set(entity.getIri(), parent)
 		}
 	}
 
 	let rootEntities = entities.filter((node) => {
+
+		if (isTop(node.getIri()))
+			return false;
+
 		return (uriToParentNodes.get(node.getIri()) || []).length === 0
 	})
 
 	return { rootEntities, uriToChildNodes }
+}
+
+function isTop(iri) {
+	return iri ===  'http://www.w3.org/2002/07/owl#Thing' || iri === 'http://www.w3.org/2002/07/owl#TopObjectProperty'
 }
 
 
