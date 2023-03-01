@@ -22,4 +22,8 @@ export default class Property extends Entity {
   getInverseOf() {
     return asArray(this.properties["http://www.w3.org/2002/07/owl#inverseOf"]);
   }
+
+  getPropertyChains() {
+    return asArray(this.properties["http://www.w3.org/2002/07/owl#propertyChainAxiom"]);
+  }
 }

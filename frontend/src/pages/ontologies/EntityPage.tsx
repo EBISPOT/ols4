@@ -3,7 +3,7 @@ import { Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { copyToClipboard, randomString, sortByKeys } from "../../app/util";
+import { asArray, copyToClipboard, randomString, sortByKeys } from "../../app/util";
 import ClassExpression from "../../components/ClassExpression";
 import EntityLink from "../../components/EntityLink";
 import Header from "../../components/Header";
@@ -272,7 +272,11 @@ export default function EntityPage({
                           entity={entity}
                           linkedEntities={linkedEntities}
                         />
-                        <InverseOfSection
+                        <PropertyInverseOfSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
+                        <PropertyChainSection
                           entity={entity}
                           linkedEntities={linkedEntities}
                         />
@@ -1049,7 +1053,7 @@ function DisjointWithSection({
   );
 }
 
-function InverseOfSection({
+function PropertyInverseOfSection({
   entity,
   linkedEntities,
 }: {
@@ -1115,3 +1119,68 @@ function InverseOfSection({
     </div>
   );
 }
+
+function PropertyChainSection({
+  entity,
+  linkedEntities,
+}: {
+  entity: Entity;
+  linkedEntities: LinkedEntities;
+}) {
+  if (!(entity instanceof Property)) {
+    return <Fragment />;
+  }
+
+  let propertyChains = entity.getPropertyChains();
+
+  if (!propertyChains || propertyChains.length === 0) {
+    return <Fragment />;
+  }
+
+  return (
+    <div>
+      <div className="font-bold">Property chain</div>
+      {propertyChains.length === 1 ? (
+        <p>
+		<PropertyChain propertyChain={propertyChains[0]} entity={entity} linkedEntities={linkedEntities} />
+        </p>
+      ) : (
+        <ul className="list-disc list-inside">
+          {propertyChains.map((propertyChain) => {
+            return (
+              <li key={randomString()}>
+		<PropertyChain propertyChain={propertyChains[0]} entity={entity} linkedEntities={linkedEntities} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function PropertyChain({propertyChain, entity, linkedEntities}:{propertyChain:any, entity:Entity, linkedEntities:any}) {
+
+	let chain = asArray(propertyChain)
+
+	return <Fragment>
+		{
+			chain.map((propertyIri, i) => {
+				return <Fragment>
+					<EntityLink 
+						ontologyId={entity.getOntologyId()}
+						entityType={"properties"}
+						iri={propertyIri}
+						linkedEntities={linkedEntities}
+					/>
+					<Fragment>
+						{i < chain.length - 1 &&
+						<span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
+						}
+					</Fragment>
+				</Fragment>
+			})
+		}
+	</Fragment>
+}
+
