@@ -218,6 +218,7 @@ public class OwlGraph implements StreamRDF {
     DisjointWithAnnotator.annotateDisjointWith(this);
     HasIndividualsAnnotator.annotateHasIndividuals(this);
     EquivalenceAnnotator.annotateEquivalance(this);
+    InverseOfAnnotator.annotateInverseOf(this);
 
     }
 

@@ -272,6 +272,10 @@ export default function EntityPage({
                           entity={entity}
                           linkedEntities={linkedEntities}
                         />
+                        <InverseOfSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                        />
                         <EntityEquivalentsSection
                           entity={entity}
                           linkedEntities={linkedEntities}
@@ -1033,6 +1037,73 @@ function DisjointWithSection({
                       entity.getType() === "property" ? "properties" : "classes"
                     }
                     iri={disjointWith}
+                    linkedEntities={linkedEntities}
+                  />
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function InverseOfSection({
+  entity,
+  linkedEntities,
+}: {
+  entity: Entity;
+  linkedEntities: LinkedEntities;
+}) {
+  if (!(entity instanceof Property)) {
+    return <Fragment />;
+  }
+
+  let inverseOfs = entity.getInverseOf();
+
+  if (!inverseOfs || inverseOfs.length === 0) {
+    return <Fragment />;
+  }
+
+  return (
+    <div>
+      <div className="font-bold">Inverse of</div>
+      {inverseOfs.length === 1 ? (
+        <p>
+          {typeof inverseOfs[0] === "object" &&
+          !Array.isArray(inverseOfs[0]) ? (
+            <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              expr={inverseOfs[0]}
+              linkedEntities={linkedEntities}
+            />
+          ) : (
+            <EntityLink
+              ontologyId={entity.getOntologyId()}
+              entityType={"properties"}
+              iri={inverseOfs[0]}
+              linkedEntities={linkedEntities}
+            />
+          )}
+        </p>
+      ) : (
+        <ul className="list-disc list-inside">
+          {inverseOfs.map((inverseOf) => {
+            return (
+              <li key={randomString()}>
+                {typeof inverseOf === "object" &&
+                !Array.isArray(inverseOf) ? (
+                  <ClassExpression
+                    ontologyId={entity.getOntologyId()}
+                    expr={inverseOf}
+                    linkedEntities={linkedEntities}
+                  />
+                ) : (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    entityType={"properties"}
+                    iri={inverseOf}
                     linkedEntities={linkedEntities}
                   />
                 )}

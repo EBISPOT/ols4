@@ -19,4 +19,7 @@ export default class Property extends Entity {
 	return asArray(this.properties['http://www.w3.org/2002/07/owl#propertyDisjointWith'])
   }
 
+  getInverseOf() {
+    return asArray(this.properties["http://www.w3.org/2002/07/owl#inverseOf"]);
+  }
 }
