@@ -1,14 +1,17 @@
 import { asArray, randomString } from "../app/util";
+import Entity from "../model/Entity";
 import LinkedEntities from "../model/LinkedEntities";
 import EntityLink from "./EntityLink";
 
 export default function ClassExpression({
   ontologyId,
+  currentEntity,
   expr,
   entityType,
   linkedEntities,
 }: {
   ontologyId:string,
+  currentEntity:Entity|undefined,
   expr: any;
   entityType?:'classes'|'properties'|'individuals',
   linkedEntities:LinkedEntities;
@@ -17,7 +20,7 @@ export default function ClassExpression({
 
   if (typeof expr !== "object") {
     // expr is just an IRI
-    return <EntityLink ontologyId={ontologyId} entityType={entityType} iri={expr} linkedEntities={linkedEntities} />
+    return <EntityLink ontologyId={ontologyId} currentEntity={currentEntity} entityType={entityType} iri={expr} linkedEntities={linkedEntities} />
   }
 
   linkedEntities = linkedEntities.mergeWith(expr.linkedEntities)
@@ -50,6 +53,7 @@ export default function ClassExpression({
         <ClassExpression
           key={randomString()}
 	  ontologyId={ontologyId}
+	  currentEntity={currentEntity}
 	  entityType={'classes'}
           expr={subExpr}
           linkedEntities={linkedEntities}
@@ -90,6 +94,7 @@ export default function ClassExpression({
           key={randomString()}
 	  ontologyId={ontologyId}
 	  entityType={'classes'}
+	  currentEntity={currentEntity}
           expr={subExpr}
           linkedEntities={linkedEntities}
         />
@@ -115,6 +120,7 @@ export default function ClassExpression({
         <ClassExpression
 	  ontologyId={ontologyId}
 	  entityType={'classes'}
+	  currentEntity={currentEntity}
 	  expr={complementOf}
 	  linkedEntities={linkedEntities} />
       </span>
@@ -142,6 +148,7 @@ export default function ClassExpression({
           key={randomString()}
 	  ontologyId={ontologyId}
 	  entityType={'individuals'}
+	  currentEntity={currentEntity}
           expr={subExpr}
           linkedEntities={linkedEntities}
         />
@@ -177,9 +184,9 @@ export default function ClassExpression({
   if (someValuesFrom) {
     return (
       <span>
-        <ClassExpression ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">some</span>
-        <ClassExpression ontologyId={ontologyId} entityType={'classes'} expr={someValuesFrom} linkedEntities={linkedEntities} />
+        <ClassExpression ontologyId={ontologyId} currentEntity={currentEntity} entityType={'classes'} expr={someValuesFrom} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -190,9 +197,9 @@ export default function ClassExpression({
   if (allValuesFrom) {
     return (
       <span>
-        <ClassExpression ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">only</span>
-        <ClassExpression ontologyId={ontologyId} entityType={'classes'} expr={allValuesFrom} linkedEntities={linkedEntities} />
+        <ClassExpression ontologyId={ontologyId} currentEntity={currentEntity} entityType={'classes'} expr={allValuesFrom} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -201,9 +208,9 @@ export default function ClassExpression({
   if (hasValue) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">value</span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'individuals'} expr={hasValue} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'individuals'} expr={hasValue} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -214,9 +221,9 @@ export default function ClassExpression({
   if (minCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={minCardinality} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'classes'} expr={minCardinality} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -227,9 +234,9 @@ export default function ClassExpression({
   if (maxCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={maxCardinality} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'classes'} expr={maxCardinality} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -240,9 +247,10 @@ export default function ClassExpression({
   if (minQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">min</span>
         <ClassExpression
+	currentEntity={currentEntity} 
 	 ontologyId={ontologyId} entityType={'classes'}
           expr={minQualifiedCardinality}
           linkedEntities={linkedEntities}
@@ -257,9 +265,10 @@ export default function ClassExpression({
   if (maxQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">max</span>
         <ClassExpression
+	currentEntity={currentEntity} 
 	 ontologyId={ontologyId} entityType={'classes'}
           expr={maxQualifiedCardinality}
           linkedEntities={linkedEntities}
@@ -274,9 +283,9 @@ export default function ClassExpression({
   if (exactCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'classes'} expr={exactCardinality} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'classes'} expr={exactCardinality} linkedEntities={linkedEntities} />
       </span>
     );
   }
@@ -287,10 +296,11 @@ export default function ClassExpression({
   if (exactQualifiedCardinality) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">exactly</span>
         <ClassExpression
 	 ontologyId={ontologyId} entityType={'classes'}
+	 currentEntity={currentEntity} 
           expr={exactQualifiedCardinality}
           linkedEntities={linkedEntities}
         />
@@ -302,7 +312,7 @@ export default function ClassExpression({
   if (hasSelf) {
     return (
       <span>
-        <ClassExpression  ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+        <ClassExpression currentEntity={currentEntity}   ontologyId={ontologyId} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
         <span className="px-1 text-embl-purple-default italic">Self</span>
       </span>
     );

@@ -2,18 +2,30 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import LinkedEntities from "../model/LinkedEntities";
 import SearchIcon from '@mui/icons-material/Search';
+import Entity from "../model/Entity";
 
 export default function EntityLink({
   ontologyId,
+  currentEntity,
   entityType,
   iri,
   linkedEntities,
 }: {
   ontologyId: string;
+  currentEntity: Entity|undefined,
   entityType: "classes" | "properties" | "individuals" | "ontologies";
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
+
+	if(typeof(iri) !== 'string') {
+		throw new Error('EntityLink iri was not a string: ' + JSON.stringify(iri))
+	}
+
+	// reference to self; just display label bc we are already on that page
+	if(currentEntity && iri === currentEntity.getIri()) {
+		return <b>{currentEntity.getName()}</b>
+	}
 
   const label = linkedEntities.getLabelForIri(iri) || iri.split("/").pop() || iri;
   const linkedEntity = linkedEntities.get(iri);

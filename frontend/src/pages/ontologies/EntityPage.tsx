@@ -430,6 +430,7 @@ function EntityAnnotationsSection({
         return (
           <EntityLink
             ontologyId={entity.getOntologyId()}
+	    currentEntity={entity}
             entityType="classes" // TODO
             iri={value.value}
             linkedEntities={linkedEntities}
@@ -580,6 +581,7 @@ function ClassInstancesSection({
               <li key={randomString()}>
                 <EntityLink
                   ontologyId={entity.getOntologyId()}
+		  currentEntity={entity}
                   entityType="individuals"
                   iri={instance.getIri()}
                   linkedEntities={linkedEntities}
@@ -619,6 +621,7 @@ function EntityEquivalentsSection({
             <li key={randomString()}>
               <ClassExpression
                 ontologyId={entity.getOntologyId()}
+		currentEntity={entity} 
                 expr={eqClass.value}
                 linkedEntities={linkedEntities}
               />
@@ -662,6 +665,7 @@ function EntityParentsSection({
         <p>
           <ClassExpression
             ontologyId={entity.getOntologyId()}
+	    currentEntity={entity}
             expr={parents[0].value}
             linkedEntities={linkedEntities}
           />
@@ -679,6 +683,7 @@ function EntityParentsSection({
               <li key={randomString()}>
                 <ClassExpression
                   ontologyId={entity.getOntologyId()}
+		  currentEntity={entity}
                   expr={parent.value}
                   linkedEntities={linkedEntities}
                 />
@@ -739,6 +744,7 @@ function EntityRelatedFromSection({
                       <li key={relatedIri + randomString()}>
                         <EntityLink
                           ontologyId={entity.getOntologyId()}
+			  currentEntity={entity}
                           entityType={"classes"}
                           iri={relatedIri}
                           linkedEntities={linkedEntities}
@@ -810,12 +816,14 @@ function IndividualTypesSection({
           {typeof types[0] === "object" && !Array.isArray(types[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
+		     currentEntity={entity}
               expr={types[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
+	      currentEntity={entity}
               entityType={"classes"}
               iri={types[0]}
               linkedEntities={linkedEntities}
@@ -830,12 +838,14 @@ function IndividualTypesSection({
                 {typeof type === "object" && !Array.isArray(type) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
+		     currentEntity={entity}
                     expr={type}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
+		    currentEntity={entity}
                     entityType={"classes"}
                     iri={type}
                     linkedEntities={linkedEntities}
@@ -875,12 +885,14 @@ function IndividualSameAsSection({
           {typeof sameAses[0] === "object" && !Array.isArray(sameAses[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
+              currentEntity={entity}
               expr={sameAses[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
+	      currentEntity={entity}
               entityType={"individuals"}
               iri={sameAses[0]}
               linkedEntities={linkedEntities}
@@ -895,12 +907,14 @@ function IndividualSameAsSection({
                 {typeof sameAs === "object" && !Array.isArray(sameAs) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
+                    currentEntity={entity}
                     expr={sameAs}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
+		    currentEntity={entity}
                     entityType={"individuals"}
                     iri={sameAs}
                     linkedEntities={linkedEntities}
@@ -941,12 +955,14 @@ function IndividualDifferentFromSection({
           !Array.isArray(differentFroms[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
+              currentEntity={entity}
               expr={differentFroms[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
+	      currentEntity={entity}
               entityType={"individuals"}
               iri={differentFroms[0]}
               linkedEntities={linkedEntities}
@@ -962,12 +978,14 @@ function IndividualDifferentFromSection({
                 !Array.isArray(differentFrom) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
+                    currentEntity={entity}
                     expr={differentFrom}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
+		    currentEntity={entity}
                     entityType={"individuals"}
                     iri={differentFrom}
                     linkedEntities={linkedEntities}
@@ -1008,12 +1026,14 @@ function DisjointWithSection({
           !Array.isArray(disjointWiths[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
               expr={disjointWiths[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
+	      currentEntity={entity}
               entityType={
                 entity.getType() === "property" ? "properties" : "classes"
               }
@@ -1031,12 +1051,14 @@ function DisjointWithSection({
                 !Array.isArray(disjointWith) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
                     expr={disjointWith}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
+		    currentEntity={entity}
                     entityType={
                       entity.getType() === "property" ? "properties" : "classes"
                     }
@@ -1079,12 +1101,14 @@ function PropertyInverseOfSection({
           !Array.isArray(inverseOfs[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
               expr={inverseOfs[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
+	      currentEntity={entity}
               entityType={"properties"}
               iri={inverseOfs[0]}
               linkedEntities={linkedEntities}
@@ -1100,12 +1124,14 @@ function PropertyInverseOfSection({
                 !Array.isArray(inverseOf) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
                     expr={inverseOf}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
+		    currentEntity={entity}
                     entityType={"properties"}
                     iri={inverseOf}
                     linkedEntities={linkedEntities}
@@ -1131,25 +1157,28 @@ function PropertyChainSection({
     return <Fragment />;
   }
 
-  let propertyChains = entity.getPropertyChains();
+  // TODO: reification discarded here
+  let propertyChains:any[] = entity.getPropertyChains().map(rf => rf.value)
 
   if (!propertyChains || propertyChains.length === 0) {
     return <Fragment />;
   }
 
+  let hasMultipleChains = propertyChains.filter(chain => Array.isArray(chain)).length > 0
+
   return (
     <div>
-      <div className="font-bold">Property chain</div>
-      {propertyChains.length === 1 ? (
+      <div className="font-bold">{hasMultipleChains ? "Property chains" : "Property chain"}</div>
+      { (!hasMultipleChains) ?
         <p>
-		<PropertyChain propertyChain={propertyChains[0]} entity={entity} linkedEntities={linkedEntities} />
+		<PropertyChain propertyChain={propertyChains} entity={entity} linkedEntities={linkedEntities} />
         </p>
-      ) : (
+       : (
         <ul className="list-disc list-inside">
           {propertyChains.map((propertyChain) => {
             return (
               <li key={randomString()}>
-		<PropertyChain propertyChain={propertyChains[0]} entity={entity} linkedEntities={linkedEntities} />
+		<PropertyChain propertyChain={propertyChain} entity={entity} linkedEntities={linkedEntities} />
               </li>
             );
           })}
@@ -1165,17 +1194,18 @@ function PropertyChain({propertyChain, entity, linkedEntities}:{propertyChain:an
 
 	return <Fragment>
 		{
-			chain.map((propertyIri, i) => {
+			chain.reverse().map((propertyIri, i) => {
 				return <Fragment>
 					<EntityLink 
 						ontologyId={entity.getOntologyId()}
+						currentEntity={entity}
 						entityType={"properties"}
 						iri={propertyIri}
 						linkedEntities={linkedEntities}
 					/>
 					<Fragment>
 						{i < chain.length - 1 &&
-						<span className="px-2 text-sm" style={{color:'gray'}}>▸</span>
+						<span className="px-2 text-sm" style={{color:'gray'}}>◂</span>
 						}
 					</Fragment>
 				</Fragment>
