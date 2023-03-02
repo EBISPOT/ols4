@@ -491,11 +491,13 @@ function DefiningOntologiesSection({
         </div>
       )}
       {appearsIn && appearsIn.length > 0 && (
-        <div className="mb-2">
+        <div className="mb-2" style={{maxWidth: "100%", inlineSize:"100%" }}>
           <span className="font-bold mr-2">Also appears in</span>
           {appearsIn.map((appearsIn: string) => {
             return (
               <Link
+	      className="my-2"
+	      style={{display: 'inline-block'}}
                 to={
                   "/ontologies/" +
                   appearsIn +
