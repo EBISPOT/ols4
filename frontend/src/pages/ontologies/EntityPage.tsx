@@ -20,6 +20,7 @@ import { getClassInstances, getEntity, getOntology } from "./ontologiesSlice";
 import { Page } from "../../app/api";
 import { useParams, useSearchParams } from "react-router-dom";
 import LanguagePicker from "../../components/LanguagePicker";
+import SearchBox from "../../components/SearchBox";
 
 export default function EntityPage({
   entityType,
@@ -145,6 +146,9 @@ export default function EntityPage({
                   </button>
                 </span>
               </div>
+		<div className="flex flex-nowrap gap-4">
+			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
+		</div>
               <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
                 <div className="text-2xl font-bold mb-4">
                   {entity.getName()}
