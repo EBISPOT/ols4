@@ -1,3 +1,4 @@
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
@@ -25,6 +26,9 @@ export default function SearchBox({
   let [query, setQuery] = useState<string>(initialQuery || "");
   //const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
+  let [exact, setExact] = useState<boolean>(false);
+  let [obsolete, setObsolete] = useState<boolean>(false);
+
   const searchForOntologies = ontologyId === undefined
   const showSuggestions = ontologyId === undefined
 
@@ -49,6 +53,8 @@ export default function SearchBox({
 					search: query,
 					size: "5",
 					lang: 'en',
+					exactMatch: exact.toString(),
+					includeObsoleteEntities: obsolete.toString(),
 					...(ontologyId ? {ontologyId} : {})
 				})}`
 			),
@@ -56,12 +62,16 @@ export default function SearchBox({
 				`api/v2/ontologies?${new URLSearchParams({
 					search: query,
 					size: "5",
-					lang: 'en'
+					lang: 'en',
+					exactMatch: exact.toString(),
+					includeObsoleteEntities: obsolete.toString(),
 				})}`
 			) : null,
 			showSuggestions ? get<Suggest>(
 				`api/suggest?${new URLSearchParams({
-					q: query
+					q: query,
+					exactMatch: exact.toString(),
+					includeObsoleteEntities: obsolete.toString(),
 				})}`
 			) : null,
 		]);
@@ -76,12 +86,15 @@ export default function SearchBox({
 
 	loadSuggestions()
 
-  }, [ query ])
+  }, [ query, exact, obsolete ])
 
   let show = open && !!query
 
 	return <Fragment>
-		<div className="relative w-full self-center"> <input
+		<div className="relative w-full self-center">
+			<div className="flex space-x-4">
+				<div className="grow">
+			<input
 			id="home-search"
 			type="text"
 			autoComplete="off"
@@ -215,6 +228,7 @@ export default function SearchBox({
 				>Search OLS for <b>{query}</b></li> }
 			</ul>
 		</div>
+		<div>
 		<button
 			className="button-primary text-lg font-bold self-center"
 			onClick={() => {
@@ -225,6 +239,13 @@ export default function SearchBox({
 		>
 			Search
 		</button>
+		</div>
+		</div>
+		<div className="col-span-2">
+		 <FormControlLabel control={<Checkbox value={exact} onChange={(ev) => setExact(!!ev.target.checked)} />} label="Exact match" />
+		 <FormControlLabel control={<Checkbox value={obsolete} onChange={(ev) => setObsolete(!!ev.target.checked)}  />} label="Include obsolete terms" />
+		 </div>
+		 </div>
 </Fragment >
 
 

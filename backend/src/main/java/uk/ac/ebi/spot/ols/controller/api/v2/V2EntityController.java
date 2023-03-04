@@ -40,15 +40,19 @@ public class V2EntityController {
             @RequestParam(value = "searchFields", required = false) String searchFields,
             @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam(value = "facetFields", required = false) String facetFields,
+            @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
             @RequestParam Map<String,String> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
+        Map<String,String> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put("isObsolete", "false");
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, DynamicQueryHelper.filterProperties(properties))
+                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
                         ),
                     HttpStatus.OK);
     }
@@ -62,15 +66,19 @@ public class V2EntityController {
             @RequestParam(value = "searchFields", required = false) String searchFields,
             @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam(value = "facetFields", required = false) String facetFields,
+            @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
             @RequestParam Map<String,String> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
+        Map<String,String> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put("isObsolete", "false");
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, DynamicQueryHelper.filterProperties(properties))
+                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
                 ),
                 HttpStatus.OK);
     }

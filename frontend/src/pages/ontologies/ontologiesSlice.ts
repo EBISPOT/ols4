@@ -28,6 +28,7 @@ export interface OntologiesState {
   loadingClassInstances: boolean;
   expandedNodes: string[];
   preferredRoots: boolean;
+  showObsolete: boolean;
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -55,6 +56,7 @@ const initialState: OntologiesState = {
   loadingClassInstances: false,
   expandedNodes: [],
   preferredRoots: false,
+  showObsolete: false
 };
 
 export const resetTree = createAction("ontologies_tree_reset");
@@ -66,6 +68,9 @@ export const disablePreferredRoots = createAction(
 );
 export const openNode = createAction<TreeNode>("ontologies_node_open");
 export const closeNode = createAction<TreeNode>("ontologies_node_close");
+export const showObsolete = createAction("ontologies_show_obsolete");
+export const hideObsolete = createAction("ontologies_hide_obsolete");
+
 
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
@@ -144,18 +149,18 @@ export const getEntities = createAsyncThunk(
 );
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
-  async ({ ontologyId, entityType, entityIri, lang }: any) => {
+  async ({ ontologyId, entityType, entityIri, lang, showObsoleteEnabled }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     if (entityType === "classes") {
       var ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-          { size: "100", lang }
+          { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     } else {
       var ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-          { size: "100", lang }
+          { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     }
@@ -164,13 +169,14 @@ export const getAncestors = createAsyncThunk(
 );
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
-  async ({ ontologyId, entityType, preferredRoots, lang }: any) => {
+  async ({ ontologyId, entityType, preferredRoots, lang, showObsoleteEnabled }: any) => {
     if (entityType === "individuals") {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
           hasIndividuals: "true",
           size: "100",
           lang,
+	  includeObsoleteEntities: showObsoleteEnabled
         })}`
       );
       return rootsPage.elements.map((obj) => thingFromProperties(obj));
@@ -180,6 +186,7 @@ export const getRootEntities = createAsyncThunk(
           isPreferredRoot: "true",
           size: "100",
           lang,
+	  includeObsoleteEntities: showObsoleteEnabled
         })}`
       );
       return rootsPage.elements.map((obj) => thingFromProperties(obj));
@@ -189,6 +196,7 @@ export const getRootEntities = createAsyncThunk(
           hasDirectParent: "false",
           size: "100",
           lang,
+	  includeObsoleteEntities: showObsoleteEnabled
         })}`
       );
       return rootsPage.elements.map((obj) => thingFromProperties(obj));
@@ -365,16 +373,27 @@ const ontologiesSlice = createSlice({
       state.loadingEntities = false;
     });
     builder.addCase(resetTree, (state: OntologiesState) => {
+	console.log('Resetting tree')
       state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
       state.expandedNodes = [];
       state.nodeChildren = {};
       state.rootNodes = [];
+      state.showObsolete = false;
     });
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = true;
     });
     builder.addCase(disablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = false;
+    });
+    builder.addCase(showObsolete, (state: OntologiesState) => {
+	console.log('Setting showObsolete to true')
+      state.showObsolete = true;
+    });
+    builder.addCase(hideObsolete, (state: OntologiesState) => {
+	console.dir(state)
+	console.log('Setting showObsolete to false')
+      state.showObsolete = false;
     });
     builder.addCase(
       openNode,

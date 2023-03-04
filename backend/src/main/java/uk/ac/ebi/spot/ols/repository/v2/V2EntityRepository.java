@@ -31,12 +31,13 @@ public class V2EntityRepository {
 
 
     public OlsFacetedResultsPage<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, Map<String,String> properties) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,String> properties) throws IOException {
 
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
+        query.setExactMatch(exactMatch);
         query.addFilter("type", "entity", SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
@@ -50,13 +51,14 @@ public class V2EntityRepository {
     }
 
     public OlsFacetedResultsPage<V2Entity> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, Map<String,String> properties) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,String> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
+        query.setExactMatch(exactMatch);
 
         query.addFilter("type", "entity", SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);

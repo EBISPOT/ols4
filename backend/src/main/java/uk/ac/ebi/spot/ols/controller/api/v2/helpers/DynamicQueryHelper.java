@@ -17,7 +17,9 @@ public class DynamicQueryHelper {
 
             k = UriUtils.decode(k, "UTF-8");
 
-            if(k.equals("lang") || k.equals("search") || k.equals("searchFields") || k.equals("boostFields") || k.equals("page") || k.equals("size"))
+            if(k.equals("lang") || k.equals("search") || k.equals("searchFields")
+                    || k.equals("boostFields") || k.equals("page") || k.equals("size") || k.equals("exactMatch")
+                        || k.equals("includeObsoleteEntities"))
                 continue;
 
             newProps.put(k, value);

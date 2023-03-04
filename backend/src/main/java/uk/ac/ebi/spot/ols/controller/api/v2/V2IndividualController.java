@@ -40,15 +40,19 @@ public class V2IndividualController {
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
             @RequestParam(value = "boostFields", required = false) String boostFields,
+            @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
             @RequestParam Map<String,String> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
-	properties.putAll(searchProperties);
+        Map<String,String> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put("isObsolete", "false");
+        properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    individualRepository.find(pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties))
+                    individualRepository.find(pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
                 ),
                 HttpStatus.OK);
     }
@@ -61,15 +65,19 @@ public class V2IndividualController {
             @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "searchFields", required = false) String searchFields,
             @RequestParam(value = "boostFields", required = false) String boostFields,
+            @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
             @RequestParam Map<String,String> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-	Map<String,String> properties = new HashMap<>(Map.of("isObsolete", "false"));
-	properties.putAll(searchProperties);
+        Map<String,String> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put("isObsolete", "false");
+        properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, DynamicQueryHelper.filterProperties(properties))
+                    individualRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
                 ),
                 HttpStatus.OK);
     }

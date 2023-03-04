@@ -9,6 +9,7 @@ import org.apache.solr.client.solrj.util.ClientUtils;
 public class OlsSolrQuery {
 
 	String searchText = null;
+	boolean exactMatch = false;
 	List<SearchField> searchFields = new ArrayList<>();
 	List<BoostField> boostFields = new ArrayList<>();
 	List<String> facetFields = new ArrayList<>();
@@ -23,6 +24,10 @@ public class OlsSolrQuery {
 
 	public String getSearchText() {
 		return this.searchText;
+	}
+
+	public void setExactMatch(boolean exactMatch) {
+		this.exactMatch = exactMatch;
 	}
 
 	public void addSearchField(String propertyName, int weight, SearchType searchType) {
@@ -50,11 +55,11 @@ public class OlsSolrQuery {
 
 		if(searchText != null) {
 
-//			if (searchText.contains("*")) {
+			if(exactMatch) {
+				query.setQuery("\"" + searchText + "\"");
+			} else {
 				query.setQuery(searchText);
-//			} else {
-//				query.setQuery("*" + searchText + "*");
-//			}
+			}
 
 			StringBuilder qf = new StringBuilder();
 
@@ -62,7 +67,7 @@ public class OlsSolrQuery {
 				if(qf.length() > 0) {
 					qf.append(" ");
 				}
-				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName, searchField.searchType)) );
+				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName, exactMatch ? SearchType.WHOLE_FIELD : searchField.searchType)) );
 				qf.append("^");
 				qf.append(searchField.weight);
 			}
@@ -81,9 +86,9 @@ public class OlsSolrQuery {
 				if(bf.length() > 0) {
 					bf.append(" ");
 				}
-				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(boostField.propertyName, boostField.searchType)) );
+				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(boostField.propertyName, exactMatch ? SearchType.WHOLE_FIELD : boostField.searchType)) );
 				bf.append(":\"");
-				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyValue(boostField.propertyValue, boostField.searchType)) );
+				bf.append(ClientUtils.escapeQueryChars( getSolrPropertyValue(boostField.propertyValue, exactMatch ? SearchType.WHOLE_FIELD : boostField.searchType)) );
 				bf.append("\"");
 				bf.append("^");
 				bf.append(boostField.weight);
@@ -95,7 +100,7 @@ public class OlsSolrQuery {
 		for(Filter f : filters) {
 			query.addFilterQuery(
 				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType))
-					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, f.searchType)) + "\"");
+					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, exactMatch ? SearchType.WHOLE_FIELD : f.searchType)) + "\"");
 		}
 
 		if(facetFields.size() > 0) {

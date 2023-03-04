@@ -1,10 +1,11 @@
 import {
+	Checkbox,
   FormControl,
   FormControlLabel,
   Radio,
   RadioGroup
 } from "@mui/material";
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString } from "../../app/util";
@@ -21,6 +22,8 @@ import {
   getRootEntities,
   openNode,
   resetTree,
+  showObsolete,
+  hideObsolete,
   TreeNode
 } from "./ontologiesSlice";
 
@@ -35,6 +38,9 @@ export default function EntityTree({
   entityType: "entities" | "classes" | "properties" | "individuals";
   lang: string;
 }) {
+
+	console.log('Rendering tree')
+
   const dispatch = useAppDispatch();
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
@@ -48,6 +54,8 @@ export default function EntityTree({
     (state) => state.ontologies.expandedNodes
   );
 
+  const showObsoleteEnabled = useAppSelector((state => state.ontologies.showObsolete));
+
   const toggleNode = (node: any) => {
     if (expandedNodes.indexOf(node.absoluteIdentity) !== -1) {
       dispatch(closeNode(node));
@@ -57,13 +65,13 @@ export default function EntityTree({
   };
 
   useEffect(() => {
-	// console.log('!!!! Dispatching resetTree')
+	console.log('!!!! Dispatching resetTree')
     dispatch(resetTree());
-  }, [ontology.getOntologyId(), entityType, selectedEntity?.getIri()]);
+  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri(), showObsoleteEnabled]);
 
   useEffect(() => {
 
-	// console.log('!!!! Dispatching API call')
+	console.log('!!!! Dispatching API call')
 
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
@@ -73,6 +81,7 @@ export default function EntityTree({
           entityType,
           entityIri,
           lang,
+	  showObsoleteEnabled
         })
       );
     } else {
@@ -82,11 +91,12 @@ export default function EntityTree({
           entityType,
           preferredRoots,
           lang,
+	  showObsoleteEnabled
         })
       );
     }
 
-  }, [dispatch, entityType, selectedEntity?.getIri(), ontology.getOntologyId(), preferredRoots, lang]);
+  }, [dispatch, entityType, selectedEntity?.getIri(), ontology.getOntologyId(), preferredRoots, lang, showObsoleteEnabled]);
 
   useEffect(() => {
 
@@ -102,12 +112,21 @@ export default function EntityTree({
 				entityIri: absId.split(';').pop(),
 				absoluteIdentity: absId,
 				lang,
+				showObsolete
 			})
 		)
 	}
 
-  }, [expandedNodes, nodeChildren]);
+  }, [dispatch, expandedNodes, nodeChildren]);
 
+  let toggleShowObsolete = useCallback(() => {
+
+	if(showObsoleteEnabled) 
+		dispatch(hideObsolete())
+	else
+		dispatch(showObsolete())
+
+  }, [ showObsoleteEnabled ]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -169,29 +188,32 @@ export default function EntityTree({
   return (
     <Fragment>
       <div style={{ position: "relative" }}>
-        {ontology.getPreferredRoots().length > 0 && (
           <div style={{ position: "absolute", right: 0, top: 0 }}>
-            <FormControl>
-              <RadioGroup
-                name="radio-buttons-group"
-                value={preferredRoots ? "true" : "false"}
-              >
-                <FormControlLabel
-                  value="true"
-                  onClick={() => dispatch(enablePreferredRoots())}
-                  control={<Radio />}
-                  label="Preferred roots"
-                />
-                <FormControlLabel
-                  value="false"
-                  onClick={() => dispatch(disablePreferredRoots())}
-                  control={<Radio />}
-                  label="All classes"
-                />
-              </RadioGroup>
-            </FormControl>
+
+		 <FormControlLabel control={<Checkbox value={showObsoleteEnabled} onClick={toggleShowObsolete} />} label="Show obsolete terms" />
+
+		{ontology.getPreferredRoots().length > 0 && (
+		<FormControl>
+		<RadioGroup
+			name="radio-buttons-group"
+			value={preferredRoots ? "true" : "false"}
+		>
+			<FormControlLabel
+			value="true"
+			onClick={() => dispatch(enablePreferredRoots())}
+			control={<Radio />}
+			label="Preferred roots"
+			/>
+			<FormControlLabel
+			value="false"
+			onClick={() => dispatch(disablePreferredRoots())}
+			control={<Radio />}
+			label="All classes"
+			/>
+		</RadioGroup>
+		</FormControl>
+		)}
           </div>
-        )}
         {rootNodes ? (
           <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
             {renderNodeChildren(rootNodes, 0)}
