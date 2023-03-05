@@ -70,15 +70,15 @@ export default function EntityTree({
     }
   }, [ dispatch, JSON.stringify(automaticallyExpandedNodes), JSON.stringify(manuallyExpandedNodes) ]);
 
-  // If the ontology, entity type, or selected entity change, reset the tree settings (including showobsolete/preferred roots)
+  // If the ontology, entity type, selected entity IRI, or lang change, reset the tree settings (including showobsolete/preferred roots)
   useEffect(() => {
     dispatch(resetTreeSettings());
-  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri()]);
+  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri() ]);
 
-  // If the ontology, entity type, or selected entity change, OR the showObsoleteEnabled/preferredRoots, reset the tree content but not the settings
+  // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings
   useEffect(() => {
     dispatch(resetTreeContent());
-  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri(), showObsoleteEnabled, preferredRoots]);
+  }, [dispatch, ontology.getOntologyId(), entityType, JSON.stringify(selectedEntity), showObsoleteEnabled, preferredRoots, lang]);
 
   useEffect(() => {
 
@@ -108,7 +108,7 @@ export default function EntityTree({
 		return () => promise.abort() // component was unmounted
 	}
 
-  }, [dispatch, entityType, selectedEntity?.getIri(), ontology.getOntologyId(), preferredRoots, lang, showObsoleteEnabled]);
+  }, [dispatch, entityType, JSON.stringify(selectedEntity), ontology.getOntologyId(), preferredRoots, lang, showObsoleteEnabled]);
 
   useEffect(() => {
 
@@ -136,7 +136,7 @@ export default function EntityTree({
 			promise.abort() // component was unmounted
 	}
 
-  }, [ dispatch, JSON.stringify(manuallyExpandedNodes), JSON.stringify(nodeChildren), ontology.getOntologyId(), entityType, preferredRoots, showObsoleteEnabled ]);
+  }, [ dispatch, lang, JSON.stringify(manuallyExpandedNodes), JSON.stringify(nodeChildren), ontology.getOntologyId(), entityType, preferredRoots, showObsoleteEnabled ]);
 
   let toggleShowObsolete = useCallback(() => {
 
@@ -187,7 +187,7 @@ export default function EntityTree({
               }}
               key={randomString()}
             >
-		<TreeLink ontology={ontology} entity={childNode.entity} title={childNode.title} />
+		<TreeLink ontology={ontology} entity={childNode.entity} title={childNode.title} lang={lang} />
               { (!showObsoleteEnabled) && childNode.numDescendants > 0 && (
                 <span style={{ color: "gray" }}>
                   {" (" + childNode.numDescendants.toLocaleString() + ")"}
@@ -244,7 +244,7 @@ export default function EntityTree({
   );
 }
 
-function TreeLink({ontology,entity,title}:{ontology:Ontology,entity:Entity,title:string}) {
+function TreeLink({ontology,entity,title,lang}:{ontology:Ontology,entity:Entity,title:string,lang:string}) {
 
           let encodedIri = encodeURIComponent(encodeURIComponent(entity.getIri()));
 
@@ -254,13 +254,13 @@ function TreeLink({ontology,entity,title}:{ontology:Ontology,entity:Entity,title
 		definedBy = []; // don't show definedBy links for terms in current ontology
 
 	return <Link
-                to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}`}
+                to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
               >
                 {title}
 		{
 			definedBy.length > 0 &&
 				definedBy.map(definingOntology => {
-				return <Link to={`/ontologies/${definingOntology}/${entity.getTypePlural()}/${encodedIri}`}>
+				return <Link to={`/ontologies/${definingOntology}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}>
 					<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white uppercase ml-1" title={definingOntology} >
 					{definingOntology}
 					</span>

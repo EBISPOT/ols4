@@ -91,7 +91,7 @@ export default function EntityPage({
     if (entityType === "classes") {
       dispatch(getClassInstances({ ontologyId, classIri: entityIri, lang }));
     }
-  }, [dispatch, ontology, entityType, entityIri, searchParams]);
+  }, [dispatch, ontology, entityType, entityIri, searchParams, lang]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
   return (

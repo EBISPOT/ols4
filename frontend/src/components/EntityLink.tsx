@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import LinkedEntities from "../model/LinkedEntities";
 import SearchIcon from '@mui/icons-material/Search';
 import Entity from "../model/Entity";
@@ -17,6 +17,9 @@ export default function EntityLink({
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  let lang = searchParams.get("lang") || "en";
 
 	if(typeof(iri) !== 'string') {
 		throw new Error('EntityLink iri was not a string: ' + JSON.stringify(iri))
@@ -47,7 +50,7 @@ export default function EntityLink({
 			// Show <label> <ontologyId> where <label> links to the term in THIS ontology
 			// and <ontologyId> links to the term in the DEFINING ontology
 			return <Fragment>
-				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
+				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
 				{label}
 				</Link>
 				<Link to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
@@ -60,7 +63,7 @@ export default function EntityLink({
 			// Term is not defined in this ontology
 			// Show <label> <ontologyId> linking to the term in the DEFINING ontology
 			return <Fragment>
-				<Link className="link-default" to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
+				<Link className="link-default" to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}?lang=${lang}`}>
 					{label}
 				</Link>
 				<Link to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
@@ -76,7 +79,7 @@ export default function EntityLink({
 			// Term is defined in this ontology but also more than 1 canonical definition
 			// Show <label><ONTOLOGY> where each ONTOLOGY button links to the term in that defining ontology
 			return <Fragment>
-				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
+				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
 				{iri}
 				</Link>
 				{
@@ -94,7 +97,7 @@ export default function EntityLink({
 			// Term is not defined in this ontology but is defined in other ontologies
 			// Show <label><ICON> linking to a disambiguation page
 			return <Fragment>
-				<Link className="link-default" to={`/search?iri=${encodedIri}`}>
+				<Link className="link-default" to={`/search?iri=${encodedIri}&lang=${lang}`}>
 					{iri}
 				</Link>
 				<Link to={`/search?iri=${encodedIri}`}>
@@ -107,7 +110,7 @@ export default function EntityLink({
 		if(linkedEntity.hasLocalDefinition) {
 			// Term is defined in this ontology
 			// Show internal link within the ontology
-			return <Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}`}>
+			return <Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
 			{label}
 			</Link>
 		} else {
@@ -117,10 +120,10 @@ export default function EntityLink({
 				// Term appears in other ontologies
 				// Show <label><ICON> linking to disambiguation page
 				return <Fragment>
-					<Link className="link-default" to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>
+					<Link className="link-default" to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}>
 						{iri}
 					</Link>
-					<Link to={`/search?iri=${encodedIri}&isDefiningOntology=true`}>
+					<Link to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}>
 						<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white"><SearchIcon /> {linkedEntity.numAppearsIn} ontologies</span>
 					</Link>
 				</Fragment>
