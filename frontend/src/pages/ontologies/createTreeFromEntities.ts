@@ -7,7 +7,7 @@ export default function createTreeFromEntities(
   entities: Entity[],
   preferredRoots: boolean,
   ontology: Ontology
-): { allNodes:TreeNode[], rootNodes: TreeNode[]; expandedNodes:Set<string>, nodeChildren: any } {
+): { allNodes:TreeNode[], rootNodes: TreeNode[]; automaticallyExpandedNodes:Set<string>, nodeChildren: any } {
   let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities);
 
   if (preferredRoots) {
@@ -22,7 +22,7 @@ export default function createTreeFromEntities(
 
   let allNodes:TreeNode[] = []
   let nodeChildren: any = {};
-  let expandedNodes:Set<string> = new Set()
+  let automaticallyExpandedNodes:Set<string> = new Set()
 
   return {
     allNodes: allNodes,
@@ -30,7 +30,7 @@ export default function createTreeFromEntities(
       createTreeNode(rootEntity, undefined, 0)
     ),
     nodeChildren,
-    expandedNodes
+    automaticallyExpandedNodes
   };
 
   function createTreeNode(
@@ -62,7 +62,7 @@ export default function createTreeFromEntities(
     );
 
     if(node.hasChildren() && childNodes.length > 0) {
-	expandedNodes.add(treeNode.absoluteIdentity)
+	automaticallyExpandedNodes.add(treeNode.absoluteIdentity)
     }
 
     return treeNode;

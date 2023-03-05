@@ -43,32 +43,39 @@ export default function EntityTree({
   const dispatch = useAppDispatch();
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
-  const loading = useAppSelector(
-    (state) => state.ontologies.loadingTree
+  const numPendingTreeRequests = useAppSelector(
+    (state) => state.ontologies.numPendingTreeRequests
   );
   const preferredRoots = useAppSelector(
     (state) => state.ontologies.preferredRoots
   );
-  const expandedNodes = useAppSelector(
-    (state) => state.ontologies.expandedNodes
+  const automaticallyExpandedNodes = useAppSelector(
+    (state) => state.ontologies.automaticallyExpandedNodes
+  );
+  const manuallyExpandedNodes = useAppSelector(
+    (state) => state.ontologies.manuallyExpandedNodes
   );
 
   const showObsoleteEnabled = useAppSelector((state => state.ontologies.showObsolete));
 
   const toggleNode = useCallback((node: any) => {
-    if (expandedNodes.indexOf(node.absoluteIdentity) !== -1) {
+
+	let isExpanded = manuallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1 ||
+				automaticallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1;
+
+    if (isExpanded) {
       dispatch(closeNode(node));
     } else {
       dispatch(openNode(node));
     }
-  }, [ dispatch, expandedNodes ]);
+  }, [ dispatch, JSON.stringify(automaticallyExpandedNodes), JSON.stringify(manuallyExpandedNodes) ]);
 
-  // If the ontology, entity type, or selected entity change, reset the tree settings
+  // If the ontology, entity type, or selected entity change, reset the tree settings (including showobsolete/preferred roots)
   useEffect(() => {
     dispatch(resetTreeSettings());
   }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri()]);
 
-  // If the ontology, entity type, or selected entity change, OR the showObsoleteEnabled/preferredRoots, reset the tree config
+  // If the ontology, entity type, or selected entity change, OR the showObsoleteEnabled/preferredRoots, reset the tree content but not the settings
   useEffect(() => {
     dispatch(resetTreeContent());
   }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri(), showObsoleteEnabled, preferredRoots]);
@@ -105,12 +112,14 @@ export default function EntityTree({
 
   useEffect(() => {
 
-	let nodesMissingChildren:string[] = expandedNodes.filter(absoluteIdentity => !nodeChildren[absoluteIdentity]?.length)
+	let nodesMissingChildren:string[] = manuallyExpandedNodes.filter(absoluteIdentity => !nodeChildren[absoluteIdentity]?.length)
 
 	// console.log('!!!! Getting missing node children: ' + JSON.stringify(nodesMissingChildren));
 
+	let promises:any = []
+
 	for(let absId of nodesMissingChildren) {
-		dispatch(
+		promises.push ( dispatch(
 			getNodeChildren({
 				ontologyId: ontology.getOntologyId(),
 				entityTypePlural: entityType,
@@ -119,10 +128,15 @@ export default function EntityTree({
 				lang,
 				showObsoleteEnabled
 			})
-		)
+		) )
 	}
 
-  }, [ dispatch, JSON.stringify(expandedNodes), nodeChildren, ontology.getOntologyId(), entityType, showObsoleteEnabled ]);
+	return () => {
+		for(let promise of promises)
+			promise.abort() // component was unmounted
+	}
+
+  }, [ dispatch, JSON.stringify(manuallyExpandedNodes), JSON.stringify(nodeChildren), ontology.getOntologyId(), entityType, preferredRoots, showObsoleteEnabled ]);
 
   let toggleShowObsolete = useCallback(() => {
 
@@ -157,7 +171,7 @@ export default function EntityTree({
       >
         {childrenSorted.map((childNode: TreeNode, i) => {
           const isExpanded =
-            expandedNodes.indexOf(childNode.absoluteIdentity) !== -1;
+            manuallyExpandedNodes.indexOf(childNode.absoluteIdentity) !== -1 || automaticallyExpandedNodes.indexOf(childNode.absoluteIdentity) !== -1;
           const isLast = i === childrenSorted!.length - 1;
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
@@ -174,7 +188,7 @@ export default function EntityTree({
               key={randomString()}
             >
 		<TreeLink ontology={ontology} entity={childNode.entity} title={childNode.title} />
-              {childNode.numDescendants > 0 && (
+              { (!showObsoleteEnabled) && childNode.numDescendants > 0 && (
                 <span style={{ color: "gray" }}>
                   {" (" + childNode.numDescendants.toLocaleString() + ")"}
                 </span>
@@ -224,7 +238,7 @@ export default function EntityTree({
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
-        {loading ? <LoadingOverlay message="Loading..." /> : null}
+        {numPendingTreeRequests > 0 ? <LoadingOverlay message="Loading..." /> : null}
       </div>
     </Fragment>
   );

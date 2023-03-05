@@ -21,12 +21,13 @@ export interface OntologiesState {
   totalEntities: number;
   loadingOntologies: boolean;
   loadingEntities: boolean;
-  loadingTree: boolean;
+  numPendingTreeRequests: number;
   loadingOntology: boolean;
   loadingEntity: boolean;
   classInstances: Page<Entity> | null;
   loadingClassInstances: boolean;
-  expandedNodes: string[];
+  automaticallyExpandedNodes: string[];
+  manuallyExpandedNodes: string[];
   preferredRoots: boolean;
   showObsolete: boolean;
 }
@@ -49,12 +50,13 @@ const initialState: OntologiesState = {
   totalEntities: 0,
   loadingOntologies: false,
   loadingEntities: false,
-  loadingTree: false,
+  numPendingTreeRequests: 0,
   loadingOntology: false,
   loadingEntity: false,
   classInstances: null,
   loadingClassInstances: false,
-  expandedNodes: [],
+  automaticallyExpandedNodes: [],
+  manuallyExpandedNodes: [],
   preferredRoots: false,
   showObsolete: false
 };
@@ -305,16 +307,19 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       getAncestors.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        let { rootNodes, nodeChildren, expandedNodes } = createTreeFromEntities(
+        let { rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
           [state.entity!, ...action.payload],
           state.preferredRoots,
           state.ontology!
         );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
-	state.expandedNodes = Array.from(new Set([...state.expandedNodes, ...Array.from(expandedNodes) ]))
+	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
       }
     );
+    builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
+        ++ state.numPendingTreeRequests;
+    });
     builder.addCase(
       getNodeChildren.fulfilled,
       (
@@ -328,21 +333,21 @@ const ontologiesSlice = createSlice({
           ...state.nodeChildren,
           [action.payload.absoluteIdentity]: action.payload.children,
         };
-        state.loadingTree = false;
+        -- state.numPendingTreeRequests;
       }
     );
-    builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
-      state.loadingTree = true;
+    builder.addCase(getNodeChildren.rejected, (state: OntologiesState) => {
+        -- state.numPendingTreeRequests;
     });
     builder.addCase(
       getRootEntities.pending,
       (state: OntologiesState) => {
-         state.loadingTree = true;
+         ++ state.numPendingTreeRequests;
       })
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        let { allNodes, rootNodes, nodeChildren, expandedNodes } = createTreeFromEntities(
+        let { allNodes, rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
           action.payload,
           state.preferredRoots,
           state.ontology!
@@ -350,10 +355,15 @@ const ontologiesSlice = createSlice({
 	// console.log('getRootEntities fulfilled; populating state from root entities ' + rootNodes.map(n => n.title))
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
-	state.expandedNodes = Array.from(new Set([...state.expandedNodes, ...Array.from(expandedNodes) ]))
-         state.loadingTree = false;
+	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
+        -- state.numPendingTreeRequests;
       }
     );
+    builder.addCase(
+      getRootEntities.rejected,
+      (state: OntologiesState) => {
+         -- state.numPendingTreeRequests;
+      })
     builder.addCase(
       getOntologies.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Ontology>>) => {
@@ -388,12 +398,13 @@ const ontologiesSlice = createSlice({
 //       console.log('Resetting tree content')
       state.nodeChildren = {};
       state.rootNodes = [];
+      state.automaticallyExpandedNodes = [];
     });
     builder.addCase(resetTreeSettings, (state: OntologiesState) => {
 //       console.log('Resetting tree settings')
       state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
       state.showObsolete = false;
-      state.expandedNodes = [];
+      state.manuallyExpandedNodes = [];
     });
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = true;
@@ -413,17 +424,21 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       openNode,
       (state: OntologiesState, action: PayloadAction<TreeNode>) => {
-        state.expandedNodes = Array.from(
-          new Set([...state.expandedNodes, action.payload.absoluteIdentity])
+        state.manuallyExpandedNodes = Array.from(
+          new Set([...state.manuallyExpandedNodes, action.payload.absoluteIdentity])
         );
       }
     );
     builder.addCase(
       closeNode,
       (state: OntologiesState, action: PayloadAction<TreeNode>) => {
-        state.expandedNodes = state.expandedNodes.filter(
+        state.manuallyExpandedNodes = state.manuallyExpandedNodes.filter(
           (node) => node !== action.payload.absoluteIdentity
         );
+        state.automaticallyExpandedNodes = state.automaticallyExpandedNodes.filter(
+          (node) => node !== action.payload.absoluteIdentity
+        );
+	delete state.nodeChildren[action.payload.absoluteIdentity];
       }
     );
   },
