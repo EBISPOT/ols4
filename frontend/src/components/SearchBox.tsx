@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
 import { randomString } from "../app/util";
 import Entity from "../model/Entity";
@@ -20,6 +20,9 @@ export default function SearchBox({
 		ontologyId?:string
 	}) {
 
+  const [searchParams, setSearchParams] = useSearchParams();
+//   let lang = searchParams.get("lang") || "en";
+
   const [open, setOpen] = useState<boolean>(false);
   let [autocomplete, setAutocomplete] = useState<Suggest|null>(null)
   let [jumpTo, setJumpTo] = useState<Thing[]>([])
@@ -27,8 +30,27 @@ export default function SearchBox({
   let [query, setQuery] = useState<string>(initialQuery || "");
   //const homeSearch = document.getElementById("home-search") as HTMLInputElement;
 
-  let [exact, setExact] = useState<boolean>(false);
-  let [obsolete, setObsolete] = useState<boolean>(false);
+  let exact = searchParams.get("exactMatch") === "true";
+  let obsolete = searchParams.get("includeObsoleteEntities") === "true";
+  let canonical = searchParams.get("isDefiningOntology") !== "false";
+
+  let setExact = useCallback((exact:boolean) => {
+	let newSearchParams = new URLSearchParams(searchParams)
+	newSearchParams.set("exactMatch", exact.toString())
+	setSearchParams(newSearchParams)
+  }, [ exact, searchParams, setSearchParams ])
+
+  let setObsolete = useCallback((obsolete:boolean) => {
+	let newSearchParams = new URLSearchParams(searchParams)
+	newSearchParams.set("includeObsoleteEntities", obsolete.toString())
+	setSearchParams(newSearchParams)
+  }, [ obsolete, searchParams, setSearchParams ])
+
+  let setCanonical = useCallback((canonical:boolean) => {
+	let newSearchParams = new URLSearchParams(searchParams)
+	newSearchParams.set("isDefiningOntology", canonical.toString())
+	setSearchParams(newSearchParams)
+  }, [ canonical, searchParams, setSearchParams ])
 
   const searchForOntologies = ontologyId === undefined
   const showSuggestions = ontologyId === undefined
@@ -60,7 +82,8 @@ export default function SearchBox({
 					lang: 'en',
 					exactMatch: exact.toString(),
 					includeObsoleteEntities: obsolete.toString(),
-					...(ontologyId ? {ontologyId} : {})
+					...(ontologyId ? {ontologyId} : {}),
+					...(canonical ? { isDefiningOntology:true} : {}) as any
 				})}`
 			),
 			searchForOntologies ? getPaginated<any>(
@@ -69,7 +92,7 @@ export default function SearchBox({
 					size: "5",
 					lang: 'en',
 					exactMatch: exact.toString(),
-					includeObsoleteEntities: obsolete.toString(),
+					includeObsoleteEntities: obsolete.toString()
 				})}`
 			) : null,
 			showSuggestions ? get<Suggest>(
@@ -122,7 +145,7 @@ export default function SearchBox({
 			onKeyDown={(ev) => {
 				if(ev.key === 'Enter') {
 					if (query) {
-						navigate("/search/" + query)
+						navigate(`/search/${encodeURIComponent(query)}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`)
 					}
 				}
 			}}
@@ -247,7 +270,7 @@ export default function SearchBox({
 			className="button-primary text-lg font-bold self-center"
 			onClick={() => {
 				if (query) {
-					navigate("/search/" + query)
+					navigate(`/search/${encodeURIComponent(query)}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`)
 				}
 			}}
 		>
@@ -256,8 +279,9 @@ export default function SearchBox({
 		</div>
 		</div>
 		<div className="col-span-2">
-		 <FormControlLabel control={<Checkbox value={exact} onChange={(ev) => setExact(!!ev.target.checked)} />} label="Exact match" />
-		 <FormControlLabel control={<Checkbox value={obsolete} onChange={(ev) => setObsolete(!!ev.target.checked)}  />} label="Include obsolete terms" />
+		 <FormControlLabel control={<Checkbox checked={exact} onChange={(ev) => setExact(!!ev.target.checked)} />} label="Exact match" />
+		 <FormControlLabel control={<Checkbox checked={obsolete} onChange={(ev) => setObsolete(!!ev.target.checked)}  />} label="Include obsolete terms" />
+		 <FormControlLabel control={<Checkbox checked={canonical} onChange={(ev) => setCanonical(!!ev.target.checked)}  />} label="Canonical definitions only" />
 		 </div>
 		 </div>
 </Fragment >
