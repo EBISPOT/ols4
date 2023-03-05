@@ -119,6 +119,13 @@ export default function SearchBox({
 			onChange={(e) => {
 				setQuery(e.target.value);
 			}}
+			onKeyDown={(ev) => {
+				if(ev.key === 'Enter') {
+					if (query) {
+						navigate("/search/" + query)
+					}
+				}
+			}}
 		/>
 			<div
 				className={
