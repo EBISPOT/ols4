@@ -9,7 +9,6 @@ import Header from "../../components/Header";
 import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import SearchBox from "../../components/SearchBox";
-import SearchOptions from "../../components/SearchOptions";
 import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
 import EntityList from "./EntityList";

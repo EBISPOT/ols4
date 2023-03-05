@@ -21,7 +21,8 @@ import {
   getNodeChildren,
   getRootEntities,
   openNode,
-  resetTree,
+  resetTreeContent,
+  resetTreeSettings,
   showObsolete,
   hideObsolete,
   TreeNode
@@ -39,13 +40,11 @@ export default function EntityTree({
   lang: string;
 }) {
 
-	console.log('Rendering tree')
-
   const dispatch = useAppDispatch();
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
   const loading = useAppSelector(
-    (state) => state.ontologies.loadingNodeChildren
+    (state) => state.ontologies.loadingTree
   );
   const preferredRoots = useAppSelector(
     (state) => state.ontologies.preferredRoots
@@ -56,45 +55,51 @@ export default function EntityTree({
 
   const showObsoleteEnabled = useAppSelector((state => state.ontologies.showObsolete));
 
-  const toggleNode = (node: any) => {
+  const toggleNode = useCallback((node: any) => {
     if (expandedNodes.indexOf(node.absoluteIdentity) !== -1) {
       dispatch(closeNode(node));
     } else {
       dispatch(openNode(node));
     }
-  };
+  }, [ dispatch, expandedNodes ]);
+
+  // If the ontology, entity type, or selected entity change, reset the tree settings
+  useEffect(() => {
+    dispatch(resetTreeSettings());
+  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri()]);
+
+  // If the ontology, entity type, or selected entity change, OR the showObsoleteEnabled/preferredRoots, reset the tree config
+  useEffect(() => {
+    dispatch(resetTreeContent());
+  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri(), showObsoleteEnabled, preferredRoots]);
 
   useEffect(() => {
-	console.log('!!!! Dispatching resetTree')
-    dispatch(resetTree());
-  }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri(), showObsoleteEnabled]);
 
-  useEffect(() => {
+	// console.log('!!!! Dispatching API call')
 
-	console.log('!!!! Dispatching API call')
-
-    if (selectedEntity) {
-      const entityIri = selectedEntity.getIri();
-      dispatch(
-        getAncestors({
-          ontologyId: ontology.getOntologyId(),
-          entityType,
-          entityIri,
-          lang,
-	  showObsoleteEnabled
-        })
-      );
-    } else {
-      dispatch(
-        getRootEntities({
-          ontologyId: ontology.getOntologyId(),
-          entityType,
-          preferredRoots,
-          lang,
-	  showObsoleteEnabled
-        })
-      );
-    }
+	if (selectedEntity) {
+		const entityIri = selectedEntity.getIri();
+		let promise = dispatch(
+			getAncestors({
+			ontologyId: ontology.getOntologyId(),
+			entityType,
+			entityIri,
+			lang,
+			showObsoleteEnabled
+			})
+		);
+		return () => promise.abort() // component was unmounted
+	} else {
+		let promise = dispatch(
+			getRootEntities({
+			ontologyId: ontology.getOntologyId(),
+			entityType,
+			preferredRoots,
+			lang,
+			showObsoleteEnabled
+			}))
+		return () => promise.abort() // component was unmounted
+	}
 
   }, [dispatch, entityType, selectedEntity?.getIri(), ontology.getOntologyId(), preferredRoots, lang, showObsoleteEnabled]);
 
@@ -112,12 +117,12 @@ export default function EntityTree({
 				entityIri: absId.split(';').pop(),
 				absoluteIdentity: absId,
 				lang,
-				showObsolete
+				showObsoleteEnabled
 			})
 		)
 	}
 
-  }, [dispatch, expandedNodes, nodeChildren]);
+  }, [ dispatch, JSON.stringify(expandedNodes), nodeChildren, ontology.getOntologyId(), entityType, showObsoleteEnabled ]);
 
   let toggleShowObsolete = useCallback(() => {
 
@@ -126,7 +131,7 @@ export default function EntityTree({
 	else
 		dispatch(showObsolete())
 
-  }, [ showObsoleteEnabled ]);
+  }, [ dispatch, showObsoleteEnabled ]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -219,7 +224,7 @@ export default function EntityTree({
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
-        {loading ? <LoadingOverlay message="Loading children..." /> : null}
+        {loading ? <LoadingOverlay message="Loading..." /> : null}
       </div>
     </Fragment>
   );

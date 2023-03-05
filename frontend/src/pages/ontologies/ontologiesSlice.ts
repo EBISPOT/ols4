@@ -21,7 +21,7 @@ export interface OntologiesState {
   totalEntities: number;
   loadingOntologies: boolean;
   loadingEntities: boolean;
-  loadingNodeChildren: boolean;
+  loadingTree: boolean;
   loadingOntology: boolean;
   loadingEntity: boolean;
   classInstances: Page<Entity> | null;
@@ -49,7 +49,7 @@ const initialState: OntologiesState = {
   totalEntities: 0,
   loadingOntologies: false,
   loadingEntities: false,
-  loadingNodeChildren: false,
+  loadingTree: false,
   loadingOntology: false,
   loadingEntity: false,
   classInstances: null,
@@ -59,7 +59,9 @@ const initialState: OntologiesState = {
   showObsolete: false
 };
 
-export const resetTree = createAction("ontologies_tree_reset");
+export const resetTreeContent = createAction("ontologies_tree_reset_content");
+export const resetTreeSettings = createAction("ontologies_tree_reset_settings");
+
 export const enablePreferredRoots = createAction(
   "ontologies_preferred_enabled"
 );
@@ -211,6 +213,7 @@ export const getNodeChildren = createAsyncThunk(
     entityIri,
     absoluteIdentity,
     lang,
+    includeObsoleteEntities: showObsoleteEnabled
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     if (entityTypePlural === "classes") {
@@ -219,6 +222,7 @@ export const getNodeChildren = createAsyncThunk(
           {
             size: "100",
             lang,
+         	includeObsoleteEntities: showObsoleteEnabled
           }
         )}`
       );
@@ -228,6 +232,7 @@ export const getNodeChildren = createAsyncThunk(
           {
             size: "100",
             lang,
+         	includeObsoleteEntities: showObsoleteEnabled
           }
         )}`
       );
@@ -237,6 +242,7 @@ export const getNodeChildren = createAsyncThunk(
           {
             size: "100",
             lang,
+         	includeObsoleteEntities: showObsoleteEnabled
           }
         )}`
       );
@@ -322,12 +328,17 @@ const ontologiesSlice = createSlice({
           ...state.nodeChildren,
           [action.payload.absoluteIdentity]: action.payload.children,
         };
-        state.loadingNodeChildren = false;
+        state.loadingTree = false;
       }
     );
     builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
-      state.loadingNodeChildren = true;
+      state.loadingTree = true;
     });
+    builder.addCase(
+      getRootEntities.pending,
+      (state: OntologiesState) => {
+         state.loadingTree = true;
+      })
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
@@ -336,10 +347,11 @@ const ontologiesSlice = createSlice({
           state.preferredRoots,
           state.ontology!
         );
-	// console.log('getRootEntities fulfilled')
+	// console.log('getRootEntities fulfilled; populating state from root entities ' + rootNodes.map(n => n.title))
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
 	state.expandedNodes = Array.from(new Set([...state.expandedNodes, ...Array.from(expandedNodes) ]))
+         state.loadingTree = false;
       }
     );
     builder.addCase(
@@ -372,13 +384,16 @@ const ontologiesSlice = createSlice({
       state.entities = initialState.entities;
       state.loadingEntities = false;
     });
-    builder.addCase(resetTree, (state: OntologiesState) => {
-	console.log('Resetting tree')
-      state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
-      state.expandedNodes = [];
+    builder.addCase(resetTreeContent, (state: OntologiesState) => {
+//       console.log('Resetting tree content')
       state.nodeChildren = {};
       state.rootNodes = [];
+    });
+    builder.addCase(resetTreeSettings, (state: OntologiesState) => {
+//       console.log('Resetting tree settings')
+      state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
       state.showObsolete = false;
+      state.expandedNodes = [];
     });
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = true;
@@ -387,12 +402,12 @@ const ontologiesSlice = createSlice({
       state.preferredRoots = false;
     });
     builder.addCase(showObsolete, (state: OntologiesState) => {
-	console.log('Setting showObsolete to true')
+	// console.log('Setting showObsolete to true')
       state.showObsolete = true;
     });
     builder.addCase(hideObsolete, (state: OntologiesState) => {
 	console.dir(state)
-	console.log('Setting showObsolete to false')
+	// console.log('Setting showObsolete to false')
       state.showObsolete = false;
     });
     builder.addCase(
