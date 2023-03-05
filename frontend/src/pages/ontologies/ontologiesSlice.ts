@@ -13,6 +13,7 @@ import createTreeFromEntities from "./createTreeFromEntities";
 export interface OntologiesState {
   ontology: Ontology | undefined;
   entity: Entity | undefined;
+  nodesWithChildrenLoaded: string[]
   nodeChildren: any;
   rootNodes: TreeNode[];
   ontologies: Ontology[];
@@ -30,6 +31,7 @@ export interface OntologiesState {
   manuallyExpandedNodes: string[];
   preferredRoots: boolean;
   showObsolete: boolean;
+  showSiblings: boolean;
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -42,6 +44,7 @@ export interface TreeNode {
 const initialState: OntologiesState = {
   ontology: undefined,
   entity: undefined,
+  nodesWithChildrenLoaded: [],
   nodeChildren: {},
   rootNodes: [],
   ontologies: [],
@@ -58,7 +61,8 @@ const initialState: OntologiesState = {
   automaticallyExpandedNodes: [],
   manuallyExpandedNodes: [],
   preferredRoots: false,
-  showObsolete: false
+  showObsolete: false,
+  showSiblings: false
 };
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
@@ -72,8 +76,12 @@ export const disablePreferredRoots = createAction(
 );
 export const openNode = createAction<TreeNode>("ontologies_node_open");
 export const closeNode = createAction<TreeNode>("ontologies_node_close");
+
 export const showObsolete = createAction("ontologies_show_obsolete");
 export const hideObsolete = createAction("ontologies_hide_obsolete");
+
+export const showSiblings = createAction("ontologies_show_siblings");
+export const hideSiblings = createAction("ontologies_hide_siblings");
 
 
 export const getOntology = createAsyncThunk(
@@ -333,6 +341,7 @@ const ontologiesSlice = createSlice({
           ...state.nodeChildren,
           [action.payload.absoluteIdentity]: action.payload.children,
         };
+	state.nodesWithChildrenLoaded.push(action.payload.absoluteIdentity)
         -- state.numPendingTreeRequests;
       }
     );
@@ -396,14 +405,16 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(resetTreeContent, (state: OntologiesState) => {
 //       console.log('Resetting tree content')
+      state.nodesWithChildrenLoaded = []
       state.nodeChildren = {};
       state.rootNodes = [];
       state.automaticallyExpandedNodes = [];
     });
     builder.addCase(resetTreeSettings, (state: OntologiesState) => {
-//       console.log('Resetting tree settings')
+      console.log('Resetting tree settings')
       state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
       state.showObsolete = false;
+      state.showSiblings = false;
       state.manuallyExpandedNodes = [];
     });
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
@@ -413,13 +424,16 @@ const ontologiesSlice = createSlice({
       state.preferredRoots = false;
     });
     builder.addCase(showObsolete, (state: OntologiesState) => {
-	// console.log('Setting showObsolete to true')
       state.showObsolete = true;
     });
     builder.addCase(hideObsolete, (state: OntologiesState) => {
-	console.dir(state)
-	// console.log('Setting showObsolete to false')
       state.showObsolete = false;
+    });
+    builder.addCase(showSiblings, (state: OntologiesState) => {
+      state.showSiblings = true;
+    });
+    builder.addCase(hideSiblings, (state: OntologiesState) => {
+      state.showSiblings = false;
     });
     builder.addCase(
       openNode,

@@ -25,7 +25,9 @@ import {
   resetTreeSettings,
   showObsolete,
   hideObsolete,
-  TreeNode
+  TreeNode,
+  hideSiblings,
+  showSiblings
 } from "./ontologiesSlice";
 
 export default function EntityTree({
@@ -41,6 +43,9 @@ export default function EntityTree({
 }) {
 
   const dispatch = useAppDispatch();
+  const nodesWithChildrenLoaded = useAppSelector(
+    (state) => state.ontologies.nodesWithChildrenLoaded
+  );
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
   const numPendingTreeRequests = useAppSelector(
@@ -57,6 +62,7 @@ export default function EntityTree({
   );
 
   const showObsoleteEnabled = useAppSelector((state => state.ontologies.showObsolete));
+  const showSiblingsEnabled = useAppSelector((state => state.ontologies.showSiblings));
 
   const toggleNode = useCallback((node: any) => {
 
@@ -92,7 +98,8 @@ export default function EntityTree({
 			entityType,
 			entityIri,
 			lang,
-			showObsoleteEnabled
+			showObsoleteEnabled,
+			showSiblingsEnabled
 			})
 		);
 		return () => promise.abort() // component was unmounted
@@ -112,9 +119,13 @@ export default function EntityTree({
 
   useEffect(() => {
 
-	let nodesMissingChildren:string[] = manuallyExpandedNodes.filter(absoluteIdentity => !nodeChildren[absoluteIdentity]?.length)
+	let nodesMissingChildren:string[] = manuallyExpandedNodes.filter(absoluteIdentity => nodesWithChildrenLoaded.indexOf(absoluteIdentity) === -1)
 
-	// console.log('!!!! Getting missing node children: ' + JSON.stringify(nodesMissingChildren));
+	if(showSiblingsEnabled) {
+		nodesMissingChildren = [ ...nodesMissingChildren, ...automaticallyExpandedNodes.filter(absoluteIdentity => nodesWithChildrenLoaded.indexOf(absoluteIdentity) === -1) ]
+	}
+
+	console.log('!!!! Getting missing node children: ' + JSON.stringify(nodesMissingChildren));
 
 	let promises:any = []
 
@@ -136,7 +147,7 @@ export default function EntityTree({
 			promise.abort() // component was unmounted
 	}
 
-  }, [ dispatch, lang, JSON.stringify(manuallyExpandedNodes), JSON.stringify(nodeChildren), ontology.getOntologyId(), entityType, preferredRoots, showObsoleteEnabled ]);
+  }, [ dispatch, lang, JSON.stringify(manuallyExpandedNodes), JSON.stringify(automaticallyExpandedNodes), JSON.stringify(nodeChildren), ontology.getOntologyId(), entityType, preferredRoots, showObsoleteEnabled, showSiblingsEnabled ]);
 
   let toggleShowObsolete = useCallback(() => {
 
@@ -146,6 +157,15 @@ export default function EntityTree({
 		dispatch(showObsolete())
 
   }, [ dispatch, showObsoleteEnabled ]);
+
+  let toggleShowSiblings = useCallback(() => {
+
+	if(showSiblingsEnabled) 
+		dispatch(hideSiblings())
+	else
+		dispatch(showSiblings())
+
+  }, [ dispatch, showSiblingsEnabled ]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -207,11 +227,10 @@ export default function EntityTree({
   return (
     <Fragment>
       <div style={{ position: "relative" }}>
-          <div style={{ position: "absolute", right: 0, top: 0 }}>
-
-		 <FormControlLabel control={<Checkbox value={showObsoleteEnabled} onClick={toggleShowObsolete} />} label="Show obsolete terms" />
+          <div style={{ position: "absolute", right: 0, top: 0 }} className="flex flex-col">
 
 		{ontology.getPreferredRoots().length > 0 && (
+			<Fragment>
 		<FormControl>
 		<RadioGroup
 			name="radio-buttons-group"
@@ -231,7 +250,12 @@ export default function EntityTree({
 			/>
 		</RadioGroup>
 		</FormControl>
+		 <br/>
+		 </Fragment>
 		)}
+
+		 <FormControlLabel control={<Checkbox checked={showObsoleteEnabled} onClick={toggleShowObsolete} />} label="Show obsolete terms" />
+		 { selectedEntity && <FormControlLabel control={<Checkbox checked={showSiblingsEnabled} onClick={toggleShowSiblings} />} label="Show all siblings" /> }
           </div>
         {rootNodes ? (
           <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
