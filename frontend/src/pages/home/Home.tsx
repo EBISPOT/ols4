@@ -82,8 +82,8 @@ export default function Home() {
                   </a>
                 </div>
                 <p>
-                  In addition to OLS the SPOT team also provides the <a className="link-default" href="https://www.ebi.ac.uk/spot/oxo">OxO</a>
-		  and <a className="link-default" href="https://www.ebi.ac.uk/spot/zooma">ZOOMA</a>
+                  In addition to OLS the SPOT team also provides the <a className="link-default" href="https://www.ebi.ac.uk/spot/oxo">OxO</a>{' '}
+		  and <a className="link-default" href="https://www.ebi.ac.uk/spot/zooma">ZOOMA</a>{' '}
                   services. OxO provides cross-ontology mappings
                   between terms from different ontologies. ZOOMA is a service to
                   assist in mapping data to ontologies in OLS.
