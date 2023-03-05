@@ -9,6 +9,7 @@ import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
 
+let curSearchToken:any = null;
 
 export default function SearchBox({
 	initialQuery,
@@ -47,6 +48,10 @@ export default function SearchBox({
 	async function loadSuggestions() {
 		setLoading(true)
 
+
+		let searchToken = randomString();
+		curSearchToken = searchToken;
+
 		let [entities, ontologies, autocomplete] = await Promise.all([
 			getPaginated<any>(
 				`api/v2/entities?${new URLSearchParams({
@@ -76,12 +81,14 @@ export default function SearchBox({
 			) : null,
 		]);
 
-		setJumpTo([
-			...entities.elements.map((obj) => thingFromProperties(obj)),
-			...(ontologies?.elements.map((obj) => new Ontology(obj)) || [])
-		])
-		setAutocomplete(autocomplete)
-		setLoading(false)
+		if(searchToken === curSearchToken) {
+			setJumpTo([
+				...entities.elements.map((obj) => thingFromProperties(obj)),
+				...(ontologies?.elements.map((obj) => new Ontology(obj)) || [])
+			])
+			setAutocomplete(autocomplete)
+			setLoading(false)
+		}
 	}
 
 	loadSuggestions()
