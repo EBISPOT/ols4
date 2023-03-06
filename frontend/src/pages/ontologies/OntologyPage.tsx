@@ -1,6 +1,6 @@
-import { AccountTree, AnchorOutlined } from "@mui/icons-material";
+import { AccountTree, AlternateEmail, AnchorOutlined, BugReport, Download, Email, Help, Home } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Tooltip } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -71,10 +71,40 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 				<span className="font-bold">Version {version}</span>
 			</div>
 		}
-              <div className="mb-4">
+              <div className="mb-6">
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
+              </div>
+              <div className="flex gap-2 mb-6">
+		{ontology.getOntologyPurl() &&
+			<Link to={ontology.getOntologyPurl()} target="_blank" download={true}>
+			<button className="button-primary font-bold self-center">
+				<div className="flex gap-2"><Download/><div>Download</div></div>
+			</button>
+			</Link>
+		}
+		{ontology.getHomepage() &&
+					<Link to={ontology.getHomepage()} target="_blank">
+				<button className="button-primary font-bold self-center">
+					<div className="flex gap-2"><Home/><div>Homepage</div></div>
+				</button>
+				</Link>
+		}
+		{ontology.getMailingList() &&
+					<Link to={"mailto:" + ontology.getMailingList()} target="_blank">
+				<button className="button-primary font-bold self-center">
+					<div className="flex gap-2"><Email/><div>Mailing List</div></div>
+				</button>
+				</Link>
+		}
+		{ontology.getTracker() &&
+					<Link to={ontology.getTracker()} target="_blank">
+				<button className="button-primary font-bold self-center">
+					<div className="flex gap-2"><BugReport/><div>Issue Tracker</div></div>
+				</button>
+				</Link>
+		}
               </div>
 		<div className="flex flex-nowrap gap-4">
 			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
@@ -113,7 +143,6 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 		{currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
 			<div className="py-2 mb-1 flex justify-between">
 				<div>
-					<Tooltip title="Tree view" placement="top">
 						<button
 							className={`button-primary font-bold mr-3 ${viewMode === "tree"
 									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
@@ -121,10 +150,8 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 								}`}
 							onClick={() => setViewMode("tree")}
 						>
-							<AccountTree fontSize="small" />
+						<div className="flex gap-2"><AccountTree/><div>Tree</div></div>
 						</button>
-					</Tooltip>
-					<Tooltip title="List view" placement="top">
 						<button
 							className={`button-primary font-bold ${viewMode === "list"
 									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
@@ -132,9 +159,8 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 								}`}
 							onClick={() => setViewMode("list")}
 						>
-							<FormatListBulletedIcon fontSize="small" />
+						<div className="flex gap-2"><FormatListBulletedIcon/><div>List</div></div>
 						</button>
-					</Tooltip>
 				</div>
 			</div>
 		) : null}

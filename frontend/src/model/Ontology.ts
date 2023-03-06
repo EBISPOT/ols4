@@ -43,6 +43,15 @@ export default class Ontology extends Thing {
   getOntologyPurl(): string {
     return this.properties["ontology_purl"];
   }
+  getHomepage():string {
+	return this.properties['homepage']
+  }
+  getMailingList():string {
+	return this.properties['mailing_list']
+  }
+  getTracker():string {
+	return this.properties['tracker']
+  }
   getVersionIri(): string {
     return this.properties["http://www.w3.org/2002/07/owl#versionIRI"];
   }

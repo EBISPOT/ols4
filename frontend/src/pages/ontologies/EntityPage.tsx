@@ -185,7 +185,6 @@ export default function EntityPage({
                 />
               </div>
               <div className="py-2 mb-1">
-                <Tooltip title="Tree view" placement="top">
                   <button
                     className={`button-primary font-bold mr-3 ${
                       viewMode === "tree"
@@ -194,10 +193,8 @@ export default function EntityPage({
                     }`}
                     onClick={() => setViewMode("tree")}
                   >
-                    <AccountTree fontSize="small" />
+			<div className="flex gap-2"><AccountTree/><div>Tree</div></div>
                   </button>
-                </Tooltip>
-                <Tooltip title="Graph view" placement="top">
                   <button
                     className={`button-primary font-bold ${
                       viewMode === "graph"
@@ -206,9 +203,8 @@ export default function EntityPage({
                     }`}
                     onClick={() => setViewMode("graph")}
                   >
-                    <Share fontSize="small" />
+			<div className="flex gap-2"><Share/><div>Graph</div></div>
                   </button>
-                </Tooltip>
               </div>
               {viewMode === "graph" && (
                 <EntityGraph
