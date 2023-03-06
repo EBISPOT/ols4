@@ -21,6 +21,7 @@ import { Page } from "../../app/api";
 import { useParams, useSearchParams } from "react-router-dom";
 import LanguagePicker from "../../components/LanguagePicker";
 import SearchBox from "../../components/SearchBox";
+import ApiLinks from "../../components/ApiLinks";
 
 export default function EntityPage({
   entityType,
@@ -94,17 +95,34 @@ export default function EntityPage({
   }, [dispatch, ontology, entityType, entityIri, searchParams, lang]);
 
   if (entity) document.title = entity.getShortForm() || entity.getName();
+
+
+
+  let ols3EntityType = ({
+	'classes': 'terms',
+	'properties': 'properties',
+	'individuals': 'individuals'
+  })[entityType]
+
+
   return (
     <div>
       <Header section="ontologies" />
       <main className="container mx-auto" style={{ position: "relative" }}>
         {ontology && entity ? (
           <Fragment>
+    <div
+      style={{ position: "absolute", top: "-16px", right: 0, width: "150px" }}
+    >
+	<div className="flex gap-4">
             <LanguagePicker
               ontology={ontology}
               lang={lang}
               onChangeLang={(lang) => setSearchParams({ lang: lang })}
             />
+		<ApiLinks apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(encodeURIComponent(entityIri))}`} />
+			</div>
+			</div>
             <div className="my-8 mx-2">
               <div className="px-2 mb-4">
                 <Link className="link-default" to={"/ontologies"}>
@@ -146,7 +164,8 @@ export default function EntityPage({
                   </button>
                 </span>
               </div>
-		<div className="flex flex-nowrap gap-4">
+	      <div className="py-1"/>{/* spacer */}
+		<div className="flex flex-nowrap gap-4 mb-4">
 			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
 		</div>
               <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">

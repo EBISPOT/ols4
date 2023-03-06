@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
+import ApiLinks from "../../components/ApiLinks";
 import Header from "../../components/Header";
 import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
@@ -48,7 +49,15 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
       <main className="container mx-auto" style={{position: 'relative'}}>
         {ontology ? (
 		<Fragment>
+    <div
+      style={{ position: "absolute", top: "-16px", right: 0, width: "150px" }}
+    >
+	<div className="flex gap-4">
 	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
+			<ApiLinks apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`} />
+			</div>
+			</div>
+
           <div className="my-8 mx-2">
             <div className="px-2 mb-4">
               <Link className="link-default" to={"/ontologies"} style={{color:'black'}}>

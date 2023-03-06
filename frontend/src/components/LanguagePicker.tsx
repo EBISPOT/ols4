@@ -11,9 +11,6 @@ export default function LanguagePicker({
   onChangeLang: (lang: string) => void;
 }) {
   return (
-    <div
-      style={{ position: "absolute", top: "-16px", right: 0, width: "150px" }}
-    >
       <FormControl variant="standard" fullWidth size="small">
         <InputLabel id="demo-simple-select-label">Language</InputLabel>
         <Select
@@ -33,6 +30,5 @@ export default function LanguagePicker({
           })}
         </Select>
       </FormControl>
-    </div>
   );
 }
