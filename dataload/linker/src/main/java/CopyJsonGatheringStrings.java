@@ -6,10 +6,14 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CopyJsonGatheringStrings {
 
     private static final JsonParser jsonParser = new JsonParser();
+
+    private static final Pattern curiePattern = Pattern.compile("[A-Z]+:[0-9A-z]+");
 
     public static void copyJsonGatheringStrings(JsonReader jsonReader, JsonWriter jsonWriter, Set<String> gatheredStrings) throws IOException {
 
@@ -22,7 +26,15 @@ public class CopyJsonGatheringStrings {
                 break;
             case STRING:
                 String str = jsonReader.nextString();
+
                 gatheredStrings.add(str);
+
+		Matcher matcher = curiePattern.matcher(str);
+
+		while(matcher.find()) {
+			gatheredStrings.add(matcher.group());
+		}
+
                 jsonWriter.value(str);
                 break;
             default:
