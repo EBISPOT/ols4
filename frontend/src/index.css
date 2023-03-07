@@ -86,30 +86,35 @@
     hover:underline
     visited:text-link-visited;
   }
-.link-ontology {
-  cursor: pointer;
-  text-decoration: none !important;
-  background-color:rgb(0, 130, 124);
+  .link-footer {
+    @apply text-white cursor-pointer
+    hover:text-embl-grey-lightest
+    hover:underline
+    visited:text-embl-grey-lightest;
+  }
+  .link-ontology {
+    cursor: pointer;
+    text-decoration: none !important;
+    background-color: rgb(0, 130, 124);
+  }
+  .link-ontology:hover {
+    text-decoration: none !important;
+    background-color: white;
+    outline: 1px solid black;
+    color: black;
+  }
+  .link-entity {
+    cursor: pointer;
+    text-decoration: none !important;
+    background-color: rgb(255 172 27);
+  }
+  .link-entity:hover {
+    text-decoration: none !important;
+    background-color: white;
+    outline: 1px solid black;
+    color: black;
+  }
 }
-.link-ontology:hover {
-  text-decoration: none !important;
-  background-color:white;
-  outline: 1px solid black;
-  color: black;
-}
-.link-entity {
-  cursor: pointer;
-  text-decoration: none !important;
-  background-color:rgb(255 172 27);
-}
-.link-entity:hover {
-  text-decoration: none !important;
-  background-color:white;
-  outline: 1px solid black;
-  color: black;
-}
-}
-
 
 @layer utilities {
   .spinner-default {
@@ -124,5 +129,3 @@
     border-style: solid;
   }
 }
-
-
