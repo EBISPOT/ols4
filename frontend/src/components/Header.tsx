@@ -8,15 +8,15 @@ export default function Header({
   // projectId?: string;
 }) {
   return (
-    <div
-      className="px-4 pt-8 pb-0 bg-black bg-right bg-cover"
+    <header
+      className="bg-black bg-right bg-cover"
       style={{
         backgroundImage:
           "url('" + process.env.PUBLIC_URL + "/embl-ebi-background-4.jpg')",
       }}
     >
-      <header className="container mx-auto flex flex-row gap-10">
-      <div className="py-6">
+      <div className="container mx-auto flex flex-row gap-10">
+        <div className="py-6">
           <a href={process.env.PUBLIC_URL}>
             <img
               alt="OxO logo"
@@ -25,7 +25,7 @@ export default function Header({
             />
           </a>
         </div>
-	<nav className="self-center">
+        <nav className="self-center">
           <ul
             className="bg-transparent text-white flex divide-white divide-x"
             data-description="navigational"
@@ -36,7 +36,9 @@ export default function Header({
               <li
                 role="menuitem"
                 className={`rounded-l-md px-4 py-3  ${
-                  section === "home" ? "bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
+                  section === "home"
+                    ? "bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 Home
@@ -58,7 +60,9 @@ export default function Header({
               <li
                 role="menuitem"
                 className={`px-4 py-3  ${
-                  section === "help" ? " bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
+                  section === "help"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 Help
@@ -68,7 +72,9 @@ export default function Header({
               <li
                 role="menuitem"
                 className={`rounded-r-md px-4 py-3 ${
-                  section === "about" ? " bg-opacity-75 bg-neutral-500" : "hover:bg-opacity-50 hover:bg-neutral-500"
+                  section === "about"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 About
@@ -76,7 +82,7 @@ export default function Header({
             </Link>
           </ul>
         </nav>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
