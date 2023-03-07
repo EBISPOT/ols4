@@ -690,7 +690,7 @@ function EntityParentsSection({
     return <Fragment />;
   }
 
-  let parents = entity?.getParents();
+  let parents = entity?.getSuperEntities();
 
   if (!parents || parents.length === 0) {
     return <Fragment />;

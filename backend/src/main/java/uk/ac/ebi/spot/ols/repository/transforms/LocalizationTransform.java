@@ -36,11 +36,13 @@ public class LocalizationTransform {
             }
         }
 
-        if(lang.equals("")) {
-            return json;
-        } else {
-            return null;
-        }
+//        if(lang.equals("")) {
+//            return json;
+//        } else {
+//            return null;
+//        }
+
+        return json;
     }
 
 
@@ -129,6 +131,13 @@ public class LocalizationTransform {
         }
 
         // This literal is not a localisation
+
+        if(!lang.equals("")) {
+            // If a lang is provided, we are only looking for values in the lang.
+            // So we skip this literal.
+            return null;
+        }
+
         JsonObject res = new JsonObject();
         for(String k : obj.keySet()) {
             if(k.equals("value")) {

@@ -132,7 +132,12 @@ public class RelatedAnnotator {
 			return;
 		}
 
-		String propertyUri = ((PropertyValueURI) property).getUri();
+		PropertyValue onProperty = fillerRestriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#onProperty");
+
+		if(onProperty == null || onProperty.getType() != PropertyValue.Type.URI)
+			return;
+
+		String propertyUri = ((PropertyValueURI) onProperty).getUri();
 
 		PropertyValue someValuesFrom = fillerRestriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#someValuesFrom");
 		if(someValuesFrom != null)  {
@@ -177,13 +182,70 @@ public class RelatedAnnotator {
 
 		if(filler.getType() == PropertyValue.Type.BNODE) {
 
-			OwlNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
+			OwlNode fillerClassExpr = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
 
-			// Evaluate this e.g. (subClassOf (some (oneOf...)) the same as (subClassOf (oneOf...))
-			// This seems to be what OLS3 does.
-			// (TODO: it ignores the propertyUri; does OLS3 use the property anywhere in this case?)
-			//
-			annotateRelated_Class_subClassOf_ClassExpr(classNode, fillerNode, ontologyBaseUris, preferredPrefix, graph);
+			PropertyValue oneOf = fillerClassExpr.properties.getPropertyValue("http://www.w3.org/2002/07/owl#oneOf");
+			if(oneOf != null)  {
+				// This is a oneOf class expression
+				annotateRelated_Class_subClassOf_Restriction_someValuesFrom_oneOf(classNode, propertyUri, fillerClassExpr, oneOf, ontologyBaseUris, preferredPrefix, graph);
+				return;
+			}
+
+			PropertyValue intersectionOf = fillerClassExpr.properties.getPropertyValue("http://www.w3.org/2002/07/owl#intersectionOf");
+			if(intersectionOf != null)  {
+				// This is an intersectionOf class expression (anonymous conjunction)
+				annotateRelated_Class_subClassOf_Restriction_someValuesFrom_intersectionOf(classNode, propertyUri, fillerClassExpr, intersectionOf, ontologyBaseUris, preferredPrefix, graph);
+				return;
+			}
+		}
+
+	}
+
+	private static void annotateRelated_Class_subClassOf_Restriction_someValuesFrom_oneOf(
+			OwlNode classNode, String propertyUri, OwlNode fillerRestriction, PropertyValue filler, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
+
+		// The filler is an RDF list of Individuals
+
+		OwlNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
+
+		List<OwlNode> fillerIndividuals =
+				RdfListEvaluator.evaluateRdfList(fillerNode, graph)
+						.stream()
+						.map(propertyValue -> graph.nodes.get( ((PropertyValueURI) propertyValue).getUri() ))
+						.collect(Collectors.toList());
+
+		for(OwlNode individualNode : fillerIndividuals) {
+			classNode.properties.addProperty("relatedTo",
+					new PropertyValueRelated(fillerNode, propertyUri, individualNode));
+			individualNode.properties.addProperty("relatedFrom",
+					new PropertyValueRelated(fillerNode, propertyUri, classNode));
+		}
+	}
+
+	private static void annotateRelated_Class_subClassOf_Restriction_someValuesFrom_intersectionOf(
+			OwlNode classNode, String propertyUri, OwlNode fillerRestriction, PropertyValue filler, Set<String> ontologyBaseUris, String preferredPrefix, OwlGraph graph) {
+
+		// The filler is an RDF list of Classes
+
+		OwlNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
+
+		List<OwlNode> fillerClasses =
+				RdfListEvaluator.evaluateRdfList(fillerNode, graph)
+						.stream()
+						.map(propertyValue -> graph.getNodeForPropertyValue(propertyValue))
+						.collect(Collectors.toList());
+
+		for(OwlNode fillerClassNode : fillerClasses) {
+
+			// Named nodes only. TODO what to do about bnodes in this case?
+			if(fillerClassNode.uri != null) {
+
+				classNode.properties.addProperty("relatedTo",
+						new PropertyValueRelated(fillerRestriction, propertyUri, fillerClassNode));
+
+				fillerClassNode.properties.addProperty("relatedFrom",
+						new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+			}
 		}
 
 	}

@@ -3,8 +3,14 @@ import Reified from "./Reified";
 import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
+
   abstract getParents(): Reified<any>[];
+  abstract getSuperEntities(): Reified<any>[];
   abstract getEquivalents(): Reified<any>[];
+
+  getSubClassOf():Reified<any>[] {
+    return Reified.fromJson<any>(this.properties["relatedFrom"]);
+  }
 
   getRelatedFrom(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["relatedFrom"]);

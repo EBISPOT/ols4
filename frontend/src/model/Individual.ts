@@ -11,6 +11,9 @@ export default class Individual extends Entity {
   getEquivalents() {
     return [];
   }
+  getSuperEntities(): Reified<any>[] {
+    return Reified.fromJson<any>([])
+  }
 
   getDifferentFrom() {
     return asArray(
