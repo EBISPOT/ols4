@@ -12,7 +12,7 @@ export default class Ontology extends Thing {
       this.properties["title"] ||
       ""
     );
-    return names[0].value || this.getOntologyId()
+    return (names[0] && names[0].value) || this.getOntologyId()
   }
   getDescription(): string {
     let descriptions = Reified.fromJson<string>(
@@ -20,7 +20,7 @@ export default class Ontology extends Thing {
       this.properties["description"] ||
       ""
     );
-    return descriptions[0].value || ''
+    return (descriptions[0] && descriptions[0].value) || ''
   }
   getSourceFileTimestamp(): string {
     return this.properties["sourceFileTimestamp"];
