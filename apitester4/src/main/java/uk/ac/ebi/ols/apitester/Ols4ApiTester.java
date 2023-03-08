@@ -50,7 +50,7 @@ public class Ols4ApiTester {
 
 		for(int nRetries = 0; nRetries < MAX_RETRIES; ++ nRetries) {
 
-			ontologies = getAll(url + "/api/ontologies");
+			ontologies = ols3GetAll(url + "/api/ontologies");
 
 			if(!ontologies.isJsonArray()) {
 				try {
@@ -82,7 +82,7 @@ public class Ols4ApiTester {
 			}
 
 			if(!ols3only) {
-				JsonElement v2Ontologies = getAll(url + "/api/v2/ontologies");
+				JsonElement v2Ontologies = ols4GetAll(url + "/api/v2/ontologies");
 				write(outDir + "/v2/ontologies.json", v2Ontologies);
 			}
 
@@ -109,13 +109,13 @@ public class Ols4ApiTester {
 
 		/// v1
 
-		JsonElement classes = getAll(url + "/api/ontologies/" + ontologyId + "/terms?size=" + size);
+		JsonElement classes = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms?size=" + size);
 		write(outDir + "/ontologies/" + ontologyId + "/terms.json", classes);
 
-		JsonElement properties = getAll(url + "/api/ontologies/" + ontologyId + "/properties?size=" + size);
+		JsonElement properties = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/properties?size=" + size);
 		write(outDir + "/ontologies/" + ontologyId + "/properties.json", properties);
 
-		JsonElement individuals = getAll(url + "/api/ontologies/" + ontologyId + "/individuals?size=" + size);
+		JsonElement individuals = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/individuals?size=" + size);
 		write(outDir + "/ontologies/" + ontologyId + "/individuals.json", individuals);
 
 		if(deep) {
@@ -127,28 +127,28 @@ public class Ols4ApiTester {
 				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + ".json", classJson);
 
-				JsonElement parentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents?size=" + size);
+				JsonElement parentsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/parents.json", parentsJson);
 
-				JsonElement ancestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors?size=" + size);
+				JsonElement ancestorsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/ancestors.json", ancestorsJson);
 
-				JsonElement hierarchicalParentsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents?size=" + size);
+				JsonElement hierarchicalParentsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalParents.json", hierarchicalParentsJson);
 
-				JsonElement hierarchicalAncestorsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors?size=" + size);
+				JsonElement hierarchicalAncestorsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalAncestors.json", hierarchicalAncestorsJson);
 
-				JsonElement childrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children?size=" + size);
+				JsonElement childrenJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/children.json", childrenJson);
 
-				JsonElement descendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants?size=" + size);
+				JsonElement descendantsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/descendants.json", descendantsJson);
 
-				JsonElement hierarchicalChildrenJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren?size=" + size);
+				JsonElement hierarchicalChildrenJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalChildren.json", hierarchicalChildrenJson);
 
-				JsonElement hierarchicalDescendantsJson = getAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants?size=" + size);
+				JsonElement hierarchicalDescendantsJson = ols3GetAll(url + "/api/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants?size=" + size);
 				write(outDir + "/ontologies/" + ontologyId + "/terms/" + doubleEncodedIri + "/hierarchicalDescendants.json", hierarchicalDescendantsJson);
 			}
 
@@ -183,16 +183,16 @@ public class Ols4ApiTester {
 
 		/// v2
 
-		JsonElement v2Entities = getAll(url + "/api/v2/ontologies/" + ontologyId + "/entities?size=" + size);
+		JsonElement v2Entities = ols4GetAll(url + "/api/v2/ontologies/" + ontologyId + "/entities?size=" + size);
 		write(outDir + "/v2/ontologies/" + ontologyId + "/entities.json", v2Entities);
 
-		JsonElement v2Classes = getAll(url + "/api/v2/ontologies/" + ontologyId + "/classes?size=" + size);
+		JsonElement v2Classes = ols4GetAll(url + "/api/v2/ontologies/" + ontologyId + "/classes?size=" + size);
 		write(outDir + "/v2/ontologies/" + ontologyId + "/classes.json", v2Classes);
 
-		JsonElement v2Properties = getAll(url + "/api/v2/ontologies/" + ontologyId + "/properties?size=" + size);
+		JsonElement v2Properties = ols4GetAll(url + "/api/v2/ontologies/" + ontologyId + "/properties?size=" + size);
 		write(outDir + "/v2/ontologies/" + ontologyId + "/properties.json", v2Properties);
 
-		JsonElement v2Individuals = getAll(url + "/api/v2/ontologies/" + ontologyId + "/individuals?size=" + size);
+		JsonElement v2Individuals = ols4GetAll(url + "/api/v2/ontologies/" + ontologyId + "/individuals?size=" + size);
 		write(outDir + "/v2/ontologies/" + ontologyId + "/individuals.json", v2Individuals);
 
 
@@ -260,7 +260,8 @@ public class Ols4ApiTester {
 		}
 	}
 
-	public JsonElement getAll(String url) {
+	// get all, HATEOAS style (OLS3 API)
+	public JsonElement ols3GetAll(String url) {
 
 		try {
 			JsonArray allEntries = new JsonArray();
@@ -295,6 +296,40 @@ public class Ols4ApiTester {
 				System.out.println("next link is " + next);
 
 				res = get(next).getAsJsonObject();
+			}
+
+			System.out.println("sorting and returning result...");
+			return deepSort(removeDates(normalizeURLs(allEntries))).getAsJsonArray();
+
+		} catch(Exception e) {
+			return gson.toJsonTree(e);
+		}
+	}
+
+	// get all paginated style (OLS4 API)
+	public JsonElement ols4GetAll(String url) {
+
+		try {
+			JsonArray allEntries = new JsonArray();
+
+			String reqUrl = url + "?page=0&numElements=100";
+
+			for(JsonObject res = get(url).getAsJsonObject();;) {
+
+				int page = res.get("page").getAsInt();
+				int numElements = res.get("numElements").getAsInt();
+				// int totalPages = res.get("totalPages").getAsInt();
+				// int totalElements = res.get("totalElements").getAsInt();
+				JsonArray elements = res.get("elements").getAsJsonArray();
+
+				allEntries.addAll(elements);
+
+				if(numElements < 100) {
+					break;
+				}
+
+				reqUrl = url + "?page=" + page + "&numElements=100";
+				res = get(reqUrl).getAsJsonObject();
 			}
 
 			System.out.println("sorting and returning result...");
