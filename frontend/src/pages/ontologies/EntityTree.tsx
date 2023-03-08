@@ -78,7 +78,7 @@ export default function EntityTree({
 
   // If the ontology, entity type, selected entity IRI, or lang change, reset the tree settings (including showobsolete/preferred roots)
   useEffect(() => {
-    dispatch(resetTreeSettings());
+    dispatch(resetTreeSettings({entityType}));
   }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri() ]);
 
   // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings
@@ -229,7 +229,7 @@ export default function EntityTree({
       <div style={{ position: "relative" }}>
           <div style={{ position: "absolute", right: 0, top: 0 }} className="flex flex-col">
 
-		{ontology.getPreferredRoots().length > 0 && (
+		{ (entityType === 'classes' && ontology.getPreferredRoots().length > 0) && (
 			<Fragment>
 		<FormControl>
 		<RadioGroup

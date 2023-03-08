@@ -66,7 +66,7 @@ const initialState: OntologiesState = {
 };
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
-export const resetTreeSettings = createAction("ontologies_tree_reset_settings");
+export const resetTreeSettings = createAction<{entityType:string}>("ontologies_tree_reset_settings");
 
 export const enablePreferredRoots = createAction(
   "ontologies_preferred_enabled"
@@ -410,9 +410,9 @@ const ontologiesSlice = createSlice({
       state.rootNodes = [];
       state.automaticallyExpandedNodes = [];
     });
-    builder.addCase(resetTreeSettings, (state: OntologiesState) => {
+    builder.addCase(resetTreeSettings, (state: OntologiesState, action: PayloadAction<{entityType:string}>) => {
       console.log('Resetting tree settings')
-      state.preferredRoots = state.ontology!.getPreferredRoots().length > 0;
+      state.preferredRoots = action.payload.entityType === 'classes' && state.ontology!.getPreferredRoots().length > 0;
       state.showObsolete = false;
       state.showSiblings = false;
       state.manuallyExpandedNodes = [];
