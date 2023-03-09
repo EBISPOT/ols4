@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOfOf.owl#"
+<rdf:RDF xmlns="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl#"
      xml:base="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -28,10 +28,10 @@
     <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOfOf rdf:parseType="Collection">
+                <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent"/>
                     <rdf:Description rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"/>
-                </owl:intersectionOfOf>
+                </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
