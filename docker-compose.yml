@@ -49,9 +49,7 @@ services:
     ols4-frontend:
       build:
         context: ./frontend
-      environment:
-        - REACT_APP_APIURL=http://localhost:8080/
-        - PUBLIC_URL=/
+      env_file: .env
       ports:
         - 8081:8080
       depends_on:
