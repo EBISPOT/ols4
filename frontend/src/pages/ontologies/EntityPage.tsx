@@ -266,6 +266,7 @@ export default function EntityPage({
                         </span>
                       </summary>
                       <div className="py-2 break-words space-y-4">
+                        <PropertyCharacteristicsSection entity={entity} />
                         <EntityAnnotationsSection
                           entity={entity}
                           linkedEntities={linkedEntities}
@@ -386,6 +387,7 @@ function EntityAnnotationsSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
+
   let annotationPredicates = entity.getAnnotationPredicates();
 
   return (
@@ -1296,6 +1298,49 @@ function addEntityLinksToText(text:string, linkedEntities:LinkedEntities, ontolo
 	res.push(<Fragment>{text.slice(n)}</Fragment>);
 
 	return res;
+}
+
+function PropertyCharacteristicsSection({entity}:{entity:Entity}) {
+
+if(entity.getType() !== 'property')
+  return <Fragment/>  
+
+  let characteristics = entity.getRdfTypes().map(type => {
+
+    return ({
+      'http://www.w3.org/2002/07/owl#FunctionalProperty': 'Functional',
+      'http://www.w3.org/2002/07/owl#InverseFunctionalProperty': 'Inverse Functional',
+      'http://www.w3.org/2002/07/owl#TransitiveProperty': 'Transitive',
+      'http://www.w3.org/2002/07/owl#SymmetricProperty': 'Symmetric',
+      'http://www.w3.org/2002/07/owl#AsymmetricProperty': 'Asymmetric',
+      'http://www.w3.org/2002/07/owl#ReflexiveProperty': 'Reflexive',
+      'http://www.w3.org/2002/07/owl#IrreflexiveProperty': 'Irreflexive',
+    })[type]
+
+  }).filter((type) => !!type)
+
+  if(characteristics.length === 0) 
+    return <Fragment/>
+
+  return <div>
+              <div className="font-bold">Characteristics</div>
+              {characteristics.length === 1 ? (
+                <p>{characteristics[0]}</p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {characteristics
+                    .map((characteristic) => {
+                      return (
+                        <li key={randomString()}>
+                          {characteristic}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+          </div>
+
 }
 
 
