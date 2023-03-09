@@ -456,7 +456,7 @@ function EntityAnnotationsSection({
           <EntityLink
             ontologyId={entity.getOntologyId()}
 	    currentEntity={entity}
-            entityType="classes" // TODO
+            entityType={entity.getTypePlural()} 
             iri={value.value}
             linkedEntities={linkedEntities}
           />
@@ -1319,7 +1319,7 @@ if(entity.getType() !== 'property')
 
   }).filter((type) => !!type)
 
-  if(characteristics.length === 0) 
+  if(characteristics.length === 0)
     return <Fragment/>
 
   return <div>

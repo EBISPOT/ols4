@@ -48,9 +48,9 @@ export default abstract class Thing {
   }
 
   getRdfTypes(): string[] {
-    return this.properties[
+    return asArray(this.properties[
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-    ] as string[];
+    ])
   }
 
   getName(): string {

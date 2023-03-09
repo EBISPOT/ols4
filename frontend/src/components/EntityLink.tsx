@@ -79,7 +79,7 @@ export default function EntityLink({
 			// Term is defined in this ontology but also more than 1 canonical definition
 			// Show <label><ONTOLOGY> where each ONTOLOGY button links to the term in that defining ontology
 			return <Fragment>
-				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
+				<Link className="link-default" to={`/ontologies/${ontologyId}/${pluraliseType(linkedEntity.type)}/${encodedIri}?lang=${lang}`}>
 				{iri}
 				</Link>
 				{
@@ -110,7 +110,7 @@ export default function EntityLink({
 		if(linkedEntity.hasLocalDefinition) {
 			// Term is defined in this ontology
 			// Show internal link within the ontology
-			return <Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
+			return <Link className="link-default" to={`/ontologies/${ontologyId}/${pluraliseType(linkedEntity.type)}/${encodedIri}?lang=${lang}`}>
 			{label}
 			</Link>
 		} else {
