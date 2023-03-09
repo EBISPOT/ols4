@@ -91,7 +91,8 @@ export default abstract class Entity extends Thing {
           predicate !== "http://www.w3.org/2000/01/rdf-schema#domain" &&
           predicate !== "http://www.w3.org/2000/01/rdf-schema#range" &&
           predicate !== "http://www.w3.org/2000/01/rdf-schema#seeAlso" &&
-          predicate !== "http://www.w3.org/2002/07/owl#hasKey"
+          predicate !== "http://www.w3.org/2002/07/owl#hasKey" &&
+          predicate !== "http://www.w3.org/2002/07/owl#disjointUnionOf"
         ) {
           continue;
         }
