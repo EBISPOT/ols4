@@ -164,6 +164,21 @@ export default function ClassExpression({
     return <span>{nodes}</span>;
   }
 
+  let inverseOf = expr["http://www.w3.org/2002/07/owl#inverseOf"];
+
+  if(inverseOf) {
+	return (
+		<span>
+		<span className="px-1 text-embl-purple-default italic">inverse</span>
+		<span>
+		{"("}
+		<ClassExpression currentEntity={currentEntity}   ontologyId={ontologyId} entityType={'properties'} expr={inverseOf} linkedEntities={linkedEntities} />
+		{")"}
+		</span>
+		</span>
+	);
+  }
+
   ///
   /// 2. owl:Restriction expressions
   ///
@@ -318,9 +333,10 @@ export default function ClassExpression({
     );
   }
 
-  return (
-    <span className="text-embl-red-default italic">
-      unknown class expression
-    </span>
-  );
+
+    return (
+      <span className="text-embl-red-default italic">
+        unknown class expression
+      </span>
+    );
 }

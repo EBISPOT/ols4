@@ -101,7 +101,7 @@ export default function Home() {
                 </div>
                 <p>
                   For feedback, enquiries or suggestion about OLS or to request
-                  a new ontology please use our <a href="https://github.com/EBISPOT/ols4/issues">GitHub issue tracker</a>. For
+                  a new ontology please use our <a href="https://github.com/EBISPOT/ols4/issues" className="link-default">GitHub issue tracker</a>. For
                   announcements relating to OLS, such as new releases and new
                   features sign up to the OLS announce mailing list.
                 </p>
