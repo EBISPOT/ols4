@@ -344,11 +344,14 @@ function EntityDescriptionSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
+	let desc = entity.getDescriptionAsArray()
   return (
     <p>
-      {entity.getDescriptionAsArray().map((definition: Reified<any>) => {
+      {desc.map((definition: Reified<any>, i:number) => {
         const hasMetadata = definition.hasMetadata();
         return (
+		<Fragment>
+            <p>
           <span key={randomString()}>
             {addEntityLinksToText(definition.value, linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}
             {hasMetadata ? (
@@ -375,6 +378,9 @@ function EntityDescriptionSection({
               </Tooltip>
             ) : null}
           </span>
+            </p>
+	{i <desc.length -1 ? <div className="py-1"/>:<Fragment/>}
+	</Fragment>
         );
       })}
     </p>
