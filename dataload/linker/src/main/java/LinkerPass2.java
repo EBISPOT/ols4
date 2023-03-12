@@ -18,7 +18,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result, Map<String,String> orcidMap) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -65,13 +65,13 @@ public class LinkerPass2 {
                         jsonWriter.name(key);
 
                         if(key.equals("classes")) {
-                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, pass1Result, orcidMap);
                             continue;
                         } else if(key.equals("properties")) {
-                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, pass1Result, orcidMap);
                             continue;
                         } else if(key.equals("individuals")) {
-                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result, orcidMap);
                             continue;
                         } else {
                             CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, ontologyGatheredStrings);
@@ -79,7 +79,7 @@ public class LinkerPass2 {
                     }
 
                     jsonWriter.name("linkedEntities");
-                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, pass1Result);
+                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, pass1Result, orcidMap);
 
                     jsonReader.endObject(); // ontology
                     jsonWriter.endObject();
@@ -103,7 +103,13 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(
+            JsonReader jsonReader,
+            JsonWriter jsonWriter,
+            String entityType,
+            String ontologyId,
+            LinkerPass1.LinkerPass1Result pass1Result,
+            Map<String,String> orcidMap) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -157,7 +163,7 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, pass1Result);
+            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, pass1Result, orcidMap);
 
             jsonWriter.endObject();
             jsonReader.endObject();
@@ -169,7 +175,13 @@ public class LinkerPass2 {
     }
 
 
-    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeLinkedEntitiesFromGatheredStrings(
+            JsonWriter jsonWriter,
+            Set<String> strings,
+            String ontologyId,
+            String entityIri,
+            LinkerPass1.LinkerPass1Result pass1Result,
+            Map<String,String> orcidMap) throws IOException {
 
         jsonWriter.beginObject();
 
@@ -183,6 +195,30 @@ public class LinkerPass2 {
             }
 
             if(entityIri != null && str.equals(entityIri)) {
+                continue;
+            }
+
+            boolean foundOrcid = false;
+            for(String orcidPrefix : OrcidResolver.ORCID_PREFIXES) {
+                if(str.startsWith(orcidPrefix)) {
+                    String orcid = str.substring(orcidPrefix.length());
+                    String orcidName = orcidMap.get(orcid);
+                    if(orcidName != null) {
+                        jsonWriter.name(str);
+                        jsonWriter.beginObject();
+                        jsonWriter.name("orcidName");
+                        jsonWriter.value(orcidName);
+                        jsonWriter.name("orcid");
+                        jsonWriter.value(orcid);
+                        jsonWriter.endObject();
+
+                        foundOrcid = true;
+                        break;
+                    }
+                }
+            }
+
+            if(foundOrcid) {
                 continue;
             }
 

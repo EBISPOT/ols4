@@ -46,7 +46,7 @@ public class Bioregistry {
         this.registryUrl = jsonUrl;
 
         try {
-            theRegistry = urlToJson(jsonUrl).getAsJsonObject();
+            theRegistry = UrlToJson.urlToJson(jsonUrl).getAsJsonObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -130,23 +130,5 @@ public class Bioregistry {
         return pattern;
     }
 
-    private JsonElement urlToJson(String url) throws IOException {
-
-        RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
-                .setSocketTimeout(5000).build();
-
-        CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
-
-        HttpGet request = new HttpGet(url);
-        HttpResponse response = client.execute(request);
-        HttpEntity entity = response.getEntity();
-        if (entity != null) {
-            return new JsonParser().parse(new InputStreamReader(entity.getContent()));
-        } else {
-            throw new RuntimeException("bioregistry response was null");
-        }
-    }
 
 }

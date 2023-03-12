@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 
 public class Linker {
 
@@ -43,10 +44,12 @@ public class Linker {
 //        LinkerPass1.LinkerPass1Result pass1Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.json")), LinkerPass1.LinkerPass1Result.class);
         LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
 
+        Map<String,String> orcidMap = OrcidResolver.resolveOrcids(pass1Result.orcids);
+
 //        gson.toJson(pass1Result, new FileWriter(outputFilePath));
 //        Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
 
-        LinkerPass2.run(inputFilePath, outputFilePath, pass1Result);
+        LinkerPass2.run(inputFilePath, outputFilePath, pass1Result, orcidMap);
 
     }
 }

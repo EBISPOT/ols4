@@ -1,76 +1,57 @@
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class GatherStrings {
+public class ReadJsonGatheringStrings {
 
     private static final JsonParser jsonParser = new JsonParser();
 
-    public static void gatherStrings(JsonReader jsonReader, Set<String> gatheredStrings) throws IOException {
+    public static void readAndGather(JsonReader jsonReader, Set<String> gatheredStrings) throws IOException {
 
         switch(jsonReader.peek()) {
             case BEGIN_ARRAY:
-                copyArray(jsonReader, jsonWriter, gatheredStrings);
+                readArray(jsonReader, gatheredStrings);
                 break;
             case BEGIN_OBJECT:
-                copyObject(jsonReader, jsonWriter, gatheredStrings);
+                readObject(jsonReader, gatheredStrings);
                 break;
             case STRING:
                 String str = jsonReader.nextString();
-
                 gatheredStrings.add(str);
-
-                Matcher matcher = curiePattern.matcher(str);
-
-                while(matcher.find()) {
-                    gatheredStrings.add(matcher.group());
-                }
-
-                jsonWriter.value(str);
                 break;
             default:
-                JsonElement elem = jsonParser.parse(jsonReader);
-                com.google.gson.internal.Streams.write(elem, jsonWriter);
+                jsonReader.skipValue();
                 break;
         }
     }
 
-    private static void copyArray(JsonReader jsonReader, JsonWriter jsonWriter, Set<String> gatheredStrings) throws IOException {
+    private static void readArray(JsonReader jsonReader, Set<String> gatheredStrings) throws IOException {
 
         jsonReader.beginArray();
-        jsonWriter.beginArray();
 
         while(jsonReader.peek() != JsonToken.END_ARRAY) {
-            copyJsonGatheringStrings(jsonReader, jsonWriter, gatheredStrings);
+            readAndGather(jsonReader, gatheredStrings);
         }
 
         jsonReader.endArray();
-        jsonWriter.endArray();
     }
 
-    private static void copyObject(JsonReader jsonReader, JsonWriter jsonWriter, Set<String> gatheredStrings) throws IOException {
+    private static void readObject(JsonReader jsonReader, Set<String> gatheredStrings) throws IOException {
 
         jsonReader.beginObject();
-        jsonWriter.beginObject();
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
             String name = jsonReader.nextName();
             gatheredStrings.add(name);
 
-            jsonWriter.name(name);
-            copyJsonGatheringStrings(jsonReader, jsonWriter, gatheredStrings);
+            readAndGather(jsonReader, gatheredStrings);
         }
 
         jsonReader.endObject();
-        jsonWriter.endObject();
     }
 
 }
