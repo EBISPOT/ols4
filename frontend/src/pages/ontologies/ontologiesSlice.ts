@@ -188,15 +188,28 @@ export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
   async ({ ontologyId, entityType, preferredRoots, lang, showObsoleteEnabled }: any) => {
     if (entityType === "individuals") {
-      const rootsPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
-          hasIndividuals: "true",
-          size: "100",
-          lang,
-	  includeObsoleteEntities: showObsoleteEnabled
-        })}`
-      );
-      return rootsPage.elements.map((obj) => thingFromProperties(obj));
+      const [classesWithIndividuals,orphanedIndividuals] = await Promise.all([
+		getPaginated<any>(
+		`api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
+		hasIndividuals: "true",
+		size: "100",
+		lang,
+		includeObsoleteEntities: showObsoleteEnabled
+		})}`),
+		getPaginated<any>(
+		`api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
+		hasDirectParent: "false",
+		size: "100",
+		lang,
+		includeObsoleteEntities: showObsoleteEnabled
+		})}`)
+	])
+      return {
+	entityType,
+	rootTerms: null,
+	classesWithIndividuals: classesWithIndividuals.elements.map((obj) => thingFromProperties(obj)),
+	orphanedIndividuals: orphanedIndividuals.elements.map((obj) => thingFromProperties(obj))
+      }
     } else if (entityType === "classes" && preferredRoots) {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
@@ -204,9 +217,13 @@ export const getRootEntities = createAsyncThunk(
           size: "100",
           lang,
 	  includeObsoleteEntities: showObsoleteEnabled
-        })}`
-      );
-      return rootsPage.elements.map((obj) => thingFromProperties(obj));
+        })}`)
+	return {
+		entityType,
+		rootTerms: rootsPage.elements.map((obj) => thingFromProperties(obj)),
+		classesWithIndividuals: null,
+		orphanedIndividuals: null
+	}
     } else {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
@@ -216,7 +233,12 @@ export const getRootEntities = createAsyncThunk(
 	  includeObsoleteEntities: showObsoleteEnabled
         })}`
       );
-      return rootsPage.elements.map((obj) => thingFromProperties(obj));
+	return {
+		entityType,
+		rootTerms: rootsPage.elements.map((obj) => thingFromProperties(obj)),
+		classesWithIndividuals: null,
+		orphanedIndividuals: null
+	}
     }
   }
 );
@@ -318,6 +340,12 @@ const ontologiesSlice = createSlice({
       state.loadingClassInstances = true;
     });
     builder.addCase(
+      getAncestors.pending,
+      (state: OntologiesState) => {
+        ++ state.numPendingTreeRequests;
+      }
+    );
+    builder.addCase(
       getAncestors.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
         let { rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
@@ -328,6 +356,13 @@ const ontologiesSlice = createSlice({
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
 	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
+	-- state.numPendingTreeRequests;
+      }
+    );
+    builder.addCase(
+      getAncestors.rejected,
+      (state: OntologiesState) => {
+        -- state.numPendingTreeRequests;
       }
     );
     builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
@@ -360,13 +395,19 @@ const ontologiesSlice = createSlice({
       })
     builder.addCase(
       getRootEntities.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
+      (state: OntologiesState, action: PayloadAction<any>) => {
+
+	let { entityType, rootTerms, classesWithIndividuals, orphanedIndividuals } = action.payload;
+
+	console.log('rootTerms')
+	console.dir(rootTerms)
+
         let { allNodes, rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
-          action.payload,
+          [ ...(rootTerms || []), ...(classesWithIndividuals || []), ...(orphanedIndividuals || []) ],
           state.preferredRoots,
           state.ontology!
         );
-	// console.log('getRootEntities fulfilled; populating state from root entities ' + rootNodes.map(n => n.title))
+
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
 	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
