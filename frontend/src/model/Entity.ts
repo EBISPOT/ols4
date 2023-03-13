@@ -58,16 +58,15 @@ export default abstract class Entity extends Thing {
     let hierarchicalProperties = this.properties["hierarchicalProperty"];
     let annotationPredicates = new Set();
 
-    /*
-    TODO
-    This logic is copied from OLS3 as used by the API compatibility layer
-    We will probably want to change it for the OLS4 frontend
-    */
-
     for (let predicate of Object.keys(this.properties)) {
+
       // properties without an IRI are things that were added by owl2json so should not
       // be included as annotations
       if (predicate.indexOf("://") === -1) continue;
+
+      // this is handled explicitly in EntityPage
+      if(predicate.startsWith("negativePropertyAssertion+"))
+	continue;
 
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation

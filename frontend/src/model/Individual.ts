@@ -39,4 +39,5 @@ export default class Individual extends Entity {
         !t.startsWith("http://www.w3.org/2000/01/rdf-schema#")
     );
   }
+
 }

@@ -199,6 +199,7 @@ public class OwlGraph implements StreamRDF {
     long endTime = System.nanoTime();
     System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
 
+    NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
     OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
     DirectParentsAnnotator.annotateDirectParents(this);
     RelatedAnnotator.annotateRelated(this);
@@ -622,6 +623,9 @@ public class OwlGraph implements StreamRDF {
                 break;
             case "http://www.w3.org/2002/07/owl#AllDifferent":
                 subjNode.types.add(OwlNode.NodeType.ALL_DIFFERENT);
+                break;
+            case "http://www.w3.org/2002/07/owl#NegativePropertyAssertion":
+                subjNode.types.add(OwlNode.NodeType.NEGATIVE_PROPERTY_ASSERTION);
                 break;
         }
     }

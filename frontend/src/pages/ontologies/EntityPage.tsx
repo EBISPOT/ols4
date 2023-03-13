@@ -267,6 +267,7 @@ export default function EntityPage({
                       </summary>
                       <div className="py-2 break-words space-y-4">
                         <PropertyCharacteristicsSection entity={entity} />
+                        <IndividualNegativePropertyAssertionsSection entity={entity} linkedEntities={linkedEntities} />
                         <EntityAnnotationsSection
                           entity={entity}
                           linkedEntities={linkedEntities}
@@ -1348,5 +1349,62 @@ if(entity.getType() !== 'property')
           </div>
 
 }
+
+function IndividualNegativePropertyAssertionsSection({entity, linkedEntities}:{entity:Entity, linkedEntities:LinkedEntities}) {
+
+	if(entity.getType() !== 'individual')
+		return <Fragment/>  
+
+	let negativePropertyAssertionKeys =
+		Object.keys(entity.properties)
+			.filter(k => k.startsWith("negativePropertyAssertion+"));
+
+  if(negativePropertyAssertionKeys.length === 0)
+    return <Fragment/>
+	
+    let negativePropertyAssertions:JSX.Element[] = []
+
+    for(let k of negativePropertyAssertionKeys) {
+
+	let iri = k.slice("negativePropertyAssertion+".length)
+	let values = asArray(entity.properties[k])
+
+	for(let v of values) {
+		negativePropertyAssertions.push(
+			<span>
+				<EntityLink ontologyId={entity.getOntologyId()} currentEntity={entity} entityType="properties" iri={iri} linkedEntities={linkedEntities} />
+				{" "}
+				{ v.indexOf('://') !== -1 ?
+					<EntityLink ontologyId={entity.getOntologyId()} currentEntity={entity} entityType="individuals" iri={v} linkedEntities={linkedEntities} />
+				:
+					{v}
+				}
+			</span>
+		)
+	}
+    }
+
+  return <div>
+              <div className="font-bold">Negative property assertions</div>
+              {negativePropertyAssertions.length === 1 ? (
+                <p>{negativePropertyAssertions[0]}</p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {negativePropertyAssertions
+                    .map((npa) => {
+                      return (
+                        <li key={randomString()}>
+                          {npa}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+          </div>
+
+}
+
+
 
 

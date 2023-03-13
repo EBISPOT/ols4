@@ -17,8 +17,10 @@ public class OwlNode {
         RDF_LIST,
 	ALL_DISJOINT_CLASSES,
 	ALL_DIFFERENT,
-	ALL_DISJOINT_PROPERTIES
+	ALL_DISJOINT_PROPERTIES,
+	NEGATIVE_PROPERTY_ASSERTION
     }
+    
 
     public String uri;
     public Set<NodeType> types = new TreeSet<>();
