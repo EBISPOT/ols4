@@ -1,0 +1,666 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "owl2primer-equivalentobjectproperty",
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+      "preferredPrefix": "owl2primer-equivalentObjectProperty",
+      "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "4"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "classes": [],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasLifePartner"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2002/07/owl#equivalentProperty": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasLifePartner"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentobjectproperty"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentObjectProperty"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasLifePartner"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "owl2primer-equivalentobjectproperty"
+          ],
+          "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasSpouse"
+              },
+              "type": "property"
+            }
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2002/07/owl#equivalentProperty": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentobjectproperty"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentObjectProperty"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "owl2primer-equivalentobjectproperty"
+          ],
+          "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasLifePartner"
+              },
+              "type": "property"
+            }
+          }
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentobjectproperty"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentObjectProperty"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "owl2primer-equivalentobjectproperty"
+          ],
+          "linkedEntities": {}
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentobjectproperty"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-equivalentObjectProperty"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "owl2primer-equivalentobjectproperty"
+          ],
+          "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "John"
+              },
+              "type": "individual"
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasLifePartner"
+              },
+              "type": "property"
+            }
+          }
+        }
+      ],
+      "linkedEntities": {}
+    }
+  ]
+}

@@ -199,17 +199,17 @@ public class LinkerPass1 {
                 iri = jsonReader.nextString();
             } else if(key.equals("label")) {
                 label = jsonParser.parse(jsonReader);
-            } else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
-                JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
-		if(jsonDefinedBy.isJsonArray()) {
-			JsonArray arr = jsonDefinedBy.getAsJsonArray();
-			for(JsonElement el : arr) {
-				definedBy.add( el.getAsString() );
-			}
-		} else {
-			definedBy.add(jsonDefinedBy.getAsString());
-		}
-            } else {
+			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
+				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
+				if(jsonDefinedBy.isJsonArray()) {
+					JsonArray arr = jsonDefinedBy.getAsJsonArray();
+					for(JsonElement el : arr) {
+						definedBy.add( el.getAsString() );
+					}
+				} else {
+					definedBy.add(jsonDefinedBy.getAsString());
+				}
+			} else {
                 jsonReader.skipValue();
             }
         }

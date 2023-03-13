@@ -8,15 +8,63 @@
       "type": [
         "ontology"
       ],
+      "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverse.owl",
-      "imported": "false",
-      "isObsolete": "false",
-      "numberOfClasses": "0",
-      "numberOfEntities": "2",
-      "numberOfIndividuals": "0",
-      "numberOfProperties": "2",
-      "iriToLabel": {},
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
       "classes": [],
       "properties": [
         {
@@ -25,19 +73,133 @@
             "entity",
             "property"
           ],
-          "hasChildren": "false",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasChild"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "true",
-          "ontologyId": "owl2primer-objectproperty-inverse",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
-          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse",
-          "shortForm": "hasChild",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasChild"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-objectproperty-inverse"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-objectProperty-inverse"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasChild"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
@@ -45,18 +207,133 @@
             "entity",
             "property"
           ],
-          "hasChildren": "false",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "true",
-          "ontologyId": "owl2primer-objectproperty-inverse",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
-          "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse",
-          "shortForm": "hasParent",
-          "iriToLabel": {}
+          "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-objectproperty-inverse"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-objectProperty-inverse"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         }
       ],
       "individuals": []

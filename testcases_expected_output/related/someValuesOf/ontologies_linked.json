@@ -1,0 +1,581 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "related-somevaluesof",
+      "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
+      "preferredPrefix": "related-someValuesOf",
+      "ontology_purl": "./testcases/related/someValuesOf.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf.xml",
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+            "isObsolete": {
+              "type": [
+                "literal"
+              ],
+              "value": "false"
+            }
+          },
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-somevaluesof"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-someValuesOf"
+          },
+          "relatedTo": {
+            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+            "type": [
+              "related"
+            ],
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+            "isObsolete": {
+              "type": [
+                "literal"
+              ],
+              "value": "false"
+            }
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "related-somevaluesof"
+          ],
+          "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "B"
+              },
+              "type": "class"
+            },
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "r"
+              },
+              "type": "property"
+            }
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-somevaluesof"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-someValuesOf"
+          },
+          "relatedFrom": {
+            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A",
+            "type": [
+              "related"
+            ],
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+            "isObsolete": {
+              "type": [
+                "literal"
+              ],
+              "value": "false"
+            }
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "related-somevaluesof"
+          ],
+          "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "A"
+              },
+              "type": "class"
+            },
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": {
+              "numAppearsIn": "1",
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "r"
+              },
+              "type": "property"
+            }
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+          "type": [
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-somevaluesof"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "related-someValuesOf"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "related-somevaluesof"
+          ],
+          "linkedEntities": {}
+        }
+      ],
+      "individuals": [],
+      "linkedEntities": {}
+    }
+  ]
+}

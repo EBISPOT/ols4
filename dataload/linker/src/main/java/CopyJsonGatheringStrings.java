@@ -65,7 +65,8 @@ public class CopyJsonGatheringStrings {
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
             String name = jsonReader.nextName();
-            gatheredStrings.add(name);
+
+            gatheredStrings.add(ExtractIriFromPropertyName.extract(name));
 
             jsonWriter.name(name);
             copyJsonGatheringStrings(jsonReader, jsonWriter, gatheredStrings);
@@ -74,5 +75,7 @@ public class CopyJsonGatheringStrings {
         jsonReader.endObject();
         jsonWriter.endObject();
     }
+
+
 
 }

@@ -8,15 +8,63 @@
       "type": [
         "ontology"
       ],
+      "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl",
-      "imported": "false",
-      "isObsolete": "false",
-      "numberOfClasses": "5",
-      "numberOfEntities": "5",
-      "numberOfIndividuals": "0",
-      "numberOfProperties": "0",
-      "iriToLabel": {},
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "5"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "5"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
@@ -24,22 +72,137 @@
             "class",
             "entity"
           ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Man"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
-          "hasChildren": "false",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "false",
-          "ontologyId": "owl2primer-alldisjointclasses",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
-          "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
-          "shortForm": "Man",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Man"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-alldisjointclasses"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-allDisjointClasses"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Man"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
@@ -47,18 +210,133 @@
             "class",
             "entity"
           ],
-          "hasChildren": "true",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "true",
-          "ontologyId": "owl2primer-alldisjointclasses",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
-          "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
-          "shortForm": "Person",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "2"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "2"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-alldisjointclasses"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-allDisjointClasses"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
@@ -66,22 +344,137 @@
             "class",
             "entity"
           ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
-          "hasChildren": "false",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "false",
-          "ontologyId": "owl2primer-alldisjointclasses",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
-          "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
-          "shortForm": "Woman",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-alldisjointclasses"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-allDisjointClasses"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         }
       ],
       "properties": [],

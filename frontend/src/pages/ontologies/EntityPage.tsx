@@ -266,6 +266,8 @@ export default function EntityPage({
                         </span>
                       </summary>
                       <div className="py-2 break-words space-y-4">
+                        <PropertyCharacteristicsSection entity={entity} />
+                        <IndividualNegativePropertyAssertionsSection entity={entity} linkedEntities={linkedEntities} />
                         <EntityAnnotationsSection
                           entity={entity}
                           linkedEntities={linkedEntities}
@@ -343,11 +345,14 @@ function EntityDescriptionSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
+	let desc = entity.getDescriptionAsArray()
   return (
     <p>
-      {entity.getDescriptionAsArray().map((definition: Reified<any>) => {
+      {desc.map((definition: Reified<any>, i:number) => {
         const hasMetadata = definition.hasMetadata();
         return (
+		<Fragment>
+            <p>
           <span key={randomString()}>
             {addEntityLinksToText(definition.value, linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}
             {hasMetadata ? (
@@ -374,6 +379,9 @@ function EntityDescriptionSection({
               </Tooltip>
             ) : null}
           </span>
+            </p>
+	{i <desc.length -1 ? <div className="py-1"/>:<Fragment/>}
+	</Fragment>
         );
       })}
     </p>
@@ -386,6 +394,7 @@ function EntityAnnotationsSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
+
   let annotationPredicates = entity.getAnnotationPredicates();
 
   return (
@@ -454,7 +463,7 @@ function EntityAnnotationsSection({
           <EntityLink
             ontologyId={entity.getOntologyId()}
 	    currentEntity={entity}
-            entityType="classes" // TODO
+            entityType={entity.getTypePlural()} 
             iri={value.value}
             linkedEntities={linkedEntities}
           />
@@ -1297,5 +1306,105 @@ function addEntityLinksToText(text:string, linkedEntities:LinkedEntities, ontolo
 
 	return res;
 }
+
+function PropertyCharacteristicsSection({entity}:{entity:Entity}) {
+
+if(entity.getType() !== 'property')
+  return <Fragment/>  
+
+  let characteristics = entity.getRdfTypes().map(type => {
+
+    return ({
+      'http://www.w3.org/2002/07/owl#FunctionalProperty': 'Functional',
+      'http://www.w3.org/2002/07/owl#InverseFunctionalProperty': 'Inverse Functional',
+      'http://www.w3.org/2002/07/owl#TransitiveProperty': 'Transitive',
+      'http://www.w3.org/2002/07/owl#SymmetricProperty': 'Symmetric',
+      'http://www.w3.org/2002/07/owl#AsymmetricProperty': 'Asymmetric',
+      'http://www.w3.org/2002/07/owl#ReflexiveProperty': 'Reflexive',
+      'http://www.w3.org/2002/07/owl#IrreflexiveProperty': 'Irreflexive',
+    })[type]
+
+  }).filter((type) => !!type)
+
+  if(characteristics.length === 0)
+    return <Fragment/>
+
+  return <div>
+              <div className="font-bold">Characteristics</div>
+              {characteristics.length === 1 ? (
+                <p>{characteristics[0]}</p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {characteristics
+                    .map((characteristic) => {
+                      return (
+                        <li key={randomString()}>
+                          {characteristic}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+          </div>
+
+}
+
+function IndividualNegativePropertyAssertionsSection({entity, linkedEntities}:{entity:Entity, linkedEntities:LinkedEntities}) {
+
+	if(entity.getType() !== 'individual')
+		return <Fragment/>  
+
+	let negativePropertyAssertionKeys =
+		Object.keys(entity.properties)
+			.filter(k => k.startsWith("negativePropertyAssertion+"));
+
+  if(negativePropertyAssertionKeys.length === 0)
+    return <Fragment/>
+	
+    let negativePropertyAssertions:JSX.Element[] = []
+
+    for(let k of negativePropertyAssertionKeys) {
+
+	let iri = k.slice("negativePropertyAssertion+".length)
+	let values = asArray(entity.properties[k])
+
+	for(let v of values) {
+		negativePropertyAssertions.push(
+			<span>
+				<EntityLink ontologyId={entity.getOntologyId()} currentEntity={entity} entityType="properties" iri={iri} linkedEntities={linkedEntities} />
+				{" "}
+				{ v.indexOf('://') !== -1 ?
+					<EntityLink ontologyId={entity.getOntologyId()} currentEntity={entity} entityType="individuals" iri={v} linkedEntities={linkedEntities} />
+				:
+					{v}
+				}
+			</span>
+		)
+	}
+    }
+
+  return <div>
+              <div className="font-bold">Negative property assertions</div>
+              {negativePropertyAssertions.length === 1 ? (
+                <p>{negativePropertyAssertions[0]}</p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {negativePropertyAssertions
+                    .map((npa) => {
+                      return (
+                        <li key={randomString()}>
+                          {npa}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+          </div>
+
+}
+
+
 
 

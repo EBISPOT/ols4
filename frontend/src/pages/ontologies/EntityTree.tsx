@@ -25,6 +25,8 @@ import {
   resetTreeSettings,
   showObsolete,
   hideObsolete,
+  showCounts,
+  hideCounts,
   TreeNode,
   hideSiblings,
   showSiblings
@@ -63,6 +65,7 @@ export default function EntityTree({
 
   const showObsoleteEnabled = useAppSelector((state => state.ontologies.showObsolete));
   const showSiblingsEnabled = useAppSelector((state => state.ontologies.showSiblings));
+  const showCountsEnabled = useAppSelector((state => state.ontologies.showCounts));
 
   const toggleNode = useCallback((node: any) => {
 
@@ -78,7 +81,7 @@ export default function EntityTree({
 
   // If the ontology, entity type, selected entity IRI, or lang change, reset the tree settings (including showobsolete/preferred roots)
   useEffect(() => {
-    dispatch(resetTreeSettings());
+    dispatch(resetTreeSettings({entityType}));
   }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri() ]);
 
   // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings
@@ -167,6 +170,15 @@ export default function EntityTree({
 
   }, [ dispatch, showSiblingsEnabled ]);
 
+  let toggleShowCounts = useCallback(() => {
+
+	if(showCountsEnabled)
+		dispatch(hideCounts())
+	else
+		dispatch(showCounts())
+
+  }, [ dispatch, showCountsEnabled ]);
+
   function renderNodeChildren(
     children: TreeNode[],
     debugNumIterations: number
@@ -208,7 +220,7 @@ export default function EntityTree({
               key={randomString()}
             >
 		<TreeLink ontology={ontology} entity={childNode.entity} title={childNode.title} lang={lang} />
-              { (!showObsoleteEnabled) && childNode.numDescendants > 0 && (
+              { ( (!showObsoleteEnabled) && showCountsEnabled) && childNode.numDescendants > 0 && (
                 <span style={{ color: "gray" }}>
                   {" (" + childNode.numDescendants.toLocaleString() + ")"}
                 </span>
@@ -229,7 +241,7 @@ export default function EntityTree({
       <div style={{ position: "relative" }}>
           <div style={{ position: "absolute", right: 0, top: 0 }} className="flex flex-col">
 
-		{ontology.getPreferredRoots().length > 0 && (
+		{ (entityType === 'classes' && ontology.getPreferredRoots().length > 0) && (
 			<Fragment>
 		<FormControl>
 		<RadioGroup
@@ -254,6 +266,7 @@ export default function EntityTree({
 		 </Fragment>
 		)}
 
+		 <FormControlLabel control={<Checkbox disabled={showObsoleteEnabled} checked={ (!showObsoleteEnabled) && showCountsEnabled} onClick={toggleShowCounts} />} label="Show counts" />
 		 <FormControlLabel control={<Checkbox checked={showObsoleteEnabled} onClick={toggleShowObsolete} />} label="Show obsolete terms" />
 		 { selectedEntity && <FormControlLabel control={<Checkbox checked={showSiblingsEnabled} onClick={toggleShowSiblings} />} label="Show all siblings" /> }
           </div>

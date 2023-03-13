@@ -58,16 +58,15 @@ export default abstract class Entity extends Thing {
     let hierarchicalProperties = this.properties["hierarchicalProperty"];
     let annotationPredicates = new Set();
 
-    /*
-    TODO
-    This logic is copied from OLS3 as used by the API compatibility layer
-    We will probably want to change it for the OLS4 frontend
-    */
-
     for (let predicate of Object.keys(this.properties)) {
+
       // properties without an IRI are things that were added by owl2json so should not
       // be included as annotations
       if (predicate.indexOf("://") === -1) continue;
+
+      // this is handled explicitly in EntityPage
+      if(predicate.startsWith("negativePropertyAssertion+"))
+	continue;
 
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation
@@ -79,7 +78,7 @@ export default abstract class Entity extends Thing {
         continue;
       }
 
-      // anything in the rdf, rdfs, owl namespaces aren't considered annotations...
+      // anything in the rdf, rdfs, owl namespaces aren't displayed in the annotations section...
       if (
         predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
         predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
@@ -88,7 +87,11 @@ export default abstract class Entity extends Thing {
         // ...apart from these ones
         if (
           predicate !== "http://www.w3.org/2000/01/rdf-schema#comment" &&
-          predicate !== "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+          predicate !== "http://www.w3.org/2000/01/rdf-schema#domain" &&
+          predicate !== "http://www.w3.org/2000/01/rdf-schema#range" &&
+          predicate !== "http://www.w3.org/2000/01/rdf-schema#seeAlso" &&
+          predicate !== "http://www.w3.org/2002/07/owl#hasKey" &&
+          predicate !== "http://www.w3.org/2002/07/owl#disjointUnionOf"
         ) {
           continue;
         }

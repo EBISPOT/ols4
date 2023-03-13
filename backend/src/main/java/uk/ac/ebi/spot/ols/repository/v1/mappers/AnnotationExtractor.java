@@ -8,11 +8,14 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class AnnotationExtractor {
 
     private static Gson gson = new Gson();
+
+    private static final Pattern namePattern = Pattern.compile( "^([A-z]+)\\+(.+)$" );
 
     public static Map<String,Object> extractAnnotations(JsonObject json) {
 
@@ -30,6 +33,14 @@ public class AnnotationExtractor {
             // be included as annotations
             if(!predicate.contains("://"))
                 continue;
+
+		/* We have some added (by owl2json) ols4 properties like
+			relatedTo+http://....
+			negativePropertyAssertion+http://...
+		these are useless to ols3
+		*/
+		if(namePattern.matcher(predicate).matches())
+			continue;
 
             // If the value was already interpreted as definition/synonym/hierarchical, do
             // not include it as an annotation

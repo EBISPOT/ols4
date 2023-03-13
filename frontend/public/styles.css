@@ -5,10 +5,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
+html {
   padding-bottom: 4rem;
   position: relative;
-  min-height: calc(100vh);
+  min-height: 100vh;
 }
 
 code {

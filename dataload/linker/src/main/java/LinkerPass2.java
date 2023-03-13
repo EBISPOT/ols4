@@ -119,7 +119,7 @@ public class LinkerPass2 {
             while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
                 String name = jsonReader.nextName();
-                stringsInEntity.add(name);
+                stringsInEntity.add(ExtractIriFromPropertyName.extract(name));
                 jsonWriter.name(name);
 
                 if(name.equals("iri")) {

@@ -8,15 +8,63 @@
       "type": [
         "ontology"
       ],
+      "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/punning/v.0.0.1/class-individual.owl",
-      "imported": "false",
-      "isObsolete": "false",
-      "numberOfClasses": "2",
-      "numberOfEntities": "6",
-      "numberOfIndividuals": "3",
-      "numberOfProperties": "1",
-      "iriToLabel": {},
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "6"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
@@ -24,18 +72,133 @@
             "class",
             "entity"
           ],
-          "hasChildren": "true",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Quantity"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "true",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "Quantity",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Quantity"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "2"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "1"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Quantity"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
@@ -43,26 +206,146 @@
             "class",
             "entity"
           ],
-          "annotationPredicate": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "hasChildren": "true",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasIndividuals": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#Class",
             "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "false",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "ThermodynamicTemperature",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "1"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         }
       ],
       "properties": [
@@ -72,19 +355,133 @@
             "entity",
             "property"
           ],
-          "hasChildren": "false",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "commonlyHasUnit"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "true",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "commonlyHasUnit",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "commonlyHasUnit"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "commonlyHasUnit"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         }
       ],
       "individuals": [
@@ -94,26 +491,146 @@
             "entity",
             "individual"
           ],
-          "annotationPredicate": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "hasChildren": "true",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasIndividuals": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#Class",
             "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isPreferredRoot": "false",
-          "isRoot": "false",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "ThermodynamicTemperature",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "1"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ThermodynamicTemperature"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
@@ -121,17 +638,126 @@
             "entity",
             "individual"
           ],
-          "hasChildren": "false",
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "terakelvin"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isRoot": "true",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "terakelvin",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "terakelvin"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "terakelvin"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
@@ -139,21 +765,133 @@
             "entity",
             "individual"
           ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+          },
+          "definitionProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+            }
+          ],
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
           "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
-          "hasChildren": "false",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            }
+          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
           ],
-          "imported": "false",
-          "isDefiningOntology": "false",
-          "isObsolete": "false",
-          "isRoot": "false",
-          "ontologyId": "punning-class-individual",
-          "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
-          "ontologyPreferredPrefix": "punning-class-individual",
-          "shortForm": "thermodynamicTemperatureOfTheTriplePointOfWater",
-          "iriToLabel": {}
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "punning-class-individual"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+          },
+          "synonymProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+          }
         }
       ]
     }
