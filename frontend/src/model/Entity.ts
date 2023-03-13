@@ -78,7 +78,7 @@ export default abstract class Entity extends Thing {
         continue;
       }
 
-      // anything in the rdf, rdfs, owl namespaces aren't considered annotations...
+      // anything in the rdf, rdfs, owl namespaces aren't displayed in the annotations section...
       if (
         predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
         predicate.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||

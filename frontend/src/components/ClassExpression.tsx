@@ -293,7 +293,7 @@ export default function ClassExpression({
   }
 
   let exactCardinality = asArray(
-    expr["http://www.w3.org/2002/07/owl#exactCardinality"]
+    expr["http://www.w3.org/2002/07/owl#cardinality"]
   )[0];
   if (exactCardinality) {
     return (
@@ -306,7 +306,7 @@ export default function ClassExpression({
   }
 
   let exactQualifiedCardinality = asArray(
-    expr["http://www.w3.org/2002/07/owl#exactQualifiedCardinality"]
+    expr["http://www.w3.org/2002/07/owl#qualifiedCardinality"]
   )[0];
   if (exactQualifiedCardinality) {
     return (
