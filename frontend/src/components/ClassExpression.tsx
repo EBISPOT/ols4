@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { asArray, randomString } from "../app/util";
 import Entity from "../model/Entity";
 import LinkedEntities from "../model/LinkedEntities";
@@ -180,7 +181,63 @@ export default function ClassExpression({
   }
 
   ///
-  /// 2. owl:Restriction expressions
+  /// 2. owl:Restriction on datatype
+  ///
+  const onDatatype = expr["http://www.w3.org/2002/07/owl#onDatatype"];
+
+  if(onDatatype) {
+
+	const withRestrictions = asArray(expr["http://www.w3.org/2002/07/owl#withRestrictions"]);
+
+	let res:JSX.Element[] = [
+		<ClassExpression currentEntity={currentEntity}   ontologyId={ontologyId} entityType={'properties'} expr={onDatatype} linkedEntities={linkedEntities} />
+	]
+
+	if(withRestrictions.length > 0) {
+		res.push(<Fragment>[</Fragment>);
+		let isFirst = true;
+		for(let restriction of withRestrictions) {
+			if(isFirst)
+				isFirst = false;
+			else
+				res.push(<Fragment>, </Fragment>);
+
+
+			let minExclusive = restriction['http://www.w3.org/2001/XMLSchema#minExclusive'];
+
+			if(minExclusive) {
+				res.push(<Fragment>&gt; {minExclusive}</Fragment>);
+			}
+
+			let minInclusive = restriction['http://www.w3.org/2001/XMLSchema#minInclusive'];
+
+			if(minInclusive) {
+				res.push(<Fragment>≥ {minInclusive}</Fragment>);
+			}
+
+			let maxExclusive = restriction['http://www.w3.org/2001/XMLSchema#maxExclusive'];
+
+			if(maxExclusive) {
+				res.push(<Fragment>&lt; {maxExclusive}</Fragment>);
+			}
+
+			let maxInclusive = restriction['http://www.w3.org/2001/XMLSchema#maxInclusive'];
+
+			if(maxInclusive) {
+				res.push(<Fragment>≤ {maxInclusive}</Fragment>);
+			}
+			
+		}
+		res.push(<Fragment>]</Fragment>);
+	}
+
+	return <span children={res} />
+  }
+
+
+
+  ///
+  /// 3. owl:Restriction on property
   ///
   const onProperty = expr["http://www.w3.org/2002/07/owl#onProperty"];
   // let onProperties = expr['http://www.w3.org/2002/07/owl#onProperties'])
