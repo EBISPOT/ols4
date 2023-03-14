@@ -34,6 +34,10 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
   const [searchParams, setSearchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en"
 
+  useEffect(() => {
+    dispatch(getOntology({ontologyId, lang}));
+  }, [dispatch, ontologyId, lang, searchParams]);
+
   if(searchParams.get("iri")) {
 
 	let iri = searchParams.get("iri") as string
@@ -43,10 +47,6 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 
 	return <Navigate to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(encodeURIComponent(iri))}`} />
   }
-
-  useEffect(() => {
-    dispatch(getOntology({ontologyId, lang}));
-  }, [dispatch, ontologyId, lang, searchParams]);
 
 
   document.title = ontology?.getName() || ontologyId;
