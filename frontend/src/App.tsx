@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Help from "./pages/help/HelpPage";
@@ -11,6 +11,7 @@ import Search from "./pages/search/Search";
 
 class App extends React.Component {
   render() {
+
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
@@ -29,6 +30,18 @@ class App extends React.Component {
           />
           <Route
             path={`/ontologies/:ontologyId/classes/:entityIri`}
+            element={<EntityPage entityType="classes" />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/terms`}
+            element={<RedirectTermsToClasses />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/terms/:entityIri`}
+            element={<RedirectTermToClass />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/terms/:entityIri`}
             element={<EntityPage entityType="classes" />}
           />
           <Route
@@ -58,3 +71,17 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+function RedirectTermsToClasses() {
+	let params = useParams();
+	let [ search ] = useSearchParams()
+	return <Navigate to={{ pathname: `/ontologies/${params.ontologyId}/classes`, search: search.toString() }} />
+}
+
+function RedirectTermToClass() {
+	let params = useParams();
+	let [ search ] = useSearchParams()
+	return <Navigate to={{ pathname: `/ontologies/${params.ontologyId}/classes/${encodeURIComponent(encodeURIComponent(params.entityIri as string))}`, search: search.toString() }} />
+}
+

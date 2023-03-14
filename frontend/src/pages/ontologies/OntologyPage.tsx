@@ -2,7 +2,7 @@ import { AccountTree, AlternateEmail, AnchorOutlined, BugReport, Download, Email
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Tooltip, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ApiLinks from "../../components/ApiLinks";
@@ -33,6 +33,16 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 
   const [searchParams, setSearchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en"
+
+  if(searchParams.get("iri")) {
+
+	let iri = searchParams.get("iri") as string
+
+	let newSearchParams = new URLSearchParams(searchParams)
+	newSearchParams.delete("iri");
+
+	return <Navigate to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(encodeURIComponent(iri))}`} />
+  }
 
   useEffect(() => {
     dispatch(getOntology({ontologyId, lang}));
