@@ -1,3 +1,4 @@
+import { asArray } from "../app/util";
 import LinkedEntities from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
@@ -32,6 +33,14 @@ export default abstract class Entity extends Thing {
     return this.hasDirectChildren() || this.hasHierarchicalChildren()
   }
 
+  getAncestorIris():string[] {
+	  return asArray(this.properties['ancestor'])
+  }
+
+  getHierarchicalAncestorIris():string[] {
+	  return asArray(this.properties['hierarchicalAncestor'])
+  }
+
   getSynonyms() {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
@@ -42,10 +51,6 @@ export default abstract class Entity extends Thing {
 
   getDefinedBy():string[] {
 	return (this.properties['definedBy'] || []) as string[]
-  }
-
-  getLinkedEntities(): LinkedEntities {
-    return new LinkedEntities(this.properties["linkedEntities"] || {});
   }
 
   getShortForm(): string {

@@ -1,4 +1,5 @@
 import { asArray } from "../app/util";
+import LinkedEntities from "./LinkedEntities";
 import Reified from "./Reified";
 
 export default abstract class Thing {
@@ -91,5 +92,9 @@ export default abstract class Thing {
 
   getAnnotationById(id: string):Reified<any>[] {
     return Reified.fromJson(asArray(this.properties[id]))
+  }
+
+  getLinkedEntities(): LinkedEntities {
+    return new LinkedEntities(this.properties["linkedEntities"] || {});
   }
 }

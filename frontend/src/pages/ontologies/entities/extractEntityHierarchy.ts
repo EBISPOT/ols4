@@ -1,6 +1,6 @@
 
 import Multimap from "multimap"
-import Entity from "../../model/Entity"
+import Entity from "../../../model/Entity"
 import assert from "assert";
 
 

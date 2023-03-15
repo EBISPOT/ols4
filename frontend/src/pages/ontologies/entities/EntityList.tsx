@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import DataTable, { Column } from "../../components/DataTable";
-import Entity from "../../model/Entity";
-import { getEntities } from "./ontologiesSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import DataTable, { Column } from "../../../components/DataTable";
+import Entity from "../../../model/Entity";
+import { getEntities } from "../ontologiesSlice";
 
 export default function EntityList(props: {
   ontologyId: string;

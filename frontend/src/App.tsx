@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import About from "./pages/About";
 import Help from "./pages/help/HelpPage";
 import Home from "./pages/home/Home";
-import EntityPage from "./pages/ontologies/EntityPage";
+import EntityPage from "./pages/ontologies/entities/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
 import Search from "./pages/search/Search";
