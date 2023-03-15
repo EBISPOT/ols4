@@ -98,28 +98,28 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
               <div className="flex gap-2 mb-6">
 		{ontology.getOntologyPurl() &&
 			<Link to={ontology.getOntologyPurl()} target="_blank" download={true}>
-			<button className="button-primary font-bold self-center">
+			<button className="button-secondary font-bold self-center">
 				<div className="flex gap-2"><Download/><div>Download</div></div>
 			</button>
 			</Link>
 		}
 		{ontology.getHomepage() &&
 					<Link to={ontology.getHomepage()} target="_blank">
-				<button className="button-primary font-bold self-center">
+				<button className="button-secondary font-bold self-center">
 					<div className="flex gap-2"><Home/><div>Homepage</div></div>
 				</button>
 				</Link>
 		}
 		{ontology.getMailingList() &&
 					<Link to={"mailto:" + ontology.getMailingList()} target="_blank">
-				<button className="button-primary font-bold self-center">
+				<button className="button-secondary font-bold self-center">
 					<div className="flex gap-2"><Email/><div>Mailing List</div></div>
 				</button>
 				</Link>
 		}
 		{ontology.getTracker() &&
 					<Link to={ontology.getTracker()} target="_blank">
-				<button className="button-primary font-bold self-center">
+				<button className="button-secondary font-bold self-center">
 					<div className="flex gap-2"><BugReport/><div>Issue Tracker</div></div>
 				</button>
 				</Link>
@@ -163,7 +163,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 			<div className="py-2 mb-1 flex justify-between">
 				<div>
 						<button
-							className={`button-primary font-bold mr-3 ${viewMode === "tree"
+							className={`button-tertiary font-bold mr-3 ${viewMode === "tree"
 									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
 									: ""
 								}`}
@@ -172,7 +172,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 						<div className="flex gap-2"><AccountTree/><div>Tree</div></div>
 						</button>
 						<button
-							className={`button-primary font-bold ${viewMode === "list"
+							className={`button-tertiary font-bold ${viewMode === "list"
 									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
 									: ""
 								}`}
