@@ -177,7 +177,7 @@ public class LinkerPass2 {
 
             if(str.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
                     str.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
-                    str.startsWith("http://www.geneontology.org/formats/oboInOwl#") ||
+                    //str.startsWith("http://www.geneontology.org/formats/oboInOwl#") ||
                     str.startsWith("http://www.w3.org/2002/07/owl#")) {
                 continue;
             }
