@@ -6,14 +6,17 @@ import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ApiLinks from "../../components/ApiLinks";
+import EntityLink from "../../components/EntityLink";
 import Header from "../../components/Header";
 import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
-import EntityList from "./EntityList";
-import EntityTree from "./EntityTree";
+import Reified from "../../model/Reified";
+import EntityList from "./entities/EntityList";
+import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
+import EntityTree from "./entities/EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
 export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'individuals' }) {
@@ -235,66 +238,88 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
 
 function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
 
-	let annotationPredicates = ontology.getAnnotationPredicates()
+  let annotationPredicates = ontology.getAnnotationPredicates();
 
-	return <Fragment>
-		 {annotationPredicates.map((annotationPredicate) => {
-			const title = ontology.getLabelForIri(annotationPredicate)
-			? ontology
-				.getLabelForIri(annotationPredicate)
-				.replaceAll("_", " ")
-			: annotationPredicate
-				.substring(
-				annotationPredicate.lastIndexOf("/") + 1
-				)
-				.substring(
-				annotationPredicate
-				.substring(
-				annotationPredicate.lastIndexOf("/") + 1
-				)
-				.lastIndexOf("#") + 1
-				)
-				.replaceAll("_", " ");
+  return (
+    <Fragment>
+      {annotationPredicates
+        .map((annotationPredicate) => {
+          const title = ontology.getLabelForIri(annotationPredicate)
+            ? ontology.getLabelForIri(annotationPredicate)
+            : annotationPredicate
+                .substring(annotationPredicate.lastIndexOf("/") + 1)
+                .substring(
+                  annotationPredicate
+                    .substring(annotationPredicate.lastIndexOf("/") + 1)
+                    .lastIndexOf("#") + 1
+                );
 
-			let annotations = ontology
-			.getAnnotationById(annotationPredicate)
+          let annotations: Reified<any>[] =
+            ontology.getAnnotationById(annotationPredicate);
 
-			return (
-			<div
-			key={
-				title.toString().toUpperCase() +
-				randomString()
-			}
-			>
-			<div className="font-bold">
-				{title}
-			</div>
-			{annotations.length === 1 ?
-			<p>{getAnnotationValue(annotations[0])}</p>
-			:
-			<ul className="list-disc list-inside">
-				{annotations
-				.map((annotation: any) => {
-				const value = getAnnotationValue(annotation)
-				return (
-				<li
-					key={
-					value.toString().toUpperCase() +
-					randomString()
-					}>
-					{value}
-				</li>
-				);
-				})
-				.sort((a, b) => sortByKeys(a, b))}
-			</ul>}
-			</div>
-			);
-			})
-			.sort((a, b) => sortByKeys(a, b))
-		}</Fragment>
+          return (
+            <div key={title.toString().toUpperCase() + randomString()}>
+              <div className="font-bold">{title}</div>
 
-	function getAnnotationValue(annotation) {
-		return annotation && typeof annotation === "object" ? annotation.value : annotation;
+              {annotations.length === 1 ? (
+                <p>
+                  {renderAnnotation(annotations[0])}
+                  {annotations[0].hasMetadata() && (
+                    <MetadataTooltip
+                      metadata={annotations[0].getMetadata()}
+                      linkedEntities={ontology.getLinkedEntities()}
+                    />
+                  )}
+                </p>
+              ) : (
+                <ul className="list-disc list-inside">
+                  {annotations
+                    .map((annotation: Reified<any>) => {
+                      return (
+                        <li key={randomString()}>
+                          {renderAnnotation(annotation)}
+                          {annotation.hasMetadata() && (
+                            <MetadataTooltip
+                              metadata={annotation.getMetadata()}
+                              linkedEntities={ontology.getLinkedEntities()}
+                            />
+                          )}
+                        </li>
+                      );
+                    })
+                    .sort((a, b) => sortByKeys(a, b))}
+                </ul>
+              )}
+            </div>
+          );
+        })
+        .sort((a, b) => sortByKeys(a, b))}
+    </Fragment>
+  );
+
+  function renderAnnotation(value: Reified<any>) {
+    let linkedEntity = ontology.getLinkedEntities().get(value.value);
+
+    if (linkedEntity) {
+        return (
+          <EntityLink
+            ontologyId={ontology.getOntologyId()}
+	    currentEntity={undefined}
+            entityType={'ontologies'} 
+            iri={value.value}
+            linkedEntities={ontology.getLinkedEntities()}
+          />
+        );
+    } else {
+	if((typeof value.value) !== 'string') {
+		return <span>{JSON.stringify(value.value)}</span>
 	}
+	if(value.value.toString().indexOf("://") !== -1) {
+		return <Link className="link-default" to={value.value}>{value.value}</Link>
+	} else {
+		return <span>{value.value.toString()}</span>
+	}
+    }
+  }
+
 }

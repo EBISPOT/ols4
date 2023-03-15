@@ -1,4 +1,5 @@
 import { asArray } from "../app/util";
+import LinkedEntities from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
 
@@ -88,6 +89,10 @@ export default class Ontology extends Thing {
 		  if (predicate.indexOf('://') === -1)
 			  continue;
 
+		if(predicate === 'http://purl.obolibrary.org/obo/IAO_0000700') { // "has preferred root term"
+		continue;
+		}
+
 		// anything in the rdf, rdfs, owl namespaces aren't considered annotations
 		if (! (
 			predicate.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
@@ -106,4 +111,5 @@ export default class Ontology extends Thing {
   getLanguages():string[] {
     return asArray( this.properties["language"] );
   }
+
 }

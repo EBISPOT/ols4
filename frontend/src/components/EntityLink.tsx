@@ -53,9 +53,9 @@ export default function EntityLink({
 				<Link className="link-default" to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}>
 				{label}
 				</Link>
-				<Link to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
+				<Link to={`/ontologies/${linkedEntity.definedBy![0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
 					<span className="mx-1 link-ontology px-2 py-0 rounded-lg text-sm text-white uppercase ml-1" title={ontologyId} >
-					{linkedEntity.definedBy[0]}
+					{linkedEntity.definedBy![0]}
 					</span>
 				</Link>
 			</Fragment>
@@ -63,12 +63,12 @@ export default function EntityLink({
 			// Term is not defined in this ontology
 			// Show <label> <ontologyId> linking to the term in the DEFINING ontology
 			return <Fragment>
-				<Link className="link-default" to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}?lang=${lang}`}>
+				<Link className="link-default" to={`/ontologies/${linkedEntity.definedBy![0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}?lang=${lang}`}>
 					{label}
 				</Link>
-				<Link to={`/ontologies/${linkedEntity.definedBy[0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
+				<Link to={`/ontologies/${linkedEntity.definedBy![0]}/${pluraliseType(linkedEntity.type) || entityType}/${encodedIri}`}>
 					<span className="link-ontology px-2 py-0 rounded-lg text-sm text-white uppercase ml-1" title={ontologyId} >
-						{linkedEntity.definedBy[0]}
+						{linkedEntity.definedBy![0]}
 					</span>
 				</Link>
 			</Fragment>
@@ -83,7 +83,7 @@ export default function EntityLink({
 				{iri}
 				</Link>
 				{
-					linkedEntity.otherDefinedBy.map(definedBy => {
+					linkedEntity.definedBy!.map(definedBy => {
 						return <Link to={`/ontologies/${definedBy}/${entityType}/${encodedIri}`}>
 							<span className="link-ontology px-2 py-0 rounded-lg text-sm text-white uppercase ml-1" title={definedBy}>
 							{definedBy}
@@ -116,7 +116,7 @@ export default function EntityLink({
 		} else {
 			// Term is not defined in this ontology
 
-			if(linkedEntity.numAppearsIn > 0) {
+			if(parseInt(linkedEntity.numAppearsIn) > 0) {
 				// Term appears in other ontologies
 				// Show <label><ICON> linking to disambiguation page
 				return <Fragment>

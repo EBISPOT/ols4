@@ -588,7 +588,9 @@ public class OwlGraph implements StreamRDF {
                 break;
 
             case "http://www.w3.org/2002/07/owl#AnnotationProperty":
+                subjNode.types.add(OwlNode.NodeType.ANNOTATION_PROPERTY);
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
+                subjNode.types.add(OwlNode.NodeType.OBJECT_PROPERTY);
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
                 subjNode.types.add(OwlNode.NodeType.PROPERTY);
 

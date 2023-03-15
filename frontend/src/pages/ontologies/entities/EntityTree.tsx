@@ -7,12 +7,12 @@ import {
 } from "@mui/material";
 import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString } from "../../app/util";
-import LoadingOverlay from "../../components/LoadingOverlay";
-import Node from "../../components/Node";
-import Entity from "../../model/Entity";
-import Ontology from "../../model/Ontology";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { randomString } from "../../../app/util";
+import LoadingOverlay from "../../../components/LoadingOverlay";
+import Node from "../../../components/Node";
+import Entity from "../../../model/Entity";
+import Ontology from "../../../model/Ontology";
 import {
   closeNode,
   disablePreferredRoots,
@@ -30,7 +30,7 @@ import {
   TreeNode,
   hideSiblings,
   showSiblings
-} from "./ontologiesSlice";
+} from "../ontologiesSlice";
 
 export default function EntityTree({
   ontology,
@@ -81,7 +81,7 @@ export default function EntityTree({
 
   // If the ontology, entity type, selected entity IRI, or lang change, reset the tree settings (including showobsolete/preferred roots)
   useEffect(() => {
-    dispatch(resetTreeSettings({entityType}));
+    dispatch(resetTreeSettings({entityType, selectedEntity }));
   }, [dispatch, ontology.getOntologyId(), entityType, selectedEntity?.getIri() ]);
 
   // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings

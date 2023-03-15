@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Entity from "../../model/Entity";
+import Entity from "../../../model/Entity";
 
 export default function EntityGraph({
   ontologyId,

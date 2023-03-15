@@ -8,7 +8,7 @@ import { get, getPaginated, Page } from "../../app/api";
 import Entity from "../../model/Entity";
 import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
-import createTreeFromEntities from "./createTreeFromEntities";
+import createTreeFromEntities from "./entities/createTreeFromEntities";
 
 export interface OntologiesState {
   ontology: Ontology | undefined;
@@ -68,7 +68,7 @@ const initialState: OntologiesState = {
 };
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
-export const resetTreeSettings = createAction<{entityType:string}>("ontologies_tree_reset_settings");
+export const resetTreeSettings = createAction<{entityType:string, selectedEntity?:Entity}>("ontologies_tree_reset_settings");
 
 export const enablePreferredRoots = createAction(
   "ontologies_preferred_enabled"
@@ -456,9 +456,24 @@ const ontologiesSlice = createSlice({
       state.rootNodes = [];
       state.automaticallyExpandedNodes = [];
     });
-    builder.addCase(resetTreeSettings, (state: OntologiesState, action: PayloadAction<{entityType:string}>) => {
+    builder.addCase(resetTreeSettings, (state: OntologiesState, action: PayloadAction<{entityType:string, selectedEntity?:Entity}>) => {
       console.log('Resetting tree settings')
+
       state.preferredRoots = action.payload.entityType === 'classes' && state.ontology!.getPreferredRoots().length > 0;
+
+      if(action.payload.selectedEntity) {
+	let selectedIsDescendantOfPreferredRoots = false
+	for(let root of state.ontology!.getPreferredRoots()) {
+		if(action.payload.selectedEntity.getHierarchicalAncestorIris().indexOf(root) !== -1) {
+			selectedIsDescendantOfPreferredRoots = true;
+			break;
+		}
+	}
+	if(!selectedIsDescendantOfPreferredRoots) {
+		state.preferredRoots = false
+	}
+      }
+
       state.showObsolete = false;
       state.showSiblings = false;
       state.showCounts = true;

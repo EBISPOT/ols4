@@ -1,7 +1,7 @@
-import Entity from "../../model/Entity";
-import Ontology from "../../model/Ontology";
+import Entity from "../../../model/Entity";
+import Ontology from "../../../model/Ontology";
 import extractEntityHierarchy from "./extractEntityHierarchy";
-import { TreeNode } from "./ontologiesSlice";
+import { TreeNode } from "../ontologiesSlice";
 
 export default function createTreeFromEntities(
   entities: Entity[],

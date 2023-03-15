@@ -103,7 +103,7 @@ export default function Home() {
                   For feedback, enquiries or suggestion about OLS or to request
                   a new ontology please use our <a href="https://github.com/EBISPOT/ols4/issues" className="link-default">GitHub issue tracker</a>. For
                   announcements relating to OLS, such as new releases and new
-                  features sign up to the OLS announce mailing list.
+                  features sign up to the <a className="link-default" href="https://listserver.ebi.ac.uk/mailman/listinfo/ols-announce">OLS announce mailing list</a>.
                 </p>
               </div>
             </div>

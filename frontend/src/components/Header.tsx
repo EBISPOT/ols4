@@ -17,7 +17,7 @@ export default function Header({
     >
       <div className="container mx-auto flex flex-row gap-10">
         <div className="py-6">
-          <a href={process.env.PUBLIC_URL}>
+          <a href={process.env.PUBLIC_URL + "/"}>
             <img
               alt="OxO logo"
               className="h-24 inline-block"
