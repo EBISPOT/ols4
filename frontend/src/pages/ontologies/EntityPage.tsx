@@ -209,7 +209,7 @@ export default function EntityPage({
               </div>
               <div className="py-2 mb-1">
                   <button
-                    className={`button-primary font-bold mr-3 ${
+                    className={`button-tertiary font-bold mr-3 ${
                       viewMode === "tree"
                         ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
                         : ""
@@ -219,7 +219,7 @@ export default function EntityPage({
 			<div className="flex gap-2"><AccountTree/><div>Tree</div></div>
                   </button>
                   <button
-                    className={`button-primary font-bold ${
+                    className={`button-tertiary font-bold ${
                       viewMode === "graph"
                         ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
                         : ""
