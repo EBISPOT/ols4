@@ -521,6 +521,7 @@ const ontologiesSlice = createSlice({
           (node) => node !== action.payload.absoluteIdentity
         );
 	delete state.nodeChildren[action.payload.absoluteIdentity];
+	state.nodesWithChildrenLoaded = state.nodesWithChildrenLoaded.filter(absId => absId !== action.payload.absoluteIdentity)
       }
     );
   },
