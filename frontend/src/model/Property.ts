@@ -34,9 +34,4 @@ export default class Property extends Entity {
 	)
   }
 
-  getDomain():Reified<any> {
-	return Reified.fromJson<any>(
-		this.properties["http://www.w3.org/2002/07/owl#propertyChainAxiom"]
-	)
-  }
 }
