@@ -120,7 +120,7 @@ export default function EntityPage({
         {ontology && entity ? (
           <Fragment>
     <div
-      style={{ position: "absolute", top: "-16px", right: 0, width: "150px" }}
+      style={{ position: "absolute", top: "-16px", right: 0, width: "200px" }}
     >
 	<div className="flex gap-4">
             <LanguagePicker
@@ -128,7 +128,10 @@ export default function EntityPage({
               lang={lang}
               onChangeLang={(lang) => setSearchParams({ lang: lang })}
             />
-		<ApiLinks apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(encodeURIComponent(entityIri))}`} />
+		<ApiLinks
+			apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(encodeURIComponent(entityIri))}`}
+			betaApiUrl={`${process.env.REACT_APP_APIURL}api/v2/ontologies/${ontologyId}/${ontology.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entityIri))}`}
+			/>
 			</div>
 			</div>
             <div className="my-8 mx-2">
