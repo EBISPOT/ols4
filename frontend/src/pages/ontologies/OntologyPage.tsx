@@ -63,11 +63,14 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
         {ontology ? (
 		<Fragment>
     <div
-      style={{ position: "absolute", top: "-16px", right: 0, width: "150px" }}
+      style={{ position: "absolute", top: "-16px", right: 0, width: "200px" }}
     >
 	<div className="flex gap-4">
 	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
-			<ApiLinks apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`} />
+			<ApiLinks
+				apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`}
+				betaApiUrl={`${process.env.REACT_APP_APIURL}api/v2/ontologies/${ontologyId}`}
+				/>
 			</div>
 			</div>
 
