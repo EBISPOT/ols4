@@ -5,7 +5,4 @@ neo4jTarballUrl: http://ols4-dataserver/neo4j.tgz
 solrTarballUrl: http://ols4-dataserver/solr.tgz
 
 frontend:
-  apiUrl: https://www.ebi.ac.uk/ols4/
-  publicUrl: /ols4
-
-
+  envFile: ./frontend/.env.prod

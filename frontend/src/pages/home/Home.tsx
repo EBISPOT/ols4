@@ -1,19 +1,14 @@
 import moment from "moment";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString } from "../../app/util";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
-import Entity from "../../model/Entity";
-import Ontology from "../../model/Ontology";
-import Thing from "../../model/Thing";
 import { getStats } from "./homeSlice";
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const stats = useAppSelector((state) => state.home.stats);
 
   useEffect(() => {
@@ -32,7 +27,7 @@ export default function Home() {
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
               <div className="flex flex-nowrap gap-4 mb-4">
-		<SearchBox />
+                <SearchBox />
               </div>
               <div className="grid grid-cols-2">
                 <div className="text-neutral-black">
@@ -67,33 +62,58 @@ export default function Home() {
                   biomedical ontologies that aims to provide a single point of
                   access to the latest ontology versions. You can browse the
                   ontologies through the website as well as programmatically via
-                  the OLS API. OLS is developed and maintained by the <a  className="link-default" href="https://www.ebi.ac.uk/spot">Samples,
-                  Phenotypes and Ontologies Team (SPOT)</a> at <a  className="link-default" href="https://www.ebi.ac.uk">EMBL-EBI</a>.
+                  the OLS API. OLS is developed and maintained by the{" "}
+                  <a
+                    className="link-default"
+                    href={process.env.REACT_APP_SPOT_HOME}
+                  >
+                    Samples, Phenotypes and Ontologies Team (SPOT)
+                  </a>{" "}
+                  at{" "}
+                  <a
+                    className="link-default"
+                    href={process.env.REACT_APP_EBI_HOME}
+                  >
+                    EMBL-EBI
+                  </a>
+                  .
                 </p>
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-tool icon-spacer text-orange-default" />
                   <a
-                    href="https://www.ebi.ac.uk/spot/ontology/"
+                    href={process.env.REACT_APP_SPOT_ONTOTOOLS}
                     className="link-default"
                   >
                     Related Tools
                   </a>
                 </div>
                 <p>
-                  In addition to OLS the SPOT team also provides the <a className="link-default" href="https://www.ebi.ac.uk/spot/oxo">OxO</a>{' '}
-		  and <a className="link-default" href="https://www.ebi.ac.uk/spot/zooma">ZOOMA</a>{' '}
-                  services. OxO provides cross-ontology mappings
-                  between terms from different ontologies. ZOOMA is a service to
-                  assist in mapping data to ontologies in OLS.
+                  In addition to OLS the SPOT team also provides the{" "}
+                  <a
+                    className="link-default"
+                    href={process.env.REACT_APP_SPOT_OXO}
+                  >
+                    OxO
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    className="link-default"
+                    href={process.env.REACT_APP_SPOT_ZOOMA}
+                  >
+                    ZOOMA
+                  </a>{" "}
+                  services. OxO provides cross-ontology mappings between terms
+                  from different ontologies. ZOOMA is a service to assist in
+                  mapping data to ontologies in OLS.
                 </p>
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-orange-default" />
                   <a
-                    href="https://github.com/EBISPOT/ols4/issues"
+                    href={`${process.env.REACT_APP_SPOT_OLS4_REPO}/issues`}
                     className="link-default"
                   >
                     Report an Issue
@@ -101,9 +121,22 @@ export default function Home() {
                 </div>
                 <p>
                   For feedback, enquiries or suggestion about OLS or to request
-                  a new ontology please use our <a href="https://github.com/EBISPOT/ols4/issues" className="link-default">GitHub issue tracker</a>. For
-                  announcements relating to OLS, such as new releases and new
-                  features sign up to the <a className="link-default" href="https://listserver.ebi.ac.uk/mailman/listinfo/ols-announce">OLS announce mailing list</a>.
+                  a new ontology please use our{" "}
+                  <a
+                    href={`${process.env.REACT_APP_SPOT_OLS4_REPO}/issues`}
+                    className="link-default"
+                  >
+                    GitHub issue tracker
+                  </a>
+                  . For announcements relating to OLS, such as new releases and
+                  new features sign up to the{" "}
+                  <a
+                    className="link-default"
+                    href={process.env.REACT_APP_SPOT_OLS_ANNOUNCE}
+                  >
+                    OLS announce mailing list
+                  </a>
+                  .
                 </p>
               </div>
             </div>
@@ -135,10 +168,9 @@ export default function Home() {
                     </li>
                   </ul>
                 </div>
-              ) : 
-	      <div className="spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"/>
-		    }
-	      
+              ) : (
+                <div className="spinner-default w-7 h-7 absolute right-3 top-2.5 z-10" />
+              )}
             </div>
             <div className="mb-4">
               <Timeline
