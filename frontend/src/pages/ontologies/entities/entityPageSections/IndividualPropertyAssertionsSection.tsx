@@ -9,12 +9,14 @@ export default function IndividualPropertyAssertionsSection({entity, linkedEntit
 	if(entity.getType() !== 'individual')
 		return <Fragment/>  
 
-
 	let propertyIris = Object.keys(entity.properties)
 
-	let negativeProperties = propertyIris.filter(k => k.startsWith("negativePropertyAssertion+"));
-	let annotationProperties = propertyIris.filter(k => linkedEntities.get(k)?.type.indexOf('annotationProperty') !== -1)
-	let objectProperties = propertyIris.filter(k => linkedEntities.get(k)?.type.indexOf('objectProperty') !== -1)
+	let negativeProperties = propertyIris.filter(k => k.startsWith("negativePropertyAssertion+"))
+
+	let annotationProperties = propertyIris.filter(k =>
+		linkedEntities.get(k) && linkedEntities.get(k)!.type.indexOf('annotationProperty') !== -1)
+	let objectProperties = propertyIris.filter(k =>
+		linkedEntities.get(k) && linkedEntities.get(k)!.type.indexOf('objectProperty') !== -1)
 
     let propertyAssertions:JSX.Element[] = []
 
@@ -60,7 +62,7 @@ export default function IndividualPropertyAssertionsSection({entity, linkedEntit
     }
 
   return <div>
-              <div className="font-bold">Negative property assertions</div>
+              <div className="font-bold">Property assertions</div>
               {propertyAssertions.length === 1 ? (
                 <p>{propertyAssertions[0]}</p>
               ) : (

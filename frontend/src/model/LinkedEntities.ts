@@ -7,7 +7,7 @@ export interface LinkedEntity {
 	numAppearsIn:string
 	hasLocalDefinition:boolean
 	label:string|string[]
-	type:string|string[]
+	type:string[]
 }
 
 export default class LinkedEntities {
