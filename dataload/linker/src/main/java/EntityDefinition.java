@@ -1,11 +1,12 @@
 import com.google.gson.JsonElement;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class EntityDefinition {
 
     String ontologyId;
-    String entityType;
+    Set<String> entityTypes;
     boolean isDefiningOntology;
     JsonElement label;
 
@@ -13,11 +14,11 @@ public class EntityDefinition {
     public boolean equals(Object other) {
         return other instanceof EntityDefinition &&
                 ((EntityDefinition) other).ontologyId.equals(ontologyId) &&
-                ((EntityDefinition) other).entityType.equals(entityType);
+                ((EntityDefinition) other).entityTypes.equals(entityTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ontologyId, entityType, isDefiningOntology);
+        return Objects.hash(ontologyId, entityTypes, isDefiningOntology);
     }
 }

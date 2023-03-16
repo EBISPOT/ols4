@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 
-export default function ApiLinks({apiUrl}:{apiUrl:string}) {
+export default function ApiLinks({apiUrl, betaApiUrl}:{apiUrl:string, betaApiUrl:string}) {
 
-	return <Link to={apiUrl} target="_blank">
-		<img src={process.env.PUBLIC_URL + '/json.svg'} width={80} />
+	return <div className="flex gap-1" style={{padding: 0}}>
+		<div>
+		<Link to={apiUrl} target="_blank">
+			<img src={process.env.PUBLIC_URL + '/json.svg'} width={120} />
 		</Link>
+		</div>
+		<div>
+		<Link to={betaApiUrl} target="_blank">
+			<img src={process.env.PUBLIC_URL + '/jsonbeta.svg'} width={120} />
+		</Link>
+		</div>
+	</div>
 }

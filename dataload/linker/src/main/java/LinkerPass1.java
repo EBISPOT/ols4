@@ -1,4 +1,5 @@
 import com.google.common.io.CountingInputStream;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 public class LinkerPass1 {
 
+    private static final Gson gson = new Gson();
     private static final JsonParser jsonParser = new JsonParser();
 
     public static class LinkerPass1Result {
@@ -191,6 +193,7 @@ public class LinkerPass1 {
         String iri = null;
         JsonElement label = null;
 	Set<String> definedBy = new HashSet<>();
+	Set<String> types = null;
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
@@ -199,6 +202,8 @@ public class LinkerPass1 {
                 iri = jsonReader.nextString();
             } else if(key.equals("label")) {
                 label = jsonParser.parse(jsonReader);
+            } else if(key.equals("type")) {
+                types = gson.fromJson(jsonReader, Set.class);
 			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
@@ -218,9 +223,13 @@ public class LinkerPass1 {
             throw new RuntimeException("entity had no IRI");
         }
 
+        if(types == null) {
+            throw new RuntimeException("entity had no types");
+        }
+
         EntityDefinition entityDefinition = new EntityDefinition();
         entityDefinition.ontologyId = ontologyId;
-        entityDefinition.entityType = entityType;
+        entityDefinition.entityTypes = types;
         entityDefinition.label = label;
 
         EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);

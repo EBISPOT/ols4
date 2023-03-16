@@ -1,0 +1,68 @@
+import { Fragment } from "react";
+import { randomString } from "../../../../app/util";
+import EntityLink from "../../../../components/EntityLink";
+import Entity from "../../../../model/Entity";
+import Class from "../../../../model/Class";
+import LinkedEntities from "../../../../model/LinkedEntities";
+import Property from "../../../../model/Property";
+
+export default function EntityRelatedFromSection({
+  entity,
+  linkedEntities,
+}: {
+  entity: Entity;
+  linkedEntities: LinkedEntities;
+}) {
+  if (!(entity instanceof Class || entity instanceof Property)) {
+    return <Fragment />;
+  }
+
+  let relatedFroms = entity?.getRelatedFrom();
+
+  if (!relatedFroms || relatedFroms.length === 0) {
+    return <Fragment />;
+  }
+
+  let predicates = Array.from(
+    new Set(relatedFroms.map((relatedFrom) => relatedFrom.value.property))
+  );
+
+  return (
+    <div>
+      <div className="font-bold">Related from</div>
+      {predicates.map((p) => {
+        let label = linkedEntities.getLabelForIri(p);
+        return (
+          <div key={p + randomString()}>
+            <div>
+              <i>{label || p}</i>
+            </div>
+            <div className="pl-4">
+              <ul className="list-disc list-inside">
+                {relatedFroms
+                  .filter((relatedFrom) => relatedFrom.value.property === p)
+                  .map((relatedFrom) => {
+                    let relatedIri = relatedFrom.value.value;
+                    // let label = linkedEntities.getLabelForIri(relatedIri);
+                    return (
+                      <li key={relatedIri + randomString()}>
+                        <EntityLink
+                          ontologyId={entity.getOntologyId()}
+			  currentEntity={entity}
+                          entityType={"classes"}
+                          iri={relatedIri}
+                          linkedEntities={linkedEntities}
+                        />
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          </div>
+        );
+      })}
+
+      <ul className="list-disc list-inside"></ul>
+    </div>
+  );
+}

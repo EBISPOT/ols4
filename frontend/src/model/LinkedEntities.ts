@@ -1,8 +1,18 @@
 import Reified from "./Reified"
 
+export interface LinkedEntity {
+	definedBy?:string[]
+	iri?:string
+	url?:string
+	numAppearsIn:string
+	hasLocalDefinition:boolean
+	label:string|string[]
+	type:string[]
+}
+
 export default class LinkedEntities {
 
-	linkedEntities:any
+	linkedEntities:{ [key:string]:LinkedEntity }
 
 	constructor(linkedEntities:any) {
 		if(linkedEntities)
@@ -30,7 +40,7 @@ export default class LinkedEntities {
 		}
 	}
 
-	get(iri:string) {
+	get(iri:string):LinkedEntity|undefined {
 		return this.linkedEntities[iri]
 	}
 }

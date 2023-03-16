@@ -24,9 +24,4 @@ spec:
                 memory: 4G          
           ports:
             - containerPort: 8080
-          env:
-            - name: REACT_APP_APIURL
-              value: {{.Values.frontend.apiUrl}}
-            - name: PUBLIC_URL
-              value: {{.Values.frontend.publicUrl}}
-
+          env_file: {{.Values.frontend.envFile}}
