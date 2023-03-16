@@ -1,6 +1,11 @@
-import { AccountTree, AlternateEmail, AnchorOutlined, BugReport, Download, Email, Help, Home } from "@mui/icons-material";
+import {
+  AccountTree,
+  BugReport,
+  Download,
+  Email,
+  Home
+} from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Tooltip, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -19,121 +24,159 @@ import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import EntityTree from "./entities/EntityTree";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'individuals' }) {
-
-  const params = useParams()
-  let ontologyId:string = params.ontologyId as string
+export default function OntologyPage({
+  tab,
+}: {
+  tab: "classes" | "properties" | "individuals";
+}) {
+  const params = useParams();
+  let ontologyId: string = params.ontologyId as string;
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
 
   const [currentTab, setTab] = useState<
-   "classes" | "properties" | "individuals"
+    "classes" | "properties" | "individuals"
   >(tab || "classes");
 
   const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let lang = searchParams.get("lang") || "en"
+  let lang = searchParams.get("lang") || "en";
 
   useEffect(() => {
-    dispatch(getOntology({ontologyId, lang}));
+    dispatch(getOntology({ ontologyId, lang }));
   }, [dispatch, ontologyId, lang, searchParams]);
 
-  if(searchParams.get("iri")) {
+  if (searchParams.get("iri")) {
+    let iri = searchParams.get("iri") as string;
 
-	let iri = searchParams.get("iri") as string
+    let newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.delete("iri");
 
-	let newSearchParams = new URLSearchParams(searchParams)
-	newSearchParams.delete("iri");
-
-	return <Navigate to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(encodeURIComponent(iri))}`} />
+    return (
+      <Navigate
+        to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(
+          encodeURIComponent(iri)
+        )}`}
+      />
+    );
   }
-
 
   document.title = ontology?.getName() || ontologyId;
 
-  let version = (ontology?.getVersion() ? ontology.getVersion() : ontology?.getVersionFromIri()) || undefined;
+  let version =
+    (ontology?.getVersion()
+      ? ontology.getVersion()
+      : ontology?.getVersionFromIri()) || undefined;
 
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto" style={{position: 'relative'}}>
+      <main className="container mx-auto" style={{ position: "relative" }}>
         {ontology ? (
-		<Fragment>
-    <div
-      style={{ position: "absolute", top: "-16px", right: 0, width: "200px" }}
-    >
-	<div className="flex gap-4">
-	<LanguagePicker ontology={ontology} lang={lang} onChangeLang={(lang) => setSearchParams({lang:lang}) } />
-			<ApiLinks
-				apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`}
-				betaApiUrl={`${process.env.REACT_APP_APIURL}api/v2/ontologies/${ontologyId}`}
-				/>
-			</div>
-			</div>
-
           <div className="my-8 mx-2">
-            <div className="px-2 mb-4">
-              <Link className="link-default" to={"/ontologies"} style={{color:'black'}}>
-                Ontologies
-              </Link>
-              <span className="px-2 text-sm" style={{color:'grey'}}>▸</span>
-		<span
-		className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
-		title={ontologyId}
-		>
-		{ontologyId}
-		</span>
+            <div className="flex flex-row justify-between items-center px-2 mb-4">
+              <div>
+                <Link
+                  className="link-default"
+                  to={"/ontologies"}
+                  style={{ color: "black" }}
+                >
+                  Ontologies
+                </Link>
+                <span className="px-2 text-sm" style={{ color: "grey" }}>
+                  ▸
+                </span>
+                <span
+                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
+                  title={ontologyId}
+                >
+                  {ontologyId}
+                </span>
+              </div>
+              <div className="flex flex-row items-center gap-4">
+                <LanguagePicker
+                  ontology={ontology}
+                  lang={lang}
+                  onChangeLang={(lang) => setSearchParams({ lang: lang })}
+                />
+                <ApiLinks
+                  apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`}
+                  betaApiUrl={`${process.env.REACT_APP_APIURL}api/v2/ontologies/${ontologyId}`}
+                />
+              </div>
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="text-2xl font-bold mb-4">
                 {ontology.getName() || ontology.getOntologyId()}
               </div>
-		{version &&
-			<div className="mb-4">
-				<span className="font-bold">Version {version}</span>
-			</div>
-		}
+              {version && (
+                <div className="mb-4">
+                  <span className="font-bold">Version {version}</span>
+                </div>
+              )}
               <div className="mb-6">
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
               </div>
               <div className="flex gap-2 mb-6">
-		{ontology.getOntologyPurl() &&
-			<Link to={ontology.getOntologyPurl()} target="_blank" download={true}>
-			<button className="button-secondary font-bold self-center">
-				<div className="flex gap-2"><Download/><div>Download</div></div>
-			</button>
-			</Link>
-		}
-		{ontology.getHomepage() &&
-					<Link to={ontology.getHomepage()} target="_blank">
-				<button className="button-secondary font-bold self-center">
-					<div className="flex gap-2"><Home/><div>Homepage</div></div>
-				</button>
-				</Link>
-		}
-		{ontology.getMailingList() &&
-					<Link to={"mailto:" + ontology.getMailingList()} target="_blank">
-				<button className="button-secondary font-bold self-center">
-					<div className="flex gap-2"><Email/><div>Mailing List</div></div>
-				</button>
-				</Link>
-		}
-		{ontology.getTracker() &&
-					<Link to={ontology.getTracker()} target="_blank">
-				<button className="button-secondary font-bold self-center">
-					<div className="flex gap-2"><BugReport/><div>Issue Tracker</div></div>
-				</button>
-				</Link>
-		}
+                {ontology.getOntologyPurl() && (
+                  <Link
+                    to={ontology.getOntologyPurl()}
+                    target="_blank"
+                    download={true}
+                  >
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <Download />
+                        <div>Download</div>
+                      </div>
+                    </button>
+                  </Link>
+                )}
+                {ontology.getHomepage() && (
+                  <Link to={ontology.getHomepage()} target="_blank">
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <Home />
+                        <div>Homepage</div>
+                      </div>
+                    </button>
+                  </Link>
+                )}
+                {ontology.getMailingList() && (
+                  <Link
+                    to={"mailto:" + ontology.getMailingList()}
+                    target="_blank"
+                  >
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <Email />
+                        <div>Mailing List</div>
+                      </div>
+                    </button>
+                  </Link>
+                )}
+                {ontology.getTracker() && (
+                  <Link to={ontology.getTracker()} target="_blank">
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <BugReport />
+                        <div>Issue Tracker</div>
+                      </div>
+                    </button>
+                  </Link>
+                )}
               </div>
-		<div className="flex flex-nowrap gap-4">
-			<SearchBox ontologyId={ontologyId} placeholder={`Search ${ontologyId.toUpperCase()}...`}/>
-		</div>
+              <div className="flex flex-nowrap gap-4">
+                <SearchBox
+                  ontologyId={ontologyId}
+                  placeholder={`Search ${ontologyId.toUpperCase()}...`}
+                />
+              </div>
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
@@ -165,34 +208,46 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-		{currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
-			<div className="py-2 mb-1 flex justify-between">
-				<div>
-						<button
-							className={`button-tertiary font-bold mr-3 ${viewMode === "tree"
-									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-									: ""
-								}`}
-							onClick={() => setViewMode("tree")}
-						>
-						<div className="flex gap-2"><AccountTree/><div>Tree</div></div>
-						</button>
-						<button
-							className={`button-tertiary font-bold ${viewMode === "list"
-									? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-									: ""
-								}`}
-							onClick={() => setViewMode("list")}
-						>
-						<div className="flex gap-2"><FormatListBulletedIcon/><div>List</div></div>
-						</button>
-				</div>
-			</div>
-		) : null}
+                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
+                  <div className="py-2 mb-1 flex justify-between">
+                    <div>
+                      <button
+                        className={`button-tertiary font-bold mr-3 ${
+                          viewMode === "tree"
+                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                            : ""
+                        }`}
+                        onClick={() => setViewMode("tree")}
+                      >
+                        <div className="flex gap-2">
+                          <AccountTree />
+                          <div>Tree</div>
+                        </div>
+                      </button>
+                      <button
+                        className={`button-tertiary font-bold ${
+                          viewMode === "list"
+                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
+                            : ""
+                        }`}
+                        onClick={() => setViewMode("list")}
+                      >
+                        <div className="flex gap-2">
+                          <FormatListBulletedIcon />
+                          <div>List</div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
                 {viewMode === "list" ? (
                   <EntityList ontologyId={ontologyId} entityType={currentTab} />
                 ) : (
-                  <EntityTree ontology={ontology} entityType={currentTab} lang={lang} />
+                  <EntityTree
+                    ontology={ontology}
+                    entityType={currentTab}
+                    lang={lang}
+                  />
                 )}
               </div>
               <div className="col-span-1">
@@ -216,22 +271,24 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
                         {ontology.getVersionIri()}
                       </a>
                     </div>
-		    {/* todo remove hack when datarelease has completed; this should always be present */}
-		    {ontology.getSourceFileTimestamp() &&
-			<div>
-			<span className="font-bold">Last loaded: </span>
-			<a id="lastLoaded" href={ontology.getSourceFileTimestamp()}>
-				{ontology.getSourceFileTimestamp()}
-			</a>
-			</div>
-		    }
-		    <OntologyAnnotationsSection ontology={ontology} />
+                    {/* todo remove hack when datarelease has completed; this should always be present */}
+                    {ontology.getSourceFileTimestamp() && (
+                      <div>
+                        <span className="font-bold">Last loaded: </span>
+                        <a
+                          id="lastLoaded"
+                          href={ontology.getSourceFileTimestamp()}
+                        >
+                          {ontology.getSourceFileTimestamp()}
+                        </a>
+                      </div>
+                    )}
+                    <OntologyAnnotationsSection ontology={ontology} />
                   </div>
                 </details>
               </div>
             </div>
           </div>
-	  </Fragment>
         ) : null}
         {loading ? <LoadingOverlay message="Loading ontology..." /> : null}
       </main>
@@ -239,8 +296,7 @@ export default function OntologyPage({ tab }: { tab:'classes'|'properties'|'indi
   );
 }
 
-function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
-
+function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
   let annotationPredicates = ontology.getAnnotationPredicates();
 
   return (
@@ -304,25 +360,28 @@ function OntologyAnnotationsSection({ontology}:{ontology:Ontology}) {
     let linkedEntity = ontology.getLinkedEntities().get(value.value);
 
     if (linkedEntity) {
-        return (
-          <EntityLink
-            ontologyId={ontology.getOntologyId()}
-	    currentEntity={undefined}
-            entityType={'ontologies'} 
-            iri={value.value}
-            linkedEntities={ontology.getLinkedEntities()}
-          />
-        );
+      return (
+        <EntityLink
+          ontologyId={ontology.getOntologyId()}
+          currentEntity={undefined}
+          entityType={"ontologies"}
+          iri={value.value}
+          linkedEntities={ontology.getLinkedEntities()}
+        />
+      );
     } else {
-	if((typeof value.value) !== 'string') {
-		return <span>{JSON.stringify(value.value)}</span>
-	}
-	if(value.value.toString().indexOf("://") !== -1) {
-		return <Link className="link-default" to={value.value}>{value.value}</Link>
-	} else {
-		return <span>{value.value.toString()}</span>
-	}
+      if (typeof value.value !== "string") {
+        return <span>{JSON.stringify(value.value)}</span>;
+      }
+      if (value.value.toString().indexOf("://") !== -1) {
+        return (
+          <Link className="link-default" to={value.value}>
+            {value.value}
+          </Link>
+        );
+      } else {
+        return <span>{value.value.toString()}</span>;
+      }
     }
   }
-
 }
