@@ -322,7 +322,11 @@ public class LinkerPass2 {
 	    jsonWriter.name("label");
 	    com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
 	    jsonWriter.name("type");
-	    jsonWriter.value(definingOntology.entityType);
+        jsonWriter.beginArray();
+        for(String type : definingOntology.entityTypes) {
+            jsonWriter.value(type);
+        }
+        jsonWriter.endArray();
 
 	// 2. Else look for metadata from this ontology
 	} else if(defFromThisOntology != null) {
@@ -330,7 +334,11 @@ public class LinkerPass2 {
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
             jsonWriter.name("type");
-            jsonWriter.value(defFromThisOntology.entityType);
+            jsonWriter.beginArray();
+            for(String type : defFromThisOntology.entityTypes) {
+                jsonWriter.value(type);
+            }
+            jsonWriter.endArray();
 
 	// 3. Fall back on the first ontology we encounter that defines the IRI
 	//
@@ -340,7 +348,11 @@ public class LinkerPass2 {
 	} else {
             EntityDefinition fallbackDef = definitions.definitions.iterator().next();
             jsonWriter.name("type");
-            jsonWriter.value(fallbackDef.entityType);
+            jsonWriter.beginArray();
+            for(String type : fallbackDef.entityTypes) {
+                jsonWriter.value(type);
+            }
+            jsonWriter.endArray();
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(fallbackDef.label, jsonWriter);
         }

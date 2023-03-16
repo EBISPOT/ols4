@@ -226,6 +226,8 @@ public class OwlGraph implements StreamRDF {
 
     static final Set<String> classTypes = new TreeSet<>(Set.of("entity", "class"));
     static final Set<String> propertyTypes = new TreeSet<>(Set.of("entity", "property"));
+    static final Set<String> objectPropertyTypes = new TreeSet<>(Set.of("entity", "property", "objectProperty"));
+    static final Set<String> annotationPropertyTypes = new TreeSet<>(Set.of("entity", "property", "annotationProperty"));
     static final Set<String> individualTypes = new TreeSet<>(Set.of("entity", "individual"));
 
     public void write(JsonWriter writer) throws IOException {
@@ -293,7 +295,11 @@ public class OwlGraph implements StreamRDF {
                 // don't print bnodes at top level
                 continue;
             }
-            if (c.types.contains(OwlNode.NodeType.PROPERTY)) {
+            if (c.types.contains(OwlNode.NodeType.OBJECT_PROPERTY)) {
+                writeNode(writer, c, objectPropertyTypes);
+            } else if (c.types.contains(OwlNode.NodeType.ANNOTATION_PROPERTY)) {
+                writeNode(writer, c, annotationPropertyTypes);
+            } else if (c.types.contains(OwlNode.NodeType.PROPERTY)) {
                 writeNode(writer, c, propertyTypes);
             }
         }
