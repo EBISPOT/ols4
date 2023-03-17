@@ -13,7 +13,6 @@ export default function LanguagePicker({
 }) {
   return (
     <div className="flex items-center group relative text-md">
-      <label className="px-3">Language</label>
       <select
         className="input-default appearance-none pr-7 z-20 bg-transparent cursor-pointer"
         onChange={(e) => {

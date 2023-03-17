@@ -3,7 +3,7 @@ import {
   FormControl,
   FormControlLabel,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from "@mui/material";
 import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
-  TreeNode
+  TreeNode,
 } from "../ontologiesSlice";
 
 export default function EntityTree({
@@ -355,7 +355,9 @@ export default function EntityTree({
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
-        {numPendingTreeRequests > 0 ? <LoadingOverlay message="Loading..." /> : null}
+        {numPendingTreeRequests > 0 ? (
+          <div className="spinner-default w-7 h-7 absolute -top-2 -left-5" />
+        ) : null}
       </div>
     </Fragment>
   );
