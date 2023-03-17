@@ -35,13 +35,13 @@ export default function LanguagePicker({
   );
 }
 
-function getEmoji(lang) {
+function getEmoji(lang: string) {
   // handle special cases
   return countryCodeToFlagEmoji(
     {
       en: "en-GB",
       cs: "cs-CZ",
-      zh: "zh-CN"
+      zh: "zh-CN",
     }[lang] || lang
   );
 }

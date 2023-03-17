@@ -3,13 +3,12 @@ import {
   FormControl,
   FormControlLabel,
   Radio,
-  RadioGroup,
+  RadioGroup
 } from "@mui/material";
 import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { randomString } from "../../../app/util";
-import LoadingOverlay from "../../../components/LoadingOverlay";
 import Node from "../../../components/Node";
 import Entity from "../../../model/Entity";
 import Ontology from "../../../model/Ontology";
@@ -29,7 +28,7 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
-  TreeNode,
+  TreeNode
 } from "../ontologiesSlice";
 
 export default function EntityTree({

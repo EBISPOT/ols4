@@ -3,7 +3,7 @@ import {
   BugReport,
   Download,
   Email,
-  Home
+  Home,
 } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Fragment, useEffect, useState } from "react";
@@ -48,6 +48,10 @@ export default function OntologyPage({
   useEffect(() => {
     dispatch(getOntology({ ontologyId, lang }));
   }, [dispatch, ontologyId, lang, searchParams]);
+
+  useEffect(() => {
+    if (currentTab === "individuals") setViewMode("list");
+  }, [currentTab]);
 
   if (searchParams.get("iri")) {
     let iri = searchParams.get("iri") as string;
@@ -212,10 +216,11 @@ export default function OntologyPage({
                   <div className="py-2 mb-1 flex justify-between">
                     <div>
                       <button
-                        className={`button-tertiary font-bold mr-3 ${
+                        disabled={currentTab === "individuals"}
+                        className={`font-bold mr-3 ${
                           viewMode === "tree"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
+                            ? "button-primary-active"
+                            : "button-primary"
                         }`}
                         onClick={() => setViewMode("tree")}
                       >
@@ -225,10 +230,10 @@ export default function OntologyPage({
                         </div>
                       </button>
                       <button
-                        className={`button-tertiary font-bold ${
+                        className={`font-bold ${
                           viewMode === "list"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
+                            ? "button-primary-active"
+                            : "button-primary"
                         }`}
                         onClick={() => setViewMode("list")}
                       >
