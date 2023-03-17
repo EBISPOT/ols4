@@ -90,8 +90,8 @@ export default function OntologyPage({
                   ▸
                 </span>
                 <span
-                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
-                  title={ontologyId}
+                  className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase"
+                  title={ontologyId.toUpperCase()}
                 >
                   {ontologyId}
                 </span>

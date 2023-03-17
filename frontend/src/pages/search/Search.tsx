@@ -1,6 +1,11 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams
+} from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
@@ -8,14 +13,11 @@ import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
 import SearchBox from "../../components/SearchBox";
 import Entity from "../../model/Entity";
-import Ontology from "../../model/Ontology";
-import Thing from "../../model/Thing";
 import { getSearchResults } from "./searchSlice";
 
 export default function Search() {
-
-  const params = useParams()
-  let search:string = params.search as string
+  const params = useParams();
+  let search: string = params.search as string;
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -23,11 +25,13 @@ export default function Search() {
     (state) => state.search.loadingSearchResults
   );
   const results = useAppSelector((state) => state.search.searchResults);
-  const totalResults = useAppSelector((state) => state.search.totalSearchResults);
+  const totalResults = useAppSelector(
+    (state) => state.search.totalSearchResults
+  );
   const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-//   const [open, setOpen] = useState<boolean>(false);
+  //   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
@@ -81,7 +85,7 @@ export default function Search() {
         search,
         ontologyId: ontologyFacetSelected,
         type: typeFacetSelected,
-	searchParams
+        searchParams,
       })
     );
   }, [
@@ -91,7 +95,7 @@ export default function Search() {
     rowsPerPage,
     ontologyFacetSelected,
     typeFacetSelected,
-    searchParams
+    searchParams,
   ]);
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
@@ -108,7 +112,7 @@ export default function Search() {
       <Header section="home" />
       <main className="container mx-auto h-fit my-8">
         <div className="flex flex-nowrap gap-4 mb-6">
-		<SearchBox initialQuery={query} />
+          <SearchBox initialQuery={query} />
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
@@ -250,9 +254,14 @@ export default function Search() {
                       <div className="leading-loose">
                         <span className="font-bold">Ontology:</span>
                         &nbsp;
-                        <span className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-                          {entity.getOntologyId().toUpperCase()}
-                        </span>
+                        <Link to={"/ontologies/" + entity.getOntologyId()}>
+                          <span
+                            className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase w-fit font-bold break-all"
+                            title={entity.getOntologyId().toUpperCase()}
+                          >
+                            {entity.getOntologyId()}
+                          </span>
+                        </Link>
                       </div>
                     </div>
                   );

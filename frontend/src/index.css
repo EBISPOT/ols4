@@ -93,15 +93,12 @@
     visited:text-embl-grey-lightest;
   }
   .link-ontology {
-    cursor: pointer;
-    text-decoration: none !important;
-    background-color: rgb(0, 130, 124);
-  }
-  .link-ontology:hover {
-    text-decoration: none !important;
-    background-color: white;
-    outline: 1px solid black;
-    color: black;
+    @apply text-white cursor-pointer bg-link-default
+    hover:bg-white
+    hover:text-link-default
+    hover:outline
+    hover:outline-2
+    hover:outline-link-default;
   }
   .link-entity {
     cursor: pointer;

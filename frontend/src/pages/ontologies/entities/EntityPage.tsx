@@ -123,8 +123,8 @@ export default function EntityPage({
                 </span>
                 <Link to={"/ontologies/" + ontologyId}>
                   <span
-                    className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
-                    title={ontologyId}
+                    className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase"
+                    title={ontologyId.toUpperCase()}
                   >
                     {ontologyId}
                   </span>

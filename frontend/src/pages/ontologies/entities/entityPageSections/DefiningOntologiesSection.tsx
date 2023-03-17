@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -20,9 +20,9 @@ export default function DefiningOntologiesSection({
         ontId !== entity.getOntologyId() && definedBy.indexOf(ontId) === -1
     );
 
-    let [appearsInExpanded,setAppearsInExpanded] = useState<boolean>(false);
+  let [appearsInExpanded, setAppearsInExpanded] = useState<boolean>(false);
 
-    const MAX_DISPLAY_APPEARS_IN = 5;
+  const MAX_DISPLAY_APPEARS_IN = 5;
 
   return (
     <Fragment>
@@ -32,7 +32,6 @@ export default function DefiningOntologiesSection({
           {definedBy.map((definedBy: string) => {
             return (
               <Link
-                className="link-default"
                 to={
                   "/ontologies/" +
                   definedBy +
@@ -41,8 +40,8 @@ export default function DefiningOntologiesSection({
                 }
               >
                 <span
-                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
-                  title={definedBy}
+                  className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+                  title={definedBy.toUpperCase()}
                 >
                   {definedBy}
                 </span>
@@ -52,42 +51,46 @@ export default function DefiningOntologiesSection({
         </div>
       )}
       {appearsIn && appearsIn.length > 0 && (
-        <div className="mb-2" style={{maxWidth: "100%", inlineSize:"100%" }}>
+        <div className="mb-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
           <span className="font-bold mr-2">Also appears in</span>
-	  { (appearsIn.length <= MAX_DISPLAY_APPEARS_IN || appearsInExpanded) ?
-		appearsIn.map(renderAppearsIn)
-	    : <Fragment>
-		{
-		appearsIn.slice(0, MAX_DISPLAY_APPEARS_IN).map(renderAppearsIn)
-		}
-		&nbsp;
-		<a className="link-default" style={{fontStyle:'italic'}} onClick={() => setAppearsInExpanded(true)}>+ {appearsIn.length - MAX_DISPLAY_APPEARS_IN}</a>
-	    </Fragment>
-	  }
+          {appearsIn.length <= MAX_DISPLAY_APPEARS_IN || appearsInExpanded ? (
+            appearsIn.map(renderAppearsIn)
+          ) : (
+            <Fragment>
+              {appearsIn.slice(0, MAX_DISPLAY_APPEARS_IN).map(renderAppearsIn)}
+              &nbsp;
+              <span
+                className="link-default italic"
+                onClick={() => setAppearsInExpanded(true)}
+              >
+                + {appearsIn.length - MAX_DISPLAY_APPEARS_IN}
+              </span>
+            </Fragment>
+          )}
         </div>
       )}
     </Fragment>
   );
 
-  function renderAppearsIn(appearsIn:string) {
-	return (
-	<Link
-	className="my-2"
-	style={{display: 'inline-block'}}
-		to={
-		"/ontologies/" +
-		appearsIn +
-		`/${entity.getTypePlural()}/` +
-		encodeURIComponent(encodeURIComponent(entity.getIri()))
-		}
-	>
-		<span
-		className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase mr-1"
-		title={appearsIn}
-		>
-		{appearsIn}
-		</span>
-	</Link>
-	);
+  function renderAppearsIn(appearsIn: string) {
+    return (
+      <Link
+        className="my-2"
+        style={{ display: "inline-block" }}
+        to={
+          "/ontologies/" +
+          appearsIn +
+          `/${entity.getTypePlural()}/` +
+          encodeURIComponent(encodeURIComponent(entity.getIri()))
+        }
+      >
+        <span
+          className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+          title={appearsIn.toUpperCase()}
+        >
+          {appearsIn}
+        </span>
+      </Link>
+    );
   }
 }
