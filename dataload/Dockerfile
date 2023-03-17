@@ -20,7 +20,7 @@ RUN mkdir /opt/solr && \
     curl https://archive.apache.org/dist/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
 
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
-
+RUN echo "dbms.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
 
 # Copy all the code for dataload into /opt/dataload and build the JARs
 #
