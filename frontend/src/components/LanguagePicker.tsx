@@ -41,7 +41,8 @@ function getEmoji(lang) {
   return countryCodeToFlagEmoji(
     {
       en: "en-GB",
-      cs: "cz",
+      cs: "cs-CZ",
+      zh: "zh-CN"
     }[lang] || lang
   );
 }
