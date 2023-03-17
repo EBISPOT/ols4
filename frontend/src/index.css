@@ -51,7 +51,7 @@
     hover:translate-x-2
     hover:translate-y-2;
   }
-  .button-tertiary {
+  .button-orange {
     @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-orange-default border-4 border-orange-default shadow-button-orange transition-all ease-linear
     enabled:hover:shadow-button-orange-hover
     enabled:hover:translate-x-1
@@ -66,7 +66,7 @@
     disabled:bg-neutral-default
     disabled:border-neutral-default;
   }
-  .button-tertiary-active {
+  .button-orange-active {
     @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-orange-default border-4 border-orange-default transition-all ease-linear
     shadow-button-orange-active
     translate-x-2
@@ -109,6 +109,12 @@
     hover:text-link-hover
     hover:underline
     visited:text-link-visited;
+  }
+  .link-orange {
+    @apply text-orange-600 cursor-pointer
+    hover:text-orange-700
+    hover:underline
+    visited:text-orange-300;
   }
   .link-footer {
     @apply text-white cursor-pointer

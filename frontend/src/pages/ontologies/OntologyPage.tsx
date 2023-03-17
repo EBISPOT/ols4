@@ -257,7 +257,7 @@ export default function OntologyPage({
               </div>
               <div className="col-span-1">
                 <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-default">
                     Ontology Information
                   </summary>
                   <div className="p-2 break-words space-y-2">
