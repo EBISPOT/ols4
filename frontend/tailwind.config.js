@@ -72,17 +72,17 @@ module.exports = {
           900: "#5c470d",
         },
         orange: {
-          default: "#ffac1b",
-          50: "#ffe6ba",
-          100: "#ffd58d",
-          200: "#ffcd76",
-          300: "#ffc45f",
-          400: "#ffbc48",
-          500: "#ffb431",
-          600: "#cc8915",
-          700: "#b27812",
-          800: "#996710",
-          900: "#66440a",
+          default: "#f4941c",
+          50: "#fbdeba",
+          100: "#f9c98d",
+          200: "#f8be76",
+          300: "#f7b460",
+          400: "#f6a949",
+          500: "#f59e32",
+          600: "#db8519",
+          700: "#c37616",
+          800: "#aa6713",
+          900: "#7a4a0e",
         },
         neutral: {
           default: "#666666",
@@ -151,14 +151,16 @@ module.exports = {
           "4px 4px 0 theme(colors.link.hover), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
         "button-active":
           "0px 0px 0 theme(colors.link.hover), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
-        "button-dark":
+        "button-orange":
+          "8px 8px 0 theme(colors.orange.800), -5px -5px rgba(0,0,0,0)",
+        "button-orange-hover":
+          "4px 4px 0 theme(colors.orange.800), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
+        "button-orange-active":
+          "0px 0px 0 theme(colors.orange.800), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
+        "button-disabled":
           "8px 8px 0 theme(colors.neutral.dark), -5px -5px rgba(0,0,0,0)",
-        "button-dark-hover":
-          "4px 4px 0 theme(colors.neutral.dark), 2px 2px 4px rgba(0,0,0,.25),-5px -5px rgba(0,0,0,0)",
-        "button-dark-active":
-          "0px 0px 0 theme(colors.neutral.dark), 2px 2px 2px rgba(0,0,0,.125), -5px -5px rgba(0,0,0,0)",
         card: "0px 2px 6px theme(colors.neutral.dark / 50%)",
-        input: "0 0 0 1px theme(colors.neutral.dark)"
+        input: "0 0 0 1px theme(colors.neutral.dark)",
       },
     },
   },

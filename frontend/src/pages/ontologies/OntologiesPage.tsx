@@ -37,7 +37,7 @@ const columns: readonly Column[] = [
     sortable: true,
     selector: (ontology: Ontology) => {
       return (
-        <div className="bg-petrol-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
+        <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
           {ontology.getOntologyId().toUpperCase()}
         </div>
       );
@@ -55,28 +55,39 @@ const columns: readonly Column[] = [
       return (
         <div>
           <a
-            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}`}
+            href={
+              process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}`
+            }
             className="link-default"
           >
             Search
           </a>
           <br />
           <a
-            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/classes`}
+            href={
+              process.env.PUBLIC_URL +
+              `/ontologies/${ontology.getOntologyId()}/classes`
+            }
             className="link-default"
           >
             Classes
           </a>
           <br />
           <a
-            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/properties`}
+            href={
+              process.env.PUBLIC_URL +
+              `/ontologies/${ontology.getOntologyId()}/properties`
+            }
             className="link-default"
           >
             Properties
           </a>
           <br />
           <a
-            href={process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}/individuals`}
+            href={
+              process.env.PUBLIC_URL +
+              `/ontologies/${ontology.getOntologyId()}/individuals`
+            }
             className="link-default"
           >
             Individuals

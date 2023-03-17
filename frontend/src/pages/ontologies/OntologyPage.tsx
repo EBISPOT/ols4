@@ -3,7 +3,7 @@ import {
   BugReport,
   Download,
   Email,
-  Home
+  Home,
 } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Fragment, useEffect, useState } from "react";
@@ -49,6 +49,10 @@ export default function OntologyPage({
     dispatch(getOntology({ ontologyId, lang }));
   }, [dispatch, ontologyId, lang, searchParams]);
 
+  useEffect(() => {
+    if (currentTab === "individuals") setViewMode("list");
+  }, [currentTab]);
+
   if (searchParams.get("iri")) {
     let iri = searchParams.get("iri") as string;
 
@@ -90,8 +94,8 @@ export default function OntologyPage({
                   ▸
                 </span>
                 <span
-                  className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
-                  title={ontologyId}
+                  className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase"
+                  title={ontologyId.toUpperCase()}
                 >
                   {ontologyId}
                 </span>
@@ -212,10 +216,11 @@ export default function OntologyPage({
                   <div className="py-2 mb-1 flex justify-between">
                     <div>
                       <button
-                        className={`button-tertiary font-bold mr-3 ${
+                        disabled={currentTab === "individuals"}
+                        className={`font-bold mr-3 ${
                           viewMode === "tree"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
+                            ? "button-primary-active"
+                            : "button-primary"
                         }`}
                         onClick={() => setViewMode("tree")}
                       >
@@ -225,10 +230,10 @@ export default function OntologyPage({
                         </div>
                       </button>
                       <button
-                        className={`button-tertiary font-bold ${
+                        className={`font-bold ${
                           viewMode === "list"
-                            ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                            : ""
+                            ? "button-primary-active"
+                            : "button-primary"
                         }`}
                         onClick={() => setViewMode("list")}
                       >
@@ -252,7 +257,7 @@ export default function OntologyPage({
               </div>
               <div className="col-span-1">
                 <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-default">
                     Ontology Information
                   </summary>
                   <div className="p-2 break-words space-y-2">

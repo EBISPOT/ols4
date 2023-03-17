@@ -52,7 +52,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-8">
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-browse icon-spacer text-orange-default" />
+                  <i className="icon icon-common icon-browse icon-spacer text-yellow-default" />
                   <Link to={"/about"} className="link-default">
                     About OLS
                   </Link>
@@ -81,7 +81,7 @@ export default function Home() {
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-tool icon-spacer text-orange-default" />
+                  <i className="icon icon-common icon-tool icon-spacer text-yellow-default" />
                   <a
                     href={process.env.REACT_APP_SPOT_ONTOTOOLS}
                     className="link-default"
@@ -111,7 +111,7 @@ export default function Home() {
               </div>
               <div className="px-2 mb-4">
                 <div className="text-2xl mb-3 text-neutral-default">
-                  <i className="icon icon-common icon-exclamation-triangle icon-spacer text-orange-default" />
+                  <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-default" />
                   <a
                     href={`${process.env.REACT_APP_SPOT_OLS4_REPO}/issues`}
                     className="link-default"
@@ -169,7 +169,9 @@ export default function Home() {
                   </ul>
                 </div>
               ) : (
-                <div className="spinner-default w-7 h-7 absolute right-3 top-2.5 z-10" />
+                <div className="text-center">
+                  <div className="spinner-default w-7 h-7" />
+                </div>
               )}
             </div>
             <div className="mb-4">

@@ -123,8 +123,8 @@ export default function EntityPage({
                 </span>
                 <Link to={"/ontologies/" + ontologyId}>
                   <span
-                    className="link-ontology px-3 py-1 rounded-lg text-sm text-white uppercase"
-                    title={ontologyId}
+                    className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase"
+                    title={ontologyId.toUpperCase()}
                   >
                     {ontologyId}
                   </span>
@@ -146,7 +146,7 @@ export default function EntityPage({
                   ▸
                 </span>
                 <span
-                  className="link-entity px-3 py-1 rounded-lg text-sm text-white uppercase"
+                  className="link-entity px-2 py-1 rounded-md text-sm text-white uppercase"
                   title={entity.getShortForm()}
                 >
                   {entity.getShortForm()}
@@ -226,10 +226,10 @@ export default function EntityPage({
             </div>
             <div className="py-2 mb-1">
               <button
-                className={`button-tertiary font-bold mr-3 ${
+                className={`font-bold mr-3 ${
                   viewMode === "tree"
-                    ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                    : ""
+                    ? "button-orange-active"
+                    : "button-orange"
                 }`}
                 onClick={() => setViewMode("tree")}
               >
@@ -239,10 +239,10 @@ export default function EntityPage({
                 </div>
               </button>
               <button
-                className={`button-tertiary font-bold ${
+                className={`font-bold ${
                   viewMode === "graph"
-                    ? "shadow-button-active translate-x-2 translate-y-2 hover:shadow-button-active hover:translate-x-2 hover:translate-y-2"
-                    : ""
+                    ? "button-orange-active"
+                    : "button-orange"
                 }`}
                 onClick={() => setViewMode("graph")}
               >
@@ -283,7 +283,7 @@ export default function EntityPage({
                 </div>
                 <div className="col-span-1">
                   <details open className="p-2">
-                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
                       <span className="capitalize">
                         {entity.getType()} Information
                       </span>
@@ -301,7 +301,7 @@ export default function EntityPage({
                     </div>
                   </details>
                   <details open className="p-2">
-                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-link-default text-lg cursor-pointer hover:text-link-hover hover:underline ">
+                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
                       <span className="capitalize">
                         {entity.getType()} Relations
                       </span>

@@ -5,51 +5,75 @@
 @layer components {
   .button-primary {
     @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-link-default border-4 border-link-default shadow-button transition-all ease-linear
-    hover:shadow-button-hover
-    hover:translate-x-1
-    hover:translate-y-1
-    active:shadow-button-active
-    active:translate-x-2
-    active:translate-y-2
+    enabled:hover:shadow-button-hover
+    enabled:hover:translate-x-1
+    enabled:hover:translate-y-1
+    enabled:active:shadow-button-active
+    enabled:active:translate-x-2
+    enabled:active:translate-y-2
     disabled:shadow
-    disabled:shadow-neutral-black
+    disabled:shadow-button-disabled
     disabled:transition-none
-    disabled:translate-x-0
-    disabled:translate-y-0
     disabled:cursor-not-allowed
-    disabled:m-1;
+    disabled:bg-neutral-default
+    disabled:border-neutral-default;
+  }
+  .button-primary-active {
+    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-link-default border-4 border-link-default transition-all ease-linear
+    shadow-button-active
+    translate-x-2
+    translate-y-2
+    hover:shadow-button-active
+    hover:translate-x-2
+    hover:translate-y-2;
   }
   .button-secondary {
     @apply text-link-default px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-white border-4 border-link-default shadow-button transition-all ease-linear
-    hover:shadow-button-hover
-    hover:translate-x-1
-    hover:translate-y-1
-    active:shadow-button-active
-    active:translate-x-2
-    active:translate-y-2
+    enabled:hover:shadow-button-hover
+    enabled:hover:translate-x-1
+    enabled:hover:translate-y-1
+    enabled:active:shadow-button-active
+    enabled:active:translate-x-2
+    enabled:active:translate-y-2
     disabled:shadow
-    disabled:shadow-neutral-black
+    disabled:shadow-button-disabled
     disabled:transition-none
-    disabled:translate-x-0
-    disabled:translate-y-0
     disabled:cursor-not-allowed
-    disabled:m-1;
+    disabled:bg-neutral-default
+    disabled:border-neutral-default;
   }
-  .button-tertiary {
-    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-neutral-default border-4 border-neutral-default shadow-button-dark transition-all ease-linear
-    hover:shadow-button-dark-hover
-    hover:translate-x-1
-    hover:translate-y-1
-    active:shadow-button-dark-active
-    active:translate-x-2
-    active:translate-y-2
+  .button-secondary-active {
+    @apply text-link-default px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-white border-4 border-link-default transition-all ease-linear
+    shadow-button-active
+    translate-x-2
+    translate-y-2
+    hover:shadow-button-active
+    hover:translate-x-2
+    hover:translate-y-2;
+  }
+  .button-orange {
+    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-orange-default border-4 border-orange-default shadow-button-orange transition-all ease-linear
+    enabled:hover:shadow-button-orange-hover
+    enabled:hover:translate-x-1
+    enabled:hover:translate-y-1
+    enabled:active:shadow-button-orange-active
+    enabled:active:translate-x-2
+    enabled:active:translate-y-2
     disabled:shadow
-    disabled:shadow-neutral-black
+    disabled:shadow-button-disabled
     disabled:transition-none
-    disabled:translate-x-0
-    disabled:translate-y-0
     disabled:cursor-not-allowed
-    disabled:m-1;
+    disabled:bg-neutral-default
+    disabled:border-neutral-default;
+  }
+  .button-orange-active {
+    @apply text-white px-4 py-2 mb-2 mr-2 h-fit rounded-md bg-orange-default border-4 border-orange-default transition-all ease-linear
+    shadow-button-orange-active
+    translate-x-2
+    translate-y-2
+    hover:shadow-button-orange-active
+    hover:translate-x-2
+    hover:translate-y-2;
   }
   .input-default {
     @apply outline-none w-full h-fit bg-white p-2 rounded-md border-2 border-neutral-default
@@ -86,6 +110,12 @@
     hover:underline
     visited:text-link-visited;
   }
+  .link-orange {
+    @apply text-orange-600 cursor-pointer
+    hover:text-orange-700
+    hover:underline
+    visited:text-orange-300;
+  }
   .link-footer {
     @apply text-white cursor-pointer
     hover:text-embl-grey-lightest
@@ -93,26 +123,20 @@
     visited:text-embl-grey-lightest;
   }
   .link-ontology {
-    cursor: pointer;
-    text-decoration: none !important;
-    background-color: rgb(0, 130, 124);
-  }
-  .link-ontology:hover {
-    text-decoration: none !important;
-    background-color: white;
-    outline: 1px solid black;
-    color: black;
+    @apply text-white cursor-pointer bg-link-default
+    hover:bg-white
+    hover:text-link-default
+    hover:outline
+    hover:outline-2
+    hover:outline-link-default;
   }
   .link-entity {
-    cursor: pointer;
-    text-decoration: none !important;
-    background-color: rgb(255 172 27);
-  }
-  .link-entity:hover {
-    text-decoration: none !important;
-    background-color: white;
-    outline: 1px solid black;
-    color: black;
+    @apply text-white cursor-pointer bg-orange-default
+    hover:bg-white
+    hover:text-orange-default
+    hover:outline
+    hover:outline-2
+    hover:outline-orange-default;
   }
 }
 
