@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: dataserver
-          image: caddy:2.6.2-alpine
+          image: nginx:1.23.3
           ports:
             - containerPort: 80
           volumeMounts:
             - name: {{.Release.Name}}-data
-              mountPath: "/usr/share/caddy"
+              mountPath: "/usr/share/nginx/html"
       volumes:
       - name: {{.Release.Name}}-data
         persistentVolumeClaim:
