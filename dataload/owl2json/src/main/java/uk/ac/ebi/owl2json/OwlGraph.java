@@ -170,8 +170,13 @@ public class OwlGraph implements StreamRDF {
     }
 
 	if(this.ontologyNode == null) {
-		// There was no owl:Ontology.
-		// Look for a single node without an rdf:type (fixes loading dcterms and dc elements rdf files)
+
+        ////
+		//// There was no owl:Ontology.
+        //// Could be an RDFS "ontology", or schema.org, or just some garbage file that didn't have any ontology in it
+        ////
+
+		// Fallback 1: look for a single node without an rdf:type (fixes loading dcterms and dc elements rdf files)
 
 		List<OwlNode> nodesWithoutTypes = this.nodes.values().stream().filter(
 			node -> node.uri != null && !node.properties.hasProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
@@ -180,6 +185,34 @@ public class OwlGraph implements StreamRDF {
 		if(nodesWithoutTypes.size() == 1) {
 			this.ontologyNode = nodesWithoutTypes.get(0);
 		}
+
+        if(this.ontologyNode == null) {
+
+            // Fallback 2: fabricate an ontology node using the base_uri (fixes loading Schema.org rdf)
+
+            List<String> baseUris = (List<String>) this.config.get("base_uri");
+
+            if(baseUris != null) {
+                this.ontologyNode = new OwlNode();
+                this.ontologyNode.uri = baseUris.get(0);
+                this.ontologyNode.types.add(OwlNode.NodeType.ONTOLOGY);
+                this.nodes.put(baseUris.get(0), this.ontologyNode);
+            }
+
+            if(this.ontologyNode == null) {
+
+                // Fallback 3: fabricate an ontology node using the purl
+
+                String purl = (String)this.config.get("ontology_purl");
+
+                if(purl != null) {
+                    this.ontologyNode = new OwlNode();
+                    this.ontologyNode.uri = purl;
+                    this.ontologyNode.types.add(OwlNode.NodeType.ONTOLOGY);
+                    this.nodes.put(purl, this.ontologyNode);
+                }
+            }
+        }
 	}
 
 	ontologyNode.properties.addProperty(

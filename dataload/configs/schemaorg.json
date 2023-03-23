@@ -1,0 +1,39 @@
+{
+  "ontologies": [
+    {
+      "id": "rdfs",
+      "ontology_purl": "https://www.w3.org/2000/01/rdf-schema",
+      "base_uri": ["https://www.w3.org/2000/01/rdf-schema#"]
+    },
+    {
+      "id": "owl",
+      "ontology_purl": "https://www.w3.org/2002/07/owl",
+      "base_uri": ["https://www.w3.org/2002/07/owl#"]
+    },
+    {
+        "id": "skos",
+        "ontology_purl": "http://www.w3.org/TR/skos-reference/skos.rdf",
+        "base_uri": ["http://www.w3.org/2004/02/skos/core#"]
+    },
+    {
+        "id": "dcterms",
+        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf",
+        "base_uri": ["http://purl.org/dc/terms/"]
+    },
+    {
+        "id": "dc",
+        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.rdf",
+        "base_uri": ["http://purl.org/dc/elements/1.1/"]
+    },
+    {
+        "id": "schemaorg_http",
+        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-http.rdf",
+        "base_uri": ["http://schema.org/"]
+    },
+    {
+        "id": "schemaorg_https",
+        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-https.rdf",
+        "base_uri": ["https://schema.org/"]
+    }
+  ]
+}
