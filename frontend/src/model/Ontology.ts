@@ -9,7 +9,7 @@ export default class Ontology extends Thing {
   }
   getName(): string {
     let names = Reified.fromJson<string>(
-      this.properties["http://purl.org/dc/elements/1.1/title"] ||
+      this.properties["label"] ||
       this.properties["title"] ||
       ""
     );
@@ -17,7 +17,7 @@ export default class Ontology extends Thing {
   }
   getDescription(): string {
     let descriptions = Reified.fromJson<string>(
-      this.properties["http://purl.org/dc/elements/1.1/description"] ||
+      this.properties["definition"] ||
       this.properties["description"] ||
       ""
     );

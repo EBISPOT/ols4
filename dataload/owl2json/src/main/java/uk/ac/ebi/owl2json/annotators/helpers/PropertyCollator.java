@@ -16,13 +16,9 @@ public class PropertyCollator {
         for(String id : graph.nodes.keySet()) {
             OwlNode c = graph.nodes.get(id);
 
-            if (c.types.contains(OwlNode.NodeType.CLASS) ||
-                    c.types.contains(OwlNode.NodeType.PROPERTY) ||
-                    c.types.contains(OwlNode.NodeType.NAMED_INDIVIDUAL)) {
-
-                // skip bnodes
-                if(c.uri == null)
-                    continue;
+            // skip bnodes
+            if(c.uri == null)
+                continue;
 
 		boolean annotated = false;
 
@@ -46,7 +42,6 @@ public class PropertyCollator {
 				}
 			}
 		}
-            }
         }
 
         long endTime3 = System.nanoTime();

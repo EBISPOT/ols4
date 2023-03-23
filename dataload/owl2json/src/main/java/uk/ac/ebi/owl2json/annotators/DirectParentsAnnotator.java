@@ -31,7 +31,7 @@ public class DirectParentsAnnotator {
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
-                        if(parent.getType() == PropertyValue.Type.URI) {
+                        if(parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
                             c.properties.addProperty("directParent", parent);
                         }
                     }
@@ -43,7 +43,7 @@ public class DirectParentsAnnotator {
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
-                        if(parent.getType() == PropertyValue.Type.URI) {
+                        if(parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
                             c.properties.addProperty("directParent", parent);
                         }
                     }
@@ -67,7 +67,8 @@ public class DirectParentsAnnotator {
                                 continue;
                             }
 
-                            c.properties.addProperty("directParent", type);
+			    if(graph.nodes.containsKey(typeUri))
+				c.properties.addProperty("directParent", type);
                         }
                     }
                 }

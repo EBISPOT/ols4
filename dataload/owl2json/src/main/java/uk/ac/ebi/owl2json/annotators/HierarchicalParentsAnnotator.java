@@ -47,19 +47,14 @@ public class HierarchicalParentsAnnotator {
                 if(c.uri == null)
                     continue;
 
-                if(c.uri.equals("http://purl.allotrope.org/ontologies/result#AFR_0002711")) {
-                    System.out.println("Break");
-                }
-
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
 
-                        if (parent.getType() == PropertyValue.Type.URI) {
+                        if (parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
 
                             // Direct parent; these are also considered hierarchical parents
-
                             c.properties.addProperty("hierarchicalParent", parent);
 
                         }

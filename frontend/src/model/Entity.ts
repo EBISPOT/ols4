@@ -58,9 +58,9 @@ export default abstract class Entity extends Thing {
   }
 
   getAnnotationPredicates(): string[] {
-    let definitionProperties = this.properties["definitionProperty"];
-    let synonymProperties = this.properties["synonymProperty"];
-    let hierarchicalProperties = this.properties["hierarchicalProperty"];
+    let definitionProperties = asArray(this.properties["definitionProperty"]);
+    let synonymProperties = asArray(this.properties["synonymProperty"]);
+    let hierarchicalProperties = asArray(this.properties["hierarchicalProperty"]);
     let annotationPredicates = new Set();
 
     for (let predicate of Object.keys(this.properties)) {

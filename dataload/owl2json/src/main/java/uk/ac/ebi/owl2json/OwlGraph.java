@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OwlGraph implements StreamRDF {
 
@@ -167,6 +168,19 @@ public class OwlGraph implements StreamRDF {
             }
         }
     }
+
+	if(this.ontologyNode == null) {
+		// There was no owl:Ontology.
+		// Look for a single node without an rdf:type (fixes loading dcterms and dc elements rdf files)
+
+		List<OwlNode> nodesWithoutTypes = this.nodes.values().stream().filter(
+			node -> node.uri != null && !node.properties.hasProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
+			.collect(Collectors.toList());
+
+		if(nodesWithoutTypes.size() == 1) {
+			this.ontologyNode = nodesWithoutTypes.get(0);
+		}
+	}
 
 	ontologyNode.properties.addProperty(
 		"numberOfEntities", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
@@ -586,6 +600,7 @@ public class OwlGraph implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#Class":
             case "http://www.w3.org/2000/01/rdf-schema#Class":
+            case "http://www.w3.org/2004/02/skos/core#Concept":
                 subjNode.types.add(OwlNode.NodeType.CLASS);
 
 		if(subjNode.uri != null) {

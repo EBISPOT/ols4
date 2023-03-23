@@ -74,6 +74,7 @@ public class LinkerPass2 {
                             writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result);
                             continue;
                         } else {
+                            ontologyGatheredStrings.add(ExtractIriFromPropertyName.extract(key));
                             CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, ontologyGatheredStrings);
                         }
                     }

@@ -305,6 +305,8 @@ public class JSON2Solr {
 		for(Object label : (List<Object>) labels) {
 			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
 		}
+	} else if(labels instanceof String) {
+			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)labels), Map.class) );
 	}
 
 	Object synonyms = flattenedEntity.get("synonym");
@@ -313,6 +315,8 @@ public class JSON2Solr {
 		for(Object label : (List<Object>) synonyms) {
 			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
 		}
+	} else if(synonyms instanceof String) {
+			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)synonyms), Map.class) );
 	}
    }
 

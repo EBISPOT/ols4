@@ -42,15 +42,18 @@ public class ConfigurablePropertyAnnotator {
                     continue;
 
 		for(String p : hierarchicalProperties) {
-			c.properties.addProperty("hierarchicalProperty", PropertyValueLiteral.fromString(p));
+            if(c.properties.hasProperty(p))
+                c.properties.addProperty("hierarchicalProperty", PropertyValueLiteral.fromString(p));
 		}
 
 		for(String p : definitionProperties) {
-			c.properties.addProperty("definitionProperty", PropertyValueLiteral.fromString(p));
+            if(c.properties.hasProperty(p))
+                c.properties.addProperty("definitionProperty", PropertyValueLiteral.fromString(p));
 		}
 
 		for(String p : synonymProperties) {
-			c.properties.addProperty("synonymProperty", PropertyValueLiteral.fromString(p));
+            if(c.properties.hasProperty(p))
+                c.properties.addProperty("synonymProperty", PropertyValueLiteral.fromString(p));
 		}
             }
         }

@@ -1,6 +1,7 @@
 package uk.ac.ebi.owl2json.annotators;
 import java.util.*;
 import uk.ac.ebi.owl2json.OwlGraph;
+import uk.ac.ebi.owl2json.OwlNode;
 import uk.ac.ebi.owl2json.annotators.helpers.PropertyCollator;
 
 public class LabelAnnotator {
@@ -10,7 +11,8 @@ public class LabelAnnotator {
         Set<String> labelProperties = new TreeSet<>(
                 List.of(
                         "http://www.w3.org/2000/01/rdf-schema#label",
-                        "http://purl.org/dc/elements/1.1/title"
+                        "http://purl.org/dc/elements/1.1/title",
+                        "http://purl.org/dc/terms/title"
                 )
         );
 
