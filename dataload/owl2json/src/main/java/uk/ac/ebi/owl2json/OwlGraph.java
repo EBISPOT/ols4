@@ -585,6 +585,7 @@ public class OwlGraph implements StreamRDF {
                 break;
 
             case "http://www.w3.org/2002/07/owl#Class":
+            case "http://www.w3.org/2000/01/rdf-schema#Class":
                 subjNode.types.add(OwlNode.NodeType.CLASS);
 
 		if(subjNode.uri != null) {
@@ -598,6 +599,7 @@ public class OwlGraph implements StreamRDF {
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
                 subjNode.types.add(OwlNode.NodeType.OBJECT_PROPERTY);
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
+            case "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property":
                 subjNode.types.add(OwlNode.NodeType.PROPERTY);
 
 		if(subjNode.uri != null) {

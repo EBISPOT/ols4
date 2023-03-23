@@ -17,7 +17,6 @@ public class LinkerPass2 {
 
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
-    public static final RdfVocabularies rdfVocabs = new RdfVocabularies();
 
     public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
@@ -196,24 +195,6 @@ public class LinkerPass2 {
                 jsonWriter.endObject();
                 continue;
             }
-
-            RdfVocabularies.UriLabelMapping rdfMapping = rdfVocabs.getMapping(str);
-
-            if(rdfMapping != null) {
-                jsonWriter.name(str);
-                jsonWriter.beginObject();
-                jsonWriter.name("label");
-                jsonWriter.beginArray();
-                for(String label : rdfMapping.labels) {
-                    jsonWriter.value(label);
-                }
-                jsonWriter.endArray();
-                jsonWriter.name("source");
-                jsonWriter.value(rdfMapping.source);
-                jsonWriter.endObject();
-                continue;
-            }
-
 
 
 	    // maybe it's a CURIE?
