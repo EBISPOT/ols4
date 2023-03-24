@@ -10,7 +10,8 @@ WIP version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
 * Much faster dataload (loads the OBO foundry in hours instead of days)
 * Modular dataload pipeline with decoupled, individually testable stages
 * Automated CI testing of the dataload with minimal testcase ontologies
-* A lossless data representation: everything in the OWL is preserved in the databases
+* A lossless data representation: everything in the ontology is preserved in the databases
+* Coverage of the whole OWL2 spec, and also loads vocabularies defined purely in RDFS
 * Uses updated versions of Solr and Neo4j (no embedded databases, no MongoDB)
 * React frontend using Redux and Tailwind
 * Backwards compatibility with the OLS3 API
@@ -32,14 +33,14 @@ However, if you just want to try it out, this should get you going:
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
-If you want to test it with your own ontology, copy the OWL file to the `testcases` folder (which is mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if your ontology is in `testcases/myontology.owl`. Then follow the above steps for efo with the config filename you created.
+If you want to test it with your own ontology, copy the OWL or RDFS ontology file to the `testcases` folder (which is mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if your ontology is in `testcases/myontology.owl`. Then follow the above steps for efo with the config filename you created.
 
 # Developing OLS4
 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
 It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph database. 
 
-* The `dataload` directory contains the code which turns OWL ontologies into JSON and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with loading them.
+* The `dataload` directory contains the code which turns ontologies from RDF (specified using OWL and/or RDFS) into JSON and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with loading them.
 * The `backend` directory contains a Spring Boot application which hosts the OLS API over the above Solr and Neo4j instances
 * The `frontend` directory contains the React frontend built upon the `backend` above.
 
