@@ -14,20 +14,27 @@ spec:
       labels:
         app: {{ .Release.Name }}-solr
     spec:
-      securityContext:
-        runAsUser: 0
-        runAsGroup: 0
-        fsGroup: 0
-        fsGroupChangePolicy: Always
+      #securityContext:
+        #runAsUser: 0
+        #runAsGroup: 0
+        #fsGroup: 0
+        #fsGroupChangePolicy: Always
       containers:
         - name: solr
-        #   image: solr:9.0.0
-          image: ebispot/solr9-ubuntu18
-        #   args: ["echo Downloading data && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /var/solr/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          image: solr:9.0.0
+          resources:
+            requests:
+              ephemeral-storage: 40Gi
+            limits:
+              ephemeral-storage: 40Gi
+          #image: ebispot/solr9-ubuntu18
           command: ["/bin/bash", "-c"]
-          args: ["echo Downloading data && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /opt/solr/server/ && echo Starting solr && /entrypoint.dockersh"]
+          args: ["echo Downloading data && mkdir /tmp/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /tmp/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           env:
             - name: SOLR_TARBALL_URL
               value: {{.Values.solrTarballUrl}}
+            - name: SOLR_HOME
+              value: /tmp/solr/
           ports:
             - containerPort: 8983
+

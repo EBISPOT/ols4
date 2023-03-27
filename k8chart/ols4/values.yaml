@@ -5,4 +5,4 @@ neo4jTarballUrl: http://ols4-dataserver/neo4j.tgz
 solrTarballUrl: http://ols4-dataserver/solr.tgz
 
 frontend:
-  envFile: ./frontend/.env.prod
+  envFile: .env.prod

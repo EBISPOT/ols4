@@ -24,4 +24,7 @@ spec:
                 memory: 4G          
           ports:
             - containerPort: 8080
-          env_file: {{.Values.frontend.envFile}}
+          command: ["/bin/bash", "-c"]
+          args: ["set -a && source {{.Values.frontend.envFile}} && set +a && /opt/ols4-frontend/entrypoint.dockersh"]
+
+

@@ -16,23 +16,25 @@ spec:
     spec:
       containers:
         - name: neo4j
-          #image: neo4j:4.4.9-community
-          image: ebispot/neo4j4-ubuntu18
+          image: neo4j:4.4.9-community
           command: ["/bin/bash", "-c"]
-          args: ["rm -rf /opt/neo4j/data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /opt/neo4j/data/ && /entrypoint.dockersh"]
+          args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
           resources:
               requests:
-                cpu: 2
-                memory: 4G
+                cpu: 4
+                memory: 16G
+                ephemeral-storage: 130Gi
+              limits:
+                ephemeral-storage: 130Gi
           env:
-              # - name: NEO4J_HEAP_MEMORY
-              # value: 10g
-              # - name: NEO4J_dbms_memory_heap_maxSize
-              # value: 8g
+            - name: NEO4J_HEAP_MEMORY
+              value: 10g
+            - name: NEO4J_dbms_memory_heap_maxSize
+              value: 8g
             - name: NEO4J_TARBALL_URL
               value: {{.Values.neo4jTarballUrl}}
-            #- name: NEO4J_AUTH
-              #value: none
+            - name: NEO4J_AUTH
+              value: none
           ports:
             - containerPort: 7474
             - containerPort: 7687
