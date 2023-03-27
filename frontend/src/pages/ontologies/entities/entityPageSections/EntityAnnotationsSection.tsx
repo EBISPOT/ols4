@@ -6,6 +6,7 @@ import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Reified from "../../../../model/Reified";
+import addLinksToText from "./addLinksToText";
 import MetadataTooltip from "./MetadataTooltip";
 
 export default function EntityAnnotationsSection({
@@ -92,11 +93,7 @@ export default function EntityAnnotationsSection({
 	if((typeof value.value) !== 'string') {
 		return <ClassExpression ontologyId={entity.getOntologyId()} currentEntity={entity} expr={value.value} entityType={entity.getTypePlural() as any} linkedEntities={linkedEntities} />
 	}
-	if(value.value.toString().indexOf("://") !== -1) {
-		return <Link className="link-default" to={value.value}>{value.value}</Link>
-	} else {
-		return <span>{value.value.toString()}</span>
-	}
+	return <span>{addLinksToText(value.value.toString(), linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}</span>
     }
   }
 }

@@ -14,6 +14,7 @@ public class CopyJsonGatheringStrings {
     private static final JsonParser jsonParser = new JsonParser();
 
     private static final Pattern curiePattern = Pattern.compile("[A-Z]+:[0-9A-z]+");
+    private static final Pattern uriPattern = Pattern.compile("[A-z]+:\\/\\/[^\\s]+");
 
     public static void copyJsonGatheringStrings(JsonReader jsonReader, JsonWriter jsonWriter, Set<String> gatheredStrings) throws IOException {
 
@@ -29,11 +30,17 @@ public class CopyJsonGatheringStrings {
 
                 gatheredStrings.add(str);
 
-		Matcher matcher = curiePattern.matcher(str);
+                Matcher matcher = curiePattern.matcher(str);
 
-		while(matcher.find()) {
-			gatheredStrings.add(matcher.group());
-		}
+                while(matcher.find()) {
+                    gatheredStrings.add(matcher.group());
+                }
+
+                Matcher uriMatcher = uriPattern.matcher(str);
+
+                while(uriMatcher.find()) {
+                    gatheredStrings.add(uriMatcher.group());
+                }
 
                 jsonWriter.value(str);
                 break;

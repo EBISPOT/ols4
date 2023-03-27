@@ -4,7 +4,7 @@ import { randomString } from "../../../../app/util";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Reified from "../../../../model/Reified";
-import addEntityLinksToText from "./addEntityLinksToText";
+import addLinksToText from "./addLinksToText";
 
 export default function EntityDescriptionSection({
   entity,
@@ -22,7 +22,7 @@ export default function EntityDescriptionSection({
 		<Fragment>
             <p>
           <span key={randomString()}>
-            {addEntityLinksToText(definition.value, linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}
+            {addLinksToText(definition.value, linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}
             {hasMetadata ? (
               <Tooltip
                 title={Object.keys(definition.getMetadata())

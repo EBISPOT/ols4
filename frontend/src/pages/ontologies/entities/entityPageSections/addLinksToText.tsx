@@ -1,9 +1,11 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 
-export default function addEntityLinksToText(text:string, linkedEntities:LinkedEntities, ontologyId:string, currentEntity:Entity, entityType:"ontologies"|"classes"|"properties"|"individuals") {
+
+export default function addLinksToText(text:string, linkedEntities:LinkedEntities, ontologyId:string, currentEntity:Entity|undefined, entityType:"ontologies"|"classes"|"properties"|"individuals") {
 
 	let linksToSplice:Array<{start:number, end:number, link:JSX.Element}> = []
 
@@ -24,6 +26,37 @@ export default function addEntityLinksToText(text:string, linkedEntities:LinkedE
 
 			n += entityId.length
 		}
+	}
+
+	let urlRe = /[A-z]+:\/\/[^\s]+/g;
+
+	for(let match = urlRe.exec(text); match; match = urlRe.exec(text)) {
+
+		console.log('found match ' + match[0])
+		linksToSplice.push({
+			start: match.index,
+			end: match.index + match[0].length,
+			link: <Link to={match[0]} className="link-default" target="_blank">{match[0]}</Link>
+		})
+	}
+
+	removeOverlapping:
+	for(let n = 0; n < linksToSplice.length; ) {
+		for(let n2 = 0; n2 < linksToSplice.length; ++ n2) {
+			let spliceA = linksToSplice[n]
+			let spliceB = linksToSplice[n2]
+
+			if(spliceA === spliceB)
+				continue;
+
+			// The splices overlap if neither ends before the other starts
+			if(spliceA.end >= spliceB.start && spliceB.end >= spliceA.start) {
+				console.log('Removing overlapping')
+				linksToSplice.splice(n, 1)
+				continue removeOverlapping;
+			}
+		}
+		++ n;
 	}
 
 	if(linksToSplice.length === 0)

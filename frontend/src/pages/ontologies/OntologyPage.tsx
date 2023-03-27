@@ -20,6 +20,7 @@ import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
 import Reified from "../../model/Reified";
 import EntityList from "./entities/EntityList";
+import addLinksToText from "./entities/entityPageSections/addLinksToText";
 import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import EntityTree from "./entities/EntityTree";
 import { getOntology } from "./ontologiesSlice";
@@ -266,16 +267,20 @@ export default function OntologyPage({
                       <a
                         id="ontologyIri"
                         href={ontology.getIri() || ontology.getOntologyPurl()}
+			className="link-default"
+			target="_blank"
                       >
                         {ontology.getIri() || ontology.getOntologyPurl()}
                       </a>
                     </div>
-                    <div>
-                      <span className="font-bold">Version IRI: </span>
-                      <a id="versionIri" href={ontology.getVersionIri()}>
-                        {ontology.getVersionIri()}
-                      </a>
-                    </div>
+		    {ontology.getVersionIri() && 
+			<div>
+			<span className="font-bold">Version IRI: </span>
+			<a id="versionIri" href={ontology.getVersionIri()} className="link-default" target="_blank">
+				{ontology.getVersionIri()}
+			</a>
+			</div>
+}
                     {/* todo remove hack when datarelease has completed; this should always be present */}
                     {ontology.getSourceFileTimestamp() && (
                       <div>
@@ -378,15 +383,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
       if (typeof value.value !== "string") {
         return <span>{JSON.stringify(value.value)}</span>;
       }
-      if (value.value.toString().indexOf("://") !== -1) {
-        return (
-          <Link className="link-default" to={value.value}>
-            {value.value}
-          </Link>
-        );
-      } else {
-        return <span>{value.value.toString()}</span>;
-      }
+      return <span>{addLinksToText(value.value.toString(), ontology.getLinkedEntities(), ontology.getOntologyId(), undefined, "ontologies")}</span>;
     }
   }
 }
