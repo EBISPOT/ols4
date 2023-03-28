@@ -141,7 +141,9 @@
 
     <!-- ols4 -->
     <dynamicField name="lowercase_*" type="ols4lowercase" stored="false" indexed="true" multiValued="true" />
-    <dynamicField name="edge_*" type="ols4edge" stored="false" indexed="true" multiValued="true" />
+    <dynamicField name="edge_*" type="ols4textEdge" stored="false" indexed="true" multiValued="true" />
+    <dynamicField name="whitespace_*" type="ols4textWhitespace" stored="false" indexed="true" multiValued="true" />
+    <dynamicField name="whitespace_edge_*" type="ols4textWhitespaceEdge" stored="false" indexed="true" multiValued="true" />
 
     <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
@@ -291,36 +293,55 @@
 			<!--<filter name="lowercase"/>-->
 		</analyzer>
 	</fieldType>
-    <fieldType name="ols4lowercase" class="solr.TextField" positionIncrementGap="100" multiValued="true">
-      <analyzer type="index">
-        <tokenizer name="standard"/>
-        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
-			<!-- in this example, we will only use synonyms at query time
-        <filter name="synonymGraph" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
-        <filter name="flattenGraph"/>
-        -->
-        <filter name="lowercase"/>
-		</analyzer>
-      <analyzer type="query">
-        <tokenizer name="standard"/>
-        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
-        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-        <filter name="lowercase"/>
-		</analyzer>
-	</fieldType>
-    <fieldType name="ols4edge" class="solr.TextField">
+
+    <fieldType name="ols4textWhitespaceEdge" class="solr.TextField">
+        <analyzer type="index">
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+            <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" />
+        </analyzer>
+        <analyzer type="query">
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        </analyzer>
+    </fieldType>
+    <fieldType name="ols4textEdge" class="solr.TextField">
         <analyzer type="index">
             <tokenizer class="solr.PatternTokenizerFactory" pattern="______" />
             <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
             <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" />
-		</analyzer>
+        </analyzer>
         <analyzer type="query">
             <tokenizer class="solr.PatternTokenizerFactory" pattern="_______" />
             <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-		</analyzer>
-	</fieldType>
+        </analyzer>
+    </fieldType>
+    <fieldType name="ols4textWhitespace" class="solr.TextField">
+        <analyzer type="index">
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        </analyzer>
+        <analyzer type="query">
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+            <!-- filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" side="front" /-->
+        </analyzer>
+    </fieldType>
+
+    <!-- lowercases the entire field value, keeping it as a single token.  -->
+    <fieldType name="ols4lowercase" class="solr.TextField" positionIncrementGap="100">
+        <analyzer>
+            <tokenizer class="solr.KeywordTokenizerFactory"/>
+            <filter class="solr.LowerCaseFilterFactory" />
+        </analyzer>
+    </fieldType>
+
 
 
 	<!-- SortableTextField generaly functions exactly like TextField,

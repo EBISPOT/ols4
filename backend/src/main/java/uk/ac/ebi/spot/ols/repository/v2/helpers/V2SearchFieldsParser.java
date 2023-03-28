@@ -12,17 +12,13 @@ public class V2SearchFieldsParser {
     public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
 
         if(searchFields == null) {
-            query.addSearchField("iri", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("ontologyId", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("curie", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("curie", 1, SearchType.EDGES);
-            query.addSearchField("shortForm", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("shortForm", 1, SearchType.EDGES);
-            query.addSearchField("label", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("label", 1, SearchType.EDGES);
-            query.addSearchField("id", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("oboId", 1, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addSearchField("oboId", 1, SearchType.EDGES);
+            query.addSearchField("iri", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("ontologyId", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("curie", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("shortForm", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("label", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("id", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("oboId", 1, SearchType.WHITESPACE_EDGES);
         } else {
             for (ParsedField field : parseFieldsString(searchFields)) {
                 query.addSearchField(field.property, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
@@ -33,8 +29,8 @@ public class V2SearchFieldsParser {
     public static void addBoostFieldsToQuery(OlsSolrQuery query, String boostFields) {
 
         if(boostFields == null) {
-            query.addBoostField("type", "ontology", 10, SearchType.CASE_INSENSITIVE_TOKENS);
-            query.addBoostField("isDefiningOntology", "true", 100, SearchType.CASE_INSENSITIVE_TOKENS);
+            query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
+            query.addBoostField("isDefiningOntology", "true", 100, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);

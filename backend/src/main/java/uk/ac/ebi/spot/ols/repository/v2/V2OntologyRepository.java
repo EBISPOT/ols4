@@ -36,7 +36,7 @@ public class V2OntologyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = "label^100 ontologyId^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
