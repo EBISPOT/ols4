@@ -1000,22 +1000,23 @@
       <str name="fieldType">text_general</str>
       <lst name="copyField">
         <str name="dest">str_*</str>
-        <int name="maxChars">512</int>
+        <int name="maxChars">4096</int>
       </lst>
       <lst name="copyField">
         <str name="dest">lowercase_*</str>
+        <int name="maxChars">4096</int>
       </lst>
       <lst name="copyField">
         <str name="dest">edge_*</str>
-        <int name="maxChars">512</int>
+        <int name="maxChars">4096</int>
       </lst>
       <lst name="copyField">
         <str name="dest">whitespace_*</str>
-        <int name="maxChars">512</int>
+        <int name="maxChars">4096</int>
       </lst>
       <lst name="copyField">
         <str name="dest">whitespace_edge_*</str>
-        <int name="maxChars">512</int>
+        <int name="maxChars">4096</int>
       </lst>
       <!-- Use as default mapping instead of defaultFieldType -->
       <bool name="default">true</bool>
