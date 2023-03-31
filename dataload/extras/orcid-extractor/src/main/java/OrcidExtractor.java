@@ -4,7 +4,6 @@ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.compress.utils.CloseShieldFilterInputStream;
-import org.apache.commons.compress.utils.IOUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -16,12 +15,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
 
 public class OrcidExtractor {
 
@@ -33,7 +28,7 @@ public class OrcidExtractor {
         input.setRequired(true);
         options.addOption(input);
 
-        Option output = new Option(null, "output", true, "orcid mappings json output filename");
+        Option output = new Option(null, "output", true, "path of leveldb database to write to (can be an empty folder)");
         output.setRequired(true);
         options.addOption(output);
 
@@ -52,7 +47,6 @@ public class OrcidExtractor {
         }
 
 
-
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
@@ -63,9 +57,13 @@ public class OrcidExtractor {
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("output");
 
+        LevelDB db = new LevelDB(outputFilePath);
+
         ZipFile zipFile = new ZipFile(inputFilePath);
 
         var entries = zipFile.entries();
+
+        int n = 0;
 
         while(entries.hasMoreElements()) {
 
@@ -84,14 +82,23 @@ public class OrcidExtractor {
                     String tarEntryName = tarEntry.getName();
 
                     if(tarEntryName.endsWith(".xml")) {
-                        System.out.println(tarEntryName);
+//                        System.out.println(tarEntryName);
 
                         Document doc = builder.parse(new InputSource(new CloseShieldFilterInputStream(tarInputStream)));
 
                         try{
+                            String uri = xpath.evaluate("/*[local-name()='record']/*[local-name()='orcid-identifier']/*[local-name()='uri']/text()", doc);
                             String givenName = xpath.evaluate("/*[local-name()='record']/*[local-name()='person']/*[local-name()='name']/*[local-name()='given-names']/text()", doc);
                             String familyName = xpath.evaluate("/*[local-name()='record']/*[local-name()='person']/*[local-name()='name']/*[local-name()='family-name']/text()", doc);
-                            
+
+                            db.put(uri, "{\"source\":\"ORCID\",\"url\":\"" + uri + "\",\"label\":{\"type\":\"literal\",\"value\":\"" + familyName + ", " + givenName + "\"}}");
+
+                            ++ n;
+
+                            if(n % 10000 == 0) {
+                                System.out.println(n);
+                            }
+
                         } catch (XPathExpressionException e) {
                             continue;
                         }
@@ -105,6 +112,8 @@ public class OrcidExtractor {
                 break;
             }
         }
+
+        db.close();
 
     }
 }
