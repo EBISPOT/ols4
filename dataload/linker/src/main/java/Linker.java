@@ -23,6 +23,10 @@ public class Linker {
         output.setRequired(true);
         options.addOption(output);
 
+        Option leveldbPath = new Option(null, "leveldbPath", true, "optional path of leveldb containing extra mappings (for ORCID etc.)");
+        leveldbPath.setRequired(false);
+        options.addOption(leveldbPath);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -39,15 +43,24 @@ public class Linker {
 
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("output");
+        String leveldb_path = cmd.getOptionValue("leveldbPath");
 
-//        LinkerPass1.LinkerPass1Result pass1Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.json")), LinkerPass1.LinkerPass1Result.class);
-        LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
+        LevelDB leveldb = leveldb_path != null ? new LevelDB(leveldb_path) : null;
 
-//        gson.toJson(pass1Result, new FileWriter(outputFilePath));
-//        Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
+        try {
 
-        LinkerPass2.run(inputFilePath, outputFilePath, pass1Result);
+    //        LinkerPass1.LinkerPass1Result pass1Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.json")), LinkerPass1.LinkerPass1Result.class);
+            LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
 
+    //        gson.toJson(pass1Result, new FileWriter(outputFilePath));
+    //        Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
+
+            LinkerPass2.run(inputFilePath, outputFilePath, leveldb, pass1Result);
+
+        } finally {
+            if(leveldb != null)
+                leveldb.close();
+        }
     }
 }
 

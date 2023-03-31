@@ -18,7 +18,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -65,13 +65,13 @@ public class LinkerPass2 {
                         jsonWriter.name(key);
 
                         if(key.equals("classes")) {
-                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("properties")) {
-                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("individuals")) {
-                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, pass1Result);
                             continue;
                         } else {
                             ontologyGatheredStrings.add(ExtractIriFromPropertyName.extract(key));
@@ -80,7 +80,7 @@ public class LinkerPass2 {
                     }
 
                     jsonWriter.name("linkedEntities");
-                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, pass1Result);
+                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
 
                     jsonReader.endObject(); // ontology
                     jsonWriter.endObject();
@@ -104,7 +104,7 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -158,7 +158,7 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, pass1Result);
+            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
 
             jsonWriter.endObject();
             jsonReader.endObject();
@@ -170,7 +170,7 @@ public class LinkerPass2 {
     }
 
 
-    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonWriter.beginObject();
 
@@ -271,7 +271,20 @@ public class LinkerPass2 {
 
 			if (foundCurieMatch)
 				jsonWriter.endObject();
+
 		}
+
+        // No match as an IRI or as a CURIE. Look in LevelDB (for ORCIDs etc.)
+            if(leveldb != null) {
+                JsonElement leveldbMatch = leveldb.get(str);
+
+                if(leveldbMatch != null) {
+                    jsonWriter.name(str);
+                    com.google.gson.internal.Streams.write(leveldbMatch, jsonWriter);
+                    continue;
+                }
+            }
+
         }
 
         jsonWriter.endObject();
