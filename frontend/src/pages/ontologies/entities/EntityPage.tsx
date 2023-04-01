@@ -177,7 +177,7 @@ export default function EntityPage({
                   )}`}
                   betaApiUrl={`${
                     process.env.REACT_APP_APIURL
-                  }api/v2/ontologies/${ontologyId}/${ontology.getTypePlural()}/${encodeURIComponent(
+                  }api/v2/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
                     encodeURIComponent(entityIri)
                   )}`}
                 />

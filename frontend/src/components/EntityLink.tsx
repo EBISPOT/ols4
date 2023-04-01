@@ -1,6 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Fragment } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { asArray } from "../app/util";
 import Entity from "../model/Entity";
 import LinkedEntities from "../model/LinkedEntities";
 
@@ -215,10 +216,14 @@ export default function EntityLink({
 }
 
 function pluraliseType(type) {
-  return {
-    class: "classes",
-    individual: "individuals",
-    property: "properties",
-    ontology: "ontologies",
-  }[type];
+	for(let t of asArray(type)) {
+		let plural = { class: "classes",
+		individual: "individuals",
+		property: "properties",
+		ontology: "ontologies",
+		}[t];
+
+		if(plural)
+			return plural
+	}
 }
