@@ -132,12 +132,12 @@ export default function EntityPage({
                 <span className="px-2 text-sm" style={{ color: "gray" }}>
                   ▸
                 </span>
-                <span className="capitalize">
+                <span>
                   <Link
                     to={
                       "/ontologies/" + ontologyId + "/" + entity.getTypePlural()
                     }
-                    className="link-default"
+                    className="link-default capitalize"
                   >
                     {entity.getTypePlural()}
                   </Link>
