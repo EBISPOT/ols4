@@ -11,6 +11,12 @@ import Thing from "../model/Thing";
 
 let curSearchToken: any = null;
 
+
+interface SearchBoxEntry {
+	linkUrl:string
+	li:JSX.Element
+}
+
 export default function SearchBox({
   initialQuery,
   placeholder,
@@ -74,9 +80,12 @@ export default function SearchBox({
     };
   });
 
+  let [arrowKeySelectedN, setArrowKeySelectedN] = useState<number|undefined>(undefined)
+
   useEffect(() => {
     async function loadSuggestions() {
       setLoading(true);
+      setArrowKeySelectedN(undefined)
 
       let searchToken = randomString();
       curSearchToken = searchToken;
@@ -130,95 +139,40 @@ export default function SearchBox({
 
   let show = open && !!query;
 
-  return (
-    <Fragment>
-      <div className="w-full self-center">
-        <div className="flex space-x-4">
-          <div className="relative grow">
-            <input
-              id="home-search"
-              type="text"
-              autoComplete="off"
-              placeholder={placeholder || "Search OLS..."}
-              className="input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm pl-3"
-              onFocus={() => {
-                setOpen(true);
-              }}
-              onBlur={() => {
-                setTimeout(function () {
-                  if (mounted.current) setOpen(false);
-                }, 500);
-              }}
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-              onKeyDown={(ev) => {
-                if (ev.key === "Enter") {
-                  if (query) {
-                    navigate(
-                      `/search/${encodeURIComponent(
-                        query
-                      )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
-                    );
-                  }
-                }
-              }}
-            />
-            <div
-              className={
-                loading
-                  ? "spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"
-                  : "hidden"
-              }
-            />
-            <ul
-              className={
-                show
-                  ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
-                  : "hidden"
-              }
-            >
-              {autocomplete?.response.docs &&
-                autocomplete.response.docs.slice(0, 5).map((autocomplete) => {
-                  return (
-                    <li
-                      key={randomString()}
-                      className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
-                    >
-                      {autocomplete.autosuggest}
-                    </li>
-                  );
-                })}
+  let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || []
 
-              {jumpTo && (
-                <li className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer">
-                  <b>Jump to</b>
-                </li>
-              )}
+  let autocompleteElements = autocompleteToShow.map((autocomplete, i):SearchBoxEntry => {
+		let linkUrl = `/search/${encodeURIComponent(autocomplete.autosuggest)}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
+		return { linkUrl, li: <li
+		key={randomString()}
+		className={"py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer" + (arrowKeySelectedN === i ? ' bg-link-light' : '')}
+		>
+		{autocomplete.autosuggest}
+		</li> };
+	});
 
-              {jumpTo &&
-                jumpTo.map((jumpToEntry: Thing) => {
+	let jumpToEntityElements = jumpTo.filter(thing => thing.getType() !== 'ontology').map((jumpToEntry: Thing, i:number):SearchBoxEntry => {
                   const termUrl = encodeURIComponent(
                     encodeURIComponent(jumpToEntry.getIri())
                   );
-                  return (
-                    <Fragment>
-                      {jumpToEntry instanceof Entity &&
-                        // TODO which names to show? (multilang = lots of names)
-                        jumpToEntry
+		  if(! (jumpToEntry instanceof Entity)) {
+			throw new Error('jumpToEntry should be Entity')
+		  }
+		  // TODO which names to show? (multilang = lots of names)
+                  return jumpToEntry
                           .getNames()
                           .splice(0, 1)
-                          .map((name) => (
-                            <li
+                          .map((name) => {
+			    let linkUrl = `/ontologies/${jumpToEntry.getOntologyId()}/${jumpToEntry.getTypePlural()}/${termUrl}`
+                            return { linkUrl, li: <li
                               key={randomString()}
-                              className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                              className={"py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer" + (arrowKeySelectedN === (i + autocompleteElements.length) ? ' bg-link-light' : '')}
                             >
                               <Link
                                 onClick={() => {
                                   setOpen(false);
                                 }}
-                                to={`/ontologies/${jumpToEntry.getOntologyId()}/${jumpToEntry.getTypePlural()}/${termUrl}`}
+                                to={linkUrl}
                               >
                                 <div className="flex justify-between">
                                   <div
@@ -243,30 +197,29 @@ export default function SearchBox({
                                   </div>
                                 </div>
                               </Link>
-                            </li>
-                          ))}
-                    </Fragment>
+                            </li> }
+                          })[0]
+			}
                   );
-                })}
 
-              {jumpTo &&
-                jumpTo.map((jumpToEntry: Thing) => {
+		let jumpToOntologyElements = jumpTo.filter(thing => thing.getType() === 'ontology').map((jumpToEntry: Thing, i:number):SearchBoxEntry => {
                   const termUrl = encodeURIComponent(
                     encodeURIComponent(jumpToEntry.getIri())
                   );
-                  return (
-                    <Fragment>
-                      {jumpToEntry instanceof Ontology &&
-                        jumpToEntry.getNames().map((name) => (
-                          <li
+		  if(! (jumpToEntry instanceof Ontology)) {
+			throw new Error('jumpToEntry should be Ontology')
+		  }
+                  return jumpToEntry.getNames().splice(0,1).map((name) => {
+			let linkUrl = "/ontologies/" + jumpToEntry.getOntologyId();
+			return {linkUrl, li: <li
                             key={randomString()}
-                            className="py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                            className={"py-0 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer" + (arrowKeySelectedN === (i + jumpToEntityElements.length + autocompleteElements.length) ? ' bg-link-light' : '')}
                           >
                             <Link
                               onClick={() => {
                                 setOpen(false);
                               }}
-                              to={"/ontologies/" + jumpToEntry.getOntologyId()}
+                              to={linkUrl}
                             >
                               <div className="flex">
                                 <span
@@ -282,16 +235,88 @@ export default function SearchBox({
                               </div>
                             </Link>
                           </li>
-                        ))}
-                    </Fragment>
-                  );
-                })}
+			};
+		})[0];
+		});
+
+		let allDropdownElements = [ ...autocompleteElements, ...jumpToEntityElements, ...jumpToOntologyElements ]
+
+  return (
+    <Fragment>
+      <div className="w-full self-center">
+        <div className="flex space-x-4">
+          <div className="relative grow">
+            <input
+              id="home-search"
+              type="text"
+              autoComplete="off"
+              placeholder={placeholder || "Search OLS..."}
+              className={"input-default text-lg focus:rounded-b-sm focus-visible:rounded-b-sm pl-3"}
+              onFocus={() => {
+                setOpen(true);
+              }}
+              onBlur={() => {
+                setTimeout(function () {
+                  if (mounted.current) setOpen(false);
+                }, 500);
+              }}
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+              onKeyDown={(ev) => {
+		console.log(ev.key)
+                if (ev.key === "Enter") {
+		  if(arrowKeySelectedN !== undefined && arrowKeySelectedN < allDropdownElements.length) {
+		    navigate(allDropdownElements[arrowKeySelectedN].linkUrl);
+		  } else if (query) {
+                    navigate(
+                      `/search/${encodeURIComponent(
+                        query
+                      )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
+                    );
+                  }
+                } else if(ev.key === 'ArrowDown') {
+			console.log('down from ' + arrowKeySelectedN)
+			setArrowKeySelectedN(arrowKeySelectedN !== undefined ? Math.min(arrowKeySelectedN + 1, allDropdownElements.length) : 0)
+                } else if(ev.key === 'ArrowUp') {
+			console.log('up from ' + arrowKeySelectedN)
+			if(arrowKeySelectedN !== undefined)
+				setArrowKeySelectedN(Math.max(arrowKeySelectedN - 1, 0));
+		}
+              }}
+            />
+            <div
+              className={
+                loading
+                  ? "spinner-default w-7 h-7 absolute right-3 top-2.5 z-10"
+                  : "hidden"
+              }
+            />
+            <ul
+              className={
+                show
+                  ? "list-none bg-white text-neutral-dark border-2 border-neutral-dark shadow-input rounded-b-md w-full absolute left-0 top-12 z-10"
+                  : "hidden"
+              }
+            >
+		{autocompleteElements.map(entry => entry.li)}
+
+              {  jumpToEntityElements.length + jumpToOntologyElements.length > 0 && (
+                <li className="py-2 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer">
+                  <b>Jump to</b>
+                </li>
+              )}
+
+		{jumpToEntityElements.map(entry => entry.li)}
+		{jumpToOntologyElements.map(entry => entry.li)}
 
               <hr />
               {query && (
                 <li
                   key={randomString()}
-                  className="py-1 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+                  className={"py-1 px-3 leading-7 hover:bg-link-light hover:rounded-sm hover:cursor-pointer"
+		  	+ (arrowKeySelectedN === allDropdownElements.length ? ' bg-link-light' : '')}
                 >
                   Search OLS for <b>{query}</b>
                 </li>
