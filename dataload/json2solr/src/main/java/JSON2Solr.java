@@ -238,7 +238,7 @@ public class JSON2Solr {
     //
     // In the case of (2), we don't store anything in solr fields. Class
     // expressions should already have been evaluated into separate "related"
-    // fields by the RelatedAnnotator in owl2json.
+    // fields by the RelatedAnnotator in rdf2json.
     //
     // In the case of (3), we create a Solr document for each language (see 
     // above), and the language is passed into this function so we know which

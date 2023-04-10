@@ -65,7 +65,7 @@ export default abstract class Entity extends Thing {
 
     for (let predicate of Object.keys(this.properties)) {
 
-      // properties without an IRI are things that were added by owl2json so should not
+      // properties without an IRI are things that were added by rdf2json so should not
       // be included as annotations
       if (predicate.indexOf("://") === -1) continue;
 
