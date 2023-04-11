@@ -13,9 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import javax.annotation.RegEx;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -35,7 +33,17 @@ public class Bioregistry {
 
     JsonObject theRegistry;
     Map<String, JsonObject> prefixToDatabase = new HashMap<>();
-    Map<String, String> iriPrefixToDatabase = new HashMap<>();
+
+    Map<String, String> iriPrefixToDatabase = new TreeMap<>((s1, s2) -> {
+        if (s1.length() > s2.length()) {
+            return -1;
+        } else if (s1.length() < s2.length()) {
+            return 1;
+        } else {
+            return s1.compareTo(s2);
+        }
+    });
+
     Map<String, Pattern> patterns = new HashMap<>();
 
     public Bioregistry() {
@@ -72,9 +80,13 @@ public class Bioregistry {
             }
             
             JsonElement uriFormat = db.get("uri_format");
-            if (uriFormat != null && uriFormat.endsWith("$1) {
-                String uriPrefix = uriFormat.substring(0, uriFormat.length() - 2);                              
-                iriPrefixToDatabase.put(uriPrefix, entry.getKey());                                                                        
+            if (uriFormat != null && uriFormat.isJsonPrimitive()) {
+                String format = uriFormat.getAsString();
+                // TODO: based on charlie's PR but maybe we should regex match the format?
+                if(format.endsWith("$1")) {
+                    String uriPrefix = format.substring(0, format.length() - 2);
+                    iriPrefixToDatabase.put(uriPrefix, entry.getKey());
+                }
             }  
         }
 
@@ -115,14 +127,10 @@ public class Bioregistry {
     }
                                                         
     public String getCurieForUrl(String url) {
-        // has known issues with overlapping prefixes, should sort entry set from longest to shortest
-        // alternatively, needs to be re-implemented, with a more efficient trie data structure that
-        // deals with this implicitly
         for (var entry : iriPrefixToDatabase.entrySet()) {
           String key = entry.getKey();
           if (url.startsWith(key)) {
-              // get everything following the 
-              String local_unique_identifier = url.substring(key.length(), url.length());
+              String local_unique_identifier = url.substring(key.length());
               return entry.getValue() + ":" + local_unique_identifier;
           }
         }

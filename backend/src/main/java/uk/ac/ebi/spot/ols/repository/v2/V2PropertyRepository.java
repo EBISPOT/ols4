@@ -68,7 +68,7 @@ public class V2PropertyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.setExactMatch(exactMatch);
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId.split(","), SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);

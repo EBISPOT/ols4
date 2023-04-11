@@ -9,6 +9,7 @@ public class EntityDefinition {
     Set<String> entityTypes;
     boolean isDefiningOntology;
     JsonElement label;
+    JsonElement curie;
 
     @Override
     public boolean equals(Object other) {
