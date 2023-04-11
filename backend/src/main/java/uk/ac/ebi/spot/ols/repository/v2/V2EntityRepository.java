@@ -61,7 +61,7 @@ public class V2EntityRepository {
         query.setExactMatch(exactMatch);
 
         query.addFilter("type", "entity", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId.split(","), SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);

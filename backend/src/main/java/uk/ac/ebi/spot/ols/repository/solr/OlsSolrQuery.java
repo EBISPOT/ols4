@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.ols.repository.solr;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.util.ClientUtils;
@@ -44,7 +45,11 @@ public class OlsSolrQuery {
 	}
 
 	public void addFilter(String propertyName, String propertyValue, SearchType searchType) {
-		this.filters.add(new Filter(propertyName, propertyValue, searchType));
+		this.filters.add(new Filter(propertyName, Set.of(propertyValue), searchType));
+	}
+
+	public void addFilter(String propertyName, String[] propertyValues, SearchType searchType) {
+		this.filters.add(new Filter(propertyName, Set.of(propertyValues), searchType));
 	}
 
 	public SolrQuery constructQuery() {
@@ -98,9 +103,30 @@ public class OlsSolrQuery {
 		}
 
 		for(Filter f : filters) {
-			query.addFilterQuery(
-				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType))
-					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, exactMatch ? SearchType.WHOLE_FIELD : f.searchType)) + "\"");
+			if(f.propertyValues.size() == 1) {
+				query.addFilterQuery(
+						ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType))
+								+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValues.iterator().next(), exactMatch ? SearchType.WHOLE_FIELD : f.searchType)) + "\"");
+			} else {
+				StringBuilder fq = new StringBuilder();
+				fq.append("cat:(");
+				boolean isFirst = true;
+				for(String val : f.propertyValues) {
+					if(isFirst)
+						isFirst = false;
+					else
+						fq.append(" OR ");
+					fq.append("\"");
+					fq.append(
+							getSolrPropertyValue(
+								   ClientUtils.escapeQueryChars(val),
+								   exactMatch ? SearchType.WHOLE_FIELD : f.searchType
+							)
+					);
+					fq.append("\"");
+				}
+				fq.append(")");
+			}
 		}
 
 		if(facetFields.size() > 0) {
@@ -113,12 +139,12 @@ public class OlsSolrQuery {
 	private class Filter {
 
 		String propertyName;
-		String propertyValue;
+		Set<String> propertyValues;
 		SearchType searchType;
 
-		public Filter(String propertyName, String propertyValue, SearchType searchType) {
+		public Filter(String propertyName, Set<String> propertyValues, SearchType searchType) {
 			this.propertyName = propertyName;
-			this.propertyValue = propertyValue;
+			this.propertyValues = propertyValues;
 			this.searchType = searchType;
 		}
 	}
