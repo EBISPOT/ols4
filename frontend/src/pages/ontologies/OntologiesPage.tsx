@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import DataTable, { Column } from "../../components/DataTable";
 import Header from "../../components/Header";
@@ -106,9 +106,12 @@ export default function OntologiesPage() {
   );
   const loading = useAppSelector((state) => state.ontologies.loadingOntologies);
 
-  const [page, setPage] = useState<number>(0);
-  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [search, setSearch] = useState<string>("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  let page = parseInt(searchParams.get('page') || '0');
+  let rowsPerPage = parseInt(searchParams.get('rowsPerPage') || '10');
+  let search = searchParams.get('search') || ''
+  
 
   useEffect(() => {
     dispatch(getOntologies({ page, rowsPerPage, search }));
@@ -126,23 +129,21 @@ export default function OntologiesPage() {
           dataCount={totalOntologies}
           page={page}
           rowsPerPage={rowsPerPage}
-          onPageChange={(pg: number) => {
-            setPage(pg);
+          onPageChange={(page: number) => {
+		setSearchParams((params) => { params.set('page', page.toString()); return params })
           }}
           onRowsPerPageChange={(rows: number) => {
-            setRowsPerPage((prev) => {
-              if (rows !== prev) setPage(0);
-              return rows;
-            });
+	        setSearchParams((params) => { params.set('rowsPerPage', rows.toString()); return params })
           }}
           onSelectRow={(row: Ontology) => {
             navigate("/ontologies/" + row.getOntologyId());
           }}
-          onFilter={(key: string) => {
-            setSearch((prev) => {
-              if (key !== prev) setPage(0);
-              return key;
-            });
+          onFilter={(search: string) => {
+	        setSearchParams((params) => {
+			params.delete('page')
+			params.set('search', search)
+			return params
+		})
           }}
         />
         {loading ? <LoadingOverlay message="Loading ontologies..." /> : null}

@@ -7,7 +7,7 @@ import {
 } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Fragment, useEffect, useState } from "react";
-import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ApiLinks from "../../components/ApiLinks";
@@ -37,22 +37,20 @@ export default function OntologyPage({
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
 
-  const [currentTab, setTab] = useState<
-    "classes" | "properties" | "individuals"
-  >(tab || "classes");
-
-  const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
-
   const [searchParams, setSearchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en";
+  let viewMode = searchParams.get('viewMode') || 'tree'
+
+  let navigate = useNavigate()
 
   useEffect(() => {
     dispatch(getOntology({ ontologyId, lang }));
-  }, [dispatch, ontologyId, lang, searchParams]);
+  }, [dispatch, ontologyId, lang ]);
 
   useEffect(() => {
-    if (currentTab === "individuals") setViewMode("list");
-  }, [currentTab]);
+    if (tab === "individuals")
+	setSearchParams((params) => { params.set('viewMode', 'list'); return params })
+  }, [tab]);
 
   if (searchParams.get("iri")) {
     let iri = searchParams.get("iri") as string;
@@ -62,7 +60,7 @@ export default function OntologyPage({
 
     return (
       <Navigate
-        to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(
+        to={`/ontologies/${ontologyId}/${tab}/${encodeURIComponent(
           encodeURIComponent(iri)
         )}`}
       />
@@ -186,9 +184,9 @@ export default function OntologyPage({
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
                 <Tabs
-                  value={currentTab}
+                  value={tab}
                   onChange={(value: any) => {
-                    setTab(value);
+		     navigate(`/ontologies/${ontologyId}/${value}?${searchParams}`)
                   }}
                 >
                   <Tab
@@ -213,17 +211,17 @@ export default function OntologyPage({
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
+                {tab !== "classes" || ontology.getNumClasses() > 0 ? (
                   <div className="py-2 mb-1 flex justify-between">
                     <div>
                       <button
-                        disabled={currentTab === "individuals"}
+                        disabled={tab === "individuals"}
                         className={`font-bold mr-3 ${
                           viewMode === "tree"
                             ? "button-primary-active"
                             : "button-primary"
                         }`}
-                        onClick={() => setViewMode("tree")}
+                        onClick={() => setSearchParams(params => { params.set('viewMode', 'tree'); return params; })}
                       >
                         <div className="flex gap-2">
                           <AccountTree />
@@ -236,7 +234,7 @@ export default function OntologyPage({
                             ? "button-primary-active"
                             : "button-primary"
                         }`}
-                        onClick={() => setViewMode("list")}
+                        onClick={() => setSearchParams(params => { params.set('viewMode', 'list'); return params; })}
                       >
                         <div className="flex gap-2">
                           <FormatListBulletedIcon />
@@ -247,11 +245,11 @@ export default function OntologyPage({
                   </div>
                 ) : null}
                 {viewMode === "list" ? (
-                  <EntityList ontologyId={ontologyId} entityType={currentTab} />
+                  <EntityList ontologyId={ontologyId} entityType={tab} />
                 ) : (
                   <EntityTree
                     ontology={ontology}
-                    entityType={currentTab}
+                    entityType={tab}
                     lang={lang}
                   />
                 )}
