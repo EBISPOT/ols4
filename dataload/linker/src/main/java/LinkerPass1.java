@@ -192,8 +192,9 @@ public class LinkerPass1 {
 
         String iri = null;
         JsonElement label = null;
-	Set<String> definedBy = new HashSet<>();
-	Set<String> types = null;
+		JsonElement curie = null;
+		Set<String> definedBy = new HashSet<>();
+		Set<String> types = null;
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
@@ -202,7 +203,9 @@ public class LinkerPass1 {
                 iri = jsonReader.nextString();
             } else if(key.equals("label")) {
                 label = jsonParser.parse(jsonReader);
-            } else if(key.equals("type")) {
+			} else if(key.equals("curie")) {
+				curie = jsonParser.parse(jsonReader);
+			} else if(key.equals("type")) {
                 types = gson.fromJson(jsonReader, Set.class);
 			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
@@ -231,6 +234,7 @@ public class LinkerPass1 {
         entityDefinition.ontologyId = ontologyId;
         entityDefinition.entityTypes = types;
         entityDefinition.label = label;
+		entityDefinition.curie = curie;
 
         EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);
 
