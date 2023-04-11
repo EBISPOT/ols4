@@ -3,16 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.ac.ebi.spot</groupId>
-    <artifactId>ols4-dataload</artifactId>
+    <artifactId>ols4-dataload-extras</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-		<module>predownloader</module>
-		<module>rdf2json</module>
-		<module>linker</module>
-		<module>json2neo</module>
-		<module>extras</module>
+		<module>orcid2level</module>
+		<module>json2sssom</module>
     </modules>
 
 </project>
