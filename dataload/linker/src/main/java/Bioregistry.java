@@ -35,6 +35,7 @@ public class Bioregistry {
 
     JsonObject theRegistry;
     Map<String, JsonObject> prefixToDatabase = new HashMap<>();
+    Map<String, String> iriPrefixToDatabase = new HashMap<>();
     Map<String, Pattern> patterns = new HashMap<>();
 
     public Bioregistry() {
@@ -69,6 +70,12 @@ public class Bioregistry {
                     prefixToDatabase.put(norm(synonym.getAsString()), db);
                 }
             }
+            
+            JsonElement uriFormat = db.get("uri_format");
+            if (uriFormat != null && uriFormat.endsWith("$1) {
+                String uriPrefix = uriFormat.substring(0, uriFormat.length() - 2);                              
+                iriPrefixToDatabase.put(uriPrefix, entry.getKey());                                                                        
+            }  
         }
 
     }
@@ -106,7 +113,22 @@ public class Bioregistry {
 
         return uriFormat.getAsString().replace("$1", id);
     }
-
+                                                        
+    public String getCurieForUrl(String url) {
+        // has known issues with overlapping prefixes, should sort entry set from longest to shortest
+        // alternatively, needs to be re-implemented, with a more efficient trie data structure that
+        // deals with this implicitly
+        for (var entry : iriPrefixToDatabase.entrySet()) {
+          String key = entry.getKey();
+          if (url.startsWith(key)) {
+              // get everything following the 
+              String local_unique_identifier = url.substring(key.length(), url.length());
+              return entry.getValue() + ":" + local_unique_identifier;
+          }
+        }
+        return null;
+    }
+    
     private static String norm(String s) {
         // see https://github.com/biopragmatics/bioregistry/blob/a7424ef4a0d22eaca61d3a86c6175e2059e9c855/src/bioregistry/utils.py#L128-L133
         s = s.toLowerCase(Locale.ROOT);
