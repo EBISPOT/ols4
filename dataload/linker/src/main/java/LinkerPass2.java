@@ -201,82 +201,94 @@ public class LinkerPass2 {
                 continue;
             }
 
+            // The string wasn't in any ontology. Maybe bioregistry can turn it into a curie?
+            String curie = bioregistry.getCurieForUrl(str);
 
-	    // maybe it's a CURIE?
-		if (str.matches("^[A-z0-9]+:[A-z0-9]+$")) {
+            if(curie == null) {
+                // or maybe the string itself is a curie?
+                if (str.matches("^[A-z0-9]+:[A-z0-9]+$")) {
+                    curie = str;
+                }
+            }
 
-			boolean foundCurieMatch = false;
+            if (curie != null) {
 
-			String databaseId = str.substring(0, str.indexOf(':'));
-			String entryId = str.substring(str.indexOf(':') + 1);
+                boolean foundCurieMatch = false;
 
-			// The databaseId might be the preferredPrefix of an ontology in OLS
-			Set<String> ontologyIds = pass1Result.preferredPrefixToOntologyIds.get(databaseId);
-			if (ontologyIds != null) {
-				for (String curieOntologyId : ontologyIds) {
-					Set<String> ontologyBaseUris = pass1Result.ontologyIdToBaseUris
-							.get(curieOntologyId);
-					if (ontologyBaseUris != null) {
-						for (String ontologyBaseUri : ontologyBaseUris) {
-							String iri = ontologyBaseUri + entryId;
-							EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-									.get(iri);
+                String databaseId = curie.substring(0, curie.indexOf(':'));
+                String entryId = curie.substring(curie.indexOf(':') + 1);
 
-							if (curieIriMapping != null) {
-								foundCurieMatch = true;
-								jsonWriter.name(str);
-								jsonWriter.beginObject();
-								jsonWriter.name("iri");
-								jsonWriter.value(iri);
-								writeIriMapping(jsonWriter, curieIriMapping,
-										ontologyId);
-								break;
-							}
-						}
+                // The databaseId might be the preferredPrefix of an ontology in OLS
+                Set<String> ontologyIds = pass1Result.preferredPrefixToOntologyIds.get(databaseId);
+                if (ontologyIds != null) {
+                    for (String curieOntologyId : ontologyIds) {
+                        Set<String> ontologyBaseUris = pass1Result.ontologyIdToBaseUris
+                                .get(curieOntologyId);
+                        if (ontologyBaseUris != null) {
+                            for (String ontologyBaseUri : ontologyBaseUris) {
+                                String iri = ontologyBaseUri + entryId;
+                                EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
+                                        .get(iri);
 
-						if(foundCurieMatch)
-							break;
-					}
-				}
-			}
+                                if (curieIriMapping != null) {
+                                    foundCurieMatch = true;
+                                    jsonWriter.name(str);
+                                    jsonWriter.beginObject();
+                                    jsonWriter.name("iri");
+                                    jsonWriter.value(iri);
+                                    writeIriMapping(jsonWriter, curieIriMapping,
+                                            ontologyId);
+                                    break;
+                                }
+                            }
 
-			CurieMapResult curieMapping = mapCurie(databaseId, entryId);
+                            if(foundCurieMatch)
+                                break;
+                        }
+                    }
+                }
 
-			if (curieMapping != null) {
+                CurieMapResult curieMapping = mapCurie(databaseId, entryId);
 
-				// It was a CURIE which we were able to map.
+                if (curieMapping != null) {
 
-				// Maybe the URL the CURIE mapped to maps to the IRI an entity in OLS?
-				EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-						.get(curieMapping.url);
+                    // It was a CURIE which we were able to map.
 
-				if (!foundCurieMatch) {
-					jsonWriter.name(str);
-					jsonWriter.beginObject();
-				}
+                    // Maybe the URL the CURIE mapped to maps to the IRI an entity in OLS?
+                    EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
+                            .get(curieMapping.url);
 
-				jsonWriter.name("url");
-				jsonWriter.value(curieMapping.url);
-				jsonWriter.name("source");
-				jsonWriter.value(curieMapping.source);
+                    if (!foundCurieMatch) {
+                        jsonWriter.name(str);
+                        jsonWriter.beginObject();
+                    }
 
-				// If we didn't already write a mapping for an IRI and the URL maps to
-				// an entity in OLS, write that.
-				if ((!foundCurieMatch) && curieIriMapping != null) {
+                    jsonWriter.name("url");
+                    jsonWriter.value(curieMapping.url);
+                    jsonWriter.name("source");
+                    jsonWriter.value(curieMapping.source);
 
-					jsonWriter.name("iri");
-					jsonWriter.value(curieMapping.url);
+                    // If we didn't already write a mapping for an IRI and the URL maps to
+                    // an entity in OLS, write that.
+                    if ((!foundCurieMatch) && curieIriMapping != null) {
 
-					writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
-				}
+                        jsonWriter.name("iri");
+                        jsonWriter.value(curieMapping.url);
 
-				foundCurieMatch = true;
-			}
+                        writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
 
-			if (foundCurieMatch)
-				jsonWriter.endObject();
+                    } else {
+                        jsonWriter.name("curie");
+                        jsonWriter.value(curie);
+                    }
 
-		}
+                    foundCurieMatch = true;
+                }
+
+                if (foundCurieMatch)
+                    jsonWriter.endObject();
+
+            }
 
         // No match as an IRI or as a CURIE. Look in LevelDB (for ORCIDs etc.)
             if(leveldb != null) {
@@ -289,9 +301,10 @@ public class LinkerPass2 {
                 }
             }
 
+
         }
 
-        jsonWriter.endObject();
+        jsonWriter.endObject(); // linkedEntities
     }
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
@@ -340,6 +353,8 @@ public class LinkerPass2 {
 
 	    jsonWriter.name("label");
 	    com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
+        jsonWriter.name("curie");
+        com.google.gson.internal.Streams.write(definingOntology.curie, jsonWriter);
 	    jsonWriter.name("type");
         jsonWriter.beginArray();
         for(String type : definingOntology.entityTypes) {
@@ -352,6 +367,8 @@ public class LinkerPass2 {
 
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
+            jsonWriter.name("curie");
+            com.google.gson.internal.Streams.write(defFromThisOntology.curie, jsonWriter);
             jsonWriter.name("type");
             jsonWriter.beginArray();
             for(String type : defFromThisOntology.entityTypes) {
@@ -374,6 +391,8 @@ public class LinkerPass2 {
             jsonWriter.endArray();
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(fallbackDef.label, jsonWriter);
+            jsonWriter.name("curie");
+            com.google.gson.internal.Streams.write(fallbackDef.curie, jsonWriter);
         }
     }
 

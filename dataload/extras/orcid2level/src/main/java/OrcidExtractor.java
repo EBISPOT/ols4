@@ -92,7 +92,7 @@ public class OrcidExtractor {
                                 String givenName = xpath.evaluate("/*[local-name()='record']/*[local-name()='person']/*[local-name()='name']/*[local-name()='given-names']/text()", doc);
                                 String familyName = xpath.evaluate("/*[local-name()='record']/*[local-name()='person']/*[local-name()='name']/*[local-name()='family-name']/text()", doc);
 
-                                db.put(uri, "{\"source\":\"ORCID\",\"url\":\"" + uri + "\",\"label\":{\"type\":\"literal\",\"value\":\"" + familyName + ", " + givenName + "\"}}");
+                                db.put(uri, "{\"source\":\"ORCID\",\"url\":\"" + uri + "\",\"label\":{\"type\":[\"literal\"],\"value\":\"" + familyName + ", " + givenName + "\"}}");
 
                                 ++ n;
 
