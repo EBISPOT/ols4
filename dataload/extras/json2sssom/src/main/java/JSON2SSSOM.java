@@ -105,6 +105,14 @@ public class JSON2SSSOM {
         if(exactMatch != null) {
             writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, writer);
         }
+        JsonElement hasDbXref = entity.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
+        if(hasDbXref != null) {
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, writer);
+        }
+//        JsonElement equivalentClass = entity.get("http://www.w3.org/2002/07/owl#equivalentClass");
+//        if(equivalentClass != null) {
+//            writeEquivalentClassMappingsForEntity(entity, equivalentClass, writer);
+//        }
     }
 
     public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, CSVPrinter writer) throws IOException {
@@ -122,10 +130,10 @@ public class JSON2SSSOM {
             List<String> types = jsonArrayToStrings(exactMatchObj.getAsJsonArray("type"));
             if(types.contains("reification")) {
                 JsonElement value = exactMatchObj.get("value");
-                writeMappingsForEntity(entity, "skos:exactMatch", value, exactMatchObj, writer);
+                writeMappingsForEntity(entity, predicate, value, exactMatchObj, writer);
             } else if(types.contains("literal")) {
                 JsonElement value = exactMatchObj.get("value");
-                writeMappingsForEntity(entity, "skos:exactMatch", value, null, writer);
+                writeMappingsForEntity(entity, predicate, value, null, writer);
             }
         } else if(mappingValue.isJsonPrimitive()) {
 
@@ -137,7 +145,11 @@ public class JSON2SSSOM {
             JsonObject linkedEntity = linkedEntities.getAsJsonObject(value);
 
             if(linkedEntity == null) {
-                return; // TODO
+                return;
+            }
+
+            if(!linkedEntity.has("curie")) {
+                return;
             }
 
             String[] record = new String[tsvHeader.size()];
@@ -151,8 +163,7 @@ public class JSON2SSSOM {
                         record[i] = predicate;
                         break;
                     case "object_id":
-                        // need linker to populate curies
-                        record[i] = value;
+                        record[i] = getFirstStringValue(linkedEntity.get("curie"));
                         break;
                     case "mapping_justification":
                         break;
@@ -177,46 +188,59 @@ public class JSON2SSSOM {
         }
     }
 
-    public static Map<String,Map<String,JsonElement>> loadOntologyConfigs(String jsonFilename) throws IOException {
+//    public static void writeEquivalentClassMappingsForEntity(JsonObject entity, JsonElement mappingValue, CSVPrinter writer) throws IOException {
+//
+//        if(mappingValue.isJsonArray()) {
+//            for(JsonElement entry : mappingValue.getAsJsonArray()) {
+//                if(entry.isJsonObject()) {
+//                    writeEquivalentClassMappingsForEntity(entity, entry.getAsJsonObject(), writer);
+//                }
+//            }
+//            return;
+//        }
+//
+//    }
 
-        Map<String,Map<String,JsonElement>> res = new LinkedHashMap<>();
-        JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(jsonFilename)));
-
-        reader.beginObject();
-
-        while(reader.peek() != JsonToken.END_OBJECT) {
-            String name = reader.nextName();
-            if(name.equals("ontologies")) {
-                reader.beginArray();
-
-                while(reader.peek() != JsonToken.END_ARRAY) {
-
-                    reader.beginObject();
-
-                    Map<String,JsonElement> ontology = new LinkedHashMap<>();
-
-                    while(reader.peek() != JsonToken.END_OBJECT) {
-                        String propName = reader.nextName();
-
-                        if(propName.equals("classes") || propName.equals("properties") || propName.equals("individuals")) {
-                            reader.skipValue();
-                        } else {
-                            ontology.put(propName, jsonParser.parse(reader));
-                        }
-                    }
-
-                    res.put(ontology.get("ontologyId").getAsString(), ontology);
-
-                    reader.endObject();
-                }
-
-                reader.endArray();
-            }
-        }
-        reader.endObject();
-
-        return res;
-    }
+//    public static Map<String,Map<String,JsonElement>> loadOntologyConfigs(String jsonFilename) throws IOException {
+//
+//        Map<String,Map<String,JsonElement>> res = new LinkedHashMap<>();
+//        JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(jsonFilename)));
+//
+//        reader.beginObject();
+//
+//        while(reader.peek() != JsonToken.END_OBJECT) {
+//            String name = reader.nextName();
+//            if(name.equals("ontologies")) {
+//                reader.beginArray();
+//
+//                while(reader.peek() != JsonToken.END_ARRAY) {
+//
+//                    reader.beginObject();
+//
+//                    Map<String,JsonElement> ontology = new LinkedHashMap<>();
+//
+//                    while(reader.peek() != JsonToken.END_OBJECT) {
+//                        String propName = reader.nextName();
+//
+//                        if(propName.equals("classes") || propName.equals("properties") || propName.equals("individuals")) {
+//                            reader.skipValue();
+//                        } else {
+//                            ontology.put(propName, jsonParser.parse(reader));
+//                        }
+//                    }
+//
+//                    res.put(ontology.get("ontologyId").getAsString(), ontology);
+//
+//                    reader.endObject();
+//                }
+//
+//                reader.endArray();
+//            }
+//        }
+//        reader.endObject();
+//
+//        return res;
+//    }
 
     private static List<String> jsonArrayToStrings(JsonArray arr) {
         String[] strs = new String[arr.size()];
