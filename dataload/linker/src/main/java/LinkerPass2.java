@@ -279,7 +279,7 @@ public class LinkerPass2 {
 
                     } else {
                         jsonWriter.name("curie");
-                        jsonWriter.value(str);
+                        jsonWriter.value(curie);
                     }
 
                     foundCurieMatch = true;
