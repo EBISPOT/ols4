@@ -8,6 +8,7 @@ import EntityPage from "./pages/ontologies/entities/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
 import Search from "./pages/search/Search";
+import Downloads from "./pages/Downloads";
 
 class App extends React.Component {
   render() {
@@ -63,6 +64,7 @@ class App extends React.Component {
 
           <Route path={`/help`} element={<Help />} />
           <Route path={`/about`} element={<About />} />
+          <Route path={`/downloads`} element={<Downloads />} />
         </Routes>
         <Footer />
       </BrowserRouter>

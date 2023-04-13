@@ -80,6 +80,18 @@ export default function Header({
                 About
               </li>
             </Link>
+            <Link to={`/downloads`}>
+              <li
+                role="menuitem"
+                className={`rounded-r-md px-4 py-3 ${
+                  section === "downloads"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
+                }`}
+              >
+                Downloads
+              </li>
+            </Link>
           </ul>
         </nav>
       </div>
