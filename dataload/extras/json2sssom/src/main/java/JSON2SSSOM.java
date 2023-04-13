@@ -97,6 +97,8 @@ public class JSON2SSSOM {
             }
         }
         reader.endObject();
+
+        writer.close(true);
     }
 
     public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer) throws IOException {
