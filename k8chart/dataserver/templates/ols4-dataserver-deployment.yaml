@@ -25,4 +25,4 @@ spec:
       volumes:
       - name: {{.Release.Name}}-data
         persistentVolumeClaim:
-          claimName: {{.Release.Name}}-data
+          claimName: {{.Release.Name}}-pvc
