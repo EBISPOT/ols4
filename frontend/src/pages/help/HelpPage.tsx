@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Header from "../../components/Header";
 import HelpSection from "./HelpSection";
 import {Link} from "react-router-dom";
-import {Home} from "@mui/icons-material";
+import {Source} from "@mui/icons-material";
 
 export default function Help() {
   document.title = "Ontology Lookup Service (OLS)";
@@ -15,7 +15,7 @@ export default function Help() {
               <Link to={process.env.REACT_APP_APIURL + "swagger-ui/index.html"} target="_blank">
                   <button className="button-secondary font-bold self-center">
                       <div className="flex gap-2">
-                          <Home />
+                          <Source />
                           <div>Swagger Documentation</div>
                       </div>
                   </button>
