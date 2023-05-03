@@ -14,18 +14,18 @@ spec:
       labels:
         app: {{ .Release.Name }}-neo4j
     spec:
+      volumes:
+        - name: {{ .Release.Name }}-neo4j-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-neo4j-pvc
       containers:
         - name: neo4j
-          image: neo4j:4.4.9-community
+          image: ghcr.io/ebispot/ols4-neo4j:4.4.9-community
+          volumeMounts:
+            - mountPath: "/data"
+              name: {{ .Release.Name }}-neo4j-storage
           command: ["/bin/bash", "-c"]
           args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
-          resources:
-              requests:
-                cpu: 4
-                memory: 16G
-                ephemeral-storage: 130Gi
-              limits:
-                ephemeral-storage: 130Gi
           env:
             - name: NEO4J_HEAP_MEMORY
               value: 10g

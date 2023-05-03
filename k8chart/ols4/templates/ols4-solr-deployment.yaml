@@ -14,27 +14,25 @@ spec:
       labels:
         app: {{ .Release.Name }}-solr
     spec:
-      #securityContext:
-        #runAsUser: 0
-        #runAsGroup: 0
-        #fsGroup: 0
-        #fsGroupChangePolicy: Always
+      volumes:
+        - name: {{ .Release.Name }}-solr-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-solr-pvc
+      securityContext:
+        fsGroup: 8983
       containers:
         - name: solr
-          image: solr:9.0.0
-          resources:
-            requests:
-              ephemeral-storage: 40Gi
-            limits:
-              ephemeral-storage: 40Gi
-          #image: ebispot/solr9-ubuntu18
+          image: ghcr.io/ebispot/ols4-solr:9.0.0
+          volumeMounts:
+            - mountPath: "/data"
+              name: {{ .Release.Name }}-solr-storage
           command: ["/bin/bash", "-c"]
-          args: ["echo Downloading data && mkdir /tmp/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /tmp/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           env:
             - name: SOLR_TARBALL_URL
               value: {{.Values.solrTarballUrl}}
             - name: SOLR_HOME
-              value: /tmp/solr/
+              value: /data
           ports:
             - containerPort: 8983
 
