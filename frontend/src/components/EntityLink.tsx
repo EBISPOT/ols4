@@ -119,7 +119,7 @@ export default function EntityLink({
               linkedEntity.type
             )}/${encodedIri}?lang=${lang}`}
           >
-            {iri}
+            {label}
           </Link>
           {linkedEntity.definedBy!.map((definedBy) => {
             return (
@@ -144,7 +144,7 @@ export default function EntityLink({
             className="link-default"
             to={`/search?iri=${encodedIri}&lang=${lang}`}
           >
-            {iri}
+            {label}
           </Link>
           <Link to={`/search?iri=${encodedIri}`}>
             <span className="link-ontology px-2 py-0.5 rounded-md text-sm text-white ml-1 whitespace-nowrap">
@@ -185,7 +185,7 @@ export default function EntityLink({
               className="link-default"
               to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
             >
-              {iri}
+              {label}
             </Link>
             <Link
               to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
@@ -216,14 +216,14 @@ export default function EntityLink({
 }
 
 function pluraliseType(type) {
-	for(let t of asArray(type)) {
-		let plural = { class: "classes",
-		individual: "individuals",
-		property: "properties",
-		ontology: "ontologies",
-		}[t];
+  for (let t of asArray(type)) {
+    let plural = {
+      class: "classes",
+      individual: "individuals",
+      property: "properties",
+      ontology: "ontologies",
+    }[t];
 
-		if(plural)
-			return plural
-	}
+    if (plural) return plural;
+  }
 }
