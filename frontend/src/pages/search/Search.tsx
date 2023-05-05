@@ -4,7 +4,7 @@ import {
   Link,
   useNavigate,
   useParams,
-  useSearchParams
+  useSearchParams,
 } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
@@ -31,11 +31,9 @@ export default function Search() {
   const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-  //   const [open, setOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const ontologyFacets =
@@ -223,6 +221,14 @@ export default function Search() {
                   rowsPerPage={rowsPerPage}
                 />
                 {results.map((entity: Entity) => {
+                  const appearsIn = entity.getAppearsIn().filter(
+                    (ontId) =>
+                      ontId !== entity.getOntologyId() &&
+                      entity
+                        .getDefinedBy()
+                        .filter((ontId) => ontId !== entity.getOntologyId())
+                        .indexOf(ontId) === -1
+                  );
                   return (
                     <div key={randomString()} className="my-4">
                       <div className="mb-1 leading-loose truncate">
@@ -262,6 +268,61 @@ export default function Search() {
                             {entity.getOntologyId()}
                           </span>
                         </Link>
+                      </div>
+                      <div className="leading-loose">
+                        {appearsIn && appearsIn.length > 0 ? (
+                          <div
+                            className="mb-2"
+                            style={{ maxWidth: "100%", inlineSize: "100%" }}
+                          >
+                            <span className="font-bold mr-2">
+                              Also appears in:
+                            </span>
+                            <>
+                              {appearsIn.map((appearsIn) => {
+                                return (
+                                  <Link
+                                    className="my-2"
+                                    style={{ display: "inline-block" }}
+                                    to={
+                                      "/ontologies/" +
+                                      appearsIn +
+                                      `/${entity.getTypePlural()}/` +
+                                      encodeURIComponent(
+                                        encodeURIComponent(entity.getIri())
+                                      )
+                                    }
+                                  >
+                                    <span
+                                      className="link-ontology px-2 py-1 rounded-md text-sm font-bold text-white uppercase mr-1"
+                                      title={appearsIn.toUpperCase()}
+                                    >
+                                      {appearsIn}
+                                    </span>
+                                  </Link>
+                                );
+                              })}
+                              &nbsp;
+                              {appearsIn.length > 10 ? (
+                                <Link
+                                  to={
+                                    "/ontologies/" +
+                                    entity.getOntologyId() +
+                                    "/" +
+                                    entity.getTypePlural() +
+                                    "/" +
+                                    encodeURIComponent(
+                                      encodeURIComponent(entity.getIri())
+                                    )
+                                  }
+                                  className="link-default italic"
+                                >
+                                  +
+                                </Link>
+                              ) : null}
+                            </>
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   );
