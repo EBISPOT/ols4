@@ -221,7 +221,8 @@ export default function Search() {
                   rowsPerPage={rowsPerPage}
                 />
                 {results.map((entity: Entity) => {
-                  const appearsIn = entity.getAppearsIn().filter(
+                  const MAX_DISPLAY_APPEARS_IN = 10;
+                  const appearsInList = entity.getAppearsIn().filter(
                     (ontId) =>
                       ontId !== entity.getOntologyId() &&
                       entity
@@ -229,6 +230,15 @@ export default function Search() {
                         .filter((ontId) => ontId !== entity.getOntologyId())
                         .indexOf(ontId) === -1
                   );
+                  let appearsInCopy: string[] = [];
+                  if (appearsInList.length > MAX_DISPLAY_APPEARS_IN) {
+                    appearsInCopy = appearsInList.slice(
+                      0,
+                      MAX_DISPLAY_APPEARS_IN
+                    );
+                  } else {
+                    appearsInCopy = appearsInList.slice();
+                  }
                   return (
                     <div key={randomString()} className="my-4">
                       <div className="mb-1 leading-loose truncate">
@@ -270,7 +280,7 @@ export default function Search() {
                         </Link>
                       </div>
                       <div className="leading-loose">
-                        {appearsIn && appearsIn.length > 0 ? (
+                        {appearsInCopy && appearsInCopy.length > 0 ? (
                           <div
                             className="mb-2"
                             style={{ maxWidth: "100%", inlineSize: "100%" }}
@@ -279,7 +289,7 @@ export default function Search() {
                               Also appears in:
                             </span>
                             <>
-                              {appearsIn.map((appearsIn) => {
+                              {appearsInCopy.map((appearsIn) => {
                                 return (
                                   <Link
                                     className="my-2"
@@ -303,7 +313,7 @@ export default function Search() {
                                 );
                               })}
                               &nbsp;
-                              {appearsIn.length > 10 ? (
+                              {appearsInList.length > MAX_DISPLAY_APPEARS_IN ? (
                                 <Link
                                   to={
                                     "/ontologies/" +
@@ -315,7 +325,7 @@ export default function Search() {
                                       encodeURIComponent(entity.getIri())
                                     )
                                   }
-                                  className="link-default italic"
+                                  className="link-default"
                                 >
                                   +
                                 </Link>
