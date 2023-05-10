@@ -4,6 +4,7 @@ metadata:
   name: ols4-solr-pvc
 spec:
   storageClassName: local-storage
+  volumeName: ols4-solr-pv
   accessModes:
     - ReadWriteOnce
   resources:

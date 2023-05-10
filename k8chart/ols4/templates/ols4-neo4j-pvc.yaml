@@ -4,6 +4,7 @@ metadata:
   name: ols4-neo4j-pvc
 spec:
   storageClassName: local-storage
+  volumeName: ols4-neo4j-pv
   accessModes:
     - ReadWriteOnce
   resources:
