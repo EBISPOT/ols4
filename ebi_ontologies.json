@@ -1,0 +1,1272 @@
+{
+  "ontologies": [
+    {
+                  "id": "slm",
+		  "title": "SwissLipids",
+		  "description": "SwissLipids is a curated resource that provides information about known lipids, including lipid structure, metabolism, interactions, and subcellular and tissue localization. Information is curated from peer-reviewed literature and referenced using established ontologies, and provided with full provenance and evidence codes for curated assertions.",
+		  "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/swisslipids.ttl",
+		  "preferredPrefix": "SLM",
+                  "base_uri": ["https://swisslipids.org/rdf/SLM_"]
+          },
+	            {
+                  "id": "oboInOwl",
+                  "ontology_purl": "https://raw.githubusercontent.com/geneontology/go-ontology/master/contrib/oboInOwl",
+                  "base_uri": ["http://www.geneontology.org/formats/oboInOwl#"]
+          },
+	      {
+      "id": "cao",
+      "ontology_purl": "https://champ.stuchalk.domains.unf.edu/images/ontology/cao.owl",
+      "base_uri": ["http://champ-project.org/images/ontology/cao.owl#"],
+      "homepage": "https://champ.stuchalk.domains.unf.edu/cao",
+      "mailing_list": "schalk@unf.edu",
+      "title": "The Chemical Analysis Ontology",
+      "preferredPrefix": "CAO",
+      "creator": [
+        "Stuart Chalk"
+      ]
+    },
+	      {
+      "id": "rdfs",
+      "ontology_purl": "https://www.w3.org/2000/01/rdf-schema",
+      "base_uri": ["https://www.w3.org/2000/01/rdf-schema#"]
+    },
+    {
+      "id": "owl",
+      "ontology_purl": "https://www.w3.org/2002/07/owl",
+      "base_uri": ["https://www.w3.org/2002/07/owl#"]
+    },
+    {
+        "id": "skos",
+        "ontology_purl": "http://www.w3.org/TR/skos-reference/skos.rdf",
+        "base_uri": ["http://www.w3.org/2004/02/skos/core#"]
+    },
+    {
+        "id": "dcterms",
+        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf",
+        "base_uri": ["http://purl.org/dc/terms/"]
+    },
+    {
+        "id": "dc",
+        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.rdf",
+        "base_uri": ["http://purl.org/dc/elements/1.1/"]
+    },
+        {
+        "id": "schemaorg_http",
+        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-http.rdf",
+        "base_uri": ["http://schema.org/"]
+    },
+    {
+        "id": "schemaorg_https",
+        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-https.rdf",
+        "base_uri": ["https://schema.org/"]
+    },
+	  {
+		  "id": "uberon",
+		  "preferred_root_term": [
+			  "http://purl.obolibrary.org/obo/UBERON_0000104",
+			  "http://purl.obolibrary.org/obo/UBERON_0001062"
+		  ]
+	  },
+    {
+      "id": "phi",
+      "preferredPrefix": "PHI",
+      "title": "PHI-base Ontology",
+      "description": "Pathogen-Host Interaction database Ontology used by Ensembl",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/PHI_"
+      ],
+      "ontology_purl": "file:/nfs/panda/ensembl/production/ensprod/ontologies/phi/PHI.obo"
+    },
+    {
+      "id": "msio",
+      "preferredPrefix": "MSIO",
+      "title": "Metabolomics Standards Initiative Ontology",
+      "uri": "http://purl.obolibrary.org/obo/msio.owl",
+      "description": "an application ontology for supporting description and annotation of mass-spectrometry and nmr-spectroscopy based metabolomics experiments and fluxomics studies.",
+      "homepage": "https://github.com/MSI-Metabolomics-Standards-Initiative/MSIO",
+      "mailing_list": "https://github.com/MSI-Metabolomics-Standards-Initiative/MSIO/issues",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/MSIO_"
+      ],
+      "reasoner": "NONE",
+      "ontology_purl": "https://raw.githubusercontent.com/MSI-Metabolomics-Standards-Initiative/MSIO/master/releases/latest_release/MSIO-merged-reasoned.owl"
+    },
+    {
+      "id": "dicom",
+      "preferredPrefix": "DICOM",
+      "title": "DICOM Controlled Terminology",
+      "uri": "http://dicom.nema.org/resources/ontology/DCM/",
+      "description": "DICOM Controlled Terminology",
+      "homepage": "http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html",
+      "mailing_list": "dclunie@dclunie.com",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "base_uri": [
+        "http://dicom.nema.org/resources/ontology/DCM/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "ftp://medical.nema.org/MEDICAL/Dicom/Resources/Ontology/DCM/dcm.owl"
+    },
+    {
+      "id": "sdgio",
+      "preferredPrefix": "SDGIO",
+      "title": "Sustainable Development Goals Interface Ontology",
+      "uri": "http://purl.unep.org/sdg/sdgio.owl",
+      "description": "An OBO-compliant ontology representing the entities referenced by the SDGs, their targets, and indicators.",
+      "homepage": "https://github.com/SDG-InterfaceOntology/sdgio",
+      "mailing_list": "https://github.com/SDG-InterfaceOntology/sdgio/issues",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOWL#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.unep.org/sdg/SDGIO_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "http://purl.unep.org/sdg/sdgio.owl"
+    },
+    {
+      "id": "ensemblglossary",
+      "preferredPrefix": "ENSGLOSS",
+      "title": "Ensembl Glossary",
+      "uri": "http://ensembl.org/glossary",
+      "description": "The Ensembl glossary lists the terms, data types and file types that are used in Ensembl and describes how they are used.",
+      "homepage": "http://ensembl.org/glossary",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://ensembl.org/glossary/ENSGLOSS_"
+      ],
+      "reasoner": "NONE",
+      "ontology_purl": "https://raw.githubusercontent.com/Ensembl/ensembl-glossary/master/ensembl-glossary.owl"
+    },
+    {
+      "id": "efo",
+      "preferredPrefix": "EFO",
+      "title": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo",
+      "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
+      "homepage": "http://www.ebi.ac.uk/efo",
+      "mailing_list": "efo-users@lists.sourceforge.net",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://www.ebi.ac.uk/efo/definition"
+      ],
+      "synonym_property": [
+        "http://www.ebi.ac.uk/efo/alternative_term",
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_0002202"
+      ],
+      "hidden_property": [
+        "http://www.ebi.ac.uk/efo/has_flag"
+      ],
+      "base_uri": [
+        "http://www.ebi.ac.uk/efo/EFO_"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "http://www.ebi.ac.uk/efo/efo.owl"
+    },
+    {
+      "id": "ordo",
+      "preferredPrefix": "ORDO",
+      "description": "The Orphanet Rare Disease ontology (ORDO) is jointly developed by Orphanet and the EBI to provide a structured vocabulary for rare diseases capturing relationships between diseases, genes and other relevant features which will form a useful resource for the computational analysis of rare diseases. It derived from the Orphanet database (www.orpha.net ) , a multilingual database dedicated to rare diseases populated from literature and validated by international experts. It integrates a nosology (classification of rare diseases), relationships (gene-disease relations, epiemological data) and connections with other terminologies (MeSH, UMLS, MedDRA),databases (OMIM, UniProtKB, HGNC, ensembl, Reactome, IUPHAR, Geantlas) or classifications (ICD10).",
+      "title": "Orphanet Rare Disease Ontology",
+      "uri": "http://www.orpha.net/ontology/orphanet.owl",
+      "definition_property": [
+        "http://www.ebi.ac.uk/efo/definition"
+      ],
+      "synonym_property": [
+        "http://www.ebi.ac.uk/efo/alternative_term"
+      ],
+      "hidden_property": [
+        "http://www.ebi.ac.uk/efo/has_flag"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+	"http://www.orpha.net/ORDO/Orphanet_C021"
+      ],
+      "base_uri": [
+        "http://www.orpha.net/ORDO/Orphanet_"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "http://www.orphadata.org/data/ORDO/ordo_orphanet.owl"
+    },
+    {
+      "id": "teddy",
+      "preferredPrefix": "TEDDY",
+      "description": "TEDDY is an ontology for dynamical behaviours, observable dynamical phenomena, and control elements of bio-models and biological systems in Systems and Synthetic Biology.",
+      "title": "Terminology for Description of Dynamics",
+      "uri": "http://identifiers.org/teddy/",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "base_uri": [
+        "http://identifiers.org/teddy/TEDDY_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "http://www.biomodels.net/teddy/TEDDY"
+    },
+    {
+      "id": "edam",
+      "preferredPrefix": "EDAM",
+      "title": "Ontology of bioinformatics topics, operations, identifiers, and formats",
+      "uri": "http://edamontology.org",
+      "description": "EDAM is a simple ontology of well established, familiar concepts that are prevalent within bioinformatics, including types of data and data identifiers, data formats, operations and topics. EDAM provides a set of terms with synonyms and definitions - organised into an intuitive hierarchy for convenient use.",
+      "homepage": "http://edamontology.org",
+      "mailing_list": "edam@elixir-dk.org",
+      "definition_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasDefinition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+      ],
+      "base_uri": [
+        "http://edamontology.org/data_",
+        "http://edamontology.org/topic_",
+        "http://edamontology.org/format_",
+        "http://edamontology.org/identifier_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/edamontology/edamontology/master/releases/EDAM.owl"
+    },
+    {
+      "id": "cco",
+      "preferredPrefix": "CCO",
+      "title": "Cell Cycle Ontology",
+      "uri": "http://purl.obolibrary.org/obo/cco",
+      "description": "The Cell Cycle Ontology extends existing ontologies for cell cycle knowledge building a resource that integrates and manages knowledge about the cell cycle components and regulatory aspects.",
+      "homepage": "http://www.semantic-systems-biology.org/apo",
+      "mailing_list": "vladimir.n.mironov@gmail.com",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/CCO_"
+      ],
+      "oboSlims": true,
+      "ontology_purl": "http://www.bio.ntnu.no/ontology/CCO/cco.owl"
+    },
+    {
+      "id": "rexo",
+      "preferredPrefix": "ReXO",
+      "title": "Regulation of Gene Expression Ontology",
+      "uri": "http://www.bio.ntnu.no/ontology/ReXO/rexo.owl",
+      "description": "Regulation of Gene Expression",
+      "homepage": "http://www.semantic-systems-biology.org/apo",
+      "mailing_list": "vladimir.n.mironov@gmail.com",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/ReXO_"
+      ],
+      "oboSlims": true,
+      "ontology_purl": "http://www.bio.ntnu.no/ontology/ReXO/rexo.rdf"
+    },
+    {
+      "id": "reto",
+      "preferredPrefix": "ReTO",
+      "title": "Regulation of Transcription Ontology",
+      "uri": "http://www.bio.ntnu.no/ontology/ReTO/reto.owl",
+      "description": "Regulation of Transcription",
+      "homepage": "http://www.semantic-systems-biology.org/apo",
+      "mailing_list": "vladimir.n.mironov@gmail.com",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/ReTO_"
+      ],
+      "oboSlims": true,
+      "ontology_purl": "http://www.bio.ntnu.no/ontology/ReTO/reto.rdf"
+    },
+    {
+      "id": "gexo",
+      "preferredPrefix": "GeXO",
+      "title": "Gene Expression Ontology",
+      "uri": "http://www.bio.ntnu.no/ontology/GeXO/gexo.owl",
+      "description": "Gene Expression Ontology",
+      "homepage": "http://www.semantic-systems-biology.org/apo",
+      "mailing_list": "vladimir.n.mironov@gmail.com",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/GeXO_"
+      ],
+      "oboSlims": true,
+      "ontology_purl": "http://www.bio.ntnu.no/ontology/GeXO/gexo.rdf"
+    },
+    {
+      "id": "cmpo",
+      "preferredPrefix": "CMPO",
+      "title": "Cellular Microscopy Phenotype Ontology",
+      "uri": "http://www.ebi.ac.uk/cmpo",
+      "description": "CMPO is a species neutral ontology for describing general phenotypic observations relating to the whole cell, cellular components, cellular processes and cell populations.",
+      "homepage": "http://www.ebi.ac.uk/cmpo",
+      "mailing_list": "jupp@ebi.ac.uk",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://www.ebi.ac.uk/cmpo/CMPO_"
+      ],
+      "oboSlims": true,
+      "reasoner": "EL",
+      "ontology_purl": "http://www.ebi.ac.uk/cmpo/cmpo.owl"
+    },
+    {
+      "id": "enm",
+      "preferredPrefix": "ENM",
+      "title": "eNanoMapper Ontology",
+      "uri": "http://enanomapper.github.io/ontologies/enanomapper.owl",
+      "description": "The eNanoMapper project (www.enanomapper.net) is creating a pan-European computational infrastructure for toxicological data management for ENMs, based on semantic web standards and ontologies. \u003e This ontology is an application ontology targeting the full domain of nanomaterial safety assessment. It re-uses several other ontologies including the NPO, CHEMINF, ChEBI, and ENVO. ",
+      "homepage": "http://www.enanomapper.net/",
+      "mailing_list": "https://github.com/enanomapper/ontologies",
+      "definition_property": [
+        "http://www.ebi.ac.uk/efo/definition",
+        "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://purl.bioontology.org/ontology/npo#definition",
+        "http://purl.obolibrary.org/obo#Definition",
+        "http://purl.org/dc/elements/1.1/description"
+      ],
+      "synonym_property": [
+        "http://www.ebi.ac.uk/efo/alternative_term",
+        "http://purl.obolibrary.org/obo/IAO_0000118"
+      ],
+      "hierarchical_property": [
+        "http://www.bioassayontology.org/bao#BAO_0090002",
+        "http://purl.bioontology.org/ontology/npo#part_of"
+      ],
+      "base_uri": [
+        "http://purl.enanomapper.org/onto/ENM_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "http://enanomapper.github.io/ontologies/enanomapper.owl"
+    },
+    {
+      "id": "atol",
+      "preferredPrefix": "ATOL",
+      "title": "Animal Trait Ontology for Livestock",
+      "uri": "file:/C:/Lea/ontologies/versions%20ATOL/atol_v3.0.obo",
+      "description": "ATOL (Animal Trait Ontology for Livestock) is an ontology of characteristics defining phenotypes of livestock in their environment (EOL). ATOL aims to: - provide a reference ontology of phenotypic traits of farm animals for the international scientificand educational - communities, farmers, etc.; - deliver this reference ontology in a language which can be used by computers in order to support database management, semantic analysis and modeling; - represent traits as generic as possible for livestock vertebrates; - make the ATOL ontology as operational as possible and closely related to measurement techniques; - structure the ontology in relation to animal production.",
+      "homepage": "http://www.atol-ontology.com",
+      "mailing_list": "pylebail@rennes.inra.fr",
+      "definition_property": [
+        "file:/C:/Lea/ontologies/versions%20ATOL/atol_v3.0.obo#definition"
+      ],
+      "synonym_property": [
+        "file:/C:/Lea/ontologies/versions%20ATOL/atol_v3.0.obo#synonymExact"
+      ],
+      "base_uri": [
+        "http://purl.org/obo/owlATOL_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "http://www.atol-ontology.com/public/telechargement/atol.owl"
+    },
+    {
+      "id": "eol",
+      "preferredPrefix": "EOL",
+      "title": "Environment Ontology for Livestock",
+      "uri": "file:/C:/Lea/ontologies/environnement/leo.obo",
+      "description": "L'ontologie EOL décrit les conditions d'environnement des élevages d'animaux domestiques. Elle décrit plus particulièrement les modalités de l'alimentation, de l'environnement, de la structure des élevages et des systèmes d'élevage",
+      "homepage": "http://www.atol-ontology.com",
+      "mailing_list": "pylebail@rennes.inra.fr",
+      "definition_property": [
+        "file:/C:/Lea/ontologies/environnement/leo.obo#definition"
+      ],
+      "synonym_property": [
+        "file:/C:/Lea/ontologies/environnement/leo.obo#synonymExact"
+      ],
+      "base_uri": [
+        "http://purl.org/obo/owlEOL_"
+      ],
+      "ontology_purl": "http://www.atol-ontology.com/public/telechargement/eol.owl"
+    },
+    {
+      "id": "lbo",
+      "preferredPrefix": "LBO",
+      "title": "Livestock Breed Ontology",
+      "uri": "http://bioportal.bioontology.org/ontologies/LBO",
+      "description": "A vocabulary for cattle, chicken, horse, pig, and sheep breeds.",
+      "homepage": "http://bioportal.bioontology.org/ontologies/LBO",
+      "mailing_list": "jreecy@iastate.edu",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOWL#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/LBO_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "http://data.bioontology.org/ontologies/LBO/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb"
+    },
+    {
+      "id": "probonto",
+      "preferredPrefix": "PROBONTO",
+      "title": "Probability Distribution Ontology",
+      "uri": "http://www.probonto.org/ontology",
+      "description": "ProbOnto, is an ontology-based knowledge base of probability distributions, featuring more than eighty uni- and multivariate distributions with their defining functions, characteristics, relationships and reparameterisation formulas.",
+      "homepage": "http://probonto.org",
+      "mailing_list": "probonto.dev@gmail.com",
+      "definition_property": [
+        "http://www.probonto.org/core#0000028"
+      ],
+      "base_uri": [
+        "http://www.probonto.org/core"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/probonto/ontology/master/probonto4ols.owl"
+    },
+    {
+      "id": "pride",
+      "preferredPrefix": "PRIDE",
+      "title": "PRIDE Controlled Vocabulary",
+      "uri": "http://purl.obolibrary.org/obo/pride_cv.obo",
+      "description": "The PRIDE PRoteomics IDEntifications (PRIDE) database is a centralized, standards compliant, public data repository for proteomics data, including protein and peptide identifications, post-translational modifications and supporting spectral evidence.",
+      "homepage": "https://github.com/PRIDE-Utilities/pride-ontology",
+      "mailing_list": "https://github.com/PRIDE-Utilities/pride-ontology/issues",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/def"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOWL#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/PRIDE_"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/pride_cv.obo#part_of"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/PRIDE-Utilities/pride-ontology/master/pride_cv.obo"
+    },
+    {
+      "id": "bao",
+      "preferredPrefix": "BAO",
+      "title": "BioAssay Ontology",
+      "uri": "http://www.bioassayontology.org/bao/bao_complete.owl",
+      "description": "The BioAssay Ontology (BAO) describes biological screening assays and their results including high-throughput screening (HTS) data for the purpose of categorizing assays and data analysis. BAO is an extensible, knowledge-based, highly expressive (currently SHOIQ(D)) description of biological assays making use of descriptive logic based features of the Web Ontology Language (OWL). BAO currently has over 700 classes and also makes use of several other ontologies. It describes several concepts related to biological screening, including Perturbagen, Format, Meta Target, Design, Detection Technology, and Endpoint. Perturbagens are perturbing agents that are screened in an assay; they are mostly small molecules. Assay Meta Target describes what is known about the biological system and / or its components interrogated in the assay (and influenced by the Perturbagen). Meta target can be directly described as a molecular entity (e.g. a purified protein or a protein complex), or indirectly by a biological process or event (e.g. phosphorylation). Format describes the biological or chemical features common to each test condition in the assay and includes biochemical, cell-based, organism-based, and variations thereof. The assay Design describes the assay methodology and implementation of how the perturbation of the biological system is translated into a detectable signal. Detection Technology relates to the physical method and technical details to detect and record a signal. Endpoints are the final HTS results as they are usually published (such as IC50, percent inhibition, etc). BAO has been designed to accommodate multiplexed assays. All main BAO components include multiple levels of sub-categories and specification classes, which are linked via object property relationships forming an expressive knowledge-based representation.",
+      "homepage": "http://bioassayontology.org",
+      "mailing_list": "http://bioassayontology.org/wp/contact-us/",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://www.ebi.ac.uk/efo/definition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://purl.obolibrary.org/obo/IAO_0000118",
+        "http://www.ebi.ac.uk/efo/alternative_term"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://www.bioassayontology.org/bao#"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "http://www.bioassayontology.org/bao/"
+    },
+    {
+      "id": "sio",
+      "preferredPrefix": "SIO",
+      "title": "Semanticscience Integrated Ontology",
+      "uri": "http://semanticscience.org/ontology/sio.owl",
+      "description": "The Semanticscience Integrated Ontology (SIO) provides a simple, integrated ontology of types and relations for rich description of objects, processes and their attributes.",
+      "homepage": "https://github.com/micheldumontier/semanticscience",
+      "mailing_list": "sio-ontology@googlegroups.com",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://purl.org/dc/terms/alternative",
+        "http://purl.org/dc/elements/1.1/alternativeName",
+        "http://purl.org/dc/terms/alternativeName"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://semanticscience.org/resource/SIO_"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl"
+    },
+    {
+      "id": "unimod",
+      "preferredPrefix": "UNIMOD",
+      "title": "Unimod protein modification database for mass spectrometry",
+      "uri": "http://www.unimod.org/obo/unimod.obo",
+      "description": "Unimod is a community supported, comprehensive database of protein modifications for mass spectrometry applications. That is, accurate and verifiable values, derived from elemental compositions, for the mass differences introduced by all types of natural and artificial modifications. Other important information includes any mass change, (neutral loss), that occurs during MS/MS analysis, an d site specificity, (which residues are susceptible to modification and any constraints on the position of the modification within the protein or peptide).",
+      "homepage": "http://www.unimod.org/",
+      "mailing_list": "psidev-ms-vocab@lists.sourceforge.net",
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/UNIMOD_"
+      ],
+      "oboSlims": false,
+      "reasoner": "NONE",
+      "ontology_purl": "http://www.unimod.org/obo/unimod.obo"
+    },
+    {
+      "id": "nmrCV",
+      "preferredPrefix": "NMR",
+      "title": "nuclear magnetic resonance CV",
+      "uri": "http://nmrML.org/nmrCV",
+      "description": "This artefact is an MSI-approved controlled vocabulary primarily developed under COSMOS EU and PhenoMeNal EU governance. The nmrCV is supporting the nmrML XML format with standardized terms. nmrML is a vendor agnostic open access NMR raw data standard. Its primaly role is analogous to the mzCV for the PSI-approved mzML XML format. It uses BFO2.0 as its Top level. This CV was derived from two predecessors (The NMR CV from the David Wishart Group, developed by Joseph Cruz) and the MSI nmr CV developed by Daniel Schober at the EBI.  This simple taxonomy of terms (no DL semantics used) serves the nuclear magnetic resonance markup language (nmrML) with meaningful descriptors to amend the nmrML xml file with CV terms. Metabolomics scientists are encouraged to use this CV to annotrate their raw and experimental context data, i.e. within nmrML. The approach to have an exchange syntax mixed of an xsd and CV stems from the PSI mzML effort. The reason to branch out from an xsd into a CV is, that in areas where the terminology is likely to change faster than the nmrML xsd could be updated and aligned, an externally and decentrallised maintained CV can accompensate for such dynamics in a more flexible way. A second reason for this set-up is that semantic validity of CV terms used in an nmrML XML instance (allowed CV terms, position/relation to each other, cardinality) can be validated by rule-based proprietary validators:  By means of cardinality specifications and XPath expressions defined in an XML mapping file (an instances of the CvMappingRules.xsd ), one can define what ontology terms are allowed in a specific location of the data model.",
+      "homepage": "http://nmrml.org/cv/",
+      "mailing_list": "https://groups.google.com/forum/?hl=en#!forum/nmrml/join",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://www.w3.org/2004/02/skos/core#definition",
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://nmrML.org/nmrCV#NMR"
+      ],
+      "reasoner": "NONE",
+      "ontology_purl": "http://nmrml.org/cv/stable/nmrCV.owl"
+    },
+    {
+      "id": "sbo",
+      "title": "Systems Biology Ontology",
+      "definition_property": [
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ]
+    },
+    {
+      "id": "ro",
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_"
+      ]
+    },
+    {
+      "id": "ncbitaxon",
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_"
+      ]
+    },
+    {
+      "id": "afo",
+      "preferredPrefix": "AFO",
+      "title": "Allotrope Merged Ontology Suite",
+      "description": "Allotrope Merged Ontology Suite",
+      "uri": "http://purl.allotrope.org/voc/afo/merged/REC/2018/11",
+      "base_uri": [
+        "http://purl.allotrope.org/ontologies"
+      ],
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition",
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "http://purl.allotrope.org/voc/afo/latest.xml"
+    },
+    {
+      "id": "hpath",
+      "preferredPrefix": "MC",
+      "title": "Histopathology Ontology",
+      "uri": "https://github.com/Novartis/hpath",
+      "description": "An ontology of histopathological morphologies used by pathologists to classify/categorise animal lesions observed histologically during regulatory toxicology studies. The ontology was developed using real data from over 6000 regulatory toxicology studies donated by 13 companies spanning nine species.",
+      "homepage": "https://github.com/Novartis/hpath",
+      "mailing_list": "https://github.com/Novartis/hpath",
+      "definition_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasDefinition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/MC_"
+      ],
+      "oboSlims": false,
+      "reasoner": "None",
+      "ontology_purl": "https://raw.githubusercontent.com/Novartis/hpath/master/src/hpath.obo"
+    },
+    {
+      "id": "srao",
+      "preferredPrefix": "SRAO",
+      "title": "FAIRsharing Subject Ontology (SRAO)",
+      "uri": "http://www.fairsharing.org/ontology/subject/SRAO.owl",
+      "description": "The FAIRsharing Subject Ontology (SRAO) is an application ontology for the categorization of research disciplines across all research domains, from the humanities to the natural sciences. It utilizes multiple external vocabularies.",
+      "homepage": "https://github.com/FAIRsharing/subject-ontology",
+      "mailing_list": "contact@fairsharing.org",
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000279",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000278",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000269",
+        "http://www.fairsharing.org/ontology/domain/DRAO_0000001",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000276",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000317",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000272",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000292",
+        "http://www.fairsharing.org/ontology/subject/SRAO_0000268"
+      ],
+      "base_uri": [
+        "http://www.fairsharing.org/ontology/subject"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://github.com/FAIRsharing/subject-ontology/raw/master/releases/SRAO.owl"
+    },
+    {
+      "id": "hcao",
+      "preferredPrefix": "HCAO",
+      "title": "Human Cell Atlas Ontology",
+      "uri": "http://ontology.data.humancellatlas.org/ontologies/hcao",
+      "base_uri": [
+        "http://ontology.data.humancellatlas.org/ontologies/HCA_"
+      ],
+      "description": "Application ontology for human cell types, anatomy and development stages for the Human Cell Atlas.",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/ebi-ait/ontology/master/hcao.owl"
+    },
+    {
+      "id": "amphx",
+      "preferredPrefix": "AMPHX",
+      "title": "Amphioxus Development and Anatomy Ontology",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/AMPHX_"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/amphx_ontology/master/amphx.owl"
+    },
+    {
+      "id": "clyh",
+      "preferredPrefix": "CLYH",
+      "title": "Clytia hemisphaerica Development and Anatomy Ontology",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/CLYH_"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/clyh_ontology/master/clyh.owl"
+    },
+    {
+      "id": "idocovid19",
+      "preferredPrefix": "IDO-COVID-19",
+      "title": "The COVID-19 Infectious Disease Ontology",
+      "uri": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-covid-19/master/ontology/ido%20covid-19",
+      "description": "The COVID-19 Infectious Disease Ontology (IDO-COVID-19) is an extension of the Infectious Disease Ontology (IDO) and the Virus Infectious Disease Ontology (VIDO). IDO-COVID-19 follows OBO Foundry guidelines, employs the Basic Formal Ontology as its starting point, and covers epidemiology, classification, pathogenesis, and treatment of terms used to represent infection by the SARS-CoV-2 virus strain, and the associated COVID-19 disease.",
+      "homepage": "https://github.com/infectious-disease-ontology-extensions/ido-covid-19",
+      "mailing_list": "johnbeverley2021@u.northwestern.edu",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/IDO-COVID-19"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-covid-19/master/ontology/ido%20covid-19"
+    },
+    {
+      "id": "vido",
+      "preferredPrefix": "VIDO",
+      "title": "The Virus Infectious Disease Ontology",
+      "uri": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-virus/master/ontology/vido.owl",
+      "description": "The Virus Infectious Disease Ontology (IDO Virus) is an extension of the Infectious Disease Ontology (IDO). IDO Virus follows OBO Foundry guidelines, employs the Basic Formal Ontology as its starting point, and covers epidemiology, classification, pathogenesis, and treatment of terms used by Virologists, i.e. virus, prion, satellite, viroid, etc.",
+      "homepage": "https://github.com/infectious-disease-ontology-extensions/ido-virus",
+      "mailing_list": "johnbeverley2021@u.northwestern.edu",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/VIDO_"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-virus/master/ontology/vido.owl"
+    },
+    {
+      "id": "bcio",
+      "preferredPrefix": "BCIO",
+      "title": "The Behaviour Change Intervention Ontology",
+      "uri": "http://humanbehaviourchange.org/ontology/bcio.owl",
+      "description": "The Behaviour Change Intervention Ontology is an ontology for all aspects of human behaviour change interventions and their evaluation.",
+      "homepage": "https://www.humanbehaviourchange.org/",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://humanbehaviourchange.org/ontology"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "http://humanbehaviourchange.org/ontology/bcio.owl"
+    },
+    {
+      "id": "covoc",
+      "preferredPrefix": "COVOC",
+      "title": "COVID-19 Vocabulary Ontology",
+      "uri": "http://purl.obolibrary.org/obo/covoc.owl",
+      "description": "The COVID-19 Vocabulary (COVoc) is an ontology containing terms related to the research of the COVID-19 pandemic. This includes host organisms, pathogenicity, gene and gene products, barrier gestures, treatments and more.",
+      "homepage": "https://github.com/EBISPOT/covoc",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/COVOC_"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "https://github.com/EBISPOT/covoc/releases/download/current/covoc.owl"
+    },
+    {
+      "id": "om",
+      "preferredPrefix": "OM",
+      "title": "Ontology of units of Measure (OM)",
+      "uri": "http://www.wurvoc.org/vocabularies/om-2.0/",
+      "description": "The OM ontology provides classes, instances, and properties that represent the different concepts used for defining and using measures and units. It includes, for instance, common units such as the SI units meter and kilogram, but also units from other systems of units such as the mile or nautical mile. For many application areas it includes more specific units and quantities, such as the unit of the Hubble constant: km/s/Mpc, or the quantity vaselife.  OM defines the complete set of concepts in the domain as distinguished in the textual standards. As a result the ontology can answer a wider range of competency questions than the existing approaches do. The following application areas are supported by OM:  Geometry; Mechanics; Thermodynamics; Electromagnetism; Fluid mechanics; Chemical physics; Photometry; Radiometry and Radiobiology; Nuclear physics; Astronomy and Astrophysics; Cosmology; Earth science; Meteorology; Material science; Microbiology; Economics; Information technology; Typography; Shipping; Food engineering; Post-harvest; technology; Dynamics of texture and taste; Packaging",
+      "homepage": "https://github.com/HajoRijgersberg/OM",
+      "mailing_list": "hajo.rijgersberg@wur.nl",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_0002202"
+      ],
+      "hidden_property": [
+        "http://www.ebi.ac.uk/efo/has_flag"
+      ],
+      "base_uri": [
+        "http://www.wurvoc.org/vocabularies/om-2.0/"
+      ],
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/HajoRijgersberg/OM/master/om-2.0.rdf"
+    },
+    {
+      "id": "reproduceme",
+      "preferredPrefix": "REPR",
+      "title": "REPRODUCE-ME Ontology",
+      "uri": "https://w3id.org/reproduceme/",
+      "description": "The REPRODUCE-ME ontology is an extension of the PROV-O and the P-Plan ontology to describe a complete path of a scientific experiment. It expresses the REPRODUCE-ME Data Model using the OWL2 Web Ontology Language (OWL2). It provides a set of classes and properties to represent a scientific experiment including its computational and non-computational steps to track the provenance of results. It describes a complete path of a scientific experiment considering the use-case of biological imaging and microscopy experiments, computational experiments, including Jupyter notebooks and scripts. It describes an experiment and its data, agents, activities, plans, steps, variables, instruments, materials, and settings required for its reproducibility.",
+      "homepage": "https://w3id.org/reproduceme/research",
+      "mailing_list": "sheeba.samuel@uni-jena.de",
+      "definition_property": [
+        "http://www.w3.org/2000/01/rdf-schema#comment",
+        "http://www.w3.org/2000/01/rdf-schema#isDefinedBy"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+        "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+      ],
+      "hidden_property": [
+        "http://www.ebi.ac.uk/efo/has_flag"
+      ],
+      "base_uri": [
+        "https://w3id.org/reproduceme#"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://sheeba-samuel.github.io/REPRODUCE-ME/doc/reproduce-me.xml"
+    },
+    {
+      "id": "prov",
+      "preferredPrefix": "PROV",
+      "title": "Provenance Ontology (PROV-O)",
+      "uri": "http://www.w3.org/ns/prov#",
+      "homepage": "https://www.w3.org/TR/prov-o/",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://purl.obolibrary.org/obo/IAO_0000118",
+        "http://www.ebi.ac.uk/efo/alternative_term"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://www.bioassayontology.org/bao#"
+      ],
+      "ontology_purl": "https://www.w3.org/ns/prov-o"
+    },
+    {
+      "id": "orth",
+      "preferredPrefix": "ORTH",
+      "title": "Orthology Ontology",
+      "uri": "http://purl.org/net/orth",
+      "homepage": "http://purl.org/net/orth",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition",
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2002/07/owl#equivalentClass"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.org/net/orth#"
+      ],
+      "ontology_purl": "http://purl.org/net/orth",
+      "creator": [
+        "Tarcisio Mendes de Farias, Hirokazu Chiba, Dmitry Kuznetsov, Erick Antezana, María del Carmen Legaz-García, Florent Villiers, Christophe Dessimoz, Jesualdo Tomás Fernández-Breis, Ikuo Uchiyama"
+      ],
+      "description": "The need of a common ontology for describing orthology information in biological research communities has led to the creation of the Orthology Ontology (ORTH). ORTH ontology is designed to describe sequence homology data available in multiple orthology databases on the Web (e.g.: OMA, OrthoDB, HieranoiDB, and etc.). By sequence homology data, we mostly mean gene region, gene and protein centric orthology, paralogy, and xenology information. Depending on the database, the homology information is structured in different ways. ORTH ontology accommodates these disparate data structures namely Hierarchical Orthologous Group (HOG), cluster of homologous sequences and homologous-pairwise relations between sequences. In addition to the specific ORTH terms, this specification includes terms of the imported ontologies (e.g. Semanticscience Integrated Ontology, SIO) which are pertinents to represent the information from various orthology databases in a homogeneous way."
+    },
+    {
+      "id": "cryoem",
+      "preferredPrefix": "CRYOEM",
+      "title": "Cryo Electron Microscopy ontology",
+      "uri": "https://www.ebi.ac.uk/ols/ontologies/cryoem",
+      "homepage": "http://scipion.i2pc.es/ontology/cryoem",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://scipion.i2pc.es/ontology/"
+      ],
+      "ontology_purl": "http://scipion.i2pc.es/ontology/cryoem.owl",
+      "mailing_list": "isanchez@cnb.csic.es",
+      "creator": [
+        "Carlos Oscar Sorzano, Irene Sánchez"
+      ],
+      "description": "Ontology that describes data types and image processing operations in Cryo Electron Microscopy of Single Particles"
+    },
+    {
+      "id": "snomed",
+      "preferredPrefix": "SNOMED",
+      "title": "SNOMED CT (International Edition)",
+      "description": "SNOMED CT or SNOMED Clinical Terms is a systematically organized computer processable collection of medical terms providing codes, terms, synonyms and definitions used in clinical documentation and reporting.\n",
+      "uri": "http://snomed.info/sct/900000000000207008",
+      "base_uri": [
+        "http://snomed.info/id/"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/dev/local_ontologies/snomed.owl",
+      "allow_download": false
+    },
+    {
+      "id": "pcl",
+      "preferredPrefix": "PCL",
+      "title": "PCL Ontology",
+      "description": "Cell types that are provisionally defined by experimental techniques such as single cell or single nucleus transcriptomics rather than a straightforward \u0026 coherent set of properties.",
+      "uri": "https://raw.githubusercontent.com/obophenotype/provisional_cell_ontology/master/pcl-full.owl",
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/PCL_"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/CL_0000000"
+      ],
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/obophenotype/provisional_cell_ontology/master/pcl-full.owl",
+      "allow_download": false
+    },
+    {
+      "id": "shareloc",
+      "preferredPrefix": "SHARELOC",
+      "title": "ShareLoc",
+      "ontology_purl": "https://raw.githubusercontent.com/imodpasteur/ShareLoc.XYZ/ontology/shareloc.owl"
+    },
+    {
+      "id": "ccf",
+      "preferredPrefix": "CCF",
+      "title": "Common Coordinate Framework Ontology",
+      "is_foundry": false,
+      "uri": "https://purl.org/ccf/ccf.owl",
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "synonym_property": [
+        "http://purl.org/sig/ont/fma/synonym",
+        "http://www.lungmap.net/ontologies/database#synonym",
+        "https://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/UBERON_0000955",
+        "http://purl.obolibrary.org/obo/UBERON_0000029",
+        "http://purl.obolibrary.org/obo/UBERON_0000970",
+        "http://purl.obolibrary.org/obo/UBERON_0003889",
+        "http://purl.obolibrary.org/obo/UBERON_0000948",
+        "http://purl.obolibrary.org/obo/UBERON_0002113",
+        "http://purl.obolibrary.org/obo/UBERON_0001465",
+        "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "http://purl.obolibrary.org/obo/UBERON_0002048",
+        "http://purl.obolibrary.org/obo/UBERON_0000992",
+        "http://purl.obolibrary.org/obo/UBERON_0001264",
+        "http://purl.obolibrary.org/obo/UBERON_0002367",
+        "http://purl.obolibrary.org/obo/UBERON_0002097",
+        "http://purl.obolibrary.org/obo/UBERON_0002108",
+        "http://purl.obolibrary.org/obo/UBERON_0000059",
+        "http://purl.obolibrary.org/obo/UBERON_0002106",
+        "http://purl.obolibrary.org/obo/UBERON_0002370",
+        "http://purl.obolibrary.org/obo/UBERON_0000056",
+        "http://purl.obolibrary.org/obo/UBERON_0001255",
+        "http://purl.obolibrary.org/obo/UBERON_0000995",
+        "http://purl.obolibrary.org/obo/UBERON_0004537",
+        "http://purl.obolibrary.org/obo/UBERON_0000178",
+        "http://purl.obolibrary.org/obo/UBERON_0004536",
+        "http://purl.org/ccf/dataset",
+        "http://purl.org/ccf/person",
+        "http://purl.org/ccf/sample",
+        "http://purl.org/ccf/tissue_mapping_center",
+        "http://purl.org/ccf/spatial_entity",
+        "http://purl.org/ccf/spatial_object_reference",
+        "http://purl.org/ccf/spatial_placement"
+      ],
+      "base_uri": [
+        "https://purl.org/ccf/"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://purl.org/ccf/2.0/ccf.owl"
+    },
+    {
+       "id":"gaz",
+       "is_foundry":true,
+       "ontology_purl":"http://purl.obolibrary.org/obo/gaz.obo",
+       "hierarchical_property":[
+          "http://purl.obolibrary.org/obo/BFO_0000050",
+	  "http://purl.obolibrary.org/obo/RO_0001025",
+          "http://purl.obolibrary.org/obo/RO_0002151",
+          "http://purl.obolibrary.org/obo/RO_0002376",
+          "http://purl.obolibrary.org/obo/RO_0002377",
+          "http://purl.obolibrary.org/obo/UBREL_0000001",
+          "http://purl.obolibrary.org/obo/RO_0002219",
+          "http://purl.obolibrary.org/obo/RO_0002379",
+          "http://purl.obolibrary.org/obo/RO_0002378",
+          "http://purl.obolibrary.org/obo/RO_0002090",
+          "http://purl.obolibrary.org/obo/TEMP#proper_partof",
+          "http://purl.obolibrary.org/obo/TEMP#overlapped_by",
+          "http://purl.obolibrary.org/obo/RO_0002131",
+          "http://purl.obolibrary.org/obo/RO_0002220"
+       ]
+    },
+    {
+       "id":"bto",
+       "is_foundry":true,
+       "ontology_purl":"http://purl.obolibrary.org/obo/bto.owl",
+       "hierarchical_property":[
+          "http://purl.obolibrary.org/obo/BFO_0000050",
+          "http://purl.obolibrary.org/obo/RO_0002202",
+          "http://purl.obolibrary.org/obo/bto#develops_from",
+          "http://purl.obolibrary.org/obo/bto#related_to"
+       ]
+    },
+    {
+       "id":"cheminf",
+       "title":"Chemical Information Ontology"
+    },
+    {
+       "id":"mf",
+       "title":"Mental Functioning Ontology"
+    },
+    {
+       "id":"mamo",
+       "title":"Mathematical Modelling Ontology",
+       "label_property":"http://www.w3.org/2004/02/skos/core#prefLabel",
+       "synonym_property":[
+          "http://www.w3.org/2004/02/skos/core#altLabel"
+       ]
+    },
+    {
+       "id":"mfoem",
+       "title":"Emotion Ontology"
+    },
+    {
+       "id":"mi",
+       "ontology_purl":"https://raw.githubusercontent.com/HUPO-PSI/psi-mi-CV/master/psi-mi.owl",
+       "definition_property":[
+          "http://purl.obolibrary.org/obo/IAO_0000115"
+       ]
+    },
+    {
+       "id":"duo",
+       "ontology_purl":"http://purl.obolibrary.org/obo/duo.owl",
+       "preferred_root_term":[
+          "http://purl.obolibrary.org/obo/DUO_0000001",
+          "http://purl.obolibrary.org/obo/DUO_0000017",
+          "http://purl.obolibrary.org/obo/OBI_0000066"
+       ]
+    },
+    {
+       "id":"plana",
+       "is_foundry":true,
+       "ontology_purl":"http://purl.obolibrary.org/obo/plana.owl",
+       "synonym_property":[
+          "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+       ]
+    },
+    {
+       "id":"cpont",
+       "preferredPrefix":"CPONT",
+       "title":"Critical Path Ontology",
+       "description":"An application ontology for integrating data from the Critical Path Institute's Rare Disease Cures Accelerator Data and Analytica Platform (RDCA-DAP).",
+       "repository":"https://gitlab.c-path.org/c-pathontology/critical-path-ontology/",
+       "homepage":"https://gitlab.c-path.org/c-pathontology/critical-path-ontology",
+       "ontology_purl":"https://w3id.org/cpont/cpont.owl",
+       "uri":"https://w3id.org/cpont/cpont.owl",
+       "creator":[
+          "James Overton https://orcid.org/0000-0001-5139-5557, Nicole Vasilesvky https://orcid.org/0000-0001-5208-3432, Emily Hartley https://orcid.org/0000-0001-5839-2535, Emani Hunter https://orcid.org/0000-0001-8545-8114, Daniel Olson https://orcid.org/0000-0002-8134-1207, Rebecca Jackson https://orcid.org/0000-0003-4871-5569"
+       ],
+       "is_foundry":false,
+       "mailing_list":"rwalls@c-path.org",
+       "label_property":"http://www.w3.org/2000/01/rdf-schema#label",
+       "definition_property":[
+          "http://purl.obolibrary.org/obo/IAO_0000115"
+       ],
+       "synonym_property":[
+          "http://www.w3.org/2004/02/skos/core#closeMatch",
+          "http://www.w3.org/2004/02/skos/core#exactMatch",
+          "http://www.w3.org/2004/02/skos/core#narrowMatch",
+          "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+       ],
+       "base_uri":[
+          "https://w3id.org/cpont"
+       ],
+       "reasoner":"NONE",
+       "oboSlims":false
+    },
+    {
+       "id":"oba",
+       "hierarchical_property":[
+          "http://purl.obolibrary.org/obo/BFO_0000050"
+       ]
+    },
+    {
+      "activity_status": "active",
+      "browsers": [
+        {
+          "label": "HPO",
+          "title": "JAX HPO Browser",
+          "url": "https://hpo.jax.org/app/"
+        },
+        {
+          "label": "Monarch",
+          "title": "Monarch Phenotype Page",
+          "url": "http://monarchinitiative.org/phenotype/HP:0000118"
+        }
+      ],
+      "build": {
+        "infallible": 1,
+        "method": "archive",
+        "path": "archive/hp",
+        "source_url": "http://compbio.charite.de/hudson/job/hpo/lastSuccessfulBuild/artifact/*zip*/archive.zip"
+      },
+      "contact": {
+        "email": "dr.sebastian.koehler@gmail.com",
+        "github": "drseb",
+        "label": "Sebastian Koehler",
+        "orcid": "0000-0002-5316-1399"
+      },
+      "depicted_by": "https://raw.githubusercontent.com/obophenotype/human-phenotype-ontology/master/logo/HPO-logo-black_small.png",
+      "description": "A structured and controlled vocabulary for the phenotypic features encountered in human hereditary and other disease.",
+      "domain": "phenotype",
+      "homepage": "http://www.human-phenotype-ontology.org/",
+      "id": "hpi",
+      "jobs": [
+        {
+          "id": "https://travis-ci.org/obophenotype/human-phenotype-ontology",
+          "type": "travis-ci"
+        }
+      ],
+      "layout": "ontology_detail",
+      "license": {
+        "label": "hpo",
+        "url": "https://hpo.jax.org/app/license"
+      },
+      "mailing_list": "https://groups.io/g/human-phenotype-ontology",
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/dev/local_ontologies/hpi.owl",
+      "preferredPrefix": "HP",
+      "products": [
+        {
+          "id": "hp.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/hp.owl"
+        },
+        {
+          "id": "hp.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/hp.obo"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/18950739",
+          "title": "The Human Phenotype Ontology: a tool for annotating and analyzing human hereditary disease."
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/26119816",
+          "title": "The Human Phenotype Ontology: Semantic Unification of Common and Rare Disease."
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/24217912",
+          "title": "The Human Phenotype Ontology project: linking molecular biology and disease through phenotype data."
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/30476213",
+          "title": "Expansion of the Human Phenotype Ontology (HPO) knowledge base and resources."
+        }
+      ],
+      "repository": "https://github.com/obophenotype/human-phenotype-ontology",
+      "taxon": {
+        "id": "NCBITaxon:9606",
+        "label": "Homo sapiens"
+      },
+      "title": "Human Phenotype Ontology (i18n)",
+      "tracker": "https://github.com/obophenotype/human-phenotype-ontology/issues/",
+      "twitter": "hp_ontology",
+      "usages": [
+        {
+          "description": "HPO is used by the Monarch Initiative for phenotype annotations.",
+          "examples": [
+            {
+              "url": "https://monarchinitiative.org/phenotype/HP:0001300"
+            }
+          ],
+          "reference": "https://academic.oup.com/nar/article/45/D1/D712/2605791",
+          "type": "annotation",
+          "user": "https://monarchinitiative.org/"
+        }
+      ]
+    }
+  ]
+}
