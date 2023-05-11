@@ -125,59 +125,74 @@ export default function Search() {
                   <div className="font-semibold text-lg mb-2">Type</div>
                   <fieldset className="mb-4">
                     {typeFacets && Object.keys(typeFacets).length > 0
-                      ? Object.keys(typeFacets).map((key) => {
-                          if (key !== "entity" && typeFacets[key] > 0) {
-                            return (
-                              <label
-                                key={key}
-                                htmlFor={key}
-                                className="block p-1 w-fit"
-                              >
-                                <input
-                                  type="checkbox"
-                                  id={key}
-                                  className="invisible hidden peer"
-                                  onChange={(e) => {
-                                    handleTypeFacet(e.target.checked, key);
-                                  }}
-                                />
-                                <span className="input-checkbox mr-4" />
-                                <span className="capitalize mr-4">
-                                  {key} &#40;{typeFacets[key]}&#41;
-                                </span>
-                              </label>
-                            );
-                          } else return null;
-                        })
+                      ? Object.keys(typeFacets)
+                          .sort((a, b) => {
+                            const ac = a ? a.toString() : "";
+                            const bc = b ? b.toString() : "";
+                            return ac.localeCompare(bc);
+                          })
+                          .map((key) => {
+                            if (key !== "entity" && typeFacets[key] > 0) {
+                              return (
+                                <label
+                                  key={key}
+                                  htmlFor={key}
+                                  className="block p-1 w-fit"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    id={key}
+                                    className="invisible hidden peer"
+                                    onChange={(e) => {
+                                      handleTypeFacet(e.target.checked, key);
+                                    }}
+                                  />
+                                  <span className="input-checkbox mr-4" />
+                                  <span className="capitalize mr-4">
+                                    {key} &#40;{typeFacets[key]}&#41;
+                                  </span>
+                                </label>
+                              );
+                            } else return null;
+                          })
                       : null}
                   </fieldset>
                   <div className="font-semibold text-lg mb-2">Ontology</div>
                   <fieldset>
                     {ontologyFacets && Object.keys(ontologyFacets).length > 0
-                      ? Object.keys(ontologyFacets).map((key) => {
-                          if (ontologyFacets[key] > 0) {
-                            return (
-                              <label
-                                key={key}
-                                htmlFor={key}
-                                className="block p-1 w-fit"
-                              >
-                                <input
-                                  type="checkbox"
-                                  id={key}
-                                  className="invisible hidden peer"
-                                  onChange={(e) => {
-                                    handleOntologyFacet(e.target.checked, key);
-                                  }}
-                                />
-                                <span className="input-checkbox mr-4" />
-                                <span className="uppercase mr-4">
-                                  {key} &#40;{ontologyFacets[key]}&#41;
-                                </span>
-                              </label>
-                            );
-                          } else return null;
-                        })
+                      ? Object.keys(ontologyFacets)
+                          .sort((a, b) => {
+                            const ac = a ? a.toString() : "";
+                            const bc = b ? b.toString() : "";
+                            return ac.localeCompare(bc);
+                          })
+                          .map((key) => {
+                            if (ontologyFacets[key] > 0) {
+                              return (
+                                <label
+                                  key={key}
+                                  htmlFor={key}
+                                  className="block p-1 w-fit"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    id={key}
+                                    className="invisible hidden peer"
+                                    onChange={(e) => {
+                                      handleOntologyFacet(
+                                        e.target.checked,
+                                        key
+                                      );
+                                    }}
+                                  />
+                                  <span className="input-checkbox mr-4" />
+                                  <span className="uppercase mr-4">
+                                    {key} &#40;{ontologyFacets[key]}&#41;
+                                  </span>
+                                </label>
+                              );
+                            } else return null;
+                          })
                       : null}
                   </fieldset>
                 </div>
@@ -292,6 +307,7 @@ export default function Search() {
                               {appearsInCopy.map((appearsIn) => {
                                 return (
                                   <Link
+                                    key={appearsIn}
                                     className="my-2"
                                     style={{ display: "inline-block" }}
                                     to={
