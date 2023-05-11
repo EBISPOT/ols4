@@ -268,7 +268,9 @@ export default function Search() {
                               encodeURIComponent(entity.getIri())
                             )
                           }
-                          className="link-default text-xl mr-2"
+                          className={`link-default text-xl mr-2 ${
+                            entity.isCanonical() ? "font-bold" : ""
+                          }`}
                         >
                           {entity.getName()}
                         </Link>
@@ -283,7 +285,7 @@ export default function Search() {
                         {entity.getDescription()}
                       </div>
                       <div className="leading-loose">
-                        <span className="font-bold">Ontology:</span>
+                        <span className="font-bold mr-1">Ontology:</span>
                         &nbsp;
                         <Link to={"/ontologies/" + entity.getOntologyId()}>
                           <span

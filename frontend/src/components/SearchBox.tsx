@@ -363,7 +363,7 @@ export default function SearchBox({
               {query && (
                 <div
                   className={
-                    "py-1 px-3 leading-7 hover:bg-link-light hover:cursor-pointer" +
+                    "py-1 px-3 leading-7 hover:bg-link-light hover:rounded-b-sm hover:cursor-pointer" +
                     (arrowKeySelectedN === allDropdownElements.length
                       ? " bg-link-light"
                       : "")
