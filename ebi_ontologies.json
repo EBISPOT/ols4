@@ -716,7 +716,7 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/AMPHX_"
       ],
-      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/amphx_ontology/master/amphx.owl"
+      "ontology_purl": "http://purl.obolibrary.org/obo/amphx.owl"
     },
     {
       "id": "clyh",
@@ -731,7 +731,7 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/CLYH_"
       ],
-      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/clyh_ontology/master/clyh.owl"
+      "ontology_purl": "http://purl.obolibrary.org/obo/clyh.owl"
     },
     {
       "id": "idocovid19",
@@ -979,7 +979,7 @@
     {
       "id": "pcl",
       "preferredPrefix": "PCL",
-      "title": "PCL Ontology",
+      "title": "Provisional Cell Ontology",
       "description": "Cell types that are provisionally defined by experimental techniques such as single cell or single nucleus transcriptomics rather than a straightforward \u0026 coherent set of properties.",
       "uri": "https://raw.githubusercontent.com/obophenotype/provisional_cell_ontology/master/pcl-full.owl",
       "base_uri": [
@@ -1063,7 +1063,6 @@
     },
     {
        "id":"gaz",
-       "is_foundry":true,
        "ontology_purl":"http://purl.obolibrary.org/obo/gaz.obo",
        "hierarchical_property":[
           "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1084,7 +1083,6 @@
     },
     {
        "id":"bto",
-       "is_foundry":true,
        "ontology_purl":"http://purl.obolibrary.org/obo/bto.owl",
        "hierarchical_property":[
           "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1115,7 +1113,7 @@
     },
     {
        "id":"mi",
-       "ontology_purl":"https://raw.githubusercontent.com/HUPO-PSI/psi-mi-CV/master/psi-mi.owl",
+       "ontology_purl":"http://purl.obolibrary.org/obo/mi.owl",
        "definition_property":[
           "http://purl.obolibrary.org/obo/IAO_0000115"
        ]
@@ -1131,7 +1129,6 @@
     },
     {
        "id":"plana",
-       "is_foundry":true,
        "ontology_purl":"http://purl.obolibrary.org/obo/plana.owl",
        "synonym_property":[
           "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
@@ -1174,25 +1171,6 @@
        ]
     },
     {
-      "activity_status": "active",
-      "browsers": [
-        {
-          "label": "HPO",
-          "title": "JAX HPO Browser",
-          "url": "https://hpo.jax.org/app/"
-        },
-        {
-          "label": "Monarch",
-          "title": "Monarch Phenotype Page",
-          "url": "http://monarchinitiative.org/phenotype/HP:0000118"
-        }
-      ],
-      "build": {
-        "infallible": 1,
-        "method": "archive",
-        "path": "archive/hp",
-        "source_url": "http://compbio.charite.de/hudson/job/hpo/lastSuccessfulBuild/artifact/*zip*/archive.zip"
-      },
       "contact": {
         "email": "dr.sebastian.koehler@gmail.com",
         "github": "drseb",
@@ -1204,19 +1182,13 @@
       "domain": "phenotype",
       "homepage": "http://www.human-phenotype-ontology.org/",
       "id": "hpi",
-      "jobs": [
-        {
-          "id": "https://travis-ci.org/obophenotype/human-phenotype-ontology",
-          "type": "travis-ci"
-        }
-      ],
-      "layout": "ontology_detail",
       "license": {
         "label": "hpo",
         "url": "https://hpo.jax.org/app/license"
       },
       "mailing_list": "https://groups.io/g/human-phenotype-ontology",
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/dev/local_ontologies/hpi.owl",
+      "ontology_purl":"http://purl.obolibrary.org/obo/hp/hp-international.owl",
+      "uri":"http://purl.obolibrary.org/obo/hp/hp-international.owl",
       "preferredPrefix": "HP",
       "products": [
         {
