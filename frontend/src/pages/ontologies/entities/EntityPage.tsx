@@ -11,6 +11,7 @@ import SearchBox from "../../../components/SearchBox";
 import LinkedEntities from "../../../model/LinkedEntities";
 import { getClassInstances, getEntity, getOntology } from "../ontologiesSlice";
 import EntityGraph from "./EntityGraph";
+import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
 import DefiningOntologiesSection from "./entityPageSections/DefiningOntologiesSection";
 import DisjointWithSection from "./entityPageSections/DisjointWithSection";
@@ -27,7 +28,6 @@ import IndividualTypesSection from "./entityPageSections/IndividualTypesSection"
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
-import EntityTree from "./EntityTree";
 
 export default function EntityPage({
   entityType,
@@ -192,7 +192,14 @@ export default function EntityPage({
               />
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
-              <div className="text-2xl font-bold mb-4">{entity.getName()}</div>
+              <div className="font-bold mb-4 flex flex-row items-center">
+                <span className="text-2xl mr-3">{entity.getName()}</span>
+                {!entity.isCanonical() && (
+                  <span className="text-white text-xs bg-neutral-default px-2 py-1 rounded-md uppercase">
+                    Imported
+                  </span>
+                )}
+              </div>
               <div className="mb-4 leading-relaxed text-sm text-neutral-default">
                 <span>
                   <a href={entity.getIri()}>
@@ -227,9 +234,7 @@ export default function EntityPage({
             <div className="py-2 mb-1">
               <button
                 className={`font-bold mr-3 ${
-                  viewMode === "tree"
-                    ? "button-orange-active"
-                    : "button-orange"
+                  viewMode === "tree" ? "button-orange-active" : "button-orange"
                 }`}
                 onClick={() => setViewMode("tree")}
               >

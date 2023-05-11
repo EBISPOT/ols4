@@ -9,6 +9,10 @@ export default abstract class Entity extends Thing {
   abstract getSuperEntities(): Reified<any>[];
   abstract getEquivalents(): Reified<any>[];
 
+  isCanonical(): boolean {
+    return this.properties["isDefiningOntology"] === true;
+  }
+
   getSubClassOf():Reified<any>[] {
     return Reified.fromJson<any>(this.properties["relatedFrom"]);
   }
