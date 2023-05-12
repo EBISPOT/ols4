@@ -25,7 +25,7 @@ export default function DataTable({
   columns: readonly Column[];
   data: any[];
   dataCount: number;
-  onSelectRow: (row: any) => void;
+  onSelectRow?: (row: any) => void;
   page?: number;
   rowsPerPage?: number;
   onPageChange?: (page: number) => void;
@@ -97,9 +97,11 @@ export default function DataTable({
                   tabIndex={-1}
                   key={randomString()}
                   onClick={() => {
-                    onSelectRow(row);
+                    if (onSelectRow) onSelectRow(row);
                   }}
-                  className="even:bg-grey-50 cursor-pointer"
+                  className={`even:bg-grey-50 ${
+                    onSelectRow ? "cursor-pointer" : ""
+                  }`}
                 >
                   {columns.map((column: any) => {
                     return (
