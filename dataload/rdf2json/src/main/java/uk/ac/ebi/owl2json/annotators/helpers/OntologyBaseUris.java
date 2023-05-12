@@ -12,7 +12,7 @@ public class OntologyBaseUris {
 
         Set<String> ontologyBaseUris = new HashSet<String>();
 
-        Object configBaseUris = graph.config.get("baseUris");
+        Object configBaseUris = graph.config.get("base_uri");
 
         if(configBaseUris instanceof Collection<?>) {
             ontologyBaseUris.addAll((Collection<String>) configBaseUris);
