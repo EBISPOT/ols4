@@ -128,7 +128,7 @@ public class JSON2SSSOM {
                     yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
 
                     String yamlStr = yaml.dump(yamlHeader);
-                    yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\n"));
+                    yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
 
                     FileOutputStream fos = new FileOutputStream( outputFilePath + "/" + ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
                     fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
