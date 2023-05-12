@@ -128,7 +128,7 @@ public class JSON2SSSOM {
                     yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
 
                     String yamlStr = yaml.dump(yamlHeader);
-                    yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\n"));
+                    yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
 
                     FileOutputStream fos = new FileOutputStream( outputFilePath + "/" + ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
                     fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
@@ -166,6 +166,13 @@ public class JSON2SSSOM {
     }
 
     public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, Map<String,JsonElement> ontologyProperties, CSVPrinter writer, CurieMap curieMap) throws IOException {
+
+        JsonElement isDefiningOntology = entity.get("isDefiningOntology");
+
+        if(isDefiningOntology != null && isDefiningOntology.getAsBoolean() == false) {
+            // don't print mappings for imported entities (they will already be printed in the defining ontology)
+            return;
+        }
 
         JsonObject linkedEntities = entity.getAsJsonObject("linkedEntities");
 
