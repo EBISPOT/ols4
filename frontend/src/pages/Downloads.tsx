@@ -78,7 +78,7 @@ const data: any[] = [
       "OLS internal data representation of all loaded ontologies (~50 GB uncompressed)",
     downloadLabel: "ontologies.json.gz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontologies_linked.json.gz",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontologies.json.gz",
     format: "GZIP JSON",
   },
   {
