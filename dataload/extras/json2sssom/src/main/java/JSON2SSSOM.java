@@ -86,7 +86,7 @@ public class JSON2SSSOM {
                     ByteArrayOutputStream tsv = null;
                     OutputStreamWriter writer = null;
                     CSVPrinter csvPrinter = null;
-                    Map<String, String> curieMap = new LinkedHashMap<>();
+                    CurieMap curieMap = new CurieMap();
 
                     while(reader.peek() != JsonToken.END_OBJECT) {
 
@@ -107,7 +107,7 @@ public class JSON2SSSOM {
 
                             while(reader.peek() != JsonToken.END_ARRAY) {
                                 JsonElement entity = jsonParser.parse(reader);
-                                writeMappingsForEntity(entity.getAsJsonObject(), csvPrinter, curieMap);
+                                writeMappingsForEntity(entity.getAsJsonObject(), csvPrinter, ontologyProperties, curieMap);
                             }
 
                             reader.endArray();
@@ -125,7 +125,7 @@ public class JSON2SSSOM {
                     yamlHeaderOther.put("local_id", ontologyProperties.get("ontologyId").getAsString() + ".ols");
                     yamlHeader.put("other", yamlHeaderOther);
                     yamlHeader.put("local_name", ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
-                    yamlHeader.put("curie_map", curieMap);
+                    yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
 
                     String yamlStr = yaml.dump(yamlHeader);
                     yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\n"));
@@ -149,46 +149,53 @@ public class JSON2SSSOM {
         reader.endObject();
     }
 
-    public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer, Map<String,String> curieMap) throws IOException {
+    public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer, Map<String,JsonElement> ontologyProperties, CurieMap curieMap) throws IOException {
 
         JsonElement exactMatch = entity.get("http://www.w3.org/2004/02/skos/core#exactMatch");
         if(exactMatch != null) {
-            writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, writer, curieMap);
+            writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, ontologyProperties, writer, curieMap);
         }
         JsonElement hasDbXref = entity.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
         if(hasDbXref != null) {
-            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, ontologyProperties, writer, curieMap);
         }
-//        JsonElement equivalentClass = entity.get("http://www.w3.org/2002/07/owl#equivalentClass");
-//        if(equivalentClass != null) {
-//            writeEquivalentClassMappingsForEntity(entity, equivalentClass, writer);
-//        }
+        JsonElement equivalentClass = entity.get("http://www.w3.org/2002/07/owl#equivalentClass");
+        if(equivalentClass != null) {
+            writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, ontologyProperties, writer, curieMap);
+        }
     }
 
-    public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, CSVPrinter writer, Map<String,String> curieMap) throws IOException {
+    public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, Map<String,JsonElement> ontologyProperties, CSVPrinter writer, CurieMap curieMap) throws IOException {
 
         JsonObject linkedEntities = entity.getAsJsonObject("linkedEntities");
+
+        if(linkedEntities == null) {
+            System.out.println("entity had no linkedEntities? " + gson.toJson(entity));
+            return;
+        }
 
         if(mappingValue.isJsonArray()) {
             for(JsonElement entry : mappingValue.getAsJsonArray()) {
                 if(entry.isJsonObject()) {
-                    writeMappingsForEntity(entry.getAsJsonObject(), writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, entry, null, ontologyProperties, writer, curieMap);
                 }
             }
         } else if(mappingValue.isJsonObject()) {
             JsonObject exactMatchObj = mappingValue.getAsJsonObject();
             JsonElement type = exactMatchObj.get("type");
             if(type != null && type.isJsonArray()) {
-                List<String> types = jsonArrayToStrings(type.getAsJsonArray());
+                List<String> types = JsonHelper.jsonArrayToStrings(type.getAsJsonArray());
                 if(types.contains("reification")) {
                     JsonElement value = exactMatchObj.get("value");
-                    writeMappingsForEntity(entity, predicate, value, exactMatchObj, writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, value, exactMatchObj, ontologyProperties, writer, curieMap);
                 } else if(types.contains("literal")) {
                     JsonElement value = exactMatchObj.get("value");
-                    writeMappingsForEntity(entity, predicate, value, null, writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, value, null, ontologyProperties, writer, curieMap);
                 }
             } else {
-                System.out.println("entity had no type? " + entity.get("iri").getAsString());
+//                System.out.println("mapping value was object but had no type? " + gson.toJson(mappingValue));
+                // e.g. mapping value was object but had no type? {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://purl.obolibrary.org/obo/GO_0048856",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/RO_0002296","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/UBERON_0004490","isObsolete":{"type":["literal"],"value":"false"}}]}
+                    return;
             }
         } else if(mappingValue.isJsonPrimitive()) {
 
@@ -197,14 +204,27 @@ public class JSON2SSSOM {
 
             String value = mappingValue.getAsString();
 
-            JsonObject linkedEntity = linkedEntities.getAsJsonObject(value);
+            JsonElement linkedEntityElem = linkedEntities.get(value);
 
-            if(linkedEntity == null) {
+            if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
                 return;
             }
 
-            CurieMapping subjCurie = getCurieMapping(entity, curieMap);
-            CurieMapping objCurie = getCurieMapping(linkedEntity, curieMap);
+            JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
+
+
+//            if(predicate.equals("owl:equivalentClass")) {
+//                JsonElement definedBy = linkedEntity.get("definedBy");
+//                if(definedBy == null) {
+//                    List<String> definedByOntologyId = getStringOrListOfStrings(definedBy);
+//                    if(definedByOntologyId.contains(ontologyProperties.get("ontologyId").getAsString())) {
+//                        return;
+//                    }
+//                }
+//            }
+
+            CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
+            CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
 
             if(subjCurie == null || objCurie == null) {
                 return;
@@ -227,11 +247,11 @@ public class JSON2SSSOM {
                         record[i] = "semapv:UnspecifiedMatching";
                         break;
                     case "subject_label":
-                        record[i] = getFirstStringValue( entity.get("label") );
+                        record[i] = JsonHelper.getFirstStringValue( entity.get("label") );
                         break;
                     case "object_label":
                         if(linkedEntity.has("label")) {
-                            record[i] = getFirstStringValue( linkedEntity.get("label") );
+                            record[i] = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
                         }
                         break;
 //                    case "comment":
@@ -247,18 +267,9 @@ public class JSON2SSSOM {
         }
     }
 
-//    public static void writeEquivalentClassMappingsForEntity(JsonObject entity, JsonElement mappingValue, CSVPrinter writer) throws IOException {
-//
-//        if(mappingValue.isJsonArray()) {
-//            for(JsonElement entry : mappingValue.getAsJsonArray()) {
-//                if(entry.isJsonObject()) {
-//                    writeEquivalentClassMappingsForEntity(entity, entry.getAsJsonObject(), writer);
-//                }
-//            }
-//            return;
-//        }
-//
-//    }
+
+
+
 
 //    public static Map<String,Map<String,JsonElement>> loadOntologyConfigs(String jsonFilename) throws IOException {
 //
@@ -300,83 +311,6 @@ public class JSON2SSSOM {
 //
 //        return res;
 //    }
-
-    private static List<String> jsonArrayToStrings(JsonArray arr) {
-        String[] strs = new String[arr.size()];
-        for(int i = 0; i < arr.size(); ++ i) {
-            strs[i] = arr.get(i).getAsString();
-        }
-        return Arrays.asList(strs);
-    }
-
-    private static String getFirstStringValue(JsonElement json) {
-        if(json.isJsonArray()) {
-            return getFirstStringValue( json.getAsJsonArray().get(0) );
-        } else if(json.isJsonObject()) {
-            return getFirstStringValue( json.getAsJsonObject().get("value") );
-        } else {
-            return json.getAsString();
-        }
-    }
-
-    static class CurieMapping {
-        String iriOrUrl = null;
-        String curie = null; // FOO:12345
-        String curiePrefix = null; // FOO
-        String curieLocalPart = null; // 12345
-        String curieNamespace = null; // http://foobar/FOO_
-    }
-
-    static CurieMapping getCurieMapping(JsonObject entityOrLinkedEntity, Map<String,String> curieMap) {
-
-        if(!entityOrLinkedEntity.has("iri") && !entityOrLinkedEntity.has("url")) {
-            System.out.println("entity/linkedEntity had no iri or url, so cannot be mapped to anything");
-            return null;
-        }
-
-        CurieMapping res = new CurieMapping();
-
-        if(entityOrLinkedEntity.has("iri")) {
-            res.iriOrUrl = entityOrLinkedEntity.get("iri").getAsString();
-        } else if(entityOrLinkedEntity.has("url")) {
-            res.iriOrUrl = entityOrLinkedEntity.get("url").getAsString();
-        }
-
-        if(!entityOrLinkedEntity.has("curie")) {
-            return res;
-        }
-
-        String curie = getFirstStringValue(entityOrLinkedEntity.get("curie"));
-
-        if(!curie.contains(":")) {
-            System.out.println("curie provided by OLS " + curie + " does not look like a curie");
-            return res;
-        }
-
-        String curiePrefix = curie.split(":")[0];
-        String curieLocalPart = curie.split(":")[1];
-        String curieNamespace = res.iriOrUrl.substring(0, res.iriOrUrl.length() - curieLocalPart.length());
-
-        if(curieMap.containsKey(curiePrefix)) {
-
-            String existingNs = curieMap.get(curiePrefix);
-
-            if(!existingNs.equals(curieNamespace)) {
-                System.out.println("Namespace " + curieNamespace + " did not match existing namespace " + existingNs + " for curie prefix " + curiePrefix);
-                return res;
-            }
-
-        } else {
-            curieMap.put(curiePrefix, curieNamespace);
-        }
-
-        res.curie = curie;
-        res.curiePrefix = curiePrefix;
-        res.curieLocalPart = curieLocalPart;
-        res.curieNamespace = curieNamespace;
-
-        return res;
-    }
 
 }
 
