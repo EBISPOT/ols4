@@ -45,7 +45,11 @@ export default function SearchBox({
   let setExact = useCallback(
     (exact: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set("exactMatch", exact.toString());
+      if (exact.toString() === "true") {
+        newSearchParams.set("exactMatch", exact.toString());
+      } else {
+        newSearchParams.delete("exactMatch");
+      }
       setSearchParams(newSearchParams);
     },
     [exact, searchParams, setSearchParams]
@@ -54,7 +58,11 @@ export default function SearchBox({
   let setObsolete = useCallback(
     (obsolete: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set("includeObsoleteEntities", obsolete.toString());
+      if (obsolete.toString() === "true") {
+        newSearchParams.set("includeObsoleteEntities", obsolete.toString());
+      } else {
+        newSearchParams.delete("includeObsoleteEntities");
+      }
       setSearchParams(newSearchParams);
     },
     [obsolete, searchParams, setSearchParams]
@@ -63,7 +71,11 @@ export default function SearchBox({
   let setCanonical = useCallback(
     (canonical: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set("isDefiningOntology", canonical.toString());
+      if (canonical.toString() === "true") {
+        newSearchParams.set("isDefiningOntology", canonical.toString());
+      } else {
+        newSearchParams.delete("isDefiningOntology");
+      }
       setSearchParams(newSearchParams);
     },
     [canonical, searchParams, setSearchParams]
@@ -140,7 +152,7 @@ export default function SearchBox({
     (autocomplete, i): SearchBoxEntry => {
       const linkUrl = `/search/${encodeURIComponent(
         autocomplete.autosuggest
-      )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`;
+      )}?${new URLSearchParams(searchParams)}`;
       return {
         linkUrl,
         li: (
@@ -315,7 +327,7 @@ export default function SearchBox({
                     navigate(
                       `/search/${encodeURIComponent(
                         query
-                      )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
+                      )}?${new URLSearchParams(searchParams)}`
                     );
                   }
                 } else if (ev.key === "ArrowDown") {
@@ -373,7 +385,7 @@ export default function SearchBox({
                       navigate(
                         `/search/${encodeURIComponent(
                           query
-                        )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
+                        )}?${new URLSearchParams(searchParams)}`
                       );
                     }
                   }}
@@ -390,9 +402,9 @@ export default function SearchBox({
               onClick={() => {
                 if (query) {
                   navigate(
-                    `/search/${encodeURIComponent(
-                      query
-                    )}?exactMatch=${exact}&includeObsoleteEntities=${obsolete}&isDefiningOntology=${canonical}`
+                    `/search/${encodeURIComponent(query)}?${new URLSearchParams(
+                      searchParams
+                    )}`
                   );
                 }
               }}
