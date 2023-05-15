@@ -14,7 +14,7 @@ export default function LanguagePicker({
   return (
     <div className="flex items-center group relative text-md">
       <select
-        className="input-default appearance-none pr-7 z-20 bg-transparent cursor-pointer"
+        className="input-default appearance-none pr-7 z-20 bg-transparent cursor-pointer max-w-xs"
         onChange={(e) => {
           onChangeLang(e.target.value);
         }}
