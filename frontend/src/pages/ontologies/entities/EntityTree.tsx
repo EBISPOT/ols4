@@ -3,7 +3,7 @@ import {
   FormControl,
   FormControlLabel,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from "@mui/material";
 import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ import Node from "../../../components/Node";
 import Entity from "../../../model/Entity";
 import Ontology from "../../../model/Ontology";
 import {
+  TreeNode,
   closeNode,
   disablePreferredRoots,
   enablePreferredRoots,
@@ -28,7 +29,6 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
-  TreeNode
 } from "../ontologiesSlice";
 
 export default function EntityTree({
@@ -114,8 +114,6 @@ export default function EntityTree({
   ]);
 
   useEffect(() => {
-    // console.log('!!!! Dispatching API call')
-
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
       let promise = dispatch(
@@ -166,14 +164,12 @@ export default function EntityTree({
         ),
       ];
     }
-
-    console.log(
-      "!!!! Getting missing node children: " +
-        JSON.stringify(nodesMissingChildren)
-    );
+    // console.log(
+    //   "!!!! Getting missing node children: " +
+    //     JSON.stringify(nodesMissingChildren)
+    // );
 
     let promises: any = [];
-
     for (let absId of nodesMissingChildren) {
       promises.push(
         dispatch(

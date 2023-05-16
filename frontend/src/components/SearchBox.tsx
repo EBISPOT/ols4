@@ -2,12 +2,11 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
-import { randomString } from "../app/util";
+import { randomString, thingFromJsonProperties } from "../app/util";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
-import { thingFromProperties } from "../model/fromProperties";
 
 let curSearchToken: any = null;
 
@@ -136,7 +135,7 @@ export default function SearchBox({
 
       if (searchToken === curSearchToken) {
         setJumpTo([
-          ...entities.elements.map((obj) => thingFromProperties(obj)),
+          ...entities.elements.map((obj) => thingFromJsonProperties(obj)),
           ...(ontologies?.elements.map((obj) => new Ontology(obj)) || []),
         ]);
         setAutocomplete(autocomplete);
@@ -316,7 +315,6 @@ export default function SearchBox({
                 setQuery(e.target.value);
               }}
               onKeyDown={(ev) => {
-                console.log(ev.key);
                 if (ev.key === "Enter") {
                   if (
                     arrowKeySelectedN !== undefined &&
@@ -331,7 +329,6 @@ export default function SearchBox({
                     );
                   }
                 } else if (ev.key === "ArrowDown") {
-                  console.log("down from " + arrowKeySelectedN);
                   setArrowKeySelectedN(
                     arrowKeySelectedN !== undefined
                       ? Math.min(
@@ -341,7 +338,6 @@ export default function SearchBox({
                       : 0
                   );
                 } else if (ev.key === "ArrowUp") {
-                  console.log("up from " + arrowKeySelectedN);
                   if (arrowKeySelectedN !== undefined)
                     setArrowKeySelectedN(Math.max(arrowKeySelectedN - 1, 0));
                 }
