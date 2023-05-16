@@ -164,6 +164,21 @@ public class JSON2SSSOM {
         if(equivalentClass != null) {
             writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, ontologyProperties, writer, curieMap);
         }
+
+	// chemical specific mapping predicates
+	//
+        JsonElement inchi = entity.get("http://purl.obolibrary.org/obo/chebi/inchi");
+        if(inchi != null) {
+            writeMappingsForEntity(entity, "chebi:inchi", inchi, null, ontologyProperties, writer, curieMap);
+        }
+        JsonElement inchiKey = entity.get("http://purl.obolibrary.org/obo/chebi/inchikey");
+        if(inchiKey != null) {
+            writeMappingsForEntity(entity, "chebi:inchikey", inchiKey, null, ontologyProperties, writer, curieMap);
+        }
+        JsonElement smiles = entity.get("http://purl.obolibrary.org/obo/chebi/smiles");
+        if(smiles != null) {
+            writeMappingsForEntity(entity, "chebi:smiles", smiles, null, ontologyProperties, writer, curieMap);
+        }
     }
 
     public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, Map<String,JsonElement> ontologyProperties, CSVPrinter writer, CurieMap curieMap) throws IOException {
@@ -232,24 +247,47 @@ public class JSON2SSSOM {
 //            }
 
             CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
-            CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
 
-            if(subjCurie == null || objCurie == null) {
-                return;
-            }
+            if(subjCurie == null) {
+		return;
+	    }
+
+	    String subject_id = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
+
+
+	    String object_id = null;
+
+	    // TODO: hacks for specific chemical mappings, should generalise
+	    if(predicate.equals("chebi:inchikey")) {
+		object_id = "inchikey:" + value;
+	    } else if(predicate.equals("chebi:inchi")) {
+		object_id = "inchi:" + value;
+	    } else if(predicate.equals("chebi:smiles")) {
+		object_id = "smiles:" + value;
+	    } else {
+
+		CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
+
+		if(objCurie == null) {
+			return;
+		}
+
+		object_id = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+	    }
+
 
             String[] record = new String[tsvHeader.size()];
 
             for(int i = 0; i < tsvHeader.size(); ++ i) {
                 switch(tsvHeader.get(i)) {
                     case "subject_id":
-                        record[i] = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
+                        record[i] = subject_id;
                         break;
                     case "predicate_id":
                         record[i] = predicate;
                         break;
                     case "object_id":
-                        record[i] = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+                        record[i] = object_id;
                         break;
                     case "mapping_justification":
                         record[i] = "semapv:UnspecifiedMatching";

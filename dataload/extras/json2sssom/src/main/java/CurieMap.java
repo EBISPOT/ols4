@@ -25,9 +25,10 @@ public class CurieMap {
         addMapping("owl", "http://www.w3.org/2002/07/owl#");
         addMapping("skos", "http://www.w3.org/2004/02/skos/core#");
         addMapping("oboInOwl", "http://www.geneontology.org/formats/oboInOwl#");
-        /* #   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-#   rdfs: http://www.w3.org/2000/01/rdf-schema#
-#   sssom: https://w3id.org/sssom/*/
+        addMapping("chebi", "http://purl.obolibrary.org/obo/chebi/");
+        addMapping("inchi", "https://bioregistry.io/inchi:");
+        addMapping("inchikey", "https://bioregistry.io/inchikey:");
+        addMapping("smiles", "https://bioregistry.io/smiles:");
     }
 
     public CurieMapping mapEntity(JsonObject entityOrLinkedEntity) {
