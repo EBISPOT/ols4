@@ -225,27 +225,6 @@ public class JSON2SSSOM {
             // all mappings should eventually end up here
             // reificationMetadata may be null
 
-            String value = mappingValue.getAsString();
-
-            JsonElement linkedEntityElem = linkedEntities.get(value);
-
-            if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
-                return;
-            }
-
-            JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
-
-
-//            if(predicate.equals("owl:equivalentClass")) {
-//                JsonElement definedBy = linkedEntity.get("definedBy");
-//                if(definedBy == null) {
-//                    List<String> definedByOntologyId = getStringOrListOfStrings(definedBy);
-//                    if(definedByOntologyId.contains(ontologyProperties.get("ontologyId").getAsString())) {
-//                        return;
-//                    }
-//                }
-//            }
-
             CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
 
             if(subjCurie == null) {
@@ -255,16 +234,31 @@ public class JSON2SSSOM {
 	    String subject_id = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
 
 
+
+            String value = mappingValue.getAsString();
+
 	    String object_id = null;
+	    String object_label = "";
 
 	    // TODO: hacks for specific chemical mappings, should generalise
 	    if(predicate.equals("chebi:inchikey")) {
 		object_id = "inchikey:" + value;
+		object_label = value;
 	    } else if(predicate.equals("chebi:inchi")) {
 		object_id = "inchi:" + value;
+		object_label = value;
 	    } else if(predicate.equals("chebi:smiles")) {
 		object_id = "smiles:" + value;
+		object_label = value;
 	    } else {
+
+		JsonElement linkedEntityElem = linkedEntities.get(value);
+
+		if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
+			return;
+		}
+
+		JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
 
 		CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
 
@@ -273,6 +267,10 @@ public class JSON2SSSOM {
 		}
 
 		object_id = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+
+		if(linkedEntity.has("label"))  {
+			object_label = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
+		}
 	    }
 
 
@@ -296,9 +294,7 @@ public class JSON2SSSOM {
                         record[i] = JsonHelper.getFirstStringValue( entity.get("label") );
                         break;
                     case "object_label":
-                        if(linkedEntity.has("label")) {
-                            record[i] = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
-                        }
+			record[i] = object_label;
                         break;
 //                    case "comment":
 //                        record[i] = "extracted from " + getFirstStringValue(entity.get("ontologyId"));
