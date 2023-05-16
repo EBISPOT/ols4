@@ -231,20 +231,23 @@ export const getAncestors = createAsyncThunk(
     showObsoleteEnabled,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    var ancestorsPage: any;
     if (entityType === "classes") {
-      var ancestorsPage = await getPaginated<any>(
+      ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
           { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     } else {
-      var ancestorsPage = await getPaginated<any>(
+      ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
           { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     }
-    return ancestorsPage.elements.map((obj) => thingFromJsonProperties(obj));
+    return ancestorsPage.elements.map((obj: any) =>
+      thingFromJsonProperties(obj)
+    );
   }
 );
 export const getRootEntities = createAsyncThunk(
@@ -333,8 +336,9 @@ export const getNodeChildren = createAsyncThunk(
     includeObsoleteEntities: showObsoleteEnabled,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    var childrenPage: any;
     if (entityTypePlural === "classes") {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
           {
             size: "100",
@@ -344,7 +348,7 @@ export const getNodeChildren = createAsyncThunk(
         )}`
       );
     } else if (entityTypePlural === "individuals") {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
           {
             size: "100",
@@ -354,7 +358,7 @@ export const getNodeChildren = createAsyncThunk(
         )}`
       );
     } else {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
           {
             size: "100",
@@ -367,8 +371,8 @@ export const getNodeChildren = createAsyncThunk(
     return {
       absoluteIdentity,
       children: childrenPage.elements
-        .map((obj) => thingFromJsonProperties(obj))
-        .map((term) => {
+        .map((obj: any) => thingFromJsonProperties(obj))
+        .map((term: Entity) => {
           return {
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),

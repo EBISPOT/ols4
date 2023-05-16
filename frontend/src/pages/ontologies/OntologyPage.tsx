@@ -62,7 +62,7 @@ export default function OntologyPage() {
         params.set("viewMode", "list");
         return params;
       });
-  }, [tab]);
+  }, [tab, setSearchParams]);
 
   useEffect(() => {
     dispatch(getOntology({ ontologyId, lang }));
@@ -135,6 +135,7 @@ export default function OntologyPage() {
                   <Link
                     to={ontology.getOntologyPurl()}
                     target="_blank"
+                    rel="noopener noreferrer"
                     download={true}
                   >
                     <button className="button-secondary font-bold self-center">
@@ -146,7 +147,11 @@ export default function OntologyPage() {
                   </Link>
                 )}
                 {ontology.getHomepage() && (
-                  <Link to={ontology.getHomepage()} target="_blank">
+                  <Link
+                    to={ontology.getHomepage()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <button className="button-secondary font-bold self-center">
                       <div className="flex gap-2">
                         <Home />
@@ -159,6 +164,7 @@ export default function OntologyPage() {
                   <Link
                     to={"mailto:" + ontology.getMailingList()}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <button className="button-secondary font-bold self-center">
                       <div className="flex gap-2">
@@ -285,6 +291,7 @@ export default function OntologyPage() {
                         href={ontology.getIri() || ontology.getOntologyPurl()}
                         className="link-default"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {ontology.getIri() || ontology.getOntologyPurl()}
                       </a>
@@ -297,6 +304,7 @@ export default function OntologyPage() {
                           href={ontology.getVersionIri()}
                           className="link-default"
                           target="_blank"
+                          rel="noopener noreferrer"
                         >
                           {ontology.getVersionIri()}
                         </a>

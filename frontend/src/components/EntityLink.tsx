@@ -18,7 +18,7 @@ export default function EntityLink({
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en";
 
   if (typeof iri !== "string") {
@@ -211,8 +211,7 @@ export default function EntityLink({
       }
     }
   }
-
-  throw new Error("unknown entity link");
+  // throw new Error("unknown entity link");
 }
 
 function pluraliseType(type) {

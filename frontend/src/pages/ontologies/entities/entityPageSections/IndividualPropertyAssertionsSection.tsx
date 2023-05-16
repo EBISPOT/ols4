@@ -1,9 +1,9 @@
+import { Tooltip } from "@mui/material";
 import { Fragment } from "react";
 import { asArray, randomString, sortByKeys } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
-import { Tooltip } from "@mui/material";
 
 export default function IndividualPropertyAssertionsSection({
   entity,
@@ -20,11 +20,11 @@ export default function IndividualPropertyAssertionsSection({
     k.startsWith("negativePropertyAssertion+")
   );
 
-  let annotationProperties = propertyIris.filter(
-    (k) =>
-      linkedEntities.get(k) &&
-      linkedEntities.get(k)!.type.indexOf("annotationProperty") !== -1
-  );
+  // let annotationProperties = propertyIris.filter(
+  //   (k) =>
+  //     linkedEntities.get(k) &&
+  //     linkedEntities.get(k)!.type.indexOf("annotationProperty") !== -1
+  // );
   let objectProperties = propertyIris.filter(
     (k) =>
       linkedEntities.get(k) &&

@@ -51,7 +51,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [exact, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
   let setObsolete = useCallback(
@@ -64,7 +64,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [obsolete, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
   let setCanonical = useCallback(
@@ -77,7 +77,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [canonical, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
   const searchForOntologies = ontologyId === undefined;
@@ -234,9 +234,6 @@ export default function SearchBox({
   let jumpToOntologyElements = jumpTo
     .filter((thing) => thing.getType() === "ontology")
     .map((jumpToEntry: Thing, i: number): SearchBoxEntry => {
-      const termUrl = encodeURIComponent(
-        encodeURIComponent(jumpToEntry.getIri())
-      );
       if (!(jumpToEntry instanceof Ontology)) {
         throw new Error("jumpToEntry should be Ontology");
       }

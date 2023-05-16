@@ -1,11 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
@@ -20,7 +15,6 @@ export default function Search() {
   let search: string = params.search as string;
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const loadingResults = useAppSelector(
     (state) => state.search.loadingSearchResults
   );
@@ -31,10 +25,9 @@ export default function Search() {
   const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-  const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const ontologyFacets =
     facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
@@ -110,7 +103,7 @@ export default function Search() {
       <Header section="home" />
       <main className="container mx-auto h-fit my-8">
         <div className="flex flex-nowrap gap-4 mb-6">
-          <SearchBox initialQuery={query} />
+          <SearchBox initialQuery={search} />
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
