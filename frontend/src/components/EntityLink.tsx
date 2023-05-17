@@ -18,7 +18,7 @@ export default function EntityLink({
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en";
 
   if (typeof iri !== "string") {
@@ -36,10 +36,12 @@ export default function EntityLink({
 
   if (!linkedEntity) {
     // So far only known occurrence of this branch is for owl:Thing
-    return (
+    return iri.includes("http") ? (
       <Link className="link-default" to={iri}>
         {label}
       </Link>
+    ) : (
+      <span>{label}</span>
     );
   }
 
@@ -142,11 +144,15 @@ export default function EntityLink({
         <Fragment>
           <Link
             className="link-default"
-            to={`/search?iri=${encodedIri}&lang=${lang}`}
+            to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}
           >
             {label}
           </Link>
-          <Link to={`/search?iri=${encodedIri}`}>
+          <Link
+            to={`/search/${encodeURIComponent(
+              encodeURIComponent(label)
+            )}?exactMatch=true&lang=${lang}`}
+          >
             <span className="link-ontology px-2 py-0.5 rounded-md text-sm text-white ml-1 whitespace-nowrap">
               <SearchIcon
                 fontSize="small"
@@ -183,12 +189,14 @@ export default function EntityLink({
           <Fragment>
             <Link
               className="link-default"
-              to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
+              to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}
             >
               {label}
             </Link>
             <Link
-              to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
+              to={`/search/${encodeURIComponent(
+                encodeURIComponent(label)
+              )}?exactMatch=true&lang=${lang}`}
             >
               <span className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white whitespace-nowrap">
                 <SearchIcon
@@ -211,8 +219,7 @@ export default function EntityLink({
       }
     }
   }
-
-  throw new Error("unknown entity link");
+  // throw new Error("unknown entity link");
 }
 
 function pluraliseType(type) {

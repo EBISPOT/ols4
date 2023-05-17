@@ -14,7 +14,7 @@ export default function ClassInstancesSection({
   classInstances: Page<Entity> | null;
   linkedEntities: LinkedEntities;
 }) {
-  if (entity.getType() != "class") return <Fragment />;
+  if (entity.getType() !== "class") return <Fragment />;
 
   if (!classInstances || classInstances.elements.length === 0)
     return <Fragment />;
@@ -29,7 +29,7 @@ export default function ClassInstancesSection({
               <li key={randomString()}>
                 <EntityLink
                   ontologyId={entity.getOntologyId()}
-		  currentEntity={entity}
+                  currentEntity={entity}
                   entityType="individuals"
                   iri={instance.getIri()}
                   linkedEntities={linkedEntities}

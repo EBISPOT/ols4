@@ -1,8 +1,13 @@
 import { AccountTree, Share } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { copyToClipboard } from "../../../app/util";
+import { copyToClipboard, toCamel } from "../../../app/util";
 import ApiLinks from "../../../components/ApiLinks";
 import Header from "../../../components/Header";
 import LanguagePicker from "../../../components/LanguagePicker";
@@ -35,23 +40,20 @@ export default function EntityPage({
   entityType: "classes" | "properties" | "individuals";
 }) {
   const params = useParams();
-  let ontologyId: string = params.ontologyId as string;
-  let entityIri: string = decodeURIComponent(params.entityIri as string);
+  const ontologyId: string = params.ontologyId as string;
+  const entityIri: string = params.entityIri as string;
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const entity = useAppSelector((state) => state.ontologies.entity);
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
-  const loadingClassInstances = useAppSelector(
-    (state) => state.ontologies.loadingClassInstances
-  );
   const classInstances = useAppSelector(
     (state) => state.ontologies.classInstances
   );
+  const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let lang = searchParams.get("lang") || "en";
-  console.log("lang is " + lang);
+  const lang = searchParams.get("lang") || "en";
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const linkedEntities = entity
@@ -87,26 +89,57 @@ export default function EntityPage({
       });
   };
 
-  useEffect(() => {
-    dispatch(getOntology({ ontologyId, lang }));
-  }, [ontologyId]);
-
-  useEffect(() => {
-    dispatch(getEntity({ ontologyId, entityType, entityIri, lang }));
-
-    if (entityType === "classes") {
-      dispatch(getClassInstances({ ontologyId, classIri: entityIri, lang }));
-    }
-  }, [dispatch, ontology, entityType, entityIri, searchParams, lang]);
-
-  if (entity) document.title = entity.getShortForm() || entity.getName();
-
-  let ols3EntityType = {
+  const ols3EntityType = {
     classes: "terms",
     properties: "properties",
     individuals: "individuals",
   }[entityType];
 
+  useEffect(() => {
+    if (ontologyId) dispatch(getOntology({ ontologyId, lang }));
+  }, [dispatch, ontologyId, lang]);
+
+  useEffect(() => {}, [searchParams]);
+
+  useEffect(() => {
+    if (entityIri || searchParams) {
+      const searchParamsCopy = new URLSearchParams();
+      searchParams.forEach((value: string, key: string) => {
+        searchParamsCopy.append(toCamel(key), value);
+      });
+      dispatch(
+        getEntity({
+          ontologyId,
+          entityType,
+          entityIri,
+          searchParams: searchParamsCopy,
+        })
+      );
+    }
+  }, [dispatch, ontologyId, entityType, entityIri, searchParams]);
+
+  useEffect(() => {
+    if (entity && entityType === "classes") {
+      const searchParamsCopy = new URLSearchParams();
+      searchParams.forEach((value: string, key: string) => {
+        searchParamsCopy.append(toCamel(key), value);
+      });
+      dispatch(
+        getClassInstances({
+          ontologyId: entity.getOntologyId(),
+          classIri: entity.getIri(),
+          searchParams: searchParamsCopy,
+        })
+      );
+    }
+  }, [dispatch, entityType, entity, searchParams]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (errorMessage) navigate("/error", { state: { message: errorMessage } });
+  }, [errorMessage, navigate]);
+
+  document.title = entity?.getShortForm() || entity?.getName() || ontologyId;
   return (
     <div>
       <Header section="ontologies" />
@@ -134,9 +167,7 @@ export default function EntityPage({
                 </span>
                 <span>
                   <Link
-                    to={
-                      "/ontologies/" + ontologyId + "/" + entity.getTypePlural()
-                    }
+                    to={"/ontologies/" + ontologyId + "?tab=" + entityType}
                     className="link-default capitalize"
                   >
                     {entity.getTypePlural()}
@@ -147,9 +178,9 @@ export default function EntityPage({
                 </span>
                 <span
                   className="link-entity px-2 py-1 rounded-md text-sm text-white uppercase"
-                  title={entity.getShortForm()}
+                  title={entity.getShortForm() || entity.getName()}
                 >
-                  {entity.getShortForm()}
+                  {entity.getShortForm() || entity.getName()}
                 </span>
                 <span className="text-sm text-neutral-default">
                   &nbsp; &nbsp;
@@ -167,7 +198,7 @@ export default function EntityPage({
                 <LanguagePicker
                   ontology={ontology}
                   lang={lang}
-                  onChangeLang={(lang) => setSearchParams({ lang: lang })}
+                  onChangeLang={(lang) => setSearchParams({ lang })}
                 />
                 <ApiLinks
                   apiUrl={`${
@@ -216,12 +247,10 @@ export default function EntityPage({
                   <span>{isIriCopied ? "Copied!" : "Copy"}</span>
                 </button>
               </div>
-              <div className="mb-4">
-                <EntityDescriptionSection
-                  entity={entity}
-                  linkedEntities={linkedEntities}
-                />
-              </div>
+              <EntityDescriptionSection
+                entity={entity}
+                linkedEntities={linkedEntities}
+              />
               <DefiningOntologiesSection
                 entity={entity}
                 linkedEntities={linkedEntities}

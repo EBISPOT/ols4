@@ -2,18 +2,18 @@ import {
   createAction,
   createAsyncThunk,
   createSlice,
-  PayloadAction
+  PayloadAction,
 } from "@reduxjs/toolkit";
 import { get, getPaginated, Page } from "../../app/api";
+import { thingFromJsonProperties } from "../../app/util";
 import Entity from "../../model/Entity";
-import { thingFromProperties } from "../../model/fromProperties";
 import Ontology from "../../model/Ontology";
 import createTreeFromEntities from "./entities/createTreeFromEntities";
 
 export interface OntologiesState {
   ontology: Ontology | undefined;
   entity: Entity | undefined;
-  nodesWithChildrenLoaded: string[]
+  nodesWithChildrenLoaded: string[];
   nodeChildren: any;
   rootNodes: TreeNode[];
   ontologies: Ontology[];
@@ -33,6 +33,7 @@ export interface OntologiesState {
   showObsolete: boolean;
   showSiblings: boolean;
   showCounts: boolean;
+  errorMessage: string;
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -64,11 +65,15 @@ const initialState: OntologiesState = {
   preferredRoots: false,
   showObsolete: false,
   showSiblings: false,
-  showCounts: true
+  showCounts: true,
+  errorMessage: "",
 };
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
-export const resetTreeSettings = createAction<{entityType:string, selectedEntity?:Entity}>("ontologies_tree_reset_settings");
+export const resetTreeSettings = createAction<{
+  entityType: string;
+  selectedEntity?: Entity;
+}>("ontologies_tree_reset_settings");
 
 export const enablePreferredRoots = createAction(
   "ontologies_preferred_enabled"
@@ -88,7 +93,6 @@ export const hideSiblings = createAction("ontologies_hide_siblings");
 export const showCounts = createAction("ontologies_show_counts");
 export const hideCounts = createAction("ontologies_hide_counts");
 
-
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
   async ({ ontologyId, lang }: { ontologyId: string; lang: string }) => {
@@ -101,46 +105,100 @@ export const getOntology = createAsyncThunk(
 );
 export const getEntity = createAsyncThunk(
   "ontologies_entity",
-  async ({ ontologyId, entityType, entityIri, lang }: any) => {
+  async (
+    {
+      ontologyId,
+      entityType,
+      entityIri,
+      searchParams,
+    }: {
+      ontologyId: string;
+      entityType: string;
+      entityIri: string;
+      searchParams: URLSearchParams;
+    },
+    { rejectWithValue }
+  ) => {
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityIri)
     );
-    const termProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}`,
-      { lang }
-    );
-    return thingFromProperties(termProperties);
+    let path = "";
+    try {
+      let entityJsonProperties = null;
+      if (entityIri) {
+        path = `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}?${new URLSearchParams(
+          searchParams
+        )}`;
+        entityJsonProperties = await get<any>(path);
+      } else {
+        path = `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams(
+          searchParams
+        )}`;
+        const results = await getPaginated<any>(path);
+        if (results.elements.length === 1 && results.totalElements === 1) {
+          entityJsonProperties = results.elements[0];
+        } else {
+          return rejectWithValue(
+            `Error accessing: ${path}; Retrieved nondistinct entity: ${JSON.stringify(
+              results
+            )}`
+          );
+        }
+      }
+      return thingFromJsonProperties(entityJsonProperties);
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+    }
   }
 );
 export const getClassInstances = createAsyncThunk(
   "ontologies_entity_class_instances",
-  async ({ ontologyId, classIri, lang }: any) => {
-    const doubleEncodedTermUri = encodeURIComponent(
-      encodeURIComponent(classIri)
-    );
-    const instances = (
-      await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances`,
-        { lang }
-      )
-    ).map((i) => thingFromProperties(i));
-    return instances;
+  async (
+    {
+      ontologyId,
+      classIri,
+      searchParams,
+    }: {
+      ontologyId: string;
+      classIri: string;
+      searchParams: URLSearchParams;
+    },
+    { rejectWithValue }
+  ) => {
+    let path = "";
+    try {
+      if (classIri) {
+        const doubleEncodedTermUri = encodeURIComponent(
+          encodeURIComponent(classIri)
+        );
+        path = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances?${new URLSearchParams(
+          searchParams
+        )}`;
+        const instances = (await getPaginated<any>(path)).map((i) =>
+          thingFromJsonProperties(i)
+        );
+        return instances;
+      } else {
+        return rejectWithValue(
+          `Warning accessing: ${path}; Class IRI not provided`
+        );
+      }
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+    }
   }
 );
 export const getOntologies = createAsyncThunk(
   "ontologies_ontologies",
   async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
+    const path = `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
+      search ? "&search=" + search : ""
+    }`;
     try {
-      const data = (
-        await getPaginated<any>(
-          `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
-            search ? "&search=" + search : ""
-          }`
-        )
-      ).map((o) => new Ontology(o));
+      const data = (await getPaginated<any>(path)).map((o) => new Ontology(o));
       return data;
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
     }
   }
 );
@@ -150,95 +208,120 @@ export const getEntities = createAsyncThunk(
     { ontologyId, entityType, page, rowsPerPage, search }: any,
     { rejectWithValue }
   ) => {
+    const path = `api/v2/ontologies/${ontologyId}/${entityType}?page=${page}&size=${rowsPerPage}${
+      search ? "&search=" + search : ""
+    }`;
     try {
-      const data = (
-        await getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/${entityType}?page=${page}&size=${rowsPerPage}${
-            search ? "&search=" + search : ""
-          }`
-        )
-      ).map((e) => thingFromProperties(e));
+      const data = (await getPaginated<any>(path)).map((e) =>
+        thingFromJsonProperties(e)
+      );
       return data;
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
     }
   }
 );
 export const getAncestors = createAsyncThunk(
   "ontologies_ancestors",
-  async ({ ontologyId, entityType, entityIri, lang, showObsoleteEnabled }: any) => {
+  async ({
+    ontologyId,
+    entityType,
+    entityIri,
+    lang,
+    showObsoleteEnabled,
+  }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    var ancestorsPage: any;
     if (entityType === "classes") {
-      var ancestorsPage = await getPaginated<any>(
+      ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
           { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     } else {
-      var ancestorsPage = await getPaginated<any>(
+      ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
           { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     }
-    return ancestorsPage.elements.map((obj) => thingFromProperties(obj));
+    return ancestorsPage.elements.map((obj: any) =>
+      thingFromJsonProperties(obj)
+    );
   }
 );
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
-  async ({ ontologyId, entityType, preferredRoots, lang, showObsoleteEnabled }: any) => {
+  async ({
+    ontologyId,
+    entityType,
+    preferredRoots,
+    lang,
+    showObsoleteEnabled,
+  }: any) => {
     if (entityType === "individuals") {
-      const [classesWithIndividuals,orphanedIndividuals] = await Promise.all([
-		getPaginated<any>(
-		`api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
-		hasIndividuals: "true",
-		size: "100",
-		lang,
-		includeObsoleteEntities: showObsoleteEnabled
-		})}`),
-		getPaginated<any>(
-		`api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
-		hasDirectParent: "false",
-		size: "100",
-		lang,
-		includeObsoleteEntities: showObsoleteEnabled
-		})}`)
-	])
+      const [classesWithIndividuals, orphanedIndividuals] = await Promise.all([
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
+            hasIndividuals: "true",
+            size: "100",
+            lang,
+            includeObsoleteEntities: showObsoleteEnabled,
+          })}`
+        ),
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
+            hasDirectParent: "false",
+            size: "100",
+            lang,
+            includeObsoleteEntities: showObsoleteEnabled,
+          })}`
+        ),
+      ]);
       return {
-	entityType,
-	rootTerms: null,
-	classesWithIndividuals: classesWithIndividuals.elements.map((obj) => thingFromProperties(obj)),
-	orphanedIndividuals: orphanedIndividuals.elements.map((obj) => thingFromProperties(obj))
-      }
+        entityType,
+        rootTerms: null,
+        classesWithIndividuals: classesWithIndividuals.elements.map((obj) =>
+          thingFromJsonProperties(obj)
+        ),
+        orphanedIndividuals: orphanedIndividuals.elements.map((obj) =>
+          thingFromJsonProperties(obj)
+        ),
+      };
     } else if (entityType === "classes" && preferredRoots) {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
           isPreferredRoot: "true",
           size: "100",
           lang,
-	  includeObsoleteEntities: showObsoleteEnabled
-        })}`)
-	return {
-		entityType,
-		rootTerms: rootsPage.elements.map((obj) => thingFromProperties(obj)),
-		classesWithIndividuals: null,
-		orphanedIndividuals: null
-	}
+          includeObsoleteEntities: showObsoleteEnabled,
+        })}`
+      );
+      return {
+        entityType,
+        rootTerms: rootsPage.elements.map((obj) =>
+          thingFromJsonProperties(obj)
+        ),
+        classesWithIndividuals: null,
+        orphanedIndividuals: null,
+      };
     } else {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
           hasDirectParent: "false",
           size: "100",
           lang,
-	  includeObsoleteEntities: showObsoleteEnabled
+          includeObsoleteEntities: showObsoleteEnabled,
         })}`
       );
-	return {
-		entityType,
-		rootTerms: rootsPage.elements.map((obj) => thingFromProperties(obj)),
-		classesWithIndividuals: null,
-		orphanedIndividuals: null
-	}
+      return {
+        entityType,
+        rootTerms: rootsPage.elements.map((obj) =>
+          thingFromJsonProperties(obj)
+        ),
+        classesWithIndividuals: null,
+        orphanedIndividuals: null,
+      };
     }
   }
 );
@@ -250,36 +333,37 @@ export const getNodeChildren = createAsyncThunk(
     entityIri,
     absoluteIdentity,
     lang,
-    includeObsoleteEntities: showObsoleteEnabled
+    includeObsoleteEntities: showObsoleteEnabled,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    var childrenPage: any;
     if (entityTypePlural === "classes") {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
           {
             size: "100",
             lang,
-         	includeObsoleteEntities: showObsoleteEnabled
+            includeObsoleteEntities: showObsoleteEnabled,
           }
         )}`
       );
     } else if (entityTypePlural === "individuals") {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
           {
             size: "100",
             lang,
-         	includeObsoleteEntities: showObsoleteEnabled
+            includeObsoleteEntities: showObsoleteEnabled,
           }
         )}`
       );
     } else {
-      var childrenPage = await getPaginated<any>(
+      childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
           {
             size: "100",
             lang,
-         	includeObsoleteEntities: showObsoleteEnabled
+            includeObsoleteEntities: showObsoleteEnabled,
           }
         )}`
       );
@@ -287,8 +371,8 @@ export const getNodeChildren = createAsyncThunk(
     return {
       absoluteIdentity,
       children: childrenPage.elements
-        .map((obj) => thingFromProperties(obj))
-        .map((term) => {
+        .map((obj: any) => thingFromJsonProperties(obj))
+        .map((term: Entity) => {
           return {
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
@@ -330,6 +414,14 @@ const ontologiesSlice = createSlice({
       state.loadingEntity = true;
     });
     builder.addCase(
+      getEntity.rejected,
+      (state: OntologiesState, error: any) => {
+        state.loadingEntity = false;
+        state.entity = initialState.entity;
+        state.errorMessage = error.payload;
+      }
+    );
+    builder.addCase(
       getClassInstances.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
         state.classInstances = action.payload;
@@ -340,33 +432,41 @@ const ontologiesSlice = createSlice({
       state.loadingClassInstances = true;
     });
     builder.addCase(
-      getAncestors.pending,
-      (state: OntologiesState) => {
-        ++ state.numPendingTreeRequests;
+      getClassInstances.rejected,
+      (state: OntologiesState, error: any) => {
+        state.loadingClassInstances = false;
+        state.classInstances = initialState.classInstances;
+        state.errorMessage = error.payload;
       }
     );
+    builder.addCase(getAncestors.pending, (state: OntologiesState) => {
+      ++state.numPendingTreeRequests;
+    });
     builder.addCase(
       getAncestors.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity[]>) => {
-        let { rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
-          [state.entity!, ...action.payload],
-          state.preferredRoots,
-          state.ontology!
-        );
+        let { rootNodes, nodeChildren, automaticallyExpandedNodes } =
+          createTreeFromEntities(
+            [state.entity!, ...action.payload],
+            state.preferredRoots,
+            state.ontology!
+          );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
-	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
-	-- state.numPendingTreeRequests;
+        state.automaticallyExpandedNodes = Array.from(
+          new Set([
+            ...state.automaticallyExpandedNodes,
+            ...Array.from(automaticallyExpandedNodes),
+          ])
+        );
+        --state.numPendingTreeRequests;
       }
     );
-    builder.addCase(
-      getAncestors.rejected,
-      (state: OntologiesState) => {
-        -- state.numPendingTreeRequests;
-      }
-    );
+    builder.addCase(getAncestors.rejected, (state: OntologiesState) => {
+      --state.numPendingTreeRequests;
+    });
     builder.addCase(getNodeChildren.pending, (state: OntologiesState) => {
-        ++ state.numPendingTreeRequests;
+      ++state.numPendingTreeRequests;
     });
     builder.addCase(
       getNodeChildren.fulfilled,
@@ -381,44 +481,48 @@ const ontologiesSlice = createSlice({
           ...state.nodeChildren,
           [action.payload.absoluteIdentity]: action.payload.children,
         };
-	state.nodesWithChildrenLoaded.push(action.payload.absoluteIdentity)
-        -- state.numPendingTreeRequests;
+        state.nodesWithChildrenLoaded.push(action.payload.absoluteIdentity);
+        --state.numPendingTreeRequests;
       }
     );
     builder.addCase(getNodeChildren.rejected, (state: OntologiesState) => {
-        -- state.numPendingTreeRequests;
+      --state.numPendingTreeRequests;
     });
-    builder.addCase(
-      getRootEntities.pending,
-      (state: OntologiesState) => {
-         ++ state.numPendingTreeRequests;
-      })
+    builder.addCase(getRootEntities.pending, (state: OntologiesState) => {
+      ++state.numPendingTreeRequests;
+    });
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<any>) => {
-
-	let { entityType, rootTerms, classesWithIndividuals, orphanedIndividuals } = action.payload;
-
-	console.log('rootTerms')
-	console.dir(rootTerms)
-
-        let { allNodes, rootNodes, nodeChildren, automaticallyExpandedNodes } = createTreeFromEntities(
-          [ ...(rootTerms || []), ...(classesWithIndividuals || []), ...(orphanedIndividuals || []) ],
-          state.preferredRoots,
-          state.ontology!
-        );
+        let { rootTerms, classesWithIndividuals, orphanedIndividuals } =
+          action.payload;
+        // console.log("rootTerms");
+        // console.dir(rootTerms);
+        let { rootNodes, nodeChildren, automaticallyExpandedNodes } =
+          createTreeFromEntities(
+            [
+              ...(rootTerms || []),
+              ...(classesWithIndividuals || []),
+              ...(orphanedIndividuals || []),
+            ],
+            state.preferredRoots,
+            state.ontology!
+          );
 
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
-	state.automaticallyExpandedNodes = Array.from(new Set([...state.automaticallyExpandedNodes, ...Array.from(automaticallyExpandedNodes) ]))
-        -- state.numPendingTreeRequests;
+        state.automaticallyExpandedNodes = Array.from(
+          new Set([
+            ...state.automaticallyExpandedNodes,
+            ...Array.from(automaticallyExpandedNodes),
+          ])
+        );
+        --state.numPendingTreeRequests;
       }
     );
-    builder.addCase(
-      getRootEntities.rejected,
-      (state: OntologiesState) => {
-         -- state.numPendingTreeRequests;
-      })
+    builder.addCase(getRootEntities.rejected, (state: OntologiesState) => {
+      --state.numPendingTreeRequests;
+    });
     builder.addCase(
       getOntologies.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Ontology>>) => {
@@ -430,10 +534,14 @@ const ontologiesSlice = createSlice({
     builder.addCase(getOntologies.pending, (state: OntologiesState) => {
       state.loadingOntologies = true;
     });
-    builder.addCase(getOntologies.rejected, (state: OntologiesState) => {
-      state.ontologies = initialState.ontologies;
-      state.loadingOntologies = false;
-    });
+    builder.addCase(
+      getOntologies.rejected,
+      (state: OntologiesState, error: any) => {
+        state.ontologies = initialState.ontologies;
+        state.loadingOntologies = false;
+        state.errorMessage = error.payload;
+      }
+    );
     builder.addCase(
       getEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
@@ -445,40 +553,52 @@ const ontologiesSlice = createSlice({
     builder.addCase(getEntities.pending, (state: OntologiesState) => {
       state.loadingEntities = true;
     });
-    builder.addCase(getEntities.rejected, (state: OntologiesState) => {
-      state.entities = initialState.entities;
-      state.loadingEntities = false;
-    });
+    builder.addCase(
+      getEntities.rejected,
+      (state: OntologiesState, error: any) => {
+        state.entities = initialState.entities;
+        state.loadingEntities = false;
+        state.errorMessage = error.payload;
+      }
+    );
     builder.addCase(resetTreeContent, (state: OntologiesState) => {
-//       console.log('Resetting tree content')
-      state.nodesWithChildrenLoaded = []
+      state.nodesWithChildrenLoaded = [];
       state.nodeChildren = {};
       state.rootNodes = [];
       state.automaticallyExpandedNodes = [];
     });
-    builder.addCase(resetTreeSettings, (state: OntologiesState, action: PayloadAction<{entityType:string, selectedEntity?:Entity}>) => {
-      console.log('Resetting tree settings')
+    builder.addCase(
+      resetTreeSettings,
+      (
+        state: OntologiesState,
+        action: PayloadAction<{ entityType: string; selectedEntity?: Entity }>
+      ) => {
+        state.preferredRoots =
+          action.payload.entityType === "classes" &&
+          state.ontology!.getPreferredRoots().length > 0;
 
-      state.preferredRoots = action.payload.entityType === 'classes' && state.ontology!.getPreferredRoots().length > 0;
-
-      if(action.payload.selectedEntity) {
-	let selectedIsDescendantOfPreferredRoots = false
-	for(let root of state.ontology!.getPreferredRoots()) {
-		if(action.payload.selectedEntity.getHierarchicalAncestorIris().indexOf(root) !== -1) {
-			selectedIsDescendantOfPreferredRoots = true;
-			break;
-		}
-	}
-	if(!selectedIsDescendantOfPreferredRoots) {
-		state.preferredRoots = false
-	}
+        if (action.payload.selectedEntity) {
+          let selectedIsDescendantOfPreferredRoots = false;
+          for (let root of state.ontology!.getPreferredRoots()) {
+            if (
+              action.payload.selectedEntity
+                .getHierarchicalAncestorIris()
+                .indexOf(root) !== -1
+            ) {
+              selectedIsDescendantOfPreferredRoots = true;
+              break;
+            }
+          }
+          if (!selectedIsDescendantOfPreferredRoots) {
+            state.preferredRoots = false;
+          }
+        }
+        state.showObsolete = false;
+        state.showSiblings = false;
+        state.showCounts = true;
+        state.manuallyExpandedNodes = [];
       }
-
-      state.showObsolete = false;
-      state.showSiblings = false;
-      state.showCounts = true;
-      state.manuallyExpandedNodes = [];
-    });
+    );
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = true;
     });
@@ -507,7 +627,10 @@ const ontologiesSlice = createSlice({
       openNode,
       (state: OntologiesState, action: PayloadAction<TreeNode>) => {
         state.manuallyExpandedNodes = Array.from(
-          new Set([...state.manuallyExpandedNodes, action.payload.absoluteIdentity])
+          new Set([
+            ...state.manuallyExpandedNodes,
+            action.payload.absoluteIdentity,
+          ])
         );
       }
     );
@@ -517,11 +640,14 @@ const ontologiesSlice = createSlice({
         state.manuallyExpandedNodes = state.manuallyExpandedNodes.filter(
           (node) => node !== action.payload.absoluteIdentity
         );
-        state.automaticallyExpandedNodes = state.automaticallyExpandedNodes.filter(
-          (node) => node !== action.payload.absoluteIdentity
+        state.automaticallyExpandedNodes =
+          state.automaticallyExpandedNodes.filter(
+            (node) => node !== action.payload.absoluteIdentity
+          );
+        delete state.nodeChildren[action.payload.absoluteIdentity];
+        state.nodesWithChildrenLoaded = state.nodesWithChildrenLoaded.filter(
+          (absId) => absId !== action.payload.absoluteIdentity
         );
-	delete state.nodeChildren[action.payload.absoluteIdentity];
-	state.nodesWithChildrenLoaded = state.nodesWithChildrenLoaded.filter(absId => absId !== action.payload.absoluteIdentity)
       }
     );
   },

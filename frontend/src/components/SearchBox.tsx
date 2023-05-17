@@ -2,12 +2,11 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
-import { randomString } from "../app/util";
+import { randomString, thingFromJsonProperties } from "../app/util";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
-import { thingFromProperties } from "../model/fromProperties";
 
 let curSearchToken: any = null;
 
@@ -42,7 +41,7 @@ export default function SearchBox({
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
   let canonical = searchParams.get("isDefiningOntology") === "true";
 
-  let setExact = useCallback(
+  const setExact = useCallback(
     (exact: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (exact.toString() === "true") {
@@ -52,10 +51,10 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [exact, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
-  let setObsolete = useCallback(
+  const setObsolete = useCallback(
     (obsolete: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (obsolete.toString() === "true") {
@@ -65,10 +64,10 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [obsolete, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
-  let setCanonical = useCallback(
+  const setCanonical = useCallback(
     (canonical: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (canonical.toString() === "true") {
@@ -78,7 +77,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [canonical, searchParams, setSearchParams]
+    [searchParams, setSearchParams]
   );
 
   const searchForOntologies = ontologyId === undefined;
@@ -92,15 +91,16 @@ export default function SearchBox({
     };
   });
 
+  const cancelPromisesRef = useRef(false);
   useEffect(() => {
     async function loadSuggestions() {
       setLoading(true);
       setArrowKeySelectedN(undefined);
 
-      let searchToken = randomString();
+      const searchToken = randomString();
       curSearchToken = searchToken;
 
-      let [entities, ontologies, autocomplete] = await Promise.all([
+      const [entities, ontologies, autocomplete] = await Promise.all([
         getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
             search: query,
@@ -133,10 +133,11 @@ export default function SearchBox({
             )
           : null,
       ]);
+      if (cancelPromisesRef.current && !mounted.current) return;
 
       if (searchToken === curSearchToken) {
         setJumpTo([
-          ...entities.elements.map((obj) => thingFromProperties(obj)),
+          ...entities.elements.map((obj) => thingFromJsonProperties(obj)),
           ...(ontologies?.elements.map((obj) => new Ontology(obj)) || []),
         ]);
         setAutocomplete(autocomplete);
@@ -145,7 +146,11 @@ export default function SearchBox({
     }
 
     loadSuggestions();
-  }, [query, exact, obsolete]);
+
+    return () => {
+      cancelPromisesRef.current = true;
+    };
+  }, [query, exact, obsolete, canonical]);
 
   let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || [];
   let autocompleteElements = autocompleteToShow.map(
@@ -235,9 +240,6 @@ export default function SearchBox({
   let jumpToOntologyElements = jumpTo
     .filter((thing) => thing.getType() === "ontology")
     .map((jumpToEntry: Thing, i: number): SearchBoxEntry => {
-      const termUrl = encodeURIComponent(
-        encodeURIComponent(jumpToEntry.getIri())
-      );
       if (!(jumpToEntry instanceof Ontology)) {
         throw new Error("jumpToEntry should be Ontology");
       }
@@ -316,7 +318,6 @@ export default function SearchBox({
                 setQuery(e.target.value);
               }}
               onKeyDown={(ev) => {
-                console.log(ev.key);
                 if (ev.key === "Enter") {
                   if (
                     arrowKeySelectedN !== undefined &&
@@ -331,7 +332,6 @@ export default function SearchBox({
                     );
                   }
                 } else if (ev.key === "ArrowDown") {
-                  console.log("down from " + arrowKeySelectedN);
                   setArrowKeySelectedN(
                     arrowKeySelectedN !== undefined
                       ? Math.min(
@@ -341,7 +341,6 @@ export default function SearchBox({
                       : 0
                   );
                 } else if (ev.key === "ArrowUp") {
-                  console.log("up from " + arrowKeySelectedN);
                   if (arrowKeySelectedN !== undefined)
                     setArrowKeySelectedN(Math.max(arrowKeySelectedN - 1, 0));
                 }

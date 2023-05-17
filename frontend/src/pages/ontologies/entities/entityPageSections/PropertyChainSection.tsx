@@ -73,7 +73,7 @@ function PropertyChain({
     <Fragment>
       {chain.reverse().map((propertyExpr, i) => {
         return (
-          <Fragment>
+          <span key={propertyExpr}>
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               currentEntity={entity}
@@ -88,7 +88,7 @@ function PropertyChain({
                 </span>
               )}
             </Fragment>
-          </Fragment>
+          </span>
         );
       })}
     </Fragment>

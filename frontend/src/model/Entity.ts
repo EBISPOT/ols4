@@ -1,10 +1,8 @@
 import { asArray } from "../app/util";
-import LinkedEntities from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
 
 export default abstract class Entity extends Thing {
-
   abstract getParents(): Reified<any>[];
   abstract getSuperEntities(): Reified<any>[];
   abstract getEquivalents(): Reified<any>[];
@@ -13,7 +11,7 @@ export default abstract class Entity extends Thing {
     return this.properties["isDefiningOntology"] === true;
   }
 
-  getSubClassOf():Reified<any>[] {
+  getSubClassOf(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["relatedFrom"]);
   }
 
@@ -34,27 +32,27 @@ export default abstract class Entity extends Thing {
   }
 
   hasChildren(): boolean {
-    return this.hasDirectChildren() || this.hasHierarchicalChildren()
+    return this.hasDirectChildren() || this.hasHierarchicalChildren();
   }
 
-  getAncestorIris():string[] {
-	  return asArray(this.properties['ancestor'])
+  getAncestorIris(): string[] {
+    return asArray(this.properties["ancestor"]);
   }
 
-  getHierarchicalAncestorIris():string[] {
-	  return asArray(this.properties['hierarchicalAncestor'])
+  getHierarchicalAncestorIris(): string[] {
+    return asArray(this.properties["hierarchicalAncestor"]);
   }
 
   getSynonyms() {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
-  getAppearsIn():string[] {
-	return (this.properties['appearsIn'] || []) as string[]
+  getAppearsIn(): string[] {
+    return (this.properties["appearsIn"] || []) as string[];
   }
 
-  getDefinedBy():string[] {
-	return (this.properties['definedBy'] || []) as string[]
+  getDefinedBy(): string[] {
+    return (this.properties["definedBy"] || []) as string[];
   }
 
   getShortForm(): string {
@@ -64,18 +62,18 @@ export default abstract class Entity extends Thing {
   getAnnotationPredicates(): string[] {
     let definitionProperties = asArray(this.properties["definitionProperty"]);
     let synonymProperties = asArray(this.properties["synonymProperty"]);
-    let hierarchicalProperties = asArray(this.properties["hierarchicalProperty"]);
+    let hierarchicalProperties = asArray(
+      this.properties["hierarchicalProperty"]
+    );
     let annotationPredicates = new Set();
 
     for (let predicate of Object.keys(this.properties)) {
-
       // properties without an IRI are things that were added by rdf2json so should not
       // be included as annotations
       if (predicate.indexOf("://") === -1) continue;
 
       // this is handled explicitly in EntityPage
-      if(predicate.startsWith("negativePropertyAssertion+"))
-	continue;
+      if (predicate.startsWith("negativePropertyAssertion+")) continue;
 
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation
@@ -111,7 +109,7 @@ export default abstract class Entity extends Thing {
       //
       if (
         //predicate === "http://www.geneontology.org/formats/oboInOwl#inSubset"
-         predicate === "http://www.geneontology.org/formats/oboInOwl#id"
+        predicate === "http://www.geneontology.org/formats/oboInOwl#id"
       ) {
         continue;
       }
@@ -125,13 +123,15 @@ export default abstract class Entity extends Thing {
     return Array.from(annotationPredicates) as string[];
   }
 
-  getNumHierarchicalDescendants():number {
-    return this.properties['numHierarchicalDescendants'] ?
-            parseInt(this.properties['numHierarchicalDescendants']) : 0
+  getNumHierarchicalDescendants(): number {
+    return this.properties["numHierarchicalDescendants"]
+      ? parseInt(this.properties["numHierarchicalDescendants"])
+      : 0;
   }
 
-  getNumDescendants():number {
-    return this.properties['numDescendants'] ?
-            parseInt(this.properties['numDescendants']) : 0
+  getNumDescendants(): number {
+    return this.properties["numDescendants"]
+      ? parseInt(this.properties["numDescendants"])
+      : 0;
   }
 }

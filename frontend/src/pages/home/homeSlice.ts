@@ -1,13 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { get, getPaginated, Page } from "../../app/api";
-import Entity from "../../model/Entity";
-import { thingFromProperties } from "../../model/fromProperties";
-import Ontology from "../../model/Ontology";
-import { Suggest } from "../../model/Suggest";
-import Thing from "../../model/Thing";
+import { get } from "../../app/api";
 
 export interface HomeState {
-  stats: Stats|undefined;
+  stats: Stats | undefined;
 }
 export interface Stats {
   numberOfOntologies: number;
@@ -17,7 +12,7 @@ export interface Stats {
   lastModified: string;
 }
 const initialState: HomeState = {
-  stats: undefined
+  stats: undefined,
 };
 
 export const getStats = createAsyncThunk(

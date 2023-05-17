@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Header({
-  section,
-}: // projectId,
-{
-  section: string;
-  // projectId?: string;
-}) {
+export default function Header({ section }: { section?: string }) {
   return (
     <header
       className="bg-black bg-right bg-cover"

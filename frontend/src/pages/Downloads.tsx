@@ -60,7 +60,12 @@ const columns: readonly Column[] = [
     name: "Download",
     sortable: false,
     selector: (data) => (
-      <a className="link-default" target="_blank" href={data.downloadLink}>
+      <a
+        className="link-default"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={data.downloadLink}
+      >
         {data.downloadLabel}
       </a>
     ),
