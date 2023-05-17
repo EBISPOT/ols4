@@ -95,12 +95,17 @@ export const hideCounts = createAction("ontologies_hide_counts");
 
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
-  async ({ ontologyId, lang }: { ontologyId: string; lang: string }) => {
-    const ontologyProperties = await get<any>(
-      `api/v2/ontologies/${ontologyId}`,
-      { lang }
-    );
-    return new Ontology(ontologyProperties);
+  async (
+    { ontologyId, lang }: { ontologyId: string; lang: string },
+    { rejectWithValue }
+  ) => {
+    const path = `api/v2/ontologies/${ontologyId}`;
+    try {
+      const ontologyProperties = await get<any>(path, { lang });
+      return new Ontology(ontologyProperties);
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+    }
   }
 );
 export const getEntity = createAsyncThunk(
@@ -400,9 +405,16 @@ const ontologiesSlice = createSlice({
       }
     );
     builder.addCase(getOntology.pending, (state: OntologiesState) => {
-      state.ontology = undefined;
       state.loadingOntology = true;
     });
+    builder.addCase(
+      getOntology.rejected,
+      (state: OntologiesState, error: any) => {
+        state.ontology = initialState.ontology;
+        state.loadingOntology = false;
+        state.errorMessage = error.payload;
+      }
+    );
     builder.addCase(
       getEntity.fulfilled,
       (state: OntologiesState, action: PayloadAction<Entity>) => {

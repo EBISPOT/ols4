@@ -37,6 +37,7 @@ export default function OntologyPage() {
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
+  const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "en";
@@ -86,6 +87,9 @@ export default function OntologyPage() {
         )}`
       );
   }, [iri, navigate, ontologyId, tab]);
+  useEffect(() => {
+    if (errorMessage) navigate("/error", { state: { message: errorMessage } });
+  }, [errorMessage, navigate]);
 
   document.title = ontology?.getName() || ontologyId;
   return (
