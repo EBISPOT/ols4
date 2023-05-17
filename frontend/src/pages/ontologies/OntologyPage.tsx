@@ -57,12 +57,21 @@ export default function OntologyPage() {
       : ontology?.getVersionFromIri()) || undefined;
 
   useEffect(() => {
-    if (tab === "individuals")
+    if (tab === "individuals" && ontology && ontology.getNumIndividuals() > 0) {
       setSearchParams((params) => {
         params.set("viewMode", "list");
         return params;
       });
-  }, [tab, setSearchParams]);
+    } else if (
+      (tab === "properties" && ontology && !ontology.getNumProperties()) ||
+      (tab === "individuals" && ontology && !ontology.getNumIndividuals())
+    ) {
+      setSearchParams((params) => {
+        params.set("tab", "classes");
+        return params;
+      });
+    }
+  }, [tab, ontology, setSearchParams]);
 
   useEffect(() => {
     dispatch(getOntology({ ontologyId, lang }));

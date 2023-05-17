@@ -25,14 +25,16 @@ export default function addLinksToText(
         start: n,
         end: n + entityId.length,
         link: (
-          <EntityLink
-            key={ontologyId + entityId}
-            ontologyId={ontologyId}
-            currentEntity={currentEntity}
-            entityType={entityType}
-            iri={entityId}
-            linkedEntities={linkedEntities}
-          />
+          <span className="pr-1">
+            <EntityLink
+              key={ontologyId + entityId}
+              ontologyId={ontologyId}
+              currentEntity={currentEntity}
+              entityType={entityType}
+              iri={entityId}
+              linkedEntities={linkedEntities}
+            />
+          </span>
         ),
       });
 
@@ -50,7 +52,7 @@ export default function addLinksToText(
         <Link
           key={match[0] + randomString()}
           to={match[0]}
-          className="link-default"
+          className="link-default pr-1"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -69,7 +71,7 @@ export default function addLinksToText(
 
       // The splices overlap if neither ends before the other starts
       if (spliceA.end >= spliceB.start && spliceB.end >= spliceA.start) {
-        console.log("Removing overlapping");
+        // console.log("Removing overlapping");
         linksToSplice.splice(n, 1);
         continue removeOverlapping;
       }
@@ -87,14 +89,16 @@ export default function addLinksToText(
   for (let link of linksToSplice) {
     res.push(
       <Fragment key={text.substring(n, link.start) + randomString()}>
-        {text.substring(n, link.start)}
+        {text.substring(n, link.start)}&thinsp;
       </Fragment>
     );
     res.push(link.link);
     n = link.end;
   }
   res.push(
-    <Fragment key={text.slice(n) + randomString()}>{text.slice(n)}</Fragment>
+    <Fragment key={text.slice(n) + randomString()}>
+      {text.slice(n)}&thinsp;
+    </Fragment>
   );
 
   return res.sort((a, b) => sortByKeys(a, b));

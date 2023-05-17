@@ -66,7 +66,7 @@ const columns: readonly Column[] = [
           <a
             href={
               process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}/classes`
+              `/ontologies/${ontology.getOntologyId()}?tab=classes`
             }
             className="link-default"
           >
@@ -76,7 +76,7 @@ const columns: readonly Column[] = [
           <a
             href={
               process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}/properties`
+              `/ontologies/${ontology.getOntologyId()}?tab=properties`
             }
             className="link-default"
           >
@@ -86,7 +86,7 @@ const columns: readonly Column[] = [
           <a
             href={
               process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}/individuals`
+              `/ontologies/${ontology.getOntologyId()}?tab=individuals`
             }
             className="link-default"
           >

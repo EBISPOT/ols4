@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function Tabs({
   value,
@@ -12,6 +12,7 @@ export function Tabs({
   const firstTab = children ? children[0].props.value : "";
   const initialTab = value ? value : firstTab;
   const [activeTab, setActiveTab] = useState(initialTab);
+
   const handleActiveTab = useCallback(
     (val) => {
       setActiveTab(val);
@@ -19,6 +20,10 @@ export function Tabs({
     },
     [onChange]
   );
+
+  useEffect(() => {
+    setActiveTab(value);
+  }, [value]);
 
   return (
     <div>
