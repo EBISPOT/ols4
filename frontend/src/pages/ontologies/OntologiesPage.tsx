@@ -125,6 +125,7 @@ export default function OntologiesPage() {
           columns={columns}
           data={ontologies}
           dataCount={totalOntologies}
+          placeholder="Search ontologies..."
           page={page}
           rowsPerPage={rowsPerPage}
           onPageChange={(page: number) => {

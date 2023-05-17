@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@emotion/react";
 import {
   Checkbox,
   FormControl,
@@ -8,6 +9,7 @@ import {
 import { Fragment, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { theme } from "../../../app/mui";
 import { randomString } from "../../../app/util";
 import Node from "../../../components/Node";
 import Entity from "../../../model/Entity";
@@ -283,7 +285,7 @@ export default function EntityTree({
     );
   }
   return (
-    <Fragment>
+    <ThemeProvider theme={theme}>
       <div style={{ position: "relative" }}>
         <div
           style={{ position: "absolute", right: 0, top: 0 }}
@@ -354,7 +356,7 @@ export default function EntityTree({
           <div className="spinner-default w-7 h-7 absolute -top-2 -left-5" />
         ) : null}
       </div>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 

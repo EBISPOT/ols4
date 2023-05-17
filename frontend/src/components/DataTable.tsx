@@ -15,6 +15,7 @@ export default function DataTable({
   columns,
   data,
   dataCount,
+  placeholder,
   onSelectRow,
   page,
   rowsPerPage,
@@ -25,6 +26,7 @@ export default function DataTable({
   columns: readonly Column[];
   data: any[];
   dataCount: number;
+  placeholder?: string;
   onSelectRow?: (row: any) => void;
   page?: number;
   rowsPerPage?: number;
@@ -41,7 +43,7 @@ export default function DataTable({
         {rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
-          <div className="justify-self-start px-4">
+          <div className="justify-self-start px-2">
             <div className="flex group relative text-md">
               <label className="self-center px-3">Show</label>
               <select
@@ -61,10 +63,10 @@ export default function DataTable({
           </div>
         ) : null}
         {onFilter !== undefined ? (
-          <div className="justify-self-end group relative w-3/4 px-4">
+          <div className="justify-self-end group relative w-3/4 px-2">
             <input
               type="text"
-              placeholder="Search ontologies..."
+              placeholder={placeholder ? placeholder : "Search table..."}
               className="input-default text-md pl-10"
               onChange={(e) => {
                 onFilter(e.target.value);
@@ -76,7 +78,7 @@ export default function DataTable({
           </div>
         ) : null}
       </div>
-      <div className="mx-4">
+      <div className="mx-2">
         <table className="table-auto border-collapse border-spacing-1 w-full mb-2">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">
@@ -106,7 +108,7 @@ export default function DataTable({
                   {columns.map((column: any) => {
                     return (
                       <td
-                        className="text-sm align-top py-2 px-4"
+                        className="text-md align-top py-2 px-4"
                         key={randomString()}
                       >
                         {column.selector(row)

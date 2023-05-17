@@ -260,7 +260,7 @@ export default function EntityPage({
                 linkedEntities={linkedEntities}
               />
             </div>
-            <div className="py-2 mb-1">
+            <div className="py-2 mb-2">
               <button
                 className={`font-bold mr-3 ${
                   viewMode === "tree" ? "button-orange-active" : "button-orange"

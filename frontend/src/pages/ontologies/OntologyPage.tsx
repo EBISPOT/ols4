@@ -235,7 +235,7 @@ export default function OntologyPage() {
                   />
                 </Tabs>
                 {tab !== "classes" || ontology.getNumClasses() > 0 ? (
-                  <div className="py-2 mb-1 flex justify-between">
+                  <div className="py-2 mb-2 flex justify-between">
                     <div>
                       <button
                         disabled={tab === "individuals"}

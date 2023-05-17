@@ -1,7 +1,8 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel, ThemeProvider } from "@mui/material";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
+import { theme } from "../app/mui";
 import { randomString, thingFromJsonProperties } from "../app/util";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
@@ -413,33 +414,35 @@ export default function SearchBox({
           </div>
         </div>
         <div className="col-span-2">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={exact}
-                onChange={(ev) => setExact(!!ev.target.checked)}
-              />
-            }
-            label="Exact match"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={obsolete}
-                onChange={(ev) => setObsolete(!!ev.target.checked)}
-              />
-            }
-            label="Include obsolete terms"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={canonical}
-                onChange={(ev) => setCanonical(!!ev.target.checked)}
-              />
-            }
-            label="Canonical definitions only"
-          />
+          <ThemeProvider theme={theme}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={exact}
+                  onChange={(ev) => setExact(!!ev.target.checked)}
+                />
+              }
+              label="Exact match"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={obsolete}
+                  onChange={(ev) => setObsolete(!!ev.target.checked)}
+                />
+              }
+              label="Include obsolete terms"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={canonical}
+                  onChange={(ev) => setCanonical(!!ev.target.checked)}
+                />
+              }
+              label="Canonical definitions only"
+            />
+          </ThemeProvider>
         </div>
       </div>
     </Fragment>

@@ -35,6 +35,7 @@ export default function EntityList(props: {
       columns={columns}
       data={entities}
       dataCount={totalEntities}
+      placeholder={`Search ${entityType}...`}
       page={page}
       rowsPerPage={rowsPerPage}
       onPageChange={(pg: number) => {
@@ -50,9 +51,7 @@ export default function EntityList(props: {
         const termUrl = encodeURIComponent(
           encodeURIComponent(row.properties.iri)
         );
-        navigate(
-          `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
-        );
+        navigate(`/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`);
       }}
       onFilter={(key: string) => {
         setSearch((prev) => {
