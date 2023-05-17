@@ -135,6 +135,8 @@ export default function OntologiesPage() {
           }}
           onRowsPerPageChange={(rows: number) => {
             setSearchParams((params) => {
+              if (rows !== parseInt(params.get("rowsPerPage") || "0"))
+                params.delete("page");
               params.set("rowsPerPage", rows.toString());
               return params;
             });
