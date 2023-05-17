@@ -167,9 +167,7 @@ export default function EntityPage({
                 </span>
                 <span>
                   <Link
-                    to={
-                      "/ontologies/" + ontologyId + "/" + entity.getTypePlural()
-                    }
+                    to={"/ontologies/" + ontologyId + "?tab=" + entityType}
                     className="link-default capitalize"
                   >
                     {entity.getTypePlural()}
@@ -180,9 +178,9 @@ export default function EntityPage({
                 </span>
                 <span
                   className="link-entity px-2 py-1 rounded-md text-sm text-white uppercase"
-                  title={entity.getShortForm()}
+                  title={entity.getShortForm() || entity.getName()}
                 >
-                  {entity.getShortForm()}
+                  {entity.getShortForm() || entity.getName()}
                 </span>
                 <span className="text-sm text-neutral-default">
                   &nbsp; &nbsp;
@@ -249,12 +247,10 @@ export default function EntityPage({
                   <span>{isIriCopied ? "Copied!" : "Copy"}</span>
                 </button>
               </div>
-              <div className="mb-4">
-                <EntityDescriptionSection
-                  entity={entity}
-                  linkedEntities={linkedEntities}
-                />
-              </div>
+              <EntityDescriptionSection
+                entity={entity}
+                linkedEntities={linkedEntities}
+              />
               <DefiningOntologiesSection
                 entity={entity}
                 linkedEntities={linkedEntities}

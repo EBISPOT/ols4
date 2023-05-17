@@ -376,25 +376,29 @@ function TreeLink({
   if (definedBy.indexOf(ontology.getOntologyId()) !== -1) definedBy = []; // don't show definedBy links for terms in current ontology
 
   return (
-    <Link
-      to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
-    >
-      {title}
+    <span>
+      <Link
+        to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
+      >
+        {title}
+      </Link>
       {definedBy.length > 0 &&
         definedBy.map((definingOntology) => {
           return (
             <Link
+              key={encodedIri}
               to={`/ontologies/${definingOntology}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
+              style={{ borderBottom: 0 }}
             >
               <span
-                className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
                 title={definingOntology.toUpperCase()}
+                className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
               >
                 {definingOntology}
               </span>
             </Link>
           );
         })}
-    </Link>
+    </span>
   );
 }

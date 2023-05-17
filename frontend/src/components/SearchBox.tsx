@@ -41,7 +41,7 @@ export default function SearchBox({
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
   let canonical = searchParams.get("isDefiningOntology") === "true";
 
-  let setExact = useCallback(
+  const setExact = useCallback(
     (exact: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (exact.toString() === "true") {
@@ -54,7 +54,7 @@ export default function SearchBox({
     [searchParams, setSearchParams]
   );
 
-  let setObsolete = useCallback(
+  const setObsolete = useCallback(
     (obsolete: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (obsolete.toString() === "true") {
@@ -67,7 +67,7 @@ export default function SearchBox({
     [searchParams, setSearchParams]
   );
 
-  let setCanonical = useCallback(
+  const setCanonical = useCallback(
     (canonical: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
       if (canonical.toString() === "true") {
@@ -91,15 +91,16 @@ export default function SearchBox({
     };
   });
 
+  const cancelPromisesRef = useRef(false);
   useEffect(() => {
     async function loadSuggestions() {
       setLoading(true);
       setArrowKeySelectedN(undefined);
 
-      let searchToken = randomString();
+      const searchToken = randomString();
       curSearchToken = searchToken;
 
-      let [entities, ontologies, autocomplete] = await Promise.all([
+      const [entities, ontologies, autocomplete] = await Promise.all([
         getPaginated<any>(
           `api/v2/entities?${new URLSearchParams({
             search: query,
@@ -132,6 +133,7 @@ export default function SearchBox({
             )
           : null,
       ]);
+      if (cancelPromisesRef.current && !mounted.current) return;
 
       if (searchToken === curSearchToken) {
         setJumpTo([
@@ -144,7 +146,11 @@ export default function SearchBox({
     }
 
     loadSuggestions();
-  }, [query, exact, obsolete]);
+
+    return () => {
+      cancelPromisesRef.current = true;
+    };
+  }, [query, exact, obsolete, canonical]);
 
   let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || [];
   let autocompleteElements = autocompleteToShow.map(

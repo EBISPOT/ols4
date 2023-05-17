@@ -1,6 +1,7 @@
 import { Tooltip } from "@mui/material";
 import { Fragment } from "react";
 import { asArray, randomString, sortByKeys } from "../../../../app/util";
+import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -34,28 +35,43 @@ export default function IndividualPropertyAssertionsSection({
   let propertyAssertions: JSX.Element[] = [];
 
   for (let iri of objectProperties) {
-    let values = asArray(entity.properties[iri]);
-
+    const values = asArray(entity.properties[iri]);
     for (let v of values) {
       propertyAssertions.push(
         <span>
-          <EntityLink
+          <ClassExpression
             ontologyId={entity.getOntologyId()}
             currentEntity={entity}
             entityType="properties"
-            iri={iri}
+            expr={iri}
             linkedEntities={linkedEntities}
-          />{" "}
-          {v.indexOf("://") !== -1 ? (
-            <EntityLink
-              ontologyId={entity.getOntologyId()}
-              currentEntity={entity}
-              entityType="individuals"
-              iri={v}
-              linkedEntities={linkedEntities}
-            />
+          />
+          &thinsp;
+          {typeof v === "string" && v.includes("http") ? (
+            <span>
+              <span className="pr-1 text-sm" style={{ color: "gray" }}>
+                &#9656;
+              </span>
+              <EntityLink
+                ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
+                entityType="individuals"
+                iri={v}
+                linkedEntities={linkedEntities}
+              />
+            </span>
           ) : (
-            <Tooltip title={v} placement="top" arrow>
+            <Tooltip
+              title={
+                typeof v === "string"
+                  ? v
+                  : typeof v === "object" && !Array.isArray(v) && v.value
+                  ? JSON.stringify(v.value)
+                  : JSON.stringify(v)
+              }
+              placement="top"
+              arrow
+            >
               <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
             </Tooltip>
           )}
@@ -66,29 +82,44 @@ export default function IndividualPropertyAssertionsSection({
 
   for (let k of negativeProperties) {
     let iri = k.slice("negativePropertyAssertion+".length);
-    let values = asArray(entity.properties[k]);
-
+    const values = asArray(entity.properties[k]);
     for (let v of values) {
       propertyAssertions.push(
         <span>
           <span className="px-1 text-embl-purple-default italic">not</span>{" "}
-          <EntityLink
+          <ClassExpression
             ontologyId={entity.getOntologyId()}
             currentEntity={entity}
             entityType="properties"
-            iri={iri}
+            expr={iri}
             linkedEntities={linkedEntities}
-          />{" "}
-          {v.indexOf("://") !== -1 ? (
-            <EntityLink
-              ontologyId={entity.getOntologyId()}
-              currentEntity={entity}
-              entityType="individuals"
-              iri={v}
-              linkedEntities={linkedEntities}
-            />
+          />
+          &thinsp;
+          {typeof v === "string" && v.includes("http") ? (
+            <span>
+              <span className="pr-1 text-sm" style={{ color: "gray" }}>
+                &#9656;
+              </span>
+              <EntityLink
+                ontologyId={entity.getOntologyId()}
+                currentEntity={entity}
+                entityType="individuals"
+                iri={v}
+                linkedEntities={linkedEntities}
+              />
+            </span>
           ) : (
-            <Tooltip title={v} placement="top" arrow>
+            <Tooltip
+              title={
+                typeof v === "string"
+                  ? v
+                  : typeof v === "object" && !Array.isArray(v) && v.value
+                  ? JSON.stringify(v.value)
+                  : JSON.stringify(v)
+              }
+              placement="top"
+              arrow
+            >
               <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
             </Tooltip>
           )}

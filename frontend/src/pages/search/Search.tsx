@@ -1,5 +1,5 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, usePrevious } from "../../app/util";
@@ -91,13 +91,6 @@ export default function Search() {
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
   }, [search, prevSearch]);
-  const mounted = useRef(false);
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  });
   return (
     <div>
       <Header section="home" />
@@ -267,9 +260,11 @@ export default function Search() {
                         >
                           {entity.getName()}
                         </Link>
-                        <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-                          {entity.getShortForm()}
-                        </span>
+                        {entity.getShortForm() ? (
+                          <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                            {entity.getShortForm()}
+                          </span>
+                        ) : null}
                       </div>
                       <div className="mb-1 leading-relaxed text-sm text-neutral-default">
                         {entity.getIri()}

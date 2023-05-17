@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { randomString } from "../../../../app/util";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 
@@ -38,6 +39,7 @@ export default function DefiningOntologiesSection({
                   `/${entity.getTypePlural()}/` +
                   encodeURIComponent(encodeURIComponent(entity.getIri()))
                 }
+                key={definedBy + entity.getIri() + randomString()}
               >
                 <span
                   className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
@@ -83,6 +85,7 @@ export default function DefiningOntologiesSection({
           `/${entity.getTypePlural()}/` +
           encodeURIComponent(encodeURIComponent(entity.getIri()))
         }
+        key={appearsIn + entity.getIri() + randomString()}
       >
         <span
           className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"

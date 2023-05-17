@@ -37,7 +37,6 @@ export default function EntityAnnotationsSection({
           return (
             <div key={title.toString().toUpperCase() + randomString()}>
               <div className="font-bold">{title}</div>
-
               {annotations.length === 1 ? (
                 <p>
                   {renderAnnotation(annotations[0])}
@@ -53,8 +52,12 @@ export default function EntityAnnotationsSection({
                   {annotations
                     .map((annotation: Reified<any>) => {
                       return (
-                        <li key={randomString()}>
-                          {renderAnnotation(annotation)}
+                        <li
+                          key={
+                            annotation.value.substring(0, 10) + randomString()
+                          }
+                        >
+                          <span>{renderAnnotation(annotation)}</span>
                           {annotation.hasMetadata() && (
                             <MetadataTooltip
                               metadata={annotation.getMetadata()}

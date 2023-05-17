@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { randomString, sortByKeys } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -25,6 +26,7 @@ export default function addLinksToText(
         end: n + entityId.length,
         link: (
           <EntityLink
+            key={ontologyId + entityId}
             ontologyId={ontologyId}
             currentEntity={currentEntity}
             entityType={entityType}
@@ -39,7 +41,6 @@ export default function addLinksToText(
   }
 
   let urlRe = /[A-z]+:\/\/[^\s]+/g;
-
   for (let match = urlRe.exec(text); match; match = urlRe.exec(text)) {
     console.log("found match " + match[0]);
     linksToSplice.push({
@@ -47,6 +48,7 @@ export default function addLinksToText(
       end: match.index + match[0].length,
       link: (
         <Link
+          key={match[0] + randomString()}
           to={match[0]}
           className="link-default"
           target="_blank"
@@ -77,20 +79,23 @@ export default function addLinksToText(
 
   if (linksToSplice.length === 0) return text;
 
-  linksToSplice.sort((a, b) => a.start - b.start);
-  console.dir(linksToSplice);
-
+  // linksToSplice.sort((a, b) => a.start - b.start);
+  // console.dir(linksToSplice);
   let res: JSX.Element[] = [];
-
   let n = 0;
 
   for (let link of linksToSplice) {
-    res.push(<Fragment>{text.substring(n, link.start)}</Fragment>);
+    res.push(
+      <Fragment key={text.substring(n, link.start) + randomString()}>
+        {text.substring(n, link.start)}
+      </Fragment>
+    );
     res.push(link.link);
     n = link.end;
   }
+  res.push(
+    <Fragment key={text.slice(n) + randomString()}>{text.slice(n)}</Fragment>
+  );
 
-  res.push(<Fragment>{text.slice(n)}</Fragment>);
-
-  return res;
+  return res.sort((a, b) => sortByKeys(a, b));
 }
