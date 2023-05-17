@@ -1,5 +1,12 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Downloads from "./pages/Downloads";
@@ -35,11 +42,11 @@ class App extends React.Component {
           />
           <Route
             path={`/ontologies/:ontologyId/terms`}
-            element={<EntityPage entityType="classes" />}
+            element={<RedirectTermsToClasses />}
           />
           <Route
             path={`/ontologies/:ontologyId/terms/:entityIri`}
-            element={<EntityPage entityType="classes" />}
+            element={<RedirectTermToClass />}
           />
           <Route
             path={`/ontologies/:ontologyId/properties`}
@@ -69,3 +76,33 @@ class App extends React.Component {
 }
 
 export default App;
+
+function RedirectTermsToClasses() {
+  let params = useParams();
+  let [search] = useSearchParams();
+  return (
+    <Navigate
+      to={{
+        pathname: `/ontologies/${params.ontologyId}/classes`,
+        search: search.toString(),
+      }}
+    />
+  );
+}
+
+function RedirectTermToClass() {
+  let params = useParams();
+  let [search] = useSearchParams();
+  return (
+    <Navigate
+      to={{
+        pathname: `/ontologies/${
+          params.ontologyId
+        }/classes/${encodeURIComponent(
+          encodeURIComponent(params.entityIri as string)
+        )}`,
+        search: search.toString(),
+      }}
+    />
+  );
+}
