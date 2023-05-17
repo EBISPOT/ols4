@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { randomString, sortByKeys } from "../../../../app/util";
+import { randomString } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -25,16 +25,14 @@ export default function addLinksToText(
         start: n,
         end: n + entityId.length,
         link: (
-          <span className="pr-1">
-            <EntityLink
-              key={ontologyId + entityId}
-              ontologyId={ontologyId}
-              currentEntity={currentEntity}
-              entityType={entityType}
-              iri={entityId}
-              linkedEntities={linkedEntities}
-            />
-          </span>
+          <EntityLink
+            key={ontologyId + entityId}
+            ontologyId={ontologyId}
+            currentEntity={currentEntity}
+            entityType={entityType}
+            iri={entityId}
+            linkedEntities={linkedEntities}
+          />
         ),
       });
 
@@ -89,17 +87,15 @@ export default function addLinksToText(
   for (let link of linksToSplice) {
     res.push(
       <Fragment key={text.substring(n, link.start) + randomString()}>
-        {text.substring(n, link.start)}&thinsp;
+        {text.substring(n, link.start)}
       </Fragment>
     );
     res.push(link.link);
     n = link.end;
   }
   res.push(
-    <Fragment key={text.slice(n) + randomString()}>
-      {text.slice(n)}&thinsp;
-    </Fragment>
+    <Fragment key={text.slice(n) + randomString()}>{text.slice(n)}</Fragment>
   );
 
-  return res.sort((a, b) => sortByKeys(a, b));
+  return res;
 }

@@ -365,7 +365,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
             ontology.getAnnotationById(annotationPredicate);
 
           return (
-            <div key={title.toString().toUpperCase() + randomString()}>
+            <div key={title.toString() + randomString()}>
               <div className="font-bold">{title}</div>
 
               {annotations.length === 1 ? (
