@@ -5,7 +5,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { get, getPaginated, Page } from "../../app/api";
-import { thingFromJsonProperties } from "../../app/util";
+import { mapToApiParams, thingFromJsonProperties } from "../../app/util";
 import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import createTreeFromEntities from "./entities/createTreeFromEntities";
@@ -124,6 +124,7 @@ export const getEntity = createAsyncThunk(
     },
     { rejectWithValue }
   ) => {
+    const apiSearchParams = mapToApiParams(searchParams);
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityIri)
     );
@@ -132,12 +133,12 @@ export const getEntity = createAsyncThunk(
       let entityJsonProperties = null;
       if (entityIri) {
         path = `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedTermUri}?${new URLSearchParams(
-          searchParams
+          apiSearchParams
         )}`;
         entityJsonProperties = await get<any>(path);
       } else {
         path = `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams(
-          searchParams
+          apiSearchParams
         )}`;
         const results = await getPaginated<any>(path);
         if (results.elements.length === 1 && results.totalElements === 1) {
@@ -173,11 +174,12 @@ export const getClassInstances = createAsyncThunk(
     let path = "";
     try {
       if (classIri) {
+        const apiSearchParams = mapToApiParams(searchParams);
         const doubleEncodedTermUri = encodeURIComponent(
           encodeURIComponent(classIri)
         );
         path = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances?${new URLSearchParams(
-          searchParams
+          apiSearchParams
         )}`;
         const instances = (await getPaginated<any>(path)).map((i) =>
           thingFromJsonProperties(i)

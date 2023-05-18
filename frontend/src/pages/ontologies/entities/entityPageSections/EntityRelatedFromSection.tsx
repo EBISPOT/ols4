@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
-import Entity from "../../../../model/Entity";
 import Class from "../../../../model/Class";
+import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
 
@@ -37,32 +37,28 @@ export default function EntityRelatedFromSection({
             <div>
               <i>{label || p}</i>
             </div>
-            <div className="pl-4">
-              <ul className="list-disc list-inside">
-                {relatedFroms
-                  .filter((relatedFrom) => relatedFrom.value.property === p)
-                  .map((relatedFrom) => {
-                    let relatedIri = relatedFrom.value.value;
-                    // let label = linkedEntities.getLabelForIri(relatedIri);
-                    return (
-                      <li key={relatedIri + randomString()}>
-                        <EntityLink
-                          ontologyId={entity.getOntologyId()}
-			  currentEntity={entity}
-                          entityType={"classes"}
-                          iri={relatedIri}
-                          linkedEntities={linkedEntities}
-                        />
-                      </li>
-                    );
-                  })}
-              </ul>
-            </div>
+            <ul className="list-disc list-inside">
+              {relatedFroms
+                .filter((relatedFrom) => relatedFrom.value.property === p)
+                .map((relatedFrom) => {
+                  let relatedIri = relatedFrom.value.value;
+                  // let label = linkedEntities.getLabelForIri(relatedIri);
+                  return (
+                    <li key={relatedIri + randomString()}>
+                      <EntityLink
+                        ontologyId={entity.getOntologyId()}
+                        currentEntity={entity}
+                        entityType={"classes"}
+                        iri={relatedIri}
+                        linkedEntities={linkedEntities}
+                      />
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
         );
       })}
-
-      <ul className="list-disc list-inside"></ul>
     </div>
   );
 }

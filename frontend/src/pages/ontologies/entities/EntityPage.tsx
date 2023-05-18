@@ -7,7 +7,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { copyToClipboard, toCamel } from "../../../app/util";
+import { copyToClipboard } from "../../../app/util";
 import ApiLinks from "../../../components/ApiLinks";
 import Header from "../../../components/Header";
 import LanguagePicker from "../../../components/LanguagePicker";
@@ -103,16 +103,12 @@ export default function EntityPage({
 
   useEffect(() => {
     if (entityIri || searchParams) {
-      const searchParamsCopy = new URLSearchParams();
-      searchParams.forEach((value: string, key: string) => {
-        searchParamsCopy.append(toCamel(key), value);
-      });
       dispatch(
         getEntity({
           ontologyId,
           entityType,
           entityIri,
-          searchParams: searchParamsCopy,
+          searchParams,
         })
       );
     }
@@ -120,15 +116,11 @@ export default function EntityPage({
 
   useEffect(() => {
     if (entity && entityType === "classes") {
-      const searchParamsCopy = new URLSearchParams();
-      searchParams.forEach((value: string, key: string) => {
-        searchParamsCopy.append(toCamel(key), value);
-      });
       dispatch(
         getClassInstances({
           ontologyId: entity.getOntologyId(),
           classIri: entity.getIri(),
-          searchParams: searchParamsCopy,
+          searchParams,
         })
       );
     }
