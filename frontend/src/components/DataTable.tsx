@@ -72,7 +72,7 @@ export default function DataTable({
                 onFilter(e.target.value);
               }}
             />
-            <div className="absolute left-7 top-2 z-10">
+            <div className="absolute left-5 top-2 z-10">
               <i className="icon icon-common icon-search text-xl text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark" />
             </div>
           </div>

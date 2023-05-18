@@ -46,6 +46,17 @@ export function thingFromJsonProperties(properties: any): Entity {
   throw new Error("Unknown entity type: " + JSON.stringify(properties));
 }
 
+export function mapToApiParams(searchParams: URLSearchParams) {
+  const searchParamsCopy = new URLSearchParams();
+  searchParams.forEach((value: string, key: string) => {
+    let newKey = key.includes("_") ? toCamel(key) : key;
+    // special cases
+    if (newKey === "oboId") newKey = "curie";
+    searchParamsCopy.append(newKey, value);
+  });
+  return searchParamsCopy;
+}
+
 export function toCamel(str: string) {
   return str.replace(/([-_][a-z])/gi, ($1) => {
     return $1.toUpperCase().replace("-", "").replace("_", "");
