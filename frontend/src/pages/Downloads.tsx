@@ -32,6 +32,8 @@ export default function Downloads() {
             <a
               className="link-default"
               href="https://ftp.ebi.ac.uk/pub/databases/spot/ols/"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               https://ftp.ebi.ac.uk/pub/databases/spot/ols
             </a>
@@ -39,6 +41,8 @@ export default function Downloads() {
             <a
               className="link-default"
               href="https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest
             </a>
@@ -57,7 +61,7 @@ const columns: readonly Column[] = [
     selector: (data) => <span>{data.description}</span>,
   },
   {
-    name: "Download",
+    name: "File",
     sortable: false,
     selector: (data) => (
       <a

@@ -294,7 +294,7 @@ export default function SearchBox({
   return (
     <Fragment>
       <div className="w-full self-center">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 items-center mb-2">
           <div className="relative grow">
             <input
               id="home-search"
