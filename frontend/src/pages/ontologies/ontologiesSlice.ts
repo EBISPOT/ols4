@@ -406,6 +406,7 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getOntology.pending, (state: OntologiesState) => {
       state.loadingOntology = true;
+      state.errorMessage = initialState.errorMessage;
     });
     builder.addCase(
       getOntology.rejected,
@@ -424,6 +425,7 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getEntity.pending, (state: OntologiesState) => {
       state.loadingEntity = true;
+      state.errorMessage = initialState.errorMessage;
     });
     builder.addCase(
       getEntity.rejected,
@@ -442,6 +444,7 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getClassInstances.pending, (state: OntologiesState) => {
       state.loadingClassInstances = true;
+      state.errorMessage = initialState.errorMessage;
     });
     builder.addCase(
       getClassInstances.rejected,
@@ -545,6 +548,7 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getOntologies.pending, (state: OntologiesState) => {
       state.loadingOntologies = true;
+      state.errorMessage = initialState.errorMessage;
     });
     builder.addCase(
       getOntologies.rejected,
@@ -564,6 +568,7 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getEntities.pending, (state: OntologiesState) => {
       state.loadingEntities = true;
+      state.errorMessage = initialState.errorMessage;
     });
     builder.addCase(
       getEntities.rejected,
