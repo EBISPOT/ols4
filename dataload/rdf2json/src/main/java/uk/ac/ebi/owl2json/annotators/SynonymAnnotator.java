@@ -12,7 +12,11 @@ public class SynonymAnnotator {
 
 		Set<String> synonymProperties = new TreeSet<>(
 				List.of(
-						"http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+						"http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+						"http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+						"http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+						"http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+						"http://www.geneontology.org/formats/oboInOwl#hasSynonym"
 				)
 		);
 
