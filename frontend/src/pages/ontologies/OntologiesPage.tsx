@@ -22,7 +22,7 @@ const columns: readonly Column[] = [
               <img
                 alt={`${ontoId.toUpperCase()} logo`}
                 title={`${ontoId.toUpperCase()} logo`}
-                className="h-16 object-contain bg-white rounded-md p-1 mb-3"
+                className="h-16 object-contain bg-white rounded-lg p-1 mb-3"
                 src={logo}
               />
             ) : null}
