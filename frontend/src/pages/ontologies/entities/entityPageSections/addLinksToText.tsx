@@ -40,22 +40,35 @@ export default function addLinksToText(
     }
   }
 
-  let urlRe = /[A-z]+:\/\/[^\s]+/g;
+  const urlRe = /[A-z]+:\/\/[^\s]+/g;
+  const imgFile =
+    /.*\.(apng|avif|gif|jpg|jpeg|jfif|pjpeg|pjp|png|svg|webp|bmp|ico|cur|tif|tiff)$/g;
   for (let match = urlRe.exec(text); match; match = urlRe.exec(text)) {
-    console.log("found match " + match[0]);
+    const url = match[0];
+    // console.log("found match " + url);
     linksToSplice.push({
       start: match.index,
-      end: match.index + match[0].length,
+      end: match.index + url.length,
       link: (
-        <Link
-          key={match[0] + randomString()}
-          to={match[0]}
-          className="link-default pr-1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {match[0]}
-        </Link>
+        <span>
+          {url.toLowerCase().match(imgFile)?.length === 1 ? (
+            <img
+              src={url}
+              alt={url.substring(url.lastIndexOf("/") + 1)}
+              className="rounded-lg mx-auto object-contain"
+            />
+          ) : (
+            <Link
+              key={url + randomString()}
+              to={url}
+              className="link-default pr-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {url}
+            </Link>
+          )}
+        </span>
       ),
     });
   }
