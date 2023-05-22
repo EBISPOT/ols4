@@ -40,8 +40,11 @@ export default function EntityPage({
   entityType: "classes" | "properties" | "individuals";
 }) {
   const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const ontologyId: string = params.ontologyId as string;
-  const entityIri: string = params.entityIri as string;
+  const entityIri: string =
+    (params.entityIri as string) || searchParams.get("iri") || "";
+  const lang = searchParams.get("lang") || "en";
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
@@ -51,9 +54,6 @@ export default function EntityPage({
     (state) => state.ontologies.classInstances
   );
   const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const lang = searchParams.get("lang") || "en";
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const linkedEntities = entity
@@ -192,18 +192,20 @@ export default function EntityPage({
                   lang={lang}
                   onChangeLang={(lang) => setSearchParams({ lang })}
                 />
-                <ApiLinks
-                  apiUrl={`${
-                    process.env.REACT_APP_APIURL
-                  }api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(
-                    encodeURIComponent(entityIri)
-                  )}`}
-                  betaApiUrl={`${
-                    process.env.REACT_APP_APIURL
-                  }api/v2/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
-                    encodeURIComponent(entityIri)
-                  )}`}
-                />
+                {entityIri ? (
+                  <ApiLinks
+                    apiUrl={`${
+                      process.env.REACT_APP_APIURL
+                    }api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(
+                      encodeURIComponent(entityIri)
+                    )}`}
+                    betaApiUrl={`${
+                      process.env.REACT_APP_APIURL
+                    }api/v2/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
+                      encodeURIComponent(entityIri)
+                    )}`}
+                  />
+                ) : null}
               </div>
             </div>
             <div className="py-1" />
