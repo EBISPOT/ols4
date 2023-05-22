@@ -192,18 +192,20 @@ export default function EntityPage({
                   lang={lang}
                   onChangeLang={(lang) => setSearchParams({ lang })}
                 />
-                <ApiLinks
-                  apiUrl={`${
-                    process.env.REACT_APP_APIURL
-                  }api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(
-                    encodeURIComponent(entityIri)
-                  )}`}
-                  betaApiUrl={`${
-                    process.env.REACT_APP_APIURL
-                  }api/v2/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
-                    encodeURIComponent(entityIri)
-                  )}`}
-                />
+                {entityIri ? (
+                  <ApiLinks
+                    apiUrl={`${
+                      process.env.REACT_APP_APIURL
+                    }api/ontologies/${ontologyId}/${ols3EntityType}/${encodeURIComponent(
+                      encodeURIComponent(entityIri)
+                    )}`}
+                    betaApiUrl={`${
+                      process.env.REACT_APP_APIURL
+                    }api/v2/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
+                      encodeURIComponent(entityIri)
+                    )}`}
+                  />
+                ) : null}
               </div>
             </div>
             <div className="py-1" />
