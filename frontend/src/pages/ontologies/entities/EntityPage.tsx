@@ -40,8 +40,11 @@ export default function EntityPage({
   entityType: "classes" | "properties" | "individuals";
 }) {
   const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const ontologyId: string = params.ontologyId as string;
-  const entityIri: string = params.entityIri as string;
+  const entityIri: string =
+    (params.entityIri as string) || searchParams.get("iri") || "";
+  const lang = searchParams.get("lang") || "en";
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
@@ -51,9 +54,6 @@ export default function EntityPage({
     (state) => state.ontologies.classInstances
   );
   const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const lang = searchParams.get("lang") || "en";
 
   const [viewMode, setViewMode] = useState<"tree" | "graph">("tree");
   const linkedEntities = entity
