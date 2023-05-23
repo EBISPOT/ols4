@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
 import { getStats } from "./homeSlice";
+import OntologyGraph from "../../components/OntologyGraph";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -140,6 +141,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
+		<div className="w-full"> <OntologyGraph /> </div>
           </div>
           <div className="col-span-1">
             <div className="shadow-card border-b-8 border-link-default rounded-md my-8 p-4">
