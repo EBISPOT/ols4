@@ -6,7 +6,7 @@ import {
   Home,
 } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Link,
   useNavigate,
@@ -138,12 +138,16 @@ export default function OntologyPage() {
                   <span className="font-bold">Version {version}</span>
                 </div>
               )}
-              <div className="mb-6">
+              <div>
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
               </div>
-              <div className="flex gap-2 mb-6">
+
+	      <OntologyImportsSection ontology={ontology} />	
+	      <OntologyImportedBySection ontology={ontology} />	
+
+              <div className="flex gap-2 mt-6 mb-6">
                 {ontology.getOntologyPurl() && (
                   <Link
                     to={ontology.getOntologyPurl()}
@@ -439,3 +443,98 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
     }
   }
 }
+
+
+function OntologyImportsSection({ontology}:{ontology:Ontology}) {
+
+  let [expanded, setExpanded] = useState<boolean>(false);
+  const MAX_UNEXPANDED = 5;
+
+  let imports = ontology.getImports()
+
+  if(!imports)
+	return <Fragment/>
+
+  return (
+    <Fragment>
+      {imports && imports.length > 0 && (
+        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+          <span className="font-bold mr-2">Imports</span>
+          {imports.length <= MAX_UNEXPANDED || expanded ? (
+            imports.map(renderOntId)
+          ) : (
+            <Fragment>
+              {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
+              &nbsp;
+              <span className="link-default italic" onClick={() => setExpanded(true)}> + {imports.length - MAX_UNEXPANDED}</span>
+            </Fragment>
+          )}
+        </div>
+      )}
+    </Fragment>
+  );
+
+  function renderOntId(ontId: string) {
+    return (
+      <Link
+        className="my-2"
+        style={{ display: "inline-block" }}
+        to={"/ontologies/" + ontId}>
+        <span
+          className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+          title={ontId.toUpperCase()}>
+          {ontId}
+        </span>
+      </Link>
+    );
+  }
+
+}
+
+function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
+
+  let [expanded, setExpanded] = useState<boolean>(false);
+  const MAX_UNEXPANDED = 5;
+
+  let imports = ontology.getImportedBy()
+
+  if(!imports)
+	return <Fragment/>
+
+  return (
+    <Fragment>
+      {imports && imports.length > 0 && (
+        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+          <span className="font-bold mr-2">Imported by</span>
+          {imports.length <= MAX_UNEXPANDED || expanded ? (
+            imports.map(renderOntId)
+          ) : (
+            <Fragment>
+              {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
+              &nbsp;
+              <span className="link-default italic" onClick={() => setExpanded(true)}> + {imports.length - MAX_UNEXPANDED}</span>
+            </Fragment>
+          )}
+        </div>
+      )}
+    </Fragment>
+  );
+
+  function renderOntId(ontId: string) {
+    return (
+      <Link
+        className="my-2"
+        style={{ display: "inline-block" }}
+        to={"/ontologies/" + ontId}>
+        <span
+          className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+          title={ontId.toUpperCase()}>
+          {ontId}
+        </span>
+      </Link>
+    );
+  }
+
+}
+
+
