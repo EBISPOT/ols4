@@ -58,6 +58,30 @@ public class LinkerPass2 {
                     jsonWriter.name("ontologyId");
                     jsonWriter.value(ontologyId);
 
+
+
+                    jsonWriter.name("imports");
+		    jsonWriter.beginArray();
+		    var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
+		    if(imports != null) {
+			for(String ontId : imports) {
+				jsonWriter.value(ontId);
+			}
+		    }
+		    jsonWriter.endArray();
+
+
+                    jsonWriter.name("importedBy");
+		    jsonWriter.beginArray();
+		    var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
+		    if(importedBy != null) {
+			for(String ontId : importedBy) {
+				jsonWriter.value(ontId);
+			}
+		    }
+		    jsonWriter.endArray();
+
+
                     Set<String> ontologyGatheredStrings = new TreeSet<>();
 
                     while(jsonReader.peek() != JsonToken.END_OBJECT) {
