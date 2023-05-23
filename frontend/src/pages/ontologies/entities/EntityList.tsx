@@ -5,7 +5,10 @@ import DataTable, { Column } from "../../../components/DataTable";
 import Entity from "../../../model/Entity";
 import { getEntities } from "../ontologiesSlice";
 
-export default function EntityList(props: {
+export default function EntityList({
+  ontologyId,
+  entityType,
+}: {
   ontologyId: string;
   entityType: "entities" | "classes" | "properties" | "individuals";
 }) {
@@ -20,16 +23,17 @@ export default function EntityList(props: {
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
 
-  let { ontologyId, entityType } = props;
-
   useEffect(() => {
     dispatch(
       getEntities({ ontologyId, entityType, page, rowsPerPage, search })
     );
   }, [dispatch, ontologyId, entityType, page, rowsPerPage, search]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    setPage(0);
+  }, [entityType]);
 
+  const navigate = useNavigate();
   return (
     <DataTable
       columns={columns}
@@ -68,5 +72,10 @@ const columns: readonly Column[] = [
     name: "Name",
     sortable: true,
     selector: (entity: Entity) => entity.getName(),
+  },
+  {
+    name: "ID",
+    sortable: true,
+    selector: (entity: Entity) => entity.getShortForm(),
   },
 ];

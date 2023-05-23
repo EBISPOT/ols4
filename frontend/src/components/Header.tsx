@@ -65,7 +65,7 @@ export default function Header({ section }: { section?: string }) {
             <Link to={`/about`}>
               <li
                 role="menuitem"
-                className={`rounded-r-md px-4 py-3 ${
+                className={`px-4 py-3 ${
                   section === "about"
                     ? " bg-opacity-75 bg-neutral-500"
                     : "hover:bg-opacity-50 hover:bg-neutral-500"
