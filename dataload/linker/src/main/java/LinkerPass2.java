@@ -213,7 +213,7 @@ public class LinkerPass2 {
 
             if (curie != null) {
 
-                boolean foundCurieMatch = false;
+                boolean foundCurieMatchToOntologyTerm = false;
 
                 String databaseId = curie.substring(0, curie.indexOf(':'));
                 String entryId = curie.substring(curie.indexOf(':') + 1);
@@ -231,7 +231,7 @@ public class LinkerPass2 {
                                         .get(iri);
 
                                 if (curieIriMapping != null) {
-                                    foundCurieMatch = true;
+                                    foundCurieMatchToOntologyTerm = true;
                                     jsonWriter.name(str);
                                     jsonWriter.beginObject();
                                     jsonWriter.name("iri");
@@ -242,7 +242,7 @@ public class LinkerPass2 {
                                 }
                             }
 
-                            if(foundCurieMatch)
+                            if(foundCurieMatchToOntologyTerm)
                                 break;
                         }
                     }
@@ -252,13 +252,10 @@ public class LinkerPass2 {
 
                 if (curieMapping != null) {
 
-                    // It was a CURIE which we were able to map.
+                    // It was a CURIE which we were able to map to an URL
+		    // using bioregistry.
 
-                    // Maybe the URL the CURIE mapped to maps to the IRI an entity in OLS?
-                    EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-                            .get(curieMapping.url);
-
-                    if (!foundCurieMatch) {
+                    if (!foundCurieMatchToOntologyTerm) {
                         jsonWriter.name(str);
                         jsonWriter.beginObject();
                     }
@@ -267,25 +264,13 @@ public class LinkerPass2 {
                     jsonWriter.value(curieMapping.url);
                     jsonWriter.name("source");
                     jsonWriter.value(curieMapping.source);
+                    jsonWriter.name("curie");
+                    jsonWriter.value(curie);
 
-                    // If we didn't already write a mapping for an IRI and the URL maps to
-                    // an entity in OLS, write that.
-                    if ((!foundCurieMatch) && curieIriMapping != null) {
-
-                        jsonWriter.name("iri");
-                        jsonWriter.value(curieMapping.url);
-
-                        writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
-
-                    } else {
-                        jsonWriter.name("curie");
-                        jsonWriter.value(curie);
-                    }
-
-                    foundCurieMatch = true;
+                    foundCurieMatchToOntologyTerm = true;
                 }
 
-                if (foundCurieMatch)
+                if (foundCurieMatchToOntologyTerm)
                     jsonWriter.endObject();
 
             }
