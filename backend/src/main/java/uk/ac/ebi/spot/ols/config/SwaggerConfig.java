@@ -13,11 +13,14 @@ import javax.servlet.ServletContext;
 @Configuration
 public class SwaggerConfig {
 
+    private final String OLS4_SERVER_URL = "https://www.ebi.ac.uk/ols4";
+
     @Lazy
     @Bean
     public OpenAPI customOpenApi(ServletContext context) {
+        String serverUrl = context.getContextPath().equals("") ? OLS4_SERVER_URL : context.getContextPath();
         return new OpenAPI()
-                .addServersItem(new Server().url(String.format("https://www.ebi.ac.uk/ols - %s", context.getServerInfo())))
+                .addServersItem(new Server().url(serverUrl))
                 .info(new Info()
                         .title("OLS Service")
                         .description("REST API for OLS")
