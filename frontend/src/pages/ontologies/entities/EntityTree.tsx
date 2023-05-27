@@ -264,6 +264,10 @@ export default function EntityTree({
 		childNode.childRelationToParent === 'http://purl.obolibrary.org/obo/BFO_0000050' &&
 			<img className="mr-1" src={process.env.PUBLIC_URL + "/part.svg"} style={{height:'1em',display:'inline'}}/>
 	      }
+	      {
+		childNode.childRelationToParent === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' &&
+			<img className="mr-1" src={process.env.PUBLIC_URL + "/instance.svg"} style={{height:'1em',display:'inline'}}/>
+	      }
               <TreeLink
                 ontology={ontology}
                 entity={childNode.entity}

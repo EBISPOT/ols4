@@ -41,15 +41,37 @@ export default function extractEntityHierarchy(entities: Entity[]): {
 	continue;
       }
 
-      let parentRelationToChild = 
-	parentRelation.getMetadata()
-		&& parentRelation.getMetadata()['parentRelationToChild'] 
-		&& parentRelation.getMetadata()['parentRelationToChild'][0];
+      var parentRelationToChild, childRelationToParent
 
-      let childRelationToParent = 
-	parentRelation.getMetadata()
-		&& parentRelation.getMetadata()['childRelationToParent'] 
-		&& parentRelation.getMetadata()['childRelationToParent'][0];
+      if(entity.getType() === 'individual') {
+
+	// In the case of individuals, the child->parent relationship is always
+	// rdf:type and there is no explicit parent->child relationship.
+
+	childRelationToParent = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+	parentRelationToChild = null
+
+      } else if(entity.getType() == 'class') {
+
+	// In the case of classes, the relations are provided in the metadata.
+
+	parentRelationToChild = 
+		parentRelation.getMetadata()
+			&& parentRelation.getMetadata()['parentRelationToChild'] 
+			&& parentRelation.getMetadata()['parentRelationToChild'][0];
+
+	childRelationToParent = 
+		parentRelation.getMetadata()
+			&& parentRelation.getMetadata()['childRelationToParent'] 
+			&& parentRelation.getMetadata()['childRelationToParent'][0];
+
+      } else {
+
+	// In the case of properties, there are no relations to show.
+	// (it would always be just subPropertyOf)
+	//
+
+      }
 
       let relation = {
 	parent: parentEntity,
