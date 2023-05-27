@@ -11,10 +11,6 @@ export default abstract class Entity extends Thing {
     return this.properties["isDefiningOntology"] === true;
   }
 
-  getSubClassOf(): Reified<any>[] {
-    return Reified.fromJson<any>(this.properties["relatedFrom"]);
-  }
-
   getRelatedFrom(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["relatedFrom"]);
   }

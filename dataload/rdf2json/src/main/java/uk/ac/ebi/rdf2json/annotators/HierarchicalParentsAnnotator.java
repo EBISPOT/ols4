@@ -71,14 +71,39 @@ public class HierarchicalParentsAnnotator {
 
                         if(related.getType() == PropertyValue.Type.RELATED) {
 
-                            if(hierarchicalProperties.contains(  ((PropertyValueRelated) related).getProperty()  )) {
+                            String property = ((PropertyValueRelated) related).getProperty();
 
-                                c.properties.addProperty("hierarchicalParent",
-                                    new PropertyValueURI(
+
+
+                            // if the child->parent property is "part of" we also want to know the parent->child (inverse) property "has part"
+                            //
+                            var propertyNode = graph.nodes.get(property);
+                            String inverseProperty = null;
+                            if(propertyNode != null) {
+                                var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
+                                if(inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
+                                    inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
+                                }
+                            }
+
+
+                            if(hierarchicalProperties.contains(property)) {
+
+                                var filler = new PropertyValueURI(
                                         ((PropertyValueRelated) related).getFiller().uri
-                                    )
                                 );
 
+                                c.properties.addProperty("hierarchicalParent", filler);
+
+                                // reify the hierarchicalParent edge with the property IRIs
+                                // this enables the frontend to display e.g. "has part" relations in the tree
+                                //
+                                PropertySet reifiedProperties = new PropertySet();
+                                reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(property));
+                                if(inverseProperty != null) {
+                                    reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
+                                }
+                                c.properties.annotatePropertyWithAxiom("hierarchicalParent", filler, reifiedProperties, graph);
 
                             }
                         }

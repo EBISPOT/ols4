@@ -246,6 +246,7 @@ public class OntologyGraph implements StreamRDF {
     long endTime = System.nanoTime();
     System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
 
+    InverseOfAnnotator.annotateInverseOf(this);
     NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
     OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
     DirectParentsAnnotator.annotateDirectParents(this);
@@ -266,7 +267,6 @@ public class OntologyGraph implements StreamRDF {
     DisjointWithAnnotator.annotateDisjointWith(this);
     HasIndividualsAnnotator.annotateHasIndividuals(this);
     EquivalenceAnnotator.annotateEquivalance(this);
-    InverseOfAnnotator.annotateInverseOf(this);
 
     }
 

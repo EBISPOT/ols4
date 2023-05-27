@@ -42,7 +42,10 @@ export interface TreeNode {
   expandable: boolean;
   entity: Entity;
   numDescendants: number;
+  parentRelationToChild:string|null // if applicable, relation from the parent node to this node (e.g. has_part)
+  childRelationToParent:string|null // if applicable, relation from this node to the parent node (e.g. part_of)
 }
+
 const initialState: OntologiesState = {
   ontology: undefined,
   entity: undefined,

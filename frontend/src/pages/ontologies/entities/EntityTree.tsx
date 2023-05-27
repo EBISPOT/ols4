@@ -260,6 +260,10 @@ export default function EntityTree({
               }}
               key={randomString()}
             >
+	      {
+		childNode.childRelationToParent === 'http://purl.obolibrary.org/obo/BFO_0000050' &&
+			<img className="mr-1" src={process.env.PUBLIC_URL + "/part.svg"} style={{height:'1em',display:'inline'}}/>
+	      }
               <TreeLink
                 ontology={ontology}
                 entity={childNode.entity}
@@ -404,3 +408,4 @@ function TreeLink({
     </span>
   );
 }
+

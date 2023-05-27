@@ -8,14 +8,21 @@ import Entity from "../../../model/Entity";
  *
  * Used by EntityTree and EntityGraph
  */
+
+ interface ParentChildRelation {
+	parent:Entity,
+	child:Entity
+	parentRelationToChild:string|null
+	childRelationToParent:string|null
+ }
+
 export default function extractEntityHierarchy(entities: Entity[]): {
   rootEntities: Entity[];
-  uriToChildNodes: Multimap<string, Entity>;
+  parentToChildRelations: Multimap<string, ParentChildRelation>;
 } {
-  let uriToNode: Map<string, Entity> = new Map();
-  let uriToChildNodes: Multimap<string, Entity> = new Multimap();
-  let uriToParentNodes: Multimap<string, Entity> = new Multimap();
+  let childToParentRelations: Multimap<string, ParentChildRelation> = new Multimap();
 
+  let uriToNode: Map<string, Entity> = new Map();
   for (let entity of entities) {
     uriToNode.set(entity.getIri(), entity);
   }
@@ -23,36 +30,49 @@ export default function extractEntityHierarchy(entities: Entity[]): {
   for (let entity of entities) {
     if (isTop(entity.getIri())) continue;
 
-    let parents = entity
-      .getParents()
-      .map((parent) => parent.value)
-      // not interested in bnode subclassofs like restrictions etc
-      .filter((parent) => typeof parent === "string")
-      .map((parentUri) => uriToNode.get(parentUri))
-      .filter((parent) => parent !== undefined);
+    for (let parentRelation of entity.getParents()) {
 
-    for (let parent of parents) {
-      assert(parent);
+      let parentIri = parentRelation.value;
+      let parentEntity = uriToNode.get(parentIri);
 
-      if (isTop(parent.getIri())) continue;
+      if (isTop(parentIri)) continue;
 
-      uriToChildNodes.set(parent.getIri(), entity);
-      uriToParentNodes.set(entity.getIri(), parent);
+      if(! (parentEntity instanceof Entity)) {
+	continue;
+      }
+
+      let parentRelationToChild = 
+	parentRelation.getMetadata()
+		&& parentRelation.getMetadata()['parentRelationToChild'] 
+		&& parentRelation.getMetadata()['parentRelationToChild'][0];
+
+      let childRelationToParent = 
+	parentRelation.getMetadata()
+		&& parentRelation.getMetadata()['childRelationToParent'] 
+		&& parentRelation.getMetadata()['childRelationToParent'][0];
+
+      let relation = {
+	parent: parentEntity,
+	child: entity,
+	parentRelationToChild,
+	childRelationToParent
+      }
+
+      childToParentRelations.set(entity.getIri(), relation);
     }
   }
 
-  var breakCycles = function (currentEntity: Entity, visitedIris: Set<string>) {
-    visitedIris.add(currentEntity.getIri());
+  var breakCycles = function (currentIri:string, visitedIris: Set<string>) {
+    visitedIris.add(currentIri);
 
-    let parents = uriToParentNodes.get(currentEntity.getIri());
-    if (parents) {
-      for (let parent of parents) {
-        if (visitedIris.has(parent.getIri())) {
+    let parentRelations = childToParentRelations.get(currentIri);
+    if (parentRelations) {
+      for (let parentRelation of parentRelations) {
+        if (visitedIris.has(parentRelation.parent.getIri())) {
           // we already saw this parent, remove it
-          uriToParentNodes.delete(currentEntity.getIri(), parent);
-          uriToChildNodes.delete(parent.getIri(), currentEntity);
+	  childToParentRelations.delete(currentIri, parentRelation)
         } else {
-          breakCycles(parent, new Set(visitedIris));
+          breakCycles(parentRelation.parent.getIri(), new Set(visitedIris));
         }
       }
     }
@@ -60,15 +80,24 @@ export default function extractEntityHierarchy(entities: Entity[]): {
 
   // break cycles starting from leaf entities
   for (let entity of entities) {
-    breakCycles(entity, new Set());
+    breakCycles(entity.getIri(), new Set());
+  }
+
+  let parentToChildRelations: Multimap<string, ParentChildRelation> = new Multimap();
+
+  for(let childIri of Array.from(childToParentRelations.keys())) {
+  	let relations = childToParentRelations.get(childIri);
+	for(let r of relations) {
+		parentToChildRelations.set(r.parent.getIri(), r)
+	}
   }
 
   let rootEntities = entities.filter((node) => {
     if (isTop(node.getIri())) return false;
-    return (uriToParentNodes.get(node.getIri()) || []).length === 0;
+    return (childToParentRelations.get(node.getIri()) || []).length === 0;
   });
 
-  return { rootEntities, uriToChildNodes };
+  return { rootEntities, parentToChildRelations };
 }
 
 function isTop(iri) {
