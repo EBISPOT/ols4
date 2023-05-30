@@ -52,7 +52,7 @@ export default function About() {
               new ontology please contact&thinsp;
               <a
                 className="link-default"
-                href="http://www.ebi.ac.uk/about/spot-team"
+                href="mailto:ols-support@ebi.ac.uk"
                 rel="noopener noreferrer"
                 target="_blank"
               >
