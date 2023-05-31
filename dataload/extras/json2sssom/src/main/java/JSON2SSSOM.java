@@ -164,6 +164,21 @@ public class JSON2SSSOM {
         if(equivalentClass != null) {
             writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, ontologyProperties, writer, curieMap);
         }
+
+	// chemical specific mapping predicates
+	//
+        JsonElement inchi = entity.get("http://purl.obolibrary.org/obo/chebi/inchi");
+        if(inchi != null) {
+            writeMappingsForEntity(entity, "chebi:inchi", inchi, null, ontologyProperties, writer, curieMap);
+        }
+        JsonElement inchiKey = entity.get("http://purl.obolibrary.org/obo/chebi/inchikey");
+        if(inchiKey != null) {
+            writeMappingsForEntity(entity, "chebi:inchikey", inchiKey, null, ontologyProperties, writer, curieMap);
+        }
+        JsonElement smiles = entity.get("http://purl.obolibrary.org/obo/chebi/smiles");
+        if(smiles != null) {
+            writeMappingsForEntity(entity, "chebi:smiles", smiles, null, ontologyProperties, writer, curieMap);
+        }
     }
 
     public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, Map<String,JsonElement> ontologyProperties, CSVPrinter writer, CurieMap curieMap) throws IOException {
@@ -210,46 +225,67 @@ public class JSON2SSSOM {
             // all mappings should eventually end up here
             // reificationMetadata may be null
 
+            CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
+
+            if(subjCurie == null) {
+		return;
+	    }
+
+	    String subject_id = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
+
+
+
             String value = mappingValue.getAsString();
 
-            JsonElement linkedEntityElem = linkedEntities.get(value);
+	    String object_id = null;
+	    String object_label = "";
 
-            if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
-                return;
-            }
+	    // TODO: hacks for specific chemical mappings, should generalise
+	    if(predicate.equals("chebi:inchikey")) {
+		object_id = "inchikey:" + value;
+		object_label = value;
+	    } else if(predicate.equals("chebi:inchi")) {
+		object_id = "inchi:" + value;
+		object_label = value;
+	    } else if(predicate.equals("chebi:smiles")) {
+		object_id = "smiles:" + value;
+		object_label = value;
+	    } else {
 
-            JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
+		JsonElement linkedEntityElem = linkedEntities.get(value);
 
+		if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
+			return;
+		}
 
-//            if(predicate.equals("owl:equivalentClass")) {
-//                JsonElement definedBy = linkedEntity.get("definedBy");
-//                if(definedBy == null) {
-//                    List<String> definedByOntologyId = getStringOrListOfStrings(definedBy);
-//                    if(definedByOntologyId.contains(ontologyProperties.get("ontologyId").getAsString())) {
-//                        return;
-//                    }
-//                }
-//            }
+		JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
 
-            CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
-            CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
+		CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
 
-            if(subjCurie == null || objCurie == null) {
-                return;
-            }
+		if(objCurie == null) {
+			return;
+		}
+
+		object_id = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+
+		if(linkedEntity.has("label"))  {
+			object_label = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
+		}
+	    }
+
 
             String[] record = new String[tsvHeader.size()];
 
             for(int i = 0; i < tsvHeader.size(); ++ i) {
                 switch(tsvHeader.get(i)) {
                     case "subject_id":
-                        record[i] = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
+                        record[i] = subject_id;
                         break;
                     case "predicate_id":
                         record[i] = predicate;
                         break;
                     case "object_id":
-                        record[i] = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+                        record[i] = object_id;
                         break;
                     case "mapping_justification":
                         record[i] = "semapv:UnspecifiedMatching";
@@ -258,9 +294,7 @@ public class JSON2SSSOM {
                         record[i] = JsonHelper.getFirstStringValue( entity.get("label") );
                         break;
                     case "object_label":
-                        if(linkedEntity.has("label")) {
-                            record[i] = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
-                        }
+			record[i] = object_label;
                         break;
 //                    case "comment":
 //                        record[i] = "extracted from " + getFirstStringValue(entity.get("ontologyId"));
