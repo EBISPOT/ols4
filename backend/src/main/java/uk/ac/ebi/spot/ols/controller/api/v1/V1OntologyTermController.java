@@ -409,7 +409,7 @@ public class V1OntologyTermController {
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
-        V1Term target = getOneById(ontologyId, lang, id);
+        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
@@ -433,7 +433,7 @@ public class V1OntologyTermController {
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
-        V1Term target = getOneById(ontologyId, lang, id);
+        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
@@ -457,7 +457,7 @@ public class V1OntologyTermController {
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
-        V1Term target = getOneById(ontologyId, lang, id);
+        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
@@ -481,7 +481,7 @@ public class V1OntologyTermController {
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
-        V1Term target = getOneById(ontologyId, lang, id);
+        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
