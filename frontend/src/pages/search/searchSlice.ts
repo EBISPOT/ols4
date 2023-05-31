@@ -30,7 +30,7 @@ export const getSearchResults = createAsyncThunk(
         facetFields: "ontologyId type",
         ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
         type: type.length > 0 ? type[0] : null,
-        lang: "all",
+        // lang: "all",
 
         ...Object.fromEntries(searchParams as URLSearchParams),
       };
