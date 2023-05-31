@@ -105,10 +105,10 @@ export default class Ontology extends Thing {
   getLanguages(): string[] {
     return asArray(this.properties["language"]);
   }
-  getImportsEntitiesFrom(): string[] {
-    return asArray(this.properties["importsEntitiesFrom"]);
+  getImportsFrom(): string[] {
+    return asArray(this.properties["importsFrom"]);
   }
-  getExportsEntitiesTo(): string[] {
-    return asArray(this.properties["exportsEntitiesTo"]);
+  getExportsTo(): string[] {
+    return asArray(this.properties["exportsTo"]);
   }
 }

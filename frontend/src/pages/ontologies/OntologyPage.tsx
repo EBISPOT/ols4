@@ -450,7 +450,7 @@ function OntologyImportsSection({ontology}:{ontology:Ontology}) {
   let [expanded, setExpanded] = useState<boolean>(false);
   const MAX_UNEXPANDED = 5;
 
-  let imports = ontology.getImportsEntitiesFrom()
+  let imports = ontology.getImportsFrom()
 
   if(!imports)
 	return <Fragment/>
@@ -459,7 +459,7 @@ function OntologyImportsSection({ontology}:{ontology:Ontology}) {
     <Fragment>
       {imports && imports.length > 0 && (
         <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
-          <span className="font-bold mr-2">Imports entities from</span>
+          <span className="font-bold mr-2">Imports from</span>
           {imports.length <= MAX_UNEXPANDED || expanded ? (
             imports.map(renderOntId)
           ) : (
@@ -496,7 +496,7 @@ function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
   let [expanded, setExpanded] = useState<boolean>(false);
   const MAX_UNEXPANDED = 5;
 
-  let imports = ontology.getExportsEntitiesTo()
+  let imports = ontology.getExportsTo()
 
   if(!imports)
 	return <Fragment/>
@@ -505,7 +505,7 @@ function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
     <Fragment>
       {imports && imports.length > 0 && (
         <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
-          <span className="font-bold mr-2">Exports entities to</span>
+          <span className="font-bold mr-2">Exports to</span>
           {imports.length <= MAX_UNEXPANDED || expanded ? (
             imports.map(renderOntId)
           ) : (
