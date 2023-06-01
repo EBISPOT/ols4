@@ -436,11 +436,11 @@ export default function SearchBox({
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={canonical}
-                  onChange={(ev) => setCanonical(!!ev.target.checked)}
+                  checked={!canonical}
+                  onChange={(ev) => setCanonical(!ev.target.checked)}
                 />
               }
-              label="Canonical definitions only"
+              label="Include imported terms"
             />
           </ThemeProvider>
         </div>

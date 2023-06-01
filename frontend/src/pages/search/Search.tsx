@@ -242,7 +242,7 @@ export default function Search() {
                   }
                   return (
                     <div key={randomString()} className="my-4">
-                      <div className="mb-1 leading-loose truncate">
+                      <div className="mb-2 leading-loose truncate flex flex-row items-center">
                         <Link
                           to={
                             "/ontologies/" +
@@ -261,10 +261,15 @@ export default function Search() {
                           {entity.getName()}
                         </Link>
                         {entity.getShortForm() ? (
-                          <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
+                          <span className="bg-orange-default text-white text-sm rounded-md px-2 py-1 mr-2 w-fit font-bold break-all">
                             {entity.getShortForm()}
                           </span>
                         ) : null}
+                        {!entity.isCanonical() && (
+                          <span className="text-white text-xs bg-neutral-default px-2 py-1 rounded-md uppercase">
+                            Imported
+                          </span>
+                        )}
                       </div>
                       <div className="mb-1 leading-relaxed text-sm text-neutral-default">
                         {entity.getIri()}
