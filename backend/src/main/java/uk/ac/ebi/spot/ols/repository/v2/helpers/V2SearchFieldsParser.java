@@ -31,7 +31,7 @@ public class V2SearchFieldsParser {
 
         if(boostFields == null) {
             query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
-            query.addBoostField("isDefiningOntology", "true", 100, SearchType.WHOLE_FIELD);
+            query.addBoostField("isDefiningOntology", "true", 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);
