@@ -118,7 +118,7 @@ const data: any[] = [
     description: "Mappings extracted from all ontologies in SSSOM TSV format",
     downloadLabel: "mappings_sssom.tsv.gz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/mappings_sssom.tsv.gz",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/mappings_sssom.tgz",
     format: "tab separated file",
   },
 ];
