@@ -5,6 +5,7 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,8 @@ import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -50,7 +51,6 @@ public class V1SelectController {
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 
-
         final SolrQuery solrQuery = new SolrQuery(); // 1
 
         String queryLc = query.toLowerCase();
@@ -58,19 +58,30 @@ public class V1SelectController {
             query = "(" + createIntersectionString(query) + ")";
         }
         solrQuery.setQuery(query);
-        solrQuery.set("qf", "label synonym edge_label edge_synonym synonym shortForm iri");
-        solrQuery.set("bq", "type:ontology^10.0 isDefiningOntology:true^100.0 label_s:\"" + queryLc + "\"^1000  edge_label:\"" + queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
+        solrQuery.set("defType", "edismax");
+        solrQuery.set("qf", "label synonym edge_label edge_synonym shortForm edge_shortForm curie edge_curie iri");
+        solrQuery.set("bq", "type:ontology^10.0 isDefiningOntology:true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" + queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
         solrQuery.set("wt", "json");
 
         if (fieldList == null) {
             fieldList = new HashSet<>();
         }
 
-        solrQuery.setFields("_json");
+        if (fieldList.isEmpty()) {
+            fieldList.add("label");
+            fieldList.add("iri");
+            fieldList.add("id");
+            fieldList.add("type");
+            fieldList.add("shortForm");
+            fieldList.add("curie");
+            fieldList.add("ontologyId");
+            fieldList.add("ontologyPreferredPrefix");
+        }
+        solrQuery.setFields(fieldList.toArray(new String[fieldList.size()]));
 
         if (ontologies != null && !ontologies.isEmpty()) {
 
-            for(String ontologyId : ontologies)
+            for (String ontologyId : ontologies)
                 Validation.validateOntologyId(ontologyId);
 
             solrQuery.addFilterQuery("ontologyId: (" + String.join(" OR ", ontologies) + ")");
@@ -92,27 +103,61 @@ public class V1SelectController {
             String result = childrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+            solrQuery.addFilterQuery("directAncestor: (" + result + ")");
         }
 
         if (allChildrenOf != null) {
             String result = allChildrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+            solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
         }
 
         solrQuery.addFilterQuery("isObsolete:" + queryObsoletes);
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
-        solrQuery.setHighlight(true);
-        solrQuery.add("hl.simple.pre", "<b>");
-        solrQuery.add("hl.simple.post", "</b>");
-        solrQuery.addHighlightField("label");
-        solrQuery.addHighlightField("synonym");
+//        solrQuery.setHighlight(true);
+//        solrQuery.add("hl.simple.pre", "<b>");
+//        solrQuery.add("hl.simple.post", "</b>");
+//        solrQuery.addHighlightField("label_autosuggest");
+//        solrQuery.addHighlightField("label");
+//        solrQuery.addHighlightField("synonym_autosuggest");
+//        solrQuery.addHighlightField("synonym");
 
-        //dispatchSearch(solrSearchBuilder.toString(), response.getOutputStream());
-        dispatchSearch(solrQuery, "ols4_entities");
+        QueryResponse qr = dispatchSearch(solrQuery, "ols4_entities");
+
+        List<Object> docs = new ArrayList<>();
+        for (SolrDocument res : qr.getResults()) {
+            Map<String, Object> outDoc = new HashMap<>();
+
+            outDoc.put("id", res.get("id").toString().replace("+", ":"));
+            outDoc.put("iri", ((Collection<String>) res.get("iri")).iterator().next());
+            outDoc.put("short_form", ((Collection<String>) res.get("shortForm")).iterator().next());
+            outDoc.put("obo_id", ((Collection<String>) res.get("curie")).iterator().next());
+            outDoc.put("label", ((Collection<String>) res.get("label")).iterator().next());
+            outDoc.put("ontology_name", ((Collection<String>) res.get("ontologyId")).iterator().next());
+            outDoc.put("ontology_prefix", ((Collection<String>) res.get("ontologyPreferredPrefix")).iterator().next());
+            outDoc.put("type", ((Collection<String>) res.get("type")).iterator().next());
+
+            docs.add(outDoc);
+        }
+
+        Map<String, Object> responseHeader = new HashMap<>();
+        responseHeader.put("status", 0);
+        responseHeader.put("QTime", qr.getQTime());
+
+        Map<String, Object> responseBody = new HashMap<>();
+        responseBody.put("numFound", qr.getResults().getNumFound());
+        responseBody.put("start", 0);
+        responseBody.put("docs", docs);
+
+
+        Map<String, Object> responseObj = new HashMap<>();
+        responseObj.put("responseHeader", responseHeader);
+        responseObj.put("response", responseBody);
+
+        response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
+        response.flushBuffer();
 
     }
 
