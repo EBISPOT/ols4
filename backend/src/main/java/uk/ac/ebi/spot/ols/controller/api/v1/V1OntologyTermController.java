@@ -3,6 +3,8 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -37,6 +39,8 @@ import java.util.Collections;
 @RequestMapping("/api/ontologies")
 public class V1OntologyTermController {
 
+    private Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private V1TermRepository termRepository;
 
@@ -45,7 +49,7 @@ public class V1OntologyTermController {
 
     @Autowired
     V1PreferredRootTermAssembler preferredRootTermAssembler;
-    
+
     @Autowired
     V1JsTreeRepository jsTreeRepository;
 
@@ -56,49 +60,36 @@ public class V1OntologyTermController {
     Neo4jClient neo4jClient;
 
 
-    @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> termsByOntology(
             @PathVariable("onto") String ontologyId,
             @RequestParam(value = "iri", required = false) String iri,
             @RequestParam(value = "short_form", required = false) String shortForm,
             @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
 
-        Page<V1Term> terms = null;
-
+        id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        if (id == null) {
+            return new ResponseEntity<>(assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
+        }
+        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
-        if (iri != null) {
-            V1Term term = termRepository.findByOntologyAndIri(ontologyId, iri, lang);
-            if (term == null) 
-              throw new ResourceNotFoundException("No resource with " + oboId + " in " + ontologyId);
-            terms =  new PageImpl<V1Term>(Arrays.asList(term));
-        }
-        else if (shortForm != null) {
-            V1Term term = termRepository.findByOntologyAndShortForm(ontologyId, shortForm, lang);
-            if (term == null) 
-              throw new ResourceNotFoundException("No resource with " + oboId + " in " + ontologyId);
-            terms =  new PageImpl<V1Term>(Arrays.asList(term));
-        }
-        else if (oboId != null) {
-            V1Term term = termRepository.findByOntologyAndOboId(ontologyId, oboId, lang);
-            if (term == null) 
-              throw new ResourceNotFoundException("No resource with " + oboId + " in " + ontologyId);
-            terms =  new PageImpl<V1Term>(Arrays.asList(term));
-        }
-        else {
+        Page<V1Term> terms = new PageImpl<V1Term>(Arrays.asList(target));
+        if (target == null) {
+            log.info("No resource with " + id + " in " + ontologyId);
             terms = termRepository.findAllByOntology(ontologyId, lang, pageable);
             if (terms == null) throw new ResourceNotFoundException("Ontology not found");
         }
-
-        return new ResponseEntity<>( assembler.toModel(terms, termAssembler), HttpStatus.OK);
+        return new ResponseEntity<>(assembler.toModel(terms, termAssembler), HttpStatus.OK);
     }
 
     private V1Term getOneById(String ontologyId, String id, String lang) {
 
-        V1Term term = null;
+        V1Term term;
 
         term = termRepository.findByOntologyAndIri(ontologyId, id, lang);
         if (term == null) {
@@ -126,7 +117,7 @@ public class V1OntologyTermController {
         return id;
     }
 
-    @RequestMapping(path = "/{onto}/terms/roots", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    @RequestMapping(path = "/{onto}/terms/roots", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getRoots(
             @PathVariable("onto") String ontologyId,
@@ -139,16 +130,16 @@ public class V1OntologyTermController {
         ontologyId = ontologyId.toLowerCase();
 
         Page<V1Term> roots = termRepository.getRoots(ontologyId, includeObsoletes, lang, pageable);
-        if (roots == null) 
+        if (roots == null)
           throw new ResourceNotFoundException("No roots could be found for " + ontologyId );
         return new ResponseEntity<>( assembler.toModel(roots, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/preferredRoots", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    @RequestMapping(path = "/{onto}/terms/preferredRoots", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getPreferredRoots(
             @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false) 
+            @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
@@ -158,21 +149,21 @@ public class V1OntologyTermController {
 
         Page<V1Term> preferredRoots = termRepository.getPreferredRootTerms(ontologyId,
             includeObsoletes, lang, pageable);
-        
-        if (preferredRoots == null) 
+
+        if (preferredRoots == null)
           throw new ResourceNotFoundException("No preferred roots could be found for " + ontologyId);
-        return new ResponseEntity<>(assembler.toModel(preferredRoots, preferredRootTermAssembler), 
+        return new ResponseEntity<>(assembler.toModel(preferredRoots, preferredRootTermAssembler),
             HttpStatus.OK);
-    }    
-    
-    @RequestMapping(path = "/{onto}/terms/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    }
+
+    @RequestMapping(path = "/{onto}/terms/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Term>> getTerm(@PathVariable("onto") String ontologyId,
                                          @PathVariable("id") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     )
             throws ResourceNotFoundException {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -183,12 +174,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( termAssembler.toModel(term), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/parents", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    @RequestMapping(path = "/{onto}/terms/{id}/parents", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getParents(@PathVariable("onto") String ontologyId,
                                                   @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                   @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -198,12 +189,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(parents, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalParents", produces = 
+    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalParents", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalParents(@PathVariable("onto") String ontologyId,
                                                               @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                               @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -215,12 +206,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>(assembler.toModel(parents, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalAncestors", produces = 
+    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalAncestors", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalAncestors(@PathVariable("onto") String ontologyId,
                                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                 @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -233,12 +224,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>(assembler.toModel(parents, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/children", produces = {MediaType.APPLICATION_JSON_VALUE, 
+    @RequestMapping(path = "/{onto}/terms/{id}/children", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> children(@PathVariable("onto") String ontologyId,
                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                 @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -250,12 +241,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(children, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalChildren", produces = 
+    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalChildren", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalChildren(@PathVariable("onto") String ontologyId,
                                                                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -269,12 +260,12 @@ public class V1OntologyTermController {
         return new ResponseEntity<>(assembler.toModel(children, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalDescendants", produces = 
+    @RequestMapping(path = "/{onto}/terms/{id}/hierarchicalDescendants", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalDescendants(@PathVariable("onto") String ontologyId,
                                                                   @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                   @PathVariable("id") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
-        
+
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -301,8 +292,8 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(descendants, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/ancestors", 
-        produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
+    @RequestMapping(path = "/{onto}/terms/{id}/ancestors",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> ancestors(@PathVariable("onto") String ontologyId, @PathVariable("id") String termId, Pageable pageable,
                                                  @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -316,8 +307,8 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(ancestors, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/terms/{id}/jstree", 
-        produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
+    @RequestMapping(path = "/{onto}/terms/{id}/jstree",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)
     HttpEntity<String> graphJsTree(
             @PathVariable("onto") String ontologyId,
@@ -325,7 +316,7 @@ public class V1OntologyTermController {
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "siblings", defaultValue = "false", required = false) boolean siblings,
             @RequestParam(value = "viewMode", defaultValue = "PreferredRoots", required = false) String viewMode){
-      
+
         ontologyId = ontologyId.toLowerCase();
 
         try {
