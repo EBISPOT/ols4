@@ -18,7 +18,7 @@ export default function ApiLinks({
           />
         </Link>
       </div>
-      <div>
+      {/* <div>
         <Link to={betaApiUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={process.env.PUBLIC_URL + "/jsonbeta.svg"}
@@ -26,7 +26,7 @@ export default function ApiLinks({
             alt="JSON beta document"
           />
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }
