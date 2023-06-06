@@ -151,9 +151,9 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hasHierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
             }
 
         }
@@ -164,9 +164,9 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hasHierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
             }
         }
 
