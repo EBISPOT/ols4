@@ -169,7 +169,7 @@ export default function EntityPage({
                   ▸
                 </span>
                 <span
-                  className="link-entity px-2 py-1 rounded-md text-sm text-white uppercase"
+                  className="link-entity px-2 py-1 rounded-md text-sm text-white"
                   title={entity.getShortForm() || entity.getName()}
                 >
                   {entity.getShortForm() || entity.getName()}
