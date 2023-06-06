@@ -73,17 +73,15 @@ public class V1OntologyTermController {
             PagedResourcesAssembler assembler) {
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
-        if (id == null) {
-            return new ResponseEntity<>(assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
-        }
-        V1Term target = getOneById(ontologyId, id, lang);
         ontologyId = ontologyId.toLowerCase();
-        Page<V1Term> terms = new PageImpl<V1Term>(Arrays.asList(target));
-        if (target == null) {
-            log.info("No resource with " + id + " in " + ontologyId);
-            terms = termRepository.findAllByOntology(ontologyId, lang, pageable);
-            if (terms == null) throw new ResourceNotFoundException("Ontology not found");
+        if (id == null) {
+            Page<V1Term> allTerms = termRepository.findAllByOntology(ontologyId, lang, pageable);
+            return new ResponseEntity<>(assembler.toModel(allTerms, termAssembler), HttpStatus.OK);
         }
+
+        V1Term target = getOneById(ontologyId, id, lang);
+        if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
+        Page<V1Term> terms = new PageImpl<V1Term>(Arrays.asList(target));
         return new ResponseEntity<>(assembler.toModel(terms, termAssembler), HttpStatus.OK);
     }
 
