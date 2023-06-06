@@ -1,18 +1,14 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.RepositoryLinksResource;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +27,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * @author Simon Jupp
@@ -203,15 +197,30 @@ public class V1SearchController {
 
             Map<String,Object> outDoc = new HashMap<>();
 
-            outDoc.put("id", JsonHelper.getString(json, "id"));
-            outDoc.put("iri", JsonHelper.getString(json, "iri"));
-            outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            outDoc.put("label", JsonHelper.getStrings(json, "label"));
-            outDoc.put("description", JsonHelper.getStrings(json, "definition"));
-            outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
-            outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
-            outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
-            outDoc.put("type", "class");
+            if (fieldList == null) {
+                fieldList = new HashSet<>();
+            }
+            if (fieldList.isEmpty()) {
+                fieldList.add("id");
+                fieldList.add("iri");
+                fieldList.add("ontology_name");
+                fieldList.add("label");
+                fieldList.add("description");
+                fieldList.add("short_form");
+                fieldList.add("obo_id");
+                fieldList.add("is_defining_ontology");
+                fieldList.add("type");
+            }
+
+            if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+            if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
+            if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
+            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getStrings(json, "label"));
+            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
+            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+            if (fieldList.contains("type")) outDoc.put("type", "class");
 
             // TODO: ontology_prefix
 

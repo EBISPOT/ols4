@@ -66,16 +66,15 @@ public class V1SelectController {
         if (fieldList == null) {
             fieldList = new HashSet<>();
         }
-
         if (fieldList.isEmpty()) {
-            fieldList.add("label");
-            fieldList.add("iri");
             fieldList.add("id");
+            fieldList.add("iri");
+            fieldList.add("short_form");
+            fieldList.add("obo_id");
+            fieldList.add("label");
+            fieldList.add("ontology_name");
+            fieldList.add("ontology_prefix");
             fieldList.add("type");
-            fieldList.add("shortForm");
-            fieldList.add("curie");
-            fieldList.add("ontologyId");
-            fieldList.add("ontologyPreferredPrefix");
         }
         solrQuery.setFields(fieldList.toArray(new String[fieldList.size()]));
 
@@ -130,14 +129,14 @@ public class V1SelectController {
         for (SolrDocument res : qr.getResults()) {
             Map<String, Object> outDoc = new HashMap<>();
 
-            outDoc.put("id", res.get("id").toString().replace("+", ":"));
-            outDoc.put("iri", ((Collection<String>) res.get("iri")).iterator().next());
-            outDoc.put("short_form", ((Collection<String>) res.get("shortForm")).iterator().next());
-            outDoc.put("obo_id", ((Collection<String>) res.get("curie")).iterator().next());
-            outDoc.put("label", ((Collection<String>) res.get("label")).iterator().next());
-            outDoc.put("ontology_name", ((Collection<String>) res.get("ontologyId")).iterator().next());
-            outDoc.put("ontology_prefix", ((Collection<String>) res.get("ontologyPreferredPrefix")).iterator().next());
-            outDoc.put("type", ((Collection<String>) res.get("type")).iterator().next());
+            if (res.get("id") != null) outDoc.put("id", res.get("id").toString().replace("+", ":"));
+            if (res.get("iri") != null) outDoc.put("iri", ((Collection<String>) res.get("iri")).iterator().next());
+            if (res.get("short_form") != null) outDoc.put("short_form", ((Collection<String>) res.get("shortForm")).iterator().next());
+            if (res.get("obo_id") != null) outDoc.put("obo_id", ((Collection<String>) res.get("curie")).iterator().next());
+            if (res.get("label") != null) outDoc.put("label", ((Collection<String>) res.get("label")).iterator().next());
+            if (res.get("ontology_name") != null) outDoc.put("ontology_name", ((Collection<String>) res.get("ontologyId")).iterator().next());
+            if (res.get("ontology_prefix") != null) outDoc.put("ontology_prefix", ((Collection<String>) res.get("ontologyPreferredPrefix")).iterator().next());
+            if (res.get("type") != null) outDoc.put("type", ((Collection<String>) res.get("type")).iterator().next());
 
             docs.add(outDoc);
         }
