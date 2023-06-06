@@ -266,7 +266,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("curie", oboId, SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
@@ -278,7 +278,7 @@ public class V1TermRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
         query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("curie", oboId, SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
