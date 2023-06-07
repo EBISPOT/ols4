@@ -848,12 +848,9 @@
       "hidden_property": [
         "http://www.ebi.ac.uk/efo/has_flag"
       ],
-      "base_uri": [
-        "http://www.wurvoc.org/vocabularies/om-2.0/"
-      ],
       "reasoner": "EL",
       "oboSlims": false,
-        "base_uri":["http://www.ontology-of-units-of-measure.org/resource/om-2/"],
+        "base_uri":["http://www.ontology-of-units-of-measure.org/resource/om-2/","http://www.wurvoc.org/vocabularies/om-2.0/"],
       "ontology_purl": "https://raw.githubusercontent.com/HajoRijgersberg/OM/master/om-2.0.rdf"
     },
     {
