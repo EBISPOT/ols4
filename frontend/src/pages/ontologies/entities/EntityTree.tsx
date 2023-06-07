@@ -355,7 +355,7 @@ export default function EntityTree({
           )}
         </div>
         {rootNodes ? (
-          <div className="px-3 jstree jstree-1 jstree-proton overflow-x-scroll" role="tree">
+          <div className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto" role="tree">
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
