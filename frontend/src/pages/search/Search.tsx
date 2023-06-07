@@ -1,4 +1,4 @@
-import { KeyboardArrowDown } from "@mui/icons-material";
+import { Close, KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -28,6 +28,7 @@ export default function Search() {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [searchParams] = useSearchParams();
+  const [ontologyFacetQuery, setOntologyFacetQuery] = useState<string>("");
 
   const ontologyFacets =
     facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
@@ -68,6 +69,13 @@ export default function Search() {
     [typeFacetSelected, setTypeFacetSelected]
   );
 
+  const [ontologyFacetFiltered, setOntologyFacetFiltered] = useState<object>(
+    {}
+  );
+  useEffect(() => {
+    setOntologyFacetFiltered(ontologyFacets);
+  }, [ontologyFacets]);
+
   useEffect(() => {
     dispatch(
       getSearchResults({
@@ -91,6 +99,7 @@ export default function Search() {
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
   }, [search, prevSearch]);
+
   return (
     <div>
       <Header section="home" />
@@ -129,6 +138,7 @@ export default function Search() {
                                     type="checkbox"
                                     id={key}
                                     className="invisible hidden peer"
+                                    checked={typeFacetSelected.includes(key)}
                                     onChange={(e) => {
                                       handleTypeFacet(e.target.checked, key);
                                     }}
@@ -144,16 +154,58 @@ export default function Search() {
                       : null}
                   </fieldset>
                   <div className="font-semibold text-lg mb-2">Ontology</div>
+                  <div className="relative grow">
+                    <input
+                      id="facet-search-ontology"
+                      type="text"
+                      autoComplete="off"
+                      placeholder="Search ids..."
+                      className="input-default text-sm mb-3 pl-3"
+                      value={ontologyFacetQuery}
+                      onChange={(event) => {
+                        if (event.target.value) {
+                          setOntologyFacetFiltered(
+                            Object.fromEntries(
+                              Object.entries(ontologyFacets).filter((key) =>
+                                key
+                                  .toString()
+                                  .toLowerCase()
+                                  .includes(event.target.value.toLowerCase())
+                              )
+                            )
+                          );
+                          setOntologyFacetQuery(event.target.value);
+                        } else {
+                          setOntologyFacetFiltered(ontologyFacets);
+                          setOntologyFacetQuery("");
+                        }
+                      }}
+                    />
+                    {ontologyFacetQuery ? (
+                      <div className="absolute right-1.5 top-1.5 z-10">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setOntologyFacetFiltered(ontologyFacets);
+                            setOntologyFacetQuery("");
+                          }}
+                        >
+                          <Close />
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
                   <fieldset>
-                    {ontologyFacets && Object.keys(ontologyFacets).length > 0
-                      ? Object.keys(ontologyFacets)
+                    {ontologyFacetFiltered &&
+                    Object.keys(ontologyFacetFiltered).length > 0
+                      ? Object.keys(ontologyFacetFiltered)
                           .sort((a, b) => {
                             const ac = a ? a.toString() : "";
                             const bc = b ? b.toString() : "";
                             return ac.localeCompare(bc);
                           })
                           .map((key) => {
-                            if (ontologyFacets[key] > 0) {
+                            if (ontologyFacetFiltered[key] > 0) {
                               return (
                                 <label
                                   key={key}
@@ -164,16 +216,20 @@ export default function Search() {
                                     type="checkbox"
                                     id={key}
                                     className="invisible hidden peer"
+                                    checked={ontologyFacetSelected.includes(
+                                      key
+                                    )}
                                     onChange={(e) => {
                                       handleOntologyFacet(
                                         e.target.checked,
                                         key
                                       );
+                                      setOntologyFacetQuery("");
                                     }}
                                   />
                                   <span className="input-checkbox mr-4" />
                                   <span className="uppercase mr-4">
-                                    {key} &#40;{ontologyFacets[key]}&#41;
+                                    {key} &#40;{ontologyFacetFiltered[key]}&#41;
                                   </span>
                                 </label>
                               );

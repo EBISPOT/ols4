@@ -24,7 +24,7 @@ export default function Help() {
           // )
         }
         <div className="text-2xl font-bold my-6">Documentation</div>
-        <div className="text-lg">
+        <div>
           <p className="mb-4">
             The OLS4 API should function identically to the OLS3 API. We are
             currently in the process of making shiny new documentation pages,
