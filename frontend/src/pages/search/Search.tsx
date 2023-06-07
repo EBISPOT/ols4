@@ -159,7 +159,7 @@ export default function Search() {
                       id="facet-search-ontology"
                       type="text"
                       autoComplete="off"
-                      placeholder="Search ids..."
+                      placeholder="Search id..."
                       className="input-default text-sm mb-3 pl-3"
                       value={ontologyFacetQuery}
                       onChange={(event) => {

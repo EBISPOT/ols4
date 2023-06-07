@@ -297,11 +297,11 @@ export default function EntityTree({
       <div style={{ position: "relative" }}>
         <div
           style={{ position: "absolute", right: 0, top: 0 }}
-          className="flex flex-col"
+          className="flex flex-col bg-white px-2 m-1 rounded-lg"
         >
           {entityType === "classes" &&
             ontology.getPreferredRoots().length > 0 && (
-              <Fragment>
+              <div className="mb-2">
                 <FormControl>
                   <RadioGroup
                     name="radio-buttons-group"
@@ -321,8 +321,7 @@ export default function EntityTree({
                     />
                   </RadioGroup>
                 </FormControl>
-                <br />
-              </Fragment>
+              </div>
             )}
           <FormControlLabel
             control={
@@ -356,7 +355,7 @@ export default function EntityTree({
           )}
         </div>
         {rootNodes ? (
-          <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
+          <div className="px-3 jstree jstree-1 jstree-proton overflow-x-scroll" role="tree">
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
