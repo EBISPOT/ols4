@@ -149,9 +149,9 @@ export default function EntityLink({
             {label}
           </Link>
           <Link
-            to={`/search/${encodeURIComponent(
-              encodeURIComponent(label)
-            )}?exactMatch=true&lang=${lang}`}
+            to={`/search?q=${encodeURIComponent(
+              label
+            )}&exactMatch=true&lang=${lang}`}
           >
             <span className="link-ontology px-2 py-0.5 rounded-md text-sm text-white ml-1 whitespace-nowrap">
               <SearchIcon
@@ -194,9 +194,9 @@ export default function EntityLink({
               {label}
             </Link>
             <Link
-              to={`/search/${encodeURIComponent(
-                encodeURIComponent(label)
-              )}?exactMatch=true&lang=${lang}`}
+              to={`/search?q=${encodeURIComponent(
+                label
+              )}&exactMatch=true&lang=${lang}`}
             >
               <span className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white whitespace-nowrap">
                 <SearchIcon

@@ -11,8 +11,8 @@ import Entity from "../../model/Entity";
 import { getSearchResults } from "./searchSlice";
 
 export default function Search() {
-  const params = useParams();
-  let search: string = params.search as string;
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("q") || "";
 
   const dispatch = useAppDispatch();
   const loadingResults = useAppSelector(
@@ -27,7 +27,6 @@ export default function Search() {
 
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [searchParams] = useSearchParams();
   const [ontologyFacetQuery, setOntologyFacetQuery] = useState<string>("");
 
   const ontologyFacets =
@@ -76,7 +75,7 @@ export default function Search() {
     setOntologyFacetFiltered(ontologyFacets);
   }, [ontologyFacets]);
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(
       getSearchResults({
         page,

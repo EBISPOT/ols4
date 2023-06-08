@@ -43,8 +43,16 @@ export const getSearchResults = createAsyncThunk(
           delete query[param];
         }
       }
+      const parsedQuery = new URLSearchParams(query);
+      // remove redundant parameters
+      if (searchParams.get("ontology")) {
+        parsedQuery.set("ontologyId", searchParams.get("ontology"));
+        parsedQuery.delete("ontology");
+      }
+      if (searchParams.get("q")) parsedQuery.delete("q");
+
       const data = (
-        await getPaginated<any>(`api/v2/entities?${new URLSearchParams(query)}`)
+        await getPaginated<any>(`api/v2/entities?${parsedQuery}`)
       ).map((e) => thingFromJsonProperties(e));
       return data;
     } catch (error: any) {
