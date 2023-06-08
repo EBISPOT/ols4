@@ -156,9 +156,8 @@ export default function SearchBox({
   let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || [];
   let autocompleteElements = autocompleteToShow.map(
     (autocomplete, i): SearchBoxEntry => {
-      const linkUrl = `/search/${encodeURIComponent(
-        autocomplete.autosuggest
-      )}?${new URLSearchParams(searchParams)}`;
+      searchParams.set("q", autocomplete.autosuggest);
+      const linkUrl = `/search?${new URLSearchParams(searchParams)}`;
       return {
         linkUrl,
         li: (
@@ -326,11 +325,8 @@ export default function SearchBox({
                   ) {
                     navigate(allDropdownElements[arrowKeySelectedN].linkUrl);
                   } else if (query) {
-                    navigate(
-                      `/search/${encodeURIComponent(
-                        query
-                      )}?${new URLSearchParams(searchParams)}`
-                    );
+                    searchParams.set("q", query);
+                    navigate(`/search?${new URLSearchParams(searchParams)}`);
                   }
                 } else if (ev.key === "ArrowDown") {
                   setArrowKeySelectedN(
@@ -382,11 +378,8 @@ export default function SearchBox({
                   }
                   onClick={() => {
                     if (query) {
-                      navigate(
-                        `/search/${encodeURIComponent(
-                          query
-                        )}?${new URLSearchParams(searchParams)}`
-                      );
+                      searchParams.set("q", query);
+                      navigate(`/search?${new URLSearchParams(searchParams)}`);
                     }
                   }}
                 >
@@ -401,11 +394,8 @@ export default function SearchBox({
               className="button-primary text-lg font-bold self-center"
               onClick={() => {
                 if (query) {
-                  navigate(
-                    `/search/${encodeURIComponent(query)}?${new URLSearchParams(
-                      searchParams
-                    )}`
-                  );
+                  searchParams.set("q", query);
+                  navigate(`/search?${new URLSearchParams(searchParams)}`);
                 }
               }}
             >
