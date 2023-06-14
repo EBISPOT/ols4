@@ -68,7 +68,7 @@ public class V1OntologyTermController {
             @RequestParam(value = "short_form", required = false) String shortForm,
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
-            @RequestParam(value = "obsoletes", required = false) String obsoletes,
+            @RequestParam(value = "obsoletes", defaultValue = "false") boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
