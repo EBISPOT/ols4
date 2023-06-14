@@ -4,6 +4,7 @@ import { randomString } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
+import Image3D from "../../../../components/Image3D";
 
 export default function addLinksToText(
   text: string,
@@ -43,6 +44,8 @@ export default function addLinksToText(
   const urlRe = /[A-z]+:\/\/[^\s]+/g;
   const imgFile =
     /.*\.(apng|avif|gif|jpg|jpeg|jfif|pjpeg|pjp|png|svg|webp|bmp|ico|cur|tif|tiff)$/g;
+  const imgFile3D =
+    /.*\.(glb|gltf)$/g;
   for (let match = urlRe.exec(text); match; match = urlRe.exec(text)) {
     const url = match[0];
     // console.log("found match " + url);
@@ -58,6 +61,9 @@ export default function addLinksToText(
               className="rounded-lg mx-auto object-contain"
             />
           ) : (
+            url.toLowerCase().match(imgFile3D)?.length === 1 ? (
+		<Image3D src={url} />
+	    ) :
             <Link
               key={url + randomString()}
               to={url}

@@ -2953,6 +2953,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tweenjs/tween.js@npm:~18.6.4":
+  version: 18.6.4
+  resolution: "@tweenjs/tween.js@npm:18.6.4"
+  checksum: 47208db3f6c32cde80284a852d0fca016284f90c4798eb4ebb2ebfc2e379504007bf0c031c2c33044df8a0878fd1942ebc4e0b7f5b8bcccf812b532ea1ee73eb
+  languageName: node
+  linkType: hard
+
 "@types/aria-query@npm:^4.2.0":
   version: 4.2.2
   resolution: "@types/aria-query@npm:4.2.2"
@@ -2998,13 +3005,6 @@ __metadata:
   dependencies:
     "@babel/types": ^7.3.0
   checksum: d20953338b2f012ab7750932ece0a78e7d1645b0a6ff42d49be90f55e9998085da1374a9786a7da252df89555c6586695ba4d1d4b4e88ab2b9f306bcd35e00d3
-  languageName: node
-  linkType: hard
-
-"@types/cytoscape@npm:*":
-  version: 3.19.9
-  resolution: "@types/cytoscape@npm:3.19.9"
-  checksum: 773e7c73198a0dc9fe8fe708aca47af5e1fc47ba6e3138e37e3de23cd336441dd79d2a0215473c755a6bdd9842e3ed83e2e6d51abd128a34a5680fc10b3402b5
   languageName: node
   linkType: hard
 
@@ -3197,16 +3197,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-cytoscapejs@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@types/react-cytoscapejs@npm:1.2.2"
-  dependencies:
-    "@types/cytoscape": "*"
-    "@types/react": "*"
-  checksum: 6de669ffce58793b2222ba28f63bddbcb6b85482c4853421f51688c3d64094b03c19cf8222aaa830be9ef4b33add4911f902747254070d5766032ff33dcd8b68
-  languageName: node
-  linkType: hard
-
 "@types/react-dom@npm:^17.0.0":
   version: 17.0.19
   resolution: "@types/react-dom@npm:17.0.19"
@@ -3307,6 +3297,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/stats.js@npm:*":
+  version: 0.17.0
+  resolution: "@types/stats.js@npm:0.17.0"
+  checksum: ac8dc5e622fa3b7cc37b9e21663193a2f171a4f5896285e4dfc04f2874acbb75edc958f077bffbd85b0ae358daa5bf4ecbc71210386a4300bff05d09435e35f9
+  languageName: node
+  linkType: hard
+
 "@types/tapable@npm:^1, @types/tapable@npm:^1.0.5":
   version: 1.0.8
   resolution: "@types/tapable@npm:1.0.8"
@@ -3320,6 +3317,19 @@ __metadata:
   dependencies:
     "@types/jest": "*"
   checksum: dcb05416758fe88c1f4f3aa97b4699fcb46a5ed8f53c6b81721e66155452a48caf12ecb97dfdfd4130678e65efd66b9fca0ac434b3d63affec84842a84a6bf38
+  languageName: node
+  linkType: hard
+
+"@types/three@npm:^0.152.1":
+  version: 0.152.1
+  resolution: "@types/three@npm:0.152.1"
+  dependencies:
+    "@tweenjs/tween.js": ~18.6.4
+    "@types/stats.js": "*"
+    "@types/webxr": "*"
+    fflate: ~0.6.9
+    lil-gui: ~0.17.0
+  checksum: 25388e5c65414d4dd586ff0ec1615418838ceba293918b66755c08e263975db7913fc75dbe26b3342ba00ea0bc09af7428668194612bbd6ef7dd6cef3e4d4758
   languageName: node
   linkType: hard
 
@@ -3361,6 +3371,13 @@ __metadata:
     anymatch: ^3.0.0
     source-map: ^0.6.0
   checksum: 5f64818128c94026be0e43e77d687e2d90f0da526a3a7c308c6a0bb12e93a35c9243be427bbf6865f64fd71dc5b32715af9b9da0cd6ae8335081b6db995bad2b
+  languageName: node
+  linkType: hard
+
+"@types/webxr@npm:*":
+  version: 0.5.2
+  resolution: "@types/webxr@npm:0.5.2"
+  checksum: e3387c3d64c140557796a4bcececd82d912a88f73ff8e34bf51c04d44078390fbe4756b256b2844b1ae4664a883d46f96bb40913d21f12e9ab484d9d8dbc68c3
   languageName: node
   linkType: hard
 
@@ -5794,15 +5811,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cose-base@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "cose-base@npm:1.0.3"
-  dependencies:
-    layout-base: ^1.0.0
-  checksum: 3f3d592316df74adb215ca91e430f1c22b6e890bc0025b32ae1f6464c73fdb9614816cb40a8d38b40c6a3e9e7b8c64eda90d53fb9a4a6948abec17dad496f30b
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:^5.0.0":
   version: 5.2.1
   resolution: "cosmiconfig@npm:5.2.1"
@@ -6288,27 +6296,6 @@ __metadata:
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
   checksum: 3cc2fdeb358599ca0ea96f5ecf2fc530ccab7ed1f8aa1a894aebfacd2009281bd7380cb9b30db02a18cdd00b3ed1d7ce81a3b11fe56e33a6a0fe4424dc592fbe
-  languageName: node
-  linkType: hard
-
-"cytoscape-cose-bilkent@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "cytoscape-cose-bilkent@npm:4.1.0"
-  dependencies:
-    cose-base: ^1.0.0
-  peerDependencies:
-    cytoscape: ^3.2.0
-  checksum: bea6aa139e21bf4135b01b99f8778eed061e074d1a1689771597e8164a999d66f4075d46be584b0a88a5447f9321f38c90c8821df6a9322faaf5afebf4848d97
-  languageName: node
-  linkType: hard
-
-"cytoscape@npm:3.25.0":
-  version: 3.25.0
-  resolution: "cytoscape@npm:3.25.0"
-  dependencies:
-    heap: ^0.2.6
-    lodash: ^4.17.21
-  checksum: 514ea396d90b16ffb6decff0ef1e790b9c35fbdfe3e842a56705d87e5d0a0ed78c94a5e7b66a93596245473868c46d4396886d940688e73a4d418701ac5caa34
   languageName: node
   linkType: hard
 
@@ -7869,6 +7856,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fflate@npm:~0.6.9":
+  version: 0.6.10
+  resolution: "fflate@npm:0.6.10"
+  checksum: 96384bc4090987fe565c0de8204e3830f538144ec950576fea50aee1b42adbe9fc3ed5e7905dfa7979faaa20979def330dbebce548f3dcafc3e118cc9838526d
+  languageName: node
+  linkType: hard
+
 "figgy-pudding@npm:^3.5.1":
   version: 3.5.2
   resolution: "figgy-pudding@npm:3.5.2"
@@ -8676,13 +8670,6 @@ __metadata:
   bin:
     he: bin/he
   checksum: 3d4d6babccccd79c5c5a3f929a68af33360d6445587d628087f39a965079d84f18ce9c3d3f917ee1e3978916fc833bb8b29377c3b403f919426f91bc6965e7a7
-  languageName: node
-  linkType: hard
-
-"heap@npm:^0.2.6":
-  version: 0.2.7
-  resolution: "heap@npm:0.2.7"
-  checksum: b0f3963a799e02173f994c452921a777f2b895b710119df999736bfed7477235c2860c423d9aea18a9f3b3d065cb1114d605c208cfcb8d0ac550f97ec5d28cb0
   languageName: node
   linkType: hard
 
@@ -10807,13 +10794,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"layout-base@npm:^1.0.0":
-  version: 1.0.2
-  resolution: "layout-base@npm:1.0.2"
-  checksum: e4c312765ac4fa13b49c940e701461309c7a0aa07f784f81d31f626b945dced90a8abf83222388a5af16b7074271f745501a90ef5a3af676abb2e7eb16d55b2e
-  languageName: node
-  linkType: hard
-
 "leven@npm:^3.1.0":
   version: 3.1.0
   resolution: "leven@npm:3.1.0"
@@ -10838,6 +10818,13 @@ __metadata:
     prelude-ls: ~1.1.2
     type-check: ~0.3.2
   checksum: 0d084a524231a8246bb10fec48cdbb35282099f6954838604f3c7fc66f2e16fa66fd9cc2f3f20a541a113c4dafdf181e822c887c8a319c9195444e6c64ac395e
+  languageName: node
+  linkType: hard
+
+"lil-gui@npm:~0.17.0":
+  version: 0.17.0
+  resolution: "lil-gui@npm:0.17.0"
+  checksum: a6f33e90748ea98477f1f7af6d6cbdc4a1b38ce9da86d674d73f7b0bbdc7f3e947d81edee04c32f33fb28c69a108ba04c24270a8398064ffcc56ffeabc0a916e
   languageName: node
   linkType: hard
 
@@ -12036,13 +12023,11 @@ __metadata:
     "@types/multimap": ^1.1.2
     "@types/node": ^12.0.0
     "@types/react": ^17.0.0
-    "@types/react-cytoscapejs": ^1.2.2
     "@types/react-dom": ^17.0.0
     "@types/react-router-dom": ^5.3.3
+    "@types/three": ^0.152.1
     concurrently: ^7.5.0
     country-code-to-flag-emoji: ^1.2.1
-    cytoscape: 3.25.0
-    cytoscape-cose-bilkent: ^4.1.0
     date-fns: ^2.19.0
     file-saver: ^2.0.5
     history: ^5.0.0
@@ -12051,7 +12036,6 @@ __metadata:
     moment: ^2.29.4
     multimap: ^1.1.0
     react: ^17.0.1
-    react-cytoscapejs: ^2.0.0
     react-dom: ^17.0.1
     react-loading-overlay: ^1.0.1
     react-redux: ^8.0.2
@@ -12060,6 +12044,7 @@ __metadata:
     react-twitter-widgets: ^1.11.0
     styled-components: ^5.2.1
     tailwindcss: ^3.1.8
+    three: ^0.153.0
     typescript: ^4.1.2
     web-vitals: ^1.0.1
   languageName: unknown
@@ -13787,18 +13772,6 @@ __metadata:
     regenerator-runtime: ^0.13.7
     whatwg-fetch: ^3.4.1
   checksum: 99e52a6b2229c7ca730cfd44ac95640f955be71d144225bd6c24fa47922a742658a371d0a2f0876d732533f1055b7cd7e9d534c89c29f8ca889ecd1b8d15f065
-  languageName: node
-  linkType: hard
-
-"react-cytoscapejs@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "react-cytoscapejs@npm:2.0.0"
-  dependencies:
-    prop-types: ^15.8.1
-  peerDependencies:
-    cytoscape: ^3.2.19
-    react: ">=15.0.0"
-  checksum: 911a972262a4a7752b476108b334e53764198703802b7f3d2018f34be6a49ccfac43e3b5c33e8fb589e21be60c6745b131d2854a48903c29d8f9e2849d7d436a
   languageName: node
   linkType: hard
 
@@ -16030,6 +16003,13 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
+  languageName: node
+  linkType: hard
+
+"three@npm:^0.153.0":
+  version: 0.153.0
+  resolution: "three@npm:0.153.0"
+  checksum: 68899ca90e048967a83866a1d54a9d28bba3532d228ede9e4c2a3b9bec347c31d8bb633eeaf7828397d2419cded8f57cf32f2a9c037a3587d45122e793ddc0c4
   languageName: node
   linkType: hard
 
