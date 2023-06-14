@@ -239,7 +239,7 @@ public class V1SearchController {
 
         Map<String, Object> responseObj = new HashMap<>();
         responseObj.put("responseHeader", responseHeader);
-        responseObj.put("docs", docs);
+        responseObj.put("response", responseBody);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
