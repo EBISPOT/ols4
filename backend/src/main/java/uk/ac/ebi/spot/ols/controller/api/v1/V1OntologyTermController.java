@@ -68,6 +68,7 @@ public class V1OntologyTermController {
             @RequestParam(value = "short_form", required = false) String shortForm,
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
+            @RequestParam(value = "obsoletes", required = false) String obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -75,7 +76,7 @@ public class V1OntologyTermController {
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
         ontologyId = ontologyId.toLowerCase();
         if (id == null) {
-            Page<V1Term> allTerms = termRepository.findAllByOntology(ontologyId, lang, pageable);
+            Page<V1Term> allTerms = termRepository.findAllByOntology(ontologyId, obsoletes, lang, pageable);
             return new ResponseEntity<>(assembler.toModel(allTerms, termAssembler), HttpStatus.OK);
         }
 

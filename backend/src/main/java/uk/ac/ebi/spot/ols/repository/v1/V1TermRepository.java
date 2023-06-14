@@ -129,11 +129,12 @@ public class V1TermRepository {
 
     }
 
-    public Page<V1Term> findAllByOntology(String ontologyId, String lang, Pageable pageable) {
+    public Page<V1Term> findAllByOntology(String ontologyId, String obsoletes, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        if (obsoletes != null) query.addFilter("isObsolete", obsoletes, SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
