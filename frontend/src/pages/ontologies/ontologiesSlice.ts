@@ -387,7 +387,7 @@ export const getNodeChildren = createAsyncThunk(
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
             title: term.getName(),
-            expandable: term.hasDirectChildren(),
+            expandable: term.hasChildren(),
             entity: term,
             numDescendants:
               term.getNumHierarchicalDescendants() || term.getNumDescendants(),
