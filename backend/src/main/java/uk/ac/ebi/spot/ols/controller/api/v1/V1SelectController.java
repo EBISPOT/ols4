@@ -1,6 +1,8 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
+import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
+import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +53,7 @@ public class V1SelectController {
             @RequestParam(value = "allChildrenOf", required = false) Collection<String> allChildrenOf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
+            @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 
@@ -59,24 +65,11 @@ public class V1SelectController {
         }
         solrQuery.setQuery(query);
         solrQuery.set("defType", "edismax");
-        solrQuery.set("qf", "label synonym edge_label edge_synonym shortForm edge_shortForm curie edge_curie iri");
+        solrQuery.set("qf", "label whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
         solrQuery.set("bq", "type:ontology^10.0 isDefiningOntology:true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" + queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
         solrQuery.set("wt", "json");
 
-        if (fieldList == null) {
-            fieldList = new HashSet<>();
-        }
-        if (fieldList.isEmpty()) {
-            fieldList.add("id");
-            fieldList.add("iri");
-            fieldList.add("short_form");
-            fieldList.add("obo_id");
-            fieldList.add("label");
-            fieldList.add("ontology_name");
-            fieldList.add("ontology_prefix");
-            fieldList.add("type");
-        }
-        solrQuery.setFields(fieldList.toArray(new String[fieldList.size()]));
+        solrQuery.setFields("_json");
 
         if (ontologies != null && !ontologies.isEmpty()) {
 
@@ -123,20 +116,47 @@ public class V1SelectController {
 //        solrQuery.addHighlightField("synonym_autosuggest");
 //        solrQuery.addHighlightField("synonym");
 
+        System.out.println("select: " + solrQuery.toQueryString());
+
         QueryResponse qr = dispatchSearch(solrQuery, "ols4_entities");
 
         List<Object> docs = new ArrayList<>();
         for (SolrDocument res : qr.getResults()) {
+
+            String _json = (String)res.get("_json");
+            if(_json == null) {
+                throw new RuntimeException("_json was null");
+            }
+
+            JsonObject json = RemoveLiteralDatatypesTransform.transform(
+                    LocalizationTransform.transform( JsonParser.parseString( _json ), lang)
+            ).getAsJsonObject();
+
+            if (fieldList == null) {
+                fieldList = new HashSet<>();
+            }
+            if (fieldList.isEmpty()) {
+                fieldList.add("id");
+                fieldList.add("iri");
+                fieldList.add("short_form");
+                fieldList.add("obo_id");
+                fieldList.add("label");
+                fieldList.add("ontology_name");
+                fieldList.add("ontology_prefix");
+                fieldList.add("type");
+            }
+
             Map<String, Object> outDoc = new HashMap<>();
 
-            if (res.get("id") != null) outDoc.put("id", res.get("id").toString().replace("+", ":"));
-            if (res.get("iri") != null) outDoc.put("iri", ((Collection<String>) res.get("iri")).iterator().next());
-            if (res.get("short_form") != null) outDoc.put("short_form", ((Collection<String>) res.get("shortForm")).iterator().next());
-            if (res.get("obo_id") != null) outDoc.put("obo_id", ((Collection<String>) res.get("curie")).iterator().next());
-            if (res.get("label") != null) outDoc.put("label", ((Collection<String>) res.get("label")).iterator().next());
-            if (res.get("ontology_name") != null) outDoc.put("ontology_name", ((Collection<String>) res.get("ontologyId")).iterator().next());
-            if (res.get("ontology_prefix") != null) outDoc.put("ontology_prefix", ((Collection<String>) res.get("ontologyPreferredPrefix")).iterator().next());
-            if (res.get("type") != null) outDoc.put("type", ((Collection<String>) res.get("type")).iterator().next());
+            if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+            if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
+            if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
+            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getStrings(json, "label"));
+            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
+            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+            if (fieldList.contains("type")) outDoc.put("type", "class");
 
             docs.add(outDoc);
         }
