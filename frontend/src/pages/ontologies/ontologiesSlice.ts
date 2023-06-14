@@ -245,13 +245,13 @@ export const getAncestors = createAsyncThunk(
     if (entityType === "classes") {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-          { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
+          { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     } else {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-          { size: "100", lang, includeObsoleteEntities: showObsoleteEnabled }
+          { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
         )}`
       );
     }
@@ -274,7 +274,7 @@ export const getRootEntities = createAsyncThunk(
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
             hasIndividuals: "true",
-            size: "100",
+            size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           })}`
@@ -282,7 +282,7 @@ export const getRootEntities = createAsyncThunk(
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
             hasDirectParent: "false",
-            size: "100",
+            size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           })}`
@@ -302,7 +302,7 @@ export const getRootEntities = createAsyncThunk(
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
           isPreferredRoot: "true",
-          size: "100",
+          size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
         })}`
@@ -319,7 +319,7 @@ export const getRootEntities = createAsyncThunk(
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
           hasDirectParent: "false",
-          size: "100",
+          size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
         })}`
@@ -351,7 +351,7 @@ export const getNodeChildren = createAsyncThunk(
       childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
           {
-            size: "100",
+            size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
@@ -361,7 +361,7 @@ export const getNodeChildren = createAsyncThunk(
       childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
           {
-            size: "100",
+            size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
@@ -371,7 +371,7 @@ export const getNodeChildren = createAsyncThunk(
       childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
           {
-            size: "100",
+            size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
@@ -383,6 +383,7 @@ export const getNodeChildren = createAsyncThunk(
       children: childrenPage.elements
         .map((obj: any) => thingFromJsonProperties(obj))
         .map((term: Entity) => {
+	  let parenthoodMetadata = term.getHierarchicalParentReificationAxioms(entityIri)
           return {
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
@@ -391,6 +392,8 @@ export const getNodeChildren = createAsyncThunk(
             entity: term,
             numDescendants:
               term.getNumHierarchicalDescendants() || term.getNumDescendants(),
+	    parentRelationToChild: (parenthoodMetadata && parenthoodMetadata['parentRelationToChild']?.[0]) || null,
+	    childRelationToParent: (parenthoodMetadata && parenthoodMetadata['childRelationToParent']?.[0]) || null,
           };
         }),
     };
