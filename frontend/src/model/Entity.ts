@@ -136,12 +136,8 @@ export default abstract class Entity extends Thing {
 	
 	let hierarchicalParents = Reified.fromJson<any>(this.properties['hierarchicalParent'])
 
-	console.dir(hierarchicalParents)
-
 	for(let p of hierarchicalParents) {
 		if(p.value === parentIri) {
-			console.log('metadata')
-			console.dir(p.getMetadata())
 			return p.getMetadata()
 		}
 	}
