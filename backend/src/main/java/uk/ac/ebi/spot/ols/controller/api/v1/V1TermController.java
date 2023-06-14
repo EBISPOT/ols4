@@ -62,20 +62,22 @@ public class V1TermController implements
             Pageable pageable,
             PagedResourcesAssembler assembler) {
 
+        Page<V1Term> terms = null;
         if (id == null) {
             if (iri != null) {
-                id = iri;
+                termRepository.findAllByIri(iri, lang, pageable);
             } else if (shortForm != null) {
-                id = shortForm;
+                termRepository.findAllByShortForm(shortForm, lang, pageable);
             } else if (oboId != null) {
-                id = oboId;
+                termRepository.findAllByOboId(oboId, lang, pageable);
             }
-        }
-        Page<V1Term> terms = termRepository.findAllByIri(id, lang, pageable);
-        if (terms.getContent().isEmpty()) {
-            terms = termRepository.findAllByShortForm(id, lang, pageable);
+        } else {
+            terms = termRepository.findAllByIri(id, lang, pageable);
             if (terms.getContent().isEmpty()) {
-                terms = termRepository.findAllByOboId(id, lang, pageable);
+                terms = termRepository.findAllByShortForm(id, lang, pageable);
+                if (terms.getContent().isEmpty()) {
+                    terms = termRepository.findAllByOboId(id, lang, pageable);
+                }
             }
         }
         if (terms == null || terms.getContent().isEmpty()) {
@@ -108,20 +110,23 @@ public class V1TermController implements
             Pageable pageable,
             PagedResourcesAssembler assembler) {
 
+
+        Page<V1Term> terms = null;
         if (id == null) {
             if (iri != null) {
-                id = iri;
+                termRepository.findAllByIri(iri, lang, pageable);
             } else if (shortForm != null) {
-                id = shortForm;
+                termRepository.findAllByShortForm(shortForm, lang, pageable);
             } else if (oboId != null) {
-                id = oboId;
+                termRepository.findAllByOboId(oboId, lang, pageable);
             }
-        }
-        Page<V1Term> terms = termRepository.findAllByIriAndIsDefiningOntology(id, lang, pageable);
-        if (terms.getContent().isEmpty()) {
-            terms = termRepository.findAllByShortFormAndIsDefiningOntology(id, lang, pageable);
+        } else {
+            terms = termRepository.findAllByIri(id, lang, pageable);
             if (terms.getContent().isEmpty()) {
-                terms = termRepository.findAllByOboIdAndIsDefiningOntology(id, lang, pageable);
+                terms = termRepository.findAllByShortForm(id, lang, pageable);
+                if (terms.getContent().isEmpty()) {
+                    terms = termRepository.findAllByOboId(id, lang, pageable);
+                }
             }
         }
         if (terms == null || terms.getContent().isEmpty()) {
