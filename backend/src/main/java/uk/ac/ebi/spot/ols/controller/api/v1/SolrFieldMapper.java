@@ -19,13 +19,10 @@ public class SolrFieldMapper {
             String suffix = "";
 
             if (legacyFieldName.endsWith("_s")) {
-                prefix = "str_";
+                prefix = "lowercase_";
                 legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
             } else if (legacyFieldName.endsWith("_e")) {
                 prefix = "edge_";
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
-            } else {
-                prefix = "whitespace_edge_";
                 legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
             }
 

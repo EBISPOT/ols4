@@ -91,7 +91,7 @@ public class V1SearchController {
 
                 solrQuery.set("bq",
                         "isDefiningOntology:\"true\"^100 " +
-                        "lowercase_label:\"" + query.toLowerCase() + "\"^5" +
+                        "lowercase_label:\"" + query.toLowerCase() + "\"^5 " +
                         "lowercase_synonym:\"" + query.toLowerCase() + "\"^3");
             }
         } else {
