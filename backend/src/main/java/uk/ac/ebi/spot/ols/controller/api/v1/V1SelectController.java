@@ -142,8 +142,11 @@ public class V1SelectController {
                 fieldList.add("obo_id");
                 fieldList.add("label");
                 fieldList.add("ontology_name");
-                fieldList.add("ontology_prefix");
+//                fieldList.add("ontology_prefix");
+                fieldList.add("is_defining_ontology");
+                fieldList.add("description");
                 fieldList.add("type");
+                fieldList.add("synonym");
             }
 
             Map<String, Object> outDoc = new HashMap<>();
@@ -157,6 +160,7 @@ public class V1SelectController {
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
+            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
 
             docs.add(outDoc);
         }

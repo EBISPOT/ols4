@@ -210,6 +210,7 @@ public class V1SearchController {
                 fieldList.add("obo_id");
                 fieldList.add("is_defining_ontology");
                 fieldList.add("type");
+                fieldList.add("synonym");
             }
 
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
@@ -221,6 +222,7 @@ public class V1SearchController {
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
+            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
 
             // TODO: ontology_prefix
 
