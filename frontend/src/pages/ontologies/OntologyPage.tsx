@@ -292,6 +292,8 @@ export default function OntologyPage() {
                     ontology={ontology}
                     entityType={tab}
                     lang={lang}
+                    onNavigateToEntity={(ontology, entity) => navigate(`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
+                    onNavigateToOntology={(ontologyId, entity) => navigate(`/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
                   />
                 )}
               </div>

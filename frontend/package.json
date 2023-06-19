@@ -1,8 +1,12 @@
 {
-  "name": "ols",
+  "name": "ols4-entitytree",
   "version": "4.0.0",
+  "description": "Bundled OLS4 EntityTree",
+  "main": "dist/entity-tree-esm/index.js",
+  "module": "dist/entity-tree-esm/index.js",
   "proxy": "http://www.ebi.ac.uk/ols4/",
   "private": true,
+  "types": "dist/entity-tree-esm/index.d.ts",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -43,6 +47,10 @@
     "start": "concurrently -n 'React,Tailwind' 'react-scripts start' 'yarn watch:css'",
     "watch:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify --watch",
     "build": "yarn build:css && bash -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
+    "et_clear": "rimraf dist/entity-tree-esm/*",
+    "et_make-bundle": "rollup --config",
+    "et_cp_package-json": "cp package.json dist/entity-tree-esm/package.json",
+    "build-et": "yarn run et_clear && yarn run tsc && yarn run et_make-bundle && yarn et_cp_package-json",
     "build:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify",
     "build:sandbox": "REACT_APP_ENV=sandbox npm run build",
     "build:prod": "REACT_APP_ENV=prod npm run build",
@@ -70,6 +78,10 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "rollup": "^2.77.2",
+    "@rollup/plugin-typescript": "^8.3.4",
+    "@rollup/plugin-replace": "^5.0.2",
+    "rollup-plugin-dts": "^5.3.0"
   }
 }

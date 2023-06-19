@@ -99,12 +99,12 @@ export const hideCounts = createAction("ontologies_hide_counts");
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
   async (
-    { ontologyId, lang }: { ontologyId: string; lang: string },
+    { ontologyId, lang, apiUrl }: { ontologyId: string; lang: string; apiUrl?: string },
     { rejectWithValue }
   ) => {
     const path = `api/v2/ontologies/${ontologyId}`;
     try {
-      const ontologyProperties = await get<any>(path, { lang });
+      const ontologyProperties = await get<any>(path, { lang }, apiUrl);
       return new Ontology(ontologyProperties);
     } catch (error: any) {
       return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
@@ -239,6 +239,7 @@ export const getAncestors = createAsyncThunk(
     entityIri,
     lang,
     showObsoleteEnabled,
+    apiUrl
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     var ancestorsPage: any;
@@ -246,13 +247,13 @@ export const getAncestors = createAsyncThunk(
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
           { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
-        )}`
+        )}`, undefined,  apiUrl
       );
     } else {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
           { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
-        )}`
+        )}`, undefined,  apiUrl
       );
     }
     return ancestorsPage.elements.map((obj: any) =>
@@ -268,6 +269,7 @@ export const getRootEntities = createAsyncThunk(
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    apiUrl
   }: any) => {
     if (entityType === "individuals") {
       const [classesWithIndividuals, orphanedIndividuals] = await Promise.all([
@@ -277,7 +279,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
-          })}`
+          })}`, undefined,  apiUrl
         ),
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
@@ -285,7 +287,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
-          })}`
+          })}`, undefined,  apiUrl
         ),
       ]);
       return {
@@ -305,7 +307,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
-        })}`
+        })}`, undefined,  apiUrl
       );
       return {
         entityType,
@@ -322,7 +324,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
-        })}`
+        })}`, undefined,  apiUrl
       );
       return {
         entityType,
@@ -343,6 +345,7 @@ export const getNodeChildren = createAsyncThunk(
     entityIri,
     absoluteIdentity,
     lang,
+    apiUrl,
     includeObsoleteEntities: showObsoleteEnabled,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -355,7 +358,7 @@ export const getNodeChildren = createAsyncThunk(
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
-        )}`
+        )}`, undefined,  apiUrl
       );
     } else if (entityTypePlural === "individuals") {
       childrenPage = await getPaginated<any>(
@@ -365,7 +368,7 @@ export const getNodeChildren = createAsyncThunk(
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
-        )}`
+        )}`, undefined,  apiUrl
       );
     } else {
       childrenPage = await getPaginated<any>(
@@ -375,7 +378,7 @@ export const getNodeChildren = createAsyncThunk(
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
           }
-        )}`
+        )}`, undefined,  apiUrl
       );
     }
     return {
