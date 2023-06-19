@@ -1004,60 +1004,60 @@
       "ontology_purl": "https://raw.githubusercontent.com/imodpasteur/ShareLoc.XYZ/ontology/shareloc.owl"
     },
     {
-      "id": "ccf",
-      "preferredPrefix": "CCF",
-      "title": "Common Coordinate Framework Ontology",
-      "is_foundry": false,
-      "uri": "https://purl.org/ccf/ccf.owl",
-      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
-      "definition_property": [
-        "http://purl.obolibrary.org/obo/IAO_0000115"
-      ],
-      "hierarchical_property": [
-        "http://purl.obolibrary.org/obo/BFO_0000050"
-      ],
-      "synonym_property": [
-        "http://purl.org/sig/ont/fma/synonym",
-        "http://www.lungmap.net/ontologies/database#synonym",
-        "https://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
-      ],
-      "preferred_root_term": [
-        "http://purl.obolibrary.org/obo/UBERON_0000955",
-        "http://purl.obolibrary.org/obo/UBERON_0000029",
-        "http://purl.obolibrary.org/obo/UBERON_0000970",
-        "http://purl.obolibrary.org/obo/UBERON_0003889",
-        "http://purl.obolibrary.org/obo/UBERON_0000948",
-        "http://purl.obolibrary.org/obo/UBERON_0002113",
-        "http://purl.obolibrary.org/obo/UBERON_0001465",
-        "http://purl.obolibrary.org/obo/UBERON_0002107",
-        "http://purl.obolibrary.org/obo/UBERON_0002048",
-        "http://purl.obolibrary.org/obo/UBERON_0000992",
-        "http://purl.obolibrary.org/obo/UBERON_0001264",
-        "http://purl.obolibrary.org/obo/UBERON_0002367",
-        "http://purl.obolibrary.org/obo/UBERON_0002097",
-        "http://purl.obolibrary.org/obo/UBERON_0002108",
-        "http://purl.obolibrary.org/obo/UBERON_0000059",
-        "http://purl.obolibrary.org/obo/UBERON_0002106",
-        "http://purl.obolibrary.org/obo/UBERON_0002370",
-        "http://purl.obolibrary.org/obo/UBERON_0000056",
-        "http://purl.obolibrary.org/obo/UBERON_0001255",
-        "http://purl.obolibrary.org/obo/UBERON_0000995",
-        "http://purl.obolibrary.org/obo/UBERON_0004537",
-        "http://purl.obolibrary.org/obo/UBERON_0000178",
-        "http://purl.obolibrary.org/obo/UBERON_0004536",
-        "http://purl.org/ccf/dataset",
-        "http://purl.org/ccf/person",
-        "http://purl.org/ccf/sample",
-        "http://purl.org/ccf/tissue_mapping_center",
-        "http://purl.org/ccf/spatial_entity",
-        "http://purl.org/ccf/spatial_object_reference",
-        "http://purl.org/ccf/spatial_placement"
-      ],
-      "base_uri": [
-        "https://purl.org/ccf/"
-      ],
-      "oboSlims": false,
-      "ontology_purl": "https://purl.org/ccf/2.0/ccf.owl"
+        "id": "ccf",
+        "preferredPrefix": "CCF",
+        "title": "Human Reference Atlas Common Coordinate Framework Ontology",
+        "is_foundry": false,
+        "uri": "http://purl.org/ccf/ccf.owl",
+        "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+        "definition_property": [
+            "http://purl.obolibrary.org/obo/IAO_0000115"
+        ],
+        "hierarchical_property": [
+            "http://purl.obolibrary.org/obo/BFO_0000050"
+        ],
+        "synonym_property": [
+            "http://purl.org/sig/ont/fma/synonym",
+            "http://www.lungmap.net/ontologies/database#synonym",
+            "https://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+        ],
+        "preferred_root_term": [
+            "http://purl.obolibrary.org/obo/UBERON_0000955",
+            "http://purl.obolibrary.org/obo/UBERON_0000029",
+            "http://purl.obolibrary.org/obo/UBERON_0000970",
+            "http://purl.obolibrary.org/obo/UBERON_0003889",
+            "http://purl.obolibrary.org/obo/UBERON_0000948",
+            "http://purl.obolibrary.org/obo/UBERON_0002113",
+            "http://purl.obolibrary.org/obo/UBERON_0001465",
+            "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "http://purl.obolibrary.org/obo/UBERON_0002048",
+            "http://purl.obolibrary.org/obo/UBERON_0000992",
+            "http://purl.obolibrary.org/obo/UBERON_0001264",
+            "http://purl.obolibrary.org/obo/UBERON_0001270",
+            "http://purl.obolibrary.org/obo/UBERON_0002367",
+            "http://purl.obolibrary.org/obo/UBERON_0002097",
+            "http://purl.obolibrary.org/obo/UBERON_0002108",
+            "http://purl.obolibrary.org/obo/UBERON_0000059",
+            "http://purl.obolibrary.org/obo/UBERON_0002106",
+            "http://purl.obolibrary.org/obo/UBERON_0002370",
+            "http://purl.obolibrary.org/obo/UBERON_0000056",
+            "http://purl.obolibrary.org/obo/UBERON_0001255",
+            "http://purl.obolibrary.org/obo/UBERON_0000995",
+            "http://purl.obolibrary.org/obo/UBERON_0004537",
+            "http://purl.obolibrary.org/obo/UBERON_0000178",
+            "http://purl.obolibrary.org/obo/UBERON_0004536"
+        ],
+        "base_uri": [
+            "https://purl.org/ccf/"
+        ],
+        "oboSlims": false,
+        "ontology_purl": "https://purl.org/ccf/2.0/ccf.owl",
+        "creator": [
+            "Aaron Horning (0000-0003-3247-0798), Adel Eskaros (0000-0001-9028-338X), Al Powers (0000-0003-1941-5786), Amy Bernard (0000-0003-2540-1153), Andrea J. Radtke (0000-0003-4379-8967), Angela Kruse (0000-0001-8776-2769), Anna Maria Masci (0000-0003-1940-6740), Ansley Conchola (0000-0002-2385-6712), Avinash Boppana (0000-0003-0834-8274), Ayako Suzuki (0000-0003-1824-1067), Becky Steck (0000-0001-7565-4904), Bernard de Bono (0000-0001-7183-2638), Bertie Gottgens (0000-0001-6302-5705), Birte Steiniger (0000-0002-3602-7331), Blue Lake (0000-0002-8637-9044), Chad  Vezina (0000-0001-7058-5399), Christine Curcio (0000-0001-8776-2769; 0000-0001-9769-1538), Clayton Mathews (0000-0002-8817-6355), Clive Wasserfall (0000-0002-3522-8932), David Anderson (0000-0002-3866-0923), David M. Owens, David Osumi-Sutherland (0000-0002-7073-9172), David Rowe (0000-0001-7852-7775), Dhruv Singhal (0000-0002-6300-1647), Diane Saunders (0000-0002-8849-6746), Douglas Strand (0000-0002-0746-927X), Ed Morrisey (0000-0001-5785-1939), Elaine Jaffe (0000-0003-4632-0301), Elisa Laurenti (0000-0002-9917-9092), Elizabeth Tsui (0000-0003-4503-8494), Ellen M. Quardokus (0000-0001-7655-4833), Fiona Ginty (0000-0001-6638-683X), Gloria Pryhuber (0000-0002-9185-3994), Griffin  Weber (0000-0002-2597-881X), Hemali Phatnani (0000-0002-6571-3891), Ioannis Vlachos (0000-0002-8849-808X), Jakub Abramson (0000-0002-1745-8996), Jeff Whitsett (0000-0003-1668-5174), Jeffrey Spraggins (0000-0001-9198-5498), Jeremy A. Miller (0000-0003-4549-588X), Joel Sunshine (0000-0001-9987-6712), John Hickey (0000-0001-5675-3974), Jonhan Ho (0000-0002-1134-8585), Josef Hardi (0000-0002-2533-6681), Kalyanam Shivkumar (0000-0002-4121-1766), Kathleen ONeill (0000-0003-1980-6840), Katy Börner (0000-0002-3321-6137), Kevin Schey (0000-0001-9769-1538), Kristin Ardlie (0000-0003-4272-6283), Laura Jardine (0000-0003-4495-8205), Lou Falo (0000-0001-9813-0433), Luke Boulter (0000-0002-7954-6705), M. Todd Valerius (0000-0001-8143-9231), Maigan Brusko (0000-0002-4331-2202), Marc Halushka (0000-0002-7112-7389), Marda Jorgensen (0000-0002-7250-3569), Mark Arends (0000-0002-6826-8770), Martha Campbell-Thompson (0000-0001-6878-1235), Martijn Nawijn (0000-0003-3372-6521), Maxim Itkin (0000-0003-1361-7109), Monica M. Laronda (0000-0001-7840-4695), Muzlifah A. Haniffa (0000-0002-3927-2084), Natalie Rodriguez (0000-0001-6870-0300), Nazanin Ebrahimi (0000-0001-7183-2638), Peter Hanna (0000-0003-3092-5090), Purushotha Tata (0000-0003-4837-0337), Rachel Dull (0000-0002-0864-7007), Rajeev Malhotra (0000-0003-0120-4630), Rebecca T. Beuschel (0000-0002-3882-457X), Richard LeDuc (0000-0002-6951-2923), Robert Seifert (0000-0002-4404-8116), Sanjay Jain (0000-0003-2804-127X), Sarah A. Teichmann (0000-0002-6294-6366), Shin Lin (0000-0003-0118-0413), Song-Lin Ding (0000-0002-7072-5272), Stefania Pittaluga (0000-0001-7688-1439), Sujin Lee (0000-0002-6692-6880), Teri A. Longacre (0000-0002-0935-7300), Tim Kendall (0000-0002-4174-2786), Tom Taghon (000-0002-5781-0288), Xin Sun (0000-0002-9185-3994), Yiing Lin (0000-0002-0317-7608), Yongqun He (0000-0001-9189-9661), Z. Gordon Jiang (0000-0003-0495-9940)"
+        ],
+        "description": "The Common Coordinate Framework (CCF) Ontology is an application ontology built to support the development of the Human Reference Atlas (HRA).  It unifies vocabulary for HRA construction and usage—making it possible to ingest external data sources; supporting uniform tissue sample registration that includes the spatial positioning and semantic annotations within 3D reference organs; and supporting user-formulated cross-domain queries over tissue donor properties, anatomical structures, cell types, biomarkers, and 3D space. The CCF Ontology consists of three major ontologies. The Biological Structure Ontology records anatomical structures, cell types, and biomarkers (ASCT+B) and the relationships between them.  The ASCT+B tables are authored by human experts using templated Google Sheets. The biomarkers, cell types, and anatomical structures are mapped to existing ontologies (Uberon/FMA, CL, HGNC) whenever possible.  All relationships between anatomical structures and from cell types to anatomical structures are valid Uberon and CL relationships. The Spatial Ontology defines the shape, size, location, and rotation of experimental tissue and data major anatomical structures in the 3D Reference Object Library. The Specimen Ontology captures the sex, age, and other information on donors that provided tissue data used in the construction of the HRA.",
+        "homepage": "https://hubmapconsortium.github.io/ccf/pages/ccf-ontology.html",
+        "mailing_list": "infoccf@indiana.edu"
     },
     {
        "id":"gaz",
