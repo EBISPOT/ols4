@@ -530,7 +530,7 @@ filter: gray;
   background-position: 0 0;
 }
 .jstree-proton > .jstree-container-ul .jstree-loading > .jstree-ocl {
-  background: url("throbber.gif") center center no-repeat;
+  /*background: url("throbber.gif") center center no-repeat;*/
 }
 .jstree-proton .jstree-file {
   background: url("32px.png") -101px -69px no-repeat;
@@ -703,7 +703,7 @@ filter: gray;
   background-position: 0 0;
 }
 .jstree-proton-small > .jstree-container-ul .jstree-loading > .jstree-ocl {
-  background: url("throbber.gif") center center no-repeat;
+  /*background: url("throbber.gif") center center no-repeat;*/
 }
 .jstree-proton-small .jstree-file {
   background: url("32px.png") -103px -71px no-repeat;
@@ -876,7 +876,7 @@ filter: gray;
   background-position: 0 0;
 }
 .jstree-proton-large > .jstree-container-ul .jstree-loading > .jstree-ocl {
-  background: url("throbber.gif") center center no-repeat;
+  /*background: url("throbber.gif") center center no-repeat;*/
 }
 .jstree-proton-large .jstree-file {
   background: url("32px.png") -96px -64px no-repeat;
@@ -930,12 +930,12 @@ filter: gray;
     height: 30px;
   }
   #jstree-dnd.jstree-dnd-responsive > .jstree-ok {
-    background-image: url("30px.png");
+    /*background-image: url("30px.png");*/
     background-position: 0 -150px;
     background-size: 90px 180px;
   }
   #jstree-dnd.jstree-dnd-responsive > .jstree-er {
-    background-image: url("30px.png");
+    /*background-image: url("30px.png");*/
     background-position: -30px -150px;
     background-size: 90px 180px;
   }
@@ -960,7 +960,7 @@ filter: gray;
     overflow: hidden;
   }
   .jstree-proton-responsive .jstree-icon {
-    background-image: url("30px.png");
+    /*background-image: url("30px.png");*/
     background-size: 90px 180px;
   }
   .jstree-proton-responsive .jstree-node,
@@ -1067,7 +1067,7 @@ filter: gray;
   .jstree-proton-responsive .jstree-node > .jstree-ocl,
   .jstree-proton-responsive .jstree-themeicon,
   .jstree-proton-responsive .jstree-checkbox {
-    background-image: url("30px.png");
+    /*background-image: url("30px.png");*/
     background-size: 90px 180px;
   }
   .jstree-proton-responsive .jstree-node {
@@ -1089,11 +1089,11 @@ filter: gray;
     background-position: 0 0;
   }
   .jstree-proton-responsive .jstree-file {
-    background: url("30px.png") 0 -120px no-repeat;
+    /*background: url("30px.png") 0 -120px no-repeat;*/
     background-size: 90px 180px;
   }
   .jstree-proton-responsive .jstree-folder {
-    background: url("30px.png") -30px -30px no-repeat;
+    /*background: url("30px.png") -30px -30px no-repeat;*/
     background-size: 90px 180px;
   }
   .jstree-proton-responsive > .jstree-container-ul > .jstree-node {
