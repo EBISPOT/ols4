@@ -5211,6 +5211,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"camera-controls@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "camera-controls@npm:2.6.0"
+  peerDependencies:
+    three: ">=0.126.1"
+  checksum: 00bfa17ef1ceeb0d95348f793b0b68f906b6309b05224046e2a3d12e2bc665cbab79acb2f3ffb5b3c3b000e2df74935af21f7ce58c36642e2a13676deb24be0b
+  languageName: node
+  linkType: hard
+
 "caniuse-api@npm:^3.0.0":
   version: 3.0.0
   resolution: "caniuse-api@npm:3.0.0"
@@ -12026,6 +12035,7 @@ __metadata:
     "@types/react-dom": ^17.0.0
     "@types/react-router-dom": ^5.3.3
     "@types/three": ^0.152.1
+    camera-controls: ^2.6.0
     concurrently: ^7.5.0
     country-code-to-flag-emoji: ^1.2.1
     date-fns: ^2.19.0

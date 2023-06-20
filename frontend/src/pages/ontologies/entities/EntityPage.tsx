@@ -33,6 +33,7 @@ import IndividualTypesSection from "./entityPageSections/IndividualTypesSection"
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
+import EntityImagesSection from "./entityPageSections/EntityImagesSection";
 
 export default function EntityPage({
   entityType,
@@ -250,6 +251,10 @@ export default function EntityPage({
                 linkedEntities={linkedEntities}
               />
               <EntitySynonymsSection
+                entity={entity}
+                linkedEntities={linkedEntities}
+              />
+              <EntityImagesSection
                 entity={entity}
                 linkedEntities={linkedEntities}
               />
