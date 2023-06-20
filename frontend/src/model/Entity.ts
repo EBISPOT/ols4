@@ -55,6 +55,10 @@ export default abstract class Entity extends Thing {
     return this.properties["curie"] || this.properties["shortForm"];
   }
 
+  getDepictedBy(): Reified<string>[] {
+    return Reified.fromJson<string>(this.properties["http://xmlns.com/foaf/0.1/depicted_by"]);
+  }
+
   getAnnotationPredicates(): string[] {
     let definitionProperties = asArray(this.properties["definitionProperty"]);
     let synonymProperties = asArray(this.properties["synonymProperty"]);
@@ -70,6 +74,9 @@ export default abstract class Entity extends Thing {
 
       // this is handled explicitly in EntityPage
       if (predicate.startsWith("negativePropertyAssertion+")) continue;
+
+      // this is handled explicitly in EntityPage
+      if (predicate === "http://xmlns.com/foaf/0.1/depicted_by") continue;
 
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation
