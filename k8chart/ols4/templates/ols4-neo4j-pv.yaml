@@ -20,7 +20,6 @@ spec:
           operator: In
           values:
           - hh-rke-wp-webadmin-47-worker-2.caas.ebi.ac.uk
-          - hx-rke-wp-webadmin-40-worker-2.caas.ebi.ac.uk
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   volumeMode: Filesystem
