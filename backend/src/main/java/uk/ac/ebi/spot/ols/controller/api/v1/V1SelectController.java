@@ -69,7 +69,7 @@ public class V1SelectController {
         solrQuery.set("bq", "type:ontology^10.0 isDefiningOntology:true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" + queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
         solrQuery.set("wt", "json");
 
-        solrQuery.setFields("_json");
+        solrQuery.setFields("_json", "id");
 
         if (ontologies != null && !ontologies.isEmpty()) {
 
@@ -108,13 +108,13 @@ public class V1SelectController {
         solrQuery.addFilterQuery("isObsolete:" + queryObsoletes);
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
-//        solrQuery.setHighlight(true);
-//        solrQuery.add("hl.simple.pre", "<b>");
-//        solrQuery.add("hl.simple.post", "</b>");
-//        solrQuery.addHighlightField("label_autosuggest");
-//        solrQuery.addHighlightField("label");
-//        solrQuery.addHighlightField("synonym_autosuggest");
-//        solrQuery.addHighlightField("synonym");
+        solrQuery.setHighlight(true);
+        solrQuery.add("hl.simple.pre", "<b>");
+        solrQuery.add("hl.simple.post", "</b>");
+        solrQuery.addHighlightField("whitespace_edge_label");
+        solrQuery.addHighlightField("label");
+        solrQuery.addHighlightField("whitespace_edge_synonym");
+        solrQuery.addHighlightField("synonym");
 
         System.out.println("select: " + solrQuery.toQueryString());
 
@@ -142,7 +142,7 @@ public class V1SelectController {
                 fieldList.add("obo_id");
                 fieldList.add("label");
                 fieldList.add("ontology_name");
-//                fieldList.add("ontology_prefix");
+                fieldList.add("ontology_prefix");
                 fieldList.add("is_defining_ontology");
                 fieldList.add("description");
                 fieldList.add("type");
@@ -151,33 +151,56 @@ public class V1SelectController {
 
             Map<String, Object> outDoc = new HashMap<>();
 
-            if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+            if (fieldList.contains("id")) outDoc.put("id", res.get("id").toString().replace('+', ':'));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getStrings(json, "label"));
-            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
-            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
-            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
+            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getString(json, "label"));
+            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getString(json, "definition"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
 
             docs.add(outDoc);
         }
 
-        Map<String, Object> responseHeader = new HashMap<>();
+        Map<String, Object> responseParams = new LinkedHashMap<>();
+        responseParams.put("q", query);
+
+        Map<String, Object> responseHeader = new LinkedHashMap<>();
+        responseHeader.put("params", responseParams);
         responseHeader.put("status", 0);
         responseHeader.put("QTime", qr.getQTime());
 
-        Map<String, Object> responseBody = new HashMap<>();
+        Map<String, Object> responseBody = new LinkedHashMap<>();
         responseBody.put("numFound", qr.getResults().getNumFound());
         responseBody.put("start", 0);
         responseBody.put("docs", docs);
 
 
-        Map<String, Object> responseObj = new HashMap<>();
+        Map<String, Object> responseObj = new LinkedHashMap<>();
         responseObj.put("responseHeader", responseHeader);
         responseObj.put("response", responseBody);
+
+        Map<String,Object> highlighting = new LinkedHashMap<>();
+        for(var hl : qr.getHighlighting().entrySet()) {
+            var id = hl.getKey();
+            var highlight = hl.getValue();
+            Map<String,Object> resHighlight = new LinkedHashMap<>();
+            for(var fieldName : highlight.keySet()) {
+                if(fieldName.equals("whitespace_edge_label")) {
+                    resHighlight.put("label_autosuggest", highlight.get(fieldName));
+                } else if(fieldName.equals("whitespace_edge_synonym")) {
+                    resHighlight.put("synonym_autosuggest", highlight.get(fieldName));
+                } else {
+                    resHighlight.put(fieldName, highlight.get(fieldName));
+                }
+            }
+            highlighting.put(id.replace('+', ':'), resHighlight);
+        }
+        responseObj.put("highlighting", highlighting);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
