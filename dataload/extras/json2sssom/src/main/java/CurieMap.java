@@ -21,7 +21,7 @@ public class CurieMap {
     public Map<String, String> namespaceToCuriePrefix = new LinkedHashMap<>();
 
     public CurieMap() {
-        addMapping("semapv", "https://w3id.org/semapv/");
+        addMapping("semapv", "https://w3id.org/semapv/vocab/");
         addMapping("owl", "http://www.w3.org/2002/07/owl#");
         addMapping("skos", "http://www.w3.org/2004/02/skos/core#");
         addMapping("oboInOwl", "http://www.geneontology.org/formats/oboInOwl#");
