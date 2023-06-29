@@ -7,97 +7,6 @@ import LoadingOverlay from "../../components/LoadingOverlay";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
 
-const columns: readonly Column[] = [
-  {
-    name: "Ontology",
-    sortable: true,
-    selector: (ontology: Ontology) => {
-      const name = ontology.getName();
-      const logo = ontology.getLogoURL();
-      const ontoId = ontology.getOntologyId();
-      if (name || logo) {
-        return (
-          <div>
-            {logo ? (
-              <img
-                alt={`${ontoId.toUpperCase()} logo`}
-                title={`${ontoId.toUpperCase()} logo`}
-                className="h-16 object-contain bg-white rounded-lg p-1 mb-3"
-                src={logo}
-              />
-            ) : null}
-            {name ? <div>{name}</div> : null}
-          </div>
-        );
-      } else return ontoId;
-    },
-  },
-  {
-    name: "ID",
-    sortable: true,
-    selector: (ontology: Ontology) => {
-      return (
-        <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
-          {ontology.getOntologyId().toUpperCase()}
-        </div>
-      );
-    },
-  },
-  {
-    name: "Description",
-    sortable: true,
-    selector: (ontology: Ontology) => ontology.getDescription(),
-  },
-  {
-    name: "Actions",
-    sortable: false,
-    selector: (ontology: Ontology) => {
-      return (
-        <div>
-          <a
-            href={
-              process.env.PUBLIC_URL + `/ontologies/${ontology.getOntologyId()}`
-            }
-            className="link-default"
-          >
-            Search
-          </a>
-          <br />
-          <a
-            href={
-              process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}?tab=classes`
-            }
-            className="link-default"
-          >
-            Classes
-          </a>
-          <br />
-          <a
-            href={
-              process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}?tab=properties`
-            }
-            className="link-default"
-          >
-            Properties
-          </a>
-          <br />
-          <a
-            href={
-              process.env.PUBLIC_URL +
-              `/ontologies/${ontology.getOntologyId()}?tab=individuals`
-            }
-            className="link-default"
-          >
-            Individuals
-          </a>
-        </div>
-      );
-    },
-  },
-];
-
 export default function OntologiesPage() {
   const dispatch = useAppDispatch();
   const ontologies = useAppSelector((state) => state.ontologies.ontologies);
@@ -116,6 +25,95 @@ export default function OntologiesPage() {
   }, [dispatch, page, rowsPerPage, search]);
 
   const navigate = useNavigate();
+  const columns: readonly Column[] = [
+    {
+      name: "Ontology",
+      sortable: true,
+      selector: (ontology: Ontology) => {
+        const name = ontology.getName();
+        const logo = ontology.getLogoURL();
+        const ontoId = ontology.getOntologyId();
+        if (name || logo) {
+          return (
+            <div>
+              {logo ? (
+                <img
+                  alt={`${ontoId.toUpperCase()} logo`}
+                  title={`${ontoId.toUpperCase()} logo`}
+                  className="h-16 object-contain bg-white rounded-lg p-1 mb-3"
+                  src={logo}
+                />
+              ) : null}
+              {name ? <div>{name}</div> : null}
+            </div>
+          );
+        } else return ontoId;
+      },
+    },
+    {
+      name: "ID",
+      sortable: true,
+      selector: (ontology: Ontology) => {
+        return (
+          <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
+            {ontology.getOntologyId().toUpperCase()}
+          </div>
+        );
+      },
+    },
+    {
+      name: "Description",
+      sortable: true,
+      selector: (ontology: Ontology) => ontology.getDescription(),
+    },
+    {
+      name: "Actions",
+      sortable: false,
+      selector: (ontology: Ontology) => {
+        return (
+          <div>
+            <div
+              onClick={() => {
+                navigate(`/ontologies/${ontology.getOntologyId()}`);
+              }}
+              className="link-default"
+            >
+              Search
+            </div>
+            <div
+              onClick={() => {
+                navigate(`/ontologies/${ontology.getOntologyId()}?tab=classes`);
+              }}
+              className="link-default"
+            >
+              Classes
+            </div>
+            <div
+              onClick={() => {
+                navigate(
+                  `/ontologies/${ontology.getOntologyId()}?tab=properties`
+                );
+              }}
+              className="link-default"
+            >
+              Properties
+            </div>
+            <div
+              onClick={() => {
+                navigate(
+                  `/ontologies/${ontology.getOntologyId()}?tab=individuals`
+                );
+              }}
+              className="link-default"
+            >
+              Individuals
+            </div>
+          </div>
+        );
+      },
+    },
+  ];
+
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <div>
