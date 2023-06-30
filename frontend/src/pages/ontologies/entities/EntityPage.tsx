@@ -14,7 +14,7 @@ import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
 import SearchBox from "../../../components/SearchBox";
 import LinkedEntities from "../../../model/LinkedEntities";
-import { getClassInstances, getEntity, getOntology } from "../ontologiesSlice";
+import { getClassInstances, getEntityWithType, getOntology } from "../ontologiesSlice";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
@@ -105,7 +105,7 @@ export default function EntityPage({
   useEffect(() => {
     if (entityIri || searchParams) {
       dispatch(
-        getEntity({
+        getEntityWithType({
           ontologyId,
           entityType,
           entityIri,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -7,6 +7,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Downloads from "./pages/Downloads";
@@ -16,6 +17,7 @@ import Home from "./pages/home/Home";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
 import EntityPage from "./pages/ontologies/entities/EntityPage";
+import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
 
 class App extends React.Component {
@@ -42,11 +44,19 @@ class App extends React.Component {
           />
           <Route
             path={`/ontologies/:ontologyId/terms`}
-            element={<RedirectTermsToClasses />}
+            element={<RedirectToClasses />}
           />
           <Route
             path={`/ontologies/:ontologyId/terms/:entityIri`}
-            element={<RedirectTermToClass />}
+            element={<RedirectToType />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/entities`}
+            element={<RedirectToClasses />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/entities/:entityIri`}
+            element={<RedirectToType />}
           />
           <Route
             path={`/ontologies/:ontologyId/properties`}
@@ -77,9 +87,9 @@ class App extends React.Component {
 
 export default App;
 
-function RedirectTermsToClasses() {
-  let params = useParams();
-  let [search] = useSearchParams();
+function RedirectToClasses() {
+  const params = useParams();
+  const [search] = useSearchParams();
   return (
     <Navigate
       to={{
@@ -90,19 +100,42 @@ function RedirectTermsToClasses() {
   );
 }
 
-function RedirectTermToClass() {
-  let params = useParams();
-  let [search] = useSearchParams();
-  return (
-    <Navigate
-      to={{
-        pathname: `/ontologies/${
-          params.ontologyId
-        }/classes/${encodeURIComponent(
-          encodeURIComponent(params.entityIri as string)
-        )}`,
-        search: search.toString(),
-      }}
-    />
-  );
+function RedirectToType() {
+  const dispatch = useAppDispatch();
+  const entity = useAppSelector((state) => state.ontologies.entity);
+  const params = useParams();
+  const [search] = useSearchParams();
+
+  useEffect(() => {
+    if (params.ontologyId && params.entityIri) {
+      dispatch(
+        getEntity({
+          ontologyId: params.ontologyId,
+          entityIri: params.entityIri,
+        })
+      );
+    }
+  }, [dispatch, params]);
+
+  if (
+    entity &&
+    entity.getTypePlural() !== "ontologies" &&
+    params.ontologyId &&
+    params.entityIri
+  ) {
+    return (
+      <Navigate
+        to={{
+          pathname: `/ontologies/${
+            params.ontologyId
+          }/${entity.getTypePlural()}/${encodeURIComponent(
+            encodeURIComponent(params.entityIri as string)
+          )}`,
+          search: search.toString(),
+        }}
+      />
+    );
+  } else {
+    return <Home />;
+  }
 }

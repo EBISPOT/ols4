@@ -80,34 +80,32 @@ export default function OntologiesPage() {
             >
               Search
             </div>
-            <div
-              onClick={() => {
-                navigate(`/ontologies/${ontology.getOntologyId()}?tab=classes`);
-              }}
+            <a
+              href={`${
+                process.env.PUBLIC_URL
+              }/ontologies/${ontology.getOntologyId()}?tab=classes`}
               className="link-default"
             >
               Classes
-            </div>
-            <div
-              onClick={() => {
-                navigate(
-                  `/ontologies/${ontology.getOntologyId()}?tab=properties`
-                );
-              }}
+            </a>
+            <br />
+            <a
+              href={`${
+                process.env.PUBLIC_URL
+              }/ontologies/${ontology.getOntologyId()}?tab=properties`}
               className="link-default"
             >
               Properties
-            </div>
-            <div
-              onClick={() => {
-                navigate(
-                  `/ontologies/${ontology.getOntologyId()}?tab=individuals`
-                );
-              }}
+            </a>
+            <br />
+            <a
+              href={`${
+                process.env.PUBLIC_URL
+              }/ontologies/${ontology.getOntologyId()}?tab=individuals`}
               className="link-default"
             >
               Individuals
-            </div>
+            </a>
           </div>
         );
       },
