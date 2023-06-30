@@ -144,8 +144,8 @@ export default function OntologyPage() {
                 </p>
               </div>
 
-	      <OntologyImportsSection ontology={ontology} />	
-	      <OntologyImportedBySection ontology={ontology} />	
+              <OntologyImportsSection ontology={ontology} />
+              <OntologyImportedBySection ontology={ontology} />
 
               <div className="flex gap-2 mt-6 mb-6">
                 {ontology.getOntologyPurl() && (
@@ -391,7 +391,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
                   {annotations
                     .map((annotation: Reified<any>) => {
                       return (
-                        <li key={randomString()}>
+                        <li key={JSON.stringify(annotation)}>
                           {renderAnnotation(annotation)}
                           {annotation.hasMetadata() && (
                             <MetadataTooltip
@@ -444,16 +444,13 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
   }
 }
 
-
-function OntologyImportsSection({ontology}:{ontology:Ontology}) {
-
+function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
   let [expanded, setExpanded] = useState<boolean>(false);
   const MAX_UNEXPANDED = 5;
 
-  let imports = ontology.getImportsFrom()
+  let imports = ontology.getImportsFrom();
 
-  if(!imports)
-	return <Fragment/>
+  if (!imports) return <Fragment />;
 
   return (
     <Fragment>
@@ -466,7 +463,12 @@ function OntologyImportsSection({ontology}:{ontology:Ontology}) {
             <Fragment>
               {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
               &nbsp;
-              <span className="link-default italic" onClick={() => setExpanded(true)}> + {imports.length - MAX_UNEXPANDED}</span>
+              <span
+                className="link-default italic"
+                onClick={() => setExpanded(true)}
+              >
+                &thinsp;&nbsp;+&nbsp;{imports.length - MAX_UNEXPANDED}
+              </span>
             </Fragment>
           )}
         </div>
@@ -477,29 +479,29 @@ function OntologyImportsSection({ontology}:{ontology:Ontology}) {
   function renderOntId(ontId: string) {
     return (
       <Link
+        key={ontId}
         className="my-2"
         style={{ display: "inline-block" }}
-        to={"/ontologies/" + ontId}>
+        to={"/ontologies/" + ontId}
+      >
         <span
           className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
-          title={ontId.toUpperCase()}>
+          title={ontId.toUpperCase()}
+        >
           {ontId}
         </span>
       </Link>
     );
   }
-
 }
 
-function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
-
+function OntologyImportedBySection({ ontology }: { ontology: Ontology }) {
   let [expanded, setExpanded] = useState<boolean>(false);
   const MAX_UNEXPANDED = 5;
 
-  let imports = ontology.getExportsTo()
+  let imports = ontology.getExportsTo();
 
-  if(!imports)
-	return <Fragment/>
+  if (!imports) return <Fragment />;
 
   return (
     <Fragment>
@@ -512,7 +514,12 @@ function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
             <Fragment>
               {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
               &nbsp;
-              <span className="link-default italic" onClick={() => setExpanded(true)}> + {imports.length - MAX_UNEXPANDED}</span>
+              <span
+                className="link-default italic"
+                onClick={() => setExpanded(true)}
+              >
+                &thinsp;&nbsp;+&nbsp;{imports.length - MAX_UNEXPANDED}
+              </span>
             </Fragment>
           )}
         </div>
@@ -523,18 +530,18 @@ function OntologyImportedBySection({ontology}:{ontology:Ontology}) {
   function renderOntId(ontId: string) {
     return (
       <Link
+        key={ontId}
         className="my-2"
         style={{ display: "inline-block" }}
-        to={"/ontologies/" + ontId}>
+        to={"/ontologies/" + ontId}
+      >
         <span
           className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
-          title={ontId.toUpperCase()}>
+          title={ontId.toUpperCase()}
+        >
           {ontId}
         </span>
       </Link>
     );
   }
-
 }
-
-

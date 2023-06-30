@@ -42,8 +42,8 @@ export interface TreeNode {
   expandable: boolean;
   entity: Entity;
   numDescendants: number;
-  parentRelationToChild:string|null // if applicable, relation from the parent node to this node (e.g. has_part)
-  childRelationToParent:string|null // if applicable, relation from this node to the parent node (e.g. part_of)
+  parentRelationToChild: string | null; // if applicable, relation from the parent node to this node (e.g. has_part)
+  childRelationToParent: string | null; // if applicable, relation from this node to the parent node (e.g. part_of)
 }
 
 const initialState: OntologiesState = {
@@ -111,8 +111,8 @@ export const getOntology = createAsyncThunk(
     }
   }
 );
-export const getEntity = createAsyncThunk(
-  "ontologies_entity",
+export const getEntityWithType = createAsyncThunk(
+  "ontologies_entity_type",
   async (
     {
       ontologyId,
@@ -154,6 +154,31 @@ export const getEntity = createAsyncThunk(
           );
         }
       }
+      return thingFromJsonProperties(entityJsonProperties);
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+    }
+  }
+);
+export const getEntity = createAsyncThunk(
+  "ontologies_entity",
+  async (
+    {
+      ontologyId,
+      entityIri,
+    }: {
+      ontologyId: string;
+      entityIri: string;
+    },
+    { rejectWithValue }
+  ) => {
+    const doubleEncodedTermUri = encodeURIComponent(
+      encodeURIComponent(entityIri)
+    );
+    let path = "";
+    try {
+      path = `api/v2/ontologies/${ontologyId}/entities/${doubleEncodedTermUri}`;
+      const entityJsonProperties = await get<any>(path);
       return thingFromJsonProperties(entityJsonProperties);
     } catch (error: any) {
       return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
@@ -383,7 +408,8 @@ export const getNodeChildren = createAsyncThunk(
       children: childrenPage.elements
         .map((obj: any) => thingFromJsonProperties(obj))
         .map((term: Entity) => {
-	  let parenthoodMetadata = term.getHierarchicalParentReificationAxioms(entityIri)
+          let parenthoodMetadata =
+            term.getHierarchicalParentReificationAxioms(entityIri);
           return {
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
@@ -392,8 +418,14 @@ export const getNodeChildren = createAsyncThunk(
             entity: term,
             numDescendants:
               term.getNumHierarchicalDescendants() || term.getNumDescendants(),
-	    parentRelationToChild: (parenthoodMetadata && parenthoodMetadata['parentRelationToChild']?.[0]) || null,
-	    childRelationToParent: (parenthoodMetadata && parenthoodMetadata['childRelationToParent']?.[0]) || null,
+            parentRelationToChild:
+              (parenthoodMetadata &&
+                parenthoodMetadata["parentRelationToChild"]?.[0]) ||
+              null,
+            childRelationToParent:
+              (parenthoodMetadata &&
+                parenthoodMetadata["childRelationToParent"]?.[0]) ||
+              null,
           };
         }),
     };
@@ -421,6 +453,25 @@ const ontologiesSlice = createSlice({
       (state: OntologiesState, error: any) => {
         state.ontology = initialState.ontology;
         state.loadingOntology = false;
+        state.errorMessage = error.payload;
+      }
+    );
+    builder.addCase(
+      getEntityWithType.fulfilled,
+      (state: OntologiesState, action: PayloadAction<Entity>) => {
+        state.entity = action.payload;
+        state.loadingEntity = false;
+      }
+    );
+    builder.addCase(getEntityWithType.pending, (state: OntologiesState) => {
+      state.loadingEntity = true;
+      state.errorMessage = initialState.errorMessage;
+    });
+    builder.addCase(
+      getEntityWithType.rejected,
+      (state: OntologiesState, error: any) => {
+        state.loadingEntity = false;
+        state.entity = initialState.entity;
         state.errorMessage = error.payload;
       }
     );
