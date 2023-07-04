@@ -1,8 +1,8 @@
 import { Close, KeyboardArrowDown } from "@mui/icons-material";
 import { useCallback, useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString, usePrevious } from "../../app/util";
+import { copyToClipboard, randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
@@ -75,7 +75,22 @@ export default function Search() {
     setOntologyFacetFiltered(ontologyFacets);
   }, [ontologyFacets]);
 
-  useEffect(() => { 
+  const [isShortFormCopied, setIsShortFormCopied] = useState(false);
+  const copyShortForm = (text: string) => {
+    copyToClipboard(text)
+      .then(() => {
+        setIsShortFormCopied(true);
+        // revert after a few seconds
+        setTimeout(() => {
+          setIsShortFormCopied(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
     dispatch(
       getSearchResults({
         page,
@@ -316,8 +331,24 @@ export default function Search() {
                           {entity.getName()}
                         </Link>
                         {entity.getShortForm() ? (
-                          <span className="bg-orange-default text-white text-sm rounded-md px-2 py-1 mr-2 w-fit font-bold break-all">
-                            {entity.getShortForm()}
+                          <span className="mr-1">
+                            <span className="bg-orange-default text-white text-sm rounded-md px-2 py-1 w-fit font-bold break-all">
+                              {entity.getShortForm()}
+                            </span>
+                            &nbsp;&nbsp;
+                            <i
+                              title="Copy ID"
+                              className={`text-sm text-neutral-default icon icon-common icon-copy icon-spacer ${
+                                isShortFormCopied
+                                  ? "cursor-wait"
+                                  : "cursor-pointer"
+                              }`}
+                              onClick={() => {
+                                copyShortForm(
+                                  entity.getShortForm() || entity.getName()
+                                );
+                              }}
+                            />
                           </span>
                         ) : null}
                         {!entity.isCanonical() && (
