@@ -1135,12 +1135,19 @@ filter: gray;
   --tw-text-opacity: 1;
   color: rgb(255 255 255/var(--tw-text-opacity));
 }
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255/var(--tw-bg-opacity));
+}
 .uppercase {
   text-transform: uppercase;
 }
 .text-sm {
   font-size: .875rem;
   line-height: 1.25rem;
+}
+.pb-3 {
+  padding-bottom: .75rem;
 }
 .py-0\.5 {
   padding-top: .125rem;
@@ -1150,8 +1157,12 @@ filter: gray;
   padding-left: .5rem;
   padding-right: .5rem;
 }
-.rounded-md {
-  border-radius: .375rem;
+.px-3 {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+.m-1 {
+  margin: .25rem;
 }
 .ml-1 {
   margin-left: .25rem;
@@ -1159,4 +1170,19 @@ filter: gray;
 .mx-1 {
   margin-left: .25rem;
   margin-right: .25rem;
+}
+.rounded-lg {
+  border-radius: .5rem;
+}
+.rounded-md {
+  border-radius: .375rem;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
 }
