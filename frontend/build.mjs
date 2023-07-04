@@ -4,10 +4,7 @@ import fs from 'fs'
 import { exec } from 'child_process'
 
 let define = {}
-
-for (const k in process.env) {
-	define[`process.env.${k}`] = JSON.stringify(process.env[k])
-}
+for (const k in process.env) { define[`process.env.${k}`] = JSON.stringify(process.env[k]) }
 
 ///
 /// Build index.html (simple find and replace)
@@ -27,11 +24,17 @@ build({
 	bundle: true,
 	platform: 'browser',
 	outfile: "dist/bundle.js",
-	sourcemap: 'inline',
 	define,
 	plugins: [
 	],
-	logLevel: 'info'
+	logLevel: 'info',
+
+	...(process.env.REACT_APP_ENV === 'prod' ? {
+		sourcemap: false,
+		minify: true
+	} : {
+		sourcemap: 'inline'
+	})
 });
 
 

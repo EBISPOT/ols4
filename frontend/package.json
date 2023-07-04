@@ -41,13 +41,8 @@
     "build": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build.mjs",
     "watch": "dotenv -e .env.$REACT_APP_ENV -e .env -- nodemon -e 'ts,tsx,js,jsx,css' -w src -w index.html.in --exec 'npm run build'",
     "start": "dotenv -e .env.$REACT_APP_ENV -e .env -- concurrently -n 'Build,Serve' 'npm run watch' 'http-server dist -p 3000 --proxy $OLS_DEV_BACKEND_PROXY_URL'",
-    "build:prod": "OLS_ENV=prod npm run build",
-    "et_clear": "rimraf dist/entity-tree-esm/*",
-    "et_make-bundle": "rollup --config",
-    "et_cp_package-json": "cp package.json dist/entity-tree-esm/package.json",
-    "et_cp_styles": "cp -r src/widgets/styles/ dist/entity-tree-esm/widgets/styles/",
-    "build-et": "yarn run et_clear && yarn run tsc && yarn run et_make-bundle && yarn et_cp_package-json && yarn et_cp_styles",
-    "build:css": "tailwindcss -i ./src/index.css -o ./public/main.css --minify"
+    "build:widgets": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build_widgets.mjs",
+    "watch:widgets": "dotenv -e .env.$REACT_APP_ENV -e .env -- nodemon -e 'ts,tsx,js,jsx,css' -w src --exec 'npm run build:widgets'"
   },
   "eslintConfig": {
     "extends": [
