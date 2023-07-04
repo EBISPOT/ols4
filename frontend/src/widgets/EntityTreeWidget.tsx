@@ -4,6 +4,7 @@ import { store } from "../app/store"
 import { getOntology } from "../pages/ontologies/ontologiesSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import EntityTree from "../pages/ontologies/entities/EntityTree"
+import ReactDOM from "react-dom";
 
 
 export interface EntityTreeWidgetProps {
@@ -12,7 +13,11 @@ export interface EntityTreeWidgetProps {
   apiUrl: string;
 }
 
-export function EntityTreeWidget(props: EntityTreeWidgetProps) {
+export function createEntityTree(props:EntityTreeWidgetProps, container:any, callback?:()=>void) {
+  ReactDOM.render(EntityTreeWidget(props), container, callback);
+}
+
+function EntityTreeWidget(props: EntityTreeWidgetProps) {
 
   return (
     <Provider store={store}>
