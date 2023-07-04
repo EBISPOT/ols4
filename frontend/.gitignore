@@ -14,7 +14,6 @@
 
 # production
 /build
-/dist
 
 # misc
 .yarn
@@ -30,4 +29,10 @@ yarn-error.log*
 
 
 node
+
+
+
+dist/index.html
+dist/bundle.js
+dist/styles.css
 

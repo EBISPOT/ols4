@@ -1,0 +1,110 @@
+#searchBox{
+	float:left;
+	border:1px solid black;
+	margin-bottom:10px;
+}
+
+#vis_network{
+	min-height:700px;
+	width:74%;
+	border:1px solid ;
+	border-color: #337ab7;
+	border-radius: 5px;
+	float:left;
+}
+
+#spinner{
+	min-height:700px;
+	width:74%;
+	border:1px solid ;
+	border-color: #337ab7;
+	border-radius: 5px;
+	float:left;
+}
+
+#loadingIMG{
+	display:block;
+	margin:auto;
+	margin-top: 300px;
+	width:75px;
+	height: 75px;
+
+}
+
+
+#Legend{
+	width:25%;
+	float:right;
+}
+
+#labelPermaLinkBox{
+	width: 25%;
+	float:right;
+	margin-top:30px;
+}
+
+#buttonBoxWrapper
+{float:left;width:74%;}
+
+#buttonBox{
+ text-align: center;
+
+ margin-top:10px;
+ padding-left:10px;
+}
+
+#LookUpNodeTextfield{
+ 	position: relative;
+    top: 0px;
+    /*Round corners ... if we want to have that */
+    -webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+}
+
+
+#SecondWindow{
+	width:74%;
+	float:left;
+	min-height:80px;
+	margin-top:10px;
+	border: 1px solid;
+	border-color: #337ab7;
+	border-radius: 5px;
+	margin-bottom:25px;
+}
+
+#infoWindow{
+	float:left;
+}
+
+#infoWindowSub{
+	width:99%;
+	min-height: 160px;
+	float:left;
+	padding: 5px;
+}
+
+
+#ChangeLayout{
+	width: 140px;
+	text-align: center;
+}
+
+#LookUpNodeTextfield{
+	margin-left: 40px;
+	width:100px;
+}
+
+#TogglePhysics{
+	width:115px;
+	text-align: center;
+}
+
+#Permaanwser{
+	margin-bottom:20px;
+}
+
+.btn-default{
+	margin-right:5px
+}
