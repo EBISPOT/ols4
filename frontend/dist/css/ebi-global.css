@@ -1,0 +1,588 @@
+/* @media screen { */
+	/*
+
+	 	ebi-global.css
+
+	 	Style rules for common EBI website elements - global and local headers and footers
+
+	 	~ generic masthead rules
+	 	~ masthead menus
+	 	~ global masthead
+	 		~ global menu
+	 		~ global search
+	 	~ local masthead
+	 		~ local menu
+	 		~ local search
+	 	~ local footer
+	 	~ global footer
+	 		(includes global expanded nav)
+
+
+		AUTHOR: Francis Rowland
+		DATE:   Feb 2012
+
+	*/
+
+	/*
+		SITE-WIDE MASTHEAD LAYOUT AND SIZE
+		Generic rules for global and local mastheads
+	===================================================
+	 */
+	div#global-masthead,
+	div#global-masthead nav { height: auto; }
+	div#global-masthead nav { float: right; }
+
+	div#global-masthead p { margin: 0; }
+
+	/*
+		HORIZONTAL MASTHEAD MENUS
+		Generic rules
+	====================================
+	 */
+	div.masthead ul {
+		margin: 0;
+		padding: 0;
+		float: left;
+		list-style: none;
+	}
+
+	div.masthead ul li { float: left; }
+
+	div.masthead ul a {
+		display: block;
+	}
+
+	div.masthead ul li a,
+	div.masthead ul li a {
+		padding: 0.2em 0.6em;
+	}
+
+	div.masthead ul li abbr { border-bottom: 0 none; }
+
+
+	/*
+		GLOBAL MASTHEAD
+	==================================
+	*/
+
+	div#global-masthead {
+		border-bottom: 1px solid #e3e3e3;
+	}
+
+	div#global-masthead p,
+	div#global-masthead img {
+		float: left;
+	}
+
+	div#global-masthead img { padding-left: 0.69em; }
+
+	div#global-masthead p {
+	}
+
+	div#global-masthead p#logo a,
+	div#global-masthead p#logo a:link,
+	div#global-masthead p#logo a:visited { border: 0 none; }
+
+	div#local-footer p {
+		padding-top: 10px;
+		margin: 0;
+	}
+
+	/* Global menu styling */
+	div#global-masthead ul {
+		float: right;
+		font-size: 93%;	/* 12px */
+	}
+
+	div#global-masthead ul li a {
+		display: block;
+		border-right: 1px solid #000;
+		border-left: 1px solid #666;
+		padding-top: 5px;
+		height: 23px;
+	}
+
+	.oldie div#global-masthead ul li a {
+    width: 5em;
+    text-align: center;
+  }
+
+	div#global-masthead ul li.first a { border-left: 0 none; }
+	div#global-masthead ul li.last a { border-right: 0 none; }
+
+
+	div#global-masthead ul li a,
+	div#global-masthead ul li a:link,
+	div#global-masthead ul li a:visited {
+		color: white;
+		border-bottom: 0 none;
+	}
+
+	div#global-masthead ul li a:hover,
+	div#global-masthead ul li a:active,
+	div#global-masthead ul li a:focus,
+	div#global-masthead ul li.active a,
+	div#global-masthead ul li.active-trail a {
+		border-top: 3px solid white;
+		height: 20px
+	}
+
+
+		/* custom colour for Services */
+		div#global-masthead ul li#services a:hover,
+		div#global-masthead ul li#services a:active,
+		div#global-masthead ul li#services a:focus,
+		div#global-masthead ul li.active#services a,
+		div#global-masthead ul li.active-trail#services a {
+			border-top-color: #207a7a;
+		}
+
+		/* custom colour for Research */
+		div#global-masthead ul li#research a:hover,
+		div#global-masthead ul li#research a:active,
+		div#global-masthead ul li#research a:focus,
+		div#global-masthead ul li#research.active a,
+		div#global-masthead ul li#research.active-trail a {
+			/* border-top-color: #e3823e;  */	/* Not allowed to use orange! */
+			border-top-color: #71b360;
+		}
+
+		/* custom colour for Training */
+		div#global-masthead ul li#training a:hover,
+		div#global-masthead ul li#training a:active,
+		div#global-masthead ul li#training a:focus,
+		div#global-masthead ul li#training.active a,
+		div#global-masthead ul li#training.active-trail a {
+			border-top-color: #fab700;
+		}
+
+		/* custom colour for Industry */
+		div#global-masthead ul li#industry a:hover,
+		div#global-masthead ul li#industry a:active,
+		div#global-masthead ul li#industry a:focus,
+		div#global-masthead ul li#industry.active a,
+	    div#global-masthead ul li#industry.active-trail a {
+			border-top-color: #346189;
+		}
+    div#global-masthead ul li#industry {
+      display: none !important;
+    }
+
+		/* custom colour for About us */
+		div#global-masthead ul li#about a:hover,
+		div#global-masthead ul li#about a:active,
+		div#global-masthead ul li#about a:focus,
+		div#global-masthead ul li#about.active a,
+		div#global-masthead ul li#about.active-trail a {
+	  		border-top-color: #207a7a;
+		}
+	  /* custom colour for About us (Drupal) */
+		div#global-masthead ul li#about-us a:hover,
+		div#global-masthead ul li#about-us a:active,
+		div#global-masthead ul li#about-us a:focus,
+		div#global-masthead ul li#about-us.active a,
+		div#global-masthead ul li#about-us.active-trail a {
+			border-top-color: #207a7a;
+		}
+
+
+	/* Customisation for the GLOBAL search */
+	form#global-search {
+		float: right;
+		margin: 3px 0;
+		padding: 0;
+		height: 24px;
+		vertical-align: top;
+	}
+
+	form#global-search fieldset {
+		padding: 0;
+		margin: 0 9px;
+		border: 0 none;
+		background-color: transparent;
+	}
+
+	form#global-search label {
+		display: inline;
+	  margin-right: 0;
+    float: left;
+    margin-top: 0.1em;
+	}
+
+	form#global-search input#global-searchbox {
+		font-size: 100%;
+		margin: 0 0.3em;
+		width:140px;
+	}
+
+	form#global-search input.submit {
+		padding: 0.25em;
+
+		width: 24px;
+		height: 24px;
+		margin: 0;
+		display: inline;
+		background: url(../../../images/global/search-button.png) no-repeat;
+		background-position: 0 0;
+		width: 24px;
+		height: 24px;
+		-moz-box-shadow: 0 0 0 transparent;
+		-webkit-box-shadow: 0 0 0 transparent;
+		box-shadow:  0 0 0 transparent;
+
+		border:0 none;
+		filter:none;
+
+		/* font-size: 93%;	 */
+    float: left;
+	}
+
+	form#global-search input.submit:hover,
+	form#global-search input.submit:focus,
+	form#global-search input.submit:active {
+		background-position: -24px 0;
+		width: 24px;
+		height: 24px;
+	}
+
+
+	/*
+		LOCAL MASTHEAD
+	==================================
+	*/
+
+
+	div#local-masthead {
+		border-bottom: 3px solid #eee;
+	}
+
+
+
+	div#skip-to,
+	div#local-title-logo h1 {
+		left: -5000px;
+		top: -5000px;
+		position: absolute;
+	}
+
+
+	div#local-masthead h1 span {
+		font-size: 49.2%;	/* h1 font-size is 370%, and I want 182%, so 0.492 * 370... */
+		margin-left: 32px;
+		letter-spacing: normal;
+		color: inherit;
+	}
+	.level1 div#local-masthead h1 span {
+		font-size: 75%;
+		margin-left: 18px;
+		letter-spacing: normal;
+    color: inherit;
+  }
+
+
+	/* Local menu styling */
+	div#local-masthead nav {}
+
+	div#local-masthead ul {
+		margin-top:-5px;
+		height: auto;
+		width: 100%;
+		background-color: #111111;
+		background-color: rgba(17, 17, 17, 0.4);
+	}
+	.oldie div#local-masthead ul {
+		background-color: transparent;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#66111111',EndColorStr='#66111111') !important;
+	}
+	div#local-masthead ul li {
+		border-color: transparent;
+		border-right: 1px dotted #f8f8f8;
+	}
+
+	div#local-masthead ul li.active,
+	div#local-masthead ul li.active-trail {
+	  background-color: #111;
+	}
+
+	div#local-masthead ul li.last { border-right: 0 none; }
+
+	div#local-masthead ul li a {
+	}
+
+	div#local-masthead ul li a,
+	div#local-masthead ul li a:link,
+	div#local-masthead ul li a:visited {
+		border-bottom: 3px solid transparent;
+		color: #f6f6f6;
+	}
+
+	div#local-masthead ul li.active a,
+	div#local-masthead ul li.active a:link,
+	div#local-masthead ul li.active-trail a:link,
+	div#local-masthead ul li.active a:visited,
+	div#local-masthead ul li.active-trail a:visited {
+		padding-top: 2px;
+		border-bottom: 3px solid #666;
+		background-color: #111;
+	}
+
+	div#local-masthead ul li a:hover,
+	div#local-masthead ul li a:focus,
+	div#local-masthead ul li a:active {
+		border-bottom: 3px solid #71b360;
+		color: #fff;
+	 	background-color: #333;
+	}
+
+
+	div#local-masthead p {
+	    margin: 20px 0;		/* Check where this is being used */
+	}
+
+	body div#local-title h1,
+	body div#local-title p,
+	body div#local-title a {
+	  color: #fff;
+	  text-shadow: 1px 1px #666;
+	}
+
+	body.section-about div#local-masthead {
+		background: #60bdc4 url(../../../images/banners/EBI_ABOUT_Banner_2016.jpg) top right no-repeat;
+	}
+	body.section-industry div#local-masthead {
+		background: #83a3c9 url(../../../images/banners/EBI_INDUSTRY_Banner_2016.jpg) top right no-repeat;
+	}
+	body.section-research div#local-masthead {
+		background: #a8d793 url(../../../images/banners/EBI_RESEARCH_Banner_2016.jpg) top right no-repeat;
+	}
+	/*body.section-research div#local-title h1,
+	body.section-research div#local-title p,
+	body.section-research div#local-title a {
+	  color: #222;
+	  text-shadow: 1px 1px #ccc;
+	}*/
+	body.section-services div#local-masthead {
+		background: #60bdc4 url(../../../images/banners/EBI_SERVICES_Banner_2016.jpg) top right no-repeat;
+	}
+	body.section-training div#local-masthead {
+		background: #f9e292 url(../../../images/banners/EBI_TRAINING_Banner_2016.jpg) top right no-repeat;
+	}
+	/*body.section-training div#local-title h1,
+	body.section-training div#local-title p,
+	body.section-training div#local-title a {
+	  color: #222;
+	  text-shadow: 1px 1px #ccc;
+	}*/
+	body.section-home div#local-masthead {
+		background: #1d8086 url(../../../images/banners/EBI_HOMEPAGE_Banner.jpg) top right no-repeat;
+	}
+
+
+	ul#local-nav li.functional {
+		float: right;
+		background-color: #444;
+    background-color: rgba(17,17,17,0.4);
+	}
+	.oldie ul#local-nav li.functional {
+		background-color: transparent;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#66111111',EndColorStr='#66111111') !important;
+	}
+
+
+	/* We don't want any borders on those <h1>s */
+	div#local-title a { border: 0 none; }
+
+	/* Custom styling for different local masthead */
+	div#local-title.logo-only img,
+	div#local-title.logo-title img,
+	div#local-title.logo-title-strapline img { float: left; margin: 1em 0.69em 0.69em; }
+	div#local-title.logo-title span,
+	div#local-title.logo-title-strapline span { display:block; margin: 1em 0 0.69em 0; float:left; }
+	div#local-title.logo-title span { margin-top: 2.3em; }
+	div#local-title.logo-title h1,
+	div#local-title.logo-title-strapline h1 { display: inline; line-height: 100%; }
+	div#local-title.logo-title-strapline h1 { font-size: 270%; }
+	div#local-title.logo-title-strapline p { display: inline; font-size: 123.1%; }
+
+	/* Local search */
+
+	div#local-search form fieldset,
+	form#local-search fieldset {
+		background-color: #ffffff;
+		background-color: rgba(255, 255, 255, 0.8);
+		padding: 0.5em 2em 0.5em 0.3em; /* Increased right padding from 0.7em because the fieldset could collapse... ! */
+	}
+	.oldie div#local-search form fieldset,
+	.oldie form#local-search fieldset {
+	  background-color: transparent;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ccffffff',EndColorStr='#ccffffff');
+	}
+
+	/* Lay things out */
+	div#local-search form fieldset div.left,
+	form#local-search fieldset div.left { width:80%; margin-right:2%; float:left; }
+	div#local-search form fieldset div.right,
+	form#local-search fieldset div.right { width:18%; float:left; text-align:center; }
+
+	/* A touch of RWD */
+	@media only screen and (min-width: 1100px) {
+			div#local-search form,
+	  		form#local-search { float: right; }
+			div#local-search form fieldset,
+	  		form#local-search fieldset { max-width:440px; }
+	  	}
+
+	div#local-search form fieldset input.form-submit,
+	div#local-search form fieldset input.submit,
+	form#local-search fieldset input.submit { display: inline; margin: 0.3em 0.2em 0.1em 0.2em; }
+
+	/* Get the local search input box to behave */
+	div#local-search form fieldset input.form-text,
+	div#local-search form fieldset input#local-searchbox,
+	form#local-search fieldset input#local-searchbox {
+		font-size: 123.1%;	/* fontsize = 16px */
+		width: 95%;
+	}
+
+	/* Style local search examples*/
+	div#local-search form fieldset span.examples,
+	form#local-search fieldset span.examples { margin:0 0 0 0.3em; font-size:80%; }
+
+	/* Style the link to "Advanced" search*/
+	div#local-search form fieldset span.adv,
+	form#local-search fieldset span.adv { margin:0; font-size:80%; }
+
+
+	div#content {
+		padding-top: 9px;
+		padding-bottom: 40px;
+	}
+
+	ul#secondary-nav li.active a { font-weight: bold; }
+
+	nav#breadcrumb { margin-top: 4px; }
+
+
+
+	/*
+		FOOTER
+
+	*/
+	div#local-footer,
+	div#global-footer {
+		background-color: white;
+		background-color: rgba(255, 255, 255, 0.85);
+	}
+	.oldie div#local-footer,
+	.oldie div#global-footer {
+	  background-color: transparent;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#d9ffffff',EndColorStr='#d9ffffff');
+	}
+	#ebi-footer-meta {
+	  padding-bottom: 1px;
+	  clear:both;
+	}
+
+	/*
+		LOCAL FOOTER
+	===============================
+	 */
+
+
+	div#local-footer {
+		background-color: #fff;
+		border-top: 2px solid #eee;
+		}
+
+
+	/*
+		GLOBAL FOOTER
+	================================
+	 */
+
+	#global-footer {
+		border-top: 5px solid #eee;
+	}
+
+	#global-footer h3 {
+		/* font-size: 108%; */			/* 14px */
+		font-size: 123.1%;			/* 16px */
+		margin-bottom: 5px;
+		color: #333;
+	}
+
+	#global-footer p {
+		font-size: 100%;			/* 13px */
+	    margin: 0 0 5px 0;
+	 }
+
+	#global-footer ul {
+		font-size: 85%;	/* 11px */
+		padding: 0 0 0 9px;
+		list-style: none;
+	}
+
+	#global-footer a { border-bottom: 0 none; }
+
+	#global-footer ul li a,
+	#ebi-footer-meta p a { padding: 2px 4px 2px 0; }
+
+	#ebi-footer-meta p a { margin-left: 0; }
+
+	#global-footer ul li a:hover,
+	#global-footer ul li a:focus,
+	#global-footer ul li a:active,
+	#ebi-footer-meta p a:hover,
+	#ebi-footer-meta p a:focus,
+	#ebi-footer-meta p a:active {
+		-moz-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+
+		background-color: #e4e4e4;
+	}
+
+	#ebi-footer-meta { font-size: 85%;	/* 11px */ }
+
+	#ebi-footer-meta p.address { color: #888; }
+	#ebi-footer-meta p.legal { margin-bottom: 9px; }
+
+
+	#global-nav-expanded img {
+		padding-left: 0.7em;
+		margin: 29px 0 0 0;
+	  border: none;
+	}
+
+	#global-nav-expanded h3 { margin-top: 20px; margin-bottom 5px; line-height: 1.538; }
+	#global-nav-expanded h3.services { border-bottom: 2px solid #207a7a; }
+	#global-nav-expanded h3.research { border-bottom: 2px solid #71b360; }
+	#global-nav-expanded h3.training { border-bottom: 2px solid #fab700; }
+	#global-nav-expanded h3.industry { border-bottom: 2px solid #346189; }
+	#global-nav-expanded h3.about { border-bottom: 2px solid #207a7a; }
+
+	#global-nav-expanded .grid_4 h3 { padding: 0; }
+	#global-nav-expanded .grid_4 h3 a {
+	display: block;
+	padding: 0.5em 0.3em 0 0.3em;
+	}
+	#global-nav-expanded .grid_4 h3 a:hover,
+	#global-nav-expanded .grid_4 h3 a:focus,
+	#global-nav-expanded .grid_4 h3 a:active { background-color: #ddd; }
+
+
+/*}*/
+
+
+
+	/*
+		Set sensible minimum heights for small and large screens
+	*/
+	@media screen and (min-height: 600px) {
+		div#content { min-height: 250px; }
+	}
+
+	@media screen and (min-height: 1000px) {
+		div#content { min-height: 450px; }
+	}
