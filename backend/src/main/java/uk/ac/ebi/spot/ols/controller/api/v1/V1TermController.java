@@ -65,11 +65,11 @@ public class V1TermController implements
         Page<V1Term> terms = null;
         if (id == null) {
             if (iri != null) {
-                termRepository.findAllByIri(iri, lang, pageable);
+                terms = termRepository.findAllByIri(iri, lang, pageable);
             } else if (shortForm != null) {
-                termRepository.findAllByShortForm(shortForm, lang, pageable);
+                terms = termRepository.findAllByShortForm(shortForm, lang, pageable);
             } else if (oboId != null) {
-                termRepository.findAllByOboId(oboId, lang, pageable);
+                terms = termRepository.findAllByOboId(oboId, lang, pageable);
             }
         } else {
             terms = termRepository.findAllByIri(id, lang, pageable);
@@ -114,11 +114,11 @@ public class V1TermController implements
         Page<V1Term> terms = null;
         if (id == null) {
             if (iri != null) {
-                termRepository.findAllByIri(iri, lang, pageable);
+                terms = termRepository.findAllByIri(iri, lang, pageable);
             } else if (shortForm != null) {
-                termRepository.findAllByShortForm(shortForm, lang, pageable);
+                terms = termRepository.findAllByShortForm(shortForm, lang, pageable);
             } else if (oboId != null) {
-                termRepository.findAllByOboId(oboId, lang, pageable);
+                terms = termRepository.findAllByOboId(oboId, lang, pageable);
             }
         } else {
             terms = termRepository.findAllByIri(id, lang, pageable);
