@@ -19,6 +19,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "declaration": true,
+    "declarationDir": "dist/entity-tree-esm",
     "noImplicitAny": false
   },
   "include": [
