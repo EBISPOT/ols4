@@ -312,6 +312,8 @@ export default function EntityPage({
                     }
                     selectedEntity={entity}
                     lang={lang}
+                    onNavigateToEntity={(ontology, entity) => navigate(`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
+                    onNavigateToOntology={(ontologyId, entity) => navigate(`/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
                   />
                 </div>
                 <div className="col-span-1">

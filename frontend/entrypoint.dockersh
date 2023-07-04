@@ -4,7 +4,7 @@ cd /opt/ols4-frontend
 
 echo Building frontend. REACT_APP_APIURL: $REACT_APP_APIURL. PUBLIC_URL: $PUBLIC_URL
 
-yarn react-scripts build
+yarn run build
 
 caddy run --config ./Caddyfile
 
