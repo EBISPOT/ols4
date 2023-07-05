@@ -40,7 +40,7 @@
   "scripts": {
     "build": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build.mjs",
     "watch": "dotenv -e .env.$REACT_APP_ENV -e .env -- nodemon -e 'ts,tsx,js,jsx,css' -w src -w index.html.in --exec 'npm run build'",
-    "start": "dotenv -e .env.$REACT_APP_ENV -e .env -- concurrently -n 'Build,Serve' 'npm run watch' 'http-server dist -p 3000 --proxy $OLS_DEV_BACKEND_PROXY_URL'",
+    "start": "dotenv -e .env.$REACT_APP_ENV -e .env -- concurrently -n 'Build,Serve' 'npm run watch' 'light-server -s dist -p 3000 --proxy $OLS_DEV_BACKEND_PROXY_URL --proxypath \"/api\"'",
     "build:widgets": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build_widgets.mjs",
     "watch:widgets": "dotenv -e .env.$REACT_APP_ENV -e .env -- nodemon -e 'ts,tsx,js,jsx,css' -w src --exec 'npm run build:widgets'"
   },
@@ -65,7 +65,7 @@
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
     "esbuild": "^0.18.11",
-    "http-server": "^14.1.1",
+    "light-server": "^2.9.1",
     "nodemon": "^2.0.22",
     "tailwindcss": "^3.1.8"
   }
