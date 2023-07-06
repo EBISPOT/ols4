@@ -1,5 +1,15 @@
 {
   "ontologies": [
+	  {
+                  "id": "semapv",
+		  "title": "Semantic Mapping Vocabulary",
+		  "description": "The Semantic Mapping Vocabulary (SEMAPV) captures concepts and relations related to semantic matching, including types of matching (e.g. lexical, manually curated), preprocessing methods and specialised mapping relations.",
+		  "ontology_purl": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
+		  "homepage": "https://mapping-commons.github.io/semantic-mapping-vocabulary/",
+		  "preferredPrefix": "semapv",
+                  "base_uri": ["https://w3id.org/semapv/vocab/"]
+          },
+	           
     {
                   "id": "slm",
 		  "title": "SwissLipids",
