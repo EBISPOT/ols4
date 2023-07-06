@@ -326,7 +326,7 @@ export default function Search() {
                           }
                           className={`link-default text-xl mr-2 ${
                             entity.isCanonical() ? "font-bold" : ""
-                          }`}
+                          } ${entity.isDeprecated() ? "line-through" : ""}`}
                         >
                           {entity.getName()}
                         </Link>
@@ -352,7 +352,7 @@ export default function Search() {
                           </span>
                         ) : null}
                         {!entity.isCanonical() && (
-                          <span className="text-white text-xs bg-neutral-default px-2 py-1 rounded-md uppercase">
+                          <span className="text-white text-xs bg-neutral-default px-2 py-1 mr-1 rounded-md uppercase">
                             Imported
                           </span>
                         )}

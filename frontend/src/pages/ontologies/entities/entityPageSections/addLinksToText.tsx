@@ -74,7 +74,7 @@ export default function addLinksToText(
       // The splices overlap if neither ends before the other starts
       if (spliceA.end >= spliceB.start && spliceB.end >= spliceA.start) {
         // console.log("Removing overlapping");
-        linksToSplice.splice(n, 1);
+        linksToSplice.splice(n2, 1);
         continue removeOverlapping;
       }
     }

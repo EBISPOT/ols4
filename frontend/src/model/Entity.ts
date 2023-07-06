@@ -11,6 +11,31 @@ export default abstract class Entity extends Thing {
     return this.properties["isDefiningOntology"] === true;
   }
 
+  isDeprecated(): boolean {
+    return (
+      this.properties["http://www.w3.org/2002/07/owl#deprecated"] === "true"
+    );
+  }
+
+  getDeprecationVersion(): string {
+    // only supports EFO for now
+    return this.properties["http://www.ebi.ac.uk/efo/obsoleted_in_version"];
+  }
+
+  getDeprecationReason(): string {
+    return asArray(
+      this.properties["http://www.ebi.ac.uk/efo/reason_for_obsolescence"]
+    )
+      .concat(
+        asArray(this.properties["http://purl.obolibrary.org/obo/IAO_0000231"])
+      )
+      .join(", ");
+  }
+
+  getDeprecationReplacement(): string {
+    return this.properties["http://purl.obolibrary.org/obo/IAO_0100001"];
+  }
+
   getRelatedFrom(): Reified<any>[] {
     return Reified.fromJson<any>(this.properties["relatedFrom"]);
   }
@@ -56,7 +81,9 @@ export default abstract class Entity extends Thing {
   }
 
   getDepictedBy(): Reified<string>[] {
-    return Reified.fromJson<string>(this.properties["http://xmlns.com/foaf/0.1/depicted_by"]);
+    return Reified.fromJson<string>(
+      this.properties["http://xmlns.com/foaf/0.1/depicted_by"]
+    );
   }
 
   getAnnotationPredicates(): string[] {
@@ -137,16 +164,16 @@ export default abstract class Entity extends Thing {
       ? parseInt(this.properties["numDescendants"])
       : 0;
   }
-  
 
-  getHierarchicalParentReificationAxioms(parentIri:string):any {
-	
-	let hierarchicalParents = Reified.fromJson<any>(this.properties['hierarchicalParent'])
+  getHierarchicalParentReificationAxioms(parentIri: string): any {
+    let hierarchicalParents = Reified.fromJson<any>(
+      this.properties["hierarchicalParent"]
+    );
 
-	for(let p of hierarchicalParents) {
-		if(p.value === parentIri) {
-			return p.getMetadata()
-		}
-	}
+    for (let p of hierarchicalParents) {
+      if (p.value === parentIri) {
+        return p.getMetadata();
+      }
+    }
   }
 }
