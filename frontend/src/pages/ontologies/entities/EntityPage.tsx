@@ -220,11 +220,9 @@ export default function EntityPage({
                 placeholder={`Search ${ontologyId.toUpperCase()}...`}
               />
             </div>
-            {(entity.getDeprecationVersion() ||
-              entity.getDeprecationReason() ||
-              entity.getDeprecationReplacement()) && (
+            {entity.isDeprecated() && (
               <p className="bg-red-300 px-6 pt-3 pb-4 rounded-md mb-4 text-justify">
-                <span className="inline-block mb-2">
+                <span className="inline-block mb-1">
                   <i className="icon icon-common icon-exclamation-circle text-2xl text-red-500 mr-2"></i>
                 </span>
                 <strong>This {entity.getType()} is deprecated.</strong>
