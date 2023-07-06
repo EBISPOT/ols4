@@ -24,10 +24,12 @@ export default abstract class Entity extends Thing {
 
   getDeprecationReason(): string {
     return asArray(
-      this.properties["http://www.ebi.ac.uk/efo/reason_for_obsolescence"]
+      this.properties["http://purl.obolibrary.org/obo/IAO_0000231"]
     )
       .concat(
-        asArray(this.properties["http://purl.obolibrary.org/obo/IAO_0000231"])
+        asArray(
+          this.properties["http://www.ebi.ac.uk/efo/reason_for_obsolescence"]
+        )
       )
       .join(", ");
   }

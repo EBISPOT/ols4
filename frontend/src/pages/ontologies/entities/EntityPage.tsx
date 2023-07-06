@@ -229,17 +229,17 @@ export default function EntityPage({
                 </span>
                 <strong>This {entity.getType()} is deprecated.</strong>
                 {entity.getDeprecationVersion() && (
-                  <div className="px-2">
+                  <div>
                     Deprecated since version&thinsp;
                     <i>{entity.getDeprecationVersion()}</i>
                   </div>
                 )}
-                {entity.getDeprecationReason() && (
-                  <div className="px-2">
-                    Reason:&thinsp;
+                {entity.getDeprecationReplacement() && (
+                  <div>
+                    Replaced by&thinsp;
                     <i>
                       {addLinksToText(
-                        entity.getDeprecationReason(),
+                        entity.getDeprecationReplacement(),
                         linkedEntities,
                         ontologyId,
                         entity,
@@ -248,12 +248,12 @@ export default function EntityPage({
                     </i>
                   </div>
                 )}
-                {entity.getDeprecationReplacement() && (
-                  <div className="px-2">
-                    Replaced by&thinsp;
+                {entity.getDeprecationReason() && (
+                  <div>
+                    Reason:&thinsp;
                     <i>
                       {addLinksToText(
-                        entity.getDeprecationReplacement(),
+                        entity.getDeprecationReason(),
                         linkedEntities,
                         ontologyId,
                         entity,
