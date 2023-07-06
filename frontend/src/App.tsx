@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import About from "./pages/About";
 import Downloads from "./pages/Downloads";
 import Error from "./pages/Error";
-import Help from "./pages/help/HelpPage";
+import Help from "./pages/help/Help";
 import Home from "./pages/home/Home";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";

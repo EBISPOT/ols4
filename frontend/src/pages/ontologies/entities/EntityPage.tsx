@@ -14,7 +14,11 @@ import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
 import SearchBox from "../../../components/SearchBox";
 import LinkedEntities from "../../../model/LinkedEntities";
-import { getClassInstances, getEntityWithType, getOntology } from "../ontologiesSlice";
+import {
+  getClassInstances,
+  getEntityWithType,
+  getOntology,
+} from "../ontologiesSlice";
 import EntityGraph from "./EntityGraph";
 import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
@@ -23,6 +27,7 @@ import DisjointWithSection from "./entityPageSections/DisjointWithSection";
 import EntityAnnotationsSection from "./entityPageSections/EntityAnnotationsSection";
 import EntityDescriptionSection from "./entityPageSections/EntityDescriptionSection";
 import EntityEquivalentsSection from "./entityPageSections/EntityEquivalentsSection";
+import EntityImagesSection from "./entityPageSections/EntityImagesSection";
 import EntityParentsSection from "./entityPageSections/EntityParentsSection";
 import EntityRelatedFromSection from "./entityPageSections/EntityRelatedFromSection";
 import EntitySynonymsSection from "./entityPageSections/EntitySynonymsSection";
@@ -33,7 +38,7 @@ import IndividualTypesSection from "./entityPageSections/IndividualTypesSection"
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
-import EntityImagesSection from "./entityPageSections/EntityImagesSection";
+import addLinksToText from "./entityPageSections/addLinksToText";
 
 export default function EntityPage({
   entityType,
@@ -209,20 +214,67 @@ export default function EntityPage({
                 ) : null}
               </div>
             </div>
-            <div className="py-1" />
-            {/* spacer */}
             <div className="flex flex-nowrap gap-4 mb-4">
               <SearchBox
                 ontologyId={ontologyId}
                 placeholder={`Search ${ontologyId.toUpperCase()}...`}
               />
             </div>
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+            {(entity.getDeprecationVersion() ||
+              entity.getDeprecationReason() ||
+              entity.getDeprecationReplacement()) && (
+              <p className="bg-red-300 px-6 pt-3 pb-4 rounded-md mb-4 text-justify">
+                <span className="inline-block mb-2">
+                  <i className="icon icon-common icon-exclamation-circle text-2xl text-red-500 mr-2"></i>
+                </span>
+                <strong>This {entity.getType()} is deprecated.</strong>
+                {entity.getDeprecationVersion() && (
+                  <div>
+                    Deprecated since version&thinsp;
+                    <i>{entity.getDeprecationVersion()}</i>
+                  </div>
+                )}
+                {entity.getDeprecationReplacement() && (
+                  <div>
+                    Replaced by&thinsp;
+                    <i>
+                      {addLinksToText(
+                        entity.getDeprecationReplacement(),
+                        linkedEntities,
+                        ontologyId,
+                        entity,
+                        entityType
+                      )}
+                    </i>
+                  </div>
+                )}
+                {entity.getDeprecationReason() && (
+                  <div>
+                    Reason:&thinsp;
+                    <i>
+                      {addLinksToText(
+                        entity.getDeprecationReason(),
+                        linkedEntities,
+                        ontologyId,
+                        entity,
+                        entityType
+                      )}
+                    </i>
+                  </div>
+                )}
+              </p>
+            )}
+            <div className="bg-gradient-to-r to-white rounded-lg p-8 mb-4 text-neutral-black from-neutral-light">
               <div className="font-bold mb-4 flex flex-row items-center">
                 <span className="text-2xl mr-3">{entity.getName()}</span>
                 {!entity.isCanonical() && (
-                  <span className="text-white text-xs bg-neutral-default px-2 py-1 rounded-md uppercase">
+                  <span className="text-white text-xs bg-neutral-default px-2 py-1 mr-1 rounded-md uppercase">
                     Imported
+                  </span>
+                )}
+                {entity.isDeprecated() && (
+                  <span className="text-white text-xs bg-red-500 px-2 py-1 rounded-md uppercase">
+                    Deprecated
                   </span>
                 )}
               </div>
@@ -312,8 +364,20 @@ export default function EntityPage({
                     }
                     selectedEntity={entity}
                     lang={lang}
-                    onNavigateToEntity={(ontology, entity) => navigate(`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
-                    onNavigateToOntology={(ontologyId, entity) => navigate(`/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
+                    onNavigateToEntity={(ontology, entity) =>
+                      navigate(
+                        `/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(
+                          encodeURIComponent(entity.getIri())
+                        )}?lang=${lang}`
+                      )
+                    }
+                    onNavigateToOntology={(ontologyId, entity) =>
+                      navigate(
+                        `/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
+                          encodeURIComponent(entity.getIri())
+                        )}?lang=${lang}`
+                      )
+                    }
                   />
                 </div>
                 <div className="col-span-1">
