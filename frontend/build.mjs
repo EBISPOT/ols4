@@ -13,7 +13,8 @@ console.log('### Building index.html')
 fs.writeFileSync('dist/index.html',
 	fs.readFileSync('index.html.in')
 		.toString()
-		.split('%PUBLIC_URL%').join(process.env.PUBLIC_URL || ''));
+		.split('%PUBLIC_URL%/').join(process.env.PUBLIC_URL || '/')
+		.split('%PUBLIC_URL%').join(process.env.PUBLIC_URL || '/'));
 
 ///
 /// Build bundle.js (esbuild)

@@ -5,7 +5,7 @@ declare global {
 			iri?:string,
 			ontologyId:string,
 			apiUrl:string
-		})=>void
+		}, target:Element)=>void
 	}
 }
 

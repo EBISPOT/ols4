@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import urlJoin from 'url-join'
 
 export default function Header({ section }: { section?: string }) {
   return (
@@ -6,16 +7,16 @@ export default function Header({ section }: { section?: string }) {
       className="bg-black bg-right bg-cover"
       style={{
         backgroundImage:
-          "url('" + process.env.PUBLIC_URL + "/embl-ebi-background-4.jpg')",
+          "url('" + urlJoin(process.env.PUBLIC_URL!, "/embl-ebi-background-4.jpg") + "')"
       }}
     >
       <div className="container mx-auto flex flex-row gap-10">
         <div className="py-6">
           <a href={process.env.PUBLIC_URL + "/"}>
             <img
-              alt="OxO logo"
+              alt="OLS logo"
               className="h-24 inline-block"
-              src={process.env.PUBLIC_URL + "/logo.png"}
+              src={urlJoin(process.env.PUBLIC_URL!, "/logo.png")}
             />
           </a>
         </div>
