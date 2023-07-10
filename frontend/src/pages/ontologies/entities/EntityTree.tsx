@@ -7,6 +7,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { useCallback, useEffect } from "react";
+import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { theme } from "../../../app/mui";
 import { randomString } from "../../../app/util";
@@ -272,7 +273,7 @@ export default function EntityTree({
                 "http://purl.obolibrary.org/obo/BFO_0000050" && (
                 <img
                   className="mr-1"
-                  src={process.env.PUBLIC_URL + "/part.svg"}
+                  src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
                   style={{ height: "1em", display: "inline" }}
                 />
               )}
@@ -280,7 +281,7 @@ export default function EntityTree({
                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (
                 <img
                   className="mr-1"
-                  src={process.env.PUBLIC_URL + "/instance.svg"}
+                  src={urlJoin(process.env.PUBLIC_URL!, "/instance.svg")}
                   style={{ height: "1em", display: "inline" }}
                 />
               )}

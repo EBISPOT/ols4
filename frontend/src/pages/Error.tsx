@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
+import urlJoin from "url-join";
 import Header from "../components/Header";
 
 export default function Error() {
@@ -12,7 +13,7 @@ export default function Error() {
       <Header />
       <main className="container mx-auto">
         <img
-          src={process.env.PUBLIC_URL + "/not-found.jpg"}
+          src={urlJoin(process.env.PUBLIC_URL!, "/not-found.jpg")}
           className="max-w-lg rounded-lg mx-auto mb-4"
           alt="person using microscope by rawpixel.com on freepik.com"
         />
