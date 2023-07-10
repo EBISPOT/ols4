@@ -45,6 +45,7 @@ export default function SearchBox({
   const setExact = useCallback(
     (exact: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set("q", query);
       if (exact.toString() === "true") {
         newSearchParams.set("exactMatch", exact.toString());
       } else {
@@ -58,6 +59,7 @@ export default function SearchBox({
   const setObsolete = useCallback(
     (obsolete: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set("q", query);
       if (obsolete.toString() === "true") {
         newSearchParams.set("includeObsoleteEntities", obsolete.toString());
       } else {
@@ -71,6 +73,7 @@ export default function SearchBox({
   const setCanonical = useCallback(
     (canonical: boolean) => {
       let newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set("q", query);
       if (canonical.toString() === "true") {
         newSearchParams.set("isDefiningOntology", canonical.toString());
       } else {

@@ -30,9 +30,9 @@ export interface OntologiesState {
   automaticallyExpandedNodes: string[];
   manuallyExpandedNodes: string[];
   preferredRoots: boolean;
-  showObsolete: boolean;
-  showSiblings: boolean;
-  showCounts: boolean;
+  displayObsolete: boolean;
+  displaySiblings: boolean;
+  displayCounts: boolean;
   errorMessage: string;
 }
 export interface TreeNode {
@@ -66,9 +66,9 @@ const initialState: OntologiesState = {
   automaticallyExpandedNodes: [],
   manuallyExpandedNodes: [],
   preferredRoots: false,
-  showObsolete: false,
-  showSiblings: false,
-  showCounts: true,
+  displayObsolete: false,
+  displaySiblings: false,
+  displayCounts: true,
   errorMessage: "",
 };
 
@@ -672,9 +672,9 @@ const ontologiesSlice = createSlice({
             state.preferredRoots = false;
           }
         }
-        state.showObsolete = false;
-        state.showSiblings = false;
-        state.showCounts = true;
+        state.displayObsolete = false;
+        state.displaySiblings = false;
+        state.displayCounts = true;
         state.manuallyExpandedNodes = [];
       }
     );
@@ -685,22 +685,22 @@ const ontologiesSlice = createSlice({
       state.preferredRoots = false;
     });
     builder.addCase(showObsolete, (state: OntologiesState) => {
-      state.showObsolete = true;
+      state.displayObsolete = true;
     });
     builder.addCase(hideObsolete, (state: OntologiesState) => {
-      state.showObsolete = false;
+      state.displayObsolete = false;
     });
     builder.addCase(showSiblings, (state: OntologiesState) => {
-      state.showSiblings = true;
+      state.displaySiblings = true;
     });
     builder.addCase(hideSiblings, (state: OntologiesState) => {
-      state.showSiblings = false;
+      state.displaySiblings = false;
     });
     builder.addCase(showCounts, (state: OntologiesState) => {
-      state.showCounts = true;
+      state.displayCounts = true;
     });
     builder.addCase(hideCounts, (state: OntologiesState) => {
-      state.showCounts = false;
+      state.displayCounts = false;
     });
     builder.addCase(
       openNode,

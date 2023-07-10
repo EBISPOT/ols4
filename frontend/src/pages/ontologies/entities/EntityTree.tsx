@@ -6,7 +6,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { Fragment, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { theme } from "../../../app/mui";
 import { randomString } from "../../../app/util";
@@ -68,14 +68,14 @@ export default function EntityTree({
     (state) => state.ontologies.manuallyExpandedNodes
   );
 
-  const showObsoleteEnabled = useAppSelector(
-    (state) => state.ontologies.showObsolete
-  );
+  const showObsoleteEnabled = selectedEntity
+    ? selectedEntity.isDeprecated()
+    : useAppSelector((state) => state.ontologies.displayObsolete);
   const showSiblingsEnabled = useAppSelector(
-    (state) => state.ontologies.showSiblings
+    (state) => state.ontologies.displaySiblings
   );
   const showCountsEnabled = useAppSelector(
-    (state) => state.ontologies.showCounts
+    (state) => state.ontologies.displayCounts
   );
 
   const toggleNode = useCallback(
@@ -268,14 +268,22 @@ export default function EntityTree({
               }}
               key={randomString()}
             >
-	      {
-		childNode.childRelationToParent === 'http://purl.obolibrary.org/obo/BFO_0000050' &&
-			<img className="mr-1" src={process.env.PUBLIC_URL + "/part.svg"} style={{height:'1em',display:'inline'}}/>
-	      }
-	      {
-		childNode.childRelationToParent === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' &&
-			<img className="mr-1" src={process.env.PUBLIC_URL + "/instance.svg"} style={{height:'1em',display:'inline'}}/>
-	      }
+              {childNode.childRelationToParent ===
+                "http://purl.obolibrary.org/obo/BFO_0000050" && (
+                <img
+                  className="mr-1"
+                  src={process.env.PUBLIC_URL + "/part.svg"}
+                  style={{ height: "1em", display: "inline" }}
+                />
+              )}
+              {childNode.childRelationToParent ===
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (
+                <img
+                  className="mr-1"
+                  src={process.env.PUBLIC_URL + "/instance.svg"}
+                  style={{ height: "1em", display: "inline" }}
+                />
+              )}
               <TreeLink
                 ontology={ontology}
                 entity={childNode.entity}
@@ -365,7 +373,10 @@ export default function EntityTree({
           )}
         </div>
         {rootNodes ? (
-          <div className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto" role="tree">
+          <div
+            className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
+            role="tree"
+          >
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
@@ -383,7 +394,7 @@ function TreeLink({
   title,
   lang,
   onNavigateToEntity,
-  onNavigateToOntology
+  onNavigateToOntology,
 }: {
   ontology: Ontology;
   entity: Entity;
@@ -398,15 +409,19 @@ function TreeLink({
 
   return (
     <span>
-      <a className={"link-default"} onClick={() => onNavigateToEntity(ontology, entity)}>
+      <a
+        className={"link-default"}
+        onClick={() => onNavigateToEntity(ontology, entity)}
+      >
         {title}
       </a>
       {definedBy.length > 0 &&
         definedBy.map((definingOntology) => {
           return (
-            <span onClick={() => onNavigateToOntology(definingOntology, entity)}
-                title={definingOntology.toUpperCase()}
-                className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
+            <span
+              onClick={() => onNavigateToOntology(definingOntology, entity)}
+              title={definingOntology.toUpperCase()}
+              className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
             >
               {definingOntology}
             </span>
@@ -415,4 +430,3 @@ function TreeLink({
     </span>
   );
 }
-
