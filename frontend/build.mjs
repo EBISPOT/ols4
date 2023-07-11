@@ -31,7 +31,7 @@ build({
 	logLevel: 'info',
     sourcemap: 'linked',
 
-	...(process.env.REACT_APP_ENV === 'prod' ? {
+	...(process.env.OLS_MINIFY === 'true' ? {
 		minify: true
 	} : {
 	})

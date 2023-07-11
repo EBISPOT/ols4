@@ -25,8 +25,12 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: REACT_APP_ENV
-              value: prod
+            - name: REACT_APP_APIURL
+              value: https://www.ebi.ac.uk/ols4/
+            - name: PUBLIC_URL
+              value: /ols4/
+            - name: OLS_MINIFY
+              value: true
           command: ["/bin/bash", "-c"]
           args: ["/opt/ols4-frontend/entrypoint.dockersh"]
 
