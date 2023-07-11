@@ -26,6 +26,9 @@ spec:
               name: {{ .Release.Name }}-neo4j-storage
           command: ["/bin/bash", "-c"]
           args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
+          resources:
+            requests:
+              memory: 20Gi
           env:
             - name: NEO4J_HEAP_MEMORY
               value: 10g
