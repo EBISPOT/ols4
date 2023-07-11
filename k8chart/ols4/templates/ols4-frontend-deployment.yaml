@@ -24,7 +24,10 @@ spec:
                 memory: 4G          
           ports:
             - containerPort: 8080
+          env:
+            - name: REACT_APP_ENV
+              value: prod
           command: ["/bin/bash", "-c"]
-          args: ["export REACT_APP_ENV=prod && /opt/ols4-frontend/entrypoint.dockersh"]
+          args: ["/opt/ols4-frontend/entrypoint.dockersh"]
 
 
