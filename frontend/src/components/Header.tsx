@@ -12,7 +12,7 @@ export default function Header({ section }: { section?: string }) {
     >
       <div className="container mx-auto flex flex-row gap-10">
         <div className="py-6">
-          <a href={process.env.PUBLIC_URL + "/"}>
+          <a href={urlJoin(process.env.PUBLIC_URL!, "/")}>
             <img
               alt="OLS logo"
               className="h-24 inline-block"

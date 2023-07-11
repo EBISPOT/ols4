@@ -28,7 +28,7 @@ spec:
             - name: REACT_APP_APIURL
               value: https://www.ebi.ac.uk/ols4/
             - name: PUBLIC_URL
-              value: /ols4/
+              value: /ols4
             - name: OLS_MINIFY
               value: 'true'
           command: ["/bin/bash", "-c"]

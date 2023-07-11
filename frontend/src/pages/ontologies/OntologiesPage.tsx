@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
+import urlJoin from 'url-join'
 
 export default function OntologiesPage() {
   const dispatch = useAppDispatch();
@@ -81,27 +82,21 @@ export default function OntologiesPage() {
               Search
             </div>
             <a
-              href={`${
-                process.env.PUBLIC_URL
-              }/ontologies/${ontology.getOntologyId()}?tab=classes`}
+              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=classes`)}
               className="link-default"
             >
               Classes
             </a>
             <br />
             <a
-              href={`${
-                process.env.PUBLIC_URL
-              }/ontologies/${ontology.getOntologyId()}?tab=properties`}
+              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=properties`)}
               className="link-default"
             >
               Properties
             </a>
             <br />
             <a
-              href={`${
-                process.env.PUBLIC_URL
-              }/ontologies/${ontology.getOntologyId()}?tab=individuals`}
+              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=individuals`)}
               className="link-default"
             >
               Individuals

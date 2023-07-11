@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 import urlJoin from "url-join";
 import Header from "../components/Header";
+import urlJoin from 'url-join'
 
 export default function Error() {
   const location = useLocation();
@@ -23,7 +24,7 @@ export default function Error() {
         <div className="text-center text-2xl mx-3 mb-8">
           <a
             className="link-default text-center text-3xl"
-            href={process.env.PUBLIC_URL}
+            href={urlJoin(process.env.PUBLIC_URL!, "/")}
           >
             Return to home
           </a>

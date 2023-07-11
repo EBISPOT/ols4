@@ -8,7 +8,4 @@
         try_files {path} /
         file_server
     }
-    handle {
-        redir {$PUBLIC_URL}/
-    }
 }
