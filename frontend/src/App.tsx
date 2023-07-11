@@ -24,7 +24,7 @@ import urlJoin from "url-join";
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter basename={urlJoin(process.env.PUBLIC_URL!, "/")}>
+      <BrowserRouter basename={process.env.PUBLIC_URL!}>
         <Routes>
           <Route path={`*`} element={<Error />} />
           <Route path={`/error`} element={<Error />} />
