@@ -29,12 +29,11 @@ build({
 	plugins: [
 	],
 	logLevel: 'info',
+    sourcemap: 'linked',
 
 	...(process.env.REACT_APP_ENV === 'prod' ? {
-		sourcemap: false,
 		minify: true
 	} : {
-		sourcemap: 'inline'
 	})
 });
 

@@ -14,7 +14,7 @@ build({
 	plugins: [
 	],
 	logLevel: 'info',
-	sourcemap: 'inline'
+	sourcemap: 'linked'
 });
 
 console.log('### Building ols4_widgets.min.js')
@@ -28,7 +28,7 @@ build({
 	],
 	logLevel: 'info',
 	minify: true,
-	sourcemap: false
+	sourcemap: 'linked'
 });
 
 

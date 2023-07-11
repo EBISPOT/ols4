@@ -25,6 +25,6 @@ spec:
           ports:
             - containerPort: 8080
           command: ["/bin/bash", "-c"]
-          args: ["set -a && source {{.Values.frontend.envFile}} && set +a && /opt/ols4-frontend/entrypoint.dockersh"]
+          args: ["export REACT_APP_ENV=prod && /opt/ols4-frontend/entrypoint.dockersh"]
 
 
