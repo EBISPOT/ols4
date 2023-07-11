@@ -22,6 +22,9 @@ spec:
           volumeMounts:
             - name: {{.Release.Name}}-data
               mountPath: "/usr/share/nginx/html"
+          resources:
+            requests:
+              memory: 2Gi
       volumes:
       - name: {{.Release.Name}}-data
         persistentVolumeClaim:
