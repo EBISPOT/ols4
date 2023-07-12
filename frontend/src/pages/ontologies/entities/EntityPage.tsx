@@ -9,6 +9,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { copyToClipboard } from "../../../app/util";
 import ApiLinks from "../../../components/ApiLinks";
+import { Banner } from "../../../components/Banner";
 import Header from "../../../components/Header";
 import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
@@ -221,11 +222,10 @@ export default function EntityPage({
               />
             </div>
             {entity.isDeprecated() && (
-              <p className="bg-red-300 px-6 pt-3 pb-4 rounded-md mb-4 text-justify">
-                <span className="inline-block mb-1">
-                  <i className="icon icon-common icon-exclamation-circle text-2xl text-red-500 mr-2"></i>
-                </span>
-                <strong>This {entity.getType()} is deprecated.</strong>
+              <Banner type="error">
+                <strong className="inline-block mb-2">
+                  This {entity.getType()} is deprecated.
+                </strong>
                 {entity.getDeprecationVersion() && (
                   <div>
                     Deprecated since version&thinsp;
@@ -260,7 +260,7 @@ export default function EntityPage({
                     </i>
                   </div>
                 )}
-              </p>
+              </Banner>
             )}
             <div className="bg-gradient-to-r to-white rounded-lg p-8 mb-4 text-neutral-black from-neutral-light">
               <div className="font-bold mb-4 flex flex-row items-center">

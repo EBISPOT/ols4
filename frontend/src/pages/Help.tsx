@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import Header from "../../components/Header";
+import { Banner } from "../components/Banner";
+import Header from "../components/Header";
 
 export default function Help() {
   document.title = "Ontology Lookup Service (OLS)";
@@ -39,10 +40,7 @@ export default function Help() {
             </a>
             .
           </p>
-          <p className="bg-blue-50 px-6 pt-3 pb-4 rounded-md mb-4 text-justify">
-            <span>
-              <i className="icon icon-common icon-info text-2xl text-blue-500 mr-2 mb-1"></i>
-            </span>
+          <Banner type="info">
             Migrating to the OLS4 API should be as simple as replacing&thinsp;
             <strong>ols</strong> with <strong>ols4</strong> in the path. For
             example,
@@ -56,7 +54,7 @@ export default function Help() {
                 <i>after</i>)
               </li>
             </ul>
-          </p>
+          </Banner>
           <p className="mb-2">
             If you find any cases where the OLS4 API does not function the same
             as the OLS3 API, please open an issue on our&thinsp;
