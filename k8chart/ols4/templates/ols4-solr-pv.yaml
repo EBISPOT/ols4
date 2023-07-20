@@ -13,7 +13,7 @@ spec:
   local:
     path: /var/local-disk
   nodeAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
+    preferred:
     - weight: 50
       preference:
         matchExpressions:
