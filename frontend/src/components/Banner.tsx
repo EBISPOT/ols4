@@ -2,17 +2,24 @@ export function Banner({
   type,
   children,
 }: {
-  type: "info" | "warning" | "error";
+  type: "code" | "info" | "warning" | "error";
   children: any;
 }) {
   const bgColor = {
+    code: "bg-neutral-light",
     info: "bg-blue-50",
     warning: "bg-yellow-200",
     error: "bg-red-300",
   }[type];
 
   return (
-    <p className={`${bgColor} px-6 pt-3 pb-4 rounded-md mb-4 text-justify`}>
+    <div
+      className={`${bgColor} px-6 pt-3 pb-4 rounded-md mb-4 text-justify ${
+        type === "code"
+          ? "font-mono text-sm whitespace-nowrap overflow-x-auto"
+          : ""
+      }`}
+    >
       <span>
         {type === "info" && (
           <i className="icon icon-common icon-info text-2xl text-blue-500 mr-2" />
@@ -25,6 +32,6 @@ export function Banner({
         )}
       </span>
       {children}
-    </p>
+    </div>
   );
 }
