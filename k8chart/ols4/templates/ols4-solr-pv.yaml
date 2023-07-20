@@ -13,10 +13,9 @@ spec:
   local:
     path: /var/local-disk
   nodeAffinity:
-    preferred:
-    - weight: 50
-      preference:
-        matchExpressions:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
         - key: kubernetes.io/hostname
           operator: In
           values:
