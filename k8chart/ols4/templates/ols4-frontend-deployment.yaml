@@ -14,6 +14,16 @@ spec:
       labels:
         app: {{ .Release.Name }}-frontend
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - hh-rke-wp-webadmin-47-worker-4.caas.ebi.ac.uk
+                      - hx-rke-wp-webadmin-40-worker-4.caas.ebi.ac.uk
       containers:
         - name: web
           image: ghcr.io/ebispot/ols4-frontend:{{.Values.imageTag}}
