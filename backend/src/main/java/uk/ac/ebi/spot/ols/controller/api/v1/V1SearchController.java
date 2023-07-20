@@ -220,7 +220,9 @@ public class V1SearchController {
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
-            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
+                    JsonHelper.getString(json, "isDefiningOntology") == null ? false :
+                            JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
 
