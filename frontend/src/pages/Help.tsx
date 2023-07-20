@@ -77,7 +77,7 @@ export default function Help() {
           ]}
           data={[
             {
-              verb: "GET",
+              verb: <span className="text-code">GET</span>,
               usage: "Used to retrieve a resource",
             },
           ]}
@@ -104,16 +104,16 @@ export default function Help() {
           ]}
           data={[
             {
-              status: "200 OK",
+              status: <span className="text-code">200 OK</span>,
               usage: "The request completed successfully",
             },
             {
-              status: "400 Bad Request",
+              status: <span className="text-code">400 Bad Request</span>,
               usage:
                 "The request was malformed. The response body will include an error providing further information.",
             },
             {
-              status: "404 Not Found",
+              status: <span className="text-code">404 Not Found</span>,
               usage: "The requested resource did not exist",
             },
           ]}
@@ -130,7 +130,12 @@ export default function Help() {
             {
               path: "error",
               type: "String",
-              description: "The HTTP error that occurred, e.g. Bad Request",
+              description: (
+                <>
+                  The HTTP error that occurred, e.g.&thinsp;
+                  <span className="text-code">Bad Request</span>
+                </>
+              ),
             },
             {
               path: "message",
@@ -145,7 +150,12 @@ export default function Help() {
             {
               path: "status",
               type: "Number",
-              description: "The HTTP status code, e.g. 400",
+              description: (
+                <>
+                  The HTTP status code, e.g.&thinsp;
+                  <span className="text-code">400</span>
+                </>
+              ),
             },
             {
               path: "timestamp",
@@ -157,7 +167,8 @@ export default function Help() {
         />
         <p className="mb-2">
           For example, a request that attempts to apply a non-existent tag to a
-          resource will produce a 400 Bad Request response:
+          resource will produce a&thinsp;
+          <span className="text-code">400 Bad Request</span> response:
         </p>
         <Banner type="code">
           <pre>
@@ -176,22 +187,32 @@ Content-Length: 153
         <div className="text-xl text-petrol-600 font-bold my-3">Hypermedia</div>
         <p className="mb-2">
           This API uses hypermedia and resources include links to other
-          resources in their responses. Responses are in Hypertext Application
-          Language (HAL) format. Links can be found beneath the _links key.
-          Users of the API should not create URIs themselves, instead they
-          should use the above-described links to navigate from resource to
-          resource.
+          resources in their responses. Responses are in&thinsp;
+          <a
+            className="link-default"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="http://stateless.co/hal_specification.html"
+          >
+            Hypertext Application Language (HAL)
+          </a>
+          format. Links can be found beneath the&thinsp;
+          <span className="text-code">_links</span> key. Users of the API should
+          not create URIs themselves, instead they should use the
+          above-described links to navigate from resource to resource.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">
           Listing resources
         </div>
         <p className="mb-2">
           Requests that return multiple resources will be paginated to 20 items
-          by default. You can change the number of items returned using the size
-          parameter up to a maximum of 500 for a single request. The API also
-          supports the page parameter for accessing a specific page of items.
+          by default. You can change the number of items returned using
+          the&thinsp;<span className="text-code">size</span> parameter up to a
+          maximum of 500 for a single request. The API also supports the&thinsp;
+          <span className="text-code">page</span> parameter for accessing a
+          specific page of items.
         </p>
-        <div className="text-xl my-3">Paging resources</div>
+        <div className="text-xl italic my-3">Paging resources</div>
         <p className="mb-2">
           Links will be provided in the response to navigate the resources.
         </p>
@@ -301,8 +322,11 @@ Content-Type: application/json
         <p className="mb-2">
           The api endpoint provides the entry point into the service.
         </p>
-        <div className="text-xl my-3">Accessing the API</div>
-        <p className="mb-2">A GET request is used to access the API</p>
+        <div className="text-xl italic my-3">Accessing the API</div>
+        <p className="mb-2">
+          A&thinsp;<span className="text-code">GET</span> request is used to
+          access the API
+        </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
           $ curl -L 'http://www.ebi.ac.uk/ols/api' -i -H 'Accept:
@@ -375,9 +399,10 @@ Content-Type: application/json
         <p className="mb-2">
           The Ontologies resources is used to list ontologies in OLS
         </p>
-        <div className="text-xl my-3">Listing ontologies</div>
+        <div className="text-xl italic my-3">Listing ontologies</div>
         <p className="mb-2">
-          A GET request will list all of the OLS ontologies.
+          A&thinsp;<span className="text-code">GET</span> request will list all
+          of the OLS ontologies.
         </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
@@ -387,10 +412,11 @@ Content-Type: application/json
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
         <p className="mb-2">
           The response is paginated where the individual ontology resources are
-          in the _embedded.ontologies field.
+          in the&thinsp;<span className="text-code">_embedded.ontologies</span>{" "}
+          field.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">Ontology</div>
-        <div className="text-xl my-3">Retrieve an ontology</div>
+        <div className="text-xl italic my-3">Retrieve an ontology</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>GET /api/ontologies/&#123;ontology&#125;</code>
         <DataTable
@@ -493,7 +519,7 @@ Content-Length: 3386
             },
           ]}
         />
-        <div className="text-xl my-3">Roots terms</div>
+        <div className="text-xl italic my-3">Roots terms</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>GET /api/ontologies/&#123;ontology&#125;/terms/roots</code>
         <DataTable
@@ -510,7 +536,7 @@ Content-Length: 3386
           The terms resources is used to list terms (or classes) in OLS from a
           particular ontology
         </p>
-        <div className="text-xl my-3">Listing ontology terms</div>
+        <div className="text-xl italic my-3">Listing ontology terms</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>GET /api/ontologies/&#123;ontology&#125;/terms</code>
         <DataTable
@@ -553,10 +579,10 @@ Content-Length: 3386
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
         <p className="mb-2">
           The response is paginated where the individual term resources are in
-          the _embedded.terms field.
+          the&thinsp;<span className="text-code">_embedded.terms</span> field.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">Term</div>
-        <div className="text-xl my-3">Retrieve a term</div>
+        <div className="text-xl italic my-3">Retrieve a term</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>
           GET /api/ontologies/&#123;ontology&#125;/terms/&#123;iri&#125;
@@ -725,7 +751,9 @@ Content-Length: 3624
             },
           ]}
         />
-        <div className="text-xl my-3">Parent/child relationships for terms</div>
+        <div className="text-xl italic my-3">
+          Parent/child relationships for terms
+        </div>
         <p className="mb-2">
           The RESTful way to retrieve direct parent/child or all parent/child
           (ancestors/descendant) terms is to follow the _links URL on a given
@@ -765,7 +793,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/hierarchicalAncestors?id=G
 `}
           </pre>
         </Banner>
-        <div className="text-xl my-3">Other related terms</div>
+        <div className="text-xl italic my-3">Other related terms</div>
         <p className="mb-2">
           In cases where a term has a direct relation to another term (single
           existential to a named class in OBO), for example a "part of"
@@ -776,7 +804,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/hierarchicalAncestors?id=G
           GET
           /api/ontologies/&#123;ontology_id&#125;/terms/&#123;term_iri&#125;/&#123;property_iri&#125;
         </code>
-        <div className="text-xl my-3">Term matching across ontologies</div>
+        <div className="text-xl italic my-3">
+          Term matching across ontologies
+        </div>
         <p className="mb-2">
           It is possible to search for terms across ontologies using the
           requests and responses as defined in this section.
@@ -865,7 +895,9 @@ Content-Length: 3022
 }`}
           </pre>
         </Banner>
-        <div className="text-xl my-3">Terms based on defining ontology</div>
+        <div className="text-xl italic my-3">
+          Terms based on defining ontology
+        </div>
         <p className="mb-2">
           Where users are interested in a particular ontology, they may also be
           interested in retrieving only terms from that ontology. The requests
@@ -962,7 +994,7 @@ Content-Length: 3052
           You can access property (relationships) and ontology individuals
           (instances) following similar methods to terms.
         </p>
-        <div className="text-xl my-3">Retrieve a property</div>
+        <div className="text-xl italic my-3">Retrieve a property</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>
           GET /api/ontologies/&#123;ontology&#125;/properties/&#123;iri&#125;
@@ -981,7 +1013,9 @@ Content-Length: 3052
             },
           ]}
         />
-        <div className="text-xl my-3">Property matching across ontologies</div>
+        <div className="text-xl italic my-3">
+          Property matching across ontologies
+        </div>
         <p className="mb-2">
           Similar to terms, properties can be found based on id. See Term
           matching across ontologies. Here we only provide 2 examples: Both
@@ -997,7 +1031,7 @@ Content-Length: 3052
 $ curl -L 'http://www.ebi.ac.uk/ols/api/properties?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl my-3">
+        <div className="text-xl italic my-3">
           Properties based on defining ontology
         </div>
         <p className="mb-2">
@@ -1012,7 +1046,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/properties?iri=http://www.ebi.ac.uk/efo/
 $ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl my-3">Retrieve an individual</div>
+        <div className="text-xl italic my-3">Retrieve an individual</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>
           GET /api/ontologies/&#123;ontology&#125;/individuals/&#123;iri&#125;
@@ -1031,7 +1065,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology
             },
           ]}
         />
-        <div className="text-xl my-3">
+        <div className="text-xl italic my-3">
           Individual matching across ontologies
         </div>
         <p className="mb-2">
@@ -1049,7 +1083,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology
 $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals?iri=http://purl.obolibrary.org/obo/IAO_0000125' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl my-3">
+        <div className="text-xl italic my-3">
           Individual based on defining ontology
         </div>
         <p className="mb-2">
@@ -1065,7 +1099,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
           </pre>
         </Banner>
         <div className="text-xl text-petrol-600 font-bold my-3">Search</div>
-        <div className="text-xl my-3">Search terms</div>
+        <div className="text-xl italic my-3">Search terms</div>
         <p className="mb-2">
           The search API is independent of the REST API and supports free text
           search over the ontologies. The default search is across all textual
@@ -1085,9 +1119,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
           ]}
         />
         <p className="mb-2">
-          You can override the fields that are searched by supplying a
-          queryFields argument. For example, to query on labels and synonyms
-          use.
+          You can override the fields that are searched by supplying a&thinsp;
+          <span className="text-code">queryFields</span> argument. For example,
+          to query on labels and synonyms use.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
         <code>GET /api/search?q=&#123;q&#125;&queryFields=label,synonym</code>
@@ -1101,8 +1135,12 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
             },
             {
               parameter: "ontology",
-              description:
-                "Restrict a search to a set of ontologies e.g. ontology=uberon,ma",
+              description: (
+                <>
+                  Restrict a search to a set of ontologies e.g.&thinsp;
+                  <span className="text-code">ontology=uberon,ma</span>
+                </>
+              ),
             },
             {
               parameter: "type",
@@ -1157,7 +1195,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
             },
           ]}
         />
-        <div className="text-xl my-3">Select terms</div>
+        <div className="text-xl italic my-3">Select terms</div>
         <p className="mb-2">
           We provide an additional search endopint that is designed specifically
           for selecting ontology terms. This has been tuned specifically to
@@ -1170,8 +1208,12 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
           data={[
             {
               parameter: "ontology",
-              description:
-                "Restrict a search to a set of ontologies e.g. ontology=uberon,ma",
+              description: (
+                <>
+                  Restrict a search to a set of ontologies e.g.&thinsp;
+                  <span className="text-code">ontology=uberon,ma</span>
+                </>
+              ),
             },
             {
               parameter: "type",
@@ -1218,7 +1260,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
             },
           ]}
         />
-        <div className="text-xl my-3">Suggest terms</div>
+        <div className="text-xl italic my-3">Suggest terms</div>
         <p className="mb-2">
           We also provide a generic suggester endpoint. This endpoint aims to
           provide traditional autosuggest based on all the vocabulary in OLS
@@ -1233,8 +1275,12 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntolog
           data={[
             {
               parameter: "ontology",
-              description:
-                "Restrict a search to a set of ontologies e.g. ontology=uberon,ma",
+              description: (
+                <>
+                  Restrict a search to a set of ontologies e.g.&thinsp;
+                  <span className="text-code">ontology=uberon,ma</span>
+                </>
+              ),
             },
             {
               parameter: "rows",
