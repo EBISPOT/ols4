@@ -45,7 +45,7 @@ export default function Downloads() {
               https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest
             </a>
           </p>
-          <DataTable columns={columns} data={data} dataCount={data.length} />
+          <DataTable columns={columns} data={data} />
         </div>
       </main>
     </Fragment>
