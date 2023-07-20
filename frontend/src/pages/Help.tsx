@@ -218,7 +218,7 @@ Content-Length: 153
         </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies?page=1&size=1' -i
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies?page=1&size=1' -i
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
         <DataTable
@@ -329,7 +329,7 @@ Content-Type: application/json
         </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols/api' -i -H 'Accept:
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api' -i -H 'Accept:
           application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
@@ -406,7 +406,7 @@ Content-Type: application/json
         </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies' -i -H 'Accept:
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies' -i -H 'Accept:
           application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
@@ -430,8 +430,8 @@ Content-Type: application/json
         />
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/efo' -i -H 'Accept:
-          application/json'
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/efo' -i -H
+          'Accept: application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Sample response</div>
         <Banner type="code">
@@ -573,7 +573,7 @@ Content-Length: 3386
         />
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/efo/terms' -i -H
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms' -i -H
           'Accept: application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
@@ -604,7 +604,7 @@ Content-Length: 3386
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
           $ curl -L
-          'http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226'
+          'http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226'
           -i -H 'Accept: application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Sample response</div>
@@ -784,12 +784,12 @@ Content-Length: 3624
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/parents?id=GO:0043226' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/children?id=GO:0043226' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/ancestors?id=GO:0043226' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/descendants?id=GO:0043226' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/hierarchicalDescendants?id=GO:0043226' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/hierarchicalAncestors?id=GO:0043226' -i -H 'Accept: application/json'
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/parents?id=GO:0043226' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/children?id=GO:0043226' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/ancestors?id=GO:0043226' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/descendants?id=GO:0043226' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/hierarchicalDescendants?id=GO:0043226' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/hierarchicalAncestors?id=GO:0043226' -i -H 'Accept: application/json'
 `}
           </pre>
         </Banner>
@@ -814,11 +814,11 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/ontologies/go/hierarchicalAncestors?id=G
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms?iri=http://www.ebi.ac.uk/efo/EFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms?short_form=EFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms?obo_id=EFO:0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms?id=EFO:0000001' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms?iri=http://www.ebi.ac.uk/efo/EFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms?short_form=EFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms?obo_id=EFO:0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms?id=EFO:0000001' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Sample response</div>
@@ -906,11 +906,11 @@ Content-Length: 3022
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?short_form=EFO_0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?obo_id=EFO:0000001' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology?id=EFO:0000001' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology?short_form=EFO_0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology?obo_id=EFO:0000001' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology?id=EFO:0000001' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Sample response</div>
@@ -1027,8 +1027,8 @@ Content-Length: 3052
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000784' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/properties?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000784' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/properties?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-xl italic my-3">
@@ -1042,8 +1042,8 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/properties?iri=http://www.ebi.ac.uk/efo/
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000784' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000784' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-xl italic my-3">Retrieve an individual</div>
@@ -1079,8 +1079,8 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/properties/findByIdAndIsDefiningOntology
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000125' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/individuals?iri=http://purl.obolibrary.org/obo/IAO_0000125' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000125' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals?iri=http://purl.obolibrary.org/obo/IAO_0000125' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-xl italic my-3">
@@ -1094,8 +1094,8 @@ $ curl -L 'http://www.ebi.ac.uk/ols/api/individuals?iri=http://purl.obolibrary.o
         <div className="text-lg text-petrol-600 my-3">Sample requests</div>
         <Banner type="code">
           <pre>
-            {`$ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntology/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001901' -i -H 'Accept: application/json'
-$ curl -L 'http://www.ebi.ac.uk/ols/api/individuals/findByIdAndIsDefiningOntology?iri=http://purl.obolibrary.org/obo/RO_0001901' -i -H 'Accept: application/json'`}
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntology/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001901' -i -H 'Accept: application/json'
+$ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntology?iri=http://purl.obolibrary.org/obo/RO_0001901' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
         <div className="text-xl text-petrol-600 font-bold my-3">Search</div>
