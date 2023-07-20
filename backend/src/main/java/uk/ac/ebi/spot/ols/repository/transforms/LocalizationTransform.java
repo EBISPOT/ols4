@@ -187,7 +187,9 @@ public class LocalizationTransform {
             JsonObject entityProps = linkedEntities.getAsJsonObject(entityIri);
             JsonObject entityPropsRes = new JsonObject();
             for(String k : entityProps.keySet()) {
-                entityPropsRes.add(k, localizeValueWithFallbacks(entityProps.get(k), lang));
+                var val = localizeValueWithFallbacks(entityProps.get(k), lang);
+                if(val!=null)
+                    entityPropsRes.add(k, val);
             }
             res.add(entityIri, entityPropsRes);
         }

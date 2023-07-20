@@ -30,6 +30,27 @@ public class SynonymAnnotator {
 	}
 
 	public static void annotateSynonyms(OntologyGraph graph) {
-		PropertyCollator.collateProperties(graph, "synonym", getSynonymProperties(graph), List.of());
+		collateProperties(graph, "synonym", getSynonymProperties(graph));
+	}
+
+	private static void collateProperties(OntologyGraph graph, String destProp, Collection<String> sourceProps) {
+
+		for(String id : graph.nodes.keySet()) {
+			OntologyNode c = graph.nodes.get(id);
+
+			// skip bnodes
+			if(c.uri == null)
+				continue;
+
+			for(String prop : sourceProps) {
+				List<PropertyValue> values = c.properties.getPropertyValues(prop);
+				if(values != null) {
+					for(PropertyValue value : values) {
+						c.properties.addProperty(destProp, value);
+					}
+				}
+			}
+		}
+
 	}
 }

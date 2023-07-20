@@ -1,0 +1,50 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "contact": {
+        "email": "alpha.tom.kodamullil@scai.fraunhofer.de",
+        "github": "akodamullil",
+        "label": "Alpha Tom Kodamullil",
+        "orcid": "0000-0001-9896-3531"
+      },
+      "dependencies": [
+        {
+          "id": "bfo"
+        }
+      ],
+      "description": "Alzheimer's Disease Ontology is a knowledge-based ontology that encompasses varieties of concepts related to Alzheimer'S Disease, structured by upper level Basic Formal Ontology(BFO). This Ontology is enriched by the interrelated entities that demonstrate the network of the understanding on Alzheimer's disease and can be readily applied for text mining.",
+      "domain": "health",
+      "homepage": "https://github.com/Fraunhofer-SCAI-Applied-Semantics/ADO",
+      "id": "ado",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/ado.owl",
+      "preferredPrefix": "ADO",
+      "products": [
+        {
+          "id": "ado.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/ado.owl"
+        }
+      ],
+      "repository": "https://github.com/Fraunhofer-SCAI-Applied-Semantics/ADO",
+      "title": "Alzheimer's Disease Ontology",
+      "tracker": "https://github.com/Fraunhofer-SCAI-Applied-Semantics/ADO/issues"
+    }
+  ]
+}

@@ -216,7 +216,12 @@ public class V1SearchController {
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getStrings(json, "label"));
+            if (fieldList.contains("label")) {
+                var label = outDoc.put("label", JsonHelper.getStrings(json, "label"));
+                if(label!=null) {
+                    outDoc.put("label", label);
+                }
+            }
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));

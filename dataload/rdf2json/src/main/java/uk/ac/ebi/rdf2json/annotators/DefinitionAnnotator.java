@@ -3,6 +3,7 @@ import java.util.*;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
+import uk.ac.ebi.rdf2json.properties.PropertyValue;
 
 public class DefinitionAnnotator {
 
@@ -27,6 +28,27 @@ public class DefinitionAnnotator {
 	}
 
 	public static void annotateDefinitions(OntologyGraph graph) {
-		PropertyCollator.collateProperties(graph, "definition", getDefinitionProperties(graph), List.of());
+		collateProperties(graph, "definition", getDefinitionProperties(graph));
+	}
+
+	private static void collateProperties(OntologyGraph graph, String destProp, Collection<String> sourceProps) {
+
+		for(String id : graph.nodes.keySet()) {
+			OntologyNode c = graph.nodes.get(id);
+
+			// skip bnodes
+			if(c.uri == null)
+				continue;
+
+			for(String prop : sourceProps) {
+				List<PropertyValue> values = c.properties.getPropertyValues(prop);
+				if(values != null) {
+					for(PropertyValue value : values) {
+						c.properties.addProperty(destProp, value);
+					}
+				}
+			}
+		}
+
 	}
 }
