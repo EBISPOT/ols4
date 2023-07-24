@@ -223,7 +223,7 @@ public class V1SearchController {
                 }
             }
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
-            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm").get(0));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
                     JsonHelper.getString(json, "isDefiningOntology") == null ? false :
