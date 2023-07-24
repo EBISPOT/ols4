@@ -22,16 +22,14 @@ export default abstract class Entity extends Thing {
     return this.properties["http://www.ebi.ac.uk/efo/obsoleted_in_version"];
   }
 
-  getDeprecationReason(): string {
-    return asArray(
+  getDeprecationReason(): Reified<any>[] {
+    return Reified.fromJson<any>(
       this.properties["http://purl.obolibrary.org/obo/IAO_0000231"]
-    )
-      .concat(
-        asArray(
-          this.properties["http://www.ebi.ac.uk/efo/reason_for_obsolescence"]
-        )
+    ).concat(
+      Reified.fromJson<any>(
+        this.properties["http://www.ebi.ac.uk/efo/reason_for_obsolescence"]
       )
-      .join(", ");
+    );
   }
 
   getDeprecationReplacement(): string {
