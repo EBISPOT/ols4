@@ -196,7 +196,7 @@ Content-Length: 153
           >
             Hypertext Application Language (HAL)
           </a>
-          format. Links can be found beneath the&thinsp;
+          &thinsp;format. Links can be found beneath the&thinsp;
           <span className="text-code">_links</span> key. Users of the API should
           not create URIs themselves, instead they should use the
           above-described links to navigate from resource to resource.
@@ -412,8 +412,8 @@ Content-Type: application/json
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
         <p className="mb-2">
           The response is paginated where the individual ontology resources are
-          in the&thinsp;<span className="text-code">_embedded.ontologies</span>{" "}
-          field.
+          in the&thinsp;<span className="text-code">_embedded.ontologies</span>
+          &thinsp;field.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">Ontology</div>
         <div className="text-xl italic my-3">Retrieve an ontology</div>
