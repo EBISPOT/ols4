@@ -15,6 +15,7 @@ import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
 import SearchBox from "../../../components/SearchBox";
 import LinkedEntities from "../../../model/LinkedEntities";
+import Reified from "../../../model/Reified";
 import {
   getClassInstances,
   getEntityWithType,
@@ -36,6 +37,7 @@ import IndividualDifferentFromSection from "./entityPageSections/IndividualDiffe
 import IndividualPropertyAssertionsSection from "./entityPageSections/IndividualPropertyAssertionsSection";
 import IndividualSameAsSection from "./entityPageSections/IndividualSameAsSection";
 import IndividualTypesSection from "./entityPageSections/IndividualTypesSection";
+import MetadataTooltip from "./entityPageSections/MetadataTooltip";
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
@@ -246,20 +248,35 @@ export default function EntityPage({
                     </i>
                   </div>
                 )}
-                {entity.getDeprecationReason() && (
-                  <div>
-                    Reason:&thinsp;
-                    <i>
-                      {addLinksToText(
-                        entity.getDeprecationReason(),
-                        linkedEntities,
-                        ontologyId,
-                        entity,
-                        entityType
-                      )}
-                    </i>
-                  </div>
-                )}
+                {entity.getDeprecationReason() &&
+                  entity.getDeprecationReason().length > 0 && (
+                    <div>
+                      Reason:&thinsp;
+                      <i>
+                        {entity
+                          .getDeprecationReason()
+                          .map((reason: Reified<any>) => {
+                            return (
+                              <span key={reason.value.toString()}>
+                                {addLinksToText(
+                                  reason.value,
+                                  linkedEntities,
+                                  ontologyId,
+                                  entity,
+                                  entityType
+                                )}
+                                {reason.hasMetadata() ? (
+                                  <MetadataTooltip
+                                    metadata={reason.getMetadata()}
+                                    linkedEntities={linkedEntities}
+                                  />
+                                ) : null}
+                              </span>
+                            );
+                          })}
+                      </i>
+                    </div>
+                  )}
               </Banner>
             )}
             <div className="bg-gradient-to-r to-white rounded-lg p-8 mb-4 text-neutral-black from-neutral-light">
