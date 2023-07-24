@@ -54,7 +54,7 @@ export default function EntityAnnotationsSection({
                       return (
                         <li
                           key={
-                            annotation.value.substring(0, 10) + randomString()
+                            annotation.value.toString().substring(0, 10) + randomString()
                           }
                         >
                           <span>{renderAnnotation(annotation)}</span>

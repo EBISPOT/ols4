@@ -33,7 +33,7 @@ export default function EntityRelatedFromSection({
       {predicates.map((p) => {
         let label = linkedEntities.getLabelForIri(p);
         return (
-          <div key={p + randomString()}>
+          <div key={p.toString() + randomString()}>
             <div>
               <i>{label || p}</i>
             </div>
@@ -44,7 +44,7 @@ export default function EntityRelatedFromSection({
                   let relatedIri = relatedFrom.value.value;
                   // let label = linkedEntities.getLabelForIri(relatedIri);
                   return (
-                    <li key={relatedIri + randomString()}>
+                    <li key={relatedIri.toString() + randomString()}>
                       <EntityLink
                         ontologyId={entity.getOntologyId()}
                         currentEntity={entity}
