@@ -7,6 +7,10 @@
 		  "ontology_purl": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
 		  "homepage": "https://mapping-commons.github.io/semantic-mapping-vocabulary/",
 		  "preferredPrefix": "semapv",
+		  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+		  "synonym_property": [
+			  "http://www.w3.org/2004/02/skos/core#altLabel"
+		  ],
                   "base_uri": ["https://w3id.org/semapv/vocab/"]
           },
 	           
