@@ -210,26 +210,26 @@ public class V1SearchController {
                 fieldList.add("obo_id");
                 fieldList.add("is_defining_ontology");
                 fieldList.add("type");
-                fieldList.add("synonym");
+                fieldList.add("synonyms");
             }
 
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
             if (fieldList.contains("label")) {
-                var label = outDoc.put("label", JsonHelper.getStrings(json, "label"));
+                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
                 if(label!=null) {
                     outDoc.put("label", label);
                 }
             }
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
-            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm").get(0));
-            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
                     JsonHelper.getString(json, "isDefiningOntology") == null ? false :
                             JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains("synonyms")) outDoc.put("synonyms", JsonHelper.getStrings(json, "synonym"));
 
             // TODO: ontology_prefix
 
