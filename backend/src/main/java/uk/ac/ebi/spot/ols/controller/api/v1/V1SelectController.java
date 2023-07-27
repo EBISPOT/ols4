@@ -9,6 +9,7 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +28,6 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 @Controller
 public class V1SelectController {
 
@@ -40,7 +39,7 @@ public class V1SelectController {
     @Autowired
     private OlsSolrClient solrClient;
 
-    @RequestMapping(path = "/api/select", produces = {APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/api/select", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void select(
             @RequestParam("q") String query,
             @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
@@ -205,6 +204,7 @@ public class V1SelectController {
         responseObj.put("highlighting", highlighting);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.flushBuffer();
 
     }

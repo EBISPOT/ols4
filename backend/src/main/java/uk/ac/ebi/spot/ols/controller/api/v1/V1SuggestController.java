@@ -8,6 +8,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +22,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 @Controller
 public class V1SuggestController {
 
@@ -34,7 +33,7 @@ public class V1SuggestController {
     @Autowired
     private OlsSolrClient solrClient;
 
-    @RequestMapping(path = "/api/suggest", produces = {APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/api/suggest", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void suggest(
             @RequestParam("q") String query,
             @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
@@ -106,6 +105,7 @@ public class V1SuggestController {
         responseObj.put("response", responseBody);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.flushBuffer();
     }
 
