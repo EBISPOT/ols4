@@ -70,6 +70,9 @@ public class V1TermController implements
                 terms = termRepository.findAllByShortForm(shortForm, lang, pageable);
             } else if (oboId != null) {
                 terms = termRepository.findAllByOboId(oboId, lang, pageable);
+            } else {
+                terms = termRepository.findAll(lang, pageable);
+                if (terms == null) throw new ResourceNotFoundException("Ontology not found");
             }
         } else {
             terms = termRepository.findAllByIri(id, lang, pageable);
@@ -79,10 +82,6 @@ public class V1TermController implements
                     terms = termRepository.findAllByOboId(id, lang, pageable);
                 }
             }
-        }
-        if (terms == null || terms.getContent().isEmpty()) {
-            terms = termRepository.findAll(lang, pageable);
-            if (terms == null) throw new ResourceNotFoundException("Ontology not found");
         }
 
         return new ResponseEntity<>(assembler.toModel(terms, termAssembler), HttpStatus.OK);
