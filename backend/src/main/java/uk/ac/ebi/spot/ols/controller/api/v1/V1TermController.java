@@ -113,25 +113,25 @@ public class V1TermController implements
         Page<V1Term> terms = null;
         if (id == null) {
             if (iri != null) {
-                terms = termRepository.findAllByIri(iri, lang, pageable);
+                terms = termRepository.findAllByIriAndIsDefiningOntology(iri, lang, pageable);
             } else if (shortForm != null) {
-                terms = termRepository.findAllByShortForm(shortForm, lang, pageable);
+                terms = termRepository.findAllByShortFormAndIsDefiningOntology(shortForm, lang, pageable);
             } else if (oboId != null) {
-                terms = termRepository.findAllByOboId(oboId, lang, pageable);
+                terms = termRepository.findAllByOboIdAndIsDefiningOntology(oboId, lang, pageable);
+            } else {
+                terms = termRepository.findAllByIsDefiningOntology(lang, pageable);
+                if (terms == null) throw new ResourceNotFoundException("Ontology not found");
             }
         } else {
-            terms = termRepository.findAllByIri(id, lang, pageable);
+            terms = termRepository.findAllByIriAndIsDefiningOntology(id, lang, pageable);
             if (terms.getContent().isEmpty()) {
-                terms = termRepository.findAllByShortForm(id, lang, pageable);
+                terms = termRepository.findAllByShortFormAndIsDefiningOntology(id, lang, pageable);
                 if (terms.getContent().isEmpty()) {
-                    terms = termRepository.findAllByOboId(id, lang, pageable);
+                    terms = termRepository.findAllByOboIdAndIsDefiningOntology(id, lang, pageable);
                 }
             }
         }
-        if (terms == null || terms.getContent().isEmpty()) {
-            terms = termRepository.findAllByIsDefiningOntology(lang, pageable);
-            if (terms == null) throw new ResourceNotFoundException("Ontology not found");
-        }
+
         return new ResponseEntity<>(assembler.toModel(terms, termAssembler), HttpStatus.OK);
     }
 
