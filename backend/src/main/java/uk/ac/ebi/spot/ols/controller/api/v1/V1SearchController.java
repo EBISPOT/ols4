@@ -96,8 +96,8 @@ public class V1SearchController {
             }
         } else {
             if (exact) {
-                String[] fields = SolrFieldMapper.mapFieldsList(queryFields).toArray(new String[0]);
-                solrQuery.setQuery(createUnionQuery(query, fields, true));
+                String[] fields = SolrFieldMapper.mapFieldsList(queryFields.stream().map(queryField -> queryField + "_s").collect(Collectors.toList())).toArray(new String[0]);
+                solrQuery.setQuery(createUnionQuery(query.toLowerCase(), fields, true));
             } else {
 
                 solrQuery.set("defType", "edismax");
