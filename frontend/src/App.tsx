@@ -19,7 +19,6 @@ import OntologyPage from "./pages/ontologies/OntologyPage";
 import EntityPage from "./pages/ontologies/entities/EntityPage";
 import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
-import urlJoin from "url-join";
 
 class App extends React.Component {
   render() {

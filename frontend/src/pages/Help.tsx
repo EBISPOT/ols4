@@ -180,7 +180,7 @@ Content-Length: 153
   "status" : 404,
   "error" : "Not Found",
   "message" : "Resource not found",
-  "path" : "/ols/api/ontologies/foobar"
+  "path" : "/ols4/api/ontologies/foobar"
 }`}
           </pre>
         </Banner>
@@ -264,19 +264,19 @@ Content-Type: application/json
 {
   "_links" : {
     "first" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies?page=0&size=1"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies?page=0&size=1"
     },
     "prev" : {
-      "href" :   "http://www.ebi.ac.uk/ols/api/ontologies?page=0&size=1"
+      "href" :   "http://www.ebi.ac.uk/ols4/api/ontologies?page=0&size=1"
     },
     "self" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies"
     },
     "next" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies?page=2&size=1"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies?page=2&size=1"
     },
     "last" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies?page=140&size=1"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies?page=140&size=1"
     }
   },
   "_embedded" : {
@@ -351,19 +351,19 @@ Content-Type: application/json
 {
   "_links" : {
     "ontologies" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies"
     },
     "individuals" : {
-      "href" :   "http://www.ebi.ac.uk/ols/api/individuals"
+      "href" :   "http://www.ebi.ac.uk/ols4/api/individuals"
     },
     "terms" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/terms"
+      "href" : "http://www.ebi.ac.uk/ols4/api/terms"
     },
     "properties" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/properties"
+      "href" : "http://www.ebi.ac.uk/ols4/api/properties"
     },
     "profile" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/profile"
+      "href" : "http://www.ebi.ac.uk/ols4/api/profile"
     }
   }
 }`}
@@ -482,16 +482,16 @@ Content-Length: 3386
   },
   "_links" : {
     "self" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo"
     },
     "terms" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms"
     },
     "properties" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/properties"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/properties"
     },
     "individuals" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/individuals"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/individuals"
     }
   }
 }`}
@@ -659,37 +659,37 @@ Content-Length: 3624
   "obo_synonym" : null,
   "_links" : {
     "self" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
     },
     "parents" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
     },
     "ancestors" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
     },
     "hierarchicalParents" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
     },
     "hierarchicalAncestors" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
     },
     "jstree" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
     },
     "children" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
     },
     "descendants" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
     },
     "hierarchicalChildren" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
     },
     "hierarchicalDescendants" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
     },
     "graph" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
+      "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
     }
   }
 }`}
@@ -861,29 +861,29 @@ Content-Length: 3022
       "obo_synonym" : null,
       "_links" : {
         "self" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
         },
         "children" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/children"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/children"
         },
         "descendants" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/descendants"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/descendants"
         },
         "hierarchicalChildren" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalChildren"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalChildren"
         },
         "hierarchicalDescendants" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalDescendants"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalDescendants"
         },
         "graph" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/graph"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/graph"
         }
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
+      "href" : "http://www.ebi.ac.uk/ols4/api/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
     }
   },
   "page" : {
@@ -953,29 +953,29 @@ Content-Length: 3052
       "obo_synonym" : null,
       "_links" : {
         "self" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
         },
         "children" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/children"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/children"
         },
         "descendants" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/descendants"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/descendants"
         },
         "hierarchicalChildren" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalChildren"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalChildren"
         },
         "hierarchicalDescendants" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalDescendants"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/hierarchicalDescendants"
         },
         "graph" : {
-          "href" : "http://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/graph"
+          "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/efo/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001/graph"
         }
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "http://www.ebi.ac.uk/ols/api/terms/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
+      "href" : "http://www.ebi.ac.uk/ols4/api/terms/findByIdAndIsDefiningOntology/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000001"
     }
   },
   "page" : {
