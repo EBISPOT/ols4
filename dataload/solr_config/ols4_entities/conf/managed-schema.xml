@@ -110,31 +110,29 @@
          If you don't need it, consider removing it and the corresponding copyField directive.
     -->
 
+    <!-- COMMON field properties
+        indexed - If true, the value of the field can be used in queries to retrieve matching documents.
+        stored - If true, the actual value of the field can be retrieved by queries.
+    -->
+
     <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+
     <!-- docValues are enabled by default for long type so we don't need to index the version field  -->
     <field name="_version_" type="plong" indexed="false" stored="false"/>
 
     <!-- If you don't use child/nested documents, then you should remove the next two fields:  -->
     <!-- for nested documents (minimal; points to root document) -->
-    <field name="_root_" type="string" indexed="true" stored="false" docValues="false" />
+<!--    <field name="_root_" type="string" indexed="true" stored="false" docValues="false" />-->
     <!-- for nested documents (relationship tracking) -->
-    <field name="_nest_path_" type="_nest_path_" /><fieldType name="_nest_path_" class="solr.NestPathField" />
+<!--    <field name="_nest_path_" type="_nest_path_" /><fieldType name="_nest_path_" class="solr.NestPathField" />-->
 
-    <field name="_text_" type="text_general" indexed="true" stored="false" multiValued="true"/>
+<!--    <field name="_text_" type="text_general" indexed="false" stored="false" multiValued="true"/>-->
 
-	    
 
     <!-- OLS4: we are using dynamic fields for everything so no need to specify much of a schema.
 	 however we do need to specify the fields we DON'T want to be indexed
     -->
-    <field name="_json" type="ols4json" indexed="false" stored="true" multiValued="false" />
-
-
-
-    <!-- This can be enabled, in case the client does not know what fields may be searched. It isn't enabled by default
-         because it's very expensive to index everything twice. -->
-    <!-- <copyField source="*" dest="_text_"/> -->
-
+    <field name="_json" type="ols4json" indexed="true" stored="true" multiValued="false" />
 
     <!-- Type used for data-driven schema, to add a string copy for each text field -->
     <dynamicField name="str_*" type="strings" stored="false" docValues="true" indexed="false" useDocValuesAsStored="false"/>
@@ -275,23 +273,38 @@
          also applies synonyms.
     -->
     <fieldType name="ols4json" class="solr.TextField">
-    </fieldType>
-    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
-      <analyzer type="index">
-        <tokenizer name="standard"/>
-        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
-			<!-- in this example, we will only use synonyms at query time
+        <analyzer type="index">
+            <tokenizer name="standard"/>
+            <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+            <!-- in this example, we will only use synonyms at query time
         <filter name="synonymGraph" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
         <filter name="flattenGraph"/>
         -->
-			<!--<filter name="lowercase"/>-->
-		</analyzer>
-      <analyzer type="query">
-        <tokenizer name="standard"/>
-        <filter name="stop" ignoreCase="true" words="stopwords.txt" />
-        <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-			<!--<filter name="lowercase"/>-->
-		</analyzer>
+            <!--<filter name="lowercase"/>-->
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer name="standard"/>
+            <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+            <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+            <!--<filter name="lowercase"/>-->
+        </analyzer>
+    </fieldType>
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+        <analyzer type="index">
+            <tokenizer name="standard"/>
+            <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+                <!-- in this example, we will only use synonyms at query time
+            <filter name="synonymGraph" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+            <filter name="flattenGraph"/>
+            -->
+                <!--<filter name="lowercase"/>-->
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer name="standard"/>
+            <filter name="stop" ignoreCase="true" words="stopwords.txt" />
+            <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+                <!--<filter name="lowercase"/>-->
+        </analyzer>
 	</fieldType>
 
     <fieldType name="ols4textWhitespaceEdge" class="solr.TextField">
@@ -359,13 +372,13 @@
         <tokenizer name="standard"/>
         <filter name="stop" ignoreCase="true" words="stopwords.txt" />
         <filter name="lowercase"/>
-		</analyzer>
+      </analyzer>
       <analyzer type="query">
         <tokenizer name="standard"/>
         <filter name="stop" ignoreCase="true" words="stopwords.txt" />
         <filter name="synonymGraph" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter name="lowercase"/>
-		</analyzer>
+      </analyzer>
 	</fieldType>
 
 	<!-- A text field with defaults appropriate for English: it tokenizes with StandardTokenizer,
