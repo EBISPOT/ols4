@@ -65,7 +65,7 @@ public class RDF2JSON {
         List<String> configFilePaths = Arrays.asList(cmd.getOptionValue("config").split(","));
         String outputFilePath = cmd.getOptionValue("output");
 
-	String downloadedPath = cmd.getOptionValue("downloadedPath");
+	    String downloadedPath = cmd.getOptionValue("downloadedPath");
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
         boolean bNoDates = cmd.hasOption("noDates");
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");

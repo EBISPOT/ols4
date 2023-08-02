@@ -89,19 +89,19 @@ public class JSON2Solr {
 
                                 Map<String, Object> _class = gson.fromJson(reader, Map.class);
 
-				Map<String, Object> flattenedClass = new TreeMap<>();
+                                Map<String, Object> flattenedClass = new TreeMap<>();
 
-				String ontologyId = (String) ontology.get("ontologyId");
-				String entityId = ontologyId + "+class+" + (String) _class.get("iri");
+                                String ontologyId = (String) ontology.get("ontologyId");
+                                String entityId = ontologyId + "+class+" + (String) _class.get("iri");
 
-				flattenedClass.put("_json", gson.toJson(_class));
-				flattenedClass.put("id", entityId);
+                                flattenedClass.put("_json", gson.toJson(_class));
+                                flattenedClass.put("id", entityId);
 
-				flattenProperties(_class, flattenedClass);
+                                flattenProperties(_class, flattenedClass);
 
-				classesWriter.println(gson.toJson(flattenedClass));
+                                classesWriter.println(gson.toJson(flattenedClass));
 
-				writeAutocompleteEntries(ontologyId, entityId, flattenedClass, autocompleteWriter);
+                                writeAutocompleteEntries(ontologyId, entityId, flattenedClass, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -114,18 +114,18 @@ public class JSON2Solr {
 
                                 Map<String, Object> property = gson.fromJson(reader, Map.class);
 
-				Map<String, Object> flattenedProperty = new TreeMap<>();
+                                Map<String, Object> flattenedProperty = new TreeMap<>();
 
-				String ontologyId = (String) ontology.get("ontologyId");
-				String entityId = ontologyId + "+property+" + (String) property.get("iri");
-				flattenedProperty.put("_json", gson.toJson(property));
-				flattenedProperty.put("id", entityId);
+                                String ontologyId = (String) ontology.get("ontologyId");
+                                String entityId = ontologyId + "+property+" + (String) property.get("iri");
+                                flattenedProperty.put("_json", gson.toJson(property));
+                                flattenedProperty.put("id", entityId);
 
-				flattenProperties(property, flattenedProperty);
+                                flattenProperties(property, flattenedProperty);
 
-				propertiesWriter.println(gson.toJson(flattenedProperty));
+                                propertiesWriter.println(gson.toJson(flattenedProperty));
 
-				writeAutocompleteEntries(ontologyId, entityId, flattenedProperty, autocompleteWriter);
+                                writeAutocompleteEntries(ontologyId, entityId, flattenedProperty, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -138,18 +138,18 @@ public class JSON2Solr {
 
                                 Map<String, Object> individual = gson.fromJson(reader, Map.class);
 
-				Map<String, Object> flattenedIndividual = new TreeMap<>();
+                                Map<String, Object> flattenedIndividual = new TreeMap<>();
 
-				String ontologyId = (String) ontology.get("ontologyId");
-				String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
-				flattenedIndividual.put("_json", gson.toJson(individual));
-				flattenedIndividual.put("id", entityId);
+                                String ontologyId = (String) ontology.get("ontologyId");
+                                String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
+                                flattenedIndividual.put("_json", gson.toJson(individual));
+                                flattenedIndividual.put("id", entityId);
 
-				flattenProperties(individual, flattenedIndividual);
+                                flattenProperties(individual, flattenedIndividual);
 
-				individualsWriter.println(gson.toJson(flattenedIndividual));
+                                individualsWriter.println(gson.toJson(flattenedIndividual));
 
-				writeAutocompleteEntries(ontologyId, entityId, flattenedIndividual, autocompleteWriter);
+                                writeAutocompleteEntries(ontologyId, entityId, flattenedIndividual, autocompleteWriter);
                             }
 
                             reader.endArray();
@@ -159,24 +159,24 @@ public class JSON2Solr {
                         }
                     }
 
-                        String ontologyId = (String) ontology.get("ontologyId");
+                    String ontologyId = (String) ontology.get("ontologyId");
 
-                        Map<String, Object> flattenedOntology = new TreeMap<>();
+                    Map<String, Object> flattenedOntology = new TreeMap<>();
 
-                        // don't want to store a copy of all the entities in here too
-                        Map<String, Object> ontologyJsonObj = new TreeMap<>();
-                        for(String k : ontology.keySet()) {
-                            if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
-                                continue;
-                            ontologyJsonObj.put(k, ontology.get(k));
-                        }
+                    // don't want to store a copy of all the entities in here too
+                    Map<String, Object> ontologyJsonObj = new TreeMap<>();
+                    for(String k : ontology.keySet()) {
+                        if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
+                            continue;
+                        ontologyJsonObj.put(k, ontology.get(k));
+                    }
 
-                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
-                        flattenedOntology.put("id", ontologyId + "+ontology+" + ontology.get("iri"));
+                    flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
+                    flattenedOntology.put("id", ontologyId + "+ontology+" + ontology.get("iri"));
 
-                        flattenProperties(ontology, flattenedOntology);
+                    flattenProperties(ontology, flattenedOntology);
 
-                        ontologiesWriter.println(gson.toJson(flattenedOntology));
+                    ontologiesWriter.println(gson.toJson(flattenedOntology));
 
                     reader.endObject(); // ontology
                 }
@@ -257,11 +257,11 @@ public class JSON2Solr {
 
             Map<String, Object> dict = (Map<String, Object>) obj;
 
-	    Object type = dict.get("type");
+            Object type = dict.get("type");
 
-	    if(type == null || !(type instanceof List)) {
-		// (2) class expression  or  json junk from the ontology config
-		return null;
+            if(type == null || !(type instanceof List)) {
+            // (2) class expression  or  json junk from the ontology config
+            return null;
 	    }
 
 	    List<String> types = (List<String>) type;
@@ -277,13 +277,13 @@ public class JSON2Solr {
                 return discardMetadata(dict.get("value"));
 
 	    } else {
-		throw new RuntimeException("???");
+		    throw new RuntimeException("???");
 	    }
 
         } else {
 	
 		return obj;
-	}
+	    }
     }
 
     public static String objToString(Object obj) {
@@ -321,11 +321,11 @@ public class JSON2Solr {
    }
 
     static Map<String,String> makeAutocompleteEntry(String ontologyId, String entityId, String label) {
-	Map<String,String> entry = new LinkedHashMap<>();
-	entry.put("ontologyId", ontologyId);
-	entry.put("id", entityId);
-	entry.put("label", label);
-	return entry;
+        Map<String,String> entry = new LinkedHashMap<>();
+        entry.put("ontologyId", ontologyId);
+        entry.put("id", entityId);
+        entry.put("label", label);
+        return entry;
     }
 
 
