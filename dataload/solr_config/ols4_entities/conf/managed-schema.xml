@@ -126,7 +126,7 @@
     <!-- for nested documents (relationship tracking) -->
 <!--    <field name="_nest_path_" type="_nest_path_" /><fieldType name="_nest_path_" class="solr.NestPathField" />-->
 
-<!--    <field name="_text_" type="text_general" indexed="false" stored="false" multiValued="true"/>-->
+    <field name="_text_" type="text_general" indexed="false" stored="false" multiValued="true"/>
 
 
     <!-- OLS4: we are using dynamic fields for everything so no need to specify much of a schema.
