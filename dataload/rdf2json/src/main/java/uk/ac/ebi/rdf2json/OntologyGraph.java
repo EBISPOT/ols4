@@ -291,12 +291,12 @@ public class OntologyGraph implements StreamRDF {
             Object configVal = config.get(configKey);
 
             // we include this (lowercased) as "ontologyId" rather than "id",
-	    // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
-	    //
+            // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
+            //
             if(configKey.equals("id"))
                 continue;
 
-	    // already included explicitly above
+    	    // already included explicitly above
             if(configKey.equals("ontologyId"))
                 continue;
                 
@@ -305,7 +305,7 @@ public class OntologyGraph implements StreamRDF {
             if(configKey.equals("iri"))
                 continue;
 
-	    // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
+	         // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
             if(configKey.equals("preferred_root_term"))
                 continue;
 
