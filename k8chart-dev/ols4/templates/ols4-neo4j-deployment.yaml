@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  {{ .Release.Name }}-neo4j
+  labels:
+    app: {{ .Release.Name }}-neo4j
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-neo4j
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-neo4j
+    spec:
+      volumes:
+        - name: {{ .Release.Name }}-neo4j-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-neo4j-pvc
+      containers:
+        - name: neo4j
+          image: ghcr.io/ebispot/ols4-neo4j:4.4.9-community
+          volumeMounts:
+            - mountPath: "/data"
+              name: {{ .Release.Name }}-neo4j-storage
+          command: ["/bin/bash", "-c"]
+          args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
+          resources:
+            requests:
+              memory: 20Gi
+          env:
+            - name: NEO4J_HEAP_MEMORY
+              value: 10g
+            - name: NEO4J_dbms_memory_heap_maxSize
+              value: 8g
+            - name: NEO4J_TARBALL_URL
+              value: {{.Values.neo4jTarballUrl}}
+            - name: NEO4J_AUTH
+              value: none
+          ports:
+            - containerPort: 7474
+            - containerPort: 7687
