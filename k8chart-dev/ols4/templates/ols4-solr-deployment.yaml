@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-solr
+  labels:
+    app: {{ .Release.Name }}-solr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-solr
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-solr
+    spec:
+      volumes:
+        - name: {{ .Release.Name }}-solr-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-solr-pvc
+      securityContext:
+        fsGroup: 8983
+      containers:
+        - name: solr
+          image: ghcr.io/ebispot/ols4-solr:9.0.0
+          volumeMounts:
+            - mountPath: "/data"
+              name: {{ .Release.Name }}-solr-storage
+          command: ["/bin/bash", "-c"]
+          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          resources:
+            requests:
+              memory: 11Gi
+          env:
+            - name: SOLR_TARBALL_URL
+              value: {{.Values.solrTarballUrl}}
+            - name: SOLR_HOME
+              value: /data
+          ports:
+            - containerPort: 8983
+

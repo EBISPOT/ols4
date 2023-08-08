@@ -21,7 +21,6 @@ spec:
           values:
           - hh-rke-wp-webadmin-47-worker-1.caas.ebi.ac.uk
           - hx-rke-wp-webadmin-40-worker-1.caas.ebi.ac.uk
-          - hh-rke-wp-webadmin-56-worker-1.caas.ebi.ac.uk
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   volumeMode: Filesystem

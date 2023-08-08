@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: {{ .Release.Name }}-backend
+spec:
+  type: NodePort
+  ports:
+  - name: "application"
+    port: 8080
+  selector:
+    app: {{ .Release.Name }}-backend
