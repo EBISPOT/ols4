@@ -7,7 +7,12 @@ import {
 } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Fragment, useEffect, useState } from "react";
-import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ApiLinks from "../../components/ApiLinks";
@@ -20,62 +25,73 @@ import { Tab, Tabs } from "../../components/Tabs";
 import Ontology from "../../model/Ontology";
 import Reified from "../../model/Reified";
 import EntityList from "./entities/EntityList";
-import addLinksToText from "./entities/entityPageSections/addLinksToText";
-import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import EntityTree from "./entities/EntityTree";
+import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
+import addLinksToText from "./entities/entityPageSections/addLinksToText";
 import { getOntology } from "./ontologiesSlice";
 
-export default function OntologyPage({
-  tab,
-}: {
-  tab: "classes" | "properties" | "individuals";
-}) {
+export default function OntologyPage() {
   const params = useParams();
-  let ontologyId: string = params.ontologyId as string;
+  const ontologyId: string = params.ontologyId as string;
 
   const dispatch = useAppDispatch();
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const loading = useAppSelector((state) => state.ontologies.loadingOntology);
-
-  const [currentTab, setTab] = useState<
-    "classes" | "properties" | "individuals"
-  >(tab || "classes");
-
-  const [viewMode, setViewMode] = useState<"tree" | "list">("tree");
+  const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let lang = searchParams.get("lang") || "en";
+  const lang = searchParams.get("lang") || "en";
+  const viewMode = searchParams.get("viewMode") || "tree";
+  const tab: "classes" | "properties" | "individuals" = ({
+    classes: "classes",
+    properties: "properties",
+    individuals: "individuals",
+  }[searchParams.get("tab") || "classes"] || "classes") as
+    | "classes"
+    | "properties"
+    | "individuals";
+  const iri = searchParams.get("iri");
 
-  useEffect(() => {
-    dispatch(getOntology({ ontologyId, lang }));
-  }, [dispatch, ontologyId, lang, searchParams]);
-
-  useEffect(() => {
-    if (currentTab === "individuals") setViewMode("list");
-  }, [currentTab]);
-
-  if (searchParams.get("iri")) {
-    let iri = searchParams.get("iri") as string;
-
-    let newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.delete("iri");
-
-    return (
-      <Navigate
-        to={`/ontologies/${ontologyId}/${currentTab}/${encodeURIComponent(
-          encodeURIComponent(iri)
-        )}`}
-      />
-    );
-  }
-
-  document.title = ontology?.getName() || ontologyId;
-
-  let version =
+  const version =
     (ontology?.getVersion()
       ? ontology.getVersion()
       : ontology?.getVersionFromIri()) || undefined;
 
+  useEffect(() => {
+    if (tab === "individuals" && ontology && ontology.getNumIndividuals() > 0) {
+      setSearchParams((params) => {
+        params.set("viewMode", "list");
+        return params;
+      });
+    } else if (
+      (tab === "properties" && ontology && !ontology.getNumProperties()) ||
+      (tab === "individuals" && ontology && !ontology.getNumIndividuals())
+    ) {
+      setSearchParams((params) => {
+        params.set("tab", "classes");
+        return params;
+      });
+    }
+  }, [tab, ontology, setSearchParams]);
+
+  useEffect(() => {
+    dispatch(getOntology({ ontologyId, lang }));
+  }, [dispatch, ontologyId, lang]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (iri)
+      navigate(
+        `/ontologies/${ontologyId}/${tab}/${encodeURIComponent(
+          encodeURIComponent(iri)
+        )}`
+      );
+  }, [iri, navigate, ontologyId, tab]);
+  useEffect(() => {
+    if (errorMessage) navigate("/error", { state: { message: errorMessage } });
+  }, [errorMessage, navigate]);
+
+  document.title = ontology?.getName() || ontologyId;
   return (
     <div>
       <Header section="ontologies" />
@@ -105,7 +121,7 @@ export default function OntologyPage({
                 <LanguagePicker
                   ontology={ontology}
                   lang={lang}
-                  onChangeLang={(lang) => setSearchParams({ lang: lang })}
+                  onChangeLang={(lang) => setSearchParams({ lang })}
                 />
                 <ApiLinks
                   apiUrl={`${process.env.REACT_APP_APIURL}api/ontologies/${ontologyId}`}
@@ -122,16 +138,21 @@ export default function OntologyPage({
                   <span className="font-bold">Version {version}</span>
                 </div>
               )}
-              <div className="mb-6">
+              <div>
                 <p>
                   {ontology.getDescription() ? ontology.getDescription() : ""}
                 </p>
               </div>
-              <div className="flex gap-2 mb-6">
+
+              <OntologyImportsSection ontology={ontology} />
+              <OntologyImportedBySection ontology={ontology} />
+
+              <div className="flex gap-2 mt-6 mb-6">
                 {ontology.getOntologyPurl() && (
                   <Link
                     to={ontology.getOntologyPurl()}
                     target="_blank"
+                    rel="noopener noreferrer"
                     download={true}
                   >
                     <button className="button-secondary font-bold self-center">
@@ -143,7 +164,11 @@ export default function OntologyPage({
                   </Link>
                 )}
                 {ontology.getHomepage() && (
-                  <Link to={ontology.getHomepage()} target="_blank">
+                  <Link
+                    to={ontology.getHomepage()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <button className="button-secondary font-bold self-center">
                       <div className="flex gap-2">
                         <Home />
@@ -156,6 +181,7 @@ export default function OntologyPage({
                   <Link
                     to={"mailto:" + ontology.getMailingList()}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <button className="button-secondary font-bold self-center">
                       <div className="flex gap-2">
@@ -186,9 +212,12 @@ export default function OntologyPage({
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-2">
                 <Tabs
-                  value={currentTab}
+                  value={tab}
                   onChange={(value: any) => {
-                    setTab(value);
+                    setSearchParams((params) => {
+                      params.set("tab", value);
+                      return params;
+                    });
                   }}
                 >
                   <Tab
@@ -213,17 +242,22 @@ export default function OntologyPage({
                     disabled={!(ontology.getNumIndividuals() > 0)}
                   />
                 </Tabs>
-                {currentTab !== "classes" || ontology.getNumClasses() > 0 ? (
-                  <div className="py-2 mb-1 flex justify-between">
+                {tab !== "classes" || ontology.getNumClasses() > 0 ? (
+                  <div className="py-2 mb-2 flex justify-between">
                     <div>
                       <button
-                        disabled={currentTab === "individuals"}
+                        disabled={tab === "individuals"}
                         className={`font-bold mr-3 ${
                           viewMode === "tree"
                             ? "button-primary-active"
                             : "button-primary"
                         }`}
-                        onClick={() => setViewMode("tree")}
+                        onClick={() =>
+                          setSearchParams((params) => {
+                            params.set("viewMode", "tree");
+                            return params;
+                          })
+                        }
                       >
                         <div className="flex gap-2">
                           <AccountTree />
@@ -236,7 +270,12 @@ export default function OntologyPage({
                             ? "button-primary-active"
                             : "button-primary"
                         }`}
-                        onClick={() => setViewMode("list")}
+                        onClick={() =>
+                          setSearchParams((params) => {
+                            params.set("viewMode", "list");
+                            return params;
+                          })
+                        }
                       >
                         <div className="flex gap-2">
                           <FormatListBulletedIcon />
@@ -247,12 +286,14 @@ export default function OntologyPage({
                   </div>
                 ) : null}
                 {viewMode === "list" ? (
-                  <EntityList ontologyId={ontologyId} entityType={currentTab} />
+                  <EntityList ontologyId={ontologyId} entityType={tab} />
                 ) : (
                   <EntityTree
                     ontology={ontology}
-                    entityType={currentTab}
+                    entityType={tab}
                     lang={lang}
+                    onNavigateToEntity={(ontology, entity) => navigate(`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
+                    onNavigateToOntology={(ontologyId, entity) => navigate(`/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`)}
                   />
                 )}
               </div>
@@ -267,20 +308,27 @@ export default function OntologyPage({
                       <a
                         id="ontologyIri"
                         href={ontology.getIri() || ontology.getOntologyPurl()}
-			className="link-default"
-			target="_blank"
+                        className="link-default"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {ontology.getIri() || ontology.getOntologyPurl()}
                       </a>
                     </div>
-		    {ontology.getVersionIri() && 
-			<div>
-			<span className="font-bold">Version IRI: </span>
-			<a id="versionIri" href={ontology.getVersionIri()} className="link-default" target="_blank">
-				{ontology.getVersionIri()}
-			</a>
-			</div>
-}
+                    {ontology.getVersionIri() && (
+                      <div>
+                        <span className="font-bold">Version IRI: </span>
+                        <a
+                          id="versionIri"
+                          href={ontology.getVersionIri()}
+                          className="link-default"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {ontology.getVersionIri()}
+                        </a>
+                      </div>
+                    )}
                     {/* todo remove hack when datarelease has completed; this should always be present */}
                     {ontology.getSourceFileTimestamp() && (
                       <div>
@@ -327,7 +375,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
             ontology.getAnnotationById(annotationPredicate);
 
           return (
-            <div key={title.toString().toUpperCase() + randomString()}>
+            <div key={title.toString() + randomString()}>
               <div className="font-bold">{title}</div>
 
               {annotations.length === 1 ? (
@@ -345,7 +393,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
                   {annotations
                     .map((annotation: Reified<any>) => {
                       return (
-                        <li key={randomString()}>
+                        <li key={JSON.stringify(annotation)}>
                           {renderAnnotation(annotation)}
                           {annotation.hasMetadata() && (
                             <MetadataTooltip
@@ -383,7 +431,119 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
       if (typeof value.value !== "string") {
         return <span>{JSON.stringify(value.value)}</span>;
       }
-      return <span>{addLinksToText(value.value.toString(), ontology.getLinkedEntities(), ontology.getOntologyId(), undefined, "ontologies")}</span>;
+      return (
+        <span>
+          {addLinksToText(
+            value.value.toString(),
+            ontology.getLinkedEntities(),
+            ontology.getOntologyId(),
+            undefined,
+            "ontologies"
+          )}
+        </span>
+      );
     }
+  }
+}
+
+function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
+  let [expanded, setExpanded] = useState<boolean>(false);
+  const MAX_UNEXPANDED = 5;
+
+  let imports = ontology.getImportsFrom();
+
+  if (!imports) return <Fragment />;
+
+  return (
+    <Fragment>
+      {imports && imports.length > 0 && (
+        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+          <span className="font-bold mr-2">Imports from</span>
+          {imports.length <= MAX_UNEXPANDED || expanded ? (
+            imports.map(renderOntId)
+          ) : (
+            <Fragment>
+              {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
+              &nbsp;
+              <span
+                className="link-default italic"
+                onClick={() => setExpanded(true)}
+              >
+                &thinsp;&nbsp;+&nbsp;{imports.length - MAX_UNEXPANDED}
+              </span>
+            </Fragment>
+          )}
+        </div>
+      )}
+    </Fragment>
+  );
+
+  function renderOntId(ontId: string) {
+    return (
+      <Link
+        key={ontId}
+        className="my-2"
+        style={{ display: "inline-block" }}
+        to={"/ontologies/" + ontId}
+      >
+        <span
+          className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+          title={ontId.toUpperCase()}
+        >
+          {ontId}
+        </span>
+      </Link>
+    );
+  }
+}
+
+function OntologyImportedBySection({ ontology }: { ontology: Ontology }) {
+  let [expanded, setExpanded] = useState<boolean>(false);
+  const MAX_UNEXPANDED = 5;
+
+  let imports = ontology.getExportsTo();
+
+  if (!imports) return <Fragment />;
+
+  return (
+    <Fragment>
+      {imports && imports.length > 0 && (
+        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+          <span className="font-bold mr-2">Exports to</span>
+          {imports.length <= MAX_UNEXPANDED || expanded ? (
+            imports.map(renderOntId)
+          ) : (
+            <Fragment>
+              {imports.slice(0, MAX_UNEXPANDED).map(renderOntId)}
+              &nbsp;
+              <span
+                className="link-default italic"
+                onClick={() => setExpanded(true)}
+              >
+                &thinsp;&nbsp;+&nbsp;{imports.length - MAX_UNEXPANDED}
+              </span>
+            </Fragment>
+          )}
+        </div>
+      )}
+    </Fragment>
+  );
+
+  function renderOntId(ontId: string) {
+    return (
+      <Link
+        key={ontId}
+        className="my-2"
+        style={{ display: "inline-block" }}
+        to={"/ontologies/" + ontId}
+      >
+        <span
+          className="link-ontology px-2 py-1 rounded-md text-sm text-white uppercase mr-1"
+          title={ontId.toUpperCase()}
+        >
+          {ontId}
+        </span>
+      </Link>
+    );
   }
 }

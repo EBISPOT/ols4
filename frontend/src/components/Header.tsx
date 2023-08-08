@@ -1,27 +1,22 @@
 import { Link } from "react-router-dom";
+import urlJoin from 'url-join'
 
-export default function Header({
-  section,
-}: // projectId,
-{
-  section: string;
-  // projectId?: string;
-}) {
+export default function Header({ section }: { section?: string }) {
   return (
     <header
       className="bg-black bg-right bg-cover"
       style={{
         backgroundImage:
-          "url('" + process.env.PUBLIC_URL + "/embl-ebi-background-4.jpg')",
+          "url('" + urlJoin(process.env.PUBLIC_URL!, "/embl-ebi-background-4.jpg") + "')"
       }}
     >
       <div className="container mx-auto flex flex-row gap-10">
         <div className="py-6">
-          <a href={process.env.PUBLIC_URL + "/"}>
+          <a href={urlJoin(process.env.PUBLIC_URL!, "/")}>
             <img
-              alt="OxO logo"
+              alt="OLS logo"
               className="h-24 inline-block"
-              src={process.env.PUBLIC_URL + "/logo.png"}
+              src={urlJoin(process.env.PUBLIC_URL!, "/logo.png")}
             />
           </a>
         </div>
@@ -71,13 +66,25 @@ export default function Header({
             <Link to={`/about`}>
               <li
                 role="menuitem"
-                className={`rounded-r-md px-4 py-3 ${
+                className={`px-4 py-3 ${
                   section === "about"
                     ? " bg-opacity-75 bg-neutral-500"
                     : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
                 About
+              </li>
+            </Link>
+            <Link to={`/downloads`}>
+              <li
+                role="menuitem"
+                className={`rounded-r-md px-4 py-3 ${
+                  section === "downloads"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
+                }`}
+              >
+                Downloads
               </li>
             </Link>
           </ul>

@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class ExtractIriFromPropertyName {
 
-    /* We have some added (by owl2json) properties like
+    /* We have some added (by rdf2json) properties like
     		relatedTo+http://....
 		negativePropertyAssertion+http://...
 	which consist of some alphabetic prefix, a + character, and the IRI

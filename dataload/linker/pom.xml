@@ -41,6 +41,11 @@
             <version>3.17.0</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.fusesource.leveldbjni</groupId>
+            <artifactId>leveldbjni-all</artifactId>
+            <version>1.8</version>
+        </dependency>
     </dependencies>
 
     <properties>

@@ -4,10 +4,8 @@
 
 :8080 {
     handle_path {$PUBLIC_URL}* {
-        root * /opt/ols4-frontend/build
+        root * /opt/ols4-frontend/dist
         try_files {path} /
         file_server
     }
 }
-
-

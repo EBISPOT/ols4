@@ -4,9 +4,10 @@ type ReqParams = {[k:string]:string}|undefined
 export async function request(
   path: string,
   reqParams:ReqParams,
-  init?: RequestInit | undefined
+  init?: RequestInit | undefined,
+  apiUrl?: string
 ): Promise<any> {
-  const url = process.env.REACT_APP_APIURL + path;
+  const url = (apiUrl || process.env.REACT_APP_APIURL) + path;
   //const res = await fetch(url.replace(/([^:]\/)\/+/g, "$1"), {
   const res = await fetch(url + (reqParams ? ('?' + new URLSearchParams(Object.entries(reqParams)).toString()) : ''), {
     ...(init ? init : {}),
@@ -44,9 +45,10 @@ export class Page<T> {
 
 export async function getPaginated<ResType>(
   path: string,
-  reqParams?: ReqParams
+  reqParams?: ReqParams,
+  apiUrl?: string
 ): Promise<Page<ResType>> {
-  const res = await get<any>(path, reqParams);
+  const res = await get<any>(path, reqParams, apiUrl);
 
   return new Page<ResType>(
 	res.page || 0,
@@ -58,8 +60,8 @@ export async function getPaginated<ResType>(
   );
 }
 
-export async function get<ResType>(path: string, reqParams?:ReqParams): Promise<ResType> {
-  return request(path, reqParams);
+export async function get<ResType>(path: string, reqParams?:ReqParams, apiUrl?: string): Promise<ResType> {
+  return request(path, reqParams, undefined, apiUrl);
 }
 
 export async function post<ReqType, ResType = any>(

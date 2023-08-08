@@ -1,18 +1,21 @@
+import { ThemeProvider } from "@emotion/react";
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from "@mui/material";
-import { Fragment, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useCallback, useEffect } from "react";
+import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { theme } from "../../../app/mui";
 import { randomString } from "../../../app/util";
 import Node from "../../../components/Node";
 import Entity from "../../../model/Entity";
 import Ontology from "../../../model/Ontology";
 import {
+  TreeNode,
   closeNode,
   disablePreferredRoots,
   enablePreferredRoots,
@@ -28,7 +31,6 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
-  TreeNode
 } from "../ontologiesSlice";
 
 export default function EntityTree({
@@ -36,11 +38,17 @@ export default function EntityTree({
   entityType,
   selectedEntity,
   lang,
+  onNavigateToEntity,
+  onNavigateToOntology,
+  apiUrl,
 }: {
   ontology: Ontology;
   selectedEntity?: Entity;
   entityType: "entities" | "classes" | "properties" | "individuals";
   lang: string;
+  onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
+  onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
+  apiUrl?: string;
 }) {
   const dispatch = useAppDispatch();
   const nodesWithChildrenLoaded = useAppSelector(
@@ -61,14 +69,14 @@ export default function EntityTree({
     (state) => state.ontologies.manuallyExpandedNodes
   );
 
-  const showObsoleteEnabled = useAppSelector(
-    (state) => state.ontologies.showObsolete
-  );
+  const showObsoleteEnabled = selectedEntity
+    ? selectedEntity.isDeprecated()
+    : useAppSelector((state) => state.ontologies.displayObsolete);
   const showSiblingsEnabled = useAppSelector(
-    (state) => state.ontologies.showSiblings
+    (state) => state.ontologies.displaySiblings
   );
   const showCountsEnabled = useAppSelector(
-    (state) => state.ontologies.showCounts
+    (state) => state.ontologies.displayCounts
   );
 
   const toggleNode = useCallback(
@@ -114,8 +122,6 @@ export default function EntityTree({
   ]);
 
   useEffect(() => {
-    // console.log('!!!! Dispatching API call')
-
     if (selectedEntity) {
       const entityIri = selectedEntity.getIri();
       let promise = dispatch(
@@ -126,6 +132,7 @@ export default function EntityTree({
           lang,
           showObsoleteEnabled,
           showSiblingsEnabled,
+          apiUrl,
         })
       );
       return () => promise.abort(); // component was unmounted
@@ -137,6 +144,7 @@ export default function EntityTree({
           preferredRoots,
           lang,
           showObsoleteEnabled,
+          apiUrl,
         })
       );
       return () => promise.abort(); // component was unmounted
@@ -166,14 +174,12 @@ export default function EntityTree({
         ),
       ];
     }
-
-    console.log(
-      "!!!! Getting missing node children: " +
-        JSON.stringify(nodesMissingChildren)
-    );
+    // console.log(
+    //   "!!!! Getting missing node children: " +
+    //     JSON.stringify(nodesMissingChildren)
+    // );
 
     let promises: any = [];
-
     for (let absId of nodesMissingChildren) {
       promises.push(
         dispatch(
@@ -184,6 +190,7 @@ export default function EntityTree({
             absoluteIdentity: absId,
             lang,
             showObsoleteEnabled,
+            apiUrl,
           })
         )
       );
@@ -262,11 +269,29 @@ export default function EntityTree({
               }}
               key={randomString()}
             >
+              {childNode.childRelationToParent ===
+                "http://purl.obolibrary.org/obo/BFO_0000050" && (
+                <img
+                  className="mr-1"
+                  src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
+                  style={{ height: "1em", display: "inline" }}
+                />
+              )}
+              {childNode.childRelationToParent ===
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (
+                <img
+                  className="mr-1"
+                  src={urlJoin(process.env.PUBLIC_URL!, "/instance.svg")}
+                  style={{ height: "1em", display: "inline" }}
+                />
+              )}
               <TreeLink
                 ontology={ontology}
                 entity={childNode.entity}
                 title={childNode.title}
                 lang={lang}
+                onNavigateToEntity={onNavigateToEntity}
+                onNavigateToOntology={onNavigateToOntology}
               />
               {!showObsoleteEnabled &&
                 showCountsEnabled &&
@@ -287,15 +312,15 @@ export default function EntityTree({
     );
   }
   return (
-    <Fragment>
+    <ThemeProvider theme={theme}>
       <div style={{ position: "relative" }}>
         <div
           style={{ position: "absolute", right: 0, top: 0 }}
-          className="flex flex-col"
+          className="flex flex-col bg-white px-2 m-1 rounded-lg"
         >
           {entityType === "classes" &&
             ontology.getPreferredRoots().length > 0 && (
-              <Fragment>
+              <div className="mb-2">
                 <FormControl>
                   <RadioGroup
                     name="radio-buttons-group"
@@ -315,8 +340,7 @@ export default function EntityTree({
                     />
                   </RadioGroup>
                 </FormControl>
-                <br />
-              </Fragment>
+              </div>
             )}
           <FormControlLabel
             control={
@@ -350,7 +374,10 @@ export default function EntityTree({
           )}
         </div>
         {rootNodes ? (
-          <div className="px-3 jstree jstree-1 jstree-proton" role="tree">
+          <div
+            className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
+            role="tree"
+          >
             {renderNodeChildren(rootNodes, 0)}
           </div>
         ) : null}
@@ -358,7 +385,7 @@ export default function EntityTree({
           <div className="spinner-default w-7 h-7 absolute -top-2 -left-5" />
         ) : null}
       </div>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 
@@ -367,38 +394,41 @@ function TreeLink({
   entity,
   title,
   lang,
+  onNavigateToEntity,
+  onNavigateToOntology,
 }: {
   ontology: Ontology;
   entity: Entity;
   title: string;
   lang: string;
+  onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
+  onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
 }) {
-  let encodedIri = encodeURIComponent(encodeURIComponent(entity.getIri()));
-
   let definedBy: string[] = entity.getDefinedBy();
 
   if (definedBy.indexOf(ontology.getOntologyId()) !== -1) definedBy = []; // don't show definedBy links for terms in current ontology
 
   return (
-    <Link
-      to={`/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
-    >
-      {title}
+    <span>
+      <a
+        title={entity.getIri()}
+        className={"link-default"}
+        onClick={() => onNavigateToEntity(ontology, entity)}
+      >
+        {title}
+      </a>
       {definedBy.length > 0 &&
         definedBy.map((definingOntology) => {
           return (
-            <Link
-              to={`/ontologies/${definingOntology}/${entity.getTypePlural()}/${encodedIri}?lang=${lang}`}
+            <span
+              onClick={() => onNavigateToOntology(definingOntology, entity)}
+              title={definingOntology.toUpperCase()}
+              className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
             >
-              <span
-                className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"
-                title={definingOntology.toUpperCase()}
-              >
-                {definingOntology}
-              </span>
-            </Link>
+              {definingOntology}
+            </span>
           );
         })}
-    </Link>
+    </span>
   );
 }

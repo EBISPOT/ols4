@@ -163,6 +163,10 @@ public class OlsSolrQuery {
 				return "str_" + propertyName;
 			case EDGES:
 				return "edge_" + propertyName;
+			case WHITESPACE:
+				return "whitespace_" + propertyName;
+			case WHITESPACE_EDGES:
+				return "whitespace_edge_" + propertyName;
 			default:
 				throw new RuntimeException("unknown filter accuracy");
 		}
@@ -175,6 +179,8 @@ public class OlsSolrQuery {
 			case CASE_SENSITIVE_TOKENS:
 			case WHOLE_FIELD:
 			case EDGES:
+			case WHITESPACE:
+			case WHITESPACE_EDGES:
 				return propertyValue;
 			default:
 				throw new RuntimeException("unknown filter accuracy");

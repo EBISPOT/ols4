@@ -33,11 +33,11 @@ export default function Home() {
                 <div className="text-neutral-black">
                   <span>
                     Examples:&nbsp;
-                    <Link to={"/search/diabetes"} className="link-default">
+                    <Link to={"/search?q=diabetes"} className="link-default">
                       diabetes
                     </Link>
                     &#44;&nbsp;
-                    <Link to={"/search/GO:0098743"} className="link-default">
+                    <Link to={"/search?q=GO:0098743"} className="link-default">
                       GO:0098743
                     </Link>
                   </span>

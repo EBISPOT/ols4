@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - hh-rke-wp-webadmin-56-worker-1.caas.ebi.ac.uk
+      containers:
+        - name: dataserver
+          image: nginx:1.23.3
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: {{.Release.Name}}-data
+              mountPath: "/usr/share/nginx/html"
+          resources:
+            requests:
+              memory: 2Gi
+      volumes:
+      - name: {{.Release.Name}}-data
+        persistentVolumeClaim:
+          claimName: {{.Release.Name}}-pvc

@@ -1,32 +1,42 @@
-import React from "react";
-import { BrowserRouter, Navigate, Route, Routes, useParams, useSearchParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Help from "./pages/help/HelpPage";
+import Downloads from "./pages/Downloads";
+import Error from "./pages/Error";
+import Help from "./pages/Help";
 import Home from "./pages/home/Home";
-import EntityPage from "./pages/ontologies/entities/EntityPage";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
+import EntityPage from "./pages/ontologies/entities/EntityPage";
+import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
 
 class App extends React.Component {
   render() {
-
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.PUBLIC_URL!}>
         <Routes>
+          <Route path={`*`} element={<Error />} />
+          <Route path={`/error`} element={<Error />} />
+
           <Route path={`/`} element={<Home />} />
           <Route path={`/home`} element={<Home />} />
-          <Route path={`/search/:search?`} element={<Search />} />
+          <Route path={`/search`} element={<Search />} />
 
           <Route path={`/ontologies`} element={<OntologiesPage />} />
-          <Route
-            path={`/ontologies/:ontologyId`}
-            element={<OntologyPage tab="classes" />}
-          />
+          <Route path={`/ontologies/:ontologyId`} element={<OntologyPage />} />
           <Route
             path={`/ontologies/:ontologyId/classes`}
-            element={<OntologyPage tab="classes" />}
+            element={<EntityPage entityType="classes" />}
           />
           <Route
             path={`/ontologies/:ontologyId/classes/:entityIri`}
@@ -34,19 +44,23 @@ class App extends React.Component {
           />
           <Route
             path={`/ontologies/:ontologyId/terms`}
-            element={<RedirectTermsToClasses />}
+            element={<RedirectToClasses />}
           />
           <Route
             path={`/ontologies/:ontologyId/terms/:entityIri`}
-            element={<RedirectTermToClass />}
+            element={<RedirectToType />}
           />
           <Route
-            path={`/ontologies/:ontologyId/terms/:entityIri`}
-            element={<EntityPage entityType="classes" />}
+            path={`/ontologies/:ontologyId/entities`}
+            element={<RedirectToClasses />}
+          />
+          <Route
+            path={`/ontologies/:ontologyId/entities/:entityIri`}
+            element={<RedirectToType />}
           />
           <Route
             path={`/ontologies/:ontologyId/properties`}
-            element={<OntologyPage tab="properties" />}
+            element={<EntityPage entityType="properties" />}
           />
           <Route
             path={`/ontologies/:ontologyId/properties/:entityIri`}
@@ -54,7 +68,7 @@ class App extends React.Component {
           />
           <Route
             path={`/ontologies/:ontologyId/individuals`}
-            element={<OntologyPage tab="individuals" />}
+            element={<EntityPage entityType="individuals" />}
           />
           <Route
             path={`/ontologies/:ontologyId/individuals/:entityIri`}
@@ -63,6 +77,7 @@ class App extends React.Component {
 
           <Route path={`/help`} element={<Help />} />
           <Route path={`/about`} element={<About />} />
+          <Route path={`/downloads`} element={<Downloads />} />
         </Routes>
         <Footer />
       </BrowserRouter>
@@ -72,16 +87,55 @@ class App extends React.Component {
 
 export default App;
 
-
-function RedirectTermsToClasses() {
-	let params = useParams();
-	let [ search ] = useSearchParams()
-	return <Navigate to={{ pathname: `/ontologies/${params.ontologyId}/classes`, search: search.toString() }} />
+function RedirectToClasses() {
+  const params = useParams();
+  const [search] = useSearchParams();
+  return (
+    <Navigate
+      to={{
+        pathname: `/ontologies/${params.ontologyId}/classes`,
+        search: search.toString(),
+      }}
+    />
+  );
 }
 
-function RedirectTermToClass() {
-	let params = useParams();
-	let [ search ] = useSearchParams()
-	return <Navigate to={{ pathname: `/ontologies/${params.ontologyId}/classes/${encodeURIComponent(encodeURIComponent(params.entityIri as string))}`, search: search.toString() }} />
-}
+function RedirectToType() {
+  const dispatch = useAppDispatch();
+  const entity = useAppSelector((state) => state.ontologies.entity);
+  const params = useParams();
+  const [search] = useSearchParams();
 
+  useEffect(() => {
+    if (params.ontologyId && params.entityIri) {
+      dispatch(
+        getEntity({
+          ontologyId: params.ontologyId,
+          entityIri: params.entityIri,
+        })
+      );
+    }
+  }, [dispatch, params]);
+
+  if (
+    entity &&
+    entity.getTypePlural() !== "ontologies" &&
+    params.ontologyId &&
+    params.entityIri
+  ) {
+    return (
+      <Navigate
+        to={{
+          pathname: `/ontologies/${
+            params.ontologyId
+          }/${entity.getTypePlural()}/${encodeURIComponent(
+            encodeURIComponent(params.entityIri as string)
+          )}`,
+          search: search.toString(),
+        }}
+      />
+    );
+  } else {
+    return <Home />;
+  }
+}

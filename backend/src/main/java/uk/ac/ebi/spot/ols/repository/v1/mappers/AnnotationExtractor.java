@@ -29,12 +29,12 @@ public class AnnotationExtractor {
 
         for(String predicate : json.keySet()) {
 
-            // properties without an IRI are things that were added by owl2json so should not
+            // properties without an IRI are things that were added by rdf2json so should not
             // be included as annotations
             if(!predicate.contains("://"))
                 continue;
 
-		/* We have some added (by owl2json) ols4 properties like
+		/* We have some added (by rdf2json) ols4 properties like
 			relatedTo+http://....
 			negativePropertyAssertion+http://...
 		these are useless to ols3

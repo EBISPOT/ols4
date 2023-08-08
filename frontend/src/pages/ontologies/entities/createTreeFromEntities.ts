@@ -8,7 +8,12 @@ export default function createTreeFromEntities(
   preferredRoots: boolean,
   ontology: Ontology
 ): { allNodes:TreeNode[], rootNodes: TreeNode[]; automaticallyExpandedNodes:Set<string>, nodeChildren: any } {
-  let { rootEntities, uriToChildNodes } = extractEntityHierarchy(entities);
+  let { rootEntities, parentToChildRelations } = extractEntityHierarchy(entities);
+
+  console.log('rootEntities')
+  console.dir(rootEntities)
+  console.log('parentToChildRelations')
+  console.dir(parentToChildRelations)
 
   if (preferredRoots) {
     let preferred = ontology.getPreferredRoots();
@@ -27,7 +32,7 @@ export default function createTreeFromEntities(
   return {
     allNodes: allNodes,
     rootNodes: rootEntities.map((rootEntity) =>
-      createTreeNode(rootEntity, undefined, 0)
+      createTreeNode(rootEntity, undefined, 0, null, null)
     ),
     nodeChildren,
     automaticallyExpandedNodes
@@ -36,12 +41,14 @@ export default function createTreeFromEntities(
   function createTreeNode(
     node: Entity,
     parent: TreeNode | undefined,
-    debugNumIterations: number
+    debugNumIterations: number,
+    parentRelationToChild:string|null,
+    childRelationToParent:string|null,
   ): TreeNode {
     if (debugNumIterations > 100) {
       throw new Error("probable cyclic tree (createTreeNode)");
     }
-    const childNodes = uriToChildNodes.get(node.getIri()) || [];
+    const childNodes = parentToChildRelations.get(node.getIri()) || [];
 
     const treeNode: TreeNode = {
       absoluteIdentity: parent
@@ -53,12 +60,14 @@ export default function createTreeFromEntities(
       entity: node,
       numDescendants:
         node.getNumHierarchicalDescendants() || node.getNumDescendants(),
+      parentRelationToChild,
+      childRelationToParent
     };
 
     allNodes.push(treeNode)
 
     nodeChildren[treeNode.absoluteIdentity] = childNodes.map((childNode) =>
-      createTreeNode(childNode, treeNode, debugNumIterations + 1)
+      createTreeNode(childNode.child, treeNode, debugNumIterations + 1, childNode.parentRelationToChild, childNode.childRelationToParent)
     );
 
     if(node.hasChildren() && childNodes.length > 0) {

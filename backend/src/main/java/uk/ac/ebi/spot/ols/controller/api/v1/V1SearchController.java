@@ -1,18 +1,14 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.RepositoryLinksResource;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +27,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * @author Simon Jupp
@@ -82,8 +76,8 @@ public class V1SearchController {
                 String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
                 solrQuery.setQuery(
                         "((" +
-                                createUnionQuery(query.toLowerCase(), mapFieldsList(fields), true)
-                                + ") AND (imported:\"false\"^100 OR imported:true^0))"
+                                createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields)).toArray(new String[0]), true)
+                                + ") AND (isDefiningOntology:\"true\"^100 OR isDefiningOntology:false^0))"
                 );
 
             } else {
@@ -91,24 +85,24 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "definition", "shortForm^2", "curie^2", /*"annotations", "logical_description",*/ "iri"};
+                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", /*"annotations", "logical_description",*/ "iri"};
 
-                solrQuery.set("qf", String.join(" ", mapFieldsList(fields)));
+                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
                 solrQuery.set("bq",
                         "isDefiningOntology:\"true\"^100 " +
-                        "lowercase_label:\"" + query.toLowerCase() + "\"^5" +
+                        "lowercase_label:\"" + query.toLowerCase() + "\"^5 " +
                         "lowercase_synonym:\"" + query.toLowerCase() + "\"^3");
             }
         } else {
             if (exact) {
-                String[] fields = mapFieldsList(queryFields.toArray(new String[0]));
-                solrQuery.setQuery(createUnionQuery(query, fields, true));
+                String[] fields = SolrFieldMapper.mapFieldsList(queryFields.stream().map(queryField -> queryField + "_s").collect(Collectors.toList())).toArray(new String[0]);
+                solrQuery.setQuery(createUnionQuery(query.toLowerCase(), fields, true));
             } else {
 
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
-                solrQuery.set("qf", String.join(" ", mapFieldsList(queryFields.toArray(new String[0]))));
+                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(queryFields)));
             }
         }
 
@@ -151,9 +145,9 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hasHierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
             }
 
         }
@@ -164,9 +158,9 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hasHierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hasHierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
             }
         }
 
@@ -203,15 +197,39 @@ public class V1SearchController {
 
             Map<String,Object> outDoc = new HashMap<>();
 
-            outDoc.put("id", JsonHelper.getString(json, "id"));
-            outDoc.put("iri", JsonHelper.getString(json, "iri"));
-            outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            outDoc.put("label", JsonHelper.getStrings(json, "label"));
-            outDoc.put("description", JsonHelper.getStrings(json, "definition"));
-            outDoc.put("short_form", JsonHelper.getStrings(json, "shortForm"));
-            outDoc.put("obo_id", JsonHelper.getStrings(json, "curie"));
-            outDoc.put("is_defining_ontology", JsonHelper.getString(json, "isDefiningOntology").equals("true"));
-            outDoc.put("type", "class");
+            if (fieldList == null) {
+                fieldList = new HashSet<>();
+            }
+            if (fieldList.isEmpty()) {
+                fieldList.add("id");
+                fieldList.add("iri");
+                fieldList.add("ontology_name");
+                fieldList.add("label");
+                fieldList.add("description");
+                fieldList.add("short_form");
+                fieldList.add("obo_id");
+                fieldList.add("is_defining_ontology");
+                fieldList.add("type");
+                fieldList.add("synonyms");
+            }
+
+            if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+            if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
+            if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
+            if (fieldList.contains("label")) {
+                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
+                if(label!=null) {
+                    outDoc.put("label", label);
+                }
+            }
+            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
+            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
+                    JsonHelper.getString(json, "isDefiningOntology") == null ? false :
+                            JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+            if (fieldList.contains("type")) outDoc.put("type", "class");
+            if (fieldList.contains("synonyms")) outDoc.put("synonyms", JsonHelper.getStrings(json, "synonym"));
 
             // TODO: ontology_prefix
 
@@ -230,9 +248,10 @@ public class V1SearchController {
 
         Map<String, Object> responseObj = new HashMap<>();
         responseObj.put("responseHeader", responseHeader);
-        responseObj.put("docs", docs);
+        responseObj.put("response", responseBody);
 
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.flushBuffer();
     }
 
@@ -272,73 +291,6 @@ public class V1SearchController {
         return mySolrClient.query(query);
     }
 
-    // Maps OLS3 field names to the OLS4 schema
-    //
-    private String[] mapFieldsList(String[] ols3FieldNames) {
-
-        List<String> newFields = new ArrayList<>();
-
-        for (String legacyFieldName : ols3FieldNames) {
-
-            String prefix = "";
-            String suffix = "";
-
-            // OLS3 uses a SUFFIX of "_s" for string versions of fields.
-            // In OLS4 we use "lowercase_" as a PREFIX instead.
-            //
-            if (legacyFieldName.endsWith("_s")) {
-                prefix = "str_";
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
-            } else if (legacyFieldName.endsWith("_e")) {
-                prefix = "edge_";
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
-            }
-
-            if (legacyFieldName.indexOf('^') != -1) {
-                suffix = legacyFieldName.substring(legacyFieldName.indexOf('^') + 1);
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.indexOf('^') - 1);
-            }
-
-            if (legacyFieldName.equals("iri")) {
-                newFields.add(prefix + "iri" + suffix);
-                continue;
-            }
-
-            if (legacyFieldName.equals("label")) {
-                newFields.add(prefix + "label" + suffix);
-                continue;
-            }
-
-            if (legacyFieldName.equals("synonym")) {
-                newFields.add(prefix + "synonym" + suffix);
-                continue;
-            }
-
-            if (legacyFieldName.equals("definition")) {
-                newFields.add(prefix + "definition" + suffix);
-                continue;
-            }
-
-            if (legacyFieldName.equals("description")) {
-                newFields.add(prefix + "definition" + suffix);
-                continue;
-            }
-
-            if (legacyFieldName.equals("short_form")) {
-                newFields.add(prefix + "shortForm" + suffix);
-                continue;
-            }
-
-        }
-
-        // escape special characters in field names for solr query
-        //
-        newFields = newFields.stream().map(iri -> {
-            return iri.replace(":", "__");
-        }).collect(Collectors.toList());
-
-        return newFields.toArray(new String[0]);
-    }
 
 
 }

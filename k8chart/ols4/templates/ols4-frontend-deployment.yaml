@@ -14,6 +14,16 @@ spec:
       labels:
         app: {{ .Release.Name }}-frontend
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - hh-rke-wp-webadmin-47-worker-4.caas.ebi.ac.uk
+                    - hx-rke-wp-webadmin-40-worker-4.caas.ebi.ac.uk
       containers:
         - name: web
           image: ghcr.io/ebispot/ols4-frontend:{{.Values.imageTag}}
@@ -24,7 +34,14 @@ spec:
                 memory: 4G          
           ports:
             - containerPort: 8080
+          env:
+            - name: REACT_APP_APIURL
+              value: https://www.ebi.ac.uk/ols4/
+            - name: PUBLIC_URL
+              value: /ols4
+            - name: OLS_MINIFY
+              value: 'true'
           command: ["/bin/bash", "-c"]
-          args: ["set -a && source {{.Values.frontend.envFile}} && set +a && /opt/ols4-frontend/entrypoint.dockersh"]
+          args: ["/opt/ols4-frontend/entrypoint.dockersh"]
 
 

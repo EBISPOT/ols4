@@ -15,8 +15,8 @@ JSON_PATH_LINKED=$OUTDIR/ontologies_linked.json
 
 rm -f $OUTDIR/*
 
-echo owl2json
-java -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 -jar $SCRIPT_PATH/owl2json/target/owl2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
+echo rdf2json
+java -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 -jar $SCRIPT_PATH/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
 
 echo linker
 java -jar $SCRIPT_PATH/linker/target/linker-1.0-SNAPSHOT.jar --input "$JSON_PATH" --output "$JSON_PATH_LINKED"

@@ -18,7 +18,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -58,6 +58,30 @@ public class LinkerPass2 {
                     jsonWriter.name("ontologyId");
                     jsonWriter.value(ontologyId);
 
+
+
+                    jsonWriter.name("importsFrom");
+		    jsonWriter.beginArray();
+		    var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
+		    if(imports != null) {
+			for(String ontId : imports) {
+				jsonWriter.value(ontId);
+			}
+		    }
+		    jsonWriter.endArray();
+
+
+                    jsonWriter.name("exportsTo");
+		    jsonWriter.beginArray();
+		    var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
+		    if(importedBy != null) {
+			for(String ontId : importedBy) {
+				jsonWriter.value(ontId);
+			}
+		    }
+		    jsonWriter.endArray();
+
+
                     Set<String> ontologyGatheredStrings = new TreeSet<>();
 
                     while(jsonReader.peek() != JsonToken.END_OBJECT) {
@@ -65,13 +89,13 @@ public class LinkerPass2 {
                         jsonWriter.name(key);
 
                         if(key.equals("classes")) {
-                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("properties")) {
-                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("individuals")) {
-                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, pass1Result);
                             continue;
                         } else {
                             ontologyGatheredStrings.add(ExtractIriFromPropertyName.extract(key));
@@ -80,7 +104,7 @@ public class LinkerPass2 {
                     }
 
                     jsonWriter.name("linkedEntities");
-                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, pass1Result);
+                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
 
                     jsonReader.endObject(); // ontology
                     jsonWriter.endObject();
@@ -104,7 +128,7 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -158,7 +182,7 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, pass1Result);
+            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
 
             jsonWriter.endObject();
             jsonReader.endObject();
@@ -170,11 +194,15 @@ public class LinkerPass2 {
     }
 
 
-    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonWriter.beginObject();
 
         for(String str : strings) {
+
+            if(str.trim().length() == 0) {
+                continue;
+            }
 
             if(//str.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
                     str.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#") ||
@@ -197,84 +225,95 @@ public class LinkerPass2 {
                 continue;
             }
 
+            // The string wasn't in any ontology. Maybe bioregistry can turn it into a curie?
+            String curie = bioregistry.getCurieForUrl(str);
 
-	    // maybe it's a CURIE?
-		if (str.matches("^[A-z0-9]+:[A-z0-9]+$")) {
+            if(curie == null) {
+                // or maybe the string itself is a curie?
+                if (str.matches("^[A-z0-9]+:[A-z0-9]+$")) {
+                    curie = str;
+                }
+            }
 
-			boolean foundCurieMatch = false;
+            if (curie != null) {
 
-			String databaseId = str.substring(0, str.indexOf(':'));
-			String entryId = str.substring(str.indexOf(':') + 1);
+                boolean foundCurieMatchToOntologyTerm = false;
 
-			// The databaseId might be the preferredPrefix of an ontology in OLS
-			Set<String> ontologyIds = pass1Result.preferredPrefixToOntologyIds.get(databaseId);
-			if (ontologyIds != null) {
-				for (String curieOntologyId : ontologyIds) {
-					Set<String> ontologyBaseUris = pass1Result.ontologyIdToBaseUris
-							.get(curieOntologyId);
-					if (ontologyBaseUris != null) {
-						for (String ontologyBaseUri : ontologyBaseUris) {
-							String iri = ontologyBaseUri + entryId;
-							EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-									.get(iri);
+                String databaseId = curie.substring(0, curie.indexOf(':'));
+                String entryId = curie.substring(curie.indexOf(':') + 1);
 
-							if (curieIriMapping != null) {
-								foundCurieMatch = true;
-								jsonWriter.name(str);
-								jsonWriter.beginObject();
-								jsonWriter.name("iri");
-								jsonWriter.value(iri);
-								writeIriMapping(jsonWriter, curieIriMapping,
-										ontologyId);
-								break;
-							}
-						}
+                // The databaseId might be the preferredPrefix of an ontology in OLS
+                Set<String> ontologyIds = pass1Result.preferredPrefixToOntologyIds.get(databaseId);
+                if (ontologyIds != null) {
+                    for (String curieOntologyId : ontologyIds) {
+                        Set<String> ontologyBaseUris = pass1Result.ontologyIdToBaseUris
+                                .get(curieOntologyId);
+                        if (ontologyBaseUris != null) {
+                            for (String ontologyBaseUri : ontologyBaseUris) {
+                                String iri = ontologyBaseUri + entryId;
+                                EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
+                                        .get(iri);
 
-						if(foundCurieMatch)
-							break;
-					}
-				}
-			}
+                                if (curieIriMapping != null) {
+                                    foundCurieMatchToOntologyTerm = true;
+                                    jsonWriter.name(str);
+                                    jsonWriter.beginObject();
+                                    jsonWriter.name("iri");
+                                    jsonWriter.value(iri);
+                                    writeIriMapping(jsonWriter, curieIriMapping,
+                                            ontologyId);
+                                    break;
+                                }
+                            }
 
-			CurieMapResult curieMapping = mapCurie(databaseId, entryId);
+                            if(foundCurieMatchToOntologyTerm)
+                                break;
+                        }
+                    }
+                }
 
-			if (curieMapping != null) {
+                CurieMapResult curieMapping = mapCurie(databaseId, entryId);
 
-				// It was a CURIE which we were able to map.
+                if (curieMapping != null) {
 
-				// Maybe the URL the CURIE mapped to maps to the IRI an entity in OLS?
-				EntityDefinitionSet curieIriMapping = pass1Result.iriToDefinitions
-						.get(curieMapping.url);
+                    // It was a CURIE which we were able to map to an URL
+		    // using bioregistry.
 
-				if (!foundCurieMatch) {
-					jsonWriter.name(str);
-					jsonWriter.beginObject();
-				}
+                    if (!foundCurieMatchToOntologyTerm) {
+                        jsonWriter.name(str);
+                        jsonWriter.beginObject();
+                    }
 
-				jsonWriter.name("url");
-				jsonWriter.value(curieMapping.url);
-				jsonWriter.name("source");
-				jsonWriter.value(curieMapping.source);
+                    jsonWriter.name("url");
+                    jsonWriter.value(curieMapping.url);
+                    jsonWriter.name("source");
+                    jsonWriter.value(curieMapping.source);
+                    jsonWriter.name("curie");
+                    jsonWriter.value(curie);
 
-				// If we didn't already write a mapping for an IRI and the URL maps to
-				// an entity in OLS, write that.
-				if ((!foundCurieMatch) && curieIriMapping != null) {
+                    foundCurieMatchToOntologyTerm = true;
+                }
 
-					jsonWriter.name("iri");
-					jsonWriter.value(curieMapping.url);
+                if (foundCurieMatchToOntologyTerm)
+                    jsonWriter.endObject();
 
-					writeIriMapping(jsonWriter, curieIriMapping, ontologyId);
-				}
+            }
 
-				foundCurieMatch = true;
-			}
+        // No match as an IRI or as a CURIE. Look in LevelDB (for ORCIDs etc.)
+            if(leveldb != null) {
+                JsonElement leveldbMatch = leveldb.get(str);
 
-			if (foundCurieMatch)
-				jsonWriter.endObject();
-		}
+                if(leveldbMatch != null) {
+                    jsonWriter.name(str);
+                    com.google.gson.internal.Streams.write(leveldbMatch, jsonWriter);
+                    continue;
+                }
+            }
+
+
         }
 
-        jsonWriter.endObject();
+        jsonWriter.endObject(); // linkedEntities
     }
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
@@ -323,6 +362,8 @@ public class LinkerPass2 {
 
 	    jsonWriter.name("label");
 	    com.google.gson.internal.Streams.write(definingOntology.label, jsonWriter);
+        jsonWriter.name("curie");
+        com.google.gson.internal.Streams.write(definingOntology.curie, jsonWriter);
 	    jsonWriter.name("type");
         jsonWriter.beginArray();
         for(String type : definingOntology.entityTypes) {
@@ -335,6 +376,8 @@ public class LinkerPass2 {
 
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(defFromThisOntology.label, jsonWriter);
+            jsonWriter.name("curie");
+            com.google.gson.internal.Streams.write(defFromThisOntology.curie, jsonWriter);
             jsonWriter.name("type");
             jsonWriter.beginArray();
             for(String type : defFromThisOntology.entityTypes) {
@@ -357,6 +400,8 @@ public class LinkerPass2 {
             jsonWriter.endArray();
             jsonWriter.name("label");
             com.google.gson.internal.Streams.write(fallbackDef.label, jsonWriter);
+            jsonWriter.name("curie");
+            com.google.gson.internal.Streams.write(fallbackDef.curie, jsonWriter);
         }
     }
 

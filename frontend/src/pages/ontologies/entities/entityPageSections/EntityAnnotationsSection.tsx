@@ -1,13 +1,12 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { randomString, sortByKeys } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Reified from "../../../../model/Reified";
-import addLinksToText from "./addLinksToText";
 import MetadataTooltip from "./MetadataTooltip";
+import addLinksToText from "./addLinksToText";
 
 export default function EntityAnnotationsSection({
   entity,
@@ -16,7 +15,6 @@ export default function EntityAnnotationsSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-
   let annotationPredicates = entity.getAnnotationPredicates();
 
   return (
@@ -39,7 +37,6 @@ export default function EntityAnnotationsSection({
           return (
             <div key={title.toString().toUpperCase() + randomString()}>
               <div className="font-bold">{title}</div>
-
               {annotations.length === 1 ? (
                 <p>
                   {renderAnnotation(annotations[0])}
@@ -55,8 +52,12 @@ export default function EntityAnnotationsSection({
                   {annotations
                     .map((annotation: Reified<any>) => {
                       return (
-                        <li key={randomString()}>
-                          {renderAnnotation(annotation)}
+                        <li
+                          key={
+                            annotation.value.toString().substring(0, 10) + randomString()
+                          }
+                        >
+                          <span>{renderAnnotation(annotation)}</span>
                           {annotation.hasMetadata() && (
                             <MetadataTooltip
                               metadata={annotation.getMetadata()}
@@ -80,20 +81,38 @@ export default function EntityAnnotationsSection({
     let linkedEntity = linkedEntities.get(value.value);
 
     if (linkedEntity) {
+      return (
+        <EntityLink
+          ontologyId={entity.getOntologyId()}
+          currentEntity={entity}
+          entityType={entity.getTypePlural()}
+          iri={value.value}
+          linkedEntities={linkedEntities}
+        />
+      );
+    } else {
+      if (typeof value.value !== "string") {
         return (
-          <EntityLink
+          <ClassExpression
             ontologyId={entity.getOntologyId()}
-	    currentEntity={entity}
-            entityType={entity.getTypePlural()} 
-            iri={value.value}
+            currentEntity={entity}
+            expr={value.value}
+            entityType={entity.getTypePlural() as any}
             linkedEntities={linkedEntities}
           />
         );
-    } else {
-	if((typeof value.value) !== 'string') {
-		return <ClassExpression ontologyId={entity.getOntologyId()} currentEntity={entity} expr={value.value} entityType={entity.getTypePlural() as any} linkedEntities={linkedEntities} />
-	}
-	return <span>{addLinksToText(value.value.toString(), linkedEntities, entity.getOntologyId(), entity, entity.getTypePlural())}</span>
+      }
+      return (
+        <span>
+          {addLinksToText(
+            value.value.toString(),
+            linkedEntities,
+            entity.getOntologyId(),
+            entity,
+            entity.getTypePlural()
+          )}
+        </span>
+      );
     }
   }
 }

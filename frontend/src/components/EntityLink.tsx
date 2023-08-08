@@ -1,6 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Fragment } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { asArray } from "../app/util";
 import Entity from "../model/Entity";
 import LinkedEntities from "../model/LinkedEntities";
 
@@ -17,7 +18,7 @@ export default function EntityLink({
   iri: string;
   linkedEntities: LinkedEntities;
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   let lang = searchParams.get("lang") || "en";
 
   if (typeof iri !== "string") {
@@ -35,10 +36,12 @@ export default function EntityLink({
 
   if (!linkedEntity) {
     // So far only known occurrence of this branch is for owl:Thing
-    return (
+    return iri.includes("http") ? (
       <Link className="link-default" to={iri}>
         {label}
       </Link>
+    ) : (
+      <span>{label}</span>
     );
   }
 
@@ -118,7 +121,7 @@ export default function EntityLink({
               linkedEntity.type
             )}/${encodedIri}?lang=${lang}`}
           >
-            {iri}
+            {label}
           </Link>
           {linkedEntity.definedBy!.map((definedBy) => {
             return (
@@ -141,11 +144,15 @@ export default function EntityLink({
         <Fragment>
           <Link
             className="link-default"
-            to={`/search?iri=${encodedIri}&lang=${lang}`}
+            to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}
           >
-            {iri}
+            {label}
           </Link>
-          <Link to={`/search?iri=${encodedIri}`}>
+          <Link
+            to={`/search?q=${encodeURIComponent(
+              label
+            )}&exactMatch=true&lang=${lang}`}
+          >
             <span className="link-ontology px-2 py-0.5 rounded-md text-sm text-white ml-1 whitespace-nowrap">
               <SearchIcon
                 fontSize="small"
@@ -182,12 +189,14 @@ export default function EntityLink({
           <Fragment>
             <Link
               className="link-default"
-              to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
+              to={`/ontologies/${ontologyId}/${entityType}/${encodedIri}?lang=${lang}`}
             >
-              {iri}
+              {label}
             </Link>
             <Link
-              to={`/search?iri=${encodedIri}&isDefiningOntology=true&lang=${lang}`}
+              to={`/search?q=${encodeURIComponent(
+                label
+              )}&exactMatch=true&lang=${lang}`}
             >
               <span className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white whitespace-nowrap">
                 <SearchIcon
@@ -210,15 +219,18 @@ export default function EntityLink({
       }
     }
   }
-
-  throw new Error("unknown entity link");
+  // throw new Error("unknown entity link");
 }
 
 function pluraliseType(type) {
-  return {
-    class: "classes",
-    individual: "individuals",
-    property: "properties",
-    ontology: "ontologies",
-  }[type];
+  for (let t of asArray(type)) {
+    let plural = {
+      class: "classes",
+      individual: "individuals",
+      property: "properties",
+      ontology: "ontologies",
+    }[t];
+
+    if (plural) return plural;
+  }
 }

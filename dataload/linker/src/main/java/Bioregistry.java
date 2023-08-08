@@ -13,9 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import javax.annotation.RegEx;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -35,6 +33,17 @@ public class Bioregistry {
 
     JsonObject theRegistry;
     Map<String, JsonObject> prefixToDatabase = new HashMap<>();
+
+    Map<String, String> iriPrefixToDatabase = new TreeMap<>((s1, s2) -> {
+        if (s1.length() > s2.length()) {
+            return -1;
+        } else if (s1.length() < s2.length()) {
+            return 1;
+        } else {
+            return s1.compareTo(s2);
+        }
+    });
+
     Map<String, Pattern> patterns = new HashMap<>();
 
     public Bioregistry() {
@@ -69,6 +78,16 @@ public class Bioregistry {
                     prefixToDatabase.put(norm(synonym.getAsString()), db);
                 }
             }
+            
+            JsonElement uriFormat = db.get("uri_format");
+            if (uriFormat != null && uriFormat.isJsonPrimitive()) {
+                String format = uriFormat.getAsString();
+                // TODO: based on charlie's PR but maybe we should regex match the format?
+                if(format.endsWith("$1")) {
+                    String uriPrefix = format.substring(0, format.length() - 2);
+                    iriPrefixToDatabase.put(uriPrefix, entry.getKey());
+                }
+            }  
         }
 
     }
@@ -106,7 +125,18 @@ public class Bioregistry {
 
         return uriFormat.getAsString().replace("$1", id);
     }
-
+                                                        
+    public String getCurieForUrl(String url) {
+        for (var entry : iriPrefixToDatabase.entrySet()) {
+          String key = entry.getKey();
+          if (url.startsWith(key)) {
+              String local_unique_identifier = url.substring(key.length());
+              return entry.getValue() + ":" + local_unique_identifier;
+          }
+        }
+        return null;
+    }
+    
     private static String norm(String s) {
         // see https://github.com/biopragmatics/bioregistry/blob/a7424ef4a0d22eaca61d3a86c6175e2059e9c855/src/bioregistry/utils.py#L128-L133
         s = s.toLowerCase(Locale.ROOT);

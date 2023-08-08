@@ -11,13 +11,8 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
 
-# yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-
-
-RUN apt update && apt install -y nodejs yarn caddy
+RUN apt update && apt install -y nodejs caddy
 
 RUN mkdir /opt/ols4-frontend
 
@@ -25,8 +20,8 @@ RUN mkdir /opt/ols4-frontend
 WORKDIR /opt/ols4-frontend
 
 
-COPY package.json yarn.lock .yarnrc.yml /opt/ols4-frontend/
-RUN yarn install
+COPY package.json package-lock.json /opt/ols4-frontend/
+RUN npm install
 
 COPY . /opt/ols4-frontend/
 

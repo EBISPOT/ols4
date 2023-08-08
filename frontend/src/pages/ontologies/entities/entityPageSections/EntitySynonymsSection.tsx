@@ -19,15 +19,15 @@ export default function EntitySynonymsSection({
   }
 
   return (
-    <div className="mb-2">
-      <span className="font-bold mr-2">Synonym</span>
+    <div className="flex flex-row flex-wrap items-center mb-2">
+      <div className="font-bold mr-2">Synonym</div>
       {synonyms
         .map((synonym: Reified<any>) => {
           const hasMetadata = synonym.hasMetadata();
           return (
-            <span
+            <div
               key={synonym.value.toString().toUpperCase() + randomString()}
-              className="flex-none bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 text-sm"
+              className="bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 my-1 text-sm"
             >
               {synonym.value}
               {hasMetadata && (
@@ -36,7 +36,7 @@ export default function EntitySynonymsSection({
                   linkedEntities={linkedEntities}
                 />
               )}
-            </span>
+            </div>
           );
         })
         .sort((a, b) => sortByKeys(a, b))}

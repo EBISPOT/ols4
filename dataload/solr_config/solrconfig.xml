@@ -575,7 +575,7 @@
      they are free to add their specific configuration but need to ensure that this flag is always
      respected - this should have veto over all independent configuration flags.
     -->
-    <circuitBreakers enabled="true">
+    <circuitBreakers enabled="false">
 
     <!-- Memory Circuit Breaker Configuration
 

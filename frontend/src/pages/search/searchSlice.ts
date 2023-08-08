@@ -1,10 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { get, getPaginated, Page } from "../../app/api";
+import { getPaginated, Page } from "../../app/api";
+import { thingFromJsonProperties } from "../../app/util";
 import Entity from "../../model/Entity";
-import { thingFromProperties } from "../../model/fromProperties";
-import Ontology from "../../model/Ontology";
-import { Suggest } from "../../model/Suggest";
-import Thing from "../../model/Thing";
 
 export interface SearchState {
   searchResults: Entity[];
@@ -33,11 +30,9 @@ export const getSearchResults = createAsyncThunk(
         facetFields: "ontologyId type",
         ontologyId: ontologyId.length > 0 ? ontologyId[0] : null,
         type: type.length > 0 ? type[0] : null,
-	lang: 'all',
+        // lang: "all",
 
-	...(
-		Object.fromEntries( (searchParams as URLSearchParams) )
-	)
+        ...Object.fromEntries(searchParams as URLSearchParams),
       };
       for (const param in query) {
         if (
@@ -48,9 +43,17 @@ export const getSearchResults = createAsyncThunk(
           delete query[param];
         }
       }
+      const parsedQuery = new URLSearchParams(query);
+      // remove redundant parameters
+      if (searchParams.get("ontology")) {
+        parsedQuery.set("ontologyId", searchParams.get("ontology"));
+        parsedQuery.delete("ontology");
+      }
+      if (searchParams.get("q")) parsedQuery.delete("q");
+
       const data = (
-        await getPaginated<any>(`api/v2/entities?${new URLSearchParams(query)}`)
-      ).map((e) => thingFromProperties(e));
+        await getPaginated<any>(`api/v2/entities?${parsedQuery}`)
+      ).map((e) => thingFromJsonProperties(e));
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);

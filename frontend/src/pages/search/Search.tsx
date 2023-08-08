@@ -1,13 +1,8 @@
-import { KeyboardArrowDown } from "@mui/icons-material";
-import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams
-} from "react-router-dom";
+import { Close, KeyboardArrowDown } from "@mui/icons-material";
+import { useCallback, useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { randomString, usePrevious } from "../../app/util";
+import { copyToClipboard, randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Pagination } from "../../components/Pagination";
@@ -16,11 +11,10 @@ import Entity from "../../model/Entity";
 import { getSearchResults } from "./searchSlice";
 
 export default function Search() {
-  const params = useParams();
-  let search: string = params.search as string;
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("q") || "";
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const loadingResults = useAppSelector(
     (state) => state.search.loadingSearchResults
   );
@@ -31,12 +25,9 @@ export default function Search() {
   const facets = useAppSelector((state) => state.search.facets);
   const prevSearch = usePrevious(search);
 
-  //   const [open, setOpen] = useState<boolean>(false);
-  const [query, setQuery] = useState<string>(search);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [ontologyFacetQuery, setOntologyFacetQuery] = useState<string>("");
 
   const ontologyFacets =
     facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
@@ -77,6 +68,28 @@ export default function Search() {
     [typeFacetSelected, setTypeFacetSelected]
   );
 
+  const [ontologyFacetFiltered, setOntologyFacetFiltered] = useState<object>(
+    {}
+  );
+  useEffect(() => {
+    setOntologyFacetFiltered(ontologyFacets);
+  }, [ontologyFacets]);
+
+  const [isShortFormCopied, setIsShortFormCopied] = useState(false);
+  const copyShortForm = (text: string) => {
+    copyToClipboard(text)
+      .then(() => {
+        setIsShortFormCopied(true);
+        // revert after a few seconds
+        setTimeout(() => {
+          setIsShortFormCopied(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     dispatch(
       getSearchResults({
@@ -100,19 +113,13 @@ export default function Search() {
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
   }, [search, prevSearch]);
-  const mounted = useRef(false);
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  });
+
   return (
     <div>
       <Header section="home" />
       <main className="container mx-auto h-fit my-8">
         <div className="flex flex-nowrap gap-4 mb-6">
-          <SearchBox initialQuery={query} />
+          <SearchBox initialQuery={search} />
         </div>
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
@@ -127,59 +134,121 @@ export default function Search() {
                   <div className="font-semibold text-lg mb-2">Type</div>
                   <fieldset className="mb-4">
                     {typeFacets && Object.keys(typeFacets).length > 0
-                      ? Object.keys(typeFacets).map((key) => {
-                          if (key !== "entity" && typeFacets[key] > 0) {
-                            return (
-                              <label
-                                key={key}
-                                htmlFor={key}
-                                className="block p-1 w-fit"
-                              >
-                                <input
-                                  type="checkbox"
-                                  id={key}
-                                  className="invisible hidden peer"
-                                  onChange={(e) => {
-                                    handleTypeFacet(e.target.checked, key);
-                                  }}
-                                />
-                                <span className="input-checkbox mr-4" />
-                                <span className="capitalize mr-4">
-                                  {key} &#40;{typeFacets[key]}&#41;
-                                </span>
-                              </label>
-                            );
-                          } else return null;
-                        })
+                      ? Object.keys(typeFacets)
+                          .sort((a, b) => {
+                            const ac = a ? a.toString() : "";
+                            const bc = b ? b.toString() : "";
+                            return ac.localeCompare(bc);
+                          })
+                          .map((key) => {
+                            if (key !== "entity" && typeFacets[key] > 0) {
+                              return (
+                                <label
+                                  key={key}
+                                  htmlFor={key}
+                                  className="block p-1 w-fit"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    id={key}
+                                    className="invisible hidden peer"
+                                    checked={typeFacetSelected.includes(key)}
+                                    onChange={(e) => {
+                                      handleTypeFacet(e.target.checked, key);
+                                    }}
+                                  />
+                                  <span className="input-checkbox mr-4" />
+                                  <span className="capitalize mr-4">
+                                    {key} &#40;{typeFacets[key]}&#41;
+                                  </span>
+                                </label>
+                              );
+                            } else return null;
+                          })
                       : null}
                   </fieldset>
                   <div className="font-semibold text-lg mb-2">Ontology</div>
+                  <div className="relative grow">
+                    <input
+                      id="facet-search-ontology"
+                      type="text"
+                      autoComplete="off"
+                      placeholder="Search id..."
+                      className="input-default text-sm mb-3 pl-3"
+                      value={ontologyFacetQuery}
+                      onChange={(event) => {
+                        if (event.target.value) {
+                          setOntologyFacetFiltered(
+                            Object.fromEntries(
+                              Object.entries(ontologyFacets).filter((key) =>
+                                key
+                                  .toString()
+                                  .toLowerCase()
+                                  .includes(event.target.value.toLowerCase())
+                              )
+                            )
+                          );
+                          setOntologyFacetQuery(event.target.value);
+                        } else {
+                          setOntologyFacetFiltered(ontologyFacets);
+                          setOntologyFacetQuery("");
+                        }
+                      }}
+                    />
+                    {ontologyFacetQuery ? (
+                      <div className="absolute right-1.5 top-1.5 z-10">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setOntologyFacetFiltered(ontologyFacets);
+                            setOntologyFacetQuery("");
+                          }}
+                        >
+                          <Close />
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
                   <fieldset>
-                    {ontologyFacets && Object.keys(ontologyFacets).length > 0
-                      ? Object.keys(ontologyFacets).map((key) => {
-                          if (ontologyFacets[key] > 0) {
-                            return (
-                              <label
-                                key={key}
-                                htmlFor={key}
-                                className="block p-1 w-fit"
-                              >
-                                <input
-                                  type="checkbox"
-                                  id={key}
-                                  className="invisible hidden peer"
-                                  onChange={(e) => {
-                                    handleOntologyFacet(e.target.checked, key);
-                                  }}
-                                />
-                                <span className="input-checkbox mr-4" />
-                                <span className="uppercase mr-4">
-                                  {key} &#40;{ontologyFacets[key]}&#41;
-                                </span>
-                              </label>
-                            );
-                          } else return null;
-                        })
+                    {ontologyFacetFiltered &&
+                    Object.keys(ontologyFacetFiltered).length > 0
+                      ? Object.keys(ontologyFacetFiltered)
+                          .sort((a, b) => {
+                            const ac = a ? a.toString() : "";
+                            const bc = b ? b.toString() : "";
+                            return ac.localeCompare(bc);
+                          })
+                          .map((key) => {
+                            if (ontologyFacetFiltered[key] > 0) {
+                              return (
+                                <label
+                                  key={key}
+                                  htmlFor={key}
+                                  className="block p-1 w-fit"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    id={key}
+                                    className="invisible hidden peer"
+                                    checked={ontologyFacetSelected.includes(
+                                      key
+                                    )}
+                                    onChange={(e) => {
+                                      handleOntologyFacet(
+                                        e.target.checked,
+                                        key
+                                      );
+                                      setOntologyFacetQuery("");
+                                    }}
+                                  />
+                                  <span className="input-checkbox mr-4" />
+                                  <span className="uppercase mr-4">
+                                    {key} &#40;{ontologyFacetFiltered[key]}&#41;
+                                  </span>
+                                </label>
+                              );
+                            } else return null;
+                          })
                       : null}
                   </fieldset>
                 </div>
@@ -223,9 +292,27 @@ export default function Search() {
                   rowsPerPage={rowsPerPage}
                 />
                 {results.map((entity: Entity) => {
+                  const MAX_DISPLAY_APPEARS_IN = 10;
+                  const appearsInList = entity.getAppearsIn().filter(
+                    (ontId) =>
+                      ontId !== entity.getOntologyId() &&
+                      entity
+                        .getDefinedBy()
+                        .filter((ontId) => ontId !== entity.getOntologyId())
+                        .indexOf(ontId) === -1
+                  );
+                  let appearsInCopy: string[] = [];
+                  if (appearsInList.length > MAX_DISPLAY_APPEARS_IN) {
+                    appearsInCopy = appearsInList.slice(
+                      0,
+                      MAX_DISPLAY_APPEARS_IN
+                    );
+                  } else {
+                    appearsInCopy = appearsInList.slice();
+                  }
                   return (
                     <div key={randomString()} className="my-4">
-                      <div className="mb-1 leading-loose truncate">
+                      <div className="mb-2 leading-loose truncate flex flex-row items-center">
                         <Link
                           to={
                             "/ontologies/" +
@@ -237,13 +324,38 @@ export default function Search() {
                               encodeURIComponent(entity.getIri())
                             )
                           }
-                          className="link-default text-xl mr-2"
+                          className={`link-default text-xl mr-2 ${
+                            entity.isCanonical() ? "font-bold" : ""
+                          } ${entity.isDeprecated() ? "line-through" : ""}`}
                         >
                           {entity.getName()}
                         </Link>
-                        <span className="bg-orange-default text-white rounded-md px-2 py-1 w-fit font-bold break-all">
-                          {entity.getShortForm()}
-                        </span>
+                        {entity.getShortForm() ? (
+                          <span className="mr-1">
+                            <span className="bg-orange-default text-white text-sm rounded-md px-2 py-1 w-fit font-bold break-all">
+                              {entity.getShortForm()}
+                            </span>
+                            &nbsp;&nbsp;
+                            <i
+                              title="Copy ID"
+                              className={`text-sm text-neutral-default icon icon-common icon-copy icon-spacer ${
+                                isShortFormCopied
+                                  ? "cursor-wait"
+                                  : "cursor-pointer"
+                              }`}
+                              onClick={() => {
+                                copyShortForm(
+                                  entity.getShortForm() || entity.getName()
+                                );
+                              }}
+                            />
+                          </span>
+                        ) : null}
+                        {!entity.isCanonical() && (
+                          <span className="text-white text-xs bg-neutral-default px-2 py-1 mr-1 rounded-md uppercase">
+                            Imported
+                          </span>
+                        )}
                       </div>
                       <div className="mb-1 leading-relaxed text-sm text-neutral-default">
                         {entity.getIri()}
@@ -252,7 +364,7 @@ export default function Search() {
                         {entity.getDescription()}
                       </div>
                       <div className="leading-loose">
-                        <span className="font-bold">Ontology:</span>
+                        <span className="font-bold mr-1">Ontology:</span>
                         &nbsp;
                         <Link to={"/ontologies/" + entity.getOntologyId()}>
                           <span
@@ -262,6 +374,62 @@ export default function Search() {
                             {entity.getOntologyId()}
                           </span>
                         </Link>
+                      </div>
+                      <div className="leading-loose">
+                        {appearsInCopy && appearsInCopy.length > 0 ? (
+                          <div
+                            className="mb-2"
+                            style={{ maxWidth: "100%", inlineSize: "100%" }}
+                          >
+                            <span className="font-bold mr-2">
+                              Also appears in:
+                            </span>
+                            <>
+                              {appearsInCopy.map((appearsIn) => {
+                                return (
+                                  <Link
+                                    key={appearsIn}
+                                    className="my-2"
+                                    style={{ display: "inline-block" }}
+                                    to={
+                                      "/ontologies/" +
+                                      appearsIn +
+                                      `/${entity.getTypePlural()}/` +
+                                      encodeURIComponent(
+                                        encodeURIComponent(entity.getIri())
+                                      )
+                                    }
+                                  >
+                                    <span
+                                      className="link-ontology px-2 py-1 rounded-md text-sm font-bold text-white uppercase mr-1"
+                                      title={appearsIn.toUpperCase()}
+                                    >
+                                      {appearsIn}
+                                    </span>
+                                  </Link>
+                                );
+                              })}
+                              &nbsp;
+                              {appearsInList.length > MAX_DISPLAY_APPEARS_IN ? (
+                                <Link
+                                  to={
+                                    "/ontologies/" +
+                                    entity.getOntologyId() +
+                                    "/" +
+                                    entity.getTypePlural() +
+                                    "/" +
+                                    encodeURIComponent(
+                                      encodeURIComponent(entity.getIri())
+                                    )
+                                  }
+                                  className="link-default"
+                                >
+                                  +
+                                </Link>
+                              ) : null}
+                            </>
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   );

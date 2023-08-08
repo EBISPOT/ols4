@@ -15,6 +15,7 @@ export default function DataTable({
   columns,
   data,
   dataCount,
+  placeholder,
   onSelectRow,
   page,
   rowsPerPage,
@@ -24,8 +25,9 @@ export default function DataTable({
 }: {
   columns: readonly Column[];
   data: any[];
-  dataCount: number;
-  onSelectRow: (row: any) => void;
+  dataCount?: number;
+  placeholder?: string;
+  onSelectRow?: (row: any) => void;
   page?: number;
   rowsPerPage?: number;
   onPageChange?: (page: number) => void;
@@ -37,11 +39,11 @@ export default function DataTable({
 
   return (
     <div>
-      <div className="grid grid-cols-2 mb-2">
+      <div className="grid grid-cols-2">
         {rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
-          <div className="justify-self-start px-4">
+          <div className="justify-self-start px-2 mb-2">
             <div className="flex group relative text-md">
               <label className="self-center px-3">Show</label>
               <select
@@ -61,22 +63,22 @@ export default function DataTable({
           </div>
         ) : null}
         {onFilter !== undefined ? (
-          <div className="justify-self-end group relative w-3/4 px-4">
+          <div className="justify-self-end group relative w-3/4 px-2 mb-2">
             <input
               type="text"
-              placeholder="Search ontologies..."
+              placeholder={placeholder ? placeholder : "Search table..."}
               className="input-default text-md pl-10"
               onChange={(e) => {
                 onFilter(e.target.value);
               }}
             />
-            <div className="absolute left-7 top-2 z-10">
+            <div className="absolute left-5 top-2 z-10">
               <i className="icon icon-common icon-search text-xl text-neutral-default group-focus:text-neutral-dark group-hover:text-neutral-dark" />
             </div>
           </div>
         ) : null}
       </div>
-      <div className="mx-4">
+      <div className="mx-2">
         <table className="table-auto border-collapse border-spacing-1 w-full mb-2">
           <thead>
             <tr key={randomString()} className="border-b-2 border-grey-default">
@@ -97,14 +99,16 @@ export default function DataTable({
                   tabIndex={-1}
                   key={randomString()}
                   onClick={() => {
-                    onSelectRow(row);
+                    if (onSelectRow) onSelectRow(row);
                   }}
-                  className="even:bg-grey-50 cursor-pointer"
+                  className={`even:bg-grey-50 ${
+                    onSelectRow ? "cursor-pointer" : ""
+                  }`}
                 >
                   {columns.map((column: any) => {
                     return (
                       <td
-                        className="text-sm align-top py-2 px-4"
+                        className="text-md align-top py-2 px-4"
                         key={randomString()}
                       >
                         {column.selector(row)
@@ -127,7 +131,7 @@ export default function DataTable({
             page={page}
             onPageChange={onPageChange}
             rowsPerPage={rowsPerPage}
-            dataCount={dataCount}
+            dataCount={dataCount || 0}
           ></Pagination>
         ) : null}
       </div>

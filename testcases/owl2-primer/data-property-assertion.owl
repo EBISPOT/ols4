@@ -63,7 +63,7 @@
 
     <!-- http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#Jack -->
 
-    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#Jack">
+    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John">
         <data-property-assertion:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51</data-property-assertion:hasAge>
     </owl:NamedIndividual>
 </rdf:RDF>
