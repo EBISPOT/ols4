@@ -93,7 +93,7 @@ Build backend:
 
 Build frontend: 
 
-    yarn install
+    npm install
 
 ### Test testcases from dataload to UI
 The scripts below assume you have the following environment variables set:
