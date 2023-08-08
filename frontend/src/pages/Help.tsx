@@ -329,7 +329,7 @@ Content-Type: application/json
         </p>
         <div className="text-lg text-petrol-600 my-3">Sample request</div>
         <Banner type="code">
-          $ curl -L 'http://www.ebi.ac.uk/ols4/api' -i -H 'Accept:
+          $ curl -L 'http://www.ebi.ac.uk/ols4/api/' -i -H 'Accept:
           application/json'
         </Banner>
         <div className="text-lg text-petrol-600 my-3">Response structure</div>
