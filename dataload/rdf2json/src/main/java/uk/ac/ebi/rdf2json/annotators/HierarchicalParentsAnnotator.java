@@ -2,14 +2,12 @@ package uk.ac.ebi.rdf2json.annotators;
 
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
 import uk.ac.ebi.rdf2json.properties.*;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class HierarchicalParentsAnnotator {
 
@@ -41,7 +39,7 @@ public class HierarchicalParentsAnnotator {
             OntologyNode c = graph.nodes.get(id);
             if (c.types.contains(OntologyNode.NodeType.CLASS) ||
                     c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-                    c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+                    c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)

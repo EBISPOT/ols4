@@ -1,7 +1,5 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import uk.ac.ebi.rdf2json.OntologyNode;
@@ -22,7 +20,7 @@ public class ShortFormAnnotator {
 		    OntologyNode c = graph.nodes.get(id);
 		    if (c.types.contains(OntologyNode.NodeType.CLASS) ||
 				c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-				c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+				c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
 			// skip bnodes
 			if(c.uri == null)

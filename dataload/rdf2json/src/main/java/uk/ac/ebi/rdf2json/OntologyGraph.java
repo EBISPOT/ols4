@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+import static uk.ac.ebi.rdf2json.OntologyNode.NodeType.*;
 
 public class OntologyGraph implements StreamRDF {
 
@@ -103,8 +103,8 @@ public class OntologyGraph implements StreamRDF {
 
     OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) {
 
-	this.loadLocalFiles = loadLocalFiles;
-	this.downloadedPath = downloadedPath;
+        this.loadLocalFiles = loadLocalFiles;
+        this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();
 
@@ -151,131 +151,135 @@ public class OntologyGraph implements StreamRDF {
         }
 
 
-	while(importUrls.size() > 0) {
-		String importUrl = importUrls.get(0);
-		importUrls.remove(0);
+        while(importUrls.size() > 0) {
+            String importUrl = importUrls.get(0);
+            importUrls.remove(0);
 
-		System.out.println("import: " + importUrl);
-		parseRDF(importUrl);
-	}
+            System.out.println("import: " + importUrl);
+            parseRDF(importUrl);
+        }
 
         // Now the imports are done, mark everything else as imported
-    for(String id : nodes.keySet()) {
-        OntologyNode c = nodes.get(id);
-        if(c.uri != null) {
-            if(!c.properties.hasProperty("imported")) {
-                c.properties.addProperty("imported", PropertyValueLiteral.fromString("true"));
+        for(String id : nodes.keySet()) {
+            OntologyNode c = nodes.get(id);
+            if(c.uri != null) {
+                if(!c.properties.hasProperty("imported")) {
+                    c.properties.addProperty("imported", PropertyValueLiteral.fromString("true"));
+                }
             }
         }
-    }
-
-	if(this.ontologyNode == null) {
-
-        ////
-		//// There was no owl:Ontology.
-        //// Could be an RDFS "ontology", or schema.org, or just some garbage file that didn't have any ontology in it
-        ////
-
-		// Fallback 1: look for a single node without an rdf:type (fixes loading dcterms and dc elements rdf files)
-
-		List<OntologyNode> nodesWithoutTypes = this.nodes.values().stream().filter(
-			node -> node.uri != null && !node.properties.hasProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
-			.collect(Collectors.toList());
-
-		if(nodesWithoutTypes.size() == 1) {
-			this.ontologyNode = nodesWithoutTypes.get(0);
-		}
 
         if(this.ontologyNode == null) {
 
-            // Fallback 2: fabricate an ontology node using the base_uri (fixes loading Schema.org rdf)
+            ////
+            //// There was no owl:Ontology.
+            //// Could be an RDFS "ontology", or schema.org, or just some garbage file that didn't have any ontology in it
+            ////
 
-            List<String> baseUris = (List<String>) this.config.get("base_uri");
+            // Fallback 1: look for a single node without an rdf:type (fixes loading dcterms and dc elements rdf files)
 
-            if(baseUris != null) {
-                this.ontologyNode = new OntologyNode();
-                this.ontologyNode.uri = baseUris.get(0);
-                this.ontologyNode.types.add(OntologyNode.NodeType.ONTOLOGY);
-                this.nodes.put(baseUris.get(0), this.ontologyNode);
+            List<OntologyNode> nodesWithoutTypes = this.nodes.values().stream().filter(
+                node -> node.uri != null && !node.properties.hasProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
+                .collect(Collectors.toList());
+
+            if(nodesWithoutTypes.size() == 1) {
+                this.ontologyNode = nodesWithoutTypes.get(0);
             }
 
             if(this.ontologyNode == null) {
 
-                // Fallback 3: fabricate an ontology node using the purl
+                // Fallback 2: fabricate an ontology node using the base_uri (fixes loading Schema.org rdf)
 
-                String purl = (String)this.config.get("ontology_purl");
+                List<String> baseUris = (List<String>) this.config.get("base_uri");
 
-                if(purl != null) {
+                if(baseUris != null) {
                     this.ontologyNode = new OntologyNode();
-                    this.ontologyNode.uri = purl;
+                    this.ontologyNode.uri = baseUris.get(0);
                     this.ontologyNode.types.add(OntologyNode.NodeType.ONTOLOGY);
-                    this.nodes.put(purl, this.ontologyNode);
+                    this.nodes.put(baseUris.get(0), this.ontologyNode);
+                }
+
+                if(this.ontologyNode == null) {
+
+                    // Fallback 3: fabricate an ontology node using the purl
+
+                    String purl = (String)this.config.get("ontology_purl");
+
+                    if(purl != null) {
+                        this.ontologyNode = new OntologyNode();
+                        this.ontologyNode.uri = purl;
+                        this.ontologyNode.types.add(OntologyNode.NodeType.ONTOLOGY);
+                        this.nodes.put(purl, this.ontologyNode);
+                    }
                 }
             }
         }
-	}
-
-	ontologyNode.properties.addProperty(
-		"numberOfEntities", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses + numberOfProperties + numberOfIndividuals)));
-
-	ontologyNode.properties.addProperty(
-		"numberOfClasses", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses)));
-
-	ontologyNode.properties.addProperty(
-		"numberOfProperties", PropertyValueLiteral.fromString(Integer.toString(numberOfProperties)));
-
-	ontologyNode.properties.addProperty(
-		"numberOfIndividuals", PropertyValueLiteral.fromString(Integer.toString(numberOfIndividuals)));
-
-
-    if(!noDates) {
-        String now = java.time.LocalDateTime.now().toString();
 
         ontologyNode.properties.addProperty(
-            "loaded", PropertyValueLiteral.fromString(now));
+            "numberOfEntities", PropertyValueLiteral.fromString(Integer.toString(
+                    numberOfClasses + numberOfProperties + numberOfIndividuals)));
 
         ontologyNode.properties.addProperty(
-            "sourceFileTimestamp", PropertyValueLiteral.fromString(new Date(sourceFileTimestamp).toString()));
+            "numberOfClasses", PropertyValueLiteral.fromString(Integer.toString(numberOfClasses)));
+
+        ontologyNode.properties.addProperty(
+            "numberOfProperties", PropertyValueLiteral.fromString(Integer.toString(numberOfProperties)));
+
+        ontologyNode.properties.addProperty(
+            "numberOfIndividuals", PropertyValueLiteral.fromString(Integer.toString(numberOfIndividuals)));
+
+
+        if(!noDates) {
+            String now = java.time.LocalDateTime.now().toString();
+
+            ontologyNode.properties.addProperty(
+                "loaded", PropertyValueLiteral.fromString(now));
+
+            ontologyNode.properties.addProperty(
+                "sourceFileTimestamp", PropertyValueLiteral.fromString(new Date(sourceFileTimestamp).toString()));
+        }
+
+        for(String language : languages) {
+            ontologyNode.properties.addProperty("language", PropertyValueLiteral.fromString(language));
+        }
+
+
+        long endTime = System.nanoTime();
+        System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
+
+        InverseOfAnnotator.annotateInverseOf(this);
+        NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
+        OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
+        DirectParentsAnnotator.annotateDirectParents(this);
+        RelatedAnnotator.annotateRelated(this);
+        HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
+        AncestorsAnnotator.annotateAncestors(this);
+        HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
+        ShortFormAnnotator.annotateShortForms(this);
+        DefinitionAnnotator.annotateDefinitions(this);
+        SynonymAnnotator.annotateSynonyms(this);
+        ReifiedPropertyAnnotator.annotateReifiedProperties(this);
+        OntologyMetadataAnnotator.annotateOntologyMetadata(this);
+        HierarchyFlagsAnnotator.annotateHierarchyFlags(this); // must run after DirectParentsAnnotator and HierarchicalParentsAnnotator
+        IsObsoleteAnnotator.annotateIsObsolete(this);
+        LabelAnnotator.annotateLabels(this); // must run after ShortFormAnnotator
+        ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
+        PreferredRootsAnnotator.annotatePreferredRoots(this);
+        DisjointWithAnnotator.annotateDisjointWith(this);
+        HasIndividualsAnnotator.annotateHasIndividuals(this);
+        EquivalenceAnnotator.annotateEquivalance(this);
+
     }
 
-    for(String language : languages) {
-        ontologyNode.properties.addProperty("language", PropertyValueLiteral.fromString(language));
-    }
 
+    static final Set<OntologyNode.NodeType> classTypes = new TreeSet<>(Set.of(ENTITY, CLASS));
+    static final Set<OntologyNode.NodeType> dataPropertyTypes = new TreeSet<>(Set.of(ENTITY, PROPERTY, DATA_PROPERTY));
 
-    long endTime = System.nanoTime();
-    System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
+    static final Set<OntologyNode.NodeType> objectPropertyTypes = new TreeSet<>(Set.of(ENTITY, PROPERTY, OBJECT_PROPERTY));
+    static final Set<OntologyNode.NodeType> annotationPropertyTypes = new TreeSet<>(Set.of(ENTITY, PROPERTY, ANNOTATION_PROPERTY));
 
-    InverseOfAnnotator.annotateInverseOf(this);
-    NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
-    OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
-    DirectParentsAnnotator.annotateDirectParents(this);
-    RelatedAnnotator.annotateRelated(this);
-    HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
-    AncestorsAnnotator.annotateAncestors(this);
-    HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
-    ShortFormAnnotator.annotateShortForms(this);
-    DefinitionAnnotator.annotateDefinitions(this);
-    SynonymAnnotator.annotateSynonyms(this);
-    ReifiedPropertyAnnotator.annotateReifiedProperties(this);
-    OntologyMetadataAnnotator.annotateOntologyMetadata(this);
-    HierarchyFlagsAnnotator.annotateHierarchyFlags(this); // must run after DirectParentsAnnotator and HierarchicalParentsAnnotator
-    IsObsoleteAnnotator.annotateIsObsolete(this);
-    LabelAnnotator.annotateLabels(this); // must run after ShortFormAnnotator
-    ConfigurablePropertyAnnotator.annotateConfigurableProperties(this);
-    PreferredRootsAnnotator.annotatePreferredRoots(this);
-    DisjointWithAnnotator.annotateDisjointWith(this);
-    HasIndividualsAnnotator.annotateHasIndividuals(this);
-    EquivalenceAnnotator.annotateEquivalance(this);
-
-    }
-
-
-    static final Set<String> classTypes = new TreeSet<>(Set.of("entity", "class"));
-    static final Set<String> propertyTypes = new TreeSet<>(Set.of("entity", "property"));
-    static final Set<String> objectPropertyTypes = new TreeSet<>(Set.of("entity", "property", "objectProperty"));
-    static final Set<String> annotationPropertyTypes = new TreeSet<>(Set.of("entity", "property", "annotationProperty"));
-    static final Set<String> individualTypes = new TreeSet<>(Set.of("entity", "individual"));
+    static final Set<OntologyNode.NodeType> propertyTypes = new TreeSet<>(Set.of(ENTITY, PROPERTY));
+    static final Set<OntologyNode.NodeType> individualTypes = new TreeSet<>(Set.of(ENTITY, INDIVIDUAL));
 
     public void write(JsonWriter writer) throws IOException {
 
@@ -326,7 +330,7 @@ public class OntologyGraph implements StreamRDF {
                 continue;
             }
             if (c.types.contains(OntologyNode.NodeType.CLASS)) {
-                writeNode(writer, c, classTypes);
+                writeNode(writer, c, OntologyNode.NodeType.toString(classTypes));
             }
         }
 
@@ -343,11 +347,13 @@ public class OntologyGraph implements StreamRDF {
                 continue;
             }
             if (c.types.contains(OntologyNode.NodeType.OBJECT_PROPERTY)) {
-                writeNode(writer, c, objectPropertyTypes);
+                writeNode(writer, c, OntologyNode.NodeType.toString(objectPropertyTypes));
             } else if (c.types.contains(OntologyNode.NodeType.ANNOTATION_PROPERTY)) {
-                writeNode(writer, c, annotationPropertyTypes);
+                writeNode(writer, c, OntologyNode.NodeType.toString(annotationPropertyTypes));
+            } else if (c.types.contains(OntologyNode.NodeType.DATA_PROPERTY)) {
+                writeNode(writer, c, OntologyNode.NodeType.toString(dataPropertyTypes));
             } else if (c.types.contains(OntologyNode.NodeType.PROPERTY)) {
-                writeNode(writer, c, propertyTypes);
+                writeNode(writer, c, OntologyNode.NodeType.toString(propertyTypes));
             }
         }
 
@@ -363,8 +369,8 @@ public class OntologyGraph implements StreamRDF {
                 // don't print bnodes at top level
                 continue;
             }
-            if (c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
-                writeNode(writer, c, individualTypes);
+            if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
+                writeNode(writer, c, OntologyNode.NodeType.toString(individualTypes));
             }
         }
 
@@ -635,33 +641,35 @@ public class OntologyGraph implements StreamRDF {
             case "http://www.w3.org/2000/01/rdf-schema#Class":
             case "http://www.w3.org/2004/02/skos/core#Concept":
                 subjNode.types.add(OntologyNode.NodeType.CLASS);
-
-		if(subjNode.uri != null) {
-			++ numberOfClasses;
-		}
+                if(subjNode.uri != null) {
+                    ++ numberOfClasses;
+                }
 
                 break;
 
             case "http://www.w3.org/2002/07/owl#AnnotationProperty":
                 subjNode.types.add(OntologyNode.NodeType.ANNOTATION_PROPERTY);
+                addAddAndCountProperties(subjNode, numberOfProperties);
+                break;
+
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
                 subjNode.types.add(OntologyNode.NodeType.OBJECT_PROPERTY);
+                addAddAndCountProperties(subjNode, numberOfProperties);
+                break;
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
+                subjNode.types.add(OntologyNode.NodeType.DATA_PROPERTY);
+                addAddAndCountProperties(subjNode, numberOfProperties);
+                break;
             case "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property":
-                subjNode.types.add(OntologyNode.NodeType.PROPERTY);
-
-		if(subjNode.uri != null) {
-			++ numberOfProperties;
-		}
-
+                addAddAndCountProperties(subjNode, numberOfProperties);
                 break;
 
             case "http://www.w3.org/2002/07/owl#NamedIndividual":
-                subjNode.types.add(OntologyNode.NodeType.NAMED_INDIVIDUAL);
+                subjNode.types.add(OntologyNode.NodeType.INDIVIDUAL);
 
-		if(subjNode.uri != null) {
-			++ numberOfIndividuals;
-		}
+                if(subjNode.uri != null) {
+                    ++ numberOfIndividuals;
+                }
 
                 break;
 
@@ -685,6 +693,14 @@ public class OntologyGraph implements StreamRDF {
             case "http://www.w3.org/2002/07/owl#NegativePropertyAssertion":
                 subjNode.types.add(OntologyNode.NodeType.NEGATIVE_PROPERTY_ASSERTION);
                 break;
+        }
+    }
+
+    private void addAddAndCountProperties(OntologyNode subjNode, int numberOfProperties) {
+        subjNode.types.add(OntologyNode.NodeType.PROPERTY);
+
+        if (subjNode.uri != null) {
+            ++numberOfProperties;
         }
     }
 

@@ -20,7 +20,7 @@ public class OntologyMetadataAnnotator {
 		    OntologyNode c = graph.nodes.get(id);
 		    if (c.types.contains(OntologyNode.NodeType.CLASS) ||
 				c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-				c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+				c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
 			// skip bnodes
 			if(c.uri == null)

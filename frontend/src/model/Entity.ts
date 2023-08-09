@@ -105,6 +105,10 @@ export default abstract class Entity extends Thing {
       // this is handled explicitly in EntityPage
       if (predicate === "http://xmlns.com/foaf/0.1/depicted_by") continue;
 
+      let linkedEntity = this.getLinkedEntities().get(predicate)
+      if (linkedEntity != undefined && linkedEntity.type.indexOf("objectProperty") !== -1) continue;
+      if (linkedEntity != undefined && linkedEntity.type.indexOf("dataProperty") !== -1) continue;
+
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation
       if (

@@ -6,12 +6,9 @@ import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class HierarchyFlagsAnnotator {
 
@@ -28,7 +25,7 @@ public class HierarchyFlagsAnnotator {
 
             if (c.types.contains(OntologyNode.NodeType.CLASS) ||
                     c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-                    c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+                    c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)
@@ -90,7 +87,7 @@ public class HierarchyFlagsAnnotator {
 
             if (c.types.contains(OntologyNode.NodeType.CLASS) ||
                     c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-                    c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+                    c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)
