@@ -33,14 +33,14 @@ export default function DisjointWithSection({
           !Array.isArray(disjointWiths[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
-                currentEntity={entity}
+              currentEntity={entity}
               expr={disjointWiths[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
             <EntityLink
               ontologyId={entity.getOntologyId()}
-	      currentEntity={entity}
+	          currentEntity={entity}
               entityType={
                 entity.getType() === "property" ? "properties" : "classes"
               }

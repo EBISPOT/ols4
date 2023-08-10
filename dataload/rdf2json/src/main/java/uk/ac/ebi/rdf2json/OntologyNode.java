@@ -3,23 +3,37 @@ package uk.ac.ebi.rdf2json;
 import uk.ac.ebi.rdf2json.properties.PropertySet;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OntologyNode {
 
     public enum NodeType {
-        ONTOLOGY,
-        CLASS,
-        PROPERTY,
-        NAMED_INDIVIDUAL,
-        ANNOTATION_PROPERTY,
-        OBJECT_PROPERTY,
-        AXIOM,
-        RESTRICTION,
-        RDF_LIST,
-        ALL_DISJOINT_CLASSES,
-        ALL_DIFFERENT,
-        ALL_DISJOINT_PROPERTIES,
-        NEGATIVE_PROPERTY_ASSERTION
+        ONTOLOGY("ontology"),
+        ENTITY("entity"),
+        CLASS("class"),
+        PROPERTY("property"),
+        INDIVIDUAL("individual"),
+        ANNOTATION_PROPERTY("annotationProperty"),
+        OBJECT_PROPERTY("objectProperty"),
+        DATA_PROPERTY("dataProperty"),
+
+        AXIOM("axiom"),
+        RESTRICTION("restriction"),
+        RDF_LIST("rdfList"),
+        ALL_DISJOINT_CLASSES("allDisjointClasses"),
+        ALL_DIFFERENT("allDifferent"),
+        ALL_DISJOINT_PROPERTIES("allDisjointProperties"),
+        NEGATIVE_PROPERTY_ASSERTION("negativePropertyAssertion");
+
+        public final String name;
+
+        NodeType (String name) {
+            this.name = name;
+        }
+
+        static public Set<String> toString(Set<NodeType> nodeTypes) {
+            return nodeTypes.stream().map(t -> t.name).collect(Collectors.toSet());
+        }
     }
     
 

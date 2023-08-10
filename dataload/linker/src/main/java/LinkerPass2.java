@@ -61,25 +61,25 @@ public class LinkerPass2 {
 
 
                     jsonWriter.name("importsFrom");
-		    jsonWriter.beginArray();
-		    var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
-		    if(imports != null) {
-			for(String ontId : imports) {
-				jsonWriter.value(ontId);
-			}
-		    }
-		    jsonWriter.endArray();
+                    jsonWriter.beginArray();
+                    var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
+                    if(imports != null) {
+                        for(String ontId : imports) {
+                            jsonWriter.value(ontId);
+                        }
+                    }
+                    jsonWriter.endArray();
 
 
                     jsonWriter.name("exportsTo");
-		    jsonWriter.beginArray();
-		    var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
-		    if(importedBy != null) {
-			for(String ontId : importedBy) {
-				jsonWriter.value(ontId);
-			}
-		    }
-		    jsonWriter.endArray();
+                    jsonWriter.beginArray();
+                    var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
+                    if(importedBy != null) {
+                        for(String ontId : importedBy) {
+                            jsonWriter.value(ontId);
+                        }
+                    }
+                    jsonWriter.endArray();
 
 
                     Set<String> ontologyGatheredStrings = new TreeSet<>();
@@ -159,26 +159,26 @@ public class LinkerPass2 {
             EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
             if(defOfThisEntity != null) {
 
-			jsonWriter.name("isDefiningOntology");
-			jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
-		
-			if (defOfThisEntity.definingDefinitions.size() > 0) {
-				jsonWriter.name("definedBy");
-				jsonWriter.beginArray();
-				for (var def : defOfThisEntity.definingDefinitions) {
-					jsonWriter.value(def.ontologyId);
-				}
-				jsonWriter.endArray();
-			}
+                jsonWriter.name("isDefiningOntology");
+                jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
 
-			if (defOfThisEntity.definitions.size() > 0) {
-				jsonWriter.name("appearsIn");
-				jsonWriter.beginArray();
-				for (var def : defOfThisEntity.definitions) {
-					jsonWriter.value(def.ontologyId);
-				}
-				jsonWriter.endArray();
-			}
+                if (defOfThisEntity.definingDefinitions.size() > 0) {
+                    jsonWriter.name("definedBy");
+                    jsonWriter.beginArray();
+                    for (var def : defOfThisEntity.definingDefinitions) {
+                        jsonWriter.value(def.ontologyId);
+                    }
+                    jsonWriter.endArray();
+                }
+
+                if (defOfThisEntity.definitions.size() > 0) {
+                    jsonWriter.name("appearsIn");
+                    jsonWriter.beginArray();
+                    for (var def : defOfThisEntity.definitions) {
+                        jsonWriter.value(def.ontologyId);
+                    }
+                    jsonWriter.endArray();
+                }
             }
 
             jsonWriter.name("linkedEntities");

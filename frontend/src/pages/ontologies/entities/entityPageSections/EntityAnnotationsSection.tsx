@@ -16,6 +16,10 @@ export default function EntityAnnotationsSection({
   linkedEntities: LinkedEntities;
 }) {
   let annotationPredicates = entity.getAnnotationPredicates();
+  console.log("annotationPredicates.length = " + annotationPredicates.length)
+
+  if (annotationPredicates.length > 0)
+      console.log("annotationPredicates[0]=" + annotationPredicates[0])
 
   return (
     <Fragment>

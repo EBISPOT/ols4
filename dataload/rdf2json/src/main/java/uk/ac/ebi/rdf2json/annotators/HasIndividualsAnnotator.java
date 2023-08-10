@@ -15,7 +15,7 @@ public class HasIndividualsAnnotator {
         long startTime3 = System.nanoTime();
         for(String id : graph.nodes.keySet()) {
             OntologyNode c = graph.nodes.get(id);
-            if (c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+            if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)
