@@ -85,7 +85,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", /*"annotations", "logical_description",*/ "iri"};
+                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", "iri", "_json"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
