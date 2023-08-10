@@ -235,7 +235,7 @@ public class LinkerPass1 {
 				curie = jsonParser.parse(jsonReader);
 			} else if(key.equals("type")) {
                 types = gson.fromJson(jsonReader, Set.class);
-			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")) {
+			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
 					JsonArray arr = jsonDefinedBy.getAsJsonArray();
