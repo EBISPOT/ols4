@@ -38,6 +38,8 @@ import IndividualPropertyAssertionsSection from "./entityPageSections/Individual
 import IndividualSameAsSection from "./entityPageSections/IndividualSameAsSection";
 import IndividualTypesSection from "./entityPageSections/IndividualTypesSection";
 import MetadataTooltip from "./entityPageSections/MetadataTooltip";
+import DomainSection from "./entityPageSections/DomainSection";
+import RangeSection from "./entityPageSections/RangeSection";
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
@@ -436,6 +438,14 @@ export default function EntityPage({
                       <DisjointWithSection
                         entity={entity}
                         linkedEntities={linkedEntities}
+                      />
+                      <DomainSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                      />
+                      <RangeSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
                       />
                       <PropertyInverseOfSection
                         entity={entity}
