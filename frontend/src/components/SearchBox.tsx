@@ -160,7 +160,7 @@ export default function SearchBox({
   let autocompleteElements = autocompleteToShow.map(
     (autocomplete, i): SearchBoxEntry => {
       searchParams.set("q", autocomplete.autosuggest);
-      if (ontologyId) searchParams.set("ontologyId", ontologyId);
+      if (ontologyId) searchParams.set("ontology", ontologyId);
       const linkUrl = `/search?${new URLSearchParams(searchParams)}`;
       return {
         linkUrl,
@@ -330,7 +330,7 @@ export default function SearchBox({
                     navigate(allDropdownElements[arrowKeySelectedN].linkUrl);
                   } else if (query) {
                     searchParams.set("q", query);
-                    if (ontologyId) searchParams.set("ontologyId", ontologyId);
+                    if (ontologyId) searchParams.set("ontology", ontologyId);
                     navigate(`/search?${new URLSearchParams(searchParams)}`);
                   }
                 } else if (ev.key === "ArrowDown") {
@@ -385,7 +385,7 @@ export default function SearchBox({
                     if (query) {
                       searchParams.set("q", query);
                       if (ontologyId)
-                        searchParams.set("ontologyId", ontologyId);
+                        searchParams.set("ontology", ontologyId);
                       navigate(`/search?${new URLSearchParams(searchParams)}`);
                     }
                   }}
