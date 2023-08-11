@@ -7,7 +7,7 @@ import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
 
-export default function DisjointWithSection({
+export default function RangeSection({
   entity,
   linkedEntities,
 }: {

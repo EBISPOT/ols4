@@ -40,6 +40,7 @@ import IndividualTypesSection from "./entityPageSections/IndividualTypesSection"
 import MetadataTooltip from "./entityPageSections/MetadataTooltip";
 import DomainSection from "./entityPageSections/DomainSection";
 import RangeSection from "./entityPageSections/RangeSection";
+import HasKeySection from "./entityPageSections/HasKeySection";
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
@@ -405,7 +406,19 @@ export default function EntityPage({
                       </span>
                     </summary>
                     <div className="py-2 break-words space-y-4">
+                      <HasKeySection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                      />
                       <PropertyCharacteristicsSection entity={entity} />
+                      <DomainSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                      />
+                      <RangeSection
+                          entity={entity}
+                          linkedEntities={linkedEntities}
+                      />
                       <IndividualPropertyAssertionsSection
                         entity={entity}
                         linkedEntities={linkedEntities}
@@ -438,14 +451,6 @@ export default function EntityPage({
                       <DisjointWithSection
                         entity={entity}
                         linkedEntities={linkedEntities}
-                      />
-                      <DomainSection
-                          entity={entity}
-                          linkedEntities={linkedEntities}
-                      />
-                      <RangeSection
-                          entity={entity}
-                          linkedEntities={linkedEntities}
                       />
                       <PropertyInverseOfSection
                         entity={entity}

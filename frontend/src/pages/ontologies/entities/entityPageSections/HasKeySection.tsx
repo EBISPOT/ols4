@@ -7,34 +7,34 @@ import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
 
-export default function DomainSection({
+export default function HasKeySection({
   entity,
   linkedEntities,
 }: {
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-  if (!(entity instanceof Property)) {
+  if (!(entity instanceof Class)) {
     return <Fragment />;
   }
 
-  let domains = entity.getDomain();
+  let keys = entity.getHasKey();
 
-  if (!domains || domains.length === 0) {
+  if (!keys || keys.length === 0) {
     return <Fragment />;
   }
 
   return (
     <div>
-      <div className="font-bold">Domain</div>
-      {domains.length === 1 ? (
+      <div className="font-bold">Has Key</div>
+      {keys.length === 1 ? (
         <p>
-          {typeof domains[0] === "object" &&
-          !Array.isArray(domains[0]) ? (
+          {typeof keys[0] === "object" &&
+          !Array.isArray(keys[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               currentEntity={entity}
-              expr={domains[0]}
+              expr={keys[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
@@ -44,22 +44,22 @@ export default function DomainSection({
               entityType={
                 entity.getType() === "property" ? "properties" : "classes"
               }
-              iri={domains[0]}
+              iri={keys[0]}
               linkedEntities={linkedEntities}
             />
           )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
-          {domains.map((domains) => {
+          {keys.map((keys) => {
             return (
               <li key={randomString()}>
-                {typeof domains === "object" &&
-                !Array.isArray(domains) ? (
+                {typeof keys === "object" &&
+                !Array.isArray(keys) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
                     currentEntity={entity}
-                    expr={domains}
+                    expr={keys}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
@@ -69,7 +69,7 @@ export default function DomainSection({
                     entityType={
                       entity.getType() === "property" ? "properties" : "classes"
                     }
-                    iri={domains}
+                    iri={keys}
                     linkedEntities={linkedEntities}
                   />
                 )}
