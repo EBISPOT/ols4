@@ -649,19 +649,19 @@ public class OntologyGraph implements StreamRDF {
 
             case "http://www.w3.org/2002/07/owl#AnnotationProperty":
                 subjNode.types.add(OntologyNode.NodeType.ANNOTATION_PROPERTY);
-                addAddAndCountProperties(subjNode, numberOfProperties);
+                addAddAndCountProperties(subjNode);
                 break;
 
             case "http://www.w3.org/2002/07/owl#ObjectProperty":
                 subjNode.types.add(OntologyNode.NodeType.OBJECT_PROPERTY);
-                addAddAndCountProperties(subjNode, numberOfProperties);
+                addAddAndCountProperties(subjNode);
                 break;
             case "http://www.w3.org/2002/07/owl#DatatypeProperty":
                 subjNode.types.add(OntologyNode.NodeType.DATA_PROPERTY);
-                addAddAndCountProperties(subjNode, numberOfProperties);
+                addAddAndCountProperties(subjNode);
                 break;
             case "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property":
-                addAddAndCountProperties(subjNode, numberOfProperties);
+                addAddAndCountProperties(subjNode);
                 break;
 
             case "http://www.w3.org/2002/07/owl#NamedIndividual":
@@ -696,7 +696,7 @@ public class OntologyGraph implements StreamRDF {
         }
     }
 
-    private void addAddAndCountProperties(OntologyNode subjNode, int numberOfProperties) {
+    private void addAddAndCountProperties(OntologyNode subjNode) {
         subjNode.types.add(OntologyNode.NodeType.PROPERTY);
 
         if (subjNode.uri != null) {

@@ -29,6 +29,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN">
         <rdfs:domain rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
