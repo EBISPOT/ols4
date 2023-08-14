@@ -169,15 +169,15 @@ public class JSON2SSSOM {
 	//
         JsonElement inchi = entity.get("http://purl.obolibrary.org/obo/chebi/inchi");
         if(inchi != null) {
-            writeMappingsForEntity(entity, "chebi:inchi", inchi, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", inchi, null, ontologyProperties, writer, curieMap);
         }
         JsonElement inchiKey = entity.get("http://purl.obolibrary.org/obo/chebi/inchikey");
         if(inchiKey != null) {
-            writeMappingsForEntity(entity, "chebi:inchikey", inchiKey, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", inchiKey, null, ontologyProperties, writer, curieMap);
         }
         JsonElement smiles = entity.get("http://purl.obolibrary.org/obo/chebi/smiles");
         if(smiles != null) {
-            writeMappingsForEntity(entity, "chebi:smiles", smiles, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", smiles, null, ontologyProperties, writer, curieMap);
         }
     }
 
