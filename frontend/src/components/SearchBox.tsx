@@ -402,7 +402,7 @@ export default function SearchBox({
               onClick={() => {
                 if (query) {
                   searchParams.set("q", query);
-                  if (ontologyId) searchParams.set("ontologyId", ontologyId);
+                  if (ontologyId) searchParams.set("ontology", ontologyId);
                   navigate(`/search?${new URLSearchParams(searchParams)}`);
                 }
               }}
