@@ -35,35 +35,39 @@ export default function EntityList({
 
   const navigate = useNavigate();
   return (
-    <DataTable
-      columns={columns}
-      data={entities}
-      dataCount={totalEntities}
-      placeholder={`Search ${entityType}...`}
-      page={page}
-      rowsPerPage={rowsPerPage}
-      onPageChange={(pg: number) => {
-        setPage(pg);
-      }}
-      onRowsPerPageChange={(rows: number) => {
-        setRowsPerPage((prev) => {
-          if (rows !== prev) setPage(0);
-          return rows;
-        });
-      }}
-      onSelectRow={(row) => {
-        const termUrl = encodeURIComponent(
-          encodeURIComponent(row.properties.iri)
-        );
-        navigate(`/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`);
-      }}
-      onFilter={(key: string) => {
-        setSearch((prev) => {
-          if (key !== prev) setPage(0);
-          return key;
-        });
-      }}
-    />
+    <div className="mt-2">
+      <DataTable
+        columns={columns}
+        data={entities}
+        dataCount={totalEntities}
+        placeholder={`Search ${entityType}...`}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        onPageChange={(pg: number) => {
+          setPage(pg);
+        }}
+        onRowsPerPageChange={(rows: number) => {
+          setRowsPerPage((prev) => {
+            if (rows !== prev) setPage(0);
+            return rows;
+          });
+        }}
+        onSelectRow={(row) => {
+          const termUrl = encodeURIComponent(
+            encodeURIComponent(row.properties.iri)
+          );
+          navigate(
+            `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
+          );
+        }}
+        onFilter={(key: string) => {
+          setSearch((prev) => {
+            if (key !== prev) setPage(0);
+            return key;
+          });
+        }}
+      />
+    </div>
   );
 }
 
