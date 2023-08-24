@@ -329,8 +329,78 @@ export default function EntityPage({
                 linkedEntities={linkedEntities}
               />
             </div>
-            <div className="flex flex-col lg:flex-row-reverse lg:gap-8">
-              <div className="basis-1/3">
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
+              <div className="lg:col-span-2">
+                <div className="py-2">
+                  <button
+                    className={`font-bold mr-3 ${
+                      viewMode === "tree"
+                        ? "button-orange-active"
+                        : "button-orange"
+                    }`}
+                    onClick={() => setViewMode("tree")}
+                  >
+                    <div className="flex gap-2">
+                      <AccountTree />
+                      <div>Tree</div>
+                    </div>
+                  </button>
+                  <button
+                    className={`font-bold ${
+                      viewMode === "graph"
+                        ? "button-orange-active"
+                        : "button-orange"
+                    }`}
+                    onClick={() => setViewMode("graph")}
+                  >
+                    <div className="flex gap-2">
+                      <Share />
+                      <div>Graph</div>
+                    </div>
+                  </button>
+                </div>
+                {viewMode === "graph" ? (
+                  <EntityGraph
+                    ontologyId={ontologyId}
+                    entityType={
+                      {
+                        class: "classes",
+                        property: "properties",
+                        individual: "individuals",
+                      }[entity.getType()]
+                    }
+                    selectedEntity={entity}
+                  />
+                ) : (
+                  <EntityTree
+                    ontology={ontology}
+                    entityType={
+                      {
+                        class: "classes",
+                        property: "properties",
+                        individual: "individuals",
+                      }[entity.getType()]
+                    }
+                    selectedEntity={entity}
+                    lang={lang}
+                    onNavigateToEntity={(ontology, entity) =>
+                      navigate(
+                        `/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(
+                          encodeURIComponent(entity.getIri())
+                        )}?lang=${lang}`
+                      )
+                    }
+                    onNavigateToOntology={(ontologyId, entity) =>
+                      navigate(
+                        `/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
+                          encodeURIComponent(entity.getIri())
+                        )}?lang=${lang}`
+                      )
+                    }
+                  />
+                )}
+              </div>
+              <div className="lg:col-span-1">
                 <details open className="p-2">
                   <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
                     <span className="capitalize">
@@ -411,76 +481,6 @@ export default function EntityPage({
                     />
                   </div>
                 </details>
-              </div>
-              <div className="basis-2/3">
-                <div className="py-2">
-                  <button
-                    className={`font-bold mr-3 ${
-                      viewMode === "tree"
-                        ? "button-orange-active"
-                        : "button-orange"
-                    }`}
-                    onClick={() => setViewMode("tree")}
-                  >
-                    <div className="flex gap-2">
-                      <AccountTree />
-                      <div>Tree</div>
-                    </div>
-                  </button>
-                  <button
-                    className={`font-bold ${
-                      viewMode === "graph"
-                        ? "button-orange-active"
-                        : "button-orange"
-                    }`}
-                    onClick={() => setViewMode("graph")}
-                  >
-                    <div className="flex gap-2">
-                      <Share />
-                      <div>Graph</div>
-                    </div>
-                  </button>
-                </div>
-                {viewMode === "graph" ? (
-                  <EntityGraph
-                    ontologyId={ontologyId}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                  />
-                ) : (
-                  <EntityTree
-                    ontology={ontology}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                    lang={lang}
-                    onNavigateToEntity={(ontology, entity) =>
-                      navigate(
-                        `/ontologies/${ontology.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(
-                          encodeURIComponent(entity.getIri())
-                        )}?lang=${lang}`
-                      )
-                    }
-                    onNavigateToOntology={(ontologyId, entity) =>
-                      navigate(
-                        `/ontologies/${ontologyId}/${entity.getTypePlural()}/${encodeURIComponent(
-                          encodeURIComponent(entity.getIri())
-                        )}?lang=${lang}`
-                      )
-                    }
-                  />
-                )}
               </div>
             </div>
           </div>

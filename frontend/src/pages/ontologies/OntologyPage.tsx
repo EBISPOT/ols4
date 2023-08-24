@@ -209,56 +209,8 @@ export default function OntologyPage() {
                 />
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row-reverse lg:gap-8">
-              <div className="basis-1/3">
-                <details open className="p-2">
-                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-default">
-                    Ontology Information
-                  </summary>
-                  <div className="p-2 break-words space-y-2">
-                    <div>
-                      <span className="font-bold">Ontology IRI: </span>
-                      <a
-                        id="ontologyIri"
-                        href={ontology.getIri() || ontology.getOntologyPurl()}
-                        className="link-default"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {ontology.getIri() || ontology.getOntologyPurl()}
-                      </a>
-                    </div>
-                    {ontology.getVersionIri() && (
-                      <div>
-                        <span className="font-bold">Version IRI: </span>
-                        <a
-                          id="versionIri"
-                          href={ontology.getVersionIri()}
-                          className="link-default"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {ontology.getVersionIri()}
-                        </a>
-                      </div>
-                    )}
-                    {/* todo remove hack when datarelease has completed; this should always be present */}
-                    {ontology.getSourceFileTimestamp() && (
-                      <div>
-                        <span className="font-bold">Last loaded: </span>
-                        <a
-                          id="lastLoaded"
-                          href={ontology.getSourceFileTimestamp()}
-                        >
-                          {ontology.getSourceFileTimestamp()}
-                        </a>
-                      </div>
-                    )}
-                    <OntologyAnnotationsSection ontology={ontology} />
-                  </div>
-                </details>
-              </div>
-              <div className="basis-2/3">
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
+              <div className="lg:col-span-2 flex flex-col">
                 <Tabs
                   value={tab}
                   onChange={(value: any) => {
@@ -354,6 +306,54 @@ export default function OntologyPage() {
                     }
                   />
                 )}
+              </div>
+              <div className="lg:col-span-1">
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-default">
+                    Ontology Information
+                  </summary>
+                  <div className="p-2 break-words space-y-2">
+                    <div>
+                      <span className="font-bold">Ontology IRI: </span>
+                      <a
+                        id="ontologyIri"
+                        href={ontology.getIri() || ontology.getOntologyPurl()}
+                        className="link-default"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {ontology.getIri() || ontology.getOntologyPurl()}
+                      </a>
+                    </div>
+                    {ontology.getVersionIri() && (
+                      <div>
+                        <span className="font-bold">Version IRI: </span>
+                        <a
+                          id="versionIri"
+                          href={ontology.getVersionIri()}
+                          className="link-default"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {ontology.getVersionIri()}
+                        </a>
+                      </div>
+                    )}
+                    {/* todo remove hack when datarelease has completed; this should always be present */}
+                    {ontology.getSourceFileTimestamp() && (
+                      <div>
+                        <span className="font-bold">Last loaded: </span>
+                        <a
+                          id="lastLoaded"
+                          href={ontology.getSourceFileTimestamp()}
+                        >
+                          {ontology.getSourceFileTimestamp()}
+                        </a>
+                      </div>
+                    )}
+                    <OntologyAnnotationsSection ontology={ontology} />
+                  </div>
+                </details>
               </div>
             </div>
           </div>
