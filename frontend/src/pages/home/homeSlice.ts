@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { get } from "../../app/api";
+import urlJoin from "url-join";
 
 export interface HomeState {
   bannerText: string;
@@ -31,7 +32,7 @@ export const getBannerText = createAsyncThunk(
   "home_banner",
   async (arg, { rejectWithValue }) => {
     try {
-      const res = await fetch(process.env.REACT_APP_APIURL + "banner.txt");
+      const res = await fetch(urlJoin(process.env.PUBLIC_URL!, "banner.txt"));
       return res.text();
     } catch (error: any) {
       return rejectWithValue(error.message);
