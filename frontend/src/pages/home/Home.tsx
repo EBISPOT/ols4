@@ -3,23 +3,36 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
-import { getStats } from "./homeSlice";
+import { getBannerText, getStats } from "./homeSlice";
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const stats = useAppSelector((state) => state.home.stats);
+  const banner = useAppSelector((state) => state.home.bannerText);
 
   useEffect(() => {
     dispatch(getStats());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getBannerText());
+  }, [dispatch]);
+
+  if (banner !== "") console.log(banner);
 
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <div>
       <Header section="home" />
       <main className="container mx-auto h-fit">
+        {banner !== "" && (
+          <div className="mt-4">
+            <Banner type="warning">{banner}</Banner>
+          </div>
+        )}
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-3">
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg my-8 p-8">
