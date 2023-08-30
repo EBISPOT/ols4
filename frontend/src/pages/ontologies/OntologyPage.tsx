@@ -129,6 +129,12 @@ export default function OntologyPage() {
                 />
               </div>
             </div>
+            <div className="flex flex-nowrap gap-4 mb-4">
+              <SearchBox
+                ontologyId={ontologyId}
+                placeholder={`Search ${ontologyId.toUpperCase()}...`}
+              />
+            </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black overflow-x-auto">
               <div className="text-2xl font-bold mb-4">
                 {ontology.getName() || ontology.getOntologyId()}
@@ -147,7 +153,7 @@ export default function OntologyPage() {
               <OntologyImportsSection ontology={ontology} />
               <OntologyImportedBySection ontology={ontology} />
 
-              <div className="flex flex-wrap gap-2 mt-6 mb-6">
+              <div className="flex flex-wrap gap-2 mt-6">
                 {ontology.getOntologyPurl() && (
                   <Link
                     to={ontology.getOntologyPurl()}
@@ -201,12 +207,6 @@ export default function OntologyPage() {
                     </button>
                   </Link>
                 )}
-              </div>
-              <div className="flex flex-nowrap gap-4">
-                <SearchBox
-                  ontologyId={ontologyId}
-                  placeholder={`Search ${ontologyId.toUpperCase()}...`}
-                />
               </div>
             </div>
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
