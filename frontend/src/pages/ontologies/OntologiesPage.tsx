@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import DataTable, { Column } from "../../components/DataTable";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Ontology from "../../model/Ontology";
 import { getOntologies } from "./ontologiesSlice";
-import urlJoin from 'url-join'
 
 export default function OntologiesPage() {
   const dispatch = useAppDispatch();
@@ -42,7 +42,11 @@ export default function OntologiesPage() {
                   alt={`${ontoId.toUpperCase()} logo`}
                   title={`${ontoId.toUpperCase()} logo`}
                   className="h-16 object-contain bg-white rounded-lg p-1 mb-3"
-                  src={logo}
+                  src={
+                    logo.startsWith("/images")
+                      ? process.env.REACT_APP_OBO_FOUNDRY_REPO_RAW + logo
+                      : logo
+                  }
                 />
               ) : null}
               {name ? <div>{name}</div> : null}
@@ -82,21 +86,30 @@ export default function OntologiesPage() {
               Search
             </div>
             <a
-              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=classes`)}
+              href={urlJoin(
+                process.env.PUBLIC_URL!,
+                `/ontologies/${ontology.getOntologyId()}?tab=classes`
+              )}
               className="link-default"
             >
               Classes
             </a>
             <br />
             <a
-              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=properties`)}
+              href={urlJoin(
+                process.env.PUBLIC_URL!,
+                `/ontologies/${ontology.getOntologyId()}?tab=properties`
+              )}
               className="link-default"
             >
               Properties
             </a>
             <br />
             <a
-              href={urlJoin(process.env.PUBLIC_URL!, `/ontologies/${ontology.getOntologyId()}?tab=individuals`)}
+              href={urlJoin(
+                process.env.PUBLIC_URL!,
+                `/ontologies/${ontology.getOntologyId()}?tab=individuals`
+              )}
               className="link-default"
             >
               Individuals
