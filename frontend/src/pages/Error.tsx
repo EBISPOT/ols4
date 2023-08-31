@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 import urlJoin from "url-join";
 import Header from "../components/Header";
-import urlJoin from 'url-join'
 
 export default function Error() {
   const location = useLocation();
