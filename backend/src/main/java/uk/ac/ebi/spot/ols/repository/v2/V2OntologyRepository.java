@@ -45,7 +45,7 @@ public class V2OntologyRepository {
         query.setExactMatch(exactMatch);
         query.addFilter("type", "ontology", SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
-        V2SearchFieldsParser.addSearchFieldsToQuery(query, boostFields);
+        V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
         return solrClient.searchSolrPaginated(query, pageable)
