@@ -31,6 +31,10 @@ spec:
           resources:
             requests:
               memory: 8Gi
+              cpu: 250m
+            limits:
+              memory: 8Gi
+              cpu: 750m
           env:
             - name: SOLR_TARBALL_URL
               value: {{.Values.solrTarballUrl}}
