@@ -33,6 +33,10 @@ spec:
           resources:
             requests:
               memory: 14Gi
+              cpu: 0.5
+            limits:
+              memory: 14Gi
+              cpu: 2
           env:
             - name: OLS_SOLR_HOST
               value: http://{{ .Release.Name }}-solr:8983
