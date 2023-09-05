@@ -29,10 +29,10 @@ spec:
           resources:
             requests:
               memory: 15Gi
-              cpu: 250m
+              cpu: 0.5
             limits:
               memory: 15Gi
-              cpu: 750m
+              cpu: 2
           env:
             - name: NEO4J_HEAP_MEMORY
               value: 10g

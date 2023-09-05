@@ -32,10 +32,10 @@ spec:
           resources:
             requests:
               memory: 10Gi
-              cpu: 250m
+              cpu: 0.5
             limits:
               memory: 10Gi
-              cpu: 750m
+              cpu: 2
           env:
             - name: OLS_SOLR_HOST
               value: http://{{ .Release.Name }}-solr:8983
