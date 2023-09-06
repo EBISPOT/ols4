@@ -7,34 +7,34 @@ import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
 
-export default function DisjointWithSection({
+export default function DomainSection({
   entity,
   linkedEntities,
 }: {
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-  if (!(entity instanceof Property) && !(entity instanceof Class)) {
+  if (!(entity instanceof Property)) {
     return <Fragment />;
   }
 
-  let disjointWiths = entity.getDisjointWith();
+  let domains = entity.getDomain();
 
-  if (!disjointWiths || disjointWiths.length === 0) {
+  if (!domains || domains.length === 0) {
     return <Fragment />;
   }
 
   return (
     <div>
-      <div className="font-bold">Disjoint with</div>
-      {disjointWiths.length === 1 ? (
+      <div className="font-bold">Domain</div>
+      {domains.length === 1 ? (
         <p>
-          {typeof disjointWiths[0] === "object" &&
-          !Array.isArray(disjointWiths[0]) ? (
+          {typeof domains[0] === "object" &&
+          !Array.isArray(domains[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               currentEntity={entity}
-              expr={disjointWiths[0]}
+              expr={domains[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
@@ -44,32 +44,32 @@ export default function DisjointWithSection({
               entityType={
                 entity.getType() === "property" ? "properties" : "classes"
               }
-              iri={disjointWiths[0]}
+              iri={domains[0]}
               linkedEntities={linkedEntities}
             />
           )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
-          {disjointWiths.map((disjointWith) => {
+          {domains.map((domains) => {
             return (
               <li key={randomString()}>
-                {typeof disjointWith === "object" &&
-                !Array.isArray(disjointWith) ? (
+                {typeof domains === "object" &&
+                !Array.isArray(domains) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
-                currentEntity={entity}
-                    expr={disjointWith}
+                    currentEntity={entity}
+                    expr={domains}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
-		    currentEntity={entity}
+		            currentEntity={entity}
                     entityType={
                       entity.getType() === "property" ? "properties" : "classes"
                     }
-                    iri={disjointWith}
+                    iri={domains}
                     linkedEntities={linkedEntities}
                   />
                 )}

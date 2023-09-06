@@ -90,8 +90,7 @@ public class RDF2JSON {
                 throw new RuntimeException("Error loading config file: " + configPath);
             }
 
-            JsonReader reader = new JsonReader(
-                    new InputStreamReader(inputStream));
+            JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
 
             return (InputJson) gson.fromJson(reader, InputJson.class);
 

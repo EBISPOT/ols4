@@ -18,18 +18,19 @@ export default function IndividualPropertyAssertionsSection({
   let propertyIris = Object.keys(entity.properties);
 
   let negativeProperties = propertyIris.filter((k) =>
-    k.startsWith("negativePropertyAssertion+")
+      k.startsWith("negativePropertyAssertion+")
   );
 
-  // let annotationProperties = propertyIris.filter(
-  //   (k) =>
-  //     linkedEntities.get(k) &&
-  //     linkedEntities.get(k)!.type.indexOf("annotationProperty") !== -1
-  // );
   let objectProperties = propertyIris.filter(
     (k) =>
-      linkedEntities.get(k) &&
-      linkedEntities.get(k)!.type.indexOf("objectProperty") !== -1
+        linkedEntities.get(k) &&
+        linkedEntities.get(k)!.type.indexOf("objectProperty") !== -1
+  );
+
+  let dataProperties = propertyIris.filter(
+    (k) =>
+        linkedEntities.get(k) &&
+        linkedEntities.get(k)!.type.indexOf("dataProperty") !== -1
   );
 
   let propertyAssertions: JSX.Element[] = [];
@@ -80,8 +81,43 @@ export default function IndividualPropertyAssertionsSection({
     }
   }
 
+  for (let iri of dataProperties) {
+    const values = asArray(entity.properties[iri]);
+    for (let v of values) {
+      propertyAssertions.push(
+          <span>
+          <ClassExpression
+              ontologyId={entity.getOntologyId()}
+              currentEntity={entity}
+              entityType="properties"
+              expr={iri}
+              linkedEntities={linkedEntities}
+          />
+            &thinsp;
+            {
+              <span>
+              <span className="pr-1 text-sm" style={{ color: "gray" }}>
+                &#9656;
+              </span>
+              <EntityLink
+                  ontologyId={entity.getOntologyId()}
+                  currentEntity={entity}
+                  entityType="individuals"
+                  iri={v}
+                  linkedEntities={linkedEntities}
+              />
+            </span>
+            }
+        </span>
+      );
+    }
+  }
+
   for (let k of negativeProperties) {
     let iri = k.slice("negativePropertyAssertion+".length);
+    let linkedEntity = linkedEntities.get(iri)
+    let dataProperty = linkedEntity!.type.indexOf("dataProperty") !== -1
+    let objectProperty = linkedEntity!.type.indexOf("objectProperty") !== -1
     const values = asArray(entity.properties[k]);
     for (let v of values) {
       propertyAssertions.push(
@@ -109,6 +145,7 @@ export default function IndividualPropertyAssertionsSection({
               />
             </span>
           ) : (
+            objectProperty ?
             <Tooltip
               title={
                 typeof v === "string"
@@ -121,7 +158,19 @@ export default function IndividualPropertyAssertionsSection({
               arrow
             >
               <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
-            </Tooltip>
+            </Tooltip> :
+                <span>
+              <span className="pr-1 text-sm" style={{ color: "gray" }}>
+                &#9656;
+              </span>
+              <EntityLink
+                  ontologyId={entity.getOntologyId()}
+                  currentEntity={entity}
+                  entityType="individuals"
+                  iri={v}
+                  linkedEntities={linkedEntities}
+              />
+            </span>
           )}
         </span>
       );

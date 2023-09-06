@@ -313,11 +313,21 @@ export default function EntityTree({
   }
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ position: "relative" }}>
-        <div
-          style={{ position: "absolute", right: 0, top: 0 }}
-          className="flex flex-col bg-white px-2 m-1 rounded-lg"
-        >
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
+        {rootNodes ? (
+          <div className="lg:col-span-2 relative">
+            <div
+              className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
+              role="tree"
+            >
+              {renderNodeChildren(rootNodes, 0)}
+            </div>
+            {numPendingTreeRequests > 0 ? (
+              <div className="absolute spinner-default w-7 h-7 -top-1 -left-4 z-auto" />
+            ) : null}
+          </div>
+        ) : null}
+        <div className="lg:col-span-1 flex flex-col bg-white px-2 mb-2 rounded-lg">
           {entityType === "classes" &&
             ontology.getPreferredRoots().length > 0 && (
               <div className="mb-2">
@@ -373,17 +383,6 @@ export default function EntityTree({
             />
           )}
         </div>
-        {rootNodes ? (
-          <div
-            className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
-            role="tree"
-          >
-            {renderNodeChildren(rootNodes, 0)}
-          </div>
-        ) : null}
-        {numPendingTreeRequests > 0 ? (
-          <div className="spinner-default w-7 h-7 absolute -top-2 -left-5" />
-        ) : null}
       </div>
     </ThemeProvider>
   );

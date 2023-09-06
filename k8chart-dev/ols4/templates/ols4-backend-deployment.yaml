@@ -31,7 +31,11 @@ spec:
             - containerPort: 8080
           resources:
             requests:
-              memory: 14Gi
+              memory: 10Gi
+              cpu: 0.5
+            limits:
+              memory: 10Gi
+              cpu: 2
           env:
             - name: OLS_SOLR_HOST
               value: http://{{ .Release.Name }}-solr:8983

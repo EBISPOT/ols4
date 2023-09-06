@@ -26,6 +26,7 @@ import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
 import DefiningOntologiesSection from "./entityPageSections/DefiningOntologiesSection";
 import DisjointWithSection from "./entityPageSections/DisjointWithSection";
+import DomainSection from "./entityPageSections/DomainSection";
 import EntityAnnotationsSection from "./entityPageSections/EntityAnnotationsSection";
 import EntityDescriptionSection from "./entityPageSections/EntityDescriptionSection";
 import EntityEquivalentsSection from "./entityPageSections/EntityEquivalentsSection";
@@ -33,6 +34,7 @@ import EntityImagesSection from "./entityPageSections/EntityImagesSection";
 import EntityParentsSection from "./entityPageSections/EntityParentsSection";
 import EntityRelatedFromSection from "./entityPageSections/EntityRelatedFromSection";
 import EntitySynonymsSection from "./entityPageSections/EntitySynonymsSection";
+import HasKeySection from "./entityPageSections/HasKeySection";
 import IndividualDifferentFromSection from "./entityPageSections/IndividualDifferentFromSection";
 import IndividualPropertyAssertionsSection from "./entityPageSections/IndividualPropertyAssertionsSection";
 import IndividualSameAsSection from "./entityPageSections/IndividualSameAsSection";
@@ -41,6 +43,7 @@ import MetadataTooltip from "./entityPageSections/MetadataTooltip";
 import PropertyChainSection from "./entityPageSections/PropertyChainSection";
 import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharacteristicsSection";
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
+import RangeSection from "./entityPageSections/RangeSection";
 import addLinksToText from "./entityPageSections/addLinksToText";
 
 export default function EntityPage({
@@ -144,11 +147,11 @@ export default function EntityPage({
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto" style={{ position: "relative" }}>
+      <main className="container mx-auto">
         {ontology && entity ? (
-          <div className="my-8 mx-2">
-            <div className="flex flex-row justify-between items-center px-2 mb-4">
-              <div>
+          <div className="my-8">
+            <div className="flex flex-wrap justify-between items-center px-2 mb-4">
+              <div className="mb-2 lg:m-0">
                 <Link className="link-default" to={"/ontologies"}>
                   Ontologies
                 </Link>
@@ -279,7 +282,7 @@ export default function EntityPage({
                   )}
               </Banner>
             )}
-            <div className="bg-gradient-to-r to-white rounded-lg p-8 mb-4 text-neutral-black from-neutral-light">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black overflow-x-auto">
               <div className="font-bold mb-4 flex flex-row items-center">
                 <span className="text-2xl mr-3">{entity.getName()}</span>
                 {!entity.isCanonical() && (
@@ -326,48 +329,49 @@ export default function EntityPage({
                 linkedEntities={linkedEntities}
               />
             </div>
-            <div className="py-2 mb-2">
-              <button
-                className={`font-bold mr-3 ${
-                  viewMode === "tree" ? "button-orange-active" : "button-orange"
-                }`}
-                onClick={() => setViewMode("tree")}
-              >
-                <div className="flex gap-2">
-                  <AccountTree />
-                  <div>Tree</div>
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
+              <div className="lg:col-span-2">
+                <div className="py-2">
+                  <button
+                    className={`font-bold mr-3 ${
+                      viewMode === "tree"
+                        ? "button-orange-active"
+                        : "button-orange"
+                    }`}
+                    onClick={() => setViewMode("tree")}
+                  >
+                    <div className="flex gap-2">
+                      <AccountTree />
+                      <div>Tree</div>
+                    </div>
+                  </button>
+                  <button
+                    className={`font-bold ${
+                      viewMode === "graph"
+                        ? "button-orange-active"
+                        : "button-orange"
+                    }`}
+                    onClick={() => setViewMode("graph")}
+                  >
+                    <div className="flex gap-2">
+                      <Share />
+                      <div>Graph</div>
+                    </div>
+                  </button>
                 </div>
-              </button>
-              <button
-                className={`font-bold ${
-                  viewMode === "graph"
-                    ? "button-orange-active"
-                    : "button-orange"
-                }`}
-                onClick={() => setViewMode("graph")}
-              >
-                <div className="flex gap-2">
-                  <Share />
-                  <div>Graph</div>
-                </div>
-              </button>
-            </div>
-            {viewMode === "graph" && (
-              <EntityGraph
-                ontologyId={ontologyId}
-                entityType={
-                  {
-                    class: "classes",
-                    property: "properties",
-                    individual: "individuals",
-                  }[entity.getType()]
-                }
-                selectedEntity={entity}
-              />
-            )}
-            {viewMode === "tree" && (
-              <div className="grid grid-cols-3 gap-8">
-                <div className="col-span-2">
+                {viewMode === "graph" ? (
+                  <EntityGraph
+                    ontologyId={ontologyId}
+                    entityType={
+                      {
+                        class: "classes",
+                        property: "properties",
+                        individual: "individuals",
+                      }[entity.getType()]
+                    }
+                    selectedEntity={entity}
+                  />
+                ) : (
                   <EntityTree
                     ontology={ontology}
                     entityType={
@@ -394,79 +398,91 @@ export default function EntityPage({
                       )
                     }
                   />
-                </div>
-                <div className="col-span-1">
-                  <details open className="p-2">
-                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
-                      <span className="capitalize">
-                        {entity.getType()} Information
-                      </span>
-                    </summary>
-                    <div className="py-2 break-words space-y-4">
-                      <PropertyCharacteristicsSection entity={entity} />
-                      <IndividualPropertyAssertionsSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <EntityAnnotationsSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                    </div>
-                  </details>
-                  <details open className="p-2">
-                    <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
-                      <span className="capitalize">
-                        {entity.getType()} Relations
-                      </span>
-                    </summary>
-                    <div className="py-2 break-words space-y-4">
-                      <IndividualTypesSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <IndividualSameAsSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <IndividualDifferentFromSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <DisjointWithSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <PropertyInverseOfSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <PropertyChainSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <EntityEquivalentsSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <EntityParentsSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <EntityRelatedFromSection
-                        entity={entity}
-                        linkedEntities={linkedEntities}
-                      />
-                      <ClassInstancesSection
-                        entity={entity}
-                        classInstances={classInstances}
-                        linkedEntities={linkedEntities}
-                      />
-                    </div>
-                  </details>
-                </div>
+                )}
               </div>
-            )}
+              <div className="lg:col-span-1">
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
+                    <span className="capitalize">
+                      {entity.getType()} Information
+                    </span>
+                  </summary>
+                  <div className="py-2 break-words space-y-4">
+                    <HasKeySection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <PropertyCharacteristicsSection entity={entity} />
+                    <DomainSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <RangeSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <IndividualPropertyAssertionsSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <EntityAnnotationsSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                  </div>
+                </details>
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
+                    <span className="capitalize">
+                      {entity.getType()} Relations
+                    </span>
+                  </summary>
+                  <div className="py-2 break-words space-y-4">
+                    <IndividualTypesSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <IndividualSameAsSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <IndividualDifferentFromSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <DisjointWithSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <PropertyInverseOfSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <PropertyChainSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <EntityEquivalentsSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <EntityParentsSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <EntityRelatedFromSection
+                      entity={entity}
+                      linkedEntities={linkedEntities}
+                    />
+                    <ClassInstancesSection
+                      entity={entity}
+                      classInstances={classInstances}
+                      linkedEntities={linkedEntities}
+                    />
+                  </div>
+                </details>
+              </div>
+            </div>
           </div>
         ) : null}
         {!ontology || loading ? (

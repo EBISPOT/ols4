@@ -134,6 +134,7 @@ public class V1SelectController {
             if (fieldList == null) {
                 fieldList = new HashSet<>();
             }
+            // default fields
             if (fieldList.isEmpty()) {
                 fieldList.add("id");
                 fieldList.add("iri");
@@ -142,10 +143,8 @@ public class V1SelectController {
                 fieldList.add("label");
                 fieldList.add("ontology_name");
                 fieldList.add("ontology_prefix");
-                fieldList.add("is_defining_ontology");
                 fieldList.add("description");
                 fieldList.add("type");
-                fieldList.add("synonyms");
             }
 
             Map<String, Object> outDoc = new HashMap<>();
@@ -158,10 +157,9 @@ public class V1SelectController {
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
-                    JsonHelper.getString(json, "isDefiningOntology") == null ? false :
-                            JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+                    JsonHelper.getString(json, "isDefiningOntology") != null && JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
-            if (fieldList.contains("synonyms")) outDoc.put("synonyms", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
 
             docs.add(outDoc);

@@ -6,8 +6,8 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf">
-        <owl:versionIRI rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/data-property-assertion-domain-range-restrictions.rdf"/>
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf">
+        <owl:versionIRI rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/data-property-domain-range-restrictions.rdf"/>
     </owl:Ontology>
     
 
@@ -23,10 +23,10 @@
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf#hasAge -->
+    <!-- http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf#hasAge -->
 
-    <owl:DatatypeProperty rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf#hasAge">
-        <rdfs:domain rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf#Person"/>
+    <owl:DatatypeProperty rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf#hasAge">
+        <rdfs:domain rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf#Person"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
     </owl:DatatypeProperty>
     
@@ -43,9 +43,9 @@
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf#Person -->
+    <!-- http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf#Person -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion-domain-range-restrictions.rdf#Person"/>
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf#Person"/>
 </rdf:RDF>
 
 

@@ -85,7 +85,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", /*"annotations", "logical_description",*/ "iri"};
+                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", "iri", "_json"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
@@ -200,6 +200,7 @@ public class V1SearchController {
             if (fieldList == null) {
                 fieldList = new HashSet<>();
             }
+            // default fields
             if (fieldList.isEmpty()) {
                 fieldList.add("id");
                 fieldList.add("iri");
@@ -208,9 +209,8 @@ public class V1SearchController {
                 fieldList.add("description");
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
-                fieldList.add("is_defining_ontology");
                 fieldList.add("type");
-                fieldList.add("synonyms");
+                fieldList.add("ontology_prefix");
             }
 
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
@@ -226,12 +226,11 @@ public class V1SearchController {
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
-                    JsonHelper.getString(json, "isDefiningOntology") == null ? false :
-                            JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+                    JsonHelper.getString(json, "isDefiningOntology") != null && JsonHelper.getString(json, "isDefiningOntology").equals("true"));
             if (fieldList.contains("type")) outDoc.put("type", "class");
-            if (fieldList.contains("synonyms")) outDoc.put("synonyms", JsonHelper.getStrings(json, "synonym"));
-
-            // TODO: ontology_prefix
+            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
+            if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
 
             docs.add(outDoc);
         }

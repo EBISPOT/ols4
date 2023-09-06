@@ -1,5 +1,6 @@
 
 import { build } from "esbuild";
+import { exec } from 'child_process'
 
 let define = {}
 for (const k in process.env) { define[`process.env.${k}`] = JSON.stringify(process.env[k]) }
@@ -31,4 +32,5 @@ build({
 	sourcemap: 'linked'
 });
 
-
+console.log('### Copying treestyles.css')
+exec('cp ./src/widgets/styles/treestyles.css ./dist_widgets')

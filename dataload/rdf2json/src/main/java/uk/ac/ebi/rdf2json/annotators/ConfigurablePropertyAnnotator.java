@@ -5,10 +5,7 @@ import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class ConfigurablePropertyAnnotator {
 
@@ -35,7 +32,7 @@ public class ConfigurablePropertyAnnotator {
             OntologyNode c = graph.nodes.get(id);
             if (c.types.contains(OntologyNode.NodeType.CLASS) ||
                     c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-                    c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+                    c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // skip bnodes
                 if(c.uri == null)

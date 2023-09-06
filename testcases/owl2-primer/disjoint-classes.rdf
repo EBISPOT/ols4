@@ -21,13 +21,16 @@
      -->
 
     
-
+     <owl:AllDisjointClasses>
+       <owl:members rdf:parseType="Collection">
+         <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman"/>
+         <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man"/>
+       </owl:members>
+     </owl:AllDisjointClasses>
 
     <!-- http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man">
-        <owl:disjointWith rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man"/>
     
 
 

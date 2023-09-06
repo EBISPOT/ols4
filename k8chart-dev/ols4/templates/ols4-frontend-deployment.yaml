@@ -28,9 +28,12 @@ spec:
           image: ghcr.io/ebispot/ols4-frontend:{{.Values.imageTag}}
           imagePullPolicy: Always
           resources:
-              requests:
-                cpu: 2
-                memory: 4G          
+            requests:
+              cpu: 0.25
+              memory: 1Gi
+            limits:
+              cpu: 1
+              memory: 1Gi
           ports:
             - containerPort: 8080
           env:

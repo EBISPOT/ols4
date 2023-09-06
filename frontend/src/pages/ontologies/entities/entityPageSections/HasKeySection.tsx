@@ -7,34 +7,34 @@ import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
 
-export default function DisjointWithSection({
+export default function HasKeySection({
   entity,
   linkedEntities,
 }: {
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-  if (!(entity instanceof Property) && !(entity instanceof Class)) {
+  if (!(entity instanceof Class)) {
     return <Fragment />;
   }
 
-  let disjointWiths = entity.getDisjointWith();
+  let keys = entity.getHasKey();
 
-  if (!disjointWiths || disjointWiths.length === 0) {
+  if (!keys || keys.length === 0) {
     return <Fragment />;
   }
 
   return (
     <div>
-      <div className="font-bold">Disjoint with</div>
-      {disjointWiths.length === 1 ? (
+      <div className="font-bold">Has Key</div>
+      {keys.length === 1 ? (
         <p>
-          {typeof disjointWiths[0] === "object" &&
-          !Array.isArray(disjointWiths[0]) ? (
+          {typeof keys[0] === "object" &&
+          !Array.isArray(keys[0]) ? (
             <ClassExpression
               ontologyId={entity.getOntologyId()}
               currentEntity={entity}
-              expr={disjointWiths[0]}
+              expr={keys[0]}
               linkedEntities={linkedEntities}
             />
           ) : (
@@ -44,32 +44,32 @@ export default function DisjointWithSection({
               entityType={
                 entity.getType() === "property" ? "properties" : "classes"
               }
-              iri={disjointWiths[0]}
+              iri={keys[0]}
               linkedEntities={linkedEntities}
             />
           )}
         </p>
       ) : (
         <ul className="list-disc list-inside">
-          {disjointWiths.map((disjointWith) => {
+          {keys.map((keys) => {
             return (
               <li key={randomString()}>
-                {typeof disjointWith === "object" &&
-                !Array.isArray(disjointWith) ? (
+                {typeof keys === "object" &&
+                !Array.isArray(keys) ? (
                   <ClassExpression
                     ontologyId={entity.getOntologyId()}
-                currentEntity={entity}
-                    expr={disjointWith}
+                    currentEntity={entity}
+                    expr={keys}
                     linkedEntities={linkedEntities}
                   />
                 ) : (
                   <EntityLink
                     ontologyId={entity.getOntologyId()}
-		    currentEntity={entity}
+		            currentEntity={entity}
                     entityType={
                       entity.getType() === "property" ? "properties" : "classes"
                     }
-                    iri={disjointWith}
+                    iri={keys}
                     linkedEntities={linkedEntities}
                   />
                 )}

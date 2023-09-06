@@ -2,15 +2,10 @@ package uk.ac.ebi.rdf2json.annotators;
 
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class DirectParentsAnnotator {
 
@@ -49,7 +44,7 @@ public class DirectParentsAnnotator {
                     }
                 }
 
-            } else if (c.types.contains(OntologyNode.NodeType.NAMED_INDIVIDUAL)) {
+            } else if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // The type of individuals becomes their parent in OLS
                 //

@@ -30,7 +30,11 @@ spec:
           args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           resources:
             requests:
-              memory: 11Gi
+              memory: 8Gi
+              cpu: 0.5
+            limits:
+              memory: 8Gi
+              cpu: 2
           env:
             - name: SOLR_TARBALL_URL
               value: {{.Values.solrTarballUrl}}

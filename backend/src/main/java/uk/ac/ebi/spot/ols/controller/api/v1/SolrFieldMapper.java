@@ -27,8 +27,8 @@ public class SolrFieldMapper {
             }
 
         if (legacyFieldName.indexOf('^') != -1) {
-                suffix = legacyFieldName.substring(legacyFieldName.indexOf('^') + 1);
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.indexOf('^') - 1);
+                suffix = legacyFieldName.substring(legacyFieldName.indexOf('^'));
+                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.indexOf('^'));
             }
 
             if (legacyFieldName.equals("iri")) {
@@ -71,17 +71,15 @@ public class SolrFieldMapper {
                 continue;
             }
 
-            if (legacyFieldName.equals("ontology_name")) {
-                newFields.add(prefix + "ontologyId" + suffix);
-                continue;
-            }
-
             if (legacyFieldName.equals("type")) {
                 newFields.add(prefix + "type" + suffix);
                 continue;
             }
 
-
+            if (legacyFieldName.equals("_json")) {
+                newFields.add("_json" + suffix);
+                continue;
+            }
         }
 
         // escape special characters in field names for solr query
