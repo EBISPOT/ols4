@@ -60,8 +60,8 @@ Create tarballs for both Solr and Neo4j data folders. One good example is using 
 Uninstall existing `dataserver` deployments, if any, before installing a new one. Do not forget to set `KUBECONFIG`
 environment variable.
 
-    export KUBECONFIG=<k8s config>
-    helm install ols4-dataserver --wait <OLS4 dir>/k8chart/dataserver
+    export KUBECONFIG=<K8S_CONFIG>
+    helm install ols4-dataserver --wait <OLS4_DIR>/k8chart/dataserver
 
 ### Copy data to dataserver
 
@@ -78,6 +78,7 @@ environment variable.
 **IMPORTANT**: The use of `imageTag` is to specify the docker image uploaded to this repository. If not familiar, simply
 use either the updated `dev` or `stable` images.
 
+    export KUBECONFIG=<K8S_CONFIG>
     helm install ols4 <OLS4_DIR>/k8chart/ols4 --set imageTag=dev
 
 # Developing OLS4
