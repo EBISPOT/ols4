@@ -35,6 +35,10 @@ You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
 If you want to test it with your own ontology, copy the OWL or RDFS ontology file to the `testcases` folder (which is mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if your ontology is in `testcases/myontology.owl`. Then follow the above steps for efo with the config filename you created.
 
+## Deployment: Using Kubernetes with GitHub Packages
+
+TODO
+
 # Developing OLS4
 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of which are possible and/or performant using traditional RDBMS.
@@ -67,7 +71,6 @@ This will build and run the dataload, and start up Solr and Neo4j with your new 
 To start everything, including the frontend:
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
-    
 
 ## Development: Running OLS4 locally
 
@@ -78,8 +81,6 @@ requirements are as follows:
 3. Neo4J 4.4.x
 4. Solr 9.0.0
 5. Your favourite Git client
-6. Yarn 1.22.X
-
 
 ### Acquire source and build
 
@@ -103,7 +104,6 @@ The scripts below assume you have the following environment variables set:
 `SOLR_HOME`
 
 `OLS4_HOME` - this should point to the root folder where you have the OLS4 code.
-
 
 Change the directory to $OLS4_HOME.
 
@@ -135,7 +135,13 @@ Once you are done testing, to stop everything:
 
 ### Running the dataload locally
 
-TODO
+All related files for loading and managing data are in `dataload`. Make sure to set `OLS4_CONFIG` environment variable to specify what ontologies to load.
+
+	export OLS4_CONFIG=./dataload/configs/efo.json
+
+To start just the dataload:
+
+	docker compose up --force-recreate --build ols4-dataload
 
 ### Running the API server backend locally
 
@@ -144,12 +150,10 @@ The API server Spring Boot application located in `backend`.  Set the following 
     OLS_SOLR_HOST=http://localhost:8983
     OLS_NEO4J_HOST=bolt://localhost:7687
 
-
 ### Running the frontend locally
 
 The frontend is a React application in `frontend`. See [frontend docs](frontend/README.md) 
 for details on how to run the frontend.
-
 
 ## Development: Updating `testcases_expected_output`
 
@@ -185,14 +189,3 @@ You can now add it to your commit:
 
     git add -A testcases_expected_output
     git add -A testcases_expected_output_api
-
-
-
-
-
-
-    
-
-
-
-
