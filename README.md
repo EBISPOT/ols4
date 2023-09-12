@@ -50,7 +50,7 @@ utilized. Software requirements are as follows:
 
 ### Create data archives for Solr and Neo4j
 
-Create tarballs for both Solr and Neo4j data folders. One good example is using the `tar` command.
+Create archives for both Solr and Neo4j data folders. One good example is using the `tar` command.
 
     tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
     tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
@@ -65,7 +65,7 @@ environment variable.
 
 ### Copy data to dataserver
 
-From your local directory, copy the created tarballs to the `dataserver`.
+From your local directory, copy the created archive files to the `dataserver`.
 
     kubectl cp <LOCAL_DIR>/neo4j.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/neo4j.tgz
     kubectl cp <LOCAL_DIR>/solr.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/solr.tgz
@@ -75,8 +75,8 @@ From your local directory, copy the created tarballs to the `dataserver`.
 Uninstall existing `ols4` deployments, if any, before installing a new one. Do not forget to set `KUBECONFIG`
 environment variable.
 
-**IMPORTANT**: The use of `imageTag` is to specify the docker image uploaded to this repository. If not familiar, simply
-use either the updated `dev` or `stable` images.
+**IMPORTANT**: The use of `imageTag` is to specify the Docker image (uploaded to this repository) that will be used in the deployment. If not familiar, simply
+use either the `dev` or `stable` image.
 
     export KUBECONFIG=<K8S_CONFIG>
     helm install ols4 <OLS4_DIR>/k8chart/ols4 --set imageTag=dev
@@ -193,7 +193,7 @@ Once you are done testing, to stop everything:
 ### Running the dataload locally
 
 All related files for loading and managing data are in `dataload`. Make sure to set `OLS4_CONFIG` environment variable
-to specify what ontologies to load.
+to specify what configuration file to use, which in turn determines what ontologies to load.
 
 	export OLS4_CONFIG=./dataload/configs/efo.json
 
