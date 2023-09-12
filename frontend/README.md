@@ -1,7 +1,8 @@
 ## Development: Running OLS4 frontend locally
 
 This will require NPM.
-Inside the frontend directory, you can run:
+
+Inside the frontend directory, you can run the following commands:
 
 
     npm install
