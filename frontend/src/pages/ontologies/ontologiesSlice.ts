@@ -230,7 +230,7 @@ export const getClassInstances = createAsyncThunk(
 export const getOntologies = createAsyncThunk(
   "ontologies_ontologies",
   async ({ page, rowsPerPage, search }: any, { rejectWithValue }) => {
-    if (search.length > 1) search = "*" + search + "*";
+    if (search.length > 1 && !search.includes(" ")) search = "*" + search + "*";
     const path = `api/v2/ontologies?page=${page}&size=${rowsPerPage}${
       search ? "&search=" + search : ""
     }`;
