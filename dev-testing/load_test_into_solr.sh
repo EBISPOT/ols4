@@ -8,9 +8,6 @@ fi
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $1/ontologies.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
 
-wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $1./output/ontologies.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-
 wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file $1/classes.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
 

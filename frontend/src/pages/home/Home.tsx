@@ -1,7 +1,6 @@
 import moment from "moment";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Timeline } from "react-twitter-widgets";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
@@ -186,15 +185,6 @@ export default function Home() {
                   <div className="spinner-default w-7 h-7" />
                 </div>
               )}
-            </div>
-            <div className="mb-4">
-              <Timeline
-                dataSource={{
-                  sourceType: "profile",
-                  screenName: "EBIOLS",
-                }}
-                options={{ height: 600 }}
-              />
             </div>
           </div>
         </div>

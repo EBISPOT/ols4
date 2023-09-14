@@ -172,8 +172,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  padding-bottom: 4rem;
+#root {
+  padding-bottom: 11rem;
   position: relative;
   min-height: 100vh;
 }
