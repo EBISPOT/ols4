@@ -34,7 +34,7 @@ spec:
               cpu: 0.5
             limits:
               memory: 8Gi
-              cpu: 2
+              cpu: 1
           env:
             - name: SOLR_TARBALL_URL
               value: {{.Values.solrTarballUrl}}
