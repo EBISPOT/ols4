@@ -3,9 +3,9 @@ import {
   BugReport,
   Download,
   Email,
+  FormatListBulleted,
   Home,
 } from "@mui/icons-material";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { Fragment, useEffect, useState } from "react";
 import {
   Link,
@@ -277,7 +277,7 @@ export default function OntologyPage() {
                       }
                     >
                       <div className="flex gap-2">
-                        <FormatListBulletedIcon />
+                        <FormatListBulleted />
                         <div>List</div>
                       </div>
                     </button>
