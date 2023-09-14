@@ -1,4 +1,4 @@
-import SearchIcon from "@mui/icons-material/Search";
+import { Search } from "@mui/icons-material";
 import { Fragment } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { asArray } from "../app/util";
@@ -154,11 +154,9 @@ export default function EntityLink({
             )}&exactMatch=true&lang=${lang}`}
           >
             <span className="link-ontology px-2 py-0.5 rounded-md text-sm text-white ml-1 whitespace-nowrap">
-              <SearchIcon
-                fontSize="small"
-                style={{ verticalAlign: "text-top" }}
-              />
-              &nbsp;{otherDefinedBy.length}&nbsp;ontologies
+              <Search fontSize="small" style={{ verticalAlign: "text-top" }} />
+              &nbsp;{otherDefinedBy.length}&nbsp;
+              {otherDefinedBy.length > 1 ? "ontologies" : "ontology"}
             </span>
           </Link>
         </Fragment>
@@ -199,11 +197,14 @@ export default function EntityLink({
               )}&exactMatch=true&lang=${lang}`}
             >
               <span className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white whitespace-nowrap">
-                <SearchIcon
+                <Search
                   fontSize="small"
                   style={{ verticalAlign: "text-top" }}
                 />
-                &nbsp;{linkedEntity.numAppearsIn}&nbsp;ontologies
+                &nbsp;{linkedEntity.numAppearsIn}&nbsp;
+                {parseInt(linkedEntity.numAppearsIn) > 1
+                  ? "ontologies"
+                  : "ontology"}
               </span>
             </Link>
           </Fragment>
