@@ -13,6 +13,7 @@ services:
       image: solr:9.0.0
       environment:
         - SOLR_HOME=/mnt/ols4-solr-data
+        - SOLR_JAVA_MEM="-Xms2g -Xmx8g"
       ports:
         - 8983:8983
       volumes:
