@@ -28,6 +28,7 @@ export default function Search() {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [ontologyFacetQuery, setOntologyFacetQuery] = useState<string>("");
+  const [hideFilters, setHideFilters] = useState<boolean>(true);
 
   const ontologyFacets =
     facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
@@ -121,147 +122,164 @@ export default function Search() {
         <div className="flex flex-nowrap gap-4 mb-6">
           <SearchBox initialQuery={search} />
         </div>
-        <div className="grid grid-cols-4 gap-8">
-          <div className="col-span-1">
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8">
-              <div className="font-bold text-neutral-dark text-sm mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
+          <div
+            className={`fixed top-0 left-0 mb-4 z-30 lg:z-0 lg:static lg:col-span-1 bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 text-neutral-black overflow-x-auto h-full lg:h-fit lg:translate-x-0 transition-transform ${
+              hideFilters ? "-translate-x-full" : "translate-x-0"
+            }`}
+          >
+            <div className="flex flex-row items-center justify-between mb-4">
+              <div className="font-bold text-neutral-dark text-sm mr-2">
                 {`Showing ${
                   totalResults > rowsPerPage ? rowsPerPage : totalResults
                 } from a total of ${totalResults}`}
               </div>
-              {totalResults > 0 ? (
-                <div className="text-neutral-black">
-                  <div className="font-semibold text-lg mb-2">Type</div>
-                  <fieldset className="mb-4">
-                    {typeFacets && Object.keys(typeFacets).length > 0
-                      ? Object.keys(typeFacets)
-                          .sort((a, b) => {
-                            const ac = a ? a.toString() : "";
-                            const bc = b ? b.toString() : "";
-                            return ac.localeCompare(bc);
-                          })
-                          .map((key) => {
-                            if (key !== "entity" && typeFacets[key] > 0) {
-                              return (
-                                <label
-                                  key={key}
-                                  htmlFor={key}
-                                  className="block p-1 w-fit"
-                                >
-                                  <input
-                                    type="checkbox"
-                                    id={key}
-                                    className="invisible hidden peer"
-                                    checked={typeFacetSelected.includes(key)}
-                                    onChange={(e) => {
-                                      handleTypeFacet(e.target.checked, key);
-                                    }}
-                                  />
-                                  <span className="input-checkbox mr-4" />
-                                  <span className="capitalize mr-4">
-                                    {key} &#40;{typeFacets[key]}&#41;
-                                  </span>
-                                </label>
-                              );
-                            } else return null;
-                          })
-                      : null}
-                  </fieldset>
-                  <div className="font-semibold text-lg mb-2">Ontology</div>
-                  <div className="relative grow">
-                    <input
-                      id="facet-search-ontology"
-                      type="text"
-                      autoComplete="off"
-                      placeholder="Search id..."
-                      className="input-default text-sm mb-3 pl-3"
-                      value={ontologyFacetQuery}
-                      onChange={(event) => {
-                        if (event.target.value) {
-                          setOntologyFacetFiltered(
-                            Object.fromEntries(
-                              Object.entries(ontologyFacets).filter((key) =>
-                                key
-                                  .toString()
-                                  .toLowerCase()
-                                  .includes(event.target.value.toLowerCase())
-                              )
+              <button
+                className="lg:hidden"
+                type="button"
+                onClick={() => {
+                  setHideFilters(true);
+                }}
+              >
+                <Close />
+              </button>
+            </div>
+            {totalResults > 0 ? (
+              <div className="text-neutral-black">
+                <div className="font-semibold text-lg mb-2">Type</div>
+                <fieldset className="mb-4">
+                  {typeFacets && Object.keys(typeFacets).length > 0
+                    ? Object.keys(typeFacets)
+                        .sort((a, b) => {
+                          const ac = a ? a.toString() : "";
+                          const bc = b ? b.toString() : "";
+                          return ac.localeCompare(bc);
+                        })
+                        .map((key) => {
+                          if (key !== "entity" && typeFacets[key] > 0) {
+                            return (
+                              <label
+                                key={key}
+                                htmlFor={key}
+                                className="block p-1 w-fit"
+                              >
+                                <input
+                                  type="checkbox"
+                                  id={key}
+                                  className="invisible hidden peer"
+                                  checked={typeFacetSelected.includes(key)}
+                                  onChange={(e) => {
+                                    handleTypeFacet(e.target.checked, key);
+                                  }}
+                                />
+                                <span className="input-checkbox mr-4" />
+                                <span className="capitalize mr-4">
+                                  {key} &#40;{typeFacets[key]}&#41;
+                                </span>
+                              </label>
+                            );
+                          } else return null;
+                        })
+                    : null}
+                </fieldset>
+                <div className="font-semibold text-lg mb-2">Ontology</div>
+                <div className="relative grow">
+                  <input
+                    id="facet-search-ontology"
+                    type="text"
+                    autoComplete="off"
+                    placeholder="Search id..."
+                    className="input-default text-sm mb-3 pl-3"
+                    value={ontologyFacetQuery}
+                    onChange={(event) => {
+                      if (event.target.value) {
+                        setOntologyFacetFiltered(
+                          Object.fromEntries(
+                            Object.entries(ontologyFacets).filter((key) =>
+                              key
+                                .toString()
+                                .toLowerCase()
+                                .includes(event.target.value.toLowerCase())
                             )
-                          );
-                          setOntologyFacetQuery(event.target.value);
-                        } else {
+                          )
+                        );
+                        setOntologyFacetQuery(event.target.value);
+                      } else {
+                        setOntologyFacetFiltered(ontologyFacets);
+                        setOntologyFacetQuery("");
+                      }
+                    }}
+                  />
+                  {ontologyFacetQuery ? (
+                    <div className="absolute right-1.5 top-1.5 z-10">
+                      <button
+                        type="button"
+                        onClick={() => {
                           setOntologyFacetFiltered(ontologyFacets);
                           setOntologyFacetQuery("");
-                        }
-                      }}
-                    />
-                    {ontologyFacetQuery ? (
-                      <div className="absolute right-1.5 top-1.5 z-10">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setOntologyFacetFiltered(ontologyFacets);
-                            setOntologyFacetQuery("");
-                          }}
-                        >
-                          <Close />
-                        </button>
-                      </div>
-                    ) : null}
-                  </div>
-                  <fieldset>
-                    {ontologyFacetFiltered &&
-                    Object.keys(ontologyFacetFiltered).length > 0
-                      ? Object.keys(ontologyFacetFiltered)
-                          .sort((a, b) => {
-                            const ac = a ? a.toString() : "";
-                            const bc = b ? b.toString() : "";
-                            return ac.localeCompare(bc);
-                          })
-                          .map((key) => {
-                            if (ontologyFacetFiltered[key] > 0) {
-                              return (
-                                <label
-                                  key={key}
-                                  htmlFor={key}
-                                  className="block p-1 w-fit"
-                                >
-                                  <input
-                                    type="checkbox"
-                                    id={key}
-                                    className="invisible hidden peer"
-                                    checked={ontologyFacetSelected.includes(
-                                      key
-                                    )}
-                                    onChange={(e) => {
-                                      handleOntologyFacet(
-                                        e.target.checked,
-                                        key
-                                      );
-                                      setOntologyFacetQuery("");
-                                    }}
-                                  />
-                                  <span className="input-checkbox mr-4" />
-                                  <span className="uppercase mr-4">
-                                    {key} &#40;{ontologyFacetFiltered[key]}&#41;
-                                  </span>
-                                </label>
-                              );
-                            } else return null;
-                          })
-                      : null}
-                  </fieldset>
+                        }}
+                      >
+                        <Close />
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
+                <fieldset>
+                  {ontologyFacetFiltered &&
+                  Object.keys(ontologyFacetFiltered).length > 0
+                    ? Object.keys(ontologyFacetFiltered)
+                        .sort((a, b) => {
+                          const ac = a ? a.toString() : "";
+                          const bc = b ? b.toString() : "";
+                          return ac.localeCompare(bc);
+                        })
+                        .map((key) => {
+                          if (ontologyFacetFiltered[key] > 0) {
+                            return (
+                              <label
+                                key={key}
+                                htmlFor={key}
+                                className="block p-1 w-fit"
+                              >
+                                <input
+                                  type="checkbox"
+                                  id={key}
+                                  className="invisible hidden peer"
+                                  checked={ontologyFacetSelected.includes(key)}
+                                  onChange={(e) => {
+                                    handleOntologyFacet(e.target.checked, key);
+                                    setOntologyFacetQuery("");
+                                  }}
+                                />
+                                <span className="input-checkbox mr-4" />
+                                <span className="uppercase mr-4">
+                                  {key} &#40;{ontologyFacetFiltered[key]}&#41;
+                                </span>
+                              </label>
+                            );
+                          } else return null;
+                        })
+                    : null}
+                </fieldset>
+              </div>
+            ) : null}
           </div>
-          <div className="col-span-3">
-            <div className="grid grid-cols-4 mb-4">
-              <div className="justify-self-start col-span-3 self-center text-2xl font-bold text-neutral-dark">
+          <div className="lg:col-span-3">
+            <div className="flex flex-col-reverse gap-4 lg:flex-row justify-between mb-4">
+              <div className="lg:basis-3/4 lg:self-center text-2xl font-bold text-neutral-dark">
                 Search results for: {search}
               </div>
-              <div className="justify-self-end col-span-1">
-                <div className="flex group relative text-md">
+              <div className="justify-between flex flex-row items-center gap-4">
+                <button
+                  className="lg:hidden button-secondary"
+                  type="button"
+                  onClick={() => {
+                    setHideFilters(false);
+                  }}
+                >
+                  Filters
+                </button>
+                <div className="flex-none flex group relative text-md">
                   <label className="self-center px-3">Show</label>
                   <select
                     className="input-default appearance-none pr-7 z-20 bg-transparent"

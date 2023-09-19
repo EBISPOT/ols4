@@ -10,12 +10,14 @@ export default function Footer() {
             <a
               href={process.env.REACT_APP_SPOT_OLS4_REPO}
               className="link-footer text-xs font-bold self-center"
+              title="GitHub"
             >
               <GitHub />
             </a>
             <a
               href="https://twitter.com/EBIOLS"
               className="link-footer text-2xl font-bold hover:no-underline"
+              title="X"
             >
               X
             </a>

@@ -32,8 +32,8 @@ export default function Home() {
             <Banner type="warning">{banner}</Banner>
           </div>
         )}
-        <div className="grid grid-cols-4 gap-8">
-          <div className="col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
+          <div className="lg:col-span-3">
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg my-8 p-8">
               <div className="text-3xl mb-4 text-neutral-black font-bold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
@@ -61,8 +61,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-8">
-              <div className="px-2 mb-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+              <div className="px-2">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-browse icon-spacer text-yellow-default" />
                   <Link to={"/about"} className="link-default">
@@ -91,7 +91,7 @@ export default function Home() {
                   .
                 </p>
               </div>
-              <div className="px-2 mb-4">
+              <div className="px-2">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-tool icon-spacer text-yellow-default" />
                   <a
@@ -121,7 +121,7 @@ export default function Home() {
                   mapping data to ontologies in OLS.
                 </p>
               </div>
-              <div className="px-2 mb-4">
+              <div className="px-2">
                 <div className="text-2xl mb-3 text-neutral-default">
                   <i className="icon icon-common icon-exclamation-triangle icon-spacer text-yellow-default" />
                   <a
@@ -153,8 +153,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="col-span-1">
-            <div className="shadow-card border-b-8 border-link-default rounded-md my-8 p-4">
+          <div className="lg:col-span-1 lg:order-none order-first">
+            <div className="shadow-card border-b-8 border-link-default rounded-md mt-8 p-4">
               <div className="text-2xl text-neutral-black font-bold mb-3">
                 <i className="icon icon-common icon-analyse-graph icon-spacer" />
                 <span>Data Content</span>
