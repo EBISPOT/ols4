@@ -118,7 +118,7 @@ export default function Search() {
   return (
     <div>
       <Header section="home" />
-      <main className="container mx-auto h-fit my-8">
+      <main className="container mx-auto px-4 h-fit my-8">
         <div className="flex flex-nowrap gap-4 mb-6">
           <SearchBox initialQuery={search} />
         </div>

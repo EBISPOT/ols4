@@ -6,7 +6,7 @@ export default function About() {
   return (
     <Fragment>
       <Header section="about" />
-      <main className="container mx-auto my-8">
+      <main className="container mx-auto px-4 my-8">
         <div className="text-2xl font-bold my-6">About OLS</div>
         <div>
           <p className="my-2">

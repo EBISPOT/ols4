@@ -11,6 +11,8 @@ export default function Footer() {
               href={process.env.REACT_APP_SPOT_OLS4_REPO}
               className="link-footer text-xs font-bold self-center"
               title="GitHub"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <GitHub />
             </a>
@@ -18,6 +20,8 @@ export default function Footer() {
               href="https://twitter.com/EBIOLS"
               className="link-footer text-2xl font-bold hover:no-underline"
               title="X"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               X
             </a>
@@ -29,7 +33,12 @@ export default function Footer() {
           <i className="icon icon-common icon-copyright icon-spacer" />
           EMBL-EBI&nbsp;2023
         </span>
-        <a href={process.env.REACT_APP_EBI_LICENSING} className="link-footer">
+        <a
+          href={process.env.REACT_APP_EBI_LICENSING}
+          className="link-footer"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           Licensing
         </a>
       </div>

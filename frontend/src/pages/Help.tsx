@@ -8,7 +8,7 @@ export default function Help() {
   return (
     <Fragment>
       <Header section="help" />
-      <main className="container mx-auto my-8">
+      <main className="container mx-auto px-4 my-8">
         {
           // process.env.REACT_APP_APIURL && (
           //   <Link
