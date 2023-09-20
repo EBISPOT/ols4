@@ -8,7 +8,7 @@ export default function Downloads() {
   return (
     <Fragment>
       <Header section="downloads" />
-      <main className="container mx-auto my-8">
+      <main className="container mx-auto px-4 my-8">
         <div className="text-2xl font-bold my-6">
           Downloading OLS Data Releases
         </div>

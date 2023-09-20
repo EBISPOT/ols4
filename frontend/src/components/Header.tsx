@@ -12,7 +12,7 @@ export default function Header({ section }: { section?: string }) {
           "')",
       }}
     >
-      <div className="container mx-auto flex flex-col md:flex-row md:gap-10">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row md:gap-10">
         <div className="py-6 self-center">
           <a href={urlJoin(process.env.PUBLIC_URL!, "/")}>
             <img

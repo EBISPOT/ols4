@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <Header section="home" />
-      <main className="container mx-auto h-fit">
+      <main className="container mx-auto px-4 h-fit">
         {banner !== "" && (
           <div className="mt-4">
             <Banner type="warning">{banner}</Banner>
@@ -41,7 +41,7 @@ export default function Home() {
               <div className="flex flex-nowrap gap-4 mb-4">
                 <SearchBox />
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
                 <div className="text-neutral-black">
                   <span>
                     Examples:&nbsp;
@@ -54,7 +54,7 @@ export default function Home() {
                     </Link>
                   </span>
                 </div>
-                <div className="text-right">
+                <div className="md:text-right">
                   <Link to={"/ontologies"} className="link-default">
                     Looking for a particular ontology?
                   </Link>
@@ -74,17 +74,21 @@ export default function Home() {
                   biomedical ontologies that aims to provide a single point of
                   access to the latest ontology versions. You can browse the
                   ontologies through the website as well as programmatically via
-                  the OLS API. OLS is developed and maintained by the{" "}
+                  the OLS API. OLS is developed and maintained by the&thinsp;
                   <a
                     className="link-default"
                     href={process.env.REACT_APP_SPOT_HOME}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     Samples, Phenotypes and Ontologies Team (SPOT)
-                  </a>{" "}
-                  at{" "}
+                  </a>&thinsp;
+                  at&thinsp;
                   <a
                     className="link-default"
                     href={process.env.REACT_APP_EBI_HOME}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     EMBL-EBI
                   </a>
@@ -97,25 +101,31 @@ export default function Home() {
                   <a
                     href={process.env.REACT_APP_SPOT_ONTOTOOLS}
                     className="link-default"
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     Related Tools
                   </a>
                 </div>
                 <p>
-                  In addition to OLS the SPOT team also provides the{" "}
+                  In addition to OLS the SPOT team also provides the&thinsp;
                   <a
                     className="link-default"
                     href={process.env.REACT_APP_SPOT_OXO}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     OxO
-                  </a>{" "}
-                  and{" "}
+                  </a>&thinsp;
+                  and&thinsp;
                   <a
                     className="link-default"
                     href={process.env.REACT_APP_SPOT_ZOOMA}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     ZOOMA
-                  </a>{" "}
+                  </a>&thinsp;
                   services. OxO provides cross-ontology mappings between terms
                   from different ontologies. ZOOMA is a service to assist in
                   mapping data to ontologies in OLS.
@@ -127,24 +137,30 @@ export default function Home() {
                   <a
                     href={`${process.env.REACT_APP_SPOT_OLS4_REPO}/issues`}
                     className="link-default"
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     Report an Issue
                   </a>
                 </div>
                 <p>
                   For feedback, enquiries or suggestion about OLS or to request
-                  a new ontology please use our{" "}
+                  a new ontology please use our&thinsp;
                   <a
                     href={`${process.env.REACT_APP_SPOT_OLS4_REPO}/issues`}
                     className="link-default"
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     GitHub issue tracker
                   </a>
                   . For announcements relating to OLS, such as new releases and
-                  new features sign up to the{" "}
+                  new features sign up to the&thinsp;
                   <a
                     className="link-default"
                     href={process.env.REACT_APP_SPOT_OLS_ANNOUNCE}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     OLS announce mailing list
                   </a>

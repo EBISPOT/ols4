@@ -147,7 +147,7 @@ export default function EntityPage({
   return (
     <div>
       <Header section="ontologies" />
-      <main className="container mx-auto">
+      <main className="container mx-auto px-4">
         {ontology && entity ? (
           <div className="my-8">
             <div className="flex flex-wrap justify-between items-center px-2 mb-4">
