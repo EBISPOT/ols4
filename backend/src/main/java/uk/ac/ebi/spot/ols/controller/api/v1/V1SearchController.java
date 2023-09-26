@@ -249,8 +249,9 @@ public class V1SearchController {
         responseObj.put("responseHeader", responseHeader);
         responseObj.put("response", responseBody);
 
-        response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
     }
 
