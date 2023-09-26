@@ -150,8 +150,8 @@ export default function EntityPage({
       <main className="container mx-auto px-4">
         {ontology && entity ? (
           <div className="my-8">
-            <div className="flex flex-wrap justify-between items-center px-2 mb-4">
-              <div className="mb-2 lg:m-0">
+            <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
+              <div className="flex flex-wrap items-center gap-y-2">
                 <Link className="link-default" to={"/ontologies"}>
                   Ontologies
                 </Link>
@@ -220,12 +220,6 @@ export default function EntityPage({
                 ) : null}
               </div>
             </div>
-            <div className="flex flex-nowrap gap-4 mb-4">
-              <SearchBox
-                ontologyId={ontologyId}
-                placeholder={`Search ${ontologyId.toUpperCase()}...`}
-              />
-            </div>
             {entity.isDeprecated() && (
               <Banner type="error">
                 <strong className="inline-block mb-2">
@@ -282,40 +276,42 @@ export default function EntityPage({
                   )}
               </Banner>
             )}
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black overflow-x-auto">
-              <div className="font-bold mb-4 flex flex-row items-center">
-                <span className="text-2xl mr-3">{entity.getName()}</span>
-                {!entity.isCanonical() && (
-                  <span className="text-white text-xs bg-neutral-default px-2 py-1 mr-1 rounded-md uppercase">
-                    Imported
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+              <div className="overflow-x-auto mb-4">
+                <div className="font-bold mb-4 flex flex-row items-center">
+                  <span className="text-2xl mr-3">{entity.getName()}</span>
+                  {!entity.isCanonical() && (
+                    <span className="text-white text-xs bg-neutral-default px-2 py-1 mr-1 rounded-md uppercase">
+                      Imported
+                    </span>
+                  )}
+                  {entity.isDeprecated() && (
+                    <span className="text-white text-xs bg-red-500 px-2 py-1 rounded-md uppercase">
+                      Deprecated
+                    </span>
+                  )}
+                </div>
+                <div className="mb-4 leading-relaxed text-sm text-neutral-default">
+                  <span>
+                    <a href={entity.getIri()}>
+                      <i className="icon icon-common icon-external-link-alt icon-spacer" />
+                    </a>
                   </span>
-                )}
-                {entity.isDeprecated() && (
-                  <span className="text-white text-xs bg-red-500 px-2 py-1 rounded-md uppercase">
-                    Deprecated
-                  </span>
-                )}
+                  <span className="mr-3">{entity.getIri()}</span>
+                  <button
+                    onClick={() => {
+                      copyIri(entity.getIri());
+                    }}
+                  >
+                    <i className="icon icon-common icon-copy icon-spacer" />
+                    <span>{isIriCopied ? "Copied!" : "Copy"}</span>
+                  </button>
+                </div>
+                <EntityDescriptionSection
+                  entity={entity}
+                  linkedEntities={linkedEntities}
+                />
               </div>
-              <div className="mb-4 leading-relaxed text-sm text-neutral-default">
-                <span>
-                  <a href={entity.getIri()}>
-                    <i className="icon icon-common icon-external-link-alt icon-spacer" />
-                  </a>
-                </span>
-                <span className="mr-3">{entity.getIri()}</span>
-                <button
-                  onClick={() => {
-                    copyIri(entity.getIri());
-                  }}
-                >
-                  <i className="icon icon-common icon-copy icon-spacer" />
-                  <span>{isIriCopied ? "Copied!" : "Copy"}</span>
-                </button>
-              </div>
-              <EntityDescriptionSection
-                entity={entity}
-                linkedEntities={linkedEntities}
-              />
               <DefiningOntologiesSection
                 entity={entity}
                 linkedEntities={linkedEntities}
@@ -327,6 +323,10 @@ export default function EntityPage({
               <EntityImagesSection
                 entity={entity}
                 linkedEntities={linkedEntities}
+              />
+              <SearchBox
+                ontologyId={ontologyId}
+                placeholder={`Search ${ontologyId.toUpperCase()}...`}
               />
             </div>
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">

@@ -43,13 +43,19 @@ export default function Help() {
           Migrating to the OLS4 API should be as simple as replacing&thinsp;
           <strong>ols</strong> with <strong>ols4</strong> in the path. For
           example,
-          <ul className="list-disc list-inside">
+          <ul className="list-disc list-inside whitespace-nowrap">
             <li>
-              <code>http://www.ebi.ac.uk/ols/api/ontologies</code>&nbsp;(
+              <code className="break-words">
+                http://www.ebi.ac.uk/ols/api/ontologies
+              </code>
+              &nbsp;(
               <i>before</i>)
             </li>
             <li>
-              <code>http://www.ebi.ac.uk/ols4/api/ontologies</code>&nbsp;(
+              <code className="break-words">
+                http://www.ebi.ac.uk/ols4/api/ontologies
+              </code>
+              &nbsp;(
               <i>after</i>)
             </li>
           </ul>
@@ -418,7 +424,9 @@ Content-Type: application/json
         <div className="text-xl text-petrol-600 font-bold my-3">Ontology</div>
         <div className="text-xl italic my-3">Retrieve an ontology</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -521,7 +529,9 @@ Content-Length: 3386
         />
         <div className="text-xl italic my-3">Roots terms</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;/terms/roots</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms/roots
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -538,7 +548,9 @@ Content-Length: 3386
         </p>
         <div className="text-xl italic my-3">Listing ontology terms</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;/terms</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -584,8 +596,8 @@ Content-Length: 3386
         <div className="text-xl text-petrol-600 font-bold my-3">Term</div>
         <div className="text-xl italic my-3">Retrieve a term</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/terms/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -764,8 +776,8 @@ Content-Length: 3624
           relationships as documented in the links sections for term resources.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/parents?id=&#123;id&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/parents?id=&#123;id&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -800,9 +812,8 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/hierarchicalAncestors?id=
           relation, the related terms can be accessed directly with this API.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET
-          /api/ontologies/&#123;ontology_id&#125;/terms/&#123;term_iri&#125;/&#123;property_iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology_id&#125;/terms/&#123;term_iri&#125;/&#123;property_iri&#125;
         </code>
         <div className="text-xl italic my-3">
           Term matching across ontologies
@@ -996,8 +1007,8 @@ Content-Length: 3052
         </p>
         <div className="text-xl italic my-3">Retrieve a property</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/properties/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/properties/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -1048,8 +1059,8 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntolog
         </Banner>
         <div className="text-xl italic my-3">Retrieve an individual</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/individuals/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/individuals/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -1107,7 +1118,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           then synonyms, then definitions, then annotations.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/search?q=&#123;q&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/search?q=&#123;q&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1124,7 +1137,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           to query on labels and synonyms use.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/search?q=&#123;q&#125;&queryFields=label,synonym</code>
+        <code className="break-words">
+          GET&nbsp;/api/search?q=&#123;q&#125;&queryFields=label,synonym
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1202,7 +1217,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           support applications such as autocomplete.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/select?ontology=&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/select?ontology=&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1269,7 +1286,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           searches can be restricted by ontology.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/suggest?ontology=&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/suggest?ontology=&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[

@@ -77,7 +77,7 @@ export default function DefiningOntologiesSection({
   function renderAppearsIn(appearsIn: string) {
     return (
       <Link
-        className="my-2"
+        className="my-1"
         style={{ display: "inline-block" }}
         to={
           "/ontologies/" +
