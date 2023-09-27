@@ -154,34 +154,42 @@ public class JSON2SSSOM {
 
         JsonElement exactMatch = entity.get("http://www.w3.org/2004/02/skos/core#exactMatch");
         if(exactMatch != null) {
-            writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, null, ontologyProperties, writer, curieMap);
         }
         JsonElement hasDbXref = entity.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
         if(hasDbXref != null) {
-            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, null, ontologyProperties, writer, curieMap);
         }
         JsonElement equivalentClass = entity.get("http://www.w3.org/2002/07/owl#equivalentClass");
         if(equivalentClass != null) {
-            writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, null, ontologyProperties, writer, curieMap);
         }
 
-	// chemical specific mapping predicates
-	//
+        // hacky special cases for chemical specific mapping predicates
+        //
         JsonElement inchi = entity.get("http://purl.obolibrary.org/obo/chebi/inchi");
         if(inchi != null) {
-            writeMappingsForEntity(entity, "chebi:inchi", inchi, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", inchi, "inchi:", null, ontologyProperties, writer, curieMap);
         }
         JsonElement inchiKey = entity.get("http://purl.obolibrary.org/obo/chebi/inchikey");
         if(inchiKey != null) {
-            writeMappingsForEntity(entity, "chebi:inchikey", inchiKey, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", inchiKey, "inchikey:", null, ontologyProperties, writer, curieMap);
         }
         JsonElement smiles = entity.get("http://purl.obolibrary.org/obo/chebi/smiles");
         if(smiles != null) {
-            writeMappingsForEntity(entity, "chebi:smiles", smiles, null, ontologyProperties, writer, curieMap);
+            writeMappingsForEntity(entity, "oboInOwl:hasDbXref", smiles, "smiles:", null, ontologyProperties, writer, curieMap);
         }
     }
 
-    public static void writeMappingsForEntity(JsonObject entity, String predicate, JsonElement mappingValue, JsonObject reificationMetadata, Map<String,JsonElement> ontologyProperties, CSVPrinter writer, CurieMap curieMap) throws IOException {
+    public static void writeMappingsForEntity(
+            JsonObject entity,
+            String predicate,
+            JsonElement mappingValue,
+            String valuePrefix,
+            JsonObject reificationMetadata,
+            Map<String,JsonElement> ontologyProperties,
+            CSVPrinter writer,
+            CurieMap curieMap) throws IOException {
 
         JsonElement isDefiningOntology = entity.get("isDefiningOntology");
 
@@ -200,7 +208,7 @@ public class JSON2SSSOM {
         if(mappingValue.isJsonArray()) {
             for(JsonElement entry : mappingValue.getAsJsonArray()) {
                 if(entry.isJsonObject()) {
-                    writeMappingsForEntity(entity, predicate, entry, null, ontologyProperties, writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, entry, valuePrefix, null, ontologyProperties, writer, curieMap);
                 }
             }
         } else if(mappingValue.isJsonObject()) {
@@ -210,10 +218,10 @@ public class JSON2SSSOM {
                 List<String> types = JsonHelper.jsonArrayToStrings(type.getAsJsonArray());
                 if(types.contains("reification")) {
                     JsonElement value = exactMatchObj.get("value");
-                    writeMappingsForEntity(entity, predicate, value, exactMatchObj, ontologyProperties, writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, value, valuePrefix, exactMatchObj, ontologyProperties, writer, curieMap);
                 } else if(types.contains("literal")) {
                     JsonElement value = exactMatchObj.get("value");
-                    writeMappingsForEntity(entity, predicate, value, null, ontologyProperties, writer, curieMap);
+                    writeMappingsForEntity(entity, predicate, value, valuePrefix, null, ontologyProperties, writer, curieMap);
                 }
             } else {
 //                System.out.println("mapping value was object but had no type? " + gson.toJson(mappingValue));
@@ -228,50 +236,49 @@ public class JSON2SSSOM {
             CurieMap.CurieMapping subjCurie = curieMap.mapEntity(entity);
 
             if(subjCurie == null) {
-		return;
-	    }
+                return;
+            }
 
-	    String subject_id = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
+            String subject_id = subjCurie.curie != null ? subjCurie.curie : subjCurie.iriOrUrl;
 
 
 
             String value = mappingValue.getAsString();
 
-	    String object_id = null;
-	    String object_label = "";
+            String object_id = null;
+            String object_label = "";
 
-	    // TODO: hacks for specific chemical mappings, should generalise
-	    if(predicate.equals("chebi:inchikey")) {
-		object_id = "inchikey:" + value;
-		object_label = value;
-	    } else if(predicate.equals("chebi:inchi")) {
-		object_id = "inchi:" + value;
-		object_label = value;
-	    } else if(predicate.equals("chebi:smiles")) {
-		object_id = "smiles:" + value;
-		object_label = value;
-	    } else {
 
-		JsonElement linkedEntityElem = linkedEntities.get(value);
+            if(valuePrefix != null) {
 
-		if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
-			return;
-		}
+                // hack for chemical mappings (smiles, inchi, inchikey)
+                object_id = valuePrefix + value;
+                object_label = value;
 
-		JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
+            } else {
 
-		CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
+                // all the other mappings in OLS end up here
 
-		if(objCurie == null) {
-			return;
-		}
+                JsonElement linkedEntityElem = linkedEntities.get(value);
 
-		object_id = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+                if(linkedEntityElem == null || !linkedEntityElem.isJsonObject()) {
+                    return;
+                }
 
-		if(linkedEntity.has("label"))  {
-			object_label = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
-		}
-	    }
+                JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
+
+                CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
+
+                if(objCurie == null) {
+                    return;
+                }
+
+                object_id = objCurie.curie != null ? objCurie.curie : objCurie.iriOrUrl;
+
+                if(linkedEntity.has("label"))  {
+                    object_label = JsonHelper.getFirstStringValue( linkedEntity.get("label") );
+                }
+            }
 
 
             String[] record = new String[tsvHeader.size()];
@@ -294,7 +301,7 @@ public class JSON2SSSOM {
                         record[i] = JsonHelper.getFirstStringValue( entity.get("label") );
                         break;
                     case "object_label":
-			record[i] = object_label;
+                        record[i] = object_label;
                         break;
 //                    case "comment":
 //                        record[i] = "extracted from " + getFirstStringValue(entity.get("ontologyId"));
