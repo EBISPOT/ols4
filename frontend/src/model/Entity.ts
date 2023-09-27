@@ -82,7 +82,8 @@ export default abstract class Entity extends Thing {
 
   getDepictedBy(): Reified<string>[] {
     return Reified.fromJson<string>(
-      this.properties["http://xmlns.com/foaf/0.1/depicted_by"]
+      [ ...(this.properties["http://xmlns.com/foaf/0.1/depicted_by"] || []),
+        ...(this.properties["http://xmlns.com/foaf/0.1/depiction"] || []) ]
     );
   }
 
@@ -104,6 +105,7 @@ export default abstract class Entity extends Thing {
 
       // this is handled explicitly in EntityPage
       if (predicate === "http://xmlns.com/foaf/0.1/depicted_by") continue;
+      if (predicate === "http://xmlns.com/foaf/0.1/depiction") continue;
 
       let linkedEntity = this.getLinkedEntities().get(predicate)
       if (linkedEntity != undefined && linkedEntity.type.indexOf("objectProperty") !== -1) continue;
