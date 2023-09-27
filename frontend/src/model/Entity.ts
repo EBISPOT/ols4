@@ -82,8 +82,8 @@ export default abstract class Entity extends Thing {
 
   getDepictedBy(): Reified<string>[] {
     return Reified.fromJson<string>(
-      [ ...(this.properties["http://xmlns.com/foaf/0.1/depicted_by"] || []),
-        ...(this.properties["http://xmlns.com/foaf/0.1/depiction"] || []) ]
+      [ ...asArray(this.properties["http://xmlns.com/foaf/0.1/depicted_by"] || []),
+        ...asArray(this.properties["http://xmlns.com/foaf/0.1/depiction"] || []) ]
     );
   }
 
