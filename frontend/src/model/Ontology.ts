@@ -111,4 +111,7 @@ export default class Ontology extends Thing {
   getExportsTo(): string[] {
     return asArray(this.properties["exportsTo"]);
   }
+  getAllowDownload(): string {
+    return this.properties["allowDownload"];
+  }
 }
