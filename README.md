@@ -294,8 +294,8 @@ After creating the indexes, stop Neo4j as needed.
 
 #### Update Solr indexes
 
-Before starting Solr, make sure to copy the configuration directory (`solr_config`) from inside `dataload`.
-Start Solr locally and use the generated JSON files to update. See sample commands below:
+Before running Solr, make sure to copy the configuration (`solr_config`) from inside `dataload` directory to local, e.g., `<SOLR_DIR>/server/solr/`.
+Then, start Solr locally and use the generated JSON files to update. See sample commands below:
 
     wget \
     --method POST --no-proxy -O - --server-response --content-on-error=on \
