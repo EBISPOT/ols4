@@ -50,7 +50,7 @@ utilized. Software requirements are as follows:
 
 ### Create data archives for Solr and Neo4j
 
-To create your own Solr and Neo4j data archives, follow the steps on [how to load data locally](https://github.com/EBISPOT/ols4#running-the-dataload-locally).
+To create your own Solr and Neo4j data archives, follow the steps on [how to load data locally](#running-the-dataload-locally).
 
 ### Startup dataserver
 
@@ -297,28 +297,42 @@ After creating the indexes, stop Neo4j as needed.
 Before starting Solr, make sure to copy the configuration directory (`solr_config`) from inside `dataload`.
 Start Solr locally and use the generated JSON files to update. See sample commands below:
 
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file <LOCAL_DIR>/output_jsonl/ontologies.jsonl \
+    wget \
+    --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/ontologies.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
     
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file <LOCAL_DIR>/output_jsonl/classes.jsonl \
+    wget \
+    --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/classes.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
     
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file <LOCAL_DIR>/output_jsonl/properties.jsonl \
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/properties.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
     
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file <LOCAL_DIR>/output_jsonl/individuals.jsonl \
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/individuals.jsonl \
     http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
     
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on --header="Content-Type: application/json" --body-file <LOCAL_DIR>/output_jsonl/autocomplete.jsonl \
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/autocomplete.jsonl \
     http://localhost:8983/solr/ols4_autocomplete/update/json/docs?commit=true
 
 Update `ols4_entities` core:
 
-    wget --no-proxy -O - --server-response --content-on-error=on http://localhost:8984/solr/ols4_entities/update?commit=true
+    wget --no-proxy -O - --server-response --content-on-error=on \
+    http://localhost:8983/solr/ols4_entities/update?commit=true
 
 Update `ols4_autocomplete` core:
 
-    wget --no-proxy -O - --server-response --content-on-error=on http://localhost:8984/solr/ols4_autocomplete/update?commit=true
+    wget --no-proxy -O - --server-response --content-on-error=on \
+    http://localhost:8983/solr/ols4_autocomplete/update?commit=true
 
 After updating the indexes, stop Solr as needed.
 
@@ -326,8 +340,11 @@ After updating the indexes, stop Solr as needed.
 
 Finally, create archives for both Solr and Neo4j data folders.
 
-    tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
-    tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
+    tar --use-compress-program="pigz --fast --recursive" \
+    -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
+
+    tar --use-compress-program="pigz --fast --recursive" \
+    -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
 
 ### Running the API server backend locally
 
