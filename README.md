@@ -50,10 +50,7 @@ utilized. Software requirements are as follows:
 
 ### Create data archives for Solr and Neo4j
 
-Create archives for both Solr and Neo4j data folders. One good example is using the `tar` command.
-
-    tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
-    tar --use-compress-program="pigz --fast --recursive" -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
+To create your own Solr and Neo4j data archives, follow the steps on [how to load data locally](#running-the-dataload-locally).
 
 ### Startup dataserver
 
@@ -65,7 +62,7 @@ environment variable.
 
 ### Copy data to dataserver
 
-From your local directory, copy the created archive files to the `dataserver`.
+From your local directory, copy the Solr and Neo4j data archive files to the `dataserver`.
 
     kubectl cp <LOCAL_DIR>/neo4j.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/neo4j.tgz
     kubectl cp <LOCAL_DIR>/solr.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/solr.tgz
@@ -84,8 +81,7 @@ use either the `dev` or `stable` image.
 # Developing OLS4
 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of
-which are possible and/or performant using traditional RDBMS. It therefore uses two specialized database servers: [**
-Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph
+which are possible and/or performant using traditional RDBMS. It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph
 database.
 
 * The `dataload` directory contains the code which turns ontologies from RDF (specified using OWL and/or RDFS) into JSON
@@ -192,14 +188,163 @@ Once you are done testing, to stop everything:
 
 ### Running the dataload locally
 
-All related files for loading and managing data are in `dataload`. Make sure to set `OLS4_CONFIG` environment variable
-to specify what configuration file to use, which in turn determines what ontologies to load.
+All related files for loading and processing data are in `dataload`.
+First, make sure the configuration files (that determine which ontologies to load) are ready and to build all the JAR files:
 
-	export OLS4_CONFIG=./dataload/configs/efo.json
+    cd dataload
+    mvn clean package
 
-To start just the dataload:
+#### Pre-download RDF
 
-	docker compose up --force-recreate --build ols4-dataload
+    java \
+    -DentityExpansionLimit=0 \
+    -DtotalEntitySizeLimit=0 \
+    -Djdk.xml.totalEntitySizeLimit=0 \
+    -Djdk.xml.entityExpansionLimit=0 \
+    -jar predownloader.jar \
+    --config <CONFIG_FILE> \
+    --downloadPath <DOWNLOAD_PATH>
+
+#### Convert RDF to JSON
+
+    java \
+    -DentityExpansionLimit=0 \
+    -DtotalEntitySizeLimit=0 \
+    -Djdk.xml.totalEntitySizeLimit=0 \
+    -Djdk.xml.entityExpansionLimit=0 \
+    -jar rdf2json.jar \
+    --downloadedPath <DOWNLOAD_PATH> \
+    --config <CONFIG_FILE> \
+    --output <LOCAL_DIR>/output_json/ontologies.json
+
+#### Run ontologies linker
+
+    java \
+    -jar linker.jar \
+    --input <LOCAL_DIR>/output_json/ontologies.json \
+    --output <LOCAL_DIR>/output_json/ontologies_linked.json \
+    --leveldbPath <LEVEL_DB_DIR>
+
+#### Convert JSON to Neo4j CSV
+
+    java \
+    -jar json2neo.jar \
+    --input <LOCAL_DIR>/output_json/ontologies_linked.json \
+    --outDir <LOCAL_DIR>/output_csv/
+
+#### Create Neo4j from CSV
+
+Run Neo4j `import` command:
+
+    ./neo4j-admin import \
+    --ignore-empty-strings=true \
+    --legacy-style-quoting=false \
+    --array-delimiter="|" \
+    --multiline-fields=true \
+    --database=neo4j \
+    --read-buffer-size=134217728 \
+    $(<LOCAL_DIR>/make_csv_import_cmd.sh)
+
+Here is a sample `make_csv_import_cmd.sh` file:
+
+    for f in ./output_csv/*_ontologies.csv
+    do
+    echo -n "--nodes=$f "
+    done
+    
+    for f in ./output_csv/*_classes.csv
+    do
+    echo -n "--nodes=$f "
+    done
+    
+    for f in ./output_csv/*_properties.csv
+    do
+    echo -n "--nodes=$f "
+    done
+    
+    for f in ./output_csv/*_individuals.csv
+    do
+    echo -n "--nodes=$f "
+    done
+    
+    for f in ./output_csv/*_edges.csv
+    do
+    echo -n "--relationships=$f "
+    done
+
+#### Make Neo4j indexes
+
+Start Neo4j locally and then run the sample database commands, which are also defined in `create_indexes.cypher` inside the `dataload` directory:
+
+    CREATE INDEX FOR (n:OntologyClass) ON n.id;
+    CREATE INDEX FOR (n:OntologyIndividual) ON n.id;
+    CREATE INDEX FOR (n:OntologyProperty) ON n.id;
+    CREATE INDEX FOR (n:OntologyEntity) ON n.id;
+    
+    CALL db.awaitIndexes(10800);
+
+After creating the indexes, stop Neo4j as needed.
+
+#### Convert JSON output to Solr JSON
+
+    java \
+    -jar json2solr.jar \
+    --input <LOCAL_DIR>/output_json/ontologies_linked.json \
+    --outDir <LOCAL_DIR>/output_jsonl/
+
+#### Update Solr indexes
+
+Before running Solr, make sure to copy the configuration (`solr_config`) from inside `dataload` directory to local, e.g., `<SOLR_DIR>/server/solr/`.
+Then, start Solr locally and use the generated JSON files to update. See sample commands below:
+
+    wget \
+    --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/ontologies.jsonl \
+    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
+    
+    wget \
+    --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/classes.jsonl \
+    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
+    
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/properties.jsonl \
+    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
+    
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/individuals.jsonl \
+    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
+    
+    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
+    --header="Content-Type: application/json" \
+    --body-file <LOCAL_DIR>/output_jsonl/autocomplete.jsonl \
+    http://localhost:8983/solr/ols4_autocomplete/update/json/docs?commit=true
+
+Update `ols4_entities` core:
+
+    wget --no-proxy -O - --server-response --content-on-error=on \
+    http://localhost:8983/solr/ols4_entities/update?commit=true
+
+Update `ols4_autocomplete` core:
+
+    wget --no-proxy -O - --server-response --content-on-error=on \
+    http://localhost:8983/solr/ols4_autocomplete/update?commit=true
+
+After updating the indexes, stop Solr as needed.
+
+#### Create data archives for Solr and Neo4j
+
+Finally, create archives for both Solr and Neo4j data folders.
+
+    tar --use-compress-program="pigz --fast --recursive" \
+    -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
+
+    tar --use-compress-program="pigz --fast --recursive" \
+    -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
 
 ### Running the API server backend locally
 
