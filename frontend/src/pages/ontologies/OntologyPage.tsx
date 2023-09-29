@@ -152,7 +152,7 @@ export default function OntologyPage() {
                 placeholder={`Search ${ontologyId.toUpperCase()}...`}
               />
               <div className="flex flex-wrap gap-2 mt-4">
-                {ontology.getOntologyPurl() && (
+                {ontology.getOntologyPurl() && ontology.getAllowDownload() && (
                   <Link
                     to={ontology.getOntologyPurl()}
                     target="_blank"
