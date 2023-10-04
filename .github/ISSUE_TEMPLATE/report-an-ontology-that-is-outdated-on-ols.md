@@ -3,7 +3,7 @@ name: Report an ontology that is outdated on OLS
 about: Tell us about an ontology that is outdated on OLS. Please create different
   issues for different ontologies
 title: ''
-labels: ''
+labels: outdated ontology
 assignees: ''
 
 ---

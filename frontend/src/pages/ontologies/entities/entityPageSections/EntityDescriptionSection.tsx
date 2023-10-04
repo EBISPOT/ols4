@@ -14,7 +14,7 @@ export default function EntityDescriptionSection({
 }) {
   let desc = entity.getDescriptionAsArray();
   return (
-    <div>
+    <div className="mb-2">
       {desc.map((definition: Reified<any>, i: number) => {
         return (
           <p

@@ -98,8 +98,8 @@ export default function OntologyPage() {
       <main className="container mx-auto px-4">
         {ontology ? (
           <div className="my-8">
-            <div className="flex flex-wrap justify-between items-center px-2 mb-4">
-              <div className="mb-2 lg:m-0">
+            <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
+              <div className="flex flex-wrap items-center gap-y-2">
                 <Link
                   className="link-default"
                   to={"/ontologies"}
@@ -129,32 +129,30 @@ export default function OntologyPage() {
                 />
               </div>
             </div>
-            <div className="flex flex-nowrap gap-4 mb-4">
+            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
+              <div className="overflow-x-auto mb-4">
+                <div className="text-2xl font-bold mb-4">
+                  {ontology.getName() || ontology.getOntologyId()}
+                </div>
+                {version && (
+                  <div className="mb-4">
+                    <span className="font-bold">Version {version}</span>
+                  </div>
+                )}
+                <div>
+                  <p>
+                    {ontology.getDescription() ? ontology.getDescription() : ""}
+                  </p>
+                </div>
+              </div>
+              <OntologyImportsSection ontology={ontology} />
+              <OntologyImportedBySection ontology={ontology} />
               <SearchBox
                 ontologyId={ontologyId}
                 placeholder={`Search ${ontologyId.toUpperCase()}...`}
               />
-            </div>
-            <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black overflow-x-auto">
-              <div className="text-2xl font-bold mb-4">
-                {ontology.getName() || ontology.getOntologyId()}
-              </div>
-              {version && (
-                <div className="mb-4">
-                  <span className="font-bold">Version {version}</span>
-                </div>
-              )}
-              <div>
-                <p>
-                  {ontology.getDescription() ? ontology.getDescription() : ""}
-                </p>
-              </div>
-
-              <OntologyImportsSection ontology={ontology} />
-              <OntologyImportedBySection ontology={ontology} />
-
-              <div className="flex flex-wrap gap-2 mt-6">
-                {ontology.getOntologyPurl() && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {ontology.getOntologyPurl() && ontology.getAllowDownload() && (
                   <Link
                     to={ontology.getOntologyPurl()}
                     target="_blank"
@@ -467,7 +465,7 @@ function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
   return (
     <Fragment>
       {imports && imports.length > 0 && (
-        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+        <div className="mb-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
           <span className="font-bold mr-2">Imports from</span>
           {imports.length <= MAX_UNEXPANDED || expanded ? (
             imports.map(renderOntId)
@@ -492,7 +490,7 @@ function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
     return (
       <Link
         key={ontId}
-        className="my-2"
+        className="my-1"
         style={{ display: "inline-block" }}
         to={"/ontologies/" + ontId}
       >
@@ -518,7 +516,7 @@ function OntologyImportedBySection({ ontology }: { ontology: Ontology }) {
   return (
     <Fragment>
       {imports && imports.length > 0 && (
-        <div className="mt-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
+        <div className="mb-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
           <span className="font-bold mr-2">Exports to</span>
           {imports.length <= MAX_UNEXPANDED || expanded ? (
             imports.map(renderOntId)
@@ -543,7 +541,7 @@ function OntologyImportedBySection({ ontology }: { ontology: Ontology }) {
     return (
       <Link
         key={ontId}
-        className="my-2"
+        className="my-1"
         style={{ display: "inline-block" }}
         to={"/ontologies/" + ontId}
       >

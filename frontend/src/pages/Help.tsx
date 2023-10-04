@@ -43,13 +43,19 @@ export default function Help() {
           Migrating to the OLS4 API should be as simple as replacing&thinsp;
           <strong>ols</strong> with <strong>ols4</strong> in the path. For
           example,
-          <ul className="list-disc list-inside">
+          <ul className="list-disc list-inside whitespace-nowrap">
             <li>
-              <code>http://www.ebi.ac.uk/ols/api/ontologies</code>&nbsp;(
+              <code className="break-words">
+                http://www.ebi.ac.uk/ols/api/ontologies
+              </code>
+              &nbsp;(
               <i>before</i>)
             </li>
             <li>
-              <code>http://www.ebi.ac.uk/ols4/api/ontologies</code>&nbsp;(
+              <code className="break-words">
+                http://www.ebi.ac.uk/ols4/api/ontologies
+              </code>
+              &nbsp;(
               <i>after</i>)
             </li>
           </ul>
@@ -212,7 +218,7 @@ Content-Length: 153
           <span className="text-code">page</span> parameter for accessing a
           specific page of items.
         </p>
-        <div className="text-xl italic my-3">Paging resources</div>
+        <div className="text-xl font-bold italic my-3">Paging resources</div>
         <p className="mb-2">
           Links will be provided in the response to navigate the resources.
         </p>
@@ -322,7 +328,7 @@ Content-Type: application/json
         <p className="mb-2">
           The api endpoint provides the entry point into the service.
         </p>
-        <div className="text-xl italic my-3">Accessing the API</div>
+        <div className="text-xl font-bold italic my-3">Accessing the API</div>
         <p className="mb-2">
           A&thinsp;<span className="text-code">GET</span> request is used to
           access the API
@@ -399,7 +405,7 @@ Content-Type: application/json
         <p className="mb-2">
           The Ontologies resources is used to list ontologies in OLS
         </p>
-        <div className="text-xl italic my-3">Listing ontologies</div>
+        <div className="text-xl font-bold italic my-3">Listing ontologies</div>
         <p className="mb-2">
           A&thinsp;<span className="text-code">GET</span> request will list all
           of the OLS ontologies.
@@ -416,9 +422,13 @@ Content-Type: application/json
           &thinsp;field.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">Ontology</div>
-        <div className="text-xl italic my-3">Retrieve an ontology</div>
+        <div className="text-xl font-bold italic my-3">
+          Retrieve an ontology
+        </div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -519,9 +529,11 @@ Content-Length: 3386
             },
           ]}
         />
-        <div className="text-xl italic my-3">Roots terms</div>
+        <div className="text-xl font-bold italic my-3">Roots terms</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;/terms/roots</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms/roots
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -536,9 +548,13 @@ Content-Length: 3386
           The terms resources is used to list terms (or classes) in OLS from a
           particular ontology
         </p>
-        <div className="text-xl italic my-3">Listing ontology terms</div>
+        <div className="text-xl font-bold italic my-3">
+          Listing ontology terms
+        </div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/ontologies/&#123;ontology&#125;/terms</code>
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -582,10 +598,10 @@ Content-Length: 3386
           the&thinsp;<span className="text-code">_embedded.terms</span> field.
         </p>
         <div className="text-xl text-petrol-600 font-bold my-3">Term</div>
-        <div className="text-xl italic my-3">Retrieve a term</div>
+        <div className="text-xl font-bold italic my-3">Retrieve a term</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/terms/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/terms/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -751,7 +767,7 @@ Content-Length: 3624
             },
           ]}
         />
-        <div className="text-xl italic my-3">
+        <div className="text-xl font-bold italic my-3">
           Parent/child relationships for terms
         </div>
         <p className="mb-2">
@@ -764,8 +780,8 @@ Content-Length: 3624
           relationships as documented in the links sections for term resources.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/parents?id=&#123;id&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/parents?id=&#123;id&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -793,18 +809,135 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/go/hierarchicalAncestors?id=
 `}
           </pre>
         </Banner>
-        <div className="text-xl italic my-3">Other related terms</div>
+        <div className="text-lg text-petrol-600 my-3">Sample response</div>
+        <Banner type="code">
+          <pre>
+            {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "_embedded": {
+    "terms": [
+      {
+        "iri": "http://purl.obolibrary.org/obo/GO_0110165",
+        "lang": "en",
+        "description": [
+          "A part of a cellular organism that is either an immaterial entity or a material entity with granularity above the level of a protein complex but below that of an anatomical system. Or, a substance produced by a cellular organism with granularity above the level of a protein complex."
+        ],
+        "synonyms": [],
+        "annotation": {
+          "created_by": [
+            "kmv"
+          ],
+          "creation_date": [
+            "2019-08-12T18:01:37Z"
+          ],
+          "has_obo_namespace": [
+            "cellular_component"
+          ],
+          "id": [
+            "GO:0110165"
+          ]
+        },
+        "label": "cellular anatomical entity",
+        "ontology_name": "go",
+        "ontology_prefix": "GO",
+        "ontology_iri": "http://purl.obolibrary.org/obo/go/extensions/go-plus.owl",
+        "is_obsolete": false,
+        "term_replaced_by": null,
+        "is_defining_ontology": true,
+        "has_children": true,
+        "is_root": false,
+        "short_form": "GO_0110165",
+        "obo_id": "GO:0110165",
+        "in_subset": [
+          "goslim_pir"
+        ],
+        "obo_definition_citation": [
+          {
+            "definition": "A part of a cellular organism that is either an immaterial entity or a material entity with granularity above the level of a protein complex but below that of an anatomical system. Or, a substance produced by a cellular organism with granularity above the level of a protein complex.",
+            "oboXrefs": [
+              {
+                "database": "GOC",
+                "id": "kmv",
+                "description": null,
+                "url": null
+              }
+            ]
+          }
+        ],
+        "obo_xref": null,
+        "obo_synonym": null,
+        "is_preferred_root": false,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165?lang=en"
+          },
+          "parents": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/parents"
+          },
+          "ancestors": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/ancestors"
+          },
+          "hierarchicalParents": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/hierarchicalParents"
+          },
+          "hierarchicalAncestors": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/hierarchicalAncestors"
+          },
+          "jstree": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/jstree"
+          },
+          "children": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/children"
+          },
+          "descendants": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/descendants"
+          },
+          "hierarchicalChildren": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/hierarchicalChildren"
+          },
+          "hierarchicalDescendants": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/hierarchicalDescendants"
+          },
+          "graph": {
+            "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0110165/graph"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/go/parents?id=GO:0043226&page=0&size=20"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 1,
+    "totalPages": 1,
+    "number": 0
+  }
+}`}
+          </pre>
+        </Banner>
+        <div className="text-xl font-bold italic my-3">Other related terms</div>
         <p className="mb-2">
           In cases where a term has a direct relation to another term (single
           existential to a named class in OBO), for example a "part of"
           relation, the related terms can be accessed directly with this API.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET
-          /api/ontologies/&#123;ontology_id&#125;/terms/&#123;term_iri&#125;/&#123;property_iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology_id&#125;/terms/&#123;term_iri&#125;/&#123;property_iri&#125;
         </code>
-        <div className="text-xl italic my-3">
+        <div className="text-lg text-petrol-600 my-3">Sample request</div>
+        <Banner type="code">
+          <pre>
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/uberon/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050' -i -H 'Accept: application/json'`}
+          </pre>
+        </Banner>
+        <div className="text-xl font-bold italic my-3">
           Term matching across ontologies
         </div>
         <p className="mb-2">
@@ -895,7 +1028,7 @@ Content-Length: 3022
 }`}
           </pre>
         </Banner>
-        <div className="text-xl italic my-3">
+        <div className="text-xl font-bold italic my-3">
           Terms based on defining ontology
         </div>
         <p className="mb-2">
@@ -994,10 +1127,10 @@ Content-Length: 3052
           You can access property (relationships) and ontology individuals
           (instances) following similar methods to terms.
         </p>
-        <div className="text-xl italic my-3">Retrieve a property</div>
+        <div className="text-xl font-bold italic my-3">Retrieve a property</div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/properties/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/properties/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -1013,7 +1146,101 @@ Content-Length: 3052
             },
           ]}
         />
-        <div className="text-xl italic my-3">
+        <div className="text-lg text-petrol-600 my-3">Sample request</div>
+        <Banner type="code">
+          <pre>
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/efo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050' -i -H 'Accept: application/json'`}
+          </pre>
+        </Banner>
+        <div className="text-lg text-petrol-600 my-3">Sample response</div>
+        <Banner type="code">
+          <pre>
+            {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
+  "lang": "en",
+  "description": [
+    "a core relation that holds between a part and its whole"
+  ],
+  "synonyms": [
+    "part of"
+  ],
+  "annotation": {
+    "EFO_URI": [
+      "http://www.ebi.ac.uk/efo/part_of"
+    ],
+    "alternative label": [
+      "part_of"
+    ],
+    "editor note": [
+      "Everything is part of itself. Any part of any part of a thing is itself part of that thing. Two distinct things cannot be part of each other.",
+      "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+      "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See https://code.google.com/p/obo-relations/wiki/ROAndTime",
+      "Parthood requires the part and the whole to have compatible classes: only an occurrent can be part of an occurrent; only a process can be part of a process; only a continuant can be part of a continuant; only an independent continuant can be part of an independent continuant; only an immaterial entity can be part of an immaterial entity; only a specifically dependent continuant can be part of a specifically dependent continuant; only a generically dependent continuant can be part of a generically dependent continuant. (This list is not exhaustive.)\\n\\nA continuant cannot be part of an occurrent: use 'participates in'. An occurrent cannot be part of a continuant: use 'has participant'. A material entity cannot be part of an immaterial entity: use 'has location'. A specifically dependent continuant cannot be part of an independent continuant: use 'inheres in'. An independent continuant cannot be part of a specifically dependent continuant: use 'bearer of'."
+    ],
+    "editor preferred term": [
+      "is part of" 
+    ],
+    "example of usage": [
+      "my brain is part of my body (continuant parthood, two material entities)",
+      "my stomach cavity is part of my stomach (continuant parthood, immaterial entity is part of material entity)",
+      "this day is part of this year (occurrent parthood)"
+    ],
+    "has_dbxref": [
+      "BFO:0000050",
+      "OBO_REL:part_of"
+    ],
+    "has_obo_namespace": [
+      "external",
+      "quality",
+      "relationship",
+      "spatial",
+      "uberon"
+    ],
+    "id": [
+      "part_of"
+    ],
+    "is homeomorphic for": [
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000003",
+      "http://purl.obolibrary.org/obo/BFO_0000004",
+      "http://purl.obolibrary.org/obo/BFO_0000017",
+      "http://purl.obolibrary.org/obo/BFO_0000019",
+      "http://purl.obolibrary.org/obo/BFO_0000020",
+      "http://purl.obolibrary.org/obo/BFO_0000031"
+    ],
+    "seeAlso": [
+      "http://ontologydesignpatterns.org/wiki/Community:Parts_and_Collections",
+      "http://ontologydesignpatterns.org/wiki/Submissions:PartOf"
+    ],
+    "shorthand": [
+      "part_of"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "part of",
+  "ontology_name": "efo",
+  "ontology_prefix": "EFO",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "BFO_0000050",
+  "obo_id": "BFO:0000050",
+  "_links": {
+    "self": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/efo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050?lang=en"
+    }
+  }
+}`}
+          </pre>
+        </Banner>
+        <div className="text-xl font-bold italic my-3">
           Property matching across ontologies
         </div>
         <p className="mb-2">
@@ -1031,7 +1258,7 @@ Content-Length: 3052
 $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl italic my-3">
+        <div className="text-xl font-bold italic my-3">
           Properties based on defining ontology
         </div>
         <p className="mb-2">
@@ -1046,10 +1273,12 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties?iri=http://www.ebi.ac.uk/efo
 $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntology?iri=http://www.ebi.ac.uk/efo/EFO_0000784' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl italic my-3">Retrieve an individual</div>
+        <div className="text-xl font-bold italic my-3">
+          Retrieve an individual
+        </div>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>
-          GET /api/ontologies/&#123;ontology&#125;/individuals/&#123;iri&#125;
+        <code className="break-words">
+          GET&nbsp;/api/ontologies/&#123;ontology&#125;/individuals/&#123;iri&#125;
         </code>
         <DataTable
           columns={columnsParamDesc}
@@ -1065,7 +1294,58 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntolog
             },
           ]}
         />
-        <div className="text-xl italic my-3">
+        <div className="text-lg text-petrol-600 my-3">Sample request</div>
+        <Banner type="code">
+          <pre>
+            {`$ curl -L 'http://www.ebi.ac.uk/ols4/api/ontologies/iao/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000002' -i -H 'Accept: application/json'`}
+          </pre>
+        </Banner>
+        <div className="text-lg text-petrol-600 my-3">Sample response</div>
+        <Banner type="code">
+          <pre>
+            {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000002",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "example to be eventually removed"
+    ]
+  },
+  "type": null,
+  "label": "example to be eventually removed",
+  "ontology_name": "iao",
+  "ontology_prefix": "IAO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/iao.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000002",
+  "obo_id": "IAO:0000002",
+  "in_subset": null,
+  "_links": {
+    "self": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/iao/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000002?lang=en"
+    },
+    "types": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/iao/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000002/types"
+    },
+    "alltypes": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/iao/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000002/alltypes"
+    },
+    "jstree": {
+      "href": "https://www.ebi.ac.uk/ols4/api/ontologies/iao/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000002/jstree"
+    }
+  }
+}`}
+          </pre>
+        </Banner>
+        <div className="text-xl font-bold italic my-3">
           Individual matching across ontologies
         </div>
         <p className="mb-2">
@@ -1083,7 +1363,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/properties/findByIdAndIsDefiningOntolog
 $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals?iri=http://purl.obolibrary.org/obo/IAO_0000125' -i -H 'Accept: application/json'`}
           </pre>
         </Banner>
-        <div className="text-xl italic my-3">
+        <div className="text-xl font-bold italic my-3">
           Individual based on defining ontology
         </div>
         <p className="mb-2">
@@ -1099,7 +1379,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           </pre>
         </Banner>
         <div className="text-xl text-petrol-600 font-bold my-3">Search</div>
-        <div className="text-xl italic my-3">Search terms</div>
+        <div className="text-xl font-bold italic my-3">Search terms</div>
         <p className="mb-2">
           The search API is independent of the REST API and supports free text
           search over the ontologies. The default search is across all textual
@@ -1107,7 +1387,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           then synonyms, then definitions, then annotations.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/search?q=&#123;q&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/search?q=&#123;q&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1124,7 +1406,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           to query on labels and synonyms use.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/search?q=&#123;q&#125;&queryFields=label,synonym</code>
+        <code className="break-words">
+          GET&nbsp;/api/search?q=&#123;q&#125;&queryFields=label,synonym
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1195,14 +1479,16 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
             },
           ]}
         />
-        <div className="text-xl italic my-3">Select terms</div>
+        <div className="text-xl font-bold italic my-3">Select terms</div>
         <p className="mb-2">
           We provide an additional search endopint that is designed specifically
           for selecting ontology terms. This has been tuned specifically to
           support applications such as autocomplete.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/select?ontology=&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/select?ontology=&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[
@@ -1260,7 +1546,7 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
             },
           ]}
         />
-        <div className="text-xl italic my-3">Suggest terms</div>
+        <div className="text-xl font-bold italic my-3">Suggest terms</div>
         <p className="mb-2">
           We also provide a generic suggester endpoint. This endpoint aims to
           provide traditional autosuggest based on all the vocabulary in OLS
@@ -1269,7 +1555,9 @@ $ curl -L 'http://www.ebi.ac.uk/ols4/api/individuals/findByIdAndIsDefiningOntolo
           searches can be restricted by ontology.
         </p>
         <div className="text-lg text-petrol-600 my-3">Request structure</div>
-        <code>GET /api/suggest?ontology=&#123;ontology&#125;</code>
+        <code className="break-words">
+          GET&nbsp;/api/suggest?ontology=&#123;ontology&#125;
+        </code>
         <DataTable
           columns={columnsParamDesc}
           data={[

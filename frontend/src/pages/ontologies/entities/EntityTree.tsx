@@ -410,7 +410,7 @@ function TreeLink({
   return (
     <span>
       <a
-        title={entity.getIri()}
+        title={`${title} [${entity.getIri()}]`}
         className={"link-default"}
         onClick={() => onNavigateToEntity(ontology, entity)}
       >

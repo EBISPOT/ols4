@@ -14,9 +14,9 @@ export function Banner({
 
   return (
     <div
-      className={`${bgColor} px-6 pt-3 pb-4 rounded-md mb-4 text-justify ${
+      className={`${bgColor} px-6 pt-3 pb-4 rounded-md mb-4 text-justify overflow-x-auto ${
         type === "code"
-          ? "font-mono text-sm whitespace-nowrap overflow-x-auto"
+          ? "font-mono text-sm whitespace-nowrap"
           : ""
       }`}
     >

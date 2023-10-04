@@ -466,6 +466,12 @@ export default function Search() {
             )}
           </div>
         </div>
+        <div
+          className={`fixed top-0 right-0 backdrop-blur-none h-full w-full ${
+            hideFilters ? "hidden" : "z-20"
+          }`}
+          onClick={() => setHideFilters(true)}
+        />
         {loadingResults ? (
           <LoadingOverlay message="Search results loading..." />
         ) : null}

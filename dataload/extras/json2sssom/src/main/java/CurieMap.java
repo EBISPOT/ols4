@@ -62,16 +62,17 @@ public class CurieMap {
         String curieLocalPart = curie.split(":")[1];
 
         if(iriOrUrl == null || !iriOrUrl.endsWith(curieLocalPart)) {
-            System.out.println(iriOrUrl + " does not end with local part of curie " + curie + ". The curie will be printed without adding a prefix to the curie_map.");
+            System.out.println(iriOrUrl + " does not end with local part of curie " + curie + ". This mapping will be omitted from the results.");
 
             // We can't print the iri/url in SSSOM and we can't put the CURIE in the prefix map
-            // Not sure whether to drop the mapping or just to print the CURIE. So we'll print the CURIE for now.
+            // TODO: Currently we just drop the mapping, maybe a better way to approach this.
             //
-            CurieMapping mapping = new CurieMapping();
-            mapping.curiePrefix = curiePrefix;
-            mapping.curieLocalPart = curieLocalPart;
-            mapping.curie = curie;
-            return mapping;
+            return null;
+//            CurieMapping mapping = new CurieMapping();
+//            mapping.curiePrefix = curiePrefix;
+//            mapping.curieLocalPart = curieLocalPart;
+//            mapping.curie = curie;
+//            return mapping;
         }
 
         String curieNamespace = iriOrUrl.substring(0, iriOrUrl.length() - curieLocalPart.length());
