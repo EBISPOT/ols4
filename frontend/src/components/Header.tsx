@@ -18,7 +18,7 @@ export default function Header({ section }: { section?: string }) {
             <img
               alt="OLS logo"
               className="h-24 inline-block"
-              src={urlJoin(process.env.PUBLIC_URL!, "/logo.png")}
+              src={urlJoin(process.env.PUBLIC_URL!, "/logo.svg")}
             />
           </a>
         </div>
