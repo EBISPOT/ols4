@@ -73,7 +73,7 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
+                String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "_json"};
                 solrQuery.setQuery(
                         "((" +
                                 createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields)).toArray(new String[0]), true)
@@ -101,7 +101,7 @@ public class V1SearchController {
             } else {
 
                 solrQuery.set("defType", "edismax");
-                solrQuery.setQuery(query);
+                solrQuery.setQuery(query.toLowerCase());
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(queryFields)));
             }
         }
