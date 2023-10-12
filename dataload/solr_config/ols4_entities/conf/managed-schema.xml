@@ -117,6 +117,8 @@
 
     <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
     <field name="iri" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+    <copyField source="iri" dest="str_iri"/>
+    <copyField source="iri" dest="lowercase_iri"/>
 
     <!-- docValues are enabled by default for long type so we don't need to index the version field  -->
     <field name="_version_" type="plong" indexed="false" stored="false"/>
