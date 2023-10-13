@@ -28,7 +28,7 @@ spec:
           args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
           resources:
             requests:
-              memory: 20Gi
+              memory: 10Gi
               cpu: 0.5
             limits:
               memory: 20Gi
