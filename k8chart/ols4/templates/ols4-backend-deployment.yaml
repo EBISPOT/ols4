@@ -44,6 +44,6 @@ spec:
               value: bolt://{{ .Release.Name }}-neo4j:7687
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
-            - name: JAVA_OPTIONS
-              value: -Xmx6G
+            - name: JAVA_OPTS
+              value: "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0"
               
