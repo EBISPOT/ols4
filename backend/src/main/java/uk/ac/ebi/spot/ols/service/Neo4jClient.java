@@ -59,9 +59,10 @@ public class Neo4jClient {
 
 		Result result = session.run(query);
 
-		session.close();
+		List<Map<String,Object>> list = result.stream().map(r -> r.asMap()).collect(Collectors.toList());
 
-		return result.stream().map(r -> r.asMap()).collect(Collectors.toList());
+		session.close();
+		return list;
 	}
 
 	public List<JsonElement> query(String query, String resVar) {
@@ -70,12 +71,14 @@ public class Neo4jClient {
 
 		Result result = session.run(query);
 
+
+		List<JsonElement> list =  result.list().stream()
+				.map(r -> r.get(resVar).get("_json").asString())
+				.map(JsonParser::parseString)
+				.collect(Collectors.toList());
 		session.close();
 
-		return result.list().stream()
-					.map(r -> r.get(resVar).get("_json").asString())
-					.map(JsonParser::parseString)
-					.collect(Collectors.toList());
+		return list;
 	}
 
 	public Page<JsonElement> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
@@ -118,7 +121,6 @@ public class Neo4jClient {
 		Result countResult = session.run(countQuery, parameters);
 		System.out.println("Neo4j run paginated count: " + timer2.stop());
 
-		session.close();
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
 
@@ -126,11 +128,14 @@ public class Neo4jClient {
 			return new PageImpl<>(List.of(), pageable, count);
 		}
 
-		return new PageImpl<>(
+		Page<JsonElement> page = new PageImpl<>(
 				result.list().stream()
 						.map(r -> JsonParser.parseString(r.get(resVar).get("_json").asString()))
 						.collect(Collectors.toList()),
 				pageable, count);
+
+		session.close();
+		return page;
 	}
 
 	public JsonElement queryOne(String query, String resVar, Value parameters) {
@@ -143,7 +148,6 @@ public class Neo4jClient {
 		Result result = session.run(query, parameters);
 		System.out.println("Neo4j run query " + query + ": " + timer.stop());
 
-		session.close();
 		Value v = null;
 
 		try {
@@ -152,10 +156,8 @@ public class Neo4jClient {
 			throw new ResourceNotFoundException();
 		}
 
+		session.close();
 		return JsonParser.parseString(v.asString());
 	}
-
-
-
 }
 
