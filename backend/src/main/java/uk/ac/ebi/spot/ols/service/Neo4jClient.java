@@ -59,6 +59,8 @@ public class Neo4jClient {
 
 		Result result = session.run(query);
 
+		session.close();
+
 		return result.stream().map(r -> r.asMap()).collect(Collectors.toList());
 	}
 
@@ -67,6 +69,8 @@ public class Neo4jClient {
 		Session session = getSession();
 
 		Result result = session.run(query);
+
+		session.close();
 
 		return result.list().stream()
 					.map(r -> r.get(resVar).get("_json").asString())
@@ -77,7 +81,6 @@ public class Neo4jClient {
 	public Page<JsonElement> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
-
 
 		String sort = "";
 		String queryToRun;
@@ -115,6 +118,7 @@ public class Neo4jClient {
 		Result countResult = session.run(countQuery, parameters);
 		System.out.println("Neo4j run paginated count: " + timer2.stop());
 
+		session.close();
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
 
@@ -139,6 +143,7 @@ public class Neo4jClient {
 		Result result = session.run(query, parameters);
 		System.out.println("Neo4j run query " + query + ": " + timer.stop());
 
+		session.close();
 		Value v = null;
 
 		try {

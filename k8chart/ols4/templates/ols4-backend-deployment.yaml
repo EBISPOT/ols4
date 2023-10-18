@@ -45,5 +45,9 @@ spec:
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
             - name: JAVA_OPTIONS
+              value: "-XX:InitialRAMPercentage=58.0 -XX:MinRAMPercentage=58.0 -XX:MaxRAMPercentage=78.0"
+            - name: JAVA_OPTS
+              value: "-XX:InitialRAMPercentage=59.0 -XX:MinRAMPercentage=59.0 -XX:MaxRAMPercentage=79.0"
+            - name: JDK_JAVA_OPTIONS
               value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0"
               
