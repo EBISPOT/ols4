@@ -47,6 +47,8 @@ public class OlsSolrClient {
                 Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
                 Map<String,Object> status = (Map<String,Object>) obj.get("status");
                 Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4_entities");
+                response.close();
+                httpClient.close();
                 return coreStatus;
             }
         }
