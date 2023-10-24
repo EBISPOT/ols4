@@ -117,7 +117,7 @@ public class V1SelectController {
 
         System.out.println("select: " + solrQuery.toQueryString());
 
-        QueryResponse qr = dispatchSearch(solrQuery, "ols4_entities");
+        QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
         List<Object> docs = new ArrayList<>();
         for (SolrDocument res : qr.getResults()) {
@@ -207,12 +207,6 @@ public class V1SelectController {
         response.flushBuffer();
 
     }
-
-    private QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/" + core).build();
-        return mySolrClient.query(query);
-    }
-
 
     private String createIntersectionString(String query) {
         StringBuilder builder = new StringBuilder();

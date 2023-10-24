@@ -181,7 +181,7 @@ public class V1SearchController {
 
         System.out.println(solrQuery.jsonStr());
 
-        QueryResponse qr = dispatchSearch(solrQuery, "ols4_entities");
+        QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
@@ -286,10 +286,6 @@ public class V1SearchController {
     }
 
 
-    private QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/" + core).build();
-        return mySolrClient.query(query);
-    }
 
 
 

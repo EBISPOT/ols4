@@ -132,4 +132,11 @@ public class OlsSolrClient {
         }
         return qr;
     }
+
+    public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
+        QueryResponse qr = mySolrClient.query(query);
+        mySolrClient.close();
+        return qr;
+    }
 }
