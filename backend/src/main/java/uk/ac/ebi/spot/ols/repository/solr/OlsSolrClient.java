@@ -15,6 +15,8 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +37,8 @@ public class OlsSolrClient {
 
 
     private Gson gson = new Gson();
+
+    private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
 
     public Map<String,Object> getCoreStatus() throws IOException {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -88,7 +92,7 @@ public class OlsSolrClient {
         QueryResponse qr = runSolrQuery(query, null);
 
         if(qr.getResults().getNumFound() < 1) {
-            System.out.println(query.constructQuery().jsonStr());
+            logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.constructQuery().jsonStr());
             throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
@@ -100,7 +104,7 @@ public class OlsSolrClient {
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
-	return runSolrQuery(query.constructQuery(), pageable);
+	    return runSolrQuery(query.constructQuery(), pageable);
     }
 
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
@@ -118,7 +122,7 @@ public class OlsSolrClient {
         QueryResponse qr = null;
         try {
             qr = mySolrClient.query(query);
-            System.out.println("solr query had " + qr.getResults().getNumFound() + " result(s)");
+            logger.debug("solr query had {} result(s).", qr.getResults().getNumFound());
         } catch (SolrServerException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -127,7 +131,7 @@ public class OlsSolrClient {
             try {
                 mySolrClient.close();
             } catch (IOException ioe){
-                System.out.println("Failed to close Solr client:" + ioe.getMessage());
+                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
             }
         }
         return qr;

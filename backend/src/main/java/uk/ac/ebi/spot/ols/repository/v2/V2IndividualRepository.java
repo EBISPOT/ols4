@@ -67,7 +67,7 @@ public class V2IndividualRepository {
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
         query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -86,7 +86,7 @@ public class V2IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         return new V2Entity(
@@ -107,7 +107,7 @@ public class V2IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", classIri, SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
