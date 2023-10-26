@@ -1,6 +1,8 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -34,6 +36,8 @@ public class V2OntologyController {
     @Autowired
     V2OntologyRepository ontologyRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(V2OntologyController.class);
+
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getOntologies(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
@@ -63,6 +67,7 @@ public class V2OntologyController {
             @PathVariable("onto") String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
+        logger.trace("ontologyId = {}, lang = {}", ontologyId, lang);
         V2Entity entity = ontologyRepository.getById(ontologyId, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
