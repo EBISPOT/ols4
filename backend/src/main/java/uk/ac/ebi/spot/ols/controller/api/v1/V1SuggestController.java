@@ -79,7 +79,7 @@ public class V1SuggestController {
 //        solrQuery.addHighlightField("label");
 
 
-        QueryResponse qr = dispatchSearch(solrQuery, "ols4_autocomplete");
+        QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_autocomplete");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
@@ -110,8 +110,4 @@ public class V1SuggestController {
         response.flushBuffer();
     }
 
-    private QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(solrClient.host + "/solr/" + core).build();
-        return mySolrClient.query(query);
-    }
 }

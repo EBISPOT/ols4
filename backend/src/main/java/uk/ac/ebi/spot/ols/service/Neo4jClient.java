@@ -59,7 +59,10 @@ public class Neo4jClient {
 
 		Result result = session.run(query);
 
-		return result.stream().map(r -> r.asMap()).collect(Collectors.toList());
+		List<Map<String,Object>> list = result.stream().map(r -> r.asMap()).collect(Collectors.toList());
+
+		session.close();
+		return list;
 	}
 
 	public List<JsonElement> query(String query, String resVar) {
@@ -68,16 +71,19 @@ public class Neo4jClient {
 
 		Result result = session.run(query);
 
-		return result.list().stream()
-					.map(r -> r.get(resVar).get("_json").asString())
-					.map(JsonParser::parseString)
-					.collect(Collectors.toList());
+
+		List<JsonElement> list =  result.list().stream()
+				.map(r -> r.get(resVar).get("_json").asString())
+				.map(JsonParser::parseString)
+				.collect(Collectors.toList());
+		session.close();
+
+		return list;
 	}
 
 	public Page<JsonElement> queryPaginated(String query, String resVar, String countQuery, Value parameters, Pageable pageable) {
 
 		Session session = getSession();
-
 
 		String sort = "";
 		String queryToRun;
@@ -122,11 +128,14 @@ public class Neo4jClient {
 			return new PageImpl<>(List.of(), pageable, count);
 		}
 
-		return new PageImpl<>(
+		Page<JsonElement> page = new PageImpl<>(
 				result.list().stream()
 						.map(r -> JsonParser.parseString(r.get(resVar).get("_json").asString()))
 						.collect(Collectors.toList()),
 				pageable, count);
+
+		session.close();
+		return page;
 	}
 
 	public JsonElement queryOne(String query, String resVar, Value parameters) {
@@ -147,10 +156,8 @@ public class Neo4jClient {
 			throw new ResourceNotFoundException();
 		}
 
+		session.close();
 		return JsonParser.parseString(v.asString());
 	}
-
-
-
 }
 

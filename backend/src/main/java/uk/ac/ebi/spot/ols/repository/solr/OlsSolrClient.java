@@ -47,6 +47,8 @@ public class OlsSolrClient {
                 Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
                 Map<String,Object> status = (Map<String,Object>) obj.get("status");
                 Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4_entities");
+                response.close();
+                httpClient.close();
                 return coreStatus;
             }
         }
@@ -103,10 +105,10 @@ public class OlsSolrClient {
 
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
 
-	if(pageable != null) {
-		query.setStart((int)pageable.getOffset());
-		query.setRows(pageable.getPageSize());
-	}
+        if(pageable != null) {
+            query.setStart((int)pageable.getOffset());
+            query.setRows(pageable.getPageSize());
+        }
 
         System.out.println("solr query: " + query.toQueryString());
         System.out.println("solr host: " + host);
@@ -116,17 +118,25 @@ public class OlsSolrClient {
         QueryResponse qr = null;
         try {
             qr = mySolrClient.query(query);
+            System.out.println("solr query had " + qr.getResults().getNumFound() + " result(s)");
         } catch (SolrServerException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                mySolrClient.close();
+            } catch (IOException ioe){
+                System.out.println("Failed to close Solr client:" + ioe.getMessage());
+            }
         }
-
-        System.out.println("solr query had " + qr.getResults().getNumFound() + " result(s)");
-
         return qr;
     }
 
-
-
+    public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
+        QueryResponse qr = mySolrClient.query(query);
+        mySolrClient.close();
+        return qr;
+    }
 }

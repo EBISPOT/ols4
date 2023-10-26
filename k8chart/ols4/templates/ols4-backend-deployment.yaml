@@ -32,7 +32,7 @@ spec:
             - containerPort: 8080
           resources:
             requests:
-              memory: 20Gi
+              memory: 10Gi
               cpu: 0.5
             limits:
               memory: 20Gi
@@ -44,6 +44,6 @@ spec:
               value: bolt://{{ .Release.Name }}-neo4j:7687
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
-            - name: JAVA_OPTIONS
-              value: -Xmx6G
+            - name: JDK_JAVA_OPTIONS
+              value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0"
               
