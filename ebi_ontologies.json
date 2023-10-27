@@ -6,7 +6,8 @@
 		  "description": "The uPheno project aims to unify the annotation of phenotypes across species in a manner analogous to unification of gene function annotation by the Gene Ontology.",
 		  "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/download/v2023-10-27/upheno_all_with_relations.owl",
 		  "homepage": "https://github.com/obophenotype/upheno-dev",
-		  "preferredPrefix": "upheno2"
+		  "preferredPrefix": "upheno2",
+		  "base_uri": ["http://purl.obolibrary.org/obo/UPHENO_"]
           },
 
 	  
