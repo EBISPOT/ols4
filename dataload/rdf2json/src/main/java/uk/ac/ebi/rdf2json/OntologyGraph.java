@@ -804,7 +804,9 @@ public class OntologyGraph implements StreamRDF {
 
 			if(valueA.getType() != PropertyValue.Type.BNODE) {
 				// non bnode value, simple case
-				return valueA.equals(valueB);
+				if(!valueA.equals(valueB)) {
+                    return false;
+                }
 			} 
 
 			// bnode value
