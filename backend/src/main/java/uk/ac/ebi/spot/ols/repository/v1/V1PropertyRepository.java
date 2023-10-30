@@ -50,7 +50,7 @@ public class V1PropertyRepository {
     public V1Property findByOntologyAndIri(String ontologyId, String iri, String lang)  {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
@@ -59,7 +59,7 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByOntology(String ontologyId, String lang, Pageable pageable)  {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -69,7 +69,7 @@ public class V1PropertyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
@@ -80,7 +80,7 @@ public class V1PropertyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
@@ -91,7 +91,7 @@ public class V1PropertyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("hasDirectParent", "false", SearchType.WHOLE_FIELD);
         query.addFilter("hasHierarchicalParent", "false", SearchType.WHOLE_FIELD);
 

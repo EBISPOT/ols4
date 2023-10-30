@@ -115,7 +115,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         JsonElement first;
@@ -133,7 +133,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         if (obsoletes != null) query.addFilter("isObsolete", Boolean.toString(obsoletes), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
@@ -144,7 +144,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
 
         JsonElement first;
@@ -161,7 +161,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("curie", oboId, SearchType.WHOLE_FIELD);
 
         JsonElement first;
@@ -179,7 +179,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("hasDirectParent", "false", SearchType.WHOLE_FIELD);
         query.addFilter("hasHierarchicalParent", "false", SearchType.WHOLE_FIELD);
 

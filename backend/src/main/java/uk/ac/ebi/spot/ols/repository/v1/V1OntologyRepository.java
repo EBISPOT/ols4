@@ -25,7 +25,7 @@ public class V1OntologyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("type", "ontology", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 
         return V1OntologyMapper.mapOntology(solrClient.getFirst(query), lang);
     }
