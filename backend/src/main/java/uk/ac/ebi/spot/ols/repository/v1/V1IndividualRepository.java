@@ -56,7 +56,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 	query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
@@ -68,7 +68,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1IndividualMapper.mapIndividual(result, lang));
@@ -79,7 +79,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 	query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
@@ -90,7 +90,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
 	query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);

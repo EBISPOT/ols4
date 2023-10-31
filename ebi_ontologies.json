@@ -1,5 +1,16 @@
 {
   "ontologies": [
+	  	  {
+                  "id": "upheno2",
+		  "title": "Unified Phenotype Ontology (uPheno) 2.0",
+		  "description": "The uPheno project aims to unify the annotation of phenotypes across species in a manner analogous to unification of gene function annotation by the Gene Ontology.",
+		  "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/download/v2023-10-27/upheno_all_with_relations.owl",
+		  "homepage": "https://github.com/obophenotype/upheno-dev",
+		  "preferredPrefix": "upheno2",
+		  "base_uri": ["http://purl.obolibrary.org/obo/UPHENO_"]
+          },
+
+	  
 	  {
                   "id": "semapv",
 		  "title": "Semantic Mapping Vocabulary",
@@ -704,7 +715,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://github.com/FAIRsharing/subject-ontology/raw/master/releases/SRAO.owl"
+      "ontology_purl": "https://github.com/FAIRsharing/subject-ontology/raw/master/SRAO.owl"
     },
     {
       "id": "hcao",
