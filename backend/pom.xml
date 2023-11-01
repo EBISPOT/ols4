@@ -145,7 +145,11 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
         <!-- Logging -->
 <!--        <dependency>-->
 <!--            <groupId>ch.qos.logback</groupId>-->

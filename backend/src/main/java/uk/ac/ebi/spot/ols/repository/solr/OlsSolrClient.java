@@ -61,7 +61,8 @@ public class OlsSolrClient {
 
     public OlsFacetedResultsPage<JsonElement> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
-        QueryResponse qr = runSolrQuery(query, pageable);
+        OlsSolrQuery.AssembledQuery assembled = query.assemble();
+        QueryResponse qr = runSolrQuery(assembled.query, pageable);
 
         Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
 
@@ -74,7 +75,8 @@ public class OlsSolrClient {
                     valueToCount.put(count.getName(), count.getCount());
                 }
 
-                facetFieldToCounts.put(facetField.getName(), valueToCount);
+                String origName = assembled.fieldNamesToSolrKeys.getKey(facetField.getName());
+                facetFieldToCounts.put(origName != null ? origName : facetField.getName(), valueToCount);
             }
         }
 
@@ -90,10 +92,10 @@ public class OlsSolrClient {
 
     public JsonElement getFirst(OlsSolrQuery query) {
 
-        QueryResponse qr = runSolrQuery(query, null);
+        QueryResponse qr = runSolrQuery(query.assemble().query, null);
 
         if(qr.getResults().getNumFound() < 1) {
-            logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.constructQuery().jsonStr());
+            logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.assemble().query.jsonStr());
             throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
@@ -102,10 +104,6 @@ public class OlsSolrClient {
 
     private JsonElement getOlsEntityFromSolrResult(SolrDocument doc) {
         return JsonParser.parseString((String) doc.get("_json"));
-    }
-
-    public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
-	    return runSolrQuery(query.constructQuery(), pageable);
     }
 
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
