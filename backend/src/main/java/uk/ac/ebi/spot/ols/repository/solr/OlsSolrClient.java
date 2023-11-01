@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -115,6 +116,7 @@ public class OlsSolrClient {
         }
 
         System.out.println("solr query: " + query.toQueryString());
+        System.out.println("solr query urldecoded: " + URLDecoder.decode(query.toQueryString()));
         System.out.println("solr host: " + host);
 
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();

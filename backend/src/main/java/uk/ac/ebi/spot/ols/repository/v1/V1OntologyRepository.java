@@ -12,6 +12,8 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1OntologyMapper;
 
+import java.util.List;
+
 @Component
 public class V1OntologyRepository {
 
@@ -24,8 +26,8 @@ public class V1OntologyRepository {
         Validation.validateOntologyId(ontologyId);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "ontology", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 
         return V1OntologyMapper.mapOntology(solrClient.getFirst(query), lang);
     }
@@ -35,7 +37,7 @@ public class V1OntologyRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "ontology", SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1OntologyMapper.mapOntology(result, lang));

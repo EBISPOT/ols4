@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
@@ -55,9 +56,9 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndIri(String ontologyId, String iri, String lang) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-	query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+	query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
     }
@@ -67,8 +68,8 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOntology(String ontologyId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1IndividualMapper.mapIndividual(result, lang));
@@ -78,9 +79,9 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndShortForm(String ontologyId, String lang, String shortForm) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-	query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+	query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
     }
@@ -89,9 +90,9 @@ public class V1IndividualRepository {
     public V1Individual findByOntologyAndOboId(String ontologyId, String lang, String oboId) { 
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-	query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+	query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+	query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         return V1IndividualMapper.mapIndividual(solrClient.getFirst(query), lang);
 
@@ -102,7 +103,7 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAll(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -114,8 +115,8 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIsDefiningOntology(String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -129,8 +130,8 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIri(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -143,9 +144,9 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -158,8 +159,8 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByShortForm(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -174,9 +175,9 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
-        query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -188,8 +189,8 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOboId(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -202,9 +203,9 @@ public class V1IndividualRepository {
     public OlsFacetedResultsPage<V1Individual> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable) {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 

@@ -24,7 +24,9 @@ import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -47,12 +49,12 @@ public class V2OntologyController {
             @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
-            @RequestParam Map<String,String> searchProperties
+            @RequestParam Map<String, Collection<String>> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,String> properties = new HashMap<>();
+        Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", "false");
+            properties.put("isObsolete", List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(

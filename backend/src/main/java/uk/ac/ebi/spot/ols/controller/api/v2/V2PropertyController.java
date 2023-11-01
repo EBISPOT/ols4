@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
@@ -19,7 +20,9 @@ import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -38,12 +41,12 @@ public class V2PropertyController {
             @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
-            @RequestParam Map<String,String> searchProperties
+            @RequestParam Map<String, Collection<String>> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,String> properties = new HashMap<>();
+        Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", "false");
+            properties.put("isObsolete", List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
@@ -63,12 +66,12 @@ public class V2PropertyController {
             @RequestParam(value = "boostFields", required = false) String boostFields,
             @RequestParam(value = "exactMatch", required = false, defaultValue = "false") boolean exactMatch,
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
-            @RequestParam Map<String,String> searchProperties
+            @RequestParam MultiValueMap<String,String> searchProperties
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,String> properties = new HashMap<>();
+        Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", "false");
+            properties.put("isObsolete", List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(

@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
@@ -49,17 +50,17 @@ public class V1PropertyRepository {
 
     public V1Property findByOntologyAndIri(String ontologyId, String iri, String lang)  {
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
     }
 
     public Page<V1Property> findAllByOntology(String ontologyId, String lang, Pageable pageable)  {
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -68,9 +69,9 @@ public class V1PropertyRepository {
     public V1Property findByOntologyAndShortForm(String ontologyId, String shortForm, String lang)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-        query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+        query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
 
@@ -79,9 +80,9 @@ public class V1PropertyRepository {
     public V1Property findByOntologyAndOboId(String ontologyId, String oboId, String lang)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+        query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         return V1PropertyMapper.mapProperty(solrClient.getFirst(query), lang);
 
@@ -90,13 +91,13 @@ public class V1PropertyRepository {
     public Page<V1Property> getRoots(String ontologyId, boolean obsolete, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.WHOLE_FIELD);
-        query.addFilter("hasDirectParent", "false", SearchType.WHOLE_FIELD);
-        query.addFilter("hasHierarchicalParent", "false", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+        query.addFilter("hasDirectParent", List.of("false"), SearchType.WHOLE_FIELD);
+        query.addFilter("hasHierarchicalParent", List.of("false"), SearchType.WHOLE_FIELD);
 
         if(!obsolete)
-            query.addFilter("isObsolete", "false", SearchType.WHOLE_FIELD);
+            query.addFilter("isObsolete", List.of("false"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -106,7 +107,7 @@ public class V1PropertyRepository {
     public Page<V1Property> findAll(String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -116,8 +117,8 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByIsDefiningOntology(String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -126,8 +127,8 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByIri(String iri, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -137,9 +138,9 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -148,8 +149,8 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByShortForm(String shortForm, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -159,9 +160,9 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("shortForm", shortForm, SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -171,8 +172,8 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByOboId(String oboId, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -182,9 +183,9 @@ public class V1PropertyRepository {
     public Page<V1Property> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable)  {
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "property", SearchType.WHOLE_FIELD);
-        query.addFilter("oboId", oboId, SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", "true", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
+        query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
