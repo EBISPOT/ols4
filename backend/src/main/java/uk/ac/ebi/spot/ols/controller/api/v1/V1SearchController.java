@@ -20,6 +20,7 @@ import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.AnnotationExtractor;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -27,6 +28,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Simon Jupp
@@ -232,9 +234,22 @@ public class V1SearchController {
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
 
+            // Include annotations that were specified with <field>_annotation
+            boolean anyAnnotations = fieldList.stream()
+                    .anyMatch(s -> s.endsWith("_annotation"));
+            if (anyAnnotations) {
+                Stream<String> annotationFields = fieldList.stream().filter(s -> s.endsWith("_annotation"));
+                Map<String, Object> termAnnotations = AnnotationExtractor.extractAnnotations(json);
+
+                annotationFields.forEach(annotationName -> {
+                    // Remove _annotation suffix to get plain annotation name
+                    String fieldName = annotationName.replaceFirst("_annotation$", "");
+                    outDoc.put(annotationName, termAnnotations.get(fieldName));
+                });
+            }
+
             docs.add(outDoc);
         }
-
 
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put("status", 0);
