@@ -101,6 +101,11 @@ public class OlsSolrQuery {
 		for(Filter f : filters) {
 
 			StringBuilder fq = new StringBuilder();
+
+			if(facetFields.contains(f.propertyName)) {
+				fq.append("{!tag=olsfacet}");
+			}
+
 			fq.append( ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType)) );
 			fq.append(":(");
 
@@ -120,7 +125,9 @@ public class OlsSolrQuery {
 		}
 
 		if(facetFields.size() > 0) {
-			query.addFacetField(facetFields.toArray(new String[0]));
+			for(String facetField : facetFields) {
+				query.addFacetField("{!ex=olsfacet}" + facetField);
+			}
 		}
 
 		return query;
