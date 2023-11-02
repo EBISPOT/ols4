@@ -177,6 +177,11 @@ export default function IndividualPropertyAssertionsSection({
     }
   }
 
+
+  if (!propertyAssertions || propertyAssertions.length === 0) {
+    return <Fragment />;
+  }
+
   return (
     <div>
       <div className="font-bold">Property assertions</div>
