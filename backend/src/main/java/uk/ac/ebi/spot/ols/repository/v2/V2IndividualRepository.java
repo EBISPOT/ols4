@@ -18,6 +18,8 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -31,7 +33,7 @@ public class V2IndividualRepository {
 
 
     public OlsFacetedResultsPage<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,String> properties) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,Collection<String>> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -42,7 +44,7 @@ public class V2IndividualRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -54,7 +56,7 @@ public class V2IndividualRepository {
     }
 
     public OlsFacetedResultsPage<V2Entity> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,String> properties) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -66,8 +68,8 @@ public class V2IndividualRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -85,9 +87,9 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return new V2Entity(
                 RemoveLiteralDatatypesTransform.transform(
@@ -106,9 +108,9 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.addFilter("type", "individual", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
-        query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", classIri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", List.of(classIri), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))

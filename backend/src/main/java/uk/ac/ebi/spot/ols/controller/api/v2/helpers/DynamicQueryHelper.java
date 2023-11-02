@@ -4,16 +4,15 @@ import org.springframework.web.util.UriUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Collection;
 
 public class DynamicQueryHelper {
 
-    public static Map<String,String> filterProperties(Map<String,String> properties) {
+    public static Map<String,Collection<String>> filterProperties(Map<String,Collection<String>> properties) {
 
-        Map<String,String> newProps = new HashMap<>();
+        Map<String,Collection<String>> newProps = new HashMap<>();
 
         for(String k : properties.keySet()) {
-
-            String value = properties.get(k);
 
             k = UriUtils.decode(k, "UTF-8");
 
@@ -22,7 +21,7 @@ public class DynamicQueryHelper {
                         || k.equals("includeObsoleteEntities"))
                 continue;
 
-            newProps.put(k, value);
+            newProps.put(k, properties.get(k));
         }
 
         return newProps;
