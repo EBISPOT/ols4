@@ -15,23 +15,6 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#exactQualifiedCardinality -->
-
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#exactQualifiedCardinality"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -85,9 +68,6 @@
             </owl:Restriction>
         </rdf:type>
     </owl:NamedIndividual>
-    <rdf:Description>
-        <owl:exactQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:exactQualifiedCardinality>
-    </rdf:Description>
 </rdf:RDF>
 
 
