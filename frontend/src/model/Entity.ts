@@ -87,6 +87,12 @@ export default abstract class Entity extends Thing {
     );
   }
 
+  isPredicateFromInformalVocabulary(predicate: string): boolean {
+    return predicate.startsWith("http://www.w3.org/2004/02/skos/core#") ||
+        predicate.startsWith("http://purl.org/dc/terms/") ||
+        predicate.startsWith("http://purl.org/dc/elements/1.1/") ||
+        predicate.startsWith("http://schema.org/")
+  }
   getAnnotationPredicates(): string[] {
     let definitionProperties = asArray(this.properties["definitionProperty"]);
     let synonymProperties = asArray(this.properties["synonymProperty"]);
@@ -107,9 +113,12 @@ export default abstract class Entity extends Thing {
       if (predicate === "http://xmlns.com/foaf/0.1/depicted_by") continue;
       if (predicate === "http://xmlns.com/foaf/0.1/depiction") continue;
 
-      let linkedEntity = this.getLinkedEntities().get(predicate)
-      if (linkedEntity != undefined && linkedEntity.type.indexOf("objectProperty") !== -1) continue;
-      if (linkedEntity != undefined && linkedEntity.type.indexOf("dataProperty") !== -1) continue;
+      // Object properties and data properties are not annotation properties, except in the case of informal vocabularies.
+      if (!this.isPredicateFromInformalVocabulary(predicate)) {
+        let linkedEntity = this.getLinkedEntities().get(predicate)
+        if (linkedEntity != undefined && linkedEntity.type.indexOf("objectProperty") !== -1) continue;
+        if (linkedEntity != undefined && linkedEntity.type.indexOf("dataProperty") !== -1) continue;
+      }
 
       // If the value was already interpreted as definition/synonym/hierarchical, do
       // not include it as an annotation
