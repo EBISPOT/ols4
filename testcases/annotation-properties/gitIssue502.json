@@ -1,0 +1,24 @@
+{
+  "ontologies": [
+    {
+      "id": "rdfs",
+      "ontology_purl": "https://www.w3.org/2000/01/rdf-schema",
+      "base_uri": ["http://www.w3.org/2000/01/rdf-schema#"]
+    },
+    {
+      "id": "owl",
+      "ontology_purl": "https://www.w3.org/2002/07/owl",
+      "base_uri": ["http://www.w3.org/2002/07/owl#"]
+    },
+    {
+      "id": "skos",
+      "ontology_purl": "http://www.w3.org/TR/skos-reference/skos.rdf",
+      "base_uri": ["http://www.w3.org/2004/02/skos/core#"]
+    },
+    {
+      "id": "gitIssue502",
+      "preferredPrefix": "gitIssue502",
+      "ontology_purl": "./testcases/annotation-properties/gitIssue502.owl"
+    }
+  ]
+}
