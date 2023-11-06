@@ -28,14 +28,14 @@ spec:
           args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
           resources:
             requests:
-              memory: 10Gi
+              memory: 15Gi
               cpu: 0.5
             limits:
               memory: 20Gi
               cpu: 2
           env:
             - name: NEO4J_HEAP_MEMORY
-              value: 10g
+              value: 15g
             - name: NEO4J_dbms_memory_heap_maxSize
               value: 8g
             - name: NEO4J_TARBALL_URL
