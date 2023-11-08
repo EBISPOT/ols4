@@ -68,7 +68,8 @@ public class OlsSolrQuery {
 				if(qf.length() > 0) {
 					qf.append(" ");
 				}
-				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName, exactMatch ? SearchType.WHOLE_FIELD : searchField.searchType)) );
+				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName,
+						exactMatch ? SearchType.WHOLE_FIELD : searchField.searchType)) );
 				qf.append("^");
 				qf.append(searchField.weight);
 			}
@@ -177,22 +178,25 @@ public class OlsSolrQuery {
 	}
 
 	private String getSolrPropertyName(String propertyName, SearchType searchType) {
-		switch(searchType) {
-			case CASE_INSENSITIVE_TOKENS:
-				return "lowercase_" + propertyName;
-			case CASE_SENSITIVE_TOKENS:
-				return propertyName;
-			case WHOLE_FIELD:
-				return "str_" + propertyName;
-			case EDGES:
-				return "edge_" + propertyName;
-			case WHITESPACE:
-				return "whitespace_" + propertyName;
-			case WHITESPACE_EDGES:
-				return "whitespace_edge_" + propertyName;
-			default:
-				throw new RuntimeException("unknown filter accuracy");
-		}
+		if (propertyName.compareTo("_json") == 0)
+			return propertyName;
+		else
+			switch(searchType) {
+				case CASE_INSENSITIVE_TOKENS:
+					return "lowercase_" + propertyName;
+				case CASE_SENSITIVE_TOKENS:
+					return propertyName;
+				case WHOLE_FIELD:
+					return "str_" + propertyName;
+				case EDGES:
+					return "edge_" + propertyName;
+				case WHITESPACE:
+					return "whitespace_" + propertyName;
+				case WHITESPACE_EDGES:
+					return "whitespace_edge_" + propertyName;
+				default:
+					throw new RuntimeException("unknown filter accuracy");
+			}
 	}
 
 	private String getSolrPropertyValue(String propertyValue, SearchType searchType) {

@@ -25,6 +25,7 @@ public class V2SearchFieldsParser {
                 query.addSearchField(field.property, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
             }
         }
+        query.addSearchField("_json", 1, SearchType.CASE_INSENSITIVE_TOKENS);
     }
 
     public static void addBoostFieldsToQuery(OlsSolrQuery query, String boostFields) {
