@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://exmpl.org/xmpl/xmpl.owl#"
+     xml:base="http://exmpl.org/xmpl/xmpl.owl"
+     xmlns:xmpl="http://exmpl.org/xmpl/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:metadata="http://data.bioontology.org/metadata/">
+    <owl:Ontology rdf:about="http://exmpl.org/xmpl/xmpl.owl"/>
+  
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->  
+  
+    <!-- http://exmpl.org/xmpl/Preferred_name -->
+
+    <owl:AnnotationProperty rdf:about="http://exmpl.org/xmpl/Preferred_name">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:AnnotationProperty>
+
+    <!-- http://exmpl.org/xmpl/Synonym -->
+
+    <owl:AnnotationProperty rdf:about="http://exmpl.org/xmpl/Synonym">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:AnnotationProperty>
+
+
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+     
+    
+    <!-- http://exmpl.org/xmpl/XMPL000001 -->
+
+    <owl:Class rdf:about="http://exmpl.org/xmpl/XMPL000001">
+        <xmpl:Preferred_name xml:lang="en">parent class pref label</xmpl:Preferred_name>
+        <xmpl:Synonym xml:lang="en">label of the parent class</xmpl:Synonym>
+        <rdfs:label xml:lang="en">XMPL000001</rdfs:label>
+    </owl:Class>
+
+    <!-- http://exmpl.org/xmpl/XMPL000002 -->
+
+    <owl:Class rdf:about="http://exmpl.org/xmpl/XMPL000002">    
+        <rdfs:subClassOf rdf:resource="http://exmpl.org/xmpl/XMPL000001"/>
+        <xmpl:Preferred_name xml:lang="en">1st children class pref label</xmpl:Preferred_name>
+        <xmpl:Synonym xml:lang="en">label of the first children class</xmpl:Synonym>
+        <rdfs:label xml:lang="en">XMPL000002</rdfs:label>
+    </owl:Class>
+
+    <!-- http://exmpl.org/xmpl/XMPL000003 -->
+
+    <owl:Class rdf:about="http://exmpl.org/xmpl/XMPL000003">
+        <rdfs:subClassOf rdf:resource="http://exmpl.org/xmpl/XMPL000001"/>
+        <xmpl:Other_preferred_name xml:lang="en">2nd children class pref label</xmpl:Other_preferred_name>
+        <xmpl:Synonym xml:lang="en">label of the second children class</xmpl:Synonym>
+        <rdfs:label xml:lang="en">XMPL000003</rdfs:label>
+    </owl:Class>
+
+</rdf:RDF>
+
+
+
+
