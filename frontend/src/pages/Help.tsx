@@ -1,9 +1,10 @@
 import { Source } from "@mui/icons-material";
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Header from "../components/Header";
 
 export default function Help() {
+  const location = useLocation();
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <Fragment>
@@ -29,14 +30,14 @@ export default function Help() {
         }
         <div className="text-2xl font-bold my-6">OLS 3 Documentation</div>
           {
-              <a
-                  href={`/ols3help`}
+              <Link
+                  to={`/ols3help`}
                   rel="noopener noreferrer"
                   target="_blank"
                   className="link-default"
               >
                   OLS 3 Documentation
-              </a>
+              </Link>
           }
       </main>
     </Fragment>
