@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Downloads from "./pages/Downloads";
 import Error from "./pages/Error";
 import Help from "./pages/Help";
+import OLS3Help from "./pages/OLS3Help";
 import Home from "./pages/home/Home";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
@@ -76,6 +77,7 @@ class App extends React.Component {
           />
 
           <Route path={`/help`} element={<Help />} />
+          <Route path={`/ols3help`} element={<OLS3Help />} />
           <Route path={`/about`} element={<About />} />
           <Route path={`/downloads`} element={<Downloads />} />
         </Routes>
