@@ -1,10 +1,9 @@
 import { Source } from "@mui/icons-material";
 import { Fragment } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
 export default function Help() {
-  const location = useLocation();
   document.title = "Ontology Lookup Service (OLS)";
   return (
     <Fragment>
