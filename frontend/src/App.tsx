@@ -31,6 +31,7 @@ class App extends React.Component {
 
           <Route path={`/`} element={<Home />} />
           <Route path={`/home`} element={<Home />} />
+          <Route path={`/index`} element={<Home />} />
           <Route path={`/search`} element={<Search />} />
 
           <Route path={`/ontologies`} element={<OntologiesPage />} />
