@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -39,6 +40,7 @@ public class OlsSolrClient {
     private Gson gson = new Gson();
 
     private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
+    public static final int MAX_ROWS = 1000;
 
     public Map<String,Object> getCoreStatus() throws IOException {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -111,11 +113,13 @@ public class OlsSolrClient {
 
         if(pageable != null) {
             query.setStart((int)pageable.getOffset());
-            query.setRows(pageable.getPageSize());
+            query.setRows(pageable.getPageSize() > MAX_ROWS ? MAX_ROWS : pageable.getPageSize());
         }
 
-        System.out.println("solr query: " + query.toQueryString());
-        System.out.println("solr host: " + host);
+        logger.debug("solr rows: {} ", query.getRows());
+        logger.debug("solr query: {} ", query.toQueryString());
+        logger.debug("solr query urldecoded: {}",URLDecoder.decode(query.toQueryString()));
+        logger.debug("solr host: {}", host);
 
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
 
@@ -139,6 +143,8 @@ public class OlsSolrClient {
 
     public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
+        final int rows = query.getRows().intValue() > MAX_ROWS ? MAX_ROWS : query.getRows().intValue();
+        query.setRows(rows);
         QueryResponse qr = mySolrClient.query(query);
         mySolrClient.close();
         return qr;

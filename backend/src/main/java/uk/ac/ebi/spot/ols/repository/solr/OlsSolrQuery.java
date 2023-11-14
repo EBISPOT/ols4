@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.repository.solr;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.solr.client.solrj.SolrQuery;
@@ -43,8 +44,8 @@ public class OlsSolrQuery {
 		this.facetFields.add(propertyName);
 	}
 
-	public void addFilter(String propertyName, String propertyValue, SearchType searchType) {
-		this.filters.add(new Filter(propertyName, propertyValue, searchType));
+	public void addFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
+		this.filters.add(new Filter(propertyName, propertyValues, searchType));
 	}
 
 	public SolrQuery constructQuery() {
@@ -67,7 +68,8 @@ public class OlsSolrQuery {
 				if(qf.length() > 0) {
 					qf.append(" ");
 				}
-				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName, exactMatch ? SearchType.WHOLE_FIELD : searchField.searchType)) );
+				qf.append(ClientUtils.escapeQueryChars( getSolrPropertyName(searchField.propertyName,
+						exactMatch ? SearchType.WHOLE_FIELD : searchField.searchType)) );
 				qf.append("^");
 				qf.append(searchField.weight);
 			}
@@ -98,13 +100,35 @@ public class OlsSolrQuery {
 		}
 
 		for(Filter f : filters) {
-			query.addFilterQuery(
-				ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType))
-					+ ":\"" + ClientUtils.escapeQueryChars(getSolrPropertyValue(f.propertyValue, exactMatch ? SearchType.WHOLE_FIELD : f.searchType)) + "\"");
+
+			StringBuilder fq = new StringBuilder();
+
+			if(facetFields.contains(f.propertyName)) {
+				fq.append("{!tag=olsfacet}");
+			}
+
+			fq.append( ClientUtils.escapeQueryChars(getSolrPropertyName(f.propertyName, f.searchType)) );
+			fq.append(":(");
+
+			int n = 0;
+
+			for(String value : f.propertyValues) {
+				if(n ++ > 0) {
+					fq.append(" OR ");
+				}
+				fq.append("\"");
+				fq.append(ClientUtils.escapeQueryChars(getSolrPropertyValue(value, exactMatch ? SearchType.WHOLE_FIELD : f.searchType)));
+				fq.append("\"");
+			}
+			fq.append(")");
+
+			query.addFilterQuery(fq.toString());
 		}
 
 		if(facetFields.size() > 0) {
-			query.addFacetField(facetFields.toArray(new String[0]));
+			for(String facetField : facetFields) {
+				query.addFacetField("{!ex=olsfacet}" + facetField);
+			}
 		}
 
 		return query;
@@ -113,12 +137,12 @@ public class OlsSolrQuery {
 	private class Filter {
 
 		String propertyName;
-		String propertyValue;
+		Collection<String> propertyValues; // all values to search for ("OR")
 		SearchType searchType;
 
-		public Filter(String propertyName, String propertyValue, SearchType searchType) {
+		public Filter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
 			this.propertyName = propertyName;
-			this.propertyValue = propertyValue;
+			this.propertyValues = propertyValues;
 			this.searchType = searchType;
 		}
 	}
@@ -154,22 +178,25 @@ public class OlsSolrQuery {
 	}
 
 	private String getSolrPropertyName(String propertyName, SearchType searchType) {
-		switch(searchType) {
-			case CASE_INSENSITIVE_TOKENS:
-				return "lowercase_" + propertyName;
-			case CASE_SENSITIVE_TOKENS:
-				return propertyName;
-			case WHOLE_FIELD:
-				return "str_" + propertyName;
-			case EDGES:
-				return "edge_" + propertyName;
-			case WHITESPACE:
-				return "whitespace_" + propertyName;
-			case WHITESPACE_EDGES:
-				return "whitespace_edge_" + propertyName;
-			default:
-				throw new RuntimeException("unknown filter accuracy");
-		}
+		if (propertyName.compareTo("_json") == 0)
+			return propertyName;
+		else
+			switch(searchType) {
+				case CASE_INSENSITIVE_TOKENS:
+					return "lowercase_" + propertyName;
+				case CASE_SENSITIVE_TOKENS:
+					return propertyName;
+				case WHOLE_FIELD:
+					return "str_" + propertyName;
+				case EDGES:
+					return "edge_" + propertyName;
+				case WHITESPACE:
+					return "whitespace_" + propertyName;
+				case WHITESPACE_EDGES:
+					return "whitespace_edge_" + propertyName;
+				default:
+					throw new RuntimeException("unknown filter accuracy");
+			}
 	}
 
 	private String getSolrPropertyValue(String propertyValue, SearchType searchType) {

@@ -15,14 +15,18 @@ if(process.env.OLS_DEV_BACKEND_PROXY_URL === undefined) {
 server.use(/^\/api.*/, async (req, res) => {
   let backendUrl = urlJoin(process.env.OLS_DEV_BACKEND_PROXY_URL, req.originalUrl)
   console.log('forwarding api request to: ' + backendUrl)
-  let apiResponse = await fetch(backendUrl, {
-    redirect: 'follow',
-    method: req.method,
-    body: req.body
-  })
-  res.header('content-type', apiResponse.headers.get('content-type'))
-  res.status(apiResponse.status)
-  apiResponse.body.pipe(res)
+  try {
+    let apiResponse = await fetch(backendUrl, {
+      redirect: 'follow',
+      method: req.method,
+      body: req.body
+    })
+    res.header('content-type', apiResponse.headers.get('content-type'))
+    res.status(apiResponse.status)
+    apiResponse.body.pipe(res)
+  } catch(e) {
+    console.log(e)
+  }
 })
 
 

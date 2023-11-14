@@ -20,6 +20,8 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -32,7 +34,7 @@ public class V2ClassRepository {
     OlsNeo4jClient neo4jClient;
 
     public OlsFacetedResultsPage<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,String> properties) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,Collection<String>> properties) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -43,7 +45,7 @@ public class V2ClassRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
-        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -55,7 +57,7 @@ public class V2ClassRepository {
     }
 
     public OlsFacetedResultsPage<V2Entity> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,String> properties) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -68,8 +70,8 @@ public class V2ClassRepository {
 
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
-        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         V2SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         V2SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         V2DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
@@ -87,9 +89,9 @@ public class V2ClassRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
 
-        query.addFilter("type", "class", SearchType.WHOLE_FIELD);
-        query.addFilter("ontologyId", ontologyId, SearchType.CASE_INSENSITIVE_TOKENS);
-        query.addFilter("iri", iri, SearchType.WHOLE_FIELD);
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return new V2Entity(
                 RemoveLiteralDatatypesTransform.transform(

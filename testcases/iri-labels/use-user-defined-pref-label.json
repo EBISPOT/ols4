@@ -1,0 +1,24 @@
+{
+  "ontologies": [
+    {
+      "id": "xmpl",
+      "preferredPrefix": "XMPL",
+      "title": "Example terminology with user defined pref label",
+      "uri": "http://exmpl.org/xmpl/",
+      "description": "This config will use the defined label_property as label for a class. In OLS4 the value of label_property is a collection.",
+      
+      "base_uri": [
+        "http://exmpl.org/xmpl/"
+      ],
+      "label_property": [
+        "http://exmpl.org/xmpl/Preferred_name",
+        "http://exmpl.org/xmpl/Other_preferred_name"
+      ],
+      "synonym_property": [
+        "http://exmpl.org/xmpl/Synonym"
+      ],
+      "reasoner": "none",
+      "ontology_purl": "./testcases/iri-labels/user-defined-pref-label.owl"
+    }
+  ]
+}

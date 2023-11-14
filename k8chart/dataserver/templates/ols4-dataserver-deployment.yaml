@@ -34,10 +34,10 @@ spec:
               mountPath: "/usr/share/nginx/html"
           resources:
             requests:
-              memory: 4Gi
+              memory: 8Gi
               cpu: 0.5
             limits:
-              memory: 4Gi
+              memory: 8Gi
               cpu: 2
       volumes:
       - name: {{.Release.Name}}-data
