@@ -76,8 +76,8 @@ public class SolrFieldMapper {
                 continue;
             }
 
-            if (legacyFieldName.equals("_json")) {
-                newFields.add("_json" + suffix);
+            if (legacyFieldName.equals("annotations_trimmed")) {
+                newFields.add(prefix + "searchableAnnotationValues" + suffix);
                 continue;
             }
         }
