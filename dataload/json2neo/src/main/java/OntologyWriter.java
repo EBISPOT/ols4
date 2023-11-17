@@ -23,7 +23,9 @@ public class OntologyWriter {
 
     public static final Set<String> PROPERTY_BLACKLIST = Set.of(
             // large and doesn't get queried
-            "appearsIn"
+            "appearsIn",
+            // all property values together, this is for solr and not useful in neo4j
+            "searchableAnnotationValues"
     );
 
     public static final Set<String> EDGE_BLACKLIST = Set.of(

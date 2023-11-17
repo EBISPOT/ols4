@@ -7,6 +7,8 @@ import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.rdf2json.properties.PropertyValue.Type.LITERAL;
+
 public class SearchableAnnotationValuesAnnotator {
 
     // Roughly equivalent to "annotations_trimmed" in OLS3.
@@ -41,11 +43,10 @@ public class SearchableAnnotationValuesAnnotator {
                     }
 
                     for(var value : c.properties.getPropertyValues(predicate)) {
-                        value.getType().
-
+                        if(value.getType().equals(LITERAL)) {
+                            values.add(value);
+                        }
                     }
-
-                    values.addAll(c.properties.getPropertyValues(predicate));
                 }
 
                 for(var value : values) {

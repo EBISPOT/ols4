@@ -269,6 +269,7 @@ public class OntologyGraph implements StreamRDF {
         DisjointWithAnnotator.annotateDisjointWith(this);
         HasIndividualsAnnotator.annotateHasIndividuals(this);
         EquivalenceAnnotator.annotateEquivalance(this);
+        SearchableAnnotationValuesAnnotator.annotateSearchableAnnotationValues(this);
 
     }
 
