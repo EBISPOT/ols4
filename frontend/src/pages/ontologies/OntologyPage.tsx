@@ -29,6 +29,7 @@ import EntityTree from "./entities/EntityTree";
 import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import addLinksToText from "./entities/entityPageSections/addLinksToText";
 import { getOntology } from "./ontologiesSlice";
+import {Helmet} from 'react-helmet';
 
 export default function OntologyPage() {
   const params = useParams();
@@ -91,10 +92,18 @@ export default function OntologyPage() {
     if (errorMessage) navigate("/error", { state: { message: errorMessage } });
   }, [errorMessage, navigate]);
 
-  document.title = ontology?.getName() || ontologyId;
+
+  let pageTitle = ontology?.getName() || ontologyId.toUpperCase();
+  let pageDesc = ontology?.getDescription();
+
   return (
     <div>
       <Header section="ontologies" />
+        <Helmet>
+          <meta charSet="utf-8" />
+          {pageTitle && <title>{ontologyId.toUpperCase()} - Ontology Lookup Service</title>}
+          {pageDesc && <meta name="description" content={ontology?.getDescription()}/>}
+        </Helmet>
       <main className="container mx-auto px-4">
         {ontology ? (
           <div className="my-8">

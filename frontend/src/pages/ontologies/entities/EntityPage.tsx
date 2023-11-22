@@ -45,6 +45,7 @@ import PropertyCharacteristicsSection from "./entityPageSections/PropertyCharact
 import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSection";
 import RangeSection from "./entityPageSections/RangeSection";
 import addLinksToText from "./entityPageSections/addLinksToText";
+import { Helmet } from 'react-helmet'
 
 export default function EntityPage({
   entityType,
@@ -143,10 +144,17 @@ export default function EntityPage({
     if (errorMessage) navigate("/error", { state: { message: errorMessage } });
   }, [errorMessage, navigate]);
 
-  document.title = entity?.getShortForm() || entity?.getName() || ontologyId;
+  let pageTitle = entity?.getShortForm() || entity?.getName() || ontologyId;
+  let pageDesc = entity?.getDescription() || entity?.getName();
+
   return (
     <div>
       <Header section="ontologies" />
+        <Helmet>
+          <meta charSet="utf-8" />
+          {pageTitle && <title>{pageTitle}</title>}
+          {pageDesc && <meta name="description" content={pageDesc}/>}
+        </Helmet>
       <main className="container mx-auto px-4">
         {ontology && entity ? (
           <div className="my-8">

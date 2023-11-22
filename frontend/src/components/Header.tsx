@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import urlJoin from "url-join";
+import { Helmet } from 'react-helmet';
 
 export default function Header({ section }: { section?: string }) {
+
   return (
     <header
       className="bg-black bg-right bg-cover"
@@ -12,6 +14,10 @@ export default function Header({ section }: { section?: string }) {
           "')",
       }}
     >
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{caps(section)} - Ontology Lookup Service</title>
+        </Helmet>
       <div className="container mx-auto px-4 flex flex-col md:flex-row md:gap-10">
         <div className="py-6 self-center">
           <a href={urlJoin(process.env.PUBLIC_URL!, "/")}>
@@ -95,3 +101,8 @@ export default function Header({ section }: { section?: string }) {
     </header>
   );
 }
+
+function caps(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}
+

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -20,10 +20,16 @@ import OntologyPage from "./pages/ontologies/OntologyPage";
 import EntityPage from "./pages/ontologies/entities/EntityPage";
 import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
+import {Helmet} from "react-helmet";
 
 class App extends React.Component {
   render() {
     return (
+      <Fragment>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Ontology Lookup Service (OLS)</title>
+        </Helmet>
       <BrowserRouter basename={process.env.PUBLIC_URL!}>
         <Routes>
           <Route path={`*`} element={<Error />} />
@@ -84,6 +90,7 @@ class App extends React.Component {
         </Routes>
         <Footer />
       </BrowserRouter>
+      </Fragment>
     );
   }
 }
