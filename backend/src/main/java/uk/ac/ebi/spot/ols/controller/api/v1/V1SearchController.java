@@ -108,7 +108,10 @@ public class V1SearchController {
             }
         }
 
-        solrQuery.setFields("_json");
+        if (fieldList.contains("score"))
+           solrQuery.setFields("_json","score");
+        else
+            solrQuery.setFields("_json");
 
         if (ontologies != null && !ontologies.isEmpty()) {
 
@@ -233,6 +236,8 @@ public class V1SearchController {
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
+            if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));
+            if (fieldList.contains("score")) outDoc.put("score", res.get("score"));
 
             // Include annotations that were specified with <field>_annotation
             boolean anyAnnotations = fieldList.stream()
