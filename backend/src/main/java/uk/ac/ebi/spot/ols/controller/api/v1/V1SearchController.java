@@ -242,7 +242,7 @@ public class V1SearchController {
 
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("numFound", qr.getResults().getNumFound());
-        responseBody.put("start", start);
+        responseBody.put("start", 0);
         responseBody.put("docs", docs);
 
         Map<String, Object> responseObj = new HashMap<>();

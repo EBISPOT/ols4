@@ -132,7 +132,6 @@ export const getEntityWithType = createAsyncThunk(
     { rejectWithValue }
   ) => {
     const apiSearchParams = mapToApiParams(searchParams);
-    apiSearchParams.set("includeObsoleteEntities", "true");
     const doubleEncodedTermUri = encodeURIComponent(
       encodeURIComponent(entityIri)
     );
