@@ -20,6 +20,7 @@ public class V2SearchFieldsParser {
             query.addSearchField("id", 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("oboId", 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("synonym", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField("searchableAnnotationValues", 1, SearchType.WHITESPACE_EDGES);
         } else {
             for (ParsedField field : parseFieldsString(searchFields)) {
                 query.addSearchField(field.property, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);

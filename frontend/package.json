@@ -30,13 +30,14 @@
     "multimap": "^1.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.8.0",
     "react-twitter-widgets": "^1.11.0",
     "styled-components": "^5.2.1",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1",
-    "url-join": "^5.0.0"
+    "url-join": "^5.0.0",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "build": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build.mjs",
