@@ -108,7 +108,7 @@ public class V1SearchController {
             }
         }
 
-        if (fieldList.contains("score"))
+        if (fieldList != null && fieldList.contains("score"))
            solrQuery.setFields("_json","score");
         else
             solrQuery.setFields("_json");
