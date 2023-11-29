@@ -1,0 +1,14 @@
+{
+  "ontologies": [
+    {
+      "id": "mamo",
+      "preferredPrefix": "MAMO",
+      "title": "Mathematical Modelling Ontology",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/mamo/main/mamo.rdf"
+    }
+  ]
+}
