@@ -983,6 +983,16 @@
         "Carlos Oscar Sorzano, Irene Sánchez"
       ],
       "description": "Ontology that describes data types and image processing operations in Cryo Electron Microscopy of Single Particles"
+    },
+    {
+      "id": "mamo",
+      "preferredPrefix": "MAMO",
+      "title": "Mathematical Modelling Ontology",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/mamo/main/mamo.rdf"
     }
   ]
 }
