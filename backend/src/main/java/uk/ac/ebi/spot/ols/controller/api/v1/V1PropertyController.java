@@ -23,7 +23,7 @@ import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 @RequestMapping("/api/properties")
 @ExposesResourceFor(V1Property.class)
 public class V1PropertyController implements
@@ -93,8 +93,8 @@ public class V1PropertyController implements
         String decoded = null;
         decoded = UriUtils.decode(termId, "UTF-8");
         return getPropertiesByIdAndIsDefiningOntology(decoded, null, null, lang, pageable, assembler);
-    }    
-    
+    }
+
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getPropertiesByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false) String iri,
@@ -121,7 +121,7 @@ public class V1PropertyController implements
 
         return new ResponseEntity<>( assembler.toModel(terms, termAssembler), HttpStatus.OK);
     }
-    
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {

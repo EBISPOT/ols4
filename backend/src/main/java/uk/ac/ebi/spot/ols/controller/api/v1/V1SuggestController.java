@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@Controller
+@RestController
 public class V1SuggestController {
 
     Gson gson = new Gson();

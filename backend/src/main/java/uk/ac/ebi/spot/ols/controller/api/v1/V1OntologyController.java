@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 19/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 @RequestMapping("/api/ontologies")
 @ExposesResourceFor(V1Ontology.class)
 public class V1OntologyController implements

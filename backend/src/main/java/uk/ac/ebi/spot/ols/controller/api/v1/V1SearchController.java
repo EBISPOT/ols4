@@ -35,7 +35,7 @@ import java.util.stream.Stream;
  * @date 02/07/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 public class V1SearchController {
 
     Gson gson = new Gson();

@@ -28,7 +28,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 public class V1SelectController {
 
     Gson gson = new Gson();
