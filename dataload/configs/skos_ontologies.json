@@ -1,0 +1,113 @@
+{
+  "ontologies": [
+    {
+      "title": "PhySH - Physics Subject Headings",
+      "preferredPrefix": "physh",
+      "description": "PhySH (Physics Subject Headings) is a physics classification scheme developed by APS to organize journal, meeting, and other content by topic.",
+      "homepage": "https://physh.org/",
+      "tracker": null,
+      "logo": null,
+      "annotations": null,
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "allowDownload": false,
+      "classifications": null,
+      "license": null,
+      "repoUrl": null,
+      "uri": "https://raw.githubusercontent.com/physh-org/PhySH/master/physh.ttl",
+      "id": "physh",
+      "mailing_list": null,
+      "ontology_purl": "https://raw.githubusercontent.com/physh-org/PhySH/master/physh.ttl",
+      "reasoner": "NONE",
+      "label_property": "https://physh.org/rdf/2018/01/01/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition",
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "hierarchical_property": [
+        "http://www.w3.org/2004/02/skos/core#broader",
+        "https://physh.org/rdf/2018/01/01/core#inDiscipline",
+        "https://physh.org/rdf/2018/01/01/core#inFacet"
+      ],
+      "base_uri": [
+        "https://doi.org/10.29172"
+      ]
+    },
+    {
+      "title": "Unified Astronomy Thesaurus (UAT)",
+      "preferredPrefix": "uat",
+      "description": "The Unified Astronomy Thesaurus (UAT) is an open, interoperable and community-supported thesaurus which unifies existing, divergent, and isolated controlled vocabularies in astronomy and astrophysics into a single high-quality, freely-available open thesaurus formalizing astronomical concepts and their inter-relationships. The UAT builds upon the IAU Thesaurus with major contributions from the Astronomy portions of the thesauri developed by the Institute of Physics Publishing and the American Institute of Physics. The Unified Astronomy Thesaurus will be further enhanced and updated through a collaborative effort involving broad community participation.",
+      "homepage": "http://astrothesaurus.org",
+      "tracker": null,
+      "logo": null,
+      "annotations": null,
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "allowDownload": false,
+      "classifications": null,
+      "license": null,
+      "repoUrl": null,
+      "uri": "https://raw.githubusercontent.com/astrothesaurus/UAT/master/UAT.rdf",
+      "id": "uat",
+      "mailing_list": "sio-ontology@googlegroups.com",
+      "ontology_purl": "https://raw.githubusercontent.com/astrothesaurus/UAT/master/UAT.rdf",
+      "reasoner": "NONE",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://astrothesaurus.org/uat"
+      ]
+    },
+
+
+
+
+    {
+      "title": "Simple Knowledge Organization System (SKOS) version of Materials Data Vocabulary",
+      "preferredPrefix": "mdv",
+      "description": "A version of the Materials Data Vocabulary structured as Simple Knowledge Organization System (SKOS). The XML was originally created by the TemaTres software. This vocabulary describes the applicability to material science of records in the NIST Materials Resource Registry (NMRR - https://materials.registry.nist.gov/). The NMRR allows for the registration of materials resources, bridging the gap between existing resources and the end users. The NMRR functions as a node in a federated system, making the registered information available for research to the materials community. This is being developed at the National Institute of Standards and Technology and is made available to solicit comments from the Material Science community. (An Excel version of the file is also included in the distributions for ease of use.) Please cite this resource as: Medina-Smith, Andrea; Becker, Chandler (2017), Simple Knowledge Organization System (SKOS) version of Materials Data Vocabulary , National Institute of Standards and Technology, https://doi.org/10.18434/T4/1435037",
+      "homepage": "https://data.nist.gov/od/id/67C783D4BA814C8EE05324570681708A1899",
+      "tracker": null,
+      "logo": null,
+      "annotations": null,
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "allowDownload": true,
+      "classifications": null,
+      "license": null,
+      "repoUrl": null,
+      "id": "mdv",
+      "ontology_purl": "https://data.nist.gov/od/dm/nmrr/vocab/",
+      "reasoner": "NONE",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "creator": [
+        "Andrea Medina-Smith (https://orcid.org/0000-0002-1217-701X)",
+        "Chandler Becker (https://orcid.org/0000-0002-3653-0199)"
+      ],
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "https://data.nist.gov/od/dm/nmrr/vocab"
+      ]
+    }
+ ]
+}
+
