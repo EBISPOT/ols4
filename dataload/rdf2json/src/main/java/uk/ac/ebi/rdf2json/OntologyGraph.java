@@ -641,6 +641,7 @@ public class OntologyGraph implements StreamRDF {
             case "http://www.w3.org/2002/07/owl#Class":
             case "http://www.w3.org/2000/01/rdf-schema#Class":
             case "http://www.w3.org/2004/02/skos/core#Concept":
+            case "http://www.w3.org/2004/02/skos/core#ConceptScheme":
                 subjNode.types.add(OntologyNode.NodeType.CLASS);
                 if(subjNode.uri != null) {
                     ++ numberOfClasses;
