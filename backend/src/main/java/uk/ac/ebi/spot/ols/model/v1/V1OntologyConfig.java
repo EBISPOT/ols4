@@ -22,6 +22,8 @@ public class V1OntologyConfig {
     public String tracker;
     public String logo;
     public Collection<String> creators;
+    public Collection<String> collection;
+    public Collection<String> subject;
     //public Map<String, Collection<String>> annotations;
     public Object annotations;
 
