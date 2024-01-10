@@ -134,8 +134,7 @@ public class V1OntologyController implements
                                        filteredSet.add(ontology);
                        }
                    } catch (IllegalAccessException e) {
-                       e.printStackTrace();
-                       //throw new RuntimeException(e);
+                       throw new RuntimeException(e);
                    }
                }
            }

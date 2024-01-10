@@ -43,6 +43,8 @@ public class V1OntologyMapper {
         ontology.config.tracker = JsonHelper.getString(localizedJson, "tracker");
         ontology.config.logo = JsonHelper.getString(localizedJson, "logo");
         ontology.config.creators = JsonHelper.getStrings(localizedJson, "creators");
+        ontology.config.collection = JsonHelper.getStrings(localizedJson, "collection");
+        ontology.config.subject = JsonHelper.getStrings(localizedJson, "subject");
         ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class);
         ontology.config.fileLocation = JsonHelper.getString(localizedJson, "ontology_purl");
         ontology.config.oboSlims = localizedJson.has("oboSlims") && localizedJson.get("oboSlims").getAsBoolean();
