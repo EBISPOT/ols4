@@ -998,29 +998,6 @@
       "allowDownload": false
     },
     {
-      "id": "pcl",
-      "preferredPrefix": "PCL",
-      "title": "Provisional Cell Ontology",
-      "description": "Cell types that are provisionally defined by experimental techniques such as single cell or single nucleus transcriptomics rather than a straightforward \u0026 coherent set of properties.",
-      "uri": "https://raw.githubusercontent.com/obophenotype/provisional_cell_ontology/master/pcl-full.owl",
-      "base_uri": [
-        "http://purl.obolibrary.org/obo/PCL_"
-      ],
-      "synonym_property": [
-        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
-      ],
-      "definition_property": [
-        "http://purl.obolibrary.org/obo/IAO_0000115"
-      ],
-      "preferred_root_term": [
-        "http://purl.obolibrary.org/obo/CL_0000000"
-      ],
-      "reasoner": "EL",
-      "oboSlims": false,
-      "ontology_purl": "https://raw.githubusercontent.com/obophenotype/provisional_cell_ontology/master/pcl-full.owl",
-      "allowDownload": false
-    },
-    {
       "id": "shareloc",
       "preferredPrefix": "SHARELOC",
       "title": "ShareLoc",
