@@ -1,0 +1,15 @@
+{
+  "ontologies": [
+    {
+      "id": "partof",
+      "preferredPrefix": "partof",
+      "title": "partof",
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/ms#part_of"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "./testcases/hierarchical-properties/partof.rdf"
+    }
+  ]
+}

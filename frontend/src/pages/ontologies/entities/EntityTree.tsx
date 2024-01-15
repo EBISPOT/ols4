@@ -270,12 +270,20 @@ export default function EntityTree({
               key={randomString()}
             >
               {childNode.childRelationToParent ===
-                "http://purl.obolibrary.org/obo/BFO_0000050" && (
+                  "http://purl.obolibrary.org/obo/BFO_0000050" && (
                 <img
                   className="mr-1"
                   src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
                   style={{ height: "1em", display: "inline" }}
                 />
+              )}
+              {childNode.childRelationToParent ===
+                  "http://purl.obolibrary.org/obo/ms#part_of" && (
+                      <img
+                          className="mr-1"
+                          src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
+                          style={{ height: "1em", display: "inline" }}
+                      />
               )}
               {childNode.childRelationToParent ===
                 "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (
