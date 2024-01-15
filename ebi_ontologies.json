@@ -2,7 +2,7 @@
   "ontologies": [
 	  
 	  {
-                  "id": "semapv",
+         "id": "semapv",
 		  "title": "Semantic Mapping Vocabulary",
 		  "description": "The Semantic Mapping Vocabulary (SEMAPV) captures concepts and relations related to semantic matching, including types of matching (e.g. lexical, manually curated), preprocessing methods and specialised mapping relations.",
 		  "ontology_purl": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
@@ -1176,6 +1176,13 @@
     {
       "id": "go",
       "ontology_purl":"http://purl.obolibrary.org/obo/go/extensions/go-plus.owl"
+    },
+    {
+      "id": "ms",
+      "hierarchical_property":[
+        "http://purl.obolibrary.org/obo/ms#part_of",
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ]
     }
   ]
 }
