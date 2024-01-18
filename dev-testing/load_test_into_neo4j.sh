@@ -12,4 +12,5 @@ $NEO4J_HOME/bin/neo4j-admin import \
         --array-delimiter="|" \
         --database=neo4j \
         --processors=2 \
+        --read-buffer-size=134217728 \
         $($OLS4_HOME/dev-testing/make_csv_import_cmd.sh $1)
