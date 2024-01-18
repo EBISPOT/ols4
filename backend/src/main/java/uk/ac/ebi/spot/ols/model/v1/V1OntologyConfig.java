@@ -1,9 +1,12 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 
 public class V1OntologyConfig {
 
@@ -26,6 +29,8 @@ public class V1OntologyConfig {
     public Collection<String> collection;
     public Collection<String> subject;
     //public Map<String, Collection<String>> annotations;
+
+    public JsonObject classifications;
     public Object annotations;
 
     public  String fileLocation;
