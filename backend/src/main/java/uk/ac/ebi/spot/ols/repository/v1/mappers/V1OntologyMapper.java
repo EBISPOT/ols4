@@ -8,8 +8,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class V1OntologyMapper {
 
@@ -43,9 +42,18 @@ public class V1OntologyMapper {
         ontology.config.tracker = JsonHelper.getString(localizedJson, "tracker");
         ontology.config.logo = JsonHelper.getString(localizedJson, "logo");
         ontology.config.creators = JsonHelper.getStrings(localizedJson, "creators");
-        ontology.config.collection = JsonHelper.getStrings(localizedJson, "collection");
-        ontology.config.subject = JsonHelper.getStrings(localizedJson, "subject");
-        ontology.config.classifications = JsonHelper.getObject(localizedJson,"classifications");
+        List<JsonObject> objects =  JsonHelper.getObjects(localizedJson,"classifications");
+        Set<String> collectionSet = new HashSet<String>();
+        Set<String> subjectSet = new HashSet<String>();
+        for (JsonObject object : objects){
+            if(object.has("collection"))
+                collectionSet.addAll(JsonHelper.getStrings(object,"collection"));
+            if(object.has("subject"))
+                subjectSet.addAll(JsonHelper.getStrings(object,"subject"));
+        }
+        ontology.config.collection = collectionSet;
+        ontology.config.subject = subjectSet;
+
         ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class);
         ontology.config.fileLocation = JsonHelper.getString(localizedJson, "ontology_purl");
         ontology.config.oboSlims = localizedJson.has("oboSlims") && localizedJson.get("oboSlims").getAsBoolean();

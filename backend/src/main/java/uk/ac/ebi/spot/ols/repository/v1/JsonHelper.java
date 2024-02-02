@@ -61,12 +61,17 @@ public class JsonHelper {
         return List.of(value);
     }
 
-    public static List<String> getStrings(JsonObject json, String predicate) {
-        return getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
+    public static JsonObject getValue(JsonObject json, String predicate) {
+        JsonElement value = json.get(predicate);
+        if (value != null)
+            if (value.isJsonObject()) {
+                return value.getAsJsonObject();
+        }
+        return null;
     }
 
-    public static JsonObject getObject(JsonObject json, String predicate) {
-        return getValues(json, predicate).stream().map(v -> v.getAsJsonObject()).findFirst().get();
+    public static List<String> getStrings(JsonObject json, String predicate) {
+        return getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
     }
 
     public static List<JsonObject> getObjects(JsonObject json, String predicate) {
