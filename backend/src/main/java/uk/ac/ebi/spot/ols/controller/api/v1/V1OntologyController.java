@@ -93,11 +93,7 @@ public class V1OntologyController implements
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
-        Set<V1Ontology> tempSet = new HashSet<>();
-        if(exclusive)
-            tempSet.addAll(exclusiveFilter(schemas,classifications,pageable,lang));
-        else
-            tempSet.addAll(filter(schemas,classifications,pageable,lang));
+        Set<V1Ontology> tempSet = ontologyRepository.filter(schemas,classifications,exclusive,lang);
         List<V1Ontology> tempList = new ArrayList<V1Ontology>();
         tempList.addAll(tempSet);
         final int start = (int)pageable.getOffset();
@@ -106,90 +102,6 @@ public class V1OntologyController implements
 
         return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
     }
-
-   public Set<V1Ontology> filter(Collection<String> schemas, Collection<String> classifications, Pageable pageable, String lang){
-	   Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
-       Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-       Page<V1Ontology> document = ontologyRepository.getAll(lang, pageable);
-       tempSet.addAll(document.getContent());
-       while(document.hasNext()){
-           pageable = pageable.next();
-           document = ontologyRepository.getAll(lang, pageable);
-           tempSet.addAll(document.getContent());
-       }
-
-       for (V1Ontology ontology : tempSet){
-           for (Field field : ontology.config.getClass().getDeclaredFields()){
-               if (schemas.contains(field.getName())){
-                   try {
-                       if(field.get(ontology.config) != null)
-                           if (Collection.class.isAssignableFrom(field.getType())) {
-                               for (String ontologyClassification : (Collection<String>) field.get(ontology.config)){
-                                   if(classifications.contains(ontologyClassification))
-                                       filteredSet.add(ontology);
-                           }
-                       } else if (String.class.isAssignableFrom(field.getType())) {
-                               if(field.get(ontology.config) != null)
-                                   if(classifications.contains(field.get(ontology.config)))
-                                       filteredSet.add(ontology);
-                       }
-                   } catch (IllegalAccessException e) {
-                       throw new RuntimeException(e);
-                   }
-               }
-           }
-       }
-	   return filteredSet;
-   }
-
-   public Set<V1Ontology> exclusiveFilter(Collection<String> schemas, Collection<String> classifications, Pageable pageable, String lang){
-       Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
-       Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-       Page<V1Ontology> document = ontologyRepository.getAll(lang, pageable);
-       tempSet.addAll(document.getContent());
-       while(document.hasNext()){
-           pageable = pageable.next();
-           document = ontologyRepository.getAll(lang, pageable);
-           tempSet.addAll(document.getContent());
-       }
-
-       for (V1Ontology ontology : tempSet){
-           Set<String> fieldSet = new HashSet<>();
-           for (Field field : ontology.config.getClass().getDeclaredFields()){
-               fieldSet.add(field.getName());
-           }
-           if (fieldSet.containsAll(schemas)){
-               Set<String> tempClassifications = new HashSet<String>();
-               for (Field field : ontology.config.getClass().getDeclaredFields()){
-                   if (Collection.class.isAssignableFrom(field.getType())){
-                       try {
-                           if(field.get(ontology.config) != null)
-                               for (String classification :  classifications){
-                                   if(((Collection<String>) field.get(ontology.config)).contains(classification))
-                                       tempClassifications.add(classification);
-                               }
-
-                       } catch (IllegalAccessException e) {
-                           throw new RuntimeException(e);
-                       }
-                   }
-                   else if (String.class.isAssignableFrom(field.getType())) {
-                       try {
-                           if(field.get(ontology.config) != null)
-                               if(classifications.contains((String) field.get(ontology.config)))
-                                   tempClassifications.add( (String) field.get(ontology.config));
-                       } catch (IllegalAccessException e) {
-                           throw new RuntimeException(e);
-                       }
-                   }
-
-               }
-               if(tempClassifications.containsAll(classifications))
-                   filteredSet.add(ontology);
-           }
-       }
-       return filteredSet;
-   }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)

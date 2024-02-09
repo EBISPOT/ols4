@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -8,6 +9,8 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,11 +39,18 @@ public class V1SuggestController {
     @RequestMapping(path = "/api/suggest", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void suggest(
             @RequestParam("q") String query,
+            @RequestParam(value = "schema", required = false) Collection<String> schemas,
+            @RequestParam(value = "classification", required = false) Collection<String> classifications,
+            @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
+            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
             @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
+            @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
+
+        ontologies = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologies,exclusive,lang);
 
         final SolrQuery solrQuery = new SolrQuery();
 
