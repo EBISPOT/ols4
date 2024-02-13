@@ -53,7 +53,7 @@ public class V1OntologyMapper {
         }
         ontology.config.collection = collectionSet;
         ontology.config.subject = subjectSet;
-
+        ontology.config.classifications = gson.fromJson(localizedJson.get("classifications"), Collection.class);
         ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class);
         ontology.config.fileLocation = JsonHelper.getString(localizedJson, "ontology_purl");
         ontology.config.oboSlims = localizedJson.has("oboSlims") && localizedJson.get("oboSlims").getAsBoolean();

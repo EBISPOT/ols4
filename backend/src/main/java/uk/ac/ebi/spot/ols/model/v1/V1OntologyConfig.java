@@ -30,7 +30,7 @@ public class V1OntologyConfig {
     public Collection<String> subject;
     //public Map<String, Collection<String>> annotations;
 
-    public JsonObject classifications;
+    public Object classifications;
     public Object annotations;
 
     public  String fileLocation;
