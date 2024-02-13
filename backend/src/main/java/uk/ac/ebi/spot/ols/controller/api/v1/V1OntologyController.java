@@ -104,16 +104,32 @@ public class V1OntologyController implements
     }
 
     @RequestMapping(path = "/schemakeys", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<Set<String>> filterKeys(
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
-        return new ResponseEntity<>(ontologyRepository.getSchemaKeys(lang), HttpStatus.OK);
+    HttpEntity<Page<String>> filterKeys(
+            @PageableDefault(size = 100, page = 0) Pageable pageable,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler){
+        Set<String> tempSet = ontologyRepository.getSchemaKeys(lang);
+        List<String> tempList = new ArrayList<String>();
+        tempList.addAll(tempSet);
+        final int start = (int)pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), tempSet.size());
+        Page<String> document = new PageImpl<>(tempList.subList(start, end), pageable, tempSet.size());
+        return new ResponseEntity<>(document, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/schemavalues", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<Set<String>> filterValues(
+    HttpEntity<Page<String>> filterValues(
             @RequestParam(value = "schema", required = true) Collection<String> schemas,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
-        return new ResponseEntity<>(ontologyRepository.getSchemaValues(schemas,lang), HttpStatus.OK);
+            @PageableDefault(size = 100, page = 0) Pageable pageable,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler){
+        Set<String> tempSet = ontologyRepository.getSchemaValues(schemas,lang);
+        List<String> tempList = new ArrayList<String>();
+        tempList.addAll(tempSet);
+        final int start = (int)pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), tempSet.size());
+        Page<String> document = new PageImpl<>(tempList.subList(start, end), pageable, tempSet.size());
+        return new ResponseEntity<>(document, HttpStatus.OK);
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
