@@ -29,8 +29,8 @@ public class V1OntologyRepository {
         Validation.validateOntologyId(ontologyId);
 
         OlsSolrQuery query = new OlsSolrQuery();
-	query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
-	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+	    query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
+	    query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 
         return V1OntologyMapper.mapOntology(solrClient.getFirst(query), lang);
     }
@@ -216,6 +216,19 @@ public class V1OntologyRepository {
             }
         }
         return filteredSet;
+    }
+
+    public Set<String> getSchemaKeys(String lang){
+        Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
+        tempSet.addAll(getSet(lang));
+        Set<String> keys = new HashSet<>();
+        for (V1Ontology ontology : tempSet){
+            Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
+            for (Object o : temp){
+                keys.addAll(((Map<String, Collection<Object>>) o).keySet());
+            }
+        }
+        return keys;
     }
 
 }

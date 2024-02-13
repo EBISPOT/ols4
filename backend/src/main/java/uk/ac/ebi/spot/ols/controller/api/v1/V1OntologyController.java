@@ -103,6 +103,12 @@ public class V1OntologyController implements
         return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/schemakeys", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<Set<String>> filterKeys(
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
+        return new ResponseEntity<>(ontologyRepository.getSchemaKeys(lang), HttpStatus.OK);
+    }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
