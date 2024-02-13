@@ -231,4 +231,20 @@ public class V1OntologyRepository {
         return keys;
     }
 
+    public Set<String> getSchemaValues(Collection<String> schemas,String lang){
+        Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
+        tempSet.addAll(getSet(lang));
+        Set<String> values = new HashSet<>();
+        for (V1Ontology ontology : tempSet){
+            Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
+            for (Object o : temp){
+                for (Map.Entry<String,Collection<String>> entry : ((Map<String, Collection<String>>) o).entrySet())
+                    for (String value : entry.getValue())
+                        if(schemas.contains(entry.getKey()))
+                            values.add(value);
+            }
+        }
+        return values;
+    }
+
 }

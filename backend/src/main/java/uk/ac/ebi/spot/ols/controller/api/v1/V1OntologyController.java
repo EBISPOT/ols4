@@ -109,6 +109,13 @@ public class V1OntologyController implements
         return new ResponseEntity<>(ontologyRepository.getSchemaKeys(lang), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/schemavalues", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<Set<String>> filterValues(
+            @RequestParam(value = "schema", required = true) Collection<String> schemas,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
+        return new ResponseEntity<>(ontologyRepository.getSchemaValues(schemas,lang), HttpStatus.OK);
+    }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
