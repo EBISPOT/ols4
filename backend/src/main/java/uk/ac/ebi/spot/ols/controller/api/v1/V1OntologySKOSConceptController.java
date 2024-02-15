@@ -187,58 +187,6 @@ public class V1OntologySKOSConceptController {
 
     }
 
-    @Operation(description = "Node and Edge definitions needed to visualize the nodes that are directly related with the subject term. Ontology ID and encoded iri are required. ")
-    @RequestMapping(path = "/{onto}/graph/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    public HttpEntity<String> retrieveImmediateGraph(
-            @Parameter(description = "ontology ID", required = true)
-            @PathVariable("onto") String ontologyId,
-            @Parameter(description = "encoded concept IRI", required = true)
-            @PathVariable("iri") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
-
-        List<V1Term> related = new ArrayList<V1Term>();
-        String decodedIri = UriUtils.decode(iri, "UTF-8");
-
-        V1Term subjectTerm = termRepository.findByOntologyAndIri(ontologyId, decodedIri, lang);
-
-        related = termRepository.findRelated(ontologyId, decodedIri, "related",lang);
-
-        List<V1Term> narrower = new ArrayList<V1Term>();
-        narrower = termRepository.findRelated(ontologyId, decodedIri, "narrower",lang);
-
-        List<V1Term> broader = new ArrayList<V1Term>();
-        broader = termRepository.findRelated(ontologyId, decodedIri, "broader",lang);
-
-        Set<Node> relatedNodes = new HashSet<Node>();
-        related.forEach(term -> relatedNodes.add(new Node(term.iri, term.label)));
-        Set<Node> narrowerNodes = new HashSet<Node>();
-        narrower.forEach(term -> narrowerNodes.add(new Node(term.iri, term.label)));
-        Set<Node> broaderNodes = new HashSet<Node>();
-        broader.forEach(term -> broaderNodes.add(new Node(term.iri, term.label)));
-
-        Set<Edge> edges = new HashSet<Edge>();
-        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "related","http://www.w3.org/2004/02/skos/core#related")));
-        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "narrower","http://www.w3.org/2004/02/skos/core#narrower")));
-        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "broader","http://www.w3.org/2004/02/skos/core#broader")));
-
-        Set<Node> nodes = new HashSet<Node>();
-        nodes.add(new Node(decodedIri,subjectTerm.label));
-        nodes.addAll(relatedNodes);
-        nodes.addAll(broaderNodes);
-        nodes.addAll(narrowerNodes);
-
-
-        Map<String, Object> graph = new HashMap<String,Object>();
-        graph.put("nodes", nodes);
-        graph.put("edges", edges);
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        try {
-            return new ResponseEntity<>(ow.writeValueAsString(graph),HttpStatus.OK);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Operation(description = "Broader, Narrower and Related concept relations of a concept are displayed as text if the concept iri is provided in encoded format.")
     @RequestMapping(path = "/{onto}/displayconceptrelations/{iri}", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
     @ResponseBody
@@ -324,6 +272,58 @@ public class V1OntologySKOSConceptController {
 
     }
 
+    @Operation(description = "Node and Edge definitions needed to visualize the nodes that are directly related with the subject term. Ontology ID and encoded iri are required. ")
+    @RequestMapping(path = "/{onto}/graph/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<String> retrieveImmediateGraph(
+            @Parameter(description = "ontology ID", required = true)
+            @PathVariable("onto") String ontologyId,
+            @Parameter(description = "encoded concept IRI", required = true)
+            @PathVariable("iri") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang){
+
+        List<V1Term> related = new ArrayList<V1Term>();
+        String decodedIri = UriUtils.decode(iri, "UTF-8");
+
+        V1Term subjectTerm = termRepository.findByOntologyAndIri(ontologyId, decodedIri, lang);
+
+        related = termRepository.findRelated(ontologyId, decodedIri, "related",lang);
+
+        List<V1Term> narrower = new ArrayList<V1Term>();
+        narrower = termRepository.findRelated(ontologyId, decodedIri, "narrower",lang);
+
+        List<V1Term> broader = new ArrayList<V1Term>();
+        broader = termRepository.findRelated(ontologyId, decodedIri, "broader",lang);
+
+        Set<Node> relatedNodes = new HashSet<Node>();
+        related.forEach(term -> relatedNodes.add(new Node(term.iri, term.label)));
+        Set<Node> narrowerNodes = new HashSet<Node>();
+        narrower.forEach(term -> narrowerNodes.add(new Node(term.iri, term.label)));
+        Set<Node> broaderNodes = new HashSet<Node>();
+        broader.forEach(term -> broaderNodes.add(new Node(term.iri, term.label)));
+
+        Set<Edge> edges = new HashSet<Edge>();
+        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "related","http://www.w3.org/2004/02/skos/core#related")));
+        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "narrower","http://www.w3.org/2004/02/skos/core#narrower")));
+        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "broader","http://www.w3.org/2004/02/skos/core#broader")));
+
+        Set<Node> nodes = new HashSet<Node>();
+        nodes.add(new Node(decodedIri,subjectTerm.label));
+        nodes.addAll(relatedNodes);
+        nodes.addAll(broaderNodes);
+        nodes.addAll(narrowerNodes);
+
+
+        Map<String, Object> graph = new HashMap<String,Object>();
+        graph.put("nodes", nodes);
+        graph.put("edges", edges);
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        try {
+            return new ResponseEntity<>(ow.writeValueAsString(graph),HttpStatus.OK);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public StringBuilder generateConceptHierarchyTextByOntology(TreeNode<V1Term> rootConcept, boolean displayRelated) {
     	StringBuilder sb = new StringBuilder();
         for (TreeNode<V1Term> childConcept : rootConcept.getChildren()) {
@@ -336,11 +336,6 @@ public class V1OntologySKOSConceptController {
 	      	     sb.append(generateConceptHierarchyTextByOntology(relatedConcept,displayRelated));
 	       }
         return sb;
-    }
-
-    @RequestMapping(method = RequestMethod.GET, produces = {MediaType.TEXT_PLAIN_VALUE}, value = "/removeConceptTreeCache")
-    public HttpEntity<String> removeConceptTreeCache() {
-    	return new HttpEntity<String>(termRepository.removeConceptTreeCache());
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Resource not found")

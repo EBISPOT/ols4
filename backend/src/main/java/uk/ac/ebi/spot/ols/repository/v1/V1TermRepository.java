@@ -297,23 +297,23 @@ public class V1TermRepository {
     public Page<V1Individual> getInstances(String ontologyId, String iri, Pageable pageable) {
         throw new RuntimeException();
     }
-    
-    
-    
-    @Cacheable(value = "concepttree", key="#ontologyId.concat('-').concat(#schema).concat('-').concat(#narrower).concat('-').concat(#withChildren)")   
+
+
+
+    @Cacheable(value = "concepttree", key="#ontologyId.concat('-').concat(#schema).concat('-').concat(#narrower).concat('-').concat(#withChildren)")
     public List<TreeNode<V1Term>> conceptTree (String ontologyId, boolean schema, boolean narrower, boolean withChildren, Boolean obsoletes, String lang, Pageable pageable){
         Page<V1Term> terms = this.findAllByOntology(ontologyId, obsoletes, lang, pageable);
         List<V1Term> listOfTerms = new ArrayList<V1Term>();
-        listOfTerms.addAll(terms.getContent()); 
-        
+        listOfTerms.addAll(terms.getContent());
+
     	while(terms.hasNext()) {
     		terms = this.findAllByOntology(ontologyId, obsoletes, lang, terms.nextPageable());
     		listOfTerms.addAll(terms.getContent());
-    	}       
-        
-        List<TreeNode<V1Term>> rootIndividuals = new ArrayList<TreeNode<V1Term>>();      
+    	}
+
+        List<TreeNode<V1Term>> rootIndividuals = new ArrayList<TreeNode<V1Term>>();
         int count = 0;
-        
+
         if(schema) {
             for (V1Term indiv : listOfTerms)
            	    if (indiv.annotation.get("hasTopConcept") != null) {
@@ -329,10 +329,10 @@ public class V1TermRepository {
         		     }
         			 rootIndividuals.add(topConcept);
         		 }
-           	    }  
+           	    }
         } else for (V1Term individual : listOfTerms) {
         	 TreeNode<V1Term> tree = new TreeNode<V1Term>(individual);
-        	 
+
         	 if (tree.isRoot() && individual.annotation.get("topConceptOf") != null) {
 				tree.setIndex(String.valueOf(++count));
 				if(withChildren) {
@@ -343,22 +343,22 @@ public class V1TermRepository {
 				}
 				rootIndividuals.add(tree);
 			}
-		}    
-             
+		}
+
          return rootIndividuals;
     }
-    
+
     @Cacheable(value = "concepttree", key="#ontologyId.concat('-').concat(#narrower).concat('-').concat(#withChildren)")
     public List<TreeNode<V1Term>> conceptTreeWithoutTop (String ontologyId, boolean narrower, boolean withChildren,  Boolean obsoletes, String lang, Pageable pageable){
         Page<V1Term> terms = this.findAllByOntology(ontologyId, obsoletes, lang, pageable);
         List<V1Term> listOfTerms = new ArrayList<V1Term>();
-        listOfTerms.addAll(terms.getContent()); 
-        
+        listOfTerms.addAll(terms.getContent());
+
     	while(terms.hasNext()) {
     		terms = this.findAllByOntology(ontologyId, obsoletes, lang, terms.nextPageable());
     		listOfTerms.addAll(terms.getContent());
-    	}  
-    	
+    	}
+
         Set<String> rootIRIs = new HashSet<String>();
         List<TreeNode<V1Term>> rootIndividuals = new ArrayList<TreeNode<V1Term>>();
         int count = 0;
@@ -369,11 +369,11 @@ public class V1TermRepository {
     					V1Term broaderIndividual = findIndividual(listOfTerms,iriBroader);
     					if (broaderIndividual.annotation.get("broader") == null) {
     						rootIRIs.add(iriBroader);
-    					}	
+    					}
     				}
     			}
             }
-            
+
             for (String iri : rootIRIs) {
             	V1Term topConceptIndividual = findIndividual(listOfTerms, iri);
         		TreeNode<V1Term> topConcept = new TreeNode<V1Term>(topConceptIndividual);
@@ -382,7 +382,7 @@ public class V1TermRepository {
     		        populateChildrenandRelatedByBroader(topConceptIndividual,topConcept,listOfTerms);
         		rootIndividuals.add(topConcept);
             }
-            
+
         } else {
         	for (V1Term individual : listOfTerms) {
         		if (individual.annotation.get("narrower") != null) {
@@ -393,9 +393,9 @@ public class V1TermRepository {
         						if (individual.iri.equals(iriNarrower))
         								root = false;
         					}
-        				} 
+        				}
         			}
-        			
+
         			if(root) {
                 		TreeNode<V1Term> topConcept = new TreeNode<V1Term>(individual);
                 		topConcept.setIndex(String.valueOf(++count));
@@ -406,22 +406,22 @@ public class V1TermRepository {
         		}
         	}
         }
-      
+
          return rootIndividuals;
     }
-    
+
     @Cacheable(value = "concepttree", key="#ontologyId.concat('-').concat('s').concat('-').concat(#iri).concat('-').concat(#narrower).concat('-').concat(#index)")
     public TreeNode<V1Term> conceptSubTree(String ontologyId, String iri, boolean narrower, String index, Boolean obsoletes, String lang, Pageable pageable){
         Page<V1Term> terms = this.findAllByOntology(ontologyId, obsoletes, lang, pageable);
         List<V1Term> listOfTerms = new ArrayList<V1Term>();
-        listOfTerms.addAll(terms.getContent()); 
-        
+        listOfTerms.addAll(terms.getContent());
+
     	while(terms.hasNext()) {
     		terms = this.findAllByOntology(ontologyId, obsoletes, lang, terms.nextPageable());
     		listOfTerms.addAll(terms.getContent());
     	}
 
-    	V1Term topConceptIndividual = findIndividual(listOfTerms,iri);	        
+    	V1Term topConceptIndividual = findIndividual(listOfTerms,iri);
 		TreeNode<V1Term> topConcept =  new TreeNode<V1Term>(topConceptIndividual);
 		topConcept.setIndex(index);
 		 if(narrower)
@@ -431,56 +431,56 @@ public class V1TermRepository {
 
 	     return topConcept;
     }
-    
+
     public V1Term findIndividual(List<V1Term> wholeList, String iri) {
     	for (V1Term individual : wholeList)
     		if(individual.iri.equals(iri))
     			return individual;
     	return new V1Term();
     }
-    
+
     public List<V1Term> findRelated(String ontologyId, String iri, String relationType, String lang) {
-    	List<V1Term> related = new ArrayList<V1Term>();	
+    	List<V1Term> related = new ArrayList<V1Term>();
     	V1Term individual = this.findByOntologyAndIri(ontologyId, iri, lang);
 		if (individual != null)
 			if (individual.annotation.get(relationType) != null)
-				for (String iriBroader : (LinkedHashSet<String>) individual.annotation.get(relationType)) 
+				for (String iriBroader : (LinkedHashSet<String>) individual.annotation.get(relationType))
 					related.add(this.findByOntologyAndIri(ontologyId, iriBroader, lang));
-    	
+
     	return related;
     }
-    
+
     public List<V1Term>findRelatedIndirectly(String ontologyId, String iri, String relationType,  Boolean obsoletes, String lang, Pageable pageable){
-    	List<V1Term> related = new ArrayList<V1Term>();	
-    	
+    	List<V1Term> related = new ArrayList<V1Term>();
+
     	V1Term individual = this.findByOntologyAndIri(ontologyId, iri, lang);
     	if(individual == null)
     		return related;
     	if(individual.iri == null)
     		return related;
-    	
+
         Page<V1Term> terms = this.findAllByOntology(ontologyId, obsoletes, lang, pageable);
         List<V1Term> listOfTerms = new ArrayList<V1Term>();
-        listOfTerms.addAll(terms.getContent()); 
-        
+        listOfTerms.addAll(terms.getContent());
+
     	while(terms.hasNext()) {
     		terms = this.findAllByOntology(ontologyId, obsoletes, lang, terms.nextPageable());
     		listOfTerms.addAll(terms.getContent());
-    	}   
-    		
+    	}
+
     	for (V1Term term : listOfTerms) {
     		if (term != null)
     			if (term.annotation.get(relationType) != null)
-    				for (String iriRelated : (LinkedHashSet<String>) term.annotation.get(relationType)) 
+    				for (String iriRelated : (LinkedHashSet<String>) term.annotation.get(relationType))
     					if(iriRelated.equals(iri))
     					    related.add(term);
     	}
-    	    	
+
     	return related;
     }
-    
+
     public void populateChildrenandRelatedByNarrower(V1Term individual, TreeNode<V1Term> tree, List<V1Term> listOfTerms ) {
-		
+
 		if (individual.annotation.get("related") != null)
 		for (String iriRelated : (LinkedHashSet<String>) individual.annotation.get("related")) {
 			TreeNode<V1Term> related = new TreeNode<V1Term>(findIndividual(listOfTerms,iriRelated));
@@ -492,12 +492,12 @@ public class V1TermRepository {
 		for (String iriChild : (LinkedHashSet<String>) individual.annotation.get("narrower")) {
 			V1Term childIndividual = findIndividual(listOfTerms,iriChild);
 			TreeNode<V1Term> child = new TreeNode<V1Term>(childIndividual);
-			child.setIndex(tree.getIndex()+"."+ ++count);			
+			child.setIndex(tree.getIndex()+"."+ ++count);
 			populateChildrenandRelatedByNarrower(childIndividual,child,listOfTerms);
 			tree.addChild(child);
 		}
     }
-    
+
     public void populateChildrenandRelatedByBroader(V1Term individual, TreeNode<V1Term> tree, List<V1Term> listOfTerms) {
 		if (individual.annotation.get("related") != null)
 		for (String iriRelated : (LinkedHashSet<String>) individual.annotation.get("related")) {
@@ -512,16 +512,10 @@ public class V1TermRepository {
 					if(individual.iri != null)
 						if (individual.iri.equals(iriBroader)) {
 							TreeNode<V1Term> child = new TreeNode<V1Term>(indiv);
-							child.setIndex(tree.getIndex()+"."+ ++count);	
+							child.setIndex(tree.getIndex()+"."+ ++count);
 							populateChildrenandRelatedByBroader(indiv,child,listOfTerms);
 							tree.addChild(child);
-						}	
+						}
 		}
     }
-    
-    @CacheEvict(value="concepttree", allEntries=true)
-    public String removeConceptTreeCache() {
-    	return "All concept tree cache removed!";
-    }    
-
 }
