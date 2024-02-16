@@ -51,7 +51,7 @@ public class V1OntologySKOSConceptController {
     V1TermAssembler termAssembler;
 
     @Operation(description = "Get complete SKOS concept hierarchy or only top concepts based on alternative top concept identification methods and concept relations. If only top concepts are identified, they can be used to extract the following levels of the concept tree one by one using the /{onto}/conceptrelations/{iri} method with broader or narrower concept relations.")
-    @RequestMapping(path = "/{onto}/concepthierarchy", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/tree", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<List<TreeNode<V1Term>>> getSKOSConceptHierarchyByOntology(
     	    @Parameter(description = "ontology ID", required = true)
     	    @PathVariable("onto") String ontologyId,
@@ -72,7 +72,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Display complete SKOS concept hierarchy or only top concepts based on alternative top concept identification methods and concept relations. If only top concepts are identified, they can be used to extract the following levels of the concept tree one by one using the /{onto}/displayconceptrelations/{iri} method with broader or narrower concept relations.")
-    @RequestMapping(path = "/{onto}/displayconcepthierarchy", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/displaytree", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
     @ResponseBody
     HttpEntity<String> displaySKOSConceptHierarchyByOntology(
     	    @Parameter(description = "ontology ID", required = true)
@@ -104,7 +104,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Get partial SKOS concept hierarchy based on the encoded iri of the designated top concept")
-    @RequestMapping(path = "/{onto}/concepthierarchy/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/tree", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<TreeNode<V1Term>> getSKOSConceptHierarchyByOntologyAndIri(
     	    @Parameter(description = "ontology ID", required = true)
     	    @PathVariable("onto") String ontologyId,
@@ -129,7 +129,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Display partial SKOS concept hierarchy based on the encoded iri of the designated top concept")
-    @RequestMapping(path = "/{onto}/displayconcepthierarchy/{iri}", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/displaytree", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
     @ResponseBody
     HttpEntity<String> displaySKOSConceptHierarchyByOntologyAndIri(
     	    @Parameter(description = "ontology ID", required = true)
@@ -159,7 +159,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Broader, Narrower and Related concept relations of a concept are listed in JSON if the concept iri is provided in encoded format.")
-    @RequestMapping(path = "/{onto}/conceptrelations/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/relations", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<PagedModel<V1Term>> findRelatedConcepts(
     		@Parameter(description = "ontology ID", required = true)
     		@PathVariable("onto") String ontologyId,
@@ -188,7 +188,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Broader, Narrower and Related concept relations of a concept are displayed as text if the concept iri is provided in encoded format.")
-    @RequestMapping(path = "/{onto}/displayconceptrelations/{iri}", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/displayrelations", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
     @ResponseBody
     public HttpEntity<String> displayRelatedConcepts(
     		@Parameter(description = "ontology ID", required = true)
@@ -220,7 +220,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Broader, Narrower and Related concept relations of a concept are listed in JSON if the concept iri is provided in encoded format. The relationship is identified indirectly based on the related concept's relation to the concept in question. This requires traversing all the available concepts and checking if they are related to the concept in question. For this reason, this method is relatively slower than the displayconceptrelations method. Nevertheless, it enables to identify unforeseen relations of the concept in question")
-    @RequestMapping(path = "/{onto}/conceptrelationsindirectly/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/indirectrelations", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<List<V1Term>> findRelatedConceptsIndirectly(
     		@Parameter(description = "ontology ID", required = true)
     		@PathVariable("onto") String ontologyId,
@@ -243,7 +243,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Broader, Narrower and Related concept relations of a concept are listed in JSON if the concept iri is provided in encoded format. The relationship is identified indirectly based on the related concept's relation to the concept in question. This requires traversing all the available concepts and checking if they are related to the concept in question. For this reason, this method is relatively slower than the displayconceptrelations method. Nevertheless, it enables to identify unforeseen relations of the concept in question")
-    @RequestMapping(path = "/{onto}/displayconceptrelationsindirectly/{iri}", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/displayindirectrelations", produces = {MediaType.TEXT_PLAIN_VALUE}, method = RequestMethod.GET)
     @ResponseBody
     public HttpEntity<String> displayRelatedConceptsIndirectly(
     		@Parameter(description = "ontology ID", required = true)
@@ -273,7 +273,7 @@ public class V1OntologySKOSConceptController {
     }
 
     @Operation(description = "Node and Edge definitions needed to visualize the nodes that are directly related with the subject term. Ontology ID and encoded iri are required. ")
-    @RequestMapping(path = "/{onto}/graph/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/skos/{iri}/graph", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<String> retrieveImmediateGraph(
             @Parameter(description = "ontology ID", required = true)
             @PathVariable("onto") String ontologyId,
