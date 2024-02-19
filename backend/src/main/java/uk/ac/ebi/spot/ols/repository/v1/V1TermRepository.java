@@ -481,34 +481,34 @@ public class V1TermRepository {
 
     public void populateChildrenandRelatedByNarrower(V1Term individual, TreeNode<V1Term> tree, List<V1Term> listOfTerms ) {
 
-		if (individual.annotation.get("related") != null)
-		for (String iriRelated : (LinkedHashSet<String>) individual.annotation.get("related")) {
-			TreeNode<V1Term> related = new TreeNode<V1Term>(findIndividual(listOfTerms,iriRelated));
-			related.setIndex(tree.getIndex()+ ".related");
-			tree.addRelated(related);
-		}
+        if (individual.annotation != null)
+            for (String iriRelated : (LinkedHashSet<String>) individual.annotation.getOrDefault("related", new LinkedHashSet<String>())) {
+                TreeNode<V1Term> related = new TreeNode<V1Term>(findIndividual(listOfTerms, iriRelated));
+                related.setIndex(tree.getIndex() + ".related");
+                tree.addRelated(related);
+            }
     	int count = 0;
-    	if (individual.annotation.get("narrower") != null)
-		for (String iriChild : (LinkedHashSet<String>) individual.annotation.get("narrower")) {
-			V1Term childIndividual = findIndividual(listOfTerms,iriChild);
-			TreeNode<V1Term> child = new TreeNode<V1Term>(childIndividual);
-			child.setIndex(tree.getIndex()+"."+ ++count);
-			populateChildrenandRelatedByNarrower(childIndividual,child,listOfTerms);
-			tree.addChild(child);
-		}
+        if (individual.annotation != null)
+            for (String iriChild : (LinkedHashSet<String>) individual.annotation.getOrDefault("narrower", new LinkedHashSet<String>())) {
+                V1Term childIndividual = findIndividual(listOfTerms, iriChild);
+                TreeNode<V1Term> child = new TreeNode<V1Term>(childIndividual);
+                child.setIndex(tree.getIndex() + "." + ++count);
+                populateChildrenandRelatedByNarrower(childIndividual, child, listOfTerms);
+                tree.addChild(child);
+            }
     }
 
     public void populateChildrenandRelatedByBroader(V1Term individual, TreeNode<V1Term> tree, List<V1Term> listOfTerms) {
-		if (individual.annotation.get("related") != null)
-		for (String iriRelated : (LinkedHashSet<String>) individual.annotation.get("related")) {
-			TreeNode<V1Term> related = new TreeNode<V1Term>(findIndividual(listOfTerms,iriRelated));
-			related.setIndex(tree.getIndex()+ ".related");
-			tree.addRelated(related);
-		}
+        if (individual.annotation != null)
+            for (String iriRelated : (LinkedHashSet<String>) individual.annotation.getOrDefault("related", new LinkedHashSet<String>())) {
+                TreeNode<V1Term> related = new TreeNode<V1Term>(findIndividual(listOfTerms, iriRelated));
+                related.setIndex(tree.getIndex() + ".related");
+                tree.addRelated(related);
+            }
 		int count = 0;
 		for ( V1Term indiv : listOfTerms) {
-			if (indiv.annotation.get("broader") != null)
-				for (String iriBroader : (LinkedHashSet<String>) indiv.annotation.get("broader"))
+			if (indiv.annotation != null)
+				for (String iriBroader : (LinkedHashSet<String>) indiv.annotation.getOrDefault("broader",new LinkedHashSet<String>()))
 					if(individual.iri != null)
 						if (individual.iri.equals(iriBroader)) {
 							TreeNode<V1Term> child = new TreeNode<V1Term>(indiv);
