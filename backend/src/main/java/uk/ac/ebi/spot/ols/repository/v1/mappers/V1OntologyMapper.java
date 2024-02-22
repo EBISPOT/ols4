@@ -72,6 +72,7 @@ public class V1OntologyMapper {
         ontology.config.preferredRootTerms = JsonHelper.getStrings(localizedJson, "preferredRootTerms");
 
         ontology.config.isSkos = localizedJson.has("isSkos") && localizedJson.get("isSkos").getAsBoolean();
+        ontology.config.repoUrl = JsonHelper.getString(localizedJson, "repo_url");
         ontology.config.allowDownload = localizedJson.has("allowDownload") && localizedJson.get("allowDownload").getAsBoolean();
 
 

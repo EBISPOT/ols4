@@ -31,6 +31,8 @@ public class V1OntologyConfig {
     //public Map<String, Collection<String>> annotations;
 
     public Object classifications;
+
+    public String repoUrl;
     public Object annotations;
 
     public  String fileLocation;

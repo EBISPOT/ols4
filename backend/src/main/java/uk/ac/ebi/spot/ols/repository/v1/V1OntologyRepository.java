@@ -104,28 +104,6 @@ public class V1OntologyRepository {
         return postFilterOntologySet;
     }
 
-    Set<String> union(Collection<String> a, Collection<String> b ) {
-        Set<String> union = new HashSet<String>();
-        for (String s : a){
-            union.add(s);
-        }
-        for (String s : b){
-            union.add(s);
-        }
-        return union;
-    }
-
-    Set<String> intersection(Collection<String> a, Collection<String> b ) {
-        Set<String> intersection = new HashSet<String>();
-        for (String s1 : a){
-            for (String s2 : b){
-                if (s1.equals(s2))
-                    intersection.add(s1);
-            }
-        }
-        return intersection;
-    }
-
     public Set<V1Ontology> filter(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
         if(exclusive)
             return exclusiveFilter(schemas,classifications,lang);
@@ -135,13 +113,6 @@ public class V1OntologyRepository {
     public Set<V1Ontology> inclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
         Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-/*        Page<V1Ontology> document = getAll(lang, pageable);
-        tempSet.addAll(document.getContent());
-        while(document.hasNext()){
-            pageable = pageable.next();
-            document = getAll(lang, pageable);
-            tempSet.addAll(document.getContent());
-        }*/
         tempSet.addAll(getSet(lang));
 
         for (V1Ontology ontology : tempSet){
@@ -171,13 +142,6 @@ public class V1OntologyRepository {
     public Set<V1Ontology> exclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
         Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-/*        Page<V1Ontology> document = getAll(lang, pageable);
-        tempSet.addAll(document.getContent());
-        while(document.hasNext()){
-            pageable = pageable.next();
-            document = getAll(lang, pageable);
-            tempSet.addAll(document.getContent());
-        }*/
         tempSet.addAll(getSet(lang));
 
         for (V1Ontology ontology : tempSet){
@@ -223,9 +187,11 @@ public class V1OntologyRepository {
         tempSet.addAll(getSet(lang));
         Set<String> keys = new HashSet<>();
         for (V1Ontology ontology : tempSet){
-            Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
-            for (Object o : temp){
-                keys.addAll(((Map<String, Collection<Object>>) o).keySet());
+            if (ontology.config.classifications != null){
+                Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
+                for (Object o : temp){
+                    keys.addAll(((Map<String, Collection<Object>>) o).keySet());
+                }
             }
         }
         return keys;
@@ -236,12 +202,14 @@ public class V1OntologyRepository {
         tempSet.addAll(getSet(lang));
         Set<String> values = new HashSet<>();
         for (V1Ontology ontology : tempSet){
-            Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
-            for (Object o : temp){
-                for (Map.Entry<String,Collection<String>> entry : ((Map<String, Collection<String>>) o).entrySet())
-                    for (String value : entry.getValue())
-                        if(schemas.contains(entry.getKey()))
-                            values.add(value);
+            if (ontology.config.classifications != null){
+                Collection<Object> temp = (Collection<Object>) ontology.config.classifications;
+                for (Object o : temp){
+                    for (Map.Entry<String,Collection<String>> entry : ((Map<String, Collection<String>>) o).entrySet())
+                        for (String value : entry.getValue())
+                            if(schemas.contains(entry.getKey()))
+                                values.add(value);
+                }
             }
         }
         return values;
