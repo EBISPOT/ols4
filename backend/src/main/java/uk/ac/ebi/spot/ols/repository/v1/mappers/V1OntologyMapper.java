@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import uk.ac.ebi.spot.ols.model.v1.License;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
@@ -54,6 +55,8 @@ public class V1OntologyMapper {
         ontology.config.collection = collectionSet;
         ontology.config.subject = subjectSet;
         ontology.config.classifications = gson.fromJson(localizedJson.get("classifications"), Collection.class);
+
+        ontology.config.license = gson.fromJson(localizedJson.get("license"), License.class);
         ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class);
         ontology.config.fileLocation = JsonHelper.getString(localizedJson, "ontology_purl");
         ontology.config.oboSlims = localizedJson.has("oboSlims") && localizedJson.get("oboSlims").getAsBoolean();

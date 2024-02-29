@@ -97,62 +97,41 @@
       "repo_url": "https://www.psidev.info/groups/controlled-vocabularies"
     },
     {
-      "ontology_purl": "http://www.ebi.ac.uk/efo/efo.owl",
-      "id": "efo",
+      "ontology_purl": "https://raw.githubusercontent.com/tibonto/aeon/main/aeon.owl",
+      "description": "WIP - NOT READY FOR PRODUCTION - The Academic Event Ontology (AEON) is used to represent information regarding academic events.",
+      "homepage": "https://github.com/tibonto/aeon",
+      "id": "aeon",
       "license": {
-        "url": "www.apache.org/licenses/LICENSE-2.0",
-        "label": "Apache license 2.0"
+        "label": "CC-BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
       },
-      "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
-      "homepage": "https://www.ebi.ac.uk/efo/",
-      "mailing_list": "efo-users@ebi.ac.uk",
-      "title": "Experimental Factor Ontology",
+      "title": "Academic Event Ontology",
+      "tracker": "https://github.com/tibonto/aeon/issues",
+      "preferredPrefix": "AEON",
+      "base_uri": [
+        "https://github.com/tibonto/aeon"
+      ],
+      "classifications": [
+        {
+          "collection": null
+        },
+        {
+          "subject": [
+            "History",
+            "Social sciences",
+            "Educational science"
+          ]
+        }
+      ],
       "definition_property": [
         "http://purl.obolibrary.org/obo/IAO_0000115"
       ],
       "synonym_property": [
-        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+        "http://purl.obolibrary.org/obo/IAO_0000118",
         "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
-        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+        "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
       ],
-      "creator": [
-        "Gautier Koscielny",
-        "Jon Ison",
-        "Simon Jupp",
-        "Laura Huerta Martinez",
-        "Helen Parkinson",
-        "Zoe May Pendlington",
-        "Eleanor Williams",
-        "James Malone",
-        "Trish Whetzel",
-        "Sirarat Sarntivijai",
-        "Catherine Leroy",
-        "Ele Holloway",
-        "Tomasz Adamusiak",
-        "Emma Kate Hastings",
-        "Olamidipupo Ajigboye",
-        "Paola Roncaglia",
-        "Natalja Kurbatova",
-        "Dani Welter",
-        "Drashtti Vasant"
-      ],
-      "classifications": [
-        {
-          "collection": [
-            "NFDI4CHEM",
-            "ESS",
-            "DataPLANT"
-          ]
-        },
-        {
-          "subject": [
-            "Life Sciences, biology",
-            "Medicine",
-            "Earth sciences"
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/EBISPOT/efo"
+      "repo_url": "https://github.com/tibonto/aeon"
     }
   ]
 }
