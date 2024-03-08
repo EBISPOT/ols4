@@ -1,16 +1,56 @@
 import moment from "moment";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
 import { getBannerText, getStats } from "./homeSlice";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const stats = useAppSelector((state) => state.home.stats);
   const banner = useAppSelector((state) => state.home.bannerText);
+
+  /*
+
+  The following code handles a special case where the user is redirected to the class page of a term.
+  The service which initiates this workflow is the ebi lookup service. http://www.ebi.ac.uk/ontology-lookup/?termId=ECO:0000353
+  this url redirects to the OLS class page. It used to work in OLS3 but not in OLS 4. The following code is a workaround to make it work in OLS 4.
+
+  Refer to this RT ticket for further details: https://helpdesk.ebi.ac.uk/Ticket/Display.html?id=714111
+
+  */
+
+
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const termId = searchParams.get("termId");
+  const [iri, setIri] = useState('');
+
+  useEffect(() => {
+    const fetchEntity = async () => {
+      try {
+        const response = await fetch(`/api/v2/entities?search=${termId}`);
+        const data = await response.json();
+        const entity = data.elements[0];
+        setIri(entity.iri);
+      } catch (error) {
+        console.error('Failed to fetch entity:', error);
+      }
+    };
+
+    if (termId) {
+      fetchEntity();
+    }
+  }, [termId]);
+
+  useEffect(() => {
+    if (iri && termId) {
+      navigate(`/ontologies/${termId.split(':')[0].toLowerCase()}/classes?iri=${encodeURIComponent(iri)}`);
+    }
+  }, [iri, navigate]);
 
   useEffect(() => {
     dispatch(getStats());
