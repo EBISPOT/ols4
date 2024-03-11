@@ -1,6 +1,8 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import org.apache.commons.collections4.map.MultiKeyMap;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -17,9 +19,7 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v2")
@@ -54,6 +54,27 @@ public class V2StatisticsController {
 
         String queryString = sb.toString().substring(0,sb.toString().lastIndexOf(" OR "));
         return new ResponseEntity<>( computeStats(queryString), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<MultiKeyMap> getStatisticsBySchema(
+            @RequestParam(value = "schema", required = false) Collection<String> schemas,
+            @RequestParam(value = "lang", defaultValue = "en") String lang
+
+    ) throws IOException {
+        MultiKeyMap summaries = new MultiKeyMap();
+
+        Collection<String> keys = ontologyRepository.getSchemaKeys(lang);
+
+        for (String key : keys) {
+            Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
+
+            for (String value : values) {
+                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), false,Collections.emptySet(),lang));
+            }
+        }
+
+        return new ResponseEntity<>( summaries, HttpStatus.OK);
     }
 
     private V2Statistics computeStats(String queryString) throws IOException {
