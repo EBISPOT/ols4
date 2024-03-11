@@ -31,11 +31,13 @@ public class V2StatisticsController {
     @Autowired
     private V1OntologyRepository ontologyRepository;
 
+    @Operation(description = "Get Whole System Statistics. Components in all ontologies are taken into consideration")
     @RequestMapping(path = "/stats", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
         return new ResponseEntity<>( computeStats("*:*"), HttpStatus.OK);
     }
 
+    @Operation(description = "Get Schema and Classification based Statistics. Possible schema keys and possible classification values of particular keys can be inquired with /api/ontologies/schemakeys and /api/ontologies/schemavalues methods respectively.")
     @RequestMapping(path = "/statsby", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics(
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
@@ -46,16 +48,17 @@ public class V2StatisticsController {
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
         ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,lang);
-
         StringBuilder sb = new StringBuilder();
-        for (String id : ontologyIds){
-            sb.append("ontologyId:").append(id).append(" OR ");
+        String queryString = "none";
+        if(ontologyIds != null){
+            for (String id : ontologyIds){
+                sb.append("ontologyId:").append(id).append(" OR ");
+            }
+            queryString = sb.toString().substring(0,sb.toString().lastIndexOf(" OR "));
         }
-
-        String queryString = sb.toString().substring(0,sb.toString().lastIndexOf(" OR "));
         return new ResponseEntity<>( computeStats(queryString), HttpStatus.OK);
     }
-
+    @Operation(description = "Get Schema based Statistics. All schemas with their respective classifications can be computed if a schema is not specified.")
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<MultiKeyMap> getStatisticsBySchema(
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
