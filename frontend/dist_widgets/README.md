@@ -69,4 +69,3 @@ return (
 
 - Easy to integrate with any web application.
 - Lightweight and fast.
-- Customizable styles through `treestyles.css`.
