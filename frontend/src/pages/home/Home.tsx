@@ -32,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     const fetchEntity = async () => {
       try {
-        const response = await fetch(`/api/v2/entities?search=${termId}`);
+        const response = await fetch(`${process.env.REACT_APP_APIURL}api/v2/entities?search=${termId}`);
         const data = await response.json();
         const entity = data.elements[0];
         setIri(entity.iri);
