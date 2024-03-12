@@ -1,6 +1,10 @@
 {
   "ontologies": [
-	  
+	  {
+		  "id": "biolink",
+		  "ontology_purl": "https://github.com/biolink/biolink-model/raw/master/project/owl/biolink_model.owl.ttl",
+		  "homepage: "https://biolink.github.io/biolink-model/"
+	  },
 	  {
          "id": "semapv",
 		  "title": "Semantic Mapping Vocabulary",
