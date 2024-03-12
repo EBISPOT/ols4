@@ -27,9 +27,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const termId = searchParams.get("termId");
-  console.log('The search term id is: ', termId);
   const [iri, setIri] = useState('');
-  console.log('IRI for the search term is: ', iri);
 
   useEffect(() => {
     const fetchEntity = async () => {

@@ -5,7 +5,7 @@
 :8080 {
     handle_path {$PUBLIC_URL}* {
         root * /opt/ols4-frontend/dist
-        try_files {path} /index.html
+        try_files {path} /
         file_server
     }
 }
