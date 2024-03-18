@@ -15,7 +15,8 @@ build({
 	plugins: [
 	],
 	logLevel: 'info',
-	sourcemap: 'linked'
+	sourcemap: 'linked',
+	format: "esm"
 });
 
 console.log('### Building ols4_widgets.min.js')
@@ -29,7 +30,8 @@ build({
 	],
 	logLevel: 'info',
 	minify: true,
-	sourcemap: 'linked'
+	sourcemap: 'linked',
+	format: "esm"
 });
 
 console.log('### Copying treestyles.css')
