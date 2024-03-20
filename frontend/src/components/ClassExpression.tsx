@@ -312,43 +312,6 @@ export default function ClassExpression({
       </span>
     );
   }
-
-  let minQualifiedCardinality = asArray(
-    expr["http://www.w3.org/2002/07/owl#minQualifiedCardinality"]
-  )[0];
-  if (minQualifiedCardinality) {
-    return (
-      <span>
-        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
-        <span className="px-1 text-embl-purple-default italic">min</span>
-        <ClassExpression
-	currentEntity={currentEntity} 
-	 ontologyId={ontologyId} entityType={'classes'}
-          expr={minQualifiedCardinality}
-          linkedEntities={linkedEntities}
-        />
-      </span>
-    );
-  }
-
-  let maxQualifiedCardinality = asArray(
-    expr["http://www.w3.org/2002/07/owl#maxQualifiedCardinality"]
-  )[0];
-  if (maxQualifiedCardinality) {
-    return (
-      <span>
-        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
-        <span className="px-1 text-embl-purple-default italic">max</span>
-        <ClassExpression
-	currentEntity={currentEntity} 
-	 ontologyId={ontologyId} entityType={'classes'}
-          expr={maxQualifiedCardinality}
-          linkedEntities={linkedEntities}
-        />
-      </span>
-    );
-  }
-
   let exactCardinality = asArray(
     expr["http://www.w3.org/2002/07/owl#cardinality"]
   )[0];
@@ -362,24 +325,6 @@ export default function ClassExpression({
     );
   }
 
-  let exactQualifiedCardinality = asArray(
-    expr["http://www.w3.org/2002/07/owl#qualifiedCardinality"]
-  )[0];
-  if (exactQualifiedCardinality) {
-    return (
-      <span>
-        <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
-        <span className="px-1 text-embl-purple-default italic">exactly</span>
-        <ClassExpression
-	 ontologyId={ontologyId} entityType={'classes'}
-	 currentEntity={currentEntity} 
-          expr={exactQualifiedCardinality}
-          linkedEntities={linkedEntities}
-        />
-      </span>
-    );
-  }
-
   let hasSelf = asArray(expr["http://www.w3.org/2002/07/owl#hasSelf"])[0];
   if (hasSelf) {
     return (
@@ -388,6 +333,89 @@ export default function ClassExpression({
         <span className="px-1 text-embl-purple-default italic">Self</span>
       </span>
     );
+  }
+
+
+  ///
+  /// 4. owl:Restriction qualified cardinalities (property and class)
+  ///
+  const onClass = expr["http://www.w3.org/2002/07/owl#onClass"];
+
+  if(onClass) {
+    let minQualifiedCardinality = asArray(
+      expr["http://www.w3.org/2002/07/owl#minQualifiedCardinality"]
+    )[0];
+    if (minQualifiedCardinality) {
+      return (
+        <span>
+          <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+          <span className="px-1 text-embl-purple-default italic">min</span>
+          <ClassExpression
+    currentEntity={currentEntity} 
+    ontologyId={ontologyId} entityType={'classes'}
+            expr={minQualifiedCardinality}
+            linkedEntities={linkedEntities}
+          />
+          &nbsp;
+          <ClassExpression
+    currentEntity={currentEntity} 
+    ontologyId={ontologyId} entityType={'classes'}
+            expr={onClass}
+            linkedEntities={linkedEntities}
+          />
+        </span>
+      );
+    }
+
+    let maxQualifiedCardinality = asArray(
+      expr["http://www.w3.org/2002/07/owl#maxQualifiedCardinality"]
+    )[0];
+    if (maxQualifiedCardinality) {
+      return (
+        <span>
+          <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+          <span className="px-1 text-embl-purple-default italic">max</span>
+          <ClassExpression
+    currentEntity={currentEntity} 
+    ontologyId={ontologyId} entityType={'classes'}
+            expr={maxQualifiedCardinality}
+            linkedEntities={linkedEntities}
+          />
+          &nbsp;
+          <ClassExpression
+    currentEntity={currentEntity} 
+    ontologyId={ontologyId} entityType={'classes'}
+            expr={onClass}
+            linkedEntities={linkedEntities}
+          />
+        </span>
+      );
+    }
+
+    let exactQualifiedCardinality = asArray(
+      expr["http://www.w3.org/2002/07/owl#qualifiedCardinality"]
+    )[0];
+    if (exactQualifiedCardinality) {
+      return (
+        <span>
+          <ClassExpression  ontologyId={ontologyId} currentEntity={currentEntity} entityType={'properties'} expr={onProperty} linkedEntities={linkedEntities} />
+          <span className="px-1 text-embl-purple-default italic">exactly</span>
+          <ClassExpression
+    ontologyId={ontologyId} entityType={'classes'}
+    currentEntity={currentEntity} 
+            expr={exactQualifiedCardinality}
+            linkedEntities={linkedEntities}
+          />
+          &nbsp;
+          <ClassExpression
+    currentEntity={currentEntity} 
+    ontologyId={ontologyId} entityType={'classes'}
+            expr={onClass}
+            linkedEntities={linkedEntities}
+          />
+        </span>
+      );
+    }
   }
 
 
