@@ -23,7 +23,8 @@ public class OntologyNode {
         ALL_DISJOINT_CLASSES("allDisjointClasses"),
         ALL_DIFFERENT("allDifferent"),
         ALL_DISJOINT_PROPERTIES("allDisjointProperties"),
-        NEGATIVE_PROPERTY_ASSERTION("negativePropertyAssertion");
+        NEGATIVE_PROPERTY_ASSERTION("negativePropertyAssertion"),
+        DATATYPE("datatype");
 
         public final String name;
 

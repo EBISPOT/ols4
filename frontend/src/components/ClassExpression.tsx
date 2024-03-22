@@ -26,6 +26,20 @@ export default function ClassExpression({
 
   linkedEntities = linkedEntities.mergeWith(expr.linkedEntities)
 
+  const types = asArray(expr['type'])
+
+  if(types && types.indexOf('datatype') !== -1) {
+    // rdfs:Datatype
+    let equivClass = expr['http://www.w3.org/2002/07/owl#equivalentClass'];
+    if(equivClass) {
+      return <Fragment>
+        { expr['label'] && <span>{expr['label']} </span> }
+        <ClassExpression currentEntity={currentEntity}   ontologyId={ontologyId} entityType={'properties'} expr={equivClass} linkedEntities={linkedEntities} />
+        </Fragment>
+    }
+  }
+
+
   ///
   /// 1. owl:Class expressions
   ///
