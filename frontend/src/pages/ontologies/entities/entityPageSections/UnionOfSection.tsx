@@ -14,7 +14,7 @@ export default function UnionOfSection({
   entity: Entity;
   linkedEntities: LinkedEntities;
 }) {
-  if (!(entity instanceof Property) && !(entity instanceof Class)) {
+  if (!(entity instanceof Class)) {
     return <Fragment />;
   }
 

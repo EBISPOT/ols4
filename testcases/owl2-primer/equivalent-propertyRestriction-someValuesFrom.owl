@@ -46,7 +46,7 @@
         <owl:equivalentClass>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#hasChild"/>
-                <owl:someValuesFrom rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Parent"/>
+                <owl:someValuesFrom rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-someValuesFrom.owl#Person"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
