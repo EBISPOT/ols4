@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
 import com.google.gson.annotations.SerializedName;
+import uk.ac.ebi.spot.ols.controller.api.v1.TopConceptEnum;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -46,6 +47,10 @@ public class V1OntologyConfig {
     public  Collection<String> hiddenProperties;
     public  Collection<String> preferredRootTerms = new HashSet<>();
     public boolean isSkos;
+
+    public boolean skosNarrower;
+
+    public TopConceptEnum skosRoot;
 
     public boolean allowDownload;
 }

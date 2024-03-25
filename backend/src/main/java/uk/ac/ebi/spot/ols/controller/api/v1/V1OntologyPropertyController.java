@@ -27,7 +27,7 @@ import uk.ac.ebi.spot.ols.service.Neo4jClient;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
-@Controller
+@RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyPropertyController {
 

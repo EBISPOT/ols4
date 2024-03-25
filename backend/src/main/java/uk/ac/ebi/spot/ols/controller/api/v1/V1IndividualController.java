@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 18/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 @RequestMapping("/api/individuals")
 @ExposesResourceFor(V1Individual.class)
 public class V1IndividualController implements
@@ -81,7 +81,7 @@ public class V1IndividualController implements
 
         return new ResponseEntity<>(assembler.toModel(terms, individualAssembler), HttpStatus.OK);
     }
-    
+
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
             @PathVariable("id") String termId,
@@ -92,11 +92,11 @@ public class V1IndividualController implements
         decoded = UriUtils.decode(termId, "UTF-8");
         return getAllIndividualsByIdAndIsDefiningOntology(decoded, null, null, lang, pageable, assembler);
 
-    }    
-    
-    
-    @RequestMapping(path = "/findByIdAndIsDefiningOntology", 
-    		produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
+    }
+
+
+    @RequestMapping(path = "/findByIdAndIsDefiningOntology",
+    		produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
     		method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false) String iri,
@@ -120,7 +120,7 @@ public class V1IndividualController implements
 
         return new ResponseEntity<>(assembler.toModel(terms, individualAssembler), HttpStatus.OK);
     }
-    
+
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)

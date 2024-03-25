@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import uk.ac.ebi.spot.ols.controller.api.v1.TopConceptEnum;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
@@ -61,9 +62,12 @@ public class V1OntologyMapper {
         ontology.config.preferredRootTerms = JsonHelper.getStrings(localizedJson, "preferredRootTerms");
 
         ontology.config.isSkos = localizedJson.has("isSkos") && localizedJson.get("isSkos").getAsBoolean();
+        if(ontology.config.isSkos) {
+            ontology.config.skosNarrower = localizedJson.has("skosNarrower") && localizedJson.get("skosNarrower").getAsBoolean();
+            if (localizedJson.has("skosRoot"))
+                ontology.config.skosRoot = TopConceptEnum.valueOf(localizedJson.get("skosRoot").getAsString());
+        }
         ontology.config.allowDownload = localizedJson.has("allowDownload") && localizedJson.get("allowDownload").getAsBoolean();
-
-
         ontology.status = "LOADED";
 
         ontology.numberOfTerms = Integer.parseInt(JsonHelper.getString(localizedJson, "numberOfClasses"));
