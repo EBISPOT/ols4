@@ -23,6 +23,10 @@ export default class Class extends Entity {
 	return asArray(this.properties['http://www.w3.org/2002/07/owl#disjointWith'])
   }
 
+  getUnionOf() {
+    return asArray(this.properties['http://www.w3.org/2002/07/owl#unionOf'])
+  }
+
   getHasKey() {
     return asArray(this.properties['http://www.w3.org/2002/07/owl#hasKey'])
   }

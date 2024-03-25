@@ -207,6 +207,8 @@ public class OntologyScanner {
 
                 visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);
 
+            } else if(types.contains("datatype")) {
+
             } else {
 		throw new RuntimeException("???");
             }

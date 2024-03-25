@@ -511,7 +511,14 @@ public class OntologyGraph implements StreamRDF {
                 writer.endObject();
                 break;
             case URI:
-                writer.value(((PropertyValueURI) value).getUri());
+                String uri = ((PropertyValueURI) value).getUri();
+                OntologyNode uriNode = nodes.get(uri);
+                if(uriNode != null && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
+                    // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
+                    writeNode(writer, uriNode, Set.of("datatype"));
+                } else {
+                    writer.value(uri);
+                }
                 break;
             case RELATED:
                 writer.beginObject();
@@ -693,6 +700,10 @@ public class OntologyGraph implements StreamRDF {
                 break;
             case "http://www.w3.org/2002/07/owl#NegativePropertyAssertion":
                 subjNode.types.add(OntologyNode.NodeType.NEGATIVE_PROPERTY_ASSERTION);
+                break;
+
+            case "http://www.w3.org/2000/01/rdf-schema#Datatype":
+                subjNode.types.add(OntologyNode.NodeType.DATATYPE);
                 break;
         }
     }

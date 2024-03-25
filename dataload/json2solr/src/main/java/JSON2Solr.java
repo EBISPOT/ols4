@@ -276,6 +276,8 @@ public class JSON2Solr {
 		// (4) reification
                 return discardMetadata(dict.get("value"));
 
+	    } else if(types.contains("datatype")) {
+            return null;
 	    } else {
 		    throw new RuntimeException("???");
 	    }
