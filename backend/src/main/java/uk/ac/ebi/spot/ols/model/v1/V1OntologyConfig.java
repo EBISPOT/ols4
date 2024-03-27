@@ -22,7 +22,16 @@ public class V1OntologyConfig {
     public String tracker;
     public String logo;
     public Collection<String> creators;
+
+    public Collection<String> collection;
+    public Collection<String> subject;
     //public Map<String, Collection<String>> annotations;
+
+    public Object classifications;
+
+    public String repoUrl;
+
+    public License license;
     public Object annotations;
 
     public  String fileLocation;

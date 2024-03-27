@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -19,10 +20,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.v3.oas.annotations.Parameter;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import java.lang.reflect.*;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,7 +35,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 19/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 @RequestMapping("/api/ontologies")
 @ExposesResourceFor(V1Ontology.class)
 public class V1OntologyController implements
@@ -77,6 +81,55 @@ public class V1OntologyController implements
         V1Ontology document = ontologyRepository.get(ontologyId, lang);
         if (document == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( documentAssembler.toModel(document), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/filterby", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<PagedModel<V1Ontology>> getOntologiesByMetadata(
+    		@RequestParam(value = "schema", required = true) Collection<String> schemas,
+    		@RequestParam(value = "classification", required = true) Collection<String> classifications,
+    		@Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
+    		@RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @PageableDefault(size = 100, page = 0) Pageable pageable,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler
+    ) throws ResourceNotFoundException {
+        Set<V1Ontology> tempSet = ontologyRepository.filter(schemas,classifications,exclusive,lang);
+        List<V1Ontology> tempList = new ArrayList<V1Ontology>();
+        tempList.addAll(tempSet);
+        final int start = (int)pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), tempSet.size());
+        Page<V1Ontology> document = new PageImpl<>(tempList.subList(start, end), pageable, tempSet.size());
+
+        return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/schemakeys", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<Page<String>> filterKeys(
+            @PageableDefault(size = 100, page = 0) Pageable pageable,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler){
+        Set<String> tempSet = ontologyRepository.getSchemaKeys(lang);
+        List<String> tempList = new ArrayList<String>();
+        tempList.addAll(tempSet);
+        final int start = (int)pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), tempSet.size());
+        Page<String> document = new PageImpl<>(tempList.subList(start, end), pageable, tempSet.size());
+        return new ResponseEntity<>(document, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/schemavalues", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<Page<String>> filterValues(
+            @RequestParam(value = "schema", required = true) Collection<String> schemas,
+            @PageableDefault(size = 100, page = 0) Pageable pageable,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            PagedResourcesAssembler assembler){
+        Set<String> tempSet = ontologyRepository.getSchemaValues(schemas,lang);
+        List<String> tempList = new ArrayList<String>();
+        tempList.addAll(tempSet);
+        final int start = (int)pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), tempSet.size());
+        Page<String> document = new PageImpl<>(tempList.subList(start, end), pageable, tempSet.size());
+        return new ResponseEntity<>(document, HttpStatus.OK);
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")

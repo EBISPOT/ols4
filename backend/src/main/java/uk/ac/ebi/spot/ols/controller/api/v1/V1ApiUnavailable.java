@@ -6,8 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 27/09/2016
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 public class V1ApiUnavailable {
 
     @RequestMapping(path = "/api/unavailable", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)

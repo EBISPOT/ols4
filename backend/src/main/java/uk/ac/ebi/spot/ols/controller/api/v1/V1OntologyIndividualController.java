@@ -34,7 +34,7 @@ import java.util.Arrays;
  * @date 02/11/15
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyIndividualController {
 
