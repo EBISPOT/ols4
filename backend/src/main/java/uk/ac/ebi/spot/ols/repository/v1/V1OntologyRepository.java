@@ -35,7 +35,7 @@ public class V1OntologyRepository {
         return V1OntologyMapper.mapOntology(solrClient.getFirst(query), lang);
     }
 
-    public Set<V1Ontology> getSet(String lang){
+    public Set<V1Ontology> getAll(String lang){
         Set<V1Ontology> tempSet = new HashSet<>();
         Validation.validateLang(lang);
 
@@ -113,7 +113,7 @@ public class V1OntologyRepository {
     public Set<V1Ontology> inclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
         Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-        tempSet.addAll(getSet(lang));
+        tempSet.addAll(getAll(lang));
 
         for (V1Ontology ontology : tempSet){
             for (Field field : ontology.config.getClass().getDeclaredFields()){
@@ -142,7 +142,7 @@ public class V1OntologyRepository {
     public Set<V1Ontology> exclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
         Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
-        tempSet.addAll(getSet(lang));
+        tempSet.addAll(getAll(lang));
 
         for (V1Ontology ontology : tempSet){
             Set<String> fieldSet = new HashSet<>();
@@ -184,7 +184,7 @@ public class V1OntologyRepository {
 
     public Set<String> getSchemaKeys(String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
-        tempSet.addAll(getSet(lang));
+        tempSet.addAll(getAll(lang));
         Set<String> keys = new HashSet<>();
         for (V1Ontology ontology : tempSet){
             if (ontology.config.classifications != null){
@@ -199,7 +199,7 @@ public class V1OntologyRepository {
 
     public Set<String> getSchemaValues(Collection<String> schemas,String lang){
         Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
-        tempSet.addAll(getSet(lang));
+        tempSet.addAll(getAll(lang));
         Set<String> values = new HashSet<>();
         for (V1Ontology ontology : tempSet){
             if (ontology.config.classifications != null){
