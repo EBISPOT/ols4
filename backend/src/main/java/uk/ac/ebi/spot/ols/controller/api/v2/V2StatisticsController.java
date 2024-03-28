@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
 
 import java.io.IOException;
 import java.util.*;
@@ -29,7 +30,7 @@ public class V2StatisticsController {
     OlsSolrClient solrClient;
 
     @Autowired
-    private V1OntologyRepository ontologyRepository;
+    private V2OntologyRepository ontologyRepository;
 
     @Operation(description = "Get Whole System Statistics. Components in all ontologies are taken into consideration")
     @RequestMapping(path = "/stats", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
