@@ -476,30 +476,8 @@ public class OntologyGraph implements StreamRDF {
 
     }
 
-    private final static Set<String> XMLPrimitiveDataTypes = new HashSet<>(Arrays.asList(
-            "http://www.w3.org/2001/XMLSchema#string",
-                    "http://www.w3.org/2001/XMLSchema#boolean",
-                    "http://www.w3.org/2001/XMLSchema#decimal",
-                    "http://www.w3.org/2001/XMLSchema#float",
-                    "http://www.w3.org/2001/XMLSchema#double",
-                    "http://www.w3.org/2001/XMLSchema#duration",
-                    "http://www.w3.org/2001/XMLSchema#dateTime",
-                    "http://www.w3.org/2001/XMLSchema#time",
-                    "http://www.w3.org/2001/XMLSchema#date",
-                    "http://www.w3.org/2001/XMLSchema#gYearMonth",
-                    "http://www.w3.org/2001/XMLSchema#gYear",
-                    "http://www.w3.org/2001/XMLSchema#gMonthDay",
-                    "http://www.w3.org/2001/XMLSchema#gDay",
-                    "http://www.w3.org/2001/XMLSchema#gMonth",
-                    "http://www.w3.org/2001/XMLSchema#hexBinary",
-                    "http://www.w3.org/2001/XMLSchema#base64Binary",
-                    "http://www.w3.org/2001/XMLSchema#anyURI",
-                    "http://www.w3.org/2001/XMLSchema#QName",
-                    "http://www.w3.org/2001/XMLSchema#NOTATION"
-    ));
-
-    private boolean isXMLPrimitiveDatatype(String uri) {
-        return XMLPrimitiveDataTypes.contains(uri);
+    private boolean isXMLBuiltinDatatype(String uri) {
+        return uri.startsWith("http://www.w3.org/2001/XMLSchema#");
     }
     public void writeValue(JsonWriter writer, PropertyValue value) throws IOException {
         assert (value.axioms == null);
@@ -538,7 +516,7 @@ public class OntologyGraph implements StreamRDF {
             case URI:
                 String uri = ((PropertyValueURI) value).getUri();
                 OntologyNode uriNode = nodes.get(uri);
-                if(uriNode != null && !isXMLPrimitiveDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
+                if(uriNode != null && !isXMLBuiltinDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
                     // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
                     writeNode(writer, uriNode, Set.of("datatype"));
                 } else {
