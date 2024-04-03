@@ -98,7 +98,7 @@ public class V2ClassController {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        V2Entity entity = classRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
+        V2Entity entity = classRepository.findByOntologyAndIri(ontologyId, iri, lang);
         if (entity == null) throw new ResourceNotFoundException();
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }

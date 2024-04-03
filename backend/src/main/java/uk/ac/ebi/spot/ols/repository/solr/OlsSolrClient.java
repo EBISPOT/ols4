@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.ols.repository.solr;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -95,7 +96,8 @@ public class OlsSolrClient {
 
         if(qr.getResults().getNumFound() < 1) {
             logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.constructQuery().jsonStr());
-            throw new RuntimeException("Expected at least 1 result for solr getFirst");
+            return new JsonObject();
+            //throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
         return getOlsEntityFromSolrResult(qr.getResults().get(0));
