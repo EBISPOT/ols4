@@ -27,6 +27,7 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v1.TopConceptEnum;
 import uk.ac.ebi.spot.ols.controller.api.v1.V1TermAssembler;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
+import uk.ac.ebi.spot.ols.model.v2.SKOSRelation;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.v1.TreeNode;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
@@ -166,7 +167,7 @@ public class V2OntologySKOSConceptController {
             @PathVariable("iri") String iri,
             @Parameter(description = "skos based concept relation type", required = true)
             @RequestParam(value = "relation_type", required = true, defaultValue = "broader")
-    		@Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) String relationType,
+            @Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) SKOSRelation relationType,
             @RequestParam(value = "obsoletes", required = false, defaultValue = "false") Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
@@ -175,8 +176,7 @@ public class V2OntologySKOSConceptController {
     	ontologyId = ontologyId.toLowerCase();
     	List<V2Entity> related = new ArrayList<V2Entity>();
 		String decodedIri = UriUtils.decode(iri, "UTF-8");
-		related = classRepository.findRelated(ontologyId, decodedIri, relationType,lang);
-
+		related = classRepository.findRelated(ontologyId, decodedIri, relationType.getPropertyName(),lang);
 
         final int start = (int)pageable.getOffset();
         final int end = Math.min((start + pageable.getPageSize()), related.size());
@@ -196,7 +196,7 @@ public class V2OntologySKOSConceptController {
             @PathVariable("iri") String iri,
             @Parameter(description = "skos based concept relation type", required = true)
             @RequestParam(value = "relation_type", required = true, defaultValue = "broader")
-    		@Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) String relationType,
+            @Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) SKOSRelation relationType,
             @RequestParam(value = "obsoletes", required = false, defaultValue = "false") Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
@@ -205,7 +205,7 @@ public class V2OntologySKOSConceptController {
     	ontologyId = ontologyId.toLowerCase();
     	List<V2Entity> related = new ArrayList<V2Entity>();
 		String decodedIri = UriUtils.decode(iri, "UTF-8");
-		related = classRepository.findRelated(ontologyId, decodedIri, relationType,lang);
+		related = classRepository.findRelated(ontologyId, decodedIri, relationType.getPropertyName(),lang);
 
         final int start = (int)pageable.getOffset();
         final int end = Math.min((start + pageable.getPageSize()), related.size());
@@ -227,15 +227,14 @@ public class V2OntologySKOSConceptController {
             @PathVariable("iri") String iri,
             @Parameter(description = "skos based concept relation type", required = true)
             @RequestParam(value = "relation_type", required = true, defaultValue = "broader")
-    		@Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) String relationType,
+    		@Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) SKOSRelation relationType,
             @RequestParam(value = "obsoletes", required = false, defaultValue = "false") Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable) throws IOException {
-
     	ontologyId = ontologyId.toLowerCase();
     	List<V2Entity> related = new ArrayList<V2Entity>();
 		String decodedIri = UriUtils.decode(iri, "UTF-8");
-		related = classRepository.findRelatedIndirectly(ontologyId, decodedIri, relationType, obsoletes,lang,pageable);
+		related = classRepository.findRelatedIndirectly(ontologyId, decodedIri, relationType.getPropertyName(), obsoletes,lang,pageable);
 
         return new ResponseEntity<>( related, HttpStatus.OK);
 
@@ -251,7 +250,7 @@ public class V2OntologySKOSConceptController {
             @PathVariable("iri") String iri,
             @Parameter(description = "skos based concept relation type", required = true)
             @RequestParam(value = "relation_type", required = true, defaultValue = "broader")
-    		@Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) String relationType,
+            @Schema(type = "string", allowableValues = { "broader", "narrower", "related" }) SKOSRelation relationType,
             @Parameter(description = "Page size to retrieve individuals", required = true)
     		@RequestParam(value = "obsoletes", required = false, defaultValue = "false") Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -260,7 +259,7 @@ public class V2OntologySKOSConceptController {
     	ontologyId = ontologyId.toLowerCase();
     	List<V2Entity> related = new ArrayList<V2Entity>();
 		String decodedIri = UriUtils.decode(iri, "UTF-8");
-		related = classRepository.findRelatedIndirectly(ontologyId, decodedIri, relationType, obsoletes,lang,pageable);
+		related = classRepository.findRelatedIndirectly(ontologyId, decodedIri, relationType.getPropertyName(), obsoletes,lang,pageable);
 
     	int count = 0;
         for (V2Entity individual : related)
@@ -285,13 +284,13 @@ public class V2OntologySKOSConceptController {
 
         V2Entity subjectTerm = classRepository.findByOntologyAndIri(ontologyId, decodedIri, lang);
 
-        related = classRepository.findRelated(ontologyId, decodedIri, "related",lang);
+        related = classRepository.findRelated(ontologyId, decodedIri, SKOSRelation.related.getPropertyName(), lang);
 
         List<V2Entity> narrower = new ArrayList<V2Entity>();
-        narrower = classRepository.findRelated(ontologyId, decodedIri, "narrower",lang);
+        narrower = classRepository.findRelated(ontologyId, decodedIri, SKOSRelation.narrower.getPropertyName(), lang);
 
         List<V2Entity> broader = new ArrayList<V2Entity>();
-        broader = classRepository.findRelated(ontologyId, decodedIri, "broader",lang);
+        broader = classRepository.findRelated(ontologyId, decodedIri, SKOSRelation.broader.getPropertyName(), lang);
 
         Set<Node> relatedNodes = new HashSet<Node>();
         related.forEach(term -> relatedNodes.add(new Node(term.any().get("iri").toString(), term.any().get("label").toString())));
@@ -301,9 +300,9 @@ public class V2OntologySKOSConceptController {
         broader.forEach(term -> broaderNodes.add(new Node(term.any().get("iri").toString(), term.any().get("label").toString())));
 
         Set<Edge> edges = new HashSet<Edge>();
-        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "related","http://www.w3.org/2004/02/skos/core#related")));
-        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "narrower","http://www.w3.org/2004/02/skos/core#narrower")));
-        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "broader","http://www.w3.org/2004/02/skos/core#broader")));
+        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "related",SKOSRelation.related.getPropertyName())));
+        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "narrower",SKOSRelation.narrower.getPropertyName())));
+        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "broader",SKOSRelation.broader.getPropertyName())));
 
         Set<Node> nodes = new HashSet<Node>();
         nodes.add(new Node(decodedIri,subjectTerm.any().get("label").toString()));

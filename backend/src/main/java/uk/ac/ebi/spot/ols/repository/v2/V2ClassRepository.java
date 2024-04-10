@@ -26,6 +26,8 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 import java.io.IOException;
 import java.util.*;
 
+import static uk.ac.ebi.spot.ols.model.v2.SKOSRelation.*;
+
 @Component
 public class V2ClassRepository {
 
@@ -34,16 +36,6 @@ public class V2ClassRepository {
 
     @Autowired
     OlsNeo4jClient neo4jClient;
-
-    public String broader = "http://www.w3.org/2004/02/skos/core#broader";
-
-    public String narrower = "http://www.w3.org/2004/02/skos/core#narrower";
-
-    public String related = "http://www.w3.org/2004/02/skos/core#related";
-
-    public String hasTopConcept = "http://www.w3.org/2004/02/skos/core#hasTopConcept";
-
-    public String topConceptOf = "http://www.w3.org/2004/02/skos/core#topConceptOf";
 
 
     public OlsFacetedResultsPage<V2Entity> find(
@@ -199,8 +191,8 @@ public class V2ClassRepository {
 
         if(schema) {
             for (V2Entity term : listOfTerms)
-                if (term.any().get(hasTopConcept) != null) {
-                    for (String iriTopConcept : (ArrayList<String>) term.any().get(hasTopConcept)) {
+                if (term.any().get(hasTopConcept.getPropertyName()) != null) {
+                    for (String iriTopConcept : (ArrayList<String>) term.any().get(hasTopConcept.getPropertyName())) {
                         V2Entity topConceptTerm = findTerm(listOfTerms,iriTopConcept);
                         TreeNode<V2Entity> topConcept =  new TreeNode<V2Entity>(topConceptTerm);
                         topConcept.setIndex(String.valueOf(++count));
@@ -216,7 +208,7 @@ public class V2ClassRepository {
         } else for (V2Entity term : listOfTerms) {
             TreeNode<V2Entity> tree = new TreeNode<V2Entity>(term);
 
-            if (tree.isRoot() && term.any().get(topConceptOf) != null) {
+            if (tree.isRoot() && term.any().get(topConceptOf.getPropertyName()) != null) {
                 tree.setIndex(String.valueOf(++count));
                 if(withChildren) {
                     if(narrower)
@@ -258,10 +250,10 @@ public class V2ClassRepository {
         int count = 0;
         if(!isNarrower) {
             for (V2Entity term : listOfTerms) {
-                if(term.any() != null && term.any().get(broader) != null) {
-                    for (String iriBroader : getRelationsAsList(term,broader)) {
+                if(term.any() != null && term.any().get(broader.getPropertyName()) != null) {
+                    for (String iriBroader : getRelationsAsList(term,broader.getPropertyName())) {
                         V2Entity broaderTerm = findTerm(listOfTerms, iriBroader);
-                        if (broaderTerm.any() != null && broaderTerm.any().get(broader) == null) {
+                        if (broaderTerm.any() != null && broaderTerm.any().get(broader.getPropertyName()) == null) {
                             rootIRIs.add(iriBroader);
                         }
 
@@ -284,7 +276,7 @@ public class V2ClassRepository {
                     boolean root = true;
                     for (V2Entity V2Entity : listOfTerms) {
                         if (V2Entity.any() != null && V2Entity.any().get(narrower) != null) {
-                            for (String iriNarrower : getRelationsAsList(V2Entity,narrower)) {
+                            for (String iriNarrower : getRelationsAsList(V2Entity,narrower.getPropertyName())) {
                                 if (term.any().get("iri").equals(iriNarrower))
                                     root = false;
                             }
@@ -333,7 +325,6 @@ public class V2ClassRepository {
             if (term.any().get(relationType) != null)
                 for (String iriBroader : getRelationsAsList(term,relationType))
                     related.add(this.findByOntologyAndIri(ontologyId, iriBroader, lang));
-
         return related;
     }
 
@@ -362,14 +353,14 @@ public class V2ClassRepository {
     public void populateChildrenandRelatedByNarrower(V2Entity term, TreeNode<V2Entity> tree, List<V2Entity> listOfTerms ) {
 
         if (term.any() != null)
-            for (String iriRelated : getRelationsAsList(term,related)) {
+            for (String iriRelated : getRelationsAsList(term,related.getPropertyName())) {
                 TreeNode<V2Entity> related = new TreeNode<V2Entity>(findTerm(listOfTerms, iriRelated));
                 related.setIndex(tree.getIndex() + ".related");
                 tree.addRelated(related);
             }
         int count = 0;
         if (term.any() != null)
-            for (String iriChild : getRelationsAsList(term,narrower)) {
+            for (String iriChild : getRelationsAsList(term,narrower.getPropertyName())) {
                 V2Entity childTerm = findTerm(listOfTerms, iriChild);
                 TreeNode<V2Entity> child = new TreeNode<V2Entity>(childTerm);
                 child.setIndex(tree.getIndex() + "." + ++count);
@@ -380,7 +371,7 @@ public class V2ClassRepository {
 
     public void populateChildrenandRelatedByBroader(V2Entity term, TreeNode<V2Entity> tree, List<V2Entity> listOfTerms) {
         if (term.any() != null)
-            for (String iriRelated : getRelationsAsList(term,related)) {
+            for (String iriRelated : getRelationsAsList(term,related.getPropertyName())) {
                 TreeNode<V2Entity> related = new TreeNode<V2Entity>(findTerm(listOfTerms, iriRelated));
                 related.setIndex(tree.getIndex() + ".related");
                 tree.addRelated(related);
@@ -388,7 +379,7 @@ public class V2ClassRepository {
         int count = 0;
         for ( V2Entity V2Entity : listOfTerms) {
             if (V2Entity.any() != null)
-                for (String iriBroader : getRelationsAsList(V2Entity,broader))
+                for (String iriBroader : getRelationsAsList(V2Entity,broader.getPropertyName()))
                     if(term.any().get("iri") != null)
                         if (term.any().get("iri").equals(iriBroader)) {
                             TreeNode<V2Entity> child = new TreeNode<V2Entity>(V2Entity);
