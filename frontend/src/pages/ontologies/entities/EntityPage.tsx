@@ -30,6 +30,7 @@ import DomainSection from "./entityPageSections/DomainSection";
 import EntityAnnotationsSection from "./entityPageSections/EntityAnnotationsSection";
 import EntityDescriptionSection from "./entityPageSections/EntityDescriptionSection";
 import EntityEquivalentsSection from "./entityPageSections/EntityEquivalentsSection";
+import UnionOfSection from "./entityPageSections/UnionOfSection";
 import EntityImagesSection from "./entityPageSections/EntityImagesSection";
 import EntityParentsSection from "./entityPageSections/EntityParentsSection";
 import EntityRelatedFromSection from "./entityPageSections/EntityRelatedFromSection";
@@ -461,6 +462,10 @@ export default function EntityPage({
                     <DisjointWithSection
                       entity={entity}
                       linkedEntities={linkedEntities}
+                    />
+                    <UnionOfSection
+                        entity={entity}
+                        linkedEntities={linkedEntities}
                     />
                     <PropertyInverseOfSection
                       entity={entity}

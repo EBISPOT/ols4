@@ -27,7 +27,7 @@ export default function EntityLink({
 
   // reference to self; just display label bc we are already on that page
   if (currentEntity && iri === currentEntity.getIri()) {
-    return <b>{currentEntity.getName()}</b>;
+    return <span>{currentEntity.getName()}</span>;
   }
 
   const label =
