@@ -2,10 +2,12 @@
 package uk.ac.ebi.spot.ols.repository.v2;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
@@ -19,11 +21,8 @@ import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
+@Primary
 @Component
 public class V2ClassRepository {
 
@@ -32,6 +31,7 @@ public class V2ClassRepository {
 
     @Autowired
     OlsNeo4jClient neo4jClient;
+
 
     public OlsFacetedResultsPage<V2Entity> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,Collection<String>> properties) throws IOException {
@@ -82,7 +82,7 @@ public class V2ClassRepository {
                 .map(V2Entity::new);
     }
 
-    public V2Entity getByOntologyIdAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
+    public V2Entity findByOntologyAndIri(String ontologyId, String iri, String lang) throws ResourceNotFoundException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -168,5 +168,30 @@ public class V2ClassRepository {
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
+    }
+
+
+    public List<V2Entity> allClassesOfOntology(String ontologyId, Boolean obsoletes, Pageable pageable, String lang) throws IOException {
+        Map<String,Collection<String>> properties = new HashMap<>();
+        if(!obsoletes)
+            properties.put("isObsolete", List.of("false"));
+
+        Page<V2Entity> terms = this.findByOntologyId(ontologyId, pageable, lang, null, null, null, false,  DynamicQueryHelper.filterProperties(properties));
+        List<V2Entity> listOfTerms = new ArrayList<V2Entity>();
+        listOfTerms.addAll(terms.getContent());
+
+        while(terms.hasNext()) {
+            terms = findByOntologyId(ontologyId, terms.nextPageable(), lang, null, null, null, false,  DynamicQueryHelper.filterProperties(properties));
+            listOfTerms.addAll(terms.getContent());
+        }
+
+        return listOfTerms;
+    }
+
+    public List<String> getRelationsAsList(V2Entity entity, String relationType){
+        if(entity.any().get(relationType) instanceof String)
+            return Arrays.asList((String) entity.any().get(relationType));
+        else
+            return (ArrayList<String>) entity.any().getOrDefault(relationType, new ArrayList<String>());
     }
 }
