@@ -96,8 +96,8 @@ public class OlsSolrClient {
 
         if(qr.getResults().getNumFound() < 1) {
             logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.constructQuery().jsonStr());
-            return new JsonObject();
-            //throw new RuntimeException("Expected at least 1 result for solr getFirst");
+            //return new JsonObject();
+            throw new RuntimeException("Expected at least 1 result for solr getFirst");
         }
 
         return getOlsEntityFromSolrResult(qr.getResults().get(0));
