@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.model.v2;
+package uk.ac.ebi.spot.ols.model;
 
 /**
  * @author Erhun Giray TUNCAY

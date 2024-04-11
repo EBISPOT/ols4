@@ -25,6 +25,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 
+import uk.ac.ebi.spot.ols.model.Edge;
+import uk.ac.ebi.spot.ols.model.Node;
+import uk.ac.ebi.spot.ols.model.SKOSRelation;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.TreeNode;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
@@ -33,9 +36,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
- * @author Simon Jupp
- * @date 02/11/15
- * Samples, Phenotypes and Ontologies Team, EMBL-EBI
+ * @author Erhun Giray TUNCAY
+ * @email giray.tuncay@tib.eu
+ * TIB-Leibniz Information Center for Science and Technology
  */
 @RestController
 @RequestMapping("/api/ontologies")
@@ -302,9 +305,9 @@ public class V1OntologySKOSConceptController {
         broader.forEach(term -> broaderNodes.add(new Node(term.iri, term.label)));
 
         Set<Edge> edges = new HashSet<Edge>();
-        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "related","http://www.w3.org/2004/02/skos/core#related")));
-        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "narrower","http://www.w3.org/2004/02/skos/core#narrower")));
-        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.iri, "broader","http://www.w3.org/2004/02/skos/core#broader")));
+        relatedNodes.forEach(node -> edges.add(new Edge(decodedIri, node.getIri(), "related", SKOSRelation.related.getPropertyName())));
+        narrowerNodes.forEach(node -> edges.add(new Edge(decodedIri, node.getIri(), "narrower",SKOSRelation.narrower.getPropertyName())));
+        broaderNodes.forEach(node -> edges.add(new Edge(decodedIri, node.getIri(), "broader",SKOSRelation.broader.getPropertyName())));
 
         Set<Node> nodes = new HashSet<Node>();
         nodes.add(new Node(decodedIri,subjectTerm.label));
@@ -342,55 +345,4 @@ public class V1OntologySKOSConceptController {
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
     }
-
-    public class Node {
-        String iri;
-        String label;
-
-        public Node(String iri, String label) {
-            this.iri = iri;
-            this.label = label;
-        }
-
-        public String getIri() {
-            return iri;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-    }
-
-    public class Edge {
-        String source;
-        String target;
-        String label;
-        String uri;
-
-        public Edge(String source, String target, String label, String uri) {
-            this.source = source;
-            this.target = target;
-            this.label = label;
-            this.uri = uri;
-        }
-
-        public String getSource() {
-            return source;
-        }
-
-        public String getTarget() {
-            return target;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        public String getUri() {
-            return uri;
-        }
-
-    }
-
 }
