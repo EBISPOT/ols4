@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
@@ -17,16 +16,11 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
-import uk.ac.ebi.spot.ols.repository.v1.mappers.V1OntologyMapper;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
-
-import java.lang.reflect.Field;
 import java.util.*;
-
 import java.io.IOException;
 
-import static java.util.stream.Collectors.toCollection;
 
 @Component
 public class V2OntologyRepository {
@@ -39,7 +33,7 @@ public class V2OntologyRepository {
 
 
     public OlsFacetedResultsPage<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties, Collection<String> schemas,Collection<String> classifications,Collection ontologies,boolean exclusive) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties, Collection<String> schemas,Collection<String> classifications,Collection ontologies,boolean exclusive,boolean composite) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -53,7 +47,7 @@ public class V2OntologyRepository {
         query.setExactMatch(exactMatch);
         query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
         System.out.println("0");
-        Collection<String> filteredOntologies = filterOntologyIDs(schemas,classifications, ontologies, exclusive, lang);
+        Collection<String> filteredOntologies = filterOntologyIDs(schemas,classifications, ontologies, exclusive, composite, lang);
         if(filteredOntologies != null){
             for (String ontologyId : filteredOntologies)
                 Validation.validateOntologyId(ontologyId);
@@ -109,7 +103,7 @@ public class V2OntologyRepository {
 
     }
 
-    public Collection<String> filterOntologyIDs(Collection<String> schemas,Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, String lang){
+    public Collection<String> filterOntologyIDs(Collection<String> schemas,Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, boolean composite, String lang){
         if (schemas != null)
             schemas.remove("");
         if (classifications != null)
@@ -120,7 +114,11 @@ public class V2OntologyRepository {
             return null;
         if ((schemas == null || schemas.size() == 0 ) || (classifications == null || classifications.size() == 0 ))
             return ontologies;
-        Set<V2Entity> documents = filter(schemas, classifications, exclusiveFilter,lang);
+        Set<V2Entity> documents;
+        if(composite)
+            documents = filterComposite(schemas, classifications, exclusiveFilter,lang);
+        else
+            documents = filter(schemas, classifications, exclusiveFilter,lang);
         Set<String> filteredOntologySet = new HashSet<String>();
         for (V2Entity document : documents){
             filteredOntologySet.add(document.any().get("ontologyId").toString());
@@ -155,7 +153,7 @@ public class V2OntologyRepository {
         return postFilterOntologySet;
     }
 
-    public Set<V2Entity> filter(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
+    public Set<V2Entity> filterComposite(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
         Set<V2Entity> tempSet = new HashSet<V2Entity>();
         if(schemas != null && classifications != null)
             if(!exclusive) {
@@ -218,6 +216,70 @@ public class V2OntologyRepository {
         return tempSet;
     }
 
+    public Set<V2Entity> filter(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
+        if(exclusive)
+            return exclusiveFilter(schemas,classifications,lang);
+        else
+            return inclusiveFilter(schemas,classifications,lang);
+    }
+
+    public Set<V2Entity> inclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
+        Set<V2Entity> tempSet = new HashSet<V2Entity>();
+        Set<V2Entity> filteredSet = new HashSet<V2Entity>();
+        tempSet.addAll(getOntologies(lang));
+
+        for (V2Entity ontology : tempSet){
+            for (String key : ontology.any().keySet()){
+                if (schemas.contains(key)){
+                    if(ontology.any().get(key) != null)
+                        if (ontology.any().get(key) instanceof Collection) {
+                            for (String ontologyClassification : (Collection<String>) ontology.any().get(key)){
+                                if(classifications.contains(ontologyClassification))
+                                    filteredSet.add(ontology);
+                            }
+                        } else if (ontology.any().get(key) instanceof String) {
+                            if(ontology.any().get(key) != null)
+                                if(classifications.contains(ontology.any().get(key)))
+                                    filteredSet.add(ontology);
+                        }
+                }
+            }
+        }
+        return filteredSet;
+    }
+
+    public Set<V2Entity> exclusiveFilter(Collection<String> schemas, Collection<String> classifications, String lang){
+        Set<V2Entity> tempSet = new HashSet<V2Entity>();
+        Set<V2Entity> filteredSet = new HashSet<V2Entity>();
+        tempSet.addAll(getOntologies(lang));
+
+        for (V2Entity ontology : tempSet){
+            Set<String> fieldSet =ontology.any().keySet();
+            if (fieldSet.containsAll(schemas)){
+                Set<String> tempClassifications = new HashSet<String>();
+                for (String key : ontology.any().keySet()){
+                    if (ontology.any().get(key) instanceof Collection){
+                        if(ontology.any().get(key) != null)
+                            for (String classification :  classifications){
+                                if(((Collection<String>) ontology.any().get(key)).contains(classification))
+                                    tempClassifications.add(classification);
+                            }
+
+                    }
+                    else if (ontology.any().get(key) instanceof String) {
+                        if(ontology.any().get(key) != null)
+                            if(classifications.contains((String) ontology.any().get(key)))
+                                tempClassifications.add( (String) ontology.any().get(key));
+                    }
+
+                }
+                if(tempClassifications.containsAll(classifications))
+                    filteredSet.add(ontology);
+            }
+        }
+        return filteredSet;
+    }
+
     public Set<String> getSchemaKeys(String lang){
         Set<V2Entity> tempSet = new HashSet<V2Entity>();
         tempSet.addAll(getOntologies(lang));
@@ -250,7 +312,6 @@ public class V2OntologyRepository {
         }
         return values;
     }
-
 }
 
 

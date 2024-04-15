@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
-import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
 
 import java.io.IOException;
@@ -44,11 +43,12 @@ public class V2StatisticsController {
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
             @RequestParam(value = "classification", required = false) Collection<String> classifications,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
-            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
             @RequestParam(value = "ontologyIds", required = false) Collection<String> ontologyIds,
+            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @RequestParam(value = "composite", required = false, defaultValue = "true") boolean filterComposite,
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
-        ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,lang);
+        ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,filterComposite,lang);
         StringBuilder sb = new StringBuilder();
         String queryString = "none";
         if(ontologyIds != null){
@@ -74,7 +74,7 @@ public class V2StatisticsController {
             Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
 
             for (String value : values) {
-                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), false,Collections.emptySet(),lang));
+                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),false,true,lang));
             }
         }
 

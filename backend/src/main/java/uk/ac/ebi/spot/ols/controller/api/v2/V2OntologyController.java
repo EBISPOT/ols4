@@ -56,7 +56,8 @@ public class V2OntologyController {
             @RequestParam(value = "classification", required = false) List<String> classifications,
             @RequestParam(value = "ontology", required = false) List<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
-            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive
+            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @RequestParam(value = "composite", required = false, defaultValue = "false") boolean filterComposite
     ) throws ResourceNotFoundException, IOException {
         Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
@@ -65,7 +66,7 @@ public class V2OntologyController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    ontologyRepository.find(pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties),schemas,classifications,ontologies,exclusive)
+                    ontologyRepository.find(pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties),schemas,classifications,ontologies,exclusive,filterComposite)
                 ),
                 HttpStatus.OK);
     }
