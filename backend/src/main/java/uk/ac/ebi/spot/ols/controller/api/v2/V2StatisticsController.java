@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
@@ -45,10 +46,10 @@ public class V2StatisticsController {
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "ontologyIds", required = false) Collection<String> ontologyIds,
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
-            @RequestParam(value = "composite", required = false, defaultValue = "true") boolean filterComposite,
+            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
-        ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,filterComposite,lang);
+        ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,filterOption,lang);
         StringBuilder sb = new StringBuilder();
         String queryString = "none";
         if(ontologyIds != null){
@@ -63,6 +64,8 @@ public class V2StatisticsController {
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<MultiKeyMap> getStatisticsBySchema(
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
+            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "lang", defaultValue = "en") String lang
 
     ) throws IOException {
@@ -74,7 +77,7 @@ public class V2StatisticsController {
             Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
 
             for (String value : values) {
-                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),false,true,lang));
+                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),exclusive,filterOption,lang));
             }
         }
 

@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
 import com.google.gson.annotations.SerializedName;
+import uk.ac.ebi.spot.ols.model.License;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
@@ -57,7 +58,7 @@ public class V2OntologyController {
             @RequestParam(value = "ontology", required = false) List<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
-            @RequestParam(value = "composite", required = false, defaultValue = "false") boolean filterComposite
+            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption
     ) throws ResourceNotFoundException, IOException {
         Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
@@ -66,7 +67,7 @@ public class V2OntologyController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<>(
-                    ontologyRepository.find(pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties),schemas,classifications,ontologies,exclusive,filterComposite)
+                    ontologyRepository.find(pageable, lang, search, searchFields, boostFields, exactMatch, DynamicQueryHelper.filterProperties(properties),schemas,classifications,ontologies,exclusive,filterOption)
                 ),
                 HttpStatus.OK);
     }

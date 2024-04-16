@@ -3,10 +3,12 @@ package uk.ac.ebi.spot.ols.repository.v2;
 
 import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
+import com.google.gson.internal.LinkedTreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
@@ -33,7 +35,7 @@ public class V2OntologyRepository {
 
 
     public OlsFacetedResultsPage<V2Entity> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties, Collection<String> schemas,Collection<String> classifications,Collection ontologies,boolean exclusive,boolean composite) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties, Collection<String> schemas,Collection<String> classifications,Collection ontologies,boolean exclusive,FilterOption filterOption) throws IOException {
 
         Validation.validateLang(lang);
 
@@ -47,7 +49,7 @@ public class V2OntologyRepository {
         query.setExactMatch(exactMatch);
         query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
         System.out.println("0");
-        Collection<String> filteredOntologies = filterOntologyIDs(schemas,classifications, ontologies, exclusive, composite, lang);
+        Collection<String> filteredOntologies = filterOntologyIDs(schemas,classifications, ontologies, exclusive, filterOption, lang);
         if(filteredOntologies != null){
             for (String ontologyId : filteredOntologies)
                 Validation.validateOntologyId(ontologyId);
@@ -98,12 +100,10 @@ public class V2OntologyRepository {
                             lang
                     )
             ));
-
         return entities;
-
     }
 
-    public Collection<String> filterOntologyIDs(Collection<String> schemas,Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, boolean composite, String lang){
+    public Collection<String> filterOntologyIDs(Collection<String> schemas, Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, FilterOption filterOption, String lang){
         if (schemas != null)
             schemas.remove("");
         if (classifications != null)
@@ -115,10 +115,12 @@ public class V2OntologyRepository {
         if ((schemas == null || schemas.size() == 0 ) || (classifications == null || classifications.size() == 0 ))
             return ontologies;
         Set<V2Entity> documents;
-        if(composite)
+        if(FilterOption.COMPOSITE == filterOption)
             documents = filterComposite(schemas, classifications, exclusiveFilter,lang);
-        else
+        else if (FilterOption.LINEAR == filterOption)
             documents = filter(schemas, classifications, exclusiveFilter,lang);
+        else
+            documents = filterLicense(schemas, classifications, exclusiveFilter,lang);
         Set<String> filteredOntologySet = new HashSet<String>();
         for (V2Entity document : documents){
             filteredOntologySet.add(document.any().get("ontologyId").toString());
@@ -264,19 +266,53 @@ public class V2OntologyRepository {
                                 if(((Collection<String>) ontology.any().get(key)).contains(classification))
                                     tempClassifications.add(classification);
                             }
-
-                    }
-                    else if (ontology.any().get(key) instanceof String) {
+                    } else if (ontology.any().get(key) instanceof String) {
                         if(ontology.any().get(key) != null)
                             if(classifications.contains((String) ontology.any().get(key)))
                                 tempClassifications.add( (String) ontology.any().get(key));
                     }
-
                 }
                 if(tempClassifications.containsAll(classifications))
                     filteredSet.add(ontology);
             }
         }
+        return filteredSet;
+    }
+
+    public Set<V2Entity> filterLicense(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
+        Set<V2Entity> tempSet = new HashSet<V2Entity>();
+        Set<V2Entity> filteredSet = new HashSet<V2Entity>();
+        tempSet.addAll(getOntologies(lang));
+
+        for (V2Entity ontology : tempSet){
+            if (ontology.any().keySet().contains("license")){
+                LinkedTreeMap<String, Object> license = (LinkedTreeMap<String, Object>) ontology.any().get("license");
+                String label = license.get("label") != null ? (String) license.get("label") : "";
+                String logo = license.get("logo") != null ? (String) license.get("logo") : "";
+                String url = license.get("url") != null ? (String) license.get("url") : "";
+                if (exclusive){
+                    Set<String> tempClassifications = new HashSet<String>();
+                    if (schemas.contains("license.label") && label.length() > 0 && classifications.contains(label))
+                        tempClassifications.add("license.label");
+                    if (schemas.contains("license.logo") && logo.length() > 0 && classifications.contains(logo))
+                        tempClassifications.add("license.logo");
+                    if (schemas.contains("license.url") && url.length() > 0 && classifications.contains(url))
+                        tempClassifications.add("license.url");
+
+                    if(tempClassifications.containsAll(classifications))
+                        filteredSet.add(ontology);
+
+                } else {
+                    if (schemas.contains("license.label") && label.length() > 0 && classifications.contains(label))
+                        filteredSet.add(ontology);
+                    if (schemas.contains("license.logo") && logo.length() > 0 && classifications.contains(logo))
+                        filteredSet.add(ontology);
+                    if (schemas.contains("license.url") && url.length() > 0 && classifications.contains(url))
+                        filteredSet.add(ontology);
+                }
+            }
+        }
+
         return filteredSet;
     }
 

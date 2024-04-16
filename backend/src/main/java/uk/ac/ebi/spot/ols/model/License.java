@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.model.v1;
+package uk.ac.ebi.spot.ols.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
