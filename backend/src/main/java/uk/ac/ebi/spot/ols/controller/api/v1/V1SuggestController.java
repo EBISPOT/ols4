@@ -14,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
@@ -39,16 +40,17 @@ public class V1SuggestController {
             @RequestParam("q") String query,
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
             @RequestParam(value = "classification", required = false) Collection<String> classifications,
+            @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
-            @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
+            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 
-        ontologies = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologies,exclusive,lang);
+        ontologies = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologies,exclusive,filterOption,lang);
 
         final SolrQuery solrQuery = new SolrQuery();
 

@@ -23,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Parameter;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import java.lang.reflect.*;
@@ -89,11 +90,18 @@ public class V1OntologyController implements
     		@RequestParam(value = "classification", required = true) Collection<String> classifications,
     		@Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
     		@RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @PageableDefault(size = 100, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
-        Set<V1Ontology> tempSet = ontologyRepository.filter(schemas,classifications,exclusive,lang);
+        Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
+        if (filterOption == FilterOption.LINEAR)
+            tempSet = ontologyRepository.filter(schemas,classifications,exclusive, lang);
+        else if (filterOption == FilterOption.COMPOSITE)
+            tempSet = ontologyRepository.filterComposite(schemas,classifications,exclusive, lang);
+        else if (filterOption == FilterOption.LICENSE)
+            tempSet = ontologyRepository.filterLicense(schemas,classifications,exclusive,lang);
         List<V1Ontology> tempList = new ArrayList<V1Ontology>();
         tempList.addAll(tempSet);
         final int start = (int)pageable.getOffset();

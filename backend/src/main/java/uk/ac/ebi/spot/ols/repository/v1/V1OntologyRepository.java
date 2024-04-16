@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.model.FilterOption;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
+import uk.ac.ebi.spot.ols.model.License;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
@@ -58,7 +60,7 @@ public class V1OntologyRepository {
                 .map(result -> V1OntologyMapper.mapOntology(result, lang));
     }
 
-    public Collection<String> filterOntologyIDs(Collection<String> schemas,Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, String lang){
+    public Collection<String> filterOntologyIDs(Collection<String> schemas, Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, FilterOption filterOption, String lang){
         if (schemas != null)
             schemas.remove("");
         if (classifications != null)
@@ -69,7 +71,13 @@ public class V1OntologyRepository {
             return null;
         if ((schemas == null || schemas.size() == 0 ) || (classifications == null || classifications.size() == 0 ))
             return ontologies;
-        Set<V1Ontology> documents = filter(schemas, classifications, exclusiveFilter,lang);
+        Set<V1Ontology> documents;
+        if(FilterOption.COMPOSITE == filterOption)
+            documents = filterComposite(schemas, classifications, exclusiveFilter,lang);
+        else if (FilterOption.LINEAR == filterOption)
+            documents = filter(schemas, classifications, exclusiveFilter,lang);
+        else
+            documents = filterLicense(schemas, classifications, exclusiveFilter,lang);
         Set<String> filteredOntologySet = new HashSet<String>();
         for (V1Ontology document : documents){
             filteredOntologySet.add(document.ontologyId);
@@ -179,6 +187,107 @@ public class V1OntologyRepository {
                     filteredSet.add(ontology);
             }
         }
+        return filteredSet;
+    }
+
+    public Set<V1Ontology> filterComposite(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
+        Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
+        if(schemas != null && classifications != null)
+            if(!exclusive) {
+                for (V1Ontology ontologyDocument : getAll(lang)) {
+                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications) {
+                        for (String schema: schemas)
+                            if(classificationSchema.containsKey(schema))
+                                for (String classification: classifications) {
+                                    if (classificationSchema.get(schema) != null)
+                                        if (!classificationSchema.get(schema).isEmpty())
+                                            if (classificationSchema.get(schema).contains(classification)) {
+                                                tempSet.add(ontologyDocument);
+                                            }
+                                }
+
+                    }
+                }
+            } else if (exclusive && schemas != null && schemas.size() == 1 && classifications != null && classifications.size() == 1) {
+                String schema = schemas.iterator().next();
+                String classification = classifications.iterator().next();
+                System.out.println("schema: "+schema);
+                System.out.println("classification: "+classification);
+                for (V1Ontology ontologyDocument : getAll(lang)){
+                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications){
+                        if(classificationSchema.containsKey(schema))
+                            if (classificationSchema.get(schema) != null)
+                                if (!classificationSchema.get(schema).isEmpty()){
+                                    for (String s :classificationSchema.get(schema))
+                                        System.out.println(s);
+                                    if(classificationSchema.get(schema).contains(classification))
+                                        tempSet.add(ontologyDocument);
+                                }
+
+                    }
+                }
+            } else {
+                for (V1Ontology ontologyDocument : getAll(lang)) {
+                    Set<String> tempClassifications = new HashSet<String>();
+                    if(ontologyDocument.config.classifications != null)
+                        if (!((Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications).isEmpty()) {
+                            for (Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications) {
+                                for (String schema : schemas)
+                                    if (classificationSchema.containsKey(schema)) {
+                                        for (String classification : classifications) {
+                                            if (classificationSchema.get(schema) != null) {
+                                                if (!classificationSchema.get(schema).isEmpty()) {
+                                                    if (classificationSchema.get(schema).contains(classification)) {
+                                                        tempClassifications.add(classification);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                            }
+                            if (tempClassifications.containsAll(classifications))
+                                tempSet.add(ontologyDocument);
+                        }
+                }
+            }
+        return tempSet;
+    }
+
+
+    public Set<V1Ontology> filterLicense(Collection<String> schemas, Collection<String> classifications, boolean exclusive, String lang){
+        Set<V1Ontology> tempSet = new HashSet<V1Ontology>();
+        Set<V1Ontology> filteredSet = new HashSet<V1Ontology>();
+        tempSet.addAll(getAll(lang));
+
+        for (V1Ontology ontology : tempSet){
+            if (ontology.config.license != null){
+                License license = ontology.config.license;
+                String label = license.getLabel() != null ? (String) license.getLabel() : "";
+                String logo = license.getLogo() != null ? (String) license.getLogo() : "";
+                String url = license.getUrl() != null ? (String) license.getUrl() : "";
+                if (exclusive){
+                    Set<String> tempClassifications = new HashSet<String>();
+                    if (schemas.contains("license.label") && label.length() > 0 && classifications.contains(label))
+                        tempClassifications.add("license.label");
+                    if (schemas.contains("license.logo") && logo.length() > 0 && classifications.contains(logo))
+                        tempClassifications.add("license.logo");
+                    if (schemas.contains("license.url") && url.length() > 0 && classifications.contains(url))
+                        tempClassifications.add("license.url");
+
+                    if(tempClassifications.containsAll(classifications))
+                        filteredSet.add(ontology);
+
+                } else {
+                    if (schemas.contains("license.label") && label.length() > 0 && classifications.contains(label))
+                        filteredSet.add(ontology);
+                    if (schemas.contains("license.logo") && logo.length() > 0 && classifications.contains(logo))
+                        filteredSet.add(ontology);
+                    if (schemas.contains("license.url") && url.length() > 0 && classifications.contains(url))
+                        filteredSet.add(ontology);
+                }
+            }
+        }
+
         return filteredSet;
     }
 
