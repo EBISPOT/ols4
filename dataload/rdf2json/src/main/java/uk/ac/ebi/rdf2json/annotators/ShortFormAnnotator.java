@@ -20,7 +20,9 @@ public class ShortFormAnnotator {
 		    OntologyNode c = graph.nodes.get(id);
 		    if (c.types.contains(OntologyNode.NodeType.CLASS) ||
 				c.types.contains(OntologyNode.NodeType.PROPERTY) ||
-				c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
+				c.types.contains(OntologyNode.NodeType.INDIVIDUAL) ||
+				c.types.contains(OntologyNode.NodeType.DATATYPE)
+				) {
 
 			// skip bnodes
 			if(c.uri == null)

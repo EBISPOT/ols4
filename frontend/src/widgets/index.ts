@@ -1,8 +1,8 @@
 
 import { createEntityTree } from "./EntityTreeWidget"
 
-window['OLSWidgets'] = {
-    createEntityTree
-}
+// window['OLSWidgets'] = {
+//     createEntityTree
+// }
 
 export { createEntityTree }
