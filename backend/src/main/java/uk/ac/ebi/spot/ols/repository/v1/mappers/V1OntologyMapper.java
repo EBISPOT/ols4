@@ -3,14 +3,14 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import uk.ac.ebi.spot.ols.model.License;
 import uk.ac.ebi.spot.ols.controller.api.v1.TopConceptEnum;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class V1OntologyMapper {
 
@@ -44,6 +44,20 @@ public class V1OntologyMapper {
         ontology.config.tracker = JsonHelper.getString(localizedJson, "tracker");
         ontology.config.logo = JsonHelper.getString(localizedJson, "logo");
         ontology.config.creators = JsonHelper.getStrings(localizedJson, "creators");
+        List<JsonObject> objects =  JsonHelper.getObjects(localizedJson,"classifications");
+        Set<String> collectionSet = new HashSet<String>();
+        Set<String> subjectSet = new HashSet<String>();
+        for (JsonObject object : objects){
+            if(object.has("collection"))
+                collectionSet.addAll(JsonHelper.getStrings(object,"collection"));
+            if(object.has("subject"))
+                subjectSet.addAll(JsonHelper.getStrings(object,"subject"));
+        }
+        ontology.config.collection = collectionSet;
+        ontology.config.subject = subjectSet;
+        ontology.config.classifications = gson.fromJson(localizedJson.get("classifications"), Collection.class);
+
+        ontology.config.license = gson.fromJson(localizedJson.get("license"), License.class);
         ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class);
         ontology.config.fileLocation = JsonHelper.getString(localizedJson, "ontology_purl");
         ontology.config.oboSlims = localizedJson.has("oboSlims") && localizedJson.get("oboSlims").getAsBoolean();
@@ -62,6 +76,7 @@ public class V1OntologyMapper {
         ontology.config.preferredRootTerms = JsonHelper.getStrings(localizedJson, "preferredRootTerms");
 
         ontology.config.isSkos = localizedJson.has("isSkos") && localizedJson.get("isSkos").getAsBoolean();
+        ontology.config.repoUrl = JsonHelper.getString(localizedJson, "repo_url");
         if(ontology.config.isSkos) {
             ontology.config.skosNarrower = localizedJson.has("skosNarrower") && localizedJson.get("skosNarrower").getAsBoolean();
             if (localizedJson.has("skosRoot"))

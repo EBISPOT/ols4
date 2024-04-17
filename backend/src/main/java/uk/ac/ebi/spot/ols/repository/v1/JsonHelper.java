@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class JsonHelper {
@@ -58,6 +59,15 @@ public class JsonHelper {
         }
 
         return List.of(value);
+    }
+
+    public static JsonObject getValue(JsonObject json, String predicate) {
+        JsonElement value = json.get(predicate);
+        if (value != null)
+            if (value.isJsonObject()) {
+                return value.getAsJsonObject();
+        }
+        return null;
     }
 
     public static List<String> getStrings(JsonObject json, String predicate) {

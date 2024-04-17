@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.model.v1;
 
 import com.google.gson.annotations.SerializedName;
+import uk.ac.ebi.spot.ols.model.License;
 import uk.ac.ebi.spot.ols.controller.api.v1.TopConceptEnum;
 
 import java.util.Collection;
@@ -23,7 +24,16 @@ public class V1OntologyConfig {
     public String tracker;
     public String logo;
     public Collection<String> creators;
+
+    public Collection<String> collection;
+    public Collection<String> subject;
     //public Map<String, Collection<String>> annotations;
+
+    public Object classifications;
+
+    public String repoUrl;
+
+    public License license;
     public Object annotations;
 
     public  String fileLocation;

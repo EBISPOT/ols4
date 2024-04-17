@@ -1,0 +1,137 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl",
+      "description": "DUO is an ontology which represent data use conditions.",
+      "homepage": "https://github.com/EBISPOT/DUO",
+      "id": "duo",
+      "license": {
+        "label": "CC-BY",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "http://creativecommons.org/licenses/by/3.0/"
+      },
+      "title": "The Data Use Ontology",
+      "tracker": "https://github.com/EBISPOT/DUO/issues",
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/OBI_0000066"
+      ],
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118",
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#shorthand"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "classifications": [
+        {
+          "collection": [
+            "NFDI4ING",
+            "NFDI4CHEM",
+            "ESS"
+          ]
+        },
+        {
+          "subject": [
+            "Computer Science"
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/EBISPOT/DUO"
+    },
+    {
+      "ontology_purl": "http://purl.obolibrary.org/obo/ms.owl",
+      "description": "A structured controlled vocabulary for the annotation of experiments concerned with proteomics mass spectrometry.",
+      "homepage": "http://www.psidev.info/groups/controlled-vocabularies",
+      "id": "ms",
+      "license": {
+        "label": "CC-BY",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "title": "Mass Spectrometry",
+      "tracker": "https://github.com/HUPO-PSI/psi-ms-CV/issues",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "creator": [
+        "Yasset Perez-Riverol",
+        "Matt Chambers",
+        "Andreas Bertsch",
+        "Marius Kallhardt",
+        "Eric Deutsch",
+        "Fredrik Levander",
+        "Pierre-Alain Binz",
+        "Gerhard Mayer",
+        "Joshua Klein"
+      ],
+      "is_foundary": 1,
+      "preferredPrefix": "MS",
+      "classifications": [
+        {
+          "collection": [
+            "NFDI4CHEM",
+            "DataPLANT"
+          ]
+        },
+        {
+          "subject": [
+            "Chemistry"
+          ]
+        }
+      ],
+      "repo_url": "https://www.psidev.info/groups/controlled-vocabularies"
+    },
+    {
+      "ontology_purl": "https://raw.githubusercontent.com/tibonto/aeon/main/aeon.owl",
+      "description": "WIP - NOT READY FOR PRODUCTION - The Academic Event Ontology (AEON) is used to represent information regarding academic events.",
+      "homepage": "https://github.com/tibonto/aeon",
+      "id": "aeon",
+      "license": {
+        "label": "CC-BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "title": "Academic Event Ontology",
+      "tracker": "https://github.com/tibonto/aeon/issues",
+      "preferredPrefix": "AEON",
+      "base_uri": [
+        "https://github.com/tibonto/aeon"
+      ],
+      "classifications": [
+        {
+          "collection": null
+        },
+        {
+          "subject": [
+            "History",
+            "Social sciences",
+            "Educational science"
+          ]
+        }
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000118",
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+      ],
+      "repo_url": "https://github.com/tibonto/aeon"
+    }
+  ]
+}

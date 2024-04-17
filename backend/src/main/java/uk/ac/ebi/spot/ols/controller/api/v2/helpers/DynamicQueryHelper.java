@@ -20,8 +20,8 @@ public class DynamicQueryHelper {
                     || k.equals("boostFields") || k.equals("page") || k.equals("size") || k.equals("exactMatch")
                         || k.equals("includeObsoleteEntities"))
                 continue;
-
-            newProps.put(k, properties.get(k));
+            if (properties.get(k) instanceof Collection)
+                newProps.put(k, properties.get(k));
         }
 
         return newProps;
