@@ -90,6 +90,9 @@ public class V1OntologyController implements
     		@RequestParam(value = "classification", required = true) Collection<String> classifications,
     		@Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
     		@RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
+                    "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
+                    "Use Linear option to filter based on String and Collection<String> based variables.")
             @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @PageableDefault(size = 100, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,

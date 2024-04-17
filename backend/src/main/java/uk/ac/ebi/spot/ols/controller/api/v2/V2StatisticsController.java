@@ -46,6 +46,9 @@ public class V2StatisticsController {
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "ontologyIds", required = false) Collection<String> ontologyIds,
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
+                    "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
+                    "Use Linear option to filter based on String and Collection<String> based variables.")
             @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
@@ -60,24 +63,19 @@ public class V2StatisticsController {
         }
         return new ResponseEntity<>( computeStats(queryString), HttpStatus.OK);
     }
-    @Operation(description = "Get Schema based Statistics. All schemas with their respective classifications can be computed if a schema is not specified.")
+    @Operation(description = "Get Composite Schema based Statistics. All schemas with their respective classifications under the classifications variable will be computed.")
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<MultiKeyMap> getStatisticsBySchema(
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
-            @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
-            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "lang", defaultValue = "en") String lang
 
     ) throws IOException {
         MultiKeyMap summaries = new MultiKeyMap();
-
         Collection<String> keys = ontologyRepository.getSchemaKeys(lang);
-
         for (String key : keys) {
             Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
-
             for (String value : values) {
-                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),exclusive,filterOption,lang));
+                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),false,FilterOption.LINEAR,lang));
             }
         }
 

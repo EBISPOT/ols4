@@ -43,6 +43,9 @@ public class V1SuggestController {
             @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
+            @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
+                    "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
+                    "Use Linear option to filter based on String and Collection<String> based variables.")
             @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
