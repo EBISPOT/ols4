@@ -54,7 +54,7 @@
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person"/>
                     <owl:Class>
-                        <owl:complementOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person"/>
+                        <owl:complementOf rdf:resource="http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Parent"/>
                     </owl:Class>
                 </owl:intersectionOf>
             </owl:Class>

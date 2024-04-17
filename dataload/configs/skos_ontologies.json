@@ -1,0 +1,148 @@
+{
+  "ontologies": [
+    {
+  "ontology_purl": "https://raw.githubusercontent.com/physh-org/PhySH/master/physh.ttl",
+  "description": "PhySH (Physics Subject Headings) is a physics classification scheme developed by APS to organize journal, meeting, and other content by topic.",
+  "homepage": "https://physh.org/",
+  "id": "PhySH",
+  "license": {
+    "label": "CC-0 1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "title": "PhySH - Physics Subject Headings",
+  "tracker": "https://github.com/physh-org/PhySH/issues",
+  "definition_property": [
+    "http://www.w3.org/2004/02/skos/core#definition",
+    "http://purl.org/dc/terms/description"
+  ],
+  "creator": [
+    "American Physical Society (https://www.aps.org/)"
+  ],
+  "preferredPrefix": "physh",
+  "hierarchical_property": [
+    "http://www.w3.org/2004/02/skos/core#broader",
+    "https://physh.org/rdf/2018/01/01/core#inDiscipline",
+    "https://physh.org/rdf/2018/01/01/core#inFacet"
+  ],
+  "label_property": "https://physh.org/rdf/2018/01/01/core#prefLabel",
+  "synonym_property": [
+    "http://www.w3.org/2004/02/skos/core#altLabel"
+  ],
+  "base_uri": [
+    "https://doi.org/10.29172"
+  ],
+  "repo_url": "https://github.com/physh-org/PhySH",
+  "isSkos": true,
+  "skosNarrower": false,
+  "skosRoot": "RELATIONSHIPS"
+    },
+    {
+  "ontology_purl": "https://raw.githubusercontent.com/astrothesaurus/UAT/master/UAT.rdf",
+  "title": "Unified Astronomy Thesaurus (UAT)",
+  "id": "uat",
+  "preferredPrefix": "uat",
+  "license": {
+    "label": "Creative Commons Attribution-ShareAlike 3.0 Unported License",
+    "url": "https://github.com/astrothesaurus/UAT/blob/master/LICENSE.md"
+  },
+  "mailing_list": "sio-ontology@googlegroups.com",
+  "description": "The Unified Astronomy Thesaurus (UAT) is an open, interoperable and community-supported thesaurus which unifies existing, divergent, and isolated controlled vocabularies in astronomy and astrophysics into a single high-quality, freely-available open thesaurus formalizing astronomical concepts and their inter-relationships. The UAT builds upon the IAU Thesaurus with major contributions from the Astronomy portions of the thesauri developed by the Institute of Physics Publishing and the American Institute of Physics. The Unified Astronomy Thesaurus will be further enhanced and updated through a collaborative effort involving broad community participation.",
+  "homepage": "http://astrothesaurus.org",
+  "creator": [
+    "Frey Katie"
+  ],
+  "is_foundary": false,
+  "tracker": "https://github.com/astrothesaurus/UAT/issues",
+  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+  "base_uri": [
+    "http://astrothesaurus.org/uat"
+  ],
+  "synonym_property": [
+    "http://www.w3.org/2004/02/skos/core#altLabel"
+  ],
+  "definition_property": [
+    "http://www.w3.org/2004/02/skos/core#definition"
+  ],
+  "repo_url": "https://github.com/astrothesaurus/UAT",
+  "isSkos": true,
+  "skosNarrower": false,
+  "skosRoot": "TOPCONCEPTOF_PROPERTY"
+    },
+{
+  "ontology_purl": "https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl",
+  "id": "hsfs",
+  "title": "Hochschulfächersystematik",
+  "description": "Diese Hochschulfächersystematik basiert auf der Destatis-Systematik der Fächergruppen, Studienbereiche und Studienfächer (http://bartoc.org/node/18919) und wird gepflegt von der OER-Metadatengruppe der DINI-AG KIM. Die Systematik ist Bestandteil der Spezifikationen LOM for Higher Education OER Repositories und LRMI-Profil (Entwurf).",
+  "repo_url": "https://github.com/dini-ag-kim/hochschulfaechersystematik",
+  "preferredPrefix": "hsfs",
+  "allow_download": true,
+  "homepage": "https://bartoc.org/en/node/18919",
+  "base_uri": [
+    "https://w3id.org/kim/hochschulfaechersystematik/"
+  ],
+  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+  "isSkos": true,
+  "skosNarrower": false,
+  "skosRoot": "TOPCONCEPTOF_PROPERTY",
+  "creator": [
+    "Michael Menzel",
+    "Adrian Pohl"
+  ],
+  "license": {
+    "label": "freely available",
+    "url": "http://bartoc.org/en/Access/Free"
+  }
+},
+{
+  "ontology_purl": "https://purl.org/fidbaudigital/subjects",
+  "title": "FID BAUdigital Subject Headings",
+  "id": "bdsubj",
+  "preferredPrefix": "bdsubj",
+  "license": {
+    "label": "CC-BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "description": "This subject heading system has beeen developed for use in FID BAUdigital and its future web services. It covers scientific fields of Civil Engineering, Architecture and Urban Studies with a special section on digitization. This subject classification has been mapped to several other classification systems. The latest version of the subject classification including these mappings is available at https://gitlab.com/fid-bau/terminologie/fid-baudigital-faecherklassifikation/-/raw/main/Subject_Headings_all_mappings.owl.",
+  "homepage": "https://gitlab.com/fid-bau/terminologie/fid-baudigital-faecherklassifikation",
+  "tracker": "https://gitlab.com/fid-bau/terminologie/fid-baudigital-faecherklassifikation/-/issues",
+  "definition_property": [
+    "http://www.w3.org/2004/02/skos/core#definition"
+  ],
+  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+  "creator": [
+    "Fraunhofer-Informationszentrum Raum und Bau IRB"
+  ],
+  "base_uri": [
+    "https://purl.org/fidbaudigital/subjects"
+  ],
+  "isSkos": true,
+  "skosNarrower": false,
+  "skosRoot": "TOPCONCEPTOF_PROPERTY",
+  "repo_url": "https://gitlab.com/fid-bau/terminologie/fid-baudigital-faecherklassifikation"
+},
+{
+  "ontology_purl": "https://vocabs-downloads.acdh.oeaw.ac.at/vocabs-main/GeneralConcepts/OeFOS/oefos_disciplines.ttl",
+  "id": "oefos",
+  "license": {
+    "label": "Creative Commons Attribution 4.0 International License.",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "title": "The Austrian Fields of Science and Technology Classification (ÖFOS 2012)",
+  "description": "The Austrian Fields of Science and Technology Classification (ÖFOS 2012) is the Austrian version of the revised international Fields of Science and Technology Classification of the OECD (FOS) published in the Frascati Manual 2015 as Fields of Research and Development (FORD). These fields are adjusted to national needs, whose application for international comparisons is binding, particularly within the European Statistical System. The six major Fields of Science: Natural Sciences; Technical Sciences; Human Medicine, Health Sciences; Agricultural Sciences, Veterinary Medicine; Social Sciences and Humanities remained unchanged in comparison to ÖFOS 2002. In order to ensure international comparability, the previous 2-digit levels from 2002, which are no longer applicable, were replaced by new 3-digit levels (groups) according to the international FOS respectively FORD. These 3-digit levels were provided with further sub-groups (4-digits) taking into account the comments of the international classification. It is therefore feasible that the new Austrian Fields of Science adapt to national peculiarities of the Austrian research activities. The research area with the corresponding 6-digits in alphabetical order serves as a description of the fields of activities and research projects and/or for the coverage of the main scientific activities of a statistical unit in the research and development surveys. (Current revision status: August 2017)",
+  "homepage": "https://vocabs.dariah.eu/oefos/en/",
+  "base_uri": [
+    "https://vocabs.acdh.oeaw.ac.at/oefosdisciplines/"
+  ],
+  "allow_download": true,
+  "preferredPrefix": "oefos",
+  "isSkos": true,
+  "skosNarrower": false,
+  "skosRoot": "SCHEMA",
+  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+  "creator": [
+    "Christoph Hoffmann"
+  ]
+}
+ ]
+}
+
