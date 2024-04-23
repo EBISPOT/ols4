@@ -12,6 +12,7 @@ export interface EntityTreeWidgetProps {
   iri?: string;
   ontologyId: string;
   apiUrl: string;
+  specifiedRootIri?: string;
   entityType?: "entities" | "classes" | "properties" | "individuals";
   lang?: string;
   onNavigateToEntity?: (ontology: Ontology, entity: Entity) => void;
@@ -33,6 +34,7 @@ function EntityTreeWidget(props: EntityTreeWidgetProps) {
         ontologyId={props.ontologyId}
         iri={props.iri}
         apiUrl={props.apiUrl}
+        specifiedRootIri={props.specifiedRootIri}
       />
     </Provider>
   );
@@ -64,6 +66,7 @@ function EntityTreeWidgetInner(props: EntityTreeWidgetProps) {
         <EntityTree
           ontology={ontology}
           entityType={entityType}
+          specifiedRootIri={props.specifiedRootIri}
           lang={lang}
           onNavigateToEntity={onNavigateToEntity}
           onNavigateToOntology={onNavigateToOntology}
