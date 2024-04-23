@@ -34,6 +34,7 @@ export interface OntologiesState {
   displaySiblings: boolean;
   displayCounts: boolean;
   errorMessage: string;
+  specificRootIri: string;
 }
 export interface TreeNode {
   absoluteIdentity: string; // the IRIs of this node and its ancestors delimited by a ;
@@ -70,6 +71,7 @@ const initialState: OntologiesState = {
   displaySiblings: false,
   displayCounts: true,
   errorMessage: "",
+  specificRootIri: "",
 };
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
@@ -95,6 +97,7 @@ export const hideSiblings = createAction("ontologies_hide_siblings");
 
 export const showCounts = createAction("ontologies_show_counts");
 export const hideCounts = createAction("ontologies_hide_counts");
+export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
   "ontologies_ontology",
@@ -171,9 +174,11 @@ export const getEntity = createAsyncThunk(
     {
       ontologyId,
       entityIri,
+      apiUrl,
     }: {
       ontologyId: string;
       entityIri: string;
+      apiUrl?: string;
     },
     { rejectWithValue }
   ) => {
@@ -183,7 +188,7 @@ export const getEntity = createAsyncThunk(
     let path = "";
     try {
       path = `api/v2/ontologies/${ontologyId}/entities/${doubleEncodedTermUri}`;
-      const entityJsonProperties = await get<any>(path);
+      const entityJsonProperties = await get<any>(path, undefined, apiUrl);
       return thingFromJsonProperties(entityJsonProperties);
     } catch (error: any) {
       return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
@@ -550,7 +555,8 @@ const ontologiesSlice = createSlice({
           createTreeFromEntities(
             [state.entity!, ...action.payload],
             state.preferredRoots,
-            state.ontology!
+            state.ontology!,
+            state.specificRootIri
           );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
@@ -607,7 +613,8 @@ const ontologiesSlice = createSlice({
               ...(orphanedIndividuals || []),
             ],
             state.preferredRoots,
-            state.ontology!
+            state.ontology!,
+            state.specificRootIri
           );
 
         state.rootNodes = rootNodes;
@@ -725,6 +732,9 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(hideCounts, (state: OntologiesState) => {
       state.displayCounts = false;
+    });
+    builder.addCase(setSpecificRootIri, (state: OntologiesState, action: PayloadAction<string>) => {
+      state.specificRootIri = action.payload;
     });
     builder.addCase(
       openNode,
