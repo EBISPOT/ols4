@@ -6,16 +6,19 @@ import { TreeNode } from "../ontologiesSlice";
 export default function createTreeFromEntities(
   entities: Entity[],
   preferredRoots: boolean,
-  ontology: Ontology
+  ontology: Ontology,
+  specificRootIri: string
 ): { allNodes:TreeNode[], rootNodes: TreeNode[]; automaticallyExpandedNodes:Set<string>, nodeChildren: any } {
   let { rootEntities, parentToChildRelations } = extractEntityHierarchy(entities);
 
-  console.log('rootEntities')
-  console.dir(rootEntities)
-  console.log('parentToChildRelations')
-  console.dir(parentToChildRelations)
+  if(specificRootIri) {
+    let specificRootEntity = entities.find(entity => entity.getIri() === specificRootIri)
+    if (specificRootEntity) {
+      rootEntities = [specificRootEntity];
+    }
+  }
 
-  if (preferredRoots) {
+  if (preferredRoots && !specificRootIri) {
     let preferred = ontology.getPreferredRoots();
     if (preferred.length > 0) {
       let preferredRootEntities = preferred.map(
