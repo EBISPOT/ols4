@@ -112,7 +112,52 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/PHI_"
       ],
-      "ontology_purl": "file:/nfs/panda/ensembl/production/ensprod/ontologies/phi/PHI.obo"
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/phi.owl"
+    },
+    {
+      "activity_status": "active",
+      "contact": {
+        "email": "jaiswalp@science.oregonstate.edu",
+        "github": "jaiswalp",
+        "label": "Pankaj Jaiswal",
+        "orcid": "0000-0002-1005-8383"
+      },
+      "depicted_by": "http://planteome.org/sites/default/files/garland_logo.PNG",
+      "description": "A structured, controlled vocabulary which describes the treatments, growing conditions, and/or study types used in plant biology experiments.",
+      "domain": "investigations",
+      "homepage": "http://planteome.org/",
+      "id": "peco",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/peco.owl",
+      "page": "http://browser.planteome.org/amigo/term/PECO:0007359",
+      "preferredPrefix": "PECO",
+      "products": [
+        {
+          "id": "peco.owl",
+          "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/peco.owl"
+        },
+        {
+          "id": "peco.obo",
+          "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/peco.obo"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/29186578",
+          "title": "The Planteome database: an integrated resource for reference ontologies, plant genomics and phenomics."
+        }
+      ],
+      "repository": "https://github.com/Planteome/plant-experimental-conditions-ontology",
+      "tags": [
+        "experimental conditions"
+      ],
+      "title": "Plant Experimental Conditions Ontology",
+      "tracker": "https://github.com/Planteome/plant-experimental-conditions-ontology/issues"
     },
     {
       "id": "msio",
@@ -1184,6 +1229,10 @@
     {
       "id": "go",
       "ontology_purl":"http://purl.obolibrary.org/obo/go/extensions/go-plus.owl"
+    },
+    {
+      "id": "mp",
+      "ontology_purl":"http://purl.obolibrary.org/obo/mp/mp-international.owl"
     },
     {
       "id": "ms",
