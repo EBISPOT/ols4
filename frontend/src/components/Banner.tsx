@@ -20,18 +20,18 @@ export function Banner({
           : ""
       }`}
     >
-      <span>
+      <div style={{display: 'flex', alignItems: 'center'}}>
         {type === "info" && (
-          <i className="icon icon-common icon-info text-2xl text-blue-500 mr-2" />
+            <i className="icon icon-common icon-info text-2xl text-blue-500 mr-2"/>
         )}
         {type === "warning" && (
-          <i className="icon icon-common icon-exclamation-triangle text-2xl text-yellow-800 mr-2" />
+            <i className="icon icon-common icon-exclamation-triangle text-2xl text-yellow-800 mr-2"/>
         )}
         {type === "error" && (
-          <i className="icon icon-common icon-exclamation-circle text-2xl text-red-500 mr-2" />
+            <i className="icon icon-common icon-exclamation-circle text-2xl text-red-500 mr-2"/>
         )}
-      </span>
-      {children}
+        <div dangerouslySetInnerHTML={{__html: children}}/>
+      </div>
     </div>
   );
 }
