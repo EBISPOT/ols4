@@ -7,8 +7,8 @@ rm -rf /opt/solr/server/solr/*
 cp -r /opt/dataload/solr_config/* /opt/solr/server/solr/
 ./load_into_solr.sh /opt/solr /tmp/out
 ./create_neo4j_indexes.sh /opt/neo4j
-chmod -R 777 /opt/solr
-chmod -R 777 /opt/neo4j
+chmod -R 777 /opt/solr/server/solr/*
+chmod -R 777 /opt/neo4j/data/*
 
 
 
