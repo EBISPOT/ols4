@@ -5,8 +5,7 @@
 
 FROM maven:3.8-jdk-11
 
-
-
+RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
 
 # Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
 #
@@ -35,7 +34,10 @@ RUN cp -r /opt/dataload/solr_config /opt/solr/server/solr
 
 RUN mkdir /tmp/out
 
+RUN chown -R ols:ols /opt/* /tmp/out
+RUN chmod -R 777 /opt/* /tmp/out
 
+USER ols
 WORKDIR /opt/dataload
 
 CMD ./dataload.dockersh

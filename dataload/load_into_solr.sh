@@ -25,11 +25,11 @@ wget --method POST --no-proxy -O - --server-response --content-on-error=on --hea
 
 sleep 5
 
-wget http://localhost:8983/solr/ols4_entities/update?commit=true
+wget --no-proxy http://127.0.0.1:8983/solr/ols4_entities/update?commit=true
 
 sleep 5
 
-wget http://localhost:8983/solr/ols4_autocomplete/update?commit=true
+wget --no-proxy http://127.0.0.1:8983/solr/ols4_autocomplete/update?commit=true
 
 sleep 5
 
