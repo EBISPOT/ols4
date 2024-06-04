@@ -31,11 +31,14 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
+  setSpecificRootIri,
+  getEntity,
 } from "../ontologiesSlice";
 
 export default function EntityTree({
   ontology,
   entityType,
+  specifiedRootIri,
   selectedEntity,
   lang,
   onNavigateToEntity,
@@ -45,6 +48,7 @@ export default function EntityTree({
   ontology: Ontology;
   selectedEntity?: Entity;
   entityType: "entities" | "classes" | "properties" | "individuals";
+  specifiedRootIri?: string;
   lang: string;
   onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
   onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
@@ -136,6 +140,19 @@ export default function EntityTree({
         })
       );
       return () => promise.abort(); // component was unmounted
+    } else if (specifiedRootIri) {
+            let promise = dispatch(
+                getAncestors({
+                    ontologyId: ontology.getOntologyId(),
+                    entityType,
+                    entityIri: specifiedRootIri,
+                    lang,
+                    showObsoleteEnabled,
+                    showSiblingsEnabled,
+                    apiUrl,
+                })
+            );
+            return () => promise.abort(); // component was unmounted
     } else {
       let promise = dispatch(
         getRootEntities({
@@ -157,7 +174,26 @@ export default function EntityTree({
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    specifiedRootIri,
   ]);
+
+    useEffect(() => {
+        if (specifiedRootIri) {
+            dispatch(
+                getEntity({
+                    ontologyId: ontology.getOntologyId(),
+                    entityIri: specifiedRootIri,
+                    apiUrl: apiUrl,
+                })
+            );
+        }
+    }, [dispatch, specifiedRootIri, ontology.getOntologyId(),]);
+
+    useEffect(() => {
+        if (specifiedRootIri) {
+            dispatch(setSpecificRootIri(specifiedRootIri));
+        }
+    }, [dispatch, specifiedRootIri]);
 
   const prevNodeChildrenRef = useRef(nodeChildren);
 
@@ -350,7 +386,7 @@ export default function EntityTree({
         ) : null}
         <div className="lg:col-span-1 flex flex-col bg-white px-2 mb-2 rounded-lg">
           {entityType === "classes" &&
-            ontology.getPreferredRoots().length > 0 && (
+            ontology.getPreferredRoots().length > 0 && !specifiedRootIri && (
               <div className="mb-2">
                 <FormControl>
                   <RadioGroup
