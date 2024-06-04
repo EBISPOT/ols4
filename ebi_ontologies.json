@@ -112,7 +112,7 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/PHI_"
       ],
-      "ontology_purl": "file:/nfs/panda/ensembl/production/ensprod/ontologies/phi/PHI.obo"
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/phi.owl"
     },
     {
       "id": "msio",
@@ -1184,6 +1184,10 @@
     {
       "id": "go",
       "ontology_purl":"http://purl.obolibrary.org/obo/go/extensions/go-plus.owl"
+    },
+    {
+      "id": "mp",
+      "ontology_purl":"http://purl.obolibrary.org/obo/mp/mp-international.owl"
     },
     {
       "id": "ms",

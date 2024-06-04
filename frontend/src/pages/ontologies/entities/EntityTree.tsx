@@ -6,7 +6,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { theme } from "../../../app/mui";
@@ -195,7 +195,24 @@ export default function EntityTree({
         }
     }, [dispatch, specifiedRootIri]);
 
+  const prevNodeChildrenRef = useRef(nodeChildren);
+
+  const haveRelevantPartsChanged = (prev, next) => {
+    if (!prev || !next) return true;
+    const prevKeys = Object.keys(prev);
+    const nextKeys = Object.keys(next);
+    if (prevKeys.length !== nextKeys.length) return true;
+    for (let key of prevKeys) {
+      if (prev[key] !== next[key]) return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
+    const prevNodeChildren = prevNodeChildrenRef.current;
+    if (!haveRelevantPartsChanged(prevNodeChildren, nodeChildren)) {
+      return;
+    }
     let nodesMissingChildren: string[] = manuallyExpandedNodes.filter(
       (absoluteIdentity) =>
         nodesWithChildrenLoaded.indexOf(absoluteIdentity) === -1
@@ -236,7 +253,7 @@ export default function EntityTree({
     lang,
     JSON.stringify(manuallyExpandedNodes),
     JSON.stringify(automaticallyExpandedNodes),
-    JSON.stringify(nodeChildren),
+    nodeChildren,
     ontology.getOntologyId(),
     entityType,
     preferredRoots,

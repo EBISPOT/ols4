@@ -69,7 +69,7 @@ export default function Home() {
       <main className="container mx-auto px-4 h-fit">
         {banner !== "" && (
           <div className="mt-4">
-            <Banner type="warning">{banner}</Banner>
+            <Banner type="info">{banner}</Banner>
           </div>
         )}
         <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
