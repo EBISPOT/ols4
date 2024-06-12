@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.response.FacetField;
+import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -181,6 +183,18 @@ public class V1SearchController {
 //        solrQuery.addHighlightField("https://github.com/EBISPOT/owl2neo#definition");
 
 //        solrQuery.addFacetField("ontology_name", "ontology_prefix", "type", "subset", "is_defining_ontology", "is_obsolete");
+        
+        /*
+		 * Fix: Start issue -
+		 * https://github.com/EBISPOT/ols4/issues/613
+		 * Added new OLS4 faceFields
+		 * 
+		 */
+		// TODO: Need to check and add additional faceted fields if required
+		solrQuery.addFacetField("ontologyId", "ontologyIri", "ontologyPreferredPrefix", "type", "isDefiningOntology", "isObsolete");
+		/*
+		 * Fix: End
+		 */
         solrQuery.add("wt", format);
 
 
@@ -264,16 +278,60 @@ public class V1SearchController {
         responseBody.put("numFound", qr.getResults().getNumFound());
         responseBody.put("start", start);
         responseBody.put("docs", docs);
+        
+        /*
+		 * Fix: Start issue -
+		 * https://github.com/EBISPOT/ols4/issues/613
+		 * Created facetFieldsMap: Start Gson not able to parse FacetField format -
+		 * [ontologyId:[efo (17140)] Converting FacetFied to Map format
+		 */
+		Map<String, List<String>> facetFieldsMap = parseFacetFields(qr.getFacetFields());
+		Map<String, Object> facetCounts = new HashMap<>();
+		facetCounts.put("facet_fields", facetFieldsMap);
+		/*
+		 * Fix: End
+		 */
 
         Map<String, Object> responseObj = new HashMap<>();
         responseObj.put("responseHeader", responseHeader);
         responseObj.put("response", responseBody);
+        
+        /*
+		 * Fix: Start issue -
+		 * https://github.com/ts4nfdi/terminology-service-suite/issues/51 Added
+		 * facet_counts to responseObj
+		 */
+		responseObj.put("facet_counts", facetCounts);
+		/*
+		 * Fix: End
+		 */
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
     }
+    
+    private Map<String, List<String>> parseFacetFields(List<FacetField> facetFields) {
+		Map<String, List<String>> facetFieldsMap = new HashMap<>();
+		List<String> newFacetFields;
+		if (facetFields != null && facetFields.size() > 0) {
+			for (FacetField ff : facetFields) {
+				List<Count> facetFieldCount = ff.getValues();
+				if (facetFieldsMap.containsKey(ff.getName()))
+					newFacetFields = facetFieldsMap.get(ff.getName());
+				else
+					newFacetFields = new ArrayList<>();
+
+				for (Count ffCount : facetFieldCount) {
+					newFacetFields.add(ffCount.getName());
+					newFacetFields.add("" + ffCount.getCount());
+				}
+				facetFieldsMap.put(ff.getName(), newFacetFields);
+			}
+		}
+		return facetFieldsMap;
+	}
 
     Function<String, String> addQuotes = new Function<String, String>() {
         @Override
