@@ -34,6 +34,10 @@ However, if you just want to try it out, this should get you going:
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
+If you need to set the heap size, you can do so using:
+
+    JAVA_OPTS="-Xms5G -Xmx25G"  docker compose up
+
 If you want to test it with your own ontology, copy the OWL or RDFS ontology file to the `testcases` folder (which is
 mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a
 template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if
@@ -173,6 +177,10 @@ the output directory, both relative from $OLS4_HOME, i.e.:
 or if you want to load all testcases, you can use
 
     ./dev-testing/teststack.sh ./testcases ./output
+
+If you need to set the Java heap size, you can set the environment the JAVA_OPTS variable as follows:
+
+     export JAVA_OPTS="-Xms5G -Xmx10G"
 
 Once Neo4J and Solr is up, to start the backend (REST API) you can run:
 

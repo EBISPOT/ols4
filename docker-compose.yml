@@ -1,6 +1,8 @@
 version: '3'
 services:
     ols4-dataload:
+      environment:
+        - JAVA_OPTS=${JAVA_OPTS}
       build: ./dataload
       volumes:
         - ols4-solr-data:/opt/solr/server/solr:rw
