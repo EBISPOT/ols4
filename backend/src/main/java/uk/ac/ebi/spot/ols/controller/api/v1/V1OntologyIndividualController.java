@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -34,7 +35,9 @@ import java.util.Arrays;
  * @date 02/11/15
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@Tag(name = "Ontology Individual Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
+        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+@RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyIndividualController {
 
@@ -88,10 +91,10 @@ public class V1OntologyIndividualController {
         return new ResponseEntity<>(assembler.toModel(terms, individualAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/individuals/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/individuals/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Individual>> getIndividual(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
@@ -101,10 +104,10 @@ public class V1OntologyIndividualController {
         return new ResponseEntity<>(individualAssembler.toModel(term), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/individuals/{id}/types", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/individuals/{iri}/types", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getDirectTypes(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler
@@ -117,10 +120,10 @@ public class V1OntologyIndividualController {
     }
 
 
-    @RequestMapping(path = "/{onto}/individuals/{id}/alltypes", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/individuals/{iri}/alltypes", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> ancestors(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -131,10 +134,10 @@ public class V1OntologyIndividualController {
         return new ResponseEntity<>(assembler.toModel(ancestors, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/individuals/{id}/jstree", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/individuals/{iri}/jstree", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<String> getJsTree(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();

@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,8 @@ import javax.servlet.http.HttpServletRequest;
  * @date 23/06/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
+@Tag(name = "Terms Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
+        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
 @RestController
 @RequestMapping("/api/terms")
 @ExposesResourceFor(V1Term.class)
@@ -39,8 +42,8 @@ public class V1TermController implements
     @Autowired
     V1TermAssembler termAssembler;
 
-    @RequestMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("id") String termId,
+    @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri") String termId,
                                                          @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                          Pageable pageable,
                                                          PagedResourcesAssembler assembler
@@ -87,8 +90,8 @@ public class V1TermController implements
         return new ResponseEntity<>(assembler.toModel(terms, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("id") String termId,
+    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri") String termId,
                                                                              @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                              Pageable pageable,
                                                                              PagedResourcesAssembler assembler

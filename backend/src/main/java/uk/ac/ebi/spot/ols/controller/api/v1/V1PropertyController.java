@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +24,9 @@ import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@Tag(name = "Property Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
+        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+@RestController
 @RequestMapping("/api/properties")
 @ExposesResourceFor(V1Property.class)
 public class V1PropertyController implements
@@ -41,8 +44,8 @@ public class V1PropertyController implements
         return resource;
     }
 
-    @RequestMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("id") String termId,
+    @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("iri") String termId,
                                                               @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                               Pageable pageable,
                                                               PagedResourcesAssembler assembler
@@ -82,8 +85,8 @@ public class V1PropertyController implements
     }
 
 
-    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("id") String termId,
+    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("iri") String termId,
                                                                                    @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                                    Pageable pageable,
                                                                                    PagedResourcesAssembler assembler

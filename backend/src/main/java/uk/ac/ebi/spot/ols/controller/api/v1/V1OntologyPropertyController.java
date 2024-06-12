@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,7 +28,9 @@ import uk.ac.ebi.spot.ols.service.Neo4jClient;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
-@Controller
+@Tag(name = "Ontology Property Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
+        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+@RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyPropertyController {
 
@@ -96,10 +99,10 @@ public class V1OntologyPropertyController {
         return new ResponseEntity<>( assembler.toModel(roots, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Property>> getProperty(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
@@ -109,10 +112,10 @@ public class V1OntologyPropertyController {
         return new ResponseEntity<>( termAssembler.toModel(term), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}/parents", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}/parents", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getParents(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -123,10 +126,10 @@ public class V1OntologyPropertyController {
         return new ResponseEntity<>( assembler.toModel(parents, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}/children", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}/children", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> children(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -137,10 +140,10 @@ public class V1OntologyPropertyController {
         return new ResponseEntity<>( assembler.toModel(children, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> descendants(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -151,10 +154,10 @@ public class V1OntologyPropertyController {
         return new ResponseEntity<>( assembler.toModel(descendants, termAssembler), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> ancestors(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             Pageable pageable,
             PagedResourcesAssembler assembler) {
@@ -166,10 +169,10 @@ public class V1OntologyPropertyController {
     }
 
 
-    @RequestMapping(path = "/{onto}/properties/{id}/jstree/children/{nodeid}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/properties/{iri}/jstree/children/{nodeid}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<String> graphJsTreeChildren(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @PathVariable("nodeid") String jstreeId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
@@ -187,12 +190,12 @@ public class V1OntologyPropertyController {
         throw new ResourceNotFoundException();
     }
 
-    @RequestMapping(path = "/{onto}/properties/{id}/jstree",
+    @RequestMapping(path = "/{onto}/properties/{iri}/jstree",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
             method = RequestMethod.GET)
     HttpEntity<String> getJsTree(
             @PathVariable("onto") String ontologyId,
-            @PathVariable("id") String termId,
+            @PathVariable("iri") String termId,
             @RequestParam(value = "siblings", defaultValue = "false", required = false) boolean siblings,
             @RequestParam(value = "viewMode", defaultValue = "PreferredRoots", required = false) String viewMode,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang)

@@ -1,5 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,8 @@ import javax.servlet.http.HttpServletRequest;
  * @date 19/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@Tag(name = "Ontology Controller")
+@RestController
 @RequestMapping("/api/ontologies")
 @ExposesResourceFor(V1Ontology.class)
 public class V1OntologyController implements

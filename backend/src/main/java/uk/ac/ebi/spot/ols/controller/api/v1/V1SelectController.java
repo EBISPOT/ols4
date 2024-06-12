@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
@@ -28,7 +30,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Controller
+@Tag(name = "Select Controller")
+@RestController
 public class V1SelectController {
 
     Gson gson = new Gson();
