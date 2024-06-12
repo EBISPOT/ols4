@@ -13,31 +13,15 @@ export default function Help() {
         {
 
           process.env.REACT_APP_APIURL && (
-            <Link
-              to={process.env.REACT_APP_APIURL + "swagger-ui/index.html"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="button-secondary font-bold self-center">
-                <div className="flex gap-2">
-                  <Source />
-                  <div>OLS 4 Swagger Documentation</div>
+                <div className="iframe-container">
+                    <iframe
+                        src={process.env.REACT_APP_APIURL + "swagger-ui/index.html"}
+                        title="Swagger Documentation"
+                        style={{width: '100%', height: '1000px', border: 'none', overflow: 'visible'}}
+                    />
                 </div>
-              </button>
-            </Link>
-          )
+            )
         }
-        <div className="text-2xl font-bold my-6">OLS 3 Documentation</div>
-          {
-              <Link
-                  to={`/ols3help`}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="link-default"
-              >
-                  OLS 3 Documentation
-              </Link>
-          }
       </main>
     </Fragment>
   );
