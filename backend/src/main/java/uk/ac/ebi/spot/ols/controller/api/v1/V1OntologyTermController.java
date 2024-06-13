@@ -378,10 +378,10 @@ public class V1OntologyTermController {
         throw new ResourceNotFoundException();
     }
 
-    @RequestMapping(path = "/{onto}/terms/{iri}/{relation}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{onto}/terms/{iri}/{property_iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> related(@PathVariable("onto") String ontologyId,
                                            @PathVariable("iri") String termId,
-                                           @PathVariable("relation") String relation,
+                                           @PathVariable("property_iri") String relation,
                                            Pageable pageable,
                                            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                            PagedResourcesAssembler assembler) {
