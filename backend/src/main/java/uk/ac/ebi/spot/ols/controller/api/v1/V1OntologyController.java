@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,9 +64,9 @@ public class V1OntologyController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Ontology>> getOntologies(
-            @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            PagedResourcesAssembler assembler
+            @PageableDefault(size = 20, page = 0) @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         Page<V1Ontology> document = ontologyRepository.getAll(lang, pageable);
         return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);

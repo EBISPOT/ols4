@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,8 +46,8 @@ public class V1TermController implements
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri") String termId,
                                                          @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                         Pageable pageable,
-                                                         PagedResourcesAssembler assembler
+                                                         @Parameter(hidden = true) Pageable pageable,
+                                                         @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
 
         String decoded = null;
@@ -62,8 +63,8 @@ public class V1TermController implements
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         Page<V1Term> terms = null;
         if (id == null) {
@@ -93,8 +94,8 @@ public class V1TermController implements
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri") String termId,
                                                                              @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                                             Pageable pageable,
-                                                                             PagedResourcesAssembler assembler
+                                                                             @Parameter(hidden = true) Pageable pageable,
+                                                                             @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
 
         String decoded = null;
@@ -109,8 +110,8 @@ public class V1TermController implements
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         Page<V1Term> terms = null;

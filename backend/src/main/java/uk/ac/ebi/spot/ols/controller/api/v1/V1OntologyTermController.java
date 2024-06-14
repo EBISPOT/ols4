@@ -74,8 +74,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "obsoletes", required = false) Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
         ontologyId = ontologyId.toLowerCase();
@@ -127,8 +127,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
@@ -145,8 +145,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler
+            @Parameter(hidden = true)Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
@@ -185,7 +185,7 @@ public class V1OntologyTermController {
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getParents(@PathVariable("onto") String ontologyId,
                                                   @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                  @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                  @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -200,7 +200,7 @@ public class V1OntologyTermController {
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalParents(@PathVariable("onto") String ontologyId,
                                                               @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                              @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                              @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -217,7 +217,7 @@ public class V1OntologyTermController {
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalAncestors(@PathVariable("onto") String ontologyId,
                                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                                @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                                @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -235,7 +235,7 @@ public class V1OntologyTermController {
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> children(@PathVariable("onto") String ontologyId,
                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -252,7 +252,7 @@ public class V1OntologyTermController {
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalChildren(@PathVariable("onto") String ontologyId,
                                                                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                               @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                               @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -271,7 +271,7 @@ public class V1OntologyTermController {
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getHierarchicalDescendants(@PathVariable("onto") String ontologyId,
                                                                   @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                                  @PathVariable("iri") String termId, Pageable pageable, PagedResourcesAssembler assembler) {
+                                                                  @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -288,8 +288,8 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms/{iri}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> descendants(@PathVariable("onto") String ontologyId,
                                                    @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                   @PathVariable("iri") String termId, Pageable pageable,
-                                                   PagedResourcesAssembler assembler) {
+                                                   @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable,
+                                                   @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -302,9 +302,11 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms/{iri}/ancestors",
         produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> ancestors(@PathVariable("onto") String ontologyId, @PathVariable("iri") String termId, Pageable pageable,
-                                                 @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                 PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> ancestors(@PathVariable("onto") String ontologyId,
+                                             @PathVariable("iri") String termId,
+                                             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+                                             @Parameter(hidden = true) Pageable pageable,
+                                             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -382,9 +384,9 @@ public class V1OntologyTermController {
     HttpEntity<PagedModel<V1Term>> related(@PathVariable("onto") String ontologyId,
                                            @PathVariable("iri") String termId,
                                            @PathVariable("property_iri") String relation,
-                                           Pageable pageable,
                                            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                           PagedResourcesAssembler assembler) {
+                                           @Parameter(hidden = true) Pageable pageable,
+                                           @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         ontologyId = ontologyId.toLowerCase();
 
         String decodedTerm = UriUtils.decode(termId, "UTF-8");
@@ -402,8 +404,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -426,8 +428,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -450,8 +452,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -474,8 +476,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -498,8 +500,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -522,8 +524,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
@@ -546,8 +548,8 @@ public class V1OntologyTermController {
             @RequestParam(value = "obo_id", required = false) String oboId,
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
