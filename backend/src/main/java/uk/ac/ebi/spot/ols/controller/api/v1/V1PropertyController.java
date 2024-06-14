@@ -122,7 +122,7 @@ public class V1PropertyController implements
                     example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
-                    description = "This refers to the name of the property.",
+                    description = "This refers to the short form of the property.",
                     example = "DUO_0000041") String shortForm,
             @RequestParam(value = "obo_id", required = false)
             @Parameter(name = "obo_id",

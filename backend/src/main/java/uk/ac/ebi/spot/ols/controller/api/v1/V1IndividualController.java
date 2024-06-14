@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Tag(name = "Individual Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+        "For example, the IRI http://purl.obolibrary.org/obo/IAO_0000124 should be encoded as http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124.")
 @RestController
 @RequestMapping("/api/individuals")
 @ExposesResourceFor(V1Individual.class)
@@ -52,7 +52,10 @@ public class V1IndividualController implements
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
-            @PathVariable("iri") String termId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -64,9 +67,18 @@ public class V1IndividualController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the individual.",
+                    example = "IAO_0000124") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the individual.",
+                    example = "IAO:0000124") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -88,7 +100,10 @@ public class V1IndividualController implements
     
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
-            @PathVariable("iri") String termId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -103,9 +118,18 @@ public class V1IndividualController implements
     		produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
     		method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the individual.",
+                    example = "IAO_0000124") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the individual.",
+                    example = "IAO:0000124") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
