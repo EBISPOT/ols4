@@ -2,6 +2,8 @@
   "ontologies": [
     {
       "ontologyId": "owl2primer-equivalent-intersectionof",
+      "importsFrom": [],
+      "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
       "preferredPrefix": "owl2primer-equivalent-intersectionOf",
       "ontology_purl": "./testcases/owl2-primer/equivalent-intersectionOf.owl",
@@ -65,6 +67,32 @@
         ],
         "value": "0"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Mother",
@@ -78,20 +106,6 @@
             ],
             "value": "Mother"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
@@ -132,20 +146,12 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
           ],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
@@ -212,17 +218,17 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Mother"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -238,7 +244,16 @@
                 ],
                 "value": "Parent"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Parent"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman": {
               "numAppearsIn": "1",
@@ -249,7 +264,16 @@
                 ],
                 "value": "Woman"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Woman"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           }
         },
@@ -265,20 +289,6 @@
             ],
             "value": "Parent"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -305,20 +315,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
@@ -374,17 +370,17 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Parent"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -404,20 +400,6 @@
             ],
             "value": "Woman"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -444,20 +426,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
@@ -513,17 +481,17 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Woman"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [

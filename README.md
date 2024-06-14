@@ -24,10 +24,7 @@ This repository contains three projects:
 
 # Deploying OLS4
 
-Deployment instructions will go here. OLS4 is still under heavy development, so currently we only have detailed
-instructions for developers below.
-
-However, if you just want to try it out, this should get you going:
+If you want to try OLS4 out, this should get you going:
 
     export OLS4_CONFIG=./dataload/configs/efo.json
     docker compose up
@@ -367,10 +364,20 @@ local (Dockerized) Solr and Neo4j servers:
 The frontend is a React application in `frontend`. See [frontend docs](frontend/README.md)
 for details on how to run the frontend.
 
-## Development: Updating `testcases_expected_output`
+## Development: Updating `testcases_expected_output` and `testcases_expected_output_api`
+If you make changes to the data load or API of OLS, you need to run testcases and compare it against the expected outputs 
+to ensure backward compatibility. This testing consists of 
 
-If you change something that results in the test output changing (e.g. adding new tests, changing what the output looks
-like), the CI on this repo will fail.
+1. testing the dataload outputs by comparing test outputs to expected outputs, and
+2. API testing which compares API responses to expected responses.
+
+### Testing dataload
+These tests are run locally as described in [Test testcases from dataload to UI](#test-testcases-from-dataload-to-ui)
+
+First make sure all the JARs are up to date:
+
+    mvn clean package
+
 
 To fix this, you need to replace the `testcases_expected_output` and `testcases_expected_output_api` folders with the
 new expected output. **You should do this in the same commit as your code/test changes because then we can track exactly

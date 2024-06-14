@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-#TEST_CONFIGS=$(find testcases | grep json)
-TEST_CONFIGS=./dataload/configs/efo.json
+TEST_CONFIGS=$(find testcases | grep json)
 
 rm -rf testcases_output/*
 mkdir testcases_output

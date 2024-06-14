@@ -1,9 +1,9 @@
 {
   "ontologies": [
     {
-      "ontologyId": "efo",
+      "ontologyId": "efo-hierarchical-properties",
       "iri": "http://www.ebi.ac.uk/efo/efo.owl",
-      "preferredPrefix": "EFO",
+      "preferredPrefix": "efo-hierarchical-properties",
       "title": "Experimental Factor Ontology",
       "uri": "http://www.ebi.ac.uk/efo",
       "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
@@ -72,6 +72,44 @@
         ],
         "value": "38"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "25"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "63"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "38"
+        }
+      ],
       "classes": [
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
@@ -85,20 +123,6 @@
             ],
             "value": "UBERON:0000467"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -125,21 +149,24 @@
             "value": "true"
           },
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalParent": {
+            "type": [
+              "reification"
+            ],
+            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+            "axioms": [
+              {
+                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+              }
+            ]
+          },
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -198,7 +225,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -210,7 +237,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -278,17 +305,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0000467"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -303,20 +330,6 @@
             ],
             "value": "UBERON:0000468"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -343,20 +356,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -404,7 +403,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -416,7 +415,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -500,17 +499,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0000468"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -525,20 +524,6 @@
             ],
             "value": "UBERON:0000483"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -565,21 +550,24 @@
             "value": "true"
           },
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalParent": {
+            "type": [
+              "reification"
+            ],
+            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+            "axioms": [
+              {
+                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+              }
+            ]
+          },
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -638,7 +626,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -650,7 +638,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -668,17 +656,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0000483"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -693,20 +681,6 @@
             ],
             "value": "UBERON:0000916"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -738,23 +712,37 @@
             "http://purl.obolibrary.org/obo/UBERON_0013702"
           ],
           "hierarchicalParent": [
-            "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "http://purl.obolibrary.org/obo/UBERON_0002100"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -826,7 +814,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -838,7 +826,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -924,17 +912,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0000916"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -949,20 +937,6 @@
             ],
             "value": "UBERON:0000949"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "hasDirectChildren": {
@@ -994,20 +968,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -1061,7 +1027,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -1073,7 +1039,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -1109,17 +1075,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0000949"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -1134,20 +1100,6 @@
             ],
             "value": "UBERON:0001007"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "hasDirectChildren": {
@@ -1179,20 +1131,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -1245,7 +1189,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -1257,7 +1201,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -1293,17 +1237,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001007"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -1318,20 +1262,6 @@
             ],
             "value": "UBERON:0001009"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "hasDirectChildren": {
@@ -1363,20 +1293,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -1426,7 +1348,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -1438,7 +1360,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1456,17 +1378,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001009"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -1481,20 +1403,6 @@
             ],
             "value": "UBERON:0001193"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001637",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
@@ -1542,23 +1450,37 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001637",
-            "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -1631,7 +1553,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -1643,7 +1565,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": [
             {
@@ -1679,17 +1601,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001193"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -1704,20 +1626,6 @@
             ],
             "value": "UBERON:0001281"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001982",
             "http://purl.obolibrary.org/obo/UBERON_0001981",
@@ -1776,27 +1684,85 @@
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001982",
             "http://purl.obolibrary.org/obo/UBERON_0001986",
-            "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "http://purl.obolibrary.org/obo/UBERON_0001981",
-            "http://purl.obolibrary.org/obo/UBERON_0002100",
-            "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "http://purl.obolibrary.org/obo/UBERON_0004535",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001981",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004535",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -1914,7 +1880,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -1926,7 +1892,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": [
             {
@@ -2026,17 +1992,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001281"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2051,20 +2017,6 @@
             ],
             "value": "UBERON:0001637"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "hasDirectChildren": {
@@ -2093,20 +2045,12 @@
           },
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -2155,7 +2099,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -2167,19 +2111,19 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001637"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2194,20 +2138,6 @@
             ],
             "value": "UBERON:0001638"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "hasDirectChildren": {
@@ -2236,20 +2166,12 @@
           },
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -2298,7 +2220,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -2310,19 +2232,19 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001638"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2337,20 +2259,6 @@
             ],
             "value": "UBERON:0001639"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
@@ -2398,23 +2306,37 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
-            "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -2487,7 +2409,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -2499,7 +2421,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": [
             {
@@ -2535,17 +2457,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001639"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2560,20 +2482,6 @@
             ],
             "value": "UBERON:0001981"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -2600,20 +2508,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -2661,7 +2555,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -2673,7 +2567,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2691,17 +2585,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001981"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2716,20 +2610,6 @@
             ],
             "value": "UBERON:0001982"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
           "hasDirectChildren": {
@@ -2762,22 +2642,25 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001981",
-            "http://purl.obolibrary.org/obo/UBERON_0002049"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -2839,7 +2722,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -2851,7 +2734,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2869,17 +2752,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001982"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -2894,20 +2777,6 @@
             ],
             "value": "UBERON:0001986"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000483",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
           "hasDirectChildren": {
@@ -2939,20 +2808,12 @@
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
           "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -3001,7 +2862,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -3013,19 +2874,19 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0001986"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -3040,20 +2901,6 @@
             ],
             "value": "UBERON:0002049"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -3080,20 +2927,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -3141,7 +2974,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -3153,7 +2986,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -3171,17 +3004,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002049"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -3196,20 +3029,6 @@
             ],
             "value": "UBERON:0002100"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -3240,23 +3059,37 @@
             "http://purl.obolibrary.org/obo/UBERON_0013702"
           ],
           "hierarchicalParent": [
-            "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "http://purl.obolibrary.org/obo/UBERON_0013702"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -3328,7 +3161,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -3340,7 +3173,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -3442,17 +3275,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002100"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -3467,20 +3300,6 @@
             ],
             "value": "UBERON:0002107"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530"
@@ -3524,27 +3343,85 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0002368",
-            "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "http://purl.obolibrary.org/obo/UBERON_0000949",
-            "http://purl.obolibrary.org/obo/UBERON_0001007",
-            "http://purl.obolibrary.org/obo/UBERON_0002100",
-            "http://purl.obolibrary.org/obo/UBERON_0002423"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -3661,7 +3538,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -3673,7 +3550,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -3855,17 +3732,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002107"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -3880,20 +3757,6 @@
             ],
             "value": "UBERON:0002368"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0002530",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0002530",
           "hasDirectChildren": {
@@ -3928,22 +3791,25 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0002530",
-            "http://purl.obolibrary.org/obo/UBERON_0000949"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -4022,7 +3888,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -4034,7 +3900,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -4052,17 +3918,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002368"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -4077,20 +3943,6 @@
             ],
             "value": "UBERON:0002423"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -4122,23 +3974,37 @@
             "http://purl.obolibrary.org/obo/UBERON_0001007"
           ],
           "hierarchicalParent": [
-            "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "http://purl.obolibrary.org/obo/UBERON_0001007"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -4210,7 +4076,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -4222,7 +4088,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -4274,17 +4140,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002423"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -4299,20 +4165,6 @@
             ],
             "value": "UBERON:0002530"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -4342,21 +4194,24 @@
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalParent": {
+            "type": [
+              "reification"
+            ],
+            "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+            "axioms": [
+              {
+                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+              }
+            ]
+          },
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -4415,7 +4270,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -4427,7 +4282,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -4445,17 +4300,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0002530"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -4470,20 +4325,6 @@
             ],
             "value": "UBERON:0004535"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
           "hasDirectChildren": {
@@ -4517,22 +4358,25 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "http://purl.obolibrary.org/obo/UBERON_0001009"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001009",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -4594,7 +4438,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -4606,7 +4450,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -4640,17 +4484,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0004535"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -4665,20 +4509,6 @@
             ],
             "value": "UBERON:0004647"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -4717,21 +4547,24 @@
             "http://purl.obolibrary.org/obo/UBERON_0001007",
             "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0002107",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalParent": {
+            "type": [
+              "reification"
+            ],
+            "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+            "axioms": [
+              {
+                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+              }
+            ]
+          },
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -4790,7 +4623,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -4802,7 +4635,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
             {
@@ -4886,17 +4719,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0004647"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -4911,20 +4744,6 @@
             ],
             "value": "UBERON:0006841"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
@@ -4972,25 +4791,61 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
-            "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "http://purl.obolibrary.org/obo/UBERON_0002100",
-            "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -5085,7 +4940,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -5097,7 +4952,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedTo": [
             {
@@ -5165,17 +5020,17 @@
               }
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0006841"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -5190,20 +5045,6 @@
             ],
             "value": "UBERON:0013702"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -5230,21 +5071,24 @@
             "value": "true"
           },
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalParent": {
+            "type": [
+              "reification"
+            ],
+            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+            "axioms": [
+              {
+                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+              }
+            ]
+          },
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
             "type": [
@@ -5303,7 +5147,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -5315,7 +5159,7 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
           "relatedFrom": {
             "property": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -5349,17 +5193,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBERON_0013702"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
@@ -5367,8 +5211,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -5396,6 +5241,12 @@
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "value": "a core relation that holds between a part and its whole",
               "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_0000822"
             }
           ],
           "definitionProperty": [
@@ -5409,7 +5260,7 @@
               "type": [
                 "literal"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
+              "value": "http://www.w3.org/2000/01/rdf-schema#comment"
             }
           ],
           "directAncestor": [],
@@ -5437,20 +5288,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://purl.obolibrary.org/obo/IAO_0000111": [
             {
               "type": [
@@ -5792,7 +5629,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -5804,8 +5641,216 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
+          "searchableAnnotationValues": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "is part of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "is part of",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "my brain is part of my body (continuant parthood, two material entities)"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "my brain is part of my body (continuant parthood, two material entities)",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "my stomach cavity is part of my stomach (continuant parthood, immaterial entity is part of material entity)"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "my stomach cavity is part of my stomach (continuant parthood, immaterial entity is part of material entity)",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "this day is part of this year (occurrent parthood)"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "this day is part of this year (occurrent parthood)",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "For continuants: C part_of C' if and only if: given any c that instantiates C at a time t, there is some c' such that c' instantiates C' at time t, and c *part_of* c' at t. For processes: P part_of P' if and only if: given any p that instantiates P at a time t, there is some p' such that p' instantiates P' at time t, and p *part_of* p' at t. (Here *part_of* is the instance-level part-relation.)"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "a core relation that holds between a part and its whole"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "a core relation that holds between a part and its whole",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Everything is part of itself. Any part of any part of a thing is itself part of that thing. Two distinct things cannot be part of each other."
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Everything is part of itself. Any part of any part of a thing is itself part of that thing. Two distinct things cannot be part of each other.",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See https://code.google.com/p/obo-relations/wiki/ROAndTime",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parthood requires the part and the whole to have compatible classes: only an occurrent can be part of an occurrent; only a process can be part of a process; only a continuant can be part of a continuant; only an independent continuant can be part of an independent continuant; only an immaterial entity can be part of an immaterial entity; only a specifically dependent continuant can be part of a specifically dependent continuant; only a generically dependent continuant can be part of a generically dependent continuant. (This list is not exhaustive.)\n\nA continuant cannot be part of an occurrent: use 'participates in'. An occurrent cannot be part of a continuant: use 'has participant'. A material entity cannot be part of an immaterial entity: use 'has location'. A specifically dependent continuant cannot be part of an independent continuant: use 'inheres in'. An independent continuant cannot be part of a specifically dependent continuant: use 'bearer of'."
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Parthood requires the part and the whole to have compatible classes: only an occurrent can be part of an occurrent; only a process can be part of a process; only a continuant can be part of a continuant; only an independent continuant can be part of an independent continuant; only an immaterial entity can be part of an immaterial entity; only a specifically dependent continuant can be part of a specifically dependent continuant; only a generically dependent continuant can be part of a generically dependent continuant. (This list is not exhaustive.)\n\nA continuant cannot be part of an occurrent: use 'participates in'. An occurrent cannot be part of a continuant: use 'has participant'. A material entity cannot be part of an immaterial entity: use 'has location'. A specifically dependent continuant cannot be part of an independent continuant: use 'inheres in'. An independent continuant cannot be part of a specifically dependent continuant: use 'bearer of'.",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "part_of",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.ebi.ac.uk/efo/part_of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "BFO:0000050"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "OBO_REL:part_of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "human_stages_ontology"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "protein"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "quality"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "relationship"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "uberon"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "false"
+            }
+          ],
           "shortForm": {
             "type": [
               "literal"
@@ -5828,8 +5873,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -5837,20 +5883,6 @@
             ],
             "value": "BFO:0000051"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -5876,20 +5908,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.ebi.ac.uk/efo/EFO_URI": {
             "type": [
               "literal"
@@ -5975,7 +5993,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -5987,26 +6005,47 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
           },
+          "searchableAnnotationValues": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.ebi.ac.uk/efo/has_part"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "BFO:0000051"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has_part"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "false"
+            }
+          ],
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "BFO_0000051"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6014,20 +6053,6 @@
             ],
             "value": "IAO:0000111"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6053,20 +6078,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6108,7 +6119,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6120,26 +6131,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000111"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6147,20 +6159,6 @@
             ],
             "value": "IAO:0000112"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6186,20 +6184,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6241,7 +6225,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6253,26 +6237,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000112"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6280,20 +6265,6 @@
             ],
             "value": "IAO:0000115"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6319,20 +6290,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6374,7 +6331,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6386,26 +6343,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000115"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6413,20 +6371,6 @@
             ],
             "value": "IAO:0000116"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6452,20 +6396,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6507,7 +6437,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6519,26 +6449,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000116"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6546,20 +6477,6 @@
             ],
             "value": "IAO:0000118"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6585,20 +6502,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6640,7 +6543,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6652,26 +6555,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000118"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6679,20 +6583,6 @@
             ],
             "value": "IAO:0000232"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6718,20 +6608,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6773,7 +6649,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6785,26 +6661,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "IAO_0000232"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0001900",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6812,20 +6689,6 @@
             ],
             "value": "RO:0001900"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6851,20 +6714,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -6906,7 +6755,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -6918,26 +6767,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "RO_0001900"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0002174",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -6945,20 +6795,6 @@
             ],
             "value": "RO:0002174"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -6984,20 +6820,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7039,7 +6861,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7051,26 +6873,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "RO_0002174"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0040042",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7078,20 +6901,6 @@
             ],
             "value": "RO:0040042"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7117,20 +6926,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7172,7 +6967,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7184,26 +6979,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "RO_0040042"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000001",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7211,20 +7007,6 @@
             ],
             "value": "UBPROP:0000001"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7250,20 +7032,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7305,7 +7073,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7317,26 +7085,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000001"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000002",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7344,20 +7113,6 @@
             ],
             "value": "UBPROP:0000002"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7383,20 +7138,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7438,7 +7179,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7450,26 +7191,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000002"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000003",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7477,20 +7219,6 @@
             ],
             "value": "UBPROP:0000003"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7516,20 +7244,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7571,7 +7285,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7583,26 +7297,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000003"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000007",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7610,20 +7325,6 @@
             ],
             "value": "UBPROP:0000007"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7649,20 +7350,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7704,7 +7391,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7716,26 +7403,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000007"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000008",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7743,20 +7431,6 @@
             ],
             "value": "UBPROP:0000008"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7782,20 +7456,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7837,7 +7497,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7849,26 +7509,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000008"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000009",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -7876,20 +7537,6 @@
             ],
             "value": "UBPROP:0000009"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -7915,20 +7562,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -7970,7 +7603,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -7982,26 +7615,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000009"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000010",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8009,20 +7643,6 @@
             ],
             "value": "UBPROP:0000010"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8048,20 +7668,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8103,7 +7709,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8115,26 +7721,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000010"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000012",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8142,20 +7749,6 @@
             ],
             "value": "UBPROP:0000012"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8181,20 +7774,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8236,7 +7815,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8248,26 +7827,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000012"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000202",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8275,20 +7855,6 @@
             ],
             "value": "UBPROP:0000202"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8314,20 +7880,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8369,7 +7921,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8381,26 +7933,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "UBPROP_0000202"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.ebi.ac.uk/efo/EFO_URI",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8408,20 +7961,6 @@
             ],
             "value": "EFO:URI"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8447,20 +7986,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8502,7 +8027,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8514,26 +8039,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "EFO_URI"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#date_retrieved",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8541,20 +8067,6 @@
             ],
             "value": "date:retrieved"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8580,20 +8092,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8635,7 +8133,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8647,26 +8145,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "date_retrieved"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#external_class",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8674,20 +8173,6 @@
             ],
             "value": "external:class"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8713,20 +8198,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8768,7 +8239,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8780,26 +8251,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "external_class"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#external_ontology",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8807,20 +8279,6 @@
             ],
             "value": "external:ontology"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8846,20 +8304,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -8901,7 +8345,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -8913,26 +8357,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "external_ontology"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -8940,20 +8385,6 @@
             ],
             "value": "hasAlternativeId"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -8979,20 +8410,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9034,7 +8451,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9046,26 +8463,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasAlternativeId"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9073,20 +8491,6 @@
             ],
             "value": "hasBroadSynonym"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9112,20 +8516,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9167,7 +8557,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9179,26 +8569,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasBroadSynonym"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9206,20 +8597,6 @@
             ],
             "value": "hasDbXref"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9245,20 +8622,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9300,7 +8663,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9312,26 +8675,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasDbXref"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9339,20 +8703,6 @@
             ],
             "value": "hasExactSynonym"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9378,20 +8728,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9433,7 +8769,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9445,26 +8781,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasExactSynonym"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9472,20 +8809,6 @@
             ],
             "value": "hasOBONamespace"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9511,20 +8834,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9566,7 +8875,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9578,26 +8887,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasOBONamespace"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9605,20 +8915,6 @@
             ],
             "value": "hasRelatedSynonym"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9644,20 +8940,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9699,7 +8981,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9711,26 +8993,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasRelatedSynonym"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9738,20 +9021,6 @@
             ],
             "value": "hasSynonymType"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9777,20 +9046,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9832,7 +9087,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9844,26 +9099,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "hasSynonymType"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#id",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -9871,20 +9127,6 @@
             ],
             "value": "id"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -9910,20 +9152,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -9965,7 +9193,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -9977,26 +9205,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "id"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10004,20 +9233,6 @@
             ],
             "value": "inSubset"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10043,20 +9258,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10098,7 +9299,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10110,26 +9311,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "inSubset"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#notes",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10137,20 +9339,6 @@
             ],
             "value": "notes"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10176,20 +9364,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10231,7 +9405,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10243,26 +9417,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "notes"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#ontology",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10270,20 +9445,6 @@
             ],
             "value": "ontology"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10309,20 +9470,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10364,7 +9511,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10376,26 +9523,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "ontology"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10403,20 +9551,6 @@
             ],
             "value": "shorthand"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10442,20 +9576,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10497,7 +9617,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10509,26 +9629,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "shorthand"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10536,20 +9657,6 @@
             ],
             "value": "source"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10575,20 +9682,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10630,7 +9723,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10642,26 +9735,27 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "source"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://xmlns.com/foaf/0.1/depicted_by",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "annotationProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -10669,20 +9763,6 @@
             ],
             "value": "depicted:by"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -10708,20 +9788,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "imported": {
             "type": [
@@ -10763,7 +9829,7 @@
             "type": [
               "literal"
             ],
-            "value": "efo"
+            "value": "efo-hierarchical-properties"
           },
           "ontologyIri": {
             "type": [
@@ -10775,19 +9841,19 @@
             "type": [
               "literal"
             ],
-            "value": "EFO"
+            "value": "efo-hierarchical-properties"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
           },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "depicted_by"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
