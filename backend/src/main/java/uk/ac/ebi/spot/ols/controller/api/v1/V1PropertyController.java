@@ -26,7 +26,7 @@ import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import javax.servlet.http.HttpServletRequest;
 
 @Tag(name = "Property Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+        "For example, the IRI http://purl.obolibrary.org/obo/DUO_0000041 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041.")
 @RestController
 @RequestMapping("/api/properties")
 @ExposesResourceFor(V1Property.class)
@@ -46,7 +46,10 @@ public class V1PropertyController implements
     }
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("iri") String termId,
+    HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("iri")
+                                                          @Parameter(name = "iri",
+                                                                  description = "The IRI of the property, this value must be double URL encoded",
+                                                                  example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String termId,
                                                               @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                               @Parameter(hidden = true) Pageable pageable,
                                                               @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -60,9 +63,18 @@ public class V1PropertyController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getAllProperties(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the property, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the property.",
+                    example = "DUO_0000041") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the property.",
+                    example = "DUO:0000041") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -87,7 +99,10 @@ public class V1PropertyController implements
 
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("iri") String termId,
+    HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("iri")
+                                                                               @Parameter(name = "iri",
+                                                                                       description = "The IRI of the property, this value must be double URL encoded",
+                                                                                       example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String termId,
                                                                                    @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                                    @Parameter(hidden = true) Pageable pageable,
                                                                                    @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -101,9 +116,18 @@ public class V1PropertyController implements
     
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getPropertiesByIdAndIsDefiningOntology(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the property, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the name of the property.",
+                    example = "DUO_0000041") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the property.",
+                    example = "DUO:0000041") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
