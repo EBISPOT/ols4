@@ -2,6 +2,8 @@
   "ontologies": [
     {
       "ontologyId": "owl2primer-equivalentclass",
+      "importsFrom": [],
+      "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
       "preferredPrefix": "owl2primer-equivalentClass",
       "ontology_purl": "./testcases/owl2-primer/equivalentClass.owl",
@@ -65,6 +67,32 @@
         ],
         "value": "0"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
@@ -78,20 +106,6 @@
             ],
             "value": "Human"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -118,20 +132,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
           "imported": {
@@ -188,17 +188,17 @@
             ],
             "value": "owl2primer-equivalentClass"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Human"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -214,7 +214,16 @@
                 ],
                 "value": "Person"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Person"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           }
         },
@@ -230,20 +239,6 @@
             ],
             "value": "Person"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -270,20 +265,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
           "imported": {
@@ -340,17 +321,17 @@
             ],
             "value": "owl2primer-equivalentClass"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Person"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -366,7 +347,16 @@
                 ],
                 "value": "Human"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Human"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           }
         }

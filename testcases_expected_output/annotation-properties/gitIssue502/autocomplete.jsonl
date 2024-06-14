@@ -1,0 +1,717 @@
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#Class","label":"Class"}
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#Container","label":"Container"}
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty","label":"ContainerMembershipProperty"}
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#Datatype","label":"Datatype"}
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#Literal","label":"Literal"}
+{"ontologyId":"rdfs","id":"rdfs+class+http://www.w3.org/2000/01/rdf-schema#Resource","label":"Resource"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#comment","label":"comment"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#domain","label":"domain"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#isDefinedBy","label":"isDefinedBy"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#label","label":"label"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#member","label":"member"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#range","label":"range"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#seeAlso","label":"seeAlso"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#subClassOf","label":"subClassOf"}
+{"ontologyId":"rdfs","id":"rdfs+property+http://www.w3.org/2000/01/rdf-schema#subPropertyOf","label":"subPropertyOf"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#Class","label":"Class"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#Container","label":"Container"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty","label":"ContainerMembershipProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#Datatype","label":"Datatype"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#Literal","label":"Literal"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2000/01/rdf-schema#Resource","label":"Resource"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#AllDifferent","label":"AllDifferent"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#AllDisjointClasses","label":"AllDisjointClasses"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#AllDisjointProperties","label":"AllDisjointProperties"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Annotation","label":"Annotation"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#AnnotationProperty","label":"AnnotationProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#AsymmetricProperty","label":"AsymmetricProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Axiom","label":"Axiom"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Class","label":"Class"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#DataRange","label":"DataRange"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#DatatypeProperty","label":"DatatypeProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#DeprecatedClass","label":"DeprecatedClass"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#DeprecatedProperty","label":"DeprecatedProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#FunctionalProperty","label":"FunctionalProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#InverseFunctionalProperty","label":"InverseFunctionalProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#IrreflexiveProperty","label":"IrreflexiveProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#NamedIndividual","label":"NamedIndividual"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#NegativePropertyAssertion","label":"NegativePropertyAssertion"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Nothing","label":"Nothing"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#ObjectProperty","label":"ObjectProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Ontology","label":"Ontology"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#OntologyProperty","label":"OntologyProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#ReflexiveProperty","label":"ReflexiveProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Restriction","label":"Restriction"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#SymmetricProperty","label":"SymmetricProperty"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#Thing","label":"Thing"}
+{"ontologyId":"owl","id":"owl+class+http://www.w3.org/2002/07/owl#TransitiveProperty","label":"TransitiveProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#comment","label":"comment"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#domain","label":"domain"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#isDefinedBy","label":"isDefinedBy"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#label","label":"label"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#member","label":"member"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#range","label":"range"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#seeAlso","label":"seeAlso"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#subClassOf","label":"subClassOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2000/01/rdf-schema#subPropertyOf","label":"subPropertyOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#allValuesFrom","label":"allValuesFrom"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#annotatedProperty","label":"annotatedProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#annotatedSource","label":"annotatedSource"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#annotatedTarget","label":"annotatedTarget"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#assertionProperty","label":"assertionProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#backwardCompatibleWith","label":"backwardCompatibleWith"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#bottomDataProperty","label":"bottomDataProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#bottomObjectProperty","label":"bottomObjectProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#cardinality","label":"cardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#complementOf","label":"complementOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#datatypeComplementOf","label":"datatypeComplementOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#deprecated","label":"deprecated"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#differentFrom","label":"differentFrom"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#disjointUnionOf","label":"disjointUnionOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#disjointWith","label":"disjointWith"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#distinctMembers","label":"distinctMembers"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#equivalentClass","label":"equivalentClass"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#equivalentProperty","label":"equivalentProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#hasKey","label":"hasKey"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#hasSelf","label":"hasSelf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#hasValue","label":"hasValue"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#incompatibleWith","label":"incompatibleWith"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#intersectionOf","label":"intersectionOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#inverseOf","label":"inverseOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#maxCardinality","label":"maxCardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#maxQualifiedCardinality","label":"maxQualifiedCardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#members","label":"members"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#minCardinality","label":"minCardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#minQualifiedCardinality","label":"minQualifiedCardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#onClass","label":"onClass"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#onDataRange","label":"onDataRange"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#onDatatype","label":"onDatatype"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#onProperties","label":"onProperties"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#onProperty","label":"onProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#oneOf","label":"oneOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#priorVersion","label":"priorVersion"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#propertyChainAxiom","label":"propertyChainAxiom"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#propertyDisjointWith","label":"propertyDisjointWith"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#qualifiedCardinality","label":"qualifiedCardinality"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#sameAs","label":"sameAs"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#someValuesFrom","label":"someValuesFrom"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#sourceIndividual","label":"sourceIndividual"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#targetIndividual","label":"targetIndividual"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#targetValue","label":"targetValue"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#topDataProperty","label":"topDataProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#topObjectProperty","label":"topObjectProperty"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#unionOf","label":"unionOf"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#versionInfo","label":"versionInfo"}
+{"ontologyId":"owl","id":"owl+property+http://www.w3.org/2002/07/owl#withRestrictions","label":"withRestrictions"}
+{"ontologyId":"skos","id":"skos+class+http://www.w3.org/2004/02/skos/core#Collection","label":"Collection"}
+{"ontologyId":"skos","id":"skos+class+http://www.w3.org/2004/02/skos/core#Concept","label":"Concept"}
+{"ontologyId":"skos","id":"skos+class+http://www.w3.org/2004/02/skos/core#ConceptScheme","label":"Concept Scheme"}
+{"ontologyId":"skos","id":"skos+class+http://www.w3.org/2004/02/skos/core#OrderedCollection","label":"Ordered Collection"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#altLabel","label":"alternative label"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#broadMatch","label":"has broader match"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#broader","label":"has broader"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#broaderTransitive","label":"has broader transitive"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#changeNote","label":"change note"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#closeMatch","label":"has close match"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#definition","label":"definition"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#editorialNote","label":"editorial note"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#exactMatch","label":"has exact match"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#example","label":"example"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#hasTopConcept","label":"has top concept"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#hiddenLabel","label":"hidden label"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#historyNote","label":"history note"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#inScheme","label":"is in scheme"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#mappingRelation","label":"is in mapping relation with"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#member","label":"has member"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#memberList","label":"has member list"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#narrowMatch","label":"has narrower match"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#narrower","label":"has narrower"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#narrowerTransitive","label":"has narrower transitive"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#notation","label":"notation"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#note","label":"note"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#prefLabel","label":"preferred label"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#related","label":"has related"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#relatedMatch","label":"has related match"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#scopeNote","label":"scope note"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#semanticRelation","label":"is in semantic relation with"}
+{"ontologyId":"skos","id":"skos+property+http://www.w3.org/2004/02/skos/core#topConceptOf","label":"is top concept in scheme"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000002","label":"continuant"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000003","label":"occurrent"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000004","label":"independent continuant"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000015","label":"process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000016","label":"disposition"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000017","label":"realizable entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000019","label":"quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000020","label":"specifically dependent continuant"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000023","label":"role"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000034","label":"function"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000040","label":"material entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/BFO_0000141","label":"immaterial entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000000","label":"cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000003","label":"native cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000039","label":"germ line cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000211","label":"electrically active cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000255","label":"eukaryotic cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000393","label":"electrically responsive cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000404","label":"electrically signaling cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000540","label":"neuron"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000548","label":"animal cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0000586","label":"germ cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0002319","label":"neural cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/CL_0002371","label":"somatic cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0000003","label":"reproduction"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001508","label":"action potential"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001704","label":"formation of primary germ layer"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001705","label":"ectoderm formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001706","label":"endoderm formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001707","label":"mesoderm formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001838","label":"embryonic epithelial tube formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0001841","label":"neural tube formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0002009","label":"morphogenesis of an epithelium"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0003008","label":"system process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0005102","label":"signaling receptor binding"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0005179","label":"hormone activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0005183","label":"gonadotropin hormone-releasing hormone activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0005515","label":"protein binding"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0006810","label":"transport"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0006811","label":"monoatomic ion transport"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007154","label":"cell communication"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007165","label":"signal transduction"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007267","label":"cell-cell signaling"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007268","label":"chemical synaptic transmission"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007275","label":"multicellular organism development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007276","label":"gamete generation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007369","label":"gastrulation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007398","label":"ectoderm development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007399","label":"nervous system development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007492","label":"endoderm development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0007498","label":"mesoderm development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0008150","label":"biological_process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009566","label":"fertilization"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009653","label":"anatomical structure morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009790","label":"embryo development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009791","label":"post-embryonic development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009792","label":"embryo development ending in birth or egg hatching"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009888","label":"tissue development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009914","label":"hormone transport"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0009987","label":"cellular process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0010817","label":"regulation of hormone levels"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0016301","label":"kinase activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0016331","label":"morphogenesis of embryonic epithelium"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0019226","label":"transmission of nerve impulse"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0019953","label":"sexual reproduction"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0021915","label":"neural tube development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0022414","label":"reproductive process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0023052","label":"signaling"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0023061","label":"signal release"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0030545","label":"signaling receptor regulator activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0030546","label":"signaling receptor activator activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0032501","label":"multicellular organismal process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0032502","label":"developmental process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0032504","label":"multicellular organism reproduction"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0032940","label":"secretion by cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0034220","label":"monoatomic ion transmembrane transport"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0035148","label":"tube formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0035239","label":"tube morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0035295","label":"tube development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0038023","label":"signaling receptor activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0040016","label":"embryonic cleavage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0042391","label":"regulation of membrane potential"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0043009","label":"chordate embryonic development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0045202","label":"synapse"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0046879","label":"hormone secretion"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0046903","label":"secretion"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048018","label":"receptor ligand activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048332","label":"mesoderm morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048513","label":"animal organ development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048598","label":"embryonic morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048609","label":"multicellular organismal reproductive process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048646","label":"anatomical structure formation involved in morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048729","label":"tissue morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048731","label":"system development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0048856","label":"anatomical structure development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0050789","label":"regulation of biological process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0050794","label":"regulation of cellular process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0050877","label":"nervous system process"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0050896","label":"response to stimulus"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0051179","label":"localization"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0051234","label":"establishment of localization"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0051301","label":"cell division"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0051716","label":"cellular response to stimulus"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0055085","label":"transmembrane transport"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0060429","label":"epithelium development"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0060562","label":"epithelial tube morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0065007","label":"biological regulation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0065008","label":"regulation of biological quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0072175","label":"epithelial tube formation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0098772","label":"molecular function regulator activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0098916","label":"anterograde trans-synaptic signaling"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0099536","label":"synaptic signaling"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0099537","label":"trans-synaptic signaling"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0140352","label":"export from cell"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/GO_0140677","label":"molecular function activator activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/HP_0001513","label":"Obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"condition"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disease or disorder, non-neoplastic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"diseases"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"diseases and disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"medical condition"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"other disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002146","label":"hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002146","label":"gonadotropin deficiency"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002146","label":"hypogonadotropism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndromic disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"cluster, symptom"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"clusters, symptom"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"symptom cluster"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"symptom clusters"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndrome associated with disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndromes"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndromic disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002254","label":"syndromic disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"gonadal disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"disease of gonad"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"disease or disorder of gonad"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"disorder of gonad"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"disorder of gonads"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"gonad disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"gonad disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"gonadal disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002259","label":"gonadal disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"female reproductive system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disease of female reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disease or disorder of female reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disorder of female genital system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disorder of female reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"female reproductive disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"female reproductive system disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"female reproductive system disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"female reproductive system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disease of female genital system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"disorder of female genital tract"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"gynaecological disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002263","label":"gynecological disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002320","label":"congenital nervous system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002320","label":"congenital abnormality of the nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002320","label":"congenital nervous system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0002320","label":"congenital neurologic anomaly"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"hereditary disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"genetic condition"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"genetic disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"genetic disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"hereditary disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"hereditary disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"hereditary diseases"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"inherited disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"inherited genetic disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"molecular disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"Mendelian disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"familial disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003847","label":"inborn disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0003916","label":"overnutrition"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"reproductive system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"disease of reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"disease or disorder of reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"disorder of reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"genital disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"genital system disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"reproductive disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"reproductive system disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"reproductive system disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005039","label":"reproductive system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"nervous system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"disease of nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"disease or disorder of nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"disorder of nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"nervous system disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"nervous system disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"nervous system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"neurologic disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"neurologic disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"neurological disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005071","label":"neurological disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005137","label":"nutritional disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005137","label":"nutritional disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005137","label":"nutrition disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"disease of endocrine system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"disease or disorder of endocrine system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"disorder of endocrine system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine system disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine system disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrine system disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"endocrinopathy"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0005151","label":"thyroid or other glandular disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Willi syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader Willi syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Labhart-Willi syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Willi syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Willi-Labhart syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Willi-Prader syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"PWS"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Willi syndrome chromosome region"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"Prader-Willi-like syndrome associated with chromosome 6"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"obesity, muscular hypotonia, intellectual disability, short stature, hypogonadotropic hypogonadism, and small hands and feet"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0008300","label":"obesity, muscular hypotonia, mental retardation, short stature, hypogonadotropic hypogonadism, and small hands and feet"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0011122","label":"obesity disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0011122","label":"obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0011122","label":"obesity disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015127","label":"pituitary deficiency"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015160","label":"multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015160","label":"MCA/variable MR"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015160","label":"multiple congenital anomalies-variable intellectual disability with or without dysmorphism syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015330","label":"overgrowth/obesity syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015514","label":"hereditary endocrine growth disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015514","label":"genetic endocrine growth disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015514","label":"growth disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015770","label":"congenital hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0015860","label":"anomaly of puberty or/and menstrual cycle"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0016072","label":"anomaly of puberty or/and menstrual cycle of genetic origin"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0016072","label":"genetic anomaly of puberty or/and menstrual cycle"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0016565","label":"syndromic genetic obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0016565","label":"syndrome associated with obesity (disease)"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0016565","label":"syndromic obesity (disease)"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"Normosmic idiopathic hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"central hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"gonadotropic deficiency"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"hypogonadism, hypogonadotropic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"hypogonadotropic hypogonadism with or without anosmia"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"low gonadotropins (secondary hypogonadism)"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"nIHH"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"normosmic congenital hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"secondary hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"congenital idiopathic hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"isolated congenital gonadotropin deficiency"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"hypogonadotropism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0018555","label":"isolated hypogonadotropic hypogonadism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosomal disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosomal disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosomal disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosomal disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosome disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"disorder, chromosomal"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"disorder, chromosome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"disorders, chromosomal"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"disorders, chromosome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"autosomal chromosome disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"autosomal chromosome disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosome abnormality disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosome abnormality disorders"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosome disorder, autosomal"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"chromosome disorders, autosomal"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019040","label":"disorder, chromosome abnormality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019042","label":"multiple congenital anomalies/dysmorphic syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019042","label":"MCAHS"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"inherited obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"genetic obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"genetic obesity (disease)"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"leanness, inherited, autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"monogenic obesity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, association with, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, early-onset, susceptibility to, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, late-onset, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, mild, early-onset, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, severe, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, severe, and type II diabetes, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019182","label":"obesity, susceptibility to, Autosomal recessive"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"developmental defect during embryogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"congenital malformation syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"developmental defect during embryogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"disorder of embryonic morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"embryonic morphogenesis disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"malformation syndrome"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019755","label":"rare developmental defect during embryogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0019824","label":"non-acquired pituitary hormone deficiency"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021125","label":"disease characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021125","label":"disease qualifier"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021125","label":"modifier"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021125","label":"qualifier"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021126","label":"syndromic or isolated"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021127","label":"has a syndromic presentation"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021135","label":"rare or common"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021136","label":"rare"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021136","label":"rare (European definition)"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021139","label":"congenital or acquired"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021140","label":"congenital"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021140","label":"inborn"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021147","label":"disorder of development or morphogenesis"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021149","label":"hereditary vs non-hereditary etiology"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"inherited"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"constitutitional genetic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"familial"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"genetic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"hereditary"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0021152","label":"inherited genetic"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0100038","label":"complex neurodevelopmental disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0100038","label":"complex neurodevelopmental disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0100500","label":"Mendelian neurodevelopmental disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0700092","label":"neurodevelopmental disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0700096","label":"human disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/MONDO_0700096","label":"human disease or disorder"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_110814","label":"Xenoturbellida"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_110815","label":"Xenoturbella"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_117570","label":"Teleostomi"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_117571","label":"Euteleostomi"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_1312402","label":"Xenacoelomorpha"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_131567","label":"cellular organisms"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_1338369","label":"Dipnotetrapodomorpha"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_1437010","label":"Boreoeutheria"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_1547233","label":"Xenoturbellidae"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_207598","label":"Homininae"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_2759","label":"Eukaryota"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_314146","label":"Euarchontoglires"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_314293","label":"Simiiformes"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_314295","label":"Hominoidea"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_32523","label":"Tetrapoda"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_32524","label":"Amniota"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_32525","label":"Theria \u003cmammals\u003e"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_33154","label":"Opisthokonta"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_33208","label":"Metazoa"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_33213","label":"Bilateria"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_33511","label":"Deuterostomia"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_376913","label":"Haplorrhini"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_40674","label":"Mammalia"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_6040","label":"Porifera"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_6072","label":"Eumetazoa"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_7711","label":"Chordata"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_7742","label":"Vertebrata \u003cvertebrates\u003e"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_7776","label":"Gnathostomata \u003cvertebrates\u003e"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_8287","label":"Sarcopterygii"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_89593","label":"Craniata \u003cchordates\u003e"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9347","label":"Eutheria"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9443","label":"Primates"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9526","label":"Catarrhini"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9604","label":"Hominidae"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9605","label":"Homo"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/NCBITaxon_9606","label":"Homo sapiens"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/OGMS_0000031","label":"disease"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0000001","label":"quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0000051","label":"morphology"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0000141","label":"structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0001018","label":"physical quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0001241","label":"physical object quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0001992","label":"cellularity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0001993","label":"multicellular"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0001995","label":"organismal quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0002198","label":"quality of a substance"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/PATO_0010001","label":"disconnected"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000000","label":"processual entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000061","label":"anatomical structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000062","label":"organ"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000066","label":"fully formed stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000068","label":"embryo stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000071","label":"death stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000092","label":"post-embryonic stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000104","label":"life cycle"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000105","label":"life cycle stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000106","label":"zygote stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000107","label":"cleavage stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000108","label":"blastula stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000109","label":"gastrula stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000110","label":"neurula stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000111","label":"organogenesis stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000463","label":"organism substance"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000465","label":"material anatomical entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000466","label":"immaterial anatomical entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000467","label":"anatomical system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000468","label":"multicellular organism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000474","label":"female reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000922","label":"embryo"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000949","label":"endocrine system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000990","label":"reproductive system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0000991","label":"gonad"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0001016","label":"nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0001048","label":"primordium"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0001062","label":"anatomical entity"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0002050","label":"embryonic structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0002368","label":"endocrine gland"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0002530","label":"gland"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0003100","label":"female organism"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0003133","label":"reproductive organ"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0005156","label":"reproductive structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0005423","label":"developing anatomical structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0005564","label":"gonad primordium"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0006598","label":"presumptive structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0006984","label":"anatomical surface"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0010000","label":"multicellular anatomical structure"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0010199","label":"bona-fide anatomical boundary"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0015203","label":"non-connected functional system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0015204","label":"glandular system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0016880","label":"future nervous system"}
+{"ontologyId":"gitissue502","id":"gitissue502+class+http://purl.obolibrary.org/obo/UBERON_0034923","label":"disconnected anatomical group"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000050","label":"part of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000051","label":"has part"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000062","label":"preceded by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000063","label":"precedes"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000066","label":"occurs in"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/BFO_0000067","label":"contains process"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/IAO_0000115","label":"IAO_0000115"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/IAO_0000116","label":"IAO_0000116"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/IAO_0000233","label":"IAO_0000233"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/IAO_0006012","label":"IAO_0006012"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000052","label":"characteristic of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000053","label":"has characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000053","label":"has characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000056","label":"participates in"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000057","label":"has participant"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000079","label":"function of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000080","label":"quality of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000081","label":"role of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000085","label":"has function"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000086","label":"has quality"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000087","label":"has role"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000091","label":"has disposition"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0000092","label":"disposition of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002000","label":"2D boundary of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002002","label":"has 2D boundary"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002013","label":"has regulatory component activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002014","label":"has negative regulatory component activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002015","label":"has positive regulatory component activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002017","label":"has component activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002018","label":"has component process"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002022","label":"directly regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002023","label":"directly negatively regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002024","label":"directly positively regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002025","label":"has effector activity"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002081","label":"before or simultaneous with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002082","label":"simultaneous with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002086","label":"ends after"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002087","label":"immediately preceded by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002090","label":"immediately precedes"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002131","label":"overlaps"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002160","label":"only in taxon"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002162","label":"in taxon"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002175","label":"RO_0002175"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002180","label":"has component"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002202","label":"develops from"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002203","label":"develops into"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002207","label":"directly develops from"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002210","label":"directly develops into"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002211","label":"regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002212","label":"negatively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002213","label":"positively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002215","label":"capable of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002216","label":"capable of part of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002222","label":"temporally related to"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002223","label":"starts"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002224","label":"starts with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002225","label":"develops from part of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002229","label":"ends"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002230","label":"ends with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002231","label":"has start location"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002232","label":"has end location"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002233","label":"has input"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002254","label":"has developmental contribution from"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002255","label":"developmentally contributes to"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002258","label":"developmentally preceded by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002263","label":"acts upstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002264","label":"acts upstream of or within"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002286","label":"developmentally succeeded by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002287","label":"part of developmental precursor of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002304","label":"causally upstream of, positive effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002305","label":"causally upstream of, negative effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002327","label":"enables"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002331","label":"involved in"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002333","label":"enabled by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002334","label":"regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002335","label":"negatively regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002336","label":"positively regulated by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002352","label":"input of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002384","label":"has developmental potential involving"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002385","label":"has potential to developmentally contribute to"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002387","label":"has potential to develop into"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002388","label":"has potential to directly develop into"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002404","label":"causally downstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002405","label":"immediately causally downstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002407","label":"indirectly positively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002409","label":"indirectly negatively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002411","label":"causally upstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002412","label":"immediately causally upstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002418","label":"causally upstream of or within"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002427","label":"causally downstream of or within"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002428","label":"involved in regulation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002429","label":"involved in positive regulation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002430","label":"involved in negative regulation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002431","label":"involved in or involved in regulation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002434","label":"interacts with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002436","label":"molecularly interacts with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002447","label":"phosphorylates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002448","label":"directly regulates activity of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002449","label":"directly negatively regulates activity of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002450","label":"directly positively regulates activity of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002473","label":"composed primarily of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002479","label":"has part that occurs in"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002487","label":"relation between physical entity and a process or stage"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002488","label":"existence starts during"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002489","label":"existence starts with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002490","label":"existence overlaps"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002492","label":"existence ends during"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002493","label":"existence ends with"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002494","label":"transformation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002495","label":"immediate transformation of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002496","label":"existence starts during or after"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002497","label":"existence ends during or before"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002500","label":"causal agent in process"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002501","label":"causal relation between processes"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002506","label":"causal relation between entities"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002559","label":"causally influenced by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002566","label":"causally influences"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002578","label":"directly regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002584","label":"has part structure that is capable of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002595","label":"causal relation between material entity and a process"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002596","label":"capable of regulating"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002597","label":"capable of negatively regulating"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002598","label":"capable of positively regulating"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002608","label":"process has causal agent"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002629","label":"directly positively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0002630","label":"directly negatively regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0003000","label":"produces"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0003001","label":"produced by"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004019","label":"disease has basis in"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004021","label":"disease caused by disruption of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004021","label":"disease has basis in disruption of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004023","label":"causal relationship with disease as subject"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004024","label":"disease causes disruption of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004024","label":"disease disrupts"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004026","label":"disease has location"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004029","label":"disease has feature"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004032","label":"acts upstream of or within, positive effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004033","label":"acts upstream of or within, negative effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004034","label":"acts upstream of, positive effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004035","label":"acts upstream of, negative effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004046","label":"causally upstream of or within, negative effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0004047","label":"causally upstream of or within, positive effect"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0011002","label":"regulates activity of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0012011","label":"indirectly causally upstream of"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0012012","label":"indirectly regulates"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0019000","label":"regulates characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0019001","label":"positively regulates characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/RO_0019002","label":"negatively regulates characteristic"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/mondo#excluded_subClassOf","label":"excluded_subClassOf"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.obolibrary.org/obo/mondo#should_conform_to","label":"should_conform_to"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.org/dc/elements/1.1/date","label":"date"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.org/dc/terms/conformsTo","label":"conformsTo"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://purl.org/dc/terms/creator","label":"creator"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym","label":"hasBroadSynonym"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasDbXref","label":"hasDbXref"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasExactSynonym","label":"hasExactSynonym"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym","label":"hasNarrowSynonym"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym","label":"hasRelatedSynonym"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#hasSynonymType","label":"hasSynonymType"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#id","label":"id"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#inSubset","label":"inSubset"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#shorthand","label":"shorthand"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.geneontology.org/formats/oboInOwl#source","label":"source"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.w3.org/2000/01/rdf-schema#label","label":"label"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.w3.org/2004/02/skos/core#closeMatch","label":"closeMatch"}
+{"ontologyId":"gitissue502","id":"gitissue502+property+http://www.w3.org/2004/02/skos/core#exactMatch","label":"exactMatch"}

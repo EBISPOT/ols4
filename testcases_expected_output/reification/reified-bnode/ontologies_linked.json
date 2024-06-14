@@ -2,6 +2,8 @@
   "ontologies": [
     {
       "ontologyId": "reified-bnode",
+      "importsFrom": [],
+      "exportsTo": [],
       "iri": "http://example.com/reified-bnode",
       "preferredPrefix": "reified-bnode",
       "ontology_purl": "./testcases/reification/reified-bnode.owl",
@@ -64,6 +66,44 @@
         ],
         "value": "1"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        }
+      ],
       "classes": [
         {
           "iri": "http://example.com/reified-bnode#cell",
@@ -77,20 +117,6 @@
             ],
             "value": "cell"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -117,20 +143,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
@@ -202,17 +214,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "cell"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -228,7 +240,17 @@
                 ],
                 "value": "part_of"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "part:of"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             },
             "http://example.com/reified-bnode#cell_part": {
               "numAppearsIn": "1",
@@ -239,7 +261,16 @@
                 ],
                 "value": "cell_part"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "cell:part"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           }
         },
@@ -255,20 +286,6 @@
             ],
             "value": "cell:part"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -295,26 +312,15 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+          "hierarchicalProperty": {
             "type": [
-              "reification"
+              "literal"
             ],
-            "value": {
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+            {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
@@ -325,17 +331,33 @@
                 "value": "false"
               }
             },
-            "axioms": [
-              {
-                "http://www.w3.org/2000/01/rdf-schema#comment": {
+            {
+              "type": [
+                "reification"
+              ],
+              "value": {
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+                "isObsolete": {
                   "type": [
                     "literal"
                   ],
-                  "value": "This is an annotation on a property with a bnode value"
+                  "value": "false"
                 }
-              }
-            ]
-          },
+              },
+              "axioms": [
+                {
+                  "http://www.w3.org/2000/01/rdf-schema#comment": {
+                    "type": [
+                      "literal"
+                    ],
+                    "value": "This is an annotation on a property with a bnode value"
+                  }
+                }
+              ]
+            }
+          ],
           "imported": {
             "type": [
               "literal"
@@ -406,17 +428,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "cell_part"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -432,7 +454,17 @@
                 ],
                 "value": "part_of"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "part:of"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             },
             "http://example.com/reified-bnode#cell": {
               "numAppearsIn": "1",
@@ -443,7 +475,16 @@
                 ],
                 "value": "cell"
               },
-              "type": "class"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "cell"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           }
         }
@@ -452,8 +493,9 @@
         {
           "iri": "http://example.com/reified-bnode#part_of",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -461,20 +503,6 @@
             ],
             "value": "part:of"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -500,20 +528,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": {
             "type": [
@@ -569,17 +583,17 @@
             ],
             "value": "reified-bnode"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "part_of"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
