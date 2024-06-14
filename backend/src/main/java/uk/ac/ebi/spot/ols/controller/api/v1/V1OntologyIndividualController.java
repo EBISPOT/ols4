@@ -37,7 +37,7 @@ import java.util.Arrays;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Tag(name = "Ontology Individual Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+        "For example, the IRI http://purl.obolibrary.org/obo/IAO_0000124 should be encoded as http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124.")
 @RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyIndividualController {
@@ -59,10 +59,22 @@ public class V1OntologyIndividualController {
 
     @RequestMapping(path = "/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
+                    example = "iao") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the individual, it should exist in the specified ontology by {onto} param.",
+                    example = "IAO_0000124") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the individual, it should exist in the specified ontology by {onto} param.",
+                    example = "IAO:0000124") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -94,8 +106,14 @@ public class V1OntologyIndividualController {
 
     @RequestMapping(path = "/{onto}/individuals/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Individual>> getIndividual(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
+                    example = "iao") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
@@ -107,8 +125,14 @@ public class V1OntologyIndividualController {
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/types", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getDirectTypes(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
+                    example = "iao") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -123,8 +147,14 @@ public class V1OntologyIndividualController {
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/alltypes", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> ancestors(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
+                    example = "iao") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -137,8 +167,14 @@ public class V1OntologyIndividualController {
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/jstree", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<String> getJsTree(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
+                    example = "iao") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();
