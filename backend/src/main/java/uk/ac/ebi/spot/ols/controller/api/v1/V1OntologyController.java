@@ -76,7 +76,10 @@ public class V1OntologyController implements
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Ontology>> getOntology(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            @PathVariable("onto") String ontologyId) throws ResourceNotFoundException {
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
         V1Ontology document = ontologyRepository.get(ontologyId, lang);
         if (document == null) throw new ResourceNotFoundException();

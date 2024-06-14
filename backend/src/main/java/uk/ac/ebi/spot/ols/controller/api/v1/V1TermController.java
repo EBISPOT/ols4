@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Tag(name = "Terms Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+        "For example, the IRI http://purl.obolibrary.org/obo/DUO_0000017 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017.")
 @RestController
 @RequestMapping("/api/terms")
 @ExposesResourceFor(V1Term.class)
@@ -44,7 +44,10 @@ public class V1TermController implements
     V1TermAssembler termAssembler;
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri") String termId,
+    private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri")
+                                                         @Parameter(name = "iri",
+                                                                     description = "The IRI of the term, this value must be double URL encoded",
+                                                                     example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
                                                          @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                          @Parameter(hidden = true) Pageable pageable,
                                                          @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -58,10 +61,21 @@ public class V1TermController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> getTerms(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -92,7 +106,10 @@ public class V1TermController implements
     }
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri") String termId,
+    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri")
+                                                                             @Parameter(name = "iri",
+                                                                                         description = "The IRI of the term, this value must be double URL encoded",
+                                                                                         example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
                                                                              @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                                                              @Parameter(hidden = true) Pageable pageable,
                                                                              @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -105,10 +122,21 @@ public class V1TermController implements
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
