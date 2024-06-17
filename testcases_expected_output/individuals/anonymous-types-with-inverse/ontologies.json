@@ -65,6 +65,38 @@
         ],
         "value": "2"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        }
+      ],
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
@@ -78,20 +110,6 @@
             ],
             "value": "A"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -118,20 +136,12 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
@@ -214,17 +224,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "A"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
@@ -232,8 +242,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -241,22 +252,7 @@
             ],
             "value": "inverseRelation"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
-          "directAncestor": "http://www.w3.org/2002/07/owl#topObjectProperty",
-          "directParent": "http://www.w3.org/2002/07/owl#topObjectProperty",
+          "directAncestor": [],
           "hasDirectChildren": {
             "type": [
               "literal"
@@ -267,7 +263,7 @@
             "type": [
               "literal"
             ],
-            "value": "true"
+            "value": "false"
           },
           "hasHierarchicalChildren": {
             "type": [
@@ -281,20 +277,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
@@ -352,24 +334,25 @@
             ],
             "value": "individuals-anonymous-types-with-inverse"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "inverseRelation"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -377,22 +360,7 @@
             ],
             "value": "relation"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
-          "directAncestor": "http://www.w3.org/2002/07/owl#topObjectProperty",
-          "directParent": "http://www.w3.org/2002/07/owl#topObjectProperty",
+          "directAncestor": [],
           "hasDirectChildren": {
             "type": [
               "literal"
@@ -403,7 +371,7 @@
             "type": [
               "literal"
             ],
-            "value": "true"
+            "value": "false"
           },
           "hasHierarchicalChildren": {
             "type": [
@@ -417,20 +385,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
@@ -488,17 +442,17 @@
             ],
             "value": "individuals-anonymous-types-with-inverse"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "relation"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
@@ -506,8 +460,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
           "type": [
-            "entity",
-            "individual"
+            "individual",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -515,20 +469,6 @@
             ],
             "value": "a"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -554,20 +494,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             {
@@ -646,17 +572,17 @@
               "value": "false"
             }
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "a"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ]

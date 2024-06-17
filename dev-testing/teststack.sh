@@ -51,7 +51,7 @@ function process_config {
     local absolute_out_dir=$(realpath -s $relative_out_dir)
     echo "absolute_out_dir="$absolute_out_dir
 
-    $OLS4_HOME/dataload/create_datafiles.sh $config_url $absolute_out_dir
+    $OLS4_HOME/dataload/create_datafiles.sh $config_url $absolute_out_dir --noDates
 
     $OLS4_HOME/dev-testing/load_test_into_solr.sh $absolute_out_dir
   else

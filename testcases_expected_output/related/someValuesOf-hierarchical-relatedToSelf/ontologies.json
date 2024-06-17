@@ -68,6 +68,38 @@
         ],
         "value": "1"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#A",
@@ -81,20 +113,6 @@
             ],
             "value": "A"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -121,20 +139,12 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
@@ -201,17 +211,17 @@
             ],
             "value": "related-someValuesOf-hierarchical-relatedToSelf"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "A"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
@@ -219,8 +229,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -228,20 +239,6 @@
             ],
             "value": "r"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -267,20 +264,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "imported": {
             "type": [
@@ -336,17 +319,17 @@
             ],
             "value": "related-someValuesOf-hierarchical-relatedToSelf"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "r"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],
