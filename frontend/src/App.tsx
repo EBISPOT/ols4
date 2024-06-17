@@ -21,6 +21,7 @@ import EntityPage from "./pages/ontologies/entities/EntityPage";
 import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
 import {Helmet} from "react-helmet";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 class App extends React.Component {
   render() {
@@ -100,6 +101,17 @@ export default App;
 function RedirectToClasses() {
   const params = useParams();
   const [search] = useSearchParams();
+  const entityIri = search.get("iri")
+  if(entityIri) {
+    return (
+      <Navigate
+        to={{
+          pathname: `/ontologies/${params.ontologyId}/entities/${encodeURIComponent(encodeURIComponent(entityIri))}`,
+          search: search.toString(),
+        }}
+      />
+    );
+  }
   return (
     <Navigate
       to={{
@@ -138,14 +150,14 @@ function RedirectToType() {
         to={{
           pathname: `/ontologies/${
             params.ontologyId
-          }/${entity.getTypePlural()}/${encodeURIComponent(
+          }/${entity.getTypePlural()}/${
             encodeURIComponent(params.entityIri as string)
-          )}`,
+          }`,
           search: search.toString(),
         }}
       />
     );
   } else {
-    return <Home />;
+    return <LoadingOverlay />
   }
 }
