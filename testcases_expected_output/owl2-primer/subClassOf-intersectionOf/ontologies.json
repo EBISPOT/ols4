@@ -65,6 +65,32 @@
         ],
         "value": "0"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
       "classes": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
@@ -78,20 +104,6 @@
             ],
             "value": "Grandfather"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -122,23 +134,35 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
           ],
           "hierarchicalParent": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-          ],
-          "hierarchicalProperty": [
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+                }
+              ]
             },
             {
               "type": [
-                "literal"
+                "reification"
               ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+                }
+              ]
             }
           ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
@@ -227,17 +251,17 @@
               ]
             }
           ],
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Grandfather"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -252,20 +276,6 @@
             ],
             "value": "Man"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -292,20 +302,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
@@ -373,17 +369,17 @@
               "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
             ]
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Man"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         },
         {
@@ -398,20 +394,6 @@
             ],
             "value": "Parent"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -438,20 +420,6 @@
             "value": "false"
           },
           "hierarchicalAncestor": [],
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
@@ -519,17 +487,17 @@
               "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
             ]
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "Parent"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           }
         }
       ],

@@ -1,8 +1,8 @@
 {
   "ontologies": [
     {
-      "id": "efo",
-      "preferredPrefix": "EFO",
+      "id": "efo-hierarchical-properties",
+      "preferredPrefix": "efo-hierarchical-properties",
       "title": "Experimental Factor Ontology",
       "uri": "http://www.ebi.ac.uk/efo",
       "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",

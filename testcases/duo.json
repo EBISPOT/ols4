@@ -1,0 +1,69 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "build": {
+        "checkout": "git clone https://github.com/EBISPOT/duo.git",
+        "path": ".",
+        "system": "git"
+      },
+      "contact": {
+        "email": "mcourtot@gmail.com",
+        "github": "mcourtot",
+        "label": "Melanie Courtot",
+        "orcid": "0000-0002-9551-6370"
+      },
+      "dependencies": [
+        {
+          "id": "bfo"
+        },
+        {
+          "id": "iao"
+        }
+      ],
+      "description": "DUO is an ontology which represent data use conditions.",
+      "domain": "information",
+      "homepage": "https://github.com/EBISPOT/DUO",
+      "id": "duo",
+      "jobs": [
+        {
+          "id": "https://travis-ci.org/EBISPOT/DUO",
+          "type": "travis-ci"
+        }
+      ],
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 4.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl",
+      "preferredPrefix": "DUO",
+      "products": [
+        {
+          "id": "duo.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl"
+        }
+      ],
+      "repository": "https://github.com/EBISPOT/DUO",
+      "title": "Data Use Ontology",
+      "tracker": "https://github.com/EBISPOT/DUO/issues",
+      "preferred_root_term": [
+	    "http://purl.obolibrary.org/obo/DUO_0000001",
+	    "http://purl.obolibrary.org/obo/DUO_0000017",
+	    "http://purl.obolibrary.org/obo/OBI_0000066"
+      ]
+    }
+  ]
+}

@@ -2,6 +2,8 @@
   "ontologies": [
     {
       "ontologyId": "owl2primer-alldisjointobjectproperties",
+      "importsFrom": [],
+      "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl",
       "preferredPrefix": "owl2primer-allDisjointObjectProperties",
       "ontology_purl": "./testcases/owl2-primer/allDisjointObjectProperties.owl",
@@ -65,13 +67,40 @@
         ],
         "value": "3"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        }
+      ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -79,20 +108,6 @@
             ],
             "value": "propA"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -118,20 +133,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
@@ -191,17 +192,17 @@
             ],
             "value": "owl2primer-allDisjointObjectProperties"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "propA"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -217,7 +218,17 @@
                 ],
                 "value": "propC"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propC"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": {
               "numAppearsIn": "1",
@@ -228,15 +239,26 @@
                 ],
                 "value": "propB"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propB"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             }
           }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -244,20 +266,6 @@
             ],
             "value": "propB"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -283,20 +291,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
@@ -356,17 +350,17 @@
             ],
             "value": "owl2primer-allDisjointObjectProperties"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "propB"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -382,7 +376,17 @@
                 ],
                 "value": "propC"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propC"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA": {
               "numAppearsIn": "1",
@@ -393,15 +397,26 @@
                 ],
                 "value": "propA"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propA"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             }
           }
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
           "type": [
-            "entity",
-            "property"
+            "property",
+            "objectProperty",
+            "entity"
           ],
           "curie": {
             "type": [
@@ -409,20 +424,6 @@
             ],
             "value": "propC"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -448,20 +449,6 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
@@ -521,17 +508,17 @@
             ],
             "value": "owl2primer-allDisjointObjectProperties"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
             "value": "propC"
-          },
-          "synonymProperty": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
           },
           "isDefiningOntology": false,
           "appearsIn": [
@@ -547,7 +534,17 @@
                 ],
                 "value": "propA"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propA"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": {
               "numAppearsIn": "1",
@@ -558,7 +555,17 @@
                 ],
                 "value": "propB"
               },
-              "type": "property"
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propB"
+              },
+              "type": [
+                "property",
+                "objectProperty",
+                "entity"
+              ]
             }
           }
         }
