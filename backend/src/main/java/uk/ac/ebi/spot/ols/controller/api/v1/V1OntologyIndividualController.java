@@ -37,7 +37,7 @@ import java.util.Arrays;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Tag(name = "Ontology Individual Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/IAO_0000124 should be encoded as http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124.")
+        "For example, the IRI http://purl.obolibrary.org/obo/IAO_0000103 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103.")
 @RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyIndividualController {
@@ -66,7 +66,7 @@ public class V1OntologyIndividualController {
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the individual, it should exist in the specified ontology by {onto} param.",
@@ -113,7 +113,7 @@ public class V1OntologyIndividualController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
@@ -132,7 +132,7 @@ public class V1OntologyIndividualController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -154,7 +154,7 @@ public class V1OntologyIndividualController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -174,7 +174,7 @@ public class V1OntologyIndividualController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();

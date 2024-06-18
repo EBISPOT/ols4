@@ -38,7 +38,7 @@ import java.util.Collections;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Tag(name = "Ontology Term Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
-        "For example, the IRI http://purl.obolibrary.org/obo/NCBITaxon_1205067 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067.")
+        "For example, the IRI http://purl.obolibrary.org/obo/DUO_0000017 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017.")
 @RestController
 @RequestMapping("/api/ontologies")
 public class V1OntologyTermController {
@@ -67,11 +67,25 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     private HttpEntity<PagedModel<V1Term>> termsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "obsoletes", required = false) Boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
@@ -123,7 +137,10 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms/roots", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getRoots(
-            @PathVariable("onto") String ontologyId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -141,7 +158,10 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms/preferredRoots", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getPreferredRoots(
-            @PathVariable("onto") String ontologyId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
               boolean includeObsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -161,15 +181,17 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<EntityModel<V1Term>> getTerm(@PathVariable("onto") String ontologyId,
-                                         @PathVariable("iri")
-                                         @Parameter(name = "iri",
-                                                 description = "The IRI of the terms, this value must be double URL encoded",
-                                                 example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBITaxon_1205067")
-                                         String termId,
+    HttpEntity<EntityModel<V1Term>> getTerm(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
-    )
-            throws ResourceNotFoundException {
+    ) throws ResourceNotFoundException {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -183,9 +205,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/parents", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getParents(@PathVariable("onto") String ontologyId,
-                                                  @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                  @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> getParents(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -198,9 +229,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/hierarchicalParents", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getHierarchicalParents(@PathVariable("onto") String ontologyId,
-                                                              @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                              @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> getHierarchicalParents(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -215,9 +255,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/hierarchicalAncestors", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getHierarchicalAncestors(@PathVariable("onto") String ontologyId,
-                                                                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                                @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> getHierarchicalAncestors(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -233,9 +282,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/children", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> children(@PathVariable("onto") String ontologyId,
-                                                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> children(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -250,9 +308,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/hierarchicalChildren", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getHierarchicalChildren(@PathVariable("onto") String ontologyId,
-                                                               @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                               @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> getHierarchicalChildren(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -269,9 +336,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/hierarchicalDescendants", produces =
       {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getHierarchicalDescendants(@PathVariable("onto") String ontologyId,
-                                                                  @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                                  @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable, @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> getHierarchicalDescendants(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -286,10 +362,18 @@ public class V1OntologyTermController {
     }
 
     @RequestMapping(path = "/{onto}/terms/{iri}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> descendants(@PathVariable("onto") String ontologyId,
-                                                   @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-                                                   @PathVariable("iri") String termId, @Parameter(hidden = true) Pageable pageable,
-                                                   @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+    HttpEntity<PagedModel<V1Term>> descendants(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         ontologyId = ontologyId.toLowerCase();
 
         String decoded = UriUtils.decode(termId, "UTF-8");
@@ -302,8 +386,14 @@ public class V1OntologyTermController {
     @RequestMapping(path = "/{onto}/terms/{iri}/ancestors",
         produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> ancestors(@PathVariable("onto") String ontologyId,
-                                             @PathVariable("iri") String termId,
+    HttpEntity<PagedModel<V1Term>> ancestors(@PathVariable("onto")
+                                             @Parameter(name = "onto",
+                                                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                                                     example = "duo") String ontologyId,
+                                             @PathVariable("iri")
+                                             @Parameter(name = "iri",
+                                                     description = "The IRI of the term, this value must be double URL encoded",
+                                                     example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
                                              @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                              @Parameter(hidden = true) Pageable pageable,
                                              @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -320,8 +410,14 @@ public class V1OntologyTermController {
         produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)
     HttpEntity<String> graphJsTree(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "siblings", defaultValue = "false", required = false) boolean siblings,
             @RequestParam(value = "viewMode", defaultValue = "PreferredRoots", required = false) String viewMode){
@@ -341,9 +437,18 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/jstree/children/{nodeid}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<String> graphJsTreeChildren(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
-            @PathVariable("nodeid") String jstreeId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the property, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBFO_0000051") String termId,
+            @PathVariable("nodeid")
+            @Parameter(name = "nodeid",
+                    description = "This is the id of the node in the jstree of ontology specified by {onto} parameter",
+                    example = "aHR0cDovL3B1cmwub2JvbGlicmFyeS5vcmcvb2JvL0JGT18wMDAwMDUx") String jstreeId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();
@@ -362,8 +467,14 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms/{iri}/graph", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<String> graphJson(
-            @PathVariable("onto") String ontologyId,
-            @PathVariable("iri") String termId,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
     ) {
         ontologyId = ontologyId.toLowerCase();
@@ -381,9 +492,18 @@ public class V1OntologyTermController {
     }
 
     @RequestMapping(path = "/{onto}/terms/{iri}/{property_iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> related(@PathVariable("onto") String ontologyId,
-                                           @PathVariable("iri") String termId,
-                                           @PathVariable("property_iri") String relation,
+    HttpEntity<PagedModel<V1Term>> related(@PathVariable("onto")
+                                           @Parameter(name = "onto",
+                                                   description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                                                   example = "duo") String ontologyId,
+                                           @PathVariable("iri")
+                                           @Parameter(name = "iri",
+                                                   description = "The IRI of the term, this value must be double URL encoded.",
+                                                   example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+                                           @PathVariable("property_iri")
+                                           @Parameter(name = "property_iri",
+                                                   description = "The IRI of the property, this must be double URL encoded.",
+                                                   example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String relation,
                                            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
                                            @Parameter(hidden = true) Pageable pageable,
                                            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -398,11 +518,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/children", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termChildrenByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -422,11 +556,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termDescendantsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -446,11 +594,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/hierarchicalChildren", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termHierarchicalChildrenByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -470,11 +632,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/hierarchicalDescendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termHierarchicalDescendantsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -494,11 +670,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/parents", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termParentsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -518,11 +708,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termAncestorsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -542,11 +746,25 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/hierarchicalAncestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> termHierarchicalAncestorsByOntology(
-            @PathVariable("onto") String ontologyId,
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
-            @RequestParam(value = "id", required = false) String id,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the term.",
+                    example = "DUO_0000017") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the term.",
+                    example = "DUO:0000017") String oboId,
+            @RequestParam(value = "id", required = false)
+            @Parameter(name = "id",
+                    description = "This can be any of the above i.e. iri, short_form or obo_id.") String id,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
