@@ -2,6 +2,8 @@
   "ontologies": [
     {
       "ontologyId": "owl2primer-minimal",
+      "importsFrom": [],
+      "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl",
       "preferredPrefix": "owl2primer-minimal",
       "ontology_purl": "./testcases/owl2-primer/minimal.owl",
@@ -65,6 +67,26 @@
         ],
         "value": "0"
       },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
       "classes": [],
       "properties": [],
       "individuals": [],

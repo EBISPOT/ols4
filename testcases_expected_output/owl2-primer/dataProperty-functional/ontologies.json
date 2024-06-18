@@ -45,13 +45,13 @@
         "type": [
           "literal"
         ],
-        "value": "0"
+        "value": "1"
       },
       "numberOfEntities": {
         "type": [
           "literal"
         ],
-        "value": "1"
+        "value": "2"
       },
       "numberOfIndividuals": {
         "type": [
@@ -65,34 +65,51 @@
         ],
         "value": "1"
       },
-      "classes": [],
-      "properties": [
+      "searchableAnnotationValues": [
         {
-          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-functional.owl#hasAge",
           "type": [
-            "entity",
-            "property"
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        }
+      ],
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-functional.owl#Dummy",
+          "type": [
+            "class",
+            "entity"
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "hasAge"
+            "value": "Dummy"
           },
-          "definitionProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/IAO_0000115"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#description"
-            }
-          ],
           "directAncestor": [],
           "hasDirectChildren": {
             "type": [
@@ -118,24 +135,8 @@
             ],
             "value": "false"
           },
-          "hierarchicalProperty": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://purl.obolibrary.org/obo/BFO_0000050"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-            }
-          ],
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#DatatypeProperty",
-            "http://www.w3.org/2002/07/owl#FunctionalProperty"
-          ],
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "imported": {
             "type": [
               "literal"
@@ -158,7 +159,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasAge"
+            "value": "Dummy"
           },
           "numDirectDescendants": {
             "type": [
@@ -190,17 +191,128 @@
             ],
             "value": "owl2primer-dataProperty-functional"
           },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
           "shortForm": {
             "type": [
               "literal"
             ],
-            "value": "hasAge"
-          },
-          "synonymProperty": {
+            "value": "Dummy"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-functional.owl#numberOfChildren",
+          "type": [
+            "dataProperty",
+            "property",
+            "entity"
+          ],
+          "curie": {
             "type": [
               "literal"
             ],
-            "value": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+            "value": "numberOfChildren"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#DatatypeProperty",
+            "http://www.w3.org/2002/07/owl#FunctionalProperty"
+          ],
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "numberOfChildren"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-dataproperty-functional"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/owl2primer/dataProperty-functional.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "owl2primer-dataProperty-functional"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "numberOfChildren"
           }
         }
       ],
