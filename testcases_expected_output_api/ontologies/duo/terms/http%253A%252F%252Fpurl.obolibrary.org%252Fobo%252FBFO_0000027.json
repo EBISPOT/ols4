@@ -1,0 +1,75 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000027",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "BFO CLIF specification label": [
+      "ObjectAggregate"
+    ],
+    "BFO OWL specification label": [
+      "object-aggregate"
+    ],
+    "definition source": [
+      "ISBN:978-3-938793-98-5pp124-158#Thomas Bittner and Barry Smith, 'A Theory of Granular Partitions', in K. Munn and B. Smith (eds.), Applied Ontology: An Introduction, Frankfurt/Lancaster: ontos, 2008, 125-158."
+    ],
+    "editor note": [
+      "BFO 2 Reference: object aggregates may gain and lose parts while remaining numerically identical (one and the same individual) over time. This holds both for aggregates whose membership is determined naturally (the aggregate of cells in your body) and aggregates determined by fiat (a baseball team, a congressional committee)."
+    ],
+    "elucidation": [
+      "b is an object aggregate means: b is a material entity consisting exactly of a plurality of objects as member_parts at all times at which b exists. (axiom label in BFO2 Reference: [025-004])"
+    ],
+    "example of usage": [
+      "a collection of cells in a blood biobank.",
+      "a swarm of bees is an aggregate of members who are linked together through natural bonds",
+      "a symphony orchestra",
+      "an organization is an aggregate whose member parts have roles of specific types (for example in a jazz band, a chess club, a football team)",
+      "defined by fiat: the aggregate of members of an organization",
+      "defined through physical attachment: the aggregate of atoms in a lump of granite",
+      "defined through physical containment: the aggregate of molecules of carbon dioxide in a sealed container",
+      "defined via attributive delimitations such as: the patients in this hospital",
+      "the aggregate of bearings in a constant velocity axle joint",
+      "the aggregate of blood cells in your body",
+      "the nitrogen atoms in the atmosphere",
+      "the restaurants in Palo Alto",
+      "your collection of Meissen ceramic plates."
+    ],
+    "has associated axiom(fol)": [
+      "(forall (x) (if (ObjectAggregate x) (and (MaterialEntity x) (forall (t) (if (existsAt x t) (exists (y z) (and (Object y) (Object z) (memberPartOfAt y x t) (memberPartOfAt z x t) (not (= y z)))))) (not (exists (w t_1) (and (memberPartOfAt w x t_1) (not (Object w)))))))) // axiom label in BFO2 CLIF: [025-004] "
+    ]
+  },
+  "label": "object aggregate",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "BFO_0000027",
+  "obo_id": "BFO:0000027",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000027/graph"
+    }
+  }
+}

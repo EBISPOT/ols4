@@ -1,0 +1,35 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000419",
+  "lang": "en",
+  "description": [
+    "inverse of the relation of is quality specification of"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "2009/10/19 Alan Ruttenberg. Named 'junk' relation useful in restrictions, but not a real instance relationship"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "Person:Alan Ruttenberg",
+      "Person:Bjoern Peters"
+    ]
+  },
+  "label": "quality is specified as",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000419",
+  "obo_id": "IAO:0000419",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000419?lang=en"
+    }
+  }
+}

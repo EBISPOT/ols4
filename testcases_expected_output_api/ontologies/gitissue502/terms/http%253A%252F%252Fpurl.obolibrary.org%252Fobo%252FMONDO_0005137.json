@@ -1,0 +1,170 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0005137",
+  "lang": "en",
+  "description": [
+    "Any condition related to a disturbance between proper intake and utilization of nourishment."
+  ],
+  "synonyms": [
+    "nutritional disorder",
+    "nutrition disease"
+  ],
+  "annotation": {
+    "excluded_subClassOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0005066",
+      "http://purl.obolibrary.org/obo/MONDO_0006504"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D009748",
+      "http://identifiers.org/snomedct/2492009",
+      "http://linkedlifedata.com/resource/umls/id/C3714509",
+      "http://purl.obolibrary.org/obo/DOID_374",
+      "http://purl.obolibrary.org/obo/NCIT_C26836"
+    ],
+    "hasDbXref": [
+      "DOID:374",
+      "EFO:0001069",
+      "ICD9:783.9",
+      "MESH:D009748",
+      "NCIT:C26836",
+      "SCTID:2492009",
+      "UMLS:C3714509"
+    ],
+    "id": [
+      "MONDO:0005137"
+    ]
+  },
+  "label": "nutritional disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0005137",
+  "obo_id": "MONDO:0005137",
+  "in_subset": [
+    "harrisons_view",
+    "rare_grouping"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "Any condition related to a disturbance between proper intake and utilization of nourishment.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26836",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "374",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_374"
+    },
+    {
+      "database": "EFO",
+      "id": "0001069",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0001069"
+    },
+    {
+      "database": "ICD9",
+      "id": "783.9",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "MESH",
+      "id": "D009748",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D009748"
+    },
+    {
+      "database": "NCIT",
+      "id": "C26836",
+      "description": "MONDO:exact-label-match",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+    },
+    {
+      "database": "SCTID",
+      "id": "2492009",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/2492009"
+    },
+    {
+      "database": "UMLS",
+      "id": "C3714509",
+      "description": "NCIT:C26836",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C3714509"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "nutritional disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "374",
+          "url": "http://purl.obolibrary.org/obo/DOID_374"
+        },
+        {
+          "database": "NCIT",
+          "id": "C26836",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+        }
+      ]
+    },
+    {
+      "name": "nutrition disease",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "374",
+          "url": "http://purl.obolibrary.org/obo/DOID_374"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/graph"
+    }
+  }
+}

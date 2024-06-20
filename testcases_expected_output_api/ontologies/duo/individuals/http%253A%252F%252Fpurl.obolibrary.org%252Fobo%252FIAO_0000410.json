@@ -1,0 +1,44 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000410",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "A Formal Theory of Substances, Qualities, and Universals, http://ontology.buffalo.edu/bfo/SQU.pdf"
+    ],
+    "editor note": [
+      "Hard to give a definition for. Intuitively a \"natural kind\" rather than a collection of any old things, which a class is able to be, formally. At the meta level, universals are defined as positives, are disjoint with their siblings, have single asserted parents."
+    ],
+    "editor preferred term": [
+      "universal"
+    ],
+    "term editor": [
+      "Alan Ruttenberg"
+    ]
+  },
+  "label": "universal",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000410",
+  "obo_id": "IAO:0000410",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000410?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000410/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000410/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000410/jstree"
+    }
+  }
+}

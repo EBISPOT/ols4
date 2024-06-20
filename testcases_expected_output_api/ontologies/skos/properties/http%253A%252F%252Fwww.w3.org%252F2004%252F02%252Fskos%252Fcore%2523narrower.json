@@ -1,0 +1,45 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#narrower",
+  "lang": "en",
+  "description": [
+    "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "Relates a concept to a concept that is more specific in meaning."
+    ],
+    "scope note": [
+      "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."
+    ]
+  },
+  "label": "has narrower",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "narrower",
+  "obo_id": "narrower",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/descendants"
+    }
+  }
+}

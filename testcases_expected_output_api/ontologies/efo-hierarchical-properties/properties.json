@@ -1,0 +1,907 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050?lang=en"
+      }
+    },
+    "annotation": {
+      "EFO_URI": [
+        "http://www.ebi.ac.uk/efo/part_of"
+      ],
+      "IAO_0000111": [
+        "is part of"
+      ],
+      "IAO_0000112": [
+        "my brain is part of my body (continuant parthood, two material entities)",
+        "my stomach cavity is part of my stomach (continuant parthood, immaterial entity is part of material entity)",
+        "this day is part of this year (occurrent parthood)"
+      ],
+      "IAO_0000116": [
+        "Everything is part of itself. Any part of any part of a thing is itself part of that thing. Two distinct things cannot be part of each other.",
+        "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+        "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See https://code.google.com/p/obo-relations/wiki/ROAndTime",
+        "Parthood requires the part and the whole to have compatible classes: only an occurrent can be part of an occurrent; only a process can be part of a process; only a continuant can be part of a continuant; only an independent continuant can be part of an independent continuant; only an immaterial entity can be part of an immaterial entity; only a specifically dependent continuant can be part of a specifically dependent continuant; only a generically dependent continuant can be part of a generically dependent continuant. (This list is not exhaustive.)\n\nA continuant cannot be part of an occurrent: use 'participates in'. An occurrent cannot be part of a continuant: use 'has participant'. A material entity cannot be part of an immaterial entity: use 'has location'. A specifically dependent continuant cannot be part of an independent continuant: use 'inheres in'. An independent continuant cannot be part of a specifically dependent continuant: use 'bearer of'."
+      ],
+      "IAO_0000118": [
+        "part_of"
+      ],
+      "RO_0001900": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ],
+      "RO_0040042": [
+        "http://purl.obolibrary.org/obo/BFO_0000002",
+        "http://purl.obolibrary.org/obo/BFO_0000003",
+        "http://purl.obolibrary.org/obo/BFO_0000004",
+        "http://purl.obolibrary.org/obo/BFO_0000017",
+        "http://purl.obolibrary.org/obo/BFO_0000019",
+        "http://purl.obolibrary.org/obo/BFO_0000020",
+        "http://purl.obolibrary.org/obo/BFO_0000031"
+      ],
+      "hasDbXref": [
+        "BFO:0000050",
+        "OBO_REL:part_of"
+      ],
+      "hasOBONamespace": [
+        "external",
+        "human_stages_ontology",
+        "protein",
+        "quality",
+        "relationship",
+        "uberon"
+      ],
+      "id": [
+        "part_of"
+      ],
+      "seeAlso": [
+        "http://ontologydesignpatterns.org/wiki/Community:Parts_and_Collections",
+        "http://ontologydesignpatterns.org/wiki/Submissions:PartOf"
+      ],
+      "shorthand": [
+        "part_of"
+      ]
+    },
+    "description": [
+      "a core relation that holds between a part and its whole"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "part of",
+    "lang": "en",
+    "obo_id": "BFO:0000050",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "BFO_0000050",
+    "synonyms": [
+      "part of"
+    ]
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051?lang=en"
+      }
+    },
+    "annotation": {
+      "EFO_URI": [
+        "http://www.ebi.ac.uk/efo/has_part"
+      ],
+      "hasDbXref": [
+        "BFO:0000051"
+      ],
+      "shorthand": [
+        "has_part"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has part",
+    "lang": "en",
+    "obo_id": "BFO:0000051",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "BFO_0000051",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000111?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000111",
+    "lang": "en",
+    "obo_id": "IAO:0000111",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000111",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000112?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000112",
+    "lang": "en",
+    "obo_id": "IAO:0000112",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000112",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000115?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000115",
+    "lang": "en",
+    "obo_id": "IAO:0000115",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000115",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000116?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000116",
+    "lang": "en",
+    "obo_id": "IAO:0000116",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000116",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000118",
+    "lang": "en",
+    "obo_id": "IAO:0000118",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000118",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000232?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000232",
+    "lang": "en",
+    "obo_id": "IAO:0000232",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "IAO_0000232",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001900?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001900",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "RO_0001900",
+    "lang": "en",
+    "obo_id": "RO:0001900",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "RO_0001900",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002174?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0002174",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "RO_0002174",
+    "lang": "en",
+    "obo_id": "RO:0002174",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "RO_0002174",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0040042?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0040042",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "RO_0040042",
+    "lang": "en",
+    "obo_id": "RO:0040042",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "RO_0040042",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000001?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000001",
+    "lang": "en",
+    "obo_id": "UBPROP:0000001",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000002?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000002",
+    "lang": "en",
+    "obo_id": "UBPROP:0000002",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000002",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000003?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000003",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000003",
+    "lang": "en",
+    "obo_id": "UBPROP:0000003",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000003",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000007?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000007",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000007",
+    "lang": "en",
+    "obo_id": "UBPROP:0000007",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000007",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000008?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000008",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000008",
+    "lang": "en",
+    "obo_id": "UBPROP:0000008",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000008",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000009?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000009",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000009",
+    "lang": "en",
+    "obo_id": "UBPROP:0000009",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000009",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000010?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000010",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000010",
+    "lang": "en",
+    "obo_id": "UBPROP:0000010",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000010",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000012?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000012",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000012",
+    "lang": "en",
+    "obo_id": "UBPROP:0000012",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000012",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBPROP_0000202?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBPROP_0000202",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "UBPROP_0000202",
+    "lang": "en",
+    "obo_id": "UBPROP:0000202",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "UBPROP_0000202",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_URI?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/efo/EFO_URI",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "EFO_URI",
+    "lang": "en",
+    "obo_id": "EFO:URI",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "EFO_URI",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523date_retrieved?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#date_retrieved",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "date_retrieved",
+    "lang": "en",
+    "obo_id": "date:retrieved",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "date_retrieved",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523external_class?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#external_class",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "external_class",
+    "lang": "en",
+    "obo_id": "external:class",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "external_class",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523external_ontology?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#external_ontology",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "external_ontology",
+    "lang": "en",
+    "obo_id": "external:ontology",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "external_ontology",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasAlternativeId?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasAlternativeId",
+    "lang": "en",
+    "obo_id": "hasAlternativeId",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasAlternativeId",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasBroadSynonym",
+    "lang": "en",
+    "obo_id": "hasBroadSynonym",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasBroadSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDbXref?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasDbXref",
+    "lang": "en",
+    "obo_id": "hasDbXref",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasDbXref",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasExactSynonym",
+    "lang": "en",
+    "obo_id": "hasExactSynonym",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasExactSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasOBONamespace?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasOBONamespace",
+    "lang": "en",
+    "obo_id": "hasOBONamespace",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasOBONamespace",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasRelatedSynonym",
+    "lang": "en",
+    "obo_id": "hasRelatedSynonym",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasRelatedSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSynonymType?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasSynonymType",
+    "lang": "en",
+    "obo_id": "hasSynonymType",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "hasSynonymType",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523id?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#id",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "id",
+    "lang": "en",
+    "obo_id": "id",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "id",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523inSubset?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "inSubset",
+    "lang": "en",
+    "obo_id": "inSubset",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "inSubset",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523notes?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#notes",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "notes",
+    "lang": "en",
+    "obo_id": "notes",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "notes",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ontology?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ontology",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "ontology",
+    "lang": "en",
+    "obo_id": "ontology",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "ontology",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523shorthand?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "shorthand",
+    "lang": "en",
+    "obo_id": "shorthand",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "shorthand",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523source?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#source",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "source",
+    "lang": "en",
+    "obo_id": "source",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "source",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fxmlns.com%252Ffoaf%252F0.1%252Fdepicted_by?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://xmlns.com/foaf/0.1/depicted_by",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "depicted_by",
+    "lang": "en",
+    "obo_id": "depicted:by",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-hierarchical-properties",
+    "ontology_prefix": "efo-hierarchical-properties",
+    "short_form": "depicted_by",
+    "synonyms": []
+  }
+]

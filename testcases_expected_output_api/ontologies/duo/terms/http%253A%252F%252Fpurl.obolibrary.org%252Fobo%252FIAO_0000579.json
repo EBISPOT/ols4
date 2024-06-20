@@ -1,0 +1,66 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000579",
+  "lang": "en",
+  "description": [
+    "A code set of CRID records, each consisting of a CRID symbol and additional information which was recorded in the code set through an assigning a centrally registered identifier process."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "CRID registry"
+    ],
+    "definition source": [
+      "Original proposal from Bjoern, discussions at IAO calls"
+    ],
+    "example of usage": [
+      "PubMed is a CRID registry. It has a code set of PubMed identifiers associated with journal articles. "
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "Justin Whorton",
+      "PERSON: Alan Ruttenberg",
+      "PERSON: Bill Hogan",
+      "PERSON: Bjoern Peters",
+      "PERSON: Melanie Courtot"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/237"
+    ]
+  },
+  "label": "centrally registered identifier registry",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000579",
+  "obo_id": "IAO:0000579",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000579/graph"
+    }
+  }
+}

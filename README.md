@@ -368,49 +368,70 @@ for details on how to run the frontend.
 If you make changes to the data load or API of OLS, you need to run testcases and compare it against the expected outputs 
 to ensure backward compatibility. This testing consists of 
 
-1. testing the dataload outputs by comparing test outputs to expected outputs, and
-2. API testing which compares API responses to expected responses.
+1. testing the dataload outputs by comparing test outputs to expected outputs,
+2. API testing which compares API responses to expected responses, and
+3. adding the latest expected outputs to Git.
 
 ### Testing dataload
-These tests are run locally as described in [Test testcases from dataload to UI](#test-testcases-from-dataload-to-ui)
+These tests are run locally as described in [Test testcases from dataload to UI](#test-testcases-from-dataload-to-ui).
+Ensure that the environment variables `NEO4J_HOME`, `SOLR_HOME` and `OLS4_HOME` are set up accordingly.
 
-First make sure all the JARs are up to date:
+1. First make sure all the OLS4 JARs are up to date by running :
+ 
+       mvn clean package
 
-    mvn clean package
+2. Generate new output files and import into Neo4J and Solr: 
+
+       ./dev-testing/teststack.sh ./testcases ./testcases_output
+
+3. Compare `/testcases_output` with `/testcases_expected_output`:
+
+       ./compare_testcase_output.sh
+
+4. The output of step 3 is written to `testcases_compare_result.log`. If no differences are found, this file will be empty. 
+Ensure that all differences in this file can be explained and that they do make sense.
+
+5. Once you are happy with the output in `testcases_output`, remove the old `testcases_expected_output` and replace with
+new expected output:
+
+       rm -rf testcases_expected_output
+       cp -r testcases_output testcases_expected_output
+
+6. Now continue with API testing.
+
+### Testing API
+Before doing API testing you must have completed the [dataload testing](#testing-dataload).
+
+7. Start the backend:
+
+        ./dev-testing/start-backend.sh
+
+8. Run API tests against backend using: 
+
+       ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
+
+9. The results of step 8 is written to `./apitester4.log`. Differences are written to the end of the file. When there are no
+differences, this file will end with these lines:
+
+       RecursiveJsonDiff.diff() reported success
+       apitester reported success; exit code 0
+
+10. Ensure that all differences listed in `./apitester4.log` are accounted for. Once you are happy with the output, remove 
+the old `testcases_expected_output_api` and replace with new expected output: 
+
+        rm -rf testcases_expected_output_api
+        cp -r testcases_output testcases_expected_output_api
+
+11. Add the latest expected outputs to Git:
+
+        git add -A testcases_expected_output
+        git add -A testcases_expected_output_api
+
+    **You should do this in the same commit as your code/test changes because then we can track exactly
+    what changed in the output.**
+
+12. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
+
+        ./dev-testing/stopall.sh
 
 
-To fix this, you need to replace the `testcases_expected_output` and `testcases_expected_output_api` folders with the
-new expected output. **You should do this in the same commit as your code/test changes because then we can track exactly
-what changed in the output.**
-
-First make sure all the JARs are up to date:
-
-    mvn clean package
-
-Then run the test scripts:
-
-* `./test_dataload.sh` (~1 minute) will test the dataload locally, updating `testcases_expected_output`. All you need is
-  Java and Maven.
-* `./test_api.sh` (~15 mins) will test the entire OLS4 stack (dataload → solr/neo4j → api server) using Docker compose
-  to bring up and tear down all the services for each testcase, updating `testcases_expected_output_api`. You need to
-  have Docker and Docker compose installed.
-
-To run both:
-
-    ./test_dataload.sh
-    ./test_api.sh
-
-Now remove the existing expected output:
-
-    rm -rf testcases_expected_output
-    rm -rf testcases_expected_output_api
-
-Copy your new output to the respective directories:
-
-    cp -r testcases_output testcases_expected_output
-    cp -r testcases_output_api testcases_expected_output_api
-
-You can now add it to your commit:
-
-    git add -A testcases_expected_output
-    git add -A testcases_expected_output_api

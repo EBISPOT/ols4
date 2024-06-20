@@ -1,0 +1,29 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#Concept",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "An idea or notion; a unit of thought."
+    ]
+  },
+  "label": "Concept",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "Concept",
+  "obo_id": "Concept",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept/graph"
+    }
+  }
+}

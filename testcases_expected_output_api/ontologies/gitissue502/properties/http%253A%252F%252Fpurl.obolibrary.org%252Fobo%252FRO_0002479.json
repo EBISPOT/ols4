@@ -1,0 +1,30 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002479",
+  "lang": "en",
+  "description": [
+    "p has part that occurs in c if and only if there exists some p1, such that p has_part p1, and p1 occurs in c."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "has part that occurs in",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0002479",
+  "obo_id": "RO:0002479",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479/descendants"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/xmpl/terms/http%253A%252F%252Fexmpl.org%252Fxmpl%252FXMPL000001?lang=en"
+      }
+    },
+    "annotation": {
+      "XMPL_Preferred_name": [
+        "parent class pref label"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://exmpl.org/xmpl/XMPL000001",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "XMPL000001",
+    "lang": "en",
+    "obo_id": "XMPL:XMPL000001",
+    "ontology_iri": "http://exmpl.org/xmpl/xmpl.owl",
+    "ontology_name": "xmpl",
+    "ontology_prefix": "XMPL",
+    "short_form": "XMPL_XMPL000001",
+    "synonyms": [
+      "label of the parent class"
+    ]
+  }
+]

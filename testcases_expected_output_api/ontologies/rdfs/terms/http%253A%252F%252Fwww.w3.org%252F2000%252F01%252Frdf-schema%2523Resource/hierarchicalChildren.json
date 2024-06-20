@@ -1,0 +1,140 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of classes."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Class",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Class",
+    "lang": "en",
+    "obo_id": "Class",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "Class",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of RDF containers."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Container",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Container",
+    "lang": "en",
+    "obo_id": "Container",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "Container",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of literal values, eg. textual strings and integers."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Literal",
+    "lang": "en",
+    "obo_id": "Literal",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "Literal",
+    "synonyms": []
+  }
+]

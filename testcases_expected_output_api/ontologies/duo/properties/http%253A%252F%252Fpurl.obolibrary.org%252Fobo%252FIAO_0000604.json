@@ -1,0 +1,34 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000604",
+  "lang": "en",
+  "description": [
+    "relates a class of CRID to the date after which further instances should not be made, according to the central authority"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "In OWL 2 add AnnotationPropertyRange xsd:dateTimeStamp"
+    ],
+    "editor preferred term": [
+      "retired from use as of"
+    ],
+    "term editor": [
+      "Alan Ruttenberg"
+    ]
+  },
+  "label": "retired from use as of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000604",
+  "obo_id": "IAO:0000604",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000604?lang=en"
+    }
+  }
+}

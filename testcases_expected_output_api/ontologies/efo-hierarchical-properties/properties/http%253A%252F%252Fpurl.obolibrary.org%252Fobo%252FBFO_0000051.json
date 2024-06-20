@@ -1,0 +1,32 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "EFO_URI": [
+      "http://www.ebi.ac.uk/efo/has_part"
+    ],
+    "hasDbXref": [
+      "BFO:0000051"
+    ],
+    "shorthand": [
+      "has_part"
+    ]
+  },
+  "label": "has part",
+  "ontology_name": "efo-hierarchical-properties",
+  "ontology_prefix": "efo-hierarchical-properties",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "BFO_0000051",
+  "obo_id": "BFO:0000051",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051?lang=en"
+    }
+  }
+}

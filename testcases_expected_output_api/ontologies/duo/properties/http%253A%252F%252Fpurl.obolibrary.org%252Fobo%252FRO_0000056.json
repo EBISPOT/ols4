@@ -1,0 +1,42 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000056",
+  "lang": "en",
+  "description": [
+    "a relation between a continuant and a process, in which the continuant is somehow involved in the process"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "participates_in"
+    ],
+    "editor preferred term": [
+      "participates in"
+    ],
+    "example of usage": [
+      "this blood clot participates in this blood coagulation",
+      "this input material (or this output material) participates in this process",
+      "this investigator participates in this investigation"
+    ]
+  },
+  "label": "participates in",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0000056",
+  "obo_id": "RO:0000056",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056/descendants"
+    }
+  }
+}

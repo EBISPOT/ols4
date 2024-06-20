@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
+  "lang": "en",
+  "description": [
+    "A label for a class or property that can be used to refer to the class or property instead of the preferred rdfs:label. Alternative labels should be used to indicate community- or context-specific labels, abbreviations, shorthand forms and the like."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+    ],
+    "editor preferred term": [
+      "alternative label"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ],
+    "term editor": [
+      "PERSON:Daniel Schober"
+    ]
+  },
+  "label": "alternative label",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "IAO_0000118",
+  "obo_id": "IAO:0000118",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118/descendants"
+    }
+  }
+}

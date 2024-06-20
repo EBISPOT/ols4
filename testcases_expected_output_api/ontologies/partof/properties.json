@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/partof/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "part_of",
+    "lang": "en",
+    "obo_id": "BFO:0000050",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontology_name": "partof",
+    "ontology_prefix": "partof",
+    "short_form": "BFO_0000050",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/partof/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252Fms%2523part_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/ms#part_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "part_of",
+    "lang": "en",
+    "obo_id": "part:of",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontology_name": "partof",
+    "ontology_prefix": "partof",
+    "short_form": "part_of",
+    "synonyms": []
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000032",
+  "lang": "en",
+  "description": [
+    "A measurement datum that is the output of counting."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "elucidation": [
+      "A measurement datum that is the output of counting."
+    ],
+    "term editor": [
+      "Mathias Brochhausen"
+    ]
+  },
+  "label": "count",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "APOLLO_SV_00000032",
+  "obo_id": "APOLLO_SV:00000032",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000032/graph"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0001025",
+  "lang": "en",
+  "description": [
+    "a relation between two independent continuants, the target and the location, in which the target is entirely within the location"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "located_in"
+    ],
+    "editor note": [
+      "Location as a relation between instances: The primitive instance-level relation c located_in r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is part_of the spatial region occupied by c1.    Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus",
+      "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/"
+    ],
+    "editor preferred term": [
+      "located in"
+    ],
+    "example of usage": [
+      "my brain is located in my head",
+      "this rat is located in this cage"
+    ],
+    "source": [
+      "http://www.obofoundry.org/ro/#OBO_REL:located_in"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "located in",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0001025",
+  "obo_id": "RO:0001025",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001025?lang=en"
+    }
+  }
+}

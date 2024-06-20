@@ -1,0 +1,138 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The totality of all processes through which a given disease instance is realized."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "disease course",
+    "lang": "en",
+    "obo_id": "OGMS:0000063",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "OGMS_0000063",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "GO_0008150",
+    "lang": "en",
+    "obo_id": "GO:0008150",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "GO_0008150",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0006807/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0006807?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/GO_0006807",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "nitrogen compound metabolic process",
+    "lang": "en",
+    "obo_id": "GO:0006807",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "GO_0006807",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400/graph"
+      },
+      "realized_in": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000054"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "EFO_0000400",
+    "lang": "en",
+    "obo_id": "EFO:0000400",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "EFO_0000400",
+    "synonyms": []
+  }
+]

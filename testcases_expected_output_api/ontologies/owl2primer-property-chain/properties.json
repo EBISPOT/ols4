@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fproperty-chain.owl%2523hasGrandParent?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasGrandParent",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasGrandParent",
+    "lang": "en",
+    "obo_id": "hasGrandParent",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.rdf",
+    "ontology_name": "owl2primer-property-chain",
+    "ontology_prefix": "owl2primer-property-chain",
+    "short_form": "hasGrandParent",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fproperty-chain.owl%2523hasParent?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasParent",
+    "lang": "en",
+    "obo_id": "hasParent",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.rdf",
+    "ontology_name": "owl2primer-property-chain",
+    "ontology_prefix": "owl2primer-property-chain",
+    "short_form": "hasParent",
+    "synonyms": []
+  }
+]

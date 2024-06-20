@@ -1,0 +1,29 @@
+{
+  "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "EFO_0000400",
+  "ontology_name": "efo-iri-labels",
+  "ontology_prefix": "efo-iri-labels",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "EFO_0000400",
+  "obo_id": "EFO:0000400",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400/graph"
+    },
+    "realized_in": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fefo%252FEFO_0000400/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000054"
+    }
+  }
+}

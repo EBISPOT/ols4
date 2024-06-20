@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000420",
+  "lang": "en",
+  "description": [
+    "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "\"definitions\", in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal."
+    ],
+    "editor preferred term": [
+      "defined class"
+    ],
+    "term editor": [
+      "Alan Ruttenberg"
+    ]
+  },
+  "label": "defined class",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000420",
+  "obo_id": "IAO:0000420",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000420?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000420/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000420/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000420/jstree"
+    }
+  }
+}

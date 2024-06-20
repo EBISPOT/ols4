@@ -1,0 +1,108 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523deLangClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523deLangClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#deLangClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "deLangClass",
+    "lang": "en",
+    "obo_id": "deLangClass",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "deLangClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523enLabelClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523enLabelClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "en label class",
+    "lang": "en",
+    "obo_id": "enLabelClass",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "enLabelClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLabelClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLabelClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "noLabelClass",
+    "lang": "en",
+    "obo_id": "noLabelClass",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "noLabelClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLangClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/label/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLangClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      ""
+    ],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "no lang label class",
+    "lang": "en",
+    "obo_id": "noLangClass",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "noLangClass",
+    "synonyms": []
+  }
+]

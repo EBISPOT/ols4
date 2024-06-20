@@ -1,0 +1,29 @@
+{
+  "iri": "http://example.com/reified-bnode#cell_part",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "cell_part",
+  "ontology_name": "reified-bnode",
+  "ontology_prefix": "reified-bnode",
+  "ontology_iri": "http://example.com/reified-bnode",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "cell_part",
+  "obo_id": "cell:part",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/graph"
+    },
+    "part_of": {
+      "href": "http://localhost:8080/api/ontologies/reified-bnode/terms/http%253A%252F%252Fexample.com%252Freified-bnode%2523cell_part/http%253A%252F%252Fexample.com%252Freified-bnode%2523part_of"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0003684",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "abdominal cavity",
+  "ontology_name": "partof",
+  "ontology_prefix": "partof",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "UBERON_0003684",
+  "obo_id": "UBERON:0003684",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/graph"
+    },
+    "part_of": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
+    }
+  }
+}

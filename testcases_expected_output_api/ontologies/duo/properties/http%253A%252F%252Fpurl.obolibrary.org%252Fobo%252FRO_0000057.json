@@ -1,0 +1,48 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000057",
+  "lang": "en",
+  "description": [
+    "a relation between a process and a continuant, in which the continuant is somehow involved in the process"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "has_participant"
+    ],
+    "editor note": [
+      "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time."
+    ],
+    "editor preferred term": [
+      "has participant"
+    ],
+    "example of usage": [
+      "this blood coagulation has participant this blood clot",
+      "this investigation has participant this investigator",
+      "this process has participant this input material (or this output material)"
+    ],
+    "source": [
+      "http://www.obofoundry.org/ro/#OBO_REL:has_participant"
+    ]
+  },
+  "label": "has participant",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0000057",
+  "obo_id": "RO:0000057",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/descendants"
+    }
+  }
+}

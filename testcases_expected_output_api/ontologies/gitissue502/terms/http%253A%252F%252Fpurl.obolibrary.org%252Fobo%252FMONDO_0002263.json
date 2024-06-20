@@ -1,0 +1,212 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002263",
+  "lang": "en",
+  "description": [
+    "A disease involving the female reproductive system."
+  ],
+  "synonyms": [
+    "disease of female reproductive system",
+    "disease or disorder of female reproductive system",
+    "disorder of female genital system",
+    "disorder of female reproductive system",
+    "female reproductive disease",
+    "female reproductive system disease",
+    "female reproductive system disease or disorder",
+    "female reproductive system disorder",
+    "disease of female genital system",
+    "disorder of female genital tract",
+    "gynaecological disease",
+    "gynecological disease"
+  ],
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml",
+      "http://purl.obolibrary.org/obo/mondo/patterns/location_top.yaml"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D005831",
+      "http://identifiers.org/snomedct/310789003",
+      "http://purl.obolibrary.org/obo/DOID_229",
+      "http://purl.obolibrary.org/obo/NCIT_C27020"
+    ],
+    "hasDbXref": [
+      "DOID:229",
+      "ICD9:629.9",
+      "MESH:D005831",
+      "NCIT:C27020",
+      "SCTID:310789003"
+    ],
+    "id": [
+      "MONDO:0002263"
+    ]
+  },
+  "label": "female reproductive system disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0002263",
+  "obo_id": "MONDO:0002263",
+  "obo_definition_citation": [
+    {
+      "definition": "A disease involving the female reproductive system.",
+      "oboXrefs": [
+        {
+          "id": "https://orcid.org/0000-0002-6601-2165",
+          "url": "https://orcid.org/0000-0002-6601-2165"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "229",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_229"
+    },
+    {
+      "database": "ICD9",
+      "id": "629.9",
+      "description": "DOID:229"
+    },
+    {
+      "database": "MESH",
+      "id": "D005831",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D005831"
+    },
+    {
+      "database": "NCIT",
+      "id": "C27020",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C27020"
+    },
+    {
+      "database": "SCTID",
+      "id": "310789003",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/310789003"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "disease of female reproductive system",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        }
+      ]
+    },
+    {
+      "name": "disorder of female reproductive system",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        }
+      ]
+    },
+    {
+      "name": "female reproductive disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "229",
+          "url": "http://purl.obolibrary.org/obo/DOID_229"
+        }
+      ]
+    },
+    {
+      "name": "female reproductive system disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        },
+        {
+          "database": "NCIT",
+          "id": "C27020",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C27020"
+        }
+      ]
+    },
+    {
+      "name": "female reproductive system disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        },
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        }
+      ]
+    },
+    {
+      "name": "female reproductive system disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C27020",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C27020"
+        }
+      ]
+    },
+    {
+      "name": "gynaecological disease",
+      "scope": "hasRelatedSynonym",
+      "xrefs": []
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/graph"
+    },
+    "disease_has_location": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002263/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+    }
+  }
+}

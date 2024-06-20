@@ -1,0 +1,35 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "hasWife": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary"
+    ]
+  },
+  "label": "John",
+  "ontology_name": "owl2primer-object-property-assertion",
+  "ontology_prefix": "owl2primer-object-property-assertion",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "John",
+  "obo_id": "John",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-object-property-assertion/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fobject-property-assertion%2523John?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-object-property-assertion/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fobject-property-assertion%2523John/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-object-property-assertion/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fobject-property-assertion%2523John/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-object-property-assertion/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fobject-property-assertion%2523John/jstree"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000055",
+  "lang": "en",
+  "description": [
+    "Paraphrase of elucidation: a relation between a process and a realizable entity, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "realizes"
+    ],
+    "elucidation": [
+      "to say that b realizes c at t is to assert that there is some material entity d & b is a process which has participant d at t & c is a disposition or role of which d is bearer_of at t& the type instantiated by b is correlated with the type instantiated by c. (axiom label in BFO2 Reference: [059-003])"
+    ],
+    "example of usage": [
+      "this disease course realizes this disease",
+      "this investigation realizes this investigator role",
+      "this shattering realizes this fragility"
+    ]
+  },
+  "label": "realizes",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "BFO_0000055",
+  "obo_id": "BFO:0000055",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000055?lang=en"
+    }
+  }
+}
