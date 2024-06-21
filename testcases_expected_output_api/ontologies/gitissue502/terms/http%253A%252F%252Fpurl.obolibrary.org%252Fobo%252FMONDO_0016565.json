@@ -1,0 +1,128 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0016565",
+  "lang": "en",
+  "description": [
+    "Reason of obsoletion: out of scope - MONDO:excludeGroupingClass. This is part of a large mass-obsoletione effort for ORDO terms."
+  ],
+  "synonyms": [
+    "syndrome associated with obesity (disease)",
+    "syndromic obesity (disease)"
+  ],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/5114"
+    ],
+    "IAO_0006012": [
+      "2023-09-01"
+    ],
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/syndromic.yaml"
+    ],
+    "has exact match": [
+      "http://linkedlifedata.com/resource/umls/id/CN226963",
+      "http://www.orpha.net/ORDO/Orphanet_240371"
+    ],
+    "hasDbXref": [
+      "GARD:20650",
+      "Orphanet:240371",
+      "UMLS:CN226963"
+    ],
+    "id": [
+      "MONDO:0016565"
+    ]
+  },
+  "label": "syndromic genetic obesity",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0016565",
+  "obo_id": "MONDO:0016565",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "obsoletion_candidate",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "20650",
+      "url": "https://rarediseases.info.nih.gov/diseases/20650/index"
+    },
+    {
+      "database": "Orphanet",
+      "id": "240371",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=240371"
+    },
+    {
+      "database": "UMLS",
+      "id": "CN226963",
+      "description": "MONDO:equivalentTo"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "syndrome associated with obesity (disease)",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/syndromic"
+        }
+      ]
+    },
+    {
+      "name": "syndromic obesity (disease)",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/syndromic"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/graph"
+    }
+  }
+}

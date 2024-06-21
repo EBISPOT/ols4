@@ -1,0 +1,129 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
+  "lang": "en",
+  "description": [
+    "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+  ],
+  "synonyms": [
+    "condition",
+    "disease",
+    "disease or disorder",
+    "disease or disorder, non-neoplastic",
+    "diseases",
+    "diseases and disorders",
+    "disorder",
+    "disorders",
+    "medical condition",
+    "other disease"
+  ],
+  "annotation": {
+    "exactMatch": [
+      "http://identifiers.org/mesh/D004194",
+      "http://identifiers.org/snomedct/64572001",
+      "http://linkedlifedata.com/resource/umls/id/C0012634",
+      "http://purl.obolibrary.org/obo/DOID_4",
+      "http://purl.obolibrary.org/obo/NCIT_C2991",
+      "http://www.orpha.net/ORDO/Orphanet_377788"
+    ],
+    "hasDbXref": [
+      "DOID:4",
+      "EFO:0000408",
+      "ICD10:N18",
+      "ICD9:799.9",
+      "MESH:D004194",
+      "NCIT:C2991",
+      "OGMS:0000031",
+      "Orphanet:377788",
+      "SCTID:64572001",
+      "UMLS:C0012634"
+    ],
+    "id": [
+      "MONDO:0000001"
+    ]
+  },
+  "label": "disease or disorder",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "MONDO_0000001",
+  "obo_id": "MONDO:0000001",
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "4",
+      "url": "http://purl.obolibrary.org/obo/DOID_4"
+    },
+    {
+      "database": "EFO",
+      "id": "0000408",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0000408"
+    },
+    {
+      "database": "ICD10",
+      "id": "N18",
+      "url": "https://icd.who.int/browse10/2019/en#/N18"
+    },
+    {
+      "database": "ICD9",
+      "id": "799.9"
+    },
+    {
+      "database": "MESH",
+      "id": "D004194",
+      "url": "http://id.nlm.nih.gov/mesh/D004194"
+    },
+    {
+      "database": "NCIT",
+      "id": "C2991",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+    },
+    {
+      "database": "OGMS",
+      "id": "0000031",
+      "url": "http://purl.obolibrary.org/obo/OGMS_0000031"
+    },
+    {
+      "database": "Orphanet",
+      "id": "377788",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=377788"
+    },
+    {
+      "database": "SCTID",
+      "id": "64572001",
+      "url": "http://snomed.info/id/64572001"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0012634",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0012634"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/graph"
+    }
+  }
+}

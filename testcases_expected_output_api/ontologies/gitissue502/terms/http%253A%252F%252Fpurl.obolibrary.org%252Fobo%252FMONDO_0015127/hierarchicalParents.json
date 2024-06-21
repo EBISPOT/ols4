@@ -1,0 +1,272 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+      ],
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0021199"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D004700",
+        "http://identifiers.org/snomedct/362969004",
+        "http://linkedlifedata.com/resource/umls/id/C0014130",
+        "http://purl.obolibrary.org/obo/DOID_28",
+        "http://purl.obolibrary.org/obo/NCIT_C3009"
+      ],
+      "hasDbXref": [
+        "DOID:28",
+        "EFO:0001379",
+        "ICD9:259.8",
+        "ICD9:259.9",
+        "MESH:D004700",
+        "NCIT:C3009",
+        "SCTID:362969004",
+        "UMLS:C0014130"
+      ],
+      "id": [
+        "MONDO:0005151"
+      ]
+    },
+    "description": [
+      "A disease involving the endocrine system."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "endocrine system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease involving the endocrine system.",
+        "oboXrefs": [
+          {
+            "id": "https://orcid.org/0000-0002-6601-2165",
+            "url": "https://orcid.org/0000-0002-6601-2165"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005151",
+    "obo_synonym": [
+      {
+        "name": "disease of endocrine system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of endocrine system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          },
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "28",
+            "url": "http://purl.obolibrary.org/obo/DOID_28"
+          },
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrinopathy",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "thyroid or other glandular disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "28",
+        "url": "http://purl.obolibrary.org/obo/DOID_28"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0001379",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0001379"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "259.9"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "259.8"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D004700",
+        "url": "http://id.nlm.nih.gov/mesh/D004700"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C3009",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "362969004",
+        "url": "http://snomed.info/id/362969004"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C3009",
+        "id": "C0014130",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0014130"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005151",
+    "synonyms": [
+      "disease of endocrine system",
+      "disease or disorder of endocrine system",
+      "disorder of endocrine system",
+      "endocrine disease",
+      "endocrine disorder",
+      "endocrine system disease or disorder",
+      "endocrine system disease",
+      "endocrine system disorder",
+      "endocrinopathy",
+      "thyroid or other glandular disorders"
+    ]
+  }
+]

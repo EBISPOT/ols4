@@ -1,0 +1,1787 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/mesh/D007006",
+        "http://identifiers.org/snomedct/48130008",
+        "http://linkedlifedata.com/resource/umls/id/C0020619",
+        "http://purl.obolibrary.org/obo/DOID_1924",
+        "http://purl.obolibrary.org/obo/NCIT_C9227"
+      ],
+      "hasDbXref": [
+        "DOID:1924",
+        "ICD9:253.4",
+        "MESH:D007006",
+        "NCIT:C9227",
+        "SCTID:48130008",
+        "UMLS:C0020619"
+      ],
+      "id": [
+        "MONDO:0002146"
+      ]
+    },
+    "description": [
+      "A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include erectile dysfunction, muscle atrophy, gynecomastia and increased abdominal fat. In females, additional signs include shrinking of the breasts and loss of, or failure to develop menstruation."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "hypogonadism",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include erectile dysfunction, muscle atrophy, gynecomastia and increased abdominal fat. In females, additional signs include shrinking of the breasts and loss of, or failure to develop menstruation.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "P378"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0002146",
+    "obo_synonym": [
+      {
+        "name": "gonadotropin deficiency",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C9227",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+          }
+        ]
+      },
+      {
+        "name": "hypogonadotropism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C9227",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "1924",
+        "url": "http://purl.obolibrary.org/obo/DOID_1924"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "253.4"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D007006",
+        "url": "http://id.nlm.nih.gov/mesh/D007006"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C9227",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "48130008",
+        "url": "http://snomed.info/id/48130008"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C9227",
+        "id": "C0020619",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0020619"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0002146",
+    "synonyms": [
+      "gonadotropin deficiency",
+      "hypogonadotropism"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml",
+        "http://purl.obolibrary.org/obo/mondo/patterns/location_top.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D006058",
+        "http://linkedlifedata.com/resource/umls/id/C0018050",
+        "http://purl.obolibrary.org/obo/DOID_2277",
+        "http://purl.obolibrary.org/obo/NCIT_C26786"
+      ],
+      "hasDbXref": [
+        "DOID:2277",
+        "MESH:D006058",
+        "NCIT:C26786",
+        "UMLS:C0018050"
+      ],
+      "id": [
+        "MONDO:0002259"
+      ]
+    },
+    "description": [
+      "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "gonadal disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "P378"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0002259",
+    "obo_synonym": [
+      {
+        "name": "disease of gonad",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of gonad",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of gonads",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26786",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+          }
+        ]
+      },
+      {
+        "name": "gonad disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "gonad disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "gonadal disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26786",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+          }
+        ]
+      },
+      {
+        "name": "gonadal disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26786",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "2277",
+        "url": "http://purl.obolibrary.org/obo/DOID_2277"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D006058",
+        "url": "http://id.nlm.nih.gov/mesh/D006058"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C26786",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "C0018050",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0018050"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0002259",
+    "synonyms": [
+      "disease of gonad",
+      "disease or disorder of gonad",
+      "disorder of gonad",
+      "disorder of gonads",
+      "gonad disease or disorder",
+      "gonad disease",
+      "gonadal disorder",
+      "gonadal disorders"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0008300?lang=en"
+      }
+    },
+    "annotation": {
+      "has close match": [
+        "http://identifiers.org/meddra/10036476"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D011218",
+        "http://identifiers.org/snomedct/89392001",
+        "http://linkedlifedata.com/resource/umls/id/C0032897",
+        "http://purl.obolibrary.org/obo/DOID_11983",
+        "http://purl.obolibrary.org/obo/NCIT_C75463",
+        "http://www.orpha.net/ORDO/Orphanet_739",
+        "https://omim.org/entry/176270"
+      ],
+      "hasDbXref": [
+        "DOID:11983",
+        "GARD:5575",
+        "ICD9:759.81",
+        "MESH:D011218",
+        "MedDRA:10036476",
+        "NCIT:C75463",
+        "OMIM:176270",
+        "Orphanet:739",
+        "SCTID:89392001",
+        "UMLS:C0032897"
+      ],
+      "id": [
+        "MONDO:0008300"
+      ],
+      "seeAlso": [
+        "https://rarediseases.info.nih.gov/diseases/5575/prader-willi-syndrome"
+      ]
+    },
+    "description": [
+      "Prader-Willi syndrome is a rare genetic disorder characterized by hypothalamic-pituitary abnormalities with severe hypotonia during the neonatal period and first two years of life and the onset of hyperphagia with a risk of morbid obesity during infancy and adulthood, learning difficulties and behavioral problems or severe psychiatric problems."
+    ],
+    "has_children": false,
+    "in_subset": [
+      "gard_rare",
+      "nord_rare",
+      "ordo_disease",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0008300",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Prader-Willi syndrome",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Prader-Willi syndrome is a rare genetic disorder characterized by hypothalamic-pituitary abnormalities with severe hypotonia during the neonatal period and first two years of life and the onset of hyperphagia with a risk of morbid obesity during infancy and adulthood, learning difficulties and behavioral problems or severe psychiatric problems.",
+        "oboXrefs": [
+          {
+            "database": "Orphanet",
+            "id": "739",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=739"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0008300",
+    "obo_synonym": [
+      {
+        "name": "PWS",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "Lexical"
+          },
+          {
+            "database": "OMIM",
+            "id": "176270",
+            "url": "https://omim.org/entry/176270"
+          }
+        ]
+      },
+      {
+        "name": "Prader Willi syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "11983",
+            "url": "http://purl.obolibrary.org/obo/DOID_11983"
+          }
+        ]
+      },
+      {
+        "name": "Prader-Labhart-Willi syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "176270",
+            "url": "https://omim.org/entry/176270"
+          },
+          {
+            "database": "Orphanet",
+            "id": "739",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=739"
+          }
+        ]
+      },
+      {
+        "name": "Prader-Willi syndrome chromosome region",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "176270",
+            "url": "https://omim.org/entry/176270"
+          }
+        ]
+      },
+      {
+        "name": "Prader-Willi syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "Lexical"
+          },
+          {
+            "database": "OMIM",
+            "id": "176270",
+            "url": "https://omim.org/entry/176270"
+          }
+        ]
+      },
+      {
+        "name": "Prader-Willi-Labhart syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C75463",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C75463"
+          }
+        ]
+      },
+      {
+        "name": "Prader-Willi-like syndrome associated with chromosome 6",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "176270",
+            "url": "https://omim.org/entry/176270"
+          }
+        ]
+      },
+      {
+        "name": "Willi-Prader syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "739",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=739"
+          }
+        ]
+      },
+      {
+        "name": "obesity, muscular hypotonia, intellectual disability, short stature, hypogonadotropic hypogonadism, and small hands and feet",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "GARD",
+            "id": "0005575",
+            "url": "https://rarediseases.info.nih.gov/diseases/0005575/index"
+          }
+        ]
+      },
+      {
+        "name": "obesity, muscular hypotonia, mental retardation, short stature, hypogonadotropic hypogonadism, and small hands and feet",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "GARD",
+            "id": "0005575",
+            "url": "https://rarediseases.info.nih.gov/diseases/0005575/index"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "11983",
+        "url": "http://purl.obolibrary.org/obo/DOID_11983"
+      },
+      {
+        "database": "GARD",
+        "id": "5575",
+        "url": "https://rarediseases.info.nih.gov/diseases/5575/index"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "759.81"
+      },
+      {
+        "database": "MESH",
+        "description": "Orphanet:739/e",
+        "id": "D011218",
+        "url": "http://id.nlm.nih.gov/mesh/D011218"
+      },
+      {
+        "database": "MedDRA",
+        "description": "Orphanet:739/e",
+        "id": "10036476",
+        "url": "http://bioportal.bioontology.org/ontologies/MEDDRA?p=classes&conceptid=10036476"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C75463",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C75463"
+      },
+      {
+        "database": "OMIM",
+        "description": "Orphanet:739/e",
+        "id": "176270",
+        "url": "https://omim.org/entry/176270"
+      },
+      {
+        "database": "Orphanet",
+        "description": "OMIM:176270",
+        "id": "739",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=739"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "89392001",
+        "url": "http://snomed.info/id/89392001"
+      },
+      {
+        "database": "UMLS",
+        "description": "Orphanet:739/e",
+        "id": "C0032897",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0032897"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0008300",
+    "synonyms": [
+      "PWS",
+      "Prader Willi syndrome",
+      "Prader-Labhart-Willi syndrome",
+      "Prader-Willi syndrome chromosome region",
+      "Prader-Willi syndrome",
+      "Prader-Willi-Labhart syndrome",
+      "Prader-Willi-like syndrome associated with chromosome 6",
+      "Willi-Prader syndrome",
+      "obesity, muscular hypotonia, intellectual disability, short stature, hypogonadotropic hypogonadism, and small hands and feet",
+      "obesity, muscular hypotonia, mental retardation, short stature, hypogonadotropic hypogonadism, and small hands and feet"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127?lang=en"
+      }
+    },
+    "annotation": {
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0015968"
+      ],
+      "has exact match": [
+        "http://www.orpha.net/ORDO/Orphanet_101957"
+      ],
+      "hasDbXref": [
+        "GARD:19801",
+        "ICD10CM:E23.0",
+        "Orphanet:101957",
+        "UMLS:C0020635"
+      ],
+      "id": [
+        "MONDO:0015127"
+      ]
+    },
+    "description": [
+      "Editor note: in ORDO, Orphanet:101957 is classified as genetic, yet has acquired subtypes"
+    ],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0015127",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "pituitary deficiency",
+    "lang": "en",
+    "obo_id": "MONDO:0015127",
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "19801",
+        "url": "https://rarediseases.info.nih.gov/diseases/19801/index"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "Orphanet:101957/specific",
+        "id": "E23.0"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "101957",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=101957"
+      },
+      {
+        "database": "UMLS",
+        "description": "Orphanet:101957",
+        "id": "C0020635",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0020635"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0015127",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/mesh/D006130",
+        "http://linkedlifedata.com/resource/umls/id/CN237424",
+        "http://www.orpha.net/ORDO/Orphanet_156643"
+      ],
+      "hasDbXref": [
+        "GARD:20012",
+        "MESH:D006130",
+        "Orphanet:156643",
+        "UMLS:CN237424"
+      ],
+      "id": [
+        "MONDO:0015514"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0015514",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "hereditary endocrine growth disease",
+    "lang": "en",
+    "obo_id": "MONDO:0015514",
+    "obo_synonym": [
+      {
+        "name": "genetic endocrine growth disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "156643",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=156643"
+          }
+        ]
+      },
+      {
+        "name": "growth disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "cjm"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "20012",
+        "url": "https://rarediseases.info.nih.gov/diseases/20012/index"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D006130",
+        "url": "http://id.nlm.nih.gov/mesh/D006130"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "156643",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=156643"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "CN237424"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0015514",
+    "synonyms": [
+      "genetic endocrine growth disease",
+      "growth disorder"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015770?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/snomedct/722944006",
+        "http://linkedlifedata.com/resource/umls/id/C3899503",
+        "http://purl.obolibrary.org/obo/NCIT_C120162",
+        "http://www.orpha.net/ORDO/Orphanet_174590"
+      ],
+      "hasDbXref": [
+        "GARD:20135",
+        "ICD10CM:E23.0",
+        "NCIT:C120162",
+        "Orphanet:174590",
+        "SCTID:722944006",
+        "UMLS:C3899503"
+      ],
+      "id": [
+        "MONDO:0015770"
+      ]
+    },
+    "description": [
+      "Congenital hypogonadotropic hypogonadism (CHH) is a rare disorder of sexual maturation characterized by gonadotropin (Gn) deficiency with low sex steroid levels associated with low levels of follicle stimulating hormone (FSH) and luteinizing hormone (LH)."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0015770",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "congenital hypogonadotropic hypogonadism",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Congenital hypogonadotropic hypogonadism (CHH) is a rare disorder of sexual maturation characterized by gonadotropin (Gn) deficiency with low sex steroid levels associated with low levels of follicle stimulating hormone (FSH) and luteinizing hormone (LH).",
+        "oboXrefs": [
+          {
+            "database": "Orphanet",
+            "id": "174590",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=174590"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0015770",
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "20135",
+        "url": "https://rarediseases.info.nih.gov/diseases/20135/index"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "Orphanet:174590/ntbt",
+        "id": "E23.0"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C120162",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C120162"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "174590",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=174590"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "722944006",
+        "url": "http://snomed.info/id/722944006"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C120162",
+        "id": "C3899503",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C3899503"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0015770",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0016565?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000233": [
+        "https://github.com/monarch-initiative/mondo/issues/5114"
+      ],
+      "IAO_0006012": [
+        "2023-09-01"
+      ],
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/syndromic.yaml"
+      ],
+      "has exact match": [
+        "http://linkedlifedata.com/resource/umls/id/CN226963",
+        "http://www.orpha.net/ORDO/Orphanet_240371"
+      ],
+      "hasDbXref": [
+        "GARD:20650",
+        "Orphanet:240371",
+        "UMLS:CN226963"
+      ],
+      "id": [
+        "MONDO:0016565"
+      ]
+    },
+    "description": [
+      "Reason of obsoletion: out of scope - MONDO:excludeGroupingClass. This is part of a large mass-obsoletione effort for ORDO terms."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "obsoletion_candidate",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0016565",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "syndromic genetic obesity",
+    "lang": "en",
+    "obo_id": "MONDO:0016565",
+    "obo_synonym": [
+      {
+        "name": "syndrome associated with obesity (disease)",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      },
+      {
+        "name": "syndromic obesity (disease)",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "20650",
+        "url": "https://rarediseases.info.nih.gov/diseases/20650/index"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "240371",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=240371"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "CN226963"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0016565",
+    "synonyms": [
+      "syndrome associated with obesity (disease)",
+      "syndromic obesity (disease)"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/descendants"
+      },
+      "disease_caused_by_disruption_of": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/snomedct/33927004",
+        "http://linkedlifedata.com/resource/umls/id/CN235466",
+        "http://purl.obolibrary.org/obo/DOID_0090070",
+        "http://purl.obolibrary.org/obo/NCIT_C113347",
+        "http://www.orpha.net/ORDO/Orphanet_432",
+        "https://omim.org/phenotypicSeries/PS147950"
+      ],
+      "hasDbXref": [
+        "DOID:0090070",
+        "DOID:7455",
+        "GARD:16533",
+        "HP:0000044",
+        "ICD10CM:E23.0",
+        "ICD9:253.4",
+        "NCIT:C113347",
+        "OMIMPS:147950",
+        "Orphanet:432",
+        "SCTID:33927004",
+        "UMLS:CN235466"
+      ],
+      "id": [
+        "MONDO:0018555"
+      ],
+      "should_conform_to": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/OMIM_phenotypic_series.yaml"
+      ]
+    },
+    "description": [
+      "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "gard_rare",
+      "nord_rare",
+      "ordo_disease",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0018555",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "hypogonadotropic hypogonadism",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C113347",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0018555",
+    "obo_synonym": [
+      {
+        "name": "Normosmic idiopathic hypogonadotropic hypogonadism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "432",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+          }
+        ]
+      },
+      {
+        "name": "central hypogonadism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C113347",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+          }
+        ]
+      },
+      {
+        "name": "congenital idiopathic hypogonadotropic hypogonadism",
+        "scope": "hasNarrowSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "0090070",
+            "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+          }
+        ]
+      },
+      {
+        "name": "gonadotropic deficiency",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "432",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+          }
+        ]
+      },
+      {
+        "name": "hypogonadotropic hypogonadism with or without anosmia",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIMPS",
+            "id": "147950",
+            "url": "https://omim.org/MIM:PS147950"
+          }
+        ]
+      },
+      {
+        "name": "hypogonadotropic hypogonadism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C113347",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+          }
+        ]
+      },
+      {
+        "name": "hypogonadotropism",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "0004228",
+            "url": "http://purl.obolibrary.org/obo/MONDO_0004228"
+          }
+        ]
+      },
+      {
+        "name": "isolated congenital gonadotropin deficiency",
+        "scope": "hasNarrowSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "0090070",
+            "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+          }
+        ]
+      },
+      {
+        "name": "nIHH",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "432",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+          }
+        ]
+      },
+      {
+        "name": "normosmic congenital hypogonadotropic hypogonadism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "Orphanet",
+            "id": "432",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+          }
+        ]
+      },
+      {
+        "name": "secondary hypogonadism",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C113347",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentObsolete",
+        "id": "7455",
+        "url": "http://purl.obolibrary.org/obo/DOID_7455"
+      },
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "0090070",
+        "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+      },
+      {
+        "database": "GARD",
+        "id": "16533",
+        "url": "https://rarediseases.info.nih.gov/diseases/16533/index"
+      },
+      {
+        "database": "HP",
+        "description": "MONDO:otherHierarchy",
+        "id": "0000044",
+        "url": "http://purl.obolibrary.org/obo/HP_0000044"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "Orphanet:432/ntbt",
+        "id": "E23.0"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "253.4"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C113347",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+      },
+      {
+        "database": "OMIMPS",
+        "description": "MONDO:equivalentTo",
+        "id": "147950",
+        "url": "https://omim.org/MIM:PS147950"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "432",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "33927004",
+        "url": "http://snomed.info/id/33927004"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "CN235466"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0018555",
+    "synonyms": [
+      "Normosmic idiopathic hypogonadotropic hypogonadism",
+      "central hypogonadism",
+      "congenital idiopathic hypogonadotropic hypogonadism",
+      "gonadotropic deficiency",
+      "hypogonadism, hypogonadotropic",
+      "hypogonadotropic hypogonadism with or without anosmia",
+      "hypogonadotropic hypogonadism",
+      "hypogonadotropism",
+      "isolated congenital gonadotropin deficiency",
+      "isolated hypogonadotropic hypogonadism",
+      "low gonadotropins (secondary hypogonadism)",
+      "nIHH",
+      "normosmic congenital hypogonadotropic hypogonadism",
+      "secondary hypogonadism"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000233": [
+        "https://github.com/monarch-initiative/mondo/issues/4521"
+      ],
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml"
+      ],
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0015960"
+      ],
+      "has exact match": [
+        "http://www.orpha.net/ORDO/Orphanet_77828",
+        "https://omim.org/entry/601665"
+      ],
+      "hasDbXref": [
+        "GARD:18935",
+        "OMIM:601665",
+        "Orphanet:77828"
+      ],
+      "id": [
+        "MONDO:0019182"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0019182",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "inherited obesity",
+    "lang": "en",
+    "obo_id": "MONDO:0019182",
+    "obo_synonym": [
+      {
+        "name": "genetic obesity (disease)",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/genetic"
+          },
+          {
+            "database": "Orphanet",
+            "id": "77828",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+          }
+        ]
+      },
+      {
+        "name": "leanness, inherited, autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, association with, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, early-onset, susceptibility to, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, late-onset, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, mild, early-onset, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, severe, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, severe, and type II diabetes, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, susceptibility to, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "18935",
+        "url": "https://rarediseases.info.nih.gov/diseases/18935/index"
+      },
+      {
+        "database": "OMIM",
+        "description": "MONDO:equivalentTo",
+        "id": "601665",
+        "url": "https://omim.org/entry/601665"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "77828",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0019182",
+    "synonyms": [
+      "genetic obesity (disease)",
+      "genetic obesity",
+      "leanness, inherited, autosomal recessive",
+      "monogenic obesity",
+      "obesity, association with, Autosomal recessive",
+      "obesity, early-onset, susceptibility to, Autosomal recessive",
+      "obesity, late-onset, Autosomal recessive",
+      "obesity, mild, early-onset, Autosomal recessive",
+      "obesity, severe, Autosomal recessive",
+      "obesity, severe, and type II diabetes, Autosomal recessive",
+      "obesity, susceptibility to, Autosomal recessive"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019824?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://www.orpha.net/ORDO/Orphanet_95488"
+      ],
+      "hasDbXref": [
+        "GARD:19272",
+        "ICD10CM:E23.0",
+        "Orphanet:95488"
+      ],
+      "id": [
+        "MONDO:0019824"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0019824",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "non-acquired pituitary hormone deficiency",
+    "lang": "en",
+    "obo_id": "MONDO:0019824",
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "19272",
+        "url": "https://rarediseases.info.nih.gov/diseases/19272/index"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "Orphanet:95488/ntbt",
+        "id": "E23.0"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "95488",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=95488"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0019824",
+    "synonyms": []
+  }
+]

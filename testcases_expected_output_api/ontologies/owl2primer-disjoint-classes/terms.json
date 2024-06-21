@@ -1,0 +1,54 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fdisjoint-classes.rdf%2523Man/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fdisjoint-classes.rdf%2523Man?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Man",
+    "lang": "en",
+    "obo_id": "Man",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf",
+    "ontology_name": "owl2primer-disjoint-classes",
+    "ontology_prefix": "owl2primer-disjoint-classes",
+    "short_form": "Man",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fdisjoint-classes.rdf%2523Woman/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fdisjoint-classes.rdf%2523Woman?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Woman",
+    "lang": "en",
+    "obo_id": "Woman",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf",
+    "ontology_name": "owl2primer-disjoint-classes",
+    "ontology_prefix": "owl2primer-disjoint-classes",
+    "short_form": "Woman",
+    "synonyms": []
+  }
+]

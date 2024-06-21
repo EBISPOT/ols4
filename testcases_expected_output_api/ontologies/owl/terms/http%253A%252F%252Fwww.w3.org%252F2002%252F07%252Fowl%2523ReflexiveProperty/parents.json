@@ -1,0 +1,41 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523ObjectProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of object properties."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "ObjectProperty",
+    "lang": "en",
+    "obo_id": "ObjectProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "ObjectProperty",
+    "synonyms": []
+  }
+]

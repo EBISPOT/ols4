@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000081",
+  "lang": "en",
+  "description": [
+    "a relation between a role and an independent continuant (the bearer), in which the role specifically depends on the bearer for its existence"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000116": [
+      "A role inheres in its bearer at all times for which the role exists, however the role need not be realized at all the times that the role exists."
+    ]
+  },
+  "label": "role of",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "RO_0000081",
+  "obo_id": "RO:0000081",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/jstree"
+    }
+  }
+}

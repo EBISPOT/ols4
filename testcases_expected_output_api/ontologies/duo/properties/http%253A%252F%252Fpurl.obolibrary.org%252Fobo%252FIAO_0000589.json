@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000589",
+  "lang": "en",
+  "description": [
+    "An alternative name for a class or property which is unique across the OBO Foundry."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "GROUP:OBO Foundry <http://obofoundry.org/>"
+    ],
+    "editor note": [
+      "The intended usage of that property is as follow: OBO foundry unique labels are automatically generated based on regular expressions provided by each ontology, so that SO could specify unique label = 'sequence ' + [label], etc. , MA could specify 'mouse + [label]' etc. Upon importing terms, ontology developers can choose to use the 'OBO foundry unique label' for an imported term or not. The same applies to tools ."
+    ],
+    "editor preferred term": [
+      "OBO foundry unique label"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ],
+    "term editor": [
+      "PERSON:Alan Ruttenberg",
+      "PERSON:Bjoern Peters",
+      "PERSON:Chris Mungall",
+      "PERSON:Melanie Courtot"
+    ]
+  },
+  "label": "OBO foundry unique label",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000589",
+  "obo_id": "IAO:0000589",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000589?lang=en"
+    }
+  }
+}

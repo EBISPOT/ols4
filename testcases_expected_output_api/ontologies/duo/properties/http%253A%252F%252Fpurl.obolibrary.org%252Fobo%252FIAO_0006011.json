@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0006011",
+  "lang": "en",
+  "description": [
+    "A annotation relationship between two terms in an ontology that may refer to the same (natural) type but where more evidence is required before terms are merged.",
+    "Edges asserting this should be annotated with to record evidence supporting the assertion and its provenance."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "may be identical to"
+    ],
+    "ontology term requester": [
+      "VFB"
+    ],
+    "term editor": [
+      "David Osumi-Sutherland"
+    ],
+    "term tracker item": [
+      "#40"
+    ]
+  },
+  "label": "may be identical to",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0006011",
+  "obo_id": "IAO:0006011",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006011?lang=en"
+    }
+  }
+}

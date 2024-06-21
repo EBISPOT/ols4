@@ -1,5 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +30,9 @@ import javax.servlet.http.HttpServletRequest;
  * @date 18/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@Tag(name = "Individual Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
+        "For example, the IRI http://purl.obolibrary.org/obo/IAO_0000124 should be encoded as http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124.")
+@RestController
 @RequestMapping("/api/individuals")
 @ExposesResourceFor(V1Individual.class)
 public class V1IndividualController implements
@@ -46,12 +50,15 @@ public class V1IndividualController implements
         return resource;
     }
 
-    @RequestMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
-            @PathVariable("id") String termId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         String decoded = null;
         decoded = UriUtils.decode(termId, "UTF-8");
         return getAllIndividuals(decoded, null, null, lang, pageable, assembler);
@@ -60,12 +67,21 @@ public class V1IndividualController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the individual.",
+                    example = "IAO_0000124") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the individual.",
+                    example = "IAO:0000124") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         Page<V1Individual> terms = null;
 
@@ -82,12 +98,15 @@ public class V1IndividualController implements
         return new ResponseEntity<>(assembler.toModel(terms, individualAssembler), HttpStatus.OK);
     }
     
-    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
-            @PathVariable("id") String termId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
         String decoded = null;
         decoded = UriUtils.decode(termId, "UTF-8");
         return getAllIndividualsByIdAndIsDefiningOntology(decoded, null, null, lang, pageable, assembler);
@@ -99,12 +118,21 @@ public class V1IndividualController implements
     		produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
     		method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
-            @RequestParam(value = "iri", required = false) String iri,
-            @RequestParam(value = "short_form", required = false) String shortForm,
-            @RequestParam(value = "obo_id", required = false) String oboId,
+            @RequestParam(value = "iri", required = false)
+            @Parameter(name = "iri",
+                    description = "The IRI of the individual, this value must be double URL encoded",
+                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+            @RequestParam(value = "short_form", required = false)
+            @Parameter(name = "short_form",
+                    description = "This refers to the short form of the individual.",
+                    example = "IAO_0000124") String shortForm,
+            @RequestParam(value = "obo_id", required = false)
+            @Parameter(name = "obo_id",
+                    description = "This refers to the OBO ID of the individual.",
+                    example = "IAO:0000124") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            Pageable pageable,
-            PagedResourcesAssembler assembler) {
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
 
         Page<V1Individual> terms = null;
 

@@ -1,0 +1,27 @@
+{
+  "iri": "http://www.w3.org/2002/07/owl#OntologyProperty",
+  "lang": "en",
+  "description": [
+    "The class of ontology properties."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "OntologyProperty",
+  "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "OntologyProperty",
+  "obo_id": "OntologyProperty",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523OntologyProperty?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523OntologyProperty/graph"
+    }
+  }
+}

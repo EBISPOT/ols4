@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000119",
+  "lang": "en",
+  "description": [
+    "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000119": [
+      "Discussion on obo-discuss mailing-list, see http://bit.ly/hgm99w",
+      "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+    ],
+    "editor preferred term": [
+      "definition source"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "term editor": [
+      "PERSON:Daniel Schober"
+    ]
+  },
+  "label": "definition source",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000119",
+  "obo_id": "IAO:0000119",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000119?lang=en"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#member",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "Relates a collection to one of its members."
+    ]
+  },
+  "label": "has member",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "member",
+  "obo_id": "member",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523member?lang=en"
+    }
+  }
+}

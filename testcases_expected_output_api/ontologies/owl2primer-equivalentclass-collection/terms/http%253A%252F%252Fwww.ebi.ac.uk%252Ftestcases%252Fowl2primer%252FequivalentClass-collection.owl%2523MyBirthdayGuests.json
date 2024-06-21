@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "MyBirthdayGuests",
+  "ontology_name": "owl2primer-equivalentclass-collection",
+  "ontology_prefix": "owl2primer-equivalentClass-collection",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "MyBirthdayGuests",
+  "obo_id": "MyBirthdayGuests",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalentclass-collection/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass-collection.owl%2523MyBirthdayGuests/graph"
+    }
+  }
+}

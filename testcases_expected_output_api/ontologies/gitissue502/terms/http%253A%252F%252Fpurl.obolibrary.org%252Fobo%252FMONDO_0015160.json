@@ -1,0 +1,104 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015160",
+  "lang": "en",
+  "description": [],
+  "synonyms": [
+    "MCA/variable MR",
+    "multiple congenital anomalies-variable intellectual disability with or without dysmorphism syndrome"
+  ],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/4069"
+    ],
+    "hasDbXref": [
+      "Orphanet:102284"
+    ],
+    "id": [
+      "MONDO:0015160"
+    ]
+  },
+  "label": "multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0015160",
+  "obo_id": "MONDO:0015160",
+  "in_subset": [
+    "disease_grouping",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "Orphanet",
+      "id": "102284",
+      "description": "MONDO:equivalentObsolete",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=102284"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "MCA/variable MR",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "102284",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=102284"
+        }
+      ]
+    },
+    {
+      "name": "multiple congenital anomalies-variable intellectual disability with or without dysmorphism syndrome",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "102284",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=102284"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015160/graph"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NamedIndividual/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NamedIndividual?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of named individuals."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "NamedIndividual",
+    "lang": "en",
+    "obo_id": "NamedIndividual",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "NamedIndividual",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Nothing/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Nothing?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "This is the empty class."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#Nothing",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Nothing",
+    "lang": "en",
+    "obo_id": "Nothing",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Nothing",
+    "synonyms": []
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000135",
+  "lang": "en",
+  "description": [
+    "c specifically denotes r =def \nr is a portion of reality\n& c is a particular quality\n& c depends specifically on some independent continuant b \n& b acquired c as the result of the achievement of an objective to enable pointing to r repeatedly. \n\nMarked means there is a changed or additional quality of the bearer - the  quality is the information carrier.\n\nCase 1\nMemory trace as mark created when reading some description of some friend. The trace can denote.\n\nCase 2\nPattern of ink arrayed on paper as mark when writing down a friend's name\n\nCase 3\nPattern of magnetic domains on scattered pieces of a hard disk platter as mark when saving a file."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
+    ],
+    "editor note": [
+      "8/6/2009 Alan Ruttenberg: The suggestions is to deprecate specific and generically denotes in favor of a single denote relationship that corresponds to the generic sense",
+      "see https://github.com/information-artifact-ontology/IAO/issues/25&q=denote"
+    ],
+    "example of usage": [
+      "The process of creation is, for example,  writing down on paper the name of a friend by deliberately creating a certain pattern using ink.\n\nHere the ink + paper is the independent continuant and the carrier is the pattern in the ink.\n\nc = pattern in the ink\nb = paper + ink\nr = friend"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ],
+    "has obsolescence reason": [
+      "http://purl.obolibrary.org/obo/IAO_0000103"
+    ],
+    "term editor": [
+      "Alan Ruttenberg"
+    ]
+  },
+  "label": "obsolete_specifically denotes",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000135",
+  "obo_id": "IAO:0000135",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/jstree"
+    }
+  }
+}

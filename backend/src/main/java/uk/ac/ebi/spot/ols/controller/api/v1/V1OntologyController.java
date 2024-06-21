@@ -1,5 +1,8 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +34,8 @@ import javax.servlet.http.HttpServletRequest;
  * @date 19/08/2015
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
-@Controller
+@Tag(name = "Ontology Controller")
+@RestController
 @RequestMapping("/api/ontologies")
 @ExposesResourceFor(V1Ontology.class)
 public class V1OntologyController implements
@@ -60,9 +64,9 @@ public class V1OntologyController implements
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Ontology>> getOntologies(
-            @PageableDefault(size = 20, page = 0) Pageable pageable,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            PagedResourcesAssembler assembler
+            @PageableDefault(size = 20, page = 0) @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         Page<V1Ontology> document = ontologyRepository.getAll(lang, pageable);
         return new ResponseEntity<>( assembler.toModel(document, documentAssembler), HttpStatus.OK);
@@ -72,7 +76,10 @@ public class V1OntologyController implements
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<EntityModel<V1Ontology>> getOntology(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            @PathVariable("onto") String ontologyId) throws ResourceNotFoundException {
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
         V1Ontology document = ontologyRepository.get(ontologyId, lang);
         if (document == null) throw new ResourceNotFoundException();

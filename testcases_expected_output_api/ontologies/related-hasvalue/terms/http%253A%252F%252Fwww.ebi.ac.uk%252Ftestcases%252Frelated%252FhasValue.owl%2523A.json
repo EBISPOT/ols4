@@ -1,0 +1,26 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "A",
+  "ontology_name": "related-hasvalue",
+  "ontology_prefix": "related-hasValue",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "A",
+  "obo_id": "A",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/related-hasvalue/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FhasValue.owl%2523A?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/related-hasvalue/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FhasValue.owl%2523A/graph"
+    }
+  }
+}

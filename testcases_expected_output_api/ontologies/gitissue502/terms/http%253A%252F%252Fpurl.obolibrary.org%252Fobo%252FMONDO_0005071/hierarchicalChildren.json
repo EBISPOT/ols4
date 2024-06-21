@@ -1,0 +1,275 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002320?lang=en"
+      }
+    },
+    "annotation": {
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0000839"
+      ],
+      "has exact match": [
+        "http://purl.obolibrary.org/obo/DOID_2490",
+        "http://purl.obolibrary.org/obo/NCIT_C97172"
+      ],
+      "hasDbXref": [
+        "DOID:2490",
+        "ICD9:742",
+        "NCIT:C97172"
+      ],
+      "id": [
+        "MONDO:0002320"
+      ]
+    },
+    "description": [
+      "An abnormality of the nervous system that is present at birth or detected in the neonatal period."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002320",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "congenital nervous system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "An abnormality of the nervous system that is present at birth or detected in the neonatal period.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C97172",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C97172"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0002320",
+    "obo_synonym": [
+      {
+        "name": "congenital abnormality of the nervous system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C97172",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C97172"
+          }
+        ]
+      },
+      {
+        "name": "congenital nervous system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C97172",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C97172"
+          }
+        ]
+      },
+      {
+        "name": "congenital neurologic anomaly",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "2490",
+            "url": "http://purl.obolibrary.org/obo/DOID_2490"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "2490",
+        "url": "http://purl.obolibrary.org/obo/DOID_2490"
+      },
+      {
+        "database": "ICD9",
+        "description": "DOID:2490",
+        "id": "742",
+        "url": "http://www.icd9data.com/getICD9Code.ashx?icd9=742"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C97172",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C97172"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0002320",
+    "synonyms": [
+      "congenital abnormality of the nervous system",
+      "congenital nervous system disorder",
+      "congenital neurologic anomaly"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000233": [
+        "https://github.com/monarch-initiative/mondo/issues/3410"
+      ],
+      "creator": [
+        "https://orcid.org/0000-0002-4142-7153"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D065886",
+        "http://identifiers.org/snomedct/700364009",
+        "http://linkedlifedata.com/resource/umls/id/C1535926",
+        "http://purl.obolibrary.org/obo/NCIT_C1535926",
+        "http://purl.obolibrary.org/obo/NCIT_C89338"
+      ],
+      "hasDbXref": [
+        "MESH:D065886",
+        "MedDRA:C1535926",
+        "NCIT:C1535926",
+        "NCIT:C89338",
+        "SCTID:700364009",
+        "UMLS:C1535926"
+      ],
+      "id": [
+        "MONDO:0700092"
+      ]
+    },
+    "description": [
+      "A behavioral and cognitive disorder with onset during the developmental period that involves impaired or aberrant development of intellectual, motor, or social functions."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0700092",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "neurodevelopmental disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A behavioral and cognitive disorder with onset during the developmental period that involves impaired or aberrant development of intellectual, motor, or social functions.",
+        "oboXrefs": [
+          {
+            "database": "SCTID",
+            "id": "700364009",
+            "url": "http://snomed.info/id/700364009"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0700092",
+    "obo_xref": [
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D065886",
+        "url": "http://id.nlm.nih.gov/mesh/D065886"
+      },
+      {
+        "database": "MedDRA",
+        "id": "C1535926"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C1535926",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C1535926"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C89338",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C89338"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "700364009",
+        "url": "http://snomed.info/id/700364009"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "C1535926",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C1535926"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0700092",
+    "synonyms": []
+  }
+]

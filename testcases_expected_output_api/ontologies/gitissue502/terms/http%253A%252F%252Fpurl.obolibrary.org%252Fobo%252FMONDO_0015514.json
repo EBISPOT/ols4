@@ -1,0 +1,128 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015514",
+  "lang": "en",
+  "description": [],
+  "synonyms": [
+    "genetic endocrine growth disease",
+    "growth disorder"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/mesh/D006130",
+      "http://linkedlifedata.com/resource/umls/id/CN237424",
+      "http://www.orpha.net/ORDO/Orphanet_156643"
+    ],
+    "hasDbXref": [
+      "GARD:20012",
+      "MESH:D006130",
+      "Orphanet:156643",
+      "UMLS:CN237424"
+    ],
+    "id": [
+      "MONDO:0015514"
+    ]
+  },
+  "label": "hereditary endocrine growth disease",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0015514",
+  "obo_id": "MONDO:0015514",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "20012",
+      "url": "https://rarediseases.info.nih.gov/diseases/20012/index"
+    },
+    {
+      "database": "MESH",
+      "id": "D006130",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D006130"
+    },
+    {
+      "database": "Orphanet",
+      "id": "156643",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=156643"
+    },
+    {
+      "database": "UMLS",
+      "id": "CN237424",
+      "description": "MONDO:equivalentTo"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "genetic endocrine growth disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "156643",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=156643"
+        }
+      ]
+    },
+    {
+      "name": "growth disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "cjm"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/graph"
+    },
+    "has_characteristic": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015514/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    }
+  }
+}

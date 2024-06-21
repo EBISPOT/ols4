@@ -1,0 +1,191 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0019755",
+  "lang": "en",
+  "description": [
+    "A disease that has its basis in the disruption of embryonic morphogenesis."
+  ],
+  "synonyms": [
+    "congenital malformation syndrome",
+    "developmental defect during embryogenesis",
+    "disorder of embryonic morphogenesis",
+    "embryonic morphogenesis disease",
+    "malformation syndrome",
+    "rare developmental defect during embryogenesis"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/snomedct/400038003",
+      "http://linkedlifedata.com/resource/umls/id/C1302790",
+      "http://linkedlifedata.com/resource/umls/id/CN206687",
+      "http://purl.obolibrary.org/obo/NCIT_C99267",
+      "http://www.orpha.net/ORDO/Orphanet_93890"
+    ],
+    "hasDbXref": [
+      "GARD:22513",
+      "ICD9:759.7",
+      "NCIT:C99267",
+      "Orphanet:93890",
+      "SCTID:400038003",
+      "UMLS:C1302790",
+      "UMLS:CN206687"
+    ],
+    "id": [
+      "MONDO:0019755"
+    ]
+  },
+  "label": "developmental defect during embryogenesis",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0019755",
+  "obo_id": "MONDO:0019755",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "A disease that has its basis in the disruption of embryonic morphogenesis.",
+      "oboXrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "22513",
+      "url": "https://rarediseases.info.nih.gov/diseases/22513/index"
+    },
+    {
+      "database": "ICD9",
+      "id": "759.7"
+    },
+    {
+      "database": "NCIT",
+      "id": "C99267",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C99267"
+    },
+    {
+      "database": "Orphanet",
+      "id": "93890",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=93890"
+    },
+    {
+      "database": "SCTID",
+      "id": "400038003",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/400038003"
+    },
+    {
+      "database": "UMLS",
+      "id": "C1302790",
+      "description": "MONDO:equivalentTo",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C1302790"
+    },
+    {
+      "database": "UMLS",
+      "id": "CN206687",
+      "description": "MONDO:equivalentTo"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "disorder of embryonic morphogenesis",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        },
+        {
+          "database": "MONDO",
+          "id": "patterns/basis_in_disruption_of_process"
+        }
+      ]
+    },
+    {
+      "name": "embryonic morphogenesis disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        }
+      ]
+    },
+    {
+      "name": "malformation syndrome",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "93890",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=93890"
+        }
+      ]
+    },
+    {
+      "name": "rare developmental defect during embryogenesis",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "93890",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=93890"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/graph"
+    },
+    "disease_caused_by_disruption_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019755/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021"
+    }
+  }
+}

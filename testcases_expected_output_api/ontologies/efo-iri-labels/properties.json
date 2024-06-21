@@ -1,0 +1,48 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has part",
+    "lang": "en",
+    "obo_id": "BFO:0000051",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "BFO_0000051",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000054?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "realized in",
+    "lang": "en",
+    "obo_id": "BFO:0000054",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "BFO_0000054",
+    "synonyms": []
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "B",
+  "ontology_name": "related-somevaluesof-hierarchical",
+  "ontology_prefix": "related-someValuesOf-hierarchical",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "B",
+  "obo_id": "B",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/related-somevaluesof-hierarchical/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FsomeValuesOf-hierarchical.owl%2523B/graph"
+    }
+  }
+}

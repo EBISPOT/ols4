@@ -1,0 +1,973 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:broadMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has broader match",
+    "lang": "en",
+    "obo_id": "broadMatch",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "broadMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a concept to a concept that is more general in meaning."
+      ],
+      "scope note": [
+        "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."
+      ]
+    },
+    "description": [
+      "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#broader",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has broader",
+    "lang": "en",
+    "obo_id": "broader",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "broader",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broaderTransitive?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:broaderTransitive is a transitive superproperty of skos:broader."
+      ],
+      "scope note": [
+        "By convention, skos:broaderTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#broaderTransitive",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has broader transitive",
+    "lang": "en",
+    "obo_id": "broaderTransitive",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "broaderTransitive",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523changeNote/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523changeNote/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523changeNote/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523changeNote?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A note about a modification to a concept."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#changeNote",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "change note",
+    "lang": "en",
+    "obo_id": "changeNote",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "changeNote",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has close match",
+    "lang": "en",
+    "obo_id": "closeMatch",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "closeMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A statement or formal explanation of the meaning of a concept."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#definition",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "definition",
+    "lang": "en",
+    "obo_id": "definition",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "definition",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523editorialNote/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523editorialNote/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523editorialNote/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523editorialNote?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A note for an editor, translator or maintainer of the vocabulary."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#editorialNote",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "editorial note",
+    "lang": "en",
+    "obo_id": "editorialNote",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "editorialNote",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:exactMatch is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch."
+      ]
+    },
+    "description": [
+      "skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has exact match",
+    "lang": "en",
+    "obo_id": "exactMatch",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "exactMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523example/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523example/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523example/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523example?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "An example of the use of a concept."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#example",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "example",
+    "lang": "en",
+    "obo_id": "example",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "example",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523historyNote/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523historyNote/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523historyNote/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523historyNote?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A note about the past state/use/meaning of a concept."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#historyNote",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "history note",
+    "lang": "en",
+    "obo_id": "historyNote",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "historyNote",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523mappingRelation?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates two concepts coming, by convention, from different schemes, and that have comparable meanings"
+      ]
+    },
+    "description": [
+      "These concept mapping relations mirror semantic relations, and the data model defined below is similar (with the exception of skos:exactMatch) to the data model defined for semantic relations. A distinct vocabulary is provided for concept mapping relations, to provide a convenient way to differentiate links within a concept scheme from links between concept schemes. However, this pattern of usage is not a formal requirement of the SKOS data model, and relies on informal definitions of best practice."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is in mapping relation with",
+    "lang": "en",
+    "obo_id": "mappingRelation",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "mappingRelation",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:narrowMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has narrower match",
+    "lang": "en",
+    "obo_id": "narrowMatch",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "narrowMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrower?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a concept to a concept that is more specific in meaning."
+      ],
+      "scope note": [
+        "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."
+      ]
+    },
+    "description": [
+      "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#narrower",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has narrower",
+    "lang": "en",
+    "obo_id": "narrower",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "narrower",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowerTransitive?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:narrowerTransitive is a transitive superproperty of skos:narrower."
+      ],
+      "scope note": [
+        "By convention, skos:narrowerTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has narrower transitive",
+    "lang": "en",
+    "obo_id": "narrowerTransitive",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "narrowerTransitive",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related/descendants"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523related?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a concept to a concept with which there is an associative semantic relationship."
+      ]
+    },
+    "description": [
+      "skos:related is disjoint with skos:broaderTransitive"
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#related",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has related",
+    "lang": "en",
+    "obo_id": "related",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "related",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523relatedMatch/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523relatedMatch/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523relatedMatch/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523relatedMatch?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "skos:relatedMatch is used to state an associative mapping link between two conceptual resources in different concept schemes."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has related match",
+    "lang": "en",
+    "obo_id": "relatedMatch",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "relatedMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523scopeNote/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523scopeNote/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523scopeNote/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523scopeNote?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A note that helps to clarify the meaning and/or the use of a concept."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#scopeNote",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "scope note",
+    "lang": "en",
+    "obo_id": "scopeNote",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "scopeNote",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523topConceptOf/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523topConceptOf/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523topConceptOf/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523topConceptOf?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a concept to the concept scheme that it is a top level concept of."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#topConceptOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is top concept in scheme",
+    "lang": "en",
+    "obo_id": "topConceptOf",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "topConceptOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523inScheme/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523inScheme/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523inScheme?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a resource (for example a concept) to a concept scheme in which it is included."
+      ],
+      "scope note": [
+        "A concept may be a member of more than one concept scheme."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#inScheme",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is in scheme",
+    "lang": "en",
+    "obo_id": "inScheme",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "inScheme",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A general note, for any purpose."
+      ],
+      "scope note": [
+        "This property may be used directly, or as a super-property for more specific note types."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#note",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "note",
+    "lang": "en",
+    "obo_id": "note",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "note",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523semanticRelation/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523semanticRelation/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523semanticRelation?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Links a concept to a concept related by meaning."
+      ],
+      "scope note": [
+        "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is in semantic relation with",
+    "lang": "en",
+    "obo_id": "semanticRelation",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "semanticRelation",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523altLabel?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "An alternative lexical label for a resource."
+      ],
+      "example": [
+        "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."
+      ]
+    },
+    "description": [
+      "The range of skos:altLabel is the class of RDF plain literals.",
+      "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#altLabel",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "alternative label",
+    "lang": "en",
+    "obo_id": "altLabel",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "altLabel",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523hasTopConcept?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#hasTopConcept",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has top concept",
+    "lang": "en",
+    "obo_id": "hasTopConcept",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "hasTopConcept",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523hiddenLabel?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A lexical label for a resource that should be hidden when generating visual displays of the resource, but should still be accessible to free text search operations."
+      ]
+    },
+    "description": [
+      "The range of skos:hiddenLabel is the class of RDF plain literals.",
+      "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#hiddenLabel",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hidden label",
+    "lang": "en",
+    "obo_id": "hiddenLabel",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "hiddenLabel",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523member?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates a collection to one of its members."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#member",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has member",
+    "lang": "en",
+    "obo_id": "member",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "member",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523memberList?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "Relates an ordered collection to the RDF list containing its members."
+      ]
+    },
+    "description": [
+      "For any resource, every item in the list given as the value of the\n      skos:memberList property is also a value of the skos:member property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#memberList",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has member list",
+    "lang": "en",
+    "obo_id": "memberList",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "memberList",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523notation?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme."
+      ],
+      "scope note": [
+        "By convention, skos:notation is used with a typed literal in the object position of the triple."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#notation",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "notation",
+    "lang": "en",
+    "obo_id": "notation",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "notation",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523prefLabel?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "The preferred lexical label for a resource, in a given language."
+      ]
+    },
+    "description": [
+      "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.",
+      "The range of skos:prefLabel is the class of RDF plain literals.",
+      "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise\n      disjoint properties."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "preferred label",
+    "lang": "en",
+    "obo_id": "prefLabel",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "prefLabel",
+    "synonyms": []
+  }
+]
