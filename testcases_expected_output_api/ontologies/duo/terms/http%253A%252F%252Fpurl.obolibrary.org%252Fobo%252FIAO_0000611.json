@@ -1,0 +1,68 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000611",
+  "lang": "en",
+  "description": [
+    "A part of a document about a resource described in the document, e.g. software, that describes where and/or how that resource can be obtained."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "availability",
+      "availability of data",
+      "data archiving",
+      "data availability",
+      "data availability statement",
+      "data sharing statement"
+    ],
+    "editor preferred term": [
+      "availability section"
+    ],
+    "example of usage": [
+      "The section labelled 'availability and requirements' in a typical scientific journal article, e.g. Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/)."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183",
+      "https://github.com/information-artifact-ontology/IAO/issues/234"
+    ]
+  },
+  "label": "availability section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000611",
+  "obo_id": "IAO:0000611",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/graph"
+    },
+    "has_part": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000611/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+    }
+  }
+}

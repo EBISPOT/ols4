@@ -1,0 +1,1125 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000002?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "This term was depreacted as it is not used to tag datasets but instead as patterns for DUO codes capture. This is an archive specific requirement, e.g. \"one code from a primary category and one or more from a second category'\nThis is better done by Schemablocks and constraining the pattern of usage of DUO terms at each archive level."
+      ],
+      "id": [
+        "DUO:0000002"
+      ]
+    },
+    "description": [
+      "A categorical data item indicating the primary category the consent code belongs to according to Dyke et al. 2016."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000002",
+    "is_defining_ontology": true,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete consent code primary category",
+    "lang": "en",
+    "obo_id": "DUO:0000002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000002",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000003?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "This term was depreacted as it is not used to tag datasets but instead as patterns for DUO codes capture. This is an archive specific requirement, e.g. \"one code from a primary category and one or more from a second category'\nThis is better done by Schemablocks and constraining the pattern of usage of DUO terms at each archive level."
+      ],
+      "id": [
+        "DUO:0000003"
+      ]
+    },
+    "description": [
+      "A categorical data item indicating the secondary category the consent code belongs to according to Dyke et al. 2016."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000003",
+    "is_defining_ontology": true,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete consent code secondary category",
+    "lang": "en",
+    "obo_id": "DUO:0000003",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000003",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000005?lang=en"
+      }
+    },
+    "annotation": {
+      "id": [
+        "DUO:0000005"
+      ],
+      "shorthand": [
+        "GRU-CC"
+      ],
+      "term replaced by": [
+        "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043"
+      ]
+    },
+    "description": [
+      "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
+      "This term was made obsolete as per https://github.com/EBISPOT/DUO/issues/45"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000005",
+    "is_defining_ontology": true,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete general research use and clinical care",
+    "lang": "en",
+    "obo_id": "DUO:0000005",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000005",
+    "synonyms": [],
+    "term_replaced_by": "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043"
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014?lang=en"
+      }
+    },
+    "annotation": {
+      "id": [
+        "DUO:0000014"
+      ],
+      "shorthand": [
+        "RU"
+      ]
+    },
+    "description": [
+      "Deprecated as GRU-CC was split into GRU and CC, so this is not applicable anymore as a qualifier of GRU-CC",
+      "This data use limitation indicates that use is limited to research purposes (e.g., does not include its use in clinical care)."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000014",
+    "is_defining_ontology": true,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete research use only",
+    "lang": "en",
+    "obo_id": "DUO:0000014",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000014",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000008?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000008",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_artifact",
+    "lang": "en",
+    "obo_id": "IAO:0000008",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000008",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000012?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\n\nSuperclass was 'digitial quality'"
+      ],
+      "editor preferred term": [
+        "obsolete_digital entity"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A digital entity is an information entity which is a collection of bits that can be interpreted by a computer. Two digital entities are the same if they are bitwise identical."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000012",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_digital entity",
+    "lang": "en",
+    "obo_id": "IAO:0000012",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000012",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000018?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000226"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000018",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_material_entity",
+    "lang": "en",
+    "obo_id": "IAO:0000018",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000018",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000019?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\nSuperclass was 'digital entity'",
+        "digital_entity"
+      ],
+      "editor preferred term": [
+        "binary digital entity"
+      ],
+      "example of usage": [
+        "MS Word document, ZIP file, DICOM file, JPEG file"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A binary digital entity is a digital entity that is encoded in a way that is not easily human readable and that contains other than text characters."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000019",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_binary digital entity",
+    "lang": "en",
+    "obo_id": "IAO:0000019",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000019",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000024?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
+      ],
+      "example of usage": [
+        "The length of a ruler."
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "a unit of measure is the quality of some material entity compared to which another quality is some multiple of."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000024",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_unit of measure",
+    "lang": "en",
+    "obo_id": "IAO:0000024",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000024",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000035?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "conclusion"
+      ],
+      "definition source": [
+        "OBI_0000005"
+      ],
+      "editor note": [
+        "The obsoleting of narrative object required a modest change in the definition of this term.  Circularity with \"interpretation... interprets\" has been removed, using \"about the implications\" instead."
+      ],
+      "editor preferred term": [
+        "obsolete_study interpretation"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "Lawrence Hunter",
+        "PERSON: Jennifer Fostel"
+      ]
+    },
+    "description": [
+      "A study interpretation is a textual entity about the implications of a study result. Examples include discussion of whether a hypothesis is false, whether the study failed to address the hypothesis, and whether the study results have led to new hypotheses"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000035",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_study interpretation",
+    "lang": "en",
+    "obo_id": "IAO:0000035",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000035",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000132",
+        "group:OBI"
+      ],
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\nsuperclass was 'digital document'",
+        "digital_entity"
+      ],
+      "editor preferred term": [
+        "text based digital entity"
+      ],
+      "example of usage": [
+        "XML file, C++ source code file"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A text based digital entity is a digital entity that is encoded so that it only contains text characters."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000047",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_text based digital entity",
+    "lang": "en",
+    "obo_id": "IAO:0000047",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000047",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000059?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "I prepended the 'report ' to make it clear that we mean parts of reports here. We may want a more generic version of 'figure', in which case this would become a defined class - figure and part_of some report",
+        "Replaced by defined version of figure"
+      ],
+      "editor preferred term": [
+        "report figure"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000124"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg",
+        "person:Allyson Lister"
+      ]
+    },
+    "description": [
+      "A report figure is a report display element that has some aspect of illustration, but may be a composite of figures, images, and other elements"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000059",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_report figure",
+    "lang": "en",
+    "obo_id": "IAO:0000059",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000059",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000091?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI"
+      ],
+      "editor note": [
+        "There will be some issue here about whether these are defined classes. As intended these are meant to denote the parts of the report that are not textual but are typically boxed and set within the text, labelled with some identifier, and referred to in the text"
+      ],
+      "editor preferred term": [
+        "report element"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg",
+        "PERSON: Allyson Lister"
+      ]
+    },
+    "description": [
+      "A report element is a narrative object in which information is presented and consumed by a human being, and is part of a report. Examples of report elements are figure (dot plot), table, text portion (may include a movie or audio clip on a web page)."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000091",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_report element",
+    "lang": "en",
+    "obo_id": "IAO:0000091",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000091",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000093?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\nsuperclass was 'digital entity'"
+      ],
+      "editor preferred term": [
+        "binary executable"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Jennifer Fostel"
+      ]
+    },
+    "description": [
+      "Binary executable is a digital entity consisting of the binary representation of machine instructions of a specific processor or they may be binary pseudocode for a virtual machine. A non-source executable file is also called an object program. It is assumed that the binary executable file contains properly-formatted computer instructions.  (derived from Wikipedia, Nov 1, 2007)"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000093",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_binary executable",
+    "lang": "en",
+    "obo_id": "IAO:0000093",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000093",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000097?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "2009-08-10 Alan Ruttenberg: Larry Hunter suggests that this be obsoleted and replaced by 'textual entity table'. Alan restored as there are OBI dependencies and this merits further discussion"
+      ],
+      "editor preferred term": [
+        "report table"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000002"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg",
+        "person:Allyson Lister"
+      ]
+    },
+    "description": [
+      "A report table is a report display element consisting of a matrix of cells layed out in a grid, some set of which are filled with some information content"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000097",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_report table",
+    "lang": "en",
+    "obo_id": "IAO:0000097",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000097",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000105?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "group:OBI"
+      ],
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\nsuperclass was 'digial entity'"
+      ],
+      "editor preferred term": [
+        "digital document"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "person:Jennifer Fostel"
+      ]
+    },
+    "description": [
+      "A digital document is a digital entity consisting of an electronic file which can be rendered into human-readable form by one or more computational applications.  The digital document does not refer to the information content of the document but to an instance of the file."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000105",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete2_digital document",
+    "lang": "en",
+    "obo_id": "IAO:0000105",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000105",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000128?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "_identifier is a container under information content entity for collecting types of terms to indicate a specific instance or clas of what was used or participated in an investigation. Identifiers are borne by a product or its packaging, and can be encoded in a variety of other information objects, such as bar codes, numerals, or patterns of dots.\n\nNote: everybody agreed that identifier is probably a too general term. We however felt that it would be appropriate to group \"identifiying\" terms under some kind of umbrella. We therefore propose to use _identifier for that purpose. As per OBI conventions, the _ prefixing identifier indicates that this is a helper class and shouldn't be considered as final."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000121"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000226"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000128",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_identifier",
+    "lang": "en",
+    "obo_id": "IAO:0000128",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000128",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000141?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4",
+        "Need to rework digital entity. Digital quality was suggested by Barry."
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000141",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_digital quality",
+    "lang": "en",
+    "obo_id": "IAO:0000141",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000141",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000182?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "WEB: http://www.graphpad.com/www/book/survive.htm"
+      ],
+      "editor preferred term": [
+        "obsolete_survival curve"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "PERSON:Chris Stoeckert",
+        "PERSON:James Malone",
+        "PERSON:Melanie Courtot"
+      ]
+    },
+    "description": [
+      "A survival curve is a report graph which is a graphical representation of data where the percentage of survival is plotted as a function of time."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000182",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_survival curve",
+    "lang": "en",
+    "obo_id": "IAO:0000182",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000182",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "MC, 20101124: deprecated following discussion at IAO call 20101124. Term was deemed not necessary - no use case for now."
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [
+      "a planned process with the objective to establish a system that allows to refer to specific entities of a certain kind and store information about them, by establishing a CRID registry and plan specifications for the process of 1) assigning a CRID and 2) looking up a CRID."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000576",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete_establishing a CRID registry",
+    "lang": "en",
+    "obo_id": "IAO:0000576",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000576",
+    "synonyms": []
+  }
+]

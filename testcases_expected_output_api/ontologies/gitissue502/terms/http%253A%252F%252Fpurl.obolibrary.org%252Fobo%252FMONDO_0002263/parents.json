@@ -1,0 +1,243 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/snomedct/362968007",
+        "http://linkedlifedata.com/resource/umls/id/C0178829",
+        "http://purl.obolibrary.org/obo/DOID_15",
+        "http://purl.obolibrary.org/obo/NCIT_C4875"
+      ],
+      "hasDbXref": [
+        "DOID:15",
+        "EFO:0000512",
+        "NCIT:C4875",
+        "SCTID:362968007",
+        "UMLS:C0178829",
+        "Wikipedia:Reproductive_system_disease"
+      ],
+      "id": [
+        "MONDO:0005039"
+      ]
+    },
+    "description": [
+      "A disease involving the reproductive system."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "reproductive system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease involving the reproductive system.",
+        "oboXrefs": [
+          {
+            "id": "https://orcid.org/0000-0002-6601-2165",
+            "url": "https://orcid.org/0000-0002-6601-2165"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005039",
+    "obo_synonym": [
+      {
+        "name": "disease of reproductive system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of reproductive system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          },
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "genital disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "genital system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "15",
+            "url": "http://purl.obolibrary.org/obo/DOID_15"
+          }
+        ]
+      },
+      {
+        "name": "reproductive disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "15",
+            "url": "http://purl.obolibrary.org/obo/DOID_15"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          },
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "15",
+        "url": "http://purl.obolibrary.org/obo/DOID_15"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0000512",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000512"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C4875",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "362968007",
+        "url": "http://snomed.info/id/362968007"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C4875",
+        "id": "C0178829",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0178829"
+      },
+      {
+        "database": "Wikipedia",
+        "description": "EFO:0000512",
+        "id": "Reproductive_system_disease",
+        "url": "http://en.wikipedia.org/wiki/Reproductive_system_disease"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005039",
+    "synonyms": [
+      "disease of reproductive system",
+      "disease or disorder of reproductive system",
+      "disorder of reproductive system",
+      "genital disorders",
+      "genital system disease",
+      "reproductive disease",
+      "reproductive system disease or disorder",
+      "reproductive system disease",
+      "reproductive system disorder"
+    ]
+  }
+]

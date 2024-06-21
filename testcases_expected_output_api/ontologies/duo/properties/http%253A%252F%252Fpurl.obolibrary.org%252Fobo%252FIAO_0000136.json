@@ -1,0 +1,46 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000136",
+  "lang": "en",
+  "description": [
+    "A (currently) primitive relation that relates an information artifact to an entity."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
+    ],
+    "editor note": [
+      "7/6/2009 Alan Ruttenberg. Following discussion with Jonathan Rees, and introduction of \"mentions\" relation. Weaken the is_about relationship to be primitive. \n\nWe will try to build it back up by elaborating the various subproperties that are more precisely defined.\n\nSome currently missing phenomena that should be considered \"about\" are predications - \"The only person who knows the answer is sitting beside me\" , Allegory, Satire, and other literary forms that can be topical without explicitly mentioning the topic."
+    ],
+    "example of usage": [
+      "This document is about information artifacts and their representations"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ],
+    "term editor": [
+      "person:Alan Ruttenberg"
+    ]
+  },
+  "label": "is about",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "IAO_0000136",
+  "obo_id": "IAO:0000136",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/descendants"
+    }
+  }
+}

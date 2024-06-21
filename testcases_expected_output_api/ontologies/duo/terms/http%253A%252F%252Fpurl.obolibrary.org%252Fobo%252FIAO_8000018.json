@@ -1,0 +1,50 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_8000018",
+  "lang": "en",
+  "description": [
+    "A subset ontology that is designed for basic applications to continue to make certain simplifying assumptions; many of these simplifying assumptions were based on the initial version of the Gene Ontology, and have become enshrined in many popular and useful tools such as term enrichment tools.\n\nExamples of such assumptions include: traversing the ontology graph ignoring relationship types using a naive algorithm will not lead to cycles (i.e. the ontology is a DAG); every referenced term is declared in the ontology (i.e. there are no dangling clauses).\n\nAn ontology is OBO Basic if and only if it has the following characteristics:\nDAG\nUnidirectional\nNo Dangling Clauses\nFully Asserted\nFully Labeled\nNo equivalence axioms\nSingly labeled edges\nNo qualifier lists\nNo disjointness axioms\nNo owl-axioms header\nNo imports"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "obo basic subset ontology module"
+    ],
+    "seeAlso": [
+      "http://owlcollab.github.io/oboformat/doc/obo-syntax.html#6.2"
+    ]
+  },
+  "label": "obo basic subset ontology module",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_8000018",
+  "obo_id": "IAO:8000018",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000018/graph"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000603",
+  "lang": "en",
+  "description": [
+    "Relates an ontology IRI to an (inclusive) range of IRIs in an OBO name space. The range is give as, e.g. \"IAO_0020000-IAO_0020999\"",
+    "Add as annotation triples in the granting ontology"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "is allocated id range"
+    ],
+    "term editor": [
+      "PERSON:Alan Ruttenberg"
+    ]
+  },
+  "label": "is allocated id range",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000603",
+  "obo_id": "IAO:0000603",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000603?lang=en"
+    }
+  }
+}

@@ -1,0 +1,4483 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000179/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000179/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000179/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000179?lang=en"
+      }
+    },
+    "annotation": {
+      "curator note": [
+        "Really of interest to developers only"
+      ]
+    },
+    "description": [
+      "Relates an entity in the ontology to the name of the variable that is used to represent it in the code that generates the BFO OWL file from the lispy specification."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000179",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "BFO OWL specification label",
+    "lang": "en",
+    "obo_id": "BFO:0000179",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000179",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000180/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000180/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000180/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000180?lang=en"
+      }
+    },
+    "annotation": {
+      "curator note": [
+        "Really of interest to developers only"
+      ],
+      "definition source": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relates an entity in the ontology to the term that is used to represent it in the the CLIF specification of BFO2"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000180",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "BFO CLIF specification label",
+    "lang": "en",
+    "obo_id": "BFO:0000180",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000180",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000039/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000039/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000039/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000039?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000039",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has measurement unit label",
+    "lang": "en",
+    "obo_id": "IAO:0000039",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000039",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
+      ],
+      "editor note": [
+        "8/6/2009 Alan Ruttenberg: The suggestions is to deprecate specific and generically denotes in favor of a single denote relationship that corresponds to the generic sense",
+        "see https://github.com/information-artifact-ontology/IAO/issues/25&q=denote"
+      ],
+      "example of usage": [
+        "The process of creation is, for example,  writing down on paper the name of a friend by deliberately creating a certain pattern using ink.\n\nHere the ink + paper is the independent continuant and the carrier is the pattern in the ink.\n\nc = pattern in the ink\nb = paper + ink\nr = friend"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "c specifically denotes r =def \nr is a portion of reality\n& c is a particular quality\n& c depends specifically on some independent continuant b \n& b acquired c as the result of the achievement of an objective to enable pointing to r repeatedly. \n\nMarked means there is a changed or additional quality of the bearer - the  quality is the information carrier.\n\nCase 1\nMemory trace as mark created when reading some description of some friend. The trace can denote.\n\nCase 2\nPattern of ink arrayed on paper as mark when writing down a friend's name\n\nCase 3\nPattern of magnetic domains on scattered pieces of a hard disk platter as mark when saving a file."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000135",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "obsolete_specifically denotes",
+    "lang": "en",
+    "obo_id": "IAO:0000135",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000135",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "7/6/2009 Alan Ruttenberg. P4 RC1 munges our GCI so remove it for now: mentions some entity equivalentTo has_part some ('generically denotes' some entity)",
+        "7/6/2009 Alan Ruttenberg: Add this relation following conversation with Jonathan Rees that N&S GCI for is_about was too strong. Really it was simply sufficient. To effect this change we introduce this relation, which is subproperty of is_about, and have previous GCI use this relation \"mentions\" in it's (logical) definition"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "PERSON: Jonathan Rees",
+        "Person: Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "An information artifact IA mentions an entity E exactly when it has a component/part that denotes E"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000142",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "mentions",
+    "lang": "en",
+    "obo_id": "IAO:0000142",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000142",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Conversations with Barry Smith, Werner Ceusters, Bjoern Peters, Michel Dumontier, Melanie Courtot, James Malone, Bill Hogan"
+      ],
+      "editor note": [
+        "2009-11-10 Alan Ruttenberg. Old definition said the following to emphasize the generic nature of this relation. We no longer have 'specifically denotes', which would have been primitive, so make this relation primitive.\ng denotes r =def \nr is a portion of reality\nthere is some c that is a concretization of g \nevery c that is a concretization of g specifically denotes r"
+      ],
+      "example of usage": [
+        "A person's name denotes the person. A variable name in a computer program denotes some piece of memory. Lexically equivalent strings can denote different things, for instance \"Alan\" can denote different people. In each case of use, there is a case of the denotation relation obtaining, between \"Alan\" and the person that is being named."
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "",
+      "A primitive, instance-level, relation obtaining between an information content entity and some portion of reality. Denotation is what happens when someone creates an information content entity E in order to specifically refer to something. The only relation between E and the thing is that E can be used to 'pick out' the thing. This relation connects those two together. Freedictionary.com sense 3: To signify directly; refer to specifically"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000219",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "denotes",
+    "lang": "en",
+    "obo_id": "IAO:0000219",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000219",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000220/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000220/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000220/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000220?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "see https://github.com/information-artifact-ontology/IAO/issues/25&q=denote"
+      ],
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000220",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "obsolete_materially denotes",
+    "lang": "en",
+    "obo_id": "IAO:0000220",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000220",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000221/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000221/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000221/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000221?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "8/6/2009 Alan Ruttenberg: The strategy is to be rather specific with this relationship. There are other kinds of measurements that are not of qualities, such as those that measure time. We will add these as separate properties for the moment and see about generalizing later",
+        "From the second IAO workshop [Alan Ruttenberg 8/6/2009: not completely current, though bringing in comparison is probably important]\n\nThis one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details.\n--\nFrom the second IAO workshop, various comments, [commented on by Alan Ruttenberg 8/6/2009]\n\nunit of measure is a quality, e.g. the length of a ruler.\n\n[We decided to hedge on what units of measure are, instead talking about measurement unit labels, which are the information content entities that are about whatever measurement units are. For IAO we need that information entity in any case. See the term measurement unit label]\n\n[Some struggling with the various subflavors of is_about. We subsequently removed the relation represents, and describes until and only when we have a better theory]\n\na represents b means either a denotes b or a describes\n\ndescribe:\na describes b means a is about b and a allows an inference of at least one quality of b\n\nWe have had a long discussion about denotes versus describes.",
+        "From the second IAO workshop: An attempt at tieing the quality to the measurement datum more carefully.\n\na is a magnitude means a is a determinate quality particular inhering in some bearer b existing at a time t that can be represented/denoted by an information content entity e that has parts denoting a unit of measure, a number, and b. The unit of measure is an instance of the determinable quality.",
+        "From the second meeting on IAO:\n\nAn attempt at defining assay using Barry's \"reliability\" wording\n\nassay:\nprocess and has_input some material entity\nand has_output some information content entity \nand which is such that instances of this process type reliably generate \noutputs that describes the input.",
+        "This one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details."
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "m is a quality measurement of q at t. When q is a quality, there is a measurement process p that has specified output m, a measurement datum, that is about q"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000221",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is quality measurement of",
+    "lang": "en",
+    "obo_id": "IAO:0000221",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000221",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000222/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000222/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000222/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000222?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000222",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "obsolete_describes",
+    "lang": "en",
+    "obo_id": "IAO:0000222",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000222",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000223/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000223/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000223/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000223?lang=en"
+      }
+    },
+    "annotation": {
+      "has obsolescence reason": [
+        "http://purl.obolibrary.org/obo/IAO_0000103"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000223",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "obsolete_represents",
+    "lang": "en",
+    "obo_id": "IAO:0000223",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000223",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000407/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000407/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000407/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000407?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "relating a cartesian spatial coordinate datum to a unit label that together with the values represent a point"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000407",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has coordinate unit label",
+    "lang": "en",
+    "obo_id": "IAO:0000407",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000407",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000413/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000413/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000413/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000413?lang=en"
+      }
+    },
+    "annotation": {
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "relates a process to a time-measurement-datum that represents the duration of the process"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000413",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is duration of",
+    "lang": "en",
+    "obo_id": "IAO:0000413",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000413",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000418/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000418/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000418/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000418?lang=en"
+      }
+    },
+    "annotation": {
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg",
+        "Person:Bjoern Peters"
+      ]
+    },
+    "description": [
+      "A relation between a data item and a quality of a material entity where the material entity is the specified output of a material transformation which achieves an objective specification that indicates the intended value of the specified quality."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000418",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is quality specification of",
+    "lang": "en",
+    "obo_id": "IAO:0000418",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000418",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "antisymmetric property"
+      ],
+      "example of usage": [
+        "part_of antisymmetric property xsd:true"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Use boolean value xsd:true to indicate that the property is an antisymmetric property"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000427",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "antisymmetric property",
+    "lang": "en",
+    "obo_id": "IAO:0000427",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000427",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000581/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000581/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000581/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000581?lang=en"
+      }
+    },
+    "annotation": {
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "relates a time stamped measurement datum to the time measurement datum that denotes the time when the measurement was taken"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000581",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has time stamp",
+    "lang": "en",
+    "obo_id": "IAO:0000581",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000581",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000583/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000583/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000583/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000583?lang=en"
+      }
+    },
+    "annotation": {
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "relates a time stamped measurement datum to the measurement datum that was measured"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000583",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has measurement datum",
+    "lang": "en",
+    "obo_id": "IAO:0000583",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000583",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works."
+      ],
+      "editor preferred term": [
+        "has_specified_input"
+      ],
+      "example of usage": [
+        "see is_input_of example_of_usage"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/obi.owl"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "The inverse property of is_specified_input_of"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_specified_input",
+    "lang": "en",
+    "obo_id": "OBI:0000293",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OBI_0000293",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has_specified_output"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/obi.owl"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "The inverse property of is_specified_output_of"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OBI_0000299",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_specified_output",
+    "lang": "en",
+    "obo_id": "OBI:0000299",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OBI_0000299",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000312/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000312/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000312/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000312?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "is_specified_output_of"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/obi.owl"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OBI_0000312",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "is_specified_output_of",
+    "lang": "en",
+    "obo_id": "OBI:0000312",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OBI_0000312",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "function_of",
+        "is function of"
+      ],
+      "editor note": [
+        "A function inheres in its bearer at all times for which the function exists, however the function need not be realized at all the times that the function exists."
+      ],
+      "example of usage": [
+        "this catalysis function is a function of this enzyme"
+      ]
+    },
+    "description": [
+      "a relation between a function and an independent continuant (the bearer), in which the function specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000079",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "function of",
+    "lang": "en",
+    "obo_id": "RO:0000079",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000079",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "is quality of",
+        "quality_of"
+      ],
+      "editor note": [
+        "A quality inheres in its bearer at all times for which the quality exists."
+      ],
+      "example of usage": [
+        "this red color is a quality of this apple"
+      ]
+    },
+    "description": [
+      "a relation between a quality and an independent continuant (the bearer), in which the quality specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000080",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "quality of",
+    "lang": "en",
+    "obo_id": "RO:0000080",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000080",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000081?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "is role of",
+        "role_of"
+      ],
+      "editor note": [
+        "A role inheres in its bearer at all times for which the role exists, however the role need not be realized at all the times that the role exists."
+      ],
+      "example of usage": [
+        "this investigator role is a role of this person"
+      ]
+    },
+    "description": [
+      "a relation between a role and an independent continuant (the bearer), in which the role specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000081",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "role of",
+    "lang": "en",
+    "obo_id": "RO:0000081",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000081",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000085/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000085/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000085/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000085?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has_function"
+      ],
+      "editor note": [
+        "A bearer can have many functions, and its functions can exist for different periods of time, but none of its functions can exist when the bearer does not exist. A function need not be realized at all the times that the function exists."
+      ],
+      "example of usage": [
+        "this enzyme has function this catalysis function (more colloquially: this enzyme has this catalysis function)"
+      ]
+    },
+    "description": [
+      "a relation between an independent continuant (the bearer) and a function, in which the function specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000085",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has function",
+    "lang": "en",
+    "obo_id": "RO:0000085",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000085",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has_quality"
+      ],
+      "editor note": [
+        "A bearer can have many qualities, and its qualities can exist for different periods of time, but none of its qualities can exist when the bearer does not exist."
+      ],
+      "example of usage": [
+        "this apple has quality this red color"
+      ]
+    },
+    "description": [
+      "a relation between an independent continuant (the bearer) and a quality, in which the quality specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000086",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has quality",
+    "lang": "en",
+    "obo_id": "RO:0000086",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000086",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has_role"
+      ],
+      "editor note": [
+        "A bearer can have many roles, and its roles can exist for different periods of time, but none of its roles can exist when the bearer does not exist. A role need not be realized at all the times that the role exists."
+      ],
+      "example of usage": [
+        "this person has role this investigator role (more colloquially: this person has this role of investigator)"
+      ]
+    },
+    "description": [
+      "a relation between an independent continuant (the bearer) and a role, in which the role specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000087",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has role",
+    "lang": "en",
+    "obo_id": "RO:0000087",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000087",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000091/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000091/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000091/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000091?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "a relation between an independent continuant (the bearer) and a disposition, in which the disposition specifically depends on the bearer for its existence"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000091",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has disposition",
+    "lang": "en",
+    "obo_id": "RO:0000091",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000091",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000092/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000092/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000092/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000092?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000092",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "disposition of",
+    "lang": "en",
+    "obo_id": "RO:0000092",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000092",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "is member of",
+        "member part of"
+      ],
+      "definition source": [
+        "SIO"
+      ],
+      "example of usage": [
+        "An organism that is a member of a population of organisms"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "is member of is a mereological relation between a item and a collection."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0002350",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "member of",
+    "lang": "en",
+    "obo_id": "RO:0002350",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0002350",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002351/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002351/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002351/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002351?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "SIO"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "has member is a mereological relation between a collection and an item."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0002351",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has member",
+    "lang": "en",
+    "obo_id": "RO:0002351",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0002351",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "seeAlso": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/18"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0001-5208-3432"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/18"
+      ]
+    },
+    "description": [
+      "An alternative label for a class or property which has a more general meaning than the preferred name/primary label."
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has broad synonym",
+    "lang": "en",
+    "obo_id": "hasBroadSynonym",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "hasBroadSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "seeAlso": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/20"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0001-5208-3432"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/20"
+      ]
+    },
+    "description": [
+      "An alternative label for a class or property which has the exact same meaning than the preferred name/primary label."
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has exact synonym",
+    "lang": "en",
+    "obo_id": "hasExactSynonym",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "hasExactSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "seeAlso": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/19"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0001-5208-3432"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/19"
+      ]
+    },
+    "description": [
+      "An alternative label for a class or property which has a more specific meaning than the preferred name/primary label."
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has narrow synonym",
+    "lang": "en",
+    "obo_id": "hasNarrowSynonym",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "hasNarrowSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "seeAlso": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/21"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0001-5208-3432"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/21"
+      ]
+    },
+    "description": [
+      "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct."
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has related synonym",
+    "lang": "en",
+    "obo_id": "hasRelatedSynonym",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "hasRelatedSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "part_of"
+      ],
+      "editor note": [
+        "Everything is part of itself. Any part of any part of a thing is itself part of that thing. Two distinct things cannot be part of each other.",
+        "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+        "Parthood requires the part and the whole to have compatible classes: only an occurrent can be part of an occurrent; only a process can be part of a process; only a continuant can be part of a continuant; only an independent continuant can be part of an independent continuant; only an immaterial entity can be part of an immaterial entity; only a specifically dependent continuant can be part of a specifically dependent continuant; only a generically dependent continuant can be part of a generically dependent continuant. (This list is not exhaustive.)\n\nA continuant cannot be part of an occurrent: use 'participates in'. An occurrent cannot be part of a continuant: use 'has participant'. A material entity cannot be part of an immaterial entity: use 'has location'. A specifically dependent continuant cannot be part of an independent continuant: use 'inheres in'. An independent continuant cannot be part of a specifically dependent continuant: use 'bearer of'."
+      ],
+      "editor preferred term": [
+        "is part of"
+      ],
+      "example of usage": [
+        "my brain is part of my body (continuant parthood, two material entities)",
+        "my stomach cavity is part of my stomach (continuant parthood, immaterial entity is part of material entity)",
+        "this day is part of this year (occurrent parthood)"
+      ],
+      "seeAlso": [
+        "http://www.obofoundry.org/ro/#OBO_REL:part_of"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a core relation that holds between a part and its whole"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "part of",
+    "lang": "en",
+    "obo_id": "BFO:0000050",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000050",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has_part"
+      ],
+      "editor note": [
+        "Everything has itself as a part. Any part of any part of a thing is itself part of that thing. Two distinct things cannot have each other as a part.",
+        "Occurrents are not subject to change and so parthood between occurrents holds for all the times that the part exists. Many continuants are subject to change, so parthood between continuants will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+        "Parthood requires the part and the whole to have compatible classes: only an occurrent have an occurrent as part; only a process can have a process as part; only a continuant can have a continuant as part; only an independent continuant can have an independent continuant as part; only a specifically dependent continuant can have a specifically dependent continuant as part; only a generically dependent continuant can have a generically dependent continuant as part. (This list is not exhaustive.)\n\nA continuant cannot have an occurrent as part: use 'participates in'. An occurrent cannot have a continuant as part: use 'has participant'. An immaterial entity cannot have a material entity as part: use 'location of'. An independent continuant cannot have a specifically dependent continuant as part: use 'bearer of'. A specifically dependent continuant cannot have an independent continuant as part: use 'inheres in'."
+      ],
+      "editor preferred term": [
+        "has part"
+      ],
+      "example of usage": [
+        "my body has part my brain (continuant parthood, two material entities)",
+        "my stomach has part my stomach cavity (continuant parthood, material entity has part immaterial entity)",
+        "this year has part this day (occurrent parthood)"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a core relation that holds between a whole and its part"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has part",
+    "lang": "en",
+    "obo_id": "BFO:0000051",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000051",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000118?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor preferred term": [
+        "alternative label"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "A label for a class or property that can be used to refer to the class or property instead of the preferred rdfs:label. Alternative labels should be used to indicate community- or context-specific labels, abbreviations, shorthand forms and the like."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "alternative label",
+    "lang": "en",
+    "obo_id": "IAO:0000118",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000118",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
+      ],
+      "editor note": [
+        "7/6/2009 Alan Ruttenberg. Following discussion with Jonathan Rees, and introduction of \"mentions\" relation. Weaken the is_about relationship to be primitive. \n\nWe will try to build it back up by elaborating the various subproperties that are more precisely defined.\n\nSome currently missing phenomena that should be considered \"about\" are predications - \"The only person who knows the answer is sitting beside me\" , Allegory, Satire, and other literary forms that can be topical without explicitly mentioning the topic."
+      ],
+      "example of usage": [
+        "This document is about information artifacts and their representations"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "A (currently) primitive relation that relates an information artifact to an entity."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000136",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is about",
+    "lang": "en",
+    "obo_id": "IAO:0000136",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000136",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001?lang=en"
+      }
+    },
+    "annotation": {
+      "created_by": [
+        "http://orcid.org/0000-0001-5208-3432"
+      ],
+      "definition source": [
+        "OBO Operations call"
+      ]
+    },
+    "description": [
+      "This is an annotation used on an object property to indicate a logical characterstic beyond what is possible in OWL."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0001001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "logical characteristic of object property",
+    "lang": "en",
+    "obo_id": "OMO:0001001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0001001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "inheres_in"
+      ],
+      "editor preferred term": [
+        "inheres in"
+      ],
+      "example of usage": [
+        "this fragility is a characteristic of this vase",
+        "this red color is a characteristic of this apple"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000052",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "characteristic of",
+    "lang": "en",
+    "obo_id": "RO:0000052",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000052",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "bearer_of",
+        "is bearer of"
+      ],
+      "editor note": [
+        "A bearer can have many dependents, and its dependents can exist for different periods of time, but none of its dependents can exist when the bearer does not exist."
+      ],
+      "editor preferred term": [
+        "bearer of"
+      ],
+      "example of usage": [
+        "this apple is bearer of this red color",
+        "this vase is bearer of this fragility"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "Inverse of characteristic_of"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000053",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has characteristic",
+    "lang": "en",
+    "obo_id": "RO:0000053",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000053",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000056?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "participates_in"
+      ],
+      "editor preferred term": [
+        "participates in"
+      ],
+      "example of usage": [
+        "this blood clot participates in this blood coagulation",
+        "this input material (or this output material) participates in this process",
+        "this investigator participates in this investigation"
+      ]
+    },
+    "description": [
+      "a relation between a continuant and a process, in which the continuant is somehow involved in the process"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000056",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "participates in",
+    "lang": "en",
+    "obo_id": "RO:0000056",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000056",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has_participant"
+      ],
+      "editor note": [
+        "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time."
+      ],
+      "editor preferred term": [
+        "has participant"
+      ],
+      "example of usage": [
+        "this blood coagulation has participant this blood clot",
+        "this investigation has participant this investigator",
+        "this process has participant this input material (or this output material)"
+      ],
+      "source": [
+        "http://www.obofoundry.org/ro/#OBO_REL:has_participant"
+      ]
+    },
+    "description": [
+      "a relation between a process and a continuant, in which the continuant is somehow involved in the process"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000057",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has participant",
+    "lang": "en",
+    "obo_id": "RO:0000057",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000057",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteProperty/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteProperty/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "ObsoleteProperty",
+    "lang": "en",
+    "obo_id": "ObsoleteProperty",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "ObsoleteProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#label",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "label",
+    "lang": "en",
+    "obo_id": "label",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "label",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fprotege.stanford.edu%252Fplugins%252Fowl%252Fprotege%2523defaultLanguage?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://protege.stanford.edu/plugins/owl/protege#defaultLanguage",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "defaultLanguage",
+    "lang": "en",
+    "obo_id": "defaultLanguage",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "defaultLanguage",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000054?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "is realized by",
+        "realized_in"
+      ],
+      "editor preferred term": [
+        "realized in"
+      ],
+      "elucidation": [
+        "[copied from inverse property 'realizes'] to say that b realizes c at t is to assert that there is some material entity d & b is a process which has participant d at t & c is a disposition or role of which d is bearer_of at t& the type instantiated by b is correlated with the type instantiated by c. (axiom label in BFO2 Reference: [059-003])"
+      ],
+      "example of usage": [
+        "this disease is realized in this disease course",
+        "this fragility is realized in this shattering",
+        "this investigator role is realized in this investigation"
+      ]
+    },
+    "description": [
+      "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "realized in",
+    "lang": "en",
+    "obo_id": "BFO:0000054",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000054",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000055?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "realizes"
+      ],
+      "elucidation": [
+        "to say that b realizes c at t is to assert that there is some material entity d & b is a process which has participant d at t & c is a disposition or role of which d is bearer_of at t& the type instantiated by b is correlated with the type instantiated by c. (axiom label in BFO2 Reference: [059-003])"
+      ],
+      "example of usage": [
+        "this disease course realizes this disease",
+        "this investigation realizes this investigator role",
+        "this shattering realizes this fragility"
+      ]
+    },
+    "description": [
+      "Paraphrase of elucidation: a relation between a process and a realizable entity, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000055",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "realizes",
+    "lang": "en",
+    "obo_id": "BFO:0000055",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000055",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000066?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "occurs_in",
+        "unfolds in",
+        "unfolds_in"
+      ],
+      "editor preferred term": [
+        "occurs in"
+      ]
+    },
+    "description": [
+      "b occurs_in c =def b is a process and c is a material entity or immaterial entity& there exists a spatiotemporal region r and b occupies_spatiotemporal_region r.& forall(t) if b exists_at t then c exists_at t & there exist spatial regions s and s’ where & b spatially_projects_onto s at t& c is occupies_spatial_region s’ at t& s is a proper_continuant_part_of s’ at t"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000066",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "occurs in",
+    "lang": "en",
+    "obo_id": "BFO:0000066",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000066",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000067?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "site of"
+      ]
+    },
+    "description": [
+      "[copied from inverse property 'occurs in'] b occurs_in c =def b is a process and c is a material entity or immaterial entity& there exists a spatiotemporal region r and b occupies_spatiotemporal_region r.& forall(t) if b exists_at t then c exists_at t & there exist spatial regions s and s’ where & b spatially_projects_onto s at t& c is occupies_spatial_region s’ at t& s is a proper_continuant_part_of s’ at t"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000067",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "contains process",
+    "lang": "en",
+    "obo_id": "BFO:0000067",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000067",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000010?lang=en"
+      }
+    },
+    "annotation": {
+      "DUO_preferred_label": [
+        "is_restricted_to"
+      ],
+      "curator note": [
+        "E.g. A dataset is restricted to an instance of an investigation for a specific disease or at geographical location."
+      ],
+      "id": [
+        "DUO:0000010"
+      ],
+      "term editor": [
+        "J. Neil Otte"
+      ]
+    },
+    "description": [
+      "A is restricted to B iff A is a consent code and B is an investigation and A may only participate in instances of a class C, of which B is an instance."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000010",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is restricted to",
+    "lang": "en",
+    "obo_id": "DUO:0000010",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000010",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000041?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000041",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "DUO_preferred_label",
+    "lang": "en",
+    "obo_id": "DUO:0000041",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "DUO_0000041",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000004?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000004",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has measurement value",
+    "lang": "en",
+    "obo_id": "IAO:0000004",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000004",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000111?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000111": [
+        "editor preferred term"
+      ],
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "The concise, meaningful, and human-friendly name for a class or property preferred by the ontology developers. (US-English)"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "editor preferred term",
+    "lang": "en",
+    "obo_id": "IAO:0000111",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000111",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000112?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor preferred term": [
+        "example of usage"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "A phrase describing how a term should be used and/or a citation to a work which uses it. May also include other kinds of examples that facilitate immediate understanding, such as widely know prototypes or instances of a class, or cases where a relation is said to hold."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "example of usage",
+    "lang": "en",
+    "obo_id": "IAO:0000112",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000112",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000113?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000277"
+      ],
+      "editor preferred term": [
+        "in branch"
+      ],
+      "term editor": [
+        "GROUP:OBI"
+      ]
+    },
+    "description": [
+      "An annotation property indicating which module the terms belong to. This is currently experimental and not implemented yet."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000113",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "in branch",
+    "lang": "en",
+    "obo_id": "IAO:0000113",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000113",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000114?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has curation status"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg",
+        "PERSON:Bill Bug",
+        "PERSON:Melanie Courtot"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000114",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has curation status",
+    "lang": "en",
+    "obo_id": "IAO:0000114",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000114",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000115?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor note": [
+        "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.  "
+      ],
+      "editor preferred term": [
+        "definition"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "definition",
+    "lang": "en",
+    "obo_id": "IAO:0000115",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000115",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000116?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI:<http://purl.obofoundry.org/obo/obi>"
+      ],
+      "editor preferred term": [
+        "editor note"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "editor note",
+    "lang": "en",
+    "obo_id": "IAO:0000116",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000116",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000117?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000117": [
+        "PERSON:Daniel Schober"
+      ],
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor note": [
+        "20110707, MC: label update to term editor and definition modified accordingly. See https://github.com/information-artifact-ontology/IAO/issues/115."
+      ],
+      "editor preferred term": [
+        "term editor"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ]
+    },
+    "description": [
+      "Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000117",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "term editor",
+    "lang": "en",
+    "obo_id": "IAO:0000117",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000117",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000119?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000119": [
+        "Discussion on obo-discuss mailing-list, see http://bit.ly/hgm99w",
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor preferred term": [
+        "definition source"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Daniel Schober"
+      ]
+    },
+    "description": [
+      "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000119",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "definition source",
+    "lang": "en",
+    "obo_id": "IAO:0000119",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000119",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000143?lang=en"
+      }
+    },
+    "annotation": {
+      "date": [
+        "2022-01-28T07:20:08Z"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0002-8844-9165"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/250"
+      ]
+    },
+    "description": [
+      "Inverse of the relation 'mentions'"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000143",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "mentioned by",
+    "lang": "en",
+    "obo_id": "IAO:0000143",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000143",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000231?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has obsolescence reason"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg",
+        "PERSON:Melanie Courtot"
+      ]
+    },
+    "description": [
+      "Relates an annotation property to an obsolescence reason. The values of obsolescence reasons come from a list of predefined terms, instances of the class obsolescence reason specification."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000231",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has obsolescence reason",
+    "lang": "en",
+    "obo_id": "IAO:0000231",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000231",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000232?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "curator note"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "An administrative note of use for a curator but of no use for a user"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "curator note",
+    "lang": "en",
+    "obo_id": "IAO:0000232",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000232",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000233?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "term tracker item"
+      ],
+      "example of usage": [
+        "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "An IRI or similar locator for a request or discussion of an ontology term.",
+      "The 'tracker item' can associate a tracker with a specific ontology term."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000233",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "term tracker item",
+    "lang": "en",
+    "obo_id": "IAO:0000233",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000233",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000234?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "ontology term requester"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "The name of the person, project, or organization that motivated inclusion of an ontology term by requesting its addition."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000234",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "ontology term requester",
+    "lang": "en",
+    "obo_id": "IAO:0000234",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000234",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000235?lang=en"
+      }
+    },
+    "annotation": {
+      "term editor": [
+        "Person: Jie Zheng, Chris Stoeckert, Mike Conlon"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/206"
+      ]
+    },
+    "description": [
+      "inverse of the relation 'denotes'"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000235",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "denoted by",
+    "lang": "en",
+    "obo_id": "IAO:0000235",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000235",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000404?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000404",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has x coordinate value",
+    "lang": "en",
+    "obo_id": "IAO:0000404",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000404",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000405?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000405",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has z coordinate value",
+    "lang": "en",
+    "obo_id": "IAO:0000405",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000405",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000406?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000406",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has y coordinate value",
+    "lang": "en",
+    "obo_id": "IAO:0000406",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000406",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000411?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "In OWL 2 add AnnotationPropertyRange('is denotator type' 'denotator type')"
+      ],
+      "editor preferred term": [
+        "is denotator type"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relates an class defined in an ontology, to the type of it's denotator"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000411",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is denotator type",
+    "lang": "en",
+    "obo_id": "IAO:0000411",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000411",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000412?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+      ],
+      "editor preferred term": [
+        "imported from"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg",
+        "PERSON:Melanie Courtot"
+      ]
+    },
+    "description": [
+      "For external terms/classes, the ontology from which the term was imported"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000412",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "imported from",
+    "lang": "en",
+    "obo_id": "IAO:0000412",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000412",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000417?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "2009/10/19 Alan Ruttenberg. Named 'junk' relation useful in restrictions, but not a real instance relationship"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "inverse of the relation of is quality measurement of"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000417",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is quality measured as",
+    "lang": "en",
+    "obo_id": "IAO:0000417",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000417",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000419?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "2009/10/19 Alan Ruttenberg. Named 'junk' relation useful in restrictions, but not a real instance relationship"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg",
+        "Person:Bjoern Peters"
+      ]
+    },
+    "description": [
+      "inverse of the relation of is quality specification of"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000419",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "quality is specified as",
+    "lang": "en",
+    "obo_id": "IAO:0000419",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000419",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000424?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "expand expression to"
+      ],
+      "example of usage": [
+        "ObjectProperty: RO_0002104\nLabel: has plasma membrane part\nAnnotations: IAO_0000424 \"http://purl.obolibrary.org/obo/BFO_0000051 some (http://purl.org/obo/owl/GO#GO_0005886 and http://purl.obolibrary.org/obo/BFO_0000051 some ?Y)\"\n"
+      ],
+      "term editor": [
+        "Chris Mungall"
+      ]
+    },
+    "description": [
+      "A macro expansion tag applied to an object property (or possibly a data property)  which can be used by a macro-expansion engine to generate more complex expressions from simpler ones"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000424",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "expand expression to",
+    "lang": "en",
+    "obo_id": "IAO:0000424",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000424",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000425?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "expand assertion to"
+      ],
+      "example of usage": [
+        "ObjectProperty: RO???\nLabel: spatially disjoint from\nAnnotations: expand_assertion_to \"DisjointClasses: (http://purl.obolibrary.org/obo/BFO_0000051 some ?X)  (http://purl.obolibrary.org/obo/BFO_0000051 some ?Y)\"\n"
+      ],
+      "term editor": [
+        "Chris Mungall"
+      ]
+    },
+    "description": [
+      "A macro expansion tag applied to an annotation property which can be expanded into a more detailed axiom."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000425",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "expand assertion to",
+    "lang": "en",
+    "obo_id": "IAO:0000425",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000425",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000426?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "first order logic expression"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000426",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "first order logic expression",
+    "lang": "en",
+    "obo_id": "IAO:0000426",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000426",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000589?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP:OBO Foundry <http://obofoundry.org/>"
+      ],
+      "editor note": [
+        "The intended usage of that property is as follow: OBO foundry unique labels are automatically generated based on regular expressions provided by each ontology, so that SO could specify unique label = 'sequence ' + [label], etc. , MA could specify 'mouse + [label]' etc. Upon importing terms, ontology developers can choose to use the 'OBO foundry unique label' for an imported term or not. The same applies to tools ."
+      ],
+      "editor preferred term": [
+        "OBO foundry unique label"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg",
+        "PERSON:Bjoern Peters",
+        "PERSON:Chris Mungall",
+        "PERSON:Melanie Courtot"
+      ]
+    },
+    "description": [
+      "An alternative name for a class or property which is unique across the OBO Foundry."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000589",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "OBO foundry unique label",
+    "lang": "en",
+    "obo_id": "IAO:0000589",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000589",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000596?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has ID digit count"
+      ],
+      "example of usage": [
+        "Ontology: <http://purl.obolibrary.org/obo/ro/idrange/>\n  Annotations: \n     'has ID prefix': \"http://purl.obolibrary.org/obo/RO_\"\n     'has ID digit count' : 7,\n     rdfs:label \"RO id policy\"\n     'has ID policy for': \"RO\""
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relates an ontology used to record id policy to the number of digits in the URI. The URI is: the 'has ID prefix\" annotation property value concatenated with an integer in the id range (left padded with \"0\"s to make this many digits)"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000596",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ID digit count",
+    "lang": "en",
+    "obo_id": "IAO:0000596",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000596",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000597?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has ID range allocated"
+      ],
+      "example of usage": [
+        "Datatype: idrange:1\nAnnotations: 'has ID range allocated to': \"Chris Mungall\"\nEquivalentTo: xsd:integer[> 2151 , <= 2300]\n"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relates a datatype that encodes a range of integers to the name of the person or organization who can use those ids constructed in that range to define new terms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000597",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ID range allocated to",
+    "lang": "en",
+    "obo_id": "IAO:0000597",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000597",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000598?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has ID policy for"
+      ],
+      "example of usage": [
+        "Ontology: <http://purl.obolibrary.org/obo/ro/idrange/>\n  Annotations: \n     'has ID prefix': \"http://purl.obolibrary.org/obo/RO_\"\n     'has ID digit count' : 7,\n     rdfs:label \"RO id policy\"\n     'has ID policy for': \"RO\""
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relating an ontology used to record id policy to the ontology namespace whose policy it manages"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000598",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ID policy for",
+    "lang": "en",
+    "obo_id": "IAO:0000598",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000598",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000599?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has ID prefix"
+      ],
+      "example of usage": [
+        "Ontology: <http://purl.obolibrary.org/obo/ro/idrange/>\n  Annotations: \n     'has ID prefix': \"http://purl.obolibrary.org/obo/RO_\"\n     'has ID digit count' : 7,\n     rdfs:label \"RO id policy\"\n     'has ID policy for': \"RO\""
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Relates an ontology used to record id policy to a prefix concatenated with an integer in the id range (left padded with \"0\"s to make this many digits) to construct an ID for a term being created."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000599",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ID prefix",
+    "lang": "en",
+    "obo_id": "IAO:0000599",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000599",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000600?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000600": [
+        "Primitive terms in a highest-level ontology such as BFO are terms which are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms"
+      ],
+      "definition source": [
+        "Person:Barry Smith"
+      ],
+      "editor preferred term": [
+        "elucidation"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000600",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "elucidation",
+    "lang": "en",
+    "obo_id": "IAO:0000600",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000600",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000601?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person:Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "has associated axiom(nl)"
+      ],
+      "elucidation": [
+        "An axiom associated with a term expressed using natural language"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000601",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has associated axiom(nl)",
+    "lang": "en",
+    "obo_id": "IAO:0000601",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000601",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000602?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person:Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "has associated axiom(fol)"
+      ],
+      "elucidation": [
+        "An axiom expressed in first order logic using CLIF syntax"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000602",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has associated axiom(fol)",
+    "lang": "en",
+    "obo_id": "IAO:0000602",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000602",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000603?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "is allocated id range"
+      ],
+      "term editor": [
+        "PERSON:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Add as annotation triples in the granting ontology",
+      "Relates an ontology IRI to an (inclusive) range of IRIs in an OBO name space. The range is give as, e.g. \"IAO_0020000-IAO_0020999\""
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000603",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is allocated id range",
+    "lang": "en",
+    "obo_id": "IAO:0000603",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000603",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000604?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "In OWL 2 add AnnotationPropertyRange xsd:dateTimeStamp"
+      ],
+      "editor preferred term": [
+        "retired from use as of"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "relates a class of CRID to the date after which further instances should not be made, according to the central authority"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000604",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "retired from use as of",
+    "lang": "en",
+    "obo_id": "IAO:0000604",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000604",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000700?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "has ontology root term"
+      ],
+      "term editor": [
+        "Nicolas Matentzoglu"
+      ]
+    },
+    "description": [
+      "Ontology annotation property. Relates an ontology to a term that is a designated root term of the ontology. Display tools like OLS can use terms annotated with this property as the starting point for rendering the ontology class hierarchy. There can be more than one root."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000700",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ontology root term",
+    "lang": "en",
+    "obo_id": "IAO:0000700",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000700",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006011?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "may be identical to"
+      ],
+      "ontology term requester": [
+        "VFB"
+      ],
+      "term editor": [
+        "David Osumi-Sutherland"
+      ],
+      "term tracker item": [
+        "#40"
+      ]
+    },
+    "description": [
+      "A annotation relationship between two terms in an ontology that may refer to the same (natural) type but where more evidence is required before terms are merged.",
+      "Edges asserting this should be annotated with to record evidence supporting the assertion and its provenance."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0006011",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "may be identical to",
+    "lang": "en",
+    "obo_id": "IAO:0006011",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0006011",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006012?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "scheduled for obsoletion on or after"
+      ],
+      "ontology term requester": [
+        "GO ontology"
+      ],
+      "term editor": [
+        "Chris Mungall, Jie Zheng"
+      ],
+      "term tracker item": [
+        "https://github.com/geneontology/go-ontology/issues/15532",
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/32"
+      ]
+    },
+    "description": [
+      "Used when the class or object is scheduled for obsoletion/deprecation on or after a particular date."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0006012",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "scheduled for obsoletion on or after",
+    "lang": "en",
+    "obo_id": "IAO:0006012",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0006012",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0010000?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person:Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "has axiom id"
+      ],
+      "elucidation": [
+        "A URI that is intended to be unique label for an axiom used for tracking change to the ontology. For an axiom expressed in different languages, each expression is given the same URI"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0010000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has axiom label",
+    "lang": "en",
+    "obo_id": "IAO:0010000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0010000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0100001?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "Person:Alan Ruttenberg"
+      ],
+      "editor preferred term": [
+        "term replaced by"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "Person:Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "Add as annotation triples in the granting ontology",
+      "Use on obsolete terms, relating the term to another term that can be used as a substitute"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0100001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "term replaced by",
+    "lang": "en",
+    "obo_id": "IAO:0100001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0100001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000295?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OBI_0000295",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_specified_input_of",
+    "lang": "en",
+    "obo_id": "OBI:0000295",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OBI_0000295",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0002000?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0002-7356-1779",
+        "https://orcid.org/0000-0002-8688-6599"
+      ],
+      "example of usage": [
+        "'part disjoint with' 'defined by construct' \"\"\"\n    PREFIX owl: <http://www.w3.org/2002/07/owl#>\n    PREFIX : <http://example.org/\n    CONSTRUCT {\n      [\n        a owl:Restriction ;\n        owl:onProperty :part_of ;\n        owl:someValuesFrom ?a ;\n        owl:disjointWith [\n          a owl:Restriction ;\n          owl:onProperty :part_of ;\n          owl:someValuesFrom ?b\n        ]\n      ]\n    }\n    WHERE {\n      ?a :part_disjoint_with ?b .\n    }"
+      ],
+      "term tracker item": [
+        "https://github.com/ontodev/robot/issues/963"
+      ]
+    },
+    "description": [
+      "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0002000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "defined by construct",
+    "lang": "en",
+    "obo_id": "OMO:0002000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0002000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000058?lang=en"
+      }
+    },
+    "annotation": {
+      "example of usage": [
+        "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The journal article (a generically dependent continuant) is concretized as the quality (a specifically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
+        "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process)."
+      ]
+    },
+    "description": [
+      "A relationship between a generically dependent continuant and a specifically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000058",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is concretized as",
+    "lang": "en",
+    "obo_id": "RO:0000058",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000058",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000059?lang=en"
+      }
+    },
+    "annotation": {
+      "example of usage": [
+        "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The quality (a specifically dependent continuant) concretizes the journal article (a generically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
+        "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process)."
+      ]
+    },
+    "description": [
+      "A relationship between a specifically dependent continuant and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. Multiple specifically dependent continuants can concretize the same generically dependent continuant."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0000059",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "concretizes",
+    "lang": "en",
+    "obo_id": "RO:0000059",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0000059",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001000?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "derives_from"
+      ],
+      "editor note": [
+        "This is a very general relation. More specific relations are preferred when applicable, such as 'directly develops from'."
+      ],
+      "example of usage": [
+        "this cell derives from this parent cell (cell division)",
+        "this nucleus derives from this parent nucleus (nuclear division)"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ]
+    },
+    "description": [
+      "a relation between two distinct material entities, the new entity and the old entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "derives from",
+    "lang": "en",
+    "obo_id": "RO:0001000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0001000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001001?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "derives_into"
+      ],
+      "editor note": [
+        "This is a very general relation. More specific relations are preferred when applicable, such as 'directly develops into'. To avoid making statements about a future that may not come to pass, it is often better to use the backward-looking 'derives from' rather than the forward-looking 'derives into'."
+      ],
+      "example of usage": [
+        "this parent cell derives into this cell (cell division)",
+        "this parent nucleus derives into this nucleus (nuclear division)"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ]
+    },
+    "description": [
+      "a relation between two distinct material entities, the old entity and the new entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "derives into",
+    "lang": "en",
+    "obo_id": "RO:0001001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0001001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001015?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "location_of"
+      ],
+      "editor note": [
+        "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/"
+      ],
+      "editor preferred term": [
+        "is location of"
+      ],
+      "example of usage": [
+        "my head is the location of my brain",
+        "this cage is the location of this rat"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a relation between two independent continuants, the location and the target, in which the target is entirely within the location"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001015",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "location of",
+    "lang": "en",
+    "obo_id": "RO:0001015",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0001015",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001025?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "located_in"
+      ],
+      "editor note": [
+        "Location as a relation between instances: The primitive instance-level relation c located_in r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is part_of the spatial region occupied by c1.    Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus",
+        "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/"
+      ],
+      "editor preferred term": [
+        "located in"
+      ],
+      "example of usage": [
+        "my brain is located in my head",
+        "this rat is located in this cage"
+      ],
+      "source": [
+        "http://www.obofoundry.org/ro/#OBO_REL:located_in"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a relation between two independent continuants, the target and the location, in which the target is entirely within the location"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001025",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "located in",
+    "lang": "en",
+    "obo_id": "RO:0001025",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0001025",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001900?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "An assertion that holds between an OWL Object Property and a temporal interpretation that elucidates how OWL Class Axioms that use this property are to be interpreted in a temporal context."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0001900",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "temporal interpretation",
+    "lang": "en",
+    "obo_id": "RO:0001900",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0001900",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002000?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "2D_boundary_of",
+        "boundary of",
+        "is 2D boundary of",
+        "is boundary of"
+      ],
+      "editor note": [
+        "A 2D boundary may have holes and gaps, but it must be a single connected entity, not an aggregate of several disconnected parts.",
+        "Although the boundary is two-dimensional, it exists in three-dimensional space and thus has a 3D shape."
+      ],
+      "example of usage": [
+        "the surface of my skin is a 2D boundary of my body"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a relation between a 2D immaterial entity (the boundary) and a material entity, in which the boundary delimits the material entity"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0002000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "2D boundary of",
+    "lang": "en",
+    "obo_id": "RO:0002000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0002000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002002?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "has boundary",
+        "has_2D_boundary"
+      ],
+      "editor note": [
+        "A 2D boundary may have holes and gaps, but it must be a single connected entity, not an aggregate of several disconnected parts.",
+        "Although the boundary is two-dimensional, it exists in three-dimensional space and thus has a 3D shape."
+      ],
+      "example of usage": [
+        "my body has 2D boundary the surface of my skin"
+      ],
+      "temporal interpretation": [
+        "http://purl.obolibrary.org/obo/RO_0001901"
+      ]
+    },
+    "description": [
+      "a relation between a material entity and a 2D immaterial entity (the boundary), in which the boundary delimits the material entity"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0002002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has 2D boundary",
+    "lang": "en",
+    "obo_id": "RO:0002002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0002002",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004096?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "DEPRECATED This relation is similar to but different in important respects to the characteristic-of relation. See comments on that relation for more information."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0004096",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "DEPRECATED inheres in",
+    "lang": "en",
+    "obo_id": "RO:0004096",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0004096",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004097?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/RO_0004097",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "DEPRECATED bearer of",
+    "lang": "en",
+    "obo_id": "RO:0004097",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "RO_0004097",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fcontributor?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/contributor",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "contributor",
+    "lang": "en",
+    "obo_id": "contributor",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "contributor",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fcoverage?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/coverage",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "coverage",
+    "lang": "en",
+    "obo_id": "coverage",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "coverage",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fcreator?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/creator",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "creator",
+    "lang": "en",
+    "obo_id": "creator",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "creator",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fdate?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/date",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "date",
+    "lang": "en",
+    "obo_id": "date",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "date",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fdescription?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/description",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "description",
+    "lang": "en",
+    "obo_id": "description",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "description",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fformat?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/format",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "format",
+    "lang": "en",
+    "obo_id": "format",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "format",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fidentifier?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/identifier",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "identifier",
+    "lang": "en",
+    "obo_id": "identifier",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "identifier",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Flanguage?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/language",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "language",
+    "lang": "en",
+    "obo_id": "language",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "language",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fmember?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/member",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "member",
+    "lang": "en",
+    "obo_id": "member",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "member",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fpublisher?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/publisher",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "publisher",
+    "lang": "en",
+    "obo_id": "publisher",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "publisher",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Frelation?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/relation",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "relation",
+    "lang": "en",
+    "obo_id": "relation",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "relation",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Frights?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/rights",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "rights",
+    "lang": "en",
+    "obo_id": "rights",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "rights",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fsource?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/source",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "source",
+    "lang": "en",
+    "obo_id": "source",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "source",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fsubject?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/subject",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subject",
+    "lang": "en",
+    "obo_id": "subject",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "subject",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Ftitle?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/title",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "title",
+    "lang": "en",
+    "obo_id": "title",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "title",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Ftype?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/type",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "type",
+    "lang": "en",
+    "obo_id": "type",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "type",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Fterms%252Flicense?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/terms/license",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "license",
+    "lang": "en",
+    "obo_id": "license",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "license",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523created_by?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#created_by",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "created_by",
+    "lang": "en",
+    "obo_id": "created:by",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "created_by",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523creation_date?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#creation_date",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "creation_date",
+    "lang": "en",
+    "obo_id": "creation:date",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "creation_date",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDbXref?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasDbXref",
+    "lang": "en",
+    "obo_id": "hasDbXref",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "hasDbXref",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523id?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#id",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "id",
+    "lang": "en",
+    "obo_id": "id",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "id",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523shorthand?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "shorthand",
+    "lang": "en",
+    "obo_id": "shorthand",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "shorthand",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523comment?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "comment",
+    "lang": "en",
+    "obo_id": "comment",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "comment",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "isDefinedBy",
+    "lang": "en",
+    "obo_id": "isDefinedBy",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "isDefinedBy",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "seeAlso",
+    "lang": "en",
+    "obo_id": "seeAlso",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "seeAlso",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "exactMatch",
+    "lang": "en",
+    "obo_id": "exactMatch",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "exactMatch",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fxmlns.com%252Ffoaf%252F0.1%252Fhomepage?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://xmlns.com/foaf/0.1/homepage",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "homepage",
+    "lang": "en",
+    "obo_id": "homepage",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "homepage",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fxmlns.com%252Ffoaf%252F0.1%252Fmbox?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://xmlns.com/foaf/0.1/mbox",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "mbox",
+    "lang": "en",
+    "obo_id": "mbox",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "mbox",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fxmlns.com%252Ffoaf%252F0.1%252Fpage?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://xmlns.com/foaf/0.1/page",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "page",
+    "lang": "en",
+    "obo_id": "page",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "page",
+    "synonyms": []
+  }
+]

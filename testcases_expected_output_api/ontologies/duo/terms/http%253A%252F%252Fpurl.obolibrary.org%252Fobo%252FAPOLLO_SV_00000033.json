@@ -1,0 +1,53 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000033",
+  "lang": "en",
+  "description": [
+    "The planned process of finding the number of elements in a finite set of objects."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "http://en.wikipedia.org/wiki/Counting"
+    ],
+    "elucidation": [
+      "The planned process of finding the number of elements in a finite set of objects."
+    ],
+    "term editor": [
+      "Mathias Brochhausen"
+    ]
+  },
+  "label": "counting",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "APOLLO_SV_00000033",
+  "obo_id": "APOLLO_SV:00000033",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FAPOLLO_SV_00000033/graph"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000111",
+  "lang": "en",
+  "description": [
+    "The concise, meaningful, and human-friendly name for a class or property preferred by the ontology developers. (US-English)"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000111": [
+      "editor preferred term"
+    ],
+    "definition source": [
+      "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "term editor": [
+      "PERSON:Daniel Schober"
+    ]
+  },
+  "label": "editor preferred term",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000111",
+  "obo_id": "IAO:0000111",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000111?lang=en"
+    }
+  }
+}

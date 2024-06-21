@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0001000",
+  "lang": "en",
+  "description": [
+    "a relation between two distinct material entities, the new entity and the old entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "derives_from"
+    ],
+    "editor note": [
+      "This is a very general relation. More specific relations are preferred when applicable, such as 'directly develops from'."
+    ],
+    "example of usage": [
+      "this cell derives from this parent cell (cell division)",
+      "this nucleus derives from this parent nucleus (nuclear division)"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ]
+  },
+  "label": "derives from",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0001000",
+  "obo_id": "RO:0001000",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001000?lang=en"
+    }
+  }
+}

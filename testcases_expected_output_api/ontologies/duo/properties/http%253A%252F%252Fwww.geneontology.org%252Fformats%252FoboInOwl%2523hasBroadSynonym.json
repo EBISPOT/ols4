@@ -1,0 +1,43 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+  "lang": "en",
+  "description": [
+    "An alternative label for a class or property which has a more general meaning than the preferred name/primary label."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "seeAlso": [
+      "https://github.com/information-artifact-ontology/ontology-metadata/issues/18"
+    ],
+    "term editor": [
+      "http://orcid.org/0000-0001-5208-3432"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/ontology-metadata/issues/18"
+    ]
+  },
+  "label": "has broad synonym",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "hasBroadSynonym",
+  "obo_id": "hasBroadSynonym",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/jstree"
+    }
+  }
+}

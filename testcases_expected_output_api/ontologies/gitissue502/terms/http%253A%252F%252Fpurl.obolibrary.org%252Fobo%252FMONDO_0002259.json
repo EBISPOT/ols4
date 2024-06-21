@@ -1,0 +1,203 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+  "lang": "en",
+  "description": [
+    "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+  ],
+  "synonyms": [
+    "disease of gonad",
+    "disease or disorder of gonad",
+    "disorder of gonad",
+    "disorder of gonads",
+    "gonad disease",
+    "gonad disease or disorder",
+    "gonadal disorder",
+    "gonadal disorders"
+  ],
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml",
+      "http://purl.obolibrary.org/obo/mondo/patterns/location_top.yaml"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D006058",
+      "http://linkedlifedata.com/resource/umls/id/C0018050",
+      "http://purl.obolibrary.org/obo/DOID_2277",
+      "http://purl.obolibrary.org/obo/NCIT_C26786"
+    ],
+    "hasDbXref": [
+      "DOID:2277",
+      "MESH:D006058",
+      "NCIT:C26786",
+      "UMLS:C0018050"
+    ],
+    "id": [
+      "MONDO:0002259"
+    ]
+  },
+  "label": "gonadal disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0002259",
+  "obo_id": "MONDO:0002259",
+  "obo_definition_citation": [
+    {
+      "definition": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "P378"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "2277",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_2277"
+    },
+    {
+      "database": "MESH",
+      "id": "D006058",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D006058"
+    },
+    {
+      "database": "NCIT",
+      "id": "C26786",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0018050",
+      "description": "MONDO:equivalentTo",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0018050"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "disease of gonad",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        }
+      ]
+    },
+    {
+      "name": "disorder of gonad",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        }
+      ]
+    },
+    {
+      "name": "disorder of gonads",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26786",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+        }
+      ]
+    },
+    {
+      "name": "gonad disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        }
+      ]
+    },
+    {
+      "name": "gonad disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        },
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        }
+      ]
+    },
+    {
+      "name": "gonadal disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26786",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+        }
+      ]
+    },
+    {
+      "name": "gonadal disorders",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26786",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/graph"
+    },
+    "disease_has_location": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+    }
+  }
+}

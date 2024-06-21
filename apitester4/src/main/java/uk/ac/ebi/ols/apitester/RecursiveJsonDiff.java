@@ -76,18 +76,23 @@ public class RecursiveJsonDiff {
     }
 
     LinkedHashSet<String> getJsonFiles(String path) {
+        System.out.println(path);
+        if (path.startsWith("./"))
+            path = path.substring("./".length());
+        String finalPath = path;
         Collection<File> files = FileUtils.listFiles(new File(path), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
         return new LinkedHashSet<>(
                 files.stream().map(file -> {
-                        String filePath = file.getPath();
-                        if(!filePath.startsWith(path)) {
-                            throw new RuntimeException("File " + filePath + " + did not start with prefix " + path);
-                        }
-                        return filePath.substring(path.length());
-                    }).filter(filePath -> {
-                        return filePath.endsWith(".json");
-                    })
-                .collect(Collectors.toList())
+                            String filePath = file.getPath();
+                            if(!filePath.startsWith(finalPath)) {
+                                throw new RuntimeException("File " + filePath + " + did not start with prefix " + finalPath);
+                            }
+
+                            return filePath.substring(finalPath.length());
+                        }).filter(filePath -> {
+                            return filePath.endsWith(".json");
+                        })
+                        .collect(Collectors.toList())
         );
     }
 
@@ -95,5 +100,4 @@ public class RecursiveJsonDiff {
         JsonReader reader = new JsonReader(new FileReader(filename));
         return JsonParser.parseReader(reader);
     }
-
 }

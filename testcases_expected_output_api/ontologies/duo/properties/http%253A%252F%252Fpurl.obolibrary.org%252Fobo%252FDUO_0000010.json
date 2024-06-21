@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/DUO_0000010",
+  "lang": "en",
+  "description": [
+    "A is restricted to B iff A is a consent code and B is an investigation and A may only participate in instances of a class C, of which B is an instance."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "DUO_preferred_label": [
+      "is_restricted_to"
+    ],
+    "curator note": [
+      "E.g. A dataset is restricted to an instance of an investigation for a specific disease or at geographical location."
+    ],
+    "id": [
+      "DUO:0000010"
+    ],
+    "term editor": [
+      "J. Neil Otte"
+    ]
+  },
+  "label": "is restricted to",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "DUO_0000010",
+  "obo_id": "DUO:0000010",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000010?lang=en"
+    }
+  }
+}

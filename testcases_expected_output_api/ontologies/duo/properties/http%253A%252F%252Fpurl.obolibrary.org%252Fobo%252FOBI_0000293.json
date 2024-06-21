@@ -1,0 +1,52 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
+  "lang": "en",
+  "description": [
+    "The inverse property of is_specified_input_of"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works."
+    ],
+    "editor preferred term": [
+      "has_specified_input"
+    ],
+    "example of usage": [
+      "see is_input_of example_of_usage"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "imported from": [
+      "http://purl.obolibrary.org/obo/obi.owl"
+    ],
+    "term editor": [
+      "PERSON: Alan Ruttenberg"
+    ]
+  },
+  "label": "has_specified_input",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "OBI_0000293",
+  "obo_id": "OBI:0000293",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293/jstree"
+    }
+  }
+}

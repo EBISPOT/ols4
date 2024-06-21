@@ -1,0 +1,34 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000113",
+  "lang": "en",
+  "description": [
+    "An annotation property indicating which module the terms belong to. This is currently experimental and not implemented yet."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "OBI_0000277"
+    ],
+    "editor preferred term": [
+      "in branch"
+    ],
+    "term editor": [
+      "GROUP:OBI"
+    ]
+  },
+  "label": "in branch",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000113",
+  "obo_id": "IAO:0000113",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000113?lang=en"
+    }
+  }
+}

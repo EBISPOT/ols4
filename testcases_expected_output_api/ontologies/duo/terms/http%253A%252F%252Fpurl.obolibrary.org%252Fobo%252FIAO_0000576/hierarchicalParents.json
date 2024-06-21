@@ -1,0 +1,40 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "ObsoleteClass",
+    "lang": "en",
+    "obo_id": "ObsoleteClass",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "ObsoleteClass",
+    "synonyms": []
+  }
+]

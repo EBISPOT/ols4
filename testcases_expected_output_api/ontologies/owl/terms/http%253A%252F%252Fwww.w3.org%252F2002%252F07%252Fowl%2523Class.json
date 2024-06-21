@@ -1,0 +1,54 @@
+{
+  "iri": "http://www.w3.org/2002/07/owl#Class",
+  "lang": "en",
+  "description": [
+    "The class of OWL classes."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Class",
+  "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "Class",
+  "obo_id": "Class",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/graph"
+    }
+  }
+}

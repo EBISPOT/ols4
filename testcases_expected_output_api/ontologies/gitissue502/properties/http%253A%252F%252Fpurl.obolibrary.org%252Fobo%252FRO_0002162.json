@@ -1,0 +1,40 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002162",
+  "lang": "en",
+  "description": [
+    "x is in taxon y if an only if y is an organism, and the relationship between x and y is one of: part of (reflexive), developmentally preceded by, derives from, secreted by, expressed."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "hasDbXref": [
+      "RO:0002162"
+    ],
+    "id": [
+      "in_taxon"
+    ],
+    "shorthand": [
+      "in_taxon"
+    ]
+  },
+  "label": "in taxon",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0002162",
+  "obo_id": "RO:0002162",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162/descendants"
+    }
+  }
+}

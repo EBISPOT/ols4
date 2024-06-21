@@ -1,0 +1,181 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/descendants"
+      },
+      "disease_has_feature": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004029"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/snomedct/414916001",
+        "http://linkedlifedata.com/resource/umls/id/C0028754",
+        "http://purl.obolibrary.org/obo/DOID_9970",
+        "http://purl.obolibrary.org/obo/NCIT_C3283"
+      ],
+      "hasDbXref": [
+        "DOID:9970",
+        "EFO:0001073",
+        "HP:0001513",
+        "ICD9:278.0",
+        "ICD9:278.00",
+        "NCIT:C3283",
+        "NIFSTD:nlx_dys_20090302",
+        "Orphanet:521399",
+        "SCTID:414916001",
+        "UMLS:C0028754"
+      ],
+      "id": [
+        "MONDO:0011122"
+      ]
+    },
+    "description": [
+      "A disorder involving an excessive amount of body fat.",
+      "Obesity is a complex disease that may involve multiple environmental and genetic causes. See the subclass monogenic disease for genetic subtypes"
+    ],
+    "has_children": true,
+    "in_subset": [
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0011122",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obesity disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disorder involving an excessive amount of body fat.",
+        "oboXrefs": [
+          {
+            "id": "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf",
+            "url": "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf"
+          },
+          {
+            "id": "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742",
+            "url": "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0011122",
+    "obo_synonym": [
+      {
+        "name": "obesity",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "ambiguous"
+          },
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "9970",
+        "url": "http://purl.obolibrary.org/obo/DOID_9970"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0001073",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0001073"
+      },
+      {
+        "database": "HP",
+        "description": "MONDO:otherHierarchy",
+        "id": "0001513",
+        "url": "http://purl.obolibrary.org/obo/HP_0001513"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "278.0"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "278.00"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:otherHierarchy",
+        "id": "C3283",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C3283"
+      },
+      {
+        "database": "NIFSTD",
+        "description": "EFO:0001073",
+        "id": "nlx_dys_20090302"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentObsolete",
+        "id": "521399",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=521399"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "414916001",
+        "url": "http://snomed.info/id/414916001"
+      },
+      {
+        "database": "UMLS",
+        "description": "OMIM:601665",
+        "id": "C0028754",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0028754"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0011122",
+    "synonyms": [
+      "obesity disease",
+      "obesity"
+    ]
+  }
+]

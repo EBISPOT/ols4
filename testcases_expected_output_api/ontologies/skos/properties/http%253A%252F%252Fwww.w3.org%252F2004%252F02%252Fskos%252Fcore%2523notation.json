@@ -1,0 +1,28 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#notation",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme."
+    ],
+    "scope note": [
+      "By convention, skos:notation is used with a typed literal in the object position of the triple."
+    ]
+  },
+  "label": "notation",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "notation",
+  "obo_id": "notation",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523notation?lang=en"
+    }
+  }
+}

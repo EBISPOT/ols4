@@ -1,0 +1,64 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000148",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "BFO CLIF specification label": [
+      "ZeroDimensionalTemporalRegion"
+    ],
+    "BFO OWL specification label": [
+      "0d-t-region"
+    ],
+    "alternative label": [
+      "temporal instant."
+    ],
+    "elucidation": [
+      "A zero-dimensional temporal region is a temporal region that is without extent. (axiom label in BFO2 Reference: [102-001])"
+    ],
+    "example of usage": [
+      "a temporal region that is occupied by a process boundary",
+      "right now",
+      "the moment at which a child is born",
+      "the moment at which a finger is detached in an industrial accident",
+      "the moment of death."
+    ],
+    "has associated axiom(fol)": [
+      "(forall (x) (if (ZeroDimensionalTemporalRegion x) (TemporalRegion x))) // axiom label in BFO2 CLIF: [102-001] "
+    ]
+  },
+  "label": "zero-dimensional temporal region",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "BFO_0000148",
+  "obo_id": "BFO:0000148",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000148/graph"
+    }
+  }
+}

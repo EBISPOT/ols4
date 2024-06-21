@@ -1,0 +1,35 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "businessAddress": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a"
+    ]
+  },
+  "label": "b1",
+  "ontology_name": "owl2primer-objectproperty-haskey",
+  "ontology_prefix": "owl2primer-objectProperty-hasKey",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "b1",
+  "obo_id": "b1",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-objectproperty-haskey/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523b1?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-objectproperty-haskey/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523b1/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-objectproperty-haskey/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523b1/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-objectproperty-haskey/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523b1/jstree"
+    }
+  }
+}

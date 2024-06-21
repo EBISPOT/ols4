@@ -1,0 +1,157 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "An ordered collection of concepts, where both the grouping and the ordering are meaningful."
+      ],
+      "scope note": [
+        "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#OrderedCollection",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Ordered Collection",
+    "lang": "en",
+    "obo_id": "OrderedCollection",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "OrderedCollection",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A meaningful collection of concepts."
+      ],
+      "scope note": [
+        "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#Collection",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Collection",
+    "lang": "en",
+    "obo_id": "Collection",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "Collection",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "An idea or notion; a unit of thought."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#Concept",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Concept",
+    "lang": "en",
+    "obo_id": "Concept",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "Concept",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523ConceptScheme/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523ConceptScheme?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A set of concepts, optionally including statements about semantic relationships between those concepts."
+      ],
+      "example": [
+        "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies."
+      ],
+      "scope note": [
+        "A concept scheme may be defined to include concepts from different sources."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Concept Scheme",
+    "lang": "en",
+    "obo_id": "ConceptScheme",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "ConceptScheme",
+    "synonyms": []
+  }
+]

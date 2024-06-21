@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "A meaningful collection of concepts."
+      ],
+      "scope note": [
+        "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy."
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.w3.org/2004/02/skos/core#Collection",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Collection",
+    "lang": "en",
+    "obo_id": "Collection",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "Collection",
+    "synonyms": []
+  }
+]

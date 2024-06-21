@@ -1,0 +1,44 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000079",
+  "lang": "en",
+  "description": [
+    "a relation between a function and an independent continuant (the bearer), in which the function specifically depends on the bearer for its existence"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "function_of",
+      "is function of"
+    ],
+    "editor note": [
+      "A function inheres in its bearer at all times for which the function exists, however the function need not be realized at all the times that the function exists."
+    ],
+    "example of usage": [
+      "this catalysis function is a function of this enzyme"
+    ]
+  },
+  "label": "function of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "RO_0000079",
+  "obo_id": "RO:0000079",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/jstree"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021152?lang=en"
+      }
+    },
+    "annotation": {
+      "hasDbXref": [
+        "EFO:0004420"
+      ],
+      "id": [
+        "MONDO:0021152"
+      ]
+    },
+    "description": [
+      "A characteristic of a disease in which the cause of the disease is a genetic problem inherited from either or both parents."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0021152",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "inherited",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A characteristic of a disease in which the cause of the disease is a genetic problem inherited from either or both parents.",
+        "oboXrefs": [
+          {
+            "database": "MONDO",
+            "id": "cjm"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0021152",
+    "obo_xref": [
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0004420",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0004420"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0021152",
+    "synonyms": [
+      "constitutitional genetic",
+      "familial",
+      "genetic",
+      "hereditary",
+      "inherited genetic"
+    ]
+  }
+]

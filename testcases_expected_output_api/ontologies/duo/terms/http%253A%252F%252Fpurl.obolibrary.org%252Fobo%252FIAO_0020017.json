@@ -1,0 +1,58 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0020017",
+  "lang": "en",
+  "description": [
+    "An identifier that is typically a part of a person's name which has been passed, according to law or custom, from one or both parents to their children."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "last name",
+      "surname"
+    ],
+    "definition source": [
+      "http://en.wikipedia.org/wiki/Family_name"
+    ],
+    "term editor": [
+      "Justin Whorton",
+      "Mathias Brochhausen"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/237"
+    ]
+  },
+  "label": "family name",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0020017",
+  "obo_id": "IAO:0020017",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0020017/graph"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl#MyAnnotationProperty",
+  "lang": "en",
+  "description": [
+    "For our own special use case."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "special annotation property",
+  "ontology_name": "annotation-properties-simple",
+  "ontology_prefix": "annotation-properties-simple",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "MyAnnotationProperty",
+  "obo_id": "MyAnnotationProperty",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/annotation-properties-simple/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fannotation-properties%252Fsimple.owl%2523MyAnnotationProperty?lang=en"
+    }
+  }
+}

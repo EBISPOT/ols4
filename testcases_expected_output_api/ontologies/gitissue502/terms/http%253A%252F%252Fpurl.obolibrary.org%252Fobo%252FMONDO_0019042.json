@@ -1,0 +1,104 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0019042",
+  "lang": "en",
+  "description": [],
+  "synonyms": [
+    "MCAHS"
+  ],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/4069"
+    ],
+    "has exact match": [
+      "http://www.orpha.net/ORDO/Orphanet_68341"
+    ],
+    "hasDbXref": [
+      "GARD:18876",
+      "Orphanet:68341"
+    ],
+    "id": [
+      "MONDO:0019042"
+    ]
+  },
+  "label": "multiple congenital anomalies/dysmorphic syndrome",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0019042",
+  "obo_id": "MONDO:0019042",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "18876",
+      "url": "https://rarediseases.info.nih.gov/diseases/18876/index"
+    },
+    {
+      "database": "Orphanet",
+      "id": "68341",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=68341"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "MCAHS",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "Lexical"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/graph"
+    },
+    "has_characteristic": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019042/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    }
+  }
+}

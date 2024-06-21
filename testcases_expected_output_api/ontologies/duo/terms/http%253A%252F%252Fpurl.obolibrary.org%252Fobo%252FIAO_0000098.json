@@ -1,0 +1,61 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000098",
+  "lang": "en",
+  "description": [
+    "A data format specification is the information content borne by the document published defining the specification.\nExample: The ISO document specifying what encompasses an XML document; The instructions in a XSD file"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "OBI branch derived",
+      "OBI_0000187"
+    ],
+    "editor note": [
+      "2009-03-16: provenance: term imported from OBI_0000187, which had original definition \"A data format specification is a plan which organizes\ninformation. Example: The ISO document specifying what encompasses an\nXML document; The instructions in a XSD file\""
+    ],
+    "editor preferred term": [
+      "data format specification"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000123"
+    ],
+    "term editor": [
+      "PERSON: Alan Ruttenberg",
+      "PlanAndPlannedProcess Branch"
+    ]
+  },
+  "label": "data format specification",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000098",
+  "obo_id": "IAO:0000098",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/graph"
+    }
+  }
+}

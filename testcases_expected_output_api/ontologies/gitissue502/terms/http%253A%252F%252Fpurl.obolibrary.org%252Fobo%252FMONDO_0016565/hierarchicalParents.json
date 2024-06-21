@@ -1,0 +1,602 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/syndromic.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D013577",
+        "http://linkedlifedata.com/resource/umls/id/C0039082",
+        "http://purl.obolibrary.org/obo/DOID_225",
+        "http://purl.obolibrary.org/obo/NCIT_C28193"
+      ],
+      "hasDbXref": [
+        "DOID:225",
+        "MESH:D013577",
+        "NCIT:C28193",
+        "OGMS:0000086",
+        "UMLS:C0039082"
+      ],
+      "id": [
+        "MONDO:0002254"
+      ]
+    },
+    "description": [
+      "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002254",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "syndromic disease",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C28193",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0002254",
+    "obo_synonym": [
+      {
+        "name": "cluster, symptom",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "clusters, symptom",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "symptom cluster",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "symptom clusters",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "syndrome associated with disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      },
+      {
+        "name": "syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C28193",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+          },
+          {
+            "database": "OGMS",
+            "id": "0000086",
+            "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+          }
+        ]
+      },
+      {
+        "name": "syndromes",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "syndromic disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      },
+      {
+        "name": "syndromic disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "225",
+        "url": "http://purl.obolibrary.org/obo/DOID_225"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D013577",
+        "url": "http://id.nlm.nih.gov/mesh/D013577"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C28193",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+      },
+      {
+        "database": "OGMS",
+        "description": "MONDO:cjm",
+        "id": "0000086",
+        "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C28193",
+        "id": "C0039082",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0039082"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0002254",
+    "synonyms": [
+      "cluster, symptom",
+      "clusters, symptom",
+      "symptom cluster",
+      "symptom clusters",
+      "syndrome associated with disease or disorder",
+      "syndrome",
+      "syndromes",
+      "syndromic disease or disorder",
+      "syndromic disease"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000233": [
+        "https://github.com/monarch-initiative/mondo/issues/5114"
+      ],
+      "IAO_0006012": [
+        "2023-10-01"
+      ],
+      "has exact match": [
+        "http://linkedlifedata.com/resource/umls/id/CN199360",
+        "http://www.orpha.net/ORDO/Orphanet_139024"
+      ],
+      "hasDbXref": [
+        "GARD:19903",
+        "Orphanet:139024",
+        "UMLS:CN199360"
+      ],
+      "id": [
+        "MONDO:0015330"
+      ]
+    },
+    "description": [
+      "Reason of obsoletion: out of scope - MONDO:excludeGroupingClass. This is part of a large mass-obsoletion effort for ORDO terms."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "obsoletion_candidate",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0015330",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "overgrowth/obesity syndrome",
+    "lang": "en",
+    "obo_id": "MONDO:0015330",
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "19903",
+        "url": "https://rarediseases.info.nih.gov/diseases/19903/index"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "139024",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=139024"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "CN199360"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0015330",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000233": [
+        "https://github.com/monarch-initiative/mondo/issues/4521"
+      ],
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml"
+      ],
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0015960"
+      ],
+      "has exact match": [
+        "http://www.orpha.net/ORDO/Orphanet_77828",
+        "https://omim.org/entry/601665"
+      ],
+      "hasDbXref": [
+        "GARD:18935",
+        "OMIM:601665",
+        "Orphanet:77828"
+      ],
+      "id": [
+        "MONDO:0019182"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0019182",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "inherited obesity",
+    "lang": "en",
+    "obo_id": "MONDO:0019182",
+    "obo_synonym": [
+      {
+        "name": "genetic obesity (disease)",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/genetic"
+          },
+          {
+            "database": "Orphanet",
+            "id": "77828",
+            "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+          }
+        ]
+      },
+      {
+        "name": "leanness, inherited, autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, association with, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, early-onset, susceptibility to, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, late-onset, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, mild, early-onset, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, severe, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, severe, and type II diabetes, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      },
+      {
+        "name": "obesity, susceptibility to, Autosomal recessive",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "OMIM",
+            "id": "601665",
+            "url": "https://omim.org/entry/601665"
+          },
+          {
+            "database": "OMIM",
+            "id": "genemap2",
+            "url": "https://omim.org/entry/genemap2"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "GARD",
+        "id": "18935",
+        "url": "https://rarediseases.info.nih.gov/diseases/18935/index"
+      },
+      {
+        "database": "OMIM",
+        "description": "MONDO:equivalentTo",
+        "id": "601665",
+        "url": "https://omim.org/entry/601665"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "77828",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0019182",
+    "synonyms": [
+      "genetic obesity (disease)",
+      "genetic obesity",
+      "leanness, inherited, autosomal recessive",
+      "monogenic obesity",
+      "obesity, association with, Autosomal recessive",
+      "obesity, early-onset, susceptibility to, Autosomal recessive",
+      "obesity, late-onset, Autosomal recessive",
+      "obesity, mild, early-onset, Autosomal recessive",
+      "obesity, severe, Autosomal recessive",
+      "obesity, severe, and type II diabetes, Autosomal recessive",
+      "obesity, susceptibility to, Autosomal recessive"
+    ]
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000580",
+  "lang": "en",
+  "description": [
+    "A planned process in which a request to a CRID registry is made to return the information associated with a CRID symbol"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "looking up a CRID"
+    ],
+    "example of usage": [
+      "Going to the PubMed website and entering a PubMed ID in order to retrieve the Pubmed information associated with that ID. "
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "PERSON: Alan Ruttenberg",
+      "PERSON: Bill Hogan",
+      "PERSON: Bjoern Peters",
+      "PERSON: Melanie Courtot"
+    ]
+  },
+  "label": "looking up a centrally registered identifier",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000580",
+  "obo_id": "IAO:0000580",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/graph"
+    },
+    "has_specified_input": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293"
+    },
+    "has_specified_output": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299"
+    },
+    "has_participant": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000580/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057"
+    }
+  }
+}
