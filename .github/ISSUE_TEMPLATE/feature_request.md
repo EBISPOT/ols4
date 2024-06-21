@@ -7,8 +7,14 @@ assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. 
+**New feature description.**
+Give a clear and concise description of the feature to be added to OLS and the potential limitation or problem it addresses. 
+
+**Use cases**
+Please detail the use cases that this new feature will serve.
+
+**User communities**
+If possible and with violating GDPR, can you refer us to user communities who are in need of this feature? 
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
