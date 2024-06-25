@@ -5,12 +5,17 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Ontology from "../../model/Ontology";
-import {getOntologies} from "./ontologiesSlice";
+import {getOntologies, getAllOntologies} from "./ontologiesSlice";
 import {MaterialReactTable, MRT_ColumnDef, useMaterialReactTable} from "material-react-table";
 
 export default function OntologiesPage() {
     const dispatch = useAppDispatch();
     const ontologies = useAppSelector((state) => state.ontologies.ontologies);
+
+    useEffect(() => {
+            dispatch(getAllOntologies());
+    }, [dispatch]); //useAppSelector((state) => state.ontologies.ontologies);
+
     const totalOntologies = useAppSelector(
         (state) => state.ontologies.totalOntologies
     );
