@@ -68,11 +68,13 @@ export default function OntologiesPage() {
                 accessorFn: (ontology) => ontology.getDescription(), //normal accessorKey
                 header: 'Description',
                 size: 300,
+                enableGlobalFilter: false,
             },
             {
                 accessorKey: 'actions',
                 header: 'Actions',
                 size: 20,
+                enableGlobalFilter: false,
                 Cell: ({row}) => {
                     return (
                         <div>
