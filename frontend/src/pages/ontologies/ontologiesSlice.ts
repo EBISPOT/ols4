@@ -672,6 +672,25 @@ const ontologiesSlice = createSlice({
         state.errorMessage = error.payload;
       }
     );
+      builder.addCase(
+          getAllOntologies.fulfilled,
+          (state: OntologiesState, action: PayloadAction<Ontology[]>) => {
+              state.ontologies = action.payload;
+              state.loadingOntologies = false;
+          }
+      );
+      builder.addCase(getAllOntologies.pending, (state: OntologiesState) => {
+          state.loadingOntologies = true;
+          state.errorMessage = initialState.errorMessage;
+      });
+      builder.addCase(
+          getAllOntologies.rejected,
+          (state: OntologiesState, error: any) => {
+              state.ontologies = initialState.ontologies;
+              state.loadingOntologies = false;
+              state.errorMessage = error.payload;
+          }
+      );
     builder.addCase(
       getEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {

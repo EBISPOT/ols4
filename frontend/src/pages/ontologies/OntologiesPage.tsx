@@ -1,11 +1,11 @@
 import {useEffect, useMemo} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import urlJoin from "url-join";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import Ontology from "../../model/Ontology";
-import {getOntologies, getAllOntologies} from "./ontologiesSlice";
+import {getAllOntologies} from "./ontologiesSlice";
 import {MaterialReactTable, MRT_ColumnDef, useMaterialReactTable} from "material-react-table";
 
 export default function OntologiesPage() {
@@ -14,21 +14,8 @@ export default function OntologiesPage() {
 
     useEffect(() => {
             dispatch(getAllOntologies());
-    }, [dispatch]); //useAppSelector((state) => state.ontologies.ontologies);
-
-    const totalOntologies = useAppSelector(
-        (state) => state.ontologies.totalOntologies
-    );
+    }, [dispatch]);
     const loading = useAppSelector((state) => state.ontologies.loadingOntologies);
-
-    const [searchParams, setSearchParams] = useSearchParams();
-    let page = parseInt(searchParams.get("page") || "0");
-    let rowsPerPage = parseInt(searchParams.get("rowsPerPage") || "10");
-    let search = searchParams.get("search") || "";
-
-    useEffect(() => {
-        dispatch(getOntologies({page, rowsPerPage, search}));
-    }, [dispatch, page, rowsPerPage, search]);
 
     const navigate = useNavigate();
 
