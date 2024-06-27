@@ -165,8 +165,17 @@ export default function OntologiesPage() {
             },
             sx: {
                 cursor: 'pointer',
+                textAlign: 'left',
+                verticalAlign: 'top',
             },
         }),
+        paginationDisplayMode: 'pages',
+        muiPaginationProps: {
+            color: 'primary',
+            rowsPerPageOptions: [10, 20, 30, 50],
+            shape: 'rounded',
+            variant: 'outlined',
+        },
     });
 
     document.title = "Ontology Lookup Service (OLS)";
