@@ -75,6 +75,9 @@ export default function OntologiesPage() {
                 header: 'Actions',
                 size: 20,
                 enableGlobalFilter: false,
+                enableColumnFilter: false,
+                enableSorting: false,
+                enableColumnActions: false,
                 Cell: ({row}) => {
                     return (
                         <div>
@@ -127,6 +130,9 @@ export default function OntologiesPage() {
         columns,
         data: ontologies,
         initialState: { showGlobalFilter: true },
+        enableFullScreenToggle: false,
+        enableDensityToggle: false,
+        enableHiding: false,
         muiSearchTextFieldProps: {
             placeholder: 'Search all ontologies...',
             sx: {minWidth: '18 rem'},
