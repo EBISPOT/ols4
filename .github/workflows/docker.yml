@@ -3,6 +3,8 @@ name: Build & publish ols4 images
 on:
   push:
     branches: [ "dev", "stable" ]
+  pull_request:
+    branches: [ "dev" ]
 
 env:
   REGISTRY: ghcr.io
@@ -29,20 +31,20 @@ jobs:
         run: |
           cd dataload
           docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }} .
-          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.head_ref }}
           docker push --all-tags ghcr.io/ebispot/ols4-dataload
 
       - name: Build and push ols4 backend Docker image
         run: |
           cd backend
           docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} .
-          docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.head_ref }}
           docker push --all-tags ghcr.io/ebispot/ols4-backend
 
       - name: Build and push ols4 frontend Docker image
         run: |
           cd frontend
           docker build -t ghcr.io/ebispot/ols4-frontend:${{ github.sha }} .
-          docker tag ghcr.io/ebispot/ols4-frontend:${{github.sha}} ghcr.io/ebispot/ols4-frontend:${{ github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-frontend:${{github.sha}} ghcr.io/ebispot/ols4-frontend:${{ github.head_ref }}
           docker push --all-tags ghcr.io/ebispot/ols4-frontend
 

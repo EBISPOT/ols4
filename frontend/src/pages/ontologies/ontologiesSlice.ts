@@ -248,6 +248,27 @@ export const getOntologies = createAsyncThunk(
     }
   }
 );
+
+export const getAllOntologies = createAsyncThunk(
+    "ontologies_all",
+    async (_, { rejectWithValue }) => {
+        const path = `api/v2/ontologies?size=1`;
+        try {
+            const response = await get<any>(path);
+            const totalElements = response.totalElements;
+
+            const allOntologiesPath = `api/v2/ontologies?size=${totalElements}`;
+            const allOntologiesResponse = await get<any>(allOntologiesPath);
+            const data = allOntologiesResponse.elements.map((o: any) => new Ontology(o));
+
+            //const data = (await getPaginated<any>(path)).map((o) => new Ontology(o));
+
+            return data;
+        } catch (error: any) {
+            return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+        }
+    }
+);
 export const getEntities = createAsyncThunk(
   "ontologies_entities",
   async (
@@ -651,6 +672,25 @@ const ontologiesSlice = createSlice({
         state.errorMessage = error.payload;
       }
     );
+      builder.addCase(
+          getAllOntologies.fulfilled,
+          (state: OntologiesState, action: PayloadAction<Ontology[]>) => {
+              state.ontologies = action.payload;
+              state.loadingOntologies = false;
+          }
+      );
+      builder.addCase(getAllOntologies.pending, (state: OntologiesState) => {
+          state.loadingOntologies = true;
+          state.errorMessage = initialState.errorMessage;
+      });
+      builder.addCase(
+          getAllOntologies.rejected,
+          (state: OntologiesState, error: any) => {
+              state.ontologies = initialState.ontologies;
+              state.loadingOntologies = false;
+              state.errorMessage = error.payload;
+          }
+      );
     builder.addCase(
       getEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Entity>>) => {
