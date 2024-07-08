@@ -5,6 +5,7 @@ import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class IsObsoleteAnnotator {
 				continue;
 			}
 
-			c.properties.addProperty("isObsolete",
-					PropertyValueLiteral.fromString(isEntityObsolete(c) ? "true" : "false"));
+			c.properties.addProperty(IS_OBSOLETE.getText(),
+					PropertyValueLiteral.fromBoolean(isEntityObsolete(c) ? "true" : "false"));
 		}
 
 		long endTime3 = System.nanoTime();
@@ -40,15 +41,17 @@ public class IsObsoleteAnnotator {
 
 		PropertyValue deprecated = node.properties.getPropertyValue("http://www.w3.org/2002/07/owl#deprecated");
 
+		String deprecatedValue = (deprecated != null) ? ((PropertyValueLiteral) deprecated).getValue() : "false";
+
 		if(deprecated != null &&
 				  deprecated.getType() == PropertyValue.Type.LITERAL &&
-				  ((PropertyValueLiteral) deprecated).getValue().equals("true")) {
+				(deprecatedValue.equalsIgnoreCase("true") || deprecatedValue.equals("1")))
+		{
 			 return true;
 		}
 
 
 		// 2. is the class a direct subClassOf oboInOwl:ObsoleteClass?
-
 		List<PropertyValue> parents = node.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 
 		if(parents != null) {

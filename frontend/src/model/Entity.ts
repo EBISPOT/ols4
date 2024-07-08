@@ -13,7 +13,7 @@ export default abstract class Entity extends Thing {
 
   isDeprecated(): boolean {
     return (
-      this.properties["http://www.w3.org/2002/07/owl#deprecated"] === "true"
+      this.properties["isObsolete"] === true
     );
   }
 

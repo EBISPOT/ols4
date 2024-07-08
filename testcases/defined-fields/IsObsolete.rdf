@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+     xml:base="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf">
+        <owl:versionIRI rdf:resource="http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedDataProperty">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass">
+        <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE">
+        <owl:deprecated xml:lang="en">TRUE</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#ObsoleteClass -->
+
+    <owl:Class rdf:about="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual -->
+
+    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual -->
+
+    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.24.2023-01-14T21:28:32Z) https://github.com/owlcs/owlapi -->
+

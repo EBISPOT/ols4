@@ -496,22 +496,45 @@ public class OntologyGraph implements StreamRDF {
                 break;
             case LITERAL:
                 PropertyValueLiteral literal = (PropertyValueLiteral) value;
-                writer.beginObject();
-                writer.name("type");
-                writer.beginArray();
-                writer.value("literal");
-                writer.endArray();
-                if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
-                    writer.name("datatype");
-                    writer.value(literal.getDatatype());
+                if (literal.getDatatype() != null) {
+                    if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#boolean")) {
+                        writer.value(Boolean.valueOf(literal.getValue()).booleanValue());
+                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#double")) {
+                        writer.value(Double.valueOf(literal.getValue()).doubleValue());
+                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                        writer.beginObject();
+                        writer.name("type");
+                        writer.beginArray();
+                        writer.value("literal");
+                        writer.endArray();
+                        if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                            writer.name("datatype");
+                            writer.value(literal.getDatatype());
+                        }
+                        writer.name("value");
+                        writer.value(literal.getValue());
+                        if(!literal.getLang().equals("")) {
+                            writer.name("lang");
+                            writer.value(literal.getLang());
+                        }
+                        writer.endObject();
+                    } else {
+                        writer.beginObject();
+                        writer.name("type");
+                        writer.beginArray();
+                        writer.value("literal");
+                        writer.endArray();
+                        writer.name("datatype");
+                        writer.value(literal.getDatatype());
+                        writer.name("value");
+                        writer.value(literal.getValue());
+                        if(!literal.getLang().equals("")) {
+                            writer.name("lang");
+                            writer.value(literal.getLang());
+                        }
+                        writer.endObject();
+                    }
                 }
-                writer.name("value");
-                writer.value(literal.getValue());
-                if(!literal.getLang().equals("")) {
-                    writer.name("lang");
-                    writer.value(literal.getLang());
-                }
-                writer.endObject();
                 break;
             case URI:
                 String uri = ((PropertyValueURI) value).getUri();

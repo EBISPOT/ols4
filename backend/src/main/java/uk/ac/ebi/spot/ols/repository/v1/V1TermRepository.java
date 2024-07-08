@@ -15,6 +15,7 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -134,7 +135,7 @@ public class V1TermRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
-        if (obsoletes != null) query.addFilter("isObsolete", List.of(Boolean.toString(obsoletes)), SearchType.WHOLE_FIELD);
+        if (obsoletes != null) query.addFilter(IS_OBSOLETE.getOls3Text(), List.of(Boolean.toString(obsoletes)), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
@@ -184,7 +185,7 @@ public class V1TermRepository {
         query.addFilter("hasHierarchicalParent", List.of("false"), SearchType.WHOLE_FIELD);
 
         if (!obsolete)
-            query.addFilter("isObsolete", List.of("false"), SearchType.WHOLE_FIELD);
+            query.addFilter(IS_OBSOLETE.getOls3Text(), List.of("false"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));

@@ -21,6 +21,7 @@ import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.v2.V2IndividualRepository;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class V2IndividualController {
 
         Map<String, Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", List.of("false"));
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
@@ -75,7 +76,7 @@ public class V2IndividualController {
 
         Map<String, Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", List.of("false"));
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
