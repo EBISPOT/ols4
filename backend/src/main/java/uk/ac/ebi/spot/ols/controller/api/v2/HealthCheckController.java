@@ -46,7 +46,7 @@ public class HealthCheckController {
 
     private boolean checkNeo4j() {
         try {
-            String decodedUrl = UriUtils.decode(solrUrl, StandardCharsets.UTF_8);
+            String decodedUrl = UriUtils.decode(neo4jUrl, StandardCharsets.UTF_8);
             ResponseEntity<String> response = restTemplate.getForEntity(decodedUrl, String.class);
             if (response.getStatusCode().is2xxSuccessful()) {
                 JsonObject jsonResponse = JsonParser.parseString(response.getBody()).getAsJsonObject();
