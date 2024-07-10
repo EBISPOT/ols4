@@ -33,8 +33,9 @@ spec:
             httpGet:
               path: /api/v2/health
               port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 2
             timeoutSeconds: 10
           resources:
             requests:
