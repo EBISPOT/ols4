@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,7 @@ import org.springframework.web.util.UriUtils;
 import java.nio.charset.StandardCharsets;
 
 @RestController
+@RequestMapping("/api/v2")
 public class HealthCheckController {
 
     @Value("${solr.url}")
@@ -31,7 +33,7 @@ public class HealthCheckController {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("/health")
+    @RequestMapping("/health")
     public ResponseEntity<String> checkHealth() {
         if (!checkNeo4j()) {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Neo4j is not initialized.");
