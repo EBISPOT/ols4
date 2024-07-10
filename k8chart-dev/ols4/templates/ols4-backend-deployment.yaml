@@ -29,6 +29,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /api/v2/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 6000
+            timeoutSeconds: 10
           resources:
             requests:
               memory: 10Gi
