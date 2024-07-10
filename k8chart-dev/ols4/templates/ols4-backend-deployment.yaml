@@ -31,9 +31,10 @@ spec:
             - containerPort: 8080
           readinessProbe:
             httpGet:
-              path: /api/v2/health
-              port: 8080
-              scheme: HTTP
+              path: /ols4/api/v2/health  # Ensure this matches the context path
+              port: 443
+              host: wwwdev.ebi.ac.uk
+              scheme: HTTPS
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 10
