@@ -161,7 +161,9 @@ public class V1SelectController {
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
                     JsonHelper.getString(json, "isDefiningOntology") != null && JsonHelper.getString(json, "isDefiningOntology").equals("true"));
-            if (fieldList.contains("type")) outDoc.put("type", "class");
+            if (fieldList.contains("type")) {
+                outDoc.put("type", JsonHelper.getType(json, "type"));
+            }
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
 
