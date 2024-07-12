@@ -32,9 +32,11 @@ spec:
           readinessProbe:
             httpGet:
               path: /ols4/api/v2/health  # Ensure this matches the context path
-              port: 443
-              host: wwwdev.ebi.ac.uk
-              scheme: HTTPS
+              port: 8080
+              scheme: HTTP
+              httpHeaders:
+                - name: Host
+                  value: { { .Release.Name } }-backend
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 10
