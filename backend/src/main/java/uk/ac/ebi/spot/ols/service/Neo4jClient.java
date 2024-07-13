@@ -12,12 +12,15 @@ import com.google.gson.JsonParser;
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
 import org.neo4j.driver.exceptions.NoSuchRecordException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 
 import javax.validation.constraints.NotNull;
 
@@ -29,7 +32,7 @@ public class Neo4jClient {
 	@org.springframework.beans.factory.annotation.Value("${ols.neo4j.host:bolt://localhost:7687}")
 	private String host;
 
-
+	private static final Logger logger = LoggerFactory.getLogger(Neo4jClient.class);
 
 	private Gson gson = new Gson();
 
@@ -106,8 +109,8 @@ public class Neo4jClient {
 			queryToRun = query;
 		}
 
-		System.out.println(queryToRun);
-		System.out.println(gson.toJson(parameters.asMap()));
+		logger.trace("queryToRun = {}", queryToRun);
+		logger.info(" gson.toJson(parameters.asMap()) = {}", gson.toJson(parameters.asMap()));
 
 		Stopwatch timer = Stopwatch.createStarted();
 		Result result = session.run(
@@ -115,11 +118,11 @@ public class Neo4jClient {
 
 		    parameters
 		);
-		System.out.println("Neo4j run paginated query: " + timer.stop());
+		logger.info("Neo4j run paginated query duration = {}", timer.stop());
 
 		Stopwatch timer2 = Stopwatch.createStarted();
 		Result countResult = session.run(countQuery, parameters);
-		System.out.println("Neo4j run paginated count: " + timer2.stop());
+		logger.info("Neo4j run paginated count duration = {}", timer2.stop());
 
 		Record countRecord = countResult.single();
 		int count = countRecord.get(0).asInt();
@@ -142,11 +145,11 @@ public class Neo4jClient {
 
 		Session session = getSession();
 
-		System.out.println(query);
+		logger.debug("query = {}", query);
 
 		Stopwatch timer = Stopwatch.createStarted();
 		Result result = session.run(query, parameters);
-		System.out.println("Neo4j run query " + query + ": " + timer.stop());
+		logger.info("Neo4j run query {} has duration {}", query, timer.stop());
 
 		Value v = null;
 

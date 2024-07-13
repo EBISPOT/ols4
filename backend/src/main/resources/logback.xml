@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="uk.ac.ebi.spot.ols" level="trace"/>
+    <logger name="uk.ac.ebi.spot.ols" level="info"/>
     <root level="error">
         <appender-ref ref="STDOUT" />
     </root>

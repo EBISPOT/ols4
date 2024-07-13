@@ -6,12 +6,12 @@ import com.google.gson.JsonParser;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +41,8 @@ public class V1SelectController {
 
     @Autowired
     private OlsSolrClient solrClient;
+
+    private static final Logger logger = LoggerFactory.getLogger(V1SelectController.class);
 
     @RequestMapping(path = "/api/select", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void select(
@@ -118,7 +120,7 @@ public class V1SelectController {
         solrQuery.addHighlightField("whitespace_edge_synonym");
         solrQuery.addHighlightField("synonym");
 
-        System.out.println("select: " + solrQuery.toQueryString());
+        logger.debug("select () ", solrQuery.toQueryString());
 
         QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
