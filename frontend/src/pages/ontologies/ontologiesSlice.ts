@@ -252,20 +252,14 @@ export const getOntologies = createAsyncThunk(
 export const getAllOntologies = createAsyncThunk(
     "ontologies_all",
     async (_, { rejectWithValue }) => {
-        const path = `api/v2/ontologies?size=1`;
+        const allOntologiesPath = `api/v2/cache/ontologies`;
         try {
-            const response = await get<any>(path);
-            const totalElements = response.totalElements;
-
-            const allOntologiesPath = `api/v2/ontologies?size=${totalElements}`;
             const allOntologiesResponse = await get<any>(allOntologiesPath);
             const data = allOntologiesResponse.elements.map((o: any) => new Ontology(o));
 
-            //const data = (await getPaginated<any>(path)).map((o) => new Ontology(o));
-
             return data;
         } catch (error: any) {
-            return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+            return rejectWithValue(`Error accessing: ${allOntologiesPath}; ${error.message}`);
         }
     }
 );

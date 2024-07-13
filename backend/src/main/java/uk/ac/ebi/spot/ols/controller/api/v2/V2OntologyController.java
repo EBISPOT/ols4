@@ -51,6 +51,14 @@ public class V2OntologyController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false") boolean includeObsoleteEntities,
             @RequestParam Map<String, Collection<String>> searchProperties
     ) throws ResourceNotFoundException, IOException {
+        logger.trace("Pageable: {}", pageable);
+        logger.trace("lang: {}", lang);
+        logger.trace("search: {}", search);
+        logger.trace("searchFields: {}", searchFields);
+        logger.trace("boostFields: {}", boostFields);
+        logger.trace("exactMatch: {}", exactMatch);
+        logger.trace("includeObsoleteEntities: {}", includeObsoleteEntities);
+        logger.trace("searchProperties: {}", searchProperties);
 
         Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)

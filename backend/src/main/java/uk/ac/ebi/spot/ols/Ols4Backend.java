@@ -7,6 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * TODO: We should consider caching responses that are static (such as statistics and ontologies loaded
+ * for the ontologies in the ontologies tab) on startup of the OLS backend.
+ *
+ */
 @SpringBootApplication
 public class Ols4Backend {
 

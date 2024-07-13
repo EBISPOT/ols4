@@ -81,8 +81,6 @@ public class V1SearchController {
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
-        System.out.println("fieldList 1 = " + fieldList);
-        System.out.println("type = " + types);
 
         final SolrQuery solrQuery = new SolrQuery(); // 1
 
@@ -208,15 +206,11 @@ public class V1SearchController {
 		 * Fix: End
 		 */
         solrQuery.add("wt", format);
-        System.out.println("fieldList 2 = " + fieldList);
-
-        System.out.println("solrQuery=" + solrQuery.jsonStr());
 
         QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
-            System.out.println("res = " + res.toString());
             String _json = (String)res.get("_json");
             if(_json == null) {
                 throw new RuntimeException("_json was null");

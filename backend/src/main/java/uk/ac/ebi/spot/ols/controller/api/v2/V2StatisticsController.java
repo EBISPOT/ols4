@@ -3,6 +3,8 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.hateoas.MediaTypes;
@@ -27,36 +29,46 @@ public class V2StatisticsController {
     @Autowired
     OlsSolrClient solrClient;
 
+    private static ResponseEntity statisticsResponse = null ;
+    private static final Logger logger = LoggerFactory.getLogger(V2StatisticsController.class);
+
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
 
-        Map<String,Object> coreStatus = solrClient.getCoreStatus();
-        Map<String,Object> indexStatus = (Map<String,Object>) coreStatus.get("index");
-        String lastModified = (String) indexStatus.get("lastModified");
+        if (statisticsResponse == null) {
+            logger.debug("Getting statistics from Solr");
+            Map<String, Object> coreStatus = solrClient.getCoreStatus();
+            Map<String, Object> indexStatus = (Map<String, Object>) coreStatus.get("index");
+            String lastModified = (String) indexStatus.get("lastModified");
 
-        SolrQuery query = new SolrQuery();
+            SolrQuery query = new SolrQuery();
 
-        query.setQuery("*:*");
-        query.setFacet(true);
-        query.addFacetField("type");
-        query.setRows(0);
+            query.setQuery("*:*");
+            query.setFacet(true);
+            query.addFacetField("type");
+            query.setRows(0);
 
-        QueryResponse qr = solrClient.runSolrQuery(query, null);
+            QueryResponse qr = solrClient.runSolrQuery(query, null);
 
-        Map<String,Integer> counts = new HashMap<>();
+            Map<String, Integer> counts = new HashMap<>();
 
-        for(FacetField.Count count : qr.getFacetField("type").getValues()) {
-            counts.put(count.getName(), (int)count.getCount());
+            for (FacetField.Count count : qr.getFacetField("type").getValues()) {
+                counts.put(count.getName(), (int) count.getCount());
+            }
+
+
+            V2Statistics statistics = new V2Statistics();
+            statistics.lastModified = lastModified;
+            statistics.numberOfOntologies = counts.containsKey("ontology") ? counts.get("ontology") : 0;
+            statistics.numberOfClasses = counts.containsKey("class") ? counts.get("class") : 0;
+            statistics.numberOfIndividuals = counts.containsKey("individual") ? counts.get("individual") : 0;
+            statistics.numberOfProperties = counts.containsKey("property") ? counts.get("property") : 0;
+
+            statisticsResponse = new ResponseEntity<>(statistics, HttpStatus.OK);
+
+        } else {
+            logger.debug("Getting statistics from cache");
         }
-
-        V2Statistics stats = new V2Statistics();
-        stats.lastModified = lastModified;
-        stats.numberOfOntologies = counts.containsKey("ontology") ? counts.get("ontology") : 0;
-        stats.numberOfClasses = counts.containsKey("class") ? counts.get("class") : 0;
-        stats.numberOfIndividuals = counts.containsKey("individual") ? counts.get("individual") : 0;
-        stats.numberOfProperties = counts.containsKey("property") ? counts.get("property") : 0;
-
-        return new ResponseEntity<>( stats, HttpStatus.OK);
+        return statisticsResponse;
     }
-
 }
