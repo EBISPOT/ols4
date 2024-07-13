@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
@@ -56,7 +57,7 @@ public class V2OntologyCacheController {
             Map<String, Collection<String>> properties = new HashMap<>();
             properties.put("isObsolete", List.of("false"));
 
-            Pageable pageable = PageRequest.of(0, 1000);
+            Pageable pageable = PageRequest.of(0, 1000, Sort.by("ontologyId"));
             allOntologiesResponse = new ResponseEntity<>(
                     new V2PagedAndFacetedResponse<>(
                             ontologyRepository.find(pageable, "en", null, null, null, false, DynamicQueryHelper.filterProperties(properties))
