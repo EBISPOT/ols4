@@ -37,8 +37,8 @@ spec:
               httpHeaders:
                 - name: Host
                   value: {{ .Release.Name }}-backend
-            initialDelaySeconds: 5
-            periodSeconds: 2
+            initialDelaySeconds: 15
+            periodSeconds: 60
             timeoutSeconds: 10
           resources:
             requests:
