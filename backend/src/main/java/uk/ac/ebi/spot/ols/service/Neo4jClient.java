@@ -51,6 +51,13 @@ public class Neo4jClient {
 
 	}
 
+	public long returnNodeCount() {
+		Session session = getSession();
+		Result result = session.run("MATCH (n) RETURN COUNT(n)");
+		long count = result.single().get(0).asLong();
+		session.close();
+		return count;
+	}
 
 	// only used by OLS3 graph repo, remove at some point
 	public List<Map<String,Object>> rawQuery(String query) {

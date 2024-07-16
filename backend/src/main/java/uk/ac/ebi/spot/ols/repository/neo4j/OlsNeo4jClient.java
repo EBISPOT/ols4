@@ -19,6 +19,10 @@ public class OlsNeo4jClient {
 	@Autowired
 	Neo4jClient neo4jClient;
 
+	public long getDatabaseNodeCount() {
+		return neo4jClient.returnNodeCount();
+	}
+
     public Page<JsonElement> getAll(String type, Map<String,String> properties, Pageable pageable) {
 
 		String query = "MATCH (a:" + type + ")";
