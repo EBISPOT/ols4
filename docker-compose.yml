@@ -3,12 +3,14 @@ services:
     ols4-dataload:
       environment:
         - JAVA_OPTS=${JAVA_OPTS}
-      build: ./dataload
+      build:
+        context: .
+        dockerfile: ./dataload/Dockerfile
       volumes:
         - ols4-solr-data:/opt/solr/server/solr:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
         - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config.json:ro
-        - ./testcases:/opt/dataload/testcases:ro
+        - ./testcases:/opt/ols/dataload/testcases:ro
           #- ./docker_out:/tmp/out:rw
       command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS:-}
     ols4-solr:
@@ -36,7 +38,9 @@ services:
         ols4-dataload:
           condition: service_completed_successfully
     ols4-backend:
-      build: ./backend
+      build:
+        context: .
+        dockerfile: ./backend/Dockerfile
       ports:
         - 8080:8080
       environment:
@@ -70,8 +74,5 @@ services:
       links:
         - ols4-backend
 volumes:
-    ols4-solr-data:
     ols4-neo4j-data:
-
-
-
+    ols4-solr-data:
