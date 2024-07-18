@@ -1,0 +1,59 @@
+{
+  "ontologies": [
+    {
+      "activity_status": "inactive",
+      "build": {
+        "method": "archive",
+        "path": "archive",
+        "source_url": "http://build.berkeleybop.org/job/build-gaz/lastSuccessfulBuild/artifact/*zip*/archive.zip"
+      },
+      "contact": {
+        "email": "lschriml@som.umaryland.edu",
+        "github": "lschriml",
+        "label": "Lynn Schriml",
+        "orcid": "0000-0001-8910-9851"
+      },
+      "description": "A gazetteer constructed on ontological principles",
+      "homepage": "http://environmentontology.github.io/gaz/",
+      "id": "gaz",
+      "preferredPrefix": "GAZ",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC0 1.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/cc-zero.png",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "mailing_list": "https://groups.google.com/forum/#!forum/obo-gazetteer",
+      "ontology_purl": "http://purl.obolibrary.org/obo/gaz.owl",
+      "products": [
+        {
+          "id": "gaz.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/gaz.owl"
+        },
+        {
+          "id": "gaz.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/gaz.obo"
+        }
+      ],
+      "repository": "https://github.com/EnvironmentOntology/gaz",
+      "title": "Gazetteer",
+      "tracker": "https://github.com/EnvironmentOntology/gaz/issues",
+      "hierarchical_property":[
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_0001025",
+        "http://purl.obolibrary.org/obo/RO_0002151",
+        "http://purl.obolibrary.org/obo/RO_0002376",
+        "http://purl.obolibrary.org/obo/RO_0002377",
+        "http://purl.obolibrary.org/obo/UBREL_0000001",
+        "http://purl.obolibrary.org/obo/RO_0002219",
+        "http://purl.obolibrary.org/obo/RO_0002379",
+        "http://purl.obolibrary.org/obo/RO_0002378",
+        "http://purl.obolibrary.org/obo/RO_0002090",
+        "http://purl.obolibrary.org/obo/TEMP#proper_partof",
+        "http://purl.obolibrary.org/obo/TEMP#overlapped_by",
+        "http://purl.obolibrary.org/obo/RO_0002131",
+        "http://purl.obolibrary.org/obo/RO_0002220"
+      ]
+    }
+  ]
+}

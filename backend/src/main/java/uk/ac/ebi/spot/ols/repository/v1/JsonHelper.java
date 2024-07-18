@@ -64,6 +64,18 @@ public class JsonHelper {
         return getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
     }
 
+    /**
+     * This methi
+     * @param json
+     * @param predicate
+     * @return
+     */
+    public static String getType(JsonObject json, String predicate){
+        List<String> types = getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
+        types.remove("entity");
+        return types.get(0);
+    }
+
     public static List<JsonObject> getObjects(JsonObject json, String predicate) {
         return getValues(json, predicate).stream().map(v -> v.getAsJsonObject()).collect(Collectors.toList());
     }

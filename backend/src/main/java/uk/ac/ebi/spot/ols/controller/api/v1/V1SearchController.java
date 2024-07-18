@@ -21,6 +21,8 @@ import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,7 @@ import com.google.gson.JsonParser;
 
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.repository.Validation;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
@@ -55,6 +58,8 @@ public class V1SearchController {
     @Autowired
     private OlsSolrClient solrClient;
 
+
+    private static final Logger logger = LoggerFactory.getLogger(V1SearchController.class);
 
     @RequestMapping(path = "/api/search", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void search(
@@ -209,14 +214,12 @@ public class V1SearchController {
 		 */
         solrQuery.add("wt", format);
 
-
-        System.out.println(solrQuery.jsonStr());
+        logger.debug("search: ()", solrQuery.toQueryString());
 
         QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
         List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
-
             String _json = (String)res.get("_json");
             if(_json == null) {
                 throw new RuntimeException("_json was null");
@@ -258,7 +261,9 @@ public class V1SearchController {
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
                     JsonHelper.getString(json, "isDefiningOntology") != null && JsonHelper.getString(json, "isDefiningOntology").equals("true"));
-            if (fieldList.contains("type")) outDoc.put("type", "class");
+            if (fieldList.contains("type")) {
+                outDoc.put("type", JsonHelper.getType(json, "type"));
+            }
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
