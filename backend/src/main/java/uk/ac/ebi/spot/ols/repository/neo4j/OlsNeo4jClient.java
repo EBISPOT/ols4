@@ -21,8 +21,13 @@ public class OlsNeo4jClient {
 
 	@Autowired
 	Neo4jClient neo4jClient;
-
+  
 	private static final Logger logger = LoggerFactory.getLogger(OlsNeo4jClient.class);
+  
+  
+	public long getDatabaseNodeCount() {
+		return neo4jClient.returnNodeCount();
+	}
 
     public Page<JsonElement> getAll(String type, Map<String,String> properties, Pageable pageable) {
 
