@@ -29,6 +29,17 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /ols4/api/v2/health  # Ensure this matches the context path
+              port: 8080
+              scheme: HTTP
+              httpHeaders:
+                - name: Host
+                  value: {{ .Release.Name }}-backend
+            initialDelaySeconds: 15
+            periodSeconds: 60
+            timeoutSeconds: 10
           resources:
             requests:
               memory: 10Gi
