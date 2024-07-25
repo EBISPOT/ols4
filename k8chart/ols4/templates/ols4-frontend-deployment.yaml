@@ -24,6 +24,10 @@ spec:
                   values:
                     - hh-rke-wp-webadmin-47-worker-4.caas.ebi.ac.uk
                     - hx-rke-wp-webadmin-40-worker-4.caas.ebi.ac.uk
+      initContainers:
+        - name: wait-for-backend
+          image: busybox
+          command: [ 'sh', '-c', 'until nc -z {{ .Release.Name }}-backend 8080; do echo waiting for backend; sleep 5; done;' ]
       containers:
         - name: web
           image: ghcr.io/ebispot/ols4-frontend:{{.Values.imageTag}}
