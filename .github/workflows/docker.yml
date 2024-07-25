@@ -31,8 +31,8 @@ jobs:
         run: |
           cd ols-shared
           mvn clean package
-          cp target/ols-shared.jar ../dataload/libs/ols-shared.jar
-          cp target/ols-shared.jar ../backend/libs/ols-shared.jar
+          cp target/ols4-shared-1.0.0-SNAPSHOT.jar ../dataload/libs/ols4-shared-1.0.0-SNAPSHOT.jar
+          cp target/ols4-shared-1.0.0-SNAPSHOT.jar ../backend/libs/ols4-shared-1.0.0-SNAPSHOT.jar
 
       - name: Build and push ols4 dataload Docker image
         run: |
