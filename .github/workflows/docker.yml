@@ -35,7 +35,6 @@ jobs:
 
       - name: Build and push ols4 backend Docker image
         run: |
-          cd backend
           docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} -f ./backend/Dockerfile .
           docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.head_ref || github.ref_name }}
           docker push --all-tags ghcr.io/ebispot/ols4-backend
