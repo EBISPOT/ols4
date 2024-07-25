@@ -26,18 +26,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Build ols-shared and copy to dataload and backend
-#        run: |
-#          cd dataload
-#          mkdir libs
-#          cd ../backend
-#          mkdir libs
-#          cd ..
-#          cd ols-shared
-#          mvn clean package
-#          cp target/ols4-shared-1.0.0-SNAPSHOT.jar ../dataload/libs/ols4-shared-1.0.0-SNAPSHOT.jar
-#          cp target/ols4-shared-1.0.0-SNAPSHOT.jar ../backend/libs/ols4-shared-1.0.0-SNAPSHOT.jar
 
       - name: Build and push ols4 dataload Docker image
         run: |
@@ -48,7 +36,7 @@ jobs:
       - name: Build and push ols4 backend Docker image
         run: |
           cd backend
-          docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} .
+          docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} -f ./backend/Dockerfile .
           docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.head_ref || github.ref_name }}
           docker push --all-tags ghcr.io/ebispot/ols4-backend
 
