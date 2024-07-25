@@ -29,6 +29,9 @@ jobs:
 
       - name: Build ols-shared and copy to dataload and backend
         run: |
+          cd dataload
+          mkdir libs
+          cd ..
           cd ols-shared
           mvn clean package
           cp target/ols4-shared-1.0.0-SNAPSHOT.jar ../dataload/libs/ols4-shared-1.0.0-SNAPSHOT.jar
