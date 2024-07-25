@@ -27,6 +27,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build ols-shared and copy to dataload and backend
+        run: |
+          cd ols-shared
+          mvn clean package
+          cp target/ols-shared.jar ../dataload/libs/ols-shared.jar
+          cp target/ols-shared.jar ../backend/libs/ols-shared.jar
+
       - name: Build and push ols4 dataload Docker image
         run: |
           docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }} -f ./dataload/Dockerfile .
