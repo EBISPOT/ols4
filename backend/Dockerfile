@@ -1,5 +1,6 @@
 
-FROM maven:3.6.3-adoptopenjdk-14
+#FROM maven:3.6.3-adoptopenjdk-14
+FROM maven:3.8-jdk-11
 
 RUN mkdir /opt/ols && mkdir /opt/ols/backend && mkdir /opt/ols/ols-shared
 COPY ./backend /opt/ols/backend
