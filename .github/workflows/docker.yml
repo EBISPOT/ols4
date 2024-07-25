@@ -31,6 +31,8 @@ jobs:
         run: |
           cd dataload
           mkdir libs
+          cd ../backend
+          mkdir libs
           cd ..
           cd ols-shared
           mvn clean package
