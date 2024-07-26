@@ -15,6 +15,7 @@ import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1PropertyMapper;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 @Component
 public class V1PropertyRepository {
@@ -97,7 +98,7 @@ public class V1PropertyRepository {
         query.addFilter("hasHierarchicalParent", List.of("false"), SearchType.WHOLE_FIELD);
 
         if(!obsolete)
-            query.addFilter("isObsolete", List.of("false"), SearchType.WHOLE_FIELD);
+            query.addFilter(IS_OBSOLETE.getOls3Text(), List.of("false"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));

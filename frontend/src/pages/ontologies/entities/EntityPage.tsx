@@ -229,11 +229,13 @@ export default function EntityPage({
                 ) : null}
               </div>
             </div>
-            {entity.isDeprecated() && (
+             {entity.isDeprecated() && (
               <Banner type="error">
+                <div>
                 <strong className="inline-block mb-2">
-                  This {entity.getType()} is deprecated.
-                </strong>
+                   This {entity.getType()} is deprecated.
+                 </strong>
+                </div>
                 {entity.getDeprecationVersion() && (
                   <div>
                     Deprecated since version&thinsp;
@@ -283,7 +285,7 @@ export default function EntityPage({
                       </i>
                     </div>
                   )}
-              </Banner>
+               </Banner>
             )}
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="overflow-x-auto mb-4">

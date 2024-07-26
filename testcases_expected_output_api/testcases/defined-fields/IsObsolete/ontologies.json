@@ -1,0 +1,1329 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "isobsolete",
+      "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+      "preferredPrefix": "IsObsolete",
+      "ontology_purl": "./testcases/defined-fields/IsObsolete.rdf",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf",
+      "imported": {
+        "type": [
+          "literal"
+        ],
+        "value": "false"
+      },
+      "isObsolete": false,
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDirectDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numHierarchicalDescendants": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "6"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "12"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "4"
+      },
+      "searchableAnnotationValues": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "false"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "6"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "12"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
+        }
+      ],
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "AnGODefinedObsoleteClass"
+          },
+          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "directParent": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hierarchicalAncestor": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "hierarchicalParent": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "AnGODefinedObsoleteClass"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "AnGODefinedObsoleteClass"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValue1"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValue1"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValue1"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTRUE"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#deprecated": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "TRUE",
+            "lang": "en"
+          },
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTRUE"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTRUE"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTrue"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTrue"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithValueTrue"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedClass"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": false,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedClass"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedClass"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ObsoleteClass"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "true"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": false,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "ObsoleteClass"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "1"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "1"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ObsoleteClass"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedDataProperty",
+          "type": [
+            "dataProperty",
+            "property",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedDataProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedDataProperty"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedDataProperty"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty",
+          "type": [
+            "property",
+            "objectProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedObjectProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedObjectProperty"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedObjectProperty"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty",
+          "type": [
+            "dataProperty",
+            "property",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedDataProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": false,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedDataProperty"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedDataProperty"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty",
+          "type": [
+            "property",
+            "objectProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedObjectProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": false,
+          "isPreferredRoot": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedObjectProperty"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedObjectProperty"
+          }
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual",
+          "type": [
+            "individual",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedIndividual"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": true,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedIndividual"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedIndividual"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual",
+          "type": [
+            "individual",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedIndividual"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasDirectParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalChildren": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "hasHierarchicalParent": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "imported": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "isObsolete": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedIndividual"
+          },
+          "numDirectDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "numHierarchicalDescendants": {
+            "type": [
+              "literal"
+            ],
+            "value": "0"
+          },
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": {
+            "type": [
+              "literal"
+            ],
+            "value": "false"
+          },
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedIndividual"
+          }
+        }
+      ]
+    }
+  ]
+}

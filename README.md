@@ -189,7 +189,7 @@ Once the backend is up, you can start the frontend with:
 
 Once you are done testing, to stop everything:
 
-    ./stopall.sh
+    ./stopNeo4JSolr.sh
 
 ### Running the dataload locally
 
@@ -395,7 +395,7 @@ Ensure that all differences in this file can be explained and that they do make 
 new expected output:
 
        rm -rf testcases_expected_output
-       cp -r testcases_output testcases_expected_output
+       cp -r testcases_output/testcases testcases_expected_output
 
 6. Now continue with API testing.
 
@@ -432,6 +432,6 @@ the old `testcases_expected_output_api` and replace with new expected output:
 
 12. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
 
-        ./dev-testing/stopall.sh
+        ./dev-testing/stopNeo4JSolr.sh
 
 

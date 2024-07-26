@@ -6,14 +6,12 @@ import com.google.gson.JsonParser;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 @Tag(name = "Select Controller")
 @RestController
@@ -112,7 +111,7 @@ public class V1SelectController {
             solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
         }
 
-        solrQuery.addFilterQuery("isObsolete:" + queryObsoletes);
+        solrQuery.addFilterQuery(IS_OBSOLETE.getText() + ":" + queryObsoletes);
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
         solrQuery.setHighlight(true);

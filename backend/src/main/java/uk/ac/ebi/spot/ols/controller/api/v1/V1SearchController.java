@@ -25,7 +25,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,11 +43,9 @@ import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.AnnotationExtractor;
 
-/**
- * @author Simon Jupp
- * @date 02/07/2015
- * Samples, Phenotypes and Ontologies Team, EMBL-EBI
- */
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
+
 @Tag(name = "Search Controller")
 @RestController
 public class V1SearchController {
@@ -186,7 +183,7 @@ public class V1SearchController {
             }
         }
 
-        solrQuery.addFilterQuery("isObsolete:" + queryObsoletes);
+        solrQuery.addFilterQuery(IS_OBSOLETE.getText() + ":" + queryObsoletes);
 
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
@@ -206,7 +203,12 @@ public class V1SearchController {
 		 *
 		 */
 		// TODO: Need to check and add additional faceted fields if required
-		solrQuery.addFacetField("ontologyId", "ontologyIri", "ontologyPreferredPrefix", "type", "isDefiningOntology", "isObsolete");
+		solrQuery.addFacetField("ontologyId",
+                "ontologyIri",
+                "ontologyPreferredPrefix",
+                "type",
+                "isDefiningOntology",
+                IS_OBSOLETE.getText());
 		/*
 		 * Fix: End
 		 */
