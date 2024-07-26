@@ -23,9 +23,10 @@ export default function OntologiesPage() {
         () => [
             {
                 accessorFn: (ontology) => ontology.getName(), //access nested data with dot notation
+                id: 'name',
                 header: 'Ontology',
                 size: 50,
-                Cell: ({row}) => {
+                Cell: ({row, renderedCellValue}) => {
                     const name = row.original.getName();
                     const logo = row.original.getLogoURL();
                     const ontoId = row.original.getOntologyId();
@@ -44,7 +45,7 @@ export default function OntologiesPage() {
                                         }
                                     />
                                 ) : null}
-                                {name ? <div>{name}</div> : null}
+                                <div>{renderedCellValue}</div>
                             </div>
                         );
                     } else return ontoId;
@@ -52,13 +53,14 @@ export default function OntologiesPage() {
             },
             {
                 accessorFn: (ontology) => ontology.getOntologyId().toUpperCase(),
+                id: 'id',
                 header: 'ID',
                 size: 20,
-                Cell: ({row}) => {
+                Cell: ({row, renderedCellValue}) => {
                     return (
                         <div style={{width: '50px'}}>
                             <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
-                                {row.original.getOntologyId().toUpperCase()}
+                                {renderedCellValue}
                             </div>
                         </div>
                     );
@@ -66,6 +68,7 @@ export default function OntologiesPage() {
             },
             {
                 accessorFn: (ontology) => ontology.getDescription(), //normal accessorKey
+                id: 'description',
                 header: 'Description',
                 size: 300,
                 enableGlobalFilter: false,
@@ -129,7 +132,27 @@ export default function OntologiesPage() {
     const table = useMaterialReactTable({
         columns,
         data: ontologies,
-        initialState: { showGlobalFilter: true },
+        initialState: {
+            showGlobalFilter: true,
+            sorting: [
+                {
+                    id: 'id', //sort by id by default on page load
+                    desc: false,
+                },
+            ],
+        },
+        filterFns: {
+            myCustomFilter: (row, id, filterValue) => {
+                if (!filterValue) return true;
+
+                const valueById = row.original.getOntologyId().toLowerCase();
+                const valueByName = row.original.getName().toLowerCase();
+
+                if (valueById.includes(filterValue.toLowerCase())) return true;
+                return valueByName.includes(filterValue.toLowerCase());
+            },
+        },
+        globalFilterFn: 'myCustomFilter',
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
