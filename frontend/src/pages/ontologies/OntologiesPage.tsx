@@ -26,6 +26,7 @@ export default function OntologiesPage() {
                 id: 'name',
                 header: 'Ontology',
                 size: 50,
+                filterFn: 'fuzzy',
                 Cell: ({row, renderedCellValue}) => {
                     const name = row.original.getName();
                     const logo = row.original.getLogoURL();
@@ -56,6 +57,7 @@ export default function OntologiesPage() {
                 id: 'id',
                 header: 'ID',
                 size: 20,
+                filterFn: 'startsWith',
                 Cell: ({row, renderedCellValue}) => {
                     return (
                         <div style={{width: '50px'}}>
@@ -141,7 +143,7 @@ export default function OntologiesPage() {
                 },
             ],
         },
-        filterFns: {
+        /*filterFns: {
             myCustomFilter: (row, id, filterValue) => {
                 if (!filterValue) return true;
 
@@ -152,7 +154,7 @@ export default function OntologiesPage() {
                 return valueByName.includes(filterValue.toLowerCase());
             },
         },
-        globalFilterFn: 'myCustomFilter',
+        globalFilterFn: 'myCustomFilter',*/
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
