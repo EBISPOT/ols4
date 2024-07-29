@@ -19,7 +19,7 @@ export default function ClassExpression({
 }) {
 	entityType = entityType || 'classes'
 
-  if (typeof expr !== "object") {
+  if (typeof expr !== "object" && typeof expr !== "boolean") {
     // expr is just an IRI
     return <EntityLink ontologyId={ontologyId} currentEntity={currentEntity} entityType={entityType} iri={expr} linkedEntities={linkedEntities} />
   }
