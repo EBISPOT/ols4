@@ -143,7 +143,7 @@ export default function OntologiesPage() {
                 },
             ],
         },
-        filterFns: {
+        /*filterFns: {
             myCustomFilter: (row, id, filterValue) => {
                 if (!filterValue) return true;
 
@@ -153,8 +153,8 @@ export default function OntologiesPage() {
                 if (valueById.includes(filterValue.toLowerCase())) return true;
                 return valueByName.includes(filterValue.toLowerCase());
             },
-        },
-        globalFilterFn: 'myCustomFilter',
+        },*/
+        globalFilterFn: 'includesString',
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
