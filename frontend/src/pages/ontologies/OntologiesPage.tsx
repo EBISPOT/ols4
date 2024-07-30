@@ -26,7 +26,7 @@ export default function OntologiesPage() {
                 id: 'name',
                 header: 'Ontology',
                 size: 50,
-                filterFn: 'fuzzy',
+                filterFn: 'startsWith',
                 Cell: ({row, renderedCellValue}) => {
                     const name = row.original.getName();
                     const logo = row.original.getLogoURL();
@@ -154,7 +154,7 @@ export default function OntologiesPage() {
                 return valueByName.includes(filterValue.toLowerCase());
             },
         },*/
-        globalFilterFn: 'includesString',
+        //globalFilterFn: 'includesString',
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
