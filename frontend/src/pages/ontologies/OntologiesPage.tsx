@@ -143,18 +143,7 @@ export default function OntologiesPage() {
                 },
             ],
         },
-        /*filterFns: {
-            myCustomFilter: (row, id, filterValue) => {
-                if (!filterValue) return true;
-
-                const valueById = row.original.getOntologyId().toLowerCase();
-                const valueByName = row.original.getName().toLowerCase();
-
-                if (valueById.includes(filterValue.toLowerCase())) return true;
-                return valueByName.includes(filterValue.toLowerCase());
-            },
-        },*/
-        //globalFilterFn: 'includesString',
+        globalFilterFn: 'includesString',
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
