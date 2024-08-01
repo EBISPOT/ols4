@@ -91,7 +91,7 @@ export default function EntityAnnotationsSection({
         />
       );
     } else {
-      if (typeof value.value !== "string") {
+      if (typeof value.value !== "string" && typeof value.value !== "boolean") {
         return (
           <ClassExpression
             ontologyId={entity.getOntologyId()}
