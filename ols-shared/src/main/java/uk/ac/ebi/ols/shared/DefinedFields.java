@@ -1,9 +1,9 @@
 package uk.ac.ebi.ols.shared;
 
 public enum DefinedFields {
-    IS_OBSOLETE("isObsolete", "isObsolete", "Set to true if this entity is obsolete, otherwise is set to false."),
-    DEFINITION("definition", "","The definition of this entity."),
-    DIRECT_PARENT("directParent", "","The list of direct parents for this entity.");
+    IS_OBSOLETE("isObsolete", "is_obsolete", "Set to true if this entity is obsolete, otherwise is set to false."),
+    DEFINITION("definition", "description","The definition of this entity."),
+    DIRECT_PARENT("directParent", "parents","The list of direct parents for this entity.");
 
     private final String text;
     private final String ols3Text;
