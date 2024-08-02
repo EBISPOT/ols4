@@ -13,7 +13,7 @@ export default function OntologiesPage() {
     const ontologies = useAppSelector((state) => state.ontologies.ontologies);
 
     useEffect(() => {
-            dispatch(getAllOntologies());
+        dispatch(getAllOntologies());
     }, [dispatch]);
     const loading = useAppSelector((state) => state.ontologies.loadingOntologies);
 
@@ -73,7 +73,7 @@ export default function OntologiesPage() {
                 id: 'description',
                 header: 'Description',
                 size: 300,
-                enableGlobalFilter: false,
+                filterFn: 'includesString',
             },
             {
                 accessorKey: 'actions',
@@ -135,7 +135,7 @@ export default function OntologiesPage() {
         columns,
         data: ontologies,
         initialState: {
-            showGlobalFilter: true,
+            showColumnFilters: true,
             sorting: [
                 {
                     id: 'id', //sort by id by default on page load
@@ -143,15 +143,11 @@ export default function OntologiesPage() {
                 },
             ],
         },
-        globalFilterFn: 'includesString',
+        enableFilterMatchHighlighting: true,
+        enableGlobalFilter: false,
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
-        muiSearchTextFieldProps: {
-            placeholder: 'Search all ontologies...',
-            sx: {minWidth: '18 rem'},
-            variant: 'outlined',
-        },
         muiTableHeadCellProps: {
             sx: {
                 fontWeight: 'bold',
