@@ -26,7 +26,7 @@ export default function OntologiesPage() {
                 id: 'name',
                 header: 'Ontology',
                 size: 50,
-                filterFn: 'startsWith',
+                filterFn: 'includesString',
                 Cell: ({row, renderedCellValue}) => {
                     const name = row.original.getName();
                     const logo = row.original.getLogoURL();
@@ -148,6 +148,7 @@ export default function OntologiesPage() {
         enableFullScreenToggle: false,
         enableDensityToggle: false,
         enableHiding: false,
+        enableTopToolbar: false,
         muiTableHeadCellProps: {
             sx: {
                 fontWeight: 'bold',
