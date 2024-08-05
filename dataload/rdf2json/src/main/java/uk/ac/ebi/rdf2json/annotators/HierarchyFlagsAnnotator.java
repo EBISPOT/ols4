@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class HierarchyFlagsAnnotator {
 
     public static void annotateHierarchyFlags(OntologyGraph graph) {
@@ -94,9 +96,9 @@ public class HierarchyFlagsAnnotator {
                     continue;
 
                 if(hasChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
 
                 if(hasHierarchicalChildren.contains(c.uri)) {

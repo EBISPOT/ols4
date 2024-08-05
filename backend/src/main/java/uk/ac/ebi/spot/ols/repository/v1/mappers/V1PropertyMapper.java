@@ -8,6 +8,8 @@ import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.Objects;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class V1PropertyMapper {
 
     public static V1Property mapProperty(JsonElement json, String lang) {
@@ -34,8 +36,8 @@ public class V1PropertyMapper {
         property.shortForm = JsonHelper.getString(localizedJson, "shortForm");
         property.oboId = property.shortForm.replace("_", ":");
 
-        property.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectChildren"))
-                || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
+        property.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()))
+                || Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()));
 
         property.isRoot = !(
                 Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectParent")) ||

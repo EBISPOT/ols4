@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class V1AncestorsJsTreeBuilder {
 
@@ -90,8 +91,8 @@ public class V1AncestorsJsTreeBuilder {
         boolean opened = (!selected);
 
 
-        boolean hasDirectChildren = Objects.equals(JsonHelper.getString(entity, "hasDirectChildren"), "true");
-        boolean hasHierarchicalChildren = Objects.equals(JsonHelper.getString(entity, "hasHierarchicalChildren"), "true");
+        boolean hasDirectChildren = Objects.equals(JsonHelper.getString(entity, HAS_DIRECT_CHILDREN.getText()), "true");
+        boolean hasHierarchicalChildren = Objects.equals(JsonHelper.getString(entity, HAS_DIRECT_CHILDREN.getText()), "true");
 
         // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
         boolean children = (!opened) && (hasDirectChildren || hasHierarchicalChildren);

@@ -47,7 +47,7 @@ public class V1TermMapper {
 
         term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_DEFINING_ONTOLOGY.getText()));
 
-        term.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectChildren"))
+        term.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()))
                 || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
 
         term.isRoot = !(
