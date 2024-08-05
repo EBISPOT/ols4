@@ -135,7 +135,7 @@ public class V1TermRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
-        if (obsoletes != null) query.addFilter(IS_OBSOLETE.getOls3Text(), List.of(Boolean.toString(obsoletes)), SearchType.WHOLE_FIELD);
+        if (obsoletes != null) query.addFilter(IS_OBSOLETE.getText(), List.of(Boolean.toString(obsoletes)), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
@@ -185,7 +185,7 @@ public class V1TermRepository {
         query.addFilter("hasHierarchicalParent", List.of("false"), SearchType.WHOLE_FIELD);
 
         if (!obsolete)
-            query.addFilter(IS_OBSOLETE.getOls3Text(), List.of("false"), SearchType.WHOLE_FIELD);
+            query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
