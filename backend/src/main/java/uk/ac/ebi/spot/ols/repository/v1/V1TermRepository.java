@@ -215,7 +215,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
@@ -236,7 +236,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
@@ -257,7 +257,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
@@ -279,7 +279,7 @@ public class V1TermRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("curie", List.of(oboId), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)

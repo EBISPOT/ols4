@@ -45,7 +45,7 @@ public class V1TermMapper {
         term.oboSynonyms = V1OboSynonymExtractor.extractFromJson(localizedJson);
         term.isPreferredRoot = false;
 
-        term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "isDefiningOntology"));
+        term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_DEFNING_ONTOLOGY.getText()));
 
         term.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectChildren"))
                 || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
