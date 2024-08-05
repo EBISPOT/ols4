@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.model.v1.*;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.*;
 
@@ -54,7 +55,7 @@ public class V1TermMapper {
                         Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
         );
 
-        term.isObsolete = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "isObsolete"));
+        term.isObsolete = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_OBSOLETE.getText()));
 
 
         List<JsonElement> replacedBy = JsonHelper.getValues(localizedJson, "http://purl.obolibrary.org/obo/IAO_0100001");

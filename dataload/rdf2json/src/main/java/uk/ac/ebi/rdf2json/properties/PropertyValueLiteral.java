@@ -17,6 +17,10 @@ public class PropertyValueLiteral extends PropertyValue {
         return new PropertyValueLiteral(str, "http://www.w3.org/2001/XMLSchema#string", "");
     }
 
+    static public PropertyValueLiteral fromBoolean(String str) {
+        return new PropertyValueLiteral(str, "http://www.w3.org/2001/XMLSchema#boolean", "");
+    }
+
     public Type getType() {
         return Type.LITERAL;
     }

@@ -16,10 +16,6 @@ export default function EntityAnnotationsSection({
   linkedEntities: LinkedEntities;
 }) {
   let annotationPredicates = entity.getAnnotationPredicates();
-  console.log("annotationPredicates.length = " + annotationPredicates.length)
-
-  if (annotationPredicates.length > 0)
-      console.log("annotationPredicates[0]=" + annotationPredicates[0])
 
   return (
     <Fragment>
@@ -95,7 +91,7 @@ export default function EntityAnnotationsSection({
         />
       );
     } else {
-      if (typeof value.value !== "string") {
+      if (typeof value.value !== "string" && typeof value.value !== "boolean") {
         return (
           <ClassExpression
             ontologyId={entity.getOntologyId()}

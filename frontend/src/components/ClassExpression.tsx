@@ -19,7 +19,7 @@ export default function ClassExpression({
 }) {
 	entityType = entityType || 'classes'
 
-  if (typeof expr !== "object") {
+  if (typeof expr !== "object" && typeof expr !== "boolean") {
     // expr is just an IRI
     return <EntityLink ontologyId={ontologyId} currentEntity={currentEntity} entityType={entityType} iri={expr} linkedEntities={linkedEntities} />
   }
@@ -256,7 +256,7 @@ export default function ClassExpression({
   const onProperty = expr["http://www.w3.org/2002/07/owl#onProperty"];
   // let onProperties = expr['http://www.w3.org/2002/07/owl#onProperties'])
 
-  if (!onProperty) {
+  if (!onProperty && typeof expr !== "boolean") {
     return (
       <span className="text-embl-red-default italic">
         unknown class expression
@@ -432,7 +432,7 @@ export default function ClassExpression({
     }
   }
 
-
+    console.log("unknown class expression - fall through")
     return (
       <span className="text-embl-red-default italic">
         unknown class expression

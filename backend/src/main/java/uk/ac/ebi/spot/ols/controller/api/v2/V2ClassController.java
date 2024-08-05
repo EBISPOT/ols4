@@ -1,14 +1,9 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,9 +19,7 @@ import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.v2.V2ClassRepository;
-import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -34,6 +27,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 @Controller
 @RequestMapping("/api/v2")
@@ -56,7 +51,7 @@ public class V2ClassController {
 
 	Map<String, Collection<String>> properties = new HashMap<>();
     if(!includeObsoleteEntities)
-        properties.put("isObsolete", List.of("false"));
+        properties.put(IS_OBSOLETE.getText(), List.of("false"));
 	properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
@@ -82,7 +77,7 @@ public class V2ClassController {
 
         Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
-            properties.put("isObsolete", List.of("false"));
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
