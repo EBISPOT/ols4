@@ -11,6 +11,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>uk.ac.ebi.spot.ols</groupId>
+            <artifactId>ols4-shared</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>

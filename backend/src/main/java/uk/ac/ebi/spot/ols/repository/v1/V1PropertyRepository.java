@@ -119,7 +119,7 @@ public class V1PropertyRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
-        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -141,7 +141,7 @@ public class V1PropertyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
-        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -163,7 +163,7 @@ public class V1PropertyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
-        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));
@@ -186,7 +186,7 @@ public class V1PropertyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
         query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
-        query.addFilter(IS_DEFNING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));

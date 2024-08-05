@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.repository.Validation;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
@@ -73,7 +72,7 @@ public class V1SelectController {
         solrQuery.set("defType", "edismax");
         solrQuery.set("qf", "label whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
         solrQuery.set("bq", "type:ontology^10.0 " +
-                IS_DEFNING_ONTOLOGY.getText() +":true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" +
+                IS_DEFINING_ONTOLOGY.getText() +":true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" +
                 queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
         solrQuery.set("wt", "json");
 
@@ -96,7 +95,7 @@ public class V1SelectController {
         }
 
         if (isLocal) {
-            solrQuery.addFilterQuery(IS_DEFNING_ONTOLOGY.getText() + ":true");
+            solrQuery.addFilterQuery(IS_DEFINING_ONTOLOGY.getText() + ":true");
         }
 
         if (childrenOf != null) {
@@ -165,9 +164,9 @@ public class V1SelectController {
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
-            if (fieldList.contains(IS_DEFNING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFNING_ONTOLOGY.getOls3Text(),
-                    JsonHelper.getString(json, IS_DEFNING_ONTOLOGY.getText()) != null &&
-                            JsonHelper.getString(json, IS_DEFNING_ONTOLOGY.getText()).equals("true"));
+            if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
+                    JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()) != null &&
+                            JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()).equals("true"));
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }

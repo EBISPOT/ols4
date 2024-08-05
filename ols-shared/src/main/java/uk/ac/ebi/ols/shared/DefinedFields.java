@@ -14,7 +14,7 @@ public enum DefinedFields {
             "Whether this class has hierarchical children or not."),
     IMPORTED("imported", "",
             "Whether this entity is imported or not."),
-    IS_DEFNING_ONTOLOGY("isDefiningOntology",
+    IS_DEFINING_ONTOLOGY("isDefiningOntology",
             "is_defining_ontology","Whether this entity is defined in this ontology or not.");
 
     private final String text;

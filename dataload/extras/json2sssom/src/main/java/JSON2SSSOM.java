@@ -193,7 +193,7 @@ public class JSON2SSSOM {
             CSVPrinter writer,
             CurieMap curieMap) throws IOException {
 
-        JsonElement isDefiningOntology = entity.get(IS_DEFNING_ONTOLOGY.getText());
+        JsonElement isDefiningOntology = entity.get(IS_DEFINING_ONTOLOGY.getText());
 
         if(isDefiningOntology != null && isDefiningOntology.getAsBoolean() == false) {
             // don't print mappings for imported entities (they will already be printed in the defining ontology)
