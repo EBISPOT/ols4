@@ -140,7 +140,7 @@ public class V1SearchController {
         }
 
         if (isLocal) {
-            solrQuery.addFilterQuery("imported:false");
+            solrQuery.addFilterQuery(IMPORTED.getText() + ":false");
         }
 
         if (isLeaf) {
