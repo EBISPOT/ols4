@@ -103,9 +103,9 @@ public class HierarchyFlagsAnnotator {
                 }
 
                 if(hasHierarchicalChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
             }
         }
