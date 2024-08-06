@@ -94,7 +94,7 @@ public class V1PropertyRepository {
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("property"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
-        query.addFilter("hasDirectParent", List.of("false"), SearchType.WHOLE_FIELD);
+        query.addFilter(HAS_DIRECT_PARENTS.getText(), List.of("false"), SearchType.WHOLE_FIELD);
         query.addFilter("hasHierarchicalParent", List.of("false"), SearchType.WHOLE_FIELD);
 
         if(!obsolete)

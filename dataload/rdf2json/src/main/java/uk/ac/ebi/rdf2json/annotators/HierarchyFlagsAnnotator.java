@@ -39,7 +39,7 @@ public class HierarchyFlagsAnnotator {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
 
-                boolean hasDirectParent = false;
+                boolean hasDirectParents = false;
 
                 if(parents != null) {
                     for (PropertyValue parent : parents) {
@@ -51,12 +51,13 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasDirectParent = true;
+                        hasDirectParents = true;
                         hasChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasDirectParent", PropertyValueLiteral.fromString(hasDirectParent ? "true" : "false"));
+                c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                        PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
 
 		// 2. Hierarchical parents
 		//

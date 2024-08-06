@@ -51,7 +51,7 @@ public class V1TermMapper {
                 || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
 
         term.isRoot = !(
-                Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectParent")) ||
+                JsonHelper.getBoolean(localizedJson, HAS_DIRECT_PARENTS.getText()) ||
                         Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
         );
 
