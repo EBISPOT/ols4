@@ -10,6 +10,8 @@ public enum DefinedFields {
             "Whether this class has hierarchical children or not."),
     HAS_HIERARCHICAL_PARENTS("hasHierarchicalParents", "",
             "Whether this class has hierarchical parents or not."),
+    HAS_LOCAL_DEFINITION("hasLocalDefinition", "",
+            "True if term is definined within this ontology."),
     IMPORTED("imported", "",
             "Whether this entity is imported or not."),
     IS_DEFINING_ONTOLOGY("isDefiningOntology",

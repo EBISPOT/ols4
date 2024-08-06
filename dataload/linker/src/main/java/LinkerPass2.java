@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.HAS_LOCAL_DEFINITION;
 import static uk.ac.ebi.ols.shared.DefinedFields.IS_DEFINING_ONTOLOGY;
 
 public class LinkerPass2 {
@@ -351,7 +352,7 @@ public class LinkerPass2 {
 	jsonWriter.name("numAppearsIn");
     jsonWriter.value(Integer.toString(definitions.definitions.size()));
 
-	jsonWriter.name("hasLocalDefinition");
+	jsonWriter.name(HAS_LOCAL_DEFINITION.getText());
 	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));
 
         EntityDefinition defFromThisOntology = definitions.ontologyIdToDefinitions.get(ontologyId);
