@@ -101,7 +101,7 @@ public class V2IndividualRepository {
         );
     }
 
-    public OlsFacetedResultsPage<V2Entity> getInstancesOfClass(
+    public OlsFacetedResultsPage<V2Entity> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, String lang) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
