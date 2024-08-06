@@ -52,7 +52,7 @@ public class V1TermMapper {
 
         term.isRoot = !(
                 JsonHelper.getBoolean(localizedJson, HAS_DIRECT_PARENTS.getText()) ||
-                        Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
+                        JsonHelper.getBoolean(localizedJson, HAS_HIERARCHICAL_PARENTS.getText())
         );
 
         term.isObsolete = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_OBSOLETE.getText()));

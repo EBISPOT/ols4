@@ -41,7 +41,7 @@ public class V1PropertyMapper {
 
         property.isRoot = !(
                 JsonHelper.getBoolean(localizedJson, HAS_DIRECT_PARENTS.getText()) ||
-                        Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
+                        JsonHelper.getBoolean(localizedJson, HAS_HIERARCHICAL_PARENTS.getText())
         );
 
         return property;

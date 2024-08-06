@@ -64,7 +64,7 @@ public class HierarchyFlagsAnnotator {
 
                 List<PropertyValue> hierarchicalParents = c.properties.getPropertyValues("hierarchicalParent");
 
-                boolean hasHierarchicalParent = false;
+                boolean hasHierarchicalParents = false;
 
                 if(hierarchicalParents != null) {
                     for (PropertyValue parent : hierarchicalParents) {
@@ -76,12 +76,12 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasHierarchicalParent = true;
+                        hasHierarchicalParents = true;
                         hasHierarchicalChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasHierarchicalParent", PropertyValueLiteral.fromString(hasHierarchicalParent ? "true" : "false"));
+                c.properties.addProperty(HAS_HIERARCHICAL_PARENTS.getText(), PropertyValueLiteral.fromBoolean(hasHierarchicalParents ? "true" : "false"));
             }
         }
 
