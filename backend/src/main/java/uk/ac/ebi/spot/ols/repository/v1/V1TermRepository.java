@@ -194,7 +194,17 @@ public class V1TermRepository {
     //    @Query (countQuery = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN count(n)",
     //            value = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN n")
     public Page<V1Term> getPreferredRootTerms(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
-        throw new RuntimeException();
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
+        query.addFilter("isPreferredRoot", List.of("true"), SearchType.WHOLE_FIELD);
+
+        if (!obsolete)
+            query.addFilter(IS_OBSOLETE.getText(), List.of(Boolean.toString(obsolete)), SearchType.WHOLE_FIELD);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     //    @Query (value = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN count(n)")
