@@ -1,0 +1,128 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0700092",
+  "lang": "en",
+  "description": [
+    "A behavioral and cognitive disorder with onset during the developmental period that involves impaired or aberrant development of intellectual, motor, or social functions."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/3410"
+    ],
+    "creator": [
+      "https://orcid.org/0000-0002-4142-7153"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D065886",
+      "http://identifiers.org/snomedct/700364009",
+      "http://linkedlifedata.com/resource/umls/id/C1535926",
+      "http://purl.obolibrary.org/obo/NCIT_C1535926",
+      "http://purl.obolibrary.org/obo/NCIT_C89338"
+    ],
+    "hasDbXref": [
+      "MESH:D065886",
+      "MedDRA:C1535926",
+      "NCIT:C1535926",
+      "NCIT:C89338",
+      "SCTID:700364009",
+      "UMLS:C1535926"
+    ],
+    "id": [
+      "MONDO:0700092"
+    ]
+  },
+  "label": "neurodevelopmental disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0700092",
+  "obo_id": "MONDO:0700092",
+  "obo_definition_citation": [
+    {
+      "definition": "A behavioral and cognitive disorder with onset during the developmental period that involves impaired or aberrant development of intellectual, motor, or social functions.",
+      "oboXrefs": [
+        {
+          "database": "SCTID",
+          "id": "700364009",
+          "url": "http://snomed.info/id/700364009"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "MESH",
+      "id": "D065886",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D065886"
+    },
+    {
+      "database": "MedDRA",
+      "id": "C1535926"
+    },
+    {
+      "database": "NCIT",
+      "id": "C1535926",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C1535926"
+    },
+    {
+      "database": "NCIT",
+      "id": "C89338",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C89338"
+    },
+    {
+      "database": "SCTID",
+      "id": "700364009",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/700364009"
+    },
+    {
+      "database": "UMLS",
+      "id": "C1535926",
+      "description": "MONDO:equivalentTo",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C1535926"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0700092/graph"
+    }
+  }
+}

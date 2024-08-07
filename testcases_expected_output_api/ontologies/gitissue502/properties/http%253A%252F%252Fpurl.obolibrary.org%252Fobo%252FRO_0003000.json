@@ -1,0 +1,24 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0003000",
+  "lang": "en",
+  "description": [
+    "a produces b if some process that occurs_in a has_output b, where a and b are material entities. Examples: hybridoma cell line produces monoclonal antibody reagent; chondroblast produces avascular GAG-rich matrix."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "produces",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0003000",
+  "obo_id": "RO:0003000",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0003000?lang=en"
+    }
+  }
+}

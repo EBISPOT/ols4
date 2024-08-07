@@ -1,0 +1,26 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsoleteSimple.rdf#DeprecatedClass",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "DeprecatedClass",
+  "ontology_name": "isobsoletesimple",
+  "ontology_prefix": "IsObsoleteSimple",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsoleteSimple.rdf",
+  "is_obsolete": true,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "DeprecatedClass",
+  "obo_id": "DeprecatedClass",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/isobsoletesimple/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsoleteSimple.rdf%2523DeprecatedClass?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/isobsoletesimple/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsoleteSimple.rdf%2523DeprecatedClass/graph"
+    }
+  }
+}

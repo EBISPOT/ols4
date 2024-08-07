@@ -1,0 +1,97 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523ThermodynamicTemperature?lang=en"
+      }
+    },
+    "annotation": {
+      "commonlyHasUnit": [
+        "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "ThermodynamicTemperature",
+    "lang": "en",
+    "obo_id": "ThermodynamicTemperature",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+    "ontology_name": "punning-class-individual",
+    "ontology_prefix": "punning-class-individual",
+    "short_form": "ThermodynamicTemperature",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fpunning%252Fclass-individual.owl%2523Quantity?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Quantity",
+    "lang": "en",
+    "obo_id": "Quantity",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+    "ontology_name": "punning-class-individual",
+    "ontology_prefix": "punning-class-individual",
+    "short_form": "Quantity",
+    "synonyms": []
+  }
+]

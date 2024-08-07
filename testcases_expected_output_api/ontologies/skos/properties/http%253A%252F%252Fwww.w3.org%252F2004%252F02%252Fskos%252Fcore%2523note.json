@@ -1,0 +1,34 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#note",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "A general note, for any purpose."
+    ],
+    "scope note": [
+      "This property may be used directly, or as a super-property for more specific note types."
+    ]
+  },
+  "label": "note",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "note",
+  "obo_id": "note",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523note/descendants"
+    }
+  }
+}

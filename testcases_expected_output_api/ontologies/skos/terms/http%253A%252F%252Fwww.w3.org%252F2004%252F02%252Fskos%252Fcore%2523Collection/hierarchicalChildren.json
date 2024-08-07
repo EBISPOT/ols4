@@ -1,0 +1,49 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523OrderedCollection?lang=en"
+      }
+    },
+    "annotation": {
+      "definition": [
+        "An ordered collection of concepts, where both the grouping and the ordering are meaningful."
+      ],
+      "scope note": [
+        "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'."
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#OrderedCollection",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Ordered Collection",
+    "lang": "en",
+    "obo_id": "OrderedCollection",
+    "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+    "ontology_name": "skos",
+    "short_form": "OrderedCollection",
+    "synonyms": []
+  }
+]

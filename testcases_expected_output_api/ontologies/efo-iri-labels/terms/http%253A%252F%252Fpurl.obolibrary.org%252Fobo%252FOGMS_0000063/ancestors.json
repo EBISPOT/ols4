@@ -1,0 +1,40 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008150?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "GO_0008150",
+    "lang": "en",
+    "obo_id": "GO:0008150",
+    "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontology_name": "efo-iri-labels",
+    "ontology_prefix": "efo-iri-labels",
+    "short_form": "GO_0008150",
+    "synonyms": []
+  }
+]

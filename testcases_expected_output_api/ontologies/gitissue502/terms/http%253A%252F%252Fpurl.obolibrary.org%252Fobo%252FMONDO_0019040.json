@@ -1,0 +1,334 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0019040",
+  "lang": "en",
+  "description": [
+    "Clinical conditions caused by an abnormal chromosome constitution in which there is extra or missing chromosome material (either a whole chromosome or a chromosome segment). (from Thompson et al., Genetics in Medicine, 5th ed, p429)"
+  ],
+  "synonyms": [
+    "chromosomal disease",
+    "chromosomal disorder",
+    "chromosomal disorders",
+    "chromosome disorder",
+    "disorder, chromosomal",
+    "disorder, chromosome",
+    "disorders, chromosomal",
+    "disorders, chromosome",
+    "autosomal chromosome disorder",
+    "autosomal chromosome disorders",
+    "chromosome abnormality disorder",
+    "chromosome abnormality disorders",
+    "chromosome disorder, autosomal",
+    "chromosome disorders, autosomal",
+    "disorder, chromosome abnormality"
+  ],
+  "annotation": {
+    "excluded_subClassOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0003847",
+      "http://purl.obolibrary.org/obo/MONDO_0019755"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D025063",
+      "http://identifiers.org/snomedct/409709004",
+      "http://purl.bioontology.org/ontology/ICD10CM/Q90-Q99",
+      "http://purl.obolibrary.org/obo/DOID_0080014",
+      "http://purl.obolibrary.org/obo/NCIT_C34470",
+      "http://www.orpha.net/ORDO/Orphanet_68335"
+    ],
+    "hasDbXref": [
+      "DOID:0080014",
+      "GARD:18874",
+      "ICD10CM:Q90-Q99",
+      "ICD9:758.89",
+      "MESH:D025063",
+      "NCIT:C34470",
+      "Orphanet:68335",
+      "SCTID:409709004"
+    ],
+    "id": [
+      "MONDO:0019040"
+    ]
+  },
+  "label": "chromosomal disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0019040",
+  "obo_id": "MONDO:0019040",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare",
+    "rare_grouping"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "Clinical conditions caused by an abnormal chromosome constitution in which there is extra or missing chromosome material (either a whole chromosome or a chromosome segment). (from Thompson et al., Genetics in Medicine, 5th ed, p429)",
+      "oboXrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "0080014",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_0080014"
+    },
+    {
+      "database": "GARD",
+      "id": "18874",
+      "url": "https://rarediseases.info.nih.gov/diseases/18874/index"
+    },
+    {
+      "database": "ICD10CM",
+      "id": "Q90-Q99",
+      "description": "https://orcid.org/0000-0002-4142-7153"
+    },
+    {
+      "database": "ICD9",
+      "id": "758.89",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "MESH",
+      "id": "D025063",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D025063"
+    },
+    {
+      "database": "NCIT",
+      "id": "C34470",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C34470"
+    },
+    {
+      "database": "Orphanet",
+      "id": "68335",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=68335"
+    },
+    {
+      "database": "SCTID",
+      "id": "409709004",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/409709004"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "chromosomal disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "0000838",
+          "url": "http://purl.obolibrary.org/obo/MONDO_0000838"
+        }
+      ]
+    },
+    {
+      "name": "chromosomal disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosomal disorders",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosome disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "disorder, chromosomal",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "disorder, chromosome",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "disorders, chromosomal",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "disorders, chromosome",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "autosomal chromosome disorder",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "autosomal chromosome disorders",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosome abnormality disorder",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosome abnormality disorders",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosome disorder, autosomal",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "chromosome disorders, autosomal",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    },
+    {
+      "name": "disorder, chromosome abnormality",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D025063",
+          "url": "http://id.nlm.nih.gov/mesh/D025063"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/graph"
+    },
+    "has_characteristic": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    }
+  }
+}

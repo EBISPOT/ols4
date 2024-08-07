@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
+  "lang": "en",
+  "description": [
+    "The totality of all processes through which a given disease instance is realized."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "disease course",
+  "ontology_name": "efo-iri-labels",
+  "ontology_prefix": "efo-iri-labels",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "OGMS_0000063",
+  "obo_id": "OGMS:0000063",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/efo-iri-labels/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOGMS_0000063/graph"
+    }
+  }
+}

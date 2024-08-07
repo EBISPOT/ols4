@@ -1,0 +1,35 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/OMO_0002000",
+  "lang": "en",
+  "description": [
+    "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "contributor": [
+      "https://orcid.org/0000-0002-7356-1779",
+      "https://orcid.org/0000-0002-8688-6599"
+    ],
+    "example of usage": [
+      "'part disjoint with' 'defined by construct' \"\"\"\n    PREFIX owl: <http://www.w3.org/2002/07/owl#>\n    PREFIX : <http://example.org/\n    CONSTRUCT {\n      [\n        a owl:Restriction ;\n        owl:onProperty :part_of ;\n        owl:someValuesFrom ?a ;\n        owl:disjointWith [\n          a owl:Restriction ;\n          owl:onProperty :part_of ;\n          owl:someValuesFrom ?b\n        ]\n      ]\n    }\n    WHERE {\n      ?a :part_disjoint_with ?b .\n    }"
+    ],
+    "term tracker item": [
+      "https://github.com/ontodev/robot/issues/963"
+    ]
+  },
+  "label": "defined by construct",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "OMO_0002000",
+  "obo_id": "OMO:0002000",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0002000?lang=en"
+    }
+  }
+}

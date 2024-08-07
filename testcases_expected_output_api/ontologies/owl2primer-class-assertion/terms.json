@@ -1,0 +1,40 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms/http%253A%252F%252Fexample.com%252Fowl2primer%2523Person?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://example.com/owl2primer#Person",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Person",
+    "lang": "en",
+    "obo_id": "Person",
+    "ontology_iri": "http://example.com/owl2primer",
+    "ontology_name": "owl2primer-class-assertion",
+    "ontology_prefix": "owl2primer-class-assertion",
+    "short_form": "Person",
+    "synonyms": []
+  }
+]

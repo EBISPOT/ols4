@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0006012",
+  "lang": "en",
+  "description": [
+    "Used when the class or object is scheduled for obsoletion/deprecation on or after a particular date."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "scheduled for obsoletion on or after"
+    ],
+    "ontology term requester": [
+      "GO ontology"
+    ],
+    "term editor": [
+      "Chris Mungall, Jie Zheng"
+    ],
+    "term tracker item": [
+      "https://github.com/geneontology/go-ontology/issues/15532",
+      "https://github.com/information-artifact-ontology/ontology-metadata/issues/32"
+    ]
+  },
+  "label": "scheduled for obsoletion on or after",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0006012",
+  "obo_id": "IAO:0006012",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006012?lang=en"
+    }
+  }
+}

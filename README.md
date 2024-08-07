@@ -420,7 +420,7 @@ differences, this file will end with these lines:
 the old `testcases_expected_output_api` and replace with new expected output: 
 
         rm -rf testcases_expected_output_api
-        cp -r testcases_output testcases_expected_output_api
+        cp -r testcases_output_api testcases_expected_output_api
 
 11. Add the latest expected outputs to Git:
 

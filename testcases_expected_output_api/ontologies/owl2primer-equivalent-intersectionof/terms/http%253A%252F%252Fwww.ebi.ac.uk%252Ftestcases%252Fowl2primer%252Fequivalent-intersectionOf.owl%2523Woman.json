@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Woman",
+  "ontology_name": "owl2primer-equivalent-intersectionof",
+  "ontology_prefix": "owl2primer-equivalent-intersectionOf",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "Woman",
+  "obo_id": "Woman",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-equivalent-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fequivalent-intersectionOf.owl%2523Woman/graph"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000650",
+  "lang": "en",
+  "description": [
+    "A planned process which takes as input a database and fills another database by extracting concretizations of information entities from the first, transforming them, and loading the transformed concretizations into the second."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "ETL"
+    ],
+    "definition source": [
+      "WEB:https://en.wikipedia.org/wiki/Extract,_transform,_load"
+    ],
+    "editor note": [
+      "Alan Ruttenberg 12/21/16: We don't define database in IAO, currently, as the bare word is ambiguous. Reasonable interpretations of the word might be the material entity, an information structure, an information content entity. However this definition commits, at least, to there being some material thing which bear concretizations of information entities and that there are new concretizations created during the process.  We consider the ETL process in terms of information entities rather than the concretizations. No committment is made as to whether the specified output."
+    ],
+    "editor preferred term": [
+      "database extract, transform, and load process"
+    ],
+    "page": [
+      "https://en.wikipedia.org/wiki/Extract,_transform,_load"
+    ],
+    "term editor": [
+      "PERSON:Alan Ruttenberg"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/187"
+    ]
+  },
+  "label": "database extract, transform, and load process",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000650",
+  "obo_id": "IAO:0000650",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/graph"
+    },
+    "has_specified_input": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293"
+    },
+    "has_specified_output": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000650/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000052",
+  "lang": "en",
+  "description": [
+    "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "inheres_in"
+    ],
+    "editor preferred term": [
+      "inheres in"
+    ],
+    "example of usage": [
+      "this fragility is a characteristic of this vase",
+      "this red color is a characteristic of this apple"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "characteristic of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0000052",
+  "obo_id": "RO:0000052",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000052/descendants"
+    }
+  }
+}

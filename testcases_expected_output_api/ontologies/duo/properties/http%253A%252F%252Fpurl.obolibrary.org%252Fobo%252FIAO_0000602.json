@@ -1,0 +1,35 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000602",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "Person:Alan Ruttenberg"
+    ],
+    "editor preferred term": [
+      "has associated axiom(fol)"
+    ],
+    "elucidation": [
+      "An axiom expressed in first order logic using CLIF syntax"
+    ],
+    "term editor": [
+      "Person:Alan Ruttenberg"
+    ]
+  },
+  "label": "has associated axiom(fol)",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000602",
+  "obo_id": "IAO:0000602",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000602?lang=en"
+    }
+  }
+}

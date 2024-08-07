@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Person",
+  "ontology_name": "owl2primer-alldisjointclasses",
+  "ontology_prefix": "owl2primer-allDisjointClasses",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "Person",
+  "obo_id": "Person",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-alldisjointclasses/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FallDisjointClasses%2523Person/graph"
+    }
+  }
+}

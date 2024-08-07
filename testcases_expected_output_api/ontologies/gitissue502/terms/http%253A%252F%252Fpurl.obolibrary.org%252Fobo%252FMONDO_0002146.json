@@ -1,0 +1,149 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002146",
+  "lang": "en",
+  "description": [
+    "A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include erectile dysfunction, muscle atrophy, gynecomastia and increased abdominal fat. In females, additional signs include shrinking of the breasts and loss of, or failure to develop menstruation."
+  ],
+  "synonyms": [
+    "gonadotropin deficiency",
+    "hypogonadotropism"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/mesh/D007006",
+      "http://identifiers.org/snomedct/48130008",
+      "http://linkedlifedata.com/resource/umls/id/C0020619",
+      "http://purl.obolibrary.org/obo/DOID_1924",
+      "http://purl.obolibrary.org/obo/NCIT_C9227"
+    ],
+    "hasDbXref": [
+      "DOID:1924",
+      "ICD9:253.4",
+      "MESH:D007006",
+      "NCIT:C9227",
+      "SCTID:48130008",
+      "UMLS:C0020619"
+    ],
+    "id": [
+      "MONDO:0002146"
+    ]
+  },
+  "label": "hypogonadism",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0002146",
+  "obo_id": "MONDO:0002146",
+  "obo_definition_citation": [
+    {
+      "definition": "A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include erectile dysfunction, muscle atrophy, gynecomastia and increased abdominal fat. In females, additional signs include shrinking of the breasts and loss of, or failure to develop menstruation.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "P378"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "1924",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_1924"
+    },
+    {
+      "database": "ICD9",
+      "id": "253.4",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "MESH",
+      "id": "D007006",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D007006"
+    },
+    {
+      "database": "NCIT",
+      "id": "C9227",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+    },
+    {
+      "database": "SCTID",
+      "id": "48130008",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/48130008"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0020619",
+      "description": "NCIT:C9227",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0020619"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "gonadotropin deficiency",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C9227",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+        }
+      ]
+    },
+    {
+      "name": "hypogonadotropism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C9227",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C9227"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002146/graph"
+    }
+  }
+}

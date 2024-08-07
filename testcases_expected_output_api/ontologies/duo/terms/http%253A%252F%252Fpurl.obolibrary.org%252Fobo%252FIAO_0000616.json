@@ -1,0 +1,77 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000616",
+  "lang": "en",
+  "description": [
+    "A part of a document used to declare any competing interests regarding the authors and/or funding organization for the work described in the document."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "authors' disclosures of potential conflicts of interest",
+      "competing financial interests",
+      "competing interests",
+      "conflict of interest",
+      "conflict of interest statement",
+      "conflict of interests",
+      "conflicts of interest",
+      "declaration of competing interest",
+      "declaration of competing interests",
+      "declaration of interest",
+      "declaration of interests",
+      "disclosure of conflict of interest",
+      "disclosure of potential conflicts of interest",
+      "duality of interest",
+      "statement of interest"
+    ],
+    "editor preferred term": [
+      "conflict of interest section"
+    ],
+    "example of usage": [
+      "The section labelled 'conflict of interest statement' in a typical scientific journal article."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183",
+      "https://github.com/information-artifact-ontology/IAO/issues/234"
+    ]
+  },
+  "label": "conflict of interest section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000616",
+  "obo_id": "IAO:0000616",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/graph"
+    },
+    "has_part": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000616/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+    }
+  }
+}

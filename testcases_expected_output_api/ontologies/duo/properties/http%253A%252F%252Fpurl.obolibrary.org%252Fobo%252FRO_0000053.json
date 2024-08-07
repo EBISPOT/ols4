@@ -1,0 +1,48 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000053",
+  "lang": "en",
+  "description": [
+    "Inverse of characteristic_of"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "bearer_of",
+      "is bearer of"
+    ],
+    "editor note": [
+      "A bearer can have many dependents, and its dependents can exist for different periods of time, but none of its dependents can exist when the bearer does not exist."
+    ],
+    "editor preferred term": [
+      "bearer of"
+    ],
+    "example of usage": [
+      "this apple is bearer of this red color",
+      "this vase is bearer of this fragility"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "has characteristic",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0000053",
+  "obo_id": "RO:0000053",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053/descendants"
+    }
+  }
+}

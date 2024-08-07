@@ -1,0 +1,34 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0004029",
+  "lang": "en",
+  "description": [
+    "A relationship between a disease and some feature of that disease, where the feature is either a phenotype or an isolated disease."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "hasDbXref": [
+      "RO:0004029"
+    ],
+    "id": [
+      "disease_has_feature"
+    ],
+    "shorthand": [
+      "disease_has_feature"
+    ]
+  },
+  "label": "disease has feature",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0004029",
+  "obo_id": "RO:0004029",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004029?lang=en"
+    }
+  }
+}

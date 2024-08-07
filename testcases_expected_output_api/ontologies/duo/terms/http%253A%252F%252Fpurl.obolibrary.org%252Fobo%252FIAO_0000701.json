@@ -1,0 +1,63 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000701",
+  "lang": "en",
+  "description": [
+    "A document part that lists and defines data variables, describes data characteristics (e.g. missing data information) and any assumptions and simplifications made."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "https://www.equator-network.org/reporting-guidelines/prisma/"
+    ],
+    "editor preferred term": [
+      "descriptive data section"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "ontology term requester": [
+      "ONE ontology"
+    ],
+    "term editor": [
+      "PERSON: Chen Yang",
+      "PERSON: Jie Zheng"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/235"
+    ]
+  },
+  "label": "descriptive data section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000701",
+  "obo_id": "IAO:0000701",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/graph"
+    }
+  }
+}
