@@ -502,6 +502,8 @@ public class OntologyGraph implements StreamRDF {
                         writer.value(Boolean.valueOf(literal.getValue()).booleanValue());
                     } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#double")) {
                         writer.value(Double.valueOf(literal.getValue()).doubleValue());
+                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#integer")) {
+                        writer.value(Integer.valueOf(literal.getValue()).intValue());
                     } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
                         writer.beginObject();
                         writer.name("type");

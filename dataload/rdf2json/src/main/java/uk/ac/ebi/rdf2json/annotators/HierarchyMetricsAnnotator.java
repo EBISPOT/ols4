@@ -12,16 +12,18 @@ import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.helpers.AncestorsClosure;
 import uk.ac.ebi.rdf2json.properties.*;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class HierarchyMetricsAnnotator {
 
     public static void annotateHierarchyMetrics(OntologyGraph graph) {
 
         long startTime3 = System.nanoTime();
 
-        annotateHierarchyMetrics(graph, "directParent", "numDirectDescendants");
+        annotateHierarchyMetrics(graph, "directParent", NUM_DESCENDANTS.getText());
         System.gc();
 
-        annotateHierarchyMetrics(graph, "hierarchicalParent", "numHierarchicalDescendants");
+        annotateHierarchyMetrics(graph, "hierarchicalParent", NUM_HIERARCHICAL_DESCENDANTS.getText());
         System.gc();
 
         long endTime3 = System.nanoTime();
@@ -57,7 +59,7 @@ public class HierarchyMetricsAnnotator {
             Integer numDescendants = iriToNumDescendants.get(c.uri);
 
             c.properties.addProperty(metricProperty,
-                    PropertyValueLiteral.fromString(numDescendants != null ? numDescendants.toString() : "0"));
+                    PropertyValueLiteral.fromInteger(numDescendants != null ? numDescendants.toString() : "0"));
         }
     }
 

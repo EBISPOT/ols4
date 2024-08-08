@@ -168,13 +168,13 @@ export default abstract class Entity extends Thing {
 
   getNumHierarchicalDescendants(): number {
     return this.properties["numHierarchicalDescendants"]
-      ? parseInt(this.properties["numHierarchicalDescendants"])
+      ? this.properties["numHierarchicalDescendants"]
       : 0;
   }
 
   getNumDescendants(): number {
     return this.properties["numDescendants"]
-      ? parseInt(this.properties["numDescendants"])
+      ? this.properties["numDescendants"]
       : 0;
   }
 
