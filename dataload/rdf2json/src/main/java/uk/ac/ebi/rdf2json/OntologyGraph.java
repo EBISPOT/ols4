@@ -24,6 +24,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 import static uk.ac.ebi.rdf2json.OntologyNode.NodeType.*;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class OntologyGraph implements StreamRDF {
 
@@ -146,7 +147,7 @@ public class OntologyGraph implements StreamRDF {
         for(String id : nodes.keySet()) {
             OntologyNode c = nodes.get(id);
             if(c.uri != null) {
-                c.properties.addProperty("imported", PropertyValueLiteral.fromString("false"));
+                c.properties.addProperty(IMPORTED.getText(), PropertyValueLiteral.fromBoolean("false"));
             }
         }
 
@@ -163,8 +164,8 @@ public class OntologyGraph implements StreamRDF {
         for(String id : nodes.keySet()) {
             OntologyNode c = nodes.get(id);
             if(c.uri != null) {
-                if(!c.properties.hasProperty("imported")) {
-                    c.properties.addProperty("imported", PropertyValueLiteral.fromString("true"));
+                if(!c.properties.hasProperty(IMPORTED.getText())) {
+                    c.properties.addProperty(IMPORTED.getText(), PropertyValueLiteral.fromBoolean("true"));
                 }
             }
         }

@@ -1,15 +1,16 @@
-
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.HAS_LOCAL_DEFINITION;
+import static uk.ac.ebi.ols.shared.DefinedFields.IS_DEFINING_ONTOLOGY;
 
 public class LinkerPass2 {
 
@@ -159,7 +160,7 @@ public class LinkerPass2 {
             EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
             if(defOfThisEntity != null) {
 
-                jsonWriter.name("isDefiningOntology");
+                jsonWriter.name(IS_DEFINING_ONTOLOGY.getText());
                 jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
 
                 if (defOfThisEntity.definingDefinitions.size() > 0) {
@@ -351,7 +352,7 @@ public class LinkerPass2 {
 	jsonWriter.name("numAppearsIn");
     jsonWriter.value(Integer.toString(definitions.definitions.size()));
 
-	jsonWriter.name("hasLocalDefinition");
+	jsonWriter.name(HAS_LOCAL_DEFINITION.getText());
 	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));
 
         EntityDefinition defFromThisOntology = definitions.ontologyIdToDefinitions.get(ontologyId);

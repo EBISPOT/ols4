@@ -10,6 +10,8 @@ import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.*;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class PreferredRootsAnnotator {
     
     public static Set<String> getPreferredRoots(OntologyGraph graph) {
@@ -58,9 +60,9 @@ public class PreferredRootsAnnotator {
                     continue;
 
                 if(preferredRoots.contains(c.uri)) {
-                    c.properties.addProperty("isPreferredRoot", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(IS_PREFERRED_ROOT.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("isPreferredRoot", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(IS_PREFERRED_ROOT.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
             }
         }

@@ -14,6 +14,9 @@ public class JsonHelper {
         return objectToString(json.get(key));
     }
 
+    public static boolean getBoolean(JsonObject json, String key) {
+        return json.getAsJsonPrimitive(key).getAsBoolean();
+    }
 
     public static String objectToString(JsonElement value) {
 

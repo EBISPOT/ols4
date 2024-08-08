@@ -8,6 +8,8 @@ import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 import java.util.List;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class HasIndividualsAnnotator {
 
     public static void annotateHasIndividuals(OntologyGraph graph) {
@@ -32,7 +34,7 @@ public class HasIndividualsAnnotator {
                                 && typeNode.types.contains(OntologyNode.NodeType.CLASS)
                                 && typeNode.uri != null) {
 
-                            typeNode.properties.addProperty("hasIndividuals", PropertyValueLiteral.fromString("true"));
+                            typeNode.properties.addProperty(HAS_INDIVIDUALS.getText(), PropertyValueLiteral.fromBoolean("true"));
                         }
                     }
                 }

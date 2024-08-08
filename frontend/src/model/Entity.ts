@@ -45,11 +45,11 @@ export default abstract class Entity extends Thing {
   }
 
   hasDirectChildren(): boolean {
-    return this.properties["hasDirectChildren"] === "true";
+    return this.properties["hasDirectChildren"] === true;
   }
 
   hasHierarchicalChildren(): boolean {
-    return this.properties["hasHierarchicalChildren"] === "true";
+    return this.properties["hasHierarchicalChildren"] === true;
   }
 
   hasChildren(): boolean {

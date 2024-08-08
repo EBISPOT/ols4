@@ -216,7 +216,7 @@ export const getClassInstances = createAsyncThunk(
         const doubleEncodedTermUri = encodeURIComponent(
           encodeURIComponent(classIri)
         );
-        path = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/instances?${new URLSearchParams(
+        path = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/individuals?${new URLSearchParams(
           apiSearchParams
         )}`;
         const instances = (await getPaginated<any>(path)).map((i) =>
@@ -346,7 +346,7 @@ export const getRootEntities = createAsyncThunk(
         ),
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
-            hasDirectParent: "false",
+            hasDirectParents: "false",
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
@@ -387,7 +387,7 @@ export const getRootEntities = createAsyncThunk(
     } else {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-          hasDirectParent: "false",
+          hasDirectParents: "false",
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
@@ -433,7 +433,7 @@ export const getNodeChildren = createAsyncThunk(
       );
     } else if (entityTypePlural === "individuals") {
       childrenPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/instances?${new URLSearchParams(
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams(
           {
             size: "1000",
             lang,

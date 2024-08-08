@@ -45,14 +45,14 @@ public class V1TermMapper {
         term.oboSynonyms = V1OboSynonymExtractor.extractFromJson(localizedJson);
         term.isPreferredRoot = false;
 
-        term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "isDefiningOntology"));
+        term.isDefiningOntology = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_DEFINING_ONTOLOGY.getText()));
 
-        term.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectChildren"))
+        term.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()))
                 || Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalChildren"));
 
         term.isRoot = !(
-                Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasDirectParent")) ||
-                        Boolean.parseBoolean(JsonHelper.getString(localizedJson, "hasHierarchicalParent"))
+                JsonHelper.getBoolean(localizedJson, HAS_DIRECT_PARENTS.getText()) ||
+                        JsonHelper.getBoolean(localizedJson, HAS_HIERARCHICAL_PARENTS.getText())
         );
 
         term.isObsolete = Boolean.parseBoolean(JsonHelper.getString(localizedJson, IS_OBSOLETE.getText()));

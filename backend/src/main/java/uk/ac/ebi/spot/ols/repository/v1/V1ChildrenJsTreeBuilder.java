@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class V1ChildrenJsTreeBuilder {
 
@@ -34,7 +35,7 @@ public class V1ChildrenJsTreeBuilder {
             jstreeEntry.put("text", JsonHelper.getString(child.getAsJsonObject(), "label"));
             jstreeEntry.put("state", Map.of("opened", false));
             jstreeEntry.put("children",
-	    	JsonHelper.getString(child.getAsJsonObject(), "hasDirectChildren").equals("true")
+	    	JsonHelper.getString(child.getAsJsonObject(), HAS_DIRECT_CHILDREN.getText()).equals("true")
 		|| JsonHelper.getString(child.getAsJsonObject(), "hasHierarchicalChildren").equals("true")
 	    );
 

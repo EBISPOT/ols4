@@ -101,10 +101,8 @@ public class V2IndividualController {
     }
 
 
-    // The instances of classes are individuals. So, the /instances endpoint is part of the Class controller.
-    //
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/instances", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Entity>> getClassInstances(
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getClassIndividuals(
             @PageableDefault(size = 20, page = 0) Pageable pageable,
             @PathVariable("onto") String ontologyId,
             @PathVariable("class") String classIri,
@@ -115,7 +113,7 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<>(
-                        individualRepository.getInstancesOfClass(ontologyId, classIri, pageable, lang)
+                        individualRepository.getIndividualsOfClass(ontologyId, classIri, pageable, lang)
                 ),
                 HttpStatus.OK);
 

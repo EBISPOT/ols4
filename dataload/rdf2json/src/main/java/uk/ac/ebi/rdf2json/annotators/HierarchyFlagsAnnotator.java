@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class HierarchyFlagsAnnotator {
 
     public static void annotateHierarchyFlags(OntologyGraph graph) {
@@ -37,7 +39,7 @@ public class HierarchyFlagsAnnotator {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
 
-                boolean hasDirectParent = false;
+                boolean hasDirectParents = false;
 
                 if(parents != null) {
                     for (PropertyValue parent : parents) {
@@ -49,19 +51,20 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasDirectParent = true;
+                        hasDirectParents = true;
                         hasChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasDirectParent", PropertyValueLiteral.fromString(hasDirectParent ? "true" : "false"));
+                c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                        PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
 
 		// 2. Hierarchical parents
 		//
 
                 List<PropertyValue> hierarchicalParents = c.properties.getPropertyValues("hierarchicalParent");
 
-                boolean hasHierarchicalParent = false;
+                boolean hasHierarchicalParents = false;
 
                 if(hierarchicalParents != null) {
                     for (PropertyValue parent : hierarchicalParents) {
@@ -73,12 +76,12 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasHierarchicalParent = true;
+                        hasHierarchicalParents = true;
                         hasHierarchicalChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasHierarchicalParent", PropertyValueLiteral.fromString(hasHierarchicalParent ? "true" : "false"));
+                c.properties.addProperty(HAS_HIERARCHICAL_PARENTS.getText(), PropertyValueLiteral.fromBoolean(hasHierarchicalParents ? "true" : "false"));
             }
         }
 
@@ -94,15 +97,15 @@ public class HierarchyFlagsAnnotator {
                     continue;
 
                 if(hasChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
 
                 if(hasHierarchicalChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
             }
         }
