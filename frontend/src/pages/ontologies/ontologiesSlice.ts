@@ -346,7 +346,7 @@ export const getRootEntities = createAsyncThunk(
         ),
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
-            // hasDirectParent: "false",
+            hasDirectParents: "false",
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
@@ -387,7 +387,7 @@ export const getRootEntities = createAsyncThunk(
     } else {
       const rootsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-          // hasDirectParent: "false",
+          hasDirectParents: "false",
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
