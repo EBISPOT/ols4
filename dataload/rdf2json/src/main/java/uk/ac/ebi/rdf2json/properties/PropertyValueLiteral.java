@@ -48,4 +48,13 @@ public class PropertyValueLiteral extends PropertyValue {
                 ((PropertyValueLiteral) other).datatype.equals(datatype) &&
                 ((PropertyValueLiteral) other).lang.equals(lang);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValueLiteral{" +
+                "value='" + value + '\'' +
+                ", datatype='" + datatype + '\'' +
+                ", lang='" + lang + '\'' +
+                '}';
+    }
 }

@@ -1,0 +1,96 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "browsers": [
+        {
+          "label": "OLS",
+          "title": "Ontology Lookup Service",
+          "url": "https://www.ebi.ac.uk/ols/ontologies/kisao"
+        },
+        {
+          "label": "BioPortal",
+          "title": "BioPortal",
+          "url": "https://bioportal.bioontology.org/ontologies/KISAO"
+        },
+        {
+          "label": "OntoBee",
+          "title": "OntoBee",
+          "url": "https://www.ontobee.org/ontology/KISAO"
+        }
+      ],
+      "build": {
+        "method": "owl2obo",
+        "source_url": "https://raw.githubusercontent.com/SED-ML/KiSAO/deploy/kisao.owl"
+      },
+      "contact": {
+        "email": "jonrkarr@gmail.com",
+        "github": "jonrkarr",
+        "label": "Jonathan Karr",
+        "orcid": "0000-0002-2605-5080"
+      },
+      "description": "A classification of algorithms for simulating biology, their parameters, and their outputs",
+      "domain": "simulation",
+      "funded_by": [
+        "NIH P41EB023912",
+        "NIH R35GM119771"
+      ],
+      "homepage": "https://github.com/SED-ML/KiSAO",
+      "id": "kisao",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "Artistic License 2.0",
+        "url": "http://opensource.org/licenses/Artistic-2.0"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/kisao.owl",
+      "preferredPrefix": "KISAO",
+      "products": [
+        {
+          "id": "kisao.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/kisao.owl"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/22027554",
+          "title": "Controlled vocabularies and semantics in systems biology"
+        }
+      ],
+      "releases": "https://github.com/SED-ML/KiSAO/releases",
+      "repository": "https://github.com/SED-ML/KiSAO",
+      "tags": [
+        "systems biology",
+        "computational biology",
+        "mathematical modeling",
+        "numerical simulation",
+        "simulation algorithms"
+      ],
+      "title": "Kinetic Simulation Algorithm Ontology",
+      "tracker": "https://github.com/SED-ML/KiSAO/issues",
+      "usages": [
+        {
+          "description": "The Simulation Experiment Description Markup Language (SED-ML) is a language for describing simulations and visualizations of their results.",
+          "examples": [
+            {
+              "description": "Several examples of simulations encoded in SED-ML",
+              "url": "https://sed-ml.org/examples.html"
+            }
+          ],
+          "type": "annotation",
+          "user": "https://sed-ml.org/"
+        }
+      ]
+    }
+  ]
+}

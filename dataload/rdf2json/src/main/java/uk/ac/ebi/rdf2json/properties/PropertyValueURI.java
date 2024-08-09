@@ -23,4 +23,11 @@ public class PropertyValueURI extends PropertyValue {
     public boolean equals(PropertyValue other) {
         return other.getType() == Type.URI && ((PropertyValueURI) other).uri.equals(uri);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValueURI{" +
+                "uri='" + uri + '\'' +
+                '}';
+    }
 }

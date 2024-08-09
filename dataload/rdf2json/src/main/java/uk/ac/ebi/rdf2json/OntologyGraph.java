@@ -394,7 +394,7 @@ public class OntologyGraph implements StreamRDF {
     }
 
 
-    private void writeNode(JsonWriter writer, OntologyNode c, Set<String> types) throws IOException {
+    private void writeNode(JsonWriter writer, OntologyNode c, Set<String> types) throws Throwable {
 
         if(c.types.contains(OntologyNode.NodeType.RDF_LIST)) {
 
@@ -420,7 +420,7 @@ public class OntologyGraph implements StreamRDF {
         }
     }
 
-    private void writeProperties(JsonWriter writer, PropertySet properties, Set<String> types) throws IOException {
+    private void writeProperties(JsonWriter writer, PropertySet properties, Set<String> types) throws Throwable {
 
         if(types != null) {
             writer.name("type");
@@ -461,7 +461,7 @@ public class OntologyGraph implements StreamRDF {
     }
 
 
-    public void writePropertyValue(JsonWriter writer, PropertyValue value, Set<String> types) throws IOException {
+    public void writePropertyValue(JsonWriter writer, PropertyValue value, Set<String> types) throws Throwable {
         if (value.axioms.size() > 0) {
             // reified
             writer.beginObject();
@@ -490,100 +490,110 @@ public class OntologyGraph implements StreamRDF {
     private boolean isXMLBuiltinDatatype(String uri) {
         return uri.startsWith("http://www.w3.org/2001/XMLSchema#");
     }
-    public void writeValue(JsonWriter writer, PropertyValue value) throws IOException {
+    public void writeValue(JsonWriter writer, PropertyValue value) throws Throwable {
         assert (value.axioms == null);
 
-        switch(value.getType()) {
-            case BNODE:
-                OntologyNode c = nodes.get(((PropertyValueBNode) value).getId());
-                if (c == null) {
-                    // empty bnode values present in some ontologies, see issue #116
-                    writer.value("");
-                } else {
-                    writeNode(writer, c, null);
-                }
-                break;
-            case ID:
-                break;
-            case LITERAL:
-                PropertyValueLiteral literal = (PropertyValueLiteral) value;
-                if (literal.getDatatype() != null) {
-                    if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#boolean")) {
-                        writer.value(Boolean.valueOf(literal.getValue()).booleanValue());
-                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#double")) {
-                        writer.value(Double.valueOf(literal.getValue()).doubleValue());
-                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#integer")) {
-                        writer.value(Integer.valueOf(literal.getValue()).intValue());
-                    } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
-                        writer.beginObject();
-                        writer.name("type");
-                        writer.beginArray();
-                        writer.value("literal");
-                        writer.endArray();
-                        if(!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+        try {
+            switch (value.getType()) {
+                case BNODE:
+                    OntologyNode c = nodes.get(((PropertyValueBNode) value).getId());
+                    if (c == null) {
+                        // empty bnode values present in some ontologies, see issue #116
+                        writer.value("");
+                    } else {
+                        writeNode(writer, c, null);
+                    }
+                    break;
+                case ID:
+                    break;
+                case LITERAL:
+                    PropertyValueLiteral literal = (PropertyValueLiteral) value;
+                    if (literal.getDatatype() != null) {
+                        if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#boolean")) {
+                            writer.value(Boolean.valueOf(literal.getValue()).booleanValue());
+                        } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#double")) {
+                            writer.value(Double.valueOf(literal.getValue()).doubleValue());
+                        } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#integer")) {
+                            // Workaround for gsso using "integer" value of 9780304343010.
+                            try {
+                                writer.value(Integer.valueOf(literal.getValue()).intValue());
+                            } catch (NumberFormatException e) {
+                                writer.value(Double.valueOf(literal.getValue()).doubleValue());
+                            }
+                        } else if (literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                            writer.beginObject();
+                            writer.name("type");
+                            writer.beginArray();
+                            writer.value("literal");
+                            writer.endArray();
+                            if (!literal.getDatatype().equals("http://www.w3.org/2001/XMLSchema#string")) {
+                                writer.name("datatype");
+                                writer.value(literal.getDatatype());
+                            }
+                            writer.name("value");
+                            writer.value(literal.getValue());
+                            if (!literal.getLang().equals("")) {
+                                writer.name("lang");
+                                writer.value(literal.getLang());
+                            }
+                            writer.endObject();
+                        } else {
+                            writer.beginObject();
+                            writer.name("type");
+                            writer.beginArray();
+                            writer.value("literal");
+                            writer.endArray();
                             writer.name("datatype");
                             writer.value(literal.getDatatype());
+                            writer.name("value");
+                            writer.value(literal.getValue());
+                            if (!literal.getLang().equals("")) {
+                                writer.name("lang");
+                                writer.value(literal.getLang());
+                            }
+                            writer.endObject();
                         }
-                        writer.name("value");
-                        writer.value(literal.getValue());
-                        if(!literal.getLang().equals("")) {
-                            writer.name("lang");
-                            writer.value(literal.getLang());
-                        }
-                        writer.endObject();
+                    }
+                    break;
+                case URI:
+                    String uri = ((PropertyValueURI) value).getUri();
+                    OntologyNode uriNode = nodes.get(uri);
+                    if (uriNode != null && !isXMLBuiltinDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
+                        // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
+                        writeNode(writer, uriNode, Set.of("datatype"));
                     } else {
-                        writer.beginObject();
-                        writer.name("type");
+                        writer.value(uri);
+                    }
+                    break;
+                case RELATED:
+                    writer.beginObject();
+                    writer.name("property");
+                    writer.value(((PropertyValueRelated) value).getProperty());
+                    writer.name("value");
+                    writer.value(((PropertyValueRelated) value).getFiller().uri);
+                    writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
+                    writer.endObject();
+                    break;
+                case ANCESTORS:
+                    PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
+                    Set<String> ancestorIris = ancestors.getAncestors(this);
+                    if (ancestorIris.size() == 1) {
+                        writer.value(ancestorIris.iterator().next());
+                    } else {
                         writer.beginArray();
-                        writer.value("literal");
-                        writer.endArray();
-                        writer.name("datatype");
-                        writer.value(literal.getDatatype());
-                        writer.name("value");
-                        writer.value(literal.getValue());
-                        if(!literal.getLang().equals("")) {
-                            writer.name("lang");
-                            writer.value(literal.getLang());
+                        for (String ancestorIri : ancestorIris) {
+                            writer.value(ancestorIri);
                         }
-                        writer.endObject();
+                        writer.endArray();
                     }
-                }
-                break;
-            case URI:
-                String uri = ((PropertyValueURI) value).getUri();
-                OntologyNode uriNode = nodes.get(uri);
-                if(uriNode != null && !isXMLBuiltinDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
-                    // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
-                    writeNode(writer, uriNode, Set.of("datatype"));
-                } else {
-                    writer.value(uri);
-                }
-                break;
-            case RELATED:
-                writer.beginObject();
-                writer.name("property");
-                writer.value(((PropertyValueRelated) value).getProperty());
-                writer.name("value");
-                writer.value(((PropertyValueRelated) value).getFiller().uri);
-                writeProperties(writer, ((PropertyValueRelated) value).getClassExpression().properties, Set.of("related"));
-                writer.endObject();
-                break;
-            case ANCESTORS:
-                PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
-                Set<String> ancestorIris = ancestors.getAncestors(this);
-                if(ancestorIris.size() == 1) {
-                    writer.value(ancestorIris.iterator().next());
-                } else {
-                    writer.beginArray();
-                    for(String ancestorIri : ancestorIris) {
-                        writer.value(ancestorIri);
-                    }
-                    writer.endArray();
-                }
-                break;
-            default:
-                writer.value("?");
-                break;
+                    break;
+                default:
+                    writer.value("?");
+                    break;
+            }
+        } catch (Throwable t) {
+            logger.error("Error writing property value {}", value, t);
+            throw t;
         }
     }
 

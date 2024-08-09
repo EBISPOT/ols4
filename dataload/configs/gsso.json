@@ -1,0 +1,57 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "build": {
+        "checkout": "git clone https://github.com/Superraptor/GSSO.git",
+        "path": ".",
+        "system": "git"
+      },
+      "contact": {
+        "email": "kronkcj@mail.uc.edu",
+        "github": "Superraptor",
+        "label": "Clair Kronk",
+        "orcid": "0000-0001-8397-8810"
+      },
+      "description": "The Gender, Sex, and Sexual Orientation (GSSO) ontology has terms for annotating interdisciplinary information concerning gender, sex, and sexual orientation for primary usage in the biomedical and adjacent sciences.",
+      "domain": "organisms",
+      "homepage": "https://gsso.research.cchmc.org/",
+      "id": "gsso",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "Apache 2.0 License",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/gsso.owl",
+      "preferredPrefix": "GSSO",
+      "products": [
+        {
+          "id": "gsso.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/gsso.owl"
+        },
+        {
+          "id": "gsso.obo",
+          "ontology_purl": "http://purl.obolibrary.org/obo/gsso.obo"
+        },
+        {
+          "id": "gsso.json",
+          "ontology_purl": "http://purl.obolibrary.org/obo/gsso.json"
+        }
+      ],
+      "repository": "https://github.com/Superraptor/GSSO",
+      "title": "Gender, Sex, and Sexual Orientation (GSSO) ontology",
+      "tracker": "https://github.com/Superraptor/GSSO/issues"
+    }
+  ]
+}

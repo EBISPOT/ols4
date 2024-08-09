@@ -19,4 +19,11 @@ public class PropertyValueBNode extends PropertyValue {
     public boolean equals(PropertyValue other) {
         return other.getType() == Type.BNODE && ((PropertyValueBNode) other).id.equals(id);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValueBNode{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

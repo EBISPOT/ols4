@@ -1,0 +1,49 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+    {
+      "activity_status": "active",
+      "build": {
+        "insert_ontology_id": true,
+        "method": "obo2owl",
+        "source_url": "http://www.ebi.ac.uk/sbo/exports/Main/SBO_OBO.obo"
+      },
+      "contact": {
+        "email": "sheriff@ebi.ac.uk",
+        "github": "rsmsheriff",
+        "label": "Rahuman Sheriff",
+        "orcid": "0000-0003-0705-9809"
+      },
+      "description": "Terms commonly used in Systems Biology, and in particular in computational modeling.",
+      "domain": "chemistry and biochemistry",
+      "homepage": "http://www.ebi.ac.uk/sbo/",
+      "id": "sbo",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "Artistic License 2.0",
+        "url": "http://opensource.org/licenses/Artistic-2.0"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/sbo.owl",
+      "preferredPrefix": "SBO",
+      "products": [
+        {
+          "id": "sbo.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/sbo.owl"
+        }
+      ],
+      "repository": "https://github.com/EBI-BioModels/SBO",
+      "title": "Systems Biology Ontology",
+      "tracker": "https://github.com/EBI-BioModels/SBO/issues"
+    }
+  ]
+}
