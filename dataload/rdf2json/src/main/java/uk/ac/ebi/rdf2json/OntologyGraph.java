@@ -287,7 +287,7 @@ public class OntologyGraph implements StreamRDF {
     static final Set<OntologyNode.NodeType> propertyTypes = new TreeSet<>(Set.of(ENTITY, PROPERTY));
     static final Set<OntologyNode.NodeType> individualTypes = new TreeSet<>(Set.of(ENTITY, INDIVIDUAL));
 
-    public void write(JsonWriter writer) throws IOException {
+    public void write(JsonWriter writer) throws Throwable {
 
         String ontologyId = ((String) config.get("id")).toLowerCase();
 
@@ -387,8 +387,9 @@ public class OntologyGraph implements StreamRDF {
 
 
             writer.endObject();
-        } catch (IOException ioe) {
-            logger.error("Error in writing ontology with id = {}", ontologyId, ioe);
+        } catch (Throwable t) {
+            logger.error("Error in writing ontology with id = {}", ontologyId, t);
+            throw t;
         }
     }
 
