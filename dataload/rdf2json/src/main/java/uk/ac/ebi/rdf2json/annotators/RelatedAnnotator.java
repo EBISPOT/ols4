@@ -1,5 +1,7 @@
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.annotators.helpers.OntologyBaseUris;
@@ -10,6 +12,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RelatedAnnotator {
+
+	private static final Logger logger = LoggerFactory.getLogger(RelatedAnnotator.class);
 
     public static void annotateRelated(OntologyGraph graph) {
 
@@ -56,7 +60,7 @@ public class RelatedAnnotator {
 
         }
         long endTime3 = System.nanoTime();
-        System.out.println("annotate related: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate related: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 
 	private static void annotateRelated_Class_subClassOf_ClassExpr(

@@ -5,6 +5,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URL;
@@ -19,6 +21,8 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class RDF2JSON {
+
+    private static final Logger logger = LoggerFactory.getLogger(RDF2JSON.class);
 
     public static void main(String[] args) throws IOException {
 
@@ -55,7 +59,7 @@ public class RDF2JSON {
         try {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             formatter.printHelp("rdf2json", options);
 
             System.exit(1);
@@ -71,8 +75,8 @@ public class RDF2JSON {
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
 
 
-        System.out.println("Configs: " + configFilePaths);
-        System.out.println("Output: " + outputFilePath);
+        logger.debug("Configs: {}", configFilePaths);
+        logger.debug("Output: {}", outputFilePath);
 
         Gson gson = new Gson();
 
@@ -136,22 +140,22 @@ public class RDF2JSON {
         for(var ontoConfig : mergedConfigs.values()) {
 
             String ontologyId = ((String)ontoConfig.get("id")).toLowerCase();
-            System.out.println("--- Loading ontology: " + ontologyId);
+            logger.info("--- Loading ontology: {}", ontologyId);
 
             try {
 
                 OntologyGraph graph = new OntologyGraph(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
 
                 if(graph.ontologyNode == null) {
-                    System.out.println("No Ontology node found; nothing will be written");
+                    logger.error("No Ontology node found; nothing will be written");
                     continue;
                 }
 
                 long startTime3 = System.nanoTime();
-                System.out.println("Writing ontology: " + ontologyId);
+                logger.info("Writing ontology: {}", ontologyId);
                 graph.write(writer);
                 long endTime3 = System.nanoTime();
-                System.out.println("Write ontology " + ontologyId + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+                logger.info("Write ontology {} : {}", ontologyId,((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
                 loadedOntologyIds.add(ontologyId);
 
@@ -165,7 +169,7 @@ public class RDF2JSON {
             // Need to look for any ontologies that we didn't load but were loaded last time, and
             // keep the old versions of them from the previous JSON file.
 
-            System.out.println("Adding previously loaded ontologies from " + mergeOutputWith + " (--mergeOutputWith)");
+            logger.info("Adding previously loaded ontologies from {} (--mergeOutputWith)", mergeOutputWith);
             long startTime = System.nanoTime();
 
             JsonReader scanReader = new JsonReader(new InputStreamReader(new FileInputStream(mergeOutputWith)));
@@ -198,7 +202,8 @@ public class RDF2JSON {
 
                         if(!loadedOntologyIds.contains(ontologyId)) {
 
-                            System.out.println("Keeping output for ontology " + ontologyId + " from previous run (--mergeOutputWith)");
+                            logger.info("Keeping output for ontology {} from previous run (--mergeOutputWith)",
+                                    ontologyId);
 
                             Map<String,Object> ontology = gson.fromJson(actualReader, Map.class);
                             writeGenericValue(writer, ontology);
@@ -221,7 +226,7 @@ public class RDF2JSON {
             }
 
             long endTime = System.nanoTime();
-            System.out.println("time to merge output with previous run: " + ((endTime - startTime) / 1000 / 1000 / 1000) + "s");
+            logger.info("time to merge output with previous run: {} s", ((endTime - startTime) / 1000 / 1000 / 1000));
         }
 
 

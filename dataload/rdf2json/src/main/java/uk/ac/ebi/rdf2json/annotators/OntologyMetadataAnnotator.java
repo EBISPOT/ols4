@@ -1,10 +1,13 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import uk.ac.ebi.rdf2json.OntologyNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
+import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 public class OntologyMetadataAnnotator {
+	private static final Logger logger = LoggerFactory.getLogger(OntologyMetadataAnnotator.class);
 
 	public static void annotateOntologyMetadata(OntologyGraph graph) {
 
@@ -35,7 +38,7 @@ public class OntologyMetadataAnnotator {
 		    }
 		}
 		long endTime3 = System.nanoTime();
-		System.out.println("annotate ontology IDs: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+		logger.info("annotate ontology IDs: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
 	}

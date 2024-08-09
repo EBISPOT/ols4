@@ -26,6 +26,9 @@ import java.util.stream.Collectors;
 import static uk.ac.ebi.rdf2json.OntologyNode.NodeType.*;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class OntologyGraph implements StreamRDF {
 
     public Map<String, Object> config;
@@ -36,6 +39,8 @@ public class OntologyGraph implements StreamRDF {
     public int numberOfClasses = 0;
     public int numberOfProperties = 0;
     public int numberOfIndividuals = 0;
+
+    private static final Logger logger = LoggerFactory.getLogger(OntologyGraph.class);
 
     private RDFParserBuilder createParser(Lang lang) {
 
@@ -55,8 +60,8 @@ public class OntologyGraph implements StreamRDF {
 
         try {
             if (loadLocalFiles && !url.contains("://")) {
-                System.out.println("Using local file for " + url);
-		sourceFileTimestamp = new File(url).lastModified();
+                logger.debug("Using local file for {}", url);
+		        sourceFileTimestamp = new File(url).lastModified();
                 createParser(RDFLanguages.filenameToLang(url, Lang.RDFXML))
                         .source(new FileInputStream(url)).parse(this);
             } else {
@@ -64,8 +69,8 @@ public class OntologyGraph implements StreamRDF {
                     String existingDownload = downloadedPath + "/" + urlToFilename(url);
                     try {
                         FileInputStream is = new FileInputStream(existingDownload);
-                        System.out.println("Using predownloaded file for " + url);
-			sourceFileTimestamp = new File(existingDownload).lastModified();
+                        logger.debug("Using predownloaded file for {}", url);
+			            sourceFileTimestamp = new File(existingDownload).lastModified();
                         Lang lang = null;
                         try {
                             String existingDownloadMimeType = Files.readString(Paths.get(existingDownload + ".mimetype"));
@@ -77,13 +82,13 @@ public class OntologyGraph implements StreamRDF {
                         }
                         createParser(lang).source(is).parse(this);
                     } catch (Exception e) {
-                        System.out.println("Downloading (not predownloaded) " + url);
-			sourceFileTimestamp = System.currentTimeMillis();
+                        logger.error("Downloading (not predownloaded) {}", url);
+			            sourceFileTimestamp = System.currentTimeMillis();
                         createParser(null).source(url).parse(this);
                     }
                 } else {
-                    System.out.println("Downloading (no predownload path provided) " + url);
-		    sourceFileTimestamp = System.currentTimeMillis();
+                    logger.debug("Downloading (no predownload path provided) {}", url);
+		            sourceFileTimestamp = System.currentTimeMillis();
                     createParser(null).source(url).parse(this);
                 }
             }
@@ -136,11 +141,11 @@ public class OntologyGraph implements StreamRDF {
         }
 
         if(url == null) {
-            System.out.println("Could not determine URL for ontology " + (String)config.get("id"));
+            logger.error("Could not determine URL for ontology {}", (String)config.get("id"));
             return;
         }
 
-        System.out.println("load ontology from: " + url);
+        logger.debug("load ontology from: {}", url);
         parseRDF(url);
 
         // Before we evaluate imports, mark all the nodes so far as not imported
@@ -156,7 +161,7 @@ public class OntologyGraph implements StreamRDF {
             String importUrl = importUrls.get(0);
             importUrls.remove(0);
 
-            System.out.println("import: " + importUrl);
+            logger.debug("import: {}", importUrl);
             parseRDF(importUrl);
         }
 
@@ -246,7 +251,7 @@ public class OntologyGraph implements StreamRDF {
 
 
         long endTime = System.nanoTime();
-        System.out.println("load ontology: " + ((endTime - startTime) / 1000 / 1000 / 1000));
+        logger.info("load ontology: {}", ((endTime - startTime) / 1000 / 1000 / 1000));
 
         SearchableAnnotationValuesAnnotator.annotateSearchableAnnotationValues(this);
         InverseOfAnnotator.annotateInverseOf(this);
@@ -270,7 +275,6 @@ public class OntologyGraph implements StreamRDF {
         DisjointWithAnnotator.annotateDisjointWith(this);
         HasIndividualsAnnotator.annotateHasIndividuals(this);
         EquivalenceAnnotator.annotateEquivalance(this);
-
     }
 
 
@@ -285,102 +289,107 @@ public class OntologyGraph implements StreamRDF {
 
     public void write(JsonWriter writer) throws IOException {
 
-        writer.beginObject();
+        String ontologyId = ((String) config.get("id")).toLowerCase();
 
-        writer.name("ontologyId");
-        writer.value(((String) config.get("id")).toLowerCase());
+        try {
+            writer.beginObject();
 
-        writer.name("iri");
-        writer.value(ontologyNode.uri);
+            writer.name("ontologyId");
+            writer.value(ontologyId);
 
-        for(String configKey : config.keySet()) {
-            Object configVal = config.get(configKey);
+            writer.name("iri");
+            writer.value(ontologyNode.uri);
 
-            // we include this (lowercased) as "ontologyId" rather than "id",
-            // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
-            //
-            if(configKey.equals("id"))
-                continue;
+            for (String configKey : config.keySet()) {
+                Object configVal = config.get(configKey);
 
-    	    // already included explicitly above
-            if(configKey.equals("ontologyId"))
-                continue;
-                
-            // don't print the iri from the config, we already printed the one from the OWL
-            // TODO: which one to keep, or should we keep both?
-            if(configKey.equals("iri"))
-                continue;
+                // we include this (lowercased) as "ontologyId" rather than "id",
+                // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
+                //
+                if (configKey.equals("id"))
+                    continue;
 
-	         // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
-            if(configKey.equals("preferred_root_term"))
-                continue;
+                // already included explicitly above
+                if (configKey.equals("ontologyId"))
+                    continue;
 
-            // everything else from the config is stored as a normal property
-            writer.name(configKey); 
-            writeGenericValue(writer, configVal);
+                // don't print the iri from the config, we already printed the one from the OWL
+                // TODO: which one to keep, or should we keep both?
+                if (configKey.equals("iri"))
+                    continue;
+
+                // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
+                if (configKey.equals("preferred_root_term"))
+                    continue;
+
+                // everything else from the config is stored as a normal property
+                writer.name(configKey);
+                writeGenericValue(writer, configVal);
+            }
+
+            writeProperties(writer, ontologyNode.properties, Set.of("ontology"));
+
+            writer.name("classes");
+            writer.beginArray();
+
+            for (String id : nodes.keySet()) {
+                OntologyNode c = nodes.get(id);
+                if (c.uri == null) {
+                    // don't print bnodes at top level
+                    continue;
+                }
+                if (c.types.contains(OntologyNode.NodeType.CLASS)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(classTypes));
+                }
+            }
+
+            writer.endArray();
+
+
+            writer.name("properties");
+            writer.beginArray();
+
+            for (String id : nodes.keySet()) {
+                OntologyNode c = nodes.get(id);
+                if (c.uri == null) {
+                    // don't print bnodes at top level
+                    continue;
+                }
+                if (c.types.contains(OntologyNode.NodeType.OBJECT_PROPERTY)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(objectPropertyTypes));
+                } else if (c.types.contains(OntologyNode.NodeType.ANNOTATION_PROPERTY)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(annotationPropertyTypes));
+                } else if (c.types.contains(OntologyNode.NodeType.DATA_PROPERTY)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(dataPropertyTypes));
+                } else if (c.types.contains(OntologyNode.NodeType.PROPERTY)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(propertyTypes));
+                }
+            }
+
+            writer.endArray();
+
+
+            writer.name("individuals");
+            writer.beginArray();
+
+            for (String id : nodes.keySet()) {
+                OntologyNode c = nodes.get(id);
+                if (c.uri == null) {
+                    // don't print bnodes at top level
+                    continue;
+                }
+                if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
+                    writeNode(writer, c, OntologyNode.NodeType.toString(individualTypes));
+                }
+            }
+
+            writer.endArray();
+
+
+            writer.endObject();
+        } catch (IOException ioe) {
+            logger.error("Error in writing ontology with id = {}", ontologyId, ioe);
         }
-
-        writeProperties(writer, ontologyNode.properties, Set.of("ontology"));
-
-        writer.name("classes");
-        writer.beginArray();
-
-        for(String id : nodes.keySet()) {
-            OntologyNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.types.contains(OntologyNode.NodeType.CLASS)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(classTypes));
-            }
-        }
-
-        writer.endArray();
-
-
-        writer.name("properties");
-        writer.beginArray();
-
-        for(String id : nodes.keySet()) {
-            OntologyNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.types.contains(OntologyNode.NodeType.OBJECT_PROPERTY)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(objectPropertyTypes));
-            } else if (c.types.contains(OntologyNode.NodeType.ANNOTATION_PROPERTY)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(annotationPropertyTypes));
-            } else if (c.types.contains(OntologyNode.NodeType.DATA_PROPERTY)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(dataPropertyTypes));
-            } else if (c.types.contains(OntologyNode.NodeType.PROPERTY)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(propertyTypes));
-            }
-        }
-
-        writer.endArray();
-
-
-        writer.name("individuals");
-        writer.beginArray();
-
-        for(String id : nodes.keySet()) {
-            OntologyNode c = nodes.get(id);
-            if (c.uri == null) {
-                // don't print bnodes at top level
-                continue;
-            }
-            if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
-                writeNode(writer, c, OntologyNode.NodeType.toString(individualTypes));
-            }
-        }
-
-        writer.endArray();
-
-
-        writer.endObject();
-
     }
 
 
@@ -424,15 +433,15 @@ public class OntologyGraph implements StreamRDF {
         // TODO: sort keys, rdf:type should be first ideally
         for (String predicate : properties.getPropertyPredicates()) {
 
-		if(types != null && types.contains("ontology") && predicate.equals("ontologyId")) {
-			// hack to workaround a punning issue.
-			// if the Ontology is also a Class it will have an ontologyId added by
-			// the OntologyMetadataAnnotator, but there is already an ontologyId field
-			// printed as part of the ontology object, so skip this one...
-			// TODO: fix this as part of the punning refactoring
-			//
-			continue;
-		}
+            if(types != null && types.contains("ontology") && predicate.equals("ontologyId")) {
+                // hack to workaround a punning issue.
+                // if the Ontology is also a Class it will have an ontologyId added by
+                // the OntologyMetadataAnnotator, but there is already an ontologyId field
+                // printed as part of the ontology object, so skip this one...
+                // TODO: fix this as part of the punning refactoring
+                //
+                continue;
+            }
 
             List<PropertyValue> values = properties.getPropertyValues(predicate);
 
@@ -577,11 +586,6 @@ public class OntologyGraph implements StreamRDF {
         }
     }
 
-
-
-
-
-
     public Map<String, OntologyNode> nodes = new TreeMap<>();
     public OntologyNode ontologyNode = null;
 
@@ -653,8 +657,6 @@ public class OntologyGraph implements StreamRDF {
         }
 
         subjNode.properties.addProperty(triple.getPredicate().getURI(), PropertyValue.fromJenaNode(triple.getObject()));
-
-
     }
 
     public void handleType(OntologyNode subjNode, Node type) {
@@ -825,42 +827,42 @@ public class OntologyGraph implements StreamRDF {
 
     public boolean areSubgraphsIsomorphic(PropertyValue rootNodeA, PropertyValue rootNodeB) {
 
-	OntologyNode a = nodes.get(nodeIdFromPropertyValue(rootNodeA));
-	OntologyNode b = nodes.get(nodeIdFromPropertyValue(rootNodeB));
+        OntologyNode a = nodes.get(nodeIdFromPropertyValue(rootNodeA));
+        OntologyNode b = nodes.get(nodeIdFromPropertyValue(rootNodeB));
 
-	if(! a.properties.getPropertyPredicates().equals( b.properties.getPropertyPredicates() )) {
-		return false;
-	}
+        if(! a.properties.getPropertyPredicates().equals( b.properties.getPropertyPredicates() )) {
+            return false;
+        }
 
-	for(String predicate : a.properties.getPropertyPredicates()) {
-		List<PropertyValue> valuesA = a.properties.getPropertyValues(predicate);
-		List<PropertyValue> valuesB = b.properties.getPropertyValues(predicate);
+        for(String predicate : a.properties.getPropertyPredicates()) {
+            List<PropertyValue> valuesA = a.properties.getPropertyValues(predicate);
+            List<PropertyValue> valuesB = b.properties.getPropertyValues(predicate);
 
-		if(valuesA.size() != valuesB.size())
-			return false;
+            if(valuesA.size() != valuesB.size())
+                return false;
 
-		for(int n = 0; n < valuesA.size(); ++ n) {
-			PropertyValue valueA = valuesA.get(n);
-			PropertyValue valueB = valuesB.get(n);
+            for(int n = 0; n < valuesA.size(); ++ n) {
+                PropertyValue valueA = valuesA.get(n);
+                PropertyValue valueB = valuesB.get(n);
 
-			if(valueA.getType() != PropertyValue.Type.BNODE) {
-				// non bnode value, simple case
-				if(!valueA.equals(valueB)) {
-                    return false;
+                if(valueA.getType() != PropertyValue.Type.BNODE) {
+                    // non bnode value, simple case
+                    if(!valueA.equals(valueB)) {
+                        return false;
+                    }
                 }
-			} 
 
-			// bnode value
+                // bnode value
 
-			if(valueB.getType() != PropertyValue.Type.BNODE)
-				return false;
+                if(valueB.getType() != PropertyValue.Type.BNODE)
+                    return false;
 
-			if(!areSubgraphsIsomorphic(valueA, valueB))
-				return false;
-		}
-	}
+                if(!areSubgraphsIsomorphic(valueA, valueB))
+                    return false;
+            }
+        }
 
-	return true;
+        return true;
     }
 
 

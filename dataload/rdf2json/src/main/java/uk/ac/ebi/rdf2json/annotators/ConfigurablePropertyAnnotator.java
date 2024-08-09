@@ -1,6 +1,8 @@
 
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
@@ -8,6 +10,7 @@ import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import java.util.Set;
 
 public class ConfigurablePropertyAnnotator {
+    private static final Logger logger = LoggerFactory.getLogger(ConfigurablePropertyAnnotator.class);
 
     // The OLS3 API doesn't return properties as "annotations" if they have already been parsed as
     // the definition, synonym, hierarchy properties.
@@ -21,10 +24,9 @@ public class ConfigurablePropertyAnnotator {
     //
     public static void annotateConfigurableProperties(OntologyGraph graph) {
 
-	Set<String> hierarchicalProperties = HierarchicalParentsAnnotator.getHierarchicalProperties(graph);
-	Set<String> definitionProperties = DefinitionAnnotator.getDefinitionProperties(graph);
-	Set<String> synonymProperties = SynonymAnnotator.getSynonymProperties(graph);
-	
+        Set<String> hierarchicalProperties = HierarchicalParentsAnnotator.getHierarchicalProperties(graph);
+        Set<String> definitionProperties = DefinitionAnnotator.getDefinitionProperties(graph);
+        Set<String> synonymProperties = SynonymAnnotator.getSynonymProperties(graph);
 
         long startTime3 = System.nanoTime();
 
@@ -38,26 +40,24 @@ public class ConfigurablePropertyAnnotator {
                 if(c.uri == null)
                     continue;
 
-		for(String p : hierarchicalProperties) {
-            if(c.properties.hasProperty(p))
-                c.properties.addProperty("hierarchicalProperty", PropertyValueLiteral.fromString(p));
-		}
+                for(String p : hierarchicalProperties) {
+                    if(c.properties.hasProperty(p))
+                        c.properties.addProperty("hierarchicalProperty", PropertyValueLiteral.fromString(p));
+                }
 
-		for(String p : definitionProperties) {
-            if(c.properties.hasProperty(p))
-                c.properties.addProperty("definitionProperty", PropertyValueLiteral.fromString(p));
-		}
+                for(String p : definitionProperties) {
+                    if(c.properties.hasProperty(p))
+                        c.properties.addProperty("definitionProperty", PropertyValueLiteral.fromString(p));
+                }
 
-		for(String p : synonymProperties) {
-            if(c.properties.hasProperty(p))
-                c.properties.addProperty("synonymProperty", PropertyValueLiteral.fromString(p));
-		}
+                for(String p : synonymProperties) {
+                    if(c.properties.hasProperty(p))
+                        c.properties.addProperty("synonymProperty", PropertyValueLiteral.fromString(p));
+                }
             }
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate configurable properties: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
-
-
+        logger.info("annotate configurable properties: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 }

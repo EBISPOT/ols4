@@ -1,11 +1,18 @@
 package uk.ac.ebi.rdf2json.annotators;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import uk.ac.ebi.rdf2json.OntologyGraph;
+import uk.ac.ebi.rdf2json.OntologyNode;
+import uk.ac.ebi.rdf2json.properties.PropertySet;
+import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+
 import java.util.List;
 
-import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.OntologyGraph;
-import uk.ac.ebi.rdf2json.properties.*;
-
 public class ReifiedPropertyAnnotator {
+
+	private static final Logger logger = LoggerFactory.getLogger(ReifiedPropertyAnnotator.class);
 
 	public static void annotateReifiedProperties(OntologyGraph graph) {
 
@@ -40,7 +47,8 @@ public class ReifiedPropertyAnnotator {
 			}
 		}
 		long endTime3 = System.nanoTime();
-		System.out.println("reification: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000) + " - now have " + graph.nodes.size() + " nodes");
+		logger.info("reification: {} - now have {} nodes",
+				((endTime3 - startTime3) / 1000 / 1000 / 1000), graph.nodes.size());
 
 	}
 	

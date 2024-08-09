@@ -1,11 +1,14 @@
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
 public class NegativePropertyAssertionAnnotator {
+	private static final Logger logger = LoggerFactory.getLogger(NegativePropertyAssertionAnnotator.class);
 
     public static void annotateNegativePropertyAssertions(OntologyGraph graph) {
 
@@ -42,7 +45,7 @@ public class NegativePropertyAssertionAnnotator {
 			}
 		}
 		long endTime3 = System.nanoTime();
-		System.out.println("annotate negative property assertions: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+		logger.info("annotate negative property assertions: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 	}
 	
 }

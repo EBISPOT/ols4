@@ -1,14 +1,16 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.OntologyNode.NodeType;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
+import java.util.List;
+
 public class InverseOfAnnotator {
+    private static final Logger logger = LoggerFactory.getLogger(InverseOfAnnotator.class);
 	
 	/* If    A inverseOf B
 	   then    B inverseOf A
@@ -47,6 +49,6 @@ public class InverseOfAnnotator {
 	}
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate inverseOf: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate inverseOf: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 }

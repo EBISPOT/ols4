@@ -1,16 +1,18 @@
 package uk.ac.ebi.rdf2json.annotators;
-import java.util.*;
-import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.OntologyNode.NodeType;
-import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
 import uk.ac.ebi.rdf2json.helpers.RdfListEvaluator;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DisjointWithAnnotator {
+	private static final Logger logger = LoggerFactory.getLogger(DisjointWithAnnotator.class);
 
 	public static void annotateDisjointWith(OntologyGraph graph) {
 
@@ -73,7 +75,7 @@ public class DisjointWithAnnotator {
 		}
 
 		long endTime3 = System.nanoTime();
-		System.out.println("annotate disjointWith: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+		logger.info("annotate disjointWith: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 	}
 }
