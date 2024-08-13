@@ -21,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -117,18 +107,8 @@
             ],
             "value": "Father"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -160,7 +140,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -180,7 +160,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -238,18 +218,8 @@
             ],
             "value": "Mother"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -281,7 +251,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -334,18 +304,8 @@
             ],
             "value": "Parent"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -377,7 +337,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -397,7 +357,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [

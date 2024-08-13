@@ -21,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -115,20 +105,8 @@
             "http://www.w3.org/2002/07/owl#equivalentClass": {
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
               "http://www.w3.org/2002/07/owl#oneOf": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-                  "value": "1"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-                  "value": "2"
-                }
+                1,
+                2
               ],
               "isObsolete": false
             },
@@ -140,18 +118,8 @@
               ],
               "value": "toddlerAge"
             },
-            "numDirectDescendants": {
-              "type": [
-                "literal"
-              ],
-              "value": "0"
-            },
-            "numHierarchicalDescendants": {
-              "type": [
-                "literal"
-              ],
-              "value": "0"
-            },
+            "numDescendants": 0,
+            "numHierarchicalDescendants": 0,
             "shortForm": {
               "type": [
                 "literal"
@@ -168,18 +136,8 @@
             ],
             "value": "hasToddlerAge"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"

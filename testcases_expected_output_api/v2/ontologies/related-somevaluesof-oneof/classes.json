@@ -34,7 +34,7 @@
         "curie": "b1",
         "hasLocalDefinition": true,
         "label": "b1",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -44,7 +44,7 @@
         "curie": "b2",
         "hasLocalDefinition": true,
         "label": "b2",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -54,7 +54,7 @@
         "curie": "b3",
         "hasLocalDefinition": true,
         "label": "b3",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -64,7 +64,7 @@
         "curie": "r",
         "hasLocalDefinition": true,
         "label": "r",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -72,8 +72,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "related-somevaluesof-oneof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl",
     "ontologyPreferredPrefix": "related-someValuesOf-oneOf",

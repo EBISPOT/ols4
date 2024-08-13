@@ -22,7 +22,7 @@
         "curie": "Man",
         "hasLocalDefinition": true,
         "label": "Man",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -32,15 +32,15 @@
         "curie": "Woman",
         "hasLocalDefinition": true,
         "label": "Woman",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-domain-range-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-domain-range-restriction",

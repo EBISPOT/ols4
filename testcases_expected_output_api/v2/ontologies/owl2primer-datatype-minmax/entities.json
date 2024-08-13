@@ -16,8 +16,8 @@
     "isPreferredRoot": false,
     "label": "Dummy",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-minmax",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
     "ontologyPreferredPrefix": "owl2primer-datatype-minmax",
@@ -47,11 +47,11 @@
         "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
         "http://www.w3.org/2002/07/owl#withRestrictions": [
           {
-            "http://www.w3.org/2001/XMLSchema#maxInclusive": "150",
+            "http://www.w3.org/2001/XMLSchema#maxInclusive": 150.0,
             "isObsolete": false
           },
           {
-            "http://www.w3.org/2001/XMLSchema#minInclusive": "0",
+            "http://www.w3.org/2001/XMLSchema#minInclusive": 0.0,
             "isObsolete": false
           }
         ],
@@ -61,8 +61,8 @@
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#personAge",
       "isObsolete": false,
       "label": "personAge",
-      "numDirectDescendants": "0",
-      "numHierarchicalDescendants": "0",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "shortForm": "personAge",
       "type": [
         "datatype"
@@ -75,8 +75,8 @@
     "isPreferredRoot": false,
     "label": "hasAge",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-minmax",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
     "ontologyPreferredPrefix": "owl2primer-datatype-minmax",

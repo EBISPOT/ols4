@@ -21,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -107,18 +97,8 @@
             ],
             "value": "Person"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -182,18 +162,8 @@
             ],
             "value": "hasAge"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -225,7 +195,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#Person": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -265,13 +235,7 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
-          "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-            "value": "51"
-          },
+          "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": 51,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
@@ -281,18 +245,8 @@
             ],
             "value": "John"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -312,13 +266,7 @@
             "value": "owl2primer-data-property-assertion"
           },
           "searchableAnnotationValues": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-              "value": "51"
-            },
+            51,
             false
           ],
           "shortForm": {
@@ -333,7 +281,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [

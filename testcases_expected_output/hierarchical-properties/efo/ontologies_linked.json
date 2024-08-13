@@ -28,18 +28,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -156,18 +146,8 @@
             ],
             "value": "anatomical system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "4"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "13"
-          },
+          "numDescendants": 4,
+          "numHierarchicalDescendants": 13,
           "ontologyId": {
             "type": [
               "literal"
@@ -245,7 +225,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -282,7 +262,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -311,7 +291,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -336,7 +316,7 @@
               "curie": "UBERON:0000467"
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -356,7 +336,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -376,7 +356,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -431,18 +411,8 @@
             ],
             "value": "multicellular organism"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "19"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 19,
           "ontologyId": {
             "type": [
               "literal"
@@ -531,7 +501,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -551,7 +521,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -588,7 +558,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -608,7 +578,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -628,7 +598,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -648,7 +618,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000483": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -732,18 +702,8 @@
             ],
             "value": "epithelium"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -786,7 +746,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -823,7 +783,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -852,7 +812,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -962,18 +922,8 @@
             ],
             "value": "abdomen"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "6"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 6,
           "ontologyId": {
             "type": [
               "literal"
@@ -1064,7 +1014,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -1106,7 +1056,7 @@
               "curie": "UBERON:0000916"
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -1135,7 +1085,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0006841": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1155,7 +1105,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1175,7 +1125,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1195,7 +1145,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1215,7 +1165,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1235,7 +1185,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1307,18 +1257,8 @@
             ],
             "value": "endocrine system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 7,
           "ontologyId": {
             "type": [
               "literal"
@@ -1374,7 +1314,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -1411,7 +1351,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1431,7 +1371,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1451,7 +1391,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1476,7 +1416,7 @@
               "curie": "UBERON:0000949"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1496,7 +1436,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001009": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1516,7 +1456,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1536,7 +1476,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1607,18 +1547,8 @@
             ],
             "value": "digestive system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 7,
           "ontologyId": {
             "type": [
               "literal"
@@ -1679,7 +1609,7 @@
               "curie": "UBERON:0001007"
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -1716,7 +1646,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1736,7 +1666,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1756,7 +1686,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001009": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1776,7 +1706,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1796,7 +1726,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1864,18 +1794,8 @@
             ],
             "value": "circulatory system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -1923,7 +1843,7 @@
               "curie": "UBERON:0001009"
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -1960,7 +1880,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1980,7 +1900,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004535": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2000,7 +1920,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2020,7 +1940,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2142,18 +2062,8 @@
             ],
             "value": "hepatic artery"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -2209,7 +2119,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -2246,7 +2156,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2266,7 +2176,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2286,7 +2196,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -2315,7 +2225,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2340,7 +2250,7 @@
               "curie": "UBERON:0001193"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2360,7 +2270,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2380,7 +2290,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2400,7 +2310,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2420,7 +2330,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2440,7 +2350,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004647": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2460,7 +2370,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2480,7 +2390,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2500,7 +2410,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001637": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2520,7 +2430,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2540,7 +2450,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2746,18 +2656,8 @@
             ],
             "value": "hepatic sinusoid"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -2857,7 +2757,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/UBERON_0001986": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2882,7 +2782,7 @@
               "curie": "UBERON:0001281"
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -2919,7 +2819,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002049": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2939,7 +2839,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2959,7 +2859,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -2979,7 +2879,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -3008,7 +2908,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3028,7 +2928,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001982": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3048,7 +2948,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004535": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3068,7 +2968,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3088,7 +2988,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3108,7 +3008,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001009": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3128,7 +3028,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3148,7 +3048,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3168,7 +3068,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3188,7 +3088,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004647": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3208,7 +3108,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3228,7 +3128,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000483": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3248,7 +3148,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3268,7 +3168,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3288,7 +3188,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3352,18 +3252,8 @@
             ],
             "value": "artery"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -3400,7 +3290,7 @@
               "curie": "UBERON:0001637"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3464,18 +3354,8 @@
             ],
             "value": "vein"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -3512,7 +3392,7 @@
               "curie": "UBERON:0001638"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3634,18 +3514,8 @@
             ],
             "value": "hepatic portal vein"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -3701,7 +3571,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -3738,7 +3608,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3758,7 +3628,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3778,7 +3648,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -3807,7 +3677,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3827,7 +3697,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3852,7 +3722,7 @@
               "curie": "UBERON:0001639"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3872,7 +3742,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3892,7 +3762,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3912,7 +3782,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3932,7 +3802,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004647": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3952,7 +3822,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3972,7 +3842,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001638": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -3992,7 +3862,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4012,7 +3882,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4032,7 +3902,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4087,18 +3957,8 @@
             ],
             "value": "blood vessel"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
+          "numDescendants": 7,
+          "numHierarchicalDescendants": 7,
           "ontologyId": {
             "type": [
               "literal"
@@ -4141,7 +4001,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4183,7 +4043,7 @@
               "curie": "UBERON:0001981"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4272,18 +4132,8 @@
             ],
             "value": "capillary"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -4326,7 +4176,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4363,7 +4213,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002049": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4383,7 +4233,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4412,7 +4262,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4484,18 +4334,8 @@
             ],
             "value": "endothelium"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -4532,7 +4372,7 @@
               "curie": "UBERON:0001986"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000483": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4552,7 +4392,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4607,18 +4447,8 @@
             ],
             "value": "vasculature"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -4661,7 +4491,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4703,7 +4533,7 @@
               "curie": "UBERON:0002049"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001982": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -4807,18 +4637,8 @@
             ],
             "value": "trunk"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 7,
           "ontologyId": {
             "type": [
               "literal"
@@ -4920,7 +4740,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4957,7 +4777,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -4986,7 +4806,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0006841": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5006,7 +4826,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5026,7 +4846,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5046,7 +4866,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5066,7 +4886,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5091,7 +4911,7 @@
               "curie": "UBERON:0002100"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5281,18 +5101,8 @@
             ],
             "value": "liver"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "5"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 5,
           "ontologyId": {
             "type": [
               "literal"
@@ -5449,7 +5259,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/UBERON_0001193": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5469,7 +5279,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -5506,7 +5316,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5526,7 +5336,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5546,7 +5356,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -5575,7 +5385,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0006841": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5595,7 +5405,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5615,7 +5425,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5635,7 +5445,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5655,7 +5465,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5675,7 +5485,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004647": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5695,7 +5505,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5715,7 +5525,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001639": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5735,7 +5545,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5755,7 +5565,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5780,7 +5590,7 @@
               "curie": "UBERON:0002107"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5800,7 +5610,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -5903,18 +5713,8 @@
             ],
             "value": "endocrine gland"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "6"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 6,
           "ontologyId": {
             "type": [
               "literal"
@@ -5957,7 +5757,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -5994,7 +5794,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6014,7 +5814,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6048,7 +5848,7 @@
               "curie": "UBERON:0002368"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6068,7 +5868,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6088,7 +5888,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6193,18 +5993,8 @@
             ],
             "value": "hepatobiliary system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "6"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 6,
           "ontologyId": {
             "type": [
               "literal"
@@ -6271,7 +6061,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6308,7 +6098,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6328,7 +6118,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6357,7 +6147,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6377,7 +6167,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6397,7 +6187,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6484,18 +6274,8 @@
             ],
             "value": "gland"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "7"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 7,
           "ontologyId": {
             "type": [
               "literal"
@@ -6543,7 +6323,7 @@
               "curie": "UBERON:0002530"
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6580,7 +6360,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6600,7 +6380,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6629,7 +6409,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6719,18 +6499,8 @@
             ],
             "value": "cardiovascular system"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -6784,7 +6554,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6821,7 +6591,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6841,7 +6611,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -6870,7 +6640,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001009": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6895,7 +6665,7 @@
               "curie": "UBERON:0004535"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -6915,7 +6685,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7006,18 +6776,8 @@
             ],
             "value": "liver lobule"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "4"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 4,
           "ontologyId": {
             "type": [
               "literal"
@@ -7106,7 +6866,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/UBERON_0001193": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7126,7 +6886,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -7163,7 +6923,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7183,7 +6943,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7203,7 +6963,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -7232,7 +6992,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0006841": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7252,7 +7012,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7272,7 +7032,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7292,7 +7052,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7312,7 +7072,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7332,7 +7092,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7352,7 +7112,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7372,7 +7132,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001639": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7392,7 +7152,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7412,7 +7172,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7432,7 +7192,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7457,7 +7217,7 @@
               "curie": "UBERON:0004647"
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7615,18 +7375,8 @@
             ],
             "value": "central vein of liver"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -7704,7 +7454,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -7741,7 +7491,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002368": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7761,7 +7511,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7781,7 +7531,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -7810,7 +7560,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7835,7 +7585,7 @@
               "curie": "UBERON:0006841"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7855,7 +7605,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7875,7 +7625,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7895,7 +7645,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0013702": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7915,7 +7665,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7935,7 +7685,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0004647": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7955,7 +7705,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7975,7 +7725,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0001638": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -7995,7 +7745,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8015,7 +7765,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000949": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8035,7 +7785,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8114,18 +7864,8 @@
             ],
             "value": "body proper"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "8"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 8,
           "ontologyId": {
             "type": [
               "literal"
@@ -8184,7 +7924,7 @@
               "curie": "UBERON:0013702"
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -8221,7 +7961,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -8250,7 +7990,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0002100": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8270,7 +8010,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8663,18 +8403,8 @@
               "value": "part_of"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -8920,7 +8650,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/RO_0040042": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8941,7 +8671,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/IAO_0000116": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8962,7 +8692,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/IAO_0000115": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -8983,7 +8713,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/IAO_0000112": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9004,7 +8734,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -9033,7 +8763,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/IAO_0000111": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9059,7 +8789,7 @@
               "curie": "BFO:0000050"
             },
             "http://purl.obolibrary.org/obo/IAO_0000118": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9080,7 +8810,7 @@
               ]
             },
             "http://www.ebi.ac.uk/efo/EFO_URI": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9101,7 +8831,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/RO_0001900": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9127,7 +8857,7 @@
               "curie": "ro:0001901"
             },
             "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9158,7 +8888,7 @@
               "curie": "bfo:0000017"
             },
             "http://www.geneontology.org/formats/oboInOwl#id": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9179,7 +8909,7 @@
               ]
             },
             "http://www.geneontology.org/formats/oboInOwl#inSubset": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9215,7 +8945,7 @@
               "curie": "bfo:0000003"
             },
             "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9236,7 +8966,7 @@
               ]
             },
             "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9257,7 +8987,7 @@
               ]
             },
             "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9361,18 +9091,8 @@
               "value": "has_part"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9424,7 +9144,7 @@
           ],
           "linkedEntities": {
             "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9445,7 +9165,7 @@
               ]
             },
             "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9466,7 +9186,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -9508,7 +9228,7 @@
               "curie": "BFO:0000051"
             },
             "http://www.ebi.ac.uk/efo/EFO_URI": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -9558,18 +9278,8 @@
             ],
             "value": "IAO_0000111"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9635,18 +9345,8 @@
             ],
             "value": "IAO_0000112"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9712,18 +9412,8 @@
             ],
             "value": "IAO_0000115"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9789,18 +9479,8 @@
             ],
             "value": "IAO_0000116"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9866,18 +9546,8 @@
             ],
             "value": "IAO_0000118"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -9943,18 +9613,8 @@
             ],
             "value": "IAO_0000232"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10020,18 +9680,8 @@
             ],
             "value": "RO_0001900"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10097,18 +9747,8 @@
             ],
             "value": "RO_0002174"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10174,18 +9814,8 @@
             ],
             "value": "RO_0040042"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10251,18 +9881,8 @@
             ],
             "value": "UBPROP_0000001"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10322,18 +9942,8 @@
             ],
             "value": "UBPROP_0000002"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10393,18 +10003,8 @@
             ],
             "value": "UBPROP_0000003"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10464,18 +10064,8 @@
             ],
             "value": "UBPROP_0000007"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10535,18 +10125,8 @@
             ],
             "value": "UBPROP_0000008"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10606,18 +10186,8 @@
             ],
             "value": "UBPROP_0000009"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10677,18 +10247,8 @@
             ],
             "value": "UBPROP_0000010"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10748,18 +10308,8 @@
             ],
             "value": "UBPROP_0000012"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10819,18 +10369,8 @@
             ],
             "value": "UBPROP_0000202"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10890,18 +10430,8 @@
             ],
             "value": "EFO_URI"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -10961,18 +10491,8 @@
             ],
             "value": "date_retrieved"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11032,18 +10552,8 @@
             ],
             "value": "external_class"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11103,18 +10613,8 @@
             ],
             "value": "external_ontology"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11174,18 +10674,8 @@
             ],
             "value": "hasAlternativeId"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11245,18 +10735,8 @@
             ],
             "value": "hasBroadSynonym"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11316,18 +10796,8 @@
             ],
             "value": "hasDbXref"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11387,18 +10857,8 @@
             ],
             "value": "hasExactSynonym"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11458,18 +10918,8 @@
             ],
             "value": "hasOBONamespace"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11529,18 +10979,8 @@
             ],
             "value": "hasRelatedSynonym"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11600,18 +11040,8 @@
             ],
             "value": "hasSynonymType"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11671,18 +11101,8 @@
             ],
             "value": "id"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11742,18 +11162,8 @@
             ],
             "value": "inSubset"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11813,18 +11223,8 @@
             ],
             "value": "notes"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11884,18 +11284,8 @@
             ],
             "value": "ontology"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -11955,18 +11345,8 @@
             ],
             "value": "shorthand"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -12026,18 +11406,8 @@
             ],
             "value": "source"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -12097,18 +11467,8 @@
             ],
             "value": "depicted_by"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -12144,7 +11504,7 @@
       "individuals": [],
       "linkedEntities": {
         "http://purl.obolibrary.org/obo/BFO_0000050": {
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": [
             {

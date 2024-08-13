@@ -21,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -119,18 +109,8 @@
             ],
             "value": "Quantity"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -204,18 +184,8 @@
             ],
             "value": "ThermodynamicTemperature"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -248,7 +218,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -268,7 +238,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -288,7 +258,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -341,18 +311,8 @@
             ],
             "value": "commonlyHasUnit"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -384,7 +344,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -449,18 +409,8 @@
             ],
             "value": "ThermodynamicTemperature"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -493,7 +443,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -513,7 +463,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -533,7 +483,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -581,18 +531,8 @@
             ],
             "value": "terakelvin"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -657,18 +597,8 @@
             ],
             "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -700,7 +630,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -720,7 +650,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": {
-              "numAppearsIn": "2",
+              "numAppearsIn": 2,
               "hasLocalDefinition": true,
               "label": {
                 "type": [

@@ -19,18 +19,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -111,18 +101,8 @@
             ],
             "value": "Dummy"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -188,23 +168,11 @@
               "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
               "http://www.w3.org/2002/07/owl#withRestrictions": [
                 {
-                  "http://www.w3.org/2001/XMLSchema#minInclusive": {
-                    "type": [
-                      "literal"
-                    ],
-                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-                    "value": "0"
-                  },
+                  "http://www.w3.org/2001/XMLSchema#minInclusive": 0,
                   "isObsolete": false
                 },
                 {
-                  "http://www.w3.org/2001/XMLSchema#maxInclusive": {
-                    "type": [
-                      "literal"
-                    ],
-                    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-                    "value": "150"
-                  },
+                  "http://www.w3.org/2001/XMLSchema#maxInclusive": 150,
                   "isObsolete": false
                 }
               ],
@@ -218,18 +186,8 @@
               ],
               "value": "personAge"
             },
-            "numDirectDescendants": {
-              "type": [
-                "literal"
-              ],
-              "value": "0"
-            },
-            "numHierarchicalDescendants": {
-              "type": [
-                "literal"
-              ],
-              "value": "0"
-            },
+            "numDescendants": 0,
+            "numHierarchicalDescendants": 0,
             "shortForm": {
               "type": [
                 "literal"
@@ -246,18 +204,8 @@
             ],
             "value": "hasAge"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"

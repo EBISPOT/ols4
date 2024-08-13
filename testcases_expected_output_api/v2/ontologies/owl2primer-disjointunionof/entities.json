@@ -27,7 +27,7 @@
         "curie": "Mother",
         "hasLocalDefinition": true,
         "label": "Mother",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -37,15 +37,15 @@
         "curie": "Parent",
         "hasLocalDefinition": true,
         "label": "Parent",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-disjointunionof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
     "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
@@ -83,15 +83,15 @@
         "curie": "Parent",
         "hasLocalDefinition": true,
         "label": "Parent",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-disjointunionof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
     "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
@@ -127,7 +127,7 @@
         "curie": "Father",
         "hasLocalDefinition": true,
         "label": "Father",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -137,15 +137,15 @@
         "curie": "Mother",
         "hasLocalDefinition": true,
         "label": "Mother",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-disjointunionof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
     "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",

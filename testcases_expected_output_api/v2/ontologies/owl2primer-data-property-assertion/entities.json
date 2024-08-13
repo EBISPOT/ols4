@@ -8,7 +8,7 @@
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
-    "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": "51",
+    "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": 51.0,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
     "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John",
@@ -20,7 +20,7 @@
         "curie": "hasAge",
         "hasLocalDefinition": true,
         "label": "hasAge",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
           "entity",
@@ -28,12 +28,13 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-data-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-data-property-assertion",
     "searchableAnnotationValues": [
+      51.0,
       false
     ],
     "shortForm": "John",
@@ -59,8 +60,8 @@
     "isPreferredRoot": false,
     "label": "Person",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-data-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-data-property-assertion",
@@ -94,15 +95,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-data-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-data-property-assertion",

@@ -32,7 +32,7 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -42,15 +42,15 @@
         "curie": "Woman",
         "hasLocalDefinition": true,
         "label": "Woman",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-subclassof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
     "ontologyPreferredPrefix": "owl2primer-subClassOf",
@@ -78,8 +78,8 @@
     "isPreferredRoot": false,
     "label": "Person",
     "linkedEntities": {},
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-subclassof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
     "ontologyPreferredPrefix": "owl2primer-subClassOf",
@@ -117,15 +117,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "1",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "owl2primer-subclassof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
     "ontologyPreferredPrefix": "owl2primer-subClassOf",

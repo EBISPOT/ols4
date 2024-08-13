@@ -136,7 +136,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -147,7 +147,7 @@
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
         "label": "IAO_0000111",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -158,7 +158,7 @@
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
         "label": "IAO_0000112",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -169,7 +169,7 @@
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
         "label": "IAO_0000115",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -180,7 +180,7 @@
         "curie": "IAO:0000116",
         "hasLocalDefinition": true,
         "label": "IAO_0000116",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -191,7 +191,7 @@
         "curie": "IAO:0000118",
         "hasLocalDefinition": true,
         "label": "IAO_0000118",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -202,7 +202,7 @@
         "curie": "RO:0001900",
         "hasLocalDefinition": true,
         "label": "RO_0001900",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -218,7 +218,7 @@
         "curie": "RO:0040042",
         "hasLocalDefinition": true,
         "label": "RO_0040042",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -229,7 +229,7 @@
         "curie": "EFO:URI",
         "hasLocalDefinition": true,
         "label": "EFO_URI",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -240,7 +240,7 @@
         "curie": "hasDbXref",
         "hasLocalDefinition": true,
         "label": "hasDbXref",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -251,7 +251,7 @@
         "curie": "hasExactSynonym",
         "hasLocalDefinition": true,
         "label": "hasExactSynonym",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -262,7 +262,7 @@
         "curie": "hasOBONamespace",
         "hasLocalDefinition": true,
         "label": "hasOBONamespace",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -273,7 +273,7 @@
         "curie": "id",
         "hasLocalDefinition": true,
         "label": "id",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -284,7 +284,7 @@
         "curie": "inSubset",
         "hasLocalDefinition": true,
         "label": "inSubset",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -295,7 +295,7 @@
         "curie": "shorthand",
         "hasLocalDefinition": true,
         "label": "shorthand",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -303,8 +303,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -372,7 +372,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -383,7 +383,7 @@
         "curie": "EFO:URI",
         "hasLocalDefinition": true,
         "label": "EFO_URI",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -394,7 +394,7 @@
         "curie": "hasDbXref",
         "hasLocalDefinition": true,
         "label": "hasDbXref",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -405,7 +405,7 @@
         "curie": "shorthand",
         "hasLocalDefinition": true,
         "label": "shorthand",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -413,8 +413,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -445,8 +445,8 @@
     "isPreferredRoot": false,
     "label": "EFO_URI",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -481,8 +481,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000111"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -517,8 +517,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000112"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -553,8 +553,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000115"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -589,8 +589,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000116"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -625,8 +625,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000118"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -661,8 +661,8 @@
         "url": "http://purl.obolibrary.org/obo/IAO_0000232"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -697,8 +697,8 @@
         "url": "http://purl.obolibrary.org/obo/RO_0001900"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -733,8 +733,8 @@
         "url": "http://purl.obolibrary.org/obo/RO_0002174"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -769,8 +769,8 @@
         "url": "http://purl.obolibrary.org/obo/RO_0040042"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -831,7 +831,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -845,7 +845,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -856,7 +856,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -866,7 +866,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -876,7 +876,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -886,15 +886,15 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "4",
-    "numHierarchicalDescendants": "13",
+    "numDescendants": 4.0,
+    "numHierarchicalDescendants": 13.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -980,7 +980,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -991,7 +991,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1001,7 +1001,7 @@
         "curie": "UBERON:0000483",
         "hasLocalDefinition": true,
         "label": "epithelium",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1011,7 +1011,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1021,7 +1021,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1031,15 +1031,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "19",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 19.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1156,7 +1156,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1170,7 +1170,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1181,15 +1181,15 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1286,7 +1286,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1300,7 +1300,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1311,7 +1311,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1321,7 +1321,7 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1331,7 +1331,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1341,7 +1341,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1351,7 +1351,7 @@
         "curie": "UBERON:0006841",
         "hasLocalDefinition": true,
         "label": "central vein of liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1361,15 +1361,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "6",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 6.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1482,7 +1482,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1493,7 +1493,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1503,7 +1503,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1513,7 +1513,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1523,7 +1523,7 @@
         "curie": "UBERON:0001009",
         "hasLocalDefinition": true,
         "label": "circulatory system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1533,7 +1533,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1543,7 +1543,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1553,15 +1553,15 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "7",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1638,7 +1638,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1649,7 +1649,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1659,7 +1659,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1669,7 +1669,7 @@
         "curie": "UBERON:0001009",
         "hasLocalDefinition": true,
         "label": "circulatory system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1679,7 +1679,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1689,15 +1689,15 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "7",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1771,7 +1771,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1782,7 +1782,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1792,7 +1792,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1802,7 +1802,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1812,15 +1812,15 @@
         "curie": "UBERON:0004535",
         "hasLocalDefinition": true,
         "label": "cardiovascular system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -1935,7 +1935,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1949,7 +1949,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1960,7 +1960,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1970,7 +1970,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1980,7 +1980,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1990,7 +1990,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2000,7 +2000,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2010,7 +2010,7 @@
         "curie": "UBERON:0001637",
         "hasLocalDefinition": true,
         "label": "artery",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2020,7 +2020,7 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2030,7 +2030,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2040,7 +2040,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2050,7 +2050,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2060,7 +2060,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2070,7 +2070,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2080,7 +2080,7 @@
         "curie": "UBERON:0004647",
         "hasLocalDefinition": true,
         "label": "liver lobule",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2090,15 +2090,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -2310,7 +2310,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2324,7 +2324,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2335,7 +2335,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2345,7 +2345,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2355,7 +2355,7 @@
         "curie": "UBERON:0000483",
         "hasLocalDefinition": true,
         "label": "epithelium",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2365,7 +2365,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2375,7 +2375,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2385,7 +2385,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2395,7 +2395,7 @@
         "curie": "UBERON:0001009",
         "hasLocalDefinition": true,
         "label": "circulatory system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2405,7 +2405,7 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2415,7 +2415,7 @@
         "curie": "UBERON:0001982",
         "hasLocalDefinition": true,
         "label": "capillary",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2425,7 +2425,7 @@
         "curie": "UBERON:0001986",
         "hasLocalDefinition": true,
         "label": "endothelium",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2435,7 +2435,7 @@
         "curie": "UBERON:0002049",
         "hasLocalDefinition": true,
         "label": "vasculature",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2445,7 +2445,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2455,7 +2455,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2465,7 +2465,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2475,7 +2475,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2485,7 +2485,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2495,7 +2495,7 @@
         "curie": "UBERON:0004535",
         "hasLocalDefinition": true,
         "label": "cardiovascular system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2505,7 +2505,7 @@
         "curie": "UBERON:0004647",
         "hasLocalDefinition": true,
         "label": "liver lobule",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2515,15 +2515,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -2635,15 +2635,15 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "1",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -2687,15 +2687,15 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -2799,7 +2799,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2813,7 +2813,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2824,7 +2824,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2834,7 +2834,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2844,7 +2844,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2854,7 +2854,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2864,7 +2864,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2874,7 +2874,7 @@
         "curie": "UBERON:0001638",
         "hasLocalDefinition": true,
         "label": "vein",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2884,7 +2884,7 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2894,7 +2894,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2904,7 +2904,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2914,7 +2914,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2924,7 +2924,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2934,7 +2934,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2944,7 +2944,7 @@
         "curie": "UBERON:0004647",
         "hasLocalDefinition": true,
         "label": "liver lobule",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2954,15 +2954,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3026,7 +3026,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3037,15 +3037,15 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "7",
-    "numHierarchicalDescendants": "7",
+    "numDescendants": 7.0,
+    "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3127,7 +3127,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3141,7 +3141,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3152,7 +3152,7 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3162,15 +3162,15 @@
         "curie": "UBERON:0002049",
         "hasLocalDefinition": true,
         "label": "vasculature",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "1",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3228,7 +3228,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3238,15 +3238,15 @@
         "curie": "UBERON:0000483",
         "hasLocalDefinition": true,
         "label": "epithelium",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "1",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3286,7 +3286,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3297,15 +3297,15 @@
         "curie": "UBERON:0001982",
         "hasLocalDefinition": true,
         "label": "capillary",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3401,7 +3401,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3415,7 +3415,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3426,7 +3426,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3436,7 +3436,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3446,7 +3446,7 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3456,7 +3456,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3466,7 +3466,7 @@
         "curie": "UBERON:0006841",
         "hasLocalDefinition": true,
         "label": "central vein of liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3476,15 +3476,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "7",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -3726,7 +3726,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3740,7 +3740,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3751,7 +3751,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3761,7 +3761,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3771,7 +3771,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3781,7 +3781,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3791,7 +3791,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3801,7 +3801,7 @@
         "curie": "UBERON:0001193",
         "hasLocalDefinition": true,
         "label": "hepatic artery",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3811,7 +3811,7 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3821,7 +3821,7 @@
         "curie": "UBERON:0001639",
         "hasLocalDefinition": true,
         "label": "hepatic portal vein",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3831,7 +3831,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3841,7 +3841,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3851,7 +3851,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3861,7 +3861,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3871,7 +3871,7 @@
         "curie": "UBERON:0004647",
         "hasLocalDefinition": true,
         "label": "liver lobule",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3881,7 +3881,7 @@
         "curie": "UBERON:0006841",
         "hasLocalDefinition": true,
         "label": "central vein of liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3891,15 +3891,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "5",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 5.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -4109,7 +4109,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4123,7 +4123,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4134,7 +4134,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4144,7 +4144,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4154,7 +4154,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4164,15 +4164,15 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "1",
-    "numHierarchicalDescendants": "6",
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 6.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -4269,7 +4269,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4283,7 +4283,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4294,7 +4294,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4304,7 +4304,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4314,7 +4314,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4324,15 +4324,15 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "6",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 6.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -4430,7 +4430,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4444,7 +4444,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4455,7 +4455,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4465,15 +4465,15 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "7",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -4556,7 +4556,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4570,7 +4570,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4581,7 +4581,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4591,7 +4591,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4601,7 +4601,7 @@
         "curie": "UBERON:0001009",
         "hasLocalDefinition": true,
         "label": "circulatory system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4611,15 +4611,15 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -4713,7 +4713,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4727,7 +4727,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4738,7 +4738,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4748,7 +4748,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4758,7 +4758,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4768,7 +4768,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4778,7 +4778,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4788,7 +4788,7 @@
         "curie": "UBERON:0001193",
         "hasLocalDefinition": true,
         "label": "hepatic artery",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4798,7 +4798,7 @@
         "curie": "UBERON:0001281",
         "hasLocalDefinition": true,
         "label": "hepatic sinusoid",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4808,7 +4808,7 @@
         "curie": "UBERON:0001639",
         "hasLocalDefinition": true,
         "label": "hepatic portal vein",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4818,7 +4818,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4828,7 +4828,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4838,7 +4838,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4848,7 +4848,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4858,7 +4858,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4868,7 +4868,7 @@
         "curie": "UBERON:0006841",
         "hasLocalDefinition": true,
         "label": "central vein of liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -4878,15 +4878,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "4",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 4.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5083,7 +5083,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -5097,7 +5097,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -5108,7 +5108,7 @@
         "curie": "UBERON:0000467",
         "hasLocalDefinition": true,
         "label": "anatomical system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5118,7 +5118,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5128,7 +5128,7 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5138,7 +5138,7 @@
         "curie": "UBERON:0000949",
         "hasLocalDefinition": true,
         "label": "endocrine system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5148,7 +5148,7 @@
         "curie": "UBERON:0001007",
         "hasLocalDefinition": true,
         "label": "digestive system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5158,7 +5158,7 @@
         "curie": "UBERON:0001638",
         "hasLocalDefinition": true,
         "label": "vein",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5168,7 +5168,7 @@
         "curie": "UBERON:0001981",
         "hasLocalDefinition": true,
         "label": "blood vessel",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5178,7 +5178,7 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5188,7 +5188,7 @@
         "curie": "UBERON:0002107",
         "hasLocalDefinition": true,
         "label": "liver",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5198,7 +5198,7 @@
         "curie": "UBERON:0002368",
         "hasLocalDefinition": true,
         "label": "endocrine gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5208,7 +5208,7 @@
         "curie": "UBERON:0002423",
         "hasLocalDefinition": true,
         "label": "hepatobiliary system",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5218,7 +5218,7 @@
         "curie": "UBERON:0002530",
         "hasLocalDefinition": true,
         "label": "gland",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5228,7 +5228,7 @@
         "curie": "UBERON:0004647",
         "hasLocalDefinition": true,
         "label": "liver lobule",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5238,15 +5238,15 @@
         "curie": "UBERON:0013702",
         "hasLocalDefinition": true,
         "label": "body proper",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5352,7 +5352,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -5366,7 +5366,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -5377,7 +5377,7 @@
         "curie": "UBERON:0000468",
         "hasLocalDefinition": true,
         "label": "multicellular organism",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -5387,15 +5387,15 @@
         "curie": "UBERON:0002100",
         "hasLocalDefinition": true,
         "label": "trunk",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "8",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 8.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5445,8 +5445,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000001",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5475,8 +5475,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000002",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5505,8 +5505,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000003",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5535,8 +5535,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000007",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5565,8 +5565,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000008",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5595,8 +5595,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000009",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5625,8 +5625,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000010",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5655,8 +5655,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000012",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5685,8 +5685,8 @@
     "isPreferredRoot": false,
     "label": "UBPROP_0000202",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5715,8 +5715,8 @@
     "isPreferredRoot": false,
     "label": "date_retrieved",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5745,8 +5745,8 @@
     "isPreferredRoot": false,
     "label": "depicted_by",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5775,8 +5775,8 @@
     "isPreferredRoot": false,
     "label": "external_class",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5805,8 +5805,8 @@
     "isPreferredRoot": false,
     "label": "external_ontology",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5835,8 +5835,8 @@
     "isPreferredRoot": false,
     "label": "hasAlternativeId",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5865,8 +5865,8 @@
     "isPreferredRoot": false,
     "label": "hasBroadSynonym",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5895,8 +5895,8 @@
     "isPreferredRoot": false,
     "label": "hasDbXref",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5925,8 +5925,8 @@
     "isPreferredRoot": false,
     "label": "hasExactSynonym",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5955,8 +5955,8 @@
     "isPreferredRoot": false,
     "label": "hasOBONamespace",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -5985,8 +5985,8 @@
     "isPreferredRoot": false,
     "label": "hasRelatedSynonym",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6015,8 +6015,8 @@
     "isPreferredRoot": false,
     "label": "hasSynonymType",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6045,8 +6045,8 @@
     "isPreferredRoot": false,
     "label": "id",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6075,8 +6075,8 @@
     "isPreferredRoot": false,
     "label": "inSubset",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6105,8 +6105,8 @@
     "isPreferredRoot": false,
     "label": "notes",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6135,8 +6135,8 @@
     "isPreferredRoot": false,
     "label": "ontology",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6165,8 +6165,8 @@
     "isPreferredRoot": false,
     "label": "shorthand",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
@@ -6195,8 +6195,8 @@
     "isPreferredRoot": false,
     "label": "source",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-hierarchical-properties",
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",

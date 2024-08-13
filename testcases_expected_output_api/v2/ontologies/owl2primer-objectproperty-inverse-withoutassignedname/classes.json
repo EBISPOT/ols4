@@ -16,8 +16,8 @@
     "isPreferredRoot": false,
     "label": "Dead",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
     "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
@@ -58,7 +58,7 @@
         "curie": "Dead",
         "hasLocalDefinition": true,
         "label": "Dead",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -68,7 +68,7 @@
         "curie": "hasChild",
         "hasLocalDefinition": true,
         "label": "hasChild",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -76,8 +76,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
     "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",

@@ -16,8 +16,8 @@
     "isPreferredRoot": false,
     "label": "Dummy",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-enumeration-nesting-issue",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
     "ontologyPreferredPrefix": "owl2primer-datatype-enumeration-nesting-issue",
@@ -45,10 +45,10 @@
       "http://www.w3.org/2002/07/owl#equivalentClass": {
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
         "http://www.w3.org/2002/07/owl#oneOf": [
-          "1",
-          "2",
-          "3",
-          "4"
+          1.0,
+          2.0,
+          3.0,
+          4.0
         ],
         "isObsolete": false
       },
@@ -56,8 +56,8 @@
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#toddlerAge",
       "isObsolete": false,
       "label": "toddlerAge",
-      "numDirectDescendants": "0",
-      "numHierarchicalDescendants": "0",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "shortForm": "toddlerAge",
       "type": [
         "datatype"
@@ -70,8 +70,8 @@
     "isPreferredRoot": false,
     "label": "ageOfToddler",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-enumeration-nesting-issue",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
     "ontologyPreferredPrefix": "owl2primer-datatype-enumeration-nesting-issue",

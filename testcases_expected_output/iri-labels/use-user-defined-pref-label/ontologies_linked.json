@@ -34,18 +34,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -168,18 +158,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -250,7 +230,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -285,7 +265,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -309,7 +289,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -404,18 +384,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -481,12 +451,36 @@
             "xmpl"
           ],
           "linkedEntities": {
+            "http://exmpl.org/xmpl/Preferred_name": {
+              "definedBy": [
+                "xmpl"
+              ],
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "XMPL_Preferred_name"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "XMPL:Preferred_name"
+              },
+              "type": [
+                "property",
+                "annotationProperty",
+                "entity"
+              ]
+            },
             "XMPL:XMPL000002": {
               "iri": "http://exmpl.org/xmpl/XMPL000002",
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -521,7 +515,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -552,35 +546,11 @@
                 "entity"
               ]
             },
-            "http://exmpl.org/xmpl/Preferred_name": {
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": "1",
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL_Preferred_name"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:Preferred_name"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            },
             "http://exmpl.org/xmpl/Synonym": {
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -675,18 +645,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -757,7 +717,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -792,7 +752,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -827,7 +787,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -880,18 +840,8 @@
             ],
             "value": "XMPL_Preferred_name"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -930,7 +880,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -981,18 +931,8 @@
             ],
             "value": "XMPL_Synonym"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -1031,7 +971,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1060,7 +1000,7 @@
           "definedBy": [
             "xmpl"
           ],
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [
@@ -1084,7 +1024,7 @@
           "definedBy": [
             "xmpl"
           ],
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [

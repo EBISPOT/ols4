@@ -18,11 +18,11 @@
         "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
         "http://www.w3.org/2002/07/owl#withRestrictions": [
           {
-            "http://www.w3.org/2001/XMLSchema#maxInclusive": "19",
+            "http://www.w3.org/2001/XMLSchema#maxInclusive": 19.0,
             "isObsolete": false
           },
           {
-            "http://www.w3.org/2001/XMLSchema#minExclusive": "12",
+            "http://www.w3.org/2001/XMLSchema#minExclusive": 12.0,
             "isObsolete": false
           }
         ],
@@ -41,7 +41,7 @@
         "curie": "hasAge",
         "hasLocalDefinition": true,
         "label": "hasAge",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
           "entity",
@@ -49,8 +49,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf",
     "ontologyPreferredPrefix": "owl2primer-class-expression-based-on-datatype-restriction",
@@ -82,8 +82,8 @@
     "isPreferredRoot": false,
     "label": "hasAge",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf",
     "ontologyPreferredPrefix": "owl2primer-class-expression-based-on-datatype-restriction",

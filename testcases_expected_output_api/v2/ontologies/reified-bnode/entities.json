@@ -20,7 +20,7 @@
         "curie": "cell:part",
         "hasLocalDefinition": true,
         "label": "cell_part",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -30,7 +30,7 @@
         "curie": "part:of",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -38,8 +38,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "reified-bnode",
     "ontologyIri": "http://example.com/reified-bnode",
     "ontologyPreferredPrefix": "reified-bnode",
@@ -107,7 +107,7 @@
         "curie": "cell",
         "hasLocalDefinition": true,
         "label": "cell",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -117,7 +117,7 @@
         "curie": "part:of",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -125,8 +125,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "reified-bnode",
     "ontologyIri": "http://example.com/reified-bnode",
     "ontologyPreferredPrefix": "reified-bnode",
@@ -165,8 +165,8 @@
     "isPreferredRoot": false,
     "label": "part_of",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "reified-bnode",
     "ontologyIri": "http://example.com/reified-bnode",
     "ontologyPreferredPrefix": "reified-bnode",

@@ -25,11 +25,11 @@
               "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
               "http://www.w3.org/2002/07/owl#withRestrictions": [
                 {
-                  "http://www.w3.org/2001/XMLSchema#maxInclusive": "0",
+                  "http://www.w3.org/2001/XMLSchema#maxInclusive": 0.0,
                   "isObsolete": false
                 },
                 {
-                  "http://www.w3.org/2001/XMLSchema#minInclusive": "150",
+                  "http://www.w3.org/2001/XMLSchema#minInclusive": 150.0,
                   "isObsolete": false
                 }
               ],
@@ -39,8 +39,8 @@
             "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#personAge",
             "isObsolete": false,
             "label": "personAge",
-            "numDirectDescendants": "0",
-            "numHierarchicalDescendants": "0",
+            "numDescendants": 0.0,
+            "numHierarchicalDescendants": 0.0,
             "shortForm": "personAge",
             "type": [
               "datatype"
@@ -63,11 +63,11 @@
                     "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
                     "http://www.w3.org/2002/07/owl#withRestrictions": [
                       {
-                        "http://www.w3.org/2001/XMLSchema#maxInclusive": "0",
+                        "http://www.w3.org/2001/XMLSchema#maxInclusive": 0.0,
                         "isObsolete": false
                       },
                       {
-                        "http://www.w3.org/2001/XMLSchema#minInclusive": "150",
+                        "http://www.w3.org/2001/XMLSchema#minInclusive": 150.0,
                         "isObsolete": false
                       }
                     ],
@@ -77,8 +77,8 @@
                   "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#personAge",
                   "isObsolete": false,
                   "label": "personAge",
-                  "numDirectDescendants": "0",
-                  "numHierarchicalDescendants": "0",
+                  "numDescendants": 0.0,
+                  "numHierarchicalDescendants": 0.0,
                   "shortForm": "personAge",
                   "type": [
                     "datatype"
@@ -100,8 +100,8 @@
               "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#minorAge",
               "isObsolete": false,
               "label": "minorAge",
-              "numDirectDescendants": "0",
-              "numHierarchicalDescendants": "0",
+              "numDescendants": 0.0,
+              "numHierarchicalDescendants": 0.0,
               "shortForm": "minorAge",
               "type": [
                 "datatype"
@@ -116,8 +116,8 @@
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#majorAge",
       "isObsolete": false,
       "label": "majorAge",
-      "numDirectDescendants": "0",
-      "numHierarchicalDescendants": "0",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "shortForm": "majorAge",
       "type": [
         "datatype"
@@ -130,8 +130,8 @@
     "isPreferredRoot": false,
     "label": "ageOfAdult",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
     "ontologyPreferredPrefix": "owl2primer-datatype-exclusion-nesting-issue",

@@ -27,7 +27,7 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -37,15 +37,15 @@
         "curie": "Woman",
         "hasLocalDefinition": true,
         "label": "Woman",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-domain-range-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-domain-range-restriction",
@@ -73,8 +73,8 @@
     "isPreferredRoot": false,
     "label": "Person",
     "linkedEntities": {},
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-object-property-domain-range-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-domain-range-restriction",
@@ -112,15 +112,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-domain-range-restriction",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-domain-range-restriction",
