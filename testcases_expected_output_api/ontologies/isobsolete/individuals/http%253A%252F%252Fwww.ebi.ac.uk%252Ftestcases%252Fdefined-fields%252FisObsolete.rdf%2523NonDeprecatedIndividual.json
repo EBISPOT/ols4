@@ -1,0 +1,31 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "NonDeprecatedIndividual",
+  "ontology_name": "isobsolete",
+  "ontology_prefix": "IsObsolete",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "NonDeprecatedIndividual",
+  "obo_id": "NonDeprecatedIndividual",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/jstree"
+    }
+  }
+}

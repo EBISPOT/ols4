@@ -1,0 +1,81 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000020",
+  "lang": "en",
+  "description": [
+    "b is a specifically dependent continuant = Def. b is a continuant & there is some independent continuant c which is not a spatial region and which is such that b s-depends_on c at every time t during the course of b’s existence. (axiom label in BFO2 Reference: [050-003])"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "BFO CLIF specification label": [
+      "SpecificallyDependentContinuant"
+    ],
+    "BFO OWL specification label": [
+      "sdc"
+    ],
+    "editor note": [
+      "Specifically dependent continuant doesn't have a closure axiom because the subclasses don't necessarily exhaust all possibilites. We're not sure what else will develop here, but for example there are questions such as what are promises, obligation, etc."
+    ],
+    "example of usage": [
+      "Reciprocal specifically dependent continuants: the function of this key to open this lock and the mutually dependent disposition of this lock: to be opened by this key",
+      "of one-sided specifically dependent continuants: the mass of this tomato",
+      "of relational dependent continuants (multiple bearers): John’s love for Mary, the ownership relation between John and this statue, the relation of authority between John and his subordinates.",
+      "the disposition of this fish to decay",
+      "the function of this heart: to pump blood",
+      "the mutual dependence of proton donors and acceptors in chemical reactions [79",
+      "the mutual dependence of the role predator and the role prey as played by two organisms in a given interaction",
+      "the pink color of a medium rare piece of grilled filet mignon at its center",
+      "the role of being a doctor",
+      "the shape of this hole.",
+      "the smell of this portion of mozzarella"
+    ],
+    "has associated axiom(fol)": [
+      "(iff (SpecificallyDependentContinuant a) (and (Continuant a) (forall (t) (if (existsAt a t) (exists (b) (and (IndependentContinuant b) (not (SpatialRegion b)) (specificallyDependsOnAt a b t))))))) // axiom label in BFO2 CLIF: [050-003] "
+    ]
+  },
+  "label": "specifically dependent continuant",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "BFO_0000020",
+  "obo_id": "BFO:0000020",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000020/graph"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0001001",
+  "lang": "en",
+  "description": [
+    "a relation between two distinct material entities, the old entity and the new entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "derives_into"
+    ],
+    "editor note": [
+      "This is a very general relation. More specific relations are preferred when applicable, such as 'directly develops into'. To avoid making statements about a future that may not come to pass, it is often better to use the backward-looking 'derives from' rather than the forward-looking 'derives into'."
+    ],
+    "example of usage": [
+      "this parent cell derives into this cell (cell division)",
+      "this parent nucleus derives into this nucleus (nuclear division)"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ]
+  },
+  "label": "derives into",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0001001",
+  "obo_id": "RO:0001001",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001001?lang=en"
+    }
+  }
+}

@@ -1,0 +1,1159 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000001?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI branch derived",
+        "OBI_0000349"
+      ],
+      "editor preferred term": [
+        "conditional specification"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "PlanAndPlannedProcess Branch"
+      ]
+    },
+    "description": [
+      "A directive information entity that specifies what should happen if the trigger condition is fulfilled."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "conditional specification",
+    "lang": "en",
+    "obo_id": "IAO:0000001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000005?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "goal specification"
+      ],
+      "definition source": [
+        "OBI Plan and Planned Process/Roles Branch",
+        "OBI_0000217"
+      ],
+      "editor note": [
+        "2009-03-16: original definition when imported from OBI read: \"objective is an non realizable information entity which can serve as that  proper part of a plan towards which the realization of the plan is directed.\"",
+        "2014-03-31: In the example of usage (\"In the protocol of a ChIP assay the objective specification says to identify protein and DNA interaction\") there is a protocol which is the ChIP assay protocol. In addition to being concretized on paper, the protocol can be concretized as a realizable entity, such as a plan that inheres in a person. The objective specification is the part that says that some protein and DNA interactions are identified. This is a specification of a process endpoint: the boundary in the process before which they are not identified and after which they are. During the realization of the plan, the goal is to get to the point of having the interactions, and participants in the realization of the plan try to do that.",
+        "Answers the question, why did you do this experiment?"
+      ],
+      "editor preferred term": [
+        "objective specification"
+      ],
+      "example of usage": [
+        "In the protocol of a ChIP assay the objective specification says to identify protein and DNA interaction."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg",
+        "PERSON: Barry Smith",
+        "PERSON: Bjoern Peters",
+        "PERSON: Jennifer Fostel"
+      ]
+    },
+    "description": [
+      "A directive information entity that describes an intended process endpoint. When part of a plan specification the concretization is realized in a planned process in which the bearer tries to effect the world so that the process endpoint is achieved."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000005",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "objective specification",
+    "lang": "en",
+    "obo_id": "IAO:0000005",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000005",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000007?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI Plan and Planned Process branch"
+      ],
+      "example of usage": [
+        "Pour the contents of flask 1 into flask 2"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "term editor": [
+        "Alan Ruttenberg"
+      ]
+    },
+    "description": [
+      "A directive information entity that describes an action the bearer will take."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000007",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "action specification",
+    "lang": "en",
+    "obo_id": "IAO:0000007",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000007",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000010?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "GROUP: OBI"
+      ],
+      "editor note": [
+        "see sourceforge tracker discussion at http://sourceforge.net/tracker/index.php?func=detail&aid=1958818&group_id=177891&atid=886178"
+      ],
+      "editor preferred term": [
+        "software"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg",
+        "PERSON: Bjoern Peters",
+        "PERSON: Chris Stoeckert",
+        "PERSON: Melanie Courtot"
+      ]
+    },
+    "description": [
+      "Software is a plan specification composed of a series of instructions that can be \ninterpreted by or directly executed by a processing unit."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000010",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software",
+    "lang": "en",
+    "obo_id": "IAO:0000010",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000010",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000025?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000058",
+        "group:OBI"
+      ],
+      "editor preferred term": [
+        "programming language"
+      ],
+      "example of usage": [
+        "R, Perl, Java"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg",
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A language in which source code is written that is intended to be executed/run by a software interpreter. Programming languages are ways to write instructions that specify what to do, and sometimes, how to do it."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000025",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "programming language",
+    "lang": "en",
+    "obo_id": "IAO:0000025",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000025",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000034?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "time trigger"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000124"
+      ],
+      "term editor": [
+        "PlanAndPlannedProcess Branch"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000034",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "time trigger",
+    "lang": "en",
+    "obo_id": "IAO:0000034",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000034",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000055?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0500021",
+        "PRS"
+      ],
+      "editor note": [
+        "MSI"
+      ],
+      "editor preferred term": [
+        "rule"
+      ],
+      "example of usage": [
+        "example to be added"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PRS"
+      ]
+    },
+    "description": [
+      "A rule is an executable which guides, defines, restricts actions."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000055",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "rule",
+    "lang": "en",
+    "obo_id": "IAO:0000055",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000055",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000064?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000270",
+        "adapted from discussion on OBI list (Matthew Pocock, Christian Cocos, Alan Ruttenberg)"
+      ],
+      "editor preferred term": [
+        "algorithm"
+      ],
+      "example of usage": [
+        "PMID: 18378114.Genomics. 2008 Mar 28. LINKGEN: A new algorithm to process data in genetic linkage studies."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "Philippe Rocca-Serra",
+        "PlanAndPlannedProcess Branch"
+      ]
+    },
+    "description": [
+      "A plan specification which describes the inputs and output of mathematical functions as well as workflow of execution for achieving an predefined objective. Algorithms are realized usually by means of implementation as computer programs for execution by automata."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000064",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "algorithm",
+    "lang": "en",
+    "obo_id": "IAO:0000064",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000064",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000065?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000199",
+        "group:OBI"
+      ],
+      "editor note": [
+        "Do we care? Jennifer: Yes, there was a particular version of R that had a bug and it was fixed later. That would imply that we mean specific version of an interpreter. So an instance of this would be a particular version of the interpreter"
+      ],
+      "editor preferred term": [
+        "software interpreter"
+      ],
+      "example of usage": [
+        "R program, Perl interpreter, Java virtual machine"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg",
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A software interpreter is a software application that executes some specified input software."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000065",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software interpreter",
+    "lang": "en",
+    "obo_id": "IAO:0000065",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000065",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000096?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI_0000039",
+        "group:OBI"
+      ],
+      "editor preferred term": [
+        "source code module"
+      ],
+      "example of usage": [
+        "The written source code that implements part of an algorithm. Test - if you know that it was written in a specific language, then it can be source code module. We mean here, roughly, the wording of a document such as a perl script."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "person:Alan Ruttenberg",
+        "person:Chris Stoeckert"
+      ]
+    },
+    "description": [
+      "A source code module is a directive information entity that specifies, using a programming language, some algorithm."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000096",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "source code module",
+    "lang": "en",
+    "obo_id": "IAO:0000096",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000096",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000098?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI branch derived",
+        "OBI_0000187"
+      ],
+      "editor note": [
+        "2009-03-16: provenance: term imported from OBI_0000187, which had original definition \"A data format specification is a plan which organizes\ninformation. Example: The ISO document specifying what encompasses an\nXML document; The instructions in a XSD file\""
+      ],
+      "editor preferred term": [
+        "data format specification"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg",
+        "PlanAndPlannedProcess Branch"
+      ]
+    },
+    "description": [
+      "A data format specification is the information content borne by the document published defining the specification.\nExample: The ISO document specifying what encompasses an XML document; The instructions in a XSD file"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000098",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "data format specification",
+    "lang": "en",
+    "obo_id": "IAO:0000098",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000098",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/graph"
+      },
+      "has_part": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000104?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "OBI Plan and Planned Process branch",
+        "OBI_0000344"
+      ],
+      "editor note": [
+        "2009-03-16: provenance: a term a plan was proposed for OBI (OBI_0000344) , edited by the PlanAndPlannedProcess branch. Original definition was \" a plan is a specification of a process that is realized by an actor to achieve the objective specified as part of the plan\". It has been subsequently moved to IAO where the objective for which the original term was defined was satisfied with the definitionof this, different, term.",
+        "2014-03-31: A plan specification can have other parts, such as conditional specifications.",
+        "2022-01-16 Updated definition to that proposed by Clint Dowloand, IAO Issue 231.",
+        "Alternative previous definition: a plan is a set of instructions that specify how an objective should be achieved"
+      ],
+      "editor preferred term": [
+        "plan specification"
+      ],
+      "example of usage": [
+        "PMID: 18323827.Nat Med. 2008 Mar;14(3):226.New plan proposed to help resolve conflicting medical advice."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000122"
+      ],
+      "seeAlso": [
+        "https://github.com/information-artifact-ontology/IAO/issues/231#issuecomment-1010455131"
+      ],
+      "term editor": [
+        "Alan Ruttenberg",
+        "Clint Dowland"
+      ]
+    },
+    "description": [
+      "2/3/2009 Comment from OBI review.\n\nAction specification not well enough specified.\nConditional specification not well enough specified.\nQuestion whether all plan specifications have objective specifications.\n\nRequest that IAO either clarify these or change definitions not to use them",
+      "A directive information entity with action specifications and objective specifications as parts, and that may be concretized as a realizable entity that, if realized, is realized in a process in which the bearer tries to achieve the objectives by taking the actions specified."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000104",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "plan specification",
+    "lang": "en",
+    "obo_id": "IAO:0000104",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000104",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000591?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://github.com/information-artifact-ontology/IAO/issues/80"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Melanie Courtot",
+        "PERSON: Michel Dumontier"
+      ]
+    },
+    "description": [
+      "A software method (also called subroutine, subprogram, procedure, method, function, or routine) is software designed to execute a specific task."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000591",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software method",
+    "lang": "en",
+    "obo_id": "IAO:0000591",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000591",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000592?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://github.com/information-artifact-ontology/IAO/issues/80"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Melanei Courtot",
+        "PERSON: Michel Dumontier"
+      ]
+    },
+    "description": [
+      "A software module is software composed of a collection of software methods."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000592",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software module",
+    "lang": "en",
+    "obo_id": "IAO:0000592",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000592",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000593?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://github.com/information-artifact-ontology/IAO/issues/80"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Melanie Courtot",
+        "PERSON: Michel Dumontier"
+      ]
+    },
+    "description": [
+      "A software library is software composed of a collection of software modules and/or software methods in a form that can be statically or dynamically linked to some software application."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000593",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software library",
+    "lang": "en",
+    "obo_id": "IAO:0000593",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000593",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000594?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://github.com/information-artifact-ontology/IAO/issues/80"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Melanie Courtot",
+        "PERSON: Michel Dumontier"
+      ]
+    },
+    "description": [
+      "A software application is software that can be directly executed by some processing unit."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000594",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software application",
+    "lang": "en",
+    "obo_id": "IAO:0000594",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000594",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000595?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://github.com/information-artifact-ontology/IAO/issues/80"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000123"
+      ],
+      "term editor": [
+        "PERSON: Melanie Courtot",
+        "PERSON: Michel Dumontier"
+      ]
+    },
+    "description": [
+      "A software script is software whose instructions can be executed using a software interpreter."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000595",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "software script",
+    "lang": "en",
+    "obo_id": "IAO:0000595",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000595",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000647?lang=en"
+      }
+    },
+    "annotation": {
+      "term editor": [
+        "Mathias Brochhausen"
+      ]
+    },
+    "description": [
+      "A plan specification that if realized, is realized by the delivery of mail to some facility or mailbox within some geographical region."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000647",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Postal delivery route",
+    "lang": "en",
+    "obo_id": "IAO:0000647",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000647",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0500000?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "study design"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/obi.owl"
+      ]
+    },
+    "description": [
+      "A plan specification comprised of protocols (which may specify how and what kinds of data will be gathered) that are executed as part of an investigation and is realized during a study design execution."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OBI_0500000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "study design",
+    "lang": "en",
+    "obo_id": "OBI:0500000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OBI_0500000",
+    "synonyms": []
+  }
+]

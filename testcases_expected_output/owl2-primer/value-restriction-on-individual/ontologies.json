@@ -11,12 +11,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/value-restriction-on-individual.rdf",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -61,12 +56,7 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -100,30 +90,10 @@
             "value": "JohnsChildren"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#equivalentClass": {
@@ -132,19 +102,9 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent",
             "isObsolete": false
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -181,12 +141,7 @@
             ],
             "value": "owl2primer-value-restriction-on-individual"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -210,44 +165,14 @@
             "value": "hasParent"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -284,12 +209,7 @@
             ],
             "value": "owl2primer-value-restriction-on-individual"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -312,37 +232,12 @@
             "value": "John"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
           "label": {
             "type": [
@@ -380,12 +275,7 @@
             ],
             "value": "owl2primer-value-restriction-on-individual"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

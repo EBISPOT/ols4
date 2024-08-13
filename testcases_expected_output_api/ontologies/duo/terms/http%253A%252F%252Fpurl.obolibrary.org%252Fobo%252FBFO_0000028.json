@@ -1,0 +1,58 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000028",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "BFO CLIF specification label": [
+      "ThreeDimensionalSpatialRegion"
+    ],
+    "BFO OWL specification label": [
+      "3d-s-region"
+    ],
+    "elucidation": [
+      "A three-dimensional spatial region is a spatial region that is of three dimensions. (axiom label in BFO2 Reference: [040-001])"
+    ],
+    "example of usage": [
+      "a cube-shaped region of space",
+      "a sphere-shaped region of space,"
+    ],
+    "has associated axiom(fol)": [
+      "(forall (x) (if (ThreeDimensionalSpatialRegion x) (SpatialRegion x))) // axiom label in BFO2 CLIF: [040-001] "
+    ]
+  },
+  "label": "three-dimensional spatial region",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "BFO_0000028",
+  "obo_id": "BFO:0000028",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000028/graph"
+    }
+  }
+}

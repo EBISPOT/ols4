@@ -4,7 +4,7 @@ export interface LinkedEntity {
 	definedBy?:string[]
 	iri?:string
 	url?:string
-	numAppearsIn:string
+	numAppearsIn:number
 	hasLocalDefinition:boolean
 	label:string|string[]
 	type:string[]

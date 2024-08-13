@@ -1,0 +1,162 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000028?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "based on Oxford English Dictionary"
+      ],
+      "editor note": [
+        "20091104, MC: this needs work and will most probably change",
+        "2014-03-31: We would like to have a deeper analysis of 'mark' and 'sign' in the future (see https://github.com/information-artifact-ontology/IAO/issues/154)."
+      ],
+      "editor preferred term": [
+        "symbol"
+      ],
+      "example of usage": [
+        "a serial number such as \"12324X\"",
+        "a stop sign",
+        "a written proper name such as \"OBI\""
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "PERSON: James A. Overton",
+        "PERSON: Jonathan Rees"
+      ]
+    },
+    "description": [
+      "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000028",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "symbol",
+    "lang": "en",
+    "obo_id": "IAO:0000028",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000028",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/graph"
+      },
+      "has_part": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000578?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "CRID"
+      ],
+      "definition source": [
+        "Original proposal from Bjoern, discussions at IAO calls"
+      ],
+      "editor note": [
+        "2014-05-05: In defining this term we take no position on what the CRID denotes. In particular do not assume it denotes a *record* in the CRID registry (since the registry might not have 'records').",
+        "Alan, IAO call 20101124: potentially the CRID denotes the instance it was associated with during creation.",
+        "Note, IAO call 20101124: URIs are not always CRID, as not centrally registered. We acknowledge that CRID is a subset of a larger identifier class, but this subset fulfills our current needs. OBI PURLs are CRID as they are registered with OCLC. UPCs (Universal Product Codes from AC Nielsen)are not CRID as they are not centrally registered."
+      ],
+      "example of usage": [
+        "The sentence \"The article has Pubmed ID 12345.\" contains a CRID that has two parts: one part is the CRID symbol, which is '12345'; the other part denotes the CRID registry, which is Pubmed."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000120"
+      ],
+      "term editor": [
+        "PERSON: Alan Ruttenberg",
+        "PERSON: Bill Hogan",
+        "PERSON: Bjoern Peters",
+        "PERSON: Melanie Courtot"
+      ]
+    },
+    "description": [
+      "An information content entity that consists of a CRID symbol and additional information about the CRID registry to which it belongs."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000578",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "centrally registered identifier",
+    "lang": "en",
+    "obo_id": "IAO:0000578",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000578",
+    "synonyms": []
+  }
+]

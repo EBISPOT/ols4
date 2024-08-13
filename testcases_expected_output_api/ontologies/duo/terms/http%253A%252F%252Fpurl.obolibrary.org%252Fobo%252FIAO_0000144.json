@@ -1,0 +1,60 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000144",
+  "lang": "en",
+  "description": [
+    "A textual entity that expresses the results of reasoning about a problem, for instance as typically found towards the end of scientific papers."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "2009/09/28 Alan Ruttenberg. Fucoidan-use-case",
+      "2009/10/23 Alan Ruttenberg: We need to work on the definition still"
+    ],
+    "editor preferred term": [
+      "conclusion textual entity"
+    ],
+    "example of usage": [
+      "that fucoidan has a small statistically significant effect on AT3 level but no useful clinical effect as in-vivo anticoagulant, a paraphrase of part of the last paragraph of the discussion section of the paper 'Pilot clinical study to evaluate the anticoagulant activity of fucoidan', by Lowenthal et. al.PMID:19696660"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "Person:Alan Ruttenberg"
+    ]
+  },
+  "label": "conclusion textual entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000144",
+  "obo_id": "IAO:0000144",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000144/graph"
+    }
+  }
+}

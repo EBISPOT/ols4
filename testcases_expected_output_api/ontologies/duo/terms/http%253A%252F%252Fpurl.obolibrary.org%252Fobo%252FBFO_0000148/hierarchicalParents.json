@@ -1,0 +1,77 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000008?lang=en"
+      }
+    },
+    "annotation": {
+      "BFO CLIF specification label": [
+        "TemporalRegion"
+      ],
+      "BFO OWL specification label": [
+        "t-region"
+      ],
+      "editor note": [
+        "Temporal region doesn't have a closure axiom because the subclasses don't exhaust all possibilites. An example would be the mereological sum of a temporal instant and a temporal interval that doesn't overlap the instant. In this case the resultant temporal region is neither 0-dimensional nor 1-dimensional"
+      ],
+      "elucidation": [
+        "A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. (axiom label in BFO2 Reference: [100-001])"
+      ],
+      "has associated axiom(fol)": [
+        "(forall (r) (if (TemporalRegion r) (occupiesTemporalRegion r r))) // axiom label in BFO2 CLIF: [119-002] ",
+        "(forall (x y) (if (and (TemporalRegion x) (occurrentPartOf y x)) (TemporalRegion y))) // axiom label in BFO2 CLIF: [101-001] ",
+        "(forall (x) (if (TemporalRegion x) (Occurrent x))) // axiom label in BFO2 CLIF: [100-001] "
+      ],
+      "has associated axiom(nl)": [
+        "All parts of temporal regions are temporal regions. (axiom label in BFO2 Reference: [101-001])",
+        "Every temporal region t is such that t occupies_temporal_region t. (axiom label in BFO2 Reference: [119-002])"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000008",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "temporal region",
+    "lang": "en",
+    "obo_id": "BFO:0000008",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000008",
+    "synonyms": []
+  }
+]

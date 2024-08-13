@@ -1,0 +1,47 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002350",
+  "lang": "en",
+  "description": [
+    "is member of is a mereological relation between a item and a collection."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "is member of",
+      "member part of"
+    ],
+    "definition source": [
+      "SIO"
+    ],
+    "example of usage": [
+      "An organism that is a member of a population of organisms"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "member of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "RO_0002350",
+  "obo_id": "RO:0002350",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002350/jstree"
+    }
+  }
+}

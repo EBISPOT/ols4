@@ -1,0 +1,149 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of classes."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Class",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Class",
+    "lang": "en",
+    "obo_id": "Class",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Class",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Class?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of OWL classes."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2002/07/owl#Class",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Class",
+    "lang": "en",
+    "obo_id": "Class",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Class",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class resource, everything."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Resource",
+    "lang": "en",
+    "obo_id": "Resource",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Resource",
+    "synonyms": []
+  }
+]

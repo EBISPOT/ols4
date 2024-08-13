@@ -1,0 +1,33 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000066",
+  "lang": "en",
+  "description": [
+    "b occurs_in c =def b is a process and c is a material entity or immaterial entity& there exists a spatiotemporal region r and b occupies_spatiotemporal_region r.& forall(t) if b exists_at t then c exists_at t & there exist spatial regions s and s’ where & b spatially_projects_onto s at t& c is occupies_spatial_region s’ at t& s is a proper_continuant_part_of s’ at t"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "occurs_in",
+      "unfolds in",
+      "unfolds_in"
+    ],
+    "editor preferred term": [
+      "occurs in"
+    ]
+  },
+  "label": "occurs in",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "BFO_0000066",
+  "obo_id": "BFO:0000066",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000066?lang=en"
+    }
+  }
+}

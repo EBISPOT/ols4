@@ -167,12 +167,7 @@
         ],
         "value": "3.42.0"
       },
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -349,12 +344,7 @@
           ],
           "value": "Tomasz Adamusiak"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -400,30 +390,10 @@
             "value": "GO:0006807"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#label": {
@@ -432,19 +402,9 @@
             ],
             "value": "nitrogen compound metabolic process"
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -481,12 +441,7 @@
             ],
             "value": "efo-iri-labels"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -518,45 +473,15 @@
             "value": "GO:0008150"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -593,12 +518,7 @@
             ],
             "value": "efo-iri-labels"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -643,30 +563,10 @@
           },
           "directAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
           "directParent": "http://purl.obolibrary.org/obo/GO_0008150",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
           "hierarchicalParent": "http://purl.obolibrary.org/obo/GO_0008150",
           "hierarchicalProperty": {
@@ -689,19 +589,9 @@
             "value": "disease course"
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -762,12 +652,7 @@
               ],
               "value": "The totality of all processes through which a given disease instance is realized."
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -902,30 +787,10 @@
             "value": "EFO:0000400"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "hierarchicalProperty": {
             "type": [
@@ -951,19 +816,9 @@
             },
             "isObsolete": false
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -1017,12 +872,7 @@
               }
             ]
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -1134,30 +984,10 @@
             "value": "BFO:0000051"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#ObjectProperty",
             "http://www.w3.org/2002/07/owl#TransitiveProperty"
@@ -1176,19 +1006,9 @@
               "value": "has_part"
             }
           ],
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -1233,12 +1053,7 @@
             ],
             "value": "efo-iri-labels"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -1283,30 +1098,10 @@
             "value": "http://www.w3.org/2000/01/rdf-schema#comment"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#comment": {
             "type": [
@@ -1323,19 +1118,9 @@
             "value": "realized in",
             "lang": "en"
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -1374,12 +1159,7 @@
             ],
             "value": "efo-iri-labels"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

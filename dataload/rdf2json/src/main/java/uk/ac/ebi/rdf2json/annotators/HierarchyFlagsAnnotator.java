@@ -1,7 +1,9 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import uk.ac.ebi.rdf2json.OntologyNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
+import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
@@ -13,6 +15,8 @@ import java.util.Set;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class HierarchyFlagsAnnotator {
+
+    private static final Logger logger = LoggerFactory.getLogger(HierarchyFlagsAnnotator.class);
 
     public static void annotateHierarchyFlags(OntologyGraph graph) {
 
@@ -111,7 +115,7 @@ public class HierarchyFlagsAnnotator {
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate hierarchy flags: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate hierarchy flags: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
     }

@@ -1,0 +1,85 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004?lang=en"
+      }
+    },
+    "annotation": {
+      "BFO CLIF specification label": [
+        "IndependentContinuant"
+      ],
+      "BFO OWL specification label": [
+        "ic"
+      ],
+      "example of usage": [
+        "a chair",
+        "a heart",
+        "a leg",
+        "a molecule",
+        "a spatial region",
+        "an atom",
+        "an orchestra.",
+        "an organism",
+        "the bottom right portion of a human torso",
+        "the interior of your mouth"
+      ],
+      "has associated axiom(fol)": [
+        "(forall (x t) (if (IndependentContinuant x) (exists (r) (and (SpatialRegion r) (locatedInAt x r t))))) // axiom label in BFO2 CLIF: [134-001] ",
+        "(forall (x t) (if (and (IndependentContinuant x) (existsAt x t)) (exists (y) (and (Entity y) (specificallyDependsOnAt y x t))))) // axiom label in BFO2 CLIF: [018-002] ",
+        "(iff (IndependentContinuant a) (and (Continuant a) (not (exists (b t) (specificallyDependsOnAt a b t))))) // axiom label in BFO2 CLIF: [017-002] "
+      ],
+      "has associated axiom(nl)": [
+        "For any independent continuant b and any time t there is some spatial region r such that b is located_in r at t. (axiom label in BFO2 Reference: [134-001])",
+        "For every independent continuant b and time t during the region of time spanned by its life, there are entities which s-depends_on b during t. (axiom label in BFO2 Reference: [018-002])"
+      ]
+    },
+    "description": [
+      "b is an independent continuant = Def. b is a continuant which is such that there is no c and no t such that b s-depends_on c at t. (axiom label in BFO2 Reference: [017-002])"
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "independent continuant",
+    "lang": "en",
+    "obo_id": "BFO:0000004",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000004",
+    "synonyms": []
+  }
+]

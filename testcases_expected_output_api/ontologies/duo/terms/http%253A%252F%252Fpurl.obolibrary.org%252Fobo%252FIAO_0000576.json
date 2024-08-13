@@ -1,0 +1,50 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000576",
+  "lang": "en",
+  "description": [
+    "a planned process with the objective to establish a system that allows to refer to specific entities of a certain kind and store information about them, by establishing a CRID registry and plan specifications for the process of 1) assigning a CRID and 2) looking up a CRID."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "MC, 20101124: deprecated following discussion at IAO call 20101124. Term was deemed not necessary - no use case for now."
+    ],
+    "has obsolescence reason": [
+      "http://purl.obolibrary.org/obo/IAO_0000103"
+    ]
+  },
+  "label": "obsolete_establishing a CRID registry",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": true,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000576",
+  "obo_id": "IAO:0000576",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000576/graph"
+    }
+  }
+}

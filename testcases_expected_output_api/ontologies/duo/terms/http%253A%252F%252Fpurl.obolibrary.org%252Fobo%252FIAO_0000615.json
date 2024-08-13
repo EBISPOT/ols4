@@ -1,0 +1,66 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000615",
+  "lang": "en",
+  "description": [
+    "A part of a document used to summarize the findings discussed in the document. The conclusion section is typically found near the end of a document."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "concluding remarks",
+      "conclusion",
+      "conclusions",
+      "findings",
+      "summary"
+    ],
+    "editor preferred term": [
+      "conclusion section"
+    ],
+    "example of usage": [
+      "The section labelled 'conclusion' in a typical scientific journal article."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183"
+    ]
+  },
+  "label": "conclusion section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000615",
+  "obo_id": "IAO:0000615",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/graph"
+    },
+    "has_part": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000615/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+    }
+  }
+}

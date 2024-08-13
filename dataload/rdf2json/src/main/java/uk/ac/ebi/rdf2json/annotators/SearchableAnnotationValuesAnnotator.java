@@ -1,5 +1,7 @@
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
@@ -10,6 +12,7 @@ import java.util.List;
 import static uk.ac.ebi.rdf2json.properties.PropertyValue.Type.LITERAL;
 
 public class SearchableAnnotationValuesAnnotator {
+    private static final Logger logger = LoggerFactory.getLogger(SearchableAnnotationValuesAnnotator.class);
 
     // Roughly equivalent to "annotations_trimmed" in OLS3.
     //
@@ -56,6 +59,6 @@ public class SearchableAnnotationValuesAnnotator {
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate searchable annotation values: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate searchable annotation values: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 }

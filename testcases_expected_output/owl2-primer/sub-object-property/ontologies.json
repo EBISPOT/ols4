@@ -11,12 +11,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/sub-object-property.owl",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -61,12 +56,7 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -113,30 +103,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "hierarchicalProperty": {
@@ -148,19 +118,9 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -197,12 +157,7 @@
             ],
             "value": "owl2primer-sub-object-property"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -223,45 +178,15 @@
             "value": "Person"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -298,12 +223,7 @@
             ],
             "value": "owl2primer-sub-object-property"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -325,30 +245,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
           "hierarchicalProperty": {
@@ -359,19 +259,9 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -408,12 +298,7 @@
             ],
             "value": "owl2primer-sub-object-property"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -437,44 +322,14 @@
             "value": "hasSpouse"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -511,12 +366,7 @@
             ],
             "value": "owl2primer-sub-object-property"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -539,45 +389,15 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -614,12 +434,7 @@
             ],
             "value": "owl2primer-sub-object-property"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

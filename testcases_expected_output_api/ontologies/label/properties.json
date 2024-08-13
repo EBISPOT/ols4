@@ -1,0 +1,90 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523deProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#deProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "deProperty",
+    "lang": "en",
+    "obo_id": "deProperty",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "deProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523enProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "en label",
+    "lang": "en",
+    "obo_id": "enProperty",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "enProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLabelProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "noLabelProperty",
+    "lang": "en",
+    "obo_id": "noLabelProperty",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "noLabelProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523property?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#property",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "noLangProperty",
+    "lang": "en",
+    "obo_id": "property",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "label",
+    "ontology_prefix": "label",
+    "short_form": "property",
+    "synonyms": []
+  }
+]

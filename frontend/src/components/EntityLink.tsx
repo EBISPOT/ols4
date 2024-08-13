@@ -180,7 +180,7 @@ export default function EntityLink({
     } else {
       // Term is not defined in this ontology
 
-      if (parseInt(linkedEntity.numAppearsIn) > 0) {
+      if (linkedEntity.numAppearsIn > 0) {
         // Term appears in other ontologies
         // Show <label><ICON> linking to disambiguation page
         return (
@@ -202,7 +202,7 @@ export default function EntityLink({
                   style={{ verticalAlign: "text-top" }}
                 />
                 &nbsp;{linkedEntity.numAppearsIn}&nbsp;
-                {parseInt(linkedEntity.numAppearsIn) > 1
+                {linkedEntity.numAppearsIn > 1
                   ? "ontologies"
                   : "ontology"}
               </span>

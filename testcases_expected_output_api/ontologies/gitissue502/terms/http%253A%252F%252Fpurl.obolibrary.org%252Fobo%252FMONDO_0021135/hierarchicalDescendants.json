@@ -1,0 +1,62 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136?lang=en"
+      }
+    },
+    "annotation": {
+      "id": [
+        "MONDO:0021136"
+      ]
+    },
+    "description": [
+      "A disease or disorder is defined as rare in Europe when it affects fewer than 1 in 2000. A disease or disorder is defined as rare in the USA when it affects fewer than 200,000 persons at any given time. Here we take the European definition to be consistent with Orphanet."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0021136",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "rare",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease or disorder is defined as rare in Europe when it affects fewer than 1 in 2000. A disease or disorder is defined as rare in the USA when it affects fewer than 200,000 persons at any given time. Here we take the European definition to be consistent with Orphanet.",
+        "oboXrefs": [
+          {
+            "id": "https://www.rarediseaseday.org/article/what-is-a-rare-disease",
+            "url": "https://www.rarediseaseday.org/article/what-is-a-rare-disease"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0021136",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0021136",
+    "synonyms": [
+      "rare (European definition)"
+    ]
+  }
+]

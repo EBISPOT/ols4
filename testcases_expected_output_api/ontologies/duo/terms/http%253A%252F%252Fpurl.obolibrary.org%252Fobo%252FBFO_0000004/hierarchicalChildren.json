@@ -1,0 +1,158 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040?lang=en"
+      }
+    },
+    "annotation": {
+      "BFO CLIF specification label": [
+        "MaterialEntity"
+      ],
+      "BFO OWL specification label": [
+        "material"
+      ],
+      "editor note": [
+        "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
+        "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
+        "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
+      ],
+      "elucidation": [
+        "A material entity is an independent continuant that has some portion of matter as proper or improper continuant part. (axiom label in BFO2 Reference: [019-002])"
+      ],
+      "example of usage": [
+        "a flame",
+        "a forest fire",
+        "a human being",
+        "a hurricane",
+        "a photon",
+        "a puff of smoke",
+        "a sea wave",
+        "a tornado",
+        "an aggregate of human beings.",
+        "an energy wave",
+        "an epidemic",
+        "the undetached arm of a human being"
+      ],
+      "has associated axiom(fol)": [
+        "(forall (x) (if (MaterialEntity x) (IndependentContinuant x))) // axiom label in BFO2 CLIF: [019-002] ",
+        "(forall (x) (if (and (Entity x) (exists (y t) (and (MaterialEntity y) (continuantPartOfAt x y t)))) (MaterialEntity x))) // axiom label in BFO2 CLIF: [021-002] ",
+        "(forall (x) (if (and (Entity x) (exists (y t) (and (MaterialEntity y) (continuantPartOfAt y x t)))) (MaterialEntity x))) // axiom label in BFO2 CLIF: [020-002] "
+      ],
+      "has associated axiom(nl)": [
+        "Every entity which has a material entity as continuant part is a material entity. (axiom label in BFO2 Reference: [020-002])",
+        "every entity of which a material entity is continuant part is also a material entity. (axiom label in BFO2 Reference: [021-002])"
+      ]
+    },
+    "description": [
+      "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "material entity",
+    "lang": "en",
+    "obo_id": "BFO:0000040",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000040",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000141?lang=en"
+      }
+    },
+    "annotation": {
+      "BFO CLIF specification label": [
+        "ImmaterialEntity"
+      ],
+      "BFO OWL specification label": [
+        "immaterial"
+      ],
+      "editor note": [
+        "BFO 2 Reference: Immaterial entities are divided into two subgroups:boundaries and sites, which bound, or are demarcated in relation, to material entities, and which can thus change location, shape and size and as their material hosts move or change shape or size (for example: your nasal passage; the hold of a ship; the boundary of Wales (which moves with the rotation of the Earth) [38, 7, 10"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "immaterial entity",
+    "lang": "en",
+    "obo_id": "BFO:0000141",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000141",
+    "synonyms": []
+  }
+]

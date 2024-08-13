@@ -1,0 +1,77 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000315",
+  "lang": "en",
+  "description": [
+    "A summary of the entire document that is substantially smaller than the document it summarizes.  It is about the document it summarizes."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "precis"
+    ],
+    "editor preferred term": [
+      "abstract"
+    ],
+    "example of usage": [
+      "The profusion of high-throughput instruments and the explosion of new results in the scientific literature, particularly in molecular biomedicine, is both a blessing and a curse to the bench researcher.   Even knowledgeable and experienced scientists can benefit from computational tools that help navigate this vast and rapidly evolving terrain. In this paper, we describe a novel computational approach to this challenge, a knowledge-based system that combines reading, reasoning and reporting methods to facilitate analysis of experimental data. Reading methods extract information from external resources, either by parsing structured data or biomedical language processing to extract information from unstructured data, and track knowledge provenance.  Reasoning methods enrich the knowledge that results from reading by, for example, noting two genes that are annotated to the same ontology term or database entry.  Reasoning is also used to combine all sources into a knowledge network that represents the integration of all sorts of relationships between a pair of genes, and to calculate a combined reliability score. Reporting methods combine the knowledge network with a congruent network constructed from experimental data and visualize the combined network in a tool that facilitates the knowledge-based analysis of that data."
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "PERSON: Lawrence Hunter"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/234"
+    ]
+  },
+  "label": "abstract",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "IAO_0000315",
+  "obo_id": "IAO:0000315",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/graph"
+    },
+    "is_about": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000315/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136"
+    }
+  }
+}

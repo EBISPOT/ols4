@@ -1,0 +1,44 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MS_1003056",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "adduct ion property",
+  "ontology_name": "partof",
+  "ontology_prefix": "partof",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "MS_1003056",
+  "obo_id": "MS:1003056",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/graph"
+    },
+    "part_of": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1003056/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252Fms%2523part_of"
+    }
+  }
+}

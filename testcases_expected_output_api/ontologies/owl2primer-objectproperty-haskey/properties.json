@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523businessAddress?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "businessAddress",
+    "lang": "en",
+    "obo_id": "businessAddress",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontology_name": "owl2primer-objectproperty-haskey",
+    "ontology_prefix": "owl2primer-objectProperty-hasKey",
+    "short_form": "businessAddress",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-hasKey.owl%2523hasSSN?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#hasSSN",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasSSN",
+    "lang": "en",
+    "obo_id": "hasSSN",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontology_name": "owl2primer-objectproperty-haskey",
+    "ontology_prefix": "owl2primer-objectProperty-hasKey",
+    "short_form": "hasSSN",
+    "synonyms": []
+  }
+]

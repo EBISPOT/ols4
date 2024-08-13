@@ -34,6 +34,14 @@ public class PropertyValueAncestors extends PropertyValue {
                 && ((PropertyValueAncestors) other).node.equals(node)
                 && ((PropertyValueAncestors) other).hierarchyPredicate.equals(hierarchyPredicate);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValueAncestors{" +
+                "node=" + node +
+                ", hierarchyPredicate='" + hierarchyPredicate + '\'' +
+                '}';
+    }
 }
 
 

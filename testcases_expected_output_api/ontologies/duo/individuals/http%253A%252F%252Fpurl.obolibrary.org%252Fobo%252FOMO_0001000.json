@@ -1,0 +1,46 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/OMO_0001000",
+  "lang": "en",
+  "description": [
+    "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease."
+    ],
+    "ontology term requester": [
+      "https://orcid.org/0000-0001-5208-3432"
+    ],
+    "term editor": [
+      "http://orcid.org/0000-0001-5208-3432"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/ontology-metadata/issues/77"
+    ]
+  },
+  "label": "out of scope",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "OMO_0001000",
+  "obo_id": "OMO:0001000",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001000?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001000/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001000/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001000/jstree"
+    }
+  }
+}

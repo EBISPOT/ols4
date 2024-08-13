@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000122",
+  "lang": "en",
+  "description": [
+    "Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking \"ready_for_release\" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release.  Those classes deemed \"ready_for_release\" will also derived from a chain of ancestor classes that are also \"ready_for_release.\""
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "ready for release"
+    ]
+  },
+  "label": "ready for release",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000122",
+  "obo_id": "IAO:0000122",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000122?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000122/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000122/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000122/jstree"
+    }
+  }
+}

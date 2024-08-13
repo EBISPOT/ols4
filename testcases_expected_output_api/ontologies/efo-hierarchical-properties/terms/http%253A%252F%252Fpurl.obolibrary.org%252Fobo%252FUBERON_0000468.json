@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "multicellular organism",
+  "ontology_name": "efo-hierarchical-properties",
+  "ontology_prefix": "efo-hierarchical-properties",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "UBERON_0000468",
+  "obo_id": "UBERON:0000468",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/graph"
+    }
+  }
+}

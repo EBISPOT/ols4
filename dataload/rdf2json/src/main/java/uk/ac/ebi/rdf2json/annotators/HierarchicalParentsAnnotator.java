@@ -1,8 +1,13 @@
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.*;
+import uk.ac.ebi.rdf2json.properties.PropertySet;
+import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueRelated;
+import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
 import java.util.Collection;
 import java.util.List;
@@ -10,6 +15,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class HierarchicalParentsAnnotator {
+    private static final Logger logger = LoggerFactory.getLogger(HierarchicalParentsAnnotator.class);
 
     public static Set<String> getHierarchicalProperties(OntologyGraph graph) {
 
@@ -110,7 +116,7 @@ public class HierarchicalParentsAnnotator {
             }
         }
         long endTime3 = System.nanoTime();
-        System.out.println("annotate hierarchical parents: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate hierarchical parents: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 
 

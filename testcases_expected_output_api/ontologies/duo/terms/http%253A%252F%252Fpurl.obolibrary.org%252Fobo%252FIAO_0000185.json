@@ -1,0 +1,55 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000185",
+  "lang": "en",
+  "description": [
+    "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "WEB: http://en.wiktionary.org/wiki/photograph"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "term editor": [
+      "PERSON:Alan Ruttenberg",
+      "PERSON:Joanne Luciano",
+      "PERSON:Melanie Courtot"
+    ]
+  },
+  "label": "photograph",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000185",
+  "obo_id": "IAO:0000185",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000185/graph"
+    }
+  }
+}

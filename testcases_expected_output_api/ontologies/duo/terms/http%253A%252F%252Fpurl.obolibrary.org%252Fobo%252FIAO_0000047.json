@@ -1,0 +1,64 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000047",
+  "lang": "en",
+  "description": [
+    "A text based digital entity is a digital entity that is encoded so that it only contains text characters."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "OBI_0000132",
+      "group:OBI"
+    ],
+    "editor note": [
+      "3/22/2009 Alan Ruttenberg, obsoleted per http://groups.google.com/group/information-ontology/browse_thread/thread/789ad4b7708d5cf4\nsuperclass was 'digital document'",
+      "digital_entity"
+    ],
+    "editor preferred term": [
+      "text based digital entity"
+    ],
+    "example of usage": [
+      "XML file, C++ source code file"
+    ],
+    "has obsolescence reason": [
+      "http://purl.obolibrary.org/obo/IAO_0000103"
+    ],
+    "term editor": [
+      "person:Chris Stoeckert"
+    ]
+  },
+  "label": "obsolete2_text based digital entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": true,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000047",
+  "obo_id": "IAO:0000047",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000047/graph"
+    }
+  }
+}

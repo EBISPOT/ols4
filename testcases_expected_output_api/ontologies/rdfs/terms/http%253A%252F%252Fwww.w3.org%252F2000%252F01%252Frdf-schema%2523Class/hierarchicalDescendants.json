@@ -1,0 +1,44 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Datatype?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of RDF datatypes."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Datatype",
+    "lang": "en",
+    "obo_id": "Datatype",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "Datatype",
+    "synonyms": []
+  }
+]

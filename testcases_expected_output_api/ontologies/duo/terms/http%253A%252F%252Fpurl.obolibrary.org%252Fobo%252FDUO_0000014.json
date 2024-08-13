@@ -1,0 +1,51 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/DUO_0000014",
+  "lang": "en",
+  "description": [
+    "This data use limitation indicates that use is limited to research purposes (e.g., does not include its use in clinical care).",
+    "Deprecated as GRU-CC was split into GRU and CC, so this is not applicable anymore as a qualifier of GRU-CC"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "id": [
+      "DUO:0000014"
+    ],
+    "shorthand": [
+      "RU"
+    ]
+  },
+  "label": "obsolete research use only",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": true,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "DUO_0000014",
+  "obo_id": "DUO:0000014",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000014/graph"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000311",
+  "lang": "en",
+  "description": [
+    "A document that is the output of a publishing process.",
+    "Revisit the term in Octorber 2020. Improve the defintion."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "published document"
+    ],
+    "editor preferred term": [
+      "publication"
+    ],
+    "example of usage": [
+      "journal article, newspaper story, book, etc."
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "term editor": [
+      "PERSON: Chris Stoeckert",
+      "PERSON: Jie Zheng",
+      "PERSON: Lawrence Hunter"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/232"
+    ]
+  },
+  "label": "publication",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "IAO_0000311",
+  "obo_id": "IAO:0000311",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000311/graph"
+    }
+  }
+}

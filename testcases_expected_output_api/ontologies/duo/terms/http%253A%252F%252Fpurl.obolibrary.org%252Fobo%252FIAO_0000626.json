@@ -1,0 +1,56 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000626",
+  "lang": "en",
+  "description": [
+    "A textual entity expressing ideas regarding future work relevant to work described in a document that could be done."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "future directions textual entity"
+    ],
+    "example of usage": [
+      "Excerpt from Wang and Li. Acta Pharmacol Sin. 2016 Jan; 37(1): 25–33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722976/):\n\nIn the future, several questions will need to be resolved regarding the physiological assembly of KCNQ channels and their functional implications in complex neural circuits. First, we still lack sufficiently selective inhibitors and activators among the KCNQ family members."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183"
+    ]
+  },
+  "label": "future directions textual entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000626",
+  "obo_id": "IAO:0000626",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000626/graph"
+    }
+  }
+}

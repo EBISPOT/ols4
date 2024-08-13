@@ -13,12 +13,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-domain-range-restriction.owl",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -63,12 +58,7 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -115,30 +105,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "hierarchicalProperty": {
@@ -150,19 +120,9 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -199,12 +159,7 @@
             ],
             "value": "owl2primer-object-property-domain-range-restriction"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -271,45 +226,15 @@
             "value": "Person"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -346,12 +271,7 @@
             ],
             "value": "owl2primer-object-property-domain-range-restriction"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -378,30 +298,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "hierarchicalProperty": {
@@ -412,19 +312,9 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -461,12 +351,7 @@
             ],
             "value": "owl2primer-object-property-domain-range-restriction"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -516,46 +401,16 @@
             "value": "hasWife"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -592,12 +447,7 @@
             ],
             "value": "owl2primer-object-property-domain-range-restriction"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

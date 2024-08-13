@@ -1,0 +1,117 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/mesh/D044343",
+        "http://identifiers.org/snomedct/302872003",
+        "http://linkedlifedata.com/resource/umls/id/C1257763",
+        "http://purl.obolibrary.org/obo/DOID_654"
+      ],
+      "hasDbXref": [
+        "DOID:654",
+        "ICD9:278.8",
+        "MESH:D044343",
+        "SCTID:302872003",
+        "UMLS:C1257763"
+      ],
+      "id": [
+        "MONDO:0003916"
+      ]
+    },
+    "description": [
+      "An imbalanced nutritional status resulting from excessive intake of nutrients. Generally, overnutrition generates an energy imbalance between food consumption and energy expenditure leading to disorders such as obesity."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0003916",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "overnutrition",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "An imbalanced nutritional status resulting from excessive intake of nutrients. Generally, overnutrition generates an energy imbalance between food consumption and energy expenditure leading to disorders such as obesity.",
+        "oboXrefs": [
+          {
+            "database": "MESH",
+            "id": "D044343",
+            "url": "http://id.nlm.nih.gov/mesh/D044343"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0003916",
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "654",
+        "url": "http://purl.obolibrary.org/obo/DOID_654"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "278.8"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D044343",
+        "url": "http://id.nlm.nih.gov/mesh/D044343"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "302872003",
+        "url": "http://snomed.info/id/302872003"
+      },
+      {
+        "database": "UMLS",
+        "description": "MONDO:equivalentTo",
+        "id": "C1257763",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C1257763"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0003916",
+    "synonyms": []
+  }
+]

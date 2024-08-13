@@ -1,0 +1,286 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0005071",
+  "lang": "en",
+  "description": [
+    "A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.",
+    "'psychiatric disorder' is not classified as a 'nervous system disorder' in Mondo (though it is often as such): the hallmarks of psychiatric disorders are based in behavior and emotional state, and the relation with nervous system malfunction or damage is not always clearly determined."
+  ],
+  "synonyms": [
+    "disease of nervous system",
+    "disease or disorder of nervous system",
+    "disorder of nervous system",
+    "nervous system disease",
+    "nervous system disease or disorder",
+    "nervous system disorder",
+    "neurologic disease",
+    "neurologic disorder",
+    "neurological disease",
+    "neurological disorder"
+  ],
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D009422",
+      "http://identifiers.org/snomedct/118940003",
+      "http://linkedlifedata.com/resource/umls/id/C0027765",
+      "http://purl.bioontology.org/ontology/ICD10CM/G00-G99",
+      "http://purl.obolibrary.org/obo/DOID_863",
+      "http://purl.obolibrary.org/obo/NCIT_C26835"
+    ],
+    "hasDbXref": [
+      "DOID:863",
+      "EFO:0000618",
+      "ICD10CM:G00-G99",
+      "ICD9:349.89",
+      "ICD9:349.9",
+      "MESH:D009422",
+      "NCIT:C26835",
+      "SCTID:118940003",
+      "UMLS:C0027765",
+      "Wikipedia:Nervous_system_disease"
+    ],
+    "id": [
+      "MONDO:0005071"
+    ]
+  },
+  "label": "nervous system disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0005071",
+  "obo_id": "MONDO:0005071",
+  "in_subset": [
+    "rare_grouping"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26835",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "863",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_863"
+    },
+    {
+      "database": "EFO",
+      "id": "0000618",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0000618"
+    },
+    {
+      "database": "ICD10CM",
+      "id": "G00-G99",
+      "description": "https://orcid.org/0000-0002-4142-7153"
+    },
+    {
+      "database": "ICD9",
+      "id": "349.89",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "ICD9",
+      "id": "349.9",
+      "description": "MONDO:i2s"
+    },
+    {
+      "database": "MESH",
+      "id": "D009422",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D009422"
+    },
+    {
+      "database": "NCIT",
+      "id": "C26835",
+      "description": "NCIT:C26835",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+    },
+    {
+      "database": "SCTID",
+      "id": "118940003",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/118940003"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0027765",
+      "description": "NCIT:C26835",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0027765"
+    },
+    {
+      "database": "Wikipedia",
+      "id": "Nervous_system_disease",
+      "description": "EFO:0000618",
+      "url": "http://en.wikipedia.org/wiki/Nervous_system_disease"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "disease of nervous system",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        }
+      ]
+    },
+    {
+      "name": "disorder of nervous system",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location_top"
+        },
+        {
+          "database": "NCIT",
+          "id": "C26835",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+        }
+      ]
+    },
+    {
+      "name": "nervous system disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        }
+      ]
+    },
+    {
+      "name": "nervous system disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "design_pattern"
+        },
+        {
+          "database": "MONDO",
+          "id": "patterns/location"
+        }
+      ]
+    },
+    {
+      "name": "nervous system disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C26835",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+        }
+      ]
+    },
+    {
+      "name": "neurologic disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "863",
+          "url": "http://purl.obolibrary.org/obo/DOID_863"
+        }
+      ]
+    },
+    {
+      "name": "neurologic disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "863",
+          "url": "http://purl.obolibrary.org/obo/DOID_863"
+        },
+        {
+          "database": "ISBN-13",
+          "id": "978-1-259-64403-0"
+        },
+        {
+          "database": "NCIT",
+          "id": "C26835",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+        }
+      ]
+    },
+    {
+      "name": "neurological disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "863",
+          "url": "http://purl.obolibrary.org/obo/DOID_863"
+        }
+      ]
+    },
+    {
+      "name": "neurological disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "863",
+          "url": "http://purl.obolibrary.org/obo/DOID_863"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/graph"
+    },
+    "disease_has_location": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+    }
+  }
+}

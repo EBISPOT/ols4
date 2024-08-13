@@ -1,0 +1,29 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Thing/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Thing?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of OWL individuals."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#Thing",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Thing",
+    "lang": "en",
+    "obo_id": "Thing",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Thing",
+    "synonyms": []
+  }
+]

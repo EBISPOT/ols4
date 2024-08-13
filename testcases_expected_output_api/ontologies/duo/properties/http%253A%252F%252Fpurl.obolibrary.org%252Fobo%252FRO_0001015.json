@@ -1,0 +1,41 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0001015",
+  "lang": "en",
+  "description": [
+    "a relation between two independent continuants, the location and the target, in which the target is entirely within the location"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "location_of"
+    ],
+    "editor note": [
+      "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/"
+    ],
+    "editor preferred term": [
+      "is location of"
+    ],
+    "example of usage": [
+      "my head is the location of my brain",
+      "this cage is the location of this rat"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "location of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0001015",
+  "obo_id": "RO:0001015",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001015?lang=en"
+    }
+  }
+}

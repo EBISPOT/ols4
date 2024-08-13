@@ -1,0 +1,45 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000142",
+  "lang": "en",
+  "description": [
+    "An information artifact IA mentions an entity E exactly when it has a component/part that denotes E"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor note": [
+      "7/6/2009 Alan Ruttenberg. P4 RC1 munges our GCI so remove it for now: mentions some entity equivalentTo has_part some ('generically denotes' some entity)",
+      "7/6/2009 Alan Ruttenberg: Add this relation following conversation with Jonathan Rees that N&S GCI for is_about was too strong. Really it was simply sufficient. To effect this change we introduce this relation, which is subproperty of is_about, and have previous GCI use this relation \"mentions\" in it's (logical) definition"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000125"
+    ],
+    "term editor": [
+      "PERSON: Jonathan Rees",
+      "Person: Alan Ruttenberg"
+    ]
+  },
+  "label": "mentions",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000142",
+  "obo_id": "IAO:0000142",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000142/jstree"
+    }
+  }
+}

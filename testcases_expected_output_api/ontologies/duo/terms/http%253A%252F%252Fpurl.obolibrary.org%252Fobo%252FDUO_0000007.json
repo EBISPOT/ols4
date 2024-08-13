@@ -1,0 +1,54 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+  "lang": "en",
+  "description": [
+    "This data use permission indicates that use is allowed provided it is related to the specified disease.",
+    "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "id": [
+      "DUO:0000007"
+    ],
+    "shorthand": [
+      "DS"
+    ]
+  },
+  "label": "disease specific research",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "DUO_0000007",
+  "obo_id": "DUO:0000007",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/graph"
+    },
+    "is_restricted_to": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000007/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDUO_0000010"
+    }
+  }
+}

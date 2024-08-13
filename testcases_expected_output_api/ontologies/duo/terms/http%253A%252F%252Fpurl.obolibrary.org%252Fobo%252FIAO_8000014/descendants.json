@@ -1,0 +1,54 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_8000015?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "template generated ontology module"
+      ],
+      "seeAlso": [
+        "http://robot.obolibrary.org/template",
+        "https://doi.org/10.1186/s13326-017-0126-0",
+        "https://github.com/dosumis/dead_simple_owl_design_patterns/"
+      ]
+    },
+    "description": [
+      "An ontology module that is automatically generated from a template specification and fillers for slots in that template."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_8000015",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "template generated ontology module",
+    "lang": "en",
+    "obo_id": "IAO:8000015",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_8000015",
+    "synonyms": []
+  }
+]

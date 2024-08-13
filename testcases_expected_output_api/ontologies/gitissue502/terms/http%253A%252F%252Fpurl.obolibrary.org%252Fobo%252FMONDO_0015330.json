@@ -1,0 +1,100 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015330",
+  "lang": "en",
+  "description": [
+    "Reason of obsoletion: out of scope - MONDO:excludeGroupingClass. This is part of a large mass-obsoletion effort for ORDO terms."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/5114"
+    ],
+    "IAO_0006012": [
+      "2023-10-01"
+    ],
+    "has exact match": [
+      "http://linkedlifedata.com/resource/umls/id/CN199360",
+      "http://www.orpha.net/ORDO/Orphanet_139024"
+    ],
+    "hasDbXref": [
+      "GARD:19903",
+      "Orphanet:139024",
+      "UMLS:CN199360"
+    ],
+    "id": [
+      "MONDO:0015330"
+    ]
+  },
+  "label": "overgrowth/obesity syndrome",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0015330",
+  "obo_id": "MONDO:0015330",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "obsoletion_candidate",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "19903",
+      "url": "https://rarediseases.info.nih.gov/diseases/19903/index"
+    },
+    {
+      "database": "Orphanet",
+      "id": "139024",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=139024"
+    },
+    {
+      "database": "UMLS",
+      "id": "CN199360",
+      "description": "MONDO:equivalentTo"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015330/graph"
+    }
+  }
+}

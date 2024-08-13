@@ -1,0 +1,59 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000621",
+  "lang": "en",
+  "description": [
+    "A textual entity that documents the ethical approval of some study design."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "ethical approval textual entity"
+    ],
+    "example of usage": [
+      "From McLean et al. Br J Gen Pract. 2014 Jul; 64(624): e440–e447 (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4073730/):\n\nThe NHS National Research Ethics Service had previously approved the use of these anonymised data for research purposes and this analysis did not require independent review."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183"
+    ]
+  },
+  "label": "ethical approval textual entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000621",
+  "obo_id": "IAO:0000621",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/graph"
+    },
+    "is_about": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000621/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136"
+    }
+  }
+}

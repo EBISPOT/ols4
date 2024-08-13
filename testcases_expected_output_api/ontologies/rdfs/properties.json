@@ -1,0 +1,224 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The defininition of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "isDefinedBy",
+    "lang": "en",
+    "obo_id": "isDefinedBy",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "isDefinedBy",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "Further information about the subject resource."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "seeAlso",
+    "lang": "en",
+    "obo_id": "seeAlso",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "seeAlso",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523comment?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A description of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "comment",
+    "lang": "en",
+    "obo_id": "comment",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "comment",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523domain?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A domain of the subject property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#domain",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "domain",
+    "lang": "en",
+    "obo_id": "domain",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "domain",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A human-readable name for the subject."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#label",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "label",
+    "lang": "en",
+    "obo_id": "label",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "label",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523member?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A member of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#member",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "member",
+    "lang": "en",
+    "obo_id": "member",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "member",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523range?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A range of the subject property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#range",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "range",
+    "lang": "en",
+    "obo_id": "range",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "range",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subClassOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The subject is a subclass of a class."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subClassOf",
+    "lang": "en",
+    "obo_id": "subClassOf",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "subClassOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subPropertyOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The subject is a subproperty of a property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subPropertyOf",
+    "lang": "en",
+    "obo_id": "subPropertyOf",
+    "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "ontology_name": "rdfs",
+    "short_form": "subPropertyOf",
+    "synonyms": []
+  }
+]

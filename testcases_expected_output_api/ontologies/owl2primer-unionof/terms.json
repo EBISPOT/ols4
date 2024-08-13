@@ -1,0 +1,80 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Father/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Father?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Father",
+    "lang": "en",
+    "obo_id": "Father",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontology_name": "owl2primer-unionof",
+    "ontology_prefix": "owl2primer-unionOf",
+    "short_form": "Father",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Mother/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Mother?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Mother",
+    "lang": "en",
+    "obo_id": "Mother",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontology_name": "owl2primer-unionof",
+    "ontology_prefix": "owl2primer-unionOf",
+    "short_form": "Mother",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Parent/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FunionOf%2523Parent?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Parent",
+    "lang": "en",
+    "obo_id": "Parent",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontology_name": "owl2primer-unionof",
+    "ontology_prefix": "owl2primer-unionOf",
+    "short_form": "Parent",
+    "synonyms": []
+  }
+]

@@ -13,12 +13,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -63,12 +58,7 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -106,30 +96,10 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
           ],
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
@@ -143,19 +113,9 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -192,12 +152,7 @@
             ],
             "value": "owl2primer-subClassOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -264,45 +219,15 @@
             "value": "Person"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -339,12 +264,7 @@
             ],
             "value": "owl2primer-subClassOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -371,30 +291,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
           "hierarchicalProperty": {
@@ -405,19 +305,9 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -454,12 +344,7 @@
             ],
             "value": "owl2primer-subClassOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

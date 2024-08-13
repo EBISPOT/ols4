@@ -41,4 +41,13 @@ public class PropertyValueRelated extends PropertyValue {
 		&& ((PropertyValueRelated) other).property.equals(property)
 		&& ((PropertyValueRelated) other).filler.equals(filler);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValueRelated{" +
+                "classExpression=" + classExpression +
+                ", property='" + property + '\'' +
+                ", filler=" + filler +
+                '}';
+    }
 }

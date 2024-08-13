@@ -1,0 +1,261 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0019182",
+  "lang": "en",
+  "description": [],
+  "synonyms": [
+    "genetic obesity",
+    "genetic obesity (disease)",
+    "leanness, inherited, autosomal recessive",
+    "monogenic obesity",
+    "obesity, association with, Autosomal recessive",
+    "obesity, early-onset, susceptibility to, Autosomal recessive",
+    "obesity, late-onset, Autosomal recessive",
+    "obesity, mild, early-onset, Autosomal recessive",
+    "obesity, severe, Autosomal recessive",
+    "obesity, severe, and type II diabetes, Autosomal recessive",
+    "obesity, susceptibility to, Autosomal recessive"
+  ],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/4521"
+    ],
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml"
+    ],
+    "excluded_subClassOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0015960"
+    ],
+    "has exact match": [
+      "http://www.orpha.net/ORDO/Orphanet_77828",
+      "https://omim.org/entry/601665"
+    ],
+    "hasDbXref": [
+      "GARD:18935",
+      "OMIM:601665",
+      "Orphanet:77828"
+    ],
+    "id": [
+      "MONDO:0019182"
+    ]
+  },
+  "label": "inherited obesity",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0019182",
+  "obo_id": "MONDO:0019182",
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "18935",
+      "url": "https://rarediseases.info.nih.gov/diseases/18935/index"
+    },
+    {
+      "database": "OMIM",
+      "id": "601665",
+      "description": "MONDO:equivalentTo",
+      "url": "https://omim.org/entry/601665"
+    },
+    {
+      "database": "Orphanet",
+      "id": "77828",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "genetic obesity (disease)",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/genetic"
+        },
+        {
+          "database": "Orphanet",
+          "id": "77828",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=77828"
+        }
+      ]
+    },
+    {
+      "name": "leanness, inherited, autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, association with, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, early-onset, susceptibility to, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, late-onset, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, mild, early-onset, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, severe, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, severe, and type II diabetes, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    },
+    {
+      "name": "obesity, susceptibility to, Autosomal recessive",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        },
+        {
+          "database": "OMIM",
+          "id": "genemap2",
+          "url": "https://omim.org/entry/genemap2"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/graph"
+    },
+    "has_characteristic": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019182/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    }
+  }
+}

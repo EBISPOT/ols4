@@ -1,0 +1,42 @@
+{
+  "iri": "http://www.w3.org/2002/07/owl#Axiom",
+  "lang": "en",
+  "description": [
+    "The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Axiom",
+  "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "Axiom",
+  "obo_id": "Axiom",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/graph"
+    }
+  }
+}

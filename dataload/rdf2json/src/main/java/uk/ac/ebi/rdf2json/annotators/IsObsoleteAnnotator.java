@@ -1,15 +1,19 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import uk.ac.ebi.rdf2json.OntologyNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
+import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
-import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.List;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.IS_OBSOLETE;
+
 public class IsObsoleteAnnotator {
+	private static final Logger logger = LoggerFactory.getLogger(IsObsoleteAnnotator.class);
 
 	public static void annotateIsObsolete(OntologyGraph graph) {
 
@@ -32,7 +36,7 @@ public class IsObsoleteAnnotator {
 		}
 
 		long endTime3 = System.nanoTime();
-		System.out.println("annotate isObsolete: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+		logger.info("annotate isObsolete: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 	}
 
 	private static boolean isEntityObsolete(OntologyNode node) {

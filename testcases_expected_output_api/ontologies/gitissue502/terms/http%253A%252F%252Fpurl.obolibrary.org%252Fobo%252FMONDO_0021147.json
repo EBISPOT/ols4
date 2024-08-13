@@ -1,0 +1,93 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0021147",
+  "lang": "en",
+  "description": [
+    "Any disease or disorder that disrupts the process development of an anatomical structure. Can be due to genetic or environmental causes. Typically happens during embryogenesis, but also includes post-embryonic development."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/specific_disease_by_disrupted_process.yaml"
+    ],
+    "has exact match": [
+      "http://purl.bioontology.org/ontology/ICD10CM/Q00-Q99"
+    ],
+    "hasDbXref": [
+      "ICD10CM:Q00-Q99"
+    ],
+    "id": [
+      "MONDO:0021147"
+    ]
+  },
+  "label": "disorder of development or morphogenesis",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0021147",
+  "obo_id": "MONDO:0021147",
+  "in_subset": [
+    "harrisons_view",
+    "rare_grouping"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "Any disease or disorder that disrupts the process development of an anatomical structure. Can be due to genetic or environmental causes. Typically happens during embryogenesis, but also includes post-embryonic development.",
+      "oboXrefs": [
+        {
+          "database": "MONDO",
+          "id": "cjm"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "ICD10CM",
+      "id": "Q00-Q99",
+      "description": "https://orcid.org/0000-0002-4142-7153"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/graph"
+    },
+    "disease_causes_disruption_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024"
+    }
+  }
+}

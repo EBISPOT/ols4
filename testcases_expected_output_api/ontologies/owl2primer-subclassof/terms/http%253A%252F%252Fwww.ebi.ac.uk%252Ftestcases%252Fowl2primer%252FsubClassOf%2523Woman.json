@@ -1,0 +1,53 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Woman",
+  "ontology_name": "owl2primer-subclassof",
+  "ontology_prefix": "owl2primer-subClassOf",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "Woman",
+  "obo_id": "Woman",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf%2523Woman/graph"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000642",
+  "lang": "en",
+  "description": [
+    "A textual entity that expresses the requirements necessary to use a resource, e.g. software."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "requirements textual entity"
+    ],
+    "example of usage": [
+      "From Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/):\n\n• Operating systems: Platform independent\n\n• Programming language: Matlab, R, Python\n\n• Other requirements: None\n\n• License: GNU GPL v3\n\n• Any restrictions to use by non-academics: None"
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183"
+    ]
+  },
+  "label": "requirements textual entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000642",
+  "obo_id": "IAO:0000642",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000642/graph"
+    }
+  }
+}

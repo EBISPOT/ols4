@@ -1,0 +1,259 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001?lang=en"
+      }
+    },
+    "annotation": {
+      "has exact match": [
+        "http://identifiers.org/mesh/D004194",
+        "http://identifiers.org/snomedct/64572001",
+        "http://linkedlifedata.com/resource/umls/id/C0012634",
+        "http://purl.obolibrary.org/obo/DOID_4",
+        "http://purl.obolibrary.org/obo/NCIT_C2991",
+        "http://www.orpha.net/ORDO/Orphanet_377788"
+      ],
+      "hasDbXref": [
+        "DOID:4",
+        "EFO:0000408",
+        "ICD9:799.9",
+        "MESH:D004194",
+        "NCIT:C2991",
+        "OGMS:0000031",
+        "Orphanet:377788",
+        "SCTID:64572001",
+        "UMLS:C0012634"
+      ],
+      "id": [
+        "MONDO:0000001"
+      ]
+    },
+    "description": [
+      "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "disease",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.",
+        "oboXrefs": [
+          {
+            "database": "OGMS",
+            "id": "0000031",
+            "url": "http://purl.obolibrary.org/obo/OGMS_0000031"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0000001",
+    "obo_synonym": [
+      {
+        "name": "condition",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "disease or disorder, non-neoplastic",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "diseases and disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "diseases",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      },
+      {
+        "name": "other disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C2991",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "4",
+        "url": "http://purl.obolibrary.org/obo/DOID_4"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0000408",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000408"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "799.9"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D004194",
+        "url": "http://id.nlm.nih.gov/mesh/D004194"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C2991",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+      },
+      {
+        "database": "OGMS",
+        "description": "MONDO:equivalentTo",
+        "id": "0000031",
+        "url": "http://purl.obolibrary.org/obo/OGMS_0000031"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "377788",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=377788"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "64572001",
+        "url": "http://snomed.info/id/64572001"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C2991",
+        "id": "C0012634",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0012634"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0000001",
+    "synonyms": [
+      "condition",
+      "disease or disorder",
+      "disease or disorder, non-neoplastic",
+      "disease",
+      "diseases and disorders",
+      "diseases",
+      "disorder",
+      "disorders",
+      "medical condition",
+      "other disease"
+    ]
+  }
+]

@@ -26,12 +26,7 @@
       ],
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -76,12 +71,7 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -127,30 +117,10 @@
             "value": "XMPL:XMPL000001"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://exmpl.org/xmpl/Preferred_name": {
             "type": [
@@ -177,19 +147,9 @@
             "value": "XMPL000001",
             "lang": "en"
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -255,12 +215,7 @@
               "value": "label of the parent class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -390,30 +345,10 @@
           },
           "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "directParent": "http://exmpl.org/xmpl/XMPL000001",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalProperty": {
@@ -448,19 +383,9 @@
             "lang": "en"
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -526,12 +451,7 @@
               "value": "label of the first children class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -696,30 +616,10 @@
           },
           "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "directParent": "http://exmpl.org/xmpl/XMPL000001",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalProperty": {
@@ -754,19 +654,9 @@
             "lang": "en"
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -832,12 +722,7 @@
               "value": "label of the second children class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -980,45 +865,15 @@
             "value": "XMPL:Preferred_name"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -1055,12 +910,7 @@
             ],
             "value": "XMPL"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -1116,45 +966,15 @@
             "value": "XMPL:Synonym"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
@@ -1191,12 +1011,7 @@
             ],
             "value": "XMPL"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

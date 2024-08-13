@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
+  "lang": "en",
+  "description": [
+    "A phrase describing how a term should be used and/or a citation to a work which uses it. May also include other kinds of examples that facilitate immediate understanding, such as widely know prototypes or instances of a class, or cases where a relation is said to hold."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+    ],
+    "editor preferred term": [
+      "example of usage"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "term editor": [
+      "PERSON:Daniel Schober"
+    ]
+  },
+  "label": "example of usage",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000112",
+  "obo_id": "IAO:0000112",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000112?lang=en"
+    }
+  }
+}

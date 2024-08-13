@@ -1,12 +1,20 @@
 package uk.ac.ebi.rdf2json.annotators;
-import java.util.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class LabelAnnotator {
+
+    private static final Logger logger = LoggerFactory.getLogger(LabelAnnotator.class);
 
     public static Set<String> getLabelProperties(OntologyGraph graph) {
 
@@ -69,7 +77,8 @@ public class LabelAnnotator {
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("collate properties from " + sourceProps + " and fallback " + fallbackProps + " into " + destProp + ": " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("collate properties from {} and fallback {} into {} : {}",
+                sourceProps, fallbackProps, destProp, ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
     }

@@ -20,7 +20,10 @@ public enum DefinedFields {
     IS_OBSOLETE("isObsolete", "isObsolete",
                         "Set to true if this entity is obsolete, otherwise is set to false."),
     IS_PREFERRED_ROOT("isPreferredRoot", "is_preferred_root",
-            "Set to true if this entity is a preferred root or not.");
+            "Set to true if this entity is a preferred root or not."),
+    NUM_DESCENDANTS ("numDescendants", "", "Number of descendants of this entity."),
+    NUM_HIERARCHICAL_DESCENDANTS ("numHierarchicalDescendants", "",
+            "Number of hierarchical descendants of this entity."),;
 
     private final String text;
     private final String ols3Text;

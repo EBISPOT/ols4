@@ -1,0 +1,52 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPATO_0000125?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "mass"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/pato.owl"
+      ]
+    },
+    "description": [
+      "A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/PATO_0000125",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "mass",
+    "lang": "en",
+    "obo_id": "PATO:0000125",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "PATO_0000125",
+    "synonyms": []
+  }
+]

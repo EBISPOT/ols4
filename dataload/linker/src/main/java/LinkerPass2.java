@@ -350,7 +350,7 @@ public class LinkerPass2 {
 	}
 
 	jsonWriter.name("numAppearsIn");
-    jsonWriter.value(Integer.toString(definitions.definitions.size()));
+    jsonWriter.value(definitions.definitions.size());
 
 	jsonWriter.name(HAS_LOCAL_DEFINITION.getText());
 	jsonWriter.value(definitions.ontologyIdToDefinitions.containsKey(ontologyId));

@@ -1,0 +1,307 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0018555",
+  "lang": "en",
+  "description": [
+    "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis."
+  ],
+  "synonyms": [
+    "Normosmic idiopathic hypogonadotropic hypogonadism",
+    "central hypogonadism",
+    "gonadotropic deficiency",
+    "hypogonadism, hypogonadotropic",
+    "hypogonadotropic hypogonadism",
+    "hypogonadotropic hypogonadism with or without anosmia",
+    "low gonadotropins (secondary hypogonadism)",
+    "nIHH",
+    "normosmic congenital hypogonadotropic hypogonadism",
+    "secondary hypogonadism",
+    "congenital idiopathic hypogonadotropic hypogonadism",
+    "isolated congenital gonadotropin deficiency",
+    "hypogonadotropism",
+    "isolated hypogonadotropic hypogonadism"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/snomedct/33927004",
+      "http://linkedlifedata.com/resource/umls/id/CN235466",
+      "http://purl.obolibrary.org/obo/DOID_0090070",
+      "http://purl.obolibrary.org/obo/NCIT_C113347",
+      "http://www.orpha.net/ORDO/Orphanet_432",
+      "https://omim.org/phenotypicSeries/PS147950"
+    ],
+    "hasDbXref": [
+      "DOID:0090070",
+      "DOID:7455",
+      "GARD:16533",
+      "HP:0000044",
+      "ICD10CM:E23.0",
+      "ICD9:253.4",
+      "NCIT:C113347",
+      "OMIMPS:147950",
+      "Orphanet:432",
+      "SCTID:33927004",
+      "UMLS:CN235466"
+    ],
+    "id": [
+      "MONDO:0018555"
+    ],
+    "should_conform_to": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/OMIM_phenotypic_series.yaml"
+    ]
+  },
+  "label": "hypogonadotropic hypogonadism",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0018555",
+  "obo_id": "MONDO:0018555",
+  "in_subset": [
+    "gard_rare",
+    "nord_rare",
+    "ordo_disease",
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "C113347",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "0090070",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+    },
+    {
+      "database": "DOID",
+      "id": "7455",
+      "description": "MONDO:equivalentObsolete",
+      "url": "http://purl.obolibrary.org/obo/DOID_7455"
+    },
+    {
+      "database": "GARD",
+      "id": "16533",
+      "url": "https://rarediseases.info.nih.gov/diseases/16533/index"
+    },
+    {
+      "database": "HP",
+      "id": "0000044",
+      "description": "MONDO:otherHierarchy",
+      "url": "http://purl.obolibrary.org/obo/HP_0000044"
+    },
+    {
+      "database": "ICD10CM",
+      "id": "E23.0",
+      "description": "Orphanet:432/ntbt"
+    },
+    {
+      "database": "ICD9",
+      "id": "253.4",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "NCIT",
+      "id": "C113347",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+    },
+    {
+      "database": "OMIMPS",
+      "id": "147950",
+      "description": "MONDO:equivalentTo",
+      "url": "https://omim.org/MIM:PS147950"
+    },
+    {
+      "database": "Orphanet",
+      "id": "432",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+    },
+    {
+      "database": "SCTID",
+      "id": "33927004",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/33927004"
+    },
+    {
+      "database": "UMLS",
+      "id": "CN235466",
+      "description": "MONDO:equivalentTo"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "Normosmic idiopathic hypogonadotropic hypogonadism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "432",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+        }
+      ]
+    },
+    {
+      "name": "central hypogonadism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C113347",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+        }
+      ]
+    },
+    {
+      "name": "gonadotropic deficiency",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "432",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+        }
+      ]
+    },
+    {
+      "name": "hypogonadotropic hypogonadism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C113347",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+        }
+      ]
+    },
+    {
+      "name": "hypogonadotropic hypogonadism with or without anosmia",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "OMIMPS",
+          "id": "147950",
+          "url": "https://omim.org/MIM:PS147950"
+        }
+      ]
+    },
+    {
+      "name": "nIHH",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "432",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+        }
+      ]
+    },
+    {
+      "name": "normosmic congenital hypogonadotropic hypogonadism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "Orphanet",
+          "id": "432",
+          "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=432"
+        }
+      ]
+    },
+    {
+      "name": "secondary hypogonadism",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C113347",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+        }
+      ]
+    },
+    {
+      "name": "hypogonadotropism",
+      "scope": "hasRelatedSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "0004228",
+          "url": "http://purl.obolibrary.org/obo/MONDO_0004228"
+        }
+      ]
+    },
+    {
+      "name": "congenital idiopathic hypogonadotropic hypogonadism",
+      "scope": "hasNarrowSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "0090070",
+          "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+        }
+      ]
+    },
+    {
+      "name": "isolated congenital gonadotropin deficiency",
+      "scope": "hasNarrowSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "0090070",
+          "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/graph"
+    },
+    "disease_caused_by_disruption_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0018555/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021"
+    }
+  }
+}
