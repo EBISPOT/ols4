@@ -27,18 +27,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -131,18 +121,8 @@
             ],
             "value": "adduct ion"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -185,7 +165,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/ms#part_of": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -206,7 +186,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/MS_1003056": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -289,18 +269,8 @@
             ],
             "value": "adduct ion property"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -343,7 +313,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/ms#part_of": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -364,7 +334,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/MS_1000353": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -424,18 +394,8 @@
             ],
             "value": "abdomen"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -478,7 +438,7 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -504,7 +464,7 @@
               "curie": "UBERON:0000916"
             },
             "http://purl.obolibrary.org/obo/UBERON_0003684": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -582,18 +542,8 @@
             ],
             "value": "abdominal cavity"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -641,7 +591,7 @@
               "curie": "UBERON:0003684"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -661,7 +611,7 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -722,18 +672,8 @@
             ],
             "value": "part_of"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -802,18 +742,8 @@
             ],
             "value": "part_of"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -849,7 +779,7 @@
       "individuals": [],
       "linkedEntities": {
         "http://purl.obolibrary.org/obo/BFO_0000050": {
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [
@@ -870,7 +800,7 @@
           ]
         },
         "http://purl.obolibrary.org/obo/ms#part_of": {
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [
