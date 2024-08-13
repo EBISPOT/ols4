@@ -23,7 +23,7 @@
         "curie": "hasSSN",
         "hasLocalDefinition": true,
         "label": "hasSSN",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
           "entity",
@@ -31,8 +31,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-key-constraint-on-data-property",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#",
     "ontologyPreferredPrefix": "owl2primer-key-constraint-on-data-property",

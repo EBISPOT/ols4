@@ -16,8 +16,8 @@
       "http://www.w3.org/2002/07/owl#equivalentClass": {
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
         "http://www.w3.org/2002/07/owl#oneOf": [
-          "1",
-          "2"
+          1.0,
+          2.0
         ],
         "isObsolete": false
       },
@@ -25,8 +25,8 @@
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf#toddlerAge",
       "isObsolete": false,
       "label": "toddlerAge",
-      "numDirectDescendants": "0",
-      "numHierarchicalDescendants": "0",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "shortForm": "toddlerAge",
       "type": [
         "datatype"
@@ -39,8 +39,8 @@
     "isPreferredRoot": false,
     "label": "hasToddlerAge",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf",
     "ontologyPreferredPrefix": "owl2primer-user-defined-data-type-nesting-issue",

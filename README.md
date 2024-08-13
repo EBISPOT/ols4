@@ -422,13 +422,13 @@ Before doing API testing you must have completed the [dataload testing](#testing
 
 12. Run API tests against backend using: 
 
-       ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
+        ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
 
 13. The results of step 8 is written to `./apitester4.log`. Differences are written to the end of the file. When there are no
 differences, this file will end with these lines:
 
-       RecursiveJsonDiff.diff() reported success
-       apitester reported success; exit code 0
+        RecursiveJsonDiff.diff() reported success
+        apitester reported success; exit code 0
 
 14. Ensure that all differences listed in `./apitester4.log` are accounted for. Once you are happy with the output, remove 
 the old `testcases_expected_output_api` and replace with new expected output: 

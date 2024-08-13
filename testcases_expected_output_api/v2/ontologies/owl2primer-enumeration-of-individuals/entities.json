@@ -15,8 +15,8 @@
     "isObsolete": false,
     "label": "Bill",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-enumeration-of-individuals",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf",
     "ontologyPreferredPrefix": "owl2primer-enumeration-of-individuals",
@@ -43,8 +43,8 @@
     "isObsolete": false,
     "label": "John",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-enumeration-of-individuals",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf",
     "ontologyPreferredPrefix": "owl2primer-enumeration-of-individuals",
@@ -71,8 +71,8 @@
     "isObsolete": false,
     "label": "Mary",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-enumeration-of-individuals",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf",
     "ontologyPreferredPrefix": "owl2primer-enumeration-of-individuals",
@@ -112,7 +112,7 @@
         "curie": "Bill",
         "hasLocalDefinition": true,
         "label": "Bill",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -122,7 +122,7 @@
         "curie": "John",
         "hasLocalDefinition": true,
         "label": "John",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -132,15 +132,15 @@
         "curie": "Mary",
         "hasLocalDefinition": true,
         "label": "Mary",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-enumeration-of-individuals",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf",
     "ontologyPreferredPrefix": "owl2primer-enumeration-of-individuals",

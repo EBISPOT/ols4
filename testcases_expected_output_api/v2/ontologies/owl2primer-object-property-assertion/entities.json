@@ -25,7 +25,7 @@
         "curie": "Mary",
         "hasLocalDefinition": true,
         "label": "Mary",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -35,7 +35,7 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -45,7 +45,7 @@
         "curie": "hasWife",
         "hasLocalDefinition": true,
         "label": "hasWife",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -53,8 +53,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",
@@ -93,7 +93,7 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -103,15 +103,15 @@
         "curie": "Woman",
         "hasLocalDefinition": true,
         "label": "Woman",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",
@@ -147,15 +147,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",
@@ -184,8 +184,8 @@
     "isPreferredRoot": false,
     "label": "Person",
     "linkedEntities": {},
-    "numDirectDescendants": "4",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 4.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",
@@ -223,15 +223,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",
@@ -259,8 +259,8 @@
     "isPreferredRoot": false,
     "label": "hasWife",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-object-property-assertion",

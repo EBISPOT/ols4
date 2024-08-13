@@ -26,8 +26,8 @@
         "url": "http://purl.obolibrary.org/obo/BFO_0000050"
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
@@ -66,7 +66,7 @@
         "curie": "MS:1003056",
         "hasLocalDefinition": true,
         "label": "adduct ion property",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -76,7 +76,7 @@
         "curie": "part:of",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -84,8 +84,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
@@ -153,7 +153,7 @@
         "curie": "MS:1000353",
         "hasLocalDefinition": true,
         "label": "adduct ion",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -163,7 +163,7 @@
         "curie": "part:of",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -171,8 +171,8 @@
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
@@ -221,7 +221,7 @@
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -232,15 +232,15 @@
         "curie": "UBERON:0003684",
         "hasLocalDefinition": true,
         "label": "abdominal cavity",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "1",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 1.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
@@ -308,7 +308,7 @@
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
         "label": "part_of",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -319,15 +319,15 @@
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
         "label": "abdomen",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
@@ -369,8 +369,8 @@
     "isPreferredRoot": false,
     "label": "part_of",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",

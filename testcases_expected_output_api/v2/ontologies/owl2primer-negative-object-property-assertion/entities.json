@@ -19,7 +19,7 @@
         "curie": "Mary",
         "hasLocalDefinition": true,
         "label": "Mary",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "individual"
@@ -29,7 +29,7 @@
         "curie": "hasWife",
         "hasLocalDefinition": true,
         "label": "hasWife",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -38,8 +38,8 @@
       }
     },
     "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
@@ -78,7 +78,7 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -88,15 +88,15 @@
         "curie": "Woman",
         "hasLocalDefinition": true,
         "label": "Woman",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
@@ -123,8 +123,8 @@
     "isObsolete": false,
     "label": "Mary",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
@@ -152,8 +152,8 @@
     "isPreferredRoot": false,
     "label": "Person",
     "linkedEntities": {},
-    "numDirectDescendants": "2",
-    "numHierarchicalDescendants": "2",
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
@@ -191,15 +191,15 @@
         "curie": "Person",
         "hasLocalDefinition": true,
         "label": "Person",
-        "numAppearsIn": "1",
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       }
     },
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
@@ -227,8 +227,8 @@
     "isPreferredRoot": false,
     "label": "hasWife",
     "linkedEntities": {},
-    "numDirectDescendants": "0",
-    "numHierarchicalDescendants": "0",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
     "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
