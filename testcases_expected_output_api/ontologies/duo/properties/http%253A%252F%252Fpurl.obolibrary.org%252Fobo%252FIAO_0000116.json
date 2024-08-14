@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
+  "lang": "en",
+  "description": [
+    "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "GROUP:OBI:<http://purl.obofoundry.org/obo/obi>"
+    ],
+    "editor preferred term": [
+      "editor note"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ],
+    "term editor": [
+      "PERSON:Daniel Schober"
+    ]
+  },
+  "label": "editor note",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000116",
+  "obo_id": "IAO:0000116",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000116?lang=en"
+    }
+  }
+}

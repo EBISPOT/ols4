@@ -1,0 +1,145 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointclasses"
+    ],
+    "curie": "Man",
+    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Man",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person": {
+        "curie": "Person",
+        "hasLocalDefinition": true,
+        "label": "Person",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman": {
+        "curie": "Woman",
+        "hasLocalDefinition": true,
+        "label": "Woman",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointclasses",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
+    "searchableAnnotationValues": false,
+    "shortForm": "Man",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointclasses"
+    ],
+    "curie": "Person",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Person",
+    "linkedEntities": {},
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "owl2primer-alldisjointclasses",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
+    "searchableAnnotationValues": false,
+    "shortForm": "Person",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointclasses"
+    ],
+    "curie": "Woman",
+    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Woman",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man": {
+        "curie": "Man",
+        "hasLocalDefinition": true,
+        "label": "Man",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person": {
+        "curie": "Person",
+        "hasLocalDefinition": true,
+        "label": "Person",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointclasses",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointClasses",
+    "searchableAnnotationValues": false,
+    "shortForm": "Woman",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

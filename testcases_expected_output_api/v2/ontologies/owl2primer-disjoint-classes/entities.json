@@ -1,0 +1,84 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-disjoint-classes"
+    ],
+    "curie": "Man",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Man",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": {
+        "curie": "Woman",
+        "hasLocalDefinition": true,
+        "label": "Woman",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-disjoint-classes",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf",
+    "ontologyPreferredPrefix": "owl2primer-disjoint-classes",
+    "searchableAnnotationValues": false,
+    "shortForm": "Man",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-disjoint-classes"
+    ],
+    "curie": "Woman",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Woman",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man": {
+        "curie": "Man",
+        "hasLocalDefinition": true,
+        "label": "Man",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-disjoint-classes",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf",
+    "ontologyPreferredPrefix": "owl2primer-disjoint-classes",
+    "searchableAnnotationValues": false,
+    "shortForm": "Woman",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

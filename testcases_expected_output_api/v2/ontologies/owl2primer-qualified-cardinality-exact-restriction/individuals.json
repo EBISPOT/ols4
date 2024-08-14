@@ -1,0 +1,61 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-qualified-cardinality-exact-restriction"
+    ],
+    "curie": "john",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onClass": "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#Parent",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#hasChild",
+        "http://www.w3.org/2002/07/owl#qualifiedCardinality": "3",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#john",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "john",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#Parent": {
+        "curie": "Parent",
+        "hasLocalDefinition": true,
+        "label": "Parent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#hasChild": {
+        "curie": "hasChild",
+        "hasLocalDefinition": true,
+        "label": "hasChild",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf",
+    "ontologyPreferredPrefix": "owl2primer-qualified-cardinality-exact-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "john",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

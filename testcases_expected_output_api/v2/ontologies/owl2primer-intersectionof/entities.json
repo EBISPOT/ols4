@@ -1,0 +1,117 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-intersectionof"
+    ],
+    "curie": "Mother",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+        "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Mother",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent": {
+        "curie": "Parent",
+        "hasLocalDefinition": true,
+        "label": "Parent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman": {
+        "curie": "Woman",
+        "hasLocalDefinition": true,
+        "label": "Woman",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-intersectionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-intersectionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mother",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-intersectionof"
+    ],
+    "curie": "Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Parent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-intersectionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-intersectionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Parent",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-intersectionof"
+    ],
+    "curie": "Woman",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Woman",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-intersectionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-intersectionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Woman",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

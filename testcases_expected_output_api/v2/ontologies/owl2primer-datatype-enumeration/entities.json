@@ -1,0 +1,86 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-datatype-enumeration"
+    ],
+    "curie": "Dummy",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#Dummy",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Dummy",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-datatype-enumeration",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
+    "ontologyPreferredPrefix": "owl2primer-datatype-enumeration",
+    "searchableAnnotationValues": false,
+    "shortForm": "Dummy",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-datatype-enumeration"
+    ],
+    "curie": "ageOfToddler",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "toddlerAge",
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+      "http://www.w3.org/2002/07/owl#equivalentClass": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+        "http://www.w3.org/2002/07/owl#oneOf": [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "isObsolete": false
+      },
+      "imported": false,
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#toddlerAge",
+      "isObsolete": false,
+      "label": "toddlerAge",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
+      "shortForm": "toddlerAge",
+      "type": [
+        "datatype"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#ageOfToddler",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "ageOfToddler",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-datatype-enumeration",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
+    "ontologyPreferredPrefix": "owl2primer-datatype-enumeration",
+    "searchableAnnotationValues": false,
+    "shortForm": "ageOfToddler",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

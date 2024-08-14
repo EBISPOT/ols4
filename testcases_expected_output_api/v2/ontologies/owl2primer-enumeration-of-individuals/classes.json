@@ -1,0 +1,70 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-enumeration-of-individuals"
+    ],
+    "curie": "MyBirthdayGuests",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#oneOf": [
+        "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Bill",
+        "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John",
+        "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#MyBirthdayGuests",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "MyBirthdayGuests",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Bill": {
+        "curie": "Bill",
+        "hasLocalDefinition": true,
+        "label": "Bill",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John": {
+        "curie": "John",
+        "hasLocalDefinition": true,
+        "label": "John",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary": {
+        "curie": "Mary",
+        "hasLocalDefinition": true,
+        "label": "Mary",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-enumeration-of-individuals",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf",
+    "ontologyPreferredPrefix": "owl2primer-enumeration-of-individuals",
+    "searchableAnnotationValues": false,
+    "shortForm": "MyBirthdayGuests",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

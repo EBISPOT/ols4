@@ -1,0 +1,68 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000708?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "ORCID ID",
+        "ORCiD",
+        "Open Researcher and Contributor ID",
+        "Open Researcher and Contributor Identifier"
+      ],
+      "definition source": [
+        "https://orcid.org/"
+      ],
+      "editor note": [
+        "This class was originally defined in Apollo_SV (http://purl.obolibrary.org/obo/APOLLO_SV_00000496) but due to it being more in scope of IAO, it was decided to add it to IAO and deprecate its Apollo_SV equivalent. (2022-10-25)",
+        "\"You can connect your iD with your professional information — affiliations, grants, publications, peer review, and more. You can use your iD to share your information with other systems, ensuring you get recognition for all your contributions, saving you time and hassle, and reducing the risk of errors.\" [https://orcid.org/]"
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0002-1595-3213"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/259"
+      ]
+    },
+    "description": [
+      "A centrally registered identifier that is issued by ORCID (https://orcid.org/) and used to persistantly identify oneself as a human researcher or contributor."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000708",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "ORCID identifier",
+    "lang": "en",
+    "obo_id": "IAO:0000708",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000708",
+    "synonyms": []
+  }
+]

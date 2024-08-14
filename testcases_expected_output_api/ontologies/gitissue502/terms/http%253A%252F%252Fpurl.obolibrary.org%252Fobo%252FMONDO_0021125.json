@@ -1,0 +1,112 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0021125",
+  "lang": "en",
+  "description": [
+    "An attribute of a disease."
+  ],
+  "synonyms": [
+    "disease qualifier",
+    "modifier",
+    "qualifier"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://purl.obolibrary.org/obo/NCIT_C41009"
+    ],
+    "hasDbXref": [
+      "NCIT:C41009"
+    ],
+    "id": [
+      "MONDO:0021125"
+    ]
+  },
+  "label": "disease characteristic",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0021125",
+  "obo_id": "MONDO:0021125",
+  "obo_definition_citation": [
+    {
+      "definition": "An attribute of a disease.",
+      "oboXrefs": [
+        {
+          "database": "MONDO",
+          "id": "cjm"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "NCIT",
+      "id": "C41009",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C41009"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "modifier",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C41009",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C41009"
+        }
+      ]
+    },
+    {
+      "name": "qualifier",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C41009",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C41009"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021125/graph"
+    }
+  }
+}

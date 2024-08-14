@@ -1,0 +1,309 @@
+[
+  {
+    "appearsIn": [
+      "related-somevaluesof-fillernestedanonymousconjunction"
+    ],
+    "curie": "A",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
+          {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+                  "isObsolete": false
+                }
+              ]
+            },
+            "isObsolete": false
+          }
+        ]
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "A",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B": {
+        "curie": "B",
+        "hasLocalDefinition": true,
+        "label": "B",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C": {
+        "curie": "C",
+        "hasLocalDefinition": true,
+        "label": "C",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D": {
+        "curie": "D",
+        "hasLocalDefinition": true,
+        "label": "D",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p": {
+        "curie": "p",
+        "hasLocalDefinition": true,
+        "label": "p",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
+        "curie": "r",
+        "hasLocalDefinition": true,
+        "label": "r",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-fillernestedanonymousconjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerNestedAnonymousConjunction",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#intersectionOf": [
+              "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+              {
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+                "isObsolete": false
+              }
+            ]
+          },
+          "isObsolete": false
+        }
+      ],
+      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "A",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-fillernestedanonymousconjunction"
+    ],
+    "curie": "B",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "B",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A": {
+        "curie": "A",
+        "hasLocalDefinition": true,
+        "label": "A",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C": {
+        "curie": "C",
+        "hasLocalDefinition": true,
+        "label": "C",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D": {
+        "curie": "D",
+        "hasLocalDefinition": true,
+        "label": "D",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p": {
+        "curie": "p",
+        "hasLocalDefinition": true,
+        "label": "p",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
+        "curie": "r",
+        "hasLocalDefinition": true,
+        "label": "r",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-fillernestedanonymousconjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerNestedAnonymousConjunction",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#intersectionOf": [
+              "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+              {
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+                "isObsolete": false
+              }
+            ]
+          },
+          "isObsolete": false
+        }
+      ],
+      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "B",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-fillernestedanonymousconjunction"
+    ],
+    "curie": "C",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "C",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-fillernestedanonymousconjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerNestedAnonymousConjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "C",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-fillernestedanonymousconjunction"
+    ],
+    "curie": "D",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "D",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-fillernestedanonymousconjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerNestedAnonymousConjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "D",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

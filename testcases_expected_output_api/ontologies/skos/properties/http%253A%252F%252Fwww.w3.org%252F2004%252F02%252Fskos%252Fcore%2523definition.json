@@ -1,0 +1,34 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#definition",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "A statement or formal explanation of the meaning of a concept."
+    ]
+  },
+  "label": "definition",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "definition",
+  "obo_id": "definition",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523definition/jstree"
+    }
+  }
+}

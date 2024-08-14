@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MS_1000353",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "adduct ion",
+  "ontology_name": "partof",
+  "ontology_prefix": "partof",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "MS_1000353",
+  "obo_id": "MS:1000353",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000353/graph"
+    }
+  }
+}

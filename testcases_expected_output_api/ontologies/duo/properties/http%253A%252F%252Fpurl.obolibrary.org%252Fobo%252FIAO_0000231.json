@@ -1,0 +1,32 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000231",
+  "lang": "en",
+  "description": [
+    "Relates an annotation property to an obsolescence reason. The values of obsolescence reasons come from a list of predefined terms, instances of the class obsolescence reason specification."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "has obsolescence reason"
+    ],
+    "term editor": [
+      "PERSON:Alan Ruttenberg",
+      "PERSON:Melanie Courtot"
+    ]
+  },
+  "label": "has obsolescence reason",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000231",
+  "obo_id": "IAO:0000231",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000231?lang=en"
+    }
+  }
+}

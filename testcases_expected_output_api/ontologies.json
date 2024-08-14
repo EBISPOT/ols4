@@ -1,0 +1,4978 @@
+[
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/annotation-properties-simple/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/annotation-properties-simple/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/annotation-properties-simple?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/annotation-properties-simple/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/annotation-properties/simple.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "annotation-properties-simple",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "annotation-properties-simple",
+      "oboSlims": false,
+      "preferredPrefix": "annotation-properties-simple",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/annotation-properties/v.0.0.1/simple.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "annotation-properties-simple",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/data-property-domain-range-restrictions/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/data-property-domain-range-restrictions/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/data-property-domain-range-restrictions?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/data-property-domain-range-restrictions/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/data-property-domain-range-restrictions.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "data-property-domain-range-restrictions",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "data-property-domain-range-restrictions",
+      "oboSlims": false,
+      "preferredPrefix": "data-property-domain-range-restrictions",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/data-property-domain-range-restrictions.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "data-property-domain-range-restrictions",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/duo/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/duo/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/duo/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "description": "DUO is an ontology which represent data use conditions.",
+      "fileLocation": "http://purl.obolibrary.org/obo/duo.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "homepage": "https://github.com/EBISPOT/DUO",
+      "id": "duo",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "duo",
+      "oboSlims": false,
+      "preferredPrefix": "DUO",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "Data Use Ontology",
+      "tracker": "https://github.com/EBISPOT/DUO/issues",
+      "versionIri": "http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 20,
+    "numberOfProperties": 134,
+    "numberOfTerms": 308,
+    "ontologyId": "duo",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/efo-hierarchical-properties/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
+      "fileLocation": "./testcases/hierarchical-properties/efo.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "id": "efo-hierarchical-properties",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "efo-hierarchical-properties",
+      "oboSlims": false,
+      "preferredPrefix": "efo-hierarchical-properties",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "Experimental Factor Ontology"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 38,
+    "numberOfTerms": 25,
+    "ontologyId": "efo-hierarchical-properties",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/efo-iri-labels/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/efo-iri-labels/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/efo-iri-labels?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/efo-iri-labels/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/iri-labels/efo-iri-labels.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "efo-iri-labels",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "efo-iri-labels",
+      "oboSlims": false,
+      "preferredPrefix": "efo-iri-labels",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "version": "3.42.0",
+      "versionIri": "http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 4,
+    "ontologyId": "efo-iri-labels",
+    "status": "LOADED",
+    "updated": "<updated>",
+    "version": "3.42.0"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/genepio/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/genepio/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/genepio?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/genepio/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/datatypes/nesting-issue/minimal-genepio.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "genepio",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "genepio",
+      "oboSlims": false,
+      "preferredPrefix": "genepio",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "genepio",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/gitissue502/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/gitissue502/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/gitissue502/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/annotation-properties/gitIssue502.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "gitissue502",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "gitissue502",
+      "oboSlims": false,
+      "preferredPrefix": "gitIssue502",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 163,
+    "numberOfTerms": 249,
+    "ontologyId": "gitissue502",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/individuals-anonymous-types-with-inverse/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/individuals/anonymous-types-with-inverse.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "individuals-anonymous-types-with-inverse",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "individuals-anonymous-types-with-inverse",
+      "oboSlims": false,
+      "preferredPrefix": "individuals-anonymous-types-with-inverse",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 2,
+    "numberOfTerms": 1,
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/isobsolete/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/isobsolete/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/isobsolete/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/IsObsolete.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "isobsolete",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "isobsolete",
+      "oboSlims": false,
+      "preferredPrefix": "IsObsolete",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 4,
+    "numberOfTerms": 6,
+    "ontologyId": "isobsolete",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/isobsoletesimple/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/isobsoletesimple/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsoletesimple?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/isobsoletesimple/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/IsObsoleteSimple.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "isobsoletesimple",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "isobsoletesimple",
+      "oboSlims": false,
+      "preferredPrefix": "IsObsoleteSimple",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsoleteSimple.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "isobsoletesimple",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/isobsoletesimplewitheforeason/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/isobsoletesimplewitheforeason/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsoletesimplewitheforeason?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/isobsoletesimplewitheforeason/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "isobsoletesimplewitheforeason",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "isobsoletesimplewitheforeason",
+      "oboSlims": false,
+      "preferredPrefix": "IsObsoleteSimpleWithEfoReason",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/IsObsoleteSimpleWithEfoReason.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "isobsoletesimplewitheforeason",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/label/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/label/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/label?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/label/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/localized-labels/label.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "label",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "label",
+      "oboSlims": false,
+      "preferredPrefix": "label",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/ols4/testcase/label/v.0.0.1"
+    },
+    "lang": "en",
+    "languages": [
+      "de",
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 4,
+    "numberOfTerms": 4,
+    "ontologyId": "label",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-chebi/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-chebi/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-chebi?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-chebi/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/ontology-annotations/version/chebi.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "ontology-annotations-version-chebi",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "ontology-annotations-version-chebi",
+      "oboSlims": false,
+      "preferredPrefix": "ontology-annotations-version-chebi",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/chebi/214/chebi.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "ontology-annotations-version-chebi",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-efo/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-efo/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-efo?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-efo/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/ontology-annotations/version/efo.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "ontology-annotations-version-efo",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "ontology-annotations-version-efo",
+      "oboSlims": false,
+      "preferredPrefix": "ontology-annotations-version-efo",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/releases/v3.23.11/efo.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "ontology-annotations-version-efo",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-ncbitaxon/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-ncbitaxon/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-ncbitaxon?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-ncbitaxon/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/ontology-annotations/version/ncbitaxon.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "ontology-annotations-version-ncbitaxon",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "ontology-annotations-version-ncbitaxon",
+      "oboSlims": false,
+      "preferredPrefix": "ontology-annotations-version-ncbitaxon",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon/2022-08-18/ncbitaxon.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "ontology-annotations-version-ncbitaxon",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-obo-date/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-obo-date/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-obo-date?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/ontology-annotations-version-obo-date/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/ontology-annotations/version/obo-date.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "ontology-annotations-version-obo-date",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "ontology-annotations-version-obo-date",
+      "oboSlims": false,
+      "preferredPrefix": "ontology-annotations-version-obo-date",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/releases/20221125/obo-date.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "ontology-annotations-version-obo-date",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.w3.org/2002/07/owl#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.w3.org/2002/07/owl#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "https://www.w3.org/2002/07/owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl",
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "The OWL 2 Schema vocabulary (OWL 2)",
+      "version": "$Date: 2009/11/15 10:54:12 $",
+      "versionIri": "http://www.w3.org/2002/07/owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 58,
+    "numberOfTerms": 32,
+    "ontologyId": "owl",
+    "status": "LOADED",
+    "updated": "<updated>",
+    "version": "$Date: 2009/11/15 10:54:12 $"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointclasses/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointclasses/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointclasses?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointclasses/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/allDisjointClasses.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-alldisjointclasses",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-alldisjointclasses",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-allDisjointClasses",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointClasses.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 5,
+    "ontologyId": "owl2primer-alldisjointclasses",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointdataproperties/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointdataproperties/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointdataproperties?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointdataproperties/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/allDisjointDataProperties.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-alldisjointdataproperties",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-alldisjointdataproperties",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-allDisjointDataProperties",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointDataProperties.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 3,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-alldisjointdataproperties",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointobjectproperties/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointobjectproperties/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointobjectproperties?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-alldisjointobjectproperties/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/allDisjointObjectProperties.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-alldisjointobjectproperties",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-alldisjointobjectproperties",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-allDisjointObjectProperties",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/allDisjointObjectProperties.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 3,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-alldisjointobjectproperties",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-anonymous-inverse-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-anonymous-inverse-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-anonymous-inverse-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-anonymous-inverse-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/anonymous-inverse-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-anonymous-inverse-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-anonymous-inverse-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-anonymous-inverse-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/anonymous-inverse-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-anonymous-inverse-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-asymmetric-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-asymmetric-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-asymmetric-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-asymmetric-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/asymmetric-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-asymmetric-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-asymmetric-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-asymmetric-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/asymmetric-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-asymmetric-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-class-assertion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/class-assertion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-class-assertion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-class-assertion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-class-assertion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://example.com/owl2primer/v.0.0.1"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-class-assertion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-class-expression-based-on-datatype-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-class-expression-based-on-datatype-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-class-expression-based-on-datatype-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-class-expression-based-on-datatype-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/class-expression-based-on-datatype-restriction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-class-expression-based-on-datatype-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-class-expression-based-on-datatype-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-class-expression-based-on-datatype-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class-expression-based-on-datatype-restriction.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-class/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-class/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-class?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-class/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/class.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-class",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-class",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-class",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-class",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-complex-class-assertions-with-negation/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-complex-class-assertions-with-negation/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-complex-class-assertions-with-negation?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-complex-class-assertions-with-negation/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/complex-class-assertions-with-negation.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-complex-class-assertions-with-negation",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-complex-class-assertions-with-negation",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-complex-class-assertions-with-negation",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/complex-class-assertions-with-negation.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 0,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-complex-class-assertions-with-negation",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-data-property-assertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-data-property-assertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-data-property-assertion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-data-property-assertion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/data-property-assertion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-data-property-assertion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-data-property-assertion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-data-property-assertion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/data-property-assertion.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-data-property-assertion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-dataproperty-functional/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-dataproperty-functional/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-dataproperty-functional?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-dataproperty-functional/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/dataProperty-functional.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-dataproperty-functional",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-dataproperty-functional",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-dataProperty-functional",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/dataProperty-functional.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-dataproperty-functional",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration-nesting-issue/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration-nesting-issue/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration-nesting-issue?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration-nesting-issue/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/datatype-enumeration.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-enumeration-nesting-issue",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-enumeration-nesting-issue",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-enumeration-nesting-issue",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-enumeration-nesting-issue",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-enumeration/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/datatype-enumeration.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-enumeration",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-enumeration",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-enumeration",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-enumeration",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion-nesting-issue/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion-nesting-issue/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion-nesting-issue?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion-nesting-issue/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/datatypes/nesting-issue/datatype-exclusion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-exclusion-nesting-issue",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-exclusion-nesting-issue",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-exclusion-nesting-issue",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-exclusion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/datatype-exclusion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-exclusion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-exclusion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-exclusion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-exclusion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax-nesting-issue/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax-nesting-issue/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax-nesting-issue?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax-nesting-issue/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/datatypes/nesting-issue/datatype-minmax.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-minmax-nesting-issue",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-minmax-nesting-issue",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-minmax-nesting-issue",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-minmax.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-minmax-nesting-issue",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-datatype-minmax/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/datatype-minmax.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-datatype-minmax",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-datatype-minmax",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-datatype-minmax",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-minmax.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-datatype-minmax",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-different-individuals/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-different-individuals/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-different-individuals?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-different-individuals/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/different-individuals.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-different-individuals",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-different-individuals",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-different-individuals",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/different-individuals.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-different-individuals",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-disjoint-classes/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/disjoint-classes.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-disjoint-classes",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-disjoint-classes",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-disjoint-classes",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/disjoint-classes.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 4,
+    "ontologyId": "owl2primer-disjoint-classes",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-disjointunionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-disjointunionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-disjointunionof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-disjointunionof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/disjointUnionOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-disjointunionof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-disjointunionof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-disjointUnionOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-disjointunionof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-enumeration-of-individuals/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-enumeration-of-individuals/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-enumeration-of-individuals?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-enumeration-of-individuals/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/enumeration-of-individuals.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-enumeration-of-individuals",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-enumeration-of-individuals",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-enumeration-of-individuals",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/enumeration-of-individuals.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-enumeration-of-individuals",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof-complementof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof-complementof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof-complementof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof-complementof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalent-intersectionOf-complementOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalent-intersectionof-complementof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalent-intersectionof-complementof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalent-intersectionOf-complementOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-intersectionof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalent-intersectionOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalent-intersectionof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalent-intersectionof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalent-intersectionOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-equivalent-intersectionof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-allvaluesfrom/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalent-propertyRestriction-allValuesFrom.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-allValuesFrom",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-allValuesFrom.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-equivalent-propertyrestriction-allvaluesfrom",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalent-propertyrestriction-somevaluesfrom/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalent-propertyRestriction-someValuesFrom.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalent-propertyRestriction-someValuesFrom",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-propertyRestriction-someValuesFrom.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-equivalent-propertyrestriction-somevaluesfrom",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass-collection/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass-collection/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass-collection?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass-collection/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalentClass-collection.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalentclass-collection",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalentclass-collection",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalentClass-collection",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass-collection.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-equivalentclass-collection",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalentClass.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalentclass",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalentclass",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalentClass",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentClass.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-equivalentclass",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/equivalentObjectProperty.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-equivalentobjectproperty",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-equivalentobjectproperty",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-equivalentObjectProperty",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 2,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-equivalentobjectproperty",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-functional-data-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-functional-data-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-functional-data-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-functional-data-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/functional-data-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-functional-data-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-functional-data-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-functional-data-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/functional-data-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-functional-data-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-functional-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-functional-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-functional-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-functional-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/functional-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-functional-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-functional-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-functional-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/functional-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-functional-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-individual/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-individual/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-individual?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-individual/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/namedIndividual.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-individual",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-individual",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-individual",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/namedIndividual.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-individual",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-intersectionof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-intersectionof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/intersectionOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-intersectionof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-intersectionof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-intersectionOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-intersectionof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-inverse-functional-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-inverse-functional-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-inverse-functional-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-inverse-functional-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/inverse-functional-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-inverse-inverse-functional-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-inverse-inverse-functional-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-inverse-functional-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/inverse-functional-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-inverse-inverse-functional-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-inverse-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/inverse-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-inverse-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-inverse-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-inverse-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/inverse-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-inverse-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-irreflexive-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-irreflexive-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-irreflexive-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-irreflexive-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/irreflexive-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-irreflexive-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-irreflexive-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-irreflexive-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/irreflexive-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-irreflexive-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-key-constraint-on-data-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-key-constraint-on-data-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-key-constraint-on-data-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-key-constraint-on-data-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/key-constraint-on-data-property.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-key-constraint-on-data-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-key-constraint-on-data-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-key-constraint-on-data-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/key-constraint-on-data-property.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-key-constraint-on-data-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-minimal/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-minimal/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-minimal?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-minimal/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/minimal.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-minimal",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-minimal",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-minimal",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/minimal.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-minimal",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-negative-data-property-assertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-negative-data-property-assertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-negative-data-property-assertion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-negative-data-property-assertion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/negative-data-property-assertion.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-negative-data-property-assertion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-negative-data-property-assertion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-negative-data-property-assertion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/negative-data-property-assertion.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-negative-data-property-assertion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-negative-object-property-assertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-negative-object-property-assertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-negative-object-property-assertion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-negative-object-property-assertion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/negative-object-property-assertion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-negative-object-property-assertion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-negative-object-property-assertion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-negative-object-property-assertion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/negative-object-property-assertion.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 1,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-negative-object-property-assertion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-assertion/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-assertion/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-assertion?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-assertion/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/object-property-assertion.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-object-property-assertion",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-object-property-assertion",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-object-property-assertion",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-assertion.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 1,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-object-property-assertion",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-domain-range-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-domain-range-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-domain-range-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-object-property-domain-range-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/object-property-domain-range-restriction.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-object-property-domain-range-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-object-property-domain-range-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-object-property-domain-range-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-domain-range-restriction.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-object-property-domain-range-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-asymmetric/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-asymmetric/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-asymmetric?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-asymmetric/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-asymmetric.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-asymmetric",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-asymmetric",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-asymmetric",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-asymmetric.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-asymmetric",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-disjoint/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-disjoint/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-disjoint?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-disjoint/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-disjoint.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-disjoint",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-disjoint",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-disjoint",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-disjoint.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-disjoint",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-functional/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-functional/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-functional?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-functional/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-functional.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-functional",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-functional",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-functional",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-functional.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-functional",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-haskey/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-hasKey.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-haskey",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-haskey",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-hasKey",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-hasKey.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 2,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse-withoutassignedname?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse-withoutassignedname/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-inverse-withoutAssignedName.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-inverse-withoutassignedname",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-inverse-withoutassignedname",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverse-withoutAssignedName.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-inverse.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-inverse",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-inverse",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-inverse",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverse.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-inverse",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inversefunctional/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inversefunctional/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inversefunctional?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inversefunctional/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-inverseFunctional.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-inversefunctional",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-inversefunctional",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-inverseFunctional",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-inverseFunctional.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-inversefunctional",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-irreflexive/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-irreflexive/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-irreflexive?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-irreflexive/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-irreflexive.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-irreflexive",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-irreflexive",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-irreflexive",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-irreflexive.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-irreflexive",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-reflexive/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-reflexive/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-reflexive?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-reflexive/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/objectProperty-reflexive.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-objectproperty-reflexive",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-objectproperty-reflexive",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-objectProperty-reflexive",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-reflexive.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-objectproperty-reflexive",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-property-chain/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/property-chain.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-property-chain",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-property-chain",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-property-chain",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/property-chain.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-property-chain",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-cardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-cardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-cardinality?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-cardinality/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/propertyRestriction-cardinality.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-propertyrestriction-cardinality",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-propertyrestriction-cardinality",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-propertyRestriction-cardinality",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-cardinality.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-propertyrestriction-cardinality",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-maxqualifiedcardinality/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/propertyRestriction-maxQualifiedCardinality.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-propertyRestriction-maxQualifiedCardinality",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-maxQualifiedCardinality.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-propertyrestriction-maxqualifiedcardinality",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-minqualifiedcardinality/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/propertyRestriction-minQualifiedCardinality.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-propertyrestriction-minqualifiedcardinality",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-propertyrestriction-minqualifiedcardinality",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-minQualifiedCardinality.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-qualifiedcardinality?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-propertyrestriction-qualifiedcardinality/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/propertyRestriction-qualifiedCardinality.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-propertyrestriction-qualifiedcardinality",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-propertyrestriction-qualifiedcardinality",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-propertyRestriction-qualifiedCardinality",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/propertyRestriction-qualifiedCardinality.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-propertyrestriction-qualifiedcardinality",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-exact-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-exact-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-exact-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-exact-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/qualified-cardinality-exact-restriction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-qualified-cardinality-exact-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-qualified-cardinality-exact-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-qualified-cardinality-exact-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/qualified-cardinality-exact-restriction.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-max-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-max-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-max-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-max-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/qualified-cardinality-max-restriction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-qualified-cardinality-max-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-qualified-cardinality-max-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-qualified-cardinality-max-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/qualified-cardinality-max-restriction.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-qualified-cardinality-max-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-min-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-min-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-min-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-qualified-cardinality-min-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/qualified-cardinality-min-restriction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-qualified-cardinality-min-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-qualified-cardinality-min-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-qualified-cardinality-min-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/qualified-cardinality-min-restriction.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-qualified-cardinality-min-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-reflexive-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-reflexive-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-reflexive-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-reflexive-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/reflexive-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-reflexive-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-reflexive-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-reflexive-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/reflexive-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-reflexive-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-same-individual/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-same-individual/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-same-individual?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-same-individual/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/same-individual.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-same-individual",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-same-individual",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-same-individual",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/same-individual.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 2,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-same-individual",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-self-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-self-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-self-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-self-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/self-restriction.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-self-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-self-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-self-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/self-restriction.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-self-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-sub-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-sub-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-sub-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/sub-object-property.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-sub-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-sub-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-sub-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/sub-object-property.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-sub-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof-intersectionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof-intersectionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof-intersectionof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof-intersectionof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/subClassOf-intersectionOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-subclassof-intersectionof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-subclassof-intersectionof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-subClassOf-intersectionOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-subclassof-intersectionof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-subclassof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/subClassOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-subclassof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-subclassof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-subClassOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 3,
+    "ontologyId": "owl2primer-subclassof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-symmetric-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-symmetric-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-symmetric-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-symmetric-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/symmetric-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-symmetric-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-symmetric-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-symmetric-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/symmetric-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-symmetric-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-transitive-object-property/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-transitive-object-property/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-transitive-object-property?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-transitive-object-property/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/transitive-object-property.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-transitive-object-property",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-transitive-object-property",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-transitive-object-property",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/transitive-object-property.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-transitive-object-property",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-unionof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-unionof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/unionOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-unionof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-unionof",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-unionOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/unionOf.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 5,
+    "ontologyId": "owl2primer-unionof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-unqualified-cardinality-exact-restriction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-unqualified-cardinality-exact-restriction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-unqualified-cardinality-exact-restriction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-unqualified-cardinality-exact-restriction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/unqualified-cardinality-exact-restriction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-unqualified-cardinality-exact-restriction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-unqualified-cardinality-exact-restriction",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-unqualified-cardinality-exact-restriction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/unqualified-cardinality-exact-restriction.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-unqualified-cardinality-exact-restriction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type-nesting-issue/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type-nesting-issue/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type-nesting-issue?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type-nesting-issue/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/datatypes/nesting-issue/user-defined-data-type.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-user-defined-data-type-nesting-issue",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-user-defined-data-type-nesting-issue",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-user-defined-data-type-nesting-issue",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/user-defined-data-type.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-user-defined-data-type/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/user-defined-data-type.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-user-defined-data-type",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-user-defined-data-type",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-user-defined-data-type",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/user-defined-data-type.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 0,
+    "ontologyId": "owl2primer-user-defined-data-type",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/owl2primer-value-restriction-on-individual/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/owl2primer-value-restriction-on-individual/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-value-restriction-on-individual?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/owl2primer-value-restriction-on-individual/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/owl2-primer/value-restriction-on-individual.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "owl2primer-value-restriction-on-individual",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "owl2primer-value-restriction-on-individual",
+      "oboSlims": false,
+      "preferredPrefix": "owl2primer-value-restriction-on-individual",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/value-restriction-on-individual.rdf"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "owl2primer-value-restriction-on-individual",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/partof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/partof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/partof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/partof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/hierarchical-properties/partof.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/ms#part_of"
+      ],
+      "id": "partof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "partof",
+      "oboSlims": false,
+      "preferredPrefix": "partof",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "partof",
+      "versionIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/v0.0.1/partof.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 4,
+    "ontologyId": "partof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/punning-class-individual/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/punning-class-individual/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/punning-class-individual?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/punning-class-individual/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/punning/class-individual.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "punning-class-individual",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "punning-class-individual",
+      "oboSlims": false,
+      "preferredPrefix": "punning-class-individual",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/punning/v.0.0.1/class-individual.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "punning-class-individual",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/rdfs/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/rdfs/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/rdfs?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/rdfs/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.w3.org/2000/01/rdf-schema#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.w3.org/2000/01/rdf-schema#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "https://www.w3.org/2000/01/rdf-schema",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "rdfs",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "rdfs",
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "The RDF Schema vocabulary (RDFS)"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 9,
+    "numberOfTerms": 6,
+    "ontologyId": "rdfs",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/reified-bnode/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/reified-bnode/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/reified-bnode?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/reified-bnode/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/reification/reified-bnode.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "reified-bnode",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "reified-bnode",
+      "oboSlims": false,
+      "preferredPrefix": "reified-bnode",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "reified-bnode",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-hasvalue/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-hasvalue/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-hasvalue?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-hasvalue/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/hasValue.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-hasvalue",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-hasvalue",
+      "oboSlims": false,
+      "preferredPrefix": "related-hasValue",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/hasValue.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 1,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "related-hasvalue",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-oneof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-oneof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-oneof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-oneof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/oneOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-oneof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-oneof",
+      "oboSlims": false,
+      "preferredPrefix": "related-oneOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/oneOf.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "related-oneof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousconjunction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousconjunction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousconjunction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousconjunction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-somevaluesof-filleranonymousconjunction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-filleranonymousconjunction",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-fillerAnonymousConjunction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousConjunction.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 3,
+    "ontologyId": "related-somevaluesof-filleranonymousconjunction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousdisjunction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousdisjunction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousdisjunction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-filleranonymousdisjunction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-fillerAnonymousDisjunction.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-somevaluesof-filleranonymousdisjunction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-filleranonymousdisjunction",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-fillerAnonymousDisjunction",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 3,
+    "ontologyId": "related-somevaluesof-filleranonymousdisjunction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-fillernestedanonymousconjunction/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-fillernestedanonymousconjunction/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-fillernestedanonymousconjunction?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-fillernestedanonymousconjunction/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-somevaluesof-fillernestedanonymousconjunction",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-fillernestedanonymousconjunction",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-fillerNestedAnonymousConjunction",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerNestedAnonymousConjunction.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 4,
+    "ontologyId": "related-somevaluesof-fillernestedanonymousconjunction",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical-relatedtoself/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical-relatedtoself/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical-relatedtoself?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical-relatedtoself/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-hierarchical-relatedToSelf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r"
+      ],
+      "id": "related-somevaluesof-hierarchical-relatedtoself",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-hierarchical-relatedtoself",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-hierarchical-relatedToSelf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-hierachical-relatedToSelf.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "related-somevaluesof-hierarchical-relatedtoself",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-hierarchical/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-hierarchical.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+      ],
+      "id": "related-somevaluesof-hierarchical",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-hierarchical",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-hierarchical",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-hierachical.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "related-somevaluesof-hierarchical",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof-oneof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof-oneof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof-oneof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof-oneof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf-oneOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-somevaluesof-oneof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof-oneof",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf-oneOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-oneOf.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 3,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "related-somevaluesof-oneof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/related-somevaluesof/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/related-somevaluesof/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/related-somevaluesof?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/related-somevaluesof/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/related/someValuesOf.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "related-somevaluesof",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "related-somevaluesof",
+      "oboSlims": false,
+      "preferredPrefix": "related-someValuesOf",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf.xml"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 2,
+    "ontologyId": "related-somevaluesof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/skos/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/skos/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/skos?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/skos/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.w3.org/2004/02/skos/core#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.w3.org/2004/02/skos/core#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "http://www.w3.org/TR/skos-reference/skos.rdf",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "skos",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "skos",
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 56,
+    "numberOfTerms": 6,
+    "ontologyId": "skos",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/xmpl/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/xmpl/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/xmpl?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/xmpl/terms"
+      }
+    },
+    "baseUris": [
+      "http://exmpl.org/xmpl/"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://exmpl.org/xmpl/"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "description": "This config will use the defined label_property as label for a class. In OLS4 the value of label_property is a collection.",
+      "fileLocation": "./testcases/iri-labels/user-defined-pref-label.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "xmpl",
+      "isSkos": false,
+      "labelProperty": "http://exmpl.org/xmpl/Other_preferred_name",
+      "namespace": "xmpl",
+      "oboSlims": false,
+      "preferredPrefix": "XMPL",
+      "preferredRootTerms": [],
+      "synonymProperties": [
+        "http://exmpl.org/xmpl/Synonym"
+      ],
+      "title": "Example terminology with user defined pref label"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 3,
+    "ontologyId": "xmpl",
+    "status": "LOADED",
+    "updated": "<updated>"
+  }
+]

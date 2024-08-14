@@ -1,0 +1,55 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-object-property-domain-range-restriction"
+    ],
+    "curie": "hasWife",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#hasWife",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasWife",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man": {
+        "curie": "Man",
+        "hasLocalDefinition": true,
+        "label": "Man",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman": {
+        "curie": "Woman",
+        "hasLocalDefinition": true,
+        "label": "Woman",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-object-property-domain-range-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction.owl",
+    "ontologyPreferredPrefix": "owl2primer-object-property-domain-range-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasWife",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

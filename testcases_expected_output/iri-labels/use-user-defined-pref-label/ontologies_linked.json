@@ -26,12 +26,7 @@
       ],
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -39,18 +34,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -76,12 +61,7 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -127,30 +107,10 @@
             "value": "XMPL:XMPL000001"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://exmpl.org/xmpl/Preferred_name": {
             "type": [
@@ -177,19 +137,9 @@
             "value": "XMPL000001",
             "lang": "en"
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -208,18 +158,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "2"
-          },
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
           "ontologyId": {
             "type": [
               "literal"
@@ -255,12 +195,7 @@
               "value": "label of the parent class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -295,7 +230,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -330,7 +265,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -354,7 +289,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -390,30 +325,10 @@
           },
           "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "directParent": "http://exmpl.org/xmpl/XMPL000001",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalProperty": {
@@ -448,19 +363,9 @@
             "lang": "en"
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -479,18 +384,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -526,12 +421,7 @@
               "value": "label of the first children class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -561,12 +451,36 @@
             "xmpl"
           ],
           "linkedEntities": {
+            "http://exmpl.org/xmpl/Preferred_name": {
+              "definedBy": [
+                "xmpl"
+              ],
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "XMPL_Preferred_name"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "XMPL:Preferred_name"
+              },
+              "type": [
+                "property",
+                "annotationProperty",
+                "entity"
+              ]
+            },
             "XMPL:XMPL000002": {
               "iri": "http://exmpl.org/xmpl/XMPL000002",
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -601,7 +515,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -632,35 +546,11 @@
                 "entity"
               ]
             },
-            "http://exmpl.org/xmpl/Preferred_name": {
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": "1",
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL_Preferred_name"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:Preferred_name"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            },
             "http://exmpl.org/xmpl/Synonym": {
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -696,30 +586,10 @@
           },
           "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "directParent": "http://exmpl.org/xmpl/XMPL000001",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
           "hierarchicalProperty": {
@@ -754,19 +624,9 @@
             "lang": "en"
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": [
             {
               "type": [
@@ -785,18 +645,8 @@
               "lang": "en"
             }
           ],
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -832,12 +682,7 @@
               "value": "label of the second children class",
               "lang": "en"
             },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "false"
-            }
+            false
           ],
           "shortForm": {
             "type": [
@@ -872,7 +717,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -907,7 +752,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
                 {
@@ -942,7 +787,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -980,63 +825,23 @@
             "value": "XMPL:Preferred_name"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "XMPL_Preferred_name"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -1055,12 +860,7 @@
             ],
             "value": "XMPL"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -1080,7 +880,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1116,63 +916,23 @@
             "value": "XMPL:Synonym"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "XMPL_Synonym"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -1191,12 +951,7 @@
             ],
             "value": "XMPL"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -1216,7 +971,7 @@
               "definedBy": [
                 "xmpl"
               ],
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1245,7 +1000,7 @@
           "definedBy": [
             "xmpl"
           ],
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [
@@ -1269,7 +1024,7 @@
           "definedBy": [
             "xmpl"
           ],
-          "numAppearsIn": "1",
+          "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": {
             "type": [

@@ -1,0 +1,63 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000706",
+  "lang": "en",
+  "description": [
+    "A study limitations section that describes systematic error introduced into sampling or testing by selecting or encouraging one outcome or answer over others."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "DOI: 10.1097/PRS.0b013e3181de24bc"
+    ],
+    "editor preferred term": [
+      "study bias section"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "ontology term requester": [
+      "ONE ontology"
+    ],
+    "term editor": [
+      "PERSON: Chen Yang",
+      "PERSON: Jie Zheng"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/235"
+    ]
+  },
+  "label": "study bias section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000706",
+  "obo_id": "IAO:0000706",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000706/graph"
+    }
+  }
+}

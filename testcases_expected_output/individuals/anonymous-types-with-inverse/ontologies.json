@@ -11,12 +11,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -24,18 +19,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -61,12 +46,7 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -106,30 +86,10 @@
             "value": "A"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "hierarchicalProperty": {
             "type": [
@@ -144,37 +104,17 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
             "isObsolete": false
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "A"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -204,12 +144,7 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
             "isObsolete": false
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -233,64 +168,24 @@
             "value": "inverseRelation"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "inverseRelation"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -309,12 +204,7 @@
             ],
             "value": "individuals-anonymous-types-with-inverse"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -336,64 +226,24 @@
             "value": "relation"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
           "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "relation"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -412,12 +262,7 @@
             ],
             "value": "individuals-anonymous-types-with-inverse"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -440,30 +285,10 @@
             "value": "a"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             {
@@ -473,12 +298,7 @@
               "isObsolete": false
             }
           ],
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
           "label": {
             "type": [
@@ -486,18 +306,8 @@
             ],
             "value": "a"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -527,12 +337,7 @@
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
             "isObsolete": false
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

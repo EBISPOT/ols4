@@ -1,0 +1,109 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-cardinality"
+    ],
+    "curie": "John",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#cardinality": "2",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#John",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "John",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild": {
+        "curie": "hasChild",
+        "hasLocalDefinition": true,
+        "label": "hasChild",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-cardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "John",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-cardinality"
+    ],
+    "curie": "Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#Parent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Parent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-cardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "Parent",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-cardinality"
+    ],
+    "curie": "hasChild",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl#hasChild",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasChild",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-cardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-cardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-cardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasChild",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

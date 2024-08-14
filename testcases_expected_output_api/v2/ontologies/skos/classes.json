@@ -1,0 +1,454 @@
+[
+  {
+    "appearsIn": [
+      "skos"
+    ],
+    "curie": "Collection",
+    "definedBy": [
+      "skos"
+    ],
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Collection",
+    "http://www.w3.org/2002/07/owl#disjointWith": [
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": "A meaningful collection of concepts.",
+    "http://www.w3.org/2004/02/skos/core#scopeNote": "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy.",
+    "imported": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#Collection",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Collection",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "isDefinedBy",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#Concept": {
+        "curie": "Concept",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "Concept",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
+        "curie": "ConceptScheme",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "Concept Scheme",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#definition": {
+        "curie": "definition",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#scopeNote": {
+        "curie": "scopeNote",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "scope note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "skos",
+    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+    "searchableAnnotationValues": [
+      "A meaningful collection of concepts.",
+      "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy.",
+      false
+    ],
+    "shortForm": "Collection",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "skos"
+    ],
+    "curie": "Concept",
+    "definedBy": [
+      "skos"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Concept",
+    "http://www.w3.org/2004/02/skos/core#definition": "An idea or notion; a unit of thought.",
+    "imported": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#Concept",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Concept",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "isDefinedBy",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#definition": {
+        "curie": "definition",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "skos",
+    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+    "searchableAnnotationValues": [
+      "An idea or notion; a unit of thought.",
+      false
+    ],
+    "shortForm": "Concept",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "skos"
+    ],
+    "curie": "ConceptScheme",
+    "definedBy": [
+      "skos"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Concept Scheme",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.w3.org/2004/02/skos/core#Concept",
+    "http://www.w3.org/2004/02/skos/core#definition": "A set of concepts, optionally including statements about semantic relationships between those concepts.",
+    "http://www.w3.org/2004/02/skos/core#example": "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.",
+    "http://www.w3.org/2004/02/skos/core#scopeNote": "A concept scheme may be defined to include concepts from different sources.",
+    "imported": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Concept Scheme",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "isDefinedBy",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#Concept": {
+        "curie": "Concept",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "Concept",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#definition": {
+        "curie": "definition",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#example": {
+        "curie": "example",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "example",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#scopeNote": {
+        "curie": "scopeNote",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "scope note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "skos",
+    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+    "searchableAnnotationValues": [
+      "A concept scheme may be defined to include concepts from different sources.",
+      "A set of concepts, optionally including statements about semantic relationships between those concepts.",
+      "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.",
+      false
+    ],
+    "shortForm": "ConceptScheme",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "skos"
+    ],
+    "curie": "OrderedCollection",
+    "definedBy": [
+      "skos"
+    ],
+    "directAncestor": "http://www.w3.org/2004/02/skos/core#Collection",
+    "directParent": "http://www.w3.org/2004/02/skos/core#Collection",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://www.w3.org/2004/02/skos/core#Collection",
+    "hierarchicalParent": "http://www.w3.org/2004/02/skos/core#Collection",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Ordered Collection",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.w3.org/2004/02/skos/core#Collection",
+    "http://www.w3.org/2004/02/skos/core#definition": "An ordered collection of concepts, where both the grouping and the ordering are meaningful.",
+    "http://www.w3.org/2004/02/skos/core#scopeNote": "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'.",
+    "imported": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#OrderedCollection",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Ordered Collection",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "isDefinedBy",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "subClassOf",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#Collection": {
+        "curie": "Collection",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "Collection",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#definition": {
+        "curie": "definition",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#scopeNote": {
+        "curie": "scopeNote",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": "scope note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "skos",
+    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+    "searchableAnnotationValues": [
+      "An ordered collection of concepts, where both the grouping and the ordering are meaningful.",
+      "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'.",
+      false
+    ],
+    "shortForm": "OrderedCollection",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

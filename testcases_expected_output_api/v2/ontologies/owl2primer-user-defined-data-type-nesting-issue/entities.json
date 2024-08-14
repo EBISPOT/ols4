@@ -1,0 +1,55 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-user-defined-data-type-nesting-issue"
+    ],
+    "curie": "hasToddlerAge",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "toddlerAge",
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+      "http://www.w3.org/2002/07/owl#equivalentClass": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+        "http://www.w3.org/2002/07/owl#oneOf": [
+          1.0,
+          2.0
+        ],
+        "isObsolete": false
+      },
+      "imported": false,
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf#toddlerAge",
+      "isObsolete": false,
+      "label": "toddlerAge",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
+      "shortForm": "toddlerAge",
+      "type": [
+        "datatype"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf#hasToddlerAge",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasToddlerAge",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf",
+    "ontologyPreferredPrefix": "owl2primer-user-defined-data-type-nesting-issue",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasToddlerAge",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

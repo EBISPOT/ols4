@@ -1,0 +1,85 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-haskey"
+    ],
+    "curie": "businessAddress",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "businessAddress",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address": {
+        "curie": "Address",
+        "hasLocalDefinition": true,
+        "label": "Address",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business": {
+        "curie": "Business",
+        "hasLocalDefinition": true,
+        "label": "Business",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-hasKey",
+    "searchableAnnotationValues": false,
+    "shortForm": "businessAddress",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-haskey"
+    ],
+    "curie": "hasSSN",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#hasSSN",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasSSN",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-hasKey",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasSSN",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000700",
+  "lang": "en",
+  "description": [
+    "Ontology annotation property. Relates an ontology to a term that is a designated root term of the ontology. Display tools like OLS can use terms annotated with this property as the starting point for rendering the ontology class hierarchy. There can be more than one root."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "has ontology root term"
+    ],
+    "term editor": [
+      "Nicolas Matentzoglu"
+    ]
+  },
+  "label": "has ontology root term",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000700",
+  "obo_id": "IAO:0000700",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000700?lang=en"
+    }
+  }
+}

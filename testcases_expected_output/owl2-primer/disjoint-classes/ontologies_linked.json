@@ -13,12 +13,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/disjoint-classes.rdf",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -26,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -63,12 +48,7 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -102,64 +82,24 @@
             "value": "Man"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "Man"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -178,12 +118,7 @@
             ],
             "value": "owl2primer-disjoint-classes"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -196,7 +131,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -230,64 +165,24 @@
             "value": "Woman"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "Woman"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -306,12 +201,7 @@
             ],
             "value": "owl2primer-disjoint-classes"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -324,7 +214,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [

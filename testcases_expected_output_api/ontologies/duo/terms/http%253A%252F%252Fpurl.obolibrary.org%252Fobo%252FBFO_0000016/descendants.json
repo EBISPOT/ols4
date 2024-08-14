@@ -1,0 +1,193 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000034?lang=en"
+      }
+    },
+    "annotation": {
+      "BFO CLIF specification label": [
+        "Function"
+      ],
+      "BFO OWL specification label": [
+        "function"
+      ],
+      "editor note": [
+        "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function – for example: to pump, to transport – can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc."
+      ],
+      "elucidation": [
+        "A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. (axiom label in BFO2 Reference: [064-001])"
+      ],
+      "example of usage": [
+        "the function of a hammer to drive in nails",
+        "the function of a heart pacemaker to regulate the beating of a heart through electricity",
+        "the function of amylase in saliva to break down starch into sugar"
+      ],
+      "has associated axiom(fol)": [
+        "(forall (x) (if (Function x) (Disposition x))) // axiom label in BFO2 CLIF: [064-001] "
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000034",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "function",
+    "lang": "en",
+    "obo_id": "BFO:0000034",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "BFO_0000034",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001?lang=en"
+      }
+    },
+    "annotation": {
+      "exactMatch": [
+        "http://identifiers.org/mesh/D004194",
+        "http://identifiers.org/snomedct/64572001",
+        "http://linkedlifedata.com/resource/umls/id/C0012634",
+        "http://purl.obolibrary.org/obo/DOID_4",
+        "http://purl.obolibrary.org/obo/NCIT_C2991",
+        "http://www.orpha.net/ORDO/Orphanet_377788"
+      ],
+      "hasDbXref": [
+        "DOID:4",
+        "EFO:0000408",
+        "ICD10:N18",
+        "ICD9:799.9",
+        "MESH:D004194",
+        "NCIT:C2991",
+        "OGMS:0000031",
+        "Orphanet:377788",
+        "SCTID:64572001",
+        "UMLS:C0012634"
+      ],
+      "id": [
+        "MONDO:0000001"
+      ]
+    },
+    "description": [
+      "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "disease or disorder",
+    "lang": "en",
+    "obo_id": "MONDO:0000001",
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "id": "4",
+        "url": "http://purl.obolibrary.org/obo/DOID_4"
+      },
+      {
+        "database": "EFO",
+        "id": "0000408",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000408"
+      },
+      {
+        "database": "ICD10",
+        "id": "N18",
+        "url": "https://icd.who.int/browse10/2019/en#/N18"
+      },
+      {
+        "database": "ICD9",
+        "id": "799.9"
+      },
+      {
+        "database": "MESH",
+        "id": "D004194",
+        "url": "http://id.nlm.nih.gov/mesh/D004194"
+      },
+      {
+        "database": "NCIT",
+        "id": "C2991",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C2991"
+      },
+      {
+        "database": "OGMS",
+        "id": "0000031",
+        "url": "http://purl.obolibrary.org/obo/OGMS_0000031"
+      },
+      {
+        "database": "Orphanet",
+        "id": "377788",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=377788"
+      },
+      {
+        "database": "SCTID",
+        "id": "64572001",
+        "url": "http://snomed.info/id/64572001"
+      },
+      {
+        "database": "UMLS",
+        "id": "C0012634",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0012634"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "MONDO_0000001",
+    "synonyms": [
+      "condition",
+      "disease or disorder",
+      "disease or disorder, non-neoplastic",
+      "disease",
+      "diseases and disorders",
+      "diseases",
+      "disorder",
+      "disorders",
+      "medical condition",
+      "other disease"
+    ]
+  }
+]

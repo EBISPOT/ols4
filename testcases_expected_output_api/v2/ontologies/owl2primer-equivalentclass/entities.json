@@ -1,0 +1,84 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-equivalentclass"
+    ],
+    "curie": "Human",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Human",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person": {
+        "curie": "Person",
+        "hasLocalDefinition": true,
+        "label": "Person",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-equivalentclass",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+    "ontologyPreferredPrefix": "owl2primer-equivalentClass",
+    "searchableAnnotationValues": false,
+    "shortForm": "Human",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-equivalentclass"
+    ],
+    "curie": "Person",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Person",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human": {
+        "curie": "Human",
+        "hasLocalDefinition": true,
+        "label": "Human",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-equivalentclass",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+    "ontologyPreferredPrefix": "owl2primer-equivalentClass",
+    "searchableAnnotationValues": false,
+    "shortForm": "Person",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

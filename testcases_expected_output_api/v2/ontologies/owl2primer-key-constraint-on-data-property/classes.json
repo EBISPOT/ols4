@@ -1,0 +1,46 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-key-constraint-on-data-property"
+    ],
+    "curie": "Person",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#hasKey": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Person",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": {
+        "curie": "hasSSN",
+        "hasLocalDefinition": true,
+        "label": "hasSSN",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-key-constraint-on-data-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#",
+    "ontologyPreferredPrefix": "owl2primer-key-constraint-on-data-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "Person",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

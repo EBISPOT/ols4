@@ -1,0 +1,159 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-disjointunionof"
+    ],
+    "curie": "Father",
+    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Father",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
+        "curie": "Mother",
+        "hasLocalDefinition": true,
+        "label": "Mother",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
+        "curie": "Parent",
+        "hasLocalDefinition": true,
+        "label": "Parent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-disjointunionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Father",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-disjointunionof"
+    ],
+    "curie": "Mother",
+    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Mother",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
+        "curie": "Parent",
+        "hasLocalDefinition": true,
+        "label": "Parent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-disjointunionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mother",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-disjointunionof"
+    ],
+    "curie": "Parent",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#disjointUnionOf": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Parent",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father": {
+        "curie": "Father",
+        "hasLocalDefinition": true,
+        "label": "Father",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
+        "curie": "Mother",
+        "hasLocalDefinition": true,
+        "label": "Mother",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "owl2primer-disjointunionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-disjointUnionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Parent",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

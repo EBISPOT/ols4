@@ -1,0 +1,36 @@
+[
+  {
+    "appearsIn": [
+      "annotation-properties-simple"
+    ],
+    "curie": "MyAnnotationProperty",
+    "definition": "For our own special use case.",
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "For our own special use case.",
+    "http://www.w3.org/2000/01/rdf-schema#label": "special annotation property",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl#MyAnnotationProperty",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "special annotation property",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "annotation-properties-simple",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl",
+    "ontologyPreferredPrefix": "annotation-properties-simple",
+    "searchableAnnotationValues": false,
+    "shortForm": "MyAnnotationProperty",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

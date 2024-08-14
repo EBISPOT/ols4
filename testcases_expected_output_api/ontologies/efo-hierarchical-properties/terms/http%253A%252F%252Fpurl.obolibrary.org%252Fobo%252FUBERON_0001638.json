@@ -1,0 +1,53 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0001638",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "vein",
+  "ontology_name": "efo-hierarchical-properties",
+  "ontology_prefix": "efo-hierarchical-properties",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "UBERON_0001638",
+  "obo_id": "UBERON:0001638",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001638/graph"
+    }
+  }
+}

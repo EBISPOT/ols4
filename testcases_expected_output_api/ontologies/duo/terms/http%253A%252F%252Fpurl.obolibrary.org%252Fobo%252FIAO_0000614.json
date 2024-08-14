@@ -1,0 +1,56 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000614",
+  "lang": "en",
+  "description": [
+    "A textual entity that expresses a detailed account of a portion of the medical history for a specific patient."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "editor preferred term": [
+      "case report textual entity"
+    ],
+    "example of usage": [
+      "Excerpt from Taglia et al. Acta Myol. 2012 Dec; 31(3): 201–203. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3631801/):\n\nThe patient is a 50-year-old man. His medical history was not contributory. At the age of 37 years, he complained of persistent fatigue and dyspnoea even for modest efforts and oedema of lower limbs. The patient was examined at the department of internal medicine of the local hospital, and hospitalised with a diagnosis of dilated cardiomyopathy probably consequence of a myocarditis process. Soon after he was transferred to the cardiologic department of the regional hospital, and pharmacologically treated for heart failure and pulmonary hypertension."
+    ],
+    "term editor": [
+      "PERSON: Bill Baumgartner"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/183"
+    ]
+  },
+  "label": "case report textual entity",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000614",
+  "obo_id": "IAO:0000614",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000614/graph"
+    }
+  }
+}

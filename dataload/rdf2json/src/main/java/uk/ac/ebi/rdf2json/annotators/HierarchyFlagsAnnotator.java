@@ -1,7 +1,9 @@
 package uk.ac.ebi.rdf2json.annotators;
 
-import uk.ac.ebi.rdf2json.OntologyNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
+import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
@@ -10,7 +12,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class HierarchyFlagsAnnotator {
+
+    private static final Logger logger = LoggerFactory.getLogger(HierarchyFlagsAnnotator.class);
 
     public static void annotateHierarchyFlags(OntologyGraph graph) {
 
@@ -37,7 +43,7 @@ public class HierarchyFlagsAnnotator {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
 
-                boolean hasDirectParent = false;
+                boolean hasDirectParents = false;
 
                 if(parents != null) {
                     for (PropertyValue parent : parents) {
@@ -49,19 +55,20 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasDirectParent = true;
+                        hasDirectParents = true;
                         hasChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasDirectParent", PropertyValueLiteral.fromString(hasDirectParent ? "true" : "false"));
+                c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                        PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
 
 		// 2. Hierarchical parents
 		//
 
                 List<PropertyValue> hierarchicalParents = c.properties.getPropertyValues("hierarchicalParent");
 
-                boolean hasHierarchicalParent = false;
+                boolean hasHierarchicalParents = false;
 
                 if(hierarchicalParents != null) {
                     for (PropertyValue parent : hierarchicalParents) {
@@ -73,12 +80,12 @@ public class HierarchyFlagsAnnotator {
                                     continue;
                         }
 
-                        hasHierarchicalParent = true;
+                        hasHierarchicalParents = true;
                         hasHierarchicalChildren.add(iri);
                     }
                 }
 
-                c.properties.addProperty("hasHierarchicalParent", PropertyValueLiteral.fromString(hasHierarchicalParent ? "true" : "false"));
+                c.properties.addProperty(HAS_HIERARCHICAL_PARENTS.getText(), PropertyValueLiteral.fromBoolean(hasHierarchicalParents ? "true" : "false"));
             }
         }
 
@@ -94,21 +101,21 @@ public class HierarchyFlagsAnnotator {
                     continue;
 
                 if(hasChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasDirectChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
 
                 if(hasHierarchicalChildren.contains(c.uri)) {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("true"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
-                    c.properties.addProperty("hasHierarchicalChildren", PropertyValueLiteral.fromString("false"));
+                    c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
             }
         }
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate hierarchy flags: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate hierarchy flags: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
     }

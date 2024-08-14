@@ -376,61 +376,73 @@ to ensure backward compatibility. This testing consists of
 These tests are run locally as described in [Test testcases from dataload to UI](#test-testcases-from-dataload-to-ui).
 Ensure that the environment variables `NEO4J_HOME`, `SOLR_HOME` and `OLS4_HOME` are set up accordingly.
 
-1. First make sure all the OLS4 JARs are up to date by running :
+1. Before running your testcases, ensure that your work is already commited. Create a new branch based on the branch you worked on
+but with a `-testcases` suffix. I.e., if your branch is called "fix-xyz", the new branch for the testcases will be 
+`fix-xyz-testcases`. We commit testcases to a separate branch due to the large number of files updated when testcases are run.
+
+2. First make sure all the OLS4 JARs are up to date by running :
  
        mvn clean package
 
-2. Generate new output files and import into Neo4J and Solr: 
+3. Generate new output files and import into Neo4J and Solr: 
 
        ./dev-testing/teststack.sh ./testcases ./testcases_output
 
-3. Compare `/testcases_output` with `/testcases_expected_output`:
+4. Compare `/testcases_output` with `/testcases_expected_output`:
 
        ./compare_testcase_output.sh
 
-4. The output of step 3 is written to `testcases_compare_result.log`. If no differences are found, this file will be empty. 
-Ensure that all differences in this file can be explained and that they do make sense.
+5. The output of step 3 is written to `testcases_compare_result.log`. If no differences are found, this file will be empty.
+   `testcases_compare_result.log` will only tell you which files are different. To see the actual differences in dicated in 
+   `testcases_compare_result.log`, compare files that are stated to be different in a visual editor like Meld. Ensure that 
+    all differences in this file can be explained and that they do make sense. 
 
-5. Once you are happy with the output in `testcases_output`, remove the old `testcases_expected_output` and replace with
+6. Once you are happy with the output in `testcases_output`, remove the old `testcases_expected_output` and replace with
 new expected output:
 
        rm -rf testcases_expected_output
        cp -r testcases_output/testcases testcases_expected_output
 
-6. Now continue with API testing.
+7. Add updated expected output to git.
+
+        git add -A testcases_expected_output
+ 
+8. Commit the updates to testcases to a branch with suffix `-testcases`.
+9. Now continue with API testing.
 
 ### Testing API
 Before doing API testing you must have completed the [dataload testing](#testing-dataload).
 
-7. Start the backend:
+10. Before running the API tests, create a new branch with suffix `api-tests`. I.e., if the branch you worked on was 
+`fix-xyz-api-tests`.
+
+11. Start the backend:
 
         ./dev-testing/start-backend.sh
 
-8. Run API tests against backend using: 
+12. Run API tests against backend using: 
 
-       ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
+        ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
 
-9. The results of step 8 is written to `./apitester4.log`. Differences are written to the end of the file. When there are no
+13. The results of step 8 is written to `./apitester4.log`. Differences are written to the end of the file. When there are no
 differences, this file will end with these lines:
 
-       RecursiveJsonDiff.diff() reported success
-       apitester reported success; exit code 0
+        RecursiveJsonDiff.diff() reported success
+        apitester reported success; exit code 0
 
-10. Ensure that all differences listed in `./apitester4.log` are accounted for. Once you are happy with the output, remove 
+14. Ensure that all differences listed in `./apitester4.log` are accounted for. Once you are happy with the output, remove 
 the old `testcases_expected_output_api` and replace with new expected output: 
 
         rm -rf testcases_expected_output_api
-        cp -r testcases_output testcases_expected_output_api
+        cp -r testcases_output_api testcases_expected_output_api
 
-11. Add the latest expected outputs to Git:
+15. Add the latest expected outputs to Git:
 
-        git add -A testcases_expected_output
         git add -A testcases_expected_output_api
 
-    **You should do this in the same commit as your code/test changes because then we can track exactly
-    what changed in the output.**
+16. Commit the API tests to a branch with suffix `-api-tests`.
 
-12. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
+17. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
 
         ./dev-testing/stopNeo4JSolr.sh
 

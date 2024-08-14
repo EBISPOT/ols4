@@ -1,0 +1,114 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-unionof"
+    ],
+    "curie": "Father",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Father",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-unionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-unionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Father",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-unionof"
+    ],
+    "curie": "Mother",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Mother",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-unionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-unionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mother",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-unionof"
+    ],
+    "curie": "Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father",
+      "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Parent",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father": {
+        "curie": "Father",
+        "hasLocalDefinition": true,
+        "label": "Father",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother": {
+        "curie": "Mother",
+        "hasLocalDefinition": true,
+        "label": "Mother",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-unionof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf.owl",
+    "ontologyPreferredPrefix": "owl2primer-unionOf",
+    "searchableAnnotationValues": false,
+    "shortForm": "Parent",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

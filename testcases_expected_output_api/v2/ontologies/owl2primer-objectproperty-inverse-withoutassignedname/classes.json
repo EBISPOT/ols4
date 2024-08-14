@@ -1,0 +1,91 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-inverse-withoutassignedname"
+    ],
+    "curie": "Dead",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Dead",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
+    "searchableAnnotationValues": false,
+    "shortForm": "Dead",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-inverse-withoutassignedname"
+    ],
+    "curie": "Orphan",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#allValuesFrom": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead",
+      "http://www.w3.org/2002/07/owl#onProperty": {
+        "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
+        "isObsolete": false
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Orphan",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead": {
+        "curie": "Dead",
+        "hasLocalDefinition": true,
+        "label": "Dead",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild": {
+        "curie": "hasChild",
+        "hasLocalDefinition": true,
+        "label": "hasChild",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-inverse-withoutassignedname",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-inverse-withoutAssignedName",
+    "searchableAnnotationValues": false,
+    "shortForm": "Orphan",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

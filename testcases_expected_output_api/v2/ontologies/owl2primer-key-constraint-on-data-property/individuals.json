@@ -1,0 +1,88 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-key-constraint-on-data-property"
+    ],
+    "curie": "Anne",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": "1234",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#Anne",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Anne",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": {
+        "curie": "hasSSN",
+        "hasLocalDefinition": true,
+        "label": "hasSSN",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-key-constraint-on-data-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#",
+    "ontologyPreferredPrefix": "owl2primer-key-constraint-on-data-property",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "shortForm": "Anne",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-key-constraint-on-data-property"
+    ],
+    "curie": "Annie",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": "1234",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Annie",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Annie",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": {
+        "curie": "hasSSN",
+        "hasLocalDefinition": true,
+        "label": "hasSSN",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-key-constraint-on-data-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#",
+    "ontologyPreferredPrefix": "owl2primer-key-constraint-on-data-property",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "shortForm": "Annie",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

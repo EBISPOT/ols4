@@ -1,0 +1,75 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-disjoint"
+    ],
+    "curie": "hasParent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2002/07/owl#propertyDisjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasParent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasParent",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse": {
+        "curie": "hasSpouse",
+        "hasLocalDefinition": true,
+        "label": "hasSpouse",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-disjoint",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasParent",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-disjoint"
+    ],
+    "curie": "hasSpouse",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasSpouse",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-disjoint",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-disjoint",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasSpouse",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

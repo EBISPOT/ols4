@@ -1,0 +1,79 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-self-restriction"
+    ],
+    "curie": "NarcisticPerson",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasSelf": true,
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#NarcisticPerson",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "NarcisticPerson",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves": {
+        "curie": "loves",
+        "hasLocalDefinition": true,
+        "label": "loves",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-self-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl",
+    "ontologyPreferredPrefix": "owl2primer-self-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "NarcisticPerson",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-self-restriction"
+    ],
+    "curie": "loves",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "loves",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-self-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl",
+    "ontologyPreferredPrefix": "owl2primer-self-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "loves",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

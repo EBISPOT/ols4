@@ -1,0 +1,35 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000600",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000600": [
+      "Primitive terms in a highest-level ontology such as BFO are terms which are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms"
+    ],
+    "definition source": [
+      "Person:Barry Smith"
+    ],
+    "editor preferred term": [
+      "elucidation"
+    ],
+    "term editor": [
+      "person:Alan Ruttenberg"
+    ]
+  },
+  "label": "elucidation",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000600",
+  "obo_id": "IAO:0000600",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000600?lang=en"
+    }
+  }
+}

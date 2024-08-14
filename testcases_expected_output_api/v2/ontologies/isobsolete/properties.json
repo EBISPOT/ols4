@@ -1,0 +1,62 @@
+[
+  {
+    "appearsIn": [
+      "isobsolete"
+    ],
+    "curie": "NonDeprecatedDataProperty",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "NonDeprecatedDataProperty",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "isobsolete",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontologyPreferredPrefix": "IsObsolete",
+    "searchableAnnotationValues": false,
+    "shortForm": "NonDeprecatedDataProperty",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "isobsolete"
+    ],
+    "curie": "NonDeprecatedObjectProperty",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "NonDeprecatedObjectProperty",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "isobsolete",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontologyPreferredPrefix": "IsObsolete",
+    "searchableAnnotationValues": false,
+    "shortForm": "NonDeprecatedObjectProperty",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

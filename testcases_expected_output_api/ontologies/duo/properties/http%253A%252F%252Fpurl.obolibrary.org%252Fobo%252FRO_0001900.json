@@ -1,0 +1,24 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0001900",
+  "lang": "en",
+  "description": [
+    "An assertion that holds between an OWL Object Property and a temporal interpretation that elucidates how OWL Class Axioms that use this property are to be interpreted in a temporal context."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "temporal interpretation",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0001900",
+  "obo_id": "RO:0001900",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001900?lang=en"
+    }
+  }
+}

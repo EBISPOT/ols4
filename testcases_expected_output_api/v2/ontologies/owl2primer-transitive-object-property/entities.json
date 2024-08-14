@@ -1,0 +1,35 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-transitive-object-property"
+    ],
+    "curie": "hasAncestor",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf#hasAncestor",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasAncestor",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-transitive-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf",
+    "ontologyPreferredPrefix": "owl2primer-transitive-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasAncestor",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

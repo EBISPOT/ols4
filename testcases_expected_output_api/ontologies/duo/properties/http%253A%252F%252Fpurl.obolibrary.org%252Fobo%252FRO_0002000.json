@@ -1,0 +1,41 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002000",
+  "lang": "en",
+  "description": [
+    "a relation between a 2D immaterial entity (the boundary) and a material entity, in which the boundary delimits the material entity"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "2D_boundary_of",
+      "boundary of",
+      "is 2D boundary of",
+      "is boundary of"
+    ],
+    "editor note": [
+      "A 2D boundary may have holes and gaps, but it must be a single connected entity, not an aggregate of several disconnected parts.",
+      "Although the boundary is two-dimensional, it exists in three-dimensional space and thus has a 3D shape."
+    ],
+    "example of usage": [
+      "the surface of my skin is a 2D boundary of my body"
+    ],
+    "temporal interpretation": [
+      "http://purl.obolibrary.org/obo/RO_0001901"
+    ]
+  },
+  "label": "2D boundary of",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "RO_0002000",
+  "obo_id": "RO:0002000",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002000?lang=en"
+    }
+  }
+}

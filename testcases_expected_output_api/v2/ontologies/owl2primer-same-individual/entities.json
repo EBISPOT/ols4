@@ -1,0 +1,82 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-same-individual"
+    ],
+    "curie": "James",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "James",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim": {
+        "curie": "Jim",
+        "hasLocalDefinition": true,
+        "label": "Jim",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-same-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual.owl",
+    "ontologyPreferredPrefix": "owl2primer-same-individual",
+    "searchableAnnotationValues": false,
+    "shortForm": "James",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-same-individual"
+    ],
+    "curie": "Jim",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Jim",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James": {
+        "curie": "James",
+        "hasLocalDefinition": true,
+        "label": "James",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-same-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual.owl",
+    "ontologyPreferredPrefix": "owl2primer-same-individual",
+    "searchableAnnotationValues": false,
+    "shortForm": "Jim",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

@@ -1,0 +1,256 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0003847",
+  "lang": "en",
+  "description": [
+    "A disease that is caused by genetic modifications where those modifications are inherited from a parent's genome.",
+    "Usage note: this is intended only for diseases with an inherited genetic etiology. Somatic genetic mutations are excluded. Some ontologies use the term 'genetic disease' in the sense of inherited disorders only, we are here careful to distinguish."
+  ],
+  "synonyms": [
+    "genetic condition",
+    "genetic disease",
+    "genetic disorder",
+    "hereditary disease",
+    "hereditary disease or disorder",
+    "hereditary diseases",
+    "inherited disease",
+    "inherited genetic disease",
+    "molecular disease",
+    "Mendelian disease",
+    "familial disorder",
+    "inborn disorder"
+  ],
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D030342",
+      "http://identifiers.org/snomedct/32895009",
+      "http://linkedlifedata.com/resource/umls/id/C0019247",
+      "http://purl.obolibrary.org/obo/DOID_630",
+      "http://purl.obolibrary.org/obo/NCIT_C3101"
+    ],
+    "hasDbXref": [
+      "DOID:630",
+      "EFO:0000508",
+      "ICD9:799.89",
+      "MESH:D030342",
+      "NCIT:C3101",
+      "SCTID:32895009",
+      "UMLS:C0019247"
+    ],
+    "id": [
+      "MONDO:0003847"
+    ]
+  },
+  "label": "hereditary disease",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0003847",
+  "obo_id": "MONDO:0003847",
+  "in_subset": [
+    "harrisons_view",
+    "rare_grouping"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "A disease that is caused by genetic modifications where those modifications are inherited from a parent's genome.",
+      "oboXrefs": [
+        {
+          "database": "MONDO",
+          "id": "cjm"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "630",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_630"
+    },
+    {
+      "database": "EFO",
+      "id": "0000508",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0000508"
+    },
+    {
+      "database": "ICD9",
+      "id": "799.89",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "MESH",
+      "id": "D030342",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D030342"
+    },
+    {
+      "database": "NCIT",
+      "id": "C3101",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+    },
+    {
+      "database": "SCTID",
+      "id": "32895009",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/32895009"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0019247",
+      "description": "NCIT:C3101",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0019247"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "hereditary disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/hereditary"
+        },
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    },
+    {
+      "name": "hereditary disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/hereditary"
+        }
+      ]
+    },
+    {
+      "name": "hereditary diseases",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    },
+    {
+      "name": "inherited disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    },
+    {
+      "name": "inherited genetic disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "id": "https://github.com/monarch-initiative/mondo/issues/1758",
+          "url": "https://github.com/monarch-initiative/mondo/issues/1758"
+        }
+      ]
+    },
+    {
+      "name": "molecular disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    },
+    {
+      "name": "Mendelian disease",
+      "scope": "hasNarrowSynonym",
+      "xrefs": [
+        {
+          "database": "DOID",
+          "id": "0050177",
+          "url": "http://purl.obolibrary.org/obo/DOID_0050177"
+        }
+      ]
+    },
+    {
+      "name": "genetic condition",
+      "scope": "hasBroadSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    },
+    {
+      "name": "genetic disorder",
+      "scope": "hasBroadSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C3101",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/graph"
+    },
+    "has_characteristic": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    }
+  }
+}

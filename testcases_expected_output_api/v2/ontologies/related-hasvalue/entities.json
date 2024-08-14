@@ -1,0 +1,162 @@
+[
+  {
+    "appearsIn": [
+      "related-hasvalue"
+    ],
+    "curie": "A",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "A",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1": {
+        "curie": "b1",
+        "hasLocalDefinition": true,
+        "label": "b1",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r": {
+        "curie": "r",
+        "hasLocalDefinition": true,
+        "label": "r",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-hasvalue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl",
+    "ontologyPreferredPrefix": "related-hasValue",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+      "isObsolete": false,
+      "property": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "A",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-hasvalue"
+    ],
+    "curie": "b1",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "b1",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A": {
+        "curie": "A",
+        "hasLocalDefinition": true,
+        "label": "A",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r": {
+        "curie": "r",
+        "hasLocalDefinition": true,
+        "label": "r",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-hasvalue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl",
+    "ontologyPreferredPrefix": "related-hasValue",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+      "isObsolete": false,
+      "property": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "b1",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-hasvalue"
+    ],
+    "curie": "r",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "r",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-hasvalue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl",
+    "ontologyPreferredPrefix": "related-hasValue",
+    "searchableAnnotationValues": false,
+    "shortForm": "r",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

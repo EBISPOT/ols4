@@ -1,0 +1,77 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-sub-object-property"
+    ],
+    "curie": "hasSpouse",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasSpouse",
+    "linkedEntities": {},
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-sub-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property",
+    "ontologyPreferredPrefix": "owl2primer-sub-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasSpouse",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-sub-object-property"
+    ],
+    "curie": "hasWife",
+    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
+    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasWife",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasWife",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse": {
+        "curie": "hasSpouse",
+        "hasLocalDefinition": true,
+        "label": "hasSpouse",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-sub-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property",
+    "ontologyPreferredPrefix": "owl2primer-sub-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasWife",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

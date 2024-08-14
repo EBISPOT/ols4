@@ -1,0 +1,60 @@
+[
+  {
+    "appearsIn": [
+      "genepio"
+    ],
+    "curie": "GENEPIO:0002113",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0002135",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/GENEPIO_0002113",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "GENEPIO_0002113",
+    "linkedEntities": {
+      "GENEPIO:0002113": {
+        "curie": "GENEPIO:0002113",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/GENEPIO_0002113"
+      },
+      "http://purl.obolibrary.org/obo/OBI_0002135": {
+        "curie": "obi:0002135",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OBI_0002135"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "genepio",
+    "ontologyIri": "http://purl.obolibrary.org/obo/genepio.owl",
+    "ontologyPreferredPrefix": "genepio",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0002135",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/OBI_0002135",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "GENEPIO_0002113",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

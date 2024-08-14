@@ -1,31 +1,36 @@
 
 package uk.ac.ebi.rdf2json.annotators;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.helpers.AncestorsClosure;
-import uk.ac.ebi.rdf2json.properties.*;
+import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.NUM_DESCENDANTS;
+import static uk.ac.ebi.ols.shared.DefinedFields.NUM_HIERARCHICAL_DESCENDANTS;
 
 public class HierarchyMetricsAnnotator {
+
+    private static final Logger logger = LoggerFactory.getLogger(HierarchyMetricsAnnotator.class);
 
     public static void annotateHierarchyMetrics(OntologyGraph graph) {
 
         long startTime3 = System.nanoTime();
 
-        annotateHierarchyMetrics(graph, "directParent", "numDirectDescendants");
+        annotateHierarchyMetrics(graph, "directParent", NUM_DESCENDANTS.getText());
         System.gc();
 
-        annotateHierarchyMetrics(graph, "hierarchicalParent", "numHierarchicalDescendants");
+        annotateHierarchyMetrics(graph, "hierarchicalParent", NUM_HIERARCHICAL_DESCENDANTS.getText());
         System.gc();
 
         long endTime3 = System.nanoTime();
-        System.out.println("annotate hierarchy metrics: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate hierarchy metrics: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 
 
@@ -57,7 +62,7 @@ public class HierarchyMetricsAnnotator {
             Integer numDescendants = iriToNumDescendants.get(c.uri);
 
             c.properties.addProperty(metricProperty,
-                    PropertyValueLiteral.fromString(numDescendants != null ? numDescendants.toString() : "0"));
+                    PropertyValueLiteral.fromInteger(numDescendants != null ? numDescendants.toString() : "0"));
         }
     }
 

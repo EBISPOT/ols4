@@ -1,0 +1,75 @@
+[
+  {
+    "appearsIn": [
+      "partof"
+    ],
+    "curie": "BFO:0000050",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "part_of",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "part_of",
+    "linkedEntities": {
+      "BFO:0000050": {
+        "curie": "BFO:0000050",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000050"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "partof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontologyPreferredPrefix": "partof",
+    "searchableAnnotationValues": false,
+    "shortForm": "BFO_0000050",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "partof"
+    ],
+    "curie": "part:of",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/ms#part_of",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "part_of",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "partof",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontologyPreferredPrefix": "partof",
+    "searchableAnnotationValues": false,
+    "shortForm": "part_of",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

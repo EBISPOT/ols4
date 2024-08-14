@@ -1,0 +1,46 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-class-assertion"
+    ],
+    "curie": "Mary",
+    "directAncestor": "http://example.com/owl2primer#Person",
+    "directParent": "http://example.com/owl2primer#Person",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://example.com/owl2primer#Person",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "imported": false,
+    "iri": "http://example.com/owl2primer#Mary",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Mary",
+    "linkedEntities": {
+      "http://example.com/owl2primer#Person": {
+        "curie": "Person",
+        "hasLocalDefinition": true,
+        "label": "Person",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-class-assertion",
+    "ontologyIri": "http://example.com/owl2primer",
+    "ontologyPreferredPrefix": "owl2primer-class-assertion",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mary",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

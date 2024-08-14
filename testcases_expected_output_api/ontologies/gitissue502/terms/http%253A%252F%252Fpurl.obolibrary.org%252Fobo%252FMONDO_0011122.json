@@ -1,0 +1,179 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0011122",
+  "lang": "en",
+  "description": [
+    "A disorder involving an excessive amount of body fat.",
+    "Obesity is a complex disease that may involve multiple environmental and genetic causes. See the subclass monogenic disease for genetic subtypes"
+  ],
+  "synonyms": [
+    "obesity",
+    "obesity disease"
+  ],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/snomedct/414916001",
+      "http://linkedlifedata.com/resource/umls/id/C0028754",
+      "http://purl.obolibrary.org/obo/DOID_9970",
+      "http://purl.obolibrary.org/obo/NCIT_C3283"
+    ],
+    "hasDbXref": [
+      "DOID:9970",
+      "EFO:0001073",
+      "HP:0001513",
+      "ICD9:278.0",
+      "ICD9:278.00",
+      "NCIT:C3283",
+      "NIFSTD:nlx_dys_20090302",
+      "Orphanet:521399",
+      "SCTID:414916001",
+      "UMLS:C0028754"
+    ],
+    "id": [
+      "MONDO:0011122"
+    ]
+  },
+  "label": "obesity disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0011122",
+  "obo_id": "MONDO:0011122",
+  "in_subset": [
+    "orphanet_rare",
+    "rare"
+  ],
+  "obo_definition_citation": [
+    {
+      "definition": "A disorder involving an excessive amount of body fat.",
+      "oboXrefs": [
+        {
+          "id": "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf",
+          "url": "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf"
+        },
+        {
+          "id": "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742",
+          "url": "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "9970",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_9970"
+    },
+    {
+      "database": "EFO",
+      "id": "0001073",
+      "description": "MONDO:equivalentTo",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0001073"
+    },
+    {
+      "database": "HP",
+      "id": "0001513",
+      "description": "MONDO:otherHierarchy",
+      "url": "http://purl.obolibrary.org/obo/HP_0001513"
+    },
+    {
+      "database": "ICD9",
+      "id": "278.0",
+      "description": "MONDO:i2s"
+    },
+    {
+      "database": "ICD9",
+      "id": "278.00",
+      "description": "MONDO:i2s"
+    },
+    {
+      "database": "NCIT",
+      "id": "C3283",
+      "description": "MONDO:otherHierarchy",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C3283"
+    },
+    {
+      "database": "NIFSTD",
+      "id": "nlx_dys_20090302",
+      "description": "EFO:0001073"
+    },
+    {
+      "database": "Orphanet",
+      "id": "521399",
+      "description": "MONDO:equivalentObsolete",
+      "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=521399"
+    },
+    {
+      "database": "SCTID",
+      "id": "414916001",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/414916001"
+    },
+    {
+      "database": "UMLS",
+      "id": "C0028754",
+      "description": "OMIM:601665",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0028754"
+    }
+  ],
+  "obo_synonym": [
+    {
+      "name": "obesity",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "ambiguous"
+        },
+        {
+          "database": "OMIM",
+          "id": "601665",
+          "url": "https://omim.org/entry/601665"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/graph"
+    },
+    "disease_has_feature": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0011122/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004029"
+    }
+  }
+}

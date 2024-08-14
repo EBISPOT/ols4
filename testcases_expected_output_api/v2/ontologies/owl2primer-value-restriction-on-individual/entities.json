@@ -1,0 +1,117 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-value-restriction-on-individual"
+    ],
+    "curie": "John",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "John",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-value-restriction-on-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf",
+    "ontologyPreferredPrefix": "owl2primer-value-restriction-on-individual",
+    "searchableAnnotationValues": false,
+    "shortForm": "John",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-value-restriction-on-individual"
+    ],
+    "curie": "JohnsChildren",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#JohnsChildren",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "JohnsChildren",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John": {
+        "curie": "John",
+        "hasLocalDefinition": true,
+        "label": "John",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent": {
+        "curie": "hasParent",
+        "hasLocalDefinition": true,
+        "label": "hasParent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-value-restriction-on-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf",
+    "ontologyPreferredPrefix": "owl2primer-value-restriction-on-individual",
+    "searchableAnnotationValues": false,
+    "shortForm": "JohnsChildren",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-value-restriction-on-individual"
+    ],
+    "curie": "hasParent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasParent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-value-restriction-on-individual",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf",
+    "ontologyPreferredPrefix": "owl2primer-value-restriction-on-individual",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasParent",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

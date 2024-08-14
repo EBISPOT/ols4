@@ -1,0 +1,434 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Class?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of classes."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Class",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Class",
+    "lang": "en",
+    "obo_id": "Class",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Class",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of RDF containers."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Container",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Container",
+    "lang": "en",
+    "obo_id": "Container",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Container",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of literal values, eg. textual strings and integers."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Literal",
+    "lang": "en",
+    "obo_id": "Literal",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Literal",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDifferent?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of collections of pairwise different individuals."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "AllDifferent",
+    "lang": "en",
+    "obo_id": "AllDifferent",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "AllDifferent",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointClasses?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of collections of pairwise disjoint classes."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "AllDisjointClasses",
+    "lang": "en",
+    "obo_id": "AllDisjointClasses",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "AllDisjointClasses",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AllDisjointProperties?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of collections of pairwise disjoint properties."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "AllDisjointProperties",
+    "lang": "en",
+    "obo_id": "AllDisjointProperties",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "AllDisjointProperties",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Annotation?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#Annotation",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Annotation",
+    "lang": "en",
+    "obo_id": "Annotation",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Annotation",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Axiom?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#Axiom",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Axiom",
+    "lang": "en",
+    "obo_id": "Axiom",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Axiom",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523NegativePropertyAssertion?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of negative property assertions."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "NegativePropertyAssertion",
+    "lang": "en",
+    "obo_id": "NegativePropertyAssertion",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "NegativePropertyAssertion",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523Ontology?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The class of ontologies."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#Ontology",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "Ontology",
+    "lang": "en",
+    "obo_id": "Ontology",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "Ontology",
+    "synonyms": []
+  }
+]

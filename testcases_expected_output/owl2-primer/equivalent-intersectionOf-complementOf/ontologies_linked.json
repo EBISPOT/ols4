@@ -13,12 +13,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalent-intersectionOf-complementOf.owl",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -26,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -63,12 +48,7 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -103,30 +83,10 @@
           },
           "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
           "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
           "hierarchicalProperty": {
@@ -148,37 +108,17 @@
               }
             ]
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "ChildlessPerson"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -197,12 +137,7 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf-complementOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -215,7 +150,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -235,7 +170,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -269,63 +204,23 @@
             "value": "Parent"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "Parent"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -344,12 +239,7 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf-complementOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -375,63 +265,23 @@
             "value": "Person"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "true"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "Person"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "1"
-          },
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
           "ontologyId": {
             "type": [
               "literal"
@@ -450,12 +300,7 @@
             ],
             "value": "owl2primer-equivalent-intersectionOf-complementOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"

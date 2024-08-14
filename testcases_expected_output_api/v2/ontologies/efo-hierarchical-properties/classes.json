@@ -1,0 +1,4648 @@
+[
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000467",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "hierarchicalParent": {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "anatomical system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "anatomical system",
+    "linkedEntities": {
+      "UBERON:0000467": {
+        "curie": "UBERON:0000467",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 4.0,
+    "numHierarchicalDescendants": 13.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002423"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002530"
+      }
+    ],
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000467",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000468",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organism",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "multicellular organism",
+    "linkedEntities": {
+      "UBERON:0000468": {
+        "curie": "UBERON:0000468",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000483": {
+        "curie": "UBERON:0000483",
+        "hasLocalDefinition": true,
+        "label": "epithelium",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 19.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000483"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0013702"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000468",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000483",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "hierarchicalParent": {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "epithelium",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000483",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "epithelium",
+    "linkedEntities": {
+      "UBERON:0000483": {
+        "curie": "UBERON:0000483",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0000483"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000483",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000916",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "abdomen",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "abdomen",
+    "linkedEntities": {
+      "UBERON:0000916": {
+        "curie": "UBERON:0000916",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0006841": {
+        "curie": "UBERON:0006841",
+        "hasLocalDefinition": true,
+        "label": "central vein of liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 6.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0006841"
+      }
+    ],
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000916",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000949",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://www.w3.org/2002/07/owl#disjointWith": [
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "endocrine system",
+    "linkedEntities": {
+      "UBERON:0000949": {
+        "curie": "UBERON:0000949",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001009": {
+        "curie": "UBERON:0001009",
+        "hasLocalDefinition": true,
+        "label": "circulatory system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002368"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000949",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001007",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "digestive system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://www.w3.org/2002/07/owl#disjointWith": [
+      "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001007",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "digestive system",
+    "linkedEntities": {
+      "UBERON:0001007": {
+        "curie": "UBERON:0001007",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001007"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001009": {
+        "curie": "UBERON:0001009",
+        "hasLocalDefinition": true,
+        "label": "circulatory system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002423"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001007",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001009",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "circulatory system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/UBERON_0002423",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001009",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "circulatory system",
+    "linkedEntities": {
+      "UBERON:0001009": {
+        "curie": "UBERON:0001009",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001009"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004535": {
+        "curie": "UBERON:0004535",
+        "hasLocalDefinition": true,
+        "label": "cardiovascular system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0004535"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001009",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001193",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0001637",
+      "http://purl.obolibrary.org/obo/UBERON_0001981"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001637",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001637",
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0004647",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001637",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "hepatic artery",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0001637",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001193",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hepatic artery",
+    "linkedEntities": {
+      "UBERON:0001193": {
+        "curie": "UBERON:0001193",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001193"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001637": {
+        "curie": "UBERON:0001637",
+        "hasLocalDefinition": true,
+        "label": "artery",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004647": {
+        "curie": "UBERON:0004647",
+        "hasLocalDefinition": true,
+        "label": "liver lobule",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001193",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001281",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000483",
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0001982",
+      "http://purl.obolibrary.org/obo/UBERON_0001986"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001982",
+      "http://purl.obolibrary.org/obo/UBERON_0001986"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000483",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0001982",
+      "http://purl.obolibrary.org/obo/UBERON_0001986",
+      "http://purl.obolibrary.org/obo/UBERON_0002049",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0004535",
+      "http://purl.obolibrary.org/obo/UBERON_0004647",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001982",
+      "http://purl.obolibrary.org/obo/UBERON_0001986",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001981"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004535"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "hepatic sinusoid",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0001982",
+      "http://purl.obolibrary.org/obo/UBERON_0001986",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001281",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hepatic sinusoid",
+    "linkedEntities": {
+      "UBERON:0001281": {
+        "curie": "UBERON:0001281",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001281"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000483": {
+        "curie": "UBERON:0000483",
+        "hasLocalDefinition": true,
+        "label": "epithelium",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001009": {
+        "curie": "UBERON:0001009",
+        "hasLocalDefinition": true,
+        "label": "circulatory system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001982": {
+        "curie": "UBERON:0001982",
+        "hasLocalDefinition": true,
+        "label": "capillary",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001986": {
+        "curie": "UBERON:0001986",
+        "hasLocalDefinition": true,
+        "label": "endothelium",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002049": {
+        "curie": "UBERON:0002049",
+        "hasLocalDefinition": true,
+        "label": "vasculature",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004535": {
+        "curie": "UBERON:0004535",
+        "hasLocalDefinition": true,
+        "label": "cardiovascular system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004647": {
+        "curie": "UBERON:0004647",
+        "hasLocalDefinition": true,
+        "label": "liver lobule",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001981"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004535"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001281",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001637",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "artery",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001637",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "artery",
+    "linkedEntities": {
+      "UBERON:0001637": {
+        "curie": "UBERON:0001637",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001637"
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001637",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001638",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "vein",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001638",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "vein",
+    "linkedEntities": {
+      "UBERON:0001638": {
+        "curie": "UBERON:0001638",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001638"
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001638",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001639",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      "http://purl.obolibrary.org/obo/UBERON_0001981"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001638",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0004647",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "hepatic portal vein",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001639",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hepatic portal vein",
+    "linkedEntities": {
+      "UBERON:0001639": {
+        "curie": "UBERON:0001639",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001639"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001638": {
+        "curie": "UBERON:0001638",
+        "hasLocalDefinition": true,
+        "label": "vein",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004647": {
+        "curie": "UBERON:0004647",
+        "hasLocalDefinition": true,
+        "label": "liver lobule",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001639",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001981",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "blood vessel",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "blood vessel",
+    "linkedEntities": {
+      "UBERON:0001981": {
+        "curie": "UBERON:0001981",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001981"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 7.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001981",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001982",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0002049"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002049"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "capillary",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001982",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "capillary",
+    "linkedEntities": {
+      "UBERON:0001982": {
+        "curie": "UBERON:0001982",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001982"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002049": {
+        "curie": "UBERON:0002049",
+        "hasLocalDefinition": true,
+        "label": "vasculature",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0002049"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001982",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0001986",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000483",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000483"
+    ],
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "endothelium",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000483",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001986",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "endothelium",
+    "linkedEntities": {
+      "UBERON:0001986": {
+        "curie": "UBERON:0001986",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001986"
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000483": {
+        "curie": "UBERON:0000483",
+        "hasLocalDefinition": true,
+        "label": "epithelium",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0001986",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002049",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "vasculature",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002049",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "vasculature",
+    "linkedEntities": {
+      "UBERON:0002049": {
+        "curie": "UBERON:0002049",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002049"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001982": {
+        "curie": "UBERON:0001982",
+        "hasLocalDefinition": true,
+        "label": "capillary",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0001982"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002049",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002100",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0013702"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "trunk",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002100",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "trunk",
+    "linkedEntities": {
+      "UBERON:0002100": {
+        "curie": "UBERON:0002100",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0006841": {
+        "curie": "UBERON:0006841",
+        "hasLocalDefinition": true,
+        "label": "central vein of liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0006841"
+      }
+    ],
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0013702"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002100",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002107",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0002368",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001007"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002423"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "liver",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002107",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "liver",
+    "linkedEntities": {
+      "UBERON:0002107": {
+        "curie": "UBERON:0002107",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001193": {
+        "curie": "UBERON:0001193",
+        "hasLocalDefinition": true,
+        "label": "hepatic artery",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001639": {
+        "curie": "UBERON:0001639",
+        "hasLocalDefinition": true,
+        "label": "hepatic portal vein",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004647": {
+        "curie": "UBERON:0004647",
+        "hasLocalDefinition": true,
+        "label": "liver lobule",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0006841": {
+        "curie": "UBERON:0006841",
+        "hasLocalDefinition": true,
+        "label": "central vein of liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 5.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001193"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001639"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0006841"
+      }
+    ],
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001007"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002423"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002107",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002368",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0002530",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0002530",
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine gland",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/UBERON_0002530",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+          "isObsolete": false
+        }
+      ]
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "endocrine gland",
+    "linkedEntities": {
+      "UBERON:0002368": {
+        "curie": "UBERON:0002368",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002368"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 6.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002368",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002423",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0001007"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001007"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "hepatobiliary system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002423",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hepatobiliary system",
+    "linkedEntities": {
+      "UBERON:0002423": {
+        "curie": "UBERON:0002423",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002423"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 6.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001007"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002423",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002530",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+    },
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "gland",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "gland",
+    "linkedEntities": {
+      "UBERON:0002530": {
+        "curie": "UBERON:0002530",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0002530"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002530",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0004535",
+    "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0001009"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001009"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "cardiovascular system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0004535",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "cardiovascular system",
+    "linkedEntities": {
+      "UBERON:0004535": {
+        "curie": "UBERON:0004535",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0004535"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001009": {
+        "curie": "UBERON:0001009",
+        "hasLocalDefinition": true,
+        "label": "circulatory system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+    },
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0001009"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0004535",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0004647",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+    },
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "liver lobule",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0004647",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "liver lobule",
+    "linkedEntities": {
+      "UBERON:0004647": {
+        "curie": "UBERON:0004647",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001193": {
+        "curie": "UBERON:0001193",
+        "hasLocalDefinition": true,
+        "label": "hepatic artery",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001281": {
+        "curie": "UBERON:0001281",
+        "hasLocalDefinition": true,
+        "label": "hepatic sinusoid",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001639": {
+        "curie": "UBERON:0001639",
+        "hasLocalDefinition": true,
+        "label": "hepatic portal vein",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0006841": {
+        "curie": "UBERON:0006841",
+        "hasLocalDefinition": true,
+        "label": "central vein of liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 4.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001193"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0001639"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0006841"
+      }
+    ],
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0004647",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0006841",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      "http://purl.obolibrary.org/obo/UBERON_0001981"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/UBERON_0001638",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000916",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      "http://purl.obolibrary.org/obo/UBERON_0001981",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0002107",
+      "http://purl.obolibrary.org/obo/UBERON_0002368",
+      "http://purl.obolibrary.org/obo/UBERON_0002423",
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      "http://purl.obolibrary.org/obo/UBERON_0004647",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "central vein of liver",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0001638",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0006841",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "central vein of liver",
+    "linkedEntities": {
+      "UBERON:0006841": {
+        "curie": "UBERON:0006841",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0006841"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": "anatomical system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000916": {
+        "curie": "UBERON:0000916",
+        "hasLocalDefinition": true,
+        "label": "abdomen",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": "endocrine system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": "digestive system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001638": {
+        "curie": "UBERON:0001638",
+        "hasLocalDefinition": true,
+        "label": "vein",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001981": {
+        "curie": "UBERON:0001981",
+        "hasLocalDefinition": true,
+        "label": "blood vessel",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002107": {
+        "curie": "UBERON:0002107",
+        "hasLocalDefinition": true,
+        "label": "liver",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002368": {
+        "curie": "UBERON:0002368",
+        "hasLocalDefinition": true,
+        "label": "endocrine gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": "hepatobiliary system",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": "gland",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0004647": {
+        "curie": "UBERON:0004647",
+        "hasLocalDefinition": true,
+        "label": "liver lobule",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": "body proper",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002107"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0006841",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0013702",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "hierarchicalParent": {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "body proper",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0013702",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "body proper",
+    "linkedEntities": {
+      "UBERON:0013702": {
+        "curie": "UBERON:0013702",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0013702"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": "multicellular organism",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": "trunk",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 8.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+    },
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0013702",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

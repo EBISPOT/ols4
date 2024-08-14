@@ -1,0 +1,81 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-equivalentobjectproperty"
+    ],
+    "curie": "John",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "John",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-equivalentobjectproperty",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+    "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+    "searchableAnnotationValues": false,
+    "shortForm": "John",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-equivalentobjectproperty"
+    ],
+    "curie": "Mary",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Mary",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": {
+        "curie": "John",
+        "hasLocalDefinition": true,
+        "label": "John",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
+        "curie": "hasLifePartner",
+        "hasLocalDefinition": true,
+        "label": "hasLifePartner",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-equivalentobjectproperty",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+    "ontologyPreferredPrefix": "owl2primer-equivalentObjectProperty",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mary",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

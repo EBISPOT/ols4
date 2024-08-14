@@ -1,0 +1,120 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-minqualifiedcardinality"
+    ],
+    "curie": "John",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#minQualifiedCardinality": "2",
+        "http://www.w3.org/2002/07/owl#onClass": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#John",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "John",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent": {
+        "curie": "Parent",
+        "hasLocalDefinition": true,
+        "label": "Parent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild": {
+        "curie": "hasChild",
+        "hasLocalDefinition": true,
+        "label": "hasChild",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "John",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-minqualifiedcardinality"
+    ],
+    "curie": "Parent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#Parent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Parent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "Parent",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-propertyrestriction-minqualifiedcardinality"
+    ],
+    "curie": "hasChild",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl#hasChild",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasChild",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-propertyrestriction-minqualifiedcardinality",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-minQualifiedCardinality.owl",
+    "ontologyPreferredPrefix": "owl2primer-propertyRestriction-minQualifiedCardinality",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasChild",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

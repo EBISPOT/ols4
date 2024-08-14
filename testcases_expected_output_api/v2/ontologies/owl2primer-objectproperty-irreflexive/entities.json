@@ -1,0 +1,35 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-irreflexive"
+    ],
+    "curie": "hasParent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasParent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-irreflexive",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-irreflexive",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasParent",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

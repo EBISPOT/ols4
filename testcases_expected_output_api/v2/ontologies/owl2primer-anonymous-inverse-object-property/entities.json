@@ -1,0 +1,121 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-anonymous-inverse-object-property"
+    ],
+    "curie": "Dead",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Dead",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-anonymous-inverse-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf",
+    "ontologyPreferredPrefix": "owl2primer-anonymous-inverse-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "Dead",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-anonymous-inverse-object-property"
+    ],
+    "curie": "Orphan",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#allValuesFrom": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead",
+      "http://www.w3.org/2002/07/owl#onProperty": {
+        "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild",
+        "isObsolete": false
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Orphan",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Orphan",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead": {
+        "curie": "Dead",
+        "hasLocalDefinition": true,
+        "label": "Dead",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild": {
+        "curie": "hasChild",
+        "hasLocalDefinition": true,
+        "label": "hasChild",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-anonymous-inverse-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf",
+    "ontologyPreferredPrefix": "owl2primer-anonymous-inverse-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "Orphan",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-anonymous-inverse-object-property"
+    ],
+    "curie": "hasChild",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasChild",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-anonymous-inverse-object-property",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf",
+    "ontologyPreferredPrefix": "owl2primer-anonymous-inverse-object-property",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasChild",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

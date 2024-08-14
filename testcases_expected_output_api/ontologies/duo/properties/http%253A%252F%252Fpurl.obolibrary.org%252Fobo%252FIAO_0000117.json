@@ -1,0 +1,40 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000117",
+  "lang": "en",
+  "description": [
+    "Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000117": [
+      "PERSON:Daniel Schober"
+    ],
+    "definition source": [
+      "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
+    ],
+    "editor note": [
+      "20110707, MC: label update to term editor and definition modified accordingly. See https://github.com/information-artifact-ontology/IAO/issues/115."
+    ],
+    "editor preferred term": [
+      "term editor"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000122"
+    ]
+  },
+  "label": "term editor",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "IAO_0000117",
+  "obo_id": "IAO:0000117",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000117?lang=en"
+    }
+  }
+}

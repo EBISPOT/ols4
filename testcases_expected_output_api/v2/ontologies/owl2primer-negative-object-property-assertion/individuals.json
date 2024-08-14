@@ -1,0 +1,81 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-negative-object-property-assertion"
+    ],
+    "curie": "Bill",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Bill",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Bill",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary": {
+        "curie": "Mary",
+        "hasLocalDefinition": true,
+        "label": "Mary",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": {
+        "curie": "hasWife",
+        "hasLocalDefinition": true,
+        "label": "hasWife",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-negative-object-property-assertion",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
+    "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
+    "searchableAnnotationValues": false,
+    "shortForm": "Bill",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-negative-object-property-assertion"
+    ],
+    "curie": "Mary",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Mary",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-negative-object-property-assertion",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion.owl",
+    "ontologyPreferredPrefix": "owl2primer-negative-object-property-assertion",
+    "searchableAnnotationValues": false,
+    "shortForm": "Mary",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

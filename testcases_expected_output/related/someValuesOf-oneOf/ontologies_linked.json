@@ -13,12 +13,7 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-oneOf.xml",
-      "imported": {
-        "type": [
-          "literal"
-        ],
-        "value": "false"
-      },
+      "imported": false,
       "isObsolete": false,
       "language": {
         "type": [
@@ -26,18 +21,8 @@
         ],
         "value": "en"
       },
-      "numDirectDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
-      "numHierarchicalDescendants": {
-        "type": [
-          "literal"
-        ],
-        "value": "0"
-      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
       "numberOfClasses": {
         "type": [
           "literal"
@@ -63,12 +48,7 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "false"
-        },
+        false,
         {
           "type": [
             "literal"
@@ -108,30 +88,10 @@
             "value": "A"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "hierarchicalProperty": {
             "type": [
@@ -153,37 +113,17 @@
             },
             "isObsolete": false
           },
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "A"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -243,12 +183,7 @@
               "isObsolete": false
             }
           ],
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -261,7 +196,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -282,7 +217,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -302,7 +237,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -322,7 +257,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -359,62 +294,22 @@
             "value": "r"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
-          "isPreferredRoot": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "isPreferredRoot": false,
           "label": {
             "type": [
               "literal"
             ],
             "value": "r"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -433,12 +328,7 @@
             ],
             "value": "related-someValuesOf-oneOf"
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -466,37 +356,12 @@
             "value": "b1"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
           "label": {
             "type": [
@@ -504,18 +369,8 @@
             ],
             "value": "b1"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -547,12 +402,7 @@
             ],
             "isObsolete": false
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -565,7 +415,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -586,7 +436,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -606,7 +456,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -626,7 +476,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -660,37 +510,12 @@
             "value": "b2"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
           "label": {
             "type": [
@@ -698,18 +523,8 @@
             ],
             "value": "b2"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -741,12 +556,7 @@
             ],
             "isObsolete": false
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -759,7 +569,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -780,7 +590,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -800,7 +610,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -820,7 +630,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -854,37 +664,12 @@
             "value": "b3"
           },
           "directAncestor": [],
-          "hasDirectChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasDirectParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalChildren": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
-          "hasHierarchicalParent": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "imported": false,
           "isObsolete": false,
           "label": {
             "type": [
@@ -892,18 +677,8 @@
             ],
             "value": "b3"
           },
-          "numDirectDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
-          "numHierarchicalDescendants": {
-            "type": [
-              "literal"
-            ],
-            "value": "0"
-          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
           "ontologyId": {
             "type": [
               "literal"
@@ -935,12 +710,7 @@
             ],
             "isObsolete": false
           },
-          "searchableAnnotationValues": {
-            "type": [
-              "literal"
-            ],
-            "value": "false"
-          },
+          "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
@@ -953,7 +723,7 @@
           ],
           "linkedEntities": {
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -974,7 +744,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -994,7 +764,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [
@@ -1014,7 +784,7 @@
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
-              "numAppearsIn": "1",
+              "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": {
                 "type": [

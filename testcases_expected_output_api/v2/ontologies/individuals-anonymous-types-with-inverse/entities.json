@@ -1,0 +1,239 @@
+[
+  {
+    "appearsIn": [
+      "individuals-anonymous-types-with-inverse"
+    ],
+    "curie": "A",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "A",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a": {
+        "curie": "a",
+        "hasLocalDefinition": true,
+        "label": "a",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
+        "curie": "relation",
+        "hasLocalDefinition": true,
+        "label": "relation",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "isObsolete": false,
+      "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "A",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "individuals-anonymous-types-with-inverse"
+    ],
+    "curie": "a",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "a",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A": {
+        "curie": "A",
+        "hasLocalDefinition": true,
+        "label": "A",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation": {
+        "curie": "inverseRelation",
+        "hasLocalDefinition": true,
+        "label": "inverseRelation",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
+        "curie": "relation",
+        "hasLocalDefinition": true,
+        "label": "relation",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "isObsolete": false,
+      "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "a",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "individuals-anonymous-types-with-inverse"
+    ],
+    "curie": "inverseRelation",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "inverseRelation",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
+        "curie": "relation",
+        "hasLocalDefinition": true,
+        "label": "relation",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
+    "searchableAnnotationValues": false,
+    "shortForm": "inverseRelation",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "individuals-anonymous-types-with-inverse"
+    ],
+    "curie": "relation",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "relation",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation": {
+        "curie": "inverseRelation",
+        "hasLocalDefinition": true,
+        "label": "inverseRelation",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
+    "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
+    "searchableAnnotationValues": false,
+    "shortForm": "relation",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

@@ -1,0 +1,1891 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/syndromic.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D013577",
+        "http://linkedlifedata.com/resource/umls/id/C0039082",
+        "http://purl.obolibrary.org/obo/DOID_225",
+        "http://purl.obolibrary.org/obo/NCIT_C28193"
+      ],
+      "hasDbXref": [
+        "DOID:225",
+        "MESH:D013577",
+        "NCIT:C28193",
+        "OGMS:0000086",
+        "UMLS:C0039082"
+      ],
+      "id": [
+        "MONDO:0002254"
+      ]
+    },
+    "description": [
+      "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002254",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "syndromic disease",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C28193",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0002254",
+    "obo_synonym": [
+      {
+        "name": "cluster, symptom",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "clusters, symptom",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "symptom cluster",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "symptom clusters",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "syndrome associated with disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      },
+      {
+        "name": "syndrome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C28193",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+          },
+          {
+            "database": "OGMS",
+            "id": "0000086",
+            "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+          }
+        ]
+      },
+      {
+        "name": "syndromes",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D013577",
+            "url": "http://id.nlm.nih.gov/mesh/D013577"
+          }
+        ]
+      },
+      {
+        "name": "syndromic disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      },
+      {
+        "name": "syndromic disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/syndromic"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "225",
+        "url": "http://purl.obolibrary.org/obo/DOID_225"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D013577",
+        "url": "http://id.nlm.nih.gov/mesh/D013577"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C28193",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+      },
+      {
+        "database": "OGMS",
+        "description": "MONDO:cjm",
+        "id": "0000086",
+        "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C28193",
+        "id": "C0039082",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0039082"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0002254",
+    "synonyms": [
+      "cluster, symptom",
+      "clusters, symptom",
+      "symptom cluster",
+      "symptom clusters",
+      "syndrome associated with disease or disorder",
+      "syndrome",
+      "syndromes",
+      "syndromic disease or disorder",
+      "syndromic disease"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003847?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D030342",
+        "http://identifiers.org/snomedct/32895009",
+        "http://linkedlifedata.com/resource/umls/id/C0019247",
+        "http://purl.obolibrary.org/obo/DOID_630",
+        "http://purl.obolibrary.org/obo/NCIT_C3101"
+      ],
+      "hasDbXref": [
+        "DOID:630",
+        "EFO:0000508",
+        "ICD9:799.89",
+        "MESH:D030342",
+        "NCIT:C3101",
+        "SCTID:32895009",
+        "UMLS:C0019247"
+      ],
+      "id": [
+        "MONDO:0003847"
+      ]
+    },
+    "description": [
+      "A disease that is caused by genetic modifications where those modifications are inherited from a parent's genome.",
+      "Usage note: this is intended only for diseases with an inherited genetic etiology. Somatic genetic mutations are excluded. Some ontologies use the term 'genetic disease' in the sense of inherited disorders only, we are here careful to distinguish."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "hereditary disease",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease that is caused by genetic modifications where those modifications are inherited from a parent's genome.",
+        "oboXrefs": [
+          {
+            "database": "MONDO",
+            "id": "cjm"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0003847",
+    "obo_synonym": [
+      {
+        "name": "Mendelian disease",
+        "scope": "hasNarrowSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "0050177",
+            "url": "http://purl.obolibrary.org/obo/DOID_0050177"
+          }
+        ]
+      },
+      {
+        "name": "genetic condition",
+        "scope": "hasBroadSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      },
+      {
+        "name": "genetic disorder",
+        "scope": "hasBroadSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      },
+      {
+        "name": "hereditary disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/hereditary"
+          }
+        ]
+      },
+      {
+        "name": "hereditary disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/hereditary"
+          },
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      },
+      {
+        "name": "hereditary diseases",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      },
+      {
+        "name": "inherited disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      },
+      {
+        "name": "inherited genetic disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "id": "https://github.com/monarch-initiative/mondo/issues/1758",
+            "url": "https://github.com/monarch-initiative/mondo/issues/1758"
+          }
+        ]
+      },
+      {
+        "name": "molecular disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3101",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "630",
+        "url": "http://purl.obolibrary.org/obo/DOID_630"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0000508",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000508"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "799.89"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D030342",
+        "url": "http://id.nlm.nih.gov/mesh/D030342"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C3101",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C3101"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "32895009",
+        "url": "http://snomed.info/id/32895009"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C3101",
+        "id": "C0019247",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0019247"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0003847",
+    "synonyms": [
+      "Mendelian disease",
+      "familial disorder",
+      "genetic condition",
+      "genetic disease",
+      "genetic disorder",
+      "hereditary disease or disorder",
+      "hereditary disease",
+      "hereditary diseases",
+      "inborn disorder",
+      "inherited disease",
+      "inherited genetic disease",
+      "molecular disease"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/snomedct/362968007",
+        "http://linkedlifedata.com/resource/umls/id/C0178829",
+        "http://purl.obolibrary.org/obo/DOID_15",
+        "http://purl.obolibrary.org/obo/NCIT_C4875"
+      ],
+      "hasDbXref": [
+        "DOID:15",
+        "EFO:0000512",
+        "NCIT:C4875",
+        "SCTID:362968007",
+        "UMLS:C0178829",
+        "Wikipedia:Reproductive_system_disease"
+      ],
+      "id": [
+        "MONDO:0005039"
+      ]
+    },
+    "description": [
+      "A disease involving the reproductive system."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "reproductive system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease involving the reproductive system.",
+        "oboXrefs": [
+          {
+            "id": "https://orcid.org/0000-0002-6601-2165",
+            "url": "https://orcid.org/0000-0002-6601-2165"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005039",
+    "obo_synonym": [
+      {
+        "name": "disease of reproductive system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of reproductive system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          },
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "genital disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "genital system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "15",
+            "url": "http://purl.obolibrary.org/obo/DOID_15"
+          }
+        ]
+      },
+      {
+        "name": "reproductive disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "15",
+            "url": "http://purl.obolibrary.org/obo/DOID_15"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          },
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      },
+      {
+        "name": "reproductive system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C4875",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "15",
+        "url": "http://purl.obolibrary.org/obo/DOID_15"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0000512",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000512"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C4875",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C4875"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "362968007",
+        "url": "http://snomed.info/id/362968007"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C4875",
+        "id": "C0178829",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0178829"
+      },
+      {
+        "database": "Wikipedia",
+        "description": "EFO:0000512",
+        "id": "Reproductive_system_disease",
+        "url": "http://en.wikipedia.org/wiki/Reproductive_system_disease"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005039",
+    "synonyms": [
+      "disease of reproductive system",
+      "disease or disorder of reproductive system",
+      "disorder of reproductive system",
+      "genital disorders",
+      "genital system disease",
+      "reproductive disease",
+      "reproductive system disease or disorder",
+      "reproductive system disease",
+      "reproductive system disorder"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005071?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D009422",
+        "http://identifiers.org/snomedct/118940003",
+        "http://linkedlifedata.com/resource/umls/id/C0027765",
+        "http://purl.bioontology.org/ontology/ICD10CM/G00-G99",
+        "http://purl.obolibrary.org/obo/DOID_863",
+        "http://purl.obolibrary.org/obo/NCIT_C26835"
+      ],
+      "hasDbXref": [
+        "DOID:863",
+        "EFO:0000618",
+        "ICD10CM:G00-G99",
+        "ICD9:349.89",
+        "ICD9:349.9",
+        "MESH:D009422",
+        "NCIT:C26835",
+        "SCTID:118940003",
+        "UMLS:C0027765",
+        "Wikipedia:Nervous_system_disease"
+      ],
+      "id": [
+        "MONDO:0005071"
+      ]
+    },
+    "description": [
+      "'psychiatric disorder' is not classified as a 'nervous system disorder' in Mondo (though it is often as such): the hallmarks of psychiatric disorders are based in behavior and emotional state, and the relation with nervous system malfunction or damage is not always clearly determined.",
+      "A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005071",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "nervous system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26835",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005071",
+    "obo_synonym": [
+      {
+        "name": "disease of nervous system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of nervous system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          },
+          {
+            "database": "NCIT",
+            "id": "C26835",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+          }
+        ]
+      },
+      {
+        "name": "nervous system disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "nervous system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "nervous system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26835",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+          }
+        ]
+      },
+      {
+        "name": "neurologic disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "863",
+            "url": "http://purl.obolibrary.org/obo/DOID_863"
+          }
+        ]
+      },
+      {
+        "name": "neurologic disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "863",
+            "url": "http://purl.obolibrary.org/obo/DOID_863"
+          },
+          {
+            "database": "ISBN-13",
+            "id": "978-1-259-64403-0"
+          },
+          {
+            "database": "NCIT",
+            "id": "C26835",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+          }
+        ]
+      },
+      {
+        "name": "neurological disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "863",
+            "url": "http://purl.obolibrary.org/obo/DOID_863"
+          }
+        ]
+      },
+      {
+        "name": "neurological disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "863",
+            "url": "http://purl.obolibrary.org/obo/DOID_863"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "863",
+        "url": "http://purl.obolibrary.org/obo/DOID_863"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0000618",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000618"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "https://orcid.org/0000-0002-4142-7153",
+        "id": "G00-G99"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "349.9"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "349.89"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D009422",
+        "url": "http://id.nlm.nih.gov/mesh/D009422"
+      },
+      {
+        "database": "NCIT",
+        "description": "NCIT:C26835",
+        "id": "C26835",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C26835"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "118940003",
+        "url": "http://snomed.info/id/118940003"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C26835",
+        "id": "C0027765",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0027765"
+      },
+      {
+        "database": "Wikipedia",
+        "description": "EFO:0000618",
+        "id": "Nervous_system_disease",
+        "url": "http://en.wikipedia.org/wiki/Nervous_system_disease"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005071",
+    "synonyms": [
+      "disease of nervous system",
+      "disease or disorder of nervous system",
+      "disorder of nervous system",
+      "nervous system disease or disorder",
+      "nervous system disease",
+      "nervous system disorder",
+      "neurologic disease",
+      "neurologic disorder",
+      "neurological disease",
+      "neurological disorder"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005137?lang=en"
+      }
+    },
+    "annotation": {
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0005066",
+        "http://purl.obolibrary.org/obo/MONDO_0006504"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D009748",
+        "http://identifiers.org/snomedct/2492009",
+        "http://linkedlifedata.com/resource/umls/id/C3714509",
+        "http://purl.obolibrary.org/obo/DOID_374",
+        "http://purl.obolibrary.org/obo/NCIT_C26836"
+      ],
+      "hasDbXref": [
+        "DOID:374",
+        "EFO:0001069",
+        "ICD9:783.9",
+        "MESH:D009748",
+        "NCIT:C26836",
+        "SCTID:2492009",
+        "UMLS:C3714509"
+      ],
+      "id": [
+        "MONDO:0005137"
+      ]
+    },
+    "description": [
+      "Any condition related to a disturbance between proper intake and utilization of nourishment."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005137",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "nutritional disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Any condition related to a disturbance between proper intake and utilization of nourishment.",
+        "oboXrefs": [
+          {
+            "database": "NCIT",
+            "id": "C26836",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005137",
+    "obo_synonym": [
+      {
+        "name": "nutrition disease",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "374",
+            "url": "http://purl.obolibrary.org/obo/DOID_374"
+          }
+        ]
+      },
+      {
+        "name": "nutritional disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "374",
+            "url": "http://purl.obolibrary.org/obo/DOID_374"
+          },
+          {
+            "database": "NCIT",
+            "id": "C26836",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "374",
+        "url": "http://purl.obolibrary.org/obo/DOID_374"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0001069",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0001069"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "783.9"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D009748",
+        "url": "http://id.nlm.nih.gov/mesh/D009748"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:exact-label-match",
+        "id": "C26836",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C26836"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "2492009",
+        "url": "http://snomed.info/id/2492009"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C26836",
+        "id": "C3714509",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C3714509"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005137",
+    "synonyms": [
+      "nutrition disease",
+      "nutritional disorder"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/descendants"
+      },
+      "disease_has_location": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml"
+      ],
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0021199"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D004700",
+        "http://identifiers.org/snomedct/362969004",
+        "http://linkedlifedata.com/resource/umls/id/C0014130",
+        "http://purl.obolibrary.org/obo/DOID_28",
+        "http://purl.obolibrary.org/obo/NCIT_C3009"
+      ],
+      "hasDbXref": [
+        "DOID:28",
+        "EFO:0001379",
+        "ICD9:259.8",
+        "ICD9:259.9",
+        "MESH:D004700",
+        "NCIT:C3009",
+        "SCTID:362969004",
+        "UMLS:C0014130"
+      ],
+      "id": [
+        "MONDO:0005151"
+      ]
+    },
+    "description": [
+      "A disease involving the endocrine system."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "endocrine system disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "A disease involving the endocrine system.",
+        "oboXrefs": [
+          {
+            "id": "https://orcid.org/0000-0002-6601-2165",
+            "url": "https://orcid.org/0000-0002-6601-2165"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0005151",
+    "obo_synonym": [
+      {
+        "name": "disease of endocrine system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          }
+        ]
+      },
+      {
+        "name": "disorder of endocrine system",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location_top"
+          },
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "DOID",
+            "id": "28",
+            "url": "http://purl.obolibrary.org/obo/DOID_28"
+          },
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disease or disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "design_pattern"
+          },
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "patterns/location"
+          }
+        ]
+      },
+      {
+        "name": "endocrine system disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "endocrinopathy",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      },
+      {
+        "name": "thyroid or other glandular disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "NCIT",
+            "id": "C3009",
+            "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "28",
+        "url": "http://purl.obolibrary.org/obo/DOID_28"
+      },
+      {
+        "database": "EFO",
+        "description": "MONDO:equivalentTo",
+        "id": "0001379",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0001379"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:i2s",
+        "id": "259.9"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "259.8"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D004700",
+        "url": "http://id.nlm.nih.gov/mesh/D004700"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C3009",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C3009"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "362969004",
+        "url": "http://snomed.info/id/362969004"
+      },
+      {
+        "database": "UMLS",
+        "description": "NCIT:C3009",
+        "id": "C0014130",
+        "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0014130"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0005151",
+    "synonyms": [
+      "disease of endocrine system",
+      "disease or disorder of endocrine system",
+      "disorder of endocrine system",
+      "endocrine disease",
+      "endocrine disorder",
+      "endocrine system disease or disorder",
+      "endocrine system disease",
+      "endocrine system disorder",
+      "endocrinopathy",
+      "thyroid or other glandular disorders"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/graph"
+      },
+      "has_characteristic": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0019040?lang=en"
+      }
+    },
+    "annotation": {
+      "excluded_subClassOf": [
+        "http://purl.obolibrary.org/obo/MONDO_0003847",
+        "http://purl.obolibrary.org/obo/MONDO_0019755"
+      ],
+      "has exact match": [
+        "http://identifiers.org/mesh/D025063",
+        "http://identifiers.org/snomedct/409709004",
+        "http://purl.bioontology.org/ontology/ICD10CM/Q90-Q99",
+        "http://purl.obolibrary.org/obo/DOID_0080014",
+        "http://purl.obolibrary.org/obo/NCIT_C34470",
+        "http://www.orpha.net/ORDO/Orphanet_68335"
+      ],
+      "hasDbXref": [
+        "DOID:0080014",
+        "GARD:18874",
+        "ICD10CM:Q90-Q99",
+        "ICD9:758.89",
+        "MESH:D025063",
+        "NCIT:C34470",
+        "Orphanet:68335",
+        "SCTID:409709004"
+      ],
+      "id": [
+        "MONDO:0019040"
+      ]
+    },
+    "description": [
+      "Clinical conditions caused by an abnormal chromosome constitution in which there is extra or missing chromosome material (either a whole chromosome or a chromosome segment). (from Thompson et al., Genetics in Medicine, 5th ed, p429)"
+    ],
+    "has_children": true,
+    "in_subset": [
+      "disease_grouping",
+      "gard_rare",
+      "ordo_group_of_disorders",
+      "orphanet_rare",
+      "rare",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0019040",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "chromosomal disorder",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Clinical conditions caused by an abnormal chromosome constitution in which there is extra or missing chromosome material (either a whole chromosome or a chromosome segment). (from Thompson et al., Genetics in Medicine, 5th ed, p429)",
+        "oboXrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0019040",
+    "obo_synonym": [
+      {
+        "name": "autosomal chromosome disorder",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "autosomal chromosome disorders",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosomal disease",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MONDO",
+            "id": "0000838",
+            "url": "http://purl.obolibrary.org/obo/MONDO_0000838"
+          }
+        ]
+      },
+      {
+        "name": "chromosomal disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosomal disorders",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosome abnormality disorder",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosome abnormality disorders",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosome disorder",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosome disorder, autosomal",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "chromosome disorders, autosomal",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "disorder, chromosomal",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "disorder, chromosome abnormality",
+        "scope": "hasRelatedSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "disorder, chromosome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "disorders, chromosomal",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      },
+      {
+        "name": "disorders, chromosome",
+        "scope": "hasExactSynonym",
+        "xrefs": [
+          {
+            "database": "MESH",
+            "id": "D025063",
+            "url": "http://id.nlm.nih.gov/mesh/D025063"
+          }
+        ]
+      }
+    ],
+    "obo_xref": [
+      {
+        "database": "DOID",
+        "description": "MONDO:equivalentTo",
+        "id": "0080014",
+        "url": "http://purl.obolibrary.org/obo/DOID_0080014"
+      },
+      {
+        "database": "GARD",
+        "id": "18874",
+        "url": "https://rarediseases.info.nih.gov/diseases/18874/index"
+      },
+      {
+        "database": "ICD10CM",
+        "description": "https://orcid.org/0000-0002-4142-7153",
+        "id": "Q90-Q99"
+      },
+      {
+        "database": "ICD9",
+        "description": "MONDO:relatedTo",
+        "id": "758.89"
+      },
+      {
+        "database": "MESH",
+        "description": "MONDO:equivalentTo",
+        "id": "D025063",
+        "url": "http://id.nlm.nih.gov/mesh/D025063"
+      },
+      {
+        "database": "NCIT",
+        "description": "MONDO:equivalentTo",
+        "id": "C34470",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C34470"
+      },
+      {
+        "database": "Orphanet",
+        "description": "MONDO:equivalentTo",
+        "id": "68335",
+        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=68335"
+      },
+      {
+        "database": "SCTID",
+        "description": "MONDO:equivalentTo",
+        "id": "409709004",
+        "url": "http://snomed.info/id/409709004"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0019040",
+    "synonyms": [
+      "autosomal chromosome disorder",
+      "autosomal chromosome disorders",
+      "chromosomal disease",
+      "chromosomal disorder",
+      "chromosomal disorders",
+      "chromosome abnormality disorder",
+      "chromosome abnormality disorders",
+      "chromosome disorder",
+      "chromosome disorder, autosomal",
+      "chromosome disorders, autosomal",
+      "disorder, chromosomal",
+      "disorder, chromosome abnormality",
+      "disorder, chromosome",
+      "disorders, chromosomal",
+      "disorders, chromosome"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/descendants"
+      },
+      "disease_causes_disruption_of": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021147?lang=en"
+      }
+    },
+    "annotation": {
+      "conformsTo": [
+        "http://purl.obolibrary.org/obo/mondo/patterns/specific_disease_by_disrupted_process.yaml"
+      ],
+      "has exact match": [
+        "http://purl.bioontology.org/ontology/ICD10CM/Q00-Q99"
+      ],
+      "hasDbXref": [
+        "ICD10CM:Q00-Q99"
+      ],
+      "id": [
+        "MONDO:0021147"
+      ]
+    },
+    "description": [
+      "Any disease or disorder that disrupts the process development of an anatomical structure. Can be due to genetic or environmental causes. Typically happens during embryogenesis, but also includes post-embryonic development."
+    ],
+    "has_children": true,
+    "in_subset": [
+      "harrisons_view",
+      "rare_grouping"
+    ],
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0021147",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "disorder of development or morphogenesis",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "Any disease or disorder that disrupts the process development of an anatomical structure. Can be due to genetic or environmental causes. Typically happens during embryogenesis, but also includes post-embryonic development.",
+        "oboXrefs": [
+          {
+            "database": "MONDO",
+            "id": "cjm"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0021147",
+    "obo_xref": [
+      {
+        "database": "ICD10CM",
+        "description": "https://orcid.org/0000-0002-4142-7153",
+        "id": "Q00-Q99"
+      }
+    ],
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0021147",
+    "synonyms": []
+  }
+]

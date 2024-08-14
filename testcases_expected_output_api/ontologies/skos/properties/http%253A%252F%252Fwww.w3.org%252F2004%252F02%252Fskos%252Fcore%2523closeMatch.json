@@ -1,0 +1,40 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property."
+    ]
+  },
+  "label": "has close match",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "closeMatch",
+  "obo_id": "closeMatch",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523closeMatch/descendants"
+    }
+  }
+}

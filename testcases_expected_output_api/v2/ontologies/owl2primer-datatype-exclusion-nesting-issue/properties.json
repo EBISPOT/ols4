@@ -1,0 +1,146 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-datatype-exclusion-nesting-issue"
+    ],
+    "curie": "ageOfAdult",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "majorAge",
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+      "http://www.w3.org/2002/07/owl#equivalentClass": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          {
+            "curie": "personAge",
+            "directAncestor": [],
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+            "http://www.w3.org/2002/07/owl#equivalentClass": {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+              "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "http://www.w3.org/2002/07/owl#withRestrictions": [
+                {
+                  "http://www.w3.org/2001/XMLSchema#maxInclusive": 0.0,
+                  "isObsolete": false
+                },
+                {
+                  "http://www.w3.org/2001/XMLSchema#minInclusive": 150.0,
+                  "isObsolete": false
+                }
+              ],
+              "isObsolete": false
+            },
+            "imported": false,
+            "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#personAge",
+            "isObsolete": false,
+            "label": "personAge",
+            "numDescendants": 0.0,
+            "numHierarchicalDescendants": 0.0,
+            "shortForm": "personAge",
+            "type": [
+              "datatype"
+            ]
+          },
+          {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+            "http://www.w3.org/2002/07/owl#datatypeComplementOf": {
+              "curie": "minorAge",
+              "directAncestor": [],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+              "http://www.w3.org/2002/07/owl#equivalentClass": {
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+                "http://www.w3.org/2002/07/owl#onDatatype": {
+                  "curie": "personAge",
+                  "directAncestor": [],
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+                  "http://www.w3.org/2002/07/owl#equivalentClass": {
+                    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+                    "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
+                    "http://www.w3.org/2002/07/owl#withRestrictions": [
+                      {
+                        "http://www.w3.org/2001/XMLSchema#maxInclusive": 0.0,
+                        "isObsolete": false
+                      },
+                      {
+                        "http://www.w3.org/2001/XMLSchema#minInclusive": 150.0,
+                        "isObsolete": false
+                      }
+                    ],
+                    "isObsolete": false
+                  },
+                  "imported": false,
+                  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#personAge",
+                  "isObsolete": false,
+                  "label": "personAge",
+                  "numDescendants": 0.0,
+                  "numHierarchicalDescendants": 0.0,
+                  "shortForm": "personAge",
+                  "type": [
+                    "datatype"
+                  ]
+                },
+                "http://www.w3.org/2002/07/owl#withRestrictions": [
+                  {
+                    "http://www.w3.org/2001/XMLSchema#maxInclusive": "18",
+                    "isObsolete": false
+                  },
+                  {
+                    "http://www.w3.org/2001/XMLSchema#minInclusive": "0",
+                    "isObsolete": false
+                  }
+                ],
+                "isObsolete": false
+              },
+              "imported": false,
+              "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#minorAge",
+              "isObsolete": false,
+              "label": "minorAge",
+              "numDescendants": 0.0,
+              "numHierarchicalDescendants": 0.0,
+              "shortForm": "minorAge",
+              "type": [
+                "datatype"
+              ]
+            },
+            "isObsolete": false
+          }
+        ],
+        "isObsolete": false
+      },
+      "imported": false,
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#majorAge",
+      "isObsolete": false,
+      "label": "majorAge",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
+      "shortForm": "majorAge",
+      "type": [
+        "datatype"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#ageOfAdult",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "ageOfAdult",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
+    "ontologyPreferredPrefix": "owl2primer-datatype-exclusion-nesting-issue",
+    "searchableAnnotationValues": false,
+    "shortForm": "ageOfAdult",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

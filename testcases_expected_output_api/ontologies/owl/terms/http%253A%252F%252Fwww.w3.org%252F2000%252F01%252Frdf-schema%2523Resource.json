@@ -1,0 +1,39 @@
+{
+  "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+  "lang": "en",
+  "description": [
+    "The class resource, everything."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Resource",
+  "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "Resource",
+  "obo_id": "Resource",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Resource/graph"
+    }
+  }
+}

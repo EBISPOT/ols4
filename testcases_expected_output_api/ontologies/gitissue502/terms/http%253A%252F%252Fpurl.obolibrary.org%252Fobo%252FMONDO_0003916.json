@@ -1,0 +1,115 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0003916",
+  "lang": "en",
+  "description": [
+    "An imbalanced nutritional status resulting from excessive intake of nutrients. Generally, overnutrition generates an energy imbalance between food consumption and energy expenditure leading to disorders such as obesity."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "has exact match": [
+      "http://identifiers.org/mesh/D044343",
+      "http://identifiers.org/snomedct/302872003",
+      "http://linkedlifedata.com/resource/umls/id/C1257763",
+      "http://purl.obolibrary.org/obo/DOID_654"
+    ],
+    "hasDbXref": [
+      "DOID:654",
+      "ICD9:278.8",
+      "MESH:D044343",
+      "SCTID:302872003",
+      "UMLS:C1257763"
+    ],
+    "id": [
+      "MONDO:0003916"
+    ]
+  },
+  "label": "overnutrition",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0003916",
+  "obo_id": "MONDO:0003916",
+  "obo_definition_citation": [
+    {
+      "definition": "An imbalanced nutritional status resulting from excessive intake of nutrients. Generally, overnutrition generates an energy imbalance between food consumption and energy expenditure leading to disorders such as obesity.",
+      "oboXrefs": [
+        {
+          "database": "MESH",
+          "id": "D044343",
+          "url": "http://id.nlm.nih.gov/mesh/D044343"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "id": "654",
+      "description": "MONDO:equivalentTo",
+      "url": "http://purl.obolibrary.org/obo/DOID_654"
+    },
+    {
+      "database": "ICD9",
+      "id": "278.8",
+      "description": "MONDO:relatedTo"
+    },
+    {
+      "database": "MESH",
+      "id": "D044343",
+      "description": "MONDO:equivalentTo",
+      "url": "http://id.nlm.nih.gov/mesh/D044343"
+    },
+    {
+      "database": "SCTID",
+      "id": "302872003",
+      "description": "MONDO:equivalentTo",
+      "url": "http://snomed.info/id/302872003"
+    },
+    {
+      "database": "UMLS",
+      "id": "C1257763",
+      "description": "MONDO:equivalentTo",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C1257763"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0003916/graph"
+    }
+  }
+}

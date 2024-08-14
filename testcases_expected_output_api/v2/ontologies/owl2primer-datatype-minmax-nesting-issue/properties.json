@@ -1,0 +1,62 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-datatype-minmax-nesting-issue"
+    ],
+    "curie": "hasAge",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "personAge",
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+      "http://www.w3.org/2002/07/owl#equivalentClass": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+        "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "http://www.w3.org/2002/07/owl#withRestrictions": [
+          {
+            "http://www.w3.org/2001/XMLSchema#maxInclusive": 150.0,
+            "isObsolete": false
+          },
+          {
+            "http://www.w3.org/2001/XMLSchema#minInclusive": 0.0,
+            "isObsolete": false
+          }
+        ],
+        "isObsolete": false
+      },
+      "imported": false,
+      "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#personAge",
+      "isObsolete": false,
+      "label": "personAge",
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
+      "shortForm": "personAge",
+      "type": [
+        "datatype"
+      ]
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl#hasAge",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasAge",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-datatype-minmax-nesting-issue",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
+    "ontologyPreferredPrefix": "owl2primer-datatype-minmax-nesting-issue",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasAge",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

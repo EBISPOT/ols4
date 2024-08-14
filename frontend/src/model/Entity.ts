@@ -45,11 +45,11 @@ export default abstract class Entity extends Thing {
   }
 
   hasDirectChildren(): boolean {
-    return this.properties["hasDirectChildren"] === "true";
+    return this.properties["hasDirectChildren"] === true;
   }
 
   hasHierarchicalChildren(): boolean {
-    return this.properties["hasHierarchicalChildren"] === "true";
+    return this.properties["hasHierarchicalChildren"] === true;
   }
 
   hasChildren(): boolean {
@@ -168,13 +168,13 @@ export default abstract class Entity extends Thing {
 
   getNumHierarchicalDescendants(): number {
     return this.properties["numHierarchicalDescendants"]
-      ? parseInt(this.properties["numHierarchicalDescendants"])
+      ? this.properties["numHierarchicalDescendants"]
       : 0;
   }
 
   getNumDescendants(): number {
     return this.properties["numDescendants"]
-      ? parseInt(this.properties["numDescendants"])
+      ? this.properties["numDescendants"]
       : 0;
   }
 

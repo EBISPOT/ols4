@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000428",
+  "lang": "en",
+  "description": [
+    "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "group:OBI"
+    ],
+    "editor preferred term": [
+      "requires discussion"
+    ],
+    "term editor": [
+      "Alan Ruttenberg"
+    ]
+  },
+  "label": "requires discussion",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000428",
+  "obo_id": "IAO:0000428",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000428?lang=en"
+    },
+    "types": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000428/types"
+    },
+    "alltypes": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000428/alltypes"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/individuals/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000428/jstree"
+    }
+  }
+}

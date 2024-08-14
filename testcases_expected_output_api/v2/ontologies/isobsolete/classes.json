@@ -1,0 +1,60 @@
+[
+  {
+    "appearsIn": [
+      "isobsolete"
+    ],
+    "curie": "NonDeprecatedClass",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "NonDeprecatedClass",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "isobsolete",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontologyPreferredPrefix": "IsObsolete",
+    "searchableAnnotationValues": false,
+    "shortForm": "NonDeprecatedClass",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "isobsolete"
+    ],
+    "curie": "ObsoleteClass",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "ObsoleteClass",
+    "linkedEntities": {},
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "isobsolete",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontologyPreferredPrefix": "IsObsolete",
+    "searchableAnnotationValues": false,
+    "shortForm": "ObsoleteClass",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

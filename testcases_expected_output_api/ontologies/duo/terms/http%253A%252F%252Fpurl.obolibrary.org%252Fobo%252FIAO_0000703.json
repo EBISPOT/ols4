@@ -1,0 +1,65 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000703",
+  "lang": "en",
+  "description": [
+    "A document part that describes human subject(s) that participated in a study (e.g. inclusion & exclusion criteria, recruitment methods, reasons for non-participation, grouping and randomisation, methods of follow-up, etc.)."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition source": [
+      "https://www.equator-network.org/reporting-guidelines/consort/",
+      "https://www.equator-network.org/reporting-guidelines/prisma/",
+      "https://www.equator-network.org/reporting-guidelines/strobe-nut/"
+    ],
+    "editor preferred term": [
+      "research participants section"
+    ],
+    "has curation status": [
+      "http://purl.obolibrary.org/obo/IAO_0000120"
+    ],
+    "ontology term requester": [
+      "ONE ontology"
+    ],
+    "term editor": [
+      "PERSON: Chen Yang",
+      "PERSON: Jie Zheng"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/IAO/issues/235"
+    ]
+  },
+  "label": "research participants section",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "IAO_0000703",
+  "obo_id": "IAO:0000703",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000703/graph"
+    }
+  }
+}

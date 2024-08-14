@@ -1,0 +1,389 @@
+[
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "BFO:0000051",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      "has part",
+      "has_part"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has part",
+      "has_part"
+    ],
+    "linkedEntities": {
+      "BFO:0000051": {
+        "curie": "BFO:0000051",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000051"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "BFO_0000051",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "BFO:0000054",
+    "definition": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+    "http://www.w3.org/2000/01/rdf-schema#label": "realized in",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "realized in",
+    "linkedEntities": {
+      "BFO:0000054": {
+        "curie": "BFO:0000054",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000054"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "BFO_0000054",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "EFO:0000400",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000054",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          "http://purl.obolibrary.org/obo/OGMS_0000063",
+          {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+            "isObsolete": false
+          }
+        ]
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "EFO_0000400",
+    "linkedEntities": {
+      "EFO:0000400": {
+        "curie": "EFO:0000400",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0000400"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000054": {
+        "curie": "BFO:0000054",
+        "hasLocalDefinition": true,
+        "label": "realized in",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/GO_0008152": {
+        "curie": "go:0008152",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://amigo.geneontology.org/amigo/term/GO:0008152"
+      },
+      "http://purl.obolibrary.org/obo/OGMS_0000063": {
+        "curie": "OGMS:0000063",
+        "hasLocalDefinition": true,
+        "label": "disease course",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "relatedTo": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/OGMS_0000063",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+          "isObsolete": false
+        }
+      ],
+      "property": "http://purl.obolibrary.org/obo/BFO_0000054",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/OGMS_0000063"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": "EFO_0000400",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "GO:0006807",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "nitrogen compound metabolic process",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/GO_0006807",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "nitrogen compound metabolic process",
+    "linkedEntities": {
+      "GO:0006807": {
+        "curie": "GO:0006807",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://amigo.geneontology.org/amigo/term/GO:0006807"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "GO_0006807",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "GO:0008150",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "GO_0008150",
+    "linkedEntities": {
+      "GO:0008150": {
+        "curie": "GO:0008150",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://amigo.geneontology.org/amigo/term/GO:0008150"
+      }
+    },
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "GO_0008150",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "OGMS:0000063",
+    "definition": "The totality of all processes through which a given disease instance is realized.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
+    "directParent": "http://purl.obolibrary.org/obo/GO_0008150",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
+    "hierarchicalParent": "http://purl.obolibrary.org/obo/GO_0008150",
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The totality of all processes through which a given disease instance is realized.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "disease course",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "disease course",
+    "linkedEntities": {
+      "OGMS:0000063": {
+        "curie": "OGMS:0000063",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OGMS_0000063"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000054": {
+        "curie": "BFO:0000054",
+        "hasLocalDefinition": true,
+        "label": "realized in",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/GO_0008150": {
+        "curie": "GO:0008150",
+        "hasLocalDefinition": true,
+        "label": "GO_0008150",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/GO_0008152": {
+        "curie": "go:0008152",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://amigo.geneontology.org/amigo/term/GO:0008152"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "iao:0000115",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000115"
+      },
+      "http://www.ebi.ac.uk/efo/EFO_0000400": {
+        "curie": "EFO:0000400",
+        "hasLocalDefinition": true,
+        "label": "EFO_0000400",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "relatedFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/OGMS_0000063",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+          "isObsolete": false
+        }
+      ],
+      "property": "http://purl.obolibrary.org/obo/BFO_0000054",
+      "type": [
+        "related"
+      ],
+      "value": "http://www.ebi.ac.uk/efo/EFO_0000400"
+    },
+    "searchableAnnotationValues": [
+      false
+    ],
+    "shortForm": "OGMS_0000063",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

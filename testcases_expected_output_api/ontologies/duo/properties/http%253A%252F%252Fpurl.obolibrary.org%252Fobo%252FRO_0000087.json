@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0000087",
+  "lang": "en",
+  "description": [
+    "a relation between an independent continuant (the bearer) and a role, in which the role specifically depends on the bearer for its existence"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "alternative label": [
+      "has_role"
+    ],
+    "editor note": [
+      "A bearer can have many roles, and its roles can exist for different periods of time, but none of its roles can exist when the bearer does not exist. A role need not be realized at all the times that the role exists."
+    ],
+    "example of usage": [
+      "this person has role this investigator role (more colloquially: this person has this role of investigator)"
+    ]
+  },
+  "label": "has role",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "RO_0000087",
+  "obo_id": "RO:0000087",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000087/jstree"
+    }
+  }
+}

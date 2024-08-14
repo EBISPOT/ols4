@@ -1,0 +1,3784 @@
+[
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000002",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "example to be eventually removed",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "example to be eventually removed",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000002",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "example to be eventually removed",
+    "linkedEntities": {
+      "IAO:0000002": {
+        "curie": "IAO:0000002",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000002"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "example to be eventually removed",
+      true
+    ],
+    "shortForm": "IAO_0000002",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000103",
+    "definition": "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "failed exploratory term",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Person:Alan Ruttenberg",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "failed exploratory term",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000103",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "failed exploratory term",
+    "linkedEntities": {
+      "IAO:0000103": {
+        "curie": "IAO:0000103",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000103"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Person:Alan Ruttenberg",
+      "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+      "failed exploratory term",
+      true
+    ],
+    "shortForm": "IAO_0000103",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000120",
+    "definition": "Class has all its metadata, but is either not guaranteed to be in its final location in the asserted IS_A hierarchy or refers to another class that is not complete.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "metadata complete",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Class has all its metadata, but is either not guaranteed to be in its final location in the asserted IS_A hierarchy or refers to another class that is not complete.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "metadata complete",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000120",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "metadata complete",
+    "linkedEntities": {
+      "IAO:0000120": {
+        "curie": "IAO:0000120",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000120"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Class has all its metadata, but is either not guaranteed to be in its final location in the asserted IS_A hierarchy or refers to another class that is not complete.",
+      "metadata complete",
+      true
+    ],
+    "shortForm": "IAO_0000120",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000121",
+    "definition": "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "organizational term",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "organizational term",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000121",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "organizational term",
+    "linkedEntities": {
+      "IAO:0000121": {
+        "curie": "IAO:0000121",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000121"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+      "organizational term",
+      true
+    ],
+    "shortForm": "IAO_0000121",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000122",
+    "definition": "Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking \"ready_for_release\" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release.  Those classes deemed \"ready_for_release\" will also derived from a chain of ancestor classes that are also \"ready_for_release.\"",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "ready for release",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking \"ready_for_release\" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release.  Those classes deemed \"ready_for_release\" will also derived from a chain of ancestor classes that are also \"ready_for_release.\"",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "ready for release",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000122",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "ready for release",
+    "linkedEntities": {
+      "IAO:0000122": {
+        "curie": "IAO:0000122",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000122"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking \"ready_for_release\" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release.  Those classes deemed \"ready_for_release\" will also derived from a chain of ancestor classes that are also \"ready_for_release.\"",
+      "ready for release",
+      true
+    ],
+    "shortForm": "IAO_0000122",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000123",
+    "definition": "Class is being worked on; however, the metadata (including definition) are not complete or sufficiently clear to the branch editors.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "metadata incomplete",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Class is being worked on; however, the metadata (including definition) are not complete or sufficiently clear to the branch editors.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "metadata incomplete",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000123",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "metadata incomplete",
+    "linkedEntities": {
+      "IAO:0000123": {
+        "curie": "IAO:0000123",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000123"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Class is being worked on; however, the metadata (including definition) are not complete or sufficiently clear to the branch editors.",
+      "metadata incomplete",
+      true
+    ],
+    "shortForm": "IAO_0000123",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000124",
+    "definition": "Nothing done yet beyond assigning a unique class ID and proposing a preferred term.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "uncurated",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Nothing done yet beyond assigning a unique class ID and proposing a preferred term.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "uncurated",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000124",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "uncurated",
+    "linkedEntities": {
+      "IAO:0000124": {
+        "curie": "IAO:0000124",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000124"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Nothing done yet beyond assigning a unique class ID and proposing a preferred term.",
+      "uncurated",
+      true
+    ],
+    "shortForm": "IAO_0000124",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000125",
+    "definition": "All definitions, placement in the asserted IS_A hierarchy and required minimal metadata are complete. The class is awaiting a final review by someone other than the term editor.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "pending final vetting",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "All definitions, placement in the asserted IS_A hierarchy and required minimal metadata are complete. The class is awaiting a final review by someone other than the term editor.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "pending final vetting",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000423",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000125",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "pending final vetting",
+    "linkedEntities": {
+      "IAO:0000125": {
+        "curie": "IAO:0000125",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000125"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "All definitions, placement in the asserted IS_A hierarchy and required minimal metadata are complete. The class is awaiting a final review by someone other than the term editor.",
+      "pending final vetting",
+      true
+    ],
+    "shortForm": "IAO_0000125",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000226",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "placeholder removed",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "placeholder removed",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000227",
+      "http://purl.obolibrary.org/obo/IAO_0000228",
+      "http://purl.obolibrary.org/obo/IAO_0000229"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000226",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "placeholder removed",
+    "linkedEntities": {
+      "IAO:0000226": {
+        "curie": "IAO:0000226",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000226"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000227": {
+        "curie": "IAO:0000227",
+        "hasLocalDefinition": true,
+        "label": "terms merged",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000228": {
+        "curie": "IAO:0000228",
+        "hasLocalDefinition": true,
+        "label": "term imported",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000229": {
+        "curie": "IAO:0000229",
+        "hasLocalDefinition": true,
+        "label": "term split",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "placeholder removed",
+      true
+    ],
+    "shortForm": "IAO_0000226",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000227",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "terms merged",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "An editor note should explain what were the merged terms and the reason for the merge.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "terms merged",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000226",
+      "http://purl.obolibrary.org/obo/IAO_0000228",
+      "http://purl.obolibrary.org/obo/IAO_0000229"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000227",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "terms merged",
+    "linkedEntities": {
+      "IAO:0000227": {
+        "curie": "IAO:0000227",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000227"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000226": {
+        "curie": "IAO:0000226",
+        "hasLocalDefinition": true,
+        "label": "placeholder removed",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000228": {
+        "curie": "IAO:0000228",
+        "hasLocalDefinition": true,
+        "label": "term imported",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000229": {
+        "curie": "IAO:0000229",
+        "hasLocalDefinition": true,
+        "label": "term split",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "An editor note should explain what were the merged terms and the reason for the merge.",
+      "terms merged",
+      true
+    ],
+    "shortForm": "IAO_0000227",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000228",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "term imported",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "term imported",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000226",
+      "http://purl.obolibrary.org/obo/IAO_0000227",
+      "http://purl.obolibrary.org/obo/IAO_0000229"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000228",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "term imported",
+    "linkedEntities": {
+      "IAO:0000228": {
+        "curie": "IAO:0000228",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000228"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000226": {
+        "curie": "IAO:0000226",
+        "hasLocalDefinition": true,
+        "label": "placeholder removed",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000227": {
+        "curie": "IAO:0000227",
+        "hasLocalDefinition": true,
+        "label": "terms merged",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000229": {
+        "curie": "IAO:0000229",
+        "hasLocalDefinition": true,
+        "label": "term split",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use.",
+      "term imported",
+      true
+    ],
+    "shortForm": "IAO_0000228",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000229",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "term split",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created.",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "term split",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000226",
+      "http://purl.obolibrary.org/obo/IAO_0000227",
+      "http://purl.obolibrary.org/obo/IAO_0000228"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000229",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "term split",
+    "linkedEntities": {
+      "IAO:0000229": {
+        "curie": "IAO:0000229",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000229"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000226": {
+        "curie": "IAO:0000226",
+        "hasLocalDefinition": true,
+        "label": "placeholder removed",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000227": {
+        "curie": "IAO:0000227",
+        "hasLocalDefinition": true,
+        "label": "terms merged",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000228": {
+        "curie": "IAO:0000228",
+        "hasLocalDefinition": true,
+        "label": "term imported",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created.",
+      "term split",
+      true
+    ],
+    "shortForm": "IAO_0000229",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000410",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000409"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000409",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "universal",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "Hard to give a definition for. Intuitively a \"natural kind\" rather than a collection of any old things, which a class is able to be, formally. At the meta level, universals are defined as positives, are disjoint with their siblings, have single asserted parents.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+    "http://purl.obolibrary.org/obo/IAO_0000119": "A Formal Theory of Substances, Qualities, and Universals, http://ontology.buffalo.edu/bfo/SQU.pdf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000409",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "universal",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000410",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "universal",
+    "linkedEntities": {
+      "IAO:0000410": {
+        "curie": "IAO:0000410",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000410"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000119": {
+        "curie": "IAO:0000119",
+        "hasLocalDefinition": true,
+        "label": "definition source",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000409": {
+        "curie": "IAO:0000409",
+        "hasLocalDefinition": true,
+        "label": "denotator type",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "A Formal Theory of Substances, Qualities, and Universals, http://ontology.buffalo.edu/bfo/SQU.pdf",
+      "Alan Ruttenberg",
+      "Hard to give a definition for. Intuitively a \"natural kind\" rather than a collection of any old things, which a class is able to be, formally. At the meta level, universals are defined as positives, are disjoint with their siblings, have single asserted parents.",
+      "universal",
+      true
+    ],
+    "shortForm": "IAO_0000410",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000420",
+    "definition": "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000409"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000409",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "defined class",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "\"definitions\", in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000409",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "defined class",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000420",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "defined class",
+    "linkedEntities": {
+      "IAO:0000420": {
+        "curie": "IAO:0000420",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000420"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000409": {
+        "curie": "IAO:0000409",
+        "hasLocalDefinition": true,
+        "label": "denotator type",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal",
+      "Alan Ruttenberg",
+      "\"definitions\", in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal.",
+      "defined class",
+      true
+    ],
+    "shortForm": "IAO_0000420",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000421",
+    "definition": "A named class expression is a logical expression that is given a name. The name can be used in place of the expression.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000409"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000409",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "named class expression",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A named class expression is a logical expression that is given a name. The name can be used in place of the expression.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "named class expressions are used in order to have more concise logical definition but their extensions may not be interesting classes on their own. In languages such as OWL, with no provisions for macros, these show up as actuall classes. Tools may with to not show them as such, and to replace uses of the macros with their expansions",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000409",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "named class expression",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000421",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "named class expression",
+    "linkedEntities": {
+      "IAO:0000421": {
+        "curie": "IAO:0000421",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000421"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000409": {
+        "curie": "IAO:0000409",
+        "hasLocalDefinition": true,
+        "label": "denotator type",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "A named class expression is a logical expression that is given a name. The name can be used in place of the expression.",
+      "Alan Ruttenberg",
+      "named class expression",
+      "named class expressions are used in order to have more concise logical definition but their extensions may not be interesting classes on their own. In languages such as OWL, with no provisions for macros, these show up as actuall classes. Tools may with to not show them as such, and to replace uses of the macros with their expansions",
+      true
+    ],
+    "shortForm": "IAO_0000421",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000423",
+    "definition": "Terms with this status should eventually replaced with a term from another ontology.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "to be replaced with external ontology term",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Terms with this status should eventually replaced with a term from another ontology.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+    "http://purl.obolibrary.org/obo/IAO_0000119": "group:OBI",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "to be replaced with external ontology term",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000428"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000423",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "to be replaced with external ontology term",
+    "linkedEntities": {
+      "IAO:0000423": {
+        "curie": "IAO:0000423",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000423"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000119": {
+        "curie": "IAO:0000119",
+        "hasLocalDefinition": true,
+        "label": "definition source",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000428": {
+        "curie": "IAO:0000428",
+        "hasLocalDefinition": true,
+        "label": "requires discussion",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "Alan Ruttenberg",
+      "Terms with this status should eventually replaced with a term from another ontology.",
+      "group:OBI",
+      "to be replaced with external ontology term",
+      true
+    ],
+    "shortForm": "IAO_0000423",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000428",
+    "definition": "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://purl.obolibrary.org/obo/IAO_0000102"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000078",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000111": "requires discussion",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+    "http://purl.obolibrary.org/obo/IAO_0000119": "group:OBI",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000078",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "requires discussion",
+    "http://www.w3.org/2002/07/owl#differentFrom": [
+      "http://purl.obolibrary.org/obo/IAO_0000120",
+      "http://purl.obolibrary.org/obo/IAO_0000121",
+      "http://purl.obolibrary.org/obo/IAO_0000122",
+      "http://purl.obolibrary.org/obo/IAO_0000123",
+      "http://purl.obolibrary.org/obo/IAO_0000124",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000423"
+    ],
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000428",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "requires discussion",
+    "linkedEntities": {
+      "IAO:0000428": {
+        "curie": "IAO:0000428",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000428"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000078": {
+        "curie": "IAO:0000078",
+        "hasLocalDefinition": true,
+        "label": "curation status specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000111": {
+        "curie": "IAO:0000111",
+        "hasLocalDefinition": true,
+        "label": "editor preferred term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000119": {
+        "curie": "IAO:0000119",
+        "hasLocalDefinition": true,
+        "label": "definition source",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000120": {
+        "curie": "IAO:0000120",
+        "hasLocalDefinition": true,
+        "label": "metadata complete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000121": {
+        "curie": "IAO:0000121",
+        "hasLocalDefinition": true,
+        "label": "organizational term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000122": {
+        "curie": "IAO:0000122",
+        "hasLocalDefinition": true,
+        "label": "ready for release",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000123": {
+        "curie": "IAO:0000123",
+        "hasLocalDefinition": true,
+        "label": "metadata incomplete",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000124": {
+        "curie": "IAO:0000124",
+        "hasLocalDefinition": true,
+        "label": "uncurated",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": "pending final vetting",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000423": {
+        "curie": "IAO:0000423",
+        "hasLocalDefinition": true,
+        "label": "to be replaced with external ontology term",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues.",
+      "Alan Ruttenberg",
+      "group:OBI",
+      "requires discussion",
+      true
+    ],
+    "shortForm": "IAO_0000428",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0001000",
+    "definition": "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": "http://purl.obolibrary.org/obo/IAO_0000225",
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "http://orcid.org/0000-0001-5208-3432",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/77",
+    "http://purl.obolibrary.org/obo/IAO_0000234": "https://orcid.org/0000-0001-5208-3432",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "out of scope",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0001000",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "out of scope",
+    "linkedEntities": {
+      "OMO:0001000": {
+        "curie": "OMO:0001000",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0001000"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": "entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": "continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": "generically dependent continuant",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": "data item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": "information content entity",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": "data about an ontology part",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": "editor note",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": "term editor",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": "obsolescence reason specification",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": "term tracker item",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000234": {
+        "curie": "IAO:0000234",
+        "hasLocalDefinition": true,
+        "label": "ontology term requester",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "label",
+        "hasLocalDefinition": true,
+        "label": "label",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0001-5208-3432": {
+        "curie": "orcid:0000-0001-5208-3432",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-5208-3432"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
+      "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+      true
+    ],
+    "shortForm": "OMO_0001000",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

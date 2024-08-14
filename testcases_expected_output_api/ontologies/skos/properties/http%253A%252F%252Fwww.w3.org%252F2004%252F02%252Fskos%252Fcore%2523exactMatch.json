@@ -1,0 +1,36 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+  "lang": "en",
+  "description": [
+    "skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "skos:exactMatch is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch."
+    ]
+  },
+  "label": "has exact match",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "exactMatch",
+  "obo_id": "exactMatch",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523exactMatch/jstree"
+    }
+  }
+}

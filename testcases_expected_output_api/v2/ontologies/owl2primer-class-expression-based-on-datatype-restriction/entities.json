@@ -1,0 +1,98 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-class-expression-based-on-datatype-restriction"
+    ],
+    "curie": "Teenager",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+        "http://www.w3.org/2002/07/owl#onDatatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "http://www.w3.org/2002/07/owl#withRestrictions": [
+          {
+            "http://www.w3.org/2001/XMLSchema#maxInclusive": 19.0,
+            "isObsolete": false
+          },
+          {
+            "http://www.w3.org/2001/XMLSchema#minExclusive": 12.0,
+            "isObsolete": false
+          }
+        ],
+        "isObsolete": false
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#Teenager",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Teenager",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge": {
+        "curie": "hasAge",
+        "hasLocalDefinition": true,
+        "label": "hasAge",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf",
+    "ontologyPreferredPrefix": "owl2primer-class-expression-based-on-datatype-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "Teenager",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-class-expression-based-on-datatype-restriction"
+    ],
+    "curie": "hasAge",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "http://www.w3.org/2002/07/owl#FunctionalProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasAge",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf",
+    "ontologyPreferredPrefix": "owl2primer-class-expression-based-on-datatype-restriction",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasAge",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

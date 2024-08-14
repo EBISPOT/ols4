@@ -1,0 +1,61 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000142",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "BFO CLIF specification label": [
+      "OneDimensionalContinuantFiatBoundary"
+    ],
+    "BFO OWL specification label": [
+      "1d-cf-boundary"
+    ],
+    "elucidation": [
+      "a one-dimensional continuant fiat boundary is a continuous fiat line whose location is defined in relation to some material entity. (axiom label in BFO2 Reference: [032-001])"
+    ],
+    "example of usage": [
+      "The Equator",
+      "all geopolitical boundaries",
+      "all lines of latitude and longitude",
+      "the line separating the outer surface of the mucosa of the lower lip from the outer surface of the skin of the chin.",
+      "the median sulcus of your tongue"
+    ],
+    "has associated axiom(fol)": [
+      "(iff (OneDimensionalContinuantFiatBoundary a) (and (ContinuantFiatBoundary a) (exists (b) (and (OneDimensionalSpatialRegion b) (forall (t) (locatedInAt a b t)))))) // axiom label in BFO2 CLIF: [032-001] "
+    ]
+  },
+  "label": "one-dimensional continuant fiat boundary",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "BFO_0000142",
+  "obo_id": "BFO:0000142",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000142/graph"
+    }
+  }
+}

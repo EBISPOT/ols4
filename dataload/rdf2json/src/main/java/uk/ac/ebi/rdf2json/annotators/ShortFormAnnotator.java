@@ -2,12 +2,15 @@ package uk.ac.ebi.rdf2json.annotators;
 
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.annotators.helpers.OntologyBaseUris;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 public class ShortFormAnnotator {
+	private static final Logger logger = LoggerFactory.getLogger(ShortFormAnnotator.class);
 
 	public static void annotateShortForms(OntologyGraph graph) {
 
@@ -37,7 +40,7 @@ public class ShortFormAnnotator {
 		    }
 		}
 		long endTime3 = System.nanoTime();
-		System.out.println("annotate short forms: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+		logger.info("annotate short forms: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 
 
 	}

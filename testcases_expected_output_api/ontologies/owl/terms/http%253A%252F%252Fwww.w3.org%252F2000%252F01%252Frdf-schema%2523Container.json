@@ -1,0 +1,42 @@
+{
+  "iri": "http://www.w3.org/2000/01/rdf-schema#Container",
+  "lang": "en",
+  "description": [
+    "The class of RDF containers."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Container",
+  "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "Container",
+  "obo_id": "Container",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Container/graph"
+    }
+  }
+}

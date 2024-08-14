@@ -1,0 +1,73 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-negative-data-property-assertion"
+    ],
+    "curie": "Jack",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "Jack",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": {
+        "curie": "hasAge",
+        "hasLocalDefinition": true,
+        "label": "hasAge",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": "53",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-negative-data-property-assertion",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf",
+    "ontologyPreferredPrefix": "owl2primer-negative-data-property-assertion",
+    "searchableAnnotationValues": false,
+    "shortForm": "Jack",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-negative-data-property-assertion"
+    ],
+    "curie": "hasAge",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasAge",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-negative-data-property-assertion",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf",
+    "ontologyPreferredPrefix": "owl2primer-negative-data-property-assertion",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasAge",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

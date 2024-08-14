@@ -1,0 +1,33 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf#DeprecatedClass",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "obsoleted_in_version": [
+      "2.62"
+    ],
+    "reason_for_obsolescence": [
+      "moving toward PATO quality space, use PATO_0000047 instead."
+    ]
+  },
+  "label": "DeprecatedClass",
+  "ontology_name": "isobsoletesimplewitheforeason",
+  "ontology_prefix": "IsObsoleteSimpleWithEfoReason",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf",
+  "is_obsolete": true,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "DeprecatedClass",
+  "obo_id": "DeprecatedClass",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/isobsoletesimplewitheforeason/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FIsObsoleteSimpleWithEfoReason.rdf%2523DeprecatedClass?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/isobsoletesimplewitheforeason/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FIsObsoleteSimpleWithEfoReason.rdf%2523DeprecatedClass/graph"
+    }
+  }
+}

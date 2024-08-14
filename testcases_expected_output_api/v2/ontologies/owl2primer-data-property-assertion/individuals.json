@@ -1,0 +1,46 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-data-property-assertion"
+    ],
+    "curie": "John",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": 51.0,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "John",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": {
+        "curie": "hasAge",
+        "hasLocalDefinition": true,
+        "label": "hasAge",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-data-property-assertion",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion.owl",
+    "ontologyPreferredPrefix": "owl2primer-data-property-assertion",
+    "searchableAnnotationValues": [
+      51.0,
+      false
+    ],
+    "shortForm": "John",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

@@ -1,0 +1,1351 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The defininition of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "isDefinedBy",
+    "lang": "en",
+    "obo_id": "isDefinedBy",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "isDefinedBy",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523seeAlso?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "Further information about the subject resource."
+    ],
+    "has_children": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "seeAlso",
+    "lang": "en",
+    "obo_id": "seeAlso",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "seeAlso",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523comment?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A description of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "comment",
+    "lang": "en",
+    "obo_id": "comment",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "comment",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523domain?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A domain of the subject property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#domain",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "domain",
+    "lang": "en",
+    "obo_id": "domain",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "domain",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A human-readable name for the subject."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#label",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "label",
+    "lang": "en",
+    "obo_id": "label",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "label",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523member?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A member of the subject resource."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#member",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "member",
+    "lang": "en",
+    "obo_id": "member",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "member",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523range?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A range of the subject property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#range",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "range",
+    "lang": "en",
+    "obo_id": "range",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "range",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subClassOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The subject is a subclass of a class."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subClassOf",
+    "lang": "en",
+    "obo_id": "subClassOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "subClassOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subPropertyOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The subject is a subproperty of a property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subPropertyOf",
+    "lang": "en",
+    "obo_id": "subPropertyOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "subPropertyOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523allValuesFrom?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the class that a universal property restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "allValuesFrom",
+    "lang": "en",
+    "obo_id": "allValuesFrom",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "allValuesFrom",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523annotatedProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the predicate of an annotated axiom or annotated annotation."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "annotatedProperty",
+    "lang": "en",
+    "obo_id": "annotatedProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "annotatedProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523annotatedSource?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the subject of an annotated axiom or annotated annotation."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "annotatedSource",
+    "lang": "en",
+    "obo_id": "annotatedSource",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "annotatedSource",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523annotatedTarget?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the object of an annotated axiom or annotated annotation."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "annotatedTarget",
+    "lang": "en",
+    "obo_id": "annotatedTarget",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "annotatedTarget",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523assertionProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the predicate of a negative property assertion."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "assertionProperty",
+    "lang": "en",
+    "obo_id": "assertionProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "assertionProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523backwardCompatibleWith?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The annotation property that indicates that a given ontology is backward compatible with another ontology."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "backwardCompatibleWith",
+    "lang": "en",
+    "obo_id": "backwardCompatibleWith",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "backwardCompatibleWith",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523bottomDataProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The data property that does not relate any individual to any data value."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "bottomDataProperty",
+    "lang": "en",
+    "obo_id": "bottomDataProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "bottomDataProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523bottomObjectProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The object property that does not relate any two individuals."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "bottomObjectProperty",
+    "lang": "en",
+    "obo_id": "bottomObjectProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "bottomObjectProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523cardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of an exact cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#cardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "cardinality",
+    "lang": "en",
+    "obo_id": "cardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "cardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523complementOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that a given class is the complement of another class."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#complementOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "complementOf",
+    "lang": "en",
+    "obo_id": "complementOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "complementOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523datatypeComplementOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that a given data range is the complement of another data range with respect to the data domain."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "datatypeComplementOf",
+    "lang": "en",
+    "obo_id": "datatypeComplementOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "datatypeComplementOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523deprecated?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The annotation property that indicates that a given entity has been deprecated."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#deprecated",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "deprecated",
+    "lang": "en",
+    "obo_id": "deprecated",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "deprecated",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523differentFrom?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given individuals are different."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#differentFrom",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "differentFrom",
+    "lang": "en",
+    "obo_id": "differentFrom",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "differentFrom",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523disjointUnionOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "disjointUnionOf",
+    "lang": "en",
+    "obo_id": "disjointUnionOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "disjointUnionOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523disjointWith?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given classes are disjoint."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#disjointWith",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "disjointWith",
+    "lang": "en",
+    "obo_id": "disjointWith",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "disjointWith",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523distinctMembers?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "distinctMembers",
+    "lang": "en",
+    "obo_id": "distinctMembers",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "distinctMembers",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523equivalentClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "equivalentClass",
+    "lang": "en",
+    "obo_id": "equivalentClass",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "equivalentClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523equivalentProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given properties are equivalent."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "equivalentProperty",
+    "lang": "en",
+    "obo_id": "equivalentProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "equivalentProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523hasKey?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of properties that jointly build a key."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#hasKey",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasKey",
+    "lang": "en",
+    "obo_id": "hasKey",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "hasKey",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523hasSelf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the property that a self restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#hasSelf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasSelf",
+    "lang": "en",
+    "obo_id": "hasSelf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "hasSelf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523hasValue?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the individual that a has-value restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#hasValue",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasValue",
+    "lang": "en",
+    "obo_id": "hasValue",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "hasValue",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523incompatibleWith?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The annotation property that indicates that a given ontology is incompatible with another ontology."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "incompatibleWith",
+    "lang": "en",
+    "obo_id": "incompatibleWith",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "incompatibleWith",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523intersectionOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of classes or data ranges that build an intersection."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "intersectionOf",
+    "lang": "en",
+    "obo_id": "intersectionOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "intersectionOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523inverseOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given properties are inverse."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#inverseOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "inverseOf",
+    "lang": "en",
+    "obo_id": "inverseOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "inverseOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523maxCardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of a maximum cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "maxCardinality",
+    "lang": "en",
+    "obo_id": "maxCardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "maxCardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523maxQualifiedCardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of a maximum qualified cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "maxQualifiedCardinality",
+    "lang": "en",
+    "obo_id": "maxQualifiedCardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "maxQualifiedCardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523members?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#members",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "members",
+    "lang": "en",
+    "obo_id": "members",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "members",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523minCardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of a minimum cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#minCardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "minCardinality",
+    "lang": "en",
+    "obo_id": "minCardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "minCardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523minQualifiedCardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of a minimum qualified cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "minQualifiedCardinality",
+    "lang": "en",
+    "obo_id": "minQualifiedCardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "minQualifiedCardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523onClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the class that a qualified object cardinality restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#onClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "onClass",
+    "lang": "en",
+    "obo_id": "onClass",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "onClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523onDataRange?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the data range that a qualified data cardinality restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#onDataRange",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "onDataRange",
+    "lang": "en",
+    "obo_id": "onDataRange",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "onDataRange",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523onDatatype?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the datatype that a datatype restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#onDatatype",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "onDatatype",
+    "lang": "en",
+    "obo_id": "onDatatype",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "onDatatype",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523onProperties?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#onProperties",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "onProperties",
+    "lang": "en",
+    "obo_id": "onProperties",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "onProperties",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523onProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the property that a property restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#onProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "onProperty",
+    "lang": "en",
+    "obo_id": "onProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "onProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523oneOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of individuals or data values that build an enumeration."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#oneOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "oneOf",
+    "lang": "en",
+    "obo_id": "oneOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "oneOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523priorVersion?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The annotation property that indicates the predecessor ontology of a given ontology."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#priorVersion",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "priorVersion",
+    "lang": "en",
+    "obo_id": "priorVersion",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "priorVersion",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523propertyChainAxiom?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the n-tuple of properties that build a sub property chain of a given property."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "propertyChainAxiom",
+    "lang": "en",
+    "obo_id": "propertyChainAxiom",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "propertyChainAxiom",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523propertyDisjointWith?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given properties are disjoint."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "propertyDisjointWith",
+    "lang": "en",
+    "obo_id": "propertyDisjointWith",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "propertyDisjointWith",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523qualifiedCardinality?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the cardinality of an exact qualified cardinality restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "qualifiedCardinality",
+    "lang": "en",
+    "obo_id": "qualifiedCardinality",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "qualifiedCardinality",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523sameAs?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines that two given individuals are equal."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#sameAs",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "sameAs",
+    "lang": "en",
+    "obo_id": "sameAs",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "sameAs",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523someValuesFrom?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the class that an existential property restriction refers to."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "someValuesFrom",
+    "lang": "en",
+    "obo_id": "someValuesFrom",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "someValuesFrom",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523sourceIndividual?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the subject of a negative property assertion."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "sourceIndividual",
+    "lang": "en",
+    "obo_id": "sourceIndividual",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "sourceIndividual",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523targetIndividual?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the object of a negative object property assertion."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "targetIndividual",
+    "lang": "en",
+    "obo_id": "targetIndividual",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "targetIndividual",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523targetValue?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the value of a negative data property assertion."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#targetValue",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "targetValue",
+    "lang": "en",
+    "obo_id": "targetValue",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "targetValue",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523topDataProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The data property that relates every individual to every data value."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "topDataProperty",
+    "lang": "en",
+    "obo_id": "topDataProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "topDataProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523topObjectProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The object property that relates every two individuals."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "topObjectProperty",
+    "lang": "en",
+    "obo_id": "topObjectProperty",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "topObjectProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523unionOf?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of classes or data ranges that build a union."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#unionOf",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "unionOf",
+    "lang": "en",
+    "obo_id": "unionOf",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "unionOf",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523versionInfo?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The annotation property that provides version information for an ontology or another OWL construct."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#versionInfo",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "versionInfo",
+    "lang": "en",
+    "obo_id": "versionInfo",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "versionInfo",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523withRestrictions?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "The property that determines the collection of facet-value pairs that define a datatype restriction."
+    ],
+    "has_children": false,
+    "iri": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "withRestrictions",
+    "lang": "en",
+    "obo_id": "withRestrictions",
+    "ontology_iri": "http://www.w3.org/2002/07/owl",
+    "ontology_name": "owl",
+    "short_form": "withRestrictions",
+    "synonyms": []
+  }
+]

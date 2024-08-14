@@ -1,0 +1,89 @@
+[
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "BFO:0000051",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      "has part",
+      "has_part"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has part",
+      "has_part"
+    ],
+    "linkedEntities": {
+      "BFO:0000051": {
+        "curie": "BFO:0000051",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000051"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "BFO_0000051",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "BFO:0000054",
+    "definition": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+    "http://www.w3.org/2000/01/rdf-schema#label": "realized in",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "realized in",
+    "linkedEntities": {
+      "BFO:0000054": {
+        "curie": "BFO:0000054",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000054"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "BFO_0000054",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

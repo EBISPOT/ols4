@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/OMO_0001001",
+  "lang": "en",
+  "description": [
+    "This is an annotation used on an object property to indicate a logical characterstic beyond what is possible in OWL."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "created_by": [
+      "http://orcid.org/0000-0001-5208-3432"
+    ],
+    "definition source": [
+      "OBO Operations call"
+    ]
+  },
+  "label": "logical characteristic of object property",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "OMO_0001001",
+  "obo_id": "OMO:0001001",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001001/descendants"
+    }
+  }
+}

@@ -6,6 +6,7 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class V2SearchFieldsParser {
 
@@ -32,7 +33,7 @@ public class V2SearchFieldsParser {
 
         if(boostFields == null) {
             query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
-            query.addBoostField("isDefiningOntology", "true", 1000, SearchType.WHOLE_FIELD);
+            query.addBoostField(IS_DEFINING_ONTOLOGY.getText(), "true", 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
             query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);

@@ -19,6 +19,7 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1IndividualMapper;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 //@RepositoryRestResource(collectionResourceRel = "individuals", exported = false)
 @Component
@@ -116,7 +117,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
 
@@ -145,7 +146,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
@@ -176,7 +177,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);
@@ -204,7 +205,7 @@ public class V1IndividualRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
-        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("oboId", List.of(oboId), SearchType.WHOLE_FIELD);
 
         OlsFacetedResultsPage<JsonElement> entities = solrClient.searchSolrPaginated(query, pageable);

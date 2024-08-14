@@ -1,0 +1,78 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-property-chain"
+    ],
+    "curie": "hasGrandParent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent",
+      "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasGrandParent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasGrandParent",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent": {
+        "curie": "hasParent",
+        "hasLocalDefinition": true,
+        "label": "hasParent",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-property-chain",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.rdf",
+    "ontologyPreferredPrefix": "owl2primer-property-chain",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasGrandParent",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-property-chain"
+    ],
+    "curie": "hasParent",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasParent",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-property-chain",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.rdf",
+    "ontologyPreferredPrefix": "owl2primer-property-chain",
+    "searchableAnnotationValues": false,
+    "shortForm": "hasParent",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

@@ -1,0 +1,185 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523AnGODefinedObsoleteClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "AnGODefinedObsoleteClass",
+    "lang": "en",
+    "obo_id": "AnGODefinedObsoleteClass",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "AnGODefinedObsoleteClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "ObsoleteClass",
+    "lang": "en",
+    "obo_id": "ObsoleteClass",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "ObsoleteClass",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValue1/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValue1?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "DeprecatedClassWithValue1",
+    "lang": "en",
+    "obo_id": "DeprecatedClassWithValue1",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "DeprecatedClassWithValue1",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValueTRUE/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValueTRUE?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "DeprecatedClassWithValueTRUE",
+    "lang": "en",
+    "obo_id": "DeprecatedClassWithValueTRUE",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "DeprecatedClassWithValueTRUE",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValueTrue/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedClassWithValueTrue?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue",
+    "is_defining_ontology": false,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "DeprecatedClassWithValueTrue",
+    "lang": "en",
+    "obo_id": "DeprecatedClassWithValueTrue",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "DeprecatedClassWithValueTrue",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "NonDeprecatedClass",
+    "lang": "en",
+    "obo_id": "NonDeprecatedClass",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "NonDeprecatedClass",
+    "synonyms": []
+  }
+]

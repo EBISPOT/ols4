@@ -1,0 +1,132 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-haskey"
+    ],
+    "curie": "a",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "a",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-hasKey",
+    "searchableAnnotationValues": false,
+    "shortForm": "a",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-haskey"
+    ],
+    "curie": "b1",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "b1",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
+        "curie": "a",
+        "hasLocalDefinition": true,
+        "label": "a",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
+        "curie": "businessAddress",
+        "hasLocalDefinition": true,
+        "label": "businessAddress",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-hasKey",
+    "searchableAnnotationValues": false,
+    "shortForm": "b1",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-objectproperty-haskey"
+    ],
+    "curie": "b2",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": "b2",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
+        "curie": "a",
+        "hasLocalDefinition": true,
+        "label": "a",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
+        "curie": "businessAddress",
+        "hasLocalDefinition": true,
+        "label": "businessAddress",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-objectproperty-haskey",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
+    "ontologyPreferredPrefix": "owl2primer-objectProperty-hasKey",
+    "searchableAnnotationValues": false,
+    "shortForm": "b2",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  }
+]

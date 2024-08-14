@@ -1,0 +1,31 @@
+{
+  "iri": "http://www.w3.org/2004/02/skos/core#altLabel",
+  "lang": "en",
+  "description": [
+    "The range of skos:altLabel is the class of RDF plain literals.",
+    "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "definition": [
+      "An alternative lexical label for a resource."
+    ],
+    "example": [
+      "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."
+    ]
+  },
+  "label": "alternative label",
+  "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "altLabel",
+  "obo_id": "altLabel",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523altLabel?lang=en"
+    }
+  }
+}

@@ -1,6 +1,8 @@
 
 package uk.ac.ebi.rdf2json.annotators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
@@ -8,7 +10,11 @@ import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 import java.util.List;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.HAS_INDIVIDUALS;
+
 public class HasIndividualsAnnotator {
+
+    private static final Logger logger = LoggerFactory.getLogger(OntologyGraph.class);
 
     public static void annotateHasIndividuals(OntologyGraph graph) {
 
@@ -32,7 +38,7 @@ public class HasIndividualsAnnotator {
                                 && typeNode.types.contains(OntologyNode.NodeType.CLASS)
                                 && typeNode.uri != null) {
 
-                            typeNode.properties.addProperty("hasIndividuals", PropertyValueLiteral.fromString("true"));
+                            typeNode.properties.addProperty(HAS_INDIVIDUALS.getText(), PropertyValueLiteral.fromBoolean("true"));
                         }
                     }
                 }
@@ -41,6 +47,6 @@ public class HasIndividualsAnnotator {
 
         }
         long endTime3 = System.nanoTime();
-        System.out.println("annotate has individuals: " + ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+        logger.info("annotate has individuals: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }
 }

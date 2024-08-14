@@ -1,0 +1,169 @@
+[
+  {
+    "appearsIn": [
+      "related-somevaluesof-filleranonymousdisjunction"
+    ],
+    "curie": "A",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#unionOf": [
+          "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
+          {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B",
+            "isObsolete": false
+          }
+        ]
+      },
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#A",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "A",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B": {
+        "curie": "B",
+        "hasLocalDefinition": true,
+        "label": "B",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C": {
+        "curie": "C",
+        "hasLocalDefinition": true,
+        "label": "C",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p": {
+        "curie": "p",
+        "hasLocalDefinition": true,
+        "label": "p",
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-filleranonymousdisjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousDisjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "A",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-filleranonymousdisjunction"
+    ],
+    "curie": "B",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "B",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-filleranonymousdisjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousDisjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "B",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-filleranonymousdisjunction"
+    ],
+    "curie": "C",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "C",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-filleranonymousdisjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousDisjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "C",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "related-somevaluesof-filleranonymousdisjunction"
+    ],
+    "curie": "p",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "p",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "related-somevaluesof-filleranonymousdisjunction",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction",
+    "ontologyPreferredPrefix": "related-someValuesOf-fillerAnonymousDisjunction",
+    "searchableAnnotationValues": false,
+    "shortForm": "p",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

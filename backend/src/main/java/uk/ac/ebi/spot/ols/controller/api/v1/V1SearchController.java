@@ -35,7 +35,6 @@ import com.google.gson.JsonParser;
 
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.repository.Validation;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
@@ -92,8 +91,10 @@ public class V1SearchController {
                 String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
                 solrQuery.setQuery(
                         "((" +
-                                createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields)).toArray(new String[0]), true)
-                                + ") AND (isDefiningOntology:\"true\"^100 OR isDefiningOntology:false^0))"
+                                createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields))
+                                        .toArray(new String[0]), true)
+                                + ") AND ("+ IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100 OR " +
+                                IS_DEFINING_ONTOLOGY.getText() + ":false^0))"
                 );
 
             } else {
@@ -106,13 +107,14 @@ public class V1SearchController {
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
                 solrQuery.set("bq",
-                        "isDefiningOntology:\"true\"^100 " +
+                        IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100 " +
                         "lowercase_label:\"" + query.toLowerCase() + "\"^5 " +
                         "lowercase_synonym:\"" + query.toLowerCase() + "\"^3");
             }
         } else {
             if (exact) {
-                String[] fields = SolrFieldMapper.mapFieldsList(queryFields.stream().map(queryField -> queryField + "_s").collect(Collectors.toList())).toArray(new String[0]);
+                String[] fields = SolrFieldMapper.mapFieldsList(queryFields.stream().map(queryField -> queryField + "_s")
+                        .collect(Collectors.toList())).toArray(new String[0]);
                 solrQuery.setQuery(createUnionQuery(query.toLowerCase(), fields, true));
             } else {
 
@@ -140,7 +142,7 @@ public class V1SearchController {
         }
 
         if (isLocal) {
-            solrQuery.addFilterQuery("imported:false");
+            solrQuery.addFilterQuery(IMPORTED.getText() + ":false");
         }
 
         if (isLeaf) {
@@ -207,7 +209,7 @@ public class V1SearchController {
                 "ontologyIri",
                 "ontologyPreferredPrefix",
                 "type",
-                "isDefiningOntology",
+                IS_DEFINING_ONTOLOGY.getText(),
                 IS_OBSOLETE.getText());
 		/*
 		 * Fix: End
@@ -259,8 +261,9 @@ public class V1SearchController {
             if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
-            if (fieldList.contains("is_defining_ontology")) outDoc.put("is_defining_ontology",
-                    JsonHelper.getString(json, "isDefiningOntology") != null && JsonHelper.getString(json, "isDefiningOntology").equals("true"));
+            if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
+                    JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()) != null &&
+                            JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()).equals("true"));
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }

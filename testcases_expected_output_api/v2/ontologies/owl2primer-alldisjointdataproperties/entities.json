@@ -1,0 +1,202 @@
+[
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointdataproperties"
+    ],
+    "curie": "Dummy",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#Dummy",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "Dummy",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointdataproperties",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointDataProperties",
+    "searchableAnnotationValues": false,
+    "shortForm": "Dummy",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointdataproperties"
+    ],
+    "curie": "propA",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "propA",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB": {
+        "curie": "propB",
+        "hasLocalDefinition": true,
+        "label": "propB",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
+        "curie": "propC",
+        "hasLocalDefinition": true,
+        "label": "propC",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointdataproperties",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointDataProperties",
+    "searchableAnnotationValues": false,
+    "shortForm": "propA",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointdataproperties"
+    ],
+    "curie": "propB",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "propB",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA": {
+        "curie": "propA",
+        "hasLocalDefinition": true,
+        "label": "propA",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
+        "curie": "propC",
+        "hasLocalDefinition": true,
+        "label": "propC",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointdataproperties",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointDataProperties",
+    "searchableAnnotationValues": false,
+    "shortForm": "propB",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl2primer-alldisjointdataproperties"
+    ],
+    "curie": "propC",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2002/07/owl#propertyDisjointWith": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB"
+    ],
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "propC",
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA": {
+        "curie": "propA",
+        "hasLocalDefinition": true,
+        "label": "propA",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB": {
+        "curie": "propB",
+        "hasLocalDefinition": true,
+        "label": "propB",
+        "numAppearsIn": 1.0,
+        "type": [
+          "dataProperty",
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl2primer-alldisjointdataproperties",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl",
+    "ontologyPreferredPrefix": "owl2primer-allDisjointDataProperties",
+    "searchableAnnotationValues": false,
+    "shortForm": "propC",
+    "type": [
+      "dataProperty",
+      "entity",
+      "property"
+    ]
+  }
+]
