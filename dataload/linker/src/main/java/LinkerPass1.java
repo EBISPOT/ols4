@@ -178,7 +178,8 @@ public class LinkerPass1 {
 					if(curieObject.has("value")) {
 						String curieValue = curieObject.get("value").getAsString();
 						if(!curieValue.contains(":")) {
-							curieValue = entry.getValue().definingOntologyIds.iterator().next().toUpperCase() + ":" + curieValue;
+							var definingOntologyId = entry.getValue().definingOntologyIds.iterator().next();
+							curieValue = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId).curie.getAsJsonObject().get("value").getAsString();
 							curieObject.addProperty("value", curieValue);
 							result.iriToDefinitions.put(entry.getKey(), definitions);
 						}
