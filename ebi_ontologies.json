@@ -2,7 +2,13 @@
   "ontologies": [
 	  {
 		  "id": "hra",
-		  "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl"
+		  "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl",
+                  "hierarchical_property": [
+		      "http://purl.org/ccf/ccf_part_of"
+	          ],
+                  "label_property": [
+		      "http://purl.org/ccf/ccf_pref_label"
+	          ]
 	  },
 	  {
 		  "id": "dcat",
