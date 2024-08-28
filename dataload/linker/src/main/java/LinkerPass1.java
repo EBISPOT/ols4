@@ -247,8 +247,12 @@ public class LinkerPass1 {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
 					JsonArray arr = jsonDefinedBy.getAsJsonArray();
-					for(JsonElement el : arr) {
-						definedBy.add( el.getAsString() );
+					for(JsonElement isDefinedBy : arr) {
+						if (isDefinedBy.isJsonObject()) {
+							JsonObject obj = isDefinedBy.getAsJsonObject();
+							definedBy.add(obj.get("value").getAsString());
+						} else
+							definedBy.add( isDefinedBy.getAsString() );
 					}
 				} else if (jsonDefinedBy.isJsonObject()) {
 					JsonObject obj = jsonDefinedBy.getAsJsonObject();
