@@ -1,6 +1,10 @@
 {
   "ontologies": [
 	  {
+		  "id": "hra",
+		  "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl"
+	  },
+	  {
 		  "id": "dcat",
 		  "ontology_purl": "https://www.w3.org/ns/dcat.ttl"
 	  },
