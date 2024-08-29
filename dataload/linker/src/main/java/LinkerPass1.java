@@ -179,9 +179,12 @@ public class LinkerPass1 {
 						String curieValue = curieObject.get("value").getAsString();
 						if(!curieValue.contains(":")) {
 							var definingOntologyId = entry.getValue().definingOntologyIds.iterator().next();
-							curieValue = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId).curie.getAsJsonObject().get("value").getAsString();
-							curieObject.addProperty("value", curieValue);
-							result.iriToDefinitions.put(entry.getKey(), definitions);
+							EntityDefinition definingEntity = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId);
+							if (definingEntity != null && definingEntity.curie != null) {
+								curieValue = definingEntity.curie.getAsJsonObject().get("value").getAsString();
+								curieObject.addProperty("value", curieValue);
+								result.iriToDefinitions.put(entry.getKey(), definitions);
+							}
 						}
 					}
 				}
