@@ -109,7 +109,7 @@
             "type": [
               "literal"
             ],
-            "value": "Class"
+            "value": "RDFS:Class"
           },
           "definition": {
             "type": [
@@ -180,7 +180,7 @@
             "type": [
               "literal"
             ],
-            "value": "Class"
+            "value": "RDFS_Class"
           }
         },
         {
@@ -193,7 +193,7 @@
             "type": [
               "literal"
             ],
-            "value": "Container"
+            "value": "RDFS:Container"
           },
           "definition": {
             "type": [
@@ -264,7 +264,7 @@
             "type": [
               "literal"
             ],
-            "value": "Container"
+            "value": "RDFS_Container"
           }
         },
         {
@@ -277,7 +277,7 @@
             "type": [
               "literal"
             ],
-            "value": "ContainerMembershipProperty"
+            "value": "RDFS:ContainerMembershipProperty"
           },
           "definition": {
             "type": [
@@ -346,7 +346,7 @@
             "type": [
               "literal"
             ],
-            "value": "ContainerMembershipProperty"
+            "value": "RDFS_ContainerMembershipProperty"
           }
         },
         {
@@ -359,7 +359,7 @@
             "type": [
               "literal"
             ],
-            "value": "Datatype"
+            "value": "RDFS:Datatype"
           },
           "definition": {
             "type": [
@@ -436,7 +436,7 @@
             "type": [
               "literal"
             ],
-            "value": "Datatype"
+            "value": "RDFS_Datatype"
           }
         },
         {
@@ -449,7 +449,7 @@
             "type": [
               "literal"
             ],
-            "value": "Literal"
+            "value": "RDFS:Literal"
           },
           "definition": {
             "type": [
@@ -520,7 +520,7 @@
             "type": [
               "literal"
             ],
-            "value": "Literal"
+            "value": "RDFS_Literal"
           }
         },
         {
@@ -533,7 +533,7 @@
             "type": [
               "literal"
             ],
-            "value": "Resource"
+            "value": "RDFS:Resource"
           },
           "definition": {
             "type": [
@@ -595,7 +595,7 @@
             "type": [
               "literal"
             ],
-            "value": "Resource"
+            "value": "RDFS_Resource"
           }
         }
       ],
@@ -610,7 +610,7 @@
             "type": [
               "literal"
             ],
-            "value": "comment"
+            "value": "RDFS:comment"
           },
           "definition": {
             "type": [
@@ -673,7 +673,7 @@
             "type": [
               "literal"
             ],
-            "value": "comment"
+            "value": "RDFS_comment"
           }
         },
         {
@@ -686,7 +686,7 @@
             "type": [
               "literal"
             ],
-            "value": "domain"
+            "value": "RDFS:domain"
           },
           "definition": {
             "type": [
@@ -749,7 +749,7 @@
             "type": [
               "literal"
             ],
-            "value": "domain"
+            "value": "RDFS_domain"
           }
         },
         {
@@ -762,7 +762,7 @@
             "type": [
               "literal"
             ],
-            "value": "isDefinedBy"
+            "value": "RDFS:isDefinedBy"
           },
           "definition": {
             "type": [
@@ -827,7 +827,7 @@
             "type": [
               "literal"
             ],
-            "value": "isDefinedBy"
+            "value": "RDFS_isDefinedBy"
           }
         },
         {
@@ -840,7 +840,7 @@
             "type": [
               "literal"
             ],
-            "value": "label"
+            "value": "RDFS:label"
           },
           "definition": {
             "type": [
@@ -903,7 +903,7 @@
             "type": [
               "literal"
             ],
-            "value": "label"
+            "value": "RDFS_label"
           }
         },
         {
@@ -916,7 +916,7 @@
             "type": [
               "literal"
             ],
-            "value": "member"
+            "value": "RDFS:member"
           },
           "definition": {
             "type": [
@@ -979,7 +979,7 @@
             "type": [
               "literal"
             ],
-            "value": "member"
+            "value": "RDFS_member"
           }
         },
         {
@@ -992,7 +992,7 @@
             "type": [
               "literal"
             ],
-            "value": "range"
+            "value": "RDFS:range"
           },
           "definition": {
             "type": [
@@ -1055,7 +1055,7 @@
             "type": [
               "literal"
             ],
-            "value": "range"
+            "value": "RDFS_range"
           }
         },
         {
@@ -1068,7 +1068,7 @@
             "type": [
               "literal"
             ],
-            "value": "seeAlso"
+            "value": "RDFS:seeAlso"
           },
           "definition": {
             "type": [
@@ -1131,7 +1131,7 @@
             "type": [
               "literal"
             ],
-            "value": "seeAlso"
+            "value": "RDFS_seeAlso"
           }
         },
         {
@@ -1144,7 +1144,7 @@
             "type": [
               "literal"
             ],
-            "value": "subClassOf"
+            "value": "RDFS:subClassOf"
           },
           "definition": {
             "type": [
@@ -1207,7 +1207,7 @@
             "type": [
               "literal"
             ],
-            "value": "subClassOf"
+            "value": "RDFS_subClassOf"
           }
         },
         {
@@ -1220,7 +1220,7 @@
             "type": [
               "literal"
             ],
-            "value": "subPropertyOf"
+            "value": "RDFS:subPropertyOf"
           },
           "definition": {
             "type": [
@@ -1283,7 +1283,7 @@
             "type": [
               "literal"
             ],
-            "value": "subPropertyOf"
+            "value": "RDFS_subPropertyOf"
           }
         }
       ],
@@ -1926,7 +1926,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDifferent"
+            "value": "OWL:AllDifferent"
           },
           "definition": {
             "type": [
@@ -1997,7 +1997,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDifferent"
+            "value": "OWL_AllDifferent"
           }
         },
         {
@@ -2010,7 +2010,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDisjointClasses"
+            "value": "OWL:AllDisjointClasses"
           },
           "definition": {
             "type": [
@@ -2081,7 +2081,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDisjointClasses"
+            "value": "OWL_AllDisjointClasses"
           }
         },
         {
@@ -2094,7 +2094,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDisjointProperties"
+            "value": "OWL:AllDisjointProperties"
           },
           "definition": {
             "type": [
@@ -2165,7 +2165,7 @@
             "type": [
               "literal"
             ],
-            "value": "AllDisjointProperties"
+            "value": "OWL_AllDisjointProperties"
           }
         },
         {
@@ -2178,7 +2178,7 @@
             "type": [
               "literal"
             ],
-            "value": "Annotation"
+            "value": "OWL:Annotation"
           },
           "definition": {
             "type": [
@@ -2249,7 +2249,7 @@
             "type": [
               "literal"
             ],
-            "value": "Annotation"
+            "value": "OWL_Annotation"
           }
         },
         {
@@ -2262,7 +2262,7 @@
             "type": [
               "literal"
             ],
-            "value": "AnnotationProperty"
+            "value": "OWL:AnnotationProperty"
           },
           "definition": {
             "type": [
@@ -2331,7 +2331,7 @@
             "type": [
               "literal"
             ],
-            "value": "AnnotationProperty"
+            "value": "OWL_AnnotationProperty"
           }
         },
         {
@@ -2344,7 +2344,7 @@
             "type": [
               "literal"
             ],
-            "value": "AsymmetricProperty"
+            "value": "OWL:AsymmetricProperty"
           },
           "definition": {
             "type": [
@@ -2415,7 +2415,7 @@
             "type": [
               "literal"
             ],
-            "value": "AsymmetricProperty"
+            "value": "OWL_AsymmetricProperty"
           }
         },
         {
@@ -2428,7 +2428,7 @@
             "type": [
               "literal"
             ],
-            "value": "Axiom"
+            "value": "OWL:Axiom"
           },
           "definition": {
             "type": [
@@ -2499,7 +2499,7 @@
             "type": [
               "literal"
             ],
-            "value": "Axiom"
+            "value": "OWL_Axiom"
           }
         },
         {
@@ -2512,7 +2512,7 @@
             "type": [
               "literal"
             ],
-            "value": "Class"
+            "value": "OWL:Class"
           },
           "definition": {
             "type": [
@@ -2589,7 +2589,7 @@
             "type": [
               "literal"
             ],
-            "value": "Class"
+            "value": "OWL_Class"
           }
         },
         {
@@ -2602,7 +2602,7 @@
             "type": [
               "literal"
             ],
-            "value": "DataRange"
+            "value": "OWL:DataRange"
           },
           "definition": {
             "type": [
@@ -2681,7 +2681,7 @@
             "type": [
               "literal"
             ],
-            "value": "DataRange"
+            "value": "OWL_DataRange"
           }
         },
         {
@@ -2694,7 +2694,7 @@
             "type": [
               "literal"
             ],
-            "value": "DatatypeProperty"
+            "value": "OWL:DatatypeProperty"
           },
           "definition": {
             "type": [
@@ -2763,7 +2763,7 @@
             "type": [
               "literal"
             ],
-            "value": "DatatypeProperty"
+            "value": "OWL_DatatypeProperty"
           }
         },
         {
@@ -2776,7 +2776,7 @@
             "type": [
               "literal"
             ],
-            "value": "DeprecatedClass"
+            "value": "OWL:DeprecatedClass"
           },
           "definition": {
             "type": [
@@ -2853,7 +2853,7 @@
             "type": [
               "literal"
             ],
-            "value": "DeprecatedClass"
+            "value": "OWL_DeprecatedClass"
           }
         },
         {
@@ -2866,7 +2866,7 @@
             "type": [
               "literal"
             ],
-            "value": "DeprecatedProperty"
+            "value": "OWL:DeprecatedProperty"
           },
           "definition": {
             "type": [
@@ -2935,7 +2935,7 @@
             "type": [
               "literal"
             ],
-            "value": "DeprecatedProperty"
+            "value": "OWL_DeprecatedProperty"
           }
         },
         {
@@ -2948,7 +2948,7 @@
             "type": [
               "literal"
             ],
-            "value": "FunctionalProperty"
+            "value": "OWL:FunctionalProperty"
           },
           "definition": {
             "type": [
@@ -3017,7 +3017,7 @@
             "type": [
               "literal"
             ],
-            "value": "FunctionalProperty"
+            "value": "OWL_FunctionalProperty"
           }
         },
         {
@@ -3030,7 +3030,7 @@
             "type": [
               "literal"
             ],
-            "value": "InverseFunctionalProperty"
+            "value": "OWL:InverseFunctionalProperty"
           },
           "definition": {
             "type": [
@@ -3101,7 +3101,7 @@
             "type": [
               "literal"
             ],
-            "value": "InverseFunctionalProperty"
+            "value": "OWL_InverseFunctionalProperty"
           }
         },
         {
@@ -3114,7 +3114,7 @@
             "type": [
               "literal"
             ],
-            "value": "IrreflexiveProperty"
+            "value": "OWL:IrreflexiveProperty"
           },
           "definition": {
             "type": [
@@ -3185,7 +3185,7 @@
             "type": [
               "literal"
             ],
-            "value": "IrreflexiveProperty"
+            "value": "OWL_IrreflexiveProperty"
           }
         },
         {
@@ -3198,7 +3198,7 @@
             "type": [
               "literal"
             ],
-            "value": "NamedIndividual"
+            "value": "OWL:NamedIndividual"
           },
           "definition": {
             "type": [
@@ -3269,7 +3269,7 @@
             "type": [
               "literal"
             ],
-            "value": "NamedIndividual"
+            "value": "OWL_NamedIndividual"
           }
         },
         {
@@ -3282,7 +3282,7 @@
             "type": [
               "literal"
             ],
-            "value": "NegativePropertyAssertion"
+            "value": "OWL:NegativePropertyAssertion"
           },
           "definition": {
             "type": [
@@ -3353,7 +3353,7 @@
             "type": [
               "literal"
             ],
-            "value": "NegativePropertyAssertion"
+            "value": "OWL_NegativePropertyAssertion"
           }
         },
         {
@@ -3366,7 +3366,7 @@
             "type": [
               "literal"
             ],
-            "value": "Nothing"
+            "value": "OWL:Nothing"
           },
           "definition": {
             "type": [
@@ -3437,7 +3437,7 @@
             "type": [
               "literal"
             ],
-            "value": "Nothing"
+            "value": "OWL_Nothing"
           }
         },
         {
@@ -3450,7 +3450,7 @@
             "type": [
               "literal"
             ],
-            "value": "ObjectProperty"
+            "value": "OWL:ObjectProperty"
           },
           "definition": {
             "type": [
@@ -3519,7 +3519,7 @@
             "type": [
               "literal"
             ],
-            "value": "ObjectProperty"
+            "value": "OWL_ObjectProperty"
           }
         },
         {
@@ -3532,7 +3532,7 @@
             "type": [
               "literal"
             ],
-            "value": "Ontology"
+            "value": "OWL:Ontology"
           },
           "definition": {
             "type": [
@@ -3603,7 +3603,7 @@
             "type": [
               "literal"
             ],
-            "value": "Ontology"
+            "value": "OWL_Ontology"
           }
         },
         {
@@ -3616,7 +3616,7 @@
             "type": [
               "literal"
             ],
-            "value": "OntologyProperty"
+            "value": "OWL:OntologyProperty"
           },
           "definition": {
             "type": [
@@ -3685,7 +3685,7 @@
             "type": [
               "literal"
             ],
-            "value": "OntologyProperty"
+            "value": "OWL_OntologyProperty"
           }
         },
         {
@@ -3698,7 +3698,7 @@
             "type": [
               "literal"
             ],
-            "value": "ReflexiveProperty"
+            "value": "OWL:ReflexiveProperty"
           },
           "definition": {
             "type": [
@@ -3769,7 +3769,7 @@
             "type": [
               "literal"
             ],
-            "value": "ReflexiveProperty"
+            "value": "OWL_ReflexiveProperty"
           }
         },
         {
@@ -3782,7 +3782,7 @@
             "type": [
               "literal"
             ],
-            "value": "Restriction"
+            "value": "OWL:Restriction"
           },
           "definition": {
             "type": [
@@ -3861,7 +3861,7 @@
             "type": [
               "literal"
             ],
-            "value": "Restriction"
+            "value": "OWL_Restriction"
           }
         },
         {
@@ -3874,7 +3874,7 @@
             "type": [
               "literal"
             ],
-            "value": "SymmetricProperty"
+            "value": "OWL:SymmetricProperty"
           },
           "definition": {
             "type": [
@@ -3945,7 +3945,7 @@
             "type": [
               "literal"
             ],
-            "value": "SymmetricProperty"
+            "value": "OWL_SymmetricProperty"
           }
         },
         {
@@ -3958,7 +3958,7 @@
             "type": [
               "literal"
             ],
-            "value": "Thing"
+            "value": "OWL:Thing"
           },
           "definition": {
             "type": [
@@ -4020,7 +4020,7 @@
             "type": [
               "literal"
             ],
-            "value": "Thing"
+            "value": "OWL_Thing"
           }
         },
         {
@@ -4033,7 +4033,7 @@
             "type": [
               "literal"
             ],
-            "value": "TransitiveProperty"
+            "value": "OWL:TransitiveProperty"
           },
           "definition": {
             "type": [
@@ -4104,7 +4104,7 @@
             "type": [
               "literal"
             ],
-            "value": "TransitiveProperty"
+            "value": "OWL_TransitiveProperty"
           }
         }
       ],
@@ -4805,7 +4805,7 @@
             "type": [
               "literal"
             ],
-            "value": "allValuesFrom"
+            "value": "OWL:allValuesFrom"
           },
           "definition": {
             "type": [
@@ -4868,7 +4868,7 @@
             "type": [
               "literal"
             ],
-            "value": "allValuesFrom"
+            "value": "OWL_allValuesFrom"
           }
         },
         {
@@ -4881,7 +4881,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedProperty"
+            "value": "OWL:annotatedProperty"
           },
           "definition": {
             "type": [
@@ -4944,7 +4944,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedProperty"
+            "value": "OWL_annotatedProperty"
           }
         },
         {
@@ -4957,7 +4957,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedSource"
+            "value": "OWL:annotatedSource"
           },
           "definition": {
             "type": [
@@ -5020,7 +5020,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedSource"
+            "value": "OWL_annotatedSource"
           }
         },
         {
@@ -5033,7 +5033,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedTarget"
+            "value": "OWL:annotatedTarget"
           },
           "definition": {
             "type": [
@@ -5096,7 +5096,7 @@
             "type": [
               "literal"
             ],
-            "value": "annotatedTarget"
+            "value": "OWL_annotatedTarget"
           }
         },
         {
@@ -5109,7 +5109,7 @@
             "type": [
               "literal"
             ],
-            "value": "assertionProperty"
+            "value": "OWL:assertionProperty"
           },
           "definition": {
             "type": [
@@ -5172,7 +5172,7 @@
             "type": [
               "literal"
             ],
-            "value": "assertionProperty"
+            "value": "OWL_assertionProperty"
           }
         },
         {
@@ -5186,7 +5186,7 @@
             "type": [
               "literal"
             ],
-            "value": "backwardCompatibleWith"
+            "value": "OWL:backwardCompatibleWith"
           },
           "definition": {
             "type": [
@@ -5252,7 +5252,7 @@
             "type": [
               "literal"
             ],
-            "value": "backwardCompatibleWith"
+            "value": "OWL_backwardCompatibleWith"
           }
         },
         {
@@ -5266,7 +5266,7 @@
             "type": [
               "literal"
             ],
-            "value": "bottomDataProperty"
+            "value": "OWL:bottomDataProperty"
           },
           "definition": {
             "type": [
@@ -5329,7 +5329,7 @@
             "type": [
               "literal"
             ],
-            "value": "bottomDataProperty"
+            "value": "OWL_bottomDataProperty"
           }
         },
         {
@@ -5343,7 +5343,7 @@
             "type": [
               "literal"
             ],
-            "value": "bottomObjectProperty"
+            "value": "OWL:bottomObjectProperty"
           },
           "definition": {
             "type": [
@@ -5406,7 +5406,7 @@
             "type": [
               "literal"
             ],
-            "value": "bottomObjectProperty"
+            "value": "OWL_bottomObjectProperty"
           }
         },
         {
@@ -5419,7 +5419,7 @@
             "type": [
               "literal"
             ],
-            "value": "cardinality"
+            "value": "OWL:cardinality"
           },
           "definition": {
             "type": [
@@ -5482,7 +5482,7 @@
             "type": [
               "literal"
             ],
-            "value": "cardinality"
+            "value": "OWL_cardinality"
           }
         },
         {
@@ -5495,7 +5495,7 @@
             "type": [
               "literal"
             ],
-            "value": "complementOf"
+            "value": "OWL:complementOf"
           },
           "definition": {
             "type": [
@@ -5558,7 +5558,7 @@
             "type": [
               "literal"
             ],
-            "value": "complementOf"
+            "value": "OWL_complementOf"
           }
         },
         {
@@ -5571,7 +5571,7 @@
             "type": [
               "literal"
             ],
-            "value": "datatypeComplementOf"
+            "value": "OWL:datatypeComplementOf"
           },
           "definition": {
             "type": [
@@ -5634,7 +5634,7 @@
             "type": [
               "literal"
             ],
-            "value": "datatypeComplementOf"
+            "value": "OWL_datatypeComplementOf"
           }
         },
         {
@@ -5648,7 +5648,7 @@
             "type": [
               "literal"
             ],
-            "value": "deprecated"
+            "value": "OWL:deprecated"
           },
           "definition": {
             "type": [
@@ -5711,7 +5711,7 @@
             "type": [
               "literal"
             ],
-            "value": "deprecated"
+            "value": "OWL_deprecated"
           }
         },
         {
@@ -5724,7 +5724,7 @@
             "type": [
               "literal"
             ],
-            "value": "differentFrom"
+            "value": "OWL:differentFrom"
           },
           "definition": {
             "type": [
@@ -5787,7 +5787,7 @@
             "type": [
               "literal"
             ],
-            "value": "differentFrom"
+            "value": "OWL_differentFrom"
           }
         },
         {
@@ -5800,7 +5800,7 @@
             "type": [
               "literal"
             ],
-            "value": "disjointUnionOf"
+            "value": "OWL:disjointUnionOf"
           },
           "definition": {
             "type": [
@@ -5863,7 +5863,7 @@
             "type": [
               "literal"
             ],
-            "value": "disjointUnionOf"
+            "value": "OWL_disjointUnionOf"
           }
         },
         {
@@ -5876,7 +5876,7 @@
             "type": [
               "literal"
             ],
-            "value": "disjointWith"
+            "value": "OWL:disjointWith"
           },
           "definition": {
             "type": [
@@ -5939,7 +5939,7 @@
             "type": [
               "literal"
             ],
-            "value": "disjointWith"
+            "value": "OWL_disjointWith"
           }
         },
         {
@@ -5952,7 +5952,7 @@
             "type": [
               "literal"
             ],
-            "value": "distinctMembers"
+            "value": "OWL:distinctMembers"
           },
           "definition": {
             "type": [
@@ -6015,7 +6015,7 @@
             "type": [
               "literal"
             ],
-            "value": "distinctMembers"
+            "value": "OWL_distinctMembers"
           }
         },
         {
@@ -6028,7 +6028,7 @@
             "type": [
               "literal"
             ],
-            "value": "equivalentClass"
+            "value": "OWL:equivalentClass"
           },
           "definition": {
             "type": [
@@ -6091,7 +6091,7 @@
             "type": [
               "literal"
             ],
-            "value": "equivalentClass"
+            "value": "OWL_equivalentClass"
           }
         },
         {
@@ -6104,7 +6104,7 @@
             "type": [
               "literal"
             ],
-            "value": "equivalentProperty"
+            "value": "OWL:equivalentProperty"
           },
           "definition": {
             "type": [
@@ -6167,7 +6167,7 @@
             "type": [
               "literal"
             ],
-            "value": "equivalentProperty"
+            "value": "OWL_equivalentProperty"
           }
         },
         {
@@ -6180,7 +6180,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasKey"
+            "value": "OWL:hasKey"
           },
           "definition": {
             "type": [
@@ -6243,7 +6243,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasKey"
+            "value": "OWL_hasKey"
           }
         },
         {
@@ -6256,7 +6256,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasSelf"
+            "value": "OWL:hasSelf"
           },
           "definition": {
             "type": [
@@ -6319,7 +6319,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasSelf"
+            "value": "OWL_hasSelf"
           }
         },
         {
@@ -6332,7 +6332,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasValue"
+            "value": "OWL:hasValue"
           },
           "definition": {
             "type": [
@@ -6395,7 +6395,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasValue"
+            "value": "OWL_hasValue"
           }
         },
         {
@@ -6409,7 +6409,7 @@
             "type": [
               "literal"
             ],
-            "value": "incompatibleWith"
+            "value": "OWL:incompatibleWith"
           },
           "definition": {
             "type": [
@@ -6475,7 +6475,7 @@
             "type": [
               "literal"
             ],
-            "value": "incompatibleWith"
+            "value": "OWL_incompatibleWith"
           }
         },
         {
@@ -6488,7 +6488,7 @@
             "type": [
               "literal"
             ],
-            "value": "intersectionOf"
+            "value": "OWL:intersectionOf"
           },
           "definition": {
             "type": [
@@ -6551,7 +6551,7 @@
             "type": [
               "literal"
             ],
-            "value": "intersectionOf"
+            "value": "OWL_intersectionOf"
           }
         },
         {
@@ -6564,7 +6564,7 @@
             "type": [
               "literal"
             ],
-            "value": "inverseOf"
+            "value": "OWL:inverseOf"
           },
           "definition": {
             "type": [
@@ -6627,7 +6627,7 @@
             "type": [
               "literal"
             ],
-            "value": "inverseOf"
+            "value": "OWL_inverseOf"
           }
         },
         {
@@ -6640,7 +6640,7 @@
             "type": [
               "literal"
             ],
-            "value": "maxCardinality"
+            "value": "OWL:maxCardinality"
           },
           "definition": {
             "type": [
@@ -6703,7 +6703,7 @@
             "type": [
               "literal"
             ],
-            "value": "maxCardinality"
+            "value": "OWL_maxCardinality"
           }
         },
         {
@@ -6716,7 +6716,7 @@
             "type": [
               "literal"
             ],
-            "value": "maxQualifiedCardinality"
+            "value": "OWL:maxQualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -6779,7 +6779,7 @@
             "type": [
               "literal"
             ],
-            "value": "maxQualifiedCardinality"
+            "value": "OWL_maxQualifiedCardinality"
           }
         },
         {
@@ -6792,7 +6792,7 @@
             "type": [
               "literal"
             ],
-            "value": "members"
+            "value": "OWL:members"
           },
           "definition": {
             "type": [
@@ -6855,7 +6855,7 @@
             "type": [
               "literal"
             ],
-            "value": "members"
+            "value": "OWL_members"
           }
         },
         {
@@ -6868,7 +6868,7 @@
             "type": [
               "literal"
             ],
-            "value": "minCardinality"
+            "value": "OWL:minCardinality"
           },
           "definition": {
             "type": [
@@ -6931,7 +6931,7 @@
             "type": [
               "literal"
             ],
-            "value": "minCardinality"
+            "value": "OWL_minCardinality"
           }
         },
         {
@@ -6944,7 +6944,7 @@
             "type": [
               "literal"
             ],
-            "value": "minQualifiedCardinality"
+            "value": "OWL:minQualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -7007,7 +7007,7 @@
             "type": [
               "literal"
             ],
-            "value": "minQualifiedCardinality"
+            "value": "OWL_minQualifiedCardinality"
           }
         },
         {
@@ -7020,7 +7020,7 @@
             "type": [
               "literal"
             ],
-            "value": "onClass"
+            "value": "OWL:onClass"
           },
           "definition": {
             "type": [
@@ -7083,7 +7083,7 @@
             "type": [
               "literal"
             ],
-            "value": "onClass"
+            "value": "OWL_onClass"
           }
         },
         {
@@ -7096,7 +7096,7 @@
             "type": [
               "literal"
             ],
-            "value": "onDataRange"
+            "value": "OWL:onDataRange"
           },
           "definition": {
             "type": [
@@ -7159,7 +7159,7 @@
             "type": [
               "literal"
             ],
-            "value": "onDataRange"
+            "value": "OWL_onDataRange"
           }
         },
         {
@@ -7172,7 +7172,7 @@
             "type": [
               "literal"
             ],
-            "value": "onDatatype"
+            "value": "OWL:onDatatype"
           },
           "definition": {
             "type": [
@@ -7235,7 +7235,7 @@
             "type": [
               "literal"
             ],
-            "value": "onDatatype"
+            "value": "OWL_onDatatype"
           }
         },
         {
@@ -7248,7 +7248,7 @@
             "type": [
               "literal"
             ],
-            "value": "onProperties"
+            "value": "OWL:onProperties"
           },
           "definition": {
             "type": [
@@ -7311,7 +7311,7 @@
             "type": [
               "literal"
             ],
-            "value": "onProperties"
+            "value": "OWL_onProperties"
           }
         },
         {
@@ -7324,7 +7324,7 @@
             "type": [
               "literal"
             ],
-            "value": "onProperty"
+            "value": "OWL:onProperty"
           },
           "definition": {
             "type": [
@@ -7387,7 +7387,7 @@
             "type": [
               "literal"
             ],
-            "value": "onProperty"
+            "value": "OWL_onProperty"
           }
         },
         {
@@ -7400,7 +7400,7 @@
             "type": [
               "literal"
             ],
-            "value": "oneOf"
+            "value": "OWL:oneOf"
           },
           "definition": {
             "type": [
@@ -7463,7 +7463,7 @@
             "type": [
               "literal"
             ],
-            "value": "oneOf"
+            "value": "OWL_oneOf"
           }
         },
         {
@@ -7477,7 +7477,7 @@
             "type": [
               "literal"
             ],
-            "value": "priorVersion"
+            "value": "OWL:priorVersion"
           },
           "definition": {
             "type": [
@@ -7543,7 +7543,7 @@
             "type": [
               "literal"
             ],
-            "value": "priorVersion"
+            "value": "OWL_priorVersion"
           }
         },
         {
@@ -7556,7 +7556,7 @@
             "type": [
               "literal"
             ],
-            "value": "propertyChainAxiom"
+            "value": "OWL:propertyChainAxiom"
           },
           "definition": {
             "type": [
@@ -7619,7 +7619,7 @@
             "type": [
               "literal"
             ],
-            "value": "propertyChainAxiom"
+            "value": "OWL_propertyChainAxiom"
           }
         },
         {
@@ -7632,7 +7632,7 @@
             "type": [
               "literal"
             ],
-            "value": "propertyDisjointWith"
+            "value": "OWL:propertyDisjointWith"
           },
           "definition": {
             "type": [
@@ -7695,7 +7695,7 @@
             "type": [
               "literal"
             ],
-            "value": "propertyDisjointWith"
+            "value": "OWL_propertyDisjointWith"
           }
         },
         {
@@ -7708,7 +7708,7 @@
             "type": [
               "literal"
             ],
-            "value": "qualifiedCardinality"
+            "value": "OWL:qualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -7771,7 +7771,7 @@
             "type": [
               "literal"
             ],
-            "value": "qualifiedCardinality"
+            "value": "OWL_qualifiedCardinality"
           }
         },
         {
@@ -7784,7 +7784,7 @@
             "type": [
               "literal"
             ],
-            "value": "sameAs"
+            "value": "OWL:sameAs"
           },
           "definition": {
             "type": [
@@ -7847,7 +7847,7 @@
             "type": [
               "literal"
             ],
-            "value": "sameAs"
+            "value": "OWL_sameAs"
           }
         },
         {
@@ -7860,7 +7860,7 @@
             "type": [
               "literal"
             ],
-            "value": "someValuesFrom"
+            "value": "OWL:someValuesFrom"
           },
           "definition": {
             "type": [
@@ -7923,7 +7923,7 @@
             "type": [
               "literal"
             ],
-            "value": "someValuesFrom"
+            "value": "OWL_someValuesFrom"
           }
         },
         {
@@ -7936,7 +7936,7 @@
             "type": [
               "literal"
             ],
-            "value": "sourceIndividual"
+            "value": "OWL:sourceIndividual"
           },
           "definition": {
             "type": [
@@ -7999,7 +7999,7 @@
             "type": [
               "literal"
             ],
-            "value": "sourceIndividual"
+            "value": "OWL_sourceIndividual"
           }
         },
         {
@@ -8012,7 +8012,7 @@
             "type": [
               "literal"
             ],
-            "value": "targetIndividual"
+            "value": "OWL:targetIndividual"
           },
           "definition": {
             "type": [
@@ -8075,7 +8075,7 @@
             "type": [
               "literal"
             ],
-            "value": "targetIndividual"
+            "value": "OWL_targetIndividual"
           }
         },
         {
@@ -8088,7 +8088,7 @@
             "type": [
               "literal"
             ],
-            "value": "targetValue"
+            "value": "OWL:targetValue"
           },
           "definition": {
             "type": [
@@ -8151,7 +8151,7 @@
             "type": [
               "literal"
             ],
-            "value": "targetValue"
+            "value": "OWL_targetValue"
           }
         },
         {
@@ -8165,7 +8165,7 @@
             "type": [
               "literal"
             ],
-            "value": "topDataProperty"
+            "value": "OWL:topDataProperty"
           },
           "definition": {
             "type": [
@@ -8228,7 +8228,7 @@
             "type": [
               "literal"
             ],
-            "value": "topDataProperty"
+            "value": "OWL_topDataProperty"
           }
         },
         {
@@ -8242,7 +8242,7 @@
             "type": [
               "literal"
             ],
-            "value": "topObjectProperty"
+            "value": "OWL:topObjectProperty"
           },
           "definition": {
             "type": [
@@ -8305,7 +8305,7 @@
             "type": [
               "literal"
             ],
-            "value": "topObjectProperty"
+            "value": "OWL_topObjectProperty"
           }
         },
         {
@@ -8318,7 +8318,7 @@
             "type": [
               "literal"
             ],
-            "value": "unionOf"
+            "value": "OWL:unionOf"
           },
           "definition": {
             "type": [
@@ -8381,7 +8381,7 @@
             "type": [
               "literal"
             ],
-            "value": "unionOf"
+            "value": "OWL_unionOf"
           }
         },
         {
@@ -8395,7 +8395,7 @@
             "type": [
               "literal"
             ],
-            "value": "versionInfo"
+            "value": "OWL:versionInfo"
           },
           "definition": {
             "type": [
@@ -8458,7 +8458,7 @@
             "type": [
               "literal"
             ],
-            "value": "versionInfo"
+            "value": "OWL_versionInfo"
           }
         },
         {
@@ -8471,7 +8471,7 @@
             "type": [
               "literal"
             ],
-            "value": "withRestrictions"
+            "value": "OWL:withRestrictions"
           },
           "definition": {
             "type": [
@@ -8534,7 +8534,7 @@
             "type": [
               "literal"
             ],
-            "value": "withRestrictions"
+            "value": "OWL_withRestrictions"
           }
         }
       ],
@@ -8743,7 +8743,7 @@
             "type": [
               "literal"
             ],
-            "value": "Collection"
+            "value": "SKOS:Collection"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -8829,7 +8829,7 @@
             "type": [
               "literal"
             ],
-            "value": "Collection"
+            "value": "SKOS_Collection"
           }
         },
         {
@@ -8842,7 +8842,7 @@
             "type": [
               "literal"
             ],
-            "value": "Concept"
+            "value": "SKOS:Concept"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -8908,7 +8908,7 @@
             "type": [
               "literal"
             ],
-            "value": "Concept"
+            "value": "SKOS_Concept"
           }
         },
         {
@@ -8921,7 +8921,7 @@
             "type": [
               "literal"
             ],
-            "value": "ConceptScheme"
+            "value": "SKOS:ConceptScheme"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -9020,7 +9020,7 @@
             "type": [
               "literal"
             ],
-            "value": "ConceptScheme"
+            "value": "SKOS_ConceptScheme"
           }
         },
         {
@@ -9033,7 +9033,7 @@
             "type": [
               "literal"
             ],
-            "value": "OrderedCollection"
+            "value": "SKOS:OrderedCollection"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#Collection",
           "directParent": "http://www.w3.org/2004/02/skos/core#Collection",
@@ -9124,7 +9124,7 @@
             "type": [
               "literal"
             ],
-            "value": "OrderedCollection"
+            "value": "SKOS_OrderedCollection"
           }
         }
       ],
@@ -9140,7 +9140,7 @@
             "type": [
               "literal"
             ],
-            "value": "altLabel"
+            "value": "SKOS:altLabel"
           },
           "definition": [
             {
@@ -9267,7 +9267,7 @@
             "type": [
               "literal"
             ],
-            "value": "altLabel"
+            "value": "SKOS_altLabel"
           }
         },
         {
@@ -9281,7 +9281,7 @@
             "type": [
               "literal"
             ],
-            "value": "broadMatch"
+            "value": "SKOS:broadMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -9363,7 +9363,7 @@
             "type": [
               "literal"
             ],
-            "value": "broadMatch"
+            "value": "SKOS_broadMatch"
           }
         },
         {
@@ -9377,7 +9377,7 @@
             "type": [
               "literal"
             ],
-            "value": "broader"
+            "value": "SKOS:broader"
           },
           "definition": {
             "type": [
@@ -9489,7 +9489,7 @@
             "type": [
               "literal"
             ],
-            "value": "broader"
+            "value": "SKOS_broader"
           }
         },
         {
@@ -9503,7 +9503,7 @@
             "type": [
               "literal"
             ],
-            "value": "broaderTransitive"
+            "value": "SKOS:broaderTransitive"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
           "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
@@ -9587,7 +9587,7 @@
             "type": [
               "literal"
             ],
-            "value": "broaderTransitive"
+            "value": "SKOS_broaderTransitive"
           }
         },
         {
@@ -9601,7 +9601,7 @@
             "type": [
               "literal"
             ],
-            "value": "changeNote"
+            "value": "SKOS:changeNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9671,7 +9671,7 @@
             "type": [
               "literal"
             ],
-            "value": "changeNote"
+            "value": "SKOS_changeNote"
           }
         },
         {
@@ -9685,7 +9685,7 @@
             "type": [
               "literal"
             ],
-            "value": "closeMatch"
+            "value": "SKOS:closeMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -9759,7 +9759,7 @@
             "type": [
               "literal"
             ],
-            "value": "closeMatch"
+            "value": "SKOS_closeMatch"
           }
         },
         {
@@ -9773,7 +9773,7 @@
             "type": [
               "literal"
             ],
-            "value": "definition"
+            "value": "SKOS:definition"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9843,7 +9843,7 @@
             "type": [
               "literal"
             ],
-            "value": "definition"
+            "value": "SKOS_definition"
           }
         },
         {
@@ -9857,7 +9857,7 @@
             "type": [
               "literal"
             ],
-            "value": "editorialNote"
+            "value": "SKOS:editorialNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9927,7 +9927,7 @@
             "type": [
               "literal"
             ],
-            "value": "editorialNote"
+            "value": "SKOS_editorialNote"
           }
         },
         {
@@ -9941,7 +9941,7 @@
             "type": [
               "literal"
             ],
-            "value": "exactMatch"
+            "value": "SKOS:exactMatch"
           },
           "definition": {
             "type": [
@@ -10039,7 +10039,7 @@
             "type": [
               "literal"
             ],
-            "value": "exactMatch"
+            "value": "SKOS_exactMatch"
           }
         },
         {
@@ -10053,7 +10053,7 @@
             "type": [
               "literal"
             ],
-            "value": "example"
+            "value": "SKOS:example"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -10123,7 +10123,7 @@
             "type": [
               "literal"
             ],
-            "value": "example"
+            "value": "SKOS_example"
           }
         },
         {
@@ -10137,7 +10137,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasTopConcept"
+            "value": "SKOS:hasTopConcept"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -10208,7 +10208,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasTopConcept"
+            "value": "SKOS_hasTopConcept"
           }
         },
         {
@@ -10222,7 +10222,7 @@
             "type": [
               "literal"
             ],
-            "value": "hiddenLabel"
+            "value": "SKOS:hiddenLabel"
           },
           "definition": [
             {
@@ -10333,7 +10333,7 @@
             "type": [
               "literal"
             ],
-            "value": "hiddenLabel"
+            "value": "SKOS_hiddenLabel"
           }
         },
         {
@@ -10347,7 +10347,7 @@
             "type": [
               "literal"
             ],
-            "value": "historyNote"
+            "value": "SKOS:historyNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -10417,7 +10417,7 @@
             "type": [
               "literal"
             ],
-            "value": "historyNote"
+            "value": "SKOS_historyNote"
           }
         },
         {
@@ -10431,7 +10431,7 @@
             "type": [
               "literal"
             ],
-            "value": "inScheme"
+            "value": "SKOS:inScheme"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -10516,7 +10516,7 @@
             "type": [
               "literal"
             ],
-            "value": "inScheme"
+            "value": "SKOS_inScheme"
           }
         },
         {
@@ -10530,7 +10530,7 @@
             "type": [
               "literal"
             ],
-            "value": "mappingRelation"
+            "value": "SKOS:mappingRelation"
           },
           "definition": {
             "type": [
@@ -10622,7 +10622,7 @@
             "type": [
               "literal"
             ],
-            "value": "mappingRelation"
+            "value": "SKOS_mappingRelation"
           }
         },
         {
@@ -10636,7 +10636,7 @@
             "type": [
               "literal"
             ],
-            "value": "member"
+            "value": "SKOS:member"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -10712,7 +10712,7 @@
             "type": [
               "literal"
             ],
-            "value": "member"
+            "value": "SKOS_member"
           }
         },
         {
@@ -10726,7 +10726,7 @@
             "type": [
               "literal"
             ],
-            "value": "memberList"
+            "value": "SKOS:memberList"
           },
           "definition": {
             "type": [
@@ -10819,7 +10819,7 @@
             "type": [
               "literal"
             ],
-            "value": "memberList"
+            "value": "SKOS_memberList"
           }
         },
         {
@@ -10833,7 +10833,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrowMatch"
+            "value": "SKOS:narrowMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -10915,7 +10915,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrowMatch"
+            "value": "SKOS_narrowMatch"
           }
         },
         {
@@ -10929,7 +10929,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrower"
+            "value": "SKOS:narrower"
           },
           "definition": {
             "type": [
@@ -11041,7 +11041,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrower"
+            "value": "SKOS_narrower"
           }
         },
         {
@@ -11055,7 +11055,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrowerTransitive"
+            "value": "SKOS:narrowerTransitive"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
           "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
@@ -11139,7 +11139,7 @@
             "type": [
               "literal"
             ],
-            "value": "narrowerTransitive"
+            "value": "SKOS_narrowerTransitive"
           }
         },
         {
@@ -11153,7 +11153,7 @@
             "type": [
               "literal"
             ],
-            "value": "notation"
+            "value": "SKOS:notation"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -11237,7 +11237,7 @@
             "type": [
               "literal"
             ],
-            "value": "notation"
+            "value": "SKOS_notation"
           }
         },
         {
@@ -11251,7 +11251,7 @@
             "type": [
               "literal"
             ],
-            "value": "note"
+            "value": "SKOS:note"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -11335,7 +11335,7 @@
             "type": [
               "literal"
             ],
-            "value": "note"
+            "value": "SKOS_note"
           }
         },
         {
@@ -11349,7 +11349,7 @@
             "type": [
               "literal"
             ],
-            "value": "prefLabel"
+            "value": "SKOS:prefLabel"
           },
           "definition": [
             {
@@ -11476,7 +11476,7 @@
             "type": [
               "literal"
             ],
-            "value": "prefLabel"
+            "value": "SKOS_prefLabel"
           }
         },
         {
@@ -11490,7 +11490,7 @@
             "type": [
               "literal"
             ],
-            "value": "related"
+            "value": "SKOS:related"
           },
           "definition": {
             "type": [
@@ -11583,7 +11583,7 @@
             "type": [
               "literal"
             ],
-            "value": "related"
+            "value": "SKOS_related"
           }
         },
         {
@@ -11597,7 +11597,7 @@
             "type": [
               "literal"
             ],
-            "value": "relatedMatch"
+            "value": "SKOS:relatedMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -11678,7 +11678,7 @@
             "type": [
               "literal"
             ],
-            "value": "relatedMatch"
+            "value": "SKOS_relatedMatch"
           }
         },
         {
@@ -11692,7 +11692,7 @@
             "type": [
               "literal"
             ],
-            "value": "scopeNote"
+            "value": "SKOS:scopeNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -11762,7 +11762,7 @@
             "type": [
               "literal"
             ],
-            "value": "scopeNote"
+            "value": "SKOS_scopeNote"
           }
         },
         {
@@ -11776,7 +11776,7 @@
             "type": [
               "literal"
             ],
-            "value": "semanticRelation"
+            "value": "SKOS:semanticRelation"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -11862,7 +11862,7 @@
             "type": [
               "literal"
             ],
-            "value": "semanticRelation"
+            "value": "SKOS_semanticRelation"
           }
         },
         {
@@ -11876,7 +11876,7 @@
             "type": [
               "literal"
             ],
-            "value": "topConceptOf"
+            "value": "SKOS:topConceptOf"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#inScheme",
           "directParent": "http://www.w3.org/2004/02/skos/core#inScheme",
@@ -11949,7 +11949,7 @@
             "type": [
               "literal"
             ],
-            "value": "topConceptOf"
+            "value": "SKOS_topConceptOf"
           }
         }
       ],
@@ -79847,6 +79847,2988 @@
               "literal"
             ],
             "value": "exactMatch"
+          }
+        }
+      ],
+      "individuals": []
+    },
+    {
+      "ontologyId": "oio",
+      "iri": "http://www.geneontology.org/formats/oboInOwl",
+      "ontology_purl": "https://gist.githubusercontent.com/haideriqbal/4a2b1a9aa81d9fa26cae81e0b0b7730b/raw/527665128b9be9d7d6133f9a796379600151c737/oboInOwl.owl",
+      "base_uri": [
+        "http://www.geneontology.org/formats/oboInOwl#"
+      ],
+      "type": [
+        "ontology"
+      ],
+      "definition": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "OBO Format metamodel. This meta-ontology is self-describing. OBO metamodel properties are described using OBO metamodel properties"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
+        }
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "OBO Format metamodel. This meta-ontology is self-describing. OBO metamodel properties are described using OBO metamodel properties"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
+        }
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "type": [
+          "literal"
+        ],
+        "value": ""
+      },
+      "imported": false,
+      "isObsolete": false,
+      "label": {
+        "type": [
+          "literal"
+        ],
+        "value": ""
+      },
+      "language": {
+        "type": [
+          "literal"
+        ],
+        "value": "en"
+      },
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "12"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "56"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "44"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "12"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "56"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "44"
+        }
+      ],
+      "classes": [
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:DbXref"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "database_cross_reference",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "database_cross_reference",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_DbXref"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:Definition"
+          },
+          "definition": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "definitionProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#comment"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://www.obofoundry.org/wiki/index.php/Definitions"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "URL:http://www.obofoundry.org/wiki/index.php/Definitions"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "The textual definition of the current term. There must be zero or one instances of this tag per term description",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#comment": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "definition",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "definition",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_Definition"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:ObsoleteClass"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "pseudo-class. in the oboInOwl translation, all obsolete classes are subclasses of this class. Note that this is not a metaclass",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "obsolete_class",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "obsolete_class",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_ObsoleteClass"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#Subset",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:Subset"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_subsetdef"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:subsetdef"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "A grouping of terms from an ontology or ontologies. Note that this is not a metaclass - classes are linked to subsets via oboInOwl:inSubset",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": [
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "slim",
+                "lang": "en"
+              },
+              "isObsolete": false
+            },
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "GO-slim",
+                "lang": "en"
+              },
+              "isObsolete": false
+            }
+          ],
+          "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": [
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "view",
+                "lang": "en"
+              },
+              "isObsolete": false
+            },
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "partition",
+                "lang": "en"
+              },
+              "isObsolete": false
+            }
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "subset",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "subset",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_Subset"
+          },
+          "synonym": [
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "slim",
+                "lang": "en"
+              },
+              "isObsolete": false
+            },
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "GO-slim",
+                "lang": "en"
+              },
+              "isObsolete": false
+            },
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "view",
+                "lang": "en"
+              },
+              "isObsolete": false
+            },
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "value": "partition",
+                "lang": "en"
+              },
+              "isObsolete": false
+            }
+          ],
+          "synonymProperty": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+            }
+          ]
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:Synonym"
+          },
+          "definition": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "definitionProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#comment"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An instance of synonym usage. synonym instances are linked to classes via oboInOwl:has*Synonym properties",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#comment": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_Synonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymType",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:SynonymType"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym_type",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym_type",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_SynonymType"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty",
+          "type": [
+            "property",
+            "objectProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:ObsoleteProperty"
+          },
+          "definition": {
+            "type": [
+              "literal"
+            ],
+            "value": "Note that this is not a metaclass"
+          },
+          "definitionProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#comment"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "pseudo-property. in the oboInOwl translation, all obsolete relations are subProperties of this class",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#comment": {
+            "type": [
+              "literal"
+            ],
+            "value": "Note that this is not a metaclass"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "obsolete_property",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "obsolete_property",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_ObsoleteProperty"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:SubsetProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "This annotation property groups all subsets declared in the ontology",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "subset_property",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "subset_property",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_SubsetProperty"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:SynonymTypeProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "This annotation property groups all synonym types declared in the ontology",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym_type_property",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "synonym_type_property",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_SynonymTypeProperty"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#consider",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:consider"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_consider"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:consider"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Gives a term which may be an appropriate substitute for an obsolete term, but needs to be looked at carefully by a human expert before the replacement is done",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "consider",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "consider",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_consider"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasAlternativeId"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_alt_id"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:alt_id"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An alternative identifier for this class; should follow ID syntax. These can result from class merges",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_alternative_id",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_alternative_id",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasAlternativeId"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasBroadSynonym"
+          },
+          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_broad_synonym"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:broad_synonym"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An alias in which the alias is broader than the primary class name. Example: cell division is a broad synonym of cytokinesis",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_broad_synonym",
+            "lang": "en"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_broad_synonym",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasBroadSynonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasDate",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasDate"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_date"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:date"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_date",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_date",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasDate"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasDbXref"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_xref"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:xref"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_dbxref",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_dbxref",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasDbXref"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefaultNamespace",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasDefaultNamespace"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_default-namespace"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:default-namespace"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_default_namespace",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_default_namespace",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasDefaultNamespace"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasDefinition"
+          },
+          "definition": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "definitionProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#comment"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_def"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:def"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "a relation between a class and an instance of a oboInOwl:Definition",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#comment": {
+            "type": [
+              "literal"
+            ],
+            "value": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_definition",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_definition",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasDefinition"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasExactSynonym"
+          },
+          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_exact_synonym"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:exact_synonym"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_exact_synonym",
+            "lang": "en"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_exact_synonym",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasExactSynonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasNarrowSynonym"
+          },
+          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_narrow_synonym"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:narrow_synonym"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An alias in which the alias is narrower than the primary class name. Example: pyrimidine-dimer repair by photolyase is a narrow synonym of photoreactive repair",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_narrow_synonym",
+            "lang": "en"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_narrow_synonym",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasNarrowSynonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasOBONamespace"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_namespace"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:namespace"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "A relation between a class and an OBO namespace string. OBO namespaces are to be distinguished from IDspaces; for example, biological_process is a namespace, GO is an idspace.",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_obo_namespace",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_obo_namespace",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasOBONamespace"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasRelatedSynonym"
+          },
+          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_related_synonym"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:related_synonym"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_related_synonym",
+            "lang": "en"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_related_synonym",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasRelatedSynonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasSubset",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasSubset"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "relation between an ontology and a oboInOwl:Subset, indicating classes in the ontology belong to the subset",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_subset",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_subset",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasSubset"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasSynonym"
+          },
+          "definition": {
+            "type": [
+              "literal"
+            ],
+            "value": "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"
+          },
+          "definitionProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#comment"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_synonym"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:synonym"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:GOC"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "A relation between a class and an alias term.",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#comment": {
+            "type": [
+              "literal"
+            ],
+            "value": "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_synonym",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_synonym",
+            "lang": "en"
+          },
+          "numDescendants": 4,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasSynonym"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasSynonymType"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://www.geneontology.org/GO.usage.shtml#type"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "URL:http://www.geneontology.org/GO.usage.shtml#type"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_synonym_type",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_synonym_type",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasSynonymType"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasURI",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasURI"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_URI",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_URI",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasURI"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#hasVersion",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:hasVersion"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_version"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:version"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_version",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "has_version",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_hasVersion"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:inSubset"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_subset"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:subset"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "relation between a class and a oboInOwl:Subset, indicating the class belongs (is a member of) the subset",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "in_subset",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "in_subset",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_inSubset"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#isCyclic",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:isCyclic"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_is_cyclic"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:is_cyclic"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "is_cyclic",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "is_cyclic",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_isCyclic"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#replacedBy",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:replacedBy"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_replaced_by"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:replaced_by"
+            },
+            "isObsolete": false
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+            "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+              "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+                "type": [
+                  "literal"
+                ],
+                "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+                "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+              },
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+              "http://www.w3.org/2000/01/rdf-schema#label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "oboInOwl:cjm"
+              },
+              "isObsolete": false
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "Gives a term which replaces an obsolete term. The value is the id of the replacement term. The value of this tag can safely be used to automatically reassign links to an obsolete term. The replaced_by tag may only be specified for obsolete terms. A single obsolete term may have more than one replaced_by tag. This tag can be used in conjunction with the consider tag.",
+              "lang": "en"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "replaced_by",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "replaced_by",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_replacedBy"
+          }
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#savedBy",
+          "type": [
+            "property",
+            "annotationProperty",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO:savedBy"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "value": "http://purl.org/obo/owl/oboFormat#oboFormat_saved_by"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboFormat:saved_by"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "saved_by",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "saved_by",
+            "lang": "en"
+          },
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "oio"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/formats/oboInOwl"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "OIO_savedBy"
           }
         }
       ],
