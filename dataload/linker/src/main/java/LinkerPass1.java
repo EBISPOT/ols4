@@ -179,9 +179,12 @@ public class LinkerPass1 {
 						String curieValue = curieObject.get("value").getAsString();
 						if(!curieValue.contains(":")) {
 							var definingOntologyId = entry.getValue().definingOntologyIds.iterator().next();
-							curieValue = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId).curie.getAsJsonObject().get("value").getAsString();
-							curieObject.addProperty("value", curieValue);
-							result.iriToDefinitions.put(entry.getKey(), definitions);
+							EntityDefinition definingEntity = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId);
+							if (definingEntity != null && definingEntity.curie != null) {
+								curieValue = definingEntity.curie.getAsJsonObject().get("value").getAsString();
+								curieObject.addProperty("value", curieValue);
+								result.iriToDefinitions.put(entry.getKey(), definitions);
+							}
 						}
 					}
 				}
@@ -247,10 +250,26 @@ public class LinkerPass1 {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
 					JsonArray arr = jsonDefinedBy.getAsJsonArray();
-					for(JsonElement el : arr) {
-						definedBy.add( el.getAsString() );
+					for(JsonElement isDefinedBy : arr) {
+						if (isDefinedBy.isJsonObject()) {
+							JsonObject obj = isDefinedBy.getAsJsonObject();
+							var value = obj.get("value");
+							if (value.isJsonObject()) {
+								definedBy.add(value.getAsJsonObject().get("value").getAsString());
+							} else
+								definedBy.add(value.getAsString());
+						} else
+							definedBy.add( isDefinedBy.getAsString() );
 					}
-				} else {
+				} else if (jsonDefinedBy.isJsonObject()) {
+					JsonObject obj = jsonDefinedBy.getAsJsonObject();
+					var value = obj.get("value");
+					if (value.isJsonObject()) {
+						definedBy.add(value.getAsJsonObject().get("value").getAsString());
+					} else
+						definedBy.add(value.getAsString());
+				}
+				else {
 					definedBy.add(jsonDefinedBy.getAsString());
 				}
 			} else {
