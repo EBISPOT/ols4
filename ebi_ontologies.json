@@ -1,6 +1,10 @@
 {
   "ontologies": [
 	  {
+		  "id": "upheno",
+		  "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/download/v2024-09-03/upheno.owl"
+	  },
+	  {
 		  "id": "hra",
 		  "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl",
                   "hierarchical_property": [
