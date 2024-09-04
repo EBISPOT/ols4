@@ -46,7 +46,7 @@ public class V1PropertyController implements
     }
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("iri")
+    public HttpEntity<PagedModel<V1Property>> getPropertiesByIri(@PathVariable("iri")
                                                           @Parameter(name = "iri",
                                                                   description = "The IRI of the property, this value must be double URL encoded",
                                                                   example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String termId,
@@ -62,7 +62,7 @@ public class V1PropertyController implements
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getAllProperties(
+    public HttpEntity<PagedModel<V1Property>> getAllProperties(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the property, this value must be double URL encoded",
@@ -99,7 +99,7 @@ public class V1PropertyController implements
 
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("iri")
+    public HttpEntity<PagedModel<V1Property>> getPropertiesByIriAndIsDefiningOntology(@PathVariable("iri")
                                                                                @Parameter(name = "iri",
                                                                                        description = "The IRI of the property, this value must be double URL encoded",
                                                                                        example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041") String termId,
@@ -115,7 +115,7 @@ public class V1PropertyController implements
     }    
     
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getPropertiesByIdAndIsDefiningOntology(
+    public HttpEntity<PagedModel<V1Property>> getPropertiesByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the property, this value must be double URL encoded",
@@ -152,6 +152,6 @@ public class V1PropertyController implements
     
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 }

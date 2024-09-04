@@ -48,7 +48,7 @@ public class V1OntologyPropertyController {
     Neo4jClient neo4jClient;
 
     @RequestMapping(path = "/{onto}/properties", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getAllPropertiesByOntology(
+    public HttpEntity<PagedModel<V1Property>> getAllPropertiesByOntology(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -98,7 +98,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/roots", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getRoots(
+    public HttpEntity<PagedModel<V1Property>> getRoots(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -119,7 +119,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<EntityModel<V1Property>> getProperty(
+    public HttpEntity<EntityModel<V1Property>> getProperty(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -138,7 +138,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/{iri}/parents", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> getParents(
+    public HttpEntity<PagedModel<V1Property>> getParents(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -158,7 +158,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/{iri}/children", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> children(
+    public HttpEntity<PagedModel<V1Property>> children(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -178,7 +178,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/{iri}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> descendants(
+    public HttpEntity<PagedModel<V1Property>> descendants(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -198,7 +198,7 @@ public class V1OntologyPropertyController {
     }
 
     @RequestMapping(path = "/{onto}/properties/{iri}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> ancestors(
+    public HttpEntity<PagedModel<V1Property>> ancestors(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -219,7 +219,7 @@ public class V1OntologyPropertyController {
 
 
     @RequestMapping(path = "/{onto}/properties/{iri}/jstree/children/{nodeid}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<String> graphJsTreeChildren(
+    public HttpEntity<String> graphJsTreeChildren(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -251,7 +251,7 @@ public class V1OntologyPropertyController {
     @RequestMapping(path = "/{onto}/properties/{iri}/jstree",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
             method = RequestMethod.GET)
-    HttpEntity<String> getJsTree(
+    public HttpEntity<String> getJsTree(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
@@ -280,6 +280,6 @@ public class V1OntologyPropertyController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 }

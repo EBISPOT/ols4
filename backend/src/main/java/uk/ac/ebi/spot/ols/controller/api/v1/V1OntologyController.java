@@ -63,7 +63,7 @@ public class V1OntologyController implements
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Ontology>> getOntologies(
+    public HttpEntity<PagedModel<V1Ontology>> getOntologies(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @PageableDefault(size = 20, page = 0) @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler
@@ -74,7 +74,7 @@ public class V1OntologyController implements
 
 
     @RequestMapping(path = "/{onto}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<EntityModel<V1Ontology>> getOntology(
+    public HttpEntity<EntityModel<V1Ontology>> getOntology(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @PathVariable("onto")
             @Parameter(name = "onto",
@@ -88,7 +88,7 @@ public class V1OntologyController implements
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 
 }

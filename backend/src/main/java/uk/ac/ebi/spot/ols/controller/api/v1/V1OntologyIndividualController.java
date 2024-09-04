@@ -58,7 +58,7 @@ public class V1OntologyIndividualController {
     V1JsTreeRepository jsTreeRepository;
 
     @RequestMapping(path = "/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Individual>> getAllIndividualsByOntology(
+    public HttpEntity<PagedModel<V1Individual>> getAllIndividualsByOntology(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
@@ -105,7 +105,7 @@ public class V1OntologyIndividualController {
     }
 
     @RequestMapping(path = "/{onto}/individuals/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<EntityModel<V1Individual>> getIndividual(
+    public HttpEntity<EntityModel<V1Individual>> getIndividual(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
@@ -124,7 +124,7 @@ public class V1OntologyIndividualController {
     }
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/types", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Term>> getDirectTypes(
+    public HttpEntity<PagedModel<V1Term>> getDirectTypes(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
@@ -146,7 +146,7 @@ public class V1OntologyIndividualController {
 
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/alltypes", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Property>> ancestors(
+    public HttpEntity<PagedModel<V1Property>> ancestors(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
@@ -166,7 +166,7 @@ public class V1OntologyIndividualController {
     }
 
     @RequestMapping(path = "/{onto}/individuals/{iri}/jstree", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<String> getJsTree(
+    public HttpEntity<String> getJsTree(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Information Artifact Ontology, the ID is iao.",
@@ -193,7 +193,7 @@ public class V1OntologyIndividualController {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 
 }

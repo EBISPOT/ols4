@@ -51,7 +51,7 @@ public class V1IndividualController implements
     }
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
+    public HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
@@ -66,7 +66,7 @@ public class V1IndividualController implements
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
+    public HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
@@ -99,7 +99,7 @@ public class V1IndividualController implements
     }
     
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
+    public HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
@@ -117,7 +117,7 @@ public class V1IndividualController implements
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", 
     		produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, 
     		method = RequestMethod.GET)
-    HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
+    public HttpEntity<PagedModel<V1Individual>> getAllIndividualsByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
@@ -152,7 +152,7 @@ public class V1IndividualController implements
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 
 }

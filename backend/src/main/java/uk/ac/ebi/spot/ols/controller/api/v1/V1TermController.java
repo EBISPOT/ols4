@@ -44,7 +44,7 @@ public class V1TermController implements
     V1TermAssembler termAssembler;
 
     @RequestMapping(path = "/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri")
+    public HttpEntity<PagedModel<V1Term>> getTermsByIri(@PathVariable("iri")
                                                          @Parameter(name = "iri",
                                                                      description = "The IRI of the term, this value must be double URL encoded",
                                                                      example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
@@ -60,7 +60,7 @@ public class V1TermController implements
     }
 
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTerms(
+    public HttpEntity<PagedModel<V1Term>> getTerms(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the term, this value must be double URL encoded",
@@ -106,7 +106,7 @@ public class V1TermController implements
     }
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology/{iri}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri")
+    public HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(@PathVariable("iri")
                                                                              @Parameter(name = "iri",
                                                                                          description = "The IRI of the term, this value must be double URL encoded",
                                                                                          example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
@@ -121,7 +121,7 @@ public class V1TermController implements
     }
 
     @RequestMapping(path = "/findByIdAndIsDefiningOntology", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(
+    public HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the term, this value must be double URL encoded",
@@ -170,7 +170,7 @@ public class V1TermController implements
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "EntityModel not found")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public void handleError(HttpServletRequest req, Exception exception) {
+    void handleError(HttpServletRequest req, Exception exception) {
     }
 
     @Override
