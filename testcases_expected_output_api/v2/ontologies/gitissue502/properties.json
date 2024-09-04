@@ -32,11 +32,6 @@
     "isPreferredRoot": false,
     "label": "part of",
     "linkedEntities": {
-      "BFO:0000050": {
-        "curie": "BFO:0000050",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000050"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -82,7 +77,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -95,7 +90,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -160,11 +155,6 @@
     "isPreferredRoot": false,
     "label": "has part",
     "linkedEntities": {
-      "BFO:0000051": {
-        "curie": "BFO:0000051",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000051"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -210,7 +200,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -223,7 +213,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -293,11 +283,6 @@
     "isPreferredRoot": false,
     "label": "preceded by",
     "linkedEntities": {
-      "BFO:0000062": {
-        "curie": "BFO:0000062",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000062"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -375,7 +360,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -388,7 +373,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -401,7 +386,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -414,7 +399,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -478,11 +463,6 @@
     "isPreferredRoot": false,
     "label": "precedes",
     "linkedEntities": {
-      "BFO:0000063": {
-        "curie": "BFO:0000063",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000063"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -538,7 +518,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -551,7 +531,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -564,7 +544,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -577,7 +557,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -640,11 +620,6 @@
     "isPreferredRoot": false,
     "label": "occurs in",
     "linkedEntities": {
-      "BFO:0000066": {
-        "curie": "BFO:0000066",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000066"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -699,7 +674,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -712,7 +687,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -725,7 +700,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -776,11 +751,6 @@
     "isPreferredRoot": false,
     "label": "contains process",
     "linkedEntities": {
-      "BFO:0000067": {
-        "curie": "BFO:0000067",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000067"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000066": {
         "curie": "BFO:0000066",
         "hasLocalDefinition": true,
@@ -804,7 +774,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -849,13 +819,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "IAO_0000115",
-    "linkedEntities": {
-      "IAO:0000115": {
-        "curie": "IAO:0000115",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000115"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "gitissue502",
@@ -885,13 +849,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "IAO_0000116",
-    "linkedEntities": {
-      "IAO:0000116": {
-        "curie": "IAO:0000116",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000116"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "gitissue502",
@@ -921,13 +879,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "IAO_0000233",
-    "linkedEntities": {
-      "IAO:0000233": {
-        "curie": "IAO:0000233",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000233"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "gitissue502",
@@ -957,13 +909,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "IAO_0006012",
-    "linkedEntities": {
-      "IAO:0006012": {
-        "curie": "IAO:0006012",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0006012"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "gitissue502",
@@ -1002,11 +948,6 @@
     "isPreferredRoot": false,
     "label": "characteristic of",
     "linkedEntities": {
-      "RO:0000052": {
-        "curie": "RO:0000052",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000052"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -1032,7 +973,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1144,10 +1085,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -1177,7 +1121,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1190,7 +1134,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -1244,11 +1188,6 @@
     "isPreferredRoot": false,
     "label": "participates in",
     "linkedEntities": {
-      "RO:0000056": {
-        "curie": "RO:0000056",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000056"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -1292,7 +1231,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -1305,7 +1244,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1318,7 +1257,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -1376,11 +1315,6 @@
     "isPreferredRoot": false,
     "label": "has participant",
     "linkedEntities": {
-      "RO:0000057": {
-        "curie": "RO:0000057",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000057"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -1446,7 +1380,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -1459,7 +1393,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1472,7 +1406,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -1529,11 +1463,6 @@
     "isPreferredRoot": false,
     "label": "function of",
     "linkedEntities": {
-      "RO:0000079": {
-        "curie": "RO:0000079",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000079"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000034": {
         "curie": "BFO:0000034",
         "hasLocalDefinition": true,
@@ -1589,7 +1518,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -1602,7 +1531,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1615,7 +1544,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1671,11 +1600,6 @@
     "isPreferredRoot": false,
     "label": "quality of",
     "linkedEntities": {
-      "RO:0000080": {
-        "curie": "RO:0000080",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000080"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -1721,7 +1645,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1734,7 +1658,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1790,11 +1714,6 @@
     "isPreferredRoot": false,
     "label": "role of",
     "linkedEntities": {
-      "RO:0000081": {
-        "curie": "RO:0000081",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000081"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -1840,7 +1759,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1853,7 +1772,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1911,11 +1830,6 @@
     "isPreferredRoot": false,
     "label": "has function",
     "linkedEntities": {
-      "RO:0000085": {
-        "curie": "RO:0000085",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000085"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -1983,7 +1897,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -1996,7 +1910,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2009,7 +1923,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2022,7 +1936,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2079,11 +1993,6 @@
     "isPreferredRoot": false,
     "label": "has quality",
     "linkedEntities": {
-      "RO:0000086": {
-        "curie": "RO:0000086",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000086"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000019": {
         "curie": "BFO:0000019",
         "hasLocalDefinition": true,
@@ -2141,7 +2050,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2154,7 +2063,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2167,7 +2076,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2225,11 +2134,6 @@
     "isPreferredRoot": false,
     "label": "has role",
     "linkedEntities": {
-      "RO:0000087": {
-        "curie": "RO:0000087",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000087"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -2297,7 +2201,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -2310,7 +2214,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2323,7 +2227,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2336,7 +2240,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2393,11 +2297,6 @@
     "isPreferredRoot": false,
     "label": "has disposition",
     "linkedEntities": {
-      "RO:0000091": {
-        "curie": "RO:0000091",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000091"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -2454,7 +2353,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -2467,7 +2366,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2480,7 +2379,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2493,7 +2392,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2547,11 +2446,6 @@
     "isPreferredRoot": false,
     "label": "disposition of",
     "linkedEntities": {
-      "RO:0000092": {
-        "curie": "RO:0000092",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000092"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -2586,7 +2480,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2599,7 +2493,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2653,11 +2547,6 @@
     "isPreferredRoot": false,
     "label": "2D boundary of",
     "linkedEntities": {
-      "RO:0002000": {
-        "curie": "RO:0002000",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002000"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -2692,7 +2581,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2751,11 +2640,6 @@
     "isPreferredRoot": false,
     "label": "has 2D boundary",
     "linkedEntities": {
-      "RO:0002002": {
-        "curie": "RO:0002002",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002002"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -2810,7 +2694,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -2823,7 +2707,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2836,7 +2720,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2906,11 +2790,6 @@
     "isPreferredRoot": false,
     "label": "has regulatory component activity",
     "linkedEntities": {
-      "RO:0002013": {
-        "curie": "RO:0002013",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002013"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -3011,7 +2890,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3024,7 +2903,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3093,11 +2972,6 @@
     "isPreferredRoot": false,
     "label": "has negative regulatory component activity",
     "linkedEntities": {
-      "RO:0002014": {
-        "curie": "RO:0002014",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002014"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -3220,7 +3094,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3233,7 +3107,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3302,11 +3176,6 @@
     "isPreferredRoot": false,
     "label": "has positive regulatory component activity",
     "linkedEntities": {
-      "RO:0002015": {
-        "curie": "RO:0002015",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002015"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -3429,7 +3298,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3442,7 +3311,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3496,11 +3365,6 @@
     "isPreferredRoot": false,
     "label": "has component activity",
     "linkedEntities": {
-      "RO:0002017": {
-        "curie": "RO:0002017",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002017"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -3546,7 +3410,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3559,7 +3423,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3615,11 +3479,6 @@
     "isPreferredRoot": false,
     "label": "has component process",
     "linkedEntities": {
-      "RO:0002018": {
-        "curie": "RO:0002018",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002018"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -3675,7 +3534,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -3688,7 +3547,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3701,7 +3560,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -3714,7 +3573,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3768,11 +3627,6 @@
     "isPreferredRoot": false,
     "label": "directly regulated by",
     "linkedEntities": {
-      "RO:0002022": {
-        "curie": "RO:0002022",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002022"
-      },
       "http://purl.obolibrary.org/obo/RO_0002334": {
         "curie": "RO:0002334",
         "hasLocalDefinition": true,
@@ -3818,7 +3672,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3831,7 +3685,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3884,11 +3738,6 @@
     "isPreferredRoot": false,
     "label": "directly negatively regulated by",
     "linkedEntities": {
-      "RO:0002023": {
-        "curie": "RO:0002023",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002023"
-      },
       "http://purl.obolibrary.org/obo/RO_0002022": {
         "curie": "RO:0002022",
         "hasLocalDefinition": true,
@@ -3945,7 +3794,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3958,7 +3807,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4011,11 +3860,6 @@
     "isPreferredRoot": false,
     "label": "directly positively regulated by",
     "linkedEntities": {
-      "RO:0002024": {
-        "curie": "RO:0002024",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002024"
-      },
       "http://purl.obolibrary.org/obo/RO_0002022": {
         "curie": "RO:0002022",
         "hasLocalDefinition": true,
@@ -4072,7 +3916,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4085,7 +3929,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4141,11 +3985,6 @@
     "isPreferredRoot": false,
     "label": "has effector activity",
     "linkedEntities": {
-      "RO:0002025": {
-        "curie": "RO:0002025",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002025"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -4202,7 +4041,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4215,7 +4054,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4262,11 +4101,6 @@
     "isPreferredRoot": false,
     "label": "before or simultaneous with",
     "linkedEntities": {
-      "RO:0002081": {
-        "curie": "RO:0002081",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002081"
-      },
       "http://purl.obolibrary.org/obo/RO_0002222": {
         "curie": "RO:0002222",
         "hasLocalDefinition": true,
@@ -4279,7 +4113,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4292,7 +4126,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4349,11 +4183,6 @@
     "isPreferredRoot": false,
     "label": "simultaneous with",
     "linkedEntities": {
-      "RO:0002082": {
-        "curie": "RO:0002082",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002082"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -4388,7 +4217,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4401,7 +4230,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4453,11 +4282,6 @@
     "isPreferredRoot": false,
     "label": "ends after",
     "linkedEntities": {
-      "RO:0002086": {
-        "curie": "RO:0002086",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002086"
-      },
       "http://purl.obolibrary.org/obo/RO_0002222": {
         "curie": "RO:0002222",
         "hasLocalDefinition": true,
@@ -4470,7 +4294,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4483,7 +4307,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4539,11 +4363,6 @@
     "isPreferredRoot": false,
     "label": "immediately preceded by",
     "linkedEntities": {
-      "RO:0002087": {
-        "curie": "RO:0002087",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002087"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000062": {
         "curie": "BFO:0000062",
         "hasLocalDefinition": true,
@@ -4611,7 +4430,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4624,7 +4443,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4679,11 +4498,6 @@
     "isPreferredRoot": false,
     "label": "immediately precedes",
     "linkedEntities": {
-      "RO:0002090": {
-        "curie": "RO:0002090",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002090"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -4740,7 +4554,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4753,7 +4567,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4817,11 +4631,6 @@
     "isPreferredRoot": false,
     "label": "overlaps",
     "linkedEntities": {
-      "RO:0002131": {
-        "curie": "RO:0002131",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002131"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -4856,7 +4665,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4909,11 +4718,6 @@
     "isPreferredRoot": false,
     "label": "only in taxon",
     "linkedEntities": {
-      "RO:0002160": {
-        "curie": "RO:0002160",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002160"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -4948,7 +4752,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4961,7 +4765,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -5122,10 +4926,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -5155,7 +4962,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5199,13 +5006,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "RO_0002175",
-    "linkedEntities": {
-      "RO:0002175": {
-        "curie": "RO:0002175",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002175"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "gitissue502",
@@ -5247,11 +5048,6 @@
     "isPreferredRoot": false,
     "label": "has component",
     "linkedEntities": {
-      "RO:0002180": {
-        "curie": "RO:0002180",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002180"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -5297,7 +5093,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5310,7 +5106,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -5368,11 +5164,6 @@
     "isPreferredRoot": false,
     "label": "develops from",
     "linkedEntities": {
-      "RO:0002202": {
-        "curie": "RO:0002202",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002202"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -5417,7 +5208,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -5430,7 +5221,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5443,7 +5234,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -5456,7 +5247,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -5525,11 +5316,6 @@
     "isPreferredRoot": false,
     "label": "develops into",
     "linkedEntities": {
-      "RO:0002203": {
-        "curie": "RO:0002203",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002203"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -5597,7 +5383,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5610,7 +5396,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -5685,11 +5471,6 @@
         "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
         "url": "http://amigo.geneontology.org/amigo/term/GO:0032502"
       },
-      "RO:0002207": {
-        "curie": "RO:0002207",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002207"
-      },
       "http://purl.obolibrary.org/obo/CL_0000000": {
         "curie": "CL:0000000",
         "hasLocalDefinition": true,
@@ -5755,7 +5536,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -5768,7 +5549,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5781,7 +5562,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -5794,7 +5575,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -5853,11 +5634,6 @@
     "isPreferredRoot": false,
     "label": "directly develops into",
     "linkedEntities": {
-      "RO:0002210": {
-        "curie": "RO:0002210",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002210"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -5936,7 +5712,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -5949,7 +5725,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6027,11 +5803,6 @@
     "isPreferredRoot": false,
     "label": "regulates",
     "linkedEntities": {
-      "RO:0002211": {
-        "curie": "RO:0002211",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002211"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -6153,7 +5924,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -6166,7 +5937,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -6179,7 +5950,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -6192,7 +5963,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6264,11 +6035,6 @@
     "isPreferredRoot": false,
     "label": "negatively regulates",
     "linkedEntities": {
-      "RO:0002212": {
-        "curie": "RO:0002212",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002212"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -6391,7 +6157,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -6404,7 +6170,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6485,11 +6251,6 @@
     "isPreferredRoot": false,
     "label": "positively regulates",
     "linkedEntities": {
-      "RO:0002213": {
-        "curie": "RO:0002213",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002213"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -6623,7 +6384,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -6636,7 +6397,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6694,11 +6455,6 @@
     "isPreferredRoot": false,
     "label": "capable of",
     "linkedEntities": {
-      "RO:0002215": {
-        "curie": "RO:0002215",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002215"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -6764,7 +6520,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -6777,7 +6533,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -6790,7 +6546,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -6803,7 +6559,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6858,11 +6614,6 @@
     "isPreferredRoot": false,
     "label": "capable of part of",
     "linkedEntities": {
-      "RO:0002216": {
-        "curie": "RO:0002216",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002216"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -6897,7 +6648,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -6910,7 +6661,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -6958,11 +6709,6 @@
     "isPreferredRoot": false,
     "label": "temporally related to",
     "linkedEntities": {
-      "RO:0002222": {
-        "curie": "RO:0002222",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002222"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -6974,7 +6720,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -6987,7 +6733,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7000,7 +6746,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -7061,11 +6807,6 @@
     "isPreferredRoot": false,
     "label": "starts",
     "linkedEntities": {
-      "RO:0002223": {
-        "curie": "RO:0002223",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002223"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -7122,7 +6863,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7135,7 +6876,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7201,11 +6942,6 @@
     "isPreferredRoot": false,
     "label": "starts with",
     "linkedEntities": {
-      "RO:0002224": {
-        "curie": "RO:0002224",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002224"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -7262,7 +6998,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7275,7 +7011,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7334,11 +7070,6 @@
     "isPreferredRoot": false,
     "label": "develops from part of",
     "linkedEntities": {
-      "RO:0002225": {
-        "curie": "RO:0002225",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002225"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -7395,7 +7126,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7408,7 +7139,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7471,11 +7202,6 @@
     "isPreferredRoot": false,
     "label": "ends",
     "linkedEntities": {
-      "RO:0002229": {
-        "curie": "RO:0002229",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002229"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -7532,7 +7258,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7545,7 +7271,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7611,11 +7337,6 @@
     "isPreferredRoot": false,
     "label": "ends with",
     "linkedEntities": {
-      "RO:0002230": {
-        "curie": "RO:0002230",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002230"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -7672,7 +7393,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7685,7 +7406,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7743,11 +7464,6 @@
     "isPreferredRoot": false,
     "label": "has start location",
     "linkedEntities": {
-      "RO:0002231": {
-        "curie": "RO:0002231",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002231"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -7813,7 +7529,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -7826,7 +7542,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -7839,7 +7555,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -7852,7 +7568,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -7910,11 +7626,6 @@
     "isPreferredRoot": false,
     "label": "has end location",
     "linkedEntities": {
-      "RO:0002232": {
-        "curie": "RO:0002232",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002232"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -7980,7 +7691,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -7993,7 +7704,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8006,7 +7717,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -8019,7 +7730,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8077,11 +7788,6 @@
     "isPreferredRoot": false,
     "label": "has input",
     "linkedEntities": {
-      "RO:0002233": {
-        "curie": "RO:0002233",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002233"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -8137,7 +7843,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -8150,7 +7856,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8163,7 +7869,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8222,11 +7928,6 @@
     "isPreferredRoot": false,
     "label": "has developmental contribution from",
     "linkedEntities": {
-      "RO:0002254": {
-        "curie": "RO:0002254",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002254"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -8293,7 +7994,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -8306,7 +8007,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8319,7 +8020,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -8332,7 +8033,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8400,11 +8101,6 @@
     "isPreferredRoot": false,
     "label": "developmentally contributes to",
     "linkedEntities": {
-      "RO:0002255": {
-        "curie": "RO:0002255",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002255"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -8483,7 +8179,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8496,7 +8192,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8554,11 +8250,6 @@
         "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
         "url": "http://amigo.geneontology.org/amigo/term/GO:0032502"
       },
-      "RO:0002258": {
-        "curie": "RO:0002258",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002258"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -8603,7 +8294,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -8616,7 +8307,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8629,7 +8320,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -8689,11 +8380,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of",
     "linkedEntities": {
-      "RO:0002263": {
-        "curie": "RO:0002263",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002263"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -8761,7 +8447,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8774,7 +8460,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8833,11 +8519,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of or within",
     "linkedEntities": {
-      "RO:0002264": {
-        "curie": "RO:0002264",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002264"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -8894,7 +8575,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -8907,7 +8588,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -8960,11 +8641,6 @@
     "isPreferredRoot": false,
     "label": "developmentally succeeded by",
     "linkedEntities": {
-      "RO:0002286": {
-        "curie": "RO:0002286",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002286"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -8999,7 +8675,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9012,7 +8688,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9068,11 +8744,6 @@
     "isPreferredRoot": false,
     "label": "part of developmental precursor of",
     "linkedEntities": {
-      "RO:0002287": {
-        "curie": "RO:0002287",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002287"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -9118,7 +8789,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9131,7 +8802,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9194,11 +8865,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of, positive effect",
     "linkedEntities": {
-      "RO:0002304": {
-        "curie": "RO:0002304",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002304"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -9277,7 +8943,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9290,7 +8956,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9355,11 +9021,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of, negative effect",
     "linkedEntities": {
-      "RO:0002305": {
-        "curie": "RO:0002305",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002305"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -9438,7 +9099,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9451,7 +9112,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9519,11 +9180,6 @@
     "isPreferredRoot": false,
     "label": "enables",
     "linkedEntities": {
-      "RO:0002327": {
-        "curie": "RO:0002327",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002327"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -9613,7 +9269,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9626,7 +9282,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9700,11 +9356,6 @@
     "isPreferredRoot": false,
     "label": "involved in",
     "linkedEntities": {
-      "RO:0002331": {
-        "curie": "RO:0002331",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002331"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -9794,7 +9445,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9807,7 +9458,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9860,11 +9511,6 @@
     "isPreferredRoot": false,
     "label": "enabled by",
     "linkedEntities": {
-      "RO:0002333": {
-        "curie": "RO:0002333",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002333"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -9899,7 +9545,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -9912,7 +9558,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -9973,11 +9619,6 @@
     "isPreferredRoot": false,
     "label": "regulated by",
     "linkedEntities": {
-      "RO:0002334": {
-        "curie": "RO:0002334",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002334"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -10033,7 +9674,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -10046,7 +9687,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10059,7 +9700,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -10072,7 +9713,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10129,11 +9770,6 @@
     "isPreferredRoot": false,
     "label": "negatively regulated by",
     "linkedEntities": {
-      "RO:0002335": {
-        "curie": "RO:0002335",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002335"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10190,7 +9826,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10203,7 +9839,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10260,11 +9896,6 @@
     "isPreferredRoot": false,
     "label": "positively regulated by",
     "linkedEntities": {
-      "RO:0002336": {
-        "curie": "RO:0002336",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002336"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10321,7 +9952,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10334,7 +9965,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10387,11 +10018,6 @@
     "isPreferredRoot": false,
     "label": "input of",
     "linkedEntities": {
-      "RO:0002352": {
-        "curie": "RO:0002352",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002352"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10426,7 +10052,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10439,7 +10065,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10490,11 +10116,6 @@
     "isPreferredRoot": false,
     "label": "has developmental potential involving",
     "linkedEntities": {
-      "RO:0002384": {
-        "curie": "RO:0002384",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002384"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10517,7 +10138,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -10530,7 +10151,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10543,7 +10164,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -10596,11 +10217,6 @@
     "isPreferredRoot": false,
     "label": "has potential to developmentally contribute to",
     "linkedEntities": {
-      "RO:0002385": {
-        "curie": "RO:0002385",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002385"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10624,7 +10240,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10637,7 +10253,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10690,11 +10306,6 @@
     "isPreferredRoot": false,
     "label": "has potential to develop into",
     "linkedEntities": {
-      "RO:0002387": {
-        "curie": "RO:0002387",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002387"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10718,7 +10329,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10731,7 +10342,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10787,11 +10398,6 @@
     "isPreferredRoot": false,
     "label": "has potential to directly develop into",
     "linkedEntities": {
-      "RO:0002388": {
-        "curie": "RO:0002388",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002388"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -10826,7 +10432,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -10839,7 +10445,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -10905,11 +10511,6 @@
     "isPreferredRoot": false,
     "label": "causally downstream of",
     "linkedEntities": {
-      "RO:0002404": {
-        "curie": "RO:0002404",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002404"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000062": {
         "curie": "BFO:0000062",
         "hasLocalDefinition": true,
@@ -10988,7 +10589,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -11001,7 +10602,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -11065,11 +10666,6 @@
     "isPreferredRoot": false,
     "label": "immediately causally downstream of",
     "linkedEntities": {
-      "RO:0002405": {
-        "curie": "RO:0002405",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002405"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000062": {
         "curie": "BFO:0000062",
         "hasLocalDefinition": true,
@@ -11159,7 +10755,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -11172,7 +10768,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -11261,11 +10857,6 @@
     "isPreferredRoot": false,
     "label": "indirectly positively regulates",
     "linkedEntities": {
-      "RO:0002407": {
-        "curie": "RO:0002407",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002407"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -11421,7 +11012,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -11434,7 +11025,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -11521,11 +11112,6 @@
     "isPreferredRoot": false,
     "label": "indirectly negatively regulates",
     "linkedEntities": {
-      "RO:0002409": {
-        "curie": "RO:0002409",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002409"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -11670,7 +11256,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -11683,7 +11269,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -11750,11 +11336,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of",
     "linkedEntities": {
-      "RO:0002411": {
-        "curie": "RO:0002411",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002411"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -11822,7 +11403,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -11835,7 +11416,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -11901,11 +11482,6 @@
     "isPreferredRoot": false,
     "label": "immediately causally upstream of",
     "linkedEntities": {
-      "RO:0002412": {
-        "curie": "RO:0002412",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002412"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -11995,7 +11571,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12008,7 +11584,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12065,11 +11641,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of or within",
     "linkedEntities": {
-      "RO:0002418": {
-        "curie": "RO:0002418",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002418"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12115,7 +11686,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12128,7 +11699,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12184,11 +11755,6 @@
     "isPreferredRoot": false,
     "label": "causally downstream of or within",
     "linkedEntities": {
-      "RO:0002427": {
-        "curie": "RO:0002427",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002427"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12223,7 +11789,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12236,7 +11802,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12310,11 +11876,6 @@
     "isPreferredRoot": false,
     "label": "involved in regulation of",
     "linkedEntities": {
-      "RO:0002428": {
-        "curie": "RO:0002428",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002428"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12415,7 +11976,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12428,7 +11989,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12497,11 +12058,6 @@
     "isPreferredRoot": false,
     "label": "involved in positive regulation of",
     "linkedEntities": {
-      "RO:0002429": {
-        "curie": "RO:0002429",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002429"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12613,7 +12169,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12626,7 +12182,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12695,11 +12251,6 @@
     "isPreferredRoot": false,
     "label": "involved in negative regulation of",
     "linkedEntities": {
-      "RO:0002430": {
-        "curie": "RO:0002430",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002430"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12811,7 +12362,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12824,7 +12375,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -12887,11 +12438,6 @@
     "isPreferredRoot": false,
     "label": "involved in or involved in regulation of",
     "linkedEntities": {
-      "RO:0002431": {
-        "curie": "RO:0002431",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002431"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -12948,7 +12494,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -12961,7 +12507,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -13019,11 +12565,6 @@
     "isPreferredRoot": false,
     "label": "interacts with",
     "linkedEntities": {
-      "RO:0002434": {
-        "curie": "RO:0002434",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002434"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -13057,7 +12598,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -13070,7 +12611,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13083,7 +12624,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -13138,11 +12679,6 @@
     "isPreferredRoot": false,
     "label": "molecularly interacts with",
     "linkedEntities": {
-      "RO:0002436": {
-        "curie": "RO:0002436",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002436"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -13166,7 +12702,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13179,7 +12715,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -13232,11 +12768,6 @@
     "isPreferredRoot": false,
     "label": "phosphorylates",
     "linkedEntities": {
-      "RO:0002447": {
-        "curie": "RO:0002447",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002447"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000116": {
         "curie": "IAO:0000116",
         "hasLocalDefinition": true,
@@ -13271,7 +12802,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13284,7 +12815,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -13355,11 +12886,6 @@
     "isPreferredRoot": false,
     "label": "directly regulates activity of",
     "linkedEntities": {
-      "RO:0002448": {
-        "curie": "RO:0002448",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002448"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -13470,7 +12996,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -13483,7 +13009,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13496,7 +13022,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -13509,7 +13035,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -13575,11 +13101,6 @@
     "isPreferredRoot": false,
     "label": "directly negatively regulates activity of",
     "linkedEntities": {
-      "RO:0002449": {
-        "curie": "RO:0002449",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002449"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -13701,7 +13222,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -13714,7 +13235,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13727,7 +13248,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -13740,7 +13261,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -13806,11 +13327,6 @@
     "isPreferredRoot": false,
     "label": "directly positively regulates activity of",
     "linkedEntities": {
-      "RO:0002450": {
-        "curie": "RO:0002450",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002450"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -13932,7 +13448,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -13945,7 +13461,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -13958,7 +13474,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -13971,7 +13487,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14028,11 +13544,6 @@
     "isPreferredRoot": false,
     "label": "composed primarily of",
     "linkedEntities": {
-      "RO:0002473": {
-        "curie": "RO:0002473",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002473"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -14077,7 +13588,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -14090,7 +13601,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14103,7 +13614,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -14116,7 +13627,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14167,11 +13678,6 @@
     "isPreferredRoot": false,
     "label": "has part that occurs in",
     "linkedEntities": {
-      "RO:0002479": {
-        "curie": "RO:0002479",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002479"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -14204,7 +13710,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -14217,7 +13723,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14230,7 +13736,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -14278,11 +13784,6 @@
     "isPreferredRoot": false,
     "label": "relation between physical entity and a process or stage",
     "linkedEntities": {
-      "RO:0002487": {
-        "curie": "RO:0002487",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002487"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -14304,7 +13805,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -14317,7 +13818,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14330,7 +13831,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -14394,11 +13895,6 @@
     "isPreferredRoot": false,
     "label": "existence starts during",
     "linkedEntities": {
-      "RO:0002488": {
-        "curie": "RO:0002488",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002488"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -14455,7 +13951,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14468,7 +13964,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14525,11 +14021,6 @@
     "isPreferredRoot": false,
     "label": "existence starts with",
     "linkedEntities": {
-      "RO:0002489": {
-        "curie": "RO:0002489",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002489"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -14586,7 +14077,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14599,7 +14090,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14651,11 +14142,6 @@
     "isPreferredRoot": false,
     "label": "existence overlaps",
     "linkedEntities": {
-      "RO:0002490": {
-        "curie": "RO:0002490",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002490"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -14679,7 +14165,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14692,7 +14178,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14758,11 +14244,6 @@
     "isPreferredRoot": false,
     "label": "existence ends during",
     "linkedEntities": {
-      "RO:0002492": {
-        "curie": "RO:0002492",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002492"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -14819,7 +14300,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14832,7 +14313,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -14889,11 +14370,6 @@
     "isPreferredRoot": false,
     "label": "existence ends with",
     "linkedEntities": {
-      "RO:0002493": {
-        "curie": "RO:0002493",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002493"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -14950,7 +14426,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -14963,7 +14439,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15021,11 +14497,6 @@
     "isPreferredRoot": false,
     "label": "transformation of",
     "linkedEntities": {
-      "RO:0002494": {
-        "curie": "RO:0002494",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002494"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -15060,7 +14531,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15073,7 +14544,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15136,11 +14607,6 @@
     "isPreferredRoot": false,
     "label": "immediate transformation of",
     "linkedEntities": {
-      "RO:0002495": {
-        "curie": "RO:0002495",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002495"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -15197,7 +14663,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15210,7 +14676,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15284,11 +14750,6 @@
     "isPreferredRoot": false,
     "label": "existence starts during or after",
     "linkedEntities": {
-      "RO:0002496": {
-        "curie": "RO:0002496",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002496"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -15356,7 +14817,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15369,7 +14830,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15443,11 +14904,6 @@
     "isPreferredRoot": false,
     "label": "existence ends during or before",
     "linkedEntities": {
-      "RO:0002497": {
-        "curie": "RO:0002497",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002497"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -15515,7 +14971,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15528,7 +14984,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15581,11 +15037,6 @@
     "isPreferredRoot": false,
     "label": "causal agent in process",
     "linkedEntities": {
-      "RO:0002500": {
-        "curie": "RO:0002500",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002500"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -15620,7 +15071,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15633,7 +15084,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15684,11 +15135,6 @@
     "isPreferredRoot": false,
     "label": "causal relation between processes",
     "linkedEntities": {
-      "RO:0002501": {
-        "curie": "RO:0002501",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002501"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -15711,7 +15157,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -15724,7 +15170,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15737,7 +15183,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -15786,11 +15232,6 @@
     "isPreferredRoot": false,
     "label": "causal relation between entities",
     "linkedEntities": {
-      "RO:0002506": {
-        "curie": "RO:0002506",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002506"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -15813,7 +15254,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -15826,7 +15267,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15839,7 +15280,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -15889,11 +15330,6 @@
     "isPreferredRoot": false,
     "label": "causally influenced by",
     "linkedEntities": {
-      "RO:0002559": {
-        "curie": "RO:0002559",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002559"
-      },
       "http://purl.obolibrary.org/obo/RO_0002506": {
         "curie": "RO:0002506",
         "hasLocalDefinition": true,
@@ -15917,7 +15353,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -15930,7 +15366,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -15995,11 +15431,6 @@
     "isPreferredRoot": false,
     "label": "causally influences",
     "linkedEntities": {
-      "RO:0002566": {
-        "curie": "RO:0002566",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002566"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -16088,7 +15519,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -16101,7 +15532,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16114,7 +15545,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -16127,7 +15558,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -16195,11 +15626,6 @@
     "isPreferredRoot": false,
     "label": "directly regulates",
     "linkedEntities": {
-      "RO:0002578": {
-        "curie": "RO:0002578",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002578"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -16311,7 +15737,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16324,7 +15750,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -16380,11 +15806,6 @@
     "isPreferredRoot": false,
     "label": "has part structure that is capable of",
     "linkedEntities": {
-      "RO:0002584": {
-        "curie": "RO:0002584",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002584"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -16430,7 +15851,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16443,7 +15864,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -16495,11 +15916,6 @@
     "isPreferredRoot": false,
     "label": "causal relation between material entity and a process",
     "linkedEntities": {
-      "RO:0002595": {
-        "curie": "RO:0002595",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002595"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -16543,7 +15959,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -16556,7 +15972,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16569,7 +15985,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -16628,11 +16044,6 @@
     "isPreferredRoot": false,
     "label": "capable of regulating",
     "linkedEntities": {
-      "RO:0002596": {
-        "curie": "RO:0002596",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002596"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -16689,7 +16100,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16702,7 +16113,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -16762,11 +16173,6 @@
     "isPreferredRoot": false,
     "label": "capable of negatively regulating",
     "linkedEntities": {
-      "RO:0002597": {
-        "curie": "RO:0002597",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002597"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -16834,7 +16240,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16847,7 +16253,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -16907,11 +16313,6 @@
     "isPreferredRoot": false,
     "label": "capable of positively regulating",
     "linkedEntities": {
-      "RO:0002598": {
-        "curie": "RO:0002598",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002598"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -16979,7 +16380,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -16992,7 +16393,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -17042,11 +16443,6 @@
     "isPreferredRoot": false,
     "label": "process has causal agent",
     "linkedEntities": {
-      "RO:0002608": {
-        "curie": "RO:0002608",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002608"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -17070,7 +16466,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17142,11 +16538,6 @@
     "isPreferredRoot": false,
     "label": "directly positively regulates",
     "linkedEntities": {
-      "RO:0002629": {
-        "curie": "RO:0002629",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002629"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -17302,7 +16693,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17315,7 +16706,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -17387,11 +16778,6 @@
     "isPreferredRoot": false,
     "label": "directly negatively regulates",
     "linkedEntities": {
-      "RO:0002630": {
-        "curie": "RO:0002630",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002630"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -17547,7 +16933,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17560,7 +16946,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -17612,11 +16998,6 @@
     "isPreferredRoot": false,
     "label": "produces",
     "linkedEntities": {
-      "RO:0003000": {
-        "curie": "RO:0003000",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0003000"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -17650,7 +17031,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -17663,7 +17044,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17676,7 +17057,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -17728,11 +17109,6 @@
     "isPreferredRoot": false,
     "label": "produced by",
     "linkedEntities": {
-      "RO:0003001": {
-        "curie": "RO:0003001",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0003001"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -17766,7 +17142,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -17779,7 +17155,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17792,7 +17168,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -17842,11 +17218,6 @@
     "isPreferredRoot": false,
     "label": "disease has basis in",
     "linkedEntities": {
-      "RO:0004019": {
-        "curie": "RO:0004019",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004019"
-      },
       "http://purl.obolibrary.org/obo/OGMS_0000031": {
         "curie": "OGMS:0000031",
         "hasLocalDefinition": true,
@@ -17869,7 +17240,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -17882,7 +17253,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -17895,7 +17266,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -18050,10 +17421,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -18083,7 +17457,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -18096,7 +17470,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18109,7 +17483,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -18122,7 +17496,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -18169,11 +17543,6 @@
     "isPreferredRoot": false,
     "label": "causal relationship with disease as subject",
     "linkedEntities": {
-      "RO:0004023": {
-        "curie": "RO:0004023",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004023"
-      },
       "http://purl.obolibrary.org/obo/OGMS_0000031": {
         "curie": "OGMS:0000031",
         "hasLocalDefinition": true,
@@ -18185,7 +17554,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -18198,7 +17567,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18322,10 +17691,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -18355,7 +17727,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -18368,7 +17740,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18381,7 +17753,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -18394,7 +17766,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -18541,10 +17913,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -18574,7 +17949,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -18587,7 +17962,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18600,7 +17975,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -18695,10 +18070,13 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "hasDbXref",
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
-        "numAppearsIn": 1.0,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -18728,7 +18106,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -18741,7 +18119,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18798,11 +18176,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of or within, positive effect",
     "linkedEntities": {
-      "RO:0004032": {
-        "curie": "RO:0004032",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004032"
-      },
       "http://purl.obolibrary.org/obo/RO_0002264": {
         "curie": "RO:0002264",
         "hasLocalDefinition": true,
@@ -18859,7 +18232,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -18872,7 +18245,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -18927,11 +18300,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of or within, negative effect",
     "linkedEntities": {
-      "RO:0004033": {
-        "curie": "RO:0004033",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004033"
-      },
       "http://purl.obolibrary.org/obo/RO_0002264": {
         "curie": "RO:0002264",
         "hasLocalDefinition": true,
@@ -18988,7 +18356,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19001,7 +18369,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19067,11 +18435,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of, positive effect",
     "linkedEntities": {
-      "RO:0004034": {
-        "curie": "RO:0004034",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004034"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -19161,7 +18524,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19174,7 +18537,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19242,11 +18605,6 @@
     "isPreferredRoot": false,
     "label": "acts upstream of, negative effect",
     "linkedEntities": {
-      "RO:0004035": {
-        "curie": "RO:0004035",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004035"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -19336,7 +18694,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19349,7 +18707,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19401,11 +18759,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of or within, negative effect",
     "linkedEntities": {
-      "RO:0004046": {
-        "curie": "RO:0004046",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004046"
-      },
       "http://purl.obolibrary.org/obo/RO_0002418": {
         "curie": "RO:0002418",
         "hasLocalDefinition": true,
@@ -19429,7 +18782,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19442,7 +18795,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19492,11 +18845,6 @@
     "isPreferredRoot": false,
     "label": "causally upstream of or within, positive effect",
     "linkedEntities": {
-      "RO:0004047": {
-        "curie": "RO:0004047",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0004047"
-      },
       "http://purl.obolibrary.org/obo/RO_0002418": {
         "curie": "RO:0002418",
         "hasLocalDefinition": true,
@@ -19520,7 +18868,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19533,7 +18881,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19588,11 +18936,6 @@
     "isPreferredRoot": false,
     "label": "regulates activity of",
     "linkedEntities": {
-      "RO:0011002": {
-        "curie": "RO:0011002",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0011002"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -19637,7 +18980,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -19650,7 +18993,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19663,7 +19006,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -19676,7 +19019,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19734,11 +19077,6 @@
     "isPreferredRoot": false,
     "label": "indirectly causally upstream of",
     "linkedEntities": {
-      "RO:0012011": {
-        "curie": "RO:0012011",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0012011"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -19806,7 +19144,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19819,7 +19157,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -19885,11 +19223,6 @@
     "isPreferredRoot": false,
     "label": "indirectly regulates",
     "linkedEntities": {
-      "RO:0012012": {
-        "curie": "RO:0012012",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0012012"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000063": {
         "curie": "BFO:0000063",
         "hasLocalDefinition": true,
@@ -19979,7 +19312,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -19992,7 +19325,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -20047,11 +19380,6 @@
     "isPreferredRoot": false,
     "label": "regulates characteristic",
     "linkedEntities": {
-      "RO:0019000": {
-        "curie": "RO:0019000",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0019000"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -20095,7 +19423,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -20108,7 +19436,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -20121,7 +19449,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -20177,11 +19505,6 @@
     "isPreferredRoot": false,
     "label": "positively regulates characteristic",
     "linkedEntities": {
-      "RO:0019001": {
-        "curie": "RO:0019001",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0019001"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -20216,7 +19539,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -20229,7 +19552,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -20291,11 +19614,6 @@
     "isPreferredRoot": false,
     "label": "negatively regulates characteristic",
     "linkedEntities": {
-      "RO:0019002": {
-        "curie": "RO:0019002",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0019002"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -20352,7 +19670,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -20365,7 +19683,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -20517,186 +19835,6 @@
     "appearsIn": [
       "gitissue502"
     ],
-    "curie": "hasBroadSynonym",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasBroadSynonym",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasBroadSynonym",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "hasDbXref",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasDbXref",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasDbXref",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "hasExactSynonym",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasExactSynonym",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasExactSynonym",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "hasNarrowSynonym",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasNarrowSynonym",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasNarrowSynonym",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "hasRelatedSynonym",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasRelatedSynonym",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasRelatedSynonym",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "hasSynonymType",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "hasSynonymType",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "hasSynonymType",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
     "curie": "id",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -20717,36 +19855,6 @@
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": false,
     "shortForm": "id",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "gitissue502"
-    ],
-    "curie": "inSubset",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "imported": false,
-    "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "inSubset",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "gitissue502",
-    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "ontologyPreferredPrefix": "gitIssue502",
-    "searchableAnnotationValues": false,
-    "shortForm": "inSubset",
     "type": [
       "annotationProperty",
       "entity",
@@ -20846,10 +19954,248 @@
   {
     "appearsIn": [
       "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasBroadSynonym",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasBroadSynonym",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasBroadSynonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasDbXref",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasDbXref",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasDbXref",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasExactSynonym",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasExactSynonym",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasExactSynonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasNarrowSynonym",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasNarrowSynonym",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasNarrowSynonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasRelatedSynonym",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasRelatedSynonym",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasRelatedSynonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:hasSynonymType",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "hasSynonymType",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_hasSynonymType",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
+      "oio"
+    ],
+    "curie": "OIO:inSubset",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "inSubset",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "gitissue502",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "gitIssue502",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_inSubset",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "gitissue502",
       "owl",
       "rdfs"
     ],
-    "curie": "label",
+    "curie": "RDFS:label",
     "definedBy": [
       "rdfs"
     ],
@@ -20871,7 +20217,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": false,
-    "shortForm": "label",
+    "shortForm": "RDFS_label",
     "type": [
       "annotationProperty",
       "entity",
@@ -20883,7 +20229,7 @@
       "gitissue502",
       "skos"
     ],
-    "curie": "closeMatch",
+    "curie": "SKOS:closeMatch",
     "definedBy": [
       "skos"
     ],
@@ -20905,7 +20251,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": false,
-    "shortForm": "closeMatch",
+    "shortForm": "SKOS_closeMatch",
     "type": [
       "annotationProperty",
       "entity",
@@ -20917,7 +20263,7 @@
       "gitissue502",
       "skos"
     ],
-    "curie": "exactMatch",
+    "curie": "SKOS:exactMatch",
     "definedBy": [
       "skos"
     ],
@@ -20939,7 +20285,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": false,
-    "shortForm": "exactMatch",
+    "shortForm": "SKOS_exactMatch",
     "type": [
       "annotationProperty",
       "entity",

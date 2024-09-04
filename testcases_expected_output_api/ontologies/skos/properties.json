@@ -27,10 +27,10 @@
     "is_root": false,
     "label": "has broader match",
     "lang": "en",
-    "obo_id": "broadMatch",
+    "obo_id": "SKOS:broadMatch",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "broadMatch",
+    "short_form": "SKOS_broadMatch",
     "synonyms": []
   },
   {
@@ -72,10 +72,10 @@
     "is_root": false,
     "label": "has broader",
     "lang": "en",
-    "obo_id": "broader",
+    "obo_id": "SKOS:broader",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "broader",
+    "short_form": "SKOS_broader",
     "synonyms": []
   },
   {
@@ -115,10 +115,10 @@
     "is_root": false,
     "label": "has broader transitive",
     "lang": "en",
-    "obo_id": "broaderTransitive",
+    "obo_id": "SKOS:broaderTransitive",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "broaderTransitive",
+    "short_form": "SKOS_broaderTransitive",
     "synonyms": []
   },
   {
@@ -149,10 +149,10 @@
     "is_root": false,
     "label": "change note",
     "lang": "en",
-    "obo_id": "changeNote",
+    "obo_id": "SKOS:changeNote",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "changeNote",
+    "short_form": "SKOS_changeNote",
     "synonyms": []
   },
   {
@@ -189,10 +189,10 @@
     "is_root": false,
     "label": "has close match",
     "lang": "en",
-    "obo_id": "closeMatch",
+    "obo_id": "SKOS:closeMatch",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "closeMatch",
+    "short_form": "SKOS_closeMatch",
     "synonyms": []
   },
   {
@@ -223,10 +223,10 @@
     "is_root": false,
     "label": "definition",
     "lang": "en",
-    "obo_id": "definition",
+    "obo_id": "SKOS:definition",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "definition",
+    "short_form": "SKOS_definition",
     "synonyms": []
   },
   {
@@ -257,10 +257,10 @@
     "is_root": false,
     "label": "editorial note",
     "lang": "en",
-    "obo_id": "editorialNote",
+    "obo_id": "SKOS:editorialNote",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "editorialNote",
+    "short_form": "SKOS_editorialNote",
     "synonyms": []
   },
   {
@@ -293,10 +293,10 @@
     "is_root": false,
     "label": "has exact match",
     "lang": "en",
-    "obo_id": "exactMatch",
+    "obo_id": "SKOS:exactMatch",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "exactMatch",
+    "short_form": "SKOS_exactMatch",
     "synonyms": []
   },
   {
@@ -327,10 +327,10 @@
     "is_root": false,
     "label": "example",
     "lang": "en",
-    "obo_id": "example",
+    "obo_id": "SKOS:example",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "example",
+    "short_form": "SKOS_example",
     "synonyms": []
   },
   {
@@ -361,10 +361,10 @@
     "is_root": false,
     "label": "history note",
     "lang": "en",
-    "obo_id": "historyNote",
+    "obo_id": "SKOS:historyNote",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "historyNote",
+    "short_form": "SKOS_historyNote",
     "synonyms": []
   },
   {
@@ -403,10 +403,10 @@
     "is_root": false,
     "label": "is in mapping relation with",
     "lang": "en",
-    "obo_id": "mappingRelation",
+    "obo_id": "SKOS:mappingRelation",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "mappingRelation",
+    "short_form": "SKOS_mappingRelation",
     "synonyms": []
   },
   {
@@ -437,10 +437,10 @@
     "is_root": false,
     "label": "has narrower match",
     "lang": "en",
-    "obo_id": "narrowMatch",
+    "obo_id": "SKOS:narrowMatch",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "narrowMatch",
+    "short_form": "SKOS_narrowMatch",
     "synonyms": []
   },
   {
@@ -482,10 +482,10 @@
     "is_root": false,
     "label": "has narrower",
     "lang": "en",
-    "obo_id": "narrower",
+    "obo_id": "SKOS:narrower",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "narrower",
+    "short_form": "SKOS_narrower",
     "synonyms": []
   },
   {
@@ -525,10 +525,10 @@
     "is_root": false,
     "label": "has narrower transitive",
     "lang": "en",
-    "obo_id": "narrowerTransitive",
+    "obo_id": "SKOS:narrowerTransitive",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "narrowerTransitive",
+    "short_form": "SKOS_narrowerTransitive",
     "synonyms": []
   },
   {
@@ -567,10 +567,10 @@
     "is_root": false,
     "label": "has related",
     "lang": "en",
-    "obo_id": "related",
+    "obo_id": "SKOS:related",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "related",
+    "short_form": "SKOS_related",
     "synonyms": []
   },
   {
@@ -601,10 +601,10 @@
     "is_root": false,
     "label": "has related match",
     "lang": "en",
-    "obo_id": "relatedMatch",
+    "obo_id": "SKOS:relatedMatch",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "relatedMatch",
+    "short_form": "SKOS_relatedMatch",
     "synonyms": []
   },
   {
@@ -635,10 +635,10 @@
     "is_root": false,
     "label": "scope note",
     "lang": "en",
-    "obo_id": "scopeNote",
+    "obo_id": "SKOS:scopeNote",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "scopeNote",
+    "short_form": "SKOS_scopeNote",
     "synonyms": []
   },
   {
@@ -669,10 +669,10 @@
     "is_root": false,
     "label": "is top concept in scheme",
     "lang": "en",
-    "obo_id": "topConceptOf",
+    "obo_id": "SKOS:topConceptOf",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "topConceptOf",
+    "short_form": "SKOS_topConceptOf",
     "synonyms": []
   },
   {
@@ -703,10 +703,10 @@
     "is_root": true,
     "label": "is in scheme",
     "lang": "en",
-    "obo_id": "inScheme",
+    "obo_id": "SKOS:inScheme",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "inScheme",
+    "short_form": "SKOS_inScheme",
     "synonyms": []
   },
   {
@@ -737,10 +737,10 @@
     "is_root": true,
     "label": "note",
     "lang": "en",
-    "obo_id": "note",
+    "obo_id": "SKOS:note",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "note",
+    "short_form": "SKOS_note",
     "synonyms": []
   },
   {
@@ -771,10 +771,10 @@
     "is_root": true,
     "label": "is in semantic relation with",
     "lang": "en",
-    "obo_id": "semanticRelation",
+    "obo_id": "SKOS:semanticRelation",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "semanticRelation",
+    "short_form": "SKOS_semanticRelation",
     "synonyms": []
   },
   {
@@ -802,10 +802,10 @@
     "is_root": true,
     "label": "alternative label",
     "lang": "en",
-    "obo_id": "altLabel",
+    "obo_id": "SKOS:altLabel",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "altLabel",
+    "short_form": "SKOS_altLabel",
     "synonyms": []
   },
   {
@@ -827,10 +827,10 @@
     "is_root": true,
     "label": "has top concept",
     "lang": "en",
-    "obo_id": "hasTopConcept",
+    "obo_id": "SKOS:hasTopConcept",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "hasTopConcept",
+    "short_form": "SKOS_hasTopConcept",
     "synonyms": []
   },
   {
@@ -855,10 +855,10 @@
     "is_root": true,
     "label": "hidden label",
     "lang": "en",
-    "obo_id": "hiddenLabel",
+    "obo_id": "SKOS:hiddenLabel",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "hiddenLabel",
+    "short_form": "SKOS_hiddenLabel",
     "synonyms": []
   },
   {
@@ -880,10 +880,10 @@
     "is_root": true,
     "label": "has member",
     "lang": "en",
-    "obo_id": "member",
+    "obo_id": "SKOS:member",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "member",
+    "short_form": "SKOS_member",
     "synonyms": []
   },
   {
@@ -907,10 +907,10 @@
     "is_root": true,
     "label": "has member list",
     "lang": "en",
-    "obo_id": "memberList",
+    "obo_id": "SKOS:memberList",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "memberList",
+    "short_form": "SKOS_memberList",
     "synonyms": []
   },
   {
@@ -935,10 +935,10 @@
     "is_root": true,
     "label": "notation",
     "lang": "en",
-    "obo_id": "notation",
+    "obo_id": "SKOS:notation",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "notation",
+    "short_form": "SKOS_notation",
     "synonyms": []
   },
   {
@@ -964,10 +964,10 @@
     "is_root": true,
     "label": "preferred label",
     "lang": "en",
-    "obo_id": "prefLabel",
+    "obo_id": "SKOS:prefLabel",
     "ontology_iri": "http://www.w3.org/2004/02/skos/core",
     "ontology_name": "skos",
-    "short_form": "prefLabel",
+    "short_form": "SKOS_prefLabel",
     "synonyms": []
   }
 ]

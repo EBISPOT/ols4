@@ -1,0 +1,53 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "has_definition": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboInOwl:GOC"
+          },
+          "isObsolete": false
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "This annotation property groups all synonym types declared in the ontology",
+          "lang": "en"
+        },
+        "isObsolete": false
+      }
+    ]
+  },
+  "label": "synonym_type_property",
+  "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "OIO_SynonymTypeProperty",
+  "obo_id": "OIO:SynonymTypeProperty",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SynonymTypeProperty?lang=en"
+    }
+  }
+}

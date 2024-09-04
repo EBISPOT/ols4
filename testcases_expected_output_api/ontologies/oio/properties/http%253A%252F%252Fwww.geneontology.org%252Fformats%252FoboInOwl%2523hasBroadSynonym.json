@@ -1,0 +1,81 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "has_dbxref": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "value": "http://purl.org/obo/owl/oboFormat#oboFormat_broad_synonym"
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "value": "oboFormat:broad_synonym"
+        },
+        "isObsolete": false
+      }
+    ],
+    "has_definition": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboInOwl:GOC"
+          },
+          "isObsolete": false
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "An alias in which the alias is broader than the primary class name. Example: cell division is a broad synonym of cytokinesis",
+          "lang": "en"
+        },
+        "isObsolete": false
+      }
+    ]
+  },
+  "label": "has_broad_synonym",
+  "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "OIO_hasBroadSynonym",
+  "obo_id": "OIO:hasBroadSynonym",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/jstree"
+    }
+  }
+}

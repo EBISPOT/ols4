@@ -47,10 +47,10 @@
     "is_root": false,
     "label": "Class",
     "lang": "en",
-    "obo_id": "Class",
+    "obo_id": "RDFS:Class",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Class",
+    "short_form": "RDFS_Class",
     "synonyms": []
   },
   {
@@ -89,10 +89,10 @@
     "is_root": false,
     "label": "Container",
     "lang": "en",
-    "obo_id": "Container",
+    "obo_id": "RDFS:Container",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Container",
+    "short_form": "RDFS_Container",
     "synonyms": []
   },
   {
@@ -143,10 +143,10 @@
     "is_root": false,
     "label": "Datatype",
     "lang": "en",
-    "obo_id": "Datatype",
+    "obo_id": "RDFS:Datatype",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Datatype",
+    "short_form": "RDFS_Datatype",
     "synonyms": []
   },
   {
@@ -185,10 +185,10 @@
     "is_root": false,
     "label": "Literal",
     "lang": "en",
-    "obo_id": "Literal",
+    "obo_id": "RDFS:Literal",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Literal",
+    "short_form": "RDFS_Literal",
     "synonyms": []
   },
   {
@@ -227,10 +227,10 @@
     "is_root": false,
     "label": "AllDifferent",
     "lang": "en",
-    "obo_id": "AllDifferent",
+    "obo_id": "OWL:AllDifferent",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "AllDifferent",
+    "short_form": "OWL_AllDifferent",
     "synonyms": []
   },
   {
@@ -269,10 +269,10 @@
     "is_root": false,
     "label": "AllDisjointClasses",
     "lang": "en",
-    "obo_id": "AllDisjointClasses",
+    "obo_id": "OWL:AllDisjointClasses",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "AllDisjointClasses",
+    "short_form": "OWL_AllDisjointClasses",
     "synonyms": []
   },
   {
@@ -311,10 +311,10 @@
     "is_root": false,
     "label": "AllDisjointProperties",
     "lang": "en",
-    "obo_id": "AllDisjointProperties",
+    "obo_id": "OWL:AllDisjointProperties",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "AllDisjointProperties",
+    "short_form": "OWL_AllDisjointProperties",
     "synonyms": []
   },
   {
@@ -353,10 +353,10 @@
     "is_root": false,
     "label": "Annotation",
     "lang": "en",
-    "obo_id": "Annotation",
+    "obo_id": "OWL:Annotation",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Annotation",
+    "short_form": "OWL_Annotation",
     "synonyms": []
   },
   {
@@ -395,10 +395,10 @@
     "is_root": false,
     "label": "AsymmetricProperty",
     "lang": "en",
-    "obo_id": "AsymmetricProperty",
+    "obo_id": "OWL:AsymmetricProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "AsymmetricProperty",
+    "short_form": "OWL_AsymmetricProperty",
     "synonyms": []
   },
   {
@@ -437,10 +437,10 @@
     "is_root": false,
     "label": "Axiom",
     "lang": "en",
-    "obo_id": "Axiom",
+    "obo_id": "OWL:Axiom",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Axiom",
+    "short_form": "OWL_Axiom",
     "synonyms": []
   },
   {
@@ -491,10 +491,10 @@
     "is_root": false,
     "label": "Class",
     "lang": "en",
-    "obo_id": "Class",
+    "obo_id": "OWL:Class",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Class",
+    "short_form": "OWL_Class",
     "synonyms": []
   },
   {
@@ -533,10 +533,10 @@
     "is_root": false,
     "label": "DataRange",
     "lang": "en",
-    "obo_id": "DataRange",
+    "obo_id": "OWL:DataRange",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "DataRange",
+    "short_form": "OWL_DataRange",
     "synonyms": []
   },
   {
@@ -575,10 +575,10 @@
     "is_root": false,
     "label": "DeprecatedClass",
     "lang": "en",
-    "obo_id": "DeprecatedClass",
+    "obo_id": "OWL:DeprecatedClass",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "DeprecatedClass",
+    "short_form": "OWL_DeprecatedClass",
     "synonyms": []
   },
   {
@@ -617,10 +617,10 @@
     "is_root": false,
     "label": "InverseFunctionalProperty",
     "lang": "en",
-    "obo_id": "InverseFunctionalProperty",
+    "obo_id": "OWL:InverseFunctionalProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "InverseFunctionalProperty",
+    "short_form": "OWL_InverseFunctionalProperty",
     "synonyms": []
   },
   {
@@ -659,10 +659,10 @@
     "is_root": false,
     "label": "IrreflexiveProperty",
     "lang": "en",
-    "obo_id": "IrreflexiveProperty",
+    "obo_id": "OWL:IrreflexiveProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "IrreflexiveProperty",
+    "short_form": "OWL_IrreflexiveProperty",
     "synonyms": []
   },
   {
@@ -701,10 +701,10 @@
     "is_root": false,
     "label": "NegativePropertyAssertion",
     "lang": "en",
-    "obo_id": "NegativePropertyAssertion",
+    "obo_id": "OWL:NegativePropertyAssertion",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "NegativePropertyAssertion",
+    "short_form": "OWL_NegativePropertyAssertion",
     "synonyms": []
   },
   {
@@ -743,10 +743,10 @@
     "is_root": false,
     "label": "Ontology",
     "lang": "en",
-    "obo_id": "Ontology",
+    "obo_id": "OWL:Ontology",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Ontology",
+    "short_form": "OWL_Ontology",
     "synonyms": []
   },
   {
@@ -785,10 +785,10 @@
     "is_root": false,
     "label": "ReflexiveProperty",
     "lang": "en",
-    "obo_id": "ReflexiveProperty",
+    "obo_id": "OWL:ReflexiveProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "ReflexiveProperty",
+    "short_form": "OWL_ReflexiveProperty",
     "synonyms": []
   },
   {
@@ -827,10 +827,10 @@
     "is_root": false,
     "label": "Restriction",
     "lang": "en",
-    "obo_id": "Restriction",
+    "obo_id": "OWL:Restriction",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Restriction",
+    "short_form": "OWL_Restriction",
     "synonyms": []
   },
   {
@@ -869,10 +869,10 @@
     "is_root": false,
     "label": "SymmetricProperty",
     "lang": "en",
-    "obo_id": "SymmetricProperty",
+    "obo_id": "OWL:SymmetricProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "SymmetricProperty",
+    "short_form": "OWL_SymmetricProperty",
     "synonyms": []
   },
   {
@@ -911,10 +911,10 @@
     "is_root": false,
     "label": "TransitiveProperty",
     "lang": "en",
-    "obo_id": "TransitiveProperty",
+    "obo_id": "OWL:TransitiveProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "TransitiveProperty",
+    "short_form": "OWL_TransitiveProperty",
     "synonyms": []
   },
   {
@@ -950,10 +950,10 @@
     "is_root": true,
     "label": "Resource",
     "lang": "en",
-    "obo_id": "Resource",
+    "obo_id": "RDFS:Resource",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Resource",
+    "short_form": "RDFS_Resource",
     "synonyms": []
   },
   {
@@ -989,10 +989,10 @@
     "is_root": true,
     "label": "ObjectProperty",
     "lang": "en",
-    "obo_id": "ObjectProperty",
+    "obo_id": "OWL:ObjectProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "ObjectProperty",
+    "short_form": "OWL_ObjectProperty",
     "synonyms": []
   },
   {
@@ -1016,10 +1016,10 @@
     "is_root": true,
     "label": "ContainerMembershipProperty",
     "lang": "en",
-    "obo_id": "ContainerMembershipProperty",
+    "obo_id": "RDFS:ContainerMembershipProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "ContainerMembershipProperty",
+    "short_form": "RDFS_ContainerMembershipProperty",
     "synonyms": []
   },
   {
@@ -1043,10 +1043,10 @@
     "is_root": true,
     "label": "AnnotationProperty",
     "lang": "en",
-    "obo_id": "AnnotationProperty",
+    "obo_id": "OWL:AnnotationProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "AnnotationProperty",
+    "short_form": "OWL_AnnotationProperty",
     "synonyms": []
   },
   {
@@ -1070,10 +1070,10 @@
     "is_root": true,
     "label": "DatatypeProperty",
     "lang": "en",
-    "obo_id": "DatatypeProperty",
+    "obo_id": "OWL:DatatypeProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "DatatypeProperty",
+    "short_form": "OWL_DatatypeProperty",
     "synonyms": []
   },
   {
@@ -1097,10 +1097,10 @@
     "is_root": true,
     "label": "DeprecatedProperty",
     "lang": "en",
-    "obo_id": "DeprecatedProperty",
+    "obo_id": "OWL:DeprecatedProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "DeprecatedProperty",
+    "short_form": "OWL_DeprecatedProperty",
     "synonyms": []
   },
   {
@@ -1124,10 +1124,10 @@
     "is_root": true,
     "label": "FunctionalProperty",
     "lang": "en",
-    "obo_id": "FunctionalProperty",
+    "obo_id": "OWL:FunctionalProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "FunctionalProperty",
+    "short_form": "OWL_FunctionalProperty",
     "synonyms": []
   },
   {
@@ -1151,10 +1151,10 @@
     "is_root": true,
     "label": "NamedIndividual",
     "lang": "en",
-    "obo_id": "NamedIndividual",
+    "obo_id": "OWL:NamedIndividual",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "NamedIndividual",
+    "short_form": "OWL_NamedIndividual",
     "synonyms": []
   },
   {
@@ -1178,10 +1178,10 @@
     "is_root": true,
     "label": "Nothing",
     "lang": "en",
-    "obo_id": "Nothing",
+    "obo_id": "OWL:Nothing",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Nothing",
+    "short_form": "OWL_Nothing",
     "synonyms": []
   },
   {
@@ -1205,10 +1205,10 @@
     "is_root": true,
     "label": "OntologyProperty",
     "lang": "en",
-    "obo_id": "OntologyProperty",
+    "obo_id": "OWL:OntologyProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "OntologyProperty",
+    "short_form": "OWL_OntologyProperty",
     "synonyms": []
   },
   {
@@ -1232,10 +1232,10 @@
     "is_root": true,
     "label": "Thing",
     "lang": "en",
-    "obo_id": "Thing",
+    "obo_id": "OWL:Thing",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Thing",
+    "short_form": "OWL_Thing",
     "synonyms": []
   }
 ]

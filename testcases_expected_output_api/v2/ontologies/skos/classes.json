@@ -3,7 +3,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "Collection",
+    "curie": "SKOS:Collection",
     "definedBy": [
       "skos"
     ],
@@ -28,7 +28,7 @@
     "label": "Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -41,7 +41,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -54,7 +54,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -67,7 +67,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -80,7 +80,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -94,7 +94,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -117,7 +117,7 @@
       "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy.",
       false
     ],
-    "shortForm": "Collection",
+    "shortForm": "SKOS_Collection",
     "type": [
       "class",
       "entity"
@@ -127,7 +127,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "Concept",
+    "curie": "SKOS:Concept",
     "definedBy": [
       "skos"
     ],
@@ -147,7 +147,7 @@
     "label": "Concept",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -160,7 +160,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -173,7 +173,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -195,7 +195,7 @@
       "An idea or notion; a unit of thought.",
       false
     ],
-    "shortForm": "Concept",
+    "shortForm": "SKOS_Concept",
     "type": [
       "class",
       "entity"
@@ -205,7 +205,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "ConceptScheme",
+    "curie": "SKOS:ConceptScheme",
     "definedBy": [
       "skos"
     ],
@@ -228,7 +228,7 @@
     "label": "Concept Scheme",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -241,7 +241,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -254,7 +254,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -267,7 +267,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -281,7 +281,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#example": {
-        "curie": "example",
+        "curie": "SKOS:example",
         "definedBy": [
           "skos"
         ],
@@ -295,7 +295,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -319,7 +319,7 @@
       "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.",
       false
     ],
-    "shortForm": "ConceptScheme",
+    "shortForm": "SKOS_ConceptScheme",
     "type": [
       "class",
       "entity"
@@ -329,7 +329,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "OrderedCollection",
+    "curie": "SKOS:OrderedCollection",
     "definedBy": [
       "skos"
     ],
@@ -356,7 +356,7 @@
     "label": "Ordered Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -369,7 +369,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -382,7 +382,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -395,7 +395,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Collection": {
-        "curie": "Collection",
+        "curie": "SKOS:Collection",
         "definedBy": [
           "skos"
         ],
@@ -408,7 +408,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -422,7 +422,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -445,7 +445,7 @@
       "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'.",
       false
     ],
-    "shortForm": "OrderedCollection",
+    "shortForm": "SKOS_OrderedCollection",
     "type": [
       "class",
       "entity"

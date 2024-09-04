@@ -219,6 +219,71 @@
   },
   {
     "base_uri": [
+      "http://www.geneontology.org/formats/oboInOwl#"
+    ],
+    "definition": [
+      "OBO Format metamodel. This meta-ontology is self-describing. OBO metamodel properties are described using OBO metamodel properties",
+      "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
+    ],
+    "exportsTo": [
+      "gitissue502"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      "OBO Format metamodel. This meta-ontology is self-describing. OBO metamodel properties are described using OBO metamodel properties",
+      "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl",
+    "isObsolete": false,
+    "label": "",
+    "language": "en",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "comment",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "12",
+    "numberOfEntities": "56",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "44",
+    "ontologyId": "oio",
+    "ontology_purl": "https://gist.githubusercontent.com/haideriqbal/4a2b1a9aa81d9fa26cae81e0b0b7730b/raw/527665128b9be9d7d6133f9a796379600151c737/oboInOwl.owl",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "base_uri": [
       "http://www.w3.org/2000/01/rdf-schema#"
     ],
     "exportsTo": [
@@ -235,7 +300,7 @@
     "language": "en",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "seeAlso",
+        "curie": "RDFS:seeAlso",
         "definedBy": [
           "rdfs"
         ],
@@ -294,7 +359,7 @@
     "language": "en",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -307,7 +372,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -320,7 +385,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "seeAlso",
+        "curie": "RDFS:seeAlso",
         "definedBy": [
           "rdfs"
         ],
@@ -387,7 +452,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "seeAlso",
+        "curie": "RDFS:seeAlso",
         "definedBy": [
           "rdfs"
         ],
@@ -690,30 +755,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon/2022-08-18/ncbitaxon.owl",
-    "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon.owl",
-    "isObsolete": false,
-    "language": "en",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "0",
-    "numberOfEntities": "0",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "0",
-    "ontologyId": "ontology-annotations-version-ncbitaxon",
-    "ontology_purl": "./testcases/ontology-annotations/version/ncbitaxon.owl",
-    "preferredPrefix": "ontology-annotations-version-ncbitaxon",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl",
     "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
@@ -812,6 +853,7 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": false,
     "importsFrom": [
+      "oio",
       "rdfs",
       "skos"
     ],
