@@ -25,10 +25,10 @@
     "is_root": false,
     "label": "isDefinedBy",
     "lang": "en",
-    "obo_id": "isDefinedBy",
+    "obo_id": "RDFS:isDefinedBy",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "isDefinedBy",
+    "short_form": "RDFS_isDefinedBy",
     "synonyms": []
   },
   {
@@ -54,10 +54,10 @@
     "is_root": true,
     "label": "seeAlso",
     "lang": "en",
-    "obo_id": "seeAlso",
+    "obo_id": "RDFS:seeAlso",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "seeAlso",
+    "short_form": "RDFS_seeAlso",
     "synonyms": []
   },
   {
@@ -77,10 +77,10 @@
     "is_root": true,
     "label": "comment",
     "lang": "en",
-    "obo_id": "comment",
+    "obo_id": "RDFS:comment",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "comment",
+    "short_form": "RDFS_comment",
     "synonyms": []
   },
   {
@@ -100,10 +100,10 @@
     "is_root": true,
     "label": "domain",
     "lang": "en",
-    "obo_id": "domain",
+    "obo_id": "RDFS:domain",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "domain",
+    "short_form": "RDFS_domain",
     "synonyms": []
   },
   {
@@ -123,10 +123,10 @@
     "is_root": true,
     "label": "label",
     "lang": "en",
-    "obo_id": "label",
+    "obo_id": "RDFS:label",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "label",
+    "short_form": "RDFS_label",
     "synonyms": []
   },
   {
@@ -146,10 +146,10 @@
     "is_root": true,
     "label": "member",
     "lang": "en",
-    "obo_id": "member",
+    "obo_id": "RDFS:member",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "member",
+    "short_form": "RDFS_member",
     "synonyms": []
   },
   {
@@ -169,10 +169,10 @@
     "is_root": true,
     "label": "range",
     "lang": "en",
-    "obo_id": "range",
+    "obo_id": "RDFS:range",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "range",
+    "short_form": "RDFS_range",
     "synonyms": []
   },
   {
@@ -192,10 +192,10 @@
     "is_root": true,
     "label": "subClassOf",
     "lang": "en",
-    "obo_id": "subClassOf",
+    "obo_id": "RDFS:subClassOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "subClassOf",
+    "short_form": "RDFS_subClassOf",
     "synonyms": []
   },
   {
@@ -215,10 +215,10 @@
     "is_root": true,
     "label": "subPropertyOf",
     "lang": "en",
-    "obo_id": "subPropertyOf",
+    "obo_id": "RDFS:subPropertyOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "subPropertyOf",
+    "short_form": "RDFS_subPropertyOf",
     "synonyms": []
   },
   {
@@ -238,10 +238,10 @@
     "is_root": true,
     "label": "allValuesFrom",
     "lang": "en",
-    "obo_id": "allValuesFrom",
+    "obo_id": "OWL:allValuesFrom",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "allValuesFrom",
+    "short_form": "OWL_allValuesFrom",
     "synonyms": []
   },
   {
@@ -261,10 +261,10 @@
     "is_root": true,
     "label": "annotatedProperty",
     "lang": "en",
-    "obo_id": "annotatedProperty",
+    "obo_id": "OWL:annotatedProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "annotatedProperty",
+    "short_form": "OWL_annotatedProperty",
     "synonyms": []
   },
   {
@@ -284,10 +284,10 @@
     "is_root": true,
     "label": "annotatedSource",
     "lang": "en",
-    "obo_id": "annotatedSource",
+    "obo_id": "OWL:annotatedSource",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "annotatedSource",
+    "short_form": "OWL_annotatedSource",
     "synonyms": []
   },
   {
@@ -307,10 +307,10 @@
     "is_root": true,
     "label": "annotatedTarget",
     "lang": "en",
-    "obo_id": "annotatedTarget",
+    "obo_id": "OWL:annotatedTarget",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "annotatedTarget",
+    "short_form": "OWL_annotatedTarget",
     "synonyms": []
   },
   {
@@ -330,10 +330,10 @@
     "is_root": true,
     "label": "assertionProperty",
     "lang": "en",
-    "obo_id": "assertionProperty",
+    "obo_id": "OWL:assertionProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "assertionProperty",
+    "short_form": "OWL_assertionProperty",
     "synonyms": []
   },
   {
@@ -353,10 +353,10 @@
     "is_root": true,
     "label": "backwardCompatibleWith",
     "lang": "en",
-    "obo_id": "backwardCompatibleWith",
+    "obo_id": "OWL:backwardCompatibleWith",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "backwardCompatibleWith",
+    "short_form": "OWL_backwardCompatibleWith",
     "synonyms": []
   },
   {
@@ -376,10 +376,10 @@
     "is_root": true,
     "label": "bottomDataProperty",
     "lang": "en",
-    "obo_id": "bottomDataProperty",
+    "obo_id": "OWL:bottomDataProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "bottomDataProperty",
+    "short_form": "OWL_bottomDataProperty",
     "synonyms": []
   },
   {
@@ -399,10 +399,10 @@
     "is_root": true,
     "label": "bottomObjectProperty",
     "lang": "en",
-    "obo_id": "bottomObjectProperty",
+    "obo_id": "OWL:bottomObjectProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "bottomObjectProperty",
+    "short_form": "OWL_bottomObjectProperty",
     "synonyms": []
   },
   {
@@ -422,10 +422,10 @@
     "is_root": true,
     "label": "cardinality",
     "lang": "en",
-    "obo_id": "cardinality",
+    "obo_id": "OWL:cardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "cardinality",
+    "short_form": "OWL_cardinality",
     "synonyms": []
   },
   {
@@ -445,10 +445,10 @@
     "is_root": true,
     "label": "complementOf",
     "lang": "en",
-    "obo_id": "complementOf",
+    "obo_id": "OWL:complementOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "complementOf",
+    "short_form": "OWL_complementOf",
     "synonyms": []
   },
   {
@@ -468,10 +468,10 @@
     "is_root": true,
     "label": "datatypeComplementOf",
     "lang": "en",
-    "obo_id": "datatypeComplementOf",
+    "obo_id": "OWL:datatypeComplementOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "datatypeComplementOf",
+    "short_form": "OWL_datatypeComplementOf",
     "synonyms": []
   },
   {
@@ -491,10 +491,10 @@
     "is_root": true,
     "label": "deprecated",
     "lang": "en",
-    "obo_id": "deprecated",
+    "obo_id": "OWL:deprecated",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "deprecated",
+    "short_form": "OWL_deprecated",
     "synonyms": []
   },
   {
@@ -514,10 +514,10 @@
     "is_root": true,
     "label": "differentFrom",
     "lang": "en",
-    "obo_id": "differentFrom",
+    "obo_id": "OWL:differentFrom",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "differentFrom",
+    "short_form": "OWL_differentFrom",
     "synonyms": []
   },
   {
@@ -537,10 +537,10 @@
     "is_root": true,
     "label": "disjointUnionOf",
     "lang": "en",
-    "obo_id": "disjointUnionOf",
+    "obo_id": "OWL:disjointUnionOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "disjointUnionOf",
+    "short_form": "OWL_disjointUnionOf",
     "synonyms": []
   },
   {
@@ -560,10 +560,10 @@
     "is_root": true,
     "label": "disjointWith",
     "lang": "en",
-    "obo_id": "disjointWith",
+    "obo_id": "OWL:disjointWith",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "disjointWith",
+    "short_form": "OWL_disjointWith",
     "synonyms": []
   },
   {
@@ -583,10 +583,10 @@
     "is_root": true,
     "label": "distinctMembers",
     "lang": "en",
-    "obo_id": "distinctMembers",
+    "obo_id": "OWL:distinctMembers",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "distinctMembers",
+    "short_form": "OWL_distinctMembers",
     "synonyms": []
   },
   {
@@ -606,10 +606,10 @@
     "is_root": true,
     "label": "equivalentClass",
     "lang": "en",
-    "obo_id": "equivalentClass",
+    "obo_id": "OWL:equivalentClass",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "equivalentClass",
+    "short_form": "OWL_equivalentClass",
     "synonyms": []
   },
   {
@@ -629,10 +629,10 @@
     "is_root": true,
     "label": "equivalentProperty",
     "lang": "en",
-    "obo_id": "equivalentProperty",
+    "obo_id": "OWL:equivalentProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "equivalentProperty",
+    "short_form": "OWL_equivalentProperty",
     "synonyms": []
   },
   {
@@ -652,10 +652,10 @@
     "is_root": true,
     "label": "hasKey",
     "lang": "en",
-    "obo_id": "hasKey",
+    "obo_id": "OWL:hasKey",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "hasKey",
+    "short_form": "OWL_hasKey",
     "synonyms": []
   },
   {
@@ -675,10 +675,10 @@
     "is_root": true,
     "label": "hasSelf",
     "lang": "en",
-    "obo_id": "hasSelf",
+    "obo_id": "OWL:hasSelf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "hasSelf",
+    "short_form": "OWL_hasSelf",
     "synonyms": []
   },
   {
@@ -698,10 +698,10 @@
     "is_root": true,
     "label": "hasValue",
     "lang": "en",
-    "obo_id": "hasValue",
+    "obo_id": "OWL:hasValue",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "hasValue",
+    "short_form": "OWL_hasValue",
     "synonyms": []
   },
   {
@@ -721,10 +721,10 @@
     "is_root": true,
     "label": "incompatibleWith",
     "lang": "en",
-    "obo_id": "incompatibleWith",
+    "obo_id": "OWL:incompatibleWith",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "incompatibleWith",
+    "short_form": "OWL_incompatibleWith",
     "synonyms": []
   },
   {
@@ -744,10 +744,10 @@
     "is_root": true,
     "label": "intersectionOf",
     "lang": "en",
-    "obo_id": "intersectionOf",
+    "obo_id": "OWL:intersectionOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "intersectionOf",
+    "short_form": "OWL_intersectionOf",
     "synonyms": []
   },
   {
@@ -767,10 +767,10 @@
     "is_root": true,
     "label": "inverseOf",
     "lang": "en",
-    "obo_id": "inverseOf",
+    "obo_id": "OWL:inverseOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "inverseOf",
+    "short_form": "OWL_inverseOf",
     "synonyms": []
   },
   {
@@ -790,10 +790,10 @@
     "is_root": true,
     "label": "maxCardinality",
     "lang": "en",
-    "obo_id": "maxCardinality",
+    "obo_id": "OWL:maxCardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "maxCardinality",
+    "short_form": "OWL_maxCardinality",
     "synonyms": []
   },
   {
@@ -813,10 +813,10 @@
     "is_root": true,
     "label": "maxQualifiedCardinality",
     "lang": "en",
-    "obo_id": "maxQualifiedCardinality",
+    "obo_id": "OWL:maxQualifiedCardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "maxQualifiedCardinality",
+    "short_form": "OWL_maxQualifiedCardinality",
     "synonyms": []
   },
   {
@@ -836,10 +836,10 @@
     "is_root": true,
     "label": "members",
     "lang": "en",
-    "obo_id": "members",
+    "obo_id": "OWL:members",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "members",
+    "short_form": "OWL_members",
     "synonyms": []
   },
   {
@@ -859,10 +859,10 @@
     "is_root": true,
     "label": "minCardinality",
     "lang": "en",
-    "obo_id": "minCardinality",
+    "obo_id": "OWL:minCardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "minCardinality",
+    "short_form": "OWL_minCardinality",
     "synonyms": []
   },
   {
@@ -882,10 +882,10 @@
     "is_root": true,
     "label": "minQualifiedCardinality",
     "lang": "en",
-    "obo_id": "minQualifiedCardinality",
+    "obo_id": "OWL:minQualifiedCardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "minQualifiedCardinality",
+    "short_form": "OWL_minQualifiedCardinality",
     "synonyms": []
   },
   {
@@ -905,10 +905,10 @@
     "is_root": true,
     "label": "onClass",
     "lang": "en",
-    "obo_id": "onClass",
+    "obo_id": "OWL:onClass",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "onClass",
+    "short_form": "OWL_onClass",
     "synonyms": []
   },
   {
@@ -928,10 +928,10 @@
     "is_root": true,
     "label": "onDataRange",
     "lang": "en",
-    "obo_id": "onDataRange",
+    "obo_id": "OWL:onDataRange",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "onDataRange",
+    "short_form": "OWL_onDataRange",
     "synonyms": []
   },
   {
@@ -951,10 +951,10 @@
     "is_root": true,
     "label": "onDatatype",
     "lang": "en",
-    "obo_id": "onDatatype",
+    "obo_id": "OWL:onDatatype",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "onDatatype",
+    "short_form": "OWL_onDatatype",
     "synonyms": []
   },
   {
@@ -974,10 +974,10 @@
     "is_root": true,
     "label": "onProperties",
     "lang": "en",
-    "obo_id": "onProperties",
+    "obo_id": "OWL:onProperties",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "onProperties",
+    "short_form": "OWL_onProperties",
     "synonyms": []
   },
   {
@@ -997,10 +997,10 @@
     "is_root": true,
     "label": "onProperty",
     "lang": "en",
-    "obo_id": "onProperty",
+    "obo_id": "OWL:onProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "onProperty",
+    "short_form": "OWL_onProperty",
     "synonyms": []
   },
   {
@@ -1020,10 +1020,10 @@
     "is_root": true,
     "label": "oneOf",
     "lang": "en",
-    "obo_id": "oneOf",
+    "obo_id": "OWL:oneOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "oneOf",
+    "short_form": "OWL_oneOf",
     "synonyms": []
   },
   {
@@ -1043,10 +1043,10 @@
     "is_root": true,
     "label": "priorVersion",
     "lang": "en",
-    "obo_id": "priorVersion",
+    "obo_id": "OWL:priorVersion",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "priorVersion",
+    "short_form": "OWL_priorVersion",
     "synonyms": []
   },
   {
@@ -1066,10 +1066,10 @@
     "is_root": true,
     "label": "propertyChainAxiom",
     "lang": "en",
-    "obo_id": "propertyChainAxiom",
+    "obo_id": "OWL:propertyChainAxiom",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "propertyChainAxiom",
+    "short_form": "OWL_propertyChainAxiom",
     "synonyms": []
   },
   {
@@ -1089,10 +1089,10 @@
     "is_root": true,
     "label": "propertyDisjointWith",
     "lang": "en",
-    "obo_id": "propertyDisjointWith",
+    "obo_id": "OWL:propertyDisjointWith",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "propertyDisjointWith",
+    "short_form": "OWL_propertyDisjointWith",
     "synonyms": []
   },
   {
@@ -1112,10 +1112,10 @@
     "is_root": true,
     "label": "qualifiedCardinality",
     "lang": "en",
-    "obo_id": "qualifiedCardinality",
+    "obo_id": "OWL:qualifiedCardinality",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "qualifiedCardinality",
+    "short_form": "OWL_qualifiedCardinality",
     "synonyms": []
   },
   {
@@ -1135,10 +1135,10 @@
     "is_root": true,
     "label": "sameAs",
     "lang": "en",
-    "obo_id": "sameAs",
+    "obo_id": "OWL:sameAs",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "sameAs",
+    "short_form": "OWL_sameAs",
     "synonyms": []
   },
   {
@@ -1158,10 +1158,10 @@
     "is_root": true,
     "label": "someValuesFrom",
     "lang": "en",
-    "obo_id": "someValuesFrom",
+    "obo_id": "OWL:someValuesFrom",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "someValuesFrom",
+    "short_form": "OWL_someValuesFrom",
     "synonyms": []
   },
   {
@@ -1181,10 +1181,10 @@
     "is_root": true,
     "label": "sourceIndividual",
     "lang": "en",
-    "obo_id": "sourceIndividual",
+    "obo_id": "OWL:sourceIndividual",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "sourceIndividual",
+    "short_form": "OWL_sourceIndividual",
     "synonyms": []
   },
   {
@@ -1204,10 +1204,10 @@
     "is_root": true,
     "label": "targetIndividual",
     "lang": "en",
-    "obo_id": "targetIndividual",
+    "obo_id": "OWL:targetIndividual",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "targetIndividual",
+    "short_form": "OWL_targetIndividual",
     "synonyms": []
   },
   {
@@ -1227,10 +1227,10 @@
     "is_root": true,
     "label": "targetValue",
     "lang": "en",
-    "obo_id": "targetValue",
+    "obo_id": "OWL:targetValue",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "targetValue",
+    "short_form": "OWL_targetValue",
     "synonyms": []
   },
   {
@@ -1250,10 +1250,10 @@
     "is_root": true,
     "label": "topDataProperty",
     "lang": "en",
-    "obo_id": "topDataProperty",
+    "obo_id": "OWL:topDataProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "topDataProperty",
+    "short_form": "OWL_topDataProperty",
     "synonyms": []
   },
   {
@@ -1273,10 +1273,10 @@
     "is_root": true,
     "label": "topObjectProperty",
     "lang": "en",
-    "obo_id": "topObjectProperty",
+    "obo_id": "OWL:topObjectProperty",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "topObjectProperty",
+    "short_form": "OWL_topObjectProperty",
     "synonyms": []
   },
   {
@@ -1296,10 +1296,10 @@
     "is_root": true,
     "label": "unionOf",
     "lang": "en",
-    "obo_id": "unionOf",
+    "obo_id": "OWL:unionOf",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "unionOf",
+    "short_form": "OWL_unionOf",
     "synonyms": []
   },
   {
@@ -1319,10 +1319,10 @@
     "is_root": true,
     "label": "versionInfo",
     "lang": "en",
-    "obo_id": "versionInfo",
+    "obo_id": "OWL:versionInfo",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "versionInfo",
+    "short_form": "OWL_versionInfo",
     "synonyms": []
   },
   {
@@ -1342,10 +1342,10 @@
     "is_root": true,
     "label": "withRestrictions",
     "lang": "en",
-    "obo_id": "withRestrictions",
+    "obo_id": "OWL:withRestrictions",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "withRestrictions",
+    "short_form": "OWL_withRestrictions",
     "synonyms": []
   }
 ]

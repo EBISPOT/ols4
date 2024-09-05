@@ -586,6 +586,56 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/oio/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/oio/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/oio/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.geneontology.org/formats/oboInOwl#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.geneontology.org/formats/oboInOwl#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "https://gist.githubusercontent.com/haideriqbal/4a2b1a9aa81d9fa26cae81e0b0b7730b/raw/527665128b9be9d7d6133f9a796379600151c737/oboInOwl.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "oio",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "oio",
+      "oboSlims": false,
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 44,
+    "numberOfTerms": 12,
+    "ontologyId": "oio",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/ontology-annotations-version-chebi/individuals"
       },
       "properties": {

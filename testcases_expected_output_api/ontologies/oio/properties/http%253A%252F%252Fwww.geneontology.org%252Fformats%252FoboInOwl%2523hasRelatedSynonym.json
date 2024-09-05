@@ -1,0 +1,81 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {
+    "has_dbxref": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "value": "http://purl.org/obo/owl/oboFormat#oboFormat_related_synonym"
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "value": "oboFormat:related_synonym"
+        },
+        "isObsolete": false
+      }
+    ],
+    "has_definition": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboInOwl:GOC"
+          },
+          "isObsolete": false
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis",
+          "lang": "en"
+        },
+        "isObsolete": false
+      }
+    ]
+  },
+  "label": "has_related_synonym",
+  "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "OIO_hasRelatedSynonym",
+  "obo_id": "OIO:hasRelatedSynonym",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/jstree"
+    }
+  }
+}

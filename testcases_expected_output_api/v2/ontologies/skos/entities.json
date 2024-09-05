@@ -4,7 +4,7 @@
       "gitissue502",
       "skos"
     ],
-    "curie": "closeMatch",
+    "curie": "SKOS:closeMatch",
     "definedBy": [
       "skos"
     ],
@@ -34,7 +34,7 @@
     "label": "has close match",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -47,7 +47,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -60,7 +60,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -73,7 +73,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -87,7 +87,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "mappingRelation",
+        "curie": "SKOS:mappingRelation",
         "definedBy": [
           "skos"
         ],
@@ -101,7 +101,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -123,7 +123,7 @@
       "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.",
       false
     ],
-    "shortForm": "closeMatch",
+    "shortForm": "SKOS_closeMatch",
     "type": [
       "entity",
       "objectProperty",
@@ -135,7 +135,7 @@
       "gitissue502",
       "skos"
     ],
-    "curie": "exactMatch",
+    "curie": "SKOS:exactMatch",
     "definedBy": [
       "skos"
     ],
@@ -170,7 +170,7 @@
     "label": "has exact match",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -183,7 +183,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -196,7 +196,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -209,7 +209,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -222,7 +222,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#closeMatch": {
-        "curie": "closeMatch",
+        "curie": "SKOS:closeMatch",
         "definedBy": [
           "skos"
         ],
@@ -236,7 +236,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -250,7 +250,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "mappingRelation",
+        "curie": "SKOS:mappingRelation",
         "definedBy": [
           "skos"
         ],
@@ -264,7 +264,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -286,7 +286,7 @@
       "skos:exactMatch is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch.",
       false
     ],
-    "shortForm": "exactMatch",
+    "shortForm": "SKOS_exactMatch",
     "type": [
       "entity",
       "objectProperty",
@@ -297,7 +297,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "Collection",
+    "curie": "SKOS:Collection",
     "definedBy": [
       "skos"
     ],
@@ -322,7 +322,7 @@
     "label": "Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -335,7 +335,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -348,7 +348,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -361,7 +361,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -374,7 +374,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -388,7 +388,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -411,7 +411,7 @@
       "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy.",
       false
     ],
-    "shortForm": "Collection",
+    "shortForm": "SKOS_Collection",
     "type": [
       "class",
       "entity"
@@ -421,7 +421,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "Concept",
+    "curie": "SKOS:Concept",
     "definedBy": [
       "skos"
     ],
@@ -441,7 +441,7 @@
     "label": "Concept",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -454,7 +454,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -467,7 +467,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -489,7 +489,7 @@
       "An idea or notion; a unit of thought.",
       false
     ],
-    "shortForm": "Concept",
+    "shortForm": "SKOS_Concept",
     "type": [
       "class",
       "entity"
@@ -499,7 +499,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "ConceptScheme",
+    "curie": "SKOS:ConceptScheme",
     "definedBy": [
       "skos"
     ],
@@ -522,7 +522,7 @@
     "label": "Concept Scheme",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -535,7 +535,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -548,7 +548,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -561,7 +561,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -575,7 +575,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#example": {
-        "curie": "example",
+        "curie": "SKOS:example",
         "definedBy": [
           "skos"
         ],
@@ -589,7 +589,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -613,7 +613,7 @@
       "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.",
       false
     ],
-    "shortForm": "ConceptScheme",
+    "shortForm": "SKOS_ConceptScheme",
     "type": [
       "class",
       "entity"
@@ -623,7 +623,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "OrderedCollection",
+    "curie": "SKOS:OrderedCollection",
     "definedBy": [
       "skos"
     ],
@@ -650,7 +650,7 @@
     "label": "Ordered Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -663,7 +663,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -676,7 +676,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -689,7 +689,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Collection": {
-        "curie": "Collection",
+        "curie": "SKOS:Collection",
         "definedBy": [
           "skos"
         ],
@@ -702,7 +702,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -716,7 +716,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -739,7 +739,7 @@
       "Ordered collections can be used where you would like a set of concepts to be displayed in a specific order, and optionally under a 'node label'.",
       false
     ],
-    "shortForm": "OrderedCollection",
+    "shortForm": "SKOS_OrderedCollection",
     "type": [
       "class",
       "entity"
@@ -749,7 +749,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "altLabel",
+    "curie": "SKOS:altLabel",
     "definedBy": [
       "skos"
     ],
@@ -783,7 +783,7 @@
     "label": "alternative label",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -796,7 +796,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -809,7 +809,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -822,7 +822,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -835,7 +835,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -849,7 +849,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#example": {
-        "curie": "example",
+        "curie": "SKOS:example",
         "definedBy": [
           "skos"
         ],
@@ -872,7 +872,7 @@
       "An alternative lexical label for a resource.",
       false
     ],
-    "shortForm": "altLabel",
+    "shortForm": "SKOS_altLabel",
     "type": [
       "annotationProperty",
       "entity",
@@ -883,7 +883,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "broadMatch",
+    "curie": "SKOS:broadMatch",
     "definedBy": [
       "skos"
     ],
@@ -921,7 +921,7 @@
     "label": "has broader match",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -934,7 +934,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -947,7 +947,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -960,7 +960,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broader": {
-        "curie": "broader",
+        "curie": "SKOS:broader",
         "definedBy": [
           "skos"
         ],
@@ -974,7 +974,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broaderTransitive": {
-        "curie": "broaderTransitive",
+        "curie": "SKOS:broaderTransitive",
         "definedBy": [
           "skos"
         ],
@@ -988,7 +988,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1002,7 +1002,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "mappingRelation",
+        "curie": "SKOS:mappingRelation",
         "definedBy": [
           "skos"
         ],
@@ -1016,7 +1016,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrowMatch": {
-        "curie": "narrowMatch",
+        "curie": "SKOS:narrowMatch",
         "definedBy": [
           "skos"
         ],
@@ -1030,7 +1030,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -1052,7 +1052,7 @@
       "skos:broadMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes.",
       false
     ],
-    "shortForm": "broadMatch",
+    "shortForm": "SKOS_broadMatch",
     "type": [
       "entity",
       "objectProperty",
@@ -1063,7 +1063,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "broader",
+    "curie": "SKOS:broader",
     "definedBy": [
       "skos"
     ],
@@ -1097,7 +1097,7 @@
     "label": "has broader",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1110,7 +1110,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1123,7 +1123,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1136,7 +1136,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1149,7 +1149,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broaderTransitive": {
-        "curie": "broaderTransitive",
+        "curie": "SKOS:broaderTransitive",
         "definedBy": [
           "skos"
         ],
@@ -1163,7 +1163,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1177,7 +1177,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrower": {
-        "curie": "narrower",
+        "curie": "SKOS:narrower",
         "definedBy": [
           "skos"
         ],
@@ -1191,7 +1191,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -1205,7 +1205,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -1228,7 +1228,7 @@
       "Relates a concept to a concept that is more general in meaning.",
       false
     ],
-    "shortForm": "broader",
+    "shortForm": "SKOS_broader",
     "type": [
       "entity",
       "objectProperty",
@@ -1239,7 +1239,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "broaderTransitive",
+    "curie": "SKOS:broaderTransitive",
     "definedBy": [
       "skos"
     ],
@@ -1268,7 +1268,7 @@
     "label": "has broader transitive",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1281,7 +1281,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1294,7 +1294,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1307,7 +1307,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1321,7 +1321,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrowerTransitive": {
-        "curie": "narrowerTransitive",
+        "curie": "SKOS:narrowerTransitive",
         "definedBy": [
           "skos"
         ],
@@ -1335,7 +1335,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -1349,7 +1349,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -1371,7 +1371,7 @@
       "By convention, skos:broaderTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application.",
       false
     ],
-    "shortForm": "broaderTransitive",
+    "shortForm": "SKOS_broaderTransitive",
     "type": [
       "entity",
       "objectProperty",
@@ -1382,7 +1382,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "changeNote",
+    "curie": "SKOS:changeNote",
     "definedBy": [
       "skos"
     ],
@@ -1408,7 +1408,7 @@
     "label": "change note",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1421,7 +1421,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1434,7 +1434,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1447,7 +1447,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1461,7 +1461,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -1483,7 +1483,7 @@
       "A note about a modification to a concept.",
       false
     ],
-    "shortForm": "changeNote",
+    "shortForm": "SKOS_changeNote",
     "type": [
       "annotationProperty",
       "entity",
@@ -1494,7 +1494,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "definition",
+    "curie": "SKOS:definition",
     "definedBy": [
       "skos"
     ],
@@ -1520,7 +1520,7 @@
     "label": "definition",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1533,7 +1533,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1546,7 +1546,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1559,7 +1559,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -1581,7 +1581,7 @@
       "A statement or formal explanation of the meaning of a concept.",
       false
     ],
-    "shortForm": "definition",
+    "shortForm": "SKOS_definition",
     "type": [
       "annotationProperty",
       "entity",
@@ -1592,7 +1592,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "editorialNote",
+    "curie": "SKOS:editorialNote",
     "definedBy": [
       "skos"
     ],
@@ -1618,7 +1618,7 @@
     "label": "editorial note",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1631,7 +1631,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1644,7 +1644,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1657,7 +1657,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1671,7 +1671,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -1693,7 +1693,7 @@
       "A note for an editor, translator or maintainer of the vocabulary.",
       false
     ],
-    "shortForm": "editorialNote",
+    "shortForm": "SKOS_editorialNote",
     "type": [
       "annotationProperty",
       "entity",
@@ -1704,7 +1704,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "example",
+    "curie": "SKOS:example",
     "definedBy": [
       "skos"
     ],
@@ -1730,7 +1730,7 @@
     "label": "example",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1743,7 +1743,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1756,7 +1756,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1769,7 +1769,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1783,7 +1783,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -1805,7 +1805,7 @@
       "An example of the use of a concept.",
       false
     ],
-    "shortForm": "example",
+    "shortForm": "SKOS_example",
     "type": [
       "annotationProperty",
       "entity",
@@ -1816,7 +1816,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "hasTopConcept",
+    "curie": "SKOS:hasTopConcept",
     "definedBy": [
       "skos"
     ],
@@ -1842,7 +1842,7 @@
     "label": "has top concept",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -1855,7 +1855,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1868,7 +1868,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1881,7 +1881,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -1894,7 +1894,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -1907,7 +1907,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -1920,7 +1920,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -1934,7 +1934,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#topConceptOf": {
-        "curie": "topConceptOf",
+        "curie": "SKOS:topConceptOf",
         "definedBy": [
           "skos"
         ],
@@ -1956,7 +1956,7 @@
       "Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies.",
       false
     ],
-    "shortForm": "hasTopConcept",
+    "shortForm": "SKOS_hasTopConcept",
     "type": [
       "entity",
       "objectProperty",
@@ -1967,7 +1967,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "hiddenLabel",
+    "curie": "SKOS:hiddenLabel",
     "definedBy": [
       "skos"
     ],
@@ -2000,7 +2000,7 @@
     "label": "hidden label",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2013,7 +2013,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2026,7 +2026,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2039,7 +2039,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2052,7 +2052,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2074,7 +2074,7 @@
       "A lexical label for a resource that should be hidden when generating visual displays of the resource, but should still be accessible to free text search operations.",
       false
     ],
-    "shortForm": "hiddenLabel",
+    "shortForm": "SKOS_hiddenLabel",
     "type": [
       "annotationProperty",
       "entity",
@@ -2085,7 +2085,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "historyNote",
+    "curie": "SKOS:historyNote",
     "definedBy": [
       "skos"
     ],
@@ -2111,7 +2111,7 @@
     "label": "history note",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2124,7 +2124,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2137,7 +2137,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2150,7 +2150,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2164,7 +2164,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -2186,7 +2186,7 @@
       "A note about the past state/use/meaning of a concept.",
       false
     ],
-    "shortForm": "historyNote",
+    "shortForm": "SKOS_historyNote",
     "type": [
       "annotationProperty",
       "entity",
@@ -2197,7 +2197,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "inScheme",
+    "curie": "SKOS:inScheme",
     "definedBy": [
       "skos"
     ],
@@ -2222,7 +2222,7 @@
     "label": "is in scheme",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2235,7 +2235,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2248,7 +2248,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2261,7 +2261,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -2274,7 +2274,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2288,7 +2288,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -2311,7 +2311,7 @@
       "Relates a resource (for example a concept) to a concept scheme in which it is included.",
       false
     ],
-    "shortForm": "inScheme",
+    "shortForm": "SKOS_inScheme",
     "type": [
       "entity",
       "objectProperty",
@@ -2322,7 +2322,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "mappingRelation",
+    "curie": "SKOS:mappingRelation",
     "definedBy": [
       "skos"
     ],
@@ -2351,7 +2351,7 @@
     "label": "is in mapping relation with",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2364,7 +2364,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2377,7 +2377,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2390,7 +2390,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2403,7 +2403,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2417,7 +2417,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -2439,7 +2439,7 @@
       "Relates two concepts coming, by convention, from different schemes, and that have comparable meanings",
       false
     ],
-    "shortForm": "mappingRelation",
+    "shortForm": "SKOS_mappingRelation",
     "type": [
       "entity",
       "objectProperty",
@@ -2450,7 +2450,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "member",
+    "curie": "SKOS:member",
     "definedBy": [
       "skos"
     ],
@@ -2481,7 +2481,7 @@
     "label": "has member",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -2494,7 +2494,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2507,7 +2507,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2520,7 +2520,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2533,7 +2533,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Collection": {
-        "curie": "Collection",
+        "curie": "SKOS:Collection",
         "definedBy": [
           "skos"
         ],
@@ -2546,7 +2546,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -2559,7 +2559,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2581,7 +2581,7 @@
       "Relates a collection to one of its members.",
       false
     ],
-    "shortForm": "member",
+    "shortForm": "SKOS_member",
     "type": [
       "entity",
       "objectProperty",
@@ -2592,7 +2592,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "memberList",
+    "curie": "SKOS:memberList",
     "definedBy": [
       "skos"
     ],
@@ -2621,7 +2621,7 @@
     "label": "has member list",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2634,7 +2634,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -2647,7 +2647,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2660,7 +2660,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2673,7 +2673,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -2686,7 +2686,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#OrderedCollection": {
-        "curie": "OrderedCollection",
+        "curie": "SKOS:OrderedCollection",
         "definedBy": [
           "skos"
         ],
@@ -2699,7 +2699,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2721,7 +2721,7 @@
       "Relates an ordered collection to the RDF list containing its members.",
       false
     ],
-    "shortForm": "memberList",
+    "shortForm": "SKOS_memberList",
     "type": [
       "entity",
       "objectProperty",
@@ -2732,7 +2732,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "narrowMatch",
+    "curie": "SKOS:narrowMatch",
     "definedBy": [
       "skos"
     ],
@@ -2770,7 +2770,7 @@
     "label": "has narrower match",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2783,7 +2783,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2796,7 +2796,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2809,7 +2809,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broadMatch": {
-        "curie": "broadMatch",
+        "curie": "SKOS:broadMatch",
         "definedBy": [
           "skos"
         ],
@@ -2823,7 +2823,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -2837,7 +2837,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "mappingRelation",
+        "curie": "SKOS:mappingRelation",
         "definedBy": [
           "skos"
         ],
@@ -2851,7 +2851,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrower": {
-        "curie": "narrower",
+        "curie": "SKOS:narrower",
         "definedBy": [
           "skos"
         ],
@@ -2865,7 +2865,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrowerTransitive": {
-        "curie": "narrowerTransitive",
+        "curie": "SKOS:narrowerTransitive",
         "definedBy": [
           "skos"
         ],
@@ -2879,7 +2879,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -2901,7 +2901,7 @@
       "skos:narrowMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes.",
       false
     ],
-    "shortForm": "narrowMatch",
+    "shortForm": "SKOS_narrowMatch",
     "type": [
       "entity",
       "objectProperty",
@@ -2912,7 +2912,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "narrower",
+    "curie": "SKOS:narrower",
     "definedBy": [
       "skos"
     ],
@@ -2946,7 +2946,7 @@
     "label": "has narrower",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2959,7 +2959,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2972,7 +2972,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2985,7 +2985,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2998,7 +2998,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broader": {
-        "curie": "broader",
+        "curie": "SKOS:broader",
         "definedBy": [
           "skos"
         ],
@@ -3012,7 +3012,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3026,7 +3026,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#narrowerTransitive": {
-        "curie": "narrowerTransitive",
+        "curie": "SKOS:narrowerTransitive",
         "definedBy": [
           "skos"
         ],
@@ -3040,7 +3040,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -3054,7 +3054,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -3077,7 +3077,7 @@
       "Relates a concept to a concept that is more specific in meaning.",
       false
     ],
-    "shortForm": "narrower",
+    "shortForm": "SKOS_narrower",
     "type": [
       "entity",
       "objectProperty",
@@ -3088,7 +3088,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "narrowerTransitive",
+    "curie": "SKOS:narrowerTransitive",
     "definedBy": [
       "skos"
     ],
@@ -3117,7 +3117,7 @@
     "label": "has narrower transitive",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3130,7 +3130,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3143,7 +3143,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3156,7 +3156,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#broaderTransitive": {
-        "curie": "broaderTransitive",
+        "curie": "SKOS:broaderTransitive",
         "definedBy": [
           "skos"
         ],
@@ -3170,7 +3170,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3184,7 +3184,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -3198,7 +3198,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -3220,7 +3220,7 @@
       "By convention, skos:narrowerTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application.",
       false
     ],
-    "shortForm": "narrowerTransitive",
+    "shortForm": "SKOS_narrowerTransitive",
     "type": [
       "entity",
       "objectProperty",
@@ -3231,7 +3231,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "notation",
+    "curie": "SKOS:notation",
     "definedBy": [
       "skos"
     ],
@@ -3255,7 +3255,7 @@
     "label": "notation",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3268,7 +3268,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3281,7 +3281,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3295,7 +3295,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -3318,7 +3318,7 @@
       "By convention, skos:notation is used with a typed literal in the object position of the triple.",
       false
     ],
-    "shortForm": "notation",
+    "shortForm": "SKOS_notation",
     "type": [
       "dataProperty",
       "entity",
@@ -3329,7 +3329,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "note",
+    "curie": "SKOS:note",
     "definedBy": [
       "skos"
     ],
@@ -3353,7 +3353,7 @@
     "label": "note",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3366,7 +3366,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3379,7 +3379,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3393,7 +3393,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -3416,7 +3416,7 @@
       "This property may be used directly, or as a super-property for more specific note types.",
       false
     ],
-    "shortForm": "note",
+    "shortForm": "SKOS_note",
     "type": [
       "annotationProperty",
       "entity",
@@ -3427,7 +3427,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "prefLabel",
+    "curie": "SKOS:prefLabel",
     "definedBy": [
       "skos"
     ],
@@ -3462,7 +3462,7 @@
     "label": "preferred label",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3475,7 +3475,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3488,7 +3488,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3501,7 +3501,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3514,7 +3514,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3536,7 +3536,7 @@
       "The preferred lexical label for a resource, in a given language.",
       false
     ],
-    "shortForm": "prefLabel",
+    "shortForm": "SKOS_prefLabel",
     "type": [
       "annotationProperty",
       "entity",
@@ -3547,7 +3547,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "related",
+    "curie": "SKOS:related",
     "definedBy": [
       "skos"
     ],
@@ -3577,7 +3577,7 @@
     "label": "has related",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3590,7 +3590,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3603,7 +3603,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3616,7 +3616,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3629,7 +3629,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3643,7 +3643,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -3665,7 +3665,7 @@
       "Relates a concept to a concept with which there is an associative semantic relationship.",
       false
     ],
-    "shortForm": "related",
+    "shortForm": "SKOS_related",
     "type": [
       "entity",
       "objectProperty",
@@ -3676,7 +3676,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "relatedMatch",
+    "curie": "SKOS:relatedMatch",
     "definedBy": [
       "skos"
     ],
@@ -3713,7 +3713,7 @@
     "label": "has related match",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3726,7 +3726,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3739,7 +3739,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3752,7 +3752,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3766,7 +3766,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "mappingRelation",
+        "curie": "SKOS:mappingRelation",
         "definedBy": [
           "skos"
         ],
@@ -3780,7 +3780,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#related": {
-        "curie": "related",
+        "curie": "SKOS:related",
         "definedBy": [
           "skos"
         ],
@@ -3794,7 +3794,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "semanticRelation",
+        "curie": "SKOS:semanticRelation",
         "definedBy": [
           "skos"
         ],
@@ -3816,7 +3816,7 @@
       "skos:relatedMatch is used to state an associative mapping link between two conceptual resources in different concept schemes.",
       false
     ],
-    "shortForm": "relatedMatch",
+    "shortForm": "SKOS_relatedMatch",
     "type": [
       "entity",
       "objectProperty",
@@ -3827,7 +3827,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "scopeNote",
+    "curie": "SKOS:scopeNote",
     "definedBy": [
       "skos"
     ],
@@ -3853,7 +3853,7 @@
     "label": "scope note",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3866,7 +3866,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3879,7 +3879,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3892,7 +3892,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -3906,7 +3906,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#note": {
-        "curie": "note",
+        "curie": "SKOS:note",
         "definedBy": [
           "skos"
         ],
@@ -3928,7 +3928,7 @@
       "A note that helps to clarify the meaning and/or the use of a concept.",
       false
     ],
-    "shortForm": "scopeNote",
+    "shortForm": "SKOS_scopeNote",
     "type": [
       "annotationProperty",
       "entity",
@@ -3939,7 +3939,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "semanticRelation",
+    "curie": "SKOS:semanticRelation",
     "definedBy": [
       "skos"
     ],
@@ -3965,7 +3965,7 @@
     "label": "is in semantic relation with",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -3978,7 +3978,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3991,7 +3991,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4004,7 +4004,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -4017,7 +4017,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -4030,7 +4030,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -4044,7 +4044,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -4067,7 +4067,7 @@
       "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts.",
       false
     ],
-    "shortForm": "semanticRelation",
+    "shortForm": "SKOS_semanticRelation",
     "type": [
       "entity",
       "objectProperty",
@@ -4078,7 +4078,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "topConceptOf",
+    "curie": "SKOS:topConceptOf",
     "definedBy": [
       "skos"
     ],
@@ -4107,7 +4107,7 @@
     "label": "is top concept in scheme",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "domain",
+        "curie": "RDFS:domain",
         "definedBy": [
           "rdfs"
         ],
@@ -4120,7 +4120,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -4133,7 +4133,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -4146,7 +4146,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "range",
+        "curie": "RDFS:range",
         "definedBy": [
           "rdfs"
         ],
@@ -4159,7 +4159,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "subPropertyOf",
+        "curie": "RDFS:subPropertyOf",
         "definedBy": [
           "rdfs"
         ],
@@ -4172,7 +4172,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -4185,7 +4185,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -4198,7 +4198,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -4212,7 +4212,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#hasTopConcept": {
-        "curie": "hasTopConcept",
+        "curie": "SKOS:hasTopConcept",
         "definedBy": [
           "skos"
         ],
@@ -4226,7 +4226,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#inScheme": {
-        "curie": "inScheme",
+        "curie": "SKOS:inScheme",
         "definedBy": [
           "skos"
         ],
@@ -4248,7 +4248,7 @@
       "Relates a concept to the concept scheme that it is a top level concept of.",
       false
     ],
-    "shortForm": "topConceptOf",
+    "shortForm": "SKOS_topConceptOf",
     "type": [
       "entity",
       "objectProperty",

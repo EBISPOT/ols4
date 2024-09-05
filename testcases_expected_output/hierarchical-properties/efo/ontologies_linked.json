@@ -310,11 +310,6 @@
                 "entity"
               ]
             },
-            "UBERON:0000467": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000467",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000467"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -636,11 +631,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0000468": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000468",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000468"
             }
           }
         },
@@ -830,11 +820,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0000483": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000483",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000483"
             }
           }
         },
@@ -1049,11 +1034,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "UBERON:0000916": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000916"
             },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
               "numAppearsIn": 1,
@@ -1410,11 +1390,6 @@
                 "entity"
               ]
             },
-            "UBERON:0000949": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000949"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1603,10 +1578,25 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0001007": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001007",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001007"
+            "http://purl.obolibrary.org/obo/UBERON_0001009": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "circulatory system"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "UBERON:0001009"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
@@ -1645,66 +1635,6 @@
                 "entity"
               ]
             },
-            "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "anatomical system"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0000467"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/UBERON_0002107": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "liver"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0002107"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/UBERON_0001009": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "circulatory system"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0001009"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1725,6 +1655,26 @@
                 "entity"
               ]
             },
+            "http://purl.obolibrary.org/obo/UBERON_0000467": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "anatomical system"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "UBERON:0000467"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1739,6 +1689,26 @@
                   "literal"
                 ],
                 "value": "UBERON:0000468"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://purl.obolibrary.org/obo/UBERON_0002107": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "liver"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "UBERON:0002107"
               },
               "type": [
                 "class",
@@ -1837,11 +1807,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0001009": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001009",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001009"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1879,46 +1844,6 @@
                 "entity"
               ]
             },
-            "http://purl.obolibrary.org/obo/UBERON_0000467": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "anatomical system"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0000467"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/UBERON_0004535": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "cardiovascular system"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0004535"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://purl.obolibrary.org/obo/UBERON_0002423": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1939,6 +1864,26 @@
                 "entity"
               ]
             },
+            "http://purl.obolibrary.org/obo/UBERON_0000467": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "anatomical system"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "UBERON:0000467"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -1953,6 +1898,26 @@
                   "literal"
                 ],
                 "value": "UBERON:0000468"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://purl.obolibrary.org/obo/UBERON_0004535": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "cardiovascular system"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "UBERON:0004535"
               },
               "type": [
                 "class",
@@ -2243,11 +2208,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0001193": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001193",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001193"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
               "numAppearsIn": 1,
@@ -2776,11 +2736,6 @@
                 "entity"
               ]
             },
-            "UBERON:0001281": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001281",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001281"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -3284,11 +3239,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0001637": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001637",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001637"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -3386,11 +3336,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0001638": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001638",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001638"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -3716,11 +3661,6 @@
                 "entity"
               ]
             },
-            "UBERON:0001639": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001639",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001639"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001007": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -4037,11 +3977,6 @@
                 "entity"
               ]
             },
-            "UBERON:0001981": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001981",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001981"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -4280,11 +4215,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0001982": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001982",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001982"
             }
           }
         },
@@ -4366,11 +4296,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0001986": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0001986",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0001986"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0000483": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -4526,11 +4451,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "UBERON:0002049": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002049",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002049"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001982": {
               "numAppearsIn": 1,
@@ -4904,11 +4824,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0002100": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002100"
             },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
               "numAppearsIn": 1,
@@ -5584,11 +5499,6 @@
                 "entity"
               ]
             },
-            "UBERON:0002107": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002107"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001281": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -5841,11 +5751,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "UBERON:0002368": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002368",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002368"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
               "numAppearsIn": 1,
@@ -6205,11 +6110,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0002423": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002423",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002423"
             }
           }
         },
@@ -6317,11 +6217,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0002530": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0002530",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0002530"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -6658,11 +6553,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "UBERON:0004535": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0004535",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0004535"
             },
             "http://purl.obolibrary.org/obo/UBERON_0000468": {
               "numAppearsIn": 1,
@@ -7211,11 +7101,6 @@
                 "entity"
               ]
             },
-            "UBERON:0004647": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0004647"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0002530": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -7579,11 +7464,6 @@
                 "entity"
               ]
             },
-            "UBERON:0006841": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0006841",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0006841"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0001981": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -7918,11 +7798,6 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
-            "UBERON:0013702": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0013702",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0013702"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -8649,6 +8524,16 @@
             "efo-hierarchical-properties"
           ],
           "linkedEntities": {
+            "http://purl.obolibrary.org/obo/BFO_0000019": {
+              "url": "http://purl.obolibrary.org/obo/BFO_0000019",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000019"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000017": {
+              "url": "http://purl.obolibrary.org/obo/BFO_0000017",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000017"
+            },
             "http://purl.obolibrary.org/obo/RO_0040042": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -8663,6 +8548,48 @@
                   "literal"
                 ],
                 "value": "RO:0040042"
+              },
+              "type": [
+                "property",
+                "annotationProperty",
+                "entity"
+              ]
+            },
+            "http://www.geneontology.org/formats/oboInOwl#id": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "id"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "id"
+              },
+              "type": [
+                "property",
+                "annotationProperty",
+                "entity"
+              ]
+            },
+            "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "inSubset"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "inSubset"
               },
               "type": [
                 "property",
@@ -8788,6 +8715,11 @@
               "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
               "curie": "BFO:0000050"
             },
+            "http://purl.obolibrary.org/obo/BFO_0000004": {
+              "url": "http://purl.obolibrary.org/obo/BFO_0000004",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000004"
+            },
             "http://purl.obolibrary.org/obo/IAO_0000118": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -8856,84 +8788,6 @@
               "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
               "curie": "ro:0001901"
             },
-            "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasOBONamespace"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasOBONamespace"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000019": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000019",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "bfo:0000019"
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000017": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000017",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "bfo:0000017"
-            },
-            "http://www.geneontology.org/formats/oboInOwl#id": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "id"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "id"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            },
-            "http://www.geneontology.org/formats/oboInOwl#inSubset": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "inSubset"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "inSubset"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000004": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000004",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "bfo:0000004"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000002": {
               "url": "http://purl.obolibrary.org/obo/BFO_0000002",
               "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
@@ -9000,6 +8854,27 @@
                   "literal"
                 ],
                 "value": "shorthand"
+              },
+              "type": [
+                "property",
+                "annotationProperty",
+                "entity"
+              ]
+            },
+            "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasOBONamespace"
+              },
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasOBONamespace"
               },
               "type": [
                 "property",
@@ -9309,13 +9184,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000111": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000111",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000111"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -9376,13 +9245,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000112": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000112",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000112"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -9443,13 +9306,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000115": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000115",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000115"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
@@ -9510,13 +9367,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000116": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000116",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000116"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
@@ -9577,13 +9428,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000118": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000118",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000118"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000232",
@@ -9644,13 +9489,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "IAO:0000232": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000232",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "IAO:0000232"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0001900",
@@ -9711,13 +9550,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "RO:0001900": {
-              "url": "http://purl.obolibrary.org/obo/RO_0001900",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "RO:0001900"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0002174",
@@ -9778,13 +9611,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "RO:0002174": {
-              "url": "http://purl.obolibrary.org/obo/RO_0002174",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "RO:0002174"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/RO_0040042",
@@ -9845,13 +9672,7 @@
           "appearsIn": [
             "efo-hierarchical-properties"
           ],
-          "linkedEntities": {
-            "RO:0040042": {
-              "url": "http://purl.obolibrary.org/obo/RO_0040042",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "RO:0040042"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBPROP_0000001",

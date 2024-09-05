@@ -19,13 +19,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "part_of",
-    "linkedEntities": {
-      "BFO:0000050": {
-        "curie": "BFO:0000050",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000050"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "partof",
@@ -57,11 +51,6 @@
     "isPreferredRoot": false,
     "label": "adduct ion",
     "linkedEntities": {
-      "MS:1000353": {
-        "curie": "MS:1000353",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/MS_1000353"
-      },
       "http://purl.obolibrary.org/obo/MS_1003056": {
         "curie": "MS:1003056",
         "hasLocalDefinition": true,
@@ -144,11 +133,6 @@
     "isPreferredRoot": false,
     "label": "adduct ion property",
     "linkedEntities": {
-      "MS:1003056": {
-        "curie": "MS:1003056",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/MS_1003056"
-      },
       "http://purl.obolibrary.org/obo/MS_1000353": {
         "curie": "MS:1000353",
         "hasLocalDefinition": true,
@@ -212,11 +196,6 @@
     "isPreferredRoot": false,
     "label": "abdomen",
     "linkedEntities": {
-      "UBERON:0000916": {
-        "curie": "UBERON:0000916",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/UBERON_0000916"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -299,11 +278,6 @@
     "isPreferredRoot": false,
     "label": "abdominal cavity",
     "linkedEntities": {
-      "UBERON:0003684": {
-        "curie": "UBERON:0003684",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/UBERON_0003684"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,

@@ -1,11 +1,6 @@
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.SetMultimap;
-import com.google.common.io.CountingInputStream;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
@@ -168,15 +163,31 @@ public class LinkerPass1 {
 		for(var entry : result.iriToDefinitions.entrySet()) {
 
 			EntityDefinitionSet definitions = entry.getValue();
-
 			// definingOntologyIris -> definingOntologyIds
 			for(String ontologyIri : definitions.definingOntologyIris) {
-				for(String ontologyId : result.ontologyIriToOntologyIds.get(ontologyIri)) {
-					definitions.definingOntologyIds.add(ontologyId);
+				if (result.ontologyIriToOntologyIds.containsKey(ontologyIri)) {
+					for(String ontologyId : result.ontologyIriToOntologyIds.get(ontologyIri)) {
+						definitions.definingOntologyIds.add(ontologyId);
+					}
 				}
 			}
 
 			for(EntityDefinition def : definitions.definitions) {
+				if(def.curie != null && entry.getValue().definingOntologyIds.iterator().hasNext()) {
+					JsonObject curieObject = def.curie.getAsJsonObject();
+					if(curieObject.has("value")) {
+						String curieValue = curieObject.get("value").getAsString();
+						if(!curieValue.contains(":")) {
+							var definingOntologyId = entry.getValue().definingOntologyIds.iterator().next();
+							EntityDefinition definingEntity = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId);
+							if (definingEntity != null && definingEntity.curie != null) {
+								curieValue = definingEntity.curie.getAsJsonObject().get("value").getAsString();
+								curieObject.addProperty("value", curieValue);
+								result.iriToDefinitions.put(entry.getKey(), definitions);
+							}
+						}
+					}
+				}
 				if(definitions.definingOntologyIds.contains(def.ontologyId)) {
 					def.isDefiningOntology = true;
 				}
@@ -235,14 +246,30 @@ public class LinkerPass1 {
 				curie = jsonParser.parse(jsonReader);
 			} else if(key.equals("type")) {
                 types = gson.fromJson(jsonReader, Set.class);
-			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#definedBy")) {
+			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
 					JsonArray arr = jsonDefinedBy.getAsJsonArray();
-					for(JsonElement el : arr) {
-						definedBy.add( el.getAsString() );
+					for(JsonElement isDefinedBy : arr) {
+						if (isDefinedBy.isJsonObject()) {
+							JsonObject obj = isDefinedBy.getAsJsonObject();
+							var value = obj.get("value");
+							if (value.isJsonObject()) {
+								definedBy.add(value.getAsJsonObject().get("value").getAsString());
+							} else
+								definedBy.add(value.getAsString());
+						} else
+							definedBy.add( isDefinedBy.getAsString() );
 					}
-				} else {
+				} else if (jsonDefinedBy.isJsonObject()) {
+					JsonObject obj = jsonDefinedBy.getAsJsonObject();
+					var value = obj.get("value");
+					if (value.isJsonObject()) {
+						definedBy.add(value.getAsJsonObject().get("value").getAsString());
+					} else
+						definedBy.add(value.getAsString());
+				}
+				else {
 					definedBy.add(jsonDefinedBy.getAsString());
 				}
 			} else {

@@ -3692,7 +3692,7 @@
       }
     },
     "annotation": {
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0004021"
       ],
       "id": [
@@ -3742,7 +3742,7 @@
       }
     },
     "annotation": {
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0004024"
       ],
       "id": [
@@ -4212,7 +4212,7 @@
       "IAO_0000116": [
         "A bearer can have many dependents, and its dependents can exist for different periods of time, but none of its dependents can exist when the bearer does not exist."
       ],
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0000053"
       ],
       "id": [
@@ -4346,7 +4346,7 @@
       }
     },
     "annotation": {
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0002162"
       ],
       "id": [
@@ -5010,7 +5010,7 @@
       "IAO_0000116": [
         "TODO: complete range axiom once more of CARO has been mireoted in to this ontology"
       ],
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0004026"
       ],
       "id": [
@@ -5044,7 +5044,7 @@
       }
     },
     "annotation": {
-      "hasDbXref": [
+      "has_dbxref": [
         "RO:0004029"
       ],
       "id": [
@@ -5196,11 +5196,11 @@
     "is_root": true,
     "label": "hasBroadSynonym",
     "lang": "en",
-    "obo_id": "hasBroadSynonym",
+    "obo_id": "OIO:hasBroadSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasBroadSynonym",
+    "short_form": "OIO_hasBroadSynonym",
     "synonyms": []
   },
   {
@@ -5218,11 +5218,11 @@
     "is_root": true,
     "label": "hasDbXref",
     "lang": "en",
-    "obo_id": "hasDbXref",
+    "obo_id": "OIO:hasDbXref",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasDbXref",
+    "short_form": "OIO_hasDbXref",
     "synonyms": []
   },
   {
@@ -5240,11 +5240,11 @@
     "is_root": true,
     "label": "hasExactSynonym",
     "lang": "en",
-    "obo_id": "hasExactSynonym",
+    "obo_id": "OIO:hasExactSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasExactSynonym",
+    "short_form": "OIO_hasExactSynonym",
     "synonyms": []
   },
   {
@@ -5262,11 +5262,11 @@
     "is_root": true,
     "label": "hasNarrowSynonym",
     "lang": "en",
-    "obo_id": "hasNarrowSynonym",
+    "obo_id": "OIO:hasNarrowSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasNarrowSynonym",
+    "short_form": "OIO_hasNarrowSynonym",
     "synonyms": []
   },
   {
@@ -5284,11 +5284,11 @@
     "is_root": true,
     "label": "hasRelatedSynonym",
     "lang": "en",
-    "obo_id": "hasRelatedSynonym",
+    "obo_id": "OIO:hasRelatedSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasRelatedSynonym",
+    "short_form": "OIO_hasRelatedSynonym",
     "synonyms": []
   },
   {
@@ -5306,11 +5306,11 @@
     "is_root": true,
     "label": "hasSynonymType",
     "lang": "en",
-    "obo_id": "hasSynonymType",
+    "obo_id": "OIO:hasSynonymType",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "hasSynonymType",
+    "short_form": "OIO_hasSynonymType",
     "synonyms": []
   },
   {
@@ -5350,11 +5350,11 @@
     "is_root": true,
     "label": "inSubset",
     "lang": "en",
-    "obo_id": "inSubset",
+    "obo_id": "OIO:inSubset",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "inSubset",
+    "short_form": "OIO_inSubset",
     "synonyms": []
   },
   {
@@ -5416,11 +5416,11 @@
     "is_root": true,
     "label": "label",
     "lang": "en",
-    "obo_id": "label",
+    "obo_id": "RDFS:label",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "label",
+    "short_form": "RDFS_label",
     "synonyms": []
   },
   {
@@ -5438,11 +5438,11 @@
     "is_root": true,
     "label": "closeMatch",
     "lang": "en",
-    "obo_id": "closeMatch",
+    "obo_id": "SKOS:closeMatch",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "closeMatch",
+    "short_form": "SKOS_closeMatch",
     "synonyms": []
   },
   {
@@ -5460,11 +5460,11 @@
     "is_root": true,
     "label": "exactMatch",
     "lang": "en",
-    "obo_id": "exactMatch",
+    "obo_id": "SKOS:exactMatch",
     "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontology_name": "gitissue502",
     "ontology_prefix": "gitIssue502",
-    "short_form": "exactMatch",
+    "short_form": "SKOS_exactMatch",
     "synonyms": []
   }
 ]

@@ -19,23 +19,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "XMPL_Preferred_name",
-    "linkedEntities": {
-      "XMPL:Preferred_name": {
-        "curie": "XMPL:Preferred_name",
-        "definedBy": [
-          "xmpl"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://exmpl.org/xmpl/Preferred_name",
-        "label": "XMPL_Preferred_name",
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "xmpl",
@@ -69,23 +53,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "XMPL_Synonym",
-    "linkedEntities": {
-      "XMPL:Synonym": {
-        "curie": "XMPL:Synonym",
-        "definedBy": [
-          "xmpl"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://exmpl.org/xmpl/Synonym",
-        "label": "XMPL_Synonym",
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "xmpl",
@@ -125,23 +93,6 @@
       "parent class pref label"
     ],
     "linkedEntities": {
-      "XMPL:XMPL000001": {
-        "curie": "XMPL:XMPL000001",
-        "definedBy": [
-          "xmpl"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://exmpl.org/xmpl/XMPL000001",
-        "label": [
-          "XMPL000001",
-          "parent class pref label"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://exmpl.org/xmpl/Preferred_name": {
         "curie": "XMPL:Preferred_name",
         "definedBy": [
@@ -221,23 +172,6 @@
       "XMPL000002"
     ],
     "linkedEntities": {
-      "XMPL:XMPL000002": {
-        "curie": "XMPL:XMPL000002",
-        "definedBy": [
-          "xmpl"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://exmpl.org/xmpl/XMPL000002",
-        "label": [
-          "1st children class pref label",
-          "XMPL000002"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://exmpl.org/xmpl/Preferred_name": {
         "curie": "XMPL:Preferred_name",
         "definedBy": [
@@ -333,23 +267,6 @@
       "XMPL000003"
     ],
     "linkedEntities": {
-      "XMPL:XMPL000003": {
-        "curie": "XMPL:XMPL000003",
-        "definedBy": [
-          "xmpl"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://exmpl.org/xmpl/XMPL000003",
-        "label": [
-          "2nd children class pref label",
-          "XMPL000003"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://exmpl.org/xmpl/Synonym": {
         "curie": "XMPL:Synonym",
         "definedBy": [

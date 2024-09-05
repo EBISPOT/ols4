@@ -204,11 +204,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "MS:1000353": {
-              "url": "http://purl.obolibrary.org/obo/MS_1000353",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "MS:1000353"
             }
           }
         },
@@ -352,11 +347,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "MS:1003056": {
-              "url": "http://purl.obolibrary.org/obo/MS_1003056",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "MS:1003056"
             }
           }
         },
@@ -457,11 +447,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "UBERON:0000916": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0000916"
             },
             "http://purl.obolibrary.org/obo/UBERON_0003684": {
               "numAppearsIn": 1,
@@ -585,11 +570,6 @@
             "partof"
           ],
           "linkedEntities": {
-            "UBERON:0003684": {
-              "url": "http://purl.obolibrary.org/obo/UBERON_0003684",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "UBERON:0003684"
-            },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -703,13 +683,7 @@
           "appearsIn": [
             "partof"
           ],
-          "linkedEntities": {
-            "BFO:0000050": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "BFO:0000050"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/ms#part_of",

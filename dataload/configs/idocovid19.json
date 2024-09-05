@@ -1,0 +1,33 @@
+{
+  "ontologies": [
+    {
+      "id": "idocovid19",
+      "preferredPrefix": "IDO-COVID-19",
+      "title": "The COVID-19 Infectious Disease Ontology",
+      "uri": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-covid-19/master/ontology/ido%20covid-19",
+      "description": "The COVID-19 Infectious Disease Ontology (IDO-COVID-19) is an extension of the Infectious Disease Ontology (IDO) and the Virus Infectious Disease Ontology (VIDO). IDO-COVID-19 follows OBO Foundry guidelines, employs the Basic Formal Ontology as its starting point, and covers epidemiology, classification, pathogenesis, and treatment of terms used to represent infection by the SARS-CoV-2 virus strain, and the associated COVID-19 disease.",
+      "homepage": "https://github.com/infectious-disease-ontology-extensions/ido-covid-19",
+      "mailing_list": "johnbeverley2021@u.northwestern.edu",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/IDO-COVID-19"
+      ],
+      "oboSlims": false,
+      "reasoner": "OWL2",
+      "ontology_purl": "https://gist.githubusercontent.com/haideriqbal/9b5245af626bd7687831c19c2c8076e8/raw/2c75495f31df0a379062bf12d3fab323eedbb7a9/idocovid19.owl"
+    },
+    {
+      "id": "oio",
+      "ontology_purl": "https://gist.githubusercontent.com/haideriqbal/4a2b1a9aa81d9fa26cae81e0b0b7730b/raw/527665128b9be9d7d6133f9a796379600151c737/oboInOwl.owl",
+      "base_uri": ["http://www.geneontology.org/formats/oboInOwl#"]
+    }
+  ]
+}

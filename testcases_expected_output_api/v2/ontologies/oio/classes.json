@@ -1,0 +1,741 @@
+[
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:DbXref",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "database_cross_reference",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "database_cross_reference",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_DbXref",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:Definition",
+    "definedBy": [
+      "oio"
+    ],
+    "definition": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://www.obofoundry.org/wiki/index.php/Definitions",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.w3.org/2000/01/rdf-schema#label": "URL:http://www.obofoundry.org/wiki/index.php/Definitions",
+      "isObsolete": false
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+        "isObsolete": false
+      },
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.w3.org/2000/01/rdf-schema#label": "The textual definition of the current term. There must be zero or one instances of this tag per term description",
+      "isObsolete": false
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "http://www.w3.org/2000/01/rdf-schema#label": "definition",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#Definition",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "definition",
+    "linkedEntities": {
+      "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+        "curie": "OIO:DbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "database_cross_reference",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+        "curie": "OIO:hasDefinition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+        "curie": "OIO:hasURI",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_URI",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "comment",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "oboInOwl:cjm": {
+        "curie": "oboInOwl:cjm",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_Definition",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:ObsoleteClass",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+        "isObsolete": false
+      },
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.w3.org/2000/01/rdf-schema#label": "pseudo-class. in the oboInOwl translation, all obsolete classes are subclasses of this class. Note that this is not a metaclass",
+      "isObsolete": false
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "obsolete_class",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "obsolete_class",
+    "linkedEntities": {
+      "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+        "curie": "OIO:DbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "database_cross_reference",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#Definition": {
+        "curie": "OIO:Definition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+        "curie": "OIO:hasDefinition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+        "curie": "OIO:hasURI",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_URI",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "oboInOwl:cjm": {
+        "curie": "oboInOwl:cjm",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_ObsoleteClass",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:Subset",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboFormat#oboFormat_subsetdef",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.w3.org/2000/01/rdf-schema#label": "oboFormat:subsetdef",
+      "isObsolete": false
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+        "isObsolete": false
+      },
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.w3.org/2000/01/rdf-schema#label": "A grouping of terms from an ontology or ontologies. Note that this is not a metaclass - classes are linked to subsets via oboInOwl:inSubset",
+      "isObsolete": false
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "GO-slim",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "slim",
+        "isObsolete": false
+      }
+    ],
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "partition",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "view",
+        "isObsolete": false
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "subset",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#Subset",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "subset",
+    "linkedEntities": {
+      "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+        "curie": "OIO:DbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "database_cross_reference",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#Definition": {
+        "curie": "OIO:Definition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#Synonym": {
+        "curie": "OIO:Synonym",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "synonym",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+        "curie": "OIO:hasDefinition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": {
+        "curie": "OIO:hasNarrowSynonym",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_narrow_synonym",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": {
+        "curie": "OIO:hasRelatedSynonym",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_related_synonym",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+        "curie": "OIO:hasURI",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_URI",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "oboFormat:subsetdef": {
+        "curie": "oboFormat:subsetdef",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.geneontology.org/formats/oboInOwl#subsetdef"
+      },
+      "oboInOwl:cjm": {
+        "curie": "oboInOwl:cjm",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_Subset",
+    "synonym": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "GO-slim",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "partition",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "slim",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+        "http://www.w3.org/2000/01/rdf-schema#label": "view",
+        "isObsolete": false
+      }
+    ],
+    "synonymProperty": [
+      "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:Synonym",
+    "definedBy": [
+      "oio"
+    ],
+    "definition": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+        "isObsolete": false
+      },
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.w3.org/2000/01/rdf-schema#label": "An instance of synonym usage. synonym instances are linked to classes via oboInOwl:has*Synonym properties",
+      "isObsolete": false
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "http://www.w3.org/2000/01/rdf-schema#label": "synonym",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#Synonym",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "synonym",
+    "linkedEntities": {
+      "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+        "curie": "OIO:DbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "database_cross_reference",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#Definition": {
+        "curie": "OIO:Definition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+        "curie": "OIO:hasDbXref",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_dbxref",
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+        "curie": "OIO:hasDefinition",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_definition",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+        "curie": "OIO:hasURI",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": "has_URI",
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "comment",
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "oboInOwl:cjm": {
+        "curie": "oboInOwl:cjm",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_Synonym",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "oio"
+    ],
+    "curie": "OIO:SynonymType",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "synonym_type",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymType",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "synonym_type",
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": "label",
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "oio",
+    "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OIO_SynonymType",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]
