@@ -225,42 +225,6 @@
             "xmpl"
           ],
           "linkedEntities": {
-            "XMPL:XMPL000001": {
-              "iri": "http://exmpl.org/xmpl/XMPL000001",
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "parent class pref label",
-                  "lang": "en"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "XMPL000001",
-                  "lang": "en"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:XMPL000001"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://exmpl.org/xmpl/Preferred_name": {
               "definedBy": [
                 "xmpl"
@@ -475,42 +439,6 @@
                 "entity"
               ]
             },
-            "XMPL:XMPL000002": {
-              "iri": "http://exmpl.org/xmpl/XMPL000002",
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "1st children class pref label",
-                  "lang": "en"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "XMPL000002",
-                  "lang": "en"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:XMPL000002"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://exmpl.org/xmpl/XMPL000001": {
               "definedBy": [
                 "xmpl"
@@ -712,42 +640,6 @@
             "xmpl"
           ],
           "linkedEntities": {
-            "XMPL:XMPL000003": {
-              "iri": "http://exmpl.org/xmpl/XMPL000003",
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "2nd children class pref label",
-                  "lang": "en"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "XMPL000003",
-                  "lang": "en"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:XMPL000003"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://exmpl.org/xmpl/XMPL000001": {
               "definedBy": [
                 "xmpl"
@@ -874,33 +766,7 @@
           "appearsIn": [
             "xmpl"
           ],
-          "linkedEntities": {
-            "XMPL:Preferred_name": {
-              "iri": "http://exmpl.org/xmpl/Preferred_name",
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL_Preferred_name"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:Preferred_name"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://exmpl.org/xmpl/Synonym",
@@ -965,33 +831,7 @@
           "appearsIn": [
             "xmpl"
           ],
-          "linkedEntities": {
-            "XMPL:Synonym": {
-              "iri": "http://exmpl.org/xmpl/Synonym",
-              "definedBy": [
-                "xmpl"
-              ],
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL_Synonym"
-              },
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "XMPL:Synonym"
-              },
-              "type": [
-                "property",
-                "annotationProperty",
-                "entity"
-              ]
-            }
-          }
+          "linkedEntities": {}
         }
       ],
       "individuals": [],

@@ -1,0 +1,1376 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasBroadSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_broad_synonym"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:broad_synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "An alias in which the alias is broader than the primary class name. Example: cell division is a broad synonym of cytokinesis"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_broad_synonym",
+    "lang": "en",
+    "obo_id": "OIO:hasBroadSynonym",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasBroadSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_exact_synonym"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:exact_synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_exact_synonym",
+    "lang": "en",
+    "obo_id": "OIO:hasExactSynonym",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasExactSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasNarrowSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_narrow_synonym"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:narrow_synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "An alias in which the alias is narrower than the primary class name. Example: pyrimidine-dimer repair by photolyase is a narrow synonym of photoreactive repair"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_narrow_synonym",
+    "lang": "en",
+    "obo_id": "OIO:hasNarrowSynonym",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasNarrowSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasRelatedSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_related_synonym"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:related_synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "has_related_synonym",
+    "lang": "en",
+    "obo_id": "OIO:hasRelatedSynonym",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasRelatedSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSynonym/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSynonym/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSynonym?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_synonym"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "A relation between a class and an alias term."
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [
+      "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"
+    ],
+    "has_children": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_synonym",
+    "lang": "en",
+    "obo_id": "OIO:hasSynonym",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasSynonym",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteProperty?lang=en"
+      }
+    },
+    "annotation": {
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "pseudo-property. in the oboInOwl translation, all obsolete relations are subProperties of this class"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [
+      "Note that this is not a metaclass"
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "obsolete_property",
+    "lang": "en",
+    "obo_id": "OIO:ObsoleteProperty",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_ObsoleteProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SubsetProperty?lang=en"
+      }
+    },
+    "annotation": {
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "This annotation property groups all subsets declared in the ontology"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "subset_property",
+    "lang": "en",
+    "obo_id": "OIO:SubsetProperty",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_SubsetProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SynonymTypeProperty?lang=en"
+      }
+    },
+    "annotation": {
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "This annotation property groups all synonym types declared in the ontology"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "synonym_type_property",
+    "lang": "en",
+    "obo_id": "OIO:SynonymTypeProperty",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_SynonymTypeProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523consider?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_consider"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:consider"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "Gives a term which may be an appropriate substitute for an obsolete term, but needs to be looked at carefully by a human expert before the replacement is done"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#consider",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "consider",
+    "lang": "en",
+    "obo_id": "OIO:consider",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_consider",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasAlternativeId?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_alt_id"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:alt_id"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "An alternative identifier for this class; should follow ID syntax. These can result from class merges"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_alternative_id",
+    "lang": "en",
+    "obo_id": "OIO:hasAlternativeId",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasAlternativeId",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDate?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_date"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:date"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDate",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_date",
+    "lang": "en",
+    "obo_id": "OIO:hasDate",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasDate",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDbXref?lang=en"
+      }
+    },
+    "annotation": {
+      "hasDbXref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_xref"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:xref"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_dbxref",
+    "lang": "en",
+    "obo_id": "OIO:hasDbXref",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasDbXref",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDefaultNamespace?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_default-namespace"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:default-namespace"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefaultNamespace",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_default_namespace",
+    "lang": "en",
+    "obo_id": "OIO:hasDefaultNamespace",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasDefaultNamespace",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDefinition?lang=en"
+      }
+    },
+    "annotation": {
+      "hasDefinition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "a relation between a class and an instance of a oboInOwl:Definition"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_def"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:def"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [
+      "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+    ],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_definition",
+    "lang": "en",
+    "obo_id": "OIO:hasDefinition",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasDefinition",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasOBONamespace?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_namespace"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:namespace"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:GOC"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "A relation between a class and an OBO namespace string. OBO namespaces are to be distinguished from IDspaces; for example, biological_process is a namespace, GO is an idspace."
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_obo_namespace",
+    "lang": "en",
+    "obo_id": "OIO:hasOBONamespace",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasOBONamespace",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSubset?lang=en"
+      }
+    },
+    "annotation": {
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "relation between an ontology and a oboInOwl:Subset, indicating classes in the ontology belong to the subset"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSubset",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_subset",
+    "lang": "en",
+    "obo_id": "OIO:hasSubset",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasSubset",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasSynonymType?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.geneontology.org/GO.usage.shtml#type"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "URL:http://www.geneontology.org/GO.usage.shtml#type"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasSynonymType",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_synonym_type",
+    "lang": "en",
+    "obo_id": "OIO:hasSynonymType",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasSynonymType",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasURI?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasURI",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_URI",
+    "lang": "en",
+    "obo_id": "OIO:hasURI",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasURI",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasVersion?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_version"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:version"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#hasVersion",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_version",
+    "lang": "en",
+    "obo_id": "OIO:hasVersion",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_hasVersion",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523inSubset?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_subset"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:subset"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "relation between a class and a oboInOwl:Subset, indicating the class belongs (is a member of) the subset"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "in_subset",
+    "lang": "en",
+    "obo_id": "OIO:inSubset",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_inSubset",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523isCyclic?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_is_cyclic"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:is_cyclic"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": ""
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#isCyclic",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_cyclic",
+    "lang": "en",
+    "obo_id": "OIO:isCyclic",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_isCyclic",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523replacedBy?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_replaced_by"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:replaced_by"
+          },
+          "isObsolete": false
+        }
+      ],
+      "has_definition": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+              "type": [
+                "literal"
+              ],
+              "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+              "value": "oboInOwl:cjm"
+            },
+            "isObsolete": false
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "lang": "en",
+            "type": [
+              "literal"
+            ],
+            "value": "Gives a term which replaces an obsolete term. The value is the id of the replacement term. The value of this tag can safely be used to automatically reassign links to an obsolete term. The replaced_by tag may only be specified for obsolete terms. A single obsolete term may have more than one replaced_by tag. This tag can be used in conjunction with the consider tag."
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#replacedBy",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "replaced_by",
+    "lang": "en",
+    "obo_id": "OIO:replacedBy",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_replacedBy",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523savedBy?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "type": [
+              "literal"
+            ],
+            "value": "http://purl.org/obo/owl/oboFormat#oboFormat_saved_by"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboFormat:saved_by"
+          },
+          "isObsolete": false
+        }
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#savedBy",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "saved_by",
+    "lang": "en",
+    "obo_id": "OIO:savedBy",
+    "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+    "ontology_name": "oio",
+    "short_form": "OIO_savedBy",
+    "synonyms": []
+  }
+]

@@ -432,13 +432,7 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {
-            "GO:0006807": {
-              "url": "http://amigo.geneontology.org/amigo/term/GO:0006807",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "GO:0006807"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/GO_0008150",
@@ -499,13 +493,7 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {
-            "GO:0008150": {
-              "url": "http://amigo.geneontology.org/amigo/term/GO:0008150",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "GO:0008150"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
@@ -681,11 +669,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "OGMS:0000063": {
-              "url": "http://purl.obolibrary.org/obo/OGMS_0000063",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "OGMS:0000063"
             },
             "http://www.ebi.ac.uk/efo/EFO_0000400": {
               "numAppearsIn": 1,
@@ -910,11 +893,6 @@
                 "objectProperty",
                 "entity"
               ]
-            },
-            "EFO:0000400": {
-              "url": "http://www.ebi.ac.uk/efo/EFO_0000400",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "EFO:0000400"
             }
           }
         }
@@ -1004,13 +982,7 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {
-            "BFO:0000051": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000051",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "BFO:0000051"
-            }
-          }
+          "linkedEntities": {}
         },
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
@@ -1100,13 +1072,7 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {
-            "BFO:0000054": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000054",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "BFO:0000054"
-            }
-          }
+          "linkedEntities": {}
         }
       ],
       "individuals": [],

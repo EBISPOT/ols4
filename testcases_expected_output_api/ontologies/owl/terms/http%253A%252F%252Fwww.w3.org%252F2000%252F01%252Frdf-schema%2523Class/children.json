@@ -47,10 +47,10 @@
     "is_root": false,
     "label": "Datatype",
     "lang": "en",
-    "obo_id": "Datatype",
+    "obo_id": "RDFS:Datatype",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Datatype",
+    "short_form": "RDFS_Datatype",
     "synonyms": []
   },
   {
@@ -101,10 +101,10 @@
     "is_root": false,
     "label": "Class",
     "lang": "en",
-    "obo_id": "Class",
+    "obo_id": "OWL:Class",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "Class",
+    "short_form": "OWL_Class",
     "synonyms": []
   },
   {
@@ -143,10 +143,10 @@
     "is_root": false,
     "label": "DeprecatedClass",
     "lang": "en",
-    "obo_id": "DeprecatedClass",
+    "obo_id": "OWL:DeprecatedClass",
     "ontology_iri": "http://www.w3.org/2002/07/owl",
     "ontology_name": "owl",
-    "short_form": "DeprecatedClass",
+    "short_form": "OWL_DeprecatedClass",
     "synonyms": []
   }
 ]

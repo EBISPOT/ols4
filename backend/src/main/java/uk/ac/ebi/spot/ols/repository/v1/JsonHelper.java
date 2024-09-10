@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class JsonHelper {
@@ -41,11 +42,48 @@ public class JsonHelper {
 
             return elements.get(0);
 
-        } else if(value.isJsonObject()) {
+        } else if(value.isJsonObject() && value.getAsJsonObject().get("value") != null) {
             return objectToString(value.getAsJsonObject().get("value"));
+
+       /* This is a special case for the OLS API. If the value is a nested JsonObject like this
+       an example from OIO ontology:
+        {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+           "type": [
+           "literal"
+          ],
+           "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+           "value": "http://www.obofoundry.org/wiki/index.php/Definitions"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+              "type": [
+                "literal"
+              ],
+          "value": "URL:http://www.obofoundry.org/wiki/index.php/Definitions"
+       },
+       "isObsolete": false
+        }
+
+         *   For this type of JsonObject we need to iterate through the entries and find value key.
+         *   For sake of simplicity I've returned the first value which is found as we don't have any
+         *   mechanism to judge which value to prefer over the other.
+         */
+
+        } else if (value.isJsonObject()) {
+            for (Map.Entry<String, JsonElement> entry : value.getAsJsonObject().entrySet()) {
+                JsonElement element = entry.getValue();
+                if (element.isJsonObject()) {
+                    JsonObject obj = element.getAsJsonObject();
+                    if (obj.has("value")) {
+                        return obj.get("value").getAsString();
+                    }
+                }
+            }
         } else {
             return value.getAsString();
         }
+        return value.getAsString();
     }
 
     public static List<JsonElement> getValues(JsonObject json, String predicate) {

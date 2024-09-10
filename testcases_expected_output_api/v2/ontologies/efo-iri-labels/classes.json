@@ -34,11 +34,6 @@
     "isPreferredRoot": false,
     "label": "EFO_0000400",
     "linkedEntities": {
-      "EFO:0000400": {
-        "curie": "EFO:0000400",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://www.ebi.ac.uk/efo/EFO_0000400"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -126,13 +121,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "nitrogen compound metabolic process",
-    "linkedEntities": {
-      "GO:0006807": {
-        "curie": "GO:0006807",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://amigo.geneontology.org/amigo/term/GO:0006807"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-iri-labels",
@@ -161,13 +150,7 @@
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": "GO_0008150",
-    "linkedEntities": {
-      "GO:0008150": {
-        "curie": "GO:0008150",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://amigo.geneontology.org/amigo/term/GO:0008150"
-      }
-    },
+    "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "efo-iri-labels",
@@ -207,11 +190,6 @@
     "isPreferredRoot": false,
     "label": "disease course",
     "linkedEntities": {
-      "OGMS:0000063": {
-        "curie": "OGMS:0000063",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OGMS_0000063"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,

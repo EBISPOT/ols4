@@ -1,0 +1,87 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#Subset",
+  "lang": "en",
+  "description": [],
+  "synonyms": [
+    "slim",
+    "GO-slim",
+    "view",
+    "partition"
+  ],
+  "annotation": {
+    "has_dbxref": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "value": "http://purl.org/obo/owl/oboFormat#oboFormat_subsetdef"
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "value": "oboFormat:subsetdef"
+        },
+        "isObsolete": false
+      }
+    ],
+    "has_definition": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboInOwl:cjm"
+          },
+          "isObsolete": false
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "A grouping of terms from an ontology or ontologies. Note that this is not a metaclass - classes are linked to subsets via oboInOwl:inSubset",
+          "lang": "en"
+        },
+        "isObsolete": false
+      }
+    ]
+  },
+  "label": "subset",
+  "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "OIO_Subset",
+  "obo_id": "OIO:Subset",
+  "obo_xref": [
+    {
+      "id": "http://purl.org/obo/owl/oboFormat#oboFormat_subsetdef",
+      "url": "http://purl.org/obo/owl/oboFormat#oboFormat_subsetdef"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523Subset?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523Subset/graph"
+    }
+  }
+}

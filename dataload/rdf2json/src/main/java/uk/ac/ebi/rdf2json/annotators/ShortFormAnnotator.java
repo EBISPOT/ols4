@@ -31,6 +31,9 @@ public class ShortFormAnnotator {
 			if(c.uri == null)
 				continue;
 
+			if (preferredPrefix == null || preferredPrefix.isEmpty()) {
+				preferredPrefix = graph.config.get("id").toString().toUpperCase();
+			}
 
 			String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri);
 			String curie = shortForm.replaceFirst("_", ":");

@@ -1,0 +1,84 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#Definition",
+  "lang": "en",
+  "description": [
+    "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+  ],
+  "synonyms": [],
+  "annotation": {
+    "has_dbxref": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "value": "http://www.obofoundry.org/wiki/index.php/Definitions"
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "value": "URL:http://www.obofoundry.org/wiki/index.php/Definitions"
+        },
+        "isObsolete": false
+      }
+    ],
+    "has_definition": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+          "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "oboInOwl:cjm"
+          },
+          "isObsolete": false
+        },
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+        "http://www.w3.org/2000/01/rdf-schema#label": {
+          "type": [
+            "literal"
+          ],
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "The textual definition of the current term. There must be zero or one instances of this tag per term description",
+          "lang": "en"
+        },
+        "isObsolete": false
+      }
+    ]
+  },
+  "label": "definition",
+  "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "OIO_Definition",
+  "obo_id": "OIO:Definition",
+  "obo_xref": [
+    {
+      "id": "http://www.obofoundry.org/wiki/index.php/Definitions",
+      "url": "http://www.obofoundry.org/wiki/index.php/Definitions"
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523Definition?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523Definition/graph"
+    }
+  }
+}

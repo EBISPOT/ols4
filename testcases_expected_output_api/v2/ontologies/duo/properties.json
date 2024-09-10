@@ -38,11 +38,6 @@
     "isPreferredRoot": false,
     "label": "part of",
     "linkedEntities": {
-      "BFO:0000050": {
-        "curie": "BFO:0000050",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000050"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -210,11 +205,6 @@
     "isPreferredRoot": false,
     "label": "has part",
     "linkedEntities": {
-      "BFO:0000051": {
-        "curie": "BFO:0000051",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000051"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -369,11 +359,6 @@
     "isPreferredRoot": false,
     "label": "realized in",
     "linkedEntities": {
-      "BFO:0000054": {
-        "curie": "BFO:0000054",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000054"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -537,11 +522,6 @@
     "isPreferredRoot": false,
     "label": "realizes",
     "linkedEntities": {
-      "BFO:0000055": {
-        "curie": "BFO:0000055",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000055"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -707,11 +687,6 @@
     "isPreferredRoot": false,
     "label": "occurs in",
     "linkedEntities": {
-      "BFO:0000066": {
-        "curie": "BFO:0000066",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000066"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000003": {
         "curie": "BFO:0000003",
         "hasLocalDefinition": true,
@@ -871,11 +846,6 @@
     "isPreferredRoot": false,
     "label": "contains process",
     "linkedEntities": {
-      "BFO:0000067": {
-        "curie": "BFO:0000067",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000067"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000066": {
         "curie": "BFO:0000066",
         "hasLocalDefinition": true,
@@ -985,11 +955,6 @@
     "isPreferredRoot": false,
     "label": "BFO OWL specification label",
     "linkedEntities": {
-      "BFO:0000179": {
-        "curie": "BFO:0000179",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000179"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -1067,11 +1032,6 @@
     "isPreferredRoot": false,
     "label": "BFO CLIF specification label",
     "linkedEntities": {
-      "BFO:0000180": {
-        "curie": "BFO:0000180",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/BFO_0000180"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -1285,23 +1245,6 @@
     "isPreferredRoot": false,
     "label": "DUO_preferred_label",
     "linkedEntities": {
-      "DUO:0000041": {
-        "curie": "DUO:0000041",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://purl.obolibrary.org/obo/DUO_0000041",
-        "label": "DUO_preferred_label",
-        "numAppearsIn": 1.0,
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ],
-        "url": "http://purl.obolibrary.org/obo/DUO_0000041"
-      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "label",
         "hasLocalDefinition": true,
@@ -1350,11 +1293,6 @@
     "isPreferredRoot": false,
     "label": "has measurement value",
     "linkedEntities": {
-      "IAO:0000004": {
-        "curie": "IAO:0000004",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000004"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000032": {
         "curie": "IAO:0000032",
         "hasLocalDefinition": true,
@@ -1415,11 +1353,6 @@
     "isPreferredRoot": false,
     "label": "has measurement unit label",
     "linkedEntities": {
-      "IAO:0000039": {
-        "curie": "IAO:0000039",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000039"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -1492,11 +1425,6 @@
     "isPreferredRoot": false,
     "label": "editor preferred term",
     "linkedEntities": {
-      "IAO:0000111": {
-        "curie": "IAO:0000111",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000111"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000114": {
         "curie": "IAO:0000114",
         "hasLocalDefinition": true,
@@ -1619,11 +1547,6 @@
     "isPreferredRoot": false,
     "label": "example of usage",
     "linkedEntities": {
-      "IAO:0000112": {
-        "curie": "IAO:0000112",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000112"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -1755,11 +1678,6 @@
     "isPreferredRoot": false,
     "label": "in branch",
     "linkedEntities": {
-      "IAO:0000113": {
-        "curie": "IAO:0000113",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000113"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -1859,11 +1777,6 @@
     "isPreferredRoot": false,
     "label": "has curation status",
     "linkedEntities": {
-      "IAO:0000114": {
-        "curie": "IAO:0000114",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000114"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -1944,11 +1857,6 @@
     "isPreferredRoot": false,
     "label": "definition",
     "linkedEntities": {
-      "IAO:0000115": {
-        "curie": "IAO:0000115",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000115"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -2083,11 +1991,6 @@
     "isPreferredRoot": false,
     "label": "editor note",
     "linkedEntities": {
-      "IAO:0000116": {
-        "curie": "IAO:0000116",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000116"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -2222,11 +2125,6 @@
     "isPreferredRoot": false,
     "label": "term editor",
     "linkedEntities": {
-      "IAO:0000117": {
-        "curie": "IAO:0000117",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000117"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -2368,11 +2266,6 @@
     "isPreferredRoot": false,
     "label": "alternative label",
     "linkedEntities": {
-      "IAO:0000118": {
-        "curie": "IAO:0000118",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000118"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -2509,11 +2402,6 @@
     "isPreferredRoot": false,
     "label": "definition source",
     "linkedEntities": {
-      "IAO:0000119": {
-        "curie": "IAO:0000119",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000119"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -2638,11 +2526,6 @@
     "isPreferredRoot": false,
     "label": "is about",
     "linkedEntities": {
-      "IAO:0000136": {
-        "curie": "IAO:0000136",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000136"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000030": {
         "curie": "IAO:0000030",
         "hasLocalDefinition": true,
@@ -2795,11 +2678,6 @@
     "isPreferredRoot": false,
     "label": "mentions",
     "linkedEntities": {
-      "IAO:0000142": {
-        "curie": "IAO:0000142",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000142"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000114": {
         "curie": "IAO:0000114",
         "hasLocalDefinition": true,
@@ -2933,11 +2811,6 @@
     "isPreferredRoot": false,
     "label": "mentioned by",
     "linkedEntities": {
-      "IAO:0000143": {
-        "curie": "IAO:0000143",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000143"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -3059,11 +2932,6 @@
     "isPreferredRoot": false,
     "label": "denotes",
     "linkedEntities": {
-      "IAO:0000219": {
-        "curie": "IAO:0000219",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000219"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000001": {
         "curie": "BFO:0000001",
         "hasLocalDefinition": true,
@@ -3239,11 +3107,6 @@
     "isPreferredRoot": false,
     "label": "is quality measurement of",
     "linkedEntities": {
-      "IAO:0000221": {
-        "curie": "IAO:0000221",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000221"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000019": {
         "curie": "BFO:0000019",
         "hasLocalDefinition": true,
@@ -3379,11 +3242,6 @@
     "isPreferredRoot": false,
     "label": "has obsolescence reason",
     "linkedEntities": {
-      "IAO:0000231": {
-        "curie": "IAO:0000231",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000231"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -3473,11 +3331,6 @@
     "isPreferredRoot": false,
     "label": "curator note",
     "linkedEntities": {
-      "IAO:0000232": {
-        "curie": "IAO:0000232",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000232"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -3606,11 +3459,6 @@
     "isPreferredRoot": false,
     "label": "term tracker item",
     "linkedEntities": {
-      "IAO:0000233": {
-        "curie": "IAO:0000233",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000233"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -3760,11 +3608,6 @@
     "isPreferredRoot": false,
     "label": "ontology term requester",
     "linkedEntities": {
-      "IAO:0000234": {
-        "curie": "IAO:0000234",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000234"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -3897,11 +3740,6 @@
     "isPreferredRoot": false,
     "label": "denoted by",
     "linkedEntities": {
-      "IAO:0000235": {
-        "curie": "IAO:0000235",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000235"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000001": {
         "curie": "BFO:0000001",
         "hasLocalDefinition": true,
@@ -4018,11 +3856,6 @@
     "isPreferredRoot": false,
     "label": "has x coordinate value",
     "linkedEntities": {
-      "IAO:0000404": {
-        "curie": "IAO:0000404",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000404"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000400": {
         "curie": "IAO:0000400",
         "hasLocalDefinition": true,
@@ -4081,11 +3914,6 @@
     "isPreferredRoot": false,
     "label": "has z coordinate value",
     "linkedEntities": {
-      "IAO:0000405": {
-        "curie": "IAO:0000405",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000405"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000400": {
         "curie": "IAO:0000400",
         "hasLocalDefinition": true,
@@ -4144,11 +3972,6 @@
     "isPreferredRoot": false,
     "label": "has y coordinate value",
     "linkedEntities": {
-      "IAO:0000406": {
-        "curie": "IAO:0000406",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000406"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000400": {
         "curie": "IAO:0000400",
         "hasLocalDefinition": true,
@@ -4213,11 +4036,6 @@
     "isPreferredRoot": false,
     "label": "has coordinate unit label",
     "linkedEntities": {
-      "IAO:0000407": {
-        "curie": "IAO:0000407",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000407"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -4309,11 +4127,6 @@
     "isPreferredRoot": false,
     "label": "is denotator type",
     "linkedEntities": {
-      "IAO:0000411": {
-        "curie": "IAO:0000411",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000411"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -4418,11 +4231,6 @@
     "isPreferredRoot": false,
     "label": "imported from",
     "linkedEntities": {
-      "IAO:0000412": {
-        "curie": "IAO:0000412",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000412"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -4559,11 +4367,6 @@
     "isPreferredRoot": false,
     "label": "is duration of",
     "linkedEntities": {
-      "IAO:0000413": {
-        "curie": "IAO:0000413",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000413"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000015": {
         "curie": "BFO:0000015",
         "hasLocalDefinition": true,
@@ -4692,11 +4495,6 @@
     "isPreferredRoot": false,
     "label": "is quality measured as",
     "linkedEntities": {
-      "IAO:0000417": {
-        "curie": "IAO:0000417",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000417"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000114": {
         "curie": "IAO:0000114",
         "hasLocalDefinition": true,
@@ -4822,11 +4620,6 @@
     "isPreferredRoot": false,
     "label": "is quality specification of",
     "linkedEntities": {
-      "IAO:0000418": {
-        "curie": "IAO:0000418",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000418"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000114": {
         "curie": "IAO:0000114",
         "hasLocalDefinition": true,
@@ -4950,11 +4743,6 @@
     "isPreferredRoot": false,
     "label": "quality is specified as",
     "linkedEntities": {
-      "IAO:0000419": {
-        "curie": "IAO:0000419",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000419"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000114": {
         "curie": "IAO:0000114",
         "hasLocalDefinition": true,
@@ -5075,11 +4863,6 @@
     "isPreferredRoot": false,
     "label": "expand expression to",
     "linkedEntities": {
-      "IAO:0000424": {
-        "curie": "IAO:0000424",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000424"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -5190,11 +4973,6 @@
     "isPreferredRoot": false,
     "label": "expand assertion to",
     "linkedEntities": {
-      "IAO:0000425": {
-        "curie": "IAO:0000425",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000425"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -5301,11 +5079,6 @@
     "isPreferredRoot": false,
     "label": "first order logic expression",
     "linkedEntities": {
-      "IAO:0000426": {
-        "curie": "IAO:0000426",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000426"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -5384,11 +5157,6 @@
     "isPreferredRoot": false,
     "label": "antisymmetric property",
     "linkedEntities": {
-      "IAO:0000427": {
-        "curie": "IAO:0000427",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000427"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -5506,11 +5274,6 @@
     "isPreferredRoot": false,
     "label": "has time stamp",
     "linkedEntities": {
-      "IAO:0000581": {
-        "curie": "IAO:0000581",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000581"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -5651,11 +5414,6 @@
     "isPreferredRoot": false,
     "label": "has measurement datum",
     "linkedEntities": {
-      "IAO:0000583": {
-        "curie": "IAO:0000583",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000583"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,
@@ -5800,11 +5558,6 @@
     "isPreferredRoot": false,
     "label": "OBO foundry unique label",
     "linkedEntities": {
-      "IAO:0000589": {
-        "curie": "IAO:0000589",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000589"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -5940,11 +5693,6 @@
     "isPreferredRoot": false,
     "label": "has ID digit count",
     "linkedEntities": {
-      "IAO:0000596": {
-        "curie": "IAO:0000596",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000596"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6049,11 +5797,6 @@
     "isPreferredRoot": false,
     "label": "has ID range allocated to",
     "linkedEntities": {
-      "IAO:0000597": {
-        "curie": "IAO:0000597",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000597"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6153,11 +5896,6 @@
     "isPreferredRoot": false,
     "label": "has ID policy for",
     "linkedEntities": {
-      "IAO:0000598": {
-        "curie": "IAO:0000598",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000598"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6262,11 +6000,6 @@
     "isPreferredRoot": false,
     "label": "has ID prefix",
     "linkedEntities": {
-      "IAO:0000599": {
-        "curie": "IAO:0000599",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000599"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6370,11 +6103,6 @@
     "isPreferredRoot": false,
     "label": "elucidation",
     "linkedEntities": {
-      "IAO:0000600": {
-        "curie": "IAO:0000600",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000600"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6473,11 +6201,6 @@
     "isPreferredRoot": false,
     "label": "has associated axiom(nl)",
     "linkedEntities": {
-      "IAO:0000601": {
-        "curie": "IAO:0000601",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000601"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6586,11 +6309,6 @@
     "isPreferredRoot": false,
     "label": "has associated axiom(fol)",
     "linkedEntities": {
-      "IAO:0000602": {
-        "curie": "IAO:0000602",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000602"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6706,11 +6424,6 @@
     "isPreferredRoot": false,
     "label": "is allocated id range",
     "linkedEntities": {
-      "IAO:0000603": {
-        "curie": "IAO:0000603",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000603"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6809,11 +6522,6 @@
     "isPreferredRoot": false,
     "label": "retired from use as of",
     "linkedEntities": {
-      "IAO:0000604": {
-        "curie": "IAO:0000604",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000604"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -6911,11 +6619,6 @@
     "isPreferredRoot": false,
     "label": "has ontology root term",
     "linkedEntities": {
-      "IAO:0000700": {
-        "curie": "IAO:0000700",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000700"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7011,11 +6714,6 @@
     "isPreferredRoot": false,
     "label": "may be identical to",
     "linkedEntities": {
-      "IAO:0006011": {
-        "curie": "IAO:0006011",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0006011"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7143,11 +6841,6 @@
     "isPreferredRoot": false,
     "label": "scheduled for obsoletion on or after",
     "linkedEntities": {
-      "IAO:0006012": {
-        "curie": "IAO:0006012",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0006012"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7259,11 +6952,6 @@
     "isPreferredRoot": false,
     "label": "has axiom label",
     "linkedEntities": {
-      "IAO:0010000": {
-        "curie": "IAO:0010000",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0010000"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7381,11 +7069,6 @@
     "isPreferredRoot": false,
     "label": "term replaced by",
     "linkedEntities": {
-      "IAO:0100001": {
-        "curie": "IAO:0100001",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0100001"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7531,11 +7214,6 @@
     "isPreferredRoot": false,
     "label": "has_specified_input",
     "linkedEntities": {
-      "OBI:0000293": {
-        "curie": "OBI:0000293",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OBI_0000293"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7704,11 +7382,6 @@
     "isPreferredRoot": false,
     "label": "is_specified_input_of",
     "linkedEntities": {
-      "OBI:0000295": {
-        "curie": "OBI:0000295",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OBI_0000295"
-      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "label",
         "hasLocalDefinition": true,
@@ -7771,11 +7444,6 @@
     "isPreferredRoot": false,
     "label": "has_specified_output",
     "linkedEntities": {
-      "OBI:0000299": {
-        "curie": "OBI:0000299",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OBI_0000299"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7940,11 +7608,6 @@
     "isPreferredRoot": false,
     "label": "is_specified_output_of",
     "linkedEntities": {
-      "OBI:0000312": {
-        "curie": "OBI:0000312",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OBI_0000312"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -8095,11 +7758,6 @@
     "isPreferredRoot": false,
     "label": "logical characteristic of object property",
     "linkedEntities": {
-      "OMO:0001001": {
-        "curie": "OMO:0001001",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OMO_0001001"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -8187,11 +7845,6 @@
     "isPreferredRoot": false,
     "label": "defined by construct",
     "linkedEntities": {
-      "OMO:0002000": {
-        "curie": "OMO:0002000",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/OMO_0002000"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -8341,11 +7994,6 @@
     "isPreferredRoot": false,
     "label": "characteristic of",
     "linkedEntities": {
-      "RO:0000052": {
-        "curie": "RO:0000052",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000052"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -8497,11 +8145,6 @@
     "isPreferredRoot": false,
     "label": "has characteristic",
     "linkedEntities": {
-      "RO:0000053": {
-        "curie": "RO:0000053",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000053"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000020": {
         "curie": "BFO:0000020",
         "hasLocalDefinition": true,
@@ -8659,11 +8302,6 @@
     "isPreferredRoot": false,
     "label": "participates in",
     "linkedEntities": {
-      "RO:0000056": {
-        "curie": "RO:0000056",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000056"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -8805,11 +8443,6 @@
     "isPreferredRoot": false,
     "label": "has participant",
     "linkedEntities": {
-      "RO:0000057": {
-        "curie": "RO:0000057",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000057"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000002": {
         "curie": "BFO:0000002",
         "hasLocalDefinition": true,
@@ -8969,11 +8602,6 @@
     "isPreferredRoot": false,
     "label": "is concretized as",
     "linkedEntities": {
-      "RO:0000058": {
-        "curie": "RO:0000058",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000058"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000020": {
         "curie": "BFO:0000020",
         "hasLocalDefinition": true,
@@ -9085,11 +8713,6 @@
     "isPreferredRoot": false,
     "label": "concretizes",
     "linkedEntities": {
-      "RO:0000059": {
-        "curie": "RO:0000059",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000059"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000020": {
         "curie": "BFO:0000020",
         "hasLocalDefinition": true,
@@ -9211,11 +8834,6 @@
     "isPreferredRoot": false,
     "label": "function of",
     "linkedEntities": {
-      "RO:0000079": {
-        "curie": "RO:0000079",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000079"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000034": {
         "curie": "BFO:0000034",
         "hasLocalDefinition": true,
@@ -9372,11 +8990,6 @@
     "isPreferredRoot": false,
     "label": "quality of",
     "linkedEntities": {
-      "RO:0000080": {
-        "curie": "RO:0000080",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000080"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -9523,11 +9136,6 @@
     "isPreferredRoot": false,
     "label": "role of",
     "linkedEntities": {
-      "RO:0000081": {
-        "curie": "RO:0000081",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000081"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -9667,11 +9275,6 @@
     "isPreferredRoot": false,
     "label": "has function",
     "linkedEntities": {
-      "RO:0000085": {
-        "curie": "RO:0000085",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000085"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -9818,11 +9421,6 @@
     "isPreferredRoot": false,
     "label": "has quality",
     "linkedEntities": {
-      "RO:0000086": {
-        "curie": "RO:0000086",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000086"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000019": {
         "curie": "BFO:0000019",
         "hasLocalDefinition": true,
@@ -9960,11 +9558,6 @@
     "isPreferredRoot": false,
     "label": "has role",
     "linkedEntities": {
-      "RO:0000087": {
-        "curie": "RO:0000087",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000087"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -10109,11 +9702,6 @@
     "isPreferredRoot": false,
     "label": "has disposition",
     "linkedEntities": {
-      "RO:0000091": {
-        "curie": "RO:0000091",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000091"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -10220,11 +9808,6 @@
     "isPreferredRoot": false,
     "label": "disposition of",
     "linkedEntities": {
-      "RO:0000092": {
-        "curie": "RO:0000092",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0000092"
-      },
       "http://purl.obolibrary.org/obo/RO_0000052": {
         "curie": "RO:0000052",
         "hasLocalDefinition": true,
@@ -10312,11 +9895,6 @@
     "isPreferredRoot": false,
     "label": "derives from",
     "linkedEntities": {
-      "RO:0001000": {
-        "curie": "RO:0001000",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0001000"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -10454,11 +10032,6 @@
     "isPreferredRoot": false,
     "label": "derives into",
     "linkedEntities": {
-      "RO:0001001": {
-        "curie": "RO:0001001",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0001001"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -10600,11 +10173,6 @@
     "isPreferredRoot": false,
     "label": "location of",
     "linkedEntities": {
-      "RO:0001015": {
-        "curie": "RO:0001015",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0001015"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -10803,11 +10371,6 @@
     "isPreferredRoot": false,
     "label": "located in",
     "linkedEntities": {
-      "RO:0001025": {
-        "curie": "RO:0001025",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0001025"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000004": {
         "curie": "BFO:0000004",
         "hasLocalDefinition": true,
@@ -10976,11 +10539,6 @@
     "isPreferredRoot": false,
     "label": "temporal interpretation",
     "linkedEntities": {
-      "RO:0001900": {
-        "curie": "RO:0001900",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0001900"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
@@ -11053,11 +10611,6 @@
     "isPreferredRoot": false,
     "label": "2D boundary of",
     "linkedEntities": {
-      "RO:0002000": {
-        "curie": "RO:0002000",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002000"
-      },
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
@@ -11198,11 +10751,6 @@
     "isPreferredRoot": false,
     "label": "has 2D boundary",
     "linkedEntities": {
-      "RO:0002002": {
-        "curie": "RO:0002002",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002002"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000040": {
         "curie": "BFO:0000040",
         "hasLocalDefinition": true,
@@ -11359,11 +10907,6 @@
     "isPreferredRoot": false,
     "label": "member of",
     "linkedEntities": {
-      "RO:0002350": {
-        "curie": "RO:0002350",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002350"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
@@ -11503,11 +11046,6 @@
     "isPreferredRoot": false,
     "label": "has member",
     "linkedEntities": {
-      "RO:0002351": {
-        "curie": "RO:0002351",
-        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "http://purl.obolibrary.org/obo/RO_0002351"
-      },
       "http://purl.obolibrary.org/obo/BFO_0000051": {
         "curie": "BFO:0000051",
         "hasLocalDefinition": true,

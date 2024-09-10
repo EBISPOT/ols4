@@ -3,7 +3,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "AllDifferent",
+    "curie": "OWL:AllDifferent",
     "definedBy": [
       "owl"
     ],
@@ -31,7 +31,7 @@
     "label": "AllDifferent",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -44,7 +44,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -57,7 +57,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -70,7 +70,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -83,7 +83,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -96,7 +96,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -114,7 +114,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "AllDifferent",
+    "shortForm": "OWL_AllDifferent",
     "type": [
       "class",
       "entity"
@@ -124,7 +124,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "AllDisjointClasses",
+    "curie": "OWL:AllDisjointClasses",
     "definedBy": [
       "owl"
     ],
@@ -152,7 +152,7 @@
     "label": "AllDisjointClasses",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -165,7 +165,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -178,7 +178,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -191,7 +191,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -204,7 +204,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -217,7 +217,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -235,7 +235,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "AllDisjointClasses",
+    "shortForm": "OWL_AllDisjointClasses",
     "type": [
       "class",
       "entity"
@@ -245,7 +245,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "AllDisjointProperties",
+    "curie": "OWL:AllDisjointProperties",
     "definedBy": [
       "owl"
     ],
@@ -273,7 +273,7 @@
     "label": "AllDisjointProperties",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -286,7 +286,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -299,7 +299,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -312,7 +312,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -325,7 +325,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -338,7 +338,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -356,7 +356,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "AllDisjointProperties",
+    "shortForm": "OWL_AllDisjointProperties",
     "type": [
       "class",
       "entity"
@@ -366,7 +366,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Annotation",
+    "curie": "OWL:Annotation",
     "definedBy": [
       "owl"
     ],
@@ -394,7 +394,7 @@
     "label": "Annotation",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -407,7 +407,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -420,7 +420,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -433,7 +433,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -446,7 +446,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -459,7 +459,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -477,7 +477,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Annotation",
+    "shortForm": "OWL_Annotation",
     "type": [
       "class",
       "entity"
@@ -487,7 +487,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "AnnotationProperty",
+    "curie": "OWL:AnnotationProperty",
     "definedBy": [
       "owl"
     ],
@@ -511,7 +511,7 @@
     "label": "AnnotationProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -524,7 +524,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -537,7 +537,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -550,7 +550,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -563,7 +563,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -581,7 +581,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "AnnotationProperty",
+    "shortForm": "OWL_AnnotationProperty",
     "type": [
       "class",
       "entity"
@@ -591,7 +591,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "AsymmetricProperty",
+    "curie": "OWL:AsymmetricProperty",
     "definedBy": [
       "owl"
     ],
@@ -619,7 +619,7 @@
     "label": "AsymmetricProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -632,7 +632,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -645,7 +645,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -658,7 +658,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -671,7 +671,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -689,7 +689,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "AsymmetricProperty",
+    "shortForm": "OWL_AsymmetricProperty",
     "type": [
       "class",
       "entity"
@@ -699,7 +699,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Axiom",
+    "curie": "OWL:Axiom",
     "definedBy": [
       "owl"
     ],
@@ -727,7 +727,7 @@
     "label": "Axiom",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -740,7 +740,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -753,7 +753,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -766,7 +766,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -779,7 +779,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -792,7 +792,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -810,7 +810,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Axiom",
+    "shortForm": "OWL_Axiom",
     "type": [
       "class",
       "entity"
@@ -820,7 +820,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Class",
+    "curie": "OWL:Class",
     "definedBy": [
       "owl"
     ],
@@ -854,7 +854,7 @@
     "label": "Class",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -867,7 +867,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -880,7 +880,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -893,7 +893,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -906,7 +906,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -919,7 +919,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -937,7 +937,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Class",
+    "shortForm": "OWL_Class",
     "type": [
       "class",
       "entity"
@@ -947,7 +947,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "DataRange",
+    "curie": "OWL:DataRange",
     "definedBy": [
       "owl"
     ],
@@ -983,7 +983,7 @@
     "label": "DataRange",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -996,7 +996,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Datatype": {
-        "curie": "Datatype",
+        "curie": "RDFS:Datatype",
         "definedBy": [
           "rdfs"
         ],
@@ -1009,7 +1009,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -1022,7 +1022,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1035,7 +1035,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1048,7 +1048,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1061,7 +1061,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1079,7 +1079,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "DataRange",
+    "shortForm": "OWL_DataRange",
     "type": [
       "class",
       "entity"
@@ -1089,7 +1089,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "DatatypeProperty",
+    "curie": "OWL:DatatypeProperty",
     "definedBy": [
       "owl"
     ],
@@ -1113,7 +1113,7 @@
     "label": "DatatypeProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1126,7 +1126,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1139,7 +1139,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1152,7 +1152,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1165,7 +1165,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1183,7 +1183,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "DatatypeProperty",
+    "shortForm": "OWL_DatatypeProperty",
     "type": [
       "class",
       "entity"
@@ -1193,7 +1193,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "DeprecatedClass",
+    "curie": "OWL:DeprecatedClass",
     "definedBy": [
       "owl"
     ],
@@ -1227,7 +1227,7 @@
     "label": "DeprecatedClass",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1240,7 +1240,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -1253,7 +1253,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1266,7 +1266,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1279,7 +1279,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1292,7 +1292,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1310,7 +1310,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "DeprecatedClass",
+    "shortForm": "OWL_DeprecatedClass",
     "type": [
       "class",
       "entity"
@@ -1320,7 +1320,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "DeprecatedProperty",
+    "curie": "OWL:DeprecatedProperty",
     "definedBy": [
       "owl"
     ],
@@ -1344,7 +1344,7 @@
     "label": "DeprecatedProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1357,7 +1357,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1370,7 +1370,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1383,7 +1383,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1396,7 +1396,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1414,7 +1414,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "DeprecatedProperty",
+    "shortForm": "OWL_DeprecatedProperty",
     "type": [
       "class",
       "entity"
@@ -1424,7 +1424,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "FunctionalProperty",
+    "curie": "OWL:FunctionalProperty",
     "definedBy": [
       "owl"
     ],
@@ -1448,7 +1448,7 @@
     "label": "FunctionalProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1461,7 +1461,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1474,7 +1474,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1487,7 +1487,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1500,7 +1500,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1518,7 +1518,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "FunctionalProperty",
+    "shortForm": "OWL_FunctionalProperty",
     "type": [
       "class",
       "entity"
@@ -1528,7 +1528,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "InverseFunctionalProperty",
+    "curie": "OWL:InverseFunctionalProperty",
     "definedBy": [
       "owl"
     ],
@@ -1556,7 +1556,7 @@
     "label": "InverseFunctionalProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1569,7 +1569,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1582,7 +1582,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1595,7 +1595,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1608,7 +1608,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1626,7 +1626,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "InverseFunctionalProperty",
+    "shortForm": "OWL_InverseFunctionalProperty",
     "type": [
       "class",
       "entity"
@@ -1636,7 +1636,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "IrreflexiveProperty",
+    "curie": "OWL:IrreflexiveProperty",
     "definedBy": [
       "owl"
     ],
@@ -1664,7 +1664,7 @@
     "label": "IrreflexiveProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1677,7 +1677,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1690,7 +1690,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1703,7 +1703,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1716,7 +1716,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1734,7 +1734,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "IrreflexiveProperty",
+    "shortForm": "OWL_IrreflexiveProperty",
     "type": [
       "class",
       "entity"
@@ -1744,7 +1744,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "NamedIndividual",
+    "curie": "OWL:NamedIndividual",
     "definedBy": [
       "owl"
     ],
@@ -1772,7 +1772,7 @@
     "label": "NamedIndividual",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1785,7 +1785,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1798,7 +1798,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1811,7 +1811,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1824,7 +1824,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1842,7 +1842,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "NamedIndividual",
+    "shortForm": "OWL_NamedIndividual",
     "type": [
       "class",
       "entity"
@@ -1852,7 +1852,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "NegativePropertyAssertion",
+    "curie": "OWL:NegativePropertyAssertion",
     "definedBy": [
       "owl"
     ],
@@ -1880,7 +1880,7 @@
     "label": "NegativePropertyAssertion",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -1893,7 +1893,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -1906,7 +1906,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -1919,7 +1919,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -1932,7 +1932,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -1945,7 +1945,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -1963,7 +1963,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "NegativePropertyAssertion",
+    "shortForm": "OWL_NegativePropertyAssertion",
     "type": [
       "class",
       "entity"
@@ -1973,7 +1973,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Nothing",
+    "curie": "OWL:Nothing",
     "definedBy": [
       "owl"
     ],
@@ -2001,7 +2001,7 @@
     "label": "Nothing",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2014,7 +2014,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2027,7 +2027,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2040,7 +2040,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2058,7 +2058,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Nothing",
+    "shortForm": "OWL_Nothing",
     "type": [
       "class",
       "entity"
@@ -2068,7 +2068,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "ObjectProperty",
+    "curie": "OWL:ObjectProperty",
     "definedBy": [
       "owl"
     ],
@@ -2092,7 +2092,7 @@
     "label": "ObjectProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2105,7 +2105,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2118,7 +2118,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2131,7 +2131,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2144,7 +2144,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2162,7 +2162,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "ObjectProperty",
+    "shortForm": "OWL_ObjectProperty",
     "type": [
       "class",
       "entity"
@@ -2172,7 +2172,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Ontology",
+    "curie": "OWL:Ontology",
     "definedBy": [
       "owl"
     ],
@@ -2200,7 +2200,7 @@
     "label": "Ontology",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2213,7 +2213,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -2226,7 +2226,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2239,7 +2239,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2252,7 +2252,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2265,7 +2265,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2283,7 +2283,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Ontology",
+    "shortForm": "OWL_Ontology",
     "type": [
       "class",
       "entity"
@@ -2293,7 +2293,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "OntologyProperty",
+    "curie": "OWL:OntologyProperty",
     "definedBy": [
       "owl"
     ],
@@ -2317,7 +2317,7 @@
     "label": "OntologyProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2330,7 +2330,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2343,7 +2343,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2356,7 +2356,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2369,7 +2369,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2387,7 +2387,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "OntologyProperty",
+    "shortForm": "OWL_OntologyProperty",
     "type": [
       "class",
       "entity"
@@ -2397,7 +2397,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "ReflexiveProperty",
+    "curie": "OWL:ReflexiveProperty",
     "definedBy": [
       "owl"
     ],
@@ -2425,7 +2425,7 @@
     "label": "ReflexiveProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2438,7 +2438,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2451,7 +2451,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2464,7 +2464,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2477,7 +2477,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2495,7 +2495,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "ReflexiveProperty",
+    "shortForm": "OWL_ReflexiveProperty",
     "type": [
       "class",
       "entity"
@@ -2505,7 +2505,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Restriction",
+    "curie": "OWL:Restriction",
     "definedBy": [
       "owl"
     ],
@@ -2541,7 +2541,7 @@
     "label": "Restriction",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2554,7 +2554,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -2567,7 +2567,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2580,7 +2580,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2593,7 +2593,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2606,7 +2606,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2624,7 +2624,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Restriction",
+    "shortForm": "OWL_Restriction",
     "type": [
       "class",
       "entity"
@@ -2634,7 +2634,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "SymmetricProperty",
+    "curie": "OWL:SymmetricProperty",
     "definedBy": [
       "owl"
     ],
@@ -2662,7 +2662,7 @@
     "label": "SymmetricProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2675,7 +2675,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2688,7 +2688,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2701,7 +2701,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2714,7 +2714,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2732,7 +2732,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "SymmetricProperty",
+    "shortForm": "OWL_SymmetricProperty",
     "type": [
       "class",
       "entity"
@@ -2742,7 +2742,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "Thing",
+    "curie": "OWL:Thing",
     "definedBy": [
       "owl"
     ],
@@ -2764,7 +2764,7 @@
     "label": "Thing",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2777,7 +2777,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2790,7 +2790,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2808,7 +2808,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "Thing",
+    "shortForm": "OWL_Thing",
     "type": [
       "class",
       "entity"
@@ -2818,7 +2818,7 @@
     "appearsIn": [
       "owl"
     ],
-    "curie": "TransitiveProperty",
+    "curie": "OWL:TransitiveProperty",
     "definedBy": [
       "owl"
     ],
@@ -2846,7 +2846,7 @@
     "label": "TransitiveProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -2859,7 +2859,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2872,7 +2872,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2885,7 +2885,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -2898,7 +2898,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -2916,7 +2916,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
-    "shortForm": "TransitiveProperty",
+    "shortForm": "OWL_TransitiveProperty",
     "type": [
       "class",
       "entity"
@@ -2927,7 +2927,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Class",
+    "curie": "RDFS:Class",
     "definedBy": [
       "rdfs"
     ],
@@ -2955,7 +2955,7 @@
     "label": "Class",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -2968,7 +2968,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -2981,7 +2981,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -2994,7 +2994,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3007,7 +3007,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3025,7 +3025,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "Class",
+    "shortForm": "RDFS_Class",
     "type": [
       "class",
       "entity"
@@ -3036,7 +3036,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Container",
+    "curie": "RDFS:Container",
     "definedBy": [
       "rdfs"
     ],
@@ -3064,7 +3064,7 @@
     "label": "Container",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -3077,7 +3077,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -3090,7 +3090,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3103,7 +3103,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3116,7 +3116,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3129,7 +3129,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3147,7 +3147,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "Container",
+    "shortForm": "RDFS_Container",
     "type": [
       "class",
       "entity"
@@ -3158,7 +3158,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "ContainerMembershipProperty",
+    "curie": "RDFS:ContainerMembershipProperty",
     "definedBy": [
       "rdfs"
     ],
@@ -3182,7 +3182,7 @@
     "label": "ContainerMembershipProperty",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -3195,7 +3195,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3208,7 +3208,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3221,7 +3221,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3234,7 +3234,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3252,7 +3252,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "ContainerMembershipProperty",
+    "shortForm": "RDFS_ContainerMembershipProperty",
     "type": [
       "class",
       "entity"
@@ -3263,7 +3263,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Datatype",
+    "curie": "RDFS:Datatype",
     "definedBy": [
       "rdfs"
     ],
@@ -3297,7 +3297,7 @@
     "label": "Datatype",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -3310,7 +3310,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -3323,7 +3323,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3336,7 +3336,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3349,7 +3349,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3362,7 +3362,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3380,7 +3380,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "Datatype",
+    "shortForm": "RDFS_Datatype",
     "type": [
       "class",
       "entity"
@@ -3391,7 +3391,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Literal",
+    "curie": "RDFS:Literal",
     "definedBy": [
       "rdfs"
     ],
@@ -3419,7 +3419,7 @@
     "label": "Literal",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -3432,7 +3432,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "Resource",
+        "curie": "RDFS:Resource",
         "definedBy": [
           "rdfs"
         ],
@@ -3445,7 +3445,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3458,7 +3458,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3471,7 +3471,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3484,7 +3484,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -3502,7 +3502,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "Literal",
+    "shortForm": "RDFS_Literal",
     "type": [
       "class",
       "entity"
@@ -3513,7 +3513,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Resource",
+    "curie": "RDFS:Resource",
     "definedBy": [
       "rdfs"
     ],
@@ -3535,7 +3535,7 @@
     "label": "Resource",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
-        "curie": "Class",
+        "curie": "RDFS:Class",
         "definedBy": [
           "rdfs"
         ],
@@ -3548,7 +3548,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -3561,7 +3561,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -3574,7 +3574,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -3592,7 +3592,7 @@
     "ontologyId": "owl",
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
-    "shortForm": "Resource",
+    "shortForm": "RDFS_Resource",
     "type": [
       "class",
       "entity"
