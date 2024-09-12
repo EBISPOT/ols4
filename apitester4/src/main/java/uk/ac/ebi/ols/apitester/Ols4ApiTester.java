@@ -345,19 +345,15 @@ public class Ols4ApiTester {
 		System.out.println("GET " + url);
 
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		InputStream is = null;
 
 		if (100 <= conn.getResponseCode() && conn.getResponseCode() <= 399) {
-			InputStream is = conn.getInputStream();
-			Reader reader = new InputStreamReader(is, "UTF-8");
-			JsonElement result = JsonParser.parseReader(reader);
-			return result;
+			is = conn.getInputStream();
 		} else {
-			InputStream is = conn.getErrorStream();
-			Reader reader = new InputStreamReader(is, "UTF-8");
-			JsonObject error = new JsonObject();
-			error.addProperty("error", IOUtils.toString(is, StandardCharsets.UTF_8));
-			return error;
+			is = conn.getErrorStream();
 		}
+		Reader reader = new InputStreamReader(is, "UTF-8");
+        return JsonParser.parseReader(reader);
 	}
 
 	public JsonElement normalizeURLs(JsonElement element) {

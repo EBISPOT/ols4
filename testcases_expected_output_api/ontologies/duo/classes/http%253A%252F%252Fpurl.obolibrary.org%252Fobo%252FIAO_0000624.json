@@ -1,3 +1,4 @@
 {
-  "error": "<html><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id='created'>Fri Aug 30 13:21:47 BST 2024</div><div>There was an unexpected error (type=Not Found, status=404).</div></body></html>"
+  "status": 404,
+  "message": "Endpoint not found: /api/ontologies/duo/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000624"
 }
