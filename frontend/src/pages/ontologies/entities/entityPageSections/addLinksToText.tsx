@@ -46,6 +46,8 @@ export default function addLinksToText(
       n !== -1;
       n = text.indexOf(entityId, n)
     ) {
+      // We need to handle this case when entity ID is part of a URL and it then gets linked to an entity but
+      // resulting url is broken. So, we need to keep the URL as is if the entity ID is part of a URL.
       // Check if the entity ID is within any URL range
       let isWithinURL = urlMatches.some(
           (urlRange) =>
