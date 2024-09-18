@@ -32,7 +32,7 @@ spec:
               cpu: 3
             limits:
               memory: 20Gi
-              cpu: 3
+              cpu: 4
           env:
             - name: NEO4J_HEAP_MEMORY
               value: 15g
