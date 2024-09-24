@@ -1,71 +1,144 @@
 {
   "ontologies": [
-	  {
-		  "id": "upheno",
-		  "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/latest/download/upheno.owl"
-	  },
-      {
-          "id": "uniprotrdfs",
-          "ontology_purl": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/core.owl"
-      },
-	  {
-		  "id": "hra",
-		  "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl",
-                  "hierarchical_property": [
-		      "http://purl.org/ccf/ccf_part_of"
-	          ],
-                  "label_property": [
-		      "http://purl.org/ccf/ccf_pref_label"
-	          ]
-	  },
-	  {
-		  "id": "dcat",
-		  "ontology_purl": "https://www.w3.org/ns/dcat.ttl"
-	  },
-	  {
-		  "id": "biolink",
-		  "ontology_purl": "https://github.com/biolink/biolink-model/raw/master/project/owl/biolink_model.owl.ttl",
-		  "homepage": "https://biolink.github.io/biolink-model/"
-	  },
-	  {
-         "id": "semapv",
-		  "title": "Semantic Mapping Vocabulary",
-		  "description": "The Semantic Mapping Vocabulary (SEMAPV) captures concepts and relations related to semantic matching, including types of matching (e.g. lexical, manually curated), preprocessing methods and specialised mapping relations.",
-		  "ontology_purl": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
-		  "homepage": "https://mapping-commons.github.io/semantic-mapping-vocabulary/",
-		  "preferredPrefix": "semapv",
-		  "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
-		  "synonym_property": [
-			  "http://www.w3.org/2004/02/skos/core#altLabel"
-		  ],
-                  "base_uri": ["https://w3id.org/semapv/vocab/"]
-          },
-	           
     {
-                  "id": "slm",
-		  "title": "SwissLipids",
-		  "description": "SwissLipids is a curated resource that provides information about known lipids, including lipid structure, metabolism, interactions, and subcellular and tissue localization. Information is curated from peer-reviewed literature and referenced using established ontologies, and provided with full provenance and evidence codes for curated assertions.",
-		  "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/swisslipids.ttl",
-		  "preferredPrefix": "SLM",
-                  "base_uri": ["https://swisslipids.org/rdf/SLM_"]
-          },
+      "id": "upheno",
+      "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/latest/download/upheno.owl"
+    },
     {
-                  "id": "lipidmaps",
-		  "title": "LIPID MAPS",
-		  "ontology_purl": "https://lipidmaps.org/files/?file=sparql_lipids&ext=ttl",
-		  "preferredPrefix": "LIPIDMAPS",
+      "id": "uniprotrdfs",
+      "ontology_purl": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/core.owl"
+    },
+    {
+      "id": "hra",
+      "ontology_purl": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl",
+      "hierarchical_property": [
+        "http://purl.org/ccf/ccf_part_of"
+      ],
+      "label_property": [
+        "http://purl.org/ccf/ccf_pref_label"
+      ]
+    },
+    {
+      "id": "dcat",
+      "ontology_purl": "https://www.w3.org/ns/dcat.ttl"
+    },
+    {
+      "id": "biolink",
+      "ontology_purl": "https://github.com/biolink/biolink-model/raw/master/project/owl/biolink_model.owl.ttl",
+      "homepage": "https://biolink.github.io/biolink-model/"
+    },
+    {
+      "id": "dhba",
+      "creator": [
+        "David Osumi-Sutherland",
+        "Huseyin Kir"
+      ],
+      "preferredPrefix": "DHBA",
+      "title": "Developing Human Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/dhbao",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Human Brain Atlas (DHBA) Structure Graph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/dhbao",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "https://purl.brain-bican.org/ontology/dhbao/DHBA_"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/dhbao/dhbao.owl"
+    },
+    {
+      "id": "hba",
+      "creator": [
+        "David Osumi-Sutherland",
+        "Huseyin Kir"
+      ],
+      "preferredPrefix": "HBA",
+      "title": "Human Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/hbao",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Human Brain Atlas (HBA) Structure Graph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/hbao",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "https://purl.brain-bican.org/ontology/hbao/HBA_"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/hbao/hbao.owl"
+    },
+    {
+      "id": "semapv",
+      "title": "Semantic Mapping Vocabulary",
+      "description": "The Semantic Mapping Vocabulary (SEMAPV) captures concepts and relations related to semantic matching, including types of matching (e.g. lexical, manually curated), preprocessing methods and specialised mapping relations.",
+      "ontology_purl": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
+      "homepage": "https://mapping-commons.github.io/semantic-mapping-vocabulary/",
+      "preferredPrefix": "semapv",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "base_uri": [
+        "https://w3id.org/semapv/vocab/"
+      ]
+    },
+    {
+      "id": "slm",
+      "title": "SwissLipids",
+      "description": "SwissLipids is a curated resource that provides information about known lipids, including lipid structure, metabolism, interactions, and subcellular and tissue localization. Information is curated from peer-reviewed literature and referenced using established ontologies, and provided with full provenance and evidence codes for curated assertions.",
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/swisslipids.ttl",
+      "preferredPrefix": "SLM",
+      "base_uri": [
+        "https://swisslipids.org/rdf/SLM_"
+      ]
+    },
+    {
+      "id": "lipidmaps",
+      "title": "LIPID MAPS",
+      "ontology_purl": "https://lipidmaps.org/files/?file=sparql_lipids&ext=ttl",
+      "preferredPrefix": "LIPIDMAPS",
       "homepage": "https://lipidmaps.org",
-                  "base_uri": ["https://www.lipidmaps.org/rdf/"]
-          },
-	            {
-                  "id": "oio",
-                  "ontology_purl": "https://raw.githubusercontent.com/geneontology/go-ontology/master/contrib/oboInOwl",
-                  "base_uri": ["http://www.geneontology.org/formats/oboInOwl#"]
-          },
-	      {
+      "base_uri": [
+        "https://www.lipidmaps.org/rdf/"
+      ]
+    },
+    {
+      "id": "oio",
+      "ontology_purl": "https://raw.githubusercontent.com/geneontology/go-ontology/master/contrib/oboInOwl",
+      "base_uri": [
+        "http://www.geneontology.org/formats/oboInOwl#"
+      ]
+    },
+    {
       "id": "cao",
       "ontology_purl": "https://champ.stuchalk.domains.unf.edu/images/ontology/cao.owl",
-      "base_uri": ["http://champ-project.org/images/ontology/cao.owl#CAO_"],
+      "base_uri": [
+        "http://champ-project.org/images/ontology/cao.owl#CAO_"
+      ],
       "homepage": "https://champ.stuchalk.domains.unf.edu/cao",
       "mailing_list": "schalk@unf.edu",
       "title": "The Chemical Analysis Ontology",
@@ -74,48 +147,62 @@
         "Stuart Chalk"
       ]
     },
-	      {
+    {
       "id": "rdfs",
       "ontology_purl": "https://www.w3.org/2000/01/rdf-schema",
-      "base_uri": ["http://www.w3.org/2000/01/rdf-schema#"]
+      "base_uri": [
+        "http://www.w3.org/2000/01/rdf-schema#"
+      ]
     },
     {
       "id": "owl",
       "ontology_purl": "https://www.w3.org/2002/07/owl",
-      "base_uri": ["http://www.w3.org/2002/07/owl#"]
+      "base_uri": [
+        "http://www.w3.org/2002/07/owl#"
+      ]
     },
     {
-        "id": "skos",
-        "ontology_purl": "http://www.w3.org/TR/skos-reference/skos.rdf",
-        "base_uri": ["http://www.w3.org/2004/02/skos/core#"]
+      "id": "skos",
+      "ontology_purl": "http://www.w3.org/TR/skos-reference/skos.rdf",
+      "base_uri": [
+        "http://www.w3.org/2004/02/skos/core#"
+      ]
     },
     {
-        "id": "dcterms",
-        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf",
-        "base_uri": ["http://purl.org/dc/terms/"]
+      "id": "dcterms",
+      "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf",
+      "base_uri": [
+        "http://purl.org/dc/terms/"
+      ]
     },
     {
-        "id": "dc",
-        "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.rdf",
-        "base_uri": ["http://purl.org/dc/elements/1.1/"]
-    },
-        {
-        "id": "schemaorg_http",
-        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-http.rdf",
-        "base_uri": ["http://schema.org/"]
+      "id": "dc",
+      "ontology_purl": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.rdf",
+      "base_uri": [
+        "http://purl.org/dc/elements/1.1/"
+      ]
     },
     {
-        "id": "schemaorg_https",
-        "ontology_purl": "https://schema.org/version/latest/schemaorg-all-https.rdf",
-        "base_uri": ["https://schema.org/"]
+      "id": "schemaorg_http",
+      "ontology_purl": "https://schema.org/version/latest/schemaorg-all-http.rdf",
+      "base_uri": [
+        "http://schema.org/"
+      ]
     },
-	  {
-		  "id": "uberon",
-		  "preferred_root_term": [
-			  "http://purl.obolibrary.org/obo/UBERON_0000104",
-			  "http://purl.obolibrary.org/obo/UBERON_0001062"
-		  ]
-	  },
+    {
+      "id": "schemaorg_https",
+      "ontology_purl": "https://schema.org/version/latest/schemaorg-all-https.rdf",
+      "base_uri": [
+        "https://schema.org/"
+      ]
+    },
+    {
+      "id": "uberon",
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/UBERON_0000104",
+        "http://purl.obolibrary.org/obo/UBERON_0001062"
+      ]
+    },
     {
       "id": "phi",
       "preferredPrefix": "PHI",
@@ -260,7 +347,7 @@
       ],
       "hierarchical_property": [
         "http://purl.obolibrary.org/obo/BFO_0000050",
-	"http://www.orpha.net/ORDO/Orphanet_C021"
+        "http://www.orpha.net/ORDO/Orphanet_C021"
       ],
       "base_uri": [
         "http://www.orpha.net/ORDO/Orphanet_"
@@ -899,7 +986,10 @@
       ],
       "reasoner": "EL",
       "oboSlims": false,
-        "base_uri":["http://www.ontology-of-units-of-measure.org/resource/om-2/","http://www.wurvoc.org/vocabularies/om-2.0/"],
+      "base_uri": [
+        "http://www.ontology-of-units-of-measure.org/resource/om-2/",
+        "http://www.wurvoc.org/vocabularies/om-2.0/"
+      ],
       "ontology_purl": "https://raw.githubusercontent.com/HajoRijgersberg/OM/master/om-2.0.rdf"
     },
     {
@@ -1030,186 +1120,186 @@
       "ontology_purl": "https://raw.githubusercontent.com/imodpasteur/ShareLoc.XYZ/ontology/shareloc.owl"
     },
     {
-        "id": "ccf",
-        "preferredPrefix": "CCF",
-        "title": "Human Reference Atlas Common Coordinate Framework Ontology",
-        "is_foundry": false,
-        "uri": "http://purl.org/ccf/ccf.owl",
-        "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
-        "definition_property": [
-            "http://purl.obolibrary.org/obo/IAO_0000115"
-        ],
-        "hierarchical_property": [
-            "http://purl.obolibrary.org/obo/BFO_0000050"
-        ],
-        "synonym_property": [
-            "http://purl.org/sig/ont/fma/synonym",
-            "http://www.lungmap.net/ontologies/database#synonym",
-            "https://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
-        ],
-        "preferred_root_term": [
-            "http://purl.obolibrary.org/obo/UBERON_0000955",
-            "http://purl.obolibrary.org/obo/UBERON_0000029",
-            "http://purl.obolibrary.org/obo/UBERON_0000970",
-            "http://purl.obolibrary.org/obo/UBERON_0003889",
-            "http://purl.obolibrary.org/obo/UBERON_0000948",
-            "http://purl.obolibrary.org/obo/UBERON_0002113",
-            "http://purl.obolibrary.org/obo/UBERON_0001465",
-            "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "http://purl.obolibrary.org/obo/UBERON_0002048",
-            "http://purl.obolibrary.org/obo/UBERON_0000992",
-            "http://purl.obolibrary.org/obo/UBERON_0001264",
-            "http://purl.obolibrary.org/obo/UBERON_0001270",
-            "http://purl.obolibrary.org/obo/UBERON_0002367",
-            "http://purl.obolibrary.org/obo/UBERON_0002097",
-            "http://purl.obolibrary.org/obo/UBERON_0002108",
-            "http://purl.obolibrary.org/obo/UBERON_0000059",
-            "http://purl.obolibrary.org/obo/UBERON_0002106",
-            "http://purl.obolibrary.org/obo/UBERON_0002370",
-            "http://purl.obolibrary.org/obo/UBERON_0000056",
-            "http://purl.obolibrary.org/obo/UBERON_0001255",
-            "http://purl.obolibrary.org/obo/UBERON_0000995",
-            "http://purl.obolibrary.org/obo/UBERON_0004537",
-            "http://purl.obolibrary.org/obo/UBERON_0000178",
-            "http://purl.obolibrary.org/obo/UBERON_0004536"
-        ],
-        "base_uri": [
-            "https://purl.org/ccf/"
-        ],
-        "oboSlims": false,
-        "ontology_purl": "https://purl.org/ccf/2.0/ccf.owl",
-        "creator": [
-            "Aaron Horning (0000-0003-3247-0798), Adel Eskaros (0000-0001-9028-338X), Al Powers (0000-0003-1941-5786), Amy Bernard (0000-0003-2540-1153), Andrea J. Radtke (0000-0003-4379-8967), Angela Kruse (0000-0001-8776-2769), Anna Maria Masci (0000-0003-1940-6740), Ansley Conchola (0000-0002-2385-6712), Avinash Boppana (0000-0003-0834-8274), Ayako Suzuki (0000-0003-1824-1067), Becky Steck (0000-0001-7565-4904), Bernard de Bono (0000-0001-7183-2638), Bertie Gottgens (0000-0001-6302-5705), Birte Steiniger (0000-0002-3602-7331), Blue Lake (0000-0002-8637-9044), Chad  Vezina (0000-0001-7058-5399), Christine Curcio (0000-0001-8776-2769; 0000-0001-9769-1538), Clayton Mathews (0000-0002-8817-6355), Clive Wasserfall (0000-0002-3522-8932), David Anderson (0000-0002-3866-0923), David M. Owens, David Osumi-Sutherland (0000-0002-7073-9172), David Rowe (0000-0001-7852-7775), Dhruv Singhal (0000-0002-6300-1647), Diane Saunders (0000-0002-8849-6746), Douglas Strand (0000-0002-0746-927X), Ed Morrisey (0000-0001-5785-1939), Elaine Jaffe (0000-0003-4632-0301), Elisa Laurenti (0000-0002-9917-9092), Elizabeth Tsui (0000-0003-4503-8494), Ellen M. Quardokus (0000-0001-7655-4833), Fiona Ginty (0000-0001-6638-683X), Gloria Pryhuber (0000-0002-9185-3994), Griffin  Weber (0000-0002-2597-881X), Hemali Phatnani (0000-0002-6571-3891), Ioannis Vlachos (0000-0002-8849-808X), Jakub Abramson (0000-0002-1745-8996), Jeff Whitsett (0000-0003-1668-5174), Jeffrey Spraggins (0000-0001-9198-5498), Jeremy A. Miller (0000-0003-4549-588X), Joel Sunshine (0000-0001-9987-6712), John Hickey (0000-0001-5675-3974), Jonhan Ho (0000-0002-1134-8585), Josef Hardi (0000-0002-2533-6681), Kalyanam Shivkumar (0000-0002-4121-1766), Kathleen ONeill (0000-0003-1980-6840), Katy Börner (0000-0002-3321-6137), Kevin Schey (0000-0001-9769-1538), Kristin Ardlie (0000-0003-4272-6283), Laura Jardine (0000-0003-4495-8205), Lou Falo (0000-0001-9813-0433), Luke Boulter (0000-0002-7954-6705), M. Todd Valerius (0000-0001-8143-9231), Maigan Brusko (0000-0002-4331-2202), Marc Halushka (0000-0002-7112-7389), Marda Jorgensen (0000-0002-7250-3569), Mark Arends (0000-0002-6826-8770), Martha Campbell-Thompson (0000-0001-6878-1235), Martijn Nawijn (0000-0003-3372-6521), Maxim Itkin (0000-0003-1361-7109), Monica M. Laronda (0000-0001-7840-4695), Muzlifah A. Haniffa (0000-0002-3927-2084), Natalie Rodriguez (0000-0001-6870-0300), Nazanin Ebrahimi (0000-0001-7183-2638), Peter Hanna (0000-0003-3092-5090), Purushotha Tata (0000-0003-4837-0337), Rachel Dull (0000-0002-0864-7007), Rajeev Malhotra (0000-0003-0120-4630), Rebecca T. Beuschel (0000-0002-3882-457X), Richard LeDuc (0000-0002-6951-2923), Robert Seifert (0000-0002-4404-8116), Sanjay Jain (0000-0003-2804-127X), Sarah A. Teichmann (0000-0002-6294-6366), Shin Lin (0000-0003-0118-0413), Song-Lin Ding (0000-0002-7072-5272), Stefania Pittaluga (0000-0001-7688-1439), Sujin Lee (0000-0002-6692-6880), Teri A. Longacre (0000-0002-0935-7300), Tim Kendall (0000-0002-4174-2786), Tom Taghon (000-0002-5781-0288), Xin Sun (0000-0002-9185-3994), Yiing Lin (0000-0002-0317-7608), Yongqun He (0000-0001-9189-9661), Z. Gordon Jiang (0000-0003-0495-9940)"
-        ],
-        "description": "The Common Coordinate Framework (CCF) Ontology is an application ontology built to support the development of the Human Reference Atlas (HRA).  It unifies vocabulary for HRA construction and usage—making it possible to ingest external data sources; supporting uniform tissue sample registration that includes the spatial positioning and semantic annotations within 3D reference organs; and supporting user-formulated cross-domain queries over tissue donor properties, anatomical structures, cell types, biomarkers, and 3D space. The CCF Ontology consists of three major ontologies. The Biological Structure Ontology records anatomical structures, cell types, and biomarkers (ASCT+B) and the relationships between them.  The ASCT+B tables are authored by human experts using templated Google Sheets. The biomarkers, cell types, and anatomical structures are mapped to existing ontologies (Uberon/FMA, CL, HGNC) whenever possible.  All relationships between anatomical structures and from cell types to anatomical structures are valid Uberon and CL relationships. The Spatial Ontology defines the shape, size, location, and rotation of experimental tissue and data major anatomical structures in the 3D Reference Object Library. The Specimen Ontology captures the sex, age, and other information on donors that provided tissue data used in the construction of the HRA.",
-        "homepage": "https://hubmapconsortium.github.io/ccf/pages/ccf-ontology.html",
-        "mailing_list": "infoccf@indiana.edu"
+      "id": "ccf",
+      "preferredPrefix": "CCF",
+      "title": "Human Reference Atlas Common Coordinate Framework Ontology",
+      "is_foundry": false,
+      "uri": "http://purl.org/ccf/ccf.owl",
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "synonym_property": [
+        "http://purl.org/sig/ont/fma/synonym",
+        "http://www.lungmap.net/ontologies/database#synonym",
+        "https://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/UBERON_0000955",
+        "http://purl.obolibrary.org/obo/UBERON_0000029",
+        "http://purl.obolibrary.org/obo/UBERON_0000970",
+        "http://purl.obolibrary.org/obo/UBERON_0003889",
+        "http://purl.obolibrary.org/obo/UBERON_0000948",
+        "http://purl.obolibrary.org/obo/UBERON_0002113",
+        "http://purl.obolibrary.org/obo/UBERON_0001465",
+        "http://purl.obolibrary.org/obo/UBERON_0002107",
+        "http://purl.obolibrary.org/obo/UBERON_0002048",
+        "http://purl.obolibrary.org/obo/UBERON_0000992",
+        "http://purl.obolibrary.org/obo/UBERON_0001264",
+        "http://purl.obolibrary.org/obo/UBERON_0001270",
+        "http://purl.obolibrary.org/obo/UBERON_0002367",
+        "http://purl.obolibrary.org/obo/UBERON_0002097",
+        "http://purl.obolibrary.org/obo/UBERON_0002108",
+        "http://purl.obolibrary.org/obo/UBERON_0000059",
+        "http://purl.obolibrary.org/obo/UBERON_0002106",
+        "http://purl.obolibrary.org/obo/UBERON_0002370",
+        "http://purl.obolibrary.org/obo/UBERON_0000056",
+        "http://purl.obolibrary.org/obo/UBERON_0001255",
+        "http://purl.obolibrary.org/obo/UBERON_0000995",
+        "http://purl.obolibrary.org/obo/UBERON_0004537",
+        "http://purl.obolibrary.org/obo/UBERON_0000178",
+        "http://purl.obolibrary.org/obo/UBERON_0004536"
+      ],
+      "base_uri": [
+        "https://purl.org/ccf/"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://purl.org/ccf/2.0/ccf.owl",
+      "creator": [
+        "Aaron Horning (0000-0003-3247-0798), Adel Eskaros (0000-0001-9028-338X), Al Powers (0000-0003-1941-5786), Amy Bernard (0000-0003-2540-1153), Andrea J. Radtke (0000-0003-4379-8967), Angela Kruse (0000-0001-8776-2769), Anna Maria Masci (0000-0003-1940-6740), Ansley Conchola (0000-0002-2385-6712), Avinash Boppana (0000-0003-0834-8274), Ayako Suzuki (0000-0003-1824-1067), Becky Steck (0000-0001-7565-4904), Bernard de Bono (0000-0001-7183-2638), Bertie Gottgens (0000-0001-6302-5705), Birte Steiniger (0000-0002-3602-7331), Blue Lake (0000-0002-8637-9044), Chad  Vezina (0000-0001-7058-5399), Christine Curcio (0000-0001-8776-2769; 0000-0001-9769-1538), Clayton Mathews (0000-0002-8817-6355), Clive Wasserfall (0000-0002-3522-8932), David Anderson (0000-0002-3866-0923), David M. Owens, David Osumi-Sutherland (0000-0002-7073-9172), David Rowe (0000-0001-7852-7775), Dhruv Singhal (0000-0002-6300-1647), Diane Saunders (0000-0002-8849-6746), Douglas Strand (0000-0002-0746-927X), Ed Morrisey (0000-0001-5785-1939), Elaine Jaffe (0000-0003-4632-0301), Elisa Laurenti (0000-0002-9917-9092), Elizabeth Tsui (0000-0003-4503-8494), Ellen M. Quardokus (0000-0001-7655-4833), Fiona Ginty (0000-0001-6638-683X), Gloria Pryhuber (0000-0002-9185-3994), Griffin  Weber (0000-0002-2597-881X), Hemali Phatnani (0000-0002-6571-3891), Ioannis Vlachos (0000-0002-8849-808X), Jakub Abramson (0000-0002-1745-8996), Jeff Whitsett (0000-0003-1668-5174), Jeffrey Spraggins (0000-0001-9198-5498), Jeremy A. Miller (0000-0003-4549-588X), Joel Sunshine (0000-0001-9987-6712), John Hickey (0000-0001-5675-3974), Jonhan Ho (0000-0002-1134-8585), Josef Hardi (0000-0002-2533-6681), Kalyanam Shivkumar (0000-0002-4121-1766), Kathleen ONeill (0000-0003-1980-6840), Katy Börner (0000-0002-3321-6137), Kevin Schey (0000-0001-9769-1538), Kristin Ardlie (0000-0003-4272-6283), Laura Jardine (0000-0003-4495-8205), Lou Falo (0000-0001-9813-0433), Luke Boulter (0000-0002-7954-6705), M. Todd Valerius (0000-0001-8143-9231), Maigan Brusko (0000-0002-4331-2202), Marc Halushka (0000-0002-7112-7389), Marda Jorgensen (0000-0002-7250-3569), Mark Arends (0000-0002-6826-8770), Martha Campbell-Thompson (0000-0001-6878-1235), Martijn Nawijn (0000-0003-3372-6521), Maxim Itkin (0000-0003-1361-7109), Monica M. Laronda (0000-0001-7840-4695), Muzlifah A. Haniffa (0000-0002-3927-2084), Natalie Rodriguez (0000-0001-6870-0300), Nazanin Ebrahimi (0000-0001-7183-2638), Peter Hanna (0000-0003-3092-5090), Purushotha Tata (0000-0003-4837-0337), Rachel Dull (0000-0002-0864-7007), Rajeev Malhotra (0000-0003-0120-4630), Rebecca T. Beuschel (0000-0002-3882-457X), Richard LeDuc (0000-0002-6951-2923), Robert Seifert (0000-0002-4404-8116), Sanjay Jain (0000-0003-2804-127X), Sarah A. Teichmann (0000-0002-6294-6366), Shin Lin (0000-0003-0118-0413), Song-Lin Ding (0000-0002-7072-5272), Stefania Pittaluga (0000-0001-7688-1439), Sujin Lee (0000-0002-6692-6880), Teri A. Longacre (0000-0002-0935-7300), Tim Kendall (0000-0002-4174-2786), Tom Taghon (000-0002-5781-0288), Xin Sun (0000-0002-9185-3994), Yiing Lin (0000-0002-0317-7608), Yongqun He (0000-0001-9189-9661), Z. Gordon Jiang (0000-0003-0495-9940)"
+      ],
+      "description": "The Common Coordinate Framework (CCF) Ontology is an application ontology built to support the development of the Human Reference Atlas (HRA).  It unifies vocabulary for HRA construction and usage—making it possible to ingest external data sources; supporting uniform tissue sample registration that includes the spatial positioning and semantic annotations within 3D reference organs; and supporting user-formulated cross-domain queries over tissue donor properties, anatomical structures, cell types, biomarkers, and 3D space. The CCF Ontology consists of three major ontologies. The Biological Structure Ontology records anatomical structures, cell types, and biomarkers (ASCT+B) and the relationships between them.  The ASCT+B tables are authored by human experts using templated Google Sheets. The biomarkers, cell types, and anatomical structures are mapped to existing ontologies (Uberon/FMA, CL, HGNC) whenever possible.  All relationships between anatomical structures and from cell types to anatomical structures are valid Uberon and CL relationships. The Spatial Ontology defines the shape, size, location, and rotation of experimental tissue and data major anatomical structures in the 3D Reference Object Library. The Specimen Ontology captures the sex, age, and other information on donors that provided tissue data used in the construction of the HRA.",
+      "homepage": "https://hubmapconsortium.github.io/ccf/pages/ccf-ontology.html",
+      "mailing_list": "infoccf@indiana.edu"
     },
     {
-       "id":"gaz",
-       "hierarchical_property":[
-          "http://purl.obolibrary.org/obo/BFO_0000050",
-	  "http://purl.obolibrary.org/obo/RO_0001025",
-          "http://purl.obolibrary.org/obo/RO_0002151",
-          "http://purl.obolibrary.org/obo/RO_0002376",
-          "http://purl.obolibrary.org/obo/RO_0002377",
-          "http://purl.obolibrary.org/obo/UBREL_0000001",
-          "http://purl.obolibrary.org/obo/RO_0002219",
-          "http://purl.obolibrary.org/obo/RO_0002379",
-          "http://purl.obolibrary.org/obo/RO_0002378",
-          "http://purl.obolibrary.org/obo/RO_0002090",
-          "http://purl.obolibrary.org/obo/TEMP#proper_partof",
-          "http://purl.obolibrary.org/obo/TEMP#overlapped_by",
-          "http://purl.obolibrary.org/obo/RO_0002131",
-          "http://purl.obolibrary.org/obo/RO_0002220"
-       ]
+      "id": "gaz",
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_0001025",
+        "http://purl.obolibrary.org/obo/RO_0002151",
+        "http://purl.obolibrary.org/obo/RO_0002376",
+        "http://purl.obolibrary.org/obo/RO_0002377",
+        "http://purl.obolibrary.org/obo/UBREL_0000001",
+        "http://purl.obolibrary.org/obo/RO_0002219",
+        "http://purl.obolibrary.org/obo/RO_0002379",
+        "http://purl.obolibrary.org/obo/RO_0002378",
+        "http://purl.obolibrary.org/obo/RO_0002090",
+        "http://purl.obolibrary.org/obo/TEMP#proper_partof",
+        "http://purl.obolibrary.org/obo/TEMP#overlapped_by",
+        "http://purl.obolibrary.org/obo/RO_0002131",
+        "http://purl.obolibrary.org/obo/RO_0002220"
+      ]
     },
     {
-       "id":"bto",
-       "ontology_purl":"http://purl.obolibrary.org/obo/bto.owl",
-       "hierarchical_property":[
-          "http://purl.obolibrary.org/obo/BFO_0000050",
-          "http://purl.obolibrary.org/obo/RO_0002202",
-          "http://purl.obolibrary.org/obo/bto#develops_from",
-          "http://purl.obolibrary.org/obo/bto#related_to"
-       ]
+      "id": "bto",
+      "ontology_purl": "http://purl.obolibrary.org/obo/bto.owl",
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://purl.obolibrary.org/obo/RO_0002202",
+        "http://purl.obolibrary.org/obo/bto#develops_from",
+        "http://purl.obolibrary.org/obo/bto#related_to"
+      ]
     },
     {
-       "id":"cheminf",
-       "title":"Chemical Information Ontology"
+      "id": "cheminf",
+      "title": "Chemical Information Ontology"
     },
     {
-       "id":"mf",
-       "title":"Mental Functioning Ontology"
+      "id": "mf",
+      "title": "Mental Functioning Ontology"
     },
     {
-       "id":"mamo",
-       "preferredPrefix": "MAMO",
-       "title":"Mathematical Modelling Ontology",
-       "label_property":"http://www.w3.org/2004/02/skos/core#prefLabel",
-       "synonym_property":[
-          "http://www.w3.org/2004/02/skos/core#altLabel"
-       ],
+      "id": "mamo",
+      "preferredPrefix": "MAMO",
+      "title": "Mathematical Modelling Ontology",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
       "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/mamo/main/mamo.rdf"
     },
     {
-       "id":"mfoem",
-       "title":"Emotion Ontology"
+      "id": "mfoem",
+      "title": "Emotion Ontology"
     },
     {
-       "id":"mi",
-       "ontology_purl":"http://purl.obolibrary.org/obo/mi.owl",
-       "definition_property":[
-          "http://purl.obolibrary.org/obo/IAO_0000115"
-       ]
+      "id": "mi",
+      "ontology_purl": "http://purl.obolibrary.org/obo/mi.owl",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ]
     },
     {
-       "id":"duo",
-       "ontology_purl":"http://purl.obolibrary.org/obo/duo.owl",
-       "preferred_root_term":[
-          "http://purl.obolibrary.org/obo/DUO_0000001",
-          "http://purl.obolibrary.org/obo/DUO_0000017",
-          "http://purl.obolibrary.org/obo/OBI_0000066"
-       ]
+      "id": "duo",
+      "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl",
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/OBI_0000066"
+      ]
     },
     {
-       "id":"plana",
-       "ontology_purl":"http://purl.obolibrary.org/obo/plana.owl",
-       "synonym_property":[
-          "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
-       ]
+      "id": "plana",
+      "ontology_purl": "http://purl.obolibrary.org/obo/plana.owl",
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ]
     },
     {
-       "id":"cpont",
-       "preferredPrefix":"CPONT",
-       "title":"Critical Path Ontology",
-       "description":"An application ontology for integrating data from the Critical Path Institute's Rare Disease Cures Accelerator Data and Analytica Platform (RDCA-DAP).",
-       "repository":"https://gitlab.c-path.org/c-pathontology/critical-path-ontology/",
-       "homepage":"https://gitlab.c-path.org/c-pathontology/critical-path-ontology",
-       "ontology_purl":"https://w3id.org/cpont/cpont.owl",
-       "uri":"https://w3id.org/cpont/cpont.owl",
-       "creator":[
-          "James Overton https://orcid.org/0000-0001-5139-5557, Nicole Vasilesvky https://orcid.org/0000-0001-5208-3432, Emily Hartley https://orcid.org/0000-0001-5839-2535, Emani Hunter https://orcid.org/0000-0001-8545-8114, Daniel Olson https://orcid.org/0000-0002-8134-1207, Rebecca Jackson https://orcid.org/0000-0003-4871-5569"
-       ],
-       "is_foundry":false,
-       "mailing_list":"rwalls@c-path.org",
-       "label_property":"http://www.w3.org/2000/01/rdf-schema#label",
-       "definition_property":[
-          "http://purl.obolibrary.org/obo/IAO_0000115"
-       ],
-       "synonym_property":[
-          "http://www.w3.org/2004/02/skos/core#closeMatch",
-          "http://www.w3.org/2004/02/skos/core#exactMatch",
-          "http://www.w3.org/2004/02/skos/core#narrowMatch",
-          "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
-       ],
-       "base_uri":[
-          "https://w3id.org/cpont"
-       ],
-       "reasoner":"NONE",
-       "oboSlims":false
+      "id": "cpont",
+      "preferredPrefix": "CPONT",
+      "title": "Critical Path Ontology",
+      "description": "An application ontology for integrating data from the Critical Path Institute's Rare Disease Cures Accelerator Data and Analytica Platform (RDCA-DAP).",
+      "repository": "https://gitlab.c-path.org/c-pathontology/critical-path-ontology/",
+      "homepage": "https://gitlab.c-path.org/c-pathontology/critical-path-ontology",
+      "ontology_purl": "https://w3id.org/cpont/cpont.owl",
+      "uri": "https://w3id.org/cpont/cpont.owl",
+      "creator": [
+        "James Overton https://orcid.org/0000-0001-5139-5557, Nicole Vasilesvky https://orcid.org/0000-0001-5208-3432, Emily Hartley https://orcid.org/0000-0001-5839-2535, Emani Hunter https://orcid.org/0000-0001-8545-8114, Daniel Olson https://orcid.org/0000-0002-8134-1207, Rebecca Jackson https://orcid.org/0000-0003-4871-5569"
+      ],
+      "is_foundry": false,
+      "mailing_list": "rwalls@c-path.org",
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#closeMatch",
+        "http://www.w3.org/2004/02/skos/core#exactMatch",
+        "http://www.w3.org/2004/02/skos/core#narrowMatch",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+      ],
+      "base_uri": [
+        "https://w3id.org/cpont"
+      ],
+      "reasoner": "NONE",
+      "oboSlims": false
     },
     {
-       "id":"oba",
-       "hierarchical_property":[
-          "http://purl.obolibrary.org/obo/BFO_0000050"
-       ]
+      "id": "oba",
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ]
     },
     {
       "id": "hp",
-      "ontology_purl":"http://purl.obolibrary.org/obo/hp/hp-international.owl"
+      "ontology_purl": "http://purl.obolibrary.org/obo/hp/hp-international.owl"
     },
     {
       "id": "go",
-      "ontology_purl":"http://purl.obolibrary.org/obo/go/extensions/go-plus.owl"
+      "ontology_purl": "http://purl.obolibrary.org/obo/go/extensions/go-plus.owl"
     },
     {
       "id": "mp",
-      "ontology_purl":"http://purl.obolibrary.org/obo/mp/mp-international.owl"
+      "ontology_purl": "http://purl.obolibrary.org/obo/mp/mp-international.owl"
     },
     {
       "id": "ms",
-      "hierarchical_property":[
+      "hierarchical_property": [
         "http://purl.obolibrary.org/obo/ms#part_of",
         "http://purl.obolibrary.org/obo/BFO_0000050"
       ]
