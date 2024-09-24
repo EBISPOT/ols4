@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -62,23 +63,61 @@ public class V1SearchController {
 
     @RequestMapping(path = "/api/search", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void search(
-            @RequestParam("q") String query,
-            @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
-            @RequestParam(value = "type", required = false) Collection<String> types,
-            @RequestParam(value = "slim", required = false) Collection<String> slims,
-            @RequestParam(value = "fieldList", required = false) Collection<String> fieldList,
-            @RequestParam(value = "queryFields", required = false) Collection<String> queryFields,
-            @RequestParam(value = "exact", required = false) boolean exact,
-            @RequestParam(value = "groupField", required = false) String groupField,
-            @RequestParam(value = "obsoletes", defaultValue = "false") boolean queryObsoletes,
-            @RequestParam(value = "local", defaultValue = "false") boolean isLocal,
-            @RequestParam(value = "childrenOf", required = false) Collection<String> childrenOf,
-            @RequestParam(value = "allChildrenOf", required = false) Collection<String> allChildrenOf,
+            @RequestParam("q")
+            @Parameter(name = "q",
+                    description = "The terms to search. By default the search is performed over term labels, synonyms, descriptions, identifiers and annotation properties.",
+                    example = "disease or liver+disease") String query,
+            @RequestParam(value = "ontology", required = false)
+            @Parameter(name = "ontology",
+                    description = "Restrict a search to a set of ontologies e.g. ontology=efo,bfo",
+                    example = "efo,bfo") Collection<String> ontologies,
+            @RequestParam(value = "type", required = false)
+            @Parameter(name = "type",
+                    description = "Restrict a search to an entity type, one of {class,property,individual,ontology}",
+                    example = "class,property") Collection<String> types,
+            @RequestParam(value = "slim", required = false)
+            @Parameter(name = "slim",
+                    description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
+            @RequestParam(value = "fieldList", required = false)
+            @Parameter(name = "fieldList",
+                    description = "Specifcy the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type}",
+                    example = "iri,label,short_form,obo_id,ontology_name") Collection<String> fieldList,
+            @RequestParam(value = "queryFields", required = false)
+            @Parameter(name = "queryFields",
+                    description = "Specify the fields to query, the defaults are {label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
+                    example = "iri,label,short_form,ontology_name") Collection<String> queryFields,
+            @RequestParam(value = "exact", required = false)
+            @Parameter(name = "exact",
+                    description = "Set to true for exact matches",
+                    example = "false") boolean exact,
+            @RequestParam(value = "groupField", required = false)
+            @Parameter(name = "groupField",
+                    description = "Group results by unique id (IRI)",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421") String groupField,
+            @RequestParam(value = "obsoletes", defaultValue = "false")
+            @Parameter(name = "obsoletes",
+                    description = "Set to true to include obsoleted terms in the results",
+                    example = "false") boolean queryObsoletes,
+            @RequestParam(value = "local", defaultValue = "false")
+            @Parameter(name = "local",
+                    description = "Set to true to only return terms that are in a defining ontology e.g. Only return matches to gene ontology terms in the gene ontology, and exclude ontologies where those terms are also referenced",
+                    example = "false") boolean isLocal,
+            @RequestParam(value = "childrenOf", required = false)
+            @Parameter(name = "childrenOf",
+                    description = "You can restrict a search to children of a given term. Supply a list of IRI for the terms that you want to search under",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> childrenOf,
+            @RequestParam(value = "allChildrenOf", required = false)
+            @Parameter(name = "allChildrenOf",
+                    description = "You can restrict a search to all children of a given term. Supply a list of IRI for the terms that you want to search under (subclassOf/is-a plus any hierarchical/transitive properties like 'part of' or 'develops from')",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> allChildrenOf,
             @RequestParam(value = "inclusive", required = false) boolean inclusive,
             @RequestParam(value = "isLeaf", required = false) boolean isLeaf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
-            @RequestParam(value = "format", defaultValue = "json") String format,
+            @RequestParam(value = "format", defaultValue = "json")
+            @Parameter(name = "format",
+                    description = "You can select the format you want the response in. Default is `json` but you can select xml, csv etc. Full list of acceptable value can be found here: https://solr.apache.org/guide/solr/latest/query-guide/response-writers.html")
+            String format,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
