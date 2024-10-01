@@ -44,26 +44,16 @@ public class ShortFormAnnotator {
 			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
 			*/
 
-			String curie;
-			if (shortForm.chars().filter(ch -> ch == '_').count() > 1) {
-				curie = shortForm;
-			} else {
-				int underscoreIndex = shortForm.indexOf('_');
-				if (underscoreIndex != -1 && shortForm.substring(underscoreIndex + 1).matches("\\d+")) {
-					curie = shortForm.replaceFirst("_", ":");
-				} else {
-					curie = shortForm;
-				}
+			String curie = shortForm;
+			if (shortForm.matches("^[^_]+_\\d+$")) {
+				curie = shortForm.replaceFirst("_", ":");
 			}
-
 			c.properties.addProperty("shortForm", PropertyValueLiteral.fromString(shortForm));
 			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
 		    }
 		}
 		long endTime3 = System.nanoTime();
 		logger.info("annotate short forms: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
-
-
 	}
 	
 	private static String extractShortForm(OntologyGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
