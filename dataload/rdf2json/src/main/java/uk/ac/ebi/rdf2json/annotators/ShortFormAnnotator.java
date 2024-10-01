@@ -36,7 +36,25 @@ public class ShortFormAnnotator {
 			}
 
 			String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri);
-			String curie = shortForm.replaceFirst("_", ":");
+
+			/*
+			CURIEs are formed by following rules:
+			If there are more than one underscore "_" in the shortform just keep the curie same as shortform
+			If there is only one underscore "_" AND the characters after the underscore are numbers then replace the underscore with colon ":"
+			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
+			*/
+
+			String curie;
+			if (shortForm.chars().filter(ch -> ch == '_').count() > 1) {
+				curie = shortForm;
+			} else {
+				int underscoreIndex = shortForm.indexOf('_');
+				if (underscoreIndex != -1 && shortForm.substring(underscoreIndex + 1).matches("\\d+")) {
+					curie = shortForm.replaceFirst("_", ":");
+				} else {
+					curie = shortForm;
+				}
+			}
 
 			c.properties.addProperty("shortForm", PropertyValueLiteral.fromString(shortForm));
 			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
