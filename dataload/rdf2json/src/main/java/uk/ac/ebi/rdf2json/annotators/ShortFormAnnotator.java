@@ -39,15 +39,12 @@ public class ShortFormAnnotator {
 
 			/*
 			CURIEs are formed by following rules:
-			If there are more than one underscore "_" in the shortform just keep the curie same as shortform
 			If there is only one underscore "_" AND the characters after the underscore are numbers then replace the underscore with colon ":"
 			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
+			If there are multiple underscore but has only digits after the last underscore then the code replaces the last underscore with a colon
 			*/
 
-			String curie = shortForm;
-			if (shortForm.matches("^[^_]+_\\d+$")) {
-				curie = shortForm.replaceFirst("_", ":");
-			}
+			String curie = shortForm.replaceFirst("_(\\d+)$", ":$1");
 			c.properties.addProperty("shortForm", PropertyValueLiteral.fromString(shortForm));
 			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
 		    }
