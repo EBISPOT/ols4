@@ -109,7 +109,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:Class"
+            "value": "RDFS_Class"
           },
           "definition": {
             "type": [
@@ -193,7 +193,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:Container"
+            "value": "RDFS_Container"
           },
           "definition": {
             "type": [
@@ -277,7 +277,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:ContainerMembershipProperty"
+            "value": "RDFS_ContainerMembershipProperty"
           },
           "definition": {
             "type": [
@@ -359,7 +359,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:Datatype"
+            "value": "RDFS_Datatype"
           },
           "definition": {
             "type": [
@@ -449,7 +449,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:Literal"
+            "value": "RDFS_Literal"
           },
           "definition": {
             "type": [
@@ -533,7 +533,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:Resource"
+            "value": "RDFS_Resource"
           },
           "definition": {
             "type": [
@@ -610,7 +610,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:comment"
+            "value": "RDFS_comment"
           },
           "definition": {
             "type": [
@@ -686,7 +686,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:domain"
+            "value": "RDFS_domain"
           },
           "definition": {
             "type": [
@@ -762,7 +762,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:isDefinedBy"
+            "value": "RDFS_isDefinedBy"
           },
           "definition": {
             "type": [
@@ -840,7 +840,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:label"
+            "value": "RDFS_label"
           },
           "definition": {
             "type": [
@@ -916,7 +916,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:member"
+            "value": "RDFS_member"
           },
           "definition": {
             "type": [
@@ -992,7 +992,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:range"
+            "value": "RDFS_range"
           },
           "definition": {
             "type": [
@@ -1068,7 +1068,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:seeAlso"
+            "value": "RDFS_seeAlso"
           },
           "definition": {
             "type": [
@@ -1144,7 +1144,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:subClassOf"
+            "value": "RDFS_subClassOf"
           },
           "definition": {
             "type": [
@@ -1220,7 +1220,7 @@
             "type": [
               "literal"
             ],
-            "value": "RDFS:subPropertyOf"
+            "value": "RDFS_subPropertyOf"
           },
           "definition": {
             "type": [
@@ -1926,7 +1926,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:AllDifferent"
+            "value": "OWL_AllDifferent"
           },
           "definition": {
             "type": [
@@ -2010,7 +2010,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:AllDisjointClasses"
+            "value": "OWL_AllDisjointClasses"
           },
           "definition": {
             "type": [
@@ -2094,7 +2094,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:AllDisjointProperties"
+            "value": "OWL_AllDisjointProperties"
           },
           "definition": {
             "type": [
@@ -2178,7 +2178,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Annotation"
+            "value": "OWL_Annotation"
           },
           "definition": {
             "type": [
@@ -2262,7 +2262,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:AnnotationProperty"
+            "value": "OWL_AnnotationProperty"
           },
           "definition": {
             "type": [
@@ -2344,7 +2344,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:AsymmetricProperty"
+            "value": "OWL_AsymmetricProperty"
           },
           "definition": {
             "type": [
@@ -2428,7 +2428,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Axiom"
+            "value": "OWL_Axiom"
           },
           "definition": {
             "type": [
@@ -2512,7 +2512,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Class"
+            "value": "OWL_Class"
           },
           "definition": {
             "type": [
@@ -2602,7 +2602,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:DataRange"
+            "value": "OWL_DataRange"
           },
           "definition": {
             "type": [
@@ -2694,7 +2694,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:DatatypeProperty"
+            "value": "OWL_DatatypeProperty"
           },
           "definition": {
             "type": [
@@ -2776,7 +2776,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:DeprecatedClass"
+            "value": "OWL_DeprecatedClass"
           },
           "definition": {
             "type": [
@@ -2866,7 +2866,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:DeprecatedProperty"
+            "value": "OWL_DeprecatedProperty"
           },
           "definition": {
             "type": [
@@ -2948,7 +2948,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:FunctionalProperty"
+            "value": "OWL_FunctionalProperty"
           },
           "definition": {
             "type": [
@@ -3030,7 +3030,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:InverseFunctionalProperty"
+            "value": "OWL_InverseFunctionalProperty"
           },
           "definition": {
             "type": [
@@ -3114,7 +3114,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:IrreflexiveProperty"
+            "value": "OWL_IrreflexiveProperty"
           },
           "definition": {
             "type": [
@@ -3198,7 +3198,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:NamedIndividual"
+            "value": "OWL_NamedIndividual"
           },
           "definition": {
             "type": [
@@ -3282,7 +3282,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:NegativePropertyAssertion"
+            "value": "OWL_NegativePropertyAssertion"
           },
           "definition": {
             "type": [
@@ -3366,7 +3366,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Nothing"
+            "value": "OWL_Nothing"
           },
           "definition": {
             "type": [
@@ -3450,7 +3450,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:ObjectProperty"
+            "value": "OWL_ObjectProperty"
           },
           "definition": {
             "type": [
@@ -3532,7 +3532,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Ontology"
+            "value": "OWL_Ontology"
           },
           "definition": {
             "type": [
@@ -3616,7 +3616,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:OntologyProperty"
+            "value": "OWL_OntologyProperty"
           },
           "definition": {
             "type": [
@@ -3698,7 +3698,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:ReflexiveProperty"
+            "value": "OWL_ReflexiveProperty"
           },
           "definition": {
             "type": [
@@ -3782,7 +3782,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Restriction"
+            "value": "OWL_Restriction"
           },
           "definition": {
             "type": [
@@ -3874,7 +3874,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:SymmetricProperty"
+            "value": "OWL_SymmetricProperty"
           },
           "definition": {
             "type": [
@@ -3958,7 +3958,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:Thing"
+            "value": "OWL_Thing"
           },
           "definition": {
             "type": [
@@ -4033,7 +4033,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:TransitiveProperty"
+            "value": "OWL_TransitiveProperty"
           },
           "definition": {
             "type": [
@@ -4805,7 +4805,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:allValuesFrom"
+            "value": "OWL_allValuesFrom"
           },
           "definition": {
             "type": [
@@ -4881,7 +4881,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:annotatedProperty"
+            "value": "OWL_annotatedProperty"
           },
           "definition": {
             "type": [
@@ -4957,7 +4957,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:annotatedSource"
+            "value": "OWL_annotatedSource"
           },
           "definition": {
             "type": [
@@ -5033,7 +5033,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:annotatedTarget"
+            "value": "OWL_annotatedTarget"
           },
           "definition": {
             "type": [
@@ -5109,7 +5109,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:assertionProperty"
+            "value": "OWL_assertionProperty"
           },
           "definition": {
             "type": [
@@ -5186,7 +5186,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:backwardCompatibleWith"
+            "value": "OWL_backwardCompatibleWith"
           },
           "definition": {
             "type": [
@@ -5266,7 +5266,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:bottomDataProperty"
+            "value": "OWL_bottomDataProperty"
           },
           "definition": {
             "type": [
@@ -5343,7 +5343,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:bottomObjectProperty"
+            "value": "OWL_bottomObjectProperty"
           },
           "definition": {
             "type": [
@@ -5419,7 +5419,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:cardinality"
+            "value": "OWL_cardinality"
           },
           "definition": {
             "type": [
@@ -5495,7 +5495,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:complementOf"
+            "value": "OWL_complementOf"
           },
           "definition": {
             "type": [
@@ -5571,7 +5571,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:datatypeComplementOf"
+            "value": "OWL_datatypeComplementOf"
           },
           "definition": {
             "type": [
@@ -5648,7 +5648,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:deprecated"
+            "value": "OWL_deprecated"
           },
           "definition": {
             "type": [
@@ -5724,7 +5724,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:differentFrom"
+            "value": "OWL_differentFrom"
           },
           "definition": {
             "type": [
@@ -5800,7 +5800,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:disjointUnionOf"
+            "value": "OWL_disjointUnionOf"
           },
           "definition": {
             "type": [
@@ -5876,7 +5876,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:disjointWith"
+            "value": "OWL_disjointWith"
           },
           "definition": {
             "type": [
@@ -5952,7 +5952,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:distinctMembers"
+            "value": "OWL_distinctMembers"
           },
           "definition": {
             "type": [
@@ -6028,7 +6028,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:equivalentClass"
+            "value": "OWL_equivalentClass"
           },
           "definition": {
             "type": [
@@ -6104,7 +6104,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:equivalentProperty"
+            "value": "OWL_equivalentProperty"
           },
           "definition": {
             "type": [
@@ -6180,7 +6180,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:hasKey"
+            "value": "OWL_hasKey"
           },
           "definition": {
             "type": [
@@ -6256,7 +6256,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:hasSelf"
+            "value": "OWL_hasSelf"
           },
           "definition": {
             "type": [
@@ -6332,7 +6332,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:hasValue"
+            "value": "OWL_hasValue"
           },
           "definition": {
             "type": [
@@ -6409,7 +6409,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:incompatibleWith"
+            "value": "OWL_incompatibleWith"
           },
           "definition": {
             "type": [
@@ -6488,7 +6488,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:intersectionOf"
+            "value": "OWL_intersectionOf"
           },
           "definition": {
             "type": [
@@ -6564,7 +6564,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:inverseOf"
+            "value": "OWL_inverseOf"
           },
           "definition": {
             "type": [
@@ -6640,7 +6640,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:maxCardinality"
+            "value": "OWL_maxCardinality"
           },
           "definition": {
             "type": [
@@ -6716,7 +6716,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:maxQualifiedCardinality"
+            "value": "OWL_maxQualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -6792,7 +6792,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:members"
+            "value": "OWL_members"
           },
           "definition": {
             "type": [
@@ -6868,7 +6868,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:minCardinality"
+            "value": "OWL_minCardinality"
           },
           "definition": {
             "type": [
@@ -6944,7 +6944,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:minQualifiedCardinality"
+            "value": "OWL_minQualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -7020,7 +7020,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:onClass"
+            "value": "OWL_onClass"
           },
           "definition": {
             "type": [
@@ -7096,7 +7096,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:onDataRange"
+            "value": "OWL_onDataRange"
           },
           "definition": {
             "type": [
@@ -7172,7 +7172,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:onDatatype"
+            "value": "OWL_onDatatype"
           },
           "definition": {
             "type": [
@@ -7248,7 +7248,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:onProperties"
+            "value": "OWL_onProperties"
           },
           "definition": {
             "type": [
@@ -7324,7 +7324,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:onProperty"
+            "value": "OWL_onProperty"
           },
           "definition": {
             "type": [
@@ -7400,7 +7400,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:oneOf"
+            "value": "OWL_oneOf"
           },
           "definition": {
             "type": [
@@ -7477,7 +7477,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:priorVersion"
+            "value": "OWL_priorVersion"
           },
           "definition": {
             "type": [
@@ -7556,7 +7556,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:propertyChainAxiom"
+            "value": "OWL_propertyChainAxiom"
           },
           "definition": {
             "type": [
@@ -7632,7 +7632,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:propertyDisjointWith"
+            "value": "OWL_propertyDisjointWith"
           },
           "definition": {
             "type": [
@@ -7708,7 +7708,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:qualifiedCardinality"
+            "value": "OWL_qualifiedCardinality"
           },
           "definition": {
             "type": [
@@ -7784,7 +7784,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:sameAs"
+            "value": "OWL_sameAs"
           },
           "definition": {
             "type": [
@@ -7860,7 +7860,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:someValuesFrom"
+            "value": "OWL_someValuesFrom"
           },
           "definition": {
             "type": [
@@ -7936,7 +7936,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:sourceIndividual"
+            "value": "OWL_sourceIndividual"
           },
           "definition": {
             "type": [
@@ -8012,7 +8012,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:targetIndividual"
+            "value": "OWL_targetIndividual"
           },
           "definition": {
             "type": [
@@ -8088,7 +8088,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:targetValue"
+            "value": "OWL_targetValue"
           },
           "definition": {
             "type": [
@@ -8165,7 +8165,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:topDataProperty"
+            "value": "OWL_topDataProperty"
           },
           "definition": {
             "type": [
@@ -8242,7 +8242,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:topObjectProperty"
+            "value": "OWL_topObjectProperty"
           },
           "definition": {
             "type": [
@@ -8318,7 +8318,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:unionOf"
+            "value": "OWL_unionOf"
           },
           "definition": {
             "type": [
@@ -8395,7 +8395,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:versionInfo"
+            "value": "OWL_versionInfo"
           },
           "definition": {
             "type": [
@@ -8471,7 +8471,7 @@
             "type": [
               "literal"
             ],
-            "value": "OWL:withRestrictions"
+            "value": "OWL_withRestrictions"
           },
           "definition": {
             "type": [
@@ -8743,7 +8743,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:Collection"
+            "value": "SKOS_Collection"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -8842,7 +8842,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:Concept"
+            "value": "SKOS_Concept"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -8921,7 +8921,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:ConceptScheme"
+            "value": "SKOS_ConceptScheme"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -9033,7 +9033,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:OrderedCollection"
+            "value": "SKOS_OrderedCollection"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#Collection",
           "directParent": "http://www.w3.org/2004/02/skos/core#Collection",
@@ -9140,7 +9140,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:altLabel"
+            "value": "SKOS_altLabel"
           },
           "definition": [
             {
@@ -9281,7 +9281,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:broadMatch"
+            "value": "SKOS_broadMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -9377,7 +9377,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:broader"
+            "value": "SKOS_broader"
           },
           "definition": {
             "type": [
@@ -9503,7 +9503,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:broaderTransitive"
+            "value": "SKOS_broaderTransitive"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
           "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
@@ -9601,7 +9601,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:changeNote"
+            "value": "SKOS_changeNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9685,7 +9685,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:closeMatch"
+            "value": "SKOS_closeMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -9773,7 +9773,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:definition"
+            "value": "SKOS_definition"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9857,7 +9857,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:editorialNote"
+            "value": "SKOS_editorialNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -9941,7 +9941,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:exactMatch"
+            "value": "SKOS_exactMatch"
           },
           "definition": {
             "type": [
@@ -10053,7 +10053,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:example"
+            "value": "SKOS_example"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -10137,7 +10137,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:hasTopConcept"
+            "value": "SKOS_hasTopConcept"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -10222,7 +10222,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:hiddenLabel"
+            "value": "SKOS_hiddenLabel"
           },
           "definition": [
             {
@@ -10347,7 +10347,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:historyNote"
+            "value": "SKOS_historyNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -10431,7 +10431,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:inScheme"
+            "value": "SKOS_inScheme"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -10530,7 +10530,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:mappingRelation"
+            "value": "SKOS_mappingRelation"
           },
           "definition": {
             "type": [
@@ -10636,7 +10636,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:member"
+            "value": "SKOS_member"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -10726,7 +10726,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:memberList"
+            "value": "SKOS_memberList"
           },
           "definition": {
             "type": [
@@ -10833,7 +10833,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:narrowMatch"
+            "value": "SKOS_narrowMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -10929,7 +10929,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:narrower"
+            "value": "SKOS_narrower"
           },
           "definition": {
             "type": [
@@ -11055,7 +11055,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:narrowerTransitive"
+            "value": "SKOS_narrowerTransitive"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
           "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
@@ -11153,7 +11153,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:notation"
+            "value": "SKOS_notation"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -11251,7 +11251,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:note"
+            "value": "SKOS_note"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -11349,7 +11349,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:prefLabel"
+            "value": "SKOS_prefLabel"
           },
           "definition": [
             {
@@ -11490,7 +11490,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:related"
+            "value": "SKOS_related"
           },
           "definition": {
             "type": [
@@ -11597,7 +11597,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:relatedMatch"
+            "value": "SKOS_relatedMatch"
           },
           "directAncestor": [
             "http://www.w3.org/2004/02/skos/core#mappingRelation",
@@ -11692,7 +11692,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:scopeNote"
+            "value": "SKOS_scopeNote"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
           "directParent": "http://www.w3.org/2004/02/skos/core#note",
@@ -11776,7 +11776,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:semanticRelation"
+            "value": "SKOS_semanticRelation"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -11876,7 +11876,7 @@
             "type": [
               "literal"
             ],
-            "value": "SKOS:topConceptOf"
+            "value": "SKOS_topConceptOf"
           },
           "directAncestor": "http://www.w3.org/2004/02/skos/core#inScheme",
           "directParent": "http://www.w3.org/2004/02/skos/core#inScheme",
@@ -78852,7 +78852,7 @@
             "type": [
               "literal"
             ],
-            "value": "excluded:subClassOf"
+            "value": "excluded_subClassOf"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -78908,7 +78908,7 @@
             "type": [
               "literal"
             ],
-            "value": "should:conform_to"
+            "value": "should_conform_to"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -79982,7 +79982,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:DbXref"
+            "value": "OIO_DbXref"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80042,7 +80042,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:Definition"
+            "value": "OIO_Definition"
           },
           "definition": {
             "type": [
@@ -80166,7 +80166,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:ObsoleteClass"
+            "value": "OIO_ObsoleteClass"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80255,7 +80255,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:Subset"
+            "value": "OIO_Subset"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80477,7 +80477,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:Synonym"
+            "value": "OIO_Synonym"
           },
           "definition": {
             "type": [
@@ -80584,7 +80584,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:SynonymType"
+            "value": "OIO_SynonymType"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80647,7 +80647,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:ObsoleteProperty"
+            "value": "OIO_ObsoleteProperty"
           },
           "definition": {
             "type": [
@@ -80754,7 +80754,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:SubsetProperty"
+            "value": "OIO_SubsetProperty"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80843,7 +80843,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:SynonymTypeProperty"
+            "value": "OIO_SynonymTypeProperty"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -80932,7 +80932,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:consider"
+            "value": "OIO_consider"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81038,7 +81038,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasAlternativeId"
+            "value": "OIO_hasAlternativeId"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81144,7 +81144,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasBroadSynonym"
+            "value": "OIO_hasBroadSynonym"
           },
           "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
           "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
@@ -81252,7 +81252,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasDate"
+            "value": "OIO_hasDate"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81329,7 +81329,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasDbXref"
+            "value": "OIO_hasDbXref"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81406,7 +81406,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasDefaultNamespace"
+            "value": "OIO_hasDefaultNamespace"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81483,7 +81483,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasDefinition"
+            "value": "OIO_hasDefinition"
           },
           "definition": {
             "type": [
@@ -81607,7 +81607,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasExactSynonym"
+            "value": "OIO_hasExactSynonym"
           },
           "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
           "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
@@ -81715,7 +81715,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasNarrowSynonym"
+            "value": "OIO_hasNarrowSynonym"
           },
           "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
           "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
@@ -81823,7 +81823,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasOBONamespace"
+            "value": "OIO_hasOBONamespace"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -81929,7 +81929,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasRelatedSynonym"
+            "value": "OIO_hasRelatedSynonym"
           },
           "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
           "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
@@ -82037,7 +82037,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasSubset"
+            "value": "OIO_hasSubset"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82126,7 +82126,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasSynonym"
+            "value": "OIO_hasSynonym"
           },
           "definition": {
             "type": [
@@ -82250,7 +82250,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasSynonymType"
+            "value": "OIO_hasSynonymType"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82327,7 +82327,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasURI"
+            "value": "OIO_hasURI"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82387,7 +82387,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:hasVersion"
+            "value": "OIO_hasVersion"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82464,7 +82464,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:inSubset"
+            "value": "OIO_inSubset"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82570,7 +82570,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:isCyclic"
+            "value": "OIO_isCyclic"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82659,7 +82659,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:replacedBy"
+            "value": "OIO_replacedBy"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -82765,7 +82765,7 @@
             "type": [
               "literal"
             ],
-            "value": "OIO:savedBy"
+            "value": "OIO_savedBy"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
