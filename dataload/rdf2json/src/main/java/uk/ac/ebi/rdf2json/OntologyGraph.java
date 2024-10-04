@@ -318,6 +318,14 @@ public class OntologyGraph implements StreamRDF {
                 if (configKey.equals("iri"))
                     continue;
 
+                if (configKey.equals("base_uri")) {
+                    // Config uses "base_uri" whereas rest of code base uses BASE_URI.getText().
+                    configKey = BASE_URI.getText();
+                    if (!(configVal instanceof Collection)) {
+                        configVal = List.of(configVal);
+                    }
+
+                }
                 // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
                 if (configKey.equals("preferred_root_term"))
                     continue;

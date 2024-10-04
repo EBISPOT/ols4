@@ -1,0 +1,28 @@
+{
+  "ontologies": [
+    {
+      "id": "edam",
+      "preferredPrefix": "EDAM",
+      "title": "Ontology of bioinformatics topics, operations, identifiers, and formats",
+      "uri": "http://edamontology.org",
+      "description": "EDAM is a simple ontology of well established, familiar concepts that are prevalent within bioinformatics, including types of data and data identifiers, data formats, operations and topics. EDAM provides a set of terms with synonyms and definitions - organised into an intuitive hierarchy for convenient use.",
+      "homepage": "http://edamontology.org",
+      "mailing_list": "edam@elixir-dk.org",
+      "definition_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasDefinition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+      ],
+      "base_uri": [
+        "http://edamontology.org/data_",
+        "http://edamontology.org/topic_",
+        "http://edamontology.org/format_",
+        "http://edamontology.org/identifier_"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/edamontology/edamontology/master/releases/EDAM.owl"
+    }
+  ]
+}
