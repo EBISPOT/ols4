@@ -7,6 +7,7 @@ import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import uk.ac.ebi.rdf2json.properties.PropertyValueUriList;
 
 import java.util.HashSet;
 import java.util.List;
@@ -41,27 +42,33 @@ public class HierarchyFlagsAnnotator {
 		// 1. Direct parents (subClassOf)
 		//
 
-                List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
+                List<PropertyValue> propertyValueUriList =  c.properties.getPropertyValues(DIRECT_PARENT.getText());
 
                 boolean hasDirectParents = false;
 
-                if(parents != null) {
-                    for (PropertyValue parent : parents) {
+                if (propertyValueUriList != null && propertyValueUriList.size()>0) {
+                    PropertyValueUriList parents = (PropertyValueUriList)propertyValueUriList.get(0);
 
-                        String iri = ((PropertyValueURI) parent).getUri();
+                    if (parents != null && parents.getListOfUris() != null) {
 
-                        if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
-                                iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
-                                    continue;
+                        for (PropertyValueURI parent : parents.getListOfUris()) {
+
+                            String iri = parent.getUri();
+
+                            if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
+                                    iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
+                                continue;
+                            }
+
+                            hasDirectParents = true;
+                            hasChildren.add(iri);
                         }
-
-                        hasDirectParents = true;
-                        hasChildren.add(iri);
                     }
+
+                    c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                            PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
                 }
 
-                c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
-                        PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
 
 		// 2. Hierarchical parents
 		//

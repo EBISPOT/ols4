@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import uk.ac.ebi.rdf2json.properties.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class DirectParentsAnnotator {
     private static final Logger logger = LoggerFactory.getLogger(DirectParentsAnnotator.class);
@@ -26,32 +28,37 @@ public class DirectParentsAnnotator {
             if (c.types.contains(OntologyNode.NodeType.CLASS)) {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+                List<PropertyValueURI> listOfUris = new ArrayList<>();
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
                         if(parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
-                            c.properties.addProperty("directParent", parent);
+                            listOfUris.add((PropertyValueURI) parent);
                         }
                     }
                 }
+                c.properties.addProperty(DIRECT_PARENT.getText(),  new PropertyValueUriList(listOfUris));
 
 	    } else if( c.types.contains(OntologyNode.NodeType.PROPERTY)) {
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
+                List<PropertyValueURI> listOfUris = new ArrayList<>();
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
                         if(parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
-                            c.properties.addProperty("directParent", parent);
+
+                            listOfUris.add((PropertyValueURI) parent);
                         }
                     }
                 }
-
+                c.properties.addProperty(DIRECT_PARENT.getText(),  new PropertyValueUriList(listOfUris));
             } else if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 
                 // The type of individuals becomes their parent in OLS
                 //
                 List<PropertyValue> types = c.properties.getPropertyValues("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+                List<PropertyValueURI> listOfUris = new ArrayList<>();
 
                 if(types != null) {
                     for(PropertyValue type : types) {
@@ -65,10 +72,11 @@ public class DirectParentsAnnotator {
                                 continue;
                             }
 
-			    if(graph.nodes.containsKey(typeUri))
-				c.properties.addProperty("directParent", type);
+                            if(graph.nodes.containsKey(typeUri))
+                                listOfUris.add((PropertyValueURI)type);
                         }
                     }
+                    c.properties.addProperty(DIRECT_PARENT.getText(),  new PropertyValueUriList(listOfUris));
                 }
             }
         }

@@ -26,7 +26,7 @@ public class AncestorsAnnotator {
                 c.properties.addProperty("hierarchicalAncestor", new PropertyValueAncestors(c, "hierarchicalParent"));
             }
 
-            c.properties.addProperty(DIRECT_ANCESTOR.getText(), new PropertyValueAncestors(c, "directParent"));
+            c.properties.addProperty(DIRECT_ANCESTOR.getText(), new PropertyValueAncestors(c, DIRECT_PARENT.getText()));
         }
 
         long endTime3 = System.nanoTime();

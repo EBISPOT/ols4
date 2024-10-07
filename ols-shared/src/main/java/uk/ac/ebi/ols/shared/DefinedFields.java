@@ -8,6 +8,7 @@ public enum DefinedFields {
     DEFINITION("definition", "description","The definition of this entity."),
     DIRECT_ANCESTOR("directAncestor", "",
             "A list of all direct parents by subclass- and hierarchical relations for this entity."),
+    DIRECT_PARENT("directParent", "","A list of the direct parents of this entity."),
     HAS_DIRECT_CHILDREN("hasDirectChildren", "has_children",
             "Whether this class has direct children or not."),
     HAS_DIRECT_PARENTS("hasDirectParents", "",
