@@ -6,6 +6,8 @@ import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValueAncestors;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class AncestorsAnnotator {
     private static final Logger logger = LoggerFactory.getLogger(AncestorsAnnotator.class);
 
@@ -24,7 +26,7 @@ public class AncestorsAnnotator {
                 c.properties.addProperty("hierarchicalAncestor", new PropertyValueAncestors(c, "hierarchicalParent"));
             }
 
-            c.properties.addProperty("directAncestor", new PropertyValueAncestors(c, "directParent"));
+            c.properties.addProperty(DIRECT_ANCESTOR.getText(), new PropertyValueAncestors(c, "directParent"));
         }
 
         long endTime3 = System.nanoTime();

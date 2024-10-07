@@ -129,7 +129,7 @@ public class V1SelectController {
             String result = childrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("directAncestor: (" + result + ")");
+            solrQuery.addFilterQuery(DIRECT_ANCESTOR.getText() + ": (" + result + ")");
         }
 
         if (allChildrenOf != null) {

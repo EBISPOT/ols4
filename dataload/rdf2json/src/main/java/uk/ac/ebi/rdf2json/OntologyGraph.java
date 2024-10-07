@@ -585,15 +585,13 @@ public class OntologyGraph implements StreamRDF {
                 case ANCESTORS:
                     PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
                     Set<String> ancestorIris = ancestors.getAncestors(this);
-                    if (ancestorIris.size() == 1) {
-                        writer.value(ancestorIris.iterator().next());
-                    } else {
-                        writer.beginArray();
-                        for (String ancestorIri : ancestorIris) {
-                            writer.value(ancestorIri);
-                        }
-                        writer.endArray();
+
+                    writer.beginArray();
+                    for (String ancestorIri : ancestorIris) {
+                        writer.value(ancestorIri);
                     }
+                    writer.endArray();
+
                     break;
                 case STRING_LIST:
                     PropertyValueStringList listOfStrings = (PropertyValueStringList)value;

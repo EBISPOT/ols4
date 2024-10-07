@@ -37,7 +37,7 @@ public class OntologyWriter {
             "definitionProperty",
             "synonymProperty",
             // these are redundant in neo4j as we already have the parent edges and cypher queries can be recursive
-            "directAncestor",
+            DIRECT_ANCESTOR.getText(),
             "hierarchicalAncestor",
             // redundant in neo4j because we already have relatedTo which can be queried in both directions
             "relatedFrom"
