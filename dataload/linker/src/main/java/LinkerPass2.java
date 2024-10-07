@@ -178,7 +178,7 @@ public class LinkerPass2 {
                 }
 
                 if (defOfThisEntity.definitions.size() > 0) {
-                    jsonWriter.name("appearsIn");
+                    jsonWriter.name(APPEARS_IN.getText());
                     jsonWriter.beginArray();
                     for (var def : defOfThisEntity.definitions) {
                         jsonWriter.value(def.ontologyId);

@@ -1,6 +1,7 @@
 package uk.ac.ebi.ols.shared;
 
 public enum DefinedFields {
+    APPEARS_IN("appearsIn", "", "The list of ontologies in which the current entity is used."),
     BASE_URI("baseUri", "baseUris",
             "The beginning of URIs that OLS assumes to belong to an ontology."),
     DEFINED_BY("definedBy", "", "A list of ontologies which defines this term"),
