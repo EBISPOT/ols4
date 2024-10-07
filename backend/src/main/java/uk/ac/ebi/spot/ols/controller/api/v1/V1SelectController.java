@@ -188,7 +188,8 @@ public class V1SelectController {
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
             if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getString(json, "label"));
-            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
+                    JsonHelper.getStrings(json, DEFINITION.getText()));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),

@@ -6,6 +6,8 @@ import uk.ac.ebi.spot.ols.model.v1.V1OboDefinitionCitation;
 import uk.ac.ebi.spot.ols.model.v1.V1OboXref;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +18,7 @@ public class V1OboDefinitionCitationExtractor {
 
         JsonObject linkedEntities = json.get("linkedEntities").getAsJsonObject();
 
-        List<JsonElement> definitions = JsonHelper.getValues(json, "definition");
+        List<JsonElement> definitions = JsonHelper.getValues(json, DEFINITION.getText());
         List<V1OboDefinitionCitation> res = new ArrayList<>();
 
         for(JsonElement def : definitions) {

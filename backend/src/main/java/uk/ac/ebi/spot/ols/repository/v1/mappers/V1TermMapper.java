@@ -35,7 +35,7 @@ public class V1TermMapper {
         }
 
         term.label = JsonHelper.getString(localizedJson, "label");
-        term.description = JsonHelper.getStrings(localizedJson, "definition").toArray(new String[0]);
+        term.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
         term.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
         term.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         term.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);

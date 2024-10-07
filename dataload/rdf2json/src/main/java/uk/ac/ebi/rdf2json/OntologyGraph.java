@@ -595,6 +595,14 @@ public class OntologyGraph implements StreamRDF {
                         writer.endArray();
                     }
                     break;
+                case STRING_LIST:
+                    PropertyValueStringList listOfStrings = (PropertyValueStringList)value;
+                    writer.beginArray();
+                    for (PropertyValueLiteral stringLiteral : listOfStrings.getListOfStrings()) {
+                        writeValue(writer, stringLiteral);
+                    }
+                    writer.endArray();
+                    break;
                 default:
                     writer.value("?");
                     break;
