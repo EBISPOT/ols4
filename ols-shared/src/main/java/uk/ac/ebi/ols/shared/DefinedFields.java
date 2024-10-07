@@ -3,6 +3,7 @@ package uk.ac.ebi.ols.shared;
 public enum DefinedFields {
     BASE_URI("baseUri", "baseUris",
             "The beginning of URIs that OLS assumes to belong to an ontology."),
+    DEFINED_BY("definedBy", "", "A list of ontologies which defines this term"),
     DEFINITION("definition", "description","The definition of this entity."),
     HAS_DIRECT_CHILDREN("hasDirectChildren", "has_children",
             "Whether this class has direct children or not."),

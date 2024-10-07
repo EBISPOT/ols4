@@ -11,8 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static uk.ac.ebi.ols.shared.DefinedFields.HAS_LOCAL_DEFINITION;
-import static uk.ac.ebi.ols.shared.DefinedFields.IS_DEFINING_ONTOLOGY;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class LinkerPass2 {
 
@@ -170,7 +169,7 @@ public class LinkerPass2 {
                 jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
 
                 if (defOfThisEntity.definingDefinitions.size() > 0) {
-                    jsonWriter.name("definedBy");
+                    jsonWriter.name(DEFINED_BY.getText());
                     jsonWriter.beginArray();
                     for (var def : defOfThisEntity.definingDefinitions) {
                         jsonWriter.value(def.ontologyId);
@@ -329,7 +328,7 @@ public class LinkerPass2 {
 
 	    // There are ontologies which canonically define this term
 
-            jsonWriter.name("definedBy");
+            jsonWriter.name(DEFINED_BY.getText());
             jsonWriter.beginArray();
             for(var def : definitions.definingDefinitions) {
                 jsonWriter.value(def.ontologyId);
@@ -343,7 +342,7 @@ public class LinkerPass2 {
 		if(definitions.definingOntologyIds.size() == 1) {
 
 			// ...and is only defined in ONE ontology. Therefore that ontology is the canonical defining ontology as far as OLS is concerned
-			jsonWriter.name("definedBy");
+			jsonWriter.name(DEFINITION.getText());
 			jsonWriter.beginArray();
 			jsonWriter.value(definitions.definingOntologyIds.iterator().next());
 			jsonWriter.endArray();
