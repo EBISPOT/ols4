@@ -33,7 +33,9 @@ public enum DefinedFields {
             "Set to true if this entity is a preferred root or not."),
     NUM_DESCENDANTS ("numDescendants", "", "Number of descendants of this entity."),
     NUM_HIERARCHICAL_DESCENDANTS ("numHierarchicalDescendants", "",
-            "Number of hierarchical descendants of this entity."),;
+            "Number of hierarchical descendants of this entity."),
+    PREFERRED_ROOT("preferredRoot", "",
+            "A list of entities that serve as roots for this ontology.");
 
     private final String text;
     private final String ols3Text;
