@@ -62,7 +62,7 @@ public class LinkerPass2 {
 
 
 
-                    jsonWriter.name("importsFrom");
+                    jsonWriter.name(IMPORTS_FROM.getText());
                     jsonWriter.beginArray();
                     var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
                     if(imports != null) {
@@ -73,7 +73,7 @@ public class LinkerPass2 {
                     jsonWriter.endArray();
 
 
-                    jsonWriter.name("exportsTo");
+                    jsonWriter.name(EXPORTS_TO.getText());
                     jsonWriter.beginArray();
                     var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
                     if(importedBy != null) {
