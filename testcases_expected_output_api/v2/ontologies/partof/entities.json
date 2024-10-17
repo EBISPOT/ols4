@@ -62,7 +62,7 @@
         ]
       },
       "http://purl.obolibrary.org/obo/ms#part_of": {
-        "curie": "part:of",
+        "curie": "part_of",
         "hasLocalDefinition": true,
         "label": "part_of",
         "numAppearsIn": 1.0,
@@ -144,7 +144,7 @@
         ]
       },
       "http://purl.obolibrary.org/obo/ms#part_of": {
-        "curie": "part:of",
+        "curie": "part_of",
         "hasLocalDefinition": true,
         "label": "part_of",
         "numAppearsIn": 1.0,
@@ -327,7 +327,7 @@
     "appearsIn": [
       "partof"
     ],
-    "curie": "part:of",
+    "curie": "part_of",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,

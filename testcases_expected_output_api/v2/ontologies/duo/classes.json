@@ -3,7 +3,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000008",
+    "curie": "APOLLO_SV:00000008",
     "definition": "A planned process that has specified output a software product and that involves the creation of source code.",
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -214,7 +214,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000032",
+    "curie": "APOLLO_SV:00000032",
     "definition": "A measurement datum that is the output of counting.",
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -266,7 +266,7 @@
     "label": "count",
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/APOLLO_SV_00000033": {
-        "curie": "APOLLO:SV_00000033",
+        "curie": "APOLLO_SV:00000033",
         "hasLocalDefinition": true,
         "label": "counting",
         "numAppearsIn": 1.0,
@@ -410,7 +410,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000033",
+    "curie": "APOLLO_SV:00000033",
     "definition": "The planned process of finding the number of elements in a finite set of objects.",
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -464,7 +464,7 @@
         "url": "http://en.wikipedia.org/wiki/Counting"
       },
       "http://purl.obolibrary.org/obo/APOLLO_SV_00000032": {
-        "curie": "APOLLO:SV_00000032",
+        "curie": "APOLLO_SV:00000032",
         "hasLocalDefinition": true,
         "label": "count",
         "numAppearsIn": 1.0,
@@ -599,7 +599,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000522",
+    "curie": "APOLLO_SV:00000522",
     "definition": [
       "A document that comprises at least one source code module and provenance data about who contributed the set of files making up the module(s), and optionally comprises also multiple versions of files with detailed change history about who committed files and when, a license for the software, readme files, documentation, executables, etc.",
       "Refers to the stuff that lives on GitHub, not to GitHub or the git software on which it is based"
@@ -867,7 +867,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000524",
+    "curie": "APOLLO_SV:00000524",
     "definition": [
       "A planned process that converts human-written or curated software into a machine-executable or interpretable set of instructions.",
       "It's compiling \"software\" (scare quotes) and not \"source code\" because you can compile Java bytecode to machine code, and Java bytecode is not technically \"source code\".  Compiling source code would be a subclass of this class (as would compiling Java bytecode, etc.).",
@@ -941,7 +941,7 @@
     "label": "compiling software",
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/APOLLO_SV_00000008": {
-        "curie": "APOLLO:SV_00000008",
+        "curie": "APOLLO_SV:00000008",
         "hasLocalDefinition": true,
         "label": "software development",
         "numAppearsIn": 1.0,
@@ -1109,7 +1109,7 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "APOLLO:SV_00000796",
+    "curie": "APOLLO_SV:00000796",
     "definition": "A planned process that has a data set as its specified output.",
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -20289,7 +20289,7 @@
     "label": "data item",
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/APOLLO_SV_00000522": {
-        "curie": "APOLLO:SV_00000522",
+        "curie": "APOLLO_SV:00000522",
         "hasLocalDefinition": true,
         "label": "source code repository",
         "numAppearsIn": 1.0,
@@ -24297,7 +24297,7 @@
     "label": "source code module",
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/APOLLO_SV_00000522": {
-        "curie": "APOLLO:SV_00000522",
+        "curie": "APOLLO_SV:00000522",
         "hasLocalDefinition": true,
         "label": "source code repository",
         "numAppearsIn": 1.0,
