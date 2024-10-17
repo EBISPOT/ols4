@@ -20,6 +20,14 @@ spec:
             claimName: {{ .Release.Name }}-solr-pvc
       securityContext:
         fsGroup: 8983
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - hh-rke-wp-webadmin-56-worker-1.caas.ebi.ac.uk
       containers:
         - name: solr
           image: ghcr.io/ebispot/ols4-solr:9.0.0
