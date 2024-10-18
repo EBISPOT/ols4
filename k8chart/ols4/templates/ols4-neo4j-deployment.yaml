@@ -14,6 +14,16 @@ spec:
       labels:
         app: {{ .Release.Name }}-neo4j
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - hh-rke-wp-webadmin-47-worker-2.caas.ebi.ac.uk
+                      - hx-rke-wp-webadmin-40-worker-2.caas.ebi.ac.uk
       volumes:
         - name: {{ .Release.Name }}-neo4j-storage
           persistentVolumeClaim:
