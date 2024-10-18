@@ -18,17 +18,17 @@ public class SolrFieldMapper {
             String prefix = "";
             String suffix = "";
 
+            if (legacyFieldName.indexOf('^') != -1) {
+                suffix = legacyFieldName.substring(legacyFieldName.indexOf('^'));
+                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.indexOf('^'));
+            }
+
             if (legacyFieldName.endsWith("_s")) {
                 prefix = "lowercase_";
                 legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
             } else if (legacyFieldName.endsWith("_e")) {
                 prefix = "edge_";
                 legacyFieldName = legacyFieldName.substring(0, legacyFieldName.length() - 2);
-            }
-
-        if (legacyFieldName.indexOf('^') != -1) {
-                suffix = legacyFieldName.substring(legacyFieldName.indexOf('^'));
-                legacyFieldName = legacyFieldName.substring(0, legacyFieldName.indexOf('^'));
             }
 
             if (legacyFieldName.equals("iri")) {
