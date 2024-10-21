@@ -14,6 +14,15 @@ spec:
       labels:
         app: {{ .Release.Name }}-solr
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+                - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - hh-rke-wp-webadmin-56-worker-1.caas.ebi.ac.uk
       volumes:
         - name: {{ .Release.Name }}-solr-storage
           persistentVolumeClaim:
