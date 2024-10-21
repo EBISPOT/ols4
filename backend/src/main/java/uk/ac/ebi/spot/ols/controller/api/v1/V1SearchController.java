@@ -127,17 +127,18 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
-                solrQuery.setQuery(
-                        "((" +
-                                createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields))
-                                        .toArray(new String[0]), true)
-                                + ") AND ("+ IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100 OR " +
-                                IS_DEFINING_ONTOLOGY.getText() + ":false^0))"
-                );
-
+                solrQuery.set("defType", "edismax");
+                solrQuery.setQuery(query.toLowerCase());
+                // Specify the query fields with boosting
+                String[] fields = {"label_s^5", "synonym_s^3", "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
+                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
+                // Boost exact phrase matches in label and synonym fields
+                solrQuery.set("pf", "lowercase_label^10 lowercase_synonym^5");
+                // Set minimum match to require all terms in the phrase to match
+                solrQuery.set("mm", "100%");
+                // Add boost query to prioritize defining ontologies
+                solrQuery.set("bq", IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100");
             } else {
-
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
