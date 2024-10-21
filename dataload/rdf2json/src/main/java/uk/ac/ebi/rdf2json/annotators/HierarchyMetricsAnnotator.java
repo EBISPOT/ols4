@@ -25,7 +25,7 @@ public class HierarchyMetricsAnnotator {
         annotateHierarchyMetrics(graph, DIRECT_PARENT.getText(), NUM_DESCENDANTS.getText());
         System.gc();
 
-        annotateHierarchyMetrics(graph, "hierarchicalParent", NUM_HIERARCHICAL_DESCENDANTS.getText());
+        annotateHierarchyMetrics(graph, HIERARCHICAL_PARENT.getText(), NUM_HIERARCHICAL_DESCENDANTS.getText());
         System.gc();
 
         long endTime3 = System.nanoTime();

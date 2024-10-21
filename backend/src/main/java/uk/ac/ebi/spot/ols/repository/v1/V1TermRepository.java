@@ -47,7 +47,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -55,7 +55,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -71,7 +71,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -80,7 +80,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
                         relationIRIs, Map.of(), pageable)

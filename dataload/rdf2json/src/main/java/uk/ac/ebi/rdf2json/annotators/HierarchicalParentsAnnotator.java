@@ -4,15 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.PropertySet;
-import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueRelated;
-import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import uk.ac.ebi.rdf2json.properties.*;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class HierarchicalParentsAnnotator {
     private static final Logger logger = LoggerFactory.getLogger(HierarchicalParentsAnnotator.class);
@@ -52,6 +48,7 @@ public class HierarchicalParentsAnnotator {
                     continue;
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+                List<PropertyValueURI> hierarchicalParents = new ArrayList<>();
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
@@ -59,8 +56,7 @@ public class HierarchicalParentsAnnotator {
                         if (parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
 
                             // Direct parent; these are also considered hierarchical parents
-                            c.properties.addProperty("hierarchicalParent", parent);
-
+                            hierarchicalParents.add((PropertyValueURI) parent);
                         }
                     }
                 }
@@ -69,6 +65,7 @@ public class HierarchicalParentsAnnotator {
                 // can find their values in relatedTo
                 //
                 List<PropertyValue> relatedTo = (List<PropertyValue>) c.properties.getPropertyValues("relatedTo");
+                Map<PropertyValueURI, PropertySet> fillerToReifiedPropertiesMap = new HashMap<>();
 
                 if(relatedTo != null) {
                     for(PropertyValue related : relatedTo) {
@@ -97,7 +94,7 @@ public class HierarchicalParentsAnnotator {
                                         ((PropertyValueRelated) related).getFiller().uri
                                 );
 
-                                c.properties.addProperty("hierarchicalParent", filler);
+                                hierarchicalParents.add(filler);
 
                                 // reify the hierarchicalParent edge with the property IRIs
                                 // this enables the frontend to display e.g. "has part" relations in the tree
@@ -107,14 +104,25 @@ public class HierarchicalParentsAnnotator {
                                 if(inverseProperty != null) {
                                     reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
                                 }
-                                c.properties.annotatePropertyWithAxiom("hierarchicalParent", filler, reifiedProperties, graph);
+//                                c.properties.annotatePropertyWithAxiom(HIERARCHICAL_PARENT.getText(), filler, reifiedProperties, graph);
+                                fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
 
                             }
                         }
                     }
                 }
+                if (hierarchicalParents.size()>0) {
+                    c.properties.addProperty(HIERARCHICAL_PARENT.getText(), new PropertyValueList(hierarchicalParents));
+                    for (PropertyValueURI propertyValueURI: fillerToReifiedPropertiesMap.keySet()) {
+                        c.properties.annotatePropertyWithAxiom(HIERARCHICAL_PARENT.getText(), propertyValueURI,
+                                fillerToReifiedPropertiesMap.get(propertyValueURI), graph);
+
+                    }
+                }
             }
         }
+
+
         long endTime3 = System.nanoTime();
         logger.info("annotate hierarchical parents: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
     }

@@ -455,8 +455,14 @@ public class OntologyGraph implements StreamRDF {
             List<PropertyValue> values = properties.getPropertyValues(predicate);
 
             writer.name(predicate);
-
-            if(values.size() == 1) {
+            if (values.size() == 1 && values.get(0) instanceof PropertyValueList) {
+                List<PropertyValue> propertyValues = ((PropertyValueList) values.get(0)).getPropertyValues();
+                writer.beginArray();
+                for (PropertyValue propertyValue : propertyValues) {
+                    writePropertyValue(writer, propertyValue, null);
+                }
+                writer.endArray();
+            } else if(values.size() == 1) {
                 writePropertyValue(writer, values.get(0), null);
             } else {
                 writer.beginArray();
@@ -593,22 +599,13 @@ public class OntologyGraph implements StreamRDF {
                     writer.endArray();
 
                     break;
-                case STRING_LIST:
-                    PropertyValueStringList listOfStrings = (PropertyValueStringList)value;
+                case LIST:
+                    PropertyValueList propertyValueList = (PropertyValueList)value;
                     writer.beginArray();
-                    for (PropertyValueLiteral stringLiteral : listOfStrings.getListOfStrings()) {
-                        writeValue(writer, stringLiteral);
+                    for (PropertyValue propertyValue : propertyValueList.getPropertyValues()) {
+                        writeValue(writer, propertyValue);
                     }
                     writer.endArray();
-                    break;
-                case URI_LIST:
-                    PropertyValueUriList listOfUri = (PropertyValueUriList)value;
-                    writer.beginArray();
-                    for (PropertyValueURI propertyValueURI : listOfUri.getListOfUris()) {
-                        writeValue(writer, propertyValueURI);
-                    }
-                    writer.endArray();
-                    break;
                 default:
                     writer.value("?");
                     break;

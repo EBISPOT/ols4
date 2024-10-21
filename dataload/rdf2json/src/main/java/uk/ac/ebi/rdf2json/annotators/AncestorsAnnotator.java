@@ -23,7 +23,7 @@ public class AncestorsAnnotator {
                 continue;
 
             if (c.types.contains(OntologyNode.NodeType.CLASS)) {
-                c.properties.addProperty("hierarchicalAncestor", new PropertyValueAncestors(c, "hierarchicalParent"));
+                c.properties.addProperty(HIERARCHICAL_ANCESTOR.getText(), new PropertyValueAncestors(c, HIERARCHICAL_PARENT.getText()));
             }
 
             c.properties.addProperty(DIRECT_ANCESTOR.getText(), new PropertyValueAncestors(c, DIRECT_PARENT.getText()));

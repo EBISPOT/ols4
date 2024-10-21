@@ -21,6 +21,10 @@ public enum DefinedFields {
     HAS_INDIVIDUALS("hasIndividuals", "", ""),
     HAS_LOCAL_DEFINITION("hasLocalDefinition", "",
             "True if term is definined within this ontology."),
+    HIERARCHICAL_ANCESTOR("hierarchicalAncestor","","The list of ancestors of this entity via " +
+            "subclass relationships and hierarchical properties such as part_of(BFO:0000050) relations."),
+    HIERARCHICAL_PARENT("hierarchicalParent","" ,"The list of parents of this entity via " +
+            "subclass relationships and hierarchical properties such as part_of(BFO:0000050) relations."),
     IMPORTED("imported", "",
             "Whether this entity is imported or not."),
     IMPORTS_FROM("importsFrom", "",

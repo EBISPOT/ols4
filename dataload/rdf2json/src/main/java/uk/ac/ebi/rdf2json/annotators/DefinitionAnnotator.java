@@ -3,8 +3,8 @@ package uk.ac.ebi.rdf2json.annotators;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
-import uk.ac.ebi.rdf2json.properties.PropertyValueStringList;
 
 import java.util.*;
 
@@ -58,7 +58,8 @@ public class DefinitionAnnotator {
 					}
 				}
 			}
-			c.properties.addProperty(destProp, new PropertyValueStringList(listOfValues));
+			if (listOfValues.size() > 0)
+				c.properties.addProperty(destProp, new PropertyValueList(listOfValues));
 		}
 
 	}

@@ -136,7 +136,7 @@ public class V1SelectController {
             String result = allChildrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+            solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText() + ": (" + result + ")");
         }
 
         solrQuery.addFilterQuery(IS_OBSOLETE.getText() + ":" + queryObsoletes);

@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
-import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
-import uk.ac.ebi.rdf2json.properties.PropertyValueUriList;
+import uk.ac.ebi.rdf2json.properties.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -55,7 +52,8 @@ public class PreferredRootsAnnotator {
         for(String root : preferredRoots)
             listOfUris.add(PropertyValueURI.fromUri(root));
 
-        graph.ontologyNode.properties.addProperty(PREFERRED_ROOT.getText(), new PropertyValueUriList(listOfUris));
+        if (listOfUris.size() > 0)
+            graph.ontologyNode.properties.addProperty(PREFERRED_ROOT.getText(), new PropertyValueList(listOfUris));
 
         for(String id : graph.nodes.keySet()) {
             OntologyNode c = graph.nodes.get(id);

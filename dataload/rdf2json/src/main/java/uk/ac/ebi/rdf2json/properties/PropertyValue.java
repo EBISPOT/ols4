@@ -17,8 +17,7 @@ public abstract class PropertyValue {
 	    RELATED,
 	    REFERENCED_ENTITIES,
         ANCESTORS,
-        STRING_LIST,
-        URI_LIST
+        LIST
     }
 
     // reification
