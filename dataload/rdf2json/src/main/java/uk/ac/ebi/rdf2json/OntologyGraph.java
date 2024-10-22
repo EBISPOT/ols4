@@ -245,9 +245,11 @@ public class OntologyGraph implements StreamRDF {
                 "sourceFileTimestamp", PropertyValueLiteral.fromString(new Date(sourceFileTimestamp).toString()));
         }
 
+        ArrayList<PropertyValueLiteral> languageList = new ArrayList<>();
         for(String language : languages) {
-            ontologyNode.properties.addProperty("language", PropertyValueLiteral.fromString(language));
+            languageList.add(PropertyValueLiteral.fromString(language));
         }
+        ontologyNode.properties.addProperty(LANGUAGE.getText(), new PropertyValueList(languageList));
 
 
         long endTime = System.nanoTime();

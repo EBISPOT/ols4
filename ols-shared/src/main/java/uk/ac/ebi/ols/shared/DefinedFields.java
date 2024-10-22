@@ -36,6 +36,7 @@ public enum DefinedFields {
     IS_PREFERRED_ROOT("isPreferredRoot", "is_preferred_root",
             "Set to true if this entity is a preferred root or not."),
     LABEL("label", "", "The name or names of this entity."),
+    LANGUAGE("language", "", "The language or languages this ontology is available in."),
     NUM_DESCENDANTS ("numDescendants", "", "Number of descendants of this entity."),
     NUM_HIERARCHICAL_DESCENDANTS ("numHierarchicalDescendants", "",
             "Number of hierarchical descendants of this entity."),
