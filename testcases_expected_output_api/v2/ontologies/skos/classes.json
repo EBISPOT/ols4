@@ -3,7 +3,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "SKOS_Collection",
+    "curie": "SKOS:Collection",
     "definedBy": [
       "skos"
     ],
@@ -28,7 +28,7 @@
     "label": "Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS_isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -41,7 +41,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -54,7 +54,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "SKOS_Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -67,7 +67,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#ConceptScheme": {
-        "curie": "SKOS_ConceptScheme",
+        "curie": "SKOS:ConceptScheme",
         "definedBy": [
           "skos"
         ],
@@ -80,7 +80,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "SKOS_definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -94,7 +94,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "SKOS_scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -127,7 +127,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "SKOS_Concept",
+    "curie": "SKOS:Concept",
     "definedBy": [
       "skos"
     ],
@@ -147,7 +147,7 @@
     "label": "Concept",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS_isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -160,7 +160,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -173,7 +173,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "SKOS_definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -205,7 +205,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "SKOS_ConceptScheme",
+    "curie": "SKOS:ConceptScheme",
     "definedBy": [
       "skos"
     ],
@@ -228,7 +228,7 @@
     "label": "Concept Scheme",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS_isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -241,7 +241,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -254,7 +254,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Concept": {
-        "curie": "SKOS_Concept",
+        "curie": "SKOS:Concept",
         "definedBy": [
           "skos"
         ],
@@ -267,7 +267,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "SKOS_definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -281,7 +281,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#example": {
-        "curie": "SKOS_example",
+        "curie": "SKOS:example",
         "definedBy": [
           "skos"
         ],
@@ -295,7 +295,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "SKOS_scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],
@@ -329,7 +329,7 @@
     "appearsIn": [
       "skos"
     ],
-    "curie": "SKOS_OrderedCollection",
+    "curie": "SKOS:OrderedCollection",
     "definedBy": [
       "skos"
     ],
@@ -356,7 +356,7 @@
     "label": "Ordered Collection",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS_isDefinedBy",
+        "curie": "RDFS:isDefinedBy",
         "definedBy": [
           "rdfs"
         ],
@@ -369,7 +369,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -382,7 +382,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS_subClassOf",
+        "curie": "RDFS:subClassOf",
         "definedBy": [
           "rdfs"
         ],
@@ -395,7 +395,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#Collection": {
-        "curie": "SKOS_Collection",
+        "curie": "SKOS:Collection",
         "definedBy": [
           "skos"
         ],
@@ -408,7 +408,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "SKOS_definition",
+        "curie": "SKOS:definition",
         "definedBy": [
           "skos"
         ],
@@ -422,7 +422,7 @@
         ]
       },
       "http://www.w3.org/2004/02/skos/core#scopeNote": {
-        "curie": "SKOS_scopeNote",
+        "curie": "SKOS:scopeNote",
         "definedBy": [
           "skos"
         ],

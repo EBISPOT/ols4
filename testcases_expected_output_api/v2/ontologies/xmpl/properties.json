@@ -3,6 +3,40 @@
     "appearsIn": [
       "xmpl"
     ],
+    "curie": "XMPL:Synonym",
+    "definedBy": [
+      "xmpl"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
+    "imported": false,
+    "iri": "http://exmpl.org/xmpl/Synonym",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "XMPL_Synonym",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "xmpl",
+    "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
+    "ontologyPreferredPrefix": "XMPL",
+    "searchableAnnotationValues": false,
+    "shortForm": "XMPL_Synonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "xmpl"
+    ],
     "curie": "XMPL_Preferred_name",
     "definedBy": [
       "xmpl"
@@ -27,40 +61,6 @@
     "ontologyPreferredPrefix": "XMPL",
     "searchableAnnotationValues": false,
     "shortForm": "XMPL_Preferred_name",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "xmpl"
-    ],
-    "curie": "XMPL_Synonym",
-    "definedBy": [
-      "xmpl"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-    "imported": false,
-    "iri": "http://exmpl.org/xmpl/Synonym",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "XMPL_Synonym",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "xmpl",
-    "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
-    "ontologyPreferredPrefix": "XMPL",
-    "searchableAnnotationValues": false,
-    "shortForm": "XMPL_Synonym",
     "type": [
       "annotationProperty",
       "entity",

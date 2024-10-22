@@ -1,6 +1,7 @@
 package uk.ac.ebi.rdf2json.annotators;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,16 +40,35 @@ public class ShortFormAnnotator {
 
 			/*
 			CURIEs are formed by following rules:
+			If there is only one underscore "_" AND the characters before the underscore are PreferredPrefix then replace the underscore with colon ":"
 			If there is only one underscore "_" AND the characters after the underscore are numbers then replace the underscore with colon ":"
 			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
 			If there are multiple underscore but has only digits after the last underscore then the code replaces the last underscore with a colon
 			*/
+			String curie;
+			// Pattern for: single underscore, prefix matches preferredPrefix
+			String preferredPrefixPattern = "^(?:" + Pattern.quote(preferredPrefix) + ")_([^_]+)$";
+			// Pattern for: single underscore, suffix is all digits
+			String singleUnderscoreDigitsPattern = "^[^_]+_(\\d+)$";
+			// Pattern for: multiple underscores, suffix is all digits
+			String multipleUnderscoresDigitsPattern = "^(.*)_(\\d+)$";
+			if (shortForm.matches(preferredPrefixPattern)) {
+				curie = shortForm.replaceFirst("_", ":");
+			} else if (shortForm.matches(singleUnderscoreDigitsPattern)) {
+				curie = shortForm.replaceFirst("_", ":");
+			} else if (shortForm.matches(multipleUnderscoresDigitsPattern)) {
+				// Multiple underscores, suffix is digits
+				// Replace the last underscore with a colon
+				curie = shortForm.replaceFirst("_(?=\\d+$)", ":");
+			} else {
+				// No transformation needed
+				curie = shortForm;
+			}
 
-			String curie = shortForm.replaceFirst("_(\\d+)$", ":$1");
 			c.properties.addProperty("shortForm", PropertyValueLiteral.fromString(shortForm));
 			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
-		    }
 		}
+	}
 		long endTime3 = System.nanoTime();
 		logger.info("annotate short forms: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
 	}

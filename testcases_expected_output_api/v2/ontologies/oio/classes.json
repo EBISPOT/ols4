@@ -3,7 +3,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_DbXref",
+    "curie": "OIO:DbXref",
     "definedBy": [
       "oio"
     ],
@@ -21,7 +21,7 @@
     "label": "database_cross_reference",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -49,7 +49,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_Definition",
+    "curie": "OIO:Definition",
     "definedBy": [
       "oio"
     ],
@@ -87,7 +87,7 @@
     "label": "definition",
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
-        "curie": "OIO_DbXref",
+        "curie": "OIO:DbXref",
         "definedBy": [
           "oio"
         ],
@@ -100,7 +100,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "OIO_hasDbXref",
+        "curie": "OIO:hasDbXref",
         "definedBy": [
           "oio"
         ],
@@ -114,7 +114,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
-        "curie": "OIO_hasDefinition",
+        "curie": "OIO:hasDefinition",
         "definedBy": [
           "oio"
         ],
@@ -128,7 +128,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-        "curie": "OIO_hasURI",
+        "curie": "OIO:hasURI",
         "definedBy": [
           "oio"
         ],
@@ -142,7 +142,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS_comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -155,7 +155,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -188,7 +188,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_ObsoleteClass",
+    "curie": "OIO:ObsoleteClass",
     "definedBy": [
       "oio"
     ],
@@ -217,7 +217,7 @@
     "label": "obsolete_class",
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
-        "curie": "OIO_DbXref",
+        "curie": "OIO:DbXref",
         "definedBy": [
           "oio"
         ],
@@ -230,7 +230,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#Definition": {
-        "curie": "OIO_Definition",
+        "curie": "OIO:Definition",
         "definedBy": [
           "oio"
         ],
@@ -243,7 +243,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "OIO_hasDbXref",
+        "curie": "OIO:hasDbXref",
         "definedBy": [
           "oio"
         ],
@@ -257,7 +257,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
-        "curie": "OIO_hasDefinition",
+        "curie": "OIO:hasDefinition",
         "definedBy": [
           "oio"
         ],
@@ -271,7 +271,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-        "curie": "OIO_hasURI",
+        "curie": "OIO:hasURI",
         "definedBy": [
           "oio"
         ],
@@ -285,7 +285,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -318,7 +318,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_Subset",
+    "curie": "OIO:Subset",
     "definedBy": [
       "oio"
     ],
@@ -377,7 +377,7 @@
     "label": "subset",
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
-        "curie": "OIO_DbXref",
+        "curie": "OIO:DbXref",
         "definedBy": [
           "oio"
         ],
@@ -390,7 +390,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#Definition": {
-        "curie": "OIO_Definition",
+        "curie": "OIO:Definition",
         "definedBy": [
           "oio"
         ],
@@ -403,7 +403,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#Synonym": {
-        "curie": "OIO_Synonym",
+        "curie": "OIO:Synonym",
         "definedBy": [
           "oio"
         ],
@@ -416,7 +416,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "OIO_hasDbXref",
+        "curie": "OIO:hasDbXref",
         "definedBy": [
           "oio"
         ],
@@ -430,7 +430,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
-        "curie": "OIO_hasDefinition",
+        "curie": "OIO:hasDefinition",
         "definedBy": [
           "oio"
         ],
@@ -444,7 +444,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": {
-        "curie": "OIO_hasNarrowSynonym",
+        "curie": "OIO:hasNarrowSynonym",
         "definedBy": [
           "oio"
         ],
@@ -458,7 +458,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": {
-        "curie": "OIO_hasRelatedSynonym",
+        "curie": "OIO:hasRelatedSynonym",
         "definedBy": [
           "oio"
         ],
@@ -472,7 +472,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-        "curie": "OIO_hasURI",
+        "curie": "OIO:hasURI",
         "definedBy": [
           "oio"
         ],
@@ -486,7 +486,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -550,7 +550,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_Synonym",
+    "curie": "OIO:Synonym",
     "definedBy": [
       "oio"
     ],
@@ -582,7 +582,7 @@
     "label": "synonym",
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
-        "curie": "OIO_DbXref",
+        "curie": "OIO:DbXref",
         "definedBy": [
           "oio"
         ],
@@ -595,7 +595,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#Definition": {
-        "curie": "OIO_Definition",
+        "curie": "OIO:Definition",
         "definedBy": [
           "oio"
         ],
@@ -608,7 +608,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
-        "curie": "OIO_hasDbXref",
+        "curie": "OIO:hasDbXref",
         "definedBy": [
           "oio"
         ],
@@ -622,7 +622,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
-        "curie": "OIO_hasDefinition",
+        "curie": "OIO:hasDefinition",
         "definedBy": [
           "oio"
         ],
@@ -636,7 +636,7 @@
         ]
       },
       "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-        "curie": "OIO_hasURI",
+        "curie": "OIO:hasURI",
         "definedBy": [
           "oio"
         ],
@@ -650,7 +650,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS_comment",
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
@@ -663,7 +663,7 @@
         ]
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
@@ -696,7 +696,7 @@
     "appearsIn": [
       "oio"
     ],
-    "curie": "OIO_SynonymType",
+    "curie": "OIO:SynonymType",
     "definedBy": [
       "oio"
     ],
@@ -714,7 +714,7 @@
     "label": "synonym_type",
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS_label",
+        "curie": "RDFS:label",
         "definedBy": [
           "rdfs"
         ],
