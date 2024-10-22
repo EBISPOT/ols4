@@ -3,41 +3,7 @@
     "appearsIn": [
       "xmpl"
     ],
-    "curie": "XMPL_Preferred_name",
-    "definedBy": [
-      "xmpl"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-    "imported": false,
-    "iri": "http://exmpl.org/xmpl/Preferred_name",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": "XMPL_Preferred_name",
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "xmpl",
-    "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
-    "ontologyPreferredPrefix": "XMPL",
-    "searchableAnnotationValues": false,
-    "shortForm": "XMPL_Preferred_name",
-    "type": [
-      "annotationProperty",
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "xmpl"
-    ],
-    "curie": "XMPL_Synonym",
+    "curie": "XMPL:Synonym",
     "definedBy": [
       "xmpl"
     ],
@@ -71,7 +37,7 @@
     "appearsIn": [
       "xmpl"
     ],
-    "curie": "XMPL_XMPL000001",
+    "curie": "XMPL:XMPL000001",
     "definedBy": [
       "xmpl"
     ],
@@ -108,7 +74,7 @@
         ]
       },
       "http://exmpl.org/xmpl/Synonym": {
-        "curie": "XMPL_Synonym",
+        "curie": "XMPL:Synonym",
         "definedBy": [
           "xmpl"
         ],
@@ -144,7 +110,7 @@
     "appearsIn": [
       "xmpl"
     ],
-    "curie": "XMPL_XMPL000002",
+    "curie": "XMPL:XMPL000002",
     "definedBy": [
       "xmpl"
     ],
@@ -187,7 +153,7 @@
         ]
       },
       "http://exmpl.org/xmpl/Synonym": {
-        "curie": "XMPL_Synonym",
+        "curie": "XMPL:Synonym",
         "definedBy": [
           "xmpl"
         ],
@@ -201,7 +167,7 @@
         ]
       },
       "http://exmpl.org/xmpl/XMPL000001": {
-        "curie": "XMPL_XMPL000001",
+        "curie": "XMPL:XMPL000001",
         "definedBy": [
           "xmpl"
         ],
@@ -239,7 +205,7 @@
     "appearsIn": [
       "xmpl"
     ],
-    "curie": "XMPL_XMPL000003",
+    "curie": "XMPL:XMPL000003",
     "definedBy": [
       "xmpl"
     ],
@@ -268,7 +234,7 @@
     ],
     "linkedEntities": {
       "http://exmpl.org/xmpl/Synonym": {
-        "curie": "XMPL_Synonym",
+        "curie": "XMPL:Synonym",
         "definedBy": [
           "xmpl"
         ],
@@ -282,7 +248,7 @@
         ]
       },
       "http://exmpl.org/xmpl/XMPL000001": {
-        "curie": "XMPL_XMPL000001",
+        "curie": "XMPL:XMPL000001",
         "definedBy": [
           "xmpl"
         ],
@@ -314,6 +280,40 @@
     "type": [
       "class",
       "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "xmpl"
+    ],
+    "curie": "XMPL_Preferred_name",
+    "definedBy": [
+      "xmpl"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
+    "imported": false,
+    "iri": "http://exmpl.org/xmpl/Preferred_name",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": "XMPL_Preferred_name",
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "xmpl",
+    "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
+    "ontologyPreferredPrefix": "XMPL",
+    "searchableAnnotationValues": false,
+    "shortForm": "XMPL_Preferred_name",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
     ]
   }
 ]
