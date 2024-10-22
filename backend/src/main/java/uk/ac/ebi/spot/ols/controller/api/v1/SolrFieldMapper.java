@@ -38,8 +38,8 @@ public class SolrFieldMapper {
                 continue;
             }
 
-            if (legacyFieldName.equals("label")) {
-                newFields.add(prefix + "label" + suffix);
+            if (legacyFieldName.equals(LABEL.getText())) {
+                newFields.add(prefix + LABEL.getText() + suffix);
                 continue;
             }
 

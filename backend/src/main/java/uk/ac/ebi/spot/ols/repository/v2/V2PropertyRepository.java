@@ -42,7 +42,7 @@ public class V2PropertyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 " + DEFINITION.getText();
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -66,7 +66,7 @@ public class V2PropertyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText() + "^100 " + DEFINITION.getText();
         }
 
         OlsSolrQuery query = new OlsSolrQuery();

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 @Component
 public class V2IndividualRepository {
@@ -38,7 +39,7 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -62,7 +63,7 @@ public class V2IndividualRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText() + "^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();

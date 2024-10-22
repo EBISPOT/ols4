@@ -127,7 +127,7 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
                 solrQuery.setQuery(
                         "((" +
                                 createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields))
@@ -141,7 +141,8 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", DEFINITION.getText(), "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"^5", "synonym^3", DEFINITION.getText(), "short_form^2", "obo_id^2",
+                        "iri", "annotations_trimmed"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
@@ -282,7 +283,7 @@ public class V1SearchController {
                 fieldList.add("id");
                 fieldList.add("iri");
                 fieldList.add("ontology_name");
-                fieldList.add("label");
+                fieldList.add(LABEL.getText());
                 fieldList.add("description");
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
@@ -293,10 +294,10 @@ public class V1SearchController {
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) {
-                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
+            if (fieldList.contains(LABEL.getText())) {
+                var label = outDoc.put(LABEL.getText(), JsonHelper.getString(json, LABEL.getText()));
                 if(label!=null) {
-                    outDoc.put("label", label);
+                    outDoc.put(LABEL.getText(), label);
                 }
             }
             if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),

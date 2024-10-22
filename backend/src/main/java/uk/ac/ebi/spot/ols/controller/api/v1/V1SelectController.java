@@ -97,7 +97,7 @@ public class V1SelectController {
         }
         solrQuery.setQuery(query);
         solrQuery.set("defType", "edismax");
-        solrQuery.set("qf", "label whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
+        solrQuery.set("qf", LABEL.getText()+" whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
         solrQuery.set("bq", "type:ontology^10.0 " +
                 IS_DEFINING_ONTOLOGY.getText() +":true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" +
                 queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
@@ -146,7 +146,7 @@ public class V1SelectController {
         solrQuery.add("hl.simple.pre", "<b>");
         solrQuery.add("hl.simple.post", "</b>");
         solrQuery.addHighlightField("whitespace_edge_label");
-        solrQuery.addHighlightField("label");
+        solrQuery.addHighlightField(LABEL.getText());
         solrQuery.addHighlightField("whitespace_edge_synonym");
         solrQuery.addHighlightField("synonym");
 
@@ -175,10 +175,10 @@ public class V1SelectController {
                 fieldList.add("iri");
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
-                fieldList.add("label");
+                fieldList.add(LABEL.getText());
                 fieldList.add("ontology_name");
                 fieldList.add("ontology_prefix");
-                fieldList.add("description");
+                fieldList.add(DEFINITION.getOls3Text());
                 fieldList.add("type");
             }
 
@@ -187,7 +187,7 @@ public class V1SelectController {
             if (fieldList.contains("id")) outDoc.put("id", res.get("id").toString().replace('+', ':'));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getString(json, "label"));
+            if (fieldList.contains(LABEL.getText())) outDoc.put(LABEL.getText(), JsonHelper.getString(json, LABEL.getText()));
             if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
                     JsonHelper.getStrings(json, DEFINITION.getText()));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
@@ -229,7 +229,7 @@ public class V1SelectController {
             Map<String,Object> resHighlight = new LinkedHashMap<>();
             for(var fieldName : highlight.keySet()) {
                 if(fieldName.equals("whitespace_edge_label")) {
-                    resHighlight.put("label_autosuggest", highlight.get(fieldName));
+                    resHighlight.put(LABEL.getText()+"_autosuggest", highlight.get(fieldName));
                 } else if(fieldName.equals("whitespace_edge_synonym")) {
                     resHighlight.put("synonym_autosuggest", highlight.get(fieldName));
                 } else {

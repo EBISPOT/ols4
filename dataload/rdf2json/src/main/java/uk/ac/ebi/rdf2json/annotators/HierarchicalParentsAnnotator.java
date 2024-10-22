@@ -104,7 +104,6 @@ public class HierarchicalParentsAnnotator {
                                 if(inverseProperty != null) {
                                     reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
                                 }
-//                                c.properties.annotatePropertyWithAxiom(HIERARCHICAL_PARENT.getText(), filler, reifiedProperties, graph);
                                 fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
 
                             }

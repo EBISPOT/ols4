@@ -27,7 +27,7 @@ public class V1PropertyMapper {
         property.ontologyPrefix = JsonHelper.getString(localizedJson, "ontologyPreferredPrefix");
         property.ontologyIri = JsonHelper.getString(localizedJson, "ontologyIri");
 
-        property.label = JsonHelper.getString(localizedJson, "label");
+        property.label = JsonHelper.getString(localizedJson, LABEL.getText());
         property.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
         property.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
         property.annotation = AnnotationExtractor.extractAnnotations(localizedJson);

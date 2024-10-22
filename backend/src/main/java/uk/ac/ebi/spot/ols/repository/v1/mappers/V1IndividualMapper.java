@@ -26,7 +26,7 @@ public class V1IndividualMapper {
         individual.ontologyPrefix = JsonHelper.getString(localizedJson, "ontologyPreferredPrefix");
         individual.ontologyIri = JsonHelper.getString(localizedJson, "ontologyIri");
 
-        individual.label = JsonHelper.getString(localizedJson, "label");
+        individual.label = JsonHelper.getString(localizedJson, LABEL.getText());
         individual.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
         individual.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
         individual.annotation = AnnotationExtractor.extractAnnotations(localizedJson);

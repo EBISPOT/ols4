@@ -41,7 +41,7 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -65,7 +65,7 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
