@@ -18,6 +18,8 @@ import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -39,7 +41,7 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -63,7 +65,7 @@ public class V2ClassRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 definition";
+            searchFields = LABEL.getText()+"^100 definition";
         }
 
         OlsSolrQuery query = new OlsSolrQuery();
@@ -110,7 +112,8 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
@@ -123,7 +126,8 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
@@ -137,7 +141,8 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList(HIERARCHICAL_PARENT.getText()),
+                        Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
@@ -150,7 +155,8 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id, Arrays.asList("hierarchicalParent"), Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
+                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
@@ -164,7 +170,8 @@ public class V2ClassRepository {
 
         String id = ontologyId + "+individual+" + iri;
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);

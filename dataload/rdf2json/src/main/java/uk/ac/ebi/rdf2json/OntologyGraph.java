@@ -245,9 +245,11 @@ public class OntologyGraph implements StreamRDF {
                 "sourceFileTimestamp", PropertyValueLiteral.fromString(new Date(sourceFileTimestamp).toString()));
         }
 
+        ArrayList<PropertyValueLiteral> languageList = new ArrayList<>();
         for(String language : languages) {
-            ontologyNode.properties.addProperty("language", PropertyValueLiteral.fromString(language));
+            languageList.add(PropertyValueLiteral.fromString(language));
         }
+        ontologyNode.properties.addProperty(LANGUAGE.getText(), new PropertyValueList(languageList));
 
 
         long endTime = System.nanoTime();
@@ -258,7 +260,7 @@ public class OntologyGraph implements StreamRDF {
         NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
         OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
         DirectParentsAnnotator.annotateDirectParents(this);
-        RelatedAnnotator.annotateRelated(this);
+        (new RelatedAnnotator()).annotateRelated(this);
         HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
         AncestorsAnnotator.annotateAncestors(this);
         HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator
@@ -318,6 +320,14 @@ public class OntologyGraph implements StreamRDF {
                 if (configKey.equals("iri"))
                     continue;
 
+                if (configKey.equals("base_uri")) {
+                    // Config uses "base_uri" whereas rest of code base uses BASE_URI.getText().
+                    configKey = BASE_URI.getText();
+                    if (!(configVal instanceof Collection)) {
+                        configVal = List.of(configVal);
+                    }
+
+                }
                 // annotated as hasPreferredRoot by PreferredRootsAnnotator, no need to duplicate
                 if (configKey.equals("preferred_root_term"))
                     continue;
@@ -447,8 +457,14 @@ public class OntologyGraph implements StreamRDF {
             List<PropertyValue> values = properties.getPropertyValues(predicate);
 
             writer.name(predicate);
-
-            if(values.size() == 1) {
+            if (values.size() == 1 && values.get(0) instanceof PropertyValueList) {
+                List<PropertyValue> propertyValues = ((PropertyValueList) values.get(0)).getPropertyValues();
+                writer.beginArray();
+                for (PropertyValue propertyValue : propertyValues) {
+                    writePropertyValue(writer, propertyValue, null);
+                }
+                writer.endArray();
+            } else if(values.size() == 1) {
                 writePropertyValue(writer, values.get(0), null);
             } else {
                 writer.beginArray();
@@ -577,16 +593,21 @@ public class OntologyGraph implements StreamRDF {
                 case ANCESTORS:
                     PropertyValueAncestors ancestors = (PropertyValueAncestors) value;
                     Set<String> ancestorIris = ancestors.getAncestors(this);
-                    if (ancestorIris.size() == 1) {
-                        writer.value(ancestorIris.iterator().next());
-                    } else {
-                        writer.beginArray();
-                        for (String ancestorIri : ancestorIris) {
-                            writer.value(ancestorIri);
-                        }
-                        writer.endArray();
+
+                    writer.beginArray();
+                    for (String ancestorIri : ancestorIris) {
+                        writer.value(ancestorIri);
                     }
+                    writer.endArray();
+
                     break;
+                case LIST:
+                    PropertyValueList propertyValueList = (PropertyValueList)value;
+                    writer.beginArray();
+                    for (PropertyValue propertyValue : propertyValueList.getPropertyValues()) {
+                        writeValue(writer, propertyValue);
+                    }
+                    writer.endArray();
                 default:
                     writer.value("?");
                     break;

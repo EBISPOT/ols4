@@ -6,6 +6,9 @@ import org.apache.commons.cli.*;
 import java.io.*;
 import java.util.*;
 
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class JSON2Solr {
 
     static Gson gson = new Gson();
@@ -301,17 +304,17 @@ public class JSON2Solr {
 
    static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, PrintStream autocompleteWriter) {
 
-	Object labels = flattenedEntity.get("label");
+	Object labels = flattenedEntity.get(LABEL.getText());
 
-	if(labels instanceof List) {
-		for(Object label : (List<Object>) labels) {
-			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
-		}
-	} else if(labels instanceof String) {
-			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)labels), Map.class) );
-	}
+    if (labels instanceof String) {
+        labels = (new ArrayList<>()).add(labels);
+    }
 
-	Object synonyms = flattenedEntity.get("synonym");
+    for(Object label : (List<Object>) labels) {
+        autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
+    }
+
+	Object synonyms = flattenedEntity.get(SYNONYM.getText());
 
 	if(synonyms instanceof List) {
 		for(Object label : (List<Object>) synonyms) {

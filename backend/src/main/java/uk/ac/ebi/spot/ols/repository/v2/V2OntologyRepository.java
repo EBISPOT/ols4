@@ -23,6 +23,8 @@ import java.util.List;
 import java.io.IOException;
 import java.util.Map;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 @Component
 public class V2OntologyRepository {
 
@@ -39,7 +41,7 @@ public class V2OntologyRepository {
         Validation.validateLang(lang);
 
         if(search != null && searchFields == null) {
-            searchFields = "label^100 ontologyId^100 definition";
+            searchFields = LABEL.getText() + "^100 ontologyId^100 " + DEFINITION.getText();
         }
 
         OlsSolrQuery query = new OlsSolrQuery();

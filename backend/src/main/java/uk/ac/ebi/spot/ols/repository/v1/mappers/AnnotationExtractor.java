@@ -10,6 +10,7 @@ import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class AnnotationExtractor {
 
@@ -95,7 +96,7 @@ public class AnnotationExtractor {
 
 	    if(linkedEntityObj != null) {
 
-		String definedLabel = JsonHelper.getString(linkedEntityObj.getAsJsonObject(), "label");
+		String definedLabel = JsonHelper.getString(linkedEntityObj.getAsJsonObject(), LABEL.getText());
 
 		if(definedLabel != null) {
 			label = definedLabel;

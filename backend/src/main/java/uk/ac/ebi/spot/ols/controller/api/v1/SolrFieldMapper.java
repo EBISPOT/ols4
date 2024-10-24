@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class SolrFieldMapper {
 	
     // Maps OLS3 field names to the OLS4 schema
@@ -36,23 +38,23 @@ public class SolrFieldMapper {
                 continue;
             }
 
-            if (legacyFieldName.equals("label")) {
-                newFields.add(prefix + "label" + suffix);
+            if (legacyFieldName.equals(LABEL.getText())) {
+                newFields.add(prefix + LABEL.getText() + suffix);
                 continue;
             }
 
-            if (legacyFieldName.equals("synonym")) {
-                newFields.add(prefix + "synonym" + suffix);
+            if (legacyFieldName.equals(SYNONYM.getText())) {
+                newFields.add(prefix + SYNONYM.getText() + suffix);
                 continue;
             }
 
-            if (legacyFieldName.equals("definition")) {
-                newFields.add(prefix + "definition" + suffix);
+            if (legacyFieldName.equals(DEFINITION.getText())) {
+                newFields.add(prefix + DEFINITION.getText() + suffix);
                 continue;
             }
 
-            if (legacyFieldName.equals("description")) {
-                newFields.add(prefix + "definition" + suffix);
+            if (legacyFieldName.equals(DEFINITION.getOls3Text())) {
+                newFields.add(prefix + DEFINITION.getText() + suffix);
                 continue;
             }
 

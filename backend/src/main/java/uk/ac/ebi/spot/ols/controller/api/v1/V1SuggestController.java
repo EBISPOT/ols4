@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 @Tag(name = "Suggest Controller")
 @RestController
 public class V1SuggestController {
@@ -55,9 +57,9 @@ public class V1SuggestController {
 
         solrQuery.setQuery(query);
         solrQuery.set("defType", "edismax");
-        solrQuery.set("qf", "label^10 edge_label^2 whitespace_edge_label^1");
+        solrQuery.set("qf", LABEL.getText()+"^10 edge_label^2 whitespace_edge_label^1");
         solrQuery.set("wt", "json");
-        solrQuery.setFields("label");
+        solrQuery.setFields(LABEL.getText());
 
         solrQuery.setSort("score", SolrQuery.ORDER.desc);
 
@@ -73,7 +75,7 @@ public class V1SuggestController {
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
         solrQuery.add("group", "true");
-        solrQuery.add("group.field", "label");
+        solrQuery.add("group.field", LABEL.getText());
         solrQuery.add("group.main", "true");
 
 
@@ -90,7 +92,7 @@ public class V1SuggestController {
         for(SolrDocument res : qr.getResults()) {
             Map<String,Object> outDoc = new HashMap<>();
 
-            outDoc.put("autosuggest", res.get("label"));
+            outDoc.put("autosuggest", res.get(LABEL.getText()));
 
             docs.add(outDoc);
         }

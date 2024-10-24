@@ -130,7 +130,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query.toLowerCase());
                 // Specify the query fields with boosting
-                String[] fields = {"label_s^5", "synonym_s^3", "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"_s^5", SYNONYM.getText()+"_s^3", "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
                 // Boost exact phrase matches in label and synonym fields
                 solrQuery.set("pf", "lowercase_label^10 lowercase_synonym^5");
@@ -142,7 +142,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"^5", SYNONYM.getText()+"^3", DEFINITION.getText(), "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
@@ -206,9 +206,10 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(" + HIERARCHICAL_ANCESTOR.getText()+
+                        ": (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText() + ": (" + result + ")");
             }
 
         }
@@ -219,9 +220,10 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter("+ HIERARCHICAL_ANCESTOR.getText()+
+                        ": (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText()+": (" + result + ")");
             }
         }
 
@@ -281,8 +283,8 @@ public class V1SearchController {
                 fieldList.add("id");
                 fieldList.add("iri");
                 fieldList.add("ontology_name");
-                fieldList.add("label");
-                fieldList.add("description");
+                fieldList.add(LABEL.getText());
+                fieldList.add(DEFINITION.getOls3Text());
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
                 fieldList.add("type");
@@ -292,13 +294,14 @@ public class V1SearchController {
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) {
-                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
+            if (fieldList.contains(LABEL.getText())) {
+                var label = outDoc.put(LABEL.getText(), JsonHelper.getString(json, LABEL.getText()));
                 if(label!=null) {
-                    outDoc.put("label", label);
+                    outDoc.put(LABEL.getText(), label);
                 }
             }
-            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
+                    JsonHelper.getStrings(json, DEFINITION.getText()));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
@@ -307,7 +310,7 @@ public class V1SearchController {
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
             if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));

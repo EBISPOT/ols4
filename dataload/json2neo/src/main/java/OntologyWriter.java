@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.*;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 public class OntologyWriter {
 
     Gson gson = new Gson();
@@ -23,7 +24,7 @@ public class OntologyWriter {
 
     public static final Set<String> PROPERTY_BLACKLIST = Set.of(
             // large and doesn't get queried
-            "appearsIn",
+            APPEARS_IN.getText(),
             // all property values together, this is for solr and not useful in neo4j
             "searchableAnnotationValues"
     );
@@ -36,8 +37,8 @@ public class OntologyWriter {
             "definitionProperty",
             "synonymProperty",
             // these are redundant in neo4j as we already have the parent edges and cypher queries can be recursive
-            "directAncestor",
-            "hierarchicalAncestor",
+            DIRECT_ANCESTOR.getText(),
+            HIERARCHICAL_ANCESTOR.getText(),
             // redundant in neo4j because we already have relatedTo which can be queried in both directions
             "relatedFrom"
     );

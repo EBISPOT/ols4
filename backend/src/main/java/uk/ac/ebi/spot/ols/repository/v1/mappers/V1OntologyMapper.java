@@ -8,8 +8,12 @@ import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
+import uk.ac.ebi.ols.shared.DefinedFields;
+
 import java.util.Map;
 import java.util.Objects;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.LANGUAGE;
 
 public class V1OntologyMapper {
 
@@ -26,7 +30,7 @@ public class V1OntologyMapper {
 
         ontology.ontologyId = JsonHelper.getString(localizedJson, "ontologyId");
         ontology.fileHash = JsonHelper.getString(localizedJson, "fileHash");
-        ontology.languages = JsonHelper.getStrings(localizedJson, "language");
+        ontology.languages = JsonHelper.getStrings(localizedJson, LANGUAGE.getText());
 
         ontology.config = new V1OntologyConfig();
 
@@ -56,7 +60,7 @@ public class V1OntologyMapper {
         ontology.config.definitionProperties = JsonHelper.getStrings(localizedJson, "definition_property");
         ontology.config.synonymProperties = JsonHelper.getStrings(localizedJson, "synonym_property");
         ontology.config.hierarchicalProperties = JsonHelper.getStrings(localizedJson, "hierarchical_property");
-        ontology.config.baseUris = JsonHelper.getStrings(localizedJson, "base_uri");
+        ontology.config.baseUris = JsonHelper.getStrings(localizedJson, DefinedFields.BASE_URI.getText());
         ontology.config.hiddenProperties = JsonHelper.getStrings(localizedJson, "hidden_property");
         ontology.config.preferredRootTerms = JsonHelper.getStrings(localizedJson, "preferredRootTerms");
 

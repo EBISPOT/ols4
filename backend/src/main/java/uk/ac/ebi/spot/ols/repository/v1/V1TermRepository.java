@@ -40,13 +40,14 @@ public class V1TermRepository {
 
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -54,7 +55,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -63,13 +64,14 @@ public class V1TermRepository {
 
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
@@ -78,16 +80,18 @@ public class V1TermRepository {
 
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of("hierarchicalParent");
+        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
+                        relationIRIs, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -96,7 +100,8 @@ public class V1TermRepository {
 
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, Arrays.asList("directParent"), Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -105,7 +110,7 @@ public class V1TermRepository {
 
         return this.neo4jClient.traverseOutgoingEdges(
                         "OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList("relatedTo"),
+                        Arrays.asList(RELATED_TO.getText()),
                         Map.of("property", relation),
                         pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
