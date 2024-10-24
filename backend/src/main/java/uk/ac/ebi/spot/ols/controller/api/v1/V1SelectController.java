@@ -148,7 +148,7 @@ public class V1SelectController {
         solrQuery.addHighlightField("whitespace_edge_label");
         solrQuery.addHighlightField(LABEL.getText());
         solrQuery.addHighlightField("whitespace_edge_synonym");
-        solrQuery.addHighlightField("synonym");
+        solrQuery.addHighlightField(SYNONYM.getText());
 
        logger.debug("select: ()", solrQuery.toQueryString());
 
@@ -198,7 +198,7 @@ public class V1SelectController {
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
 
             docs.add(outDoc);
@@ -231,7 +231,7 @@ public class V1SelectController {
                 if(fieldName.equals("whitespace_edge_label")) {
                     resHighlight.put(LABEL.getText()+"_autosuggest", highlight.get(fieldName));
                 } else if(fieldName.equals("whitespace_edge_synonym")) {
-                    resHighlight.put("synonym_autosuggest", highlight.get(fieldName));
+                    resHighlight.put(SYNONYM.getText()+"_autosuggest", highlight.get(fieldName));
                 } else {
                     resHighlight.put(fieldName, highlight.get(fieldName));
                 }

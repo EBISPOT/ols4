@@ -314,7 +314,7 @@ public class JSON2Solr {
         autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
     }
 
-	Object synonyms = flattenedEntity.get("synonym");
+	Object synonyms = flattenedEntity.get(SYNONYM.getText());
 
 	if(synonyms instanceof List) {
 		for(Object label : (List<Object>) synonyms) {

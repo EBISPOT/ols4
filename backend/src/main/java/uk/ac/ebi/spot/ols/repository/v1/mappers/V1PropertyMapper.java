@@ -29,7 +29,7 @@ public class V1PropertyMapper {
 
         property.label = JsonHelper.getString(localizedJson, LABEL.getText());
         property.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
-        property.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
+        property.synonyms = JsonHelper.getStrings(localizedJson, SYNONYM.getText()).toArray(new String[0]);
         property.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         //property.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 

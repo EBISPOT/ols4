@@ -127,7 +127,7 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                String[] fields = {LABEL.getText()+"_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"_s", SYNONYM.getText()+"_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
                 solrQuery.setQuery(
                         "((" +
                                 createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields))
@@ -141,7 +141,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {LABEL.getText()+"^5", "synonym^3", DEFINITION.getText(), "short_form^2", "obo_id^2",
+                String[] fields = {LABEL.getText()+"^5", SYNONYM.getText()+"^3", DEFINITION.getText(), "short_form^2", "obo_id^2",
                         "iri", "annotations_trimmed"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
@@ -310,7 +310,7 @@ public class V1SearchController {
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
             if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));

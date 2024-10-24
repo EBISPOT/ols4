@@ -43,8 +43,8 @@ public class SolrFieldMapper {
                 continue;
             }
 
-            if (legacyFieldName.equals("synonym")) {
-                newFields.add(prefix + "synonym" + suffix);
+            if (legacyFieldName.equals(SYNONYM.getText())) {
+                newFields.add(prefix + SYNONYM.getText() + suffix);
                 continue;
             }
 
