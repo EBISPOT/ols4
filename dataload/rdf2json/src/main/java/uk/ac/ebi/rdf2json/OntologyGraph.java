@@ -260,7 +260,7 @@ public class OntologyGraph implements StreamRDF {
         NegativePropertyAssertionAnnotator.annotateNegativePropertyAssertions(this);
         OboSynonymTypeNameAnnotator.annotateOboSynonymTypeNames(this); // n.b. this one labels axioms so must run before the ReifiedPropertyAnnotator
         DirectParentsAnnotator.annotateDirectParents(this);
-        RelatedAnnotator.annotateRelated(this);
+        (new RelatedAnnotator()).annotateRelated(this);
         HierarchicalParentsAnnotator.annotateHierarchicalParents(this); // must run after RelatedAnnotator
         AncestorsAnnotator.annotateAncestors(this);
         HierarchyMetricsAnnotator.annotateHierarchyMetrics(this); // must run after HierarchicalParentsAnnotator

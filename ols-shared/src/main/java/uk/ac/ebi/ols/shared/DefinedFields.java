@@ -41,7 +41,14 @@ public enum DefinedFields {
     NUM_HIERARCHICAL_DESCENDANTS ("numHierarchicalDescendants", "",
             "Number of hierarchical descendants of this entity."),
     PREFERRED_ROOT("preferredRoot", "",
-            "A list of entities that serve as roots for this ontology.");
+            "A list of entities that serve as roots for this ontology."),
+    RELATED_FROM("relatedFrom","", "The list of classes in which this class is used as part of its definition. " +
+            "I.e. 'liver disease' (EFO:0001421) has a relatedFrom relation with 'serum albumin measurement' (EFO:0004535) because " +
+            "'serum albumin measurement' is a subclass of 'is about some liver disease'."),
+    RELATED_TO("relatedTo","", "The list of classes that are used in axioms in the filler position" +
+            " in defining this class. It only considers classes in the filler position, not classes expressions in the filler position." +
+            "I.e. 'liver disease' (EFO:0001421) has a relatedTo relation with 'liver' (UBERON:0002107) because " +
+            "'liver disease' is a subclass of 'has_disease_location some liver'.");
 
     private final String text;
     private final String ols3Text;

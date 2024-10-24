@@ -80,7 +80,7 @@ public class V1TermMapper {
 
         term.related = new ArrayList<>();
 
-        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, "relatedTo")) {
+        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, RELATED_TO.getText())) {
 
             String predicate = relatedTo.getAsJsonPrimitive("property").getAsString();
 

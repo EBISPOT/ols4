@@ -110,7 +110,7 @@ public class V1TermRepository {
 
         return this.neo4jClient.traverseOutgoingEdges(
                         "OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList("relatedTo"),
+                        Arrays.asList(RELATED_TO.getText()),
                         Map.of("property", relation),
                         pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));

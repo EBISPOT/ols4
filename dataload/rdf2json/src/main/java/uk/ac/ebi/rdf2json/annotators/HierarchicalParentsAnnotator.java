@@ -64,48 +64,51 @@ public class HierarchicalParentsAnnotator {
                 // any non direct parents have already been interpreted by RelatedAnnotator, so we
                 // can find their values in relatedTo
                 //
-                List<PropertyValue> relatedTo = (List<PropertyValue>) c.properties.getPropertyValues("relatedTo");
+                List<PropertyValue> relatedToList = (List<PropertyValue>) c.properties.getPropertyValues(RELATED_TO.getText());
                 Map<PropertyValueURI, PropertySet> fillerToReifiedPropertiesMap = new HashMap<>();
 
-                if(relatedTo != null) {
-                    for(PropertyValue related : relatedTo) {
+                if(relatedToList != null) {
+                    for(PropertyValue relatedToListElement : relatedToList) {
+                        if (relatedToListElement.getType() == PropertyValue.Type.LIST) {
+                            for (PropertyValue related : ((PropertyValueList)relatedToListElement).getPropertyValues()) {
 
-                        if(related.getType() == PropertyValue.Type.RELATED) {
+                                if (related.getType() == PropertyValue.Type.RELATED) {
 
-                            String property = ((PropertyValueRelated) related).getProperty();
+                                    String property = ((PropertyValueRelated) related).getProperty();
 
 
+                                    // if the child->parent property is "part of" we also want to know the parent->child (inverse) property "has part"
+                                    //
+                                    var propertyNode = graph.nodes.get(property);
+                                    String inverseProperty = null;
+                                    if (propertyNode != null) {
+                                        var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
+                                        if (inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
+                                            inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
+                                        }
+                                    }
 
-                            // if the child->parent property is "part of" we also want to know the parent->child (inverse) property "has part"
-                            //
-                            var propertyNode = graph.nodes.get(property);
-                            String inverseProperty = null;
-                            if(propertyNode != null) {
-                                var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
-                                if(inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
-                                    inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
+
+                                    if (hierarchicalProperties.contains(property)) {
+
+                                        var filler = new PropertyValueURI(
+                                                ((PropertyValueRelated) related).getFiller().uri
+                                        );
+
+                                        hierarchicalParents.add(filler);
+
+                                        // reify the hierarchicalParent edge with the property IRIs
+                                        // this enables the frontend to display e.g. "has part" relations in the tree
+                                        //
+                                        PropertySet reifiedProperties = new PropertySet();
+                                        reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(property));
+                                        if (inverseProperty != null) {
+                                            reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
+                                        }
+                                        fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
+
+                                    }
                                 }
-                            }
-
-
-                            if(hierarchicalProperties.contains(property)) {
-
-                                var filler = new PropertyValueURI(
-                                        ((PropertyValueRelated) related).getFiller().uri
-                                );
-
-                                hierarchicalParents.add(filler);
-
-                                // reify the hierarchicalParent edge with the property IRIs
-                                // this enables the frontend to display e.g. "has part" relations in the tree
-                                //
-                                PropertySet reifiedProperties = new PropertySet();
-                                reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(property));
-                                if(inverseProperty != null) {
-                                    reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
-                                }
-                                fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
-
                             }
                         }
                     }
