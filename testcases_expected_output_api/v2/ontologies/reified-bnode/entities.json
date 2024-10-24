@@ -17,7 +17,7 @@
     "label": "cell",
     "linkedEntities": {
       "http://example.com/reified-bnode#cell_part": {
-        "curie": "cell:part",
+        "curie": "cell_part",
         "hasLocalDefinition": true,
         "label": "cell_part",
         "numAppearsIn": 1.0,
@@ -27,7 +27,7 @@
         ]
       },
       "http://example.com/reified-bnode#part_of": {
-        "curie": "part:of",
+        "curie": "part_of",
         "hasLocalDefinition": true,
         "label": "part_of",
         "numAppearsIn": 1.0,
@@ -65,7 +65,7 @@
     "appearsIn": [
       "reified-bnode"
     ],
-    "curie": "cell:part",
+    "curie": "cell_part",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -114,7 +114,7 @@
         ]
       },
       "http://example.com/reified-bnode#part_of": {
-        "curie": "part:of",
+        "curie": "part_of",
         "hasLocalDefinition": true,
         "label": "part_of",
         "numAppearsIn": 1.0,
@@ -152,7 +152,7 @@
     "appearsIn": [
       "reified-bnode"
     ],
-    "curie": "part:of",
+    "curie": "part_of",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,

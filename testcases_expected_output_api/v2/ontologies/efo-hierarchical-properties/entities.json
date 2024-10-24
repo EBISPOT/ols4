@@ -226,7 +226,7 @@
         ]
       },
       "http://www.ebi.ac.uk/efo/EFO_URI": {
-        "curie": "EFO:URI",
+        "curie": "EFO_URI",
         "hasLocalDefinition": true,
         "label": "EFO_URI",
         "numAppearsIn": 1.0,
@@ -380,7 +380,7 @@
         ]
       },
       "http://www.ebi.ac.uk/efo/EFO_URI": {
-        "curie": "EFO:URI",
+        "curie": "EFO_URI",
         "hasLocalDefinition": true,
         "label": "EFO_URI",
         "numAppearsIn": 1.0,
@@ -432,7 +432,7 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
-    "curie": "EFO:URI",
+    "curie": "EFO_URI",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -5523,7 +5523,7 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
-    "curie": "date:retrieved",
+    "curie": "date_retrieved",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -5553,7 +5553,7 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
-    "curie": "depicted:by",
+    "curie": "depicted_by",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -5583,7 +5583,7 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
-    "curie": "external:class",
+    "curie": "external_class",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -5613,7 +5613,7 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
-    "curie": "external:ontology",
+    "curie": "external_ontology",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
