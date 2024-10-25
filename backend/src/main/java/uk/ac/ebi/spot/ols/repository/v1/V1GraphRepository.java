@@ -1,9 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,8 +147,9 @@ public class V1GraphRepository {
 
 
     JsonObject getOntologyNodeJson(Node node, String lang) {
-
-        JsonElement ontologyNodeObject = JsonParser.parseString((String) node.asMap().get("_json"));
+        JsonElement ontologyNodeObject = new JsonObject();
+        if(node.asMap().get("_json") != null && node.asMap().get("_json") instanceof String)
+            ontologyNodeObject = JsonParser.parseString((String) node.asMap().get("_json"));
 
         return RemoveLiteralDatatypesTransform.transform(
                 LocalizationTransform.transform(ontologyNodeObject, lang)
@@ -159,8 +157,9 @@ public class V1GraphRepository {
     }
 
     JsonObject getOntologyEdgeJson(Relationship r, String lang) {
-
-        JsonElement ontologyEdgeObject = JsonParser.parseString((String) r.asMap().get("_json"));
+        JsonElement ontologyEdgeObject = new JsonObject();
+        if(r.asMap().get("_json") != null && r.asMap().get("_json") instanceof String)
+            ontologyEdgeObject = JsonParser.parseString((String) r.asMap().get("_json"));
 
         return RemoveLiteralDatatypesTransform.transform(
                 LocalizationTransform.transform(ontologyEdgeObject, lang)

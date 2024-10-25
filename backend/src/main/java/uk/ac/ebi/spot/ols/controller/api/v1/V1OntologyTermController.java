@@ -485,7 +485,7 @@ public class V1OntologyTermController {
             Object object= graphRepository.getGraphForClass(decoded, ontologyId, lang);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         throw new ResourceNotFoundException();
