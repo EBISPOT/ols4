@@ -11,11 +11,9 @@ rm -rf $1/data/databases/neo4j
 rm -rf $1/data/transactions/neo4j
 
 $1/bin/neo4j start
+sleep 20
 echo csv2neo
-
 java -jar $SCRIPT_PATH/csv2neo/target/csv2neo-1.0-SNAPSHOT.jar -m i -d $2 -bs 1000 -ps 20 -t 5
-
-$1/bin/neo4j-admin database info neo4j
 
 
 
