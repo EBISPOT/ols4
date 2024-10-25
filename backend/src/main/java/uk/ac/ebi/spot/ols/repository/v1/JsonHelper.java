@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.repository.v1;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class JsonHelper {
 
     public static String objectToString(JsonElement value) {
 
-        if(value == null) {
+        if(value == null || value instanceof JsonNull) {
             return null;
         }
 
