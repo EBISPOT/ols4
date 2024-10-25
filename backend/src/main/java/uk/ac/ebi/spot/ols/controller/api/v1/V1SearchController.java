@@ -22,6 +22,7 @@ import org.apache.solr.client.solrj.response.FacetField.Count;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -166,7 +167,7 @@ public class V1SearchController {
 
         if (groupField != null) {
             solrQuery.addFilterQuery("{!collapse field=iri}");
-            solrQuery.add("expand=true", "true");
+            solrQuery.add("expand", "true");
             solrQuery.add("expand.rows", "100");
 
         }
@@ -231,7 +232,8 @@ public class V1SearchController {
 
         QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
-        List<Object> docs = new ArrayList<>();
+        List<Object> docs = parseSolrDocs(qr.getResults(), fieldList, lang);
+        /*List<Object> docs = new ArrayList<>();
         for(SolrDocument res : qr.getResults()) {
             String _json = (String)res.get("_json");
             if(_json == null) {
@@ -299,7 +301,7 @@ public class V1SearchController {
             }
 
             docs.add(outDoc);
-        }
+        }*/
 
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put("status", 0);
@@ -337,11 +339,108 @@ public class V1SearchController {
 		 * Fix: End
 		 */
 
+		/**
+		 * Fix: Start
+		 * issue - https://github.com/TIBHannover/ols4/issues/78
+		 * 
+		 */
+		if(qr.getExpandedResults() != null && qr.getExpandedResults().size() > 0)
+			responseObj.put("expanded", parseExpandedSolrResults(qr.getExpandedResults(), fieldList, lang));
+		
+		/**
+		 * Fix: End
+		 */
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
     }
+    
+    private Map<String,Object> parseExpandedSolrResults(Map<String, SolrDocumentList> expandedResults, Collection<String> fieldList,
+			String lang) {
+    	Map<String, Object> result = new HashMap<>();
+    	expandedResults.entrySet().parallelStream().forEach((entry) -> {
+    		Map<String, Object> expandedResult = new HashMap<>();
+    		expandedResult.put("numFound", entry.getValue().getNumFound());
+    		expandedResult.put("start", entry.getValue().getStart());
+    		expandedResult.put("docs", parseSolrDocs(entry.getValue(), fieldList, lang));
+    		result.put(entry.getKey(), expandedResult);
+    	});
+    	return result;
+	}
+
+	private List<Object> parseSolrDocs(SolrDocumentList results, Collection<String> fieldList, String lang) {
+    	List<Object> docs = new ArrayList<>();
+    	for(SolrDocument res : results) {
+            String _json = (String)res.get("_json");
+            if(_json == null) {
+                throw new RuntimeException("_json was null");
+            }
+
+            JsonObject json = RemoveLiteralDatatypesTransform.transform(
+                    LocalizationTransform.transform( JsonParser.parseString( _json ), lang)
+            ).getAsJsonObject();
+
+            Map<String,Object> outDoc = new HashMap<>();
+
+            if (fieldList == null) {
+                fieldList = new HashSet<>();
+            }
+            // default fields
+            if (fieldList.isEmpty()) {
+                fieldList.add("id");
+                fieldList.add("iri");
+                fieldList.add("ontology_name");
+                fieldList.add("label");
+                fieldList.add("description");
+                fieldList.add("short_form");
+                fieldList.add("obo_id");
+                fieldList.add("type");
+                fieldList.add("ontology_prefix");
+            }
+
+            if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+            if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
+            if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
+            if (fieldList.contains("label")) {
+                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
+                if(label!=null) {
+                    outDoc.put("label", label);
+                }
+            }
+            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
+            if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
+            if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
+                    JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()) != null &&
+                            JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()).equals("true"));
+            if (fieldList.contains("type")) {
+                outDoc.put("type", JsonHelper.getType(json, "type"));
+            }
+            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
+            if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
+            if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));
+            if (fieldList.contains("score")) outDoc.put("score", res.get("score"));
+
+            // Include annotations that were specified with <field>_annotation
+            boolean anyAnnotations = fieldList.stream()
+                    .anyMatch(s -> s.endsWith("_annotation"));
+            if (anyAnnotations) {
+                Stream<String> annotationFields = fieldList.stream().filter(s -> s.endsWith("_annotation"));
+                Map<String, Object> termAnnotations = AnnotationExtractor.extractAnnotations(json);
+
+                annotationFields.forEach(annotationName -> {
+                    // Remove _annotation suffix to get plain annotation name
+                    String fieldName = annotationName.replaceFirst("_annotation$", "");
+                    outDoc.put(annotationName, termAnnotations.get(fieldName));
+                });
+            }
+
+            docs.add(outDoc);
+        }
+    	return docs;
+	}
 
     private Map<String, List<String>> parseFacetFields(List<FacetField> facetFields) {
 		Map<String, List<String>> facetFieldsMap = new HashMap<>();
