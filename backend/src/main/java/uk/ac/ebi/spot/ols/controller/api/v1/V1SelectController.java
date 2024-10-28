@@ -183,7 +183,10 @@ public class V1SelectController {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
             if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
-            if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
+            if (fieldList.contains("ontology_prefix") && JsonHelper.getString(json, "ontologyPreferredPrefix") != null)
+                outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
+            else if (fieldList.contains("ontology_prefix"))
+                outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyId").toUpperCase());
 
             docs.add(outDoc);
         }
