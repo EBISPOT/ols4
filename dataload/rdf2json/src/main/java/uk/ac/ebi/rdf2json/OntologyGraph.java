@@ -610,16 +610,8 @@ public class OntologyGraph implements StreamRDF {
                     if (uriNode != null && !isXMLBuiltinDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
                         // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
                         writeNode(writer, uriNode, Set.of("datatype"));
-                    } else if (uri != null){
-                        writer.beginObject();
-                        writer.name("uri");
-                        writer.value(uri);
-                        writer.endObject();
-                    } else {
-                        writer.beginObject();
-                        writer.name("uri");
-                        writer.value("?");
-                        writer.endObject();
+                    }else {
+                    	writer.value(uri);
                     }
                     break;
                 case RELATED:
