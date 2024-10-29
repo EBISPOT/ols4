@@ -14,12 +14,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": {
         "curie": "hasAge",
         "hasLocalDefinition": true,
-        "label": "hasAge",
+        "label": [
+          "hasAge"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -58,7 +62,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Person",
+    "label": [
+      "Person"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -89,12 +95,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasAge",
+    "label": [
+      "hasAge"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

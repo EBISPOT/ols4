@@ -1,0 +1,125 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "gonadal disorder",
+    "lang": "en",
+    "obo_id": "MONDO:0002259",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "direct-parent-with-annotation-axiom",
+    "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+    "short_form": "MONDO_0002259",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A disease involving the reproductive system."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "reproductive system disorder",
+    "lang": "en",
+    "obo_id": "MONDO:0005039",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "direct-parent-with-annotation-axiom",
+    "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+    "short_form": "MONDO_0005039",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005151?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [
+      "A disease involving the endocrine system."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "endocrine system disorder",
+    "lang": "en",
+    "obo_id": "MONDO:0005151",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "direct-parent-with-annotation-axiom",
+    "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+    "short_form": "MONDO_0005151",
+    "synonyms": []
+  }
+]

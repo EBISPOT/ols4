@@ -18,7 +18,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "part_of",
+    "label": [
+      "part_of"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -49,12 +51,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "adduct ion",
+    "label": [
+      "adduct ion"
+    ],
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/MS_1003056": {
         "curie": "MS:1003056",
         "hasLocalDefinition": true,
-        "label": "adduct ion property",
+        "label": [
+          "adduct ion property"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -64,7 +70,9 @@
       "http://purl.obolibrary.org/obo/ms#part_of": {
         "curie": "part_of",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -78,17 +86,19 @@
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/ms#part_of",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/MS_1003056"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/ms#part_of",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/MS_1003056"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "MS_1000353",
     "type": [
@@ -105,18 +115,22 @@
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/MS_1000353",
-    "hierarchicalParent": {
-      "axioms": [
-        {
-          "childRelationToParent": "http://purl.obolibrary.org/obo/ms#part_of"
-        }
-      ],
-      "type": [
-        "reification"
-      ],
-      "value": "http://purl.obolibrary.org/obo/MS_1000353"
-    },
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/MS_1000353"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/ms#part_of"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/MS_1000353"
+      }
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "adduct ion property",
@@ -131,12 +145,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "adduct ion property",
+    "label": [
+      "adduct ion property"
+    ],
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/MS_1000353": {
         "curie": "MS:1000353",
         "hasLocalDefinition": true,
-        "label": "adduct ion",
+        "label": [
+          "adduct ion"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -146,7 +164,9 @@
       "http://purl.obolibrary.org/obo/ms#part_of": {
         "curie": "part_of",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -160,17 +180,19 @@
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/ms#part_of",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/MS_1000353"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/ms#part_of",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/MS_1000353"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "MS_1003056",
     "type": [
@@ -194,12 +216,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "abdomen",
+    "label": [
+      "abdomen"
+    ],
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -210,7 +236,9 @@
       "http://purl.obolibrary.org/obo/UBERON_0003684": {
         "curie": "UBERON:0003684",
         "hasLocalDefinition": true,
-        "label": "abdominal cavity",
+        "label": [
+          "abdominal cavity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -223,17 +251,19 @@
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0003684"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0003684"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "UBERON_0000916",
     "type": [
@@ -250,18 +280,22 @@
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000916",
-    "hierarchicalParent": {
-      "axioms": [
-        {
-          "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050"
-        }
-      ],
-      "type": [
-        "reification"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
-    },
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000916"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      }
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "abdominal cavity",
@@ -276,12 +310,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "abdominal cavity",
+    "label": [
+      "abdominal cavity"
+    ],
     "linkedEntities": {
       "http://purl.obolibrary.org/obo/BFO_0000050": {
         "curie": "BFO:0000050",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -292,7 +330,9 @@
       "http://purl.obolibrary.org/obo/UBERON_0000916": {
         "curie": "UBERON:0000916",
         "hasLocalDefinition": true,
-        "label": "abdomen",
+        "label": [
+          "abdomen"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -305,17 +345,19 @@
     "ontologyId": "partof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
     "ontologyPreferredPrefix": "partof",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "UBERON_0003684",
     "type": [
@@ -341,7 +383,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "part_of",
+    "label": [
+      "part_of"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

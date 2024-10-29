@@ -4,9 +4,6 @@
       "xmpl"
     ],
     "curie": "XMPL_Preferred_name",
-    "definedBy": [
-      "xmpl"
-    ],
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -15,10 +12,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/Preferred_name",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "XMPL_Preferred_name",
+    "label": [
+      "XMPL_Preferred_name"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -38,9 +37,6 @@
       "xmpl"
     ],
     "curie": "XMPL_Synonym",
-    "definedBy": [
-      "xmpl"
-    ],
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -49,10 +45,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/Synonym",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "XMPL_Synonym",
+    "label": [
+      "XMPL_Synonym"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -72,9 +70,6 @@
       "xmpl"
     ],
     "curie": "XMPL_XMPL000001",
-    "definedBy": [
-      "xmpl"
-    ],
     "hasDirectChildren": true,
     "hasDirectParents": false,
     "hasHierarchicalChildren": true,
@@ -85,7 +80,7 @@
     "http://www.w3.org/2000/01/rdf-schema#label": "XMPL000001",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/XMPL000001",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
@@ -95,11 +90,10 @@
     "linkedEntities": {
       "http://exmpl.org/xmpl/Preferred_name": {
         "curie": "XMPL_Preferred_name",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
-        "label": "XMPL_Preferred_name",
+        "label": [
+          "XMPL_Preferred_name"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -109,11 +103,10 @@
       },
       "http://exmpl.org/xmpl/Synonym": {
         "curie": "XMPL_Synonym",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
-        "label": "XMPL_Synonym",
+        "label": [
+          "XMPL_Synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -133,7 +126,9 @@
       false
     ],
     "shortForm": "XMPL_XMPL000001",
-    "synonym": "label of the parent class",
+    "synonym": [
+      "label of the parent class"
+    ],
     "synonymProperty": "http://exmpl.org/xmpl/Synonym",
     "type": [
       "class",
@@ -145,17 +140,22 @@
       "xmpl"
     ],
     "curie": "XMPL_XMPL000002",
-    "definedBy": [
-      "xmpl"
+    "directAncestor": [
+      "http://exmpl.org/xmpl/XMPL000001"
     ],
-    "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
-    "directParent": "http://exmpl.org/xmpl/XMPL000001",
+    "directParent": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
-    "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
+    "hierarchicalAncestor": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
+    "hierarchicalParent": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://exmpl.org/xmpl/Preferred_name": "1st children class pref label",
     "http://exmpl.org/xmpl/Synonym": "label of the first children class",
@@ -164,7 +164,7 @@
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/XMPL000002",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
@@ -174,11 +174,10 @@
     "linkedEntities": {
       "http://exmpl.org/xmpl/Preferred_name": {
         "curie": "XMPL_Preferred_name",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
-        "label": "XMPL_Preferred_name",
+        "label": [
+          "XMPL_Preferred_name"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -188,11 +187,10 @@
       },
       "http://exmpl.org/xmpl/Synonym": {
         "curie": "XMPL_Synonym",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
-        "label": "XMPL_Synonym",
+        "label": [
+          "XMPL_Synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -202,9 +200,6 @@
       },
       "http://exmpl.org/xmpl/XMPL000001": {
         "curie": "XMPL_XMPL000001",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
         "label": [
           "XMPL000001",
@@ -228,7 +223,9 @@
       false
     ],
     "shortForm": "XMPL_XMPL000002",
-    "synonym": "label of the first children class",
+    "synonym": [
+      "label of the first children class"
+    ],
     "synonymProperty": "http://exmpl.org/xmpl/Synonym",
     "type": [
       "class",
@@ -240,17 +237,22 @@
       "xmpl"
     ],
     "curie": "XMPL_XMPL000003",
-    "definedBy": [
-      "xmpl"
+    "directAncestor": [
+      "http://exmpl.org/xmpl/XMPL000001"
     ],
-    "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
-    "directParent": "http://exmpl.org/xmpl/XMPL000001",
+    "directParent": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
-    "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
+    "hierarchicalAncestor": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
+    "hierarchicalParent": [
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://exmpl.org/xmpl/Other_preferred_name": "2nd children class pref label",
     "http://exmpl.org/xmpl/Synonym": "label of the second children class",
@@ -259,7 +261,7 @@
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/XMPL000003",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
@@ -269,11 +271,10 @@
     "linkedEntities": {
       "http://exmpl.org/xmpl/Synonym": {
         "curie": "XMPL_Synonym",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
-        "label": "XMPL_Synonym",
+        "label": [
+          "XMPL_Synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -283,9 +284,6 @@
       },
       "http://exmpl.org/xmpl/XMPL000001": {
         "curie": "XMPL_XMPL000001",
-        "definedBy": [
-          "xmpl"
-        ],
         "hasLocalDefinition": true,
         "label": [
           "XMPL000001",
@@ -309,7 +307,9 @@
       false
     ],
     "shortForm": "XMPL_XMPL000003",
-    "synonym": "label of the second children class",
+    "synonym": [
+      "label of the second children class"
+    ],
     "synonymProperty": "http://exmpl.org/xmpl/Synonym",
     "type": [
       "class",

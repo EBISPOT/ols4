@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasLifePartner",
+    "label": [
+      "hasLifePartner"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": {
         "curie": "hasSpouse",
         "hasLocalDefinition": true,
-        "label": "hasSpouse",
+        "label": [
+          "hasSpouse"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -58,12 +62,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSpouse",
+    "label": [
+      "hasSpouse"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
         "curie": "hasLifePartner",
         "hasLocalDefinition": true,
-        "label": "hasLifePartner",
+        "label": [
+          "hasLifePartner"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

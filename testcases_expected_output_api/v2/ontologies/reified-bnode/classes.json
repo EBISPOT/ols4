@@ -14,12 +14,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "cell",
+    "label": [
+      "cell"
+    ],
     "linkedEntities": {
       "http://example.com/reified-bnode#cell_part": {
         "curie": "cell_part",
         "hasLocalDefinition": true,
-        "label": "cell_part",
+        "label": [
+          "cell_part"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -29,7 +33,9 @@
       "http://example.com/reified-bnode#part_of": {
         "curie": "part_of",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -43,17 +49,19 @@
     "ontologyId": "reified-bnode",
     "ontologyIri": "http://example.com/reified-bnode",
     "ontologyPreferredPrefix": "reified-bnode",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-      "isObsolete": false,
-      "property": "http://example.com/reified-bnode#part_of",
-      "type": [
-        "related"
-      ],
-      "value": "http://example.com/reified-bnode#cell_part"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+        "isObsolete": false,
+        "property": "http://example.com/reified-bnode#part_of",
+        "type": [
+          "related"
+        ],
+        "value": "http://example.com/reified-bnode#cell_part"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "cell",
     "type": [
@@ -101,12 +109,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "cell_part",
+    "label": [
+      "cell_part"
+    ],
     "linkedEntities": {
       "http://example.com/reified-bnode#cell": {
         "curie": "cell",
         "hasLocalDefinition": true,
-        "label": "cell",
+        "label": [
+          "cell"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -116,7 +128,9 @@
       "http://example.com/reified-bnode#part_of": {
         "curie": "part_of",
         "hasLocalDefinition": true,
-        "label": "part_of",
+        "label": [
+          "part_of"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -130,17 +144,19 @@
     "ontologyId": "reified-bnode",
     "ontologyIri": "http://example.com/reified-bnode",
     "ontologyPreferredPrefix": "reified-bnode",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-      "isObsolete": false,
-      "property": "http://example.com/reified-bnode#part_of",
-      "type": [
-        "related"
-      ],
-      "value": "http://example.com/reified-bnode#cell"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+        "isObsolete": false,
+        "property": "http://example.com/reified-bnode#part_of",
+        "type": [
+          "related"
+        ],
+        "value": "http://example.com/reified-bnode#cell"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "cell_part",
     "type": [

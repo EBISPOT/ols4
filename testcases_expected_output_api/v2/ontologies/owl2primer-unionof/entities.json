@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Father",
+    "label": [
+      "Father"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -43,7 +45,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Mother",
+    "label": [
+      "Mother"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -76,12 +80,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father": {
         "curie": "Father",
         "hasLocalDefinition": true,
-        "label": "Father",
+        "label": [
+          "Father"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -91,7 +99,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother": {
         "curie": "Mother",
         "hasLocalDefinition": true,
-        "label": "Mother",
+        "label": [
+          "Mother"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

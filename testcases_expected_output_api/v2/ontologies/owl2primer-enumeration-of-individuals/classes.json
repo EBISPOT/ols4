@@ -22,12 +22,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "MyBirthdayGuests",
+    "label": [
+      "MyBirthdayGuests"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Bill": {
         "curie": "Bill",
         "hasLocalDefinition": true,
-        "label": "Bill",
+        "label": [
+          "Bill"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -37,7 +41,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John": {
         "curie": "John",
         "hasLocalDefinition": true,
-        "label": "John",
+        "label": [
+          "John"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -47,7 +53,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary": {
         "curie": "Mary",
         "hasLocalDefinition": true,
-        "label": "Mary",
+        "label": [
+          "Mary"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

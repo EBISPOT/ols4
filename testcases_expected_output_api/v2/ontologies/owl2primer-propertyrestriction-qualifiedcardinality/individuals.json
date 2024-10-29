@@ -22,12 +22,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -37,7 +41,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-qualifiedCardinality.owl#hasChild": {
         "curie": "hasChild",
         "hasLocalDefinition": true,
-        "label": "hasChild",
+        "label": [
+          "hasChild"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

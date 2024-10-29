@@ -14,12 +14,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "James",
+    "label": [
+      "James"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim": {
         "curie": "Jim",
         "hasLocalDefinition": true,
-        "label": "Jim",
+        "label": [
+          "Jim"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -54,12 +58,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Jim",
+    "label": [
+      "Jim"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James": {
         "curie": "James",
         "hasLocalDefinition": true,
-        "label": "James",
+        "label": [
+          "James"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

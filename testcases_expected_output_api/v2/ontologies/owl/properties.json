@@ -9,7 +9,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A human-readable name for the subject.",
+    "definition": [
+      "A human-readable name for the subject."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -26,7 +28,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "label",
+    "label": [
+      "label"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS_Literal",
@@ -34,7 +38,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -47,7 +53,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -60,7 +68,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -73,7 +83,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -86,7 +98,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -99,7 +113,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -123,10 +139,9 @@
       "owl"
     ],
     "curie": "OWL_allValuesFrom",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the class that a universal property restriction refers to."
     ],
-    "definition": "The property that determines the class that a universal property restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -140,10 +155,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#allValuesFrom",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "allValuesFrom",
+    "label": [
+      "allValuesFrom"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -151,7 +168,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -164,7 +183,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -177,7 +198,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -190,7 +213,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -203,7 +228,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -216,7 +243,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -240,10 +269,9 @@
       "owl"
     ],
     "curie": "OWL_annotatedProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the predicate of an annotated axiom or annotated annotation."
     ],
-    "definition": "The property that determines the predicate of an annotated axiom or annotated annotation.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -257,10 +285,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#annotatedProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "annotatedProperty",
+    "label": [
+      "annotatedProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -268,7 +298,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -281,7 +313,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -294,7 +328,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -307,7 +343,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -320,7 +358,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -333,7 +373,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -357,10 +399,9 @@
       "owl"
     ],
     "curie": "OWL_annotatedSource",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the subject of an annotated axiom or annotated annotation."
     ],
-    "definition": "The property that determines the subject of an annotated axiom or annotated annotation.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -374,10 +415,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#annotatedSource",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "annotatedSource",
+    "label": [
+      "annotatedSource"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -385,7 +428,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -398,7 +443,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -411,7 +458,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -424,7 +473,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -437,7 +488,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -450,7 +503,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -474,10 +529,9 @@
       "owl"
     ],
     "curie": "OWL_annotatedTarget",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the object of an annotated axiom or annotated annotation."
     ],
-    "definition": "The property that determines the object of an annotated axiom or annotated annotation.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -491,10 +545,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#annotatedTarget",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "annotatedTarget",
+    "label": [
+      "annotatedTarget"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -502,7 +558,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -515,7 +573,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -528,7 +588,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -541,7 +603,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -554,7 +618,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -567,7 +633,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -591,10 +659,9 @@
       "owl"
     ],
     "curie": "OWL_assertionProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the predicate of a negative property assertion."
     ],
-    "definition": "The property that determines the predicate of a negative property assertion.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -608,10 +675,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#assertionProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "assertionProperty",
+    "label": [
+      "assertionProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -619,7 +688,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -632,7 +703,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -645,7 +718,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -658,7 +733,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -671,7 +748,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -695,10 +774,9 @@
       "owl"
     ],
     "curie": "OWL_backwardCompatibleWith",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The annotation property that indicates that a given ontology is backward compatible with another ontology."
     ],
-    "definition": "The annotation property that indicates that a given ontology is backward compatible with another ontology.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -715,10 +793,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "backwardCompatibleWith",
+    "label": [
+      "backwardCompatibleWith"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -726,7 +806,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -739,7 +821,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -752,7 +836,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -765,7 +851,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -778,7 +866,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -803,10 +893,9 @@
       "owl"
     ],
     "curie": "OWL_bottomDataProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The data property that does not relate any individual to any data value."
     ],
-    "definition": "The data property that does not relate any individual to any data value.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -820,10 +909,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Literal",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#bottomDataProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "bottomDataProperty",
+    "label": [
+      "bottomDataProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS_Literal",
@@ -831,7 +922,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -844,7 +937,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -857,7 +952,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -870,7 +967,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -883,7 +982,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -896,7 +997,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -921,10 +1024,9 @@
       "owl"
     ],
     "curie": "OWL_bottomObjectProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The object property that does not relate any two individuals."
     ],
-    "definition": "The object property that does not relate any two individuals.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -938,10 +1040,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "bottomObjectProperty",
+    "label": [
+      "bottomObjectProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -949,7 +1053,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -962,7 +1068,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -975,7 +1083,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -988,7 +1098,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1001,7 +1113,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1026,10 +1140,9 @@
       "owl"
     ],
     "curie": "OWL_cardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of an exact cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of an exact cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1043,10 +1156,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#cardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "cardinality",
+    "label": [
+      "cardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1054,7 +1169,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1067,7 +1184,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1080,7 +1199,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1093,7 +1214,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1106,7 +1229,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1130,10 +1255,9 @@
       "owl"
     ],
     "curie": "OWL_complementOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that a given class is the complement of another class."
     ],
-    "definition": "The property that determines that a given class is the complement of another class.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1147,10 +1271,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#complementOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "complementOf",
+    "label": [
+      "complementOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1158,7 +1284,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1171,7 +1299,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1184,7 +1314,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1197,7 +1329,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1210,7 +1344,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1234,10 +1370,9 @@
       "owl"
     ],
     "curie": "OWL_datatypeComplementOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that a given data range is the complement of another data range with respect to the data domain."
     ],
-    "definition": "The property that determines that a given data range is the complement of another data range with respect to the data domain.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1251,10 +1386,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Datatype",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "datatypeComplementOf",
+    "label": [
+      "datatypeComplementOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Datatype": {
         "curie": "RDFS_Datatype",
@@ -1262,7 +1399,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Datatype",
+        "label": [
+          "Datatype"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -1275,7 +1414,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1288,7 +1429,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1301,7 +1444,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1314,7 +1459,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1327,7 +1474,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1351,10 +1500,9 @@
       "owl"
     ],
     "curie": "OWL_deprecated",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The annotation property that indicates that a given entity has been deprecated."
     ],
-    "definition": "The annotation property that indicates that a given entity has been deprecated.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1368,10 +1516,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#deprecated",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "deprecated",
+    "label": [
+      "deprecated"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -1379,7 +1529,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -1392,7 +1544,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1405,7 +1559,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1418,7 +1574,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1431,7 +1589,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1444,7 +1604,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1469,10 +1631,9 @@
       "owl"
     ],
     "curie": "OWL_differentFrom",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given individuals are different."
     ],
-    "definition": "The property that determines that two given individuals are different.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1486,10 +1647,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#differentFrom",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "differentFrom",
+    "label": [
+      "differentFrom"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1497,7 +1660,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1510,7 +1675,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1523,7 +1690,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1536,7 +1705,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1549,7 +1720,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1573,10 +1746,9 @@
       "owl"
     ],
     "curie": "OWL_disjointUnionOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes."
     ],
-    "definition": "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1590,10 +1762,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#disjointUnionOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "disjointUnionOf",
+    "label": [
+      "disjointUnionOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1601,7 +1775,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1614,7 +1790,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1627,7 +1805,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1640,7 +1820,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1653,7 +1835,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1677,10 +1861,9 @@
       "owl"
     ],
     "curie": "OWL_disjointWith",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given classes are disjoint."
     ],
-    "definition": "The property that determines that two given classes are disjoint.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1694,10 +1877,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#disjointWith",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "disjointWith",
+    "label": [
+      "disjointWith"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1705,7 +1890,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1718,7 +1905,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1731,7 +1920,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1744,7 +1935,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1757,7 +1950,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1781,10 +1976,9 @@
       "owl"
     ],
     "curie": "OWL_distinctMembers",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom."
     ],
-    "definition": "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1798,10 +1992,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#distinctMembers",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "distinctMembers",
+    "label": [
+      "distinctMembers"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -1809,7 +2005,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1822,7 +2020,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1835,7 +2035,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1848,7 +2050,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1861,7 +2065,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1885,10 +2091,9 @@
       "owl"
     ],
     "curie": "OWL_equivalentClass",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions."
     ],
-    "definition": "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1902,10 +2107,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#equivalentClass",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "equivalentClass",
+    "label": [
+      "equivalentClass"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -1913,7 +2120,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -1926,7 +2135,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1939,7 +2150,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1952,7 +2165,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1965,7 +2180,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1978,7 +2195,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2002,10 +2221,9 @@
       "owl"
     ],
     "curie": "OWL_equivalentProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given properties are equivalent."
     ],
-    "definition": "The property that determines that two given properties are equivalent.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2019,10 +2237,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#equivalentProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "equivalentProperty",
+    "label": [
+      "equivalentProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2030,7 +2250,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2043,7 +2265,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2056,7 +2280,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2069,7 +2295,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2082,7 +2310,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2106,10 +2336,9 @@
       "owl"
     ],
     "curie": "OWL_hasKey",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of properties that jointly build a key."
     ],
-    "definition": "The property that determines the collection of properties that jointly build a key.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2123,10 +2352,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#hasKey",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasKey",
+    "label": [
+      "hasKey"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2134,7 +2365,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2147,7 +2380,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2160,7 +2395,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2173,7 +2410,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2186,7 +2425,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2210,10 +2451,9 @@
       "owl"
     ],
     "curie": "OWL_hasSelf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the property that a self restriction refers to."
     ],
-    "definition": "The property that determines the property that a self restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2227,10 +2467,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#hasSelf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSelf",
+    "label": [
+      "hasSelf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -2238,7 +2480,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -2251,7 +2495,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2264,7 +2510,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2277,7 +2525,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2290,7 +2540,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2303,7 +2555,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2327,10 +2581,9 @@
       "owl"
     ],
     "curie": "OWL_hasValue",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the individual that a has-value restriction refers to."
     ],
-    "definition": "The property that determines the individual that a has-value restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2344,10 +2597,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#hasValue",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasValue",
+    "label": [
+      "hasValue"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -2355,7 +2610,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -2368,7 +2625,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2381,7 +2640,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2394,7 +2655,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2407,7 +2670,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2420,7 +2685,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2444,10 +2711,9 @@
       "owl"
     ],
     "curie": "OWL_incompatibleWith",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The annotation property that indicates that a given ontology is incompatible with another ontology."
     ],
-    "definition": "The annotation property that indicates that a given ontology is incompatible with another ontology.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2464,10 +2730,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#incompatibleWith",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "incompatibleWith",
+    "label": [
+      "incompatibleWith"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2475,7 +2743,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2488,7 +2758,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2501,7 +2773,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2514,7 +2788,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2527,7 +2803,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2552,10 +2830,9 @@
       "owl"
     ],
     "curie": "OWL_intersectionOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of classes or data ranges that build an intersection."
     ],
-    "definition": "The property that determines the collection of classes or data ranges that build an intersection.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2569,10 +2846,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#intersectionOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "intersectionOf",
+    "label": [
+      "intersectionOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -2580,7 +2859,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -2593,7 +2874,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2606,7 +2889,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2619,7 +2904,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2632,7 +2919,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2645,7 +2934,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2669,10 +2960,9 @@
       "owl"
     ],
     "curie": "OWL_inverseOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given properties are inverse."
     ],
-    "definition": "The property that determines that two given properties are inverse.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2686,10 +2976,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#ObjectProperty",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#inverseOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "inverseOf",
+    "label": [
+      "inverseOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2697,7 +2989,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2710,7 +3004,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2723,7 +3019,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2736,7 +3034,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2749,7 +3049,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2773,10 +3075,9 @@
       "owl"
     ],
     "curie": "OWL_maxCardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of a maximum cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of a maximum cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2790,10 +3091,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#maxCardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "maxCardinality",
+    "label": [
+      "maxCardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2801,7 +3104,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2814,7 +3119,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2827,7 +3134,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2840,7 +3149,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2853,7 +3164,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2877,10 +3190,9 @@
       "owl"
     ],
     "curie": "OWL_maxQualifiedCardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of a maximum qualified cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of a maximum qualified cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2894,10 +3206,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "maxQualifiedCardinality",
+    "label": [
+      "maxQualifiedCardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -2905,7 +3219,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2918,7 +3234,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2931,7 +3249,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2944,7 +3264,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2957,7 +3279,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2981,10 +3305,9 @@
       "owl"
     ],
     "curie": "OWL_members",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom."
     ],
-    "definition": "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2998,10 +3321,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#members",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "members",
+    "label": [
+      "members"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -3009,7 +3334,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -3022,7 +3349,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3035,7 +3364,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3048,7 +3379,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3061,7 +3394,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3074,7 +3409,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3098,10 +3435,9 @@
       "owl"
     ],
     "curie": "OWL_minCardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of a minimum cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of a minimum cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3115,10 +3451,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#minCardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "minCardinality",
+    "label": [
+      "minCardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -3126,7 +3464,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3139,7 +3479,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3152,7 +3494,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3165,7 +3509,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3178,7 +3524,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3202,10 +3550,9 @@
       "owl"
     ],
     "curie": "OWL_minQualifiedCardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of a minimum qualified cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of a minimum qualified cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3219,10 +3566,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "minQualifiedCardinality",
+    "label": [
+      "minQualifiedCardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -3230,7 +3579,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3243,7 +3594,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3256,7 +3609,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3269,7 +3624,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3282,7 +3639,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3306,10 +3665,9 @@
       "owl"
     ],
     "curie": "OWL_onClass",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the class that a qualified object cardinality restriction refers to."
     ],
-    "definition": "The property that determines the class that a qualified object cardinality restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3323,10 +3681,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#onClass",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "onClass",
+    "label": [
+      "onClass"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -3334,7 +3694,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3347,7 +3709,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3360,7 +3724,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3373,7 +3739,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3386,7 +3754,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3410,10 +3780,9 @@
       "owl"
     ],
     "curie": "OWL_onDataRange",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the data range that a qualified data cardinality restriction refers to."
     ],
-    "definition": "The property that determines the data range that a qualified data cardinality restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3427,10 +3796,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Datatype",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#onDataRange",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "onDataRange",
+    "label": [
+      "onDataRange"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Datatype": {
         "curie": "RDFS_Datatype",
@@ -3438,7 +3809,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Datatype",
+        "label": [
+          "Datatype"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -3451,7 +3824,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3464,7 +3839,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3477,7 +3854,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3490,7 +3869,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3503,7 +3884,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3527,10 +3910,9 @@
       "owl"
     ],
     "curie": "OWL_onDatatype",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the datatype that a datatype restriction refers to."
     ],
-    "definition": "The property that determines the datatype that a datatype restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3544,10 +3926,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Datatype",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#onDatatype",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "onDatatype",
+    "label": [
+      "onDatatype"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Datatype": {
         "curie": "RDFS_Datatype",
@@ -3555,7 +3939,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Datatype",
+        "label": [
+          "Datatype"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -3568,7 +3954,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3581,7 +3969,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3594,7 +3984,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3607,7 +3999,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3620,7 +4014,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3644,10 +4040,9 @@
       "owl"
     ],
     "curie": "OWL_onProperties",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to."
     ],
-    "definition": "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3661,10 +4056,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#onProperties",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "onProperties",
+    "label": [
+      "onProperties"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -3672,7 +4069,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3685,7 +4084,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3698,7 +4099,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3711,7 +4114,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3724,7 +4129,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3748,10 +4155,9 @@
       "owl"
     ],
     "curie": "OWL_onProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the property that a property restriction refers to."
     ],
-    "definition": "The property that determines the property that a property restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3765,10 +4171,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#onProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "onProperty",
+    "label": [
+      "onProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -3776,7 +4184,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3789,7 +4199,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3802,7 +4214,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3815,7 +4229,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3828,7 +4244,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3852,10 +4270,9 @@
       "owl"
     ],
     "curie": "OWL_oneOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of individuals or data values that build an enumeration."
     ],
-    "definition": "The property that determines the collection of individuals or data values that build an enumeration.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3869,10 +4286,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#oneOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "oneOf",
+    "label": [
+      "oneOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -3880,7 +4299,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -3893,7 +4314,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3906,7 +4329,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3919,7 +4344,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3932,7 +4359,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3945,7 +4374,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3969,10 +4400,9 @@
       "owl"
     ],
     "curie": "OWL_priorVersion",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The annotation property that indicates the predecessor ontology of a given ontology."
     ],
-    "definition": "The annotation property that indicates the predecessor ontology of a given ontology.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -3989,10 +4419,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#priorVersion",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "priorVersion",
+    "label": [
+      "priorVersion"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4000,7 +4432,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4013,7 +4447,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4026,7 +4462,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4039,7 +4477,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4052,7 +4492,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4077,10 +4519,9 @@
       "owl"
     ],
     "curie": "OWL_propertyChainAxiom",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the n-tuple of properties that build a sub property chain of a given property."
     ],
-    "definition": "The property that determines the n-tuple of properties that build a sub property chain of a given property.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4094,10 +4535,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "propertyChainAxiom",
+    "label": [
+      "propertyChainAxiom"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4105,7 +4548,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4118,7 +4563,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4131,7 +4578,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4144,7 +4593,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4157,7 +4608,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4181,10 +4634,9 @@
       "owl"
     ],
     "curie": "OWL_propertyDisjointWith",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given properties are disjoint."
     ],
-    "definition": "The property that determines that two given properties are disjoint.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4198,10 +4650,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "propertyDisjointWith",
+    "label": [
+      "propertyDisjointWith"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4209,7 +4663,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4222,7 +4678,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4235,7 +4693,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4248,7 +4708,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4261,7 +4723,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4285,10 +4749,9 @@
       "owl"
     ],
     "curie": "OWL_qualifiedCardinality",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the cardinality of an exact qualified cardinality restriction."
     ],
-    "definition": "The property that determines the cardinality of an exact qualified cardinality restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4302,10 +4765,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "qualifiedCardinality",
+    "label": [
+      "qualifiedCardinality"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4313,7 +4778,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4326,7 +4793,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4339,7 +4808,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4352,7 +4823,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4365,7 +4838,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4389,10 +4864,9 @@
       "owl"
     ],
     "curie": "OWL_sameAs",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines that two given individuals are equal."
     ],
-    "definition": "The property that determines that two given individuals are equal.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4406,10 +4880,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#sameAs",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "sameAs",
+    "label": [
+      "sameAs"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4417,7 +4893,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4430,7 +4908,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4443,7 +4923,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4456,7 +4938,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4469,7 +4953,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4493,10 +4979,9 @@
       "owl"
     ],
     "curie": "OWL_someValuesFrom",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the class that an existential property restriction refers to."
     ],
-    "definition": "The property that determines the class that an existential property restriction refers to.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4510,10 +4995,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Class",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#someValuesFrom",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "someValuesFrom",
+    "label": [
+      "someValuesFrom"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -4521,7 +5008,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -4534,7 +5023,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4547,7 +5038,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4560,7 +5053,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4573,7 +5068,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4586,7 +5083,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4610,10 +5109,9 @@
       "owl"
     ],
     "curie": "OWL_sourceIndividual",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the subject of a negative property assertion."
     ],
-    "definition": "The property that determines the subject of a negative property assertion.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4627,10 +5125,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#sourceIndividual",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "sourceIndividual",
+    "label": [
+      "sourceIndividual"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4638,7 +5138,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4651,7 +5153,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4664,7 +5168,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4677,7 +5183,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4690,7 +5198,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4714,10 +5224,9 @@
       "owl"
     ],
     "curie": "OWL_targetIndividual",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the object of a negative object property assertion."
     ],
-    "definition": "The property that determines the object of a negative object property assertion.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4731,10 +5240,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#targetIndividual",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "targetIndividual",
+    "label": [
+      "targetIndividual"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -4742,7 +5253,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4755,7 +5268,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4768,7 +5283,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4781,7 +5298,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4794,7 +5313,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4818,10 +5339,9 @@
       "owl"
     ],
     "curie": "OWL_targetValue",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the value of a negative data property assertion."
     ],
-    "definition": "The property that determines the value of a negative data property assertion.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4835,10 +5355,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Literal",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#targetValue",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "targetValue",
+    "label": [
+      "targetValue"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS_Literal",
@@ -4846,7 +5368,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -4859,7 +5383,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4872,7 +5398,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4885,7 +5413,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4898,7 +5428,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -4911,7 +5443,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4935,10 +5469,9 @@
       "owl"
     ],
     "curie": "OWL_topDataProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The data property that relates every individual to every data value."
     ],
-    "definition": "The data property that relates every individual to every data value.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -4952,10 +5485,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Literal",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#topDataProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "topDataProperty",
+    "label": [
+      "topDataProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS_Literal",
@@ -4963,7 +5498,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -4976,7 +5513,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -4989,7 +5528,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5002,7 +5543,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5015,7 +5558,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5028,7 +5573,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5053,10 +5600,9 @@
       "owl"
     ],
     "curie": "OWL_topObjectProperty",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The object property that relates every two individuals."
     ],
-    "definition": "The object property that relates every two individuals.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5070,10 +5616,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2002/07/owl#Thing",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#topObjectProperty",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "topObjectProperty",
+    "label": [
+      "topObjectProperty"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -5081,7 +5629,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5094,7 +5644,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5107,7 +5659,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5120,7 +5674,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5133,7 +5689,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5158,10 +5716,9 @@
       "owl"
     ],
     "curie": "OWL_unionOf",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of classes or data ranges that build a union."
     ],
-    "definition": "The property that determines the collection of classes or data ranges that build a union.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5175,10 +5732,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#unionOf",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "unionOf",
+    "label": [
+      "unionOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -5186,7 +5745,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5199,7 +5760,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5212,7 +5775,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5225,7 +5790,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5238,7 +5805,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5251,7 +5820,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5275,10 +5846,9 @@
       "owl"
     ],
     "curie": "OWL_versionInfo",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The annotation property that provides version information for an ontology or another OWL construct."
     ],
-    "definition": "The annotation property that provides version information for an ontology or another OWL construct.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5292,10 +5862,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#versionInfo",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "versionInfo",
+    "label": [
+      "versionInfo"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -5303,7 +5875,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5316,7 +5890,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5329,7 +5905,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5342,7 +5920,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5355,7 +5935,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5368,7 +5950,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5393,10 +5977,9 @@
       "owl"
     ],
     "curie": "OWL_withRestrictions",
-    "definedBy": [
-      "owl"
+    "definition": [
+      "The property that determines the collection of facet-value pairs that define a datatype restriction."
     ],
-    "definition": "The property that determines the collection of facet-value pairs that define a datatype restriction.",
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5410,10 +5993,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "imported": false,
     "iri": "http://www.w3.org/2002/07/owl#withRestrictions",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "withRestrictions",
+    "label": [
+      "withRestrictions"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Datatype": {
         "curie": "RDFS_Datatype",
@@ -5421,7 +6006,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Datatype",
+        "label": [
+          "Datatype"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5434,7 +6021,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5447,7 +6036,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5460,7 +6051,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5473,7 +6066,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5486,7 +6081,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5514,7 +6111,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A description of the subject resource.",
+    "definition": [
+      "A description of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5531,7 +6130,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "comment",
+    "label": [
+      "comment"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS_Literal",
@@ -5539,7 +6140,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5552,7 +6155,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5565,7 +6170,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5578,7 +6185,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5591,7 +6200,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5604,7 +6215,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5632,7 +6245,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A domain of the subject property.",
+    "definition": [
+      "A domain of the subject property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5649,7 +6264,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "domain",
+    "label": [
+      "domain"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -5657,7 +6274,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5670,7 +6289,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5683,7 +6304,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5696,7 +6319,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5709,7 +6334,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5737,10 +6364,16 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The defininition of the subject resource.",
+    "definition": [
+      "The defininition of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "directAncestor": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-    "directParent": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "directAncestor": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
+    "directParent": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -5757,7 +6390,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "isDefinedBy",
+    "label": [
+      "isDefinedBy"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -5765,7 +6400,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5778,7 +6415,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5791,7 +6430,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5804,7 +6445,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5817,7 +6460,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5830,7 +6475,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "seeAlso",
+        "label": [
+          "seeAlso"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5843,7 +6490,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5871,7 +6520,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A member of the subject resource.",
+    "definition": [
+      "A member of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -5888,7 +6539,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "member",
+    "label": [
+      "member"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -5896,7 +6549,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -5909,7 +6564,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5922,7 +6579,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5935,7 +6594,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5948,7 +6609,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -5961,7 +6624,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -5989,7 +6654,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A range of the subject property.",
+    "definition": [
+      "A range of the subject property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -6006,7 +6673,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "range",
+    "label": [
+      "range"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -6014,7 +6683,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -6027,7 +6698,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6040,7 +6713,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6053,7 +6728,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6066,7 +6743,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -6094,7 +6773,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "Further information about the subject resource.",
+    "definition": [
+      "Further information about the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": true,
     "hasDirectParents": false,
@@ -6111,7 +6792,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "seeAlso",
+    "label": [
+      "seeAlso"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS_Resource",
@@ -6119,7 +6802,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -6132,7 +6817,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6145,7 +6832,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6158,7 +6847,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6171,7 +6862,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -6184,7 +6877,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6212,7 +6907,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The subject is a subclass of a class.",
+    "definition": [
+      "The subject is a subclass of a class."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -6229,7 +6926,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subClassOf",
+    "label": [
+      "subClassOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS_Class",
@@ -6237,7 +6936,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -6250,7 +6951,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6263,7 +6966,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6276,7 +6981,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6289,7 +6996,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -6302,7 +7011,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6330,7 +7041,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The subject is a subproperty of a property.",
+    "definition": [
+      "The subject is a subproperty of a property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -6347,7 +7060,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subPropertyOf",
+    "label": [
+      "subPropertyOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS_comment",
@@ -6355,7 +7070,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6368,7 +7085,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6381,7 +7100,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -6394,7 +7115,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -6407,7 +7130,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",

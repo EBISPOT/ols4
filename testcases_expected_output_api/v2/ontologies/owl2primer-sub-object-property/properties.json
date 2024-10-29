@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSpouse",
+    "label": [
+      "hasSpouse"
+    ],
     "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
@@ -34,8 +36,12 @@
       "owl2primer-sub-object-property"
     ],
     "curie": "hasWife",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -47,12 +53,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasWife",
+    "label": [
+      "hasWife"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse": {
         "curie": "hasSpouse",
         "hasLocalDefinition": true,
-        "label": "hasSpouse",
+        "label": [
+          "hasSpouse"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

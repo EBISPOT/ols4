@@ -35,12 +35,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Teenager",
+    "label": [
+      "Teenager"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge": {
         "curie": "hasAge",
         "hasLocalDefinition": true,
-        "label": "hasAge",
+        "label": [
+          "hasAge"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -80,7 +84,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasAge",
+    "label": [
+      "hasAge"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

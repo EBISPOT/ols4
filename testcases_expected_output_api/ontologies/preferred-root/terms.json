@@ -1,0 +1,28 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/preferred-root/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FPreferredRoot.owl%2523PreferredRoot_0001/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/preferred-root/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FPreferredRoot.owl%2523PreferredRoot_0001?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "liver disease",
+    "lang": "en",
+    "obo_id": "PreferredRoot:0001",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+    "ontology_name": "preferred-root",
+    "ontology_prefix": "Preferred-Root",
+    "short_form": "PreferredRoot_0001",
+    "synonyms": []
+  }
+]

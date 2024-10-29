@@ -22,12 +22,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -37,7 +41,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/propertyRestriction-maxQualifiedCardinality.owl#hasChild": {
         "curie": "hasChild",
         "hasLocalDefinition": true,
-        "label": "hasChild",
+        "label": [
+          "hasChild"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -73,7 +79,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -102,7 +110,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasChild",
+    "label": [
+      "hasChild"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

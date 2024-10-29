@@ -13,12 +13,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "b1",
+    "label": [
+      "b1"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A": {
         "curie": "A",
         "hasLocalDefinition": true,
-        "label": "A",
+        "label": [
+          "A"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -28,7 +32,9 @@
       "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -42,17 +48,19 @@
     "ontologyId": "related-hasvalue",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/hasValue.owl",
     "ontologyPreferredPrefix": "related-hasValue",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "b1",
     "type": [

@@ -146,7 +146,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
-        "label": "IAO_0000111",
+        "label": [
+          "IAO_0000111"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -157,7 +159,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000112": {
         "curie": "IAO:0000112",
         "hasLocalDefinition": true,
-        "label": "IAO_0000112",
+        "label": [
+          "IAO_0000112"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -168,7 +172,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000115": {
         "curie": "IAO:0000115",
         "hasLocalDefinition": true,
-        "label": "IAO_0000115",
+        "label": [
+          "IAO_0000115"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -179,7 +185,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000116": {
         "curie": "IAO:0000116",
         "hasLocalDefinition": true,
-        "label": "IAO_0000116",
+        "label": [
+          "IAO_0000116"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -190,7 +198,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000118": {
         "curie": "IAO:0000118",
         "hasLocalDefinition": true,
-        "label": "IAO_0000118",
+        "label": [
+          "IAO_0000118"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -201,7 +211,9 @@
       "http://purl.obolibrary.org/obo/RO_0001900": {
         "curie": "RO:0001900",
         "hasLocalDefinition": true,
-        "label": "RO_0001900",
+        "label": [
+          "RO_0001900"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -217,7 +229,9 @@
       "http://purl.obolibrary.org/obo/RO_0040042": {
         "curie": "RO:0040042",
         "hasLocalDefinition": true,
-        "label": "RO_0040042",
+        "label": [
+          "RO_0040042"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -228,7 +242,9 @@
       "http://www.ebi.ac.uk/efo/EFO_URI": {
         "curie": "EFO_URI",
         "hasLocalDefinition": true,
-        "label": "EFO_URI",
+        "label": [
+          "EFO_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -239,7 +255,9 @@
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
         "curie": "hasDbXref",
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
+        "label": [
+          "hasDbXref"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -250,7 +268,9 @@
       "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
         "curie": "hasExactSynonym",
         "hasLocalDefinition": true,
-        "label": "hasExactSynonym",
+        "label": [
+          "hasExactSynonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -261,7 +281,9 @@
       "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": {
         "curie": "hasOBONamespace",
         "hasLocalDefinition": true,
-        "label": "hasOBONamespace",
+        "label": [
+          "hasOBONamespace"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -272,7 +294,9 @@
       "http://www.geneontology.org/formats/oboInOwl#id": {
         "curie": "id",
         "hasLocalDefinition": true,
-        "label": "id",
+        "label": [
+          "id"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -283,7 +307,9 @@
       "http://www.geneontology.org/formats/oboInOwl#inSubset": {
         "curie": "inSubset",
         "hasLocalDefinition": true,
-        "label": "inSubset",
+        "label": [
+          "inSubset"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -294,7 +320,9 @@
       "http://www.geneontology.org/formats/oboInOwl#shorthand": {
         "curie": "shorthand",
         "hasLocalDefinition": true,
-        "label": "shorthand",
+        "label": [
+          "shorthand"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -322,7 +350,9 @@
       false
     ],
     "shortForm": "BFO_0000050",
-    "synonym": "part of",
+    "synonym": [
+      "part of"
+    ],
     "synonymProperty": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
     "type": [
       "entity",
@@ -382,7 +412,9 @@
       "http://www.ebi.ac.uk/efo/EFO_URI": {
         "curie": "EFO_URI",
         "hasLocalDefinition": true,
-        "label": "EFO_URI",
+        "label": [
+          "EFO_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -393,7 +425,9 @@
       "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
         "curie": "hasDbXref",
         "hasLocalDefinition": true,
-        "label": "hasDbXref",
+        "label": [
+          "hasDbXref"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -404,7 +438,9 @@
       "http://www.geneontology.org/formats/oboInOwl#shorthand": {
         "curie": "shorthand",
         "hasLocalDefinition": true,
-        "label": "shorthand",
+        "label": [
+          "shorthand"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -443,7 +479,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "EFO_URI",
+    "label": [
+      "EFO_URI"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -473,7 +511,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000111",
+    "label": [
+      "IAO_0000111"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -503,7 +543,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000112",
+    "label": [
+      "IAO_0000112"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -533,7 +575,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000115",
+    "label": [
+      "IAO_0000115"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -563,7 +607,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000116",
+    "label": [
+      "IAO_0000116"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -593,7 +639,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000118",
+    "label": [
+      "IAO_0000118"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -623,7 +671,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "IAO_0000232",
+    "label": [
+      "IAO_0000232"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -653,7 +703,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "RO_0001900",
+    "label": [
+      "RO_0001900"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -683,7 +735,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "RO_0002174",
+    "label": [
+      "RO_0002174"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -713,7 +767,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "RO_0040042",
+    "label": [
+      "RO_0040042"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -743,7 +799,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000001",
+    "label": [
+      "UBPROP_0000001"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -773,7 +831,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000002",
+    "label": [
+      "UBPROP_0000002"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -803,7 +863,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000003",
+    "label": [
+      "UBPROP_0000003"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -833,7 +895,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000007",
+    "label": [
+      "UBPROP_0000007"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -863,7 +927,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000008",
+    "label": [
+      "UBPROP_0000008"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -893,7 +959,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000009",
+    "label": [
+      "UBPROP_0000009"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -923,7 +991,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000010",
+    "label": [
+      "UBPROP_0000010"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -953,7 +1023,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000012",
+    "label": [
+      "UBPROP_0000012"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -983,7 +1055,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "UBPROP_0000202",
+    "label": [
+      "UBPROP_0000202"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1013,7 +1087,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "date_retrieved",
+    "label": [
+      "date_retrieved"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1043,7 +1119,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "depicted_by",
+    "label": [
+      "depicted_by"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1073,7 +1151,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "external_class",
+    "label": [
+      "external_class"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1103,7 +1183,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "external_ontology",
+    "label": [
+      "external_ontology"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1133,7 +1215,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasAlternativeId",
+    "label": [
+      "hasAlternativeId"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1163,7 +1247,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasBroadSynonym",
+    "label": [
+      "hasBroadSynonym"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1193,7 +1279,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasDbXref",
+    "label": [
+      "hasDbXref"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1223,7 +1311,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasExactSynonym",
+    "label": [
+      "hasExactSynonym"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1253,7 +1343,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasOBONamespace",
+    "label": [
+      "hasOBONamespace"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1283,7 +1375,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasRelatedSynonym",
+    "label": [
+      "hasRelatedSynonym"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1313,7 +1407,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSynonymType",
+    "label": [
+      "hasSynonymType"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1343,7 +1439,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "id",
+    "label": [
+      "id"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1373,7 +1471,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "inSubset",
+    "label": [
+      "inSubset"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1403,7 +1503,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "notes",
+    "label": [
+      "notes"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1433,7 +1535,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "ontology",
+    "label": [
+      "ontology"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1463,7 +1567,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "shorthand",
+    "label": [
+      "shorthand"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1493,7 +1599,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "source",
+    "label": [
+      "source"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

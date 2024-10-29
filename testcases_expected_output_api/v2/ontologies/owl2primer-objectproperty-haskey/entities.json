@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Address",
+    "label": [
+      "Address"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -46,12 +48,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Business",
+    "label": [
+      "Business"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -86,7 +92,9 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "a",
+    "label": [
+      "a"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -115,12 +123,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "b1",
+    "label": [
+      "b1"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
         "curie": "a",
         "hasLocalDefinition": true,
-        "label": "a",
+        "label": [
+          "a"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -130,7 +142,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -166,12 +180,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "b2",
+    "label": [
+      "b2"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
         "curie": "a",
         "hasLocalDefinition": true,
-        "label": "a",
+        "label": [
+          "a"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -181,7 +199,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -219,12 +239,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "businessAddress",
+    "label": [
+      "businessAddress"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address": {
         "curie": "Address",
         "hasLocalDefinition": true,
-        "label": "Address",
+        "label": [
+          "Address"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -234,7 +258,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business": {
         "curie": "Business",
         "hasLocalDefinition": true,
-        "label": "Business",
+        "label": [
+          "Business"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -270,7 +296,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSSN",
+    "label": [
+      "hasSSN"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

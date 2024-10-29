@@ -4,9 +4,6 @@
       "xmpl"
     ],
     "curie": "XMPL_Preferred_name",
-    "definedBy": [
-      "xmpl"
-    ],
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -15,10 +12,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/Preferred_name",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "XMPL_Preferred_name",
+    "label": [
+      "XMPL_Preferred_name"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -38,9 +37,6 @@
       "xmpl"
     ],
     "curie": "XMPL_Synonym",
-    "definedBy": [
-      "xmpl"
-    ],
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -49,10 +45,12 @@
     "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
     "imported": false,
     "iri": "http://exmpl.org/xmpl/Synonym",
-    "isDefiningOntology": true,
+    "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "XMPL_Synonym",
+    "label": [
+      "XMPL_Synonym"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
