@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://example.com/owl2primer/v.0.0.1",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -98,12 +94,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -152,8 +150,12 @@
             ],
             "value": "Mary"
           },
-          "directAncestor": "http://example.com/owl2primer#Person",
-          "directParent": "http://example.com/owl2primer#Person",
+          "directAncestor": [
+            "http://example.com/owl2primer#Person"
+          ],
+          "directParent": [
+            "http://example.com/owl2primer#Person"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -164,12 +166,14 @@
           ],
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mary"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -205,12 +209,14 @@
             "http://example.com/owl2primer#Person": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"

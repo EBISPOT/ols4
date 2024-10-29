@@ -12,12 +12,14 @@
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -46,12 +48,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -100,12 +96,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "cell"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -126,17 +124,19 @@
             ],
             "value": "reified-bnode"
           },
-          "relatedFrom": {
-            "property": "http://example.com/reified-bnode#part_of",
-            "value": "http://example.com/reified-bnode#cell_part",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://example.com/reified-bnode#part_of",
+              "value": "http://example.com/reified-bnode#cell_part",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -202,12 +202,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "cell_part"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell_part"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -228,17 +230,19 @@
             ],
             "value": "reified-bnode"
           },
-          "relatedTo": {
-            "property": "http://example.com/reified-bnode#part_of",
-            "value": "http://example.com/reified-bnode#cell",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://example.com/reified-bnode#part_of",
+              "value": "http://example.com/reified-bnode#cell",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -271,12 +275,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

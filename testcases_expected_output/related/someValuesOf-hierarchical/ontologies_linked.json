@@ -18,12 +18,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-hierachical.xml",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -52,12 +54,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -101,18 +97,22 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-            "axioms": [
-              {
-                "childRelationToParent": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -129,12 +129,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "A"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -155,17 +157,19 @@
             ],
             "value": "related-someValuesOf-hierarchical"
           },
-          "relatedTo": {
-            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -181,12 +185,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "B"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "B"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -201,12 +207,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -243,12 +251,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "B"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "B"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -269,17 +279,19 @@
             ],
             "value": "related-someValuesOf-hierarchical"
           },
-          "relatedFrom": {
-            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -295,12 +307,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "A"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -315,12 +329,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -359,12 +375,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "r"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -404,12 +422,14 @@
         "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
           "numAppearsIn": 1,
           "hasLocalDefinition": true,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "r"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
           "curie": {
             "type": [
               "literal"

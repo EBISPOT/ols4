@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-domain-range-restriction.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -93,14 +89,22 @@
             ],
             "value": "Man"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -113,12 +117,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Man"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Man"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -154,12 +160,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -174,12 +182,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Woman"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Woman"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -215,12 +225,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -266,14 +278,22 @@
             ],
             "value": "Woman"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -285,12 +305,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -326,12 +348,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -371,12 +395,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasWife"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasWife"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -412,12 +438,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Man"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Man"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -432,12 +460,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Woman"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Woman"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"

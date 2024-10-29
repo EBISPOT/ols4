@@ -21,12 +21,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/hierarchical-properties/v0.0.1/partof.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -55,12 +57,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -115,12 +111,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "adduct ion"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "adduct ion"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -141,17 +139,19 @@
             ],
             "value": "partof"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/ms#part_of",
-            "value": "http://purl.obolibrary.org/obo/MS_1003056",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/ms#part_of",
+              "value": "http://purl.obolibrary.org/obo/MS_1003056",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -167,12 +167,14 @@
             "http://purl.obolibrary.org/obo/ms#part_of": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -188,12 +190,14 @@
             "http://purl.obolibrary.org/obo/MS_1003056": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "adduct ion property"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "adduct ion property"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -224,18 +228,22 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/MS_1000353",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/MS_1000353",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/ms#part_of"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/MS_1000353"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/MS_1000353",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/ms#part_of"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -258,12 +266,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "adduct ion property"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "adduct ion property"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -284,17 +294,19 @@
             ],
             "value": "partof"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/ms#part_of",
-            "value": "http://purl.obolibrary.org/obo/MS_1000353",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/ms#part_of",
+              "value": "http://purl.obolibrary.org/obo/MS_1000353",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -310,12 +322,14 @@
             "http://purl.obolibrary.org/obo/ms#part_of": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -331,12 +345,14 @@
             "http://purl.obolibrary.org/obo/MS_1000353": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "adduct ion"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "adduct ion"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -378,12 +394,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "abdomen"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abdomen"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -404,17 +422,19 @@
             ],
             "value": "partof"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0003684",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0003684",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -430,12 +450,14 @@
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -451,12 +473,14 @@
             "http://purl.obolibrary.org/obo/UBERON_0003684": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "abdominal cavity"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "abdominal cavity"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -487,18 +511,22 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000916",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000916"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -521,12 +549,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "abdominal cavity"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abdominal cavity"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -547,17 +577,19 @@
             ],
             "value": "partof"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -573,12 +605,14 @@
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "abdomen"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "abdomen"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -593,12 +627,14 @@
             "http://purl.obolibrary.org/obo/BFO_0000050": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -646,12 +682,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -710,12 +748,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -755,12 +795,14 @@
         "http://purl.obolibrary.org/obo/BFO_0000050": {
           "numAppearsIn": 1,
           "hasLocalDefinition": true,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
           "curie": {
             "type": [
               "literal"
@@ -776,12 +818,14 @@
         "http://purl.obolibrary.org/obo/ms#part_of": {
           "numAppearsIn": 1,
           "hasLocalDefinition": true,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
           "curie": {
             "type": [
               "literal"

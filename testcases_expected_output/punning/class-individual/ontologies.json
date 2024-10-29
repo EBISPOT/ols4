@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/punning/v.0.0.1/class-individual.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -47,12 +49,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -101,12 +97,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Quantity"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Quantity"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -147,15 +145,23 @@
             ],
             "value": "ThermodynamicTemperature"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hasIndividuals": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -171,12 +177,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "ThermodynamicTemperature"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ThermodynamicTemperature"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -230,12 +238,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "commonlyHasUnit"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "commonlyHasUnit"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -278,15 +288,23 @@
             ],
             "value": "ThermodynamicTemperature"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hasIndividuals": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -302,12 +320,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "ThermodynamicTemperature"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ThermodynamicTemperature"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -356,12 +376,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "terakelvin"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "terakelvin"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -406,7 +428,9 @@
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
           ],
-          "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -417,12 +441,14 @@
           ],
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

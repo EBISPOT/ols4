@@ -8,12 +8,14 @@
       "type": [
         "ontology"
       ],
-      "definition": {
-        "type": [
-          "literal"
-        ],
-        "value": "2022-05-16"
-      },
+      "definition": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2022-05-16"
+        }
+      ],
       "directAncestor": [],
       "http://purl.obolibrary.org/obo/format-version": {
         "type": [
@@ -167,12 +169,14 @@
       },
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -337,12 +341,6 @@
           "type": [
             "literal"
           ],
-          "value": "en"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "4"
         },
         {
@@ -393,12 +391,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "nitrogen compound metabolic process"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "nitrogen compound metabolic process"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -449,12 +449,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "GO_0008150"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GO_0008150"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -495,26 +497,36 @@
             ],
             "value": "OGMS:0000063"
           },
-          "definition": {
-            "type": [
-              "literal"
-            ],
-            "value": "The totality of all processes through which a given disease instance is realized."
-          },
+          "definition": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "The totality of all processes through which a given disease instance is realized."
+            }
+          ],
           "definitionProperty": {
             "type": [
               "literal"
             ],
             "value": "http://purl.obolibrary.org/obo/IAO_0000115"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
-          "directParent": "http://purl.obolibrary.org/obo/GO_0008150",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/GO_0008150"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/GO_0008150"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/GO_0008150",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/GO_0008150",
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/GO_0008150"
+          ],
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/GO_0008150"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -538,12 +550,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "disease course"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "disease course"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -564,23 +578,25 @@
             ],
             "value": "efo-iri-labels"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000054",
-            "value": "http://www.ebi.ac.uk/efo/EFO_0000400",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#intersectionOf": [
-              "http://purl.obolibrary.org/obo/OGMS_0000063",
-              {
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
-                "isObsolete": false
-              }
-            ]
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000054",
+              "value": "http://www.ebi.ac.uk/efo/EFO_0000400",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://purl.obolibrary.org/obo/OGMS_0000063",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+                  "isObsolete": false
+                }
+              ]
+            }
+          ],
           "searchableAnnotationValues": [
             {
               "type": [
@@ -642,12 +658,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "EFO_0000400"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_0000400"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -668,23 +686,25 @@
             ],
             "value": "efo-iri-labels"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000054",
-            "value": "http://purl.obolibrary.org/obo/OGMS_0000063",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#intersectionOf": [
-              "http://purl.obolibrary.org/obo/OGMS_0000063",
-              {
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-                "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
-                "isObsolete": false
-              }
-            ]
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000054",
+              "value": "http://purl.obolibrary.org/obo/OGMS_0000063",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://purl.obolibrary.org/obo/OGMS_0000063",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+                  "isObsolete": false
+                }
+              ]
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -789,12 +809,14 @@
             ],
             "value": "BFO:0000054"
           },
-          "definition": {
-            "type": [
-              "literal"
-            ],
-            "value": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
-          },
+          "definition": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+            }
+          ],
           "definitionProperty": {
             "type": [
               "literal"
@@ -825,14 +847,16 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "realized in",
-            "lang": "en"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "realized in",
+              "lang": "en"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

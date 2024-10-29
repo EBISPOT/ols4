@@ -20,12 +20,14 @@
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -54,12 +56,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -103,19 +99,23 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000468"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -138,12 +138,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "anatomical system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "anatomical system"
+            }
+          ],
           "numDescendants": 4,
           "numHierarchicalDescendants": 13,
           "ontologyId": {
@@ -178,7 +180,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002530",
               "type": [
                 "related"
               ],
@@ -189,7 +191,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002530",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
               "type": [
                 "related"
               ],
@@ -199,17 +201,19 @@
               "isObsolete": false
             }
           ],
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -246,12 +250,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "multicellular organism"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "multicellular organism"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 19,
           "ontologyId": {
@@ -275,7 +281,18 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "type": [
                 "related"
               ],
@@ -308,18 +325,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
               "type": [
                 "related"
               ],
@@ -354,19 +360,23 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000468"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -389,12 +399,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "epithelium"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "epithelium"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -415,17 +427,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -452,8 +466,8 @@
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
-            "http://purl.obolibrary.org/obo/UBERON_0000468",
             "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0000468",
             "http://purl.obolibrary.org/obo/UBERON_0013702"
           ],
           "hierarchicalParent": [
@@ -461,7 +475,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -473,7 +487,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -512,12 +526,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "abdomen"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abdomen"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 6,
           "ontologyId": {
@@ -541,17 +557,6 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "type": [
                 "related"
@@ -571,20 +576,20 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": false
-            }
-          ],
-          "relatedTo": [
+            },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": false
-            },
+            }
+          ],
+          "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
@@ -594,6 +599,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
               "isObsolete": false
             }
           ],
@@ -617,8 +633,12 @@
             ],
             "value": "UBERON:0000949"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -627,7 +647,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -650,12 +672,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "endocrine system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine system"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 7,
           "ontologyId": {
@@ -720,8 +744,12 @@
             ],
             "value": "UBERON:0001007"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -730,7 +758,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -752,12 +782,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "digestive system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "digestive system"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 7,
           "ontologyId": {
@@ -822,8 +854,12 @@
             ],
             "value": "UBERON:0001009"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -832,7 +868,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -851,12 +889,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "circulatory system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "circulatory system"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -877,17 +917,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0004535",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004535",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -912,7 +954,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0001637",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
           ],
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001637",
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001637"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -920,6 +964,7 @@
           "hierarchicalAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001637",
             "http://purl.obolibrary.org/obo/UBERON_0001981",
+            "http://purl.obolibrary.org/obo/UBERON_0004647",
             "http://purl.obolibrary.org/obo/UBERON_0002107",
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530",
@@ -930,8 +975,7 @@
             "http://purl.obolibrary.org/obo/UBERON_0002100",
             "http://purl.obolibrary.org/obo/UBERON_0013702",
             "http://purl.obolibrary.org/obo/UBERON_0001007",
-            "http://purl.obolibrary.org/obo/UBERON_0002423",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
+            "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001637",
@@ -939,7 +983,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -951,7 +995,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -991,12 +1035,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hepatic artery"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic artery"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -1020,17 +1066,6 @@
           "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "type": [
                 "related"
@@ -1038,6 +1073,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": false
             }
           ],
@@ -1082,19 +1128,19 @@
             "http://purl.obolibrary.org/obo/UBERON_0001986",
             "http://purl.obolibrary.org/obo/UBERON_0000483",
             "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "http://purl.obolibrary.org/obo/UBERON_0002100",
-            "http://purl.obolibrary.org/obo/UBERON_0013702",
+            "http://purl.obolibrary.org/obo/UBERON_0004647",
             "http://purl.obolibrary.org/obo/UBERON_0002107",
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530",
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000949",
+            "http://purl.obolibrary.org/obo/UBERON_0000916",
+            "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0013702",
             "http://purl.obolibrary.org/obo/UBERON_0001007",
             "http://purl.obolibrary.org/obo/UBERON_0002423",
             "http://purl.obolibrary.org/obo/UBERON_0004535",
-            "http://purl.obolibrary.org/obo/UBERON_0001009",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
+            "http://purl.obolibrary.org/obo/UBERON_0001009"
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001982",
@@ -1103,7 +1149,19 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1139,7 +1197,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1152,18 +1210,6 @@
                 "reification"
               ],
               "value": "http://purl.obolibrary.org/obo/UBERON_0004535",
-              "axioms": [
-                {
-                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-                }
-              ]
-            },
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1228,12 +1274,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hepatic sinusoid"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic sinusoid"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -1257,13 +1305,24 @@
           "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": false
             },
             {
@@ -1290,13 +1349,13 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "isObsolete": false
             },
             {
@@ -1308,17 +1367,6 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": false
             }
           ],
@@ -1342,14 +1390,22 @@
             ],
             "value": "UBERON:0001637"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -1367,12 +1423,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "artery"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "artery"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -1413,14 +1471,22 @@
             ],
             "value": "UBERON:0001638"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -1438,12 +1504,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "vein"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vein"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -1488,7 +1556,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
           ],
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001638",
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001638"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -1496,6 +1566,7 @@
           "hierarchicalAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981",
+            "http://purl.obolibrary.org/obo/UBERON_0004647",
             "http://purl.obolibrary.org/obo/UBERON_0002107",
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530",
@@ -1506,8 +1577,7 @@
             "http://purl.obolibrary.org/obo/UBERON_0002100",
             "http://purl.obolibrary.org/obo/UBERON_0013702",
             "http://purl.obolibrary.org/obo/UBERON_0001007",
-            "http://purl.obolibrary.org/obo/UBERON_0002423",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
+            "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
@@ -1515,7 +1585,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1527,7 +1597,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -1567,12 +1637,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hepatic portal vein"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic portal vein"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -1596,17 +1668,6 @@
           "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "type": [
                 "related"
@@ -1614,6 +1675,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": false
             }
           ],
@@ -1653,12 +1725,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "blood vessel"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "blood vessel"
+            }
+          ],
           "numDescendants": 7,
           "numHierarchicalDescendants": 7,
           "ontologyId": {
@@ -1679,17 +1753,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001981",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -1710,8 +1786,12 @@
             ],
             "value": "UBERON:0001982"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0001981",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001981",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001981"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -1760,12 +1840,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "capillary"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "capillary"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -1786,17 +1868,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0002049",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -1817,8 +1901,12 @@
             ],
             "value": "UBERON:0001986"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000483",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000483"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000483"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -1827,7 +1915,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0000483",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": "http://purl.obolibrary.org/obo/UBERON_0000483",
+          "hierarchicalParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000483"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -1845,12 +1935,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "endothelium"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endothelium"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -1907,12 +1999,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "vasculature"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vasculature"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -1933,17 +2027,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0001982",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001982",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -2029,12 +2125,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "trunk"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "trunk"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 7,
           "ontologyId": {
@@ -2056,17 +2154,6 @@
             "value": "efo-hierarchical-properties"
           },
           "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": false
-            },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
@@ -2092,6 +2179,17 @@
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0006841",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
               "type": [
                 "related"
               ],
@@ -2149,7 +2247,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530"
           ],
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0002368",
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0002368"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -2196,18 +2296,6 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "axioms": [
-                {
-                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-                }
-              ]
-            },
-            {
-              "type": [
-                "reification"
-              ],
               "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
               "axioms": [
                 {
@@ -2220,7 +2308,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2232,7 +2320,19 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2296,12 +2396,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "liver"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 5,
           "ontologyId": {
@@ -2325,7 +2427,7 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0001193",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "type": [
                 "related"
               ],
@@ -2347,6 +2449,17 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0006841",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0001639",
               "type": [
                 "related"
@@ -2358,18 +2471,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0006841",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001193",
               "type": [
                 "related"
               ],
@@ -2404,17 +2506,6 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
               "type": [
                 "related"
@@ -2426,17 +2517,6 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0002423",
               "type": [
                 "related"
@@ -2444,6 +2524,28 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "isObsolete": false
             }
           ],
@@ -2467,8 +2569,12 @@
             ],
             "value": "UBERON:0002368"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0002530",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0002530",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0002530"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0002530"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -2531,12 +2637,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "endocrine gland"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine gland"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 6,
           "ontologyId": {
@@ -2557,17 +2665,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -2594,16 +2704,16 @@
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0001007",
             "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "http://purl.obolibrary.org/obo/UBERON_0001007"
+            "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
           "hierarchicalParent": [
             {
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2615,7 +2725,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -2654,12 +2764,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hepatobiliary system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatobiliary system"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 6,
           "ontologyId": {
@@ -2680,29 +2792,20 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
-            "isObsolete": false
-          },
-          "relatedTo": [
+          "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002423",
               "isObsolete": false
-            },
+            }
+          ],
+          "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0001007",
@@ -2712,6 +2815,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001007",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
               "isObsolete": false
             }
           ],
@@ -2744,18 +2858,20 @@
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000468"
           ],
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-              }
-            ]
-          },
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -2778,12 +2894,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "gland"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "gland"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 7,
           "ontologyId": {
@@ -2804,17 +2922,19 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -2835,8 +2955,12 @@
             ],
             "value": "UBERON:0004535"
           },
-          "directAncestor": "http://purl.obolibrary.org/obo/UBERON_0000467",
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0000467",
+          "directAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0000467"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
@@ -2886,12 +3010,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "cardiovascular system"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cardiovascular system"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -2912,28 +3038,32 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
-            "isObsolete": false
-          },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0001009",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004535",
+              "isObsolete": false
+            }
+          ],
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001009",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -2972,18 +3102,20 @@
             "http://purl.obolibrary.org/obo/UBERON_0001007",
             "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-              }
-            ]
-          },
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -3006,12 +3138,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "liver lobule"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver lobule"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 4,
           "ontologyId": {
@@ -3035,28 +3169,6 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0001193",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0001639",
               "type": [
                 "related"
@@ -3076,19 +3188,43 @@
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001193",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0001281",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
             }
           ],
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -3113,7 +3249,9 @@
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981"
           ],
-          "directParent": "http://purl.obolibrary.org/obo/UBERON_0001638",
+          "directParent": [
+            "http://purl.obolibrary.org/obo/UBERON_0001638"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -3121,33 +3259,21 @@
           "hierarchicalAncestor": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
             "http://purl.obolibrary.org/obo/UBERON_0001981",
-            "http://purl.obolibrary.org/obo/UBERON_0000916",
-            "http://purl.obolibrary.org/obo/UBERON_0000468",
             "http://purl.obolibrary.org/obo/UBERON_0002100",
+            "http://purl.obolibrary.org/obo/UBERON_0000468",
             "http://purl.obolibrary.org/obo/UBERON_0013702",
+            "http://purl.obolibrary.org/obo/UBERON_0004647",
             "http://purl.obolibrary.org/obo/UBERON_0002107",
             "http://purl.obolibrary.org/obo/UBERON_0002368",
             "http://purl.obolibrary.org/obo/UBERON_0002530",
             "http://purl.obolibrary.org/obo/UBERON_0000467",
             "http://purl.obolibrary.org/obo/UBERON_0000949",
+            "http://purl.obolibrary.org/obo/UBERON_0000916",
             "http://purl.obolibrary.org/obo/UBERON_0001007",
-            "http://purl.obolibrary.org/obo/UBERON_0002423",
-            "http://purl.obolibrary.org/obo/UBERON_0004647"
+            "http://purl.obolibrary.org/obo/UBERON_0002423"
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/UBERON_0001638",
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "axioms": [
-                {
-                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-                }
-              ]
-            },
             {
               "type": [
                 "reification"
@@ -3164,7 +3290,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -3176,7 +3302,19 @@
               "type": [
                 "reification"
               ],
-              "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            },
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "axioms": [
                 {
                   "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
@@ -3228,12 +3366,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "central vein of liver"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "central vein of liver"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -3257,17 +3397,6 @@
           "relatedTo": [
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
               "type": [
                 "related"
@@ -3279,17 +3408,6 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
               "value": "http://purl.obolibrary.org/obo/UBERON_0004647",
               "type": [
                 "related"
@@ -3297,6 +3415,28 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0004647",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
               "isObsolete": false
             }
           ],
@@ -3325,19 +3465,23 @@
           "hasDirectParents": false,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://purl.obolibrary.org/obo/UBERON_0000468",
-          "hierarchicalParent": {
-            "type": [
-              "reification"
-            ],
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "axioms": [
-              {
-                "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-                "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-              }
-            ]
-          },
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/UBERON_0000468"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+                }
+              ]
+            }
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -3360,12 +3504,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "body proper"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "body proper"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 8,
           "ontologyId": {
@@ -3386,28 +3532,32 @@
             ],
             "value": "efo-hierarchical-properties"
           },
-          "relatedFrom": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
-            "isObsolete": false
-          },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0002100",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "isObsolete": false
+            }
+          ],
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -4017,12 +4167,14 @@
             ],
             "value": "BFO_0000050"
           },
-          "synonym": {
-            "type": [
-              "literal"
-            ],
-            "value": "part of"
-          },
+          "synonym": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part of"
+            }
+          ],
           "synonymProperty": {
             "type": [
               "literal"
@@ -4172,12 +4324,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000111"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000111"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4228,12 +4382,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000112"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000112"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4284,12 +4440,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000115"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000115"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4340,12 +4498,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000116"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000116"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4396,12 +4556,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000118"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000118"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4452,12 +4614,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "IAO_0000232"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000232"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4508,12 +4672,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "RO_0001900"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0001900"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4564,12 +4730,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "RO_0002174"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0002174"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4620,12 +4788,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "RO_0040042"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0040042"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4676,12 +4846,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000001"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000001"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4732,12 +4904,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000002"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000002"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4788,12 +4962,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000003"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000003"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4844,12 +5020,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000007"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000007"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4900,12 +5078,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000008"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000008"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -4956,12 +5136,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000009"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000009"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5012,12 +5194,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000010"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000010"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5068,12 +5252,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000012"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000012"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5124,12 +5310,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "UBPROP_0000202"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000202"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5180,12 +5368,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "EFO_URI"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_URI"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5236,12 +5426,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "date_retrieved"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "date_retrieved"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5292,12 +5484,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "external_class"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_class"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5348,12 +5542,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "external_ontology"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_ontology"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5404,12 +5600,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasAlternativeId"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAlternativeId"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5460,12 +5658,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasBroadSynonym"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasBroadSynonym"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5516,12 +5716,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasDbXref"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasDbXref"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5572,12 +5774,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasExactSynonym"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasExactSynonym"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5628,12 +5832,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasOBONamespace"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasOBONamespace"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5684,12 +5890,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasRelatedSynonym"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasRelatedSynonym"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5740,12 +5948,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasSynonymType"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSynonymType"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5796,12 +6006,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "id"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "id"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5852,12 +6064,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "inSubset"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "inSubset"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5908,12 +6122,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "notes"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "notes"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -5964,12 +6180,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "ontology"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ontology"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -6020,12 +6238,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "shorthand"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "shorthand"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -6076,12 +6296,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "source"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "source"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -6132,12 +6354,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "depicted_by"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "depicted_by"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
