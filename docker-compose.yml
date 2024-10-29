@@ -3,6 +3,9 @@ services:
     ols4-dataload:
       environment:
         - JAVA_OPTS=${JAVA_OPTS}
+        - BATCH_SIZE=${BATCH_SIZE}
+        - POOL_SIZE=${POOL_SIZE}
+        - NOOF_ATTEMPTS=${NOOF_ATTEMPTS}
       build:
         context: .
         dockerfile: ./dataload/Dockerfile
