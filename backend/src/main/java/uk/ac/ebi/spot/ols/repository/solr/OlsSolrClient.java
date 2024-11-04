@@ -18,6 +18,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
@@ -119,7 +120,7 @@ public class OlsSolrClient {
 
     public Set<JsonElement> getSet(OlsSolrQuery query){
         Set<JsonElement> tempSet = new HashSet<>();
-        QueryResponse qr = runSolrQuery(query, null);
+        QueryResponse qr = runSolrQuery(query, PageRequest.of(0, MAX_ROWS));
         for (int i = 0; i<qr.getResults().size();i++){
             tempSet.add(getOlsEntityFromSolrResult(qr.getResults().get(i)));
         }
