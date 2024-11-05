@@ -436,9 +436,9 @@ public class OntologyGraph implements StreamRDF {
 
 
             writer.endObject();
-        } catch (Throwable t) {
-            logger.error("Error in writing ontology with id = {}", ontologyId, t);
-            throw t;
+        } catch (Exception e) {
+            logger.error("Error in writing ontology with id = {}", ontologyId);
+            e.printStackTrace();
         }
     }
 
@@ -610,8 +610,8 @@ public class OntologyGraph implements StreamRDF {
                     if (uriNode != null && !isXMLBuiltinDatatype(uri) && uriNode.types.contains(OntologyNode.NodeType.DATATYPE)) {
                         // special case for rdfs:Datatype; nest it as with a bnode instead of referencing
                         writeNode(writer, uriNode, Set.of("datatype"));
-                    } else {
-                        writer.value(uri);
+                    }else {
+                    	writer.value(uri);
                     }
                     break;
                 case RELATED:
@@ -640,9 +640,9 @@ public class OntologyGraph implements StreamRDF {
                     writer.value("?");
                     break;
             }
-        } catch (Throwable t) {
-            logger.error("Error writing property value {}", value, t);
-            throw t;
+        } catch (Exception e) {
+            logger.error("Error writing property value {}", value);
+            e.printStackTrace();
         }
     }
 
