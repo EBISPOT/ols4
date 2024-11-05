@@ -16,6 +16,11 @@ COPY ./dataload /opt/ols/dataload
 COPY ./ols-shared /opt/ols/ols-shared
 COPY ./pom.xml /opt/ols
 
+RUN cd /opt/ols/ols-shared && mvn package
+
+RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
+RUN cd /opt/ols/dataload &&  mvn package
+
 # Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
 #
 # We use these only as temporary servers for the dataload. The "real" Neo4j
@@ -32,11 +37,6 @@ RUN if [ ! -f "/opt/ols/dataload/solr-9.7.0.tgz" ];  \
 
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
 RUN echo "dbms.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
-
-RUN cd /opt/ols/ols-shared && mvn package
-
-RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
-RUN cd /opt/ols/dataload &&  mvn package
 
 # Copy the OLS4 Solr config into our temporary Solr server
 #
