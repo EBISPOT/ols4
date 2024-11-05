@@ -25,7 +25,7 @@ services:
       command:
           - mongod
     ols4-solr:
-      image: solr:9.0.0
+      image: solr:9.7.0
       environment:
         - SOLR_HOME=/mnt/ols4-solr-data
       ports:
@@ -37,7 +37,7 @@ services:
         ols4-dataload:
           condition: service_completed_successfully
     ols4-neo4j:
-      image: neo4j:5.19.0-community
+      image: neo4j:5.25.1-community
       ports:
         - 7474:7474
         - 7687:7687
