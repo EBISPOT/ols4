@@ -32,6 +32,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collections;
 
+import java.nio.charset.StandardCharsets;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepositoryExtn;
+import uk.ac.ebi.spot.ols.service.ViewMode;
+
 /**
  * @author Simon Jupp
  * @date 02/11/15
@@ -56,6 +60,9 @@ public class V1OntologyTermController {
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;
+    
+    @Autowired
+    V1JsTreeRepositoryExtn jsTreeRepositoryExtn;
 
     @Autowired
     V1GraphRepository graphRepository;
@@ -425,8 +432,8 @@ public class V1OntologyTermController {
         ontologyId = ontologyId.toLowerCase();
 
         try {
-            String decodedTermId = UriUtils.decode(termId, "UTF-8");
-            Object object= jsTreeRepository.getJsTreeForClass(decodedTermId, ontologyId, lang);
+        	String decodedTermId = decodeUrl(termId);
+        	Object object= jsTreeRepositoryExtn.getJsTreeForClassByViewMode(decodedTermId, ontologyId, lang, ViewMode.getFromShortName(viewMode), siblings);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
@@ -786,6 +793,14 @@ public class V1OntologyTermController {
     @ExceptionHandler(ResourceNotFoundException.class)
     public void handleError(HttpServletRequest req, Exception exception) {
 
+    }
+    
+    private static String decodeUrl(String url) {
+        if(url.contains("%") || url.contains("+"))
+        {
+           return decodeUrl(java.net.URLDecoder.decode(url, StandardCharsets.UTF_8));
+        }
+        return url;
     }
 
 }

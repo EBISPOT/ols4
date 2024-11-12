@@ -155,6 +155,39 @@ public class OlsNeo4jClient {
 		return neo4jClient.queryPaginated(query, "c", countQuery, parameters("id", id), pageable);
     }
 
+    public Page<JsonElement> recursivelyTraverseOutgoingEdgesWithSiblings(String type, String id, String ontologyId, List<String> edgeIRIs, Map<String,String> edgeProps, Pageable pageable) {
+
+		String edge = makeEdgesList(edgeIRIs, Map.of());
+
+		String query =
+				"MATCH (c:" + type + ") WHERE c.id = $id "
+						+ "WITH c "
+						+ "OPTIONAL MATCH (c)-[edge:" + edge + " *]->(ancestor) "
+						+ "RETURN DISTINCT ancestor as a "
+						+ "UNION "
+						+ "MATCH (c:" + type + ") WHERE c.id = $id "
+						+ "WITH c "
+						+ "OPTIONAL MATCH (c)-[edge:" + edge + " *]->(ancestor) "
+						+ "OPTIONAL MATCH (ancestor)<-[:" + edge + "]-(descendant) "
+						+ "RETURN DISTINCT descendant as a ";
+
+		String countQuery =
+				"CALL {" + 
+					    "MATCH (a:" + type + ") WHERE a.id = $id " + 
+						"WITH a " + 
+					    "OPTIONAL MATCH (a)-[edge:" + edge + " *]->(ancestor) " +
+						"RETURN DISTINCT ancestor as a " +
+					    "UNION " +
+						"MATCH (c:" + type + ") WHERE c.id = $id " +
+					    "WITH c " +
+						"OPTIONAL MATCH (c)-[edge:" + edge + " *]->(ancestor) " +
+					    "OPTIONAL MATCH (ancestor)<-[:" + edge + "]-(descendant) " +
+						"RETURN DISTINCT descendant as a " +
+					 "}" + 
+				"RETURN count(*)";
+
+		return neo4jClient.queryPaginated(query, "a", countQuery, parameters("type", type, "id", id, "ontologyId", ontologyId), pageable);
+    }
 
 
 	private static String makeEdgesList(List<String> edgeIRIs, Map<String,String> edgeProperties) {
