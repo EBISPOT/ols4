@@ -49,7 +49,7 @@ public class V2StatisticsController {
             @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
                     "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
                     "Use Linear option to filter based on String and Collection<String> based variables.")
-            @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
+            @RequestParam(value = "option", required = false, defaultValue = "COMPOSITE") FilterOption filterOption,
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
         ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,filterOption,lang);
@@ -75,7 +75,7 @@ public class V2StatisticsController {
         for (String key : keys) {
             Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
             for (String value : values) {
-                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),false,FilterOption.LINEAR,lang));
+                summaries.put(key,value, getStatistics(Collections.singleton(key),Collections.singleton(value), Collections.emptySet(),false,FilterOption.COMPOSITE,lang));
             }
         }
 
