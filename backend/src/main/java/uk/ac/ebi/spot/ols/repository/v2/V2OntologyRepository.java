@@ -20,6 +20,9 @@ import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.IOException;
 
@@ -101,6 +104,19 @@ public class V2OntologyRepository {
                     )
             ));
         return entities;
+    }
+
+    public LocalDateTime getLastLoaded(Collection<String> ontologies,String lang){
+        LocalDateTime lastLoaded = LocalDateTime.MIN;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS");
+        for (V2Entity entity : getOntologies(lang)){
+            if (ontologies.contains(entity.any().get("ontologyId").toString())){
+                LocalDateTime dateTime = LocalDateTime.parse(entity.any().get("loaded").toString(), formatter);
+                if (dateTime.isAfter(lastLoaded))
+                    lastLoaded = dateTime;
+            }
+        }
+        return lastLoaded;
     }
 
     public Collection<String> filterOntologyIDs(Collection<String> schemas, Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, FilterOption filterOption, String lang){

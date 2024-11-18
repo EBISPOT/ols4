@@ -35,7 +35,7 @@ public class V2StatisticsController {
     @Operation(description = "Get Whole System Statistics. Components in all ontologies are taken into consideration")
     @RequestMapping(path = "/stats", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
-        return new ResponseEntity<>( computeStats("*:*"), HttpStatus.OK);
+        return new ResponseEntity<>( computeStats("*:*", null), HttpStatus.OK);
     }
 
     @Operation(description = "Get Schema and Classification based Statistics. Possible schema keys and possible classification values of particular keys can be inquired with /api/ontologies/schemakeys and /api/ontologies/schemavalues methods respectively.")
@@ -53,6 +53,7 @@ public class V2StatisticsController {
             @RequestParam(value = "lang", defaultValue = "en") String lang) throws ResourceNotFoundException, IOException{
 
         ontologyIds = ontologyRepository.filterOntologyIDs(schemas,classifications,ontologyIds,exclusive,filterOption,lang);
+        String lastLoaded = ontologyRepository.getLastLoaded(ontologyIds,lang).toString();
         StringBuilder sb = new StringBuilder();
         String queryString = "none";
         if(ontologyIds != null){
@@ -61,7 +62,7 @@ public class V2StatisticsController {
             }
             queryString = sb.toString().substring(0,sb.toString().lastIndexOf(" OR "));
         }
-        return new ResponseEntity<>( computeStats(queryString), HttpStatus.OK);
+        return new ResponseEntity<>( computeStats(queryString, lastLoaded), HttpStatus.OK);
     }
     @Operation(description = "Get Composite Schema based Statistics. All schemas with their respective classifications under the classifications variable will be computed.")
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
@@ -82,11 +83,11 @@ public class V2StatisticsController {
         return new ResponseEntity<>( summaries, HttpStatus.OK);
     }
 
-    private V2Statistics computeStats(String queryString) throws IOException {
+    private V2Statistics computeStats(String queryString, String lastLoaded) throws IOException {
 
         Map<String,Object> coreStatus = solrClient.getCoreStatus();
         Map<String,Object> indexStatus = (Map<String,Object>) coreStatus.get("index");
-        String lastModified = (String) indexStatus.get("lastModified");
+        String lastModified = lastLoaded == null ? (String) indexStatus.get("lastModified") : lastLoaded;
 
         SolrQuery query = new SolrQuery();
         query.setQuery(queryString);
