@@ -20,6 +20,9 @@ import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.v2.helpers.V2SearchFieldsParser;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.IOException;
 
@@ -103,6 +106,19 @@ public class V2OntologyRepository {
         return entities;
     }
 
+    public LocalDateTime getLastLoaded(Collection<String> ontologies,String lang){
+        LocalDateTime lastLoaded = LocalDateTime.MIN;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS");
+        for (V2Entity entity : getOntologies(lang)){
+            if (ontologies.contains(entity.any().get("ontologyId").toString())){
+                LocalDateTime dateTime = entity.any().get("loaded").toString() != null ? LocalDateTime.parse(entity.any().get("loaded").toString(), formatter) : LocalDateTime.MIN;
+                if (dateTime.isAfter(lastLoaded))
+                    lastLoaded = dateTime;
+            }
+        }
+        return lastLoaded;
+    }
+
     public Collection<String> filterOntologyIDs(Collection<String> schemas, Collection<String> classifications, Collection<String> ontologies, boolean exclusiveFilter, FilterOption filterOption, String lang){
         if (schemas != null)
             schemas.remove("");
@@ -160,18 +176,20 @@ public class V2OntologyRepository {
         if(schemas != null && classifications != null)
             if(!exclusive) {
                 for (V2Entity ontologyDocument : getOntologies(lang)) {
-                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")) {
-                        for (String schema: schemas)
-                            if(classificationSchema.containsKey(schema))
-                                for (String classification: classifications) {
-                                    if (classificationSchema.get(schema) != null)
-                                        if (!classificationSchema.get(schema).isEmpty())
-                                            if (classificationSchema.get(schema).contains(classification)) {
-                                                tempSet.add(ontologyDocument);
-                                            }
-                                }
+                    if(ontologyDocument.any().get("classifications") != null)
+                        if (!((Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")).isEmpty())
+                            for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")) {
+                                for (String schema: schemas)
+                                    if(classificationSchema.containsKey(schema))
+                                        for (String classification: classifications) {
+                                            if (classificationSchema.get(schema) != null)
+                                                if (!classificationSchema.get(schema).isEmpty())
+                                                    if (classificationSchema.get(schema).contains(classification)) {
+                                                        tempSet.add(ontologyDocument);
+                                                    }
+                                        }
 
-                    }
+                            }
                 }
             } else if (exclusive && schemas != null && schemas.size() == 1 && classifications != null && classifications.size() == 1) {
                 String schema = schemas.iterator().next();
@@ -179,17 +197,19 @@ public class V2OntologyRepository {
                 System.out.println("schema: "+schema);
                 System.out.println("classification: "+classification);
                 for (V2Entity ontologyDocument : getOntologies(lang)){
-                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")){
-                        if(classificationSchema.containsKey(schema))
-                            if (classificationSchema.get(schema) != null)
-                                if (!classificationSchema.get(schema).isEmpty()){
-                                    for (String s :classificationSchema.get(schema))
-                                        System.out.println(s);
-                                    if(classificationSchema.get(schema).contains(classification))
-                                        tempSet.add(ontologyDocument);
-                                }
+                    if(ontologyDocument.any().get("classifications") != null)
+                        if (!((Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")).isEmpty())
+                            for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.any().get("classifications")){
+                                if(classificationSchema.containsKey(schema))
+                                    if (classificationSchema.get(schema) != null)
+                                        if (!classificationSchema.get(schema).isEmpty()){
+                                            for (String s :classificationSchema.get(schema))
+                                                System.out.println(s);
+                                            if(classificationSchema.get(schema).contains(classification))
+                                                tempSet.add(ontologyDocument);
+                                        }
 
-                    }
+                            }
                 }
             } else {
                 for (V2Entity ontologyDocument : getOntologies(lang)) {

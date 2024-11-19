@@ -195,18 +195,20 @@ public class V1OntologyRepository {
         if(schemas != null && classifications != null)
             if(!exclusive) {
                 for (V1Ontology ontologyDocument : getAll(lang)) {
-                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications) {
-                        for (String schema: schemas)
-                            if(classificationSchema.containsKey(schema))
-                                for (String classification: classifications) {
-                                    if (classificationSchema.get(schema) != null)
-                                        if (!classificationSchema.get(schema).isEmpty())
-                                            if (classificationSchema.get(schema).contains(classification)) {
-                                                tempSet.add(ontologyDocument);
-                                            }
-                                }
+                    if(ontologyDocument.config.classifications != null)
+                        if (!((Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications).isEmpty())
+                            for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications) {
+                                for (String schema: schemas)
+                                    if(classificationSchema.containsKey(schema))
+                                        for (String classification: classifications) {
+                                            if (classificationSchema.get(schema) != null)
+                                                if (!classificationSchema.get(schema).isEmpty())
+                                                    if (classificationSchema.get(schema).contains(classification)) {
+                                                        tempSet.add(ontologyDocument);
+                                                    }
+                                        }
 
-                    }
+                            }
                 }
             } else if (exclusive && schemas != null && schemas.size() == 1 && classifications != null && classifications.size() == 1) {
                 String schema = schemas.iterator().next();
@@ -214,17 +216,18 @@ public class V1OntologyRepository {
                 System.out.println("schema: "+schema);
                 System.out.println("classification: "+classification);
                 for (V1Ontology ontologyDocument : getAll(lang)){
-                    for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications){
-                        if(classificationSchema.containsKey(schema))
-                            if (classificationSchema.get(schema) != null)
-                                if (!classificationSchema.get(schema).isEmpty()){
-                                    for (String s :classificationSchema.get(schema))
-                                        System.out.println(s);
-                                    if(classificationSchema.get(schema).contains(classification))
-                                        tempSet.add(ontologyDocument);
-                                }
-
-                    }
+                    if(ontologyDocument.config.classifications != null)
+                        if (!((Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications).isEmpty())
+                            for(Map<String, Collection<String>> classificationSchema : (Collection<Map<String, Collection<String>>>) ontologyDocument.config.classifications){
+                                if(classificationSchema.containsKey(schema))
+                                    if (classificationSchema.get(schema) != null)
+                                        if (!classificationSchema.get(schema).isEmpty()){
+                                            for (String s :classificationSchema.get(schema))
+                                                System.out.println(s);
+                                            if(classificationSchema.get(schema).contains(classification))
+                                                tempSet.add(ontologyDocument);
+                                        }
+                            }
                 }
             } else {
                 for (V1Ontology ontologyDocument : getAll(lang)) {
