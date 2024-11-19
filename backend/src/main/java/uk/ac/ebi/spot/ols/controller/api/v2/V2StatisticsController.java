@@ -67,9 +67,7 @@ public class V2StatisticsController {
     @Operation(description = "Get Composite Schema based Statistics. All schemas with their respective classifications under the classifications variable will be computed.")
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<MultiKeyMap> getStatisticsBySchema(
-            @RequestParam(value = "schema", required = false) Collection<String> schemas,
             @RequestParam(value = "lang", defaultValue = "en") String lang
-
     ) throws IOException {
         MultiKeyMap summaries = new MultiKeyMap();
         Collection<String> keys = ontologyRepository.getSchemaKeys(lang);
