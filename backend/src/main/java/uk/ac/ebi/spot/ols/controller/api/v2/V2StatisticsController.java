@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
+import com.google.common.collect.Sets;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.apache.commons.collections4.map.MultiKeyMap;
@@ -67,10 +68,11 @@ public class V2StatisticsController {
     @Operation(description = "Get Composite Schema based Statistics. All schemas with their respective classifications under the classifications variable will be computed.")
     @RequestMapping(path = "/allstatsbyschema", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<MultiKeyMap> getStatisticsBySchema(
+            @RequestParam(value = "schema", required = false) Set<String> schemas,
             @RequestParam(value = "lang", defaultValue = "en") String lang
     ) throws IOException {
         MultiKeyMap summaries = new MultiKeyMap();
-        Collection<String> keys = ontologyRepository.getSchemaKeys(lang);
+        Set<String> keys = schemas == null || schemas.isEmpty() ? ontologyRepository.getSchemaKeys(lang) : Sets.intersection(ontologyRepository.getSchemaKeys(lang),schemas);
         for (String key : keys) {
             Set<String> values = ontologyRepository.getSchemaValues(Collections.singleton(key),lang);
             for (String value : values) {
