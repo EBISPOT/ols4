@@ -23,6 +23,11 @@ import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.service.ViewMode;
 
+/**
+ * @author Deepan Anbalagan
+ * @email deepan.anbalagan@tib.eu
+ * TIB-Leibniz Information Center for Science and Technology
+ */
 @Component
 public class V1JsTreeRepositoryExtn {
 
@@ -38,10 +43,16 @@ public class V1JsTreeRepositoryExtn {
 	public List<Map<String, Object>> getJsTreeForClassByViewMode(String iri, String ontologyId, String lang, ViewMode viewMode,
 			boolean sibling) {
 
-		return getJSFullTreeForClass(iri, "class", "OntologyClass", ontologyId, lang, viewMode, sibling);
+		return getJSFullTree(iri, "class", "OntologyClass", ontologyId, lang, viewMode, sibling);
+	}
+	
+	public List<Map<String, Object>> getJsTreeForPropertyByViewMode(String iri, String ontologyId, String lang, ViewMode viewMode,
+			boolean sibling) {
+
+		return getJSFullTree(iri, "property", "OntologyProperty", ontologyId, lang, viewMode, sibling);
 	}
 
-	private List<Map<String, Object>> getJSFullTreeForClass(String iri, String type, String neo4jType,
+	private List<Map<String, Object>> getJSFullTree(String iri, String type, String neo4jType,
 			String ontologyId, String lang, ViewMode viewMode, boolean sibling) {
 
 		List<String> parentRelationIRIs = List.of("directParent");
@@ -67,7 +78,7 @@ public class V1JsTreeRepositoryExtn {
 															.map(ancestor -> ancestor.getAsJsonObject().getAsJsonPrimitive("iri").getAsString())
 															.collect(Collectors.toSet());
 					// 2. Get Root elements by ontologyId
-					List<JsonElement> roots = getRoots(ontologyId, false, lang, PageRequest.ofSize(100));
+					List<JsonElement> roots = getRoots(ontologyId, type, false, lang, PageRequest.ofSize(100));
 
 					// 3. Add only unique elements from roots to ancestors based on "iri"
 					ancestorsWithSiblings.addAll(roots.stream().filter(root -> {
@@ -78,18 +89,18 @@ public class V1JsTreeRepositoryExtn {
 
 					return (new V1FullJsTreeBuilder(thisEntity, ancestorsWithSiblings, parentRelationIRIs)).buildJsTree();
 				} else {
-					return v1JsTreeRepository.getJsTreeForClass(iri, ontologyId, lang);
+					return getDefaultJsTreeByType(iri, ontologyId, lang, type);
 				}
 
 			default:
-				return v1JsTreeRepository.getJsTreeForClass(iri, ontologyId, lang);
+				return getDefaultJsTreeByType(iri, ontologyId, lang, type);
 		}
 	}
 
-	private List<JsonElement> getRoots(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
+	private List<JsonElement> getRoots(String ontologyId, String type, boolean obsolete, String lang, Pageable pageable) {
 
 		OlsSolrQuery query = new OlsSolrQuery();
-		query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+		query.addFilter("type", List.of(type), SearchType.WHOLE_FIELD);
 		query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 		query.addFilter(HAS_DIRECT_PARENTS.getText(), List.of("false"), SearchType.WHOLE_FIELD);
 		query.addFilter(HAS_HIERARCHICAL_PARENTS.getText(), List.of("false"), SearchType.WHOLE_FIELD);
@@ -100,40 +111,15 @@ public class V1JsTreeRepositoryExtn {
 		return solrClient.searchSolrPaginated(query, pageable).stream().collect(Collectors.toList());
 	}
 
-	/*
-	 * public Object getJsTreeForClassByViewMode(String iri, String ontologyId,
-	 * String lang, String viewMode, boolean sibling) {
-	 * 
-	 * Object res = (sibling) ? getJsTreeParentSiblingQuery(iri, ontologyId, lang,
-	 * viewMode) : getJsTreeParentQuery(iri, ontologyId, lang, viewMode);
-	 * 
-	 * return res;
-	 * 
-	 * }
-	 * 
-	 * private Object getJsTreeParentQuery(String iri, String ontologyId, String
-	 * lang, String viewMode) { return null; }
-	 * 
-	 * private Object getJsTreeParentSiblingQuery(String iri, String ontologyId,
-	 * String lang, String viewMode) { List<String> parentRelationIRIs =
-	 * List.of("directParent"); String thisEntityId = ontologyId + "+class" + iri;
-	 * 
-	 * JsonElement thisEntity = olsNeo4jClient.getOne("OntologyClass", Map.of("id",
-	 * thisEntityId)); thisEntity = LocalizationTransform.transform(thisEntity,
-	 * lang); switch(viewMode) { case "all": String query = """ MATCH path =
-	 * (n:OntologyClass)-[r:directParent|hierarchicalParent*]
-	 * ->(parent)<-[r2:directParent|hierarchicalParent]-(n1:OntologyClass) WHERE
-	 * any(ontologyId in n.ontologyId where ontologyId=%s) and n.iri=%s UNWIND
-	 * relationships(path) as r1 WITH r1 WHERE any(isObsolete in
-	 * startNode(r1).isObsolete where isObsolete="false") RETURN distinct
-	 * startNode(r1) as parents """ .formatted(ontologyId, iri); List<JsonElement>
-	 * res = neo4jClient.query(query, "parents"); res = res.stream().map(ancestor ->
-	 * LocalizationTransform.transform(ancestor,
-	 * lang)).collect(Collectors.toList());
-	 * 
-	 * return (new V1AncestorsJsTreeBuilder(thisEntity, res,
-	 * parentRelationIRIs)).buildJsTree();
-	 * 
-	 * default: return getJsTreeForClass(iri, ontologyId, lang); } }
-	 */
+	private List<Map<String, Object>> getDefaultJsTreeByType(String iri, String ontologyId, String lang, String type){
+		
+		switch (type) {
+			case "class":
+				return v1JsTreeRepository.getJsTreeForClass(iri, ontologyId, lang);
+			case "property":
+				return v1JsTreeRepository.getJsTreeForProperty(iri, ontologyId, lang);
+			default:
+				return null;
+		}
+	}
 }

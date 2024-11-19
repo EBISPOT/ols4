@@ -21,6 +21,11 @@ import com.google.common.collect.Multimap;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+/**
+ * @author Deepan Anbalagan
+ * @email deepan.anbalagan@tib.eu
+ * TIB-Leibniz Information Center for Science and Technology
+ */
 public class V1FullJsTreeBuilder {
 
     JsonObject thisEntity;
@@ -38,7 +43,12 @@ public class V1FullJsTreeBuilder {
         // 1. put all entities (this entity + all ancestors) into an ordered set
 
         entities.add(thisEntity);
-        entities.addAll(ancestors);
+        String thisEntityIri = (String) thisEntity.getAsJsonObject().getAsJsonPrimitive("iri").getAsString();
+        ancestors.parallelStream()
+        		.filter(element -> {
+        			return !((String) element.getAsJsonObject().getAsJsonPrimitive("iri").getAsString()).equals(thisEntityIri);
+        		})
+				.forEach(entities::add);
 
         // 2. establish map of IRI -> entity
 
@@ -168,17 +178,9 @@ public class V1FullJsTreeBuilder {
         // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
         boolean children = (hasDirectChildren || hasHierarchicalChildren);
 
-        //boolean children = childIris.size() > 0;
-
         Map<String,Boolean> state = new LinkedHashMap<>();
         state.put("opened", opened);
         state.put("selected", selected);
-
-		/*
-		 * if(selected) { state.put("selected", true); }else {
-		 * 
-		 * }
-		 */
 
         jstreeEntry.put("state", state);
         jstreeEntry.put("children", children);

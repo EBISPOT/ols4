@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepositoryExtn;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.ViewMode;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -43,6 +45,9 @@ public class V1OntologyPropertyController {
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;
+    
+    @Autowired
+    V1JsTreeRepositoryExtn jsTreeRepositoryExtn;
 
     @Autowired
     Neo4jClient neo4jClient;
@@ -269,7 +274,7 @@ public class V1OntologyPropertyController {
         try {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
-            Object object= jsTreeRepository.getJsTreeForProperty(decoded, ontologyId, lang);
+            Object object= jsTreeRepositoryExtn.getJsTreeForPropertyByViewMode(decoded, ontologyId, lang, ViewMode.getFromShortName(viewMode), siblings);
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
         } catch (JsonProcessingException e) {
