@@ -31,6 +31,8 @@ import uk.ac.ebi.spot.ols.service.Neo4jClient;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Simon Jupp
@@ -404,6 +406,43 @@ public class V1OntologyTermController {
         if (ancestors == null) throw  new ResourceNotFoundException();
 
         return new ResponseEntity<>( assembler.toModel(ancestors, termAssembler), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/{onto}/terms/{iri}/equivalentclasses", produces = {MediaType.APPLICATION_JSON_VALUE,
+            MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<List<Map<String,Object>>> getEquivalentClasses(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be single URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId) {
+
+        ontologyId = ontologyId.toLowerCase();
+        String decoded = UriUtils.decode(termId, "UTF-8");
+        String entityId = ontologyId+"+class+"+decoded;
+        return new ResponseEntity<>( graphRepository.getEquivalentClass(entityId), HttpStatus.OK);
+    }
+
+
+    @RequestMapping(path = "/{onto}/terms/{iri}/relatedfrom", produces = {MediaType.APPLICATION_JSON_VALUE,
+            MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<Map<String,Object>> getRelatedFrom(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be single URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId) {
+
+        ontologyId = ontologyId.toLowerCase();
+        String decoded = UriUtils.decode(termId, "UTF-8");
+        String entityId = ontologyId+"+class+"+decoded;
+        return new ResponseEntity<>( graphRepository.getRelatedFrom(entityId), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{onto}/terms/{iri}/jstree",

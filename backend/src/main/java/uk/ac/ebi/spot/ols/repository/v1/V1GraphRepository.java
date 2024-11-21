@@ -4,6 +4,8 @@ import com.google.gson.*;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
@@ -132,19 +134,27 @@ public class V1GraphRepository {
         return (Map<String,Object>) results.get(0).get("result");
     }
 
-    Map<String,Object> getRelatedFrom(String entityId) {
-
+    public Map<String,Object> getRelatedFrom(String entityId) {
         String query =
                 "MATCH path = (x)-[r:relatedTo]->(n:OntologyClass)\n"
                         + "WHERE n.id=\"" + entityId + "\"\n"
-                        + "RETURN { nodes: collect(distinct x),\n"
-                        + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: r })\n"
+                        + "RETURN { nodes: collect({ label: x.label, iri: x.iri }),\n"
+                        + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: type(r) })\n"
                         + "} AS result";
 
         List<Map<String,Object>> results = neo4jClient.rawQuery(query);
         return (Map<String,Object>) results.get(0).get("result");
     }
 
+    public List<Map<String,Object>> getEquivalentClass(String entityId) {
+        String query =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +
+                        "WHERE a.id = '"+entityId+"' RETURN {nodes: collect( DISTINCT { label: b.label, iri: b.iri })," +
+                        "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: type(r) })} AS result";
+
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        return results;
+    }
 
     JsonObject getOntologyNodeJson(Node node, String lang) {
         JsonElement ontologyNodeObject = new JsonObject();
