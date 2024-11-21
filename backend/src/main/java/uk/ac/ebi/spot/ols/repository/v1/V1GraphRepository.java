@@ -40,6 +40,7 @@ public class V1GraphRepository {
     private Map<String, Object> getGraphForEntity(String iri, String type, String neo4jType, String ontologyId, String lang) {
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
+        List<JsonObject> selectedNode = new ArrayList<>();
 
 //        String parentsQuery =
 //                "MATCH path = (n:OntologyClass)-[r:directParent|relatedTo]-(parent)\n"
@@ -67,6 +68,10 @@ public class V1GraphRepository {
         List<Map<String,Object>> nodes = allNodes.stream().map(node -> {
 
             JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
+            
+            if(iri.equals(JsonHelper.getString(ontologyNodeObject, "iri"))) {
+            	selectedNode.add(ontologyNodeObject);
+            }
 
             JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
             if(linkedEntities != null) {
@@ -95,7 +100,7 @@ public class V1GraphRepository {
 
             JsonObject ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
 
-            String uri = JsonHelper.getString(ontologyEdgeObject, "property");
+            String uri = resolveUri(result, selectedNode, iri);
             if (uri == null) {
                 uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
             }
@@ -166,5 +171,48 @@ public class V1GraphRepository {
         ).getAsJsonObject();
     }
 
+    private String resolveUri(Map<String, Object> result, List<JsonObject> selectedNode, String iri) {
+        if (selectedNode == null || selectedNode.isEmpty()) {
+            return null;
+        }
+
+        JsonObject selectedOntologyNodeObject = selectedNode.get(0);
+        if (iri.equals(result.get("source"))) {
+            return getRelatedProperty(selectedOntologyNodeObject, "relatedTo", (String) result.get("target"));
+        } else {
+            return getRelatedProperty(selectedOntologyNodeObject, "relatedFrom", (String) result.get("source"));
+        }
+    }
+    
+    private String getRelatedProperty(JsonObject ontologyNode, String relationKey, String targetOrSourceIri) {
+        if (ontologyNode == null || !ontologyNode.has(relationKey)) {
+            return null;
+        }
+
+        JsonElement related = ontologyNode.get(relationKey);
+        if (related == null || related instanceof JsonNull) {
+            return null;
+        }
+
+        if (related.isJsonArray()) {
+            for (JsonElement element : related.getAsJsonArray()) {
+                JsonObject relationObject = element.getAsJsonObject();
+                if (relationObject != null 
+                        && targetOrSourceIri.equals(JsonHelper.getString(relationObject, "value"))
+                        && relationObject.has("property")) {
+                    return JsonHelper.getString(relationObject, "property");
+                }
+            }
+        } else if (related.isJsonObject()) {
+            JsonObject relationObject = related.getAsJsonObject();
+            if (relationObject != null 
+            		&& targetOrSourceIri.equals(JsonHelper.getString(relationObject, "value"))
+            		&& relationObject.has("property")) {
+                return JsonHelper.getString(relationObject, "property");
+            }
+        }
+
+        return null;
+    }
 }
 
