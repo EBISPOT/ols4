@@ -7,12 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.model.v1.V1Individual;
+import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.V1IndividualMapper;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.neo4j.driver.Values.parameters;
 
 @Component
 public class V1GraphRepository {
@@ -134,26 +140,46 @@ public class V1GraphRepository {
         return (Map<String,Object>) results.get(0).get("result");
     }
 
-    public Map<String,Object> getRelatedFrom(String entityId) {
+    Map<String,Object> getRelatedFrom(String entityId) {
+
         String query =
                 "MATCH path = (x)-[r:relatedTo]->(n:OntologyClass)\n"
                         + "WHERE n.id=\"" + entityId + "\"\n"
-                        + "RETURN { nodes: collect({ label: x.label, iri: x.iri }),\n"
-                        + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: type(r) })\n"
+                        + "RETURN { nodes: collect(distinct x),\n"
+                        + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: r })\n"
                         + "} AS result";
 
         List<Map<String,Object>> results = neo4jClient.rawQuery(query);
         return (Map<String,Object>) results.get(0).get("result");
     }
 
-    public List<Map<String,Object>> getEquivalentClass(String entityId) {
+    public Page<V1Term> getRelatedFromPaginated(String entityId, String lang, Pageable pageable) {
+        String query = "MATCH (x:OntologyClass)-[r:relatedTo]->(n:OntologyClass) WHERE n.id= $id RETURN x";
+        String countQuery = "MATCH (x:OntologyClass)-[r:relatedTo]->(n:OntologyClass) WHERE n.id= $id RETURN count(x)";
+
+        return neo4jClient.queryPaginated(query, "x", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
+    public Page<V1Term> getEquivalentClassPaginated(String entityId, String lang, Pageable pageable) {
         String query =
                 "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +
-                        "WHERE a.id = '"+entityId+"' RETURN {nodes: collect( DISTINCT { label: b.label, iri: b.iri })," +
-                        "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: type(r) })} AS result";
+                        "WHERE a.id = $id RETURN DISTINCT b";
+        String countQuery =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN count(DISTINCT b)";
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
-        return results;
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
+    public Page<V1Individual> getTermInstancesPaginated(String entityId, String lang, Pageable pageable) {
+        String query =
+                "MATCH (a:OntologyClass)<-[r:`http://www.w3.org/1999/02/22-rdf-syntax-ns#type`]-(b:OntologyIndividual) " +
+                        "WHERE a.id = $id RETURN b";
+        String countQuery =
+                "MATCH (a:OntologyClass)<-[r:`http://www.w3.org/1999/02/22-rdf-syntax-ns#type`]-(b:OntologyIndividual) " +
+                        "WHERE a.id = $id RETURN count(b)";
+
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1IndividualMapper.mapIndividual(record, lang));
     }
 
     JsonObject getOntologyNodeJson(Node node, String lang) {
