@@ -494,6 +494,33 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(instances, individualAssembler), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{onto}/terms/{iri}/json", produces = {MediaType.APPLICATION_JSON_VALUE,
+            MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<String> getJson(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be single URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+
+        ontologyId = ontologyId.toLowerCase();
+
+        String decoded = UriUtils.decode(termId, "UTF-8");
+        String entityId = ontologyId+"+class+"+decoded;
+        String json = graphRepository.getTermJson(entityId);
+        if (json == null)
+            throw  new ResourceNotFoundException("No instances could be found for " + ontologyId
+                    + " and " + termId);
+
+        return new ResponseEntity<>( json, HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/{onto}/terms/{iri}/jstree",
         produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE},
         method = RequestMethod.GET)

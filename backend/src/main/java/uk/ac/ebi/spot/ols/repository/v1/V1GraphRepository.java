@@ -182,6 +182,12 @@ public class V1GraphRepository {
         return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1IndividualMapper.mapIndividual(record, lang));
     }
 
+    public String getTermJson(String entityId) {
+        String query = "MATCH (a:OntologyClass) WHERE a.id = '"+entityId+"' RETURN a._json AS result";
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        return results.get(0).get("result").toString();
+    }
+
     JsonObject getOntologyNodeJson(Node node, String lang) {
         JsonElement ontologyNodeObject = new JsonObject();
         if(node.asMap().get("_json") != null && node.asMap().get("_json") instanceof String)
