@@ -160,6 +160,17 @@ public class V1GraphRepository {
         return neo4jClient.queryPaginated(query, "x", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
+    public Page<V1Term> getSuperClassPaginated(String entityId, String lang, Pageable pageable) {
+        String query =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2000/01/rdf-schema#subClassOf`]->(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN b";
+        String countQuery =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2000/01/rdf-schema#subClassOf`]->(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN count(b)";
+
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
     public Page<V1Term> getEquivalentClassPaginated(String entityId, String lang, Pageable pageable) {
         String query =
                 "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +

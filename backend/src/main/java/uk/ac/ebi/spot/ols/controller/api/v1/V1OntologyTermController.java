@@ -412,6 +412,33 @@ public class V1OntologyTermController {
         return new ResponseEntity<>( assembler.toModel(ancestors, termAssembler), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{onto}/terms/{iri}/superclasses", produces = {MediaType.APPLICATION_JSON_VALUE,
+            MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
+    HttpEntity<PagedModel<V1Term>> getSuperClasses(
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
+                    example = "duo") String ontologyId,
+            @PathVariable("iri")
+            @Parameter(name = "iri",
+                    description = "The IRI of the term, this value must be single URL encoded",
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @Parameter(hidden = true) Pageable pageable,
+            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+
+        ontologyId = ontologyId.toLowerCase();
+
+        String decoded = UriUtils.decode(termId, "UTF-8");
+        String entityId = ontologyId+"+class+"+decoded;
+        Page<V1Term> superClasses = graphRepository.getSuperClassPaginated(entityId, lang, pageable);
+        if (superClasses == null)
+            throw  new ResourceNotFoundException("No super classes could be found for " + ontologyId
+                    + " and " + termId);
+
+        return new ResponseEntity<>( assembler.toModel(superClasses, termAssembler), HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/{onto}/terms/{iri}/equivalentclasses", produces = {MediaType.APPLICATION_JSON_VALUE,
             MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Term>> getEquivalentClasses(
