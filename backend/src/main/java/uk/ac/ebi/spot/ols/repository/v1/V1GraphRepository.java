@@ -4,13 +4,21 @@ import com.google.gson.*;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.model.v1.V1Individual;
+import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.V1IndividualMapper;
+import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.neo4j.driver.Values.parameters;
 
 @Component
 public class V1GraphRepository {
@@ -150,6 +158,51 @@ public class V1GraphRepository {
         return (Map<String,Object>) results.get(0).get("result");
     }
 
+    public Page<V1Term> getRelatedFromPaginated(String entityId, String lang, Pageable pageable) {
+        String query = "MATCH (x:OntologyClass)-[r:relatedTo]->(n:OntologyClass) WHERE n.id= $id RETURN x";
+        String countQuery = "MATCH (x:OntologyClass)-[r:relatedTo]->(n:OntologyClass) WHERE n.id= $id RETURN count(x)";
+
+        return neo4jClient.queryPaginated(query, "x", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
+    public Page<V1Term> getSuperClassPaginated(String entityId, String lang, Pageable pageable) {
+        String query =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2000/01/rdf-schema#subClassOf`]->(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN b";
+        String countQuery =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2000/01/rdf-schema#subClassOf`]->(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN count(b)";
+
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
+    public Page<V1Term> getEquivalentClassPaginated(String entityId, String lang, Pageable pageable) {
+        String query =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN DISTINCT b";
+        String countQuery =
+                "MATCH (a:OntologyClass)-[r:`http://www.w3.org/2002/07/owl#equivalentClass`]-(b:OntologyClass) " +
+                        "WHERE a.id = $id RETURN count(DISTINCT b)";
+
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1TermMapper.mapTerm(record, lang));
+    }
+
+    public Page<V1Individual> getTermInstancesPaginated(String entityId, String lang, Pageable pageable) {
+        String query =
+                "MATCH (a:OntologyClass)<-[r:`http://www.w3.org/1999/02/22-rdf-syntax-ns#type`]-(b:OntologyIndividual) " +
+                        "WHERE a.id = $id RETURN b";
+        String countQuery =
+                "MATCH (a:OntologyClass)<-[r:`http://www.w3.org/1999/02/22-rdf-syntax-ns#type`]-(b:OntologyIndividual) " +
+                        "WHERE a.id = $id RETURN count(b)";
+
+        return neo4jClient.queryPaginated(query, "b", countQuery, parameters("id", entityId), pageable).map(record -> V1IndividualMapper.mapIndividual(record, lang));
+    }
+
+    public String getTermJson(String entityId) {
+        String query = "MATCH (a:OntologyClass) WHERE a.id = '"+entityId+"' RETURN a._json AS result";
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        return results.get(0).get("result").toString();
+    }
 
     JsonObject getOntologyNodeJson(Node node, String lang) {
         JsonElement ontologyNodeObject = new JsonObject();
