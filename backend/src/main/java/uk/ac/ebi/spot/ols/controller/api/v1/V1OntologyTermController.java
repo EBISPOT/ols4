@@ -531,10 +531,7 @@ public class V1OntologyTermController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the term, this value must be single URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            @Parameter(hidden = true) Pageable pageable,
-            @Parameter(hidden = true) PagedResourcesAssembler assembler) {
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId) {
 
         ontologyId = ontologyId.toLowerCase();
 
@@ -542,7 +539,7 @@ public class V1OntologyTermController {
         String entityId = ontologyId+"+class+"+decoded;
         String json = graphRepository.getTermJson(entityId);
         if (json == null)
-            throw  new ResourceNotFoundException("No instances could be found for " + ontologyId
+            throw  new ResourceNotFoundException("No _json could be found for " + ontologyId
                     + " and " + termId);
 
         return new ResponseEntity<>( json, HttpStatus.OK);
