@@ -4,8 +4,12 @@
       "owl2primer-object-property-assertion"
     ],
     "curie": "John",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -19,12 +23,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary": {
         "curie": "Mary",
         "hasLocalDefinition": true,
-        "label": "Mary",
+        "label": [
+          "Mary"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -34,7 +42,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -44,7 +54,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife": {
         "curie": "hasWife",
         "hasLocalDefinition": true,
-        "label": "hasWife",
+        "label": [
+          "hasWife"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -70,14 +82,22 @@
       "owl2primer-object-property-assertion"
     ],
     "curie": "Man",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
@@ -87,12 +107,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Man",
+    "label": [
+      "Man"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -102,7 +126,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Woman": {
         "curie": "Woman",
         "hasLocalDefinition": true,
-        "label": "Woman",
+        "label": [
+          "Woman"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -127,8 +153,12 @@
       "owl2primer-object-property-assertion"
     ],
     "curie": "Mary",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -141,12 +171,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Mary",
+    "label": [
+      "Mary"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -182,7 +216,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Person",
+    "label": [
+      "Person"
+    ],
     "linkedEntities": {},
     "numDescendants": 4.0,
     "numHierarchicalDescendants": 2.0,
@@ -201,14 +237,22 @@
       "owl2primer-object-property-assertion"
     ],
     "curie": "Woman",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
@@ -217,12 +261,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Woman",
+    "label": [
+      "Woman"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -257,7 +305,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasWife",
+    "label": [
+      "hasWife"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

@@ -13,7 +13,9 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "a",
+    "label": [
+      "a"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -42,12 +44,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "b1",
+    "label": [
+      "b1"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
         "curie": "a",
         "hasLocalDefinition": true,
-        "label": "a",
+        "label": [
+          "a"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -57,7 +63,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -93,12 +101,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "b2",
+    "label": [
+      "b2"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
         "curie": "a",
         "hasLocalDefinition": true,
-        "label": "a",
+        "label": [
+          "a"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -108,7 +120,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

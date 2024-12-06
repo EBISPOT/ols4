@@ -407,7 +407,7 @@ new expected output:
 
         git add -A testcases_expected_output
  
-8. Commit the updates to testcases to a branch with suffix `-testcases`.
+8. Commit the updates to testcases to a branch with suffix `-testcases` and message "TESTCASES updated".
 9. Now continue with API testing.
 
 ### Testing API
@@ -440,7 +440,7 @@ the old `testcases_expected_output_api` and replace with new expected output:
 
         git add -A testcases_expected_output_api
 
-16. Commit the API tests to a branch with suffix `-api-tests`.
+16. Commit the API tests to a branch with suffix `-api-tests` and message "API-TESTS updated".
 
 17. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
 

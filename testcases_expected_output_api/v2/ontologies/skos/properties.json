@@ -12,7 +12,9 @@
       "http://www.w3.org/2004/02/skos/core#mappingRelation",
       "http://www.w3.org/2004/02/skos/core#semanticRelation"
     ],
-    "directParent": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#mappingRelation"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -31,7 +33,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has close match",
+    "label": [
+      "has close match"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -39,7 +43,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -52,7 +58,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -65,7 +73,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -78,7 +88,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -92,7 +104,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in mapping relation with",
+        "label": [
+          "is in mapping relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -106,7 +120,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -139,14 +155,18 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch.",
+    "definition": [
+      "skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "directAncestor": [
       "http://www.w3.org/2004/02/skos/core#closeMatch",
       "http://www.w3.org/2004/02/skos/core#mappingRelation",
       "http://www.w3.org/2004/02/skos/core#semanticRelation"
     ],
-    "directParent": "http://www.w3.org/2004/02/skos/core#closeMatch",
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#closeMatch"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -167,7 +187,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has exact match",
+    "label": [
+      "has exact match"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -175,7 +197,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -188,7 +212,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -201,7 +227,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -214,7 +242,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -227,7 +257,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has close match",
+        "label": [
+          "has close match"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -241,7 +273,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -255,7 +289,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in mapping relation with",
+        "label": [
+          "is in mapping relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -269,7 +305,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -328,7 +366,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "alternative label",
+    "label": [
+      "alternative label"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -336,7 +376,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -349,7 +391,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -362,7 +406,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -375,7 +421,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -388,7 +436,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -402,7 +452,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "example",
+        "label": [
+          "example"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -466,7 +518,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has broader match",
+    "label": [
+      "has broader match"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -474,7 +528,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -487,7 +543,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -500,7 +558,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -513,7 +573,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader",
+        "label": [
+          "has broader"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -527,7 +589,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader transitive",
+        "label": [
+          "has broader transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -541,7 +605,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -555,7 +621,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in mapping relation with",
+        "label": [
+          "is in mapping relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -569,7 +637,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower match",
+        "label": [
+          "has narrower match"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -583,7 +653,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -615,13 +687,17 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "Broader concepts are typically rendered as parents in a concept hierarchy (tree).",
+    "definition": [
+      "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "directAncestor": [
       "http://www.w3.org/2004/02/skos/core#broaderTransitive",
       "http://www.w3.org/2004/02/skos/core#semanticRelation"
     ],
-    "directParent": "http://www.w3.org/2004/02/skos/core#broaderTransitive",
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#broaderTransitive"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -642,7 +718,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has broader",
+    "label": [
+      "has broader"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -650,7 +728,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -663,7 +743,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -676,7 +758,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -689,7 +773,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -702,7 +788,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader transitive",
+        "label": [
+          "has broader transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -716,7 +804,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -730,7 +820,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower",
+        "label": [
+          "has narrower"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -744,7 +836,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -758,7 +852,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -791,8 +887,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
-    "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -813,7 +913,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has broader transitive",
+    "label": [
+      "has broader transitive"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -821,7 +923,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -834,7 +938,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -847,7 +953,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -860,7 +968,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -874,7 +984,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower transitive",
+        "label": [
+          "has narrower transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -888,7 +1000,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -902,7 +1016,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -934,8 +1050,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -953,7 +1073,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "change note",
+    "label": [
+      "change note"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -961,7 +1083,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -974,7 +1098,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -987,7 +1113,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1000,7 +1128,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1014,7 +1144,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1046,8 +1178,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -1065,7 +1201,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "definition",
+    "label": [
+      "definition"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -1073,7 +1211,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1086,7 +1226,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1099,7 +1241,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1112,7 +1256,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1144,8 +1290,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -1163,7 +1313,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "editorial note",
+    "label": [
+      "editorial note"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -1171,7 +1323,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1184,7 +1338,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1197,7 +1353,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1210,7 +1368,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1224,7 +1384,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1256,8 +1418,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -1275,7 +1441,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "example",
+    "label": [
+      "example"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -1283,7 +1451,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1296,7 +1466,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1309,7 +1481,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1322,7 +1496,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1336,7 +1512,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1387,7 +1565,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has top concept",
+    "label": [
+      "has top concept"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
         "curie": "RDFS:domain",
@@ -1395,7 +1575,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1408,7 +1590,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1421,7 +1605,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1434,7 +1620,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1447,7 +1635,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept",
+        "label": [
+          "Concept"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1460,7 +1650,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept Scheme",
+        "label": [
+          "Concept Scheme"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1473,7 +1665,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1487,7 +1681,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is top concept in scheme",
+        "label": [
+          "is top concept in scheme"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -1545,7 +1741,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hidden label",
+    "label": [
+      "hidden label"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -1553,7 +1751,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1566,7 +1766,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1579,7 +1781,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1592,7 +1796,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1605,7 +1811,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1637,8 +1845,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -1656,7 +1868,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "history note",
+    "label": [
+      "history note"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -1664,7 +1878,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1677,7 +1893,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1690,7 +1908,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1703,7 +1923,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1717,7 +1939,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1767,7 +1991,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "is in scheme",
+    "label": [
+      "is in scheme"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -1775,7 +2001,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1788,7 +2016,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1801,7 +2031,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1814,7 +2046,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept Scheme",
+        "label": [
+          "Concept Scheme"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1827,7 +2061,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1841,7 +2077,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1874,10 +2112,16 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "These concept mapping relations mirror semantic relations, and the data model defined below is similar (with the exception of skos:exactMatch) to the data model defined for semantic relations. A distinct vocabulary is provided for concept mapping relations, to provide a convenient way to differentiate links within a concept scheme from links between concept schemes. However, this pattern of usage is not a formal requirement of the SKOS data model, and relies on informal definitions of best practice.",
+    "definition": [
+      "These concept mapping relations mirror semantic relations, and the data model defined below is similar (with the exception of skos:exactMatch) to the data model defined for semantic relations. A distinct vocabulary is provided for concept mapping relations, to provide a convenient way to differentiate links within a concept scheme from links between concept schemes. However, this pattern of usage is not a formal requirement of the SKOS data model, and relies on informal definitions of best practice."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
-    "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -1896,7 +2140,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "is in mapping relation with",
+    "label": [
+      "is in mapping relation with"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -1904,7 +2150,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1917,7 +2165,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1930,7 +2180,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1943,7 +2195,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1956,7 +2210,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1970,7 +2226,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2026,7 +2284,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has member",
+    "label": [
+      "has member"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
         "curie": "RDFS:domain",
@@ -2034,7 +2294,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2047,7 +2309,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2060,7 +2324,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2073,7 +2339,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2086,7 +2354,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Collection",
+        "label": [
+          "Collection"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2099,7 +2369,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept",
+        "label": [
+          "Concept"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2112,7 +2384,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2144,7 +2418,9 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "For any resource, every item in the list given as the value of the\n      skos:memberList property is also a value of the skos:member property.",
+    "definition": [
+      "For any resource, every item in the list given as the value of the\n      skos:memberList property is also a value of the skos:member property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2166,7 +2442,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has member list",
+    "label": [
+      "has member list"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -2174,7 +2452,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2187,7 +2467,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2200,7 +2482,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2213,7 +2497,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2226,7 +2512,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2239,7 +2527,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Ordered Collection",
+        "label": [
+          "Ordered Collection"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2252,7 +2542,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2315,7 +2607,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has narrower match",
+    "label": [
+      "has narrower match"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -2323,7 +2617,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2336,7 +2632,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2349,7 +2647,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2362,7 +2662,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader match",
+        "label": [
+          "has broader match"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2376,7 +2678,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2390,7 +2694,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in mapping relation with",
+        "label": [
+          "is in mapping relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2404,7 +2710,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower",
+        "label": [
+          "has narrower"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2418,7 +2726,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower transitive",
+        "label": [
+          "has narrower transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2432,7 +2742,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2464,13 +2776,17 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "Narrower concepts are typically rendered as children in a concept hierarchy (tree).",
+    "definition": [
+      "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "directAncestor": [
       "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
       "http://www.w3.org/2004/02/skos/core#semanticRelation"
     ],
-    "directParent": "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#narrowerTransitive"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -2491,7 +2807,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has narrower",
+    "label": [
+      "has narrower"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -2499,7 +2817,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2512,7 +2832,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2525,7 +2847,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2538,7 +2862,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2551,7 +2877,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader",
+        "label": [
+          "has broader"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2565,7 +2893,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2579,7 +2909,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has narrower transitive",
+        "label": [
+          "has narrower transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2593,7 +2925,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2607,7 +2941,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2640,8 +2976,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
-    "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -2662,7 +3002,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has narrower transitive",
+    "label": [
+      "has narrower transitive"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -2670,7 +3012,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2683,7 +3027,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2696,7 +3042,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2709,7 +3057,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has broader transitive",
+        "label": [
+          "has broader transitive"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2723,7 +3073,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2737,7 +3089,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2751,7 +3105,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -2800,7 +3156,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "notation",
+    "label": [
+      "notation"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -2808,7 +3166,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2821,7 +3181,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2834,7 +3196,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2848,7 +3212,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2898,7 +3264,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "note",
+    "label": [
+      "note"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -2906,7 +3274,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2919,7 +3289,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2932,7 +3304,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2946,7 +3320,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3007,7 +3383,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "preferred label",
+    "label": [
+      "preferred label"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -3015,7 +3393,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3028,7 +3408,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3041,7 +3423,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3054,7 +3438,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3067,7 +3453,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3099,10 +3487,16 @@
     "definedBy": [
       "skos"
     ],
-    "definition": "skos:related is disjoint with skos:broaderTransitive",
+    "definition": [
+      "skos:related is disjoint with skos:broaderTransitive"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#semanticRelation",
-    "directParent": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -3122,7 +3516,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has related",
+    "label": [
+      "has related"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -3130,7 +3526,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3143,7 +3541,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3156,7 +3556,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3169,7 +3571,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3182,7 +3586,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3196,7 +3602,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -3258,7 +3666,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has related match",
+    "label": [
+      "has related match"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -3266,7 +3676,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3279,7 +3691,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3292,7 +3706,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3305,7 +3721,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3319,7 +3737,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in mapping relation with",
+        "label": [
+          "is in mapping relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -3333,7 +3753,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has related",
+        "label": [
+          "has related"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -3347,7 +3769,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in semantic relation with",
+        "label": [
+          "is in semantic relation with"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -3379,8 +3803,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#note",
-    "directParent": "http://www.w3.org/2004/02/skos/core#note",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#note"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -3398,7 +3826,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "scope note",
+    "label": [
+      "scope note"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
         "curie": "RDFS:isDefinedBy",
@@ -3406,7 +3836,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3419,7 +3851,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3432,7 +3866,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3445,7 +3881,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3459,7 +3897,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "note",
+        "label": [
+          "note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3510,7 +3950,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "is in semantic relation with",
+    "label": [
+      "is in semantic relation with"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
         "curie": "RDFS:domain",
@@ -3518,7 +3960,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3531,7 +3975,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3544,7 +3990,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3557,7 +4005,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3570,7 +4020,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept",
+        "label": [
+          "Concept"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3583,7 +4035,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3597,7 +4051,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "scope note",
+        "label": [
+          "scope note"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3630,8 +4086,12 @@
     "definedBy": [
       "skos"
     ],
-    "directAncestor": "http://www.w3.org/2004/02/skos/core#inScheme",
-    "directParent": "http://www.w3.org/2004/02/skos/core#inScheme",
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#inScheme"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#inScheme"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -3652,7 +4112,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "is top concept in scheme",
+    "label": [
+      "is top concept in scheme"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#domain": {
         "curie": "RDFS:domain",
@@ -3660,7 +4122,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3673,7 +4137,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3686,7 +4152,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3699,7 +4167,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3712,7 +4182,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3725,7 +4197,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept",
+        "label": [
+          "Concept"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3738,7 +4212,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "Concept Scheme",
+        "label": [
+          "Concept Scheme"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3751,7 +4227,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3765,7 +4243,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "has top concept",
+        "label": [
+          "has top concept"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -3779,7 +4259,9 @@
           "skos"
         ],
         "hasLocalDefinition": true,
-        "label": "is in scheme",
+        "label": [
+          "is in scheme"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

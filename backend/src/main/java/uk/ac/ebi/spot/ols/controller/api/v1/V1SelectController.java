@@ -49,23 +49,49 @@ public class V1SelectController {
 
     @RequestMapping(path = "/api/select", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void select(
-            @RequestParam("q") String query,
+            @RequestParam("q")
+            @Parameter(name = "q",
+                    description = "The terms to search. By default the search is performed over term labels, synonyms, descriptions, identifiers and annotation properties.",
+                    example = "disease or liver+disease") String query,
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
             @RequestParam(value = "classification", required = false) Collection<String> classifications,
-            @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
+            @RequestParam(value = "ontology", required = false)
+            @Parameter(name = "ontology",
+                    description = "Restrict a search to a set of ontologies e.g. ontology=efo,bfo",
+                    example = "efo,bfo") Collection<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
             @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
-                    "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
-                    "Use Linear option to filter based on String and Collection<String> based variables.")
+                "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
+                "Use Linear option to filter based on String and Collection<String> based variables.")
             @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
-            @RequestParam(value = "type", required = false) Collection<String> types,
-            @RequestParam(value = "slim", required = false) Collection<String> slims,
-            @RequestParam(value = "fieldList", required = false) Collection<String> fieldList,
-            @RequestParam(value = "obsoletes", defaultValue = "false") boolean queryObsoletes,
-            @RequestParam(value = "local", defaultValue = "false") boolean isLocal,
-            @RequestParam(value = "childrenOf", required = false) Collection<String> childrenOf,
-            @RequestParam(value = "allChildrenOf", required = false) Collection<String> allChildrenOf,
+            @RequestParam(value = "type", required = false)
+            @Parameter(name = "type",
+                    description = "Restrict a search to an entity type, one of {class,property,individual,ontology}",
+                    example = "class,property") Collection<String> types,
+            @RequestParam(value = "slim", required = false)
+            @Parameter(name = "slim",
+                    description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
+            @RequestParam(value = "fieldList", required = false)
+            @Parameter(name = "fieldList",
+                    description = "Specifcy the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type}",
+                    example = "iri,label,short_form,obo_id,ontology_name") Collection<String> fieldList,
+            @RequestParam(value = "obsoletes", defaultValue = "false")
+            @Parameter(name = "obsoletes",
+                    description = "Set to true to include obsoleted terms in the results",
+                    example = "false") boolean queryObsoletes,
+            @RequestParam(value = "local", defaultValue = "false")
+            @Parameter(name = "local",
+                    description = "Set to true to only return terms that are in a defining ontology e.g. Only return matches to gene ontology terms in the gene ontology, and exclude ontologies where those terms are also referenced",
+                    example = "false") boolean isLocal,
+            @RequestParam(value = "childrenOf", required = false)
+            @Parameter(name = "childrenOf",
+                    description = "You can restrict a search to children of a given term. Supply a list of IRI for the terms that you want to search under",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> childrenOf,
+            @RequestParam(value = "allChildrenOf", required = false)
+            @Parameter(name = "allChildrenOf",
+                    description = "You can restrict a search to all children of a given term. Supply a list of IRI for the terms that you want to search under (subclassOf/is-a plus any hierarchical/transitive properties like 'part of' or 'develops from')",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> allChildrenOf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
@@ -82,7 +108,7 @@ public class V1SelectController {
         }
         solrQuery.setQuery(query);
         solrQuery.set("defType", "edismax");
-        solrQuery.set("qf", "label whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
+        solrQuery.set("qf", LABEL.getText()+" whitespace_edge_label synonym whitespace_edge_synonym shortForm whitespace_edge_shortForm curie iri");
         solrQuery.set("bq", "type:ontology^10.0 " +
                 IS_DEFINING_ONTOLOGY.getText() +":true^100.0 str_label:\"" + queryLc + "\"^1000  edge_label:\"" +
                 queryLc + "\"^500 str_synonym:\"" + queryLc + "\" edge_synonym:\"" + queryLc + "\"^100");
@@ -114,14 +140,14 @@ public class V1SelectController {
             String result = childrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("directAncestor: (" + result + ")");
+            solrQuery.addFilterQuery(DIRECT_ANCESTOR.getText() + ": (" + result + ")");
         }
 
         if (allChildrenOf != null) {
             String result = allChildrenOf.stream()
                     .map(addQuotes)
                     .collect(Collectors.joining(" OR "));
-            solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+            solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText() + ": (" + result + ")");
         }
 
         solrQuery.addFilterQuery(IS_OBSOLETE.getText() + ":" + queryObsoletes);
@@ -131,9 +157,9 @@ public class V1SelectController {
         solrQuery.add("hl.simple.pre", "<b>");
         solrQuery.add("hl.simple.post", "</b>");
         solrQuery.addHighlightField("whitespace_edge_label");
-        solrQuery.addHighlightField("label");
+        solrQuery.addHighlightField(LABEL.getText());
         solrQuery.addHighlightField("whitespace_edge_synonym");
-        solrQuery.addHighlightField("synonym");
+        solrQuery.addHighlightField(SYNONYM.getText());
 
        logger.debug("select: ()", solrQuery.toQueryString());
 
@@ -160,10 +186,10 @@ public class V1SelectController {
                 fieldList.add("iri");
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
-                fieldList.add("label");
+                fieldList.add(LABEL.getText());
                 fieldList.add("ontology_name");
                 fieldList.add("ontology_prefix");
-                fieldList.add("description");
+                fieldList.add(DEFINITION.getOls3Text());
                 fieldList.add("type");
             }
 
@@ -172,8 +198,9 @@ public class V1SelectController {
             if (fieldList.contains("id")) outDoc.put("id", res.get("id").toString().replace('+', ':'));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) outDoc.put("label", JsonHelper.getString(json, "label"));
-            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains(LABEL.getText())) outDoc.put(LABEL.getText(), JsonHelper.getString(json, LABEL.getText()));
+            if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
+                    JsonHelper.getStrings(json, DEFINITION.getText()));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
@@ -182,7 +209,7 @@ public class V1SelectController {
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
             if (fieldList.contains("ontology_prefix") && JsonHelper.getString(json, "ontologyPreferredPrefix") != null)
                 outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             else if (fieldList.contains("ontology_prefix"))
@@ -216,9 +243,9 @@ public class V1SelectController {
             Map<String,Object> resHighlight = new LinkedHashMap<>();
             for(var fieldName : highlight.keySet()) {
                 if(fieldName.equals("whitespace_edge_label")) {
-                    resHighlight.put("label_autosuggest", highlight.get(fieldName));
+                    resHighlight.put(LABEL.getText()+"_autosuggest", highlight.get(fieldName));
                 } else if(fieldName.equals("whitespace_edge_synonym")) {
-                    resHighlight.put("synonym_autosuggest", highlight.get(fieldName));
+                    resHighlight.put(SYNONYM.getText()+"_autosuggest", highlight.get(fieldName));
                 } else {
                     resHighlight.put(fieldName, highlight.get(fieldName));
                 }

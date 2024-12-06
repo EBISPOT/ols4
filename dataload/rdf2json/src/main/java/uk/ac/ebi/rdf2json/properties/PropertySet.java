@@ -56,12 +56,21 @@ public class PropertySet {
             } else {
                 // simple case, look for an equal value to reify
                 for (PropertyValue p : props) {
-                    if (p.equals(value)) {
+                    if (p instanceof PropertyValueList) {
+                        for (PropertyValue propertyValueListElement: ((PropertyValueList)p).getPropertyValues()) {
+                            if (propertyValueListElement.equals(value)) {
+                                prop = propertyValueListElement;
+                                break;
+                            }
+                        }
+                    } else if (p.equals(value)) {
                         prop = p;
                         break;
                     }
                 }
             }
+
+
             if (prop == null) {
                 prop = value;
                 props.add(prop);
@@ -89,10 +98,6 @@ public class PropertySet {
         if(values == null || values.size() == 0) {
             return null;
         }
-//        if(values.size() == 1) {
-//            return values.get(0);
-//        }
-//        throw new RuntimeException("More than one property value for getOne: " + predicate);
         return values.get(0);
     }
 

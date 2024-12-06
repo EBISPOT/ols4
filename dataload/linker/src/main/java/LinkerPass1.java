@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.BASE_URI;
+
 public class LinkerPass1 {
 
     private static final Gson gson = new Gson();
@@ -91,7 +93,7 @@ public class LinkerPass1 {
 							ids.add(ontologyId);
 						}
 
-					} else if(key.equals("base_uri")) {
+					} else if(key.equals(BASE_URI.getText())) {
 
 						JsonArray baseUris = jsonParser.parse(jsonReader).getAsJsonArray();
 						for(JsonElement baseUri : baseUris) {

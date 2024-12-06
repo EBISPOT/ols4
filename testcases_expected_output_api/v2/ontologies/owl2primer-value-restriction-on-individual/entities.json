@@ -13,7 +13,9 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -48,12 +50,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "JohnsChildren",
+    "label": [
+      "JohnsChildren"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John": {
         "curie": "John",
         "hasLocalDefinition": true,
-        "label": "John",
+        "label": [
+          "John"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -63,7 +69,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent": {
         "curie": "hasParent",
         "hasLocalDefinition": true,
-        "label": "hasParent",
+        "label": [
+          "hasParent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -99,7 +107,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasParent",
+    "label": [
+      "hasParent"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

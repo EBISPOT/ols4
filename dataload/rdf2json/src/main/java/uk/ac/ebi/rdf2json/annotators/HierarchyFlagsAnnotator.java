@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
-import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import uk.ac.ebi.rdf2json.properties.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,8 +21,8 @@ public class HierarchyFlagsAnnotator {
         long startTime3 = System.nanoTime();
 
         // Set of IRIs that have children
-        Set<String> hasChildren = new HashSet<>();
-        Set<String> hasHierarchicalChildren = new HashSet<>();
+        Set<String> children = new HashSet<>();
+        Set<String> hierarchicalChildren = new HashSet<>();
 
         for(String id : graph.nodes.keySet()) {
             OntologyNode c = graph.nodes.get(id);
@@ -41,36 +39,44 @@ public class HierarchyFlagsAnnotator {
 		// 1. Direct parents (subClassOf)
 		//
 
-                List<PropertyValue> parents = c.properties.getPropertyValues("directParent");
+                PropertyValueList parentsList =  (PropertyValueList)c.properties.getPropertyValue(DIRECT_PARENT.getText());
 
                 boolean hasDirectParents = false;
 
-                if(parents != null) {
-                    for (PropertyValue parent : parents) {
+                if (parentsList != null && parentsList.getPropertyValues() != null) {
+                    for (PropertyValue parent : parentsList.getPropertyValues()) {
+                        if (parent.getType() == PropertyValue.Type.URI) {
+                            String iri = ((PropertyValueURI) parent).getUri();
 
-                        String iri = ((PropertyValueURI) parent).getUri();
+                            if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
+                                    iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
+                                continue;
+                            }
 
-                        if (iri.equals("http://www.w3.org/2002/07/owl#Thing") ||
-                                iri.equals("http://www.w3.org/2002/07/owl#TopObjectProperty")) {
-                                    continue;
+                            hasDirectParents = true;
+                            children.add(iri);
                         }
-
-                        hasDirectParents = true;
-                        hasChildren.add(iri);
                     }
+
+                    c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                            PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
+                } else {
+                    c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
+                            PropertyValueLiteral.fromBoolean("false"));
                 }
 
-                c.properties.addProperty(HAS_DIRECT_PARENTS.getText(),
-                        PropertyValueLiteral.fromBoolean(hasDirectParents ? "true" : "false"));
 
 		// 2. Hierarchical parents
 		//
 
-                List<PropertyValue> hierarchicalParents = c.properties.getPropertyValues("hierarchicalParent");
+                List<PropertyValue> hierarchicalParentsList = c.properties.getPropertyValues(HIERARCHICAL_PARENT.getText());
 
                 boolean hasHierarchicalParents = false;
 
-                if(hierarchicalParents != null) {
+                if(hierarchicalParentsList != null && hierarchicalParentsList.size() == 1 &&
+                        hierarchicalParentsList.get(0) instanceof PropertyValueList ) {
+
+                    List<PropertyValue> hierarchicalParents = ((PropertyValueList) hierarchicalParentsList.get(0)).getPropertyValues();
                     for (PropertyValue parent : hierarchicalParents) {
 
                         String iri = ((PropertyValueURI) parent).getUri();
@@ -81,7 +87,7 @@ public class HierarchyFlagsAnnotator {
                         }
 
                         hasHierarchicalParents = true;
-                        hasHierarchicalChildren.add(iri);
+                        hierarchicalChildren.add(iri);
                     }
                 }
 
@@ -100,13 +106,13 @@ public class HierarchyFlagsAnnotator {
                 if(c.uri == null)
                     continue;
 
-                if(hasChildren.contains(c.uri)) {
+                if(children.contains(c.uri)) {
                     c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
                     c.properties.addProperty(HAS_DIRECT_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));
                 }
 
-                if(hasHierarchicalChildren.contains(c.uri)) {
+                if(hierarchicalChildren.contains(c.uri)) {
                     c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("true"));
                 } else {
                     c.properties.addProperty(HAS_HIERARCHICAL_CHILDREN.getText(), PropertyValueLiteral.fromBoolean("false"));

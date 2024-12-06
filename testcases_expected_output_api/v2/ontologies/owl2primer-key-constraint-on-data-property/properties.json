@@ -16,12 +16,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSSN",
+    "label": [
+      "hasSSN"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

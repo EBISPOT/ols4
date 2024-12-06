@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/negative-object-property-assertion.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -47,12 +49,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -91,14 +87,22 @@
             ],
             "value": "Man"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -111,12 +115,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Man"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Man"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -167,12 +173,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -213,14 +221,22 @@
             ],
             "value": "Woman"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -232,12 +248,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -290,12 +308,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasWife"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasWife"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -346,12 +366,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Bill"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Bill"
+            }
+          ],
           "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -401,12 +423,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mary"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

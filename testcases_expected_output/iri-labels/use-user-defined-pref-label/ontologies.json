@@ -7,7 +7,7 @@
       "title": "Example terminology with user defined pref label",
       "uri": "http://exmpl.org/xmpl/",
       "description": "This config will use the defined label_property as label for a class. In OLS4 the value of label_property is a collection.",
-      "base_uri": [
+      "baseUri": [
         "http://exmpl.org/xmpl/"
       ],
       "label_property": [
@@ -26,12 +26,14 @@
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -60,12 +62,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -201,14 +197,16 @@
             ],
             "value": "XMPL_XMPL000001"
           },
-          "synonym": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "label of the parent class",
-            "lang": "en"
-          },
+          "synonym": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "label of the parent class",
+              "lang": "en"
+            }
+          ],
           "synonymProperty": {
             "type": [
               "literal"
@@ -228,14 +226,22 @@
             ],
             "value": "XMPL:XMPL000002"
           },
-          "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
-          "directParent": "http://exmpl.org/xmpl/XMPL000001",
+          "directAncestor": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
+          "directParent": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
-          "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
+          "hierarchicalAncestor": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
+          "hierarchicalParent": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -334,14 +340,16 @@
             ],
             "value": "XMPL_XMPL000002"
           },
-          "synonym": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "label of the first children class",
-            "lang": "en"
-          },
+          "synonym": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "label of the first children class",
+              "lang": "en"
+            }
+          ],
           "synonymProperty": {
             "type": [
               "literal"
@@ -361,14 +369,22 @@
             ],
             "value": "XMPL:XMPL000003"
           },
-          "directAncestor": "http://exmpl.org/xmpl/XMPL000001",
-          "directParent": "http://exmpl.org/xmpl/XMPL000001",
+          "directAncestor": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
+          "directParent": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://exmpl.org/xmpl/XMPL000001",
-          "hierarchicalParent": "http://exmpl.org/xmpl/XMPL000001",
+          "hierarchicalAncestor": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
+          "hierarchicalParent": [
+            "http://exmpl.org/xmpl/XMPL000001"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -467,14 +483,16 @@
             ],
             "value": "XMPL_XMPL000003"
           },
-          "synonym": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "label of the second children class",
-            "lang": "en"
-          },
+          "synonym": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "label of the second children class",
+              "lang": "en"
+            }
+          ],
           "synonymProperty": {
             "type": [
               "literal"
@@ -495,7 +513,7 @@
             "type": [
               "literal"
             ],
-            "value": "XMPL:Preferred_name"
+            "value": "XMPL_Preferred_name"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -507,12 +525,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "XMPL_Preferred_name"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Preferred_name"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -564,12 +584,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "XMPL_Synonym"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Synonym"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

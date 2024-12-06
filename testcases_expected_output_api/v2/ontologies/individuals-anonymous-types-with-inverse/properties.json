@@ -16,12 +16,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "inverseRelation",
+    "label": [
+      "inverseRelation"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
         "curie": "relation",
         "hasLocalDefinition": true,
-        "label": "relation",
+        "label": [
+          "relation"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -60,12 +64,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "relation",
+    "label": [
+      "relation"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation": {
         "curie": "inverseRelation",
         "hasLocalDefinition": true,
-        "label": "inverseRelation",
+        "label": [
+          "inverseRelation"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

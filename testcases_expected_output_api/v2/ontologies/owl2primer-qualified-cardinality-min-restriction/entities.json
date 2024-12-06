@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -43,7 +45,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasChild",
+    "label": [
+      "hasChild"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -81,12 +85,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-min-restriction.rdf#john",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "john",
+    "label": [
+      "john"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-min-restriction.rdf#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -96,7 +104,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-min-restriction.rdf#hasChild": {
         "curie": "hasChild",
         "hasLocalDefinition": true,
-        "label": "hasChild",
+        "label": [
+          "hasChild"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

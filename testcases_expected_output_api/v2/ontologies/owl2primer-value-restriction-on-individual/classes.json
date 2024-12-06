@@ -20,12 +20,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "JohnsChildren",
+    "label": [
+      "JohnsChildren"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John": {
         "curie": "John",
         "hasLocalDefinition": true,
-        "label": "John",
+        "label": [
+          "John"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -35,7 +39,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent": {
         "curie": "hasParent",
         "hasLocalDefinition": true,
-        "label": "hasParent",
+        "label": [
+          "hasParent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

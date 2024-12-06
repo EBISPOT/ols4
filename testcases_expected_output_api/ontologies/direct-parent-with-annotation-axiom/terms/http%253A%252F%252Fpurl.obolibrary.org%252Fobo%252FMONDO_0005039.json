@@ -1,0 +1,40 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
+  "lang": "en",
+  "description": [
+    "A disease involving the reproductive system."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "reproductive system disorder",
+  "ontology_name": "direct-parent-with-annotation-axiom",
+  "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "MONDO_0005039",
+  "obo_id": "MONDO:0005039",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0005039/graph"
+    }
+  }
+}

@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Address",
+    "label": [
+      "Address"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -46,12 +48,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Business",
+    "label": [
+      "Business"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
         "curie": "businessAddress",
         "hasLocalDefinition": true,
-        "label": "businessAddress",
+        "label": [
+          "businessAddress"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

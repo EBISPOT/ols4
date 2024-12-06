@@ -4,7 +4,9 @@
       "annotation-properties-simple"
     ],
     "curie": "MyAnnotationProperty",
-    "definition": "For our own special use case.",
+    "definition": [
+      "For our own special use case."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -18,7 +20,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "special annotation property",
+    "label": [
+      "special annotation property"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

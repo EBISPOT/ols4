@@ -1,0 +1,43 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+  "lang": "en",
+  "description": [
+    "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "gonadal disorder",
+  "ontology_name": "direct-parent-with-annotation-axiom",
+  "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "MONDO_0002259",
+  "obo_id": "MONDO:0002259",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/direct-parent-with-annotation-axiom/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002259/graph"
+    }
+  }
+}

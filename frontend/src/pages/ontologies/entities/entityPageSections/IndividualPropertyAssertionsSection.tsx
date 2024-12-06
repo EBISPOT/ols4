@@ -94,8 +94,8 @@ export default function IndividualPropertyAssertionsSection({
               linkedEntities={linkedEntities}
           />
             &thinsp;
-            {
-              <span>
+            {typeof v === "string" && v.includes("http") ? (
+                    <span>
               <span className="pr-1 text-sm" style={{ color: "gray" }}>
                 &#9656;
               </span>
@@ -107,7 +107,21 @@ export default function IndividualPropertyAssertionsSection({
                   linkedEntities={linkedEntities}
               />
             </span>
-            }
+                ) : (
+                    <Tooltip
+                        title={
+                          typeof v === "string"
+                              ? v
+                              : typeof v === "object" && !Array.isArray(v) && v.value
+                                  ? JSON.stringify(v.value)
+                                  : JSON.stringify(v)
+                        }
+                        placement="top"
+                        arrow
+                    >
+                      <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+                    </Tooltip>
+                )}
         </span>
       );
     }

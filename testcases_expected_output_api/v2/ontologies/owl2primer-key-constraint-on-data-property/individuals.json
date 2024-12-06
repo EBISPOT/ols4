@@ -14,12 +14,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#Anne",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Anne",
+    "label": [
+      "Anne"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": {
         "curie": "hasSSN",
         "hasLocalDefinition": true,
-        "label": "hasSSN",
+        "label": [
+          "hasSSN"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -57,12 +61,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Annie",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Annie",
+    "label": [
+      "Annie"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN": {
         "curie": "hasSSN",
         "hasLocalDefinition": true,
-        "label": "hasSSN",
+        "label": [
+          "hasSSN"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",

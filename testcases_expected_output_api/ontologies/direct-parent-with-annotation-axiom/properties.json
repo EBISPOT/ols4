@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000115?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "IAO_0000115",
+    "lang": "en",
+    "obo_id": "IAO:0000115",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "direct-parent-with-annotation-axiom",
+    "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+    "short_form": "IAO_0000115",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523source?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#source",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "source",
+    "lang": "en",
+    "obo_id": "source",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "direct-parent-with-annotation-axiom",
+    "ontology_prefix": "Direct-Parent-With-Annotation-Axiom",
+    "short_form": "source",
+    "synonyms": []
+  }
+]

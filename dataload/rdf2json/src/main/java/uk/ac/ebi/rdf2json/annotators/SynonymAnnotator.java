@@ -3,11 +3,11 @@ package uk.ac.ebi.rdf2json.annotators;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.SYNONYM;
 
 public class SynonymAnnotator {
 
@@ -33,7 +33,7 @@ public class SynonymAnnotator {
 	}
 
 	public static void annotateSynonyms(OntologyGraph graph) {
-		collateProperties(graph, "synonym", getSynonymProperties(graph));
+		collateProperties(graph, SYNONYM.getText(), getSynonymProperties(graph));
 	}
 
 	private static void collateProperties(OntologyGraph graph, String destProp, Collection<String> sourceProps) {
@@ -45,14 +45,18 @@ public class SynonymAnnotator {
 			if(c.uri == null)
 				continue;
 
+			List<PropertyValue> synonyms = new ArrayList<>();
 			for(String prop : sourceProps) {
 				List<PropertyValue> values = c.properties.getPropertyValues(prop);
 				if(values != null) {
 					for(PropertyValue value : values) {
-						c.properties.addProperty(destProp, value);
+						synonyms.add(value);
 					}
 				}
 			}
+
+			if (synonyms.size()>0)
+				c.properties.addProperty(destProp, new PropertyValueList(synonyms));
 		}
 
 	}

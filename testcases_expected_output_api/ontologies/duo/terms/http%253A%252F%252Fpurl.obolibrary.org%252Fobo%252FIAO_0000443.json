@@ -46,11 +46,11 @@
     "graph": {
       "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000443/graph"
     },
-    "has_specified_input": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000443/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293"
-    },
     "has_specified_output": {
       "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000443/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000299"
+    },
+    "has_specified_input": {
+      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000443/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000293"
     }
   }
 }

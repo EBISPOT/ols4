@@ -21,12 +21,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "A",
+    "label": [
+      "A"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a": {
         "curie": "a",
         "hasLocalDefinition": true,
-        "label": "a",
+        "label": [
+          "a"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -36,7 +40,9 @@
       "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
         "curie": "relation",
         "hasLocalDefinition": true,
-        "label": "relation",
+        "label": [
+          "relation"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -50,17 +56,19 @@
     "ontologyId": "individuals-anonymous-types-with-inverse",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
     "ontologyPreferredPrefix": "individuals-anonymous-types-with-inverse",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "A",
     "type": [

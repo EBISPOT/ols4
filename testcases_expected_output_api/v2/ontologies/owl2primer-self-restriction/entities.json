@@ -20,12 +20,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "NarcisticPerson",
+    "label": [
+      "NarcisticPerson"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves": {
         "curie": "loves",
         "hasLocalDefinition": true,
-        "label": "loves",
+        "label": [
+          "loves"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -61,7 +65,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "loves",
+    "label": [
+      "loves"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Related;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.Collection;
 import java.util.HashSet;

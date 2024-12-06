@@ -34,9 +34,9 @@ public class V1TermMapper {
             term.oboId = term.shortForm;
         }
 
-        term.label = JsonHelper.getString(localizedJson, "label");
-        term.description = JsonHelper.getStrings(localizedJson, "definition").toArray(new String[0]);
-        term.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
+        term.label = JsonHelper.getString(localizedJson, LABEL.getText());
+        term.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
+        term.synonyms = JsonHelper.getStrings(localizedJson, SYNONYM.getText()).toArray(new String[0]);
         term.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         term.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 
@@ -80,13 +80,13 @@ public class V1TermMapper {
 
         term.related = new ArrayList<>();
 
-        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, "relatedTo")) {
+        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, RELATED_TO.getText())) {
 
             String predicate = relatedTo.getAsJsonPrimitive("property").getAsString();
 
 	    JsonElement linkedEntity = linkedEntities.getAsJsonObject().get(predicate);
             String label = linkedEntity != null ?
-	    	JsonHelper.getString(linkedEntity.getAsJsonObject(), "label") : ShortFormExtractor.extractShortForm(predicate);
+	    	JsonHelper.getString(linkedEntity.getAsJsonObject(), LABEL.getText()) : ShortFormExtractor.extractShortForm(predicate);
 
             V1Related relatedObj = new V1Related();
             relatedObj.iri = predicate;

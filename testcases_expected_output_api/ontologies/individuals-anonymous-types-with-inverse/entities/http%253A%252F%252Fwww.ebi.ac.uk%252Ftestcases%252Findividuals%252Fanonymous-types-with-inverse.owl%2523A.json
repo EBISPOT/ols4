@@ -1,3 +1,4 @@
 {
-  "error": "<html><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id='created'>Tue Aug 13 12:16:04 BST 2024</div><div>There was an unexpected error (type=Not Found, status=404).</div></body></html>"
+  "status": 404,
+  "message": "Endpoint not found: /api/ontologies/individuals-anonymous-types-with-inverse/entities/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Findividuals%252Fanonymous-types-with-inverse.owl%2523A"
 }

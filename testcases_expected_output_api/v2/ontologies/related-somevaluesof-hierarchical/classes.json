@@ -8,18 +8,22 @@
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-    "hierarchicalParent": {
-      "axioms": [
-        {
-          "childRelationToParent": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
-        }
-      ],
-      "type": [
-        "reification"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
-    },
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
+      }
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -33,12 +37,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "A",
+    "label": [
+      "A"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B": {
         "curie": "B",
         "hasLocalDefinition": true,
-        "label": "B",
+        "label": [
+          "B"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -48,7 +56,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -62,17 +72,19 @@
     "ontologyId": "related-somevaluesof-hierarchical",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl",
     "ontologyPreferredPrefix": "related-someValuesOf-hierarchical",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "A",
     "type": [
@@ -95,12 +107,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "B",
+    "label": [
+      "B"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A": {
         "curie": "A",
         "hasLocalDefinition": true,
-        "label": "A",
+        "label": [
+          "A"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -110,7 +126,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -124,17 +142,19 @@
     "ontologyId": "related-somevaluesof-hierarchical",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl",
     "ontologyPreferredPrefix": "related-someValuesOf-hierarchical",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "B",
     "type": [

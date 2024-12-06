@@ -14,12 +14,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": {
         "curie": "hasAge",
         "hasLocalDefinition": true,
-        "label": "hasAge",
+        "label": [
+          "hasAge"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",

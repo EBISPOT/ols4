@@ -1,0 +1,66 @@
+[
+  {
+    "appearsIn": [
+      "direct-parent-with-annotation-axiom"
+    ],
+    "curie": "IAO:0000115",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "IAO_0000115"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "direct-parent-with-annotation-axiom",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "Direct-Parent-With-Annotation-Axiom",
+    "searchableAnnotationValues": false,
+    "shortForm": "IAO_0000115",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "direct-parent-with-annotation-axiom"
+    ],
+    "curie": "source",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": false,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#source",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "source"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "direct-parent-with-annotation-axiom",
+    "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontologyPreferredPrefix": "Direct-Parent-With-Annotation-Axiom",
+    "searchableAnnotationValues": false,
+    "shortForm": "source",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  }
+]

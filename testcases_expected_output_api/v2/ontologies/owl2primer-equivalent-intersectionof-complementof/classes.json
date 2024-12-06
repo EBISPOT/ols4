@@ -4,14 +4,22 @@
       "owl2primer-equivalent-intersectionof-complementof"
     ],
     "curie": "ChildlessPerson",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
-    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
@@ -31,12 +39,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "ChildlessPerson",
+    "label": [
+      "ChildlessPerson"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -46,7 +58,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -81,7 +95,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -110,7 +126,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Person",
+    "label": [
+      "Person"
+    ],
     "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,

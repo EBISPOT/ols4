@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasParent",
+    "label": [
+      "hasParent"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse": {
         "curie": "hasSpouse",
         "hasLocalDefinition": true,
-        "label": "hasSpouse",
+        "label": [
+          "hasSpouse"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -57,7 +61,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSpouse",
+    "label": [
+      "hasSpouse"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

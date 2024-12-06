@@ -28,12 +28,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "A",
+    "label": [
+      "A"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
         "curie": "b1",
         "hasLocalDefinition": true,
-        "label": "b1",
+        "label": [
+          "b1"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -43,7 +47,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
         "curie": "b2",
         "hasLocalDefinition": true,
-        "label": "b2",
+        "label": [
+          "b2"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -53,7 +59,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
         "curie": "b3",
         "hasLocalDefinition": true,
-        "label": "b3",
+        "label": [
+          "b3"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -63,7 +71,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

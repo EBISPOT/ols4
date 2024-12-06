@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,7 +32,7 @@ public class V1JsTreeRepository {
 
     private List<Map<String,Object>> getJsTreeForEntity(String iri, String type, String neo4jType, String ontologyId, String lang) {
 
-        List<String> parentRelationIRIs = List.of("directParent");
+        List<String> parentRelationIRIs = List.of(DIRECT_PARENT.getText());
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
 
@@ -59,7 +61,7 @@ public class V1JsTreeRepository {
 
     private List<Map<String,Object>> getJsTreeChildrenForEntity(String iri, String jstreeId, String type, String neo4jType, String ontologyId, String lang) {
 
-        List<String> parentRelationIRIs = List.of("directParent");
+        List<String> parentRelationIRIs = List.of(DIRECT_PARENT.getText());
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
 

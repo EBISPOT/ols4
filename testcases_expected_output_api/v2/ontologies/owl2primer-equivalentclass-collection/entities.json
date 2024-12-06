@@ -4,8 +4,12 @@
       "owl2primer-equivalentclass-collection"
     ],
     "curie": "Bill",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -18,12 +22,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Bill",
+    "label": [
+      "Bill"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests": {
         "curie": "MyBirthdayGuests",
         "hasLocalDefinition": true,
-        "label": "MyBirthdayGuests",
+        "label": [
+          "MyBirthdayGuests"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -48,8 +56,12 @@
       "owl2primer-equivalentclass-collection"
     ],
     "curie": "John",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -62,12 +74,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests": {
         "curie": "MyBirthdayGuests",
         "hasLocalDefinition": true,
-        "label": "MyBirthdayGuests",
+        "label": [
+          "MyBirthdayGuests"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -92,8 +108,12 @@
       "owl2primer-equivalentclass-collection"
     ],
     "curie": "Mary",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
-    "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -106,12 +126,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Mary",
+    "label": [
+      "Mary"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests": {
         "curie": "MyBirthdayGuests",
         "hasLocalDefinition": true,
-        "label": "MyBirthdayGuests",
+        "label": [
+          "MyBirthdayGuests"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -155,12 +179,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "MyBirthdayGuests",
+    "label": [
+      "MyBirthdayGuests"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill": {
         "curie": "Bill",
         "hasLocalDefinition": true,
-        "label": "Bill",
+        "label": [
+          "Bill"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -170,7 +198,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John": {
         "curie": "John",
         "hasLocalDefinition": true,
-        "label": "John",
+        "label": [
+          "John"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -180,7 +210,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary": {
         "curie": "Mary",
         "hasLocalDefinition": true,
-        "label": "Mary",
+        "label": [
+          "Mary"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

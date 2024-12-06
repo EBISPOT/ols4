@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.Objects;
 
@@ -25,9 +26,9 @@ public class V1IndividualMapper {
         individual.ontologyPrefix = JsonHelper.getString(localizedJson, "ontologyPreferredPrefix");
         individual.ontologyIri = JsonHelper.getString(localizedJson, "ontologyIri");
 
-        individual.label = JsonHelper.getString(localizedJson, "label");
-        individual.description = JsonHelper.getStrings(localizedJson, "definition").toArray(new String[0]);
-        individual.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
+        individual.label = JsonHelper.getString(localizedJson, LABEL.getText());
+        individual.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
+        individual.synonyms = JsonHelper.getStrings(localizedJson, SYNONYM.getText()).toArray(new String[0]);
         individual.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         individual.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 

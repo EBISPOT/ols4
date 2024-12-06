@@ -50,6 +50,61 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/base_uri/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/base_uri/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/base_uri?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/base_uri/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.ebi.ac.uk/baseUri/BASE_URI_"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.ebi.ac.uk/baseUri/BASE_URI_"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/BaseUri.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "base_uri",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "base_uri",
+      "oboSlims": false,
+      "preferredPrefix": "BASE_URI",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "Experimental Factor Ontology",
+      "version": "3.63.0",
+      "versionIri": "http://www.ebi.ac.uk/baseUri/releases/v3.63.0/BaseUri.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 0,
+    "ontologyId": "base_uri",
+    "status": "LOADED",
+    "updated": "<updated>",
+    "version": "3.63.0"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/data-property-domain-range-restrictions/individuals"
       },
       "properties": {
@@ -92,6 +147,152 @@
     "numberOfProperties": 1,
     "numberOfTerms": 1,
     "ontologyId": "data-property-domain-range-restrictions",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/definition-multiple/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/definition-multiple/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/definition-multiple?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/definition-multiple/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/DefinitionMultiple.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "definition-multiple",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "definition-multiple",
+      "oboSlims": false,
+      "preferredPrefix": "Definition-Multiple",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/DefinitionMultiple.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "definition-multiple",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/definition-single/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/definition-single/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/definition-single?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/definition-single/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.w3.org/2002/07/owl#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.w3.org/2002/07/owl#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/DefinitionSingle.ttl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "definition-single",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "definition-single",
+      "oboSlims": false,
+      "preferredPrefix": "Definition-Single",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "definition-single",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/direct-parent-with-annotation-axiom/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/DirectParentWithAnnotationAxiom.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "direct-parent-with-annotation-axiom",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "direct-parent-with-annotation-axiom",
+      "oboSlims": false,
+      "preferredPrefix": "Direct-Parent-With-Annotation-Axiom",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 3,
+    "ontologyId": "direct-parent-with-annotation-axiom",
     "status": "LOADED",
     "updated": "<updated>"
   },
@@ -586,6 +787,148 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/labelsingle/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/labelsingle/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/labelsingle?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/labelsingle/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/labelSingle.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "labelsingle",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "labelsingle",
+      "oboSlims": false,
+      "preferredPrefix": "labelSingle",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/ols4/testcase/label/v.0.0.1"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "labelsingle",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/max-cardinality-ttl/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/max-cardinality-ttl/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/max-cardinality-ttl?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/max-cardinality-ttl/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/class-expression-issues/max-cardinality.ttl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "max-cardinality-ttl",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "max-cardinality-ttl",
+      "oboSlims": false,
+      "preferredPrefix": "max-cardinality-ttl",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "max-cardinality-ttl",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/max-cardinality/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/max-cardinality/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/max-cardinality?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/max-cardinality/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/class-expression-issues/max-cardinality.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "max-cardinality",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "max-cardinality",
+      "oboSlims": false,
+      "preferredPrefix": "max-cardinality",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 1,
+    "numberOfTerms": 1,
+    "ontologyId": "max-cardinality",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/oio/individuals"
       },
       "properties": {
@@ -608,7 +951,7 @@
       ],
       "creators": [],
       "definitionProperties": [],
-      "fileLocation": "https://gist.githubusercontent.com/haideriqbal/4a2b1a9aa81d9fa26cae81e0b0b7730b/raw/527665128b9be9d7d6133f9a796379600151c737/oboInOwl.owl",
+      "fileLocation": "./testcases/annotation-properties/oboInOwl.owl",
       "hiddenProperties": [],
       "hierarchicalProperties": [],
       "id": "oio",
@@ -4336,6 +4679,54 @@
     "numberOfProperties": 2,
     "numberOfTerms": 4,
     "ontologyId": "partof",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/preferred-root/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/preferred-root/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/preferred-root?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/preferred-root/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/PreferredRoot.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "preferred-root",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "preferred-root",
+      "oboSlims": false,
+      "preferredPrefix": "Preferred-Root",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "versionIri": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/PreferredRoot.owl"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "preferred-root",
     "status": "LOADED",
     "updated": "<updated>"
   },

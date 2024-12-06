@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -51,12 +53,6 @@
           "type": [
             "literal"
           ],
-          "value": "en"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "3"
         },
         {
@@ -83,7 +79,9 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
           ],
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
@@ -92,7 +90,9 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
           ],
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -104,12 +104,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mother"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mother"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -160,12 +162,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -206,14 +210,22 @@
             ],
             "value": "Woman"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+          ],
           "hasDirectChildren": true,
           "hasDirectParents": true,
           "hasHierarchicalChildren": true,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -225,12 +237,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {

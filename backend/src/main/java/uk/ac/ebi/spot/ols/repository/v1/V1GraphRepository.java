@@ -15,6 +15,8 @@ import uk.ac.ebi.spot.ols.repository.v1.mappers.V1IndividualMapper;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -86,13 +88,13 @@ public class V1GraphRepository {
                 for(String referencedIri : linkedEntities.keySet()) {
                     JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
                     if(!iriToLabel.containsKey(referencedIri))
-                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, "label"));
+                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, LABEL.getText()));
                 }
             }
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
             nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
-            nodeRes.put("label", JsonHelper.getString(ontologyNodeObject, "label"));
+            nodeRes.put(LABEL.getText(), JsonHelper.getString(ontologyNodeObject, LABEL.getText()));
             return nodeRes;
 
         }).collect(Collectors.toList());
@@ -117,7 +119,7 @@ public class V1GraphRepository {
             if(propertyLabel == null)
                 propertyLabel = "is a";
 
-            edgeRes.put("label", propertyLabel);
+            edgeRes.put(LABEL.getText(), propertyLabel);
             edgeRes.put("uri", uri);
 
             return edgeRes;

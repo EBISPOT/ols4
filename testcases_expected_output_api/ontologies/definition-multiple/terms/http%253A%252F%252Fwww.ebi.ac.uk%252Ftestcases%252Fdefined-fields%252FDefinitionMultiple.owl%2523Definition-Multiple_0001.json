@@ -1,0 +1,30 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/defined-fields/DefinitionMultiple.owl#Definition-Multiple_0001",
+  "lang": "en",
+  "description": [
+    "A disease involving the liver.",
+    "Any disease or dysfunction of the liver and the intrahepatic bile ducts.",
+    "Pathological processes of the LIVER."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "liver disease",
+  "ontology_name": "definition-multiple",
+  "ontology_prefix": "Definition-Multiple",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": true,
+  "short_form": "Definition-Multiple_0001",
+  "obo_id": "Definition-Multiple:0001",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/definition-multiple/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FDefinitionMultiple.owl%2523Definition-Multiple_0001?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/definition-multiple/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FDefinitionMultiple.owl%2523Definition-Multiple_0001/graph"
+    }
+  }
+}

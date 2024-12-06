@@ -6,6 +6,9 @@ import org.apache.commons.cli.*;
 import java.io.*;
 import java.util.*;
 
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class JSON2Solr {
 
     static Gson gson = new Gson();
@@ -311,7 +314,7 @@ public class JSON2Solr {
 
    static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, String outPath, Map <String,PrintStream> writers) throws FileNotFoundException {
 
-	Object labels = flattenedEntity.get("label");
+	Object labels = flattenedEntity.get(LABEL.getText());
 
 	if(labels instanceof List) {
 		for(Object label : (List<Object>) labels) {
@@ -321,7 +324,7 @@ public class JSON2Solr {
             writeAutocomplete(ontologyId,makeAutocompleteEntry(ontologyId, entityId, (String)labels),outPath,writers);
 	}
 
-	Object synonyms = flattenedEntity.get("synonym");
+	Object synonyms = flattenedEntity.get(SYNONYM.getText());
 
 	if(synonyms instanceof List) {
 		for(Object label : (List<Object>) synonyms) {
