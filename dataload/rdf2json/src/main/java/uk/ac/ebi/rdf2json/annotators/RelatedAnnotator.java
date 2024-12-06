@@ -15,29 +15,29 @@ public class RelatedAnnotator {
 
 	private static final Logger logger = LoggerFactory.getLogger(RelatedAnnotator.class);
 
-    public static void annotateRelated(OntologyGraph graph) {
+	public static void annotateRelated(OntologyGraph graph) {
 
 		Set<String> ontologyBaseUris = OntologyBaseUris.getOntologyBaseUris(graph);
 		String preferredPrefix = (String)graph.config.get("preferredPrefix");
 
 		long startTime3 = System.nanoTime();
-        for(String id : graph.nodes.keySet()) {
-            OntologyNode c = graph.nodes.get(id);
-            if (c.types.contains(OntologyNode.NodeType.CLASS)) {
+		for(String id : graph.nodes.keySet()) {
+			OntologyNode c = graph.nodes.get(id);
+			if (c.types.contains(OntologyNode.NodeType.CLASS)) {
 
-                // skip bnodes
-                if(c.uri == null)
-                    continue;
+				// skip bnodes
+				if(c.uri == null)
+					continue;
 
-                List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+				List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
 
-                if(parents != null) {
+				if(parents != null) {
 
-                    for(PropertyValue parent : parents) {
+					for(PropertyValue parent : parents) {
 
 						// We are only looking for anonymous parents, which are either class expressions or restrictions.
 						//
-                    	if(parent.getType() != PropertyValue.Type.BNODE) {
+						if(parent.getType() != PropertyValue.Type.BNODE) {
 							continue;
 						}
 
@@ -58,10 +58,10 @@ public class RelatedAnnotator {
 			}
 
 
-        }
-        long endTime3 = System.nanoTime();
-        logger.info("annotate related: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
-    }
+		}
+		long endTime3 = System.nanoTime();
+		logger.info("annotate related: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+	}
 
 	private static void annotateRelated_Class_subClassOf_ClassExpr(
 			OntologyNode classNode, OntologyNode fillerClassExpr, Set<String> ontologyBaseUris, String preferredPrefix, OntologyGraph graph) {
@@ -95,9 +95,9 @@ public class RelatedAnnotator {
 
 		for(OntologyNode individualNode : fillerIndividuals) {
 			classNode.properties.addProperty("relatedTo",
-				new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", individualNode));
+					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", individualNode));
 			individualNode.properties.addProperty("relatedFrom",
-				new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
+					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 		}
 	}
 
@@ -119,17 +119,17 @@ public class RelatedAnnotator {
 			if(fillerClassNode.uri != null) {
 
 				classNode.properties.addProperty("relatedTo",
-					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", fillerClassNode));
+						new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", fillerClassNode));
 
 				fillerClassNode.properties.addProperty("relatedFrom",
-					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
+						new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 			}
 		}
 	}
 
 
 	private static void annotateRelated_Class_subClassOf_Restriction(
-				OntologyNode classNode, PropertyValue property, OntologyNode fillerRestriction, Set<String> ontologyBaseUris, String preferredPrefix, OntologyGraph graph) {
+			OntologyNode classNode, PropertyValue property, OntologyNode fillerRestriction, Set<String> ontologyBaseUris, String preferredPrefix, OntologyGraph graph) {
 
 		if(property.getType() != PropertyValue.Type.URI) {
 			// We can't do anything with anonymous properties.
@@ -167,28 +167,28 @@ public class RelatedAnnotator {
 
 			String fillerUri = ((PropertyValueURI) filler).getUri();
 
-				// Is the filler different from the entity we are annotating?
-				if(!fillerUri.equals(classNode.uri)) {
+			// Is the filler different from the entity we are annotating?
+			if(!fillerUri.equals(classNode.uri)) {
 
-					OntologyNode fillerNode = graph.nodes.get(fillerUri);
+				OntologyNode fillerNode = graph.nodes.get(fillerUri);
 
-					if(fillerNode != null) { // sometimes filler not included in ontology, e.g. "subClassOf some xsd:float" in cdao
-						PropertyValue someValuesFrom = null;
-						if(fillerRestriction != null)
-							someValuesFrom = fillerRestriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#someValuesFrom");
-						
-						if(someValuesFrom != null) {
-							if(!((PropertyValueURI) someValuesFrom).getUri().equalsIgnoreCase(fillerUri)) {
-								classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
-								fillerNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
-							}
-						}
-						else {
-								classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
-								fillerNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+				if(fillerNode != null) { // sometimes filler not included in ontology, e.g. "subClassOf some xsd:float" in cdao
+					PropertyValue someValuesFrom = null;
+					if(fillerRestriction != null)
+						someValuesFrom = fillerRestriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#someValuesFrom");
+
+					if(someValuesFrom != null) {
+						if(!((PropertyValueURI) someValuesFrom).getUri().equalsIgnoreCase(fillerUri)) {
+							classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+							fillerNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
 						}
 					}
+					else {
+						classNode.properties.addProperty("relatedTo", new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+						fillerNode.properties.addProperty("relatedFrom", new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+					}
 				}
+			}
 
 			return;
 
@@ -221,7 +221,7 @@ public class RelatedAnnotator {
 		OntologyNode fillerNode = graph.nodes.get( ((PropertyValueBNode) filler).getId() );
 
 		logger.info("filler node uri: "+fillerNode.uri);
-	
+
 		List<OntologyNode> fillerIndividuals = new ArrayList<>();
 		if(fillerNode != null){
 			for (PropertyValue propertyValue : RdfListEvaluator.evaluateRdfList(fillerNode, graph)){

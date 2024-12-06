@@ -1,0 +1,86 @@
+[
+  {
+    "appearsIn": [
+      "max-cardinality-ttl"
+    ],
+    "curie": "maxCardinality.owlPerson",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#maxCardinality": 2.0,
+      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owlhasArm",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owlPerson",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "maxCardinality.owlPerson"
+    ],
+    "linkedEntities": {
+      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owlhasArm": {
+        "curie": "maxCardinality.owlhasArm",
+        "hasLocalDefinition": true,
+        "label": [
+          "maxCardinality.owlhasArm"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "max-cardinality-ttl",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl",
+    "ontologyPreferredPrefix": "max-cardinality-ttl",
+    "searchableAnnotationValues": false,
+    "shortForm": "maxCardinality.owlPerson",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "max-cardinality-ttl"
+    ],
+    "curie": "maxCardinality.owlhasArm",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owlhasArm",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "maxCardinality.owlhasArm"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "max-cardinality-ttl",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl",
+    "ontologyPreferredPrefix": "max-cardinality-ttl",
+    "searchableAnnotationValues": false,
+    "shortForm": "maxCardinality.owlhasArm",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  }
+]

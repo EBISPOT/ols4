@@ -50,12 +50,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Grandfather",
+    "label": [
+      "Grandfather"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man": {
         "curie": "Man",
         "hasLocalDefinition": true,
-        "label": "Man",
+        "label": [
+          "Man"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -65,7 +69,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -126,12 +132,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Man",
+    "label": [
+      "Man"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather": {
         "curie": "Grandfather",
         "hasLocalDefinition": true,
-        "label": "Grandfather",
+        "label": [
+          "Grandfather"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -141,7 +151,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -154,18 +166,20 @@
     "ontologyId": "owl2primer-subclassof-intersectionof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
     "ontologyPreferredPrefix": "owl2primer-subClassOf-intersectionOf",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2002/07/owl#intersectionOf": [
-        "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-        "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-      ],
-      "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+          "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+        ],
+        "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "Man",
     "type": [
@@ -188,12 +202,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather": {
         "curie": "Grandfather",
         "hasLocalDefinition": true,
-        "label": "Grandfather",
+        "label": [
+          "Grandfather"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -203,7 +221,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man": {
         "curie": "Man",
         "hasLocalDefinition": true,
-        "label": "Man",
+        "label": [
+          "Man"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -216,18 +236,20 @@
     "ontologyId": "owl2primer-subclassof-intersectionof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
     "ontologyPreferredPrefix": "owl2primer-subClassOf-intersectionOf",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2002/07/owl#intersectionOf": [
-        "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-        "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-      ],
-      "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+          "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+        ],
+        "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "Parent",
     "type": [

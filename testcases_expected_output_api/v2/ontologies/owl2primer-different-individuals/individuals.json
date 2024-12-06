@@ -14,12 +14,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Bill",
+    "label": [
+      "Bill"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John": {
         "curie": "John",
         "hasLocalDefinition": true,
-        "label": "John",
+        "label": [
+          "John"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -54,12 +58,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "John",
+    "label": [
+      "John"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill": {
         "curie": "Bill",
         "hasLocalDefinition": true,
-        "label": "Bill",
+        "label": [
+          "Bill"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",

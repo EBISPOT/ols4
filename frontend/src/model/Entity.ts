@@ -68,6 +68,26 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
+  getExactSynonyms(): Reified<any>[] {
+    const exactSynonymTypes = [
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    ];
+    return Reified.fromJson<any>(this.extractSynonyms(exactSynonymTypes)) || [];
+  }
+
+  getRelatedSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym")) || [];
+  }
+
+  getBroadSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym")) || [];
+  }
+
+  getNarrowSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym")) || [];
+  }
+
   getAppearsIn(): string[] {
     return (this.properties["appearsIn"] || []) as string[];
   }
@@ -188,5 +208,34 @@ export default abstract class Entity extends Thing {
         return p.getMetadata();
       }
     }
+  }
+
+  extractSynonyms(synonymTypes: string | string[]): string[] {
+    const result : string[] = [];
+    // Check if 'synonymProperty' exists in 'this.properties'
+    if (!this.properties || !this.properties.hasOwnProperty("synonymProperty")) {
+      return result; // Return empty array if 'synonymProperty' doesn't exist
+    }
+    const synonymProperties = this.properties["synonymProperty"];
+    const synonymPropsArray = Array.isArray(synonymProperties)
+        ? synonymProperties
+        : [synonymProperties];
+
+    const synonymTypesArray = Array.isArray(synonymTypes)
+        ? synonymTypes
+        : [synonymTypes];
+
+    synonymPropsArray.forEach((synonymProperty: string) => {
+      if (synonymTypesArray.includes(synonymProperty)) {
+        if (this.properties.hasOwnProperty(synonymProperty)) {
+          const synonyms = this.properties[synonymProperty];
+          if (synonyms) {
+            result.push(...(Array.isArray(synonyms) ? synonyms : [synonyms]));
+          }
+        }
+      }
+    });
+
+    return result;
   }
 }

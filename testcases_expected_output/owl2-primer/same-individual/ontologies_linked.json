@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/same-individual.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -92,12 +88,14 @@
           "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "James"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "James"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -133,12 +131,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Jim"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Jim"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -173,12 +173,14 @@
           "http://www.w3.org/2002/07/owl#sameAs": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Jim"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jim"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -214,12 +216,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "James"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "James"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"

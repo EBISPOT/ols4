@@ -16,12 +16,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasWife",
+    "label": [
+      "hasWife"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man": {
         "curie": "Man",
         "hasLocalDefinition": true,
-        "label": "Man",
+        "label": [
+          "Man"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -31,7 +35,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman": {
         "curie": "Woman",
         "hasLocalDefinition": true,
-        "label": "Woman",
+        "label": [
+          "Woman"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

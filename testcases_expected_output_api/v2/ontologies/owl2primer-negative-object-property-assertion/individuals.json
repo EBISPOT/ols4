@@ -13,12 +13,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Bill",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Bill",
+    "label": [
+      "Bill"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary": {
         "curie": "Mary",
         "hasLocalDefinition": true,
-        "label": "Mary",
+        "label": [
+          "Mary"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -28,7 +32,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": {
         "curie": "hasWife",
         "hasLocalDefinition": true,
-        "label": "hasWife",
+        "label": [
+          "hasWife"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -64,7 +70,9 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Mary",
+    "label": [
+      "Mary"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

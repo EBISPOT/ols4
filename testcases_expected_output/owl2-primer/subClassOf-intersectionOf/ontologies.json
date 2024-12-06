@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/subClassOf-intersectionOf.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -47,12 +49,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -129,12 +125,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Grandfather"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Grandfather"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -211,12 +209,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Man"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Man"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -237,18 +237,20 @@
             ],
             "value": "owl2primer-subClassOf-intersectionOf"
           },
-          "relatedFrom": {
-            "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-            "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#intersectionOf": [
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-            ]
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+                "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+              ]
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -279,12 +281,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Parent"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -305,18 +309,20 @@
             ],
             "value": "owl2primer-subClassOf-intersectionOf"
           },
-          "relatedFrom": {
-            "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-            "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#intersectionOf": [
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-              "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
-            ]
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+                "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+              ]
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [

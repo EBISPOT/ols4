@@ -17,10 +17,10 @@ public class V2SearchFieldsParser {
             query.addSearchField("ontologyId", 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("curie", 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("shortForm", 1, SearchType.WHITESPACE_EDGES);
-            query.addSearchField("label", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField(LABEL.getText(), 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("id", 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("oboId", 1, SearchType.WHITESPACE_EDGES);
-            query.addSearchField("synonym", 1, SearchType.WHITESPACE_EDGES);
+            query.addSearchField(SYNONYM.getText(), 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("searchableAnnotationValues", 1, SearchType.WHITESPACE_EDGES);
         } else {
             for (ParsedField field : parseFieldsString(searchFields)) {
@@ -34,11 +34,11 @@ public class V2SearchFieldsParser {
         if(boostFields == null) {
             query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
             query.addBoostField(IS_DEFINING_ONTOLOGY.getText(), "true", 1000, SearchType.WHOLE_FIELD);
-            query.addBoostField("label", query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
-            query.addBoostField("label", query.getSearchText(), 500, SearchType.EDGES);
+            query.addBoostField(LABEL.getText(), query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
+            query.addBoostField(LABEL.getText(), query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);
             query.addBoostField("shortForm", query.getSearchText(), 500, SearchType.EDGES);
-            query.addBoostField("synonym", query.getSearchText(), 500, SearchType.WHOLE_FIELD);
+            query.addBoostField(SYNONYM.getText(), query.getSearchText(), 500, SearchType.WHOLE_FIELD);
 //            query.addBoostField("synonym", query.getSearchText(), 100, SearchType.EDGES);
         } else {
             for (ParsedField field : parseFieldsString(boostFields)) {

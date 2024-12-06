@@ -28,7 +28,17 @@ export default function ClassExpression({
 
   const types = asArray(expr['type'])
 
-  if(types && types.indexOf('datatype') !== -1) {
+  function getCardinality(value) {
+        if (value === null || value === undefined) {
+            return [];
+        } else if (Array.isArray(value)) {
+            return value;
+        } else {
+            return [value];
+        }
+    }
+
+    if(types && types.indexOf('datatype') !== -1) {
     // rdfs:Datatype
     let equivClass = expr['http://www.w3.org/2002/07/owl#equivalentClass'];
     if(equivClass) {
@@ -150,7 +160,7 @@ export default function ClassExpression({
       </span>,
     ];
 
-    for (const subExpr of oneOf) {
+    for (let subExpr of oneOf) {
       if (nodes.length > 1) {
         nodes.push(
           <span key={randomString()} className="text-neutral-default">
@@ -158,6 +168,11 @@ export default function ClassExpression({
           </span>
         );
       }
+
+      if (typeof subExpr === "number") {
+          subExpr = subExpr.toString();
+      }
+
       nodes.push(
         <ClassExpression
           key={randomString()}
@@ -301,9 +316,12 @@ export default function ClassExpression({
     );
   }
 
-  const minCardinality = asArray(
+  let minCardinality = getCardinality(
     expr["http://www.w3.org/2002/07/owl#minCardinality"]
   )[0];
+  if(typeof minCardinality === 'number') {
+      minCardinality = minCardinality.toString()
+  }
   if (minCardinality) {
     return (
       <span>
@@ -314,9 +332,12 @@ export default function ClassExpression({
     );
   }
 
-  let maxCardinality = asArray(
+  let maxCardinality = getCardinality(
     expr["http://www.w3.org/2002/07/owl#maxCardinality"]
   )[0];
+    if(typeof maxCardinality === 'number') {
+        maxCardinality = maxCardinality.toString()
+    }
   if (maxCardinality) {
     return (
       <span>
@@ -326,9 +347,12 @@ export default function ClassExpression({
       </span>
     );
   }
-  let exactCardinality = asArray(
+  let exactCardinality = getCardinality(
     expr["http://www.w3.org/2002/07/owl#cardinality"]
   )[0];
+    if(typeof exactCardinality === 'number') {
+        exactCardinality = exactCardinality.toString()
+    }
   if (exactCardinality) {
     return (
       <span>
