@@ -295,7 +295,7 @@ public class RelatedAnnotator {
 
 			OntologyNode fillerNode = graph.nodes.get( ((PropertyValueURI) filler).getUri() );
 
-			if(fillerNode.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
+			if(fillerNode != null && fillerNode.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 				// fillerNode is an individual
 				relatedInfo.addRelatedTo(fillerNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
 				relatedInfo.addRelatedFrom(classNode, new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
