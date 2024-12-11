@@ -70,7 +70,6 @@ public class OntologyGraph implements StreamRDF {
     }
 
     private void parseRDF(String url, InputStream is, String contentType) throws IOException  {
-
         if(url.endsWith(".gz")) {
             System.out.println("parseRDF: Decompressing gzipped ontology " + url);
             is = new GZIPInputStream(is);
