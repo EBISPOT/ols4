@@ -59,18 +59,6 @@
           "type": [
             "literal"
           ],
-          "value": "de"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "4"
         },
         {
@@ -191,14 +179,16 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "en label class",
-            "lang": "en"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "en label class",
+              "lang": "en"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -249,12 +239,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelClass"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelClass"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -295,12 +287,14 @@
             ],
             "value": "noLangClass"
           },
-          "definition": {
-            "type": [
-              "literal"
-            ],
-            "value": ""
-          },
+          "definition": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": ""
+            }
+          ],
           "definitionProperty": {
             "type": [
               "literal"
@@ -329,12 +323,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "no lang label class"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "no lang label class"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -469,14 +465,16 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "en label",
-            "lang": "en"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "en label",
+              "lang": "en"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -527,12 +525,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -589,12 +589,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLangProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLangProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

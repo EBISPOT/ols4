@@ -18,12 +18,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasGrandParent",
+    "label": [
+      "hasGrandParent"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent": {
         "curie": "hasParent",
         "hasLocalDefinition": true,
-        "label": "hasParent",
+        "label": [
+          "hasParent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -60,7 +64,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasParent",
+    "label": [
+      "hasParent"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

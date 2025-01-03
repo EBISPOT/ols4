@@ -21,12 +21,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "A",
+    "label": [
+      "A"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B": {
         "curie": "B",
         "hasLocalDefinition": true,
-        "label": "B",
+        "label": [
+          "B"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -36,7 +40,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -50,17 +56,19 @@
     "ontologyId": "related-somevaluesof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
     "ontologyPreferredPrefix": "related-someValuesOf",
-    "relatedTo": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B"
-    },
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "A",
     "type": [
@@ -83,12 +91,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "B",
+    "label": [
+      "B"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A": {
         "curie": "A",
         "hasLocalDefinition": true,
-        "label": "A",
+        "label": [
+          "A"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -98,7 +110,9 @@
       "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -112,17 +126,19 @@
     "ontologyId": "related-somevaluesof",
     "ontologyIri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl",
     "ontologyPreferredPrefix": "related-someValuesOf",
-    "relatedFrom": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
-      "isObsolete": false,
-      "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
-      "type": [
-        "related"
-      ],
-      "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A"
-    },
+    "relatedFrom": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+        "isObsolete": false,
+        "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+        "type": [
+          "related"
+        ],
+        "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A"
+      }
+    ],
     "searchableAnnotationValues": false,
     "shortForm": "B",
     "type": [
@@ -145,7 +161,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "r",
+    "label": [
+      "r"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

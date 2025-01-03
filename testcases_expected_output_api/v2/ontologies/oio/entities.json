@@ -8,8 +8,12 @@
     "definedBy": [
       "oio"
     ],
-    "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
-    "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -39,7 +43,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_broad_synonym",
+    "label": [
+      "has_broad_synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -47,7 +53,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -60,7 +68,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -73,7 +83,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -87,7 +99,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -101,7 +115,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_synonym",
+        "label": [
+          "has_synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -115,7 +131,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -129,7 +147,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -142,7 +162,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -198,7 +220,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_dbxref",
+    "label": [
+      "has_dbxref"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -206,7 +230,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -219,7 +245,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -233,7 +261,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -267,8 +297,12 @@
     "definedBy": [
       "oio"
     ],
-    "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
-    "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -298,7 +332,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_exact_synonym",
+    "label": [
+      "has_exact_synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -306,7 +342,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -319,7 +357,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -332,7 +372,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -346,7 +388,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -360,7 +404,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_synonym",
+        "label": [
+          "has_synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -374,7 +420,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -388,7 +436,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -401,7 +451,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -440,8 +492,12 @@
     "definedBy": [
       "oio"
     ],
-    "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
-    "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -471,7 +527,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_narrow_synonym",
+    "label": [
+      "has_narrow_synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -479,7 +537,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -492,7 +552,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -505,7 +567,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -519,7 +583,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -533,7 +599,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_synonym",
+        "label": [
+          "has_synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -547,7 +615,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -561,7 +631,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -574,7 +646,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -613,8 +687,12 @@
     "definedBy": [
       "oio"
     ],
-    "directAncestor": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
-    "directParent": "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -644,7 +722,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_related_synonym",
+    "label": [
+      "has_related_synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -652,7 +732,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -665,7 +747,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -678,7 +762,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -692,7 +778,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -706,7 +794,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_synonym",
+        "label": [
+          "has_synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -720,7 +810,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -734,7 +826,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -747,7 +841,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -803,7 +899,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_synonym_type",
+    "label": [
+      "has_synonym_type"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -811,7 +909,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -824,7 +924,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -838,7 +940,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -852,7 +956,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -909,7 +1015,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "in_subset",
+    "label": [
+      "in_subset"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -917,7 +1025,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -930,7 +1040,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -943,7 +1055,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -957,7 +1071,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -971,7 +1087,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -985,7 +1103,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1034,7 +1154,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "database_cross_reference",
+    "label": [
+      "database_cross_reference"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
@@ -1042,7 +1164,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1069,7 +1193,9 @@
     "definedBy": [
       "oio"
     ],
-    "definition": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "definition": [
+      "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1100,7 +1226,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "definition",
+    "label": [
+      "definition"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1108,7 +1236,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1121,7 +1251,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1135,7 +1267,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1149,7 +1283,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1163,7 +1299,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1176,7 +1314,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1230,7 +1370,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "obsolete_class",
+    "label": [
+      "obsolete_class"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1238,7 +1380,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1251,7 +1395,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1264,7 +1410,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1278,7 +1426,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1292,7 +1442,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1306,7 +1458,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1338,7 +1492,9 @@
     "definedBy": [
       "oio"
     ],
-    "definition": "Note that this is not a metaclass",
+    "definition": [
+      "Note that this is not a metaclass"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1363,7 +1519,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "obsolete_property",
+    "label": [
+      "obsolete_property"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1371,7 +1529,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1384,7 +1544,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1397,7 +1559,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1411,7 +1575,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1425,7 +1591,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1439,7 +1607,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1452,7 +1622,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1537,7 +1709,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subset",
+    "label": [
+      "subset"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1545,7 +1719,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1558,7 +1734,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1571,7 +1749,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "synonym",
+        "label": [
+          "synonym"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1584,7 +1764,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1598,7 +1780,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1612,7 +1796,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_narrow_synonym",
+        "label": [
+          "has_narrow_synonym"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1626,7 +1812,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_related_synonym",
+        "label": [
+          "has_related_synonym"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1640,7 +1828,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1654,7 +1844,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1739,7 +1931,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subset_property",
+    "label": [
+      "subset_property"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1747,7 +1941,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1760,7 +1956,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1773,7 +1971,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1787,7 +1987,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1801,7 +2003,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1815,7 +2019,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1848,7 +2054,9 @@
     "definedBy": [
       "oio"
     ],
-    "definition": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "definition": [
+      "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -1873,7 +2081,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "synonym",
+    "label": [
+      "synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -1881,7 +2091,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1894,7 +2106,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -1907,7 +2121,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -1921,7 +2137,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1935,7 +2153,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -1949,7 +2169,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1962,7 +2184,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2005,7 +2229,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "synonym_type",
+    "label": [
+      "synonym_type"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
@@ -2013,7 +2239,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2062,7 +2290,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "synonym_type_property",
+    "label": [
+      "synonym_type_property"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2070,7 +2300,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2083,7 +2315,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2096,7 +2330,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2110,7 +2346,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2124,7 +2362,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2138,7 +2378,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2199,7 +2441,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "consider",
+    "label": [
+      "consider"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2207,7 +2451,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2220,7 +2466,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2233,7 +2481,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2247,7 +2497,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2261,7 +2513,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2275,7 +2529,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2341,7 +2597,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_alternative_id",
+    "label": [
+      "has_alternative_id"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2349,7 +2607,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2362,7 +2622,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2375,7 +2637,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2389,7 +2653,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2403,7 +2669,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2417,7 +2685,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2472,7 +2742,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_date",
+    "label": [
+      "has_date"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2480,7 +2752,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2493,7 +2767,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2507,7 +2783,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2521,7 +2799,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2571,7 +2851,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_default_namespace",
+    "label": [
+      "has_default_namespace"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2579,7 +2861,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2592,7 +2876,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2606,7 +2892,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2620,7 +2908,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2648,7 +2938,9 @@
     "definedBy": [
       "oio"
     ],
-    "definition": "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string",
+    "definition": [
+      "we are forced to use the n-ary relation pattern in OWL1.0. For OWL2 we may make this a direct axiom between a class and the string"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2679,7 +2971,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_definition",
+    "label": [
+      "has_definition"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2687,7 +2981,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2700,7 +2996,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2713,7 +3011,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2727,7 +3027,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2741,7 +3043,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -2754,7 +3058,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2820,7 +3126,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_obo_namespace",
+    "label": [
+      "has_obo_namespace"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2828,7 +3136,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2841,7 +3151,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2854,7 +3166,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -2868,7 +3182,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2882,7 +3198,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -2896,7 +3214,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -2956,7 +3276,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_subset",
+    "label": [
+      "has_subset"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -2964,7 +3286,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2977,7 +3301,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -2990,7 +3316,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3004,7 +3332,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3018,7 +3348,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3032,7 +3364,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3065,7 +3399,9 @@
     "definedBy": [
       "oio"
     ],
-    "definition": "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL",
+    "definition": [
+      "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": true,
     "hasDirectParents": false,
@@ -3096,7 +3432,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_synonym",
+    "label": [
+      "has_synonym"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -3104,7 +3442,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3117,7 +3457,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3130,7 +3472,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3144,7 +3488,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3158,7 +3504,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3172,7 +3520,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -3185,7 +3535,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3234,7 +3586,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_URI",
+    "label": [
+      "has_URI"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
@@ -3242,7 +3596,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3287,7 +3643,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "has_version",
+    "label": [
+      "has_version"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -3295,7 +3653,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3308,7 +3668,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3322,7 +3684,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3336,7 +3700,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3391,7 +3757,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "is_cyclic",
+    "label": [
+      "is_cyclic"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -3399,7 +3767,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3412,7 +3782,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3425,7 +3797,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3439,7 +3813,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3453,7 +3829,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3467,7 +3845,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3528,7 +3908,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "replaced_by",
+    "label": [
+      "replaced_by"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -3536,7 +3918,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3549,7 +3933,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "definition",
+        "label": [
+          "definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3562,7 +3948,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3576,7 +3964,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_definition",
+        "label": [
+          "has_definition"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3590,7 +3980,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3604,7 +3996,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -3659,7 +4053,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "saved_by",
+    "label": [
+      "saved_by"
+    ],
     "linkedEntities": {
       "http://www.geneontology.org/formats/oboInOwl#DbXref": {
         "curie": "OIO:DbXref",
@@ -3667,7 +4063,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "database_cross_reference",
+        "label": [
+          "database_cross_reference"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -3680,7 +4078,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_dbxref",
+        "label": [
+          "has_dbxref"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
@@ -3694,7 +4094,9 @@
           "oio"
         ],
         "hasLocalDefinition": true,
-        "label": "has_URI",
+        "label": [
+          "has_URI"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "annotationProperty",
@@ -3708,7 +4110,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": false,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",

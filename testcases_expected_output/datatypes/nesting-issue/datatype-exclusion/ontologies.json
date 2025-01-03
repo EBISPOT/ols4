@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -47,12 +49,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -95,12 +91,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Dummy"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dummy"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -196,12 +194,14 @@
                   },
                   "imported": false,
                   "isObsolete": false,
-                  "label": {
-                    "type": [
-                      "literal"
-                    ],
-                    "value": "personAge"
-                  },
+                  "label": [
+                    {
+                      "type": [
+                        "literal"
+                      ],
+                      "value": "personAge"
+                    }
+                  ],
                   "numDescendants": 0,
                   "numHierarchicalDescendants": 0,
                   "shortForm": {
@@ -258,12 +258,14 @@
                         },
                         "imported": false,
                         "isObsolete": false,
-                        "label": {
-                          "type": [
-                            "literal"
-                          ],
-                          "value": "personAge"
-                        },
+                        "label": [
+                          {
+                            "type": [
+                              "literal"
+                            ],
+                            "value": "personAge"
+                          }
+                        ],
                         "numDescendants": 0,
                         "numHierarchicalDescendants": 0,
                         "shortForm": {
@@ -299,12 +301,14 @@
                     },
                     "imported": false,
                     "isObsolete": false,
-                    "label": {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "minorAge"
-                    },
+                    "label": [
+                      {
+                        "type": [
+                          "literal"
+                        ],
+                        "value": "minorAge"
+                      }
+                    ],
                     "numDescendants": 0,
                     "numHierarchicalDescendants": 0,
                     "shortForm": {
@@ -321,12 +325,14 @@
             },
             "imported": false,
             "isObsolete": false,
-            "label": {
-              "type": [
-                "literal"
-              ],
-              "value": "majorAge"
-            },
+            "label": [
+              {
+                "type": [
+                  "literal"
+                ],
+                "value": "majorAge"
+              }
+            ],
             "numDescendants": 0,
             "numHierarchicalDescendants": 0,
             "shortForm": {
@@ -339,12 +345,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "ageOfAdult"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ageOfAdult"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

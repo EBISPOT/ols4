@@ -55,11 +55,11 @@
     "graph": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000104/graph"
     },
-    "has_part": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000104/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
-    },
     "ends_with": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000104/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002230"
+    },
+    "has_part": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000104/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
     }
   }
 }

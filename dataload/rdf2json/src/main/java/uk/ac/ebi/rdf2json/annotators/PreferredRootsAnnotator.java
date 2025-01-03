@@ -4,17 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.properties.PropertyValue;
-import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
-import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
+import uk.ac.ebi.rdf2json.properties.*;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.IS_PREFERRED_ROOT;
+import static uk.ac.ebi.ols.shared.DefinedFields.PREFERRED_ROOT;
 
 public class PreferredRootsAnnotator {
     private static final Logger logger = LoggerFactory.getLogger(PreferredRootsAnnotator.class);
@@ -51,8 +47,13 @@ public class PreferredRootsAnnotator {
 
         Set<String> preferredRoots = getPreferredRoots(graph);
 
+        List<PropertyValueURI> listOfUris = new ArrayList<>();
+
         for(String root : preferredRoots)
-            graph.ontologyNode.properties.addProperty("hasPreferredRoot", PropertyValueURI.fromUri(root));
+            listOfUris.add(PropertyValueURI.fromUri(root));
+
+        if (listOfUris.size() > 0)
+            graph.ontologyNode.properties.addProperty(PREFERRED_ROOT.getText(), new PropertyValueList(listOfUris));
 
         for(String id : graph.nodes.keySet()) {
             OntologyNode c = graph.nodes.get(id);

@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.LABEL;
 
 public class LabelAnnotator {
 
@@ -37,7 +37,7 @@ public class LabelAnnotator {
     }
 
     public static void annotateLabels(OntologyGraph graph) {
-        collateProperties(graph, "label", getLabelProperties(graph), List.of("shortForm"));
+        collateProperties(graph, LABEL.getText(), getLabelProperties(graph), List.of("shortForm"));
     }
 
     private static void collateProperties(OntologyGraph graph, String destProp, Collection<String> sourceProps, Collection<String> fallbackProps) {
@@ -53,14 +53,27 @@ public class LabelAnnotator {
 
             boolean hasEnglishValue = false;
 
+            List<PropertyValueLiteral> labels = new ArrayList<>();
+
             for(String prop : sourceProps) {
                 List<PropertyValue> values = c.properties.getPropertyValues(prop);
                 if(values != null) {
                     for(PropertyValue value : values) {
-                        c.properties.addProperty(destProp, value);
-                        if(!isNonEnglishValue(graph, value))
-                            hasEnglishValue = true;
+                        if (value.getType() == PropertyValue.Type.LITERAL) {
+                            labels.add((PropertyValueLiteral) value);
+                            if (!isNonEnglishValue(graph, value))
+                                hasEnglishValue = true;
+                        } else if (value.getType() == PropertyValue.Type.LIST) {
+                            for (PropertyValue propertyValue: ((PropertyValueList)value).getPropertyValues()) {
+                                if (propertyValue.getType() == PropertyValue.Type.LITERAL) {
+                                    labels.add((PropertyValueLiteral) propertyValue);
+                                    if (!isNonEnglishValue(graph, propertyValue))
+                                        hasEnglishValue = true;
+                                }
+                            }
+                        }
                     }
+
                 }
             }
 
@@ -69,11 +82,23 @@ public class LabelAnnotator {
                     List<PropertyValue> values = c.properties.getPropertyValues(prop);
                     if (values != null) {
                         for (PropertyValue value : values) {
-                            c.properties.addProperty(destProp, value);
+                            if (value.getType() == PropertyValue.Type.LITERAL) {
+                                labels.add((PropertyValueLiteral) value);
+                            } else if (value.getType() == PropertyValue.Type.LIST) {
+                                for (PropertyValue propertyValue: ((PropertyValueList)value).getPropertyValues()) {
+                                    if (propertyValue.getType() == PropertyValue.Type.LITERAL) {
+                                        labels.add((PropertyValueLiteral) propertyValue);
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
             }
+
+            if (labels.size()>0)
+                c.properties.addProperty(destProp, new PropertyValueList(labels));
         }
 
         long endTime3 = System.nanoTime();

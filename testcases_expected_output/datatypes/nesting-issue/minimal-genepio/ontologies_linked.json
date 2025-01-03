@@ -14,12 +14,14 @@
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -48,12 +50,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -102,12 +98,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "GENEPIO_0002113"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GENEPIO_0002113"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -128,17 +126,19 @@
             ],
             "value": "genepio"
           },
-          "relatedTo": {
-            "property": "http://purl.obolibrary.org/obo/OBI_0002135",
-            "value": "http://www.w3.org/2001/XMLSchema#dateTime",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0002135",
-            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.w3.org/2001/XMLSchema#dateTime",
-            "isObsolete": false
-          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0002135",
+              "value": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0002135",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [

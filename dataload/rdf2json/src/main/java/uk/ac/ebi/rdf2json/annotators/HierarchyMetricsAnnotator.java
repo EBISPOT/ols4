@@ -12,8 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static uk.ac.ebi.ols.shared.DefinedFields.NUM_DESCENDANTS;
-import static uk.ac.ebi.ols.shared.DefinedFields.NUM_HIERARCHICAL_DESCENDANTS;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class HierarchyMetricsAnnotator {
 
@@ -23,10 +22,10 @@ public class HierarchyMetricsAnnotator {
 
         long startTime3 = System.nanoTime();
 
-        annotateHierarchyMetrics(graph, "directParent", NUM_DESCENDANTS.getText());
+        annotateHierarchyMetrics(graph, DIRECT_PARENT.getText(), NUM_DESCENDANTS.getText());
         System.gc();
 
-        annotateHierarchyMetrics(graph, "hierarchicalParent", NUM_HIERARCHICAL_DESCENDANTS.getText());
+        annotateHierarchyMetrics(graph, HIERARCHICAL_PARENT.getText(), NUM_HIERARCHICAL_DESCENDANTS.getText());
         System.gc();
 
         long endTime3 = System.nanoTime();

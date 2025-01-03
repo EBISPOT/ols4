@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -64,31 +65,69 @@ public class V1SearchController {
 
     @RequestMapping(path = "/api/search", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void search(
-            @RequestParam("q") String query,
+            @RequestParam("q")
+            @Parameter(name = "q",
+                    description = "The terms to search. By default the search is performed over term labels, synonyms, descriptions, identifiers and annotation properties.",
+                    example = "disease or liver+disease") String query,
             @RequestParam(value = "schema", required = false) Collection<String> schemas,
             @RequestParam(value = "classification", required = false) Collection<String> classifications,
-            @RequestParam(value = "ontology", required = false) Collection<String> ontologies,
+            @RequestParam(value = "ontology", required = false)
+            @Parameter(name = "ontology",
+                    description = "Restrict a search to a set of ontologies e.g. ontology=efo,bfo",
+                    example = "efo,bfo") Collection<String> ontologies,
             @Parameter(description = "Set to true (default setting is false) for intersection (default behavior is union) of classifications.")
             @RequestParam(value = "exclusive", required = false, defaultValue = "false") boolean exclusive,
             @Parameter(description = "Use License option to filter based on license.label, license.logo and license.url variables. " +
                     "Use Composite Option to filter based on the objects (i.e. collection, subject) within the classifications variable. " +
                     "Use Linear option to filter based on String and Collection<String> based variables.")
             @RequestParam(value = "option", required = false, defaultValue = "LINEAR") FilterOption filterOption,
-            @RequestParam(value = "type", required = false) Collection<String> types,
-            @RequestParam(value = "slim", required = false) Collection<String> slims,
-            @RequestParam(value = "fieldList", required = false) Collection<String> fieldList,
-            @RequestParam(value = "queryFields", required = false) Collection<String> queryFields,
-            @RequestParam(value = "exact", required = false) boolean exact,
-            @RequestParam(value = "groupField", required = false) String groupField,
-            @RequestParam(value = "obsoletes", defaultValue = "false") boolean queryObsoletes,
-            @RequestParam(value = "local", defaultValue = "false") boolean isLocal,
-            @RequestParam(value = "childrenOf", required = false) Collection<String> childrenOf,
-            @RequestParam(value = "allChildrenOf", required = false) Collection<String> allChildrenOf,
+            @RequestParam(value = "type", required = false)
+            @Parameter(name = "type",
+                    description = "Restrict a search to an entity type, one of {class,property,individual,ontology}",
+                    example = "class,property") Collection<String> types,
+            @RequestParam(value = "slim", required = false)
+            @Parameter(name = "slim",
+                    description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
+            @RequestParam(value = "fieldList", required = false)
+            @Parameter(name = "fieldList",
+                    description = "Specifcy the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type}",
+                    example = "iri,label,short_form,obo_id,ontology_name") Collection<String> fieldList,
+            @RequestParam(value = "queryFields", required = false)
+            @Parameter(name = "queryFields",
+                    description = "Specify the fields to query, the defaults are {label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
+                    example = "iri,label,short_form,ontology_name") Collection<String> queryFields,
+            @RequestParam(value = "exact", required = false)
+            @Parameter(name = "exact",
+                    description = "Set to true for exact matches",
+                    example = "false") boolean exact,
+            @RequestParam(value = "groupField", required = false)
+            @Parameter(name = "groupField",
+                    description = "Group results by unique id (IRI)",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421") String groupField,
+            @RequestParam(value = "obsoletes", defaultValue = "false")
+            @Parameter(name = "obsoletes",
+                    description = "Set to true to include obsoleted terms in the results",
+                    example = "false") boolean queryObsoletes,
+            @RequestParam(value = "local", defaultValue = "false")
+            @Parameter(name = "local",
+                    description = "Set to true to only return terms that are in a defining ontology e.g. Only return matches to gene ontology terms in the gene ontology, and exclude ontologies where those terms are also referenced",
+                    example = "false") boolean isLocal,
+            @RequestParam(value = "childrenOf", required = false)
+            @Parameter(name = "childrenOf",
+                    description = "You can restrict a search to children of a given term. Supply a list of IRI for the terms that you want to search under",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> childrenOf,
+            @RequestParam(value = "allChildrenOf", required = false)
+            @Parameter(name = "allChildrenOf",
+                    description = "You can restrict a search to all children of a given term. Supply a list of IRI for the terms that you want to search under (subclassOf/is-a plus any hierarchical/transitive properties like 'part of' or 'develops from')",
+                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> allChildrenOf,
             @RequestParam(value = "inclusive", required = false) boolean inclusive,
             @RequestParam(value = "isLeaf", required = false) boolean isLeaf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
-            @RequestParam(value = "format", defaultValue = "json") String format,
+            @RequestParam(value = "format", defaultValue = "json")
+            @Parameter(name = "format",
+                    description = "You can select the format you want the response in. Default is `json` but you can select xml, csv etc. Full list of acceptable value can be found here: https://solr.apache.org/guide/solr/latest/query-guide/response-writers.html")
+            String format,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
@@ -100,21 +139,22 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                String[] fields = {"label_s", "synonym_s", "short_form_s", "obo_id_s", "iri_s", "annotations_trimmed"};
-                solrQuery.setQuery(
-                        "((" +
-                                createUnionQuery(query.toLowerCase(), SolrFieldMapper.mapFieldsList(List.of(fields))
-                                        .toArray(new String[0]), true)
-                                + ") AND ("+ IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100 OR " +
-                                IS_DEFINING_ONTOLOGY.getText() + ":false^0))"
-                );
-
+                solrQuery.set("defType", "edismax");
+                solrQuery.setQuery(query.toLowerCase());
+                // Specify the query fields with boosting
+                String[] fields = {LABEL.getText()+"_s^5", SYNONYM.getText()+"_s^3", "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
+                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
+                // Boost exact phrase matches in label and synonym fields
+                solrQuery.set("pf", "lowercase_label^10 lowercase_synonym^5");
+                // Set minimum match to require all terms in the phrase to match
+                solrQuery.set("mm", "100%");
+                // Add boost query to prioritize defining ontologies
+                solrQuery.set("bq", IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100");
             } else {
-
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {"label^5", "synonym^3", "definition", "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"^5", SYNONYM.getText()+"^3", DEFINITION.getText(), "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
@@ -178,9 +218,10 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(" + HIERARCHICAL_ANCESTOR.getText()+
+                        ": (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText() + ": (" + result + ")");
             }
 
         }
@@ -191,9 +232,10 @@ public class V1SearchController {
                     .collect(Collectors.joining(" OR "));
 
             if (inclusive) {
-                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter(hierarchicalAncestor: (" + result + "))");
+                solrQuery.addFilterQuery("filter( iri: (" + result + ")) filter("+ HIERARCHICAL_ANCESTOR.getText()+
+                        ": (" + result + "))");
             } else {
-                solrQuery.addFilterQuery("hierarchicalAncestor: (" + result + ")");
+                solrQuery.addFilterQuery(HIERARCHICAL_ANCESTOR.getText()+": (" + result + ")");
             }
         }
 
@@ -254,8 +296,8 @@ public class V1SearchController {
                 fieldList.add("id");
                 fieldList.add("iri");
                 fieldList.add("ontology_name");
-                fieldList.add("label");
-                fieldList.add("description");
+                fieldList.add(LABEL.getText());
+                fieldList.add(DEFINITION.getOls3Text());
                 fieldList.add("short_form");
                 fieldList.add("obo_id");
                 fieldList.add("type");
@@ -265,13 +307,14 @@ public class V1SearchController {
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
             if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
             if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
-            if (fieldList.contains("label")) {
-                var label = outDoc.put("label", JsonHelper.getString(json, "label"));
+            if (fieldList.contains(LABEL.getText())) {
+                var label = outDoc.put(LABEL.getText(), JsonHelper.getString(json, LABEL.getText()));
                 if(label!=null) {
-                    outDoc.put("label", label);
+                    outDoc.put(LABEL.getText(), label);
                 }
             }
-            if (fieldList.contains("description")) outDoc.put("description", JsonHelper.getStrings(json, "definition"));
+            if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
+                    JsonHelper.getStrings(json, DEFINITION.getText()));
             if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
             if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
             if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
@@ -280,7 +323,7 @@ public class V1SearchController {
             if (fieldList.contains("type")) {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
-            if (fieldList.contains("synonym")) outDoc.put("synonym", JsonHelper.getStrings(json, "synonym"));
+            if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
             if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));
@@ -342,11 +385,11 @@ public class V1SearchController {
 		/**
 		 * Fix: Start
 		 * issue - https://github.com/TIBHannover/ols4/issues/78
-		 * 
+		 *
 		 */
 		if(qr.getExpandedResults() != null && qr.getExpandedResults().size() > 0)
 			responseObj.put("expanded", parseExpandedSolrResults(qr.getExpandedResults(), fieldList, lang));
-		
+
 		/**
 		 * Fix: End
 		 */
@@ -355,7 +398,7 @@ public class V1SearchController {
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
     }
-    
+
     private Map<String,Object> parseExpandedSolrResults(Map<String, SolrDocumentList> expandedResults, Collection<String> fieldList,
 			String lang) {
     	Map<String, Object> result = new HashMap<>();

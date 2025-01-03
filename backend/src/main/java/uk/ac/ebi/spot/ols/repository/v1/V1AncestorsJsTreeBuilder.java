@@ -80,7 +80,7 @@ public class V1AncestorsJsTreeBuilder {
         }
 
         jstreeEntry.put("iri", entityIri);
-        jstreeEntry.put("text", JsonHelper.getString(entity, "label"));
+        jstreeEntry.put("text", JsonHelper.getString(entity, LABEL.getText()));
 
         Collection<String> childIris = entityIriToChildIris.get(entityIri);
 

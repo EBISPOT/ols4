@@ -1,9 +1,14 @@
 package uk.ac.ebi.rdf2json.annotators;
-import java.util.*;
+
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.OntologyNode;
-import uk.ac.ebi.rdf2json.annotators.helpers.PropertyCollator;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
+import uk.ac.ebi.rdf2json.properties.PropertyValueList;
+import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
+
+import java.util.*;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.DEFINITION;
 
 public class DefinitionAnnotator {
 
@@ -28,10 +33,11 @@ public class DefinitionAnnotator {
 	}
 
 	public static void annotateDefinitions(OntologyGraph graph) {
-		collateProperties(graph, "definition", getDefinitionProperties(graph));
+		collateProperties(graph, DEFINITION.getText(), getDefinitionProperties(graph));
 	}
 
 	private static void collateProperties(OntologyGraph graph, String destProp, Collection<String> sourceProps) {
+
 
 		for(String id : graph.nodes.keySet()) {
 			OntologyNode c = graph.nodes.get(id);
@@ -40,14 +46,17 @@ public class DefinitionAnnotator {
 			if(c.uri == null)
 				continue;
 
+			List<PropertyValue> listOfValues = new ArrayList<>();
 			for(String prop : sourceProps) {
 				List<PropertyValue> values = c.properties.getPropertyValues(prop);
 				if(values != null) {
 					for(PropertyValue value : values) {
-						c.properties.addProperty(destProp, value);
+						listOfValues.add(value);
 					}
 				}
 			}
+			if (listOfValues.size() > 0)
+				c.properties.addProperty(destProp, new PropertyValueList(listOfValues));
 		}
 
 	}

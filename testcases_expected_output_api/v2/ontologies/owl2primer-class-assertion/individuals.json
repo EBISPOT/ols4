@@ -4,8 +4,12 @@
       "owl2primer-class-assertion"
     ],
     "curie": "Mary",
-    "directAncestor": "http://example.com/owl2primer#Person",
-    "directParent": "http://example.com/owl2primer#Person",
+    "directAncestor": [
+      "http://example.com/owl2primer#Person"
+    ],
+    "directParent": [
+      "http://example.com/owl2primer#Person"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -18,12 +22,16 @@
     "iri": "http://example.com/owl2primer#Mary",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Mary",
+    "label": [
+      "Mary"
+    ],
     "linkedEntities": {
       "http://example.com/owl2primer#Person": {
         "curie": "Person",
         "hasLocalDefinition": true,
-        "label": "Person",
+        "label": [
+          "Person"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

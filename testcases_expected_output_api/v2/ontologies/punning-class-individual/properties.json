@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "commonlyHasUnit",
+    "label": [
+      "commonlyHasUnit"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
         "curie": "Quantity",
         "hasLocalDefinition": true,
-        "label": "Quantity",
+        "label": [
+          "Quantity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

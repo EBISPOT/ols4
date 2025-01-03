@@ -13,12 +13,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "Jack",
+    "label": [
+      "Jack"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": {
         "curie": "hasAge",
         "hasLocalDefinition": true,
-        "label": "hasAge",
+        "label": [
+          "hasAge"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",

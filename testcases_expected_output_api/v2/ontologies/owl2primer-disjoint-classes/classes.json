@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Man",
+    "label": [
+      "Man"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": {
         "curie": "Woman",
         "hasLocalDefinition": true,
-        "label": "Woman",
+        "label": [
+          "Woman"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -56,12 +60,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Woman",
+    "label": [
+      "Woman"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man": {
         "curie": "Man",
         "hasLocalDefinition": true,
-        "label": "Man",
+        "label": [
+          "Man"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",

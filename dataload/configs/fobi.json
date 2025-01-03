@@ -1,0 +1,66 @@
+{
+  "name": "OBO Foundry",
+  "title": "The OBO Foundry",
+  "markdown": "kramdown",
+  "highlighter": "rouge",
+  "baseurl": "/",
+  "imgurl": "/images",
+  "repo": "https://github.com/OBOFoundry/OBOFoundry.github.io/",
+  "repo_src": "https://github.com/OBOFoundry/OBOFoundry.github.io/blob/master/",
+  "author": {
+    "name": "OBO Technical WG"
+  },
+  "ontologies": [
+
+    {
+      "activity_status": "active",
+      "contact": {
+        "email": "polcaes@gmail.com",
+        "github": "pcastellanoescuder",
+        "label": "Pol Castellano Escuder",
+        "orcid": "0000-0001-6466-877X"
+      },
+      "dependencies": [
+        {
+          "id": "chebi"
+        },
+        {
+          "id": "foodon"
+        }
+      ],
+      "description": "FOBI (Food-Biomarker Ontology) is an ontology to represent food intake data and associate it with metabolomic data",
+      "domain": "diet, metabolomics, and nutrition",
+      "homepage": "https://github.com/pcastellanoescuder/FoodBiomarkerOntology",
+      "id": "fobi",
+      "layout": "ontology_detail",
+      "license": {
+        "label": "CC BY 3.0",
+        "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
+        "url": "http://creativecommons.org/licenses/by/3.0/"
+      },
+      "ontology_purl": "http://purl.obolibrary.org/obo/fobi.owl",
+      "preferredPrefix": "FOBI",
+      "products": [
+        {
+          "format": "owl-rdf/xml",
+          "id": "fobi.owl",
+          "ontology_purl": "http://purl.obolibrary.org/obo/fobi.owl",
+          "title": "FOBI is an ontology to represent food intake data and associate it with metabolomic data"
+        }
+      ],
+      "publications": [
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/32556148",
+          "title": "FOBI: an ontology to represent food intake data and associate it with metabolomic data"
+        },
+        {
+          "id": "https://www.ncbi.nlm.nih.gov/pubmed/34601570",
+          "title": "The fobitools framework: the first steps towards food enrichment analysis"
+        }
+      ],
+      "repository": "https://github.com/pcastellanoescuder/FoodBiomarkerOntology",
+      "title": "Food-Biomarker Ontology",
+      "tracker": "https://github.com/pcastellanoescuder/FoodBiomarkerOntology/issues"
+    }
+  ]
+}
