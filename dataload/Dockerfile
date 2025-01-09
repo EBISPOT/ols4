@@ -27,9 +27,9 @@ RUN cd /opt/ols/dataload &&  mvn package
 # and Solr servers are the standard images specified in docker-compose.yml
 #
 
-RUN if [ ! -f "/opt/ols/dataload/neo4j-community-5.25.1-unix.tar.gz" ];  \
-    then mkdir /opt/neo4j && curl https://dist.neo4j.org/neo4j-community-5.25.1-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j;  \
-    else mkdir /opt/neo4j && tar -xz -f /opt/ols/dataload/neo4j-community-5.25.1-unix.tar.gz --strip-components=1 -C /opt/neo4j; fi
+RUN if [ ! -f "/opt/ols/dataload/neo4j-community-5.26.0-unix.tar.gz" ];  \
+    then mkdir /opt/neo4j && curl https://dist.neo4j.org/neo4j-community-5.26.0-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j;  \
+    else mkdir /opt/neo4j && tar -xz -f /opt/ols/dataload/neo4j-community-5.26.0-unix.tar.gz --strip-components=1 -C /opt/neo4j; fi
 
 RUN if [ ! -f "/opt/ols/dataload/solr-9.7.0.tgz" ];  \
     then mkdir /opt/solr && curl https://archive.apache.org/dist/solr/solr/9.7.0/solr-9.7.0.tgz | tar -xz --strip-components=1 -C /opt/solr;  \

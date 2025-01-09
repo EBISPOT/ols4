@@ -17,7 +17,7 @@ services:
           #- ./docker_out:/tmp/out:rw
       command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS:-}
     mongo:
-      image: mongo:3.4.24
+      image: mongo:8.0.4
       ports:
           - 27017:27017
       volumes:
@@ -37,7 +37,7 @@ services:
         ols4-dataload:
           condition: service_completed_successfully
     ols4-neo4j:
-      image: neo4j:5.25.1-community
+      image: neo4j:5.26.0-community
       ports:
         - 7474:7474
         - 7687:7687
