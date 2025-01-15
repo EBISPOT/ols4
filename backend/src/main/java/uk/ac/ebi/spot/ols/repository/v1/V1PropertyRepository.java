@@ -103,6 +103,8 @@ public class V1PropertyRepository {
 
         if(!obsolete)
             query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
+        else
+            query.addFilter(IS_OBSOLETE.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
         return solrClient.searchSolrPaginated(query, pageable)
                 .map(result -> V1PropertyMapper.mapProperty(result, lang));

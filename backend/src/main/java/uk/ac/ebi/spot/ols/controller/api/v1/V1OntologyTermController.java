@@ -66,7 +66,7 @@ public class V1OntologyTermController {
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;
-    
+
     @Autowired
     V1JsTreeRepositoryExtn jsTreeRepositoryExtn;
 
@@ -154,15 +154,15 @@ public class V1OntologyTermController {
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
                     example = "duo") String ontologyId,
-            @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
-              boolean includeObsoletes,
+            @RequestParam(value = "obsoletes", defaultValue = "false", required = false)
+              boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
-        Page<V1Term> roots = termRepository.getRoots(ontologyId, includeObsoletes, lang, pageable);
+        Page<V1Term> roots = termRepository.getRoots(ontologyId, obsoletes, lang, pageable);
         if (roots == null)
           throw new ResourceNotFoundException("No roots could be found for " + ontologyId );
         return new ResponseEntity<>( assembler.toModel(roots, termAssembler), HttpStatus.OK);
@@ -933,7 +933,7 @@ public class V1OntologyTermController {
     public void handleError(HttpServletRequest req, Exception exception) {
 
     }
-    
+
     private static String decodeUrl(String url) {
         if(url.contains("%") || url.contains("+"))
         {

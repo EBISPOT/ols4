@@ -45,7 +45,7 @@ public class V1OntologyPropertyController {
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;
-    
+
     @Autowired
     V1JsTreeRepositoryExtn jsTreeRepositoryExtn;
 
@@ -109,16 +109,16 @@ public class V1OntologyPropertyController {
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
                     example = "duo") String ontologyId,
             @RequestParam(value = "includeObsoletes", defaultValue = "false", required = false)
-            @Parameter(name = "includeObsoletes",
+            @Parameter(name = "obsoletes",
                        description = "A boolean flag to get Obsolete terms",
-                       example = "true") boolean includeObsoletes,
+                       example = "true") boolean obsoletes,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler
     ) throws ResourceNotFoundException {
         ontologyId = ontologyId.toLowerCase();
 
-        Page<V1Property> roots = propertyRepository.getRoots(ontologyId, includeObsoletes, lang, pageable);
+        Page<V1Property> roots = propertyRepository.getRoots(ontologyId, obsoletes, lang, pageable);
         if (roots == null) throw  new ResourceNotFoundException();
         return new ResponseEntity<>( assembler.toModel(roots, termAssembler), HttpStatus.OK);
     }
