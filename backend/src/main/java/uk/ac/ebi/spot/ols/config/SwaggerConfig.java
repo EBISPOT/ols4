@@ -13,7 +13,7 @@ import javax.servlet.ServletContext;
 @Configuration
 public class SwaggerConfig {
 
-    private final String OLS4_SERVER_URL = "https://www.ebi.ac.uk/ols4";
+    private final String OLS4_SERVER_URL = "https://api.terminology.tib.eu";
 
     @Lazy
     @Bean
@@ -22,10 +22,10 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .addServersItem(new Server().url(serverUrl))
                 .info(new Info()
-                        .title("OLS Service")
-                        .description("REST API for OLS")
-                        .version("3.0")
-                        .termsOfService("https://www.ebi.ac.uk/about/terms-of-use/")
+                        .title("TIB Terminology Service")
+                        .description("REST API for OLS4")
+                        .version("4.0")
+                        .termsOfService("https://www.tib.eu/en/terms-of-use")
                         .license(new License()
                                 .name("CC0 1.0 Universal (CC0 1.0) Public Domain Dedication")
                                 .url("https://creativecommons.org/publicdomain/zero/1.0/")
@@ -34,3 +34,4 @@ public class SwaggerConfig {
     }
 
 }
+
