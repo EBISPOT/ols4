@@ -30,6 +30,7 @@ public class LabelAnnotator {
         Object configLabelProperties = graph.config.get("label_property");
 
         if(configLabelProperties instanceof Collection<?>) {
+            labelProperties.clear();
             labelProperties.addAll((Collection<String>) configLabelProperties);
         }
 
