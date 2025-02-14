@@ -24,12 +24,14 @@ export default function IndividualPropertyAssertionsSection({
   let objectProperties = propertyIris.filter(
     (k) =>
         linkedEntities.get(k) &&
+        linkedEntities.get(k)!.type &&
         linkedEntities.get(k)!.type.indexOf("objectProperty") !== -1
   );
 
   let dataProperties = propertyIris.filter(
     (k) =>
         linkedEntities.get(k) &&
+        linkedEntities.get(k)!.type &&
         linkedEntities.get(k)!.type.indexOf("dataProperty") !== -1
   );
 
