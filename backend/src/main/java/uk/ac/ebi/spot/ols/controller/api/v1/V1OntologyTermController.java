@@ -86,8 +86,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -590,7 +590,7 @@ public class V1OntologyTermController {
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the property, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FBFO_0000051") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String termId,
             @PathVariable("nodeid")
             @Parameter(name = "nodeid",
                     description = "This is the id of the node in the jstree of ontology specified by {onto} parameter",
@@ -670,8 +670,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -708,8 +708,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -746,8 +746,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -784,8 +784,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -822,8 +822,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -860,8 +860,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -898,8 +898,8 @@ public class V1OntologyTermController {
                     example = "duo") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",

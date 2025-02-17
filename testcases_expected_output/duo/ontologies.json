@@ -38,7 +38,7 @@
         "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
         "url": "http://creativecommons.org/licenses/by/4.0/"
       },
-      "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl",
+      "ontologyPurl": "http://purl.obolibrary.org/obo/duo.owl",
       "preferredPrefix": "DUO",
       "products": [
         {
@@ -5728,6 +5728,34 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/IAO_0000219",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000402",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+              "http://www.w3.org/2002/07/owl#intersectionOf": [
+                "http://purl.obolibrary.org/obo/BFO_0000018",
+                {
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000009",
+                  "isObsolete": false
+                }
+              ]
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/IAO_0000219",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000400",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000219",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000018",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/IAO_0000219",
               "value": "http://purl.obolibrary.org/obo/IAO_0000403",
               "type": [
                 "related"
@@ -5759,34 +5787,6 @@
                   "isObsolete": false
                 }
               ]
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/IAO_0000219",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000402",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#intersectionOf": [
-                "http://purl.obolibrary.org/obo/BFO_0000018",
-                {
-                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000009",
-                  "isObsolete": false
-                }
-              ]
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/IAO_0000219",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000400",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000219",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000018",
-              "isObsolete": false
             }
           ],
           "searchableAnnotationValues": [
@@ -19980,17 +19980,6 @@
           },
           "relatedFrom": [
             {
-              "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000316",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/BFO_0000051",
               "value": "http://purl.obolibrary.org/obo/IAO_0000104",
               "type": [
@@ -19998,6 +19987,17 @@
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/IAO_0000136",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000316",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
               "isObsolete": false
             }
@@ -23570,7 +23570,7 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000572",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
               "type": [
                 "related"
               ],
@@ -23581,7 +23581,18 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000650",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000572",
               "type": [
                 "related"
               ],
@@ -23598,17 +23609,6 @@
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
-              "isObsolete": false
-            },
-            {
-              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000650",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
               "isObsolete": false
             },
@@ -35308,19 +35308,8 @@
           },
           "relatedFrom": [
             {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000314",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000301",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000315",
               "type": [
                 "related"
               ],
@@ -35342,12 +35331,23 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000315",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000301",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000314",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
               "isObsolete": false
             }
@@ -40928,17 +40928,6 @@
           },
           "relatedTo": [
             {
-              "property": "http://purl.obolibrary.org/obo/IAO_0000221",
-              "value": "http://purl.obolibrary.org/obo/PATO_0000122",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000221",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PATO_0000122",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/IAO_0000039",
               "value": "http://purl.obolibrary.org/obo/UO_0000001",
               "type": [
@@ -40947,6 +40936,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000039",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UO_0000001",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/IAO_0000221",
+              "value": "http://purl.obolibrary.org/obo/PATO_0000122",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000221",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PATO_0000122",
               "isObsolete": false
             }
           ],
@@ -42891,17 +42891,6 @@
           },
           "relatedTo": [
             {
-              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000030",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/OBI_0000299",
               "value": "http://purl.obolibrary.org/obo/IAO_0000310",
               "type": [
@@ -42910,6 +42899,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000030",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
               "isObsolete": false
             }
           ],
@@ -43367,17 +43367,6 @@
           },
           "relatedTo": [
             {
-              "property": "http://purl.obolibrary.org/obo/OBI_0000299",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000577",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/RO_0000057",
               "value": "http://purl.obolibrary.org/obo/IAO_0000579",
               "type": [
@@ -43386,6 +43375,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0000299",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000577",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
               "isObsolete": false
             }
           ],
@@ -43614,17 +43614,6 @@
               "isObsolete": false
             },
             {
-              "property": "http://purl.obolibrary.org/obo/RO_0000057",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000579",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/OBI_0000293",
               "value": "http://purl.obolibrary.org/obo/IAO_0000577",
               "type": [
@@ -43633,6 +43622,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/RO_0000057",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000579",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
               "isObsolete": false
             }
           ],
@@ -43987,17 +43987,6 @@
           },
           "relatedFrom": [
             {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000578",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/OBI_0000299",
               "value": "http://purl.obolibrary.org/obo/IAO_0000574",
               "type": [
@@ -44005,6 +43994,17 @@
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
               "isObsolete": false
             },
@@ -44020,13 +44020,13 @@
               "isObsolete": false
             },
             {
-              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
+              "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000578",
               "type": [
                 "related"
               ],
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
               "isObsolete": false
             }
@@ -44643,7 +44643,7 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/RO_0000057",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000574",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
               "type": [
                 "related"
               ],
@@ -44665,7 +44665,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/RO_0000057",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000575",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000574",
               "type": [
                 "related"
               ],
@@ -44950,17 +44950,6 @@
               "isObsolete": false
             },
             {
-              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000577",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
-              "isObsolete": false
-            },
-            {
               "property": "http://purl.obolibrary.org/obo/RO_0000057",
               "value": "http://purl.obolibrary.org/obo/IAO_0000579",
               "type": [
@@ -44969,6 +44958,17 @@
               "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
               "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
               "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
+              "isObsolete": false
+            },
+            {
+              "property": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000577",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000577",
               "isObsolete": false
             }
           ],
@@ -64661,7 +64661,7 @@
           "relatedFrom": [
             {
               "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000621",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000317",
               "type": [
                 "related"
               ],
@@ -64672,7 +64672,7 @@
             },
             {
               "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-              "value": "http://purl.obolibrary.org/obo/IAO_0000317",
+              "value": "http://purl.obolibrary.org/obo/IAO_0000621",
               "type": [
                 "related"
               ],

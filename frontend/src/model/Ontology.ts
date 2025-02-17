@@ -37,13 +37,13 @@ export default class Ontology extends Thing {
     return this.properties["depicted_by"] || undefined;
   }
   getOntologyPurl(): string {
-    return this.properties["ontology_purl"];
+    return this.properties["ontologyPurl"];
   }
   getHomepage(): string {
     return this.properties["homepage"];
   }
   getMailingList(): string {
-    return this.properties["mailing_list"];
+    return this.properties["mailingList"];
   }
   getTracker(): string {
     return this.properties["tracker"];
