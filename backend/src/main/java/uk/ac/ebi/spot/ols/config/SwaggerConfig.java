@@ -23,7 +23,7 @@ public class SwaggerConfig {
                 .addServersItem(new Server().url(serverUrl))
                 .info(new Info()
                         .title("TIB Terminology Service")
-                        .description("REST API for OLS4")
+                        .description("REST API for OLS4. Please see <a href='https://www.ebi.ac.uk/ols4/defined-response-fields' target='_blank'> this page</a> for defined response field in OLS.")
                         .version("4.0")
                         .termsOfService("https://www.tib.eu/en/terms-of-use")
                         .license(new License()

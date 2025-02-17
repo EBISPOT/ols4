@@ -263,6 +263,16 @@ export default function ClassExpression({
 	return <span children={res} />
   }
 
+    const nsType = expr["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
+    if (nsType) {
+        return (
+            <span>
+        <span className="text-neutral-default">
+            <ClassExpression currentEntity={currentEntity}   ontologyId={ontologyId} entityType={'properties'} expr={nsType} linkedEntities={linkedEntities} />
+        </span>
+      </span>
+        );
+    }
 
 
   ///

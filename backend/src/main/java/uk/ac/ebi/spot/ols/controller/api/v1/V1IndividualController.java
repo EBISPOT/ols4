@@ -56,7 +56,7 @@ public class V1IndividualController implements
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FGAZ_00043159") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -70,16 +70,16 @@ public class V1IndividualController implements
     HttpEntity<PagedModel<V1Individual>> getAllIndividuals(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the individual, this value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+                    description = "The IRI of the individual.",
+                    example = "http://purl.obolibrary.org/obo/GAZ_00043159") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the individual.",
-                    example = "IAO_0000124") String shortForm,
+                    example = "GAZ_00043159") String shortForm,
             @RequestParam(value = "obo_id", required = false)
             @Parameter(name = "obo_id",
                     description = "This refers to the OBO ID of the individual.",
-                    example = "IAO:0000124") String oboId,
+                    example = "GAZ:00043159") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -105,7 +105,7 @@ public class V1IndividualController implements
             @PathVariable("iri")
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String termId,
+                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOHD_0000363") String termId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {
@@ -123,15 +123,15 @@ public class V1IndividualController implements
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
                     description = "The IRI of the individual, this value must be double URL encoded",
-                    example = "http%3A%252F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000124") String iri,
+                    example = "http://purl.obolibrary.org/obo/OHD_0000363") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the individual.",
-                    example = "IAO_0000124") String shortForm,
+                    example = "OHD_0000363") String shortForm,
             @RequestParam(value = "obo_id", required = false)
             @Parameter(name = "obo_id",
                     description = "This refers to the OBO ID of the individual.",
-                    example = "IAO:0000124") String oboId,
+                    example = "OHD:0000363") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {

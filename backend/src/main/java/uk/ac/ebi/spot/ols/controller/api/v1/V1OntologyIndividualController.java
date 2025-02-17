@@ -65,16 +65,16 @@ public class V1OntologyIndividualController {
                     example = "iao") String ontologyId,
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param. This value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000103") String iri,
+                    description = "The IRI of the individual, this IRI should exist in the specified ontology by {onto} param.",
+                    example = "http://purl.obolibrary.org/obo/IAO_0000002") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the individual, it should exist in the specified ontology by {onto} param.",
-                    example = "IAO_0000124") String shortForm,
+                    example = "IAO_0000002") String shortForm,
             @RequestParam(value = "obo_id", required = false)
             @Parameter(name = "obo_id",
                     description = "This refers to the OBO ID of the individual, it should exist in the specified ontology by {onto} param.",
-                    example = "IAO:0000124") String oboId,
+                    example = "IAO:0000002") String oboId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @Parameter(hidden = true) Pageable pageable,
             @Parameter(hidden = true) PagedResourcesAssembler assembler) {

@@ -4,7 +4,7 @@
       "ontologyId": "related-somevaluesof-filleranonymousconjunction",
       "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
       "preferredPrefix": "related-someValuesOf-fillerAnonymousConjunction",
-      "ontology_purl": "./testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
+      "ontologyPurl": "./testcases/related/someValuesOf-fillerAnonymousConjunction.owl",
       "type": [
         "ontology"
       ],
@@ -146,7 +146,7 @@
           "relatedTo": [
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
               "type": [
                 "related"
               ],
@@ -158,7 +158,7 @@
             },
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
               "type": [
                 "related"
               ],

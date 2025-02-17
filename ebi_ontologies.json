@@ -1,8 +1,116 @@
 {
   "ontologies": [
     {
+      "id": "evora",
+      "ontology_purl": "https://raw.githubusercontent.com/EVORA-project/evora-ontology/refs/heads/main/models/owl/evora_ontology.owl.ttl"
+    },
+    {
+      "id": "ictv",
+      "ontology_purl": "https://raw.githubusercontent.com/EVORA-project/ictv-ontology/refs/heads/main/out/ictv_2023.owl.ttl"
+    },
+    {
       "id": "uniprotrdfs",
       "ontology_purl": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/core.owl"
+    },
+    {
+      "id": "dmba",
+      "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
+      "is_foundary": false,
+      "preferredPrefix": "DMBA",
+      "title": "Developing Mouse Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Mouse Brain Atlas (DMBA) StructureGraph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/dmbao",
+      "mailing_list": "cellsemantics@gmail.com",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": "https://purl.brain-bican.org/ontology/dmbao/DMBA_",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl"
+    },
+    {
+      "id": "mba",
+      "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
+      "is_foundary": false,
+      "preferredPrefix": "MBA",
+      "title": "Mouse Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/mbao/mbao.owl",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Mouse Brain Atlas (MBA) StructureGraph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/mbao",
+      "mailing_list": "cellsemantics@gmail.com",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": "https://purl.brain-bican.org/ontology/mbao/MBA_",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/mbao/mbao.owl"
+    },
+    {
+      "id": "emi",
+      "creator": [
+        "Tarcisio Mendes de Farias",
+        "Luca Cappelletti",
+        "Marco Pagni",
+        "Arnaud Gaudry",
+        "Florence Mehl",
+        "Ana Claudia Sima",
+        "Pierre-Marie Allard",
+        "Disha Tandon",
+        "The Earth Metabolome Initiative Consortium"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "EMI",
+      "title": "The Earth Metabolome Initiative (EMI) ontology",
+      "uri": "https://purl.org/emi",
+      "description": "The Earth Metabolome Initiative (EMI) ontology is designed to capture and structure the metabolic content of all currently known species on our planet.",
+      "homepage": "https://purl.org/emi/documentation",
+      "mailing_list": "kru@sib.swiss",
+      "label_property": [
+        "rdfs:label",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "rdfs:comment",
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#closeMatch"
+      ],
+      "hierarchical_property": [
+        "rdfs:subClassOf",
+        "rdfs:subPropertyOf"
+      ],
+      "hidden_property": "List of properties to that are ignored when rendering the ontology.",
+      "base_uri": "https://purl.org/emi#",
+      "reasoner": "Hermit",
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/digital-botanical-gardens-initiative/earth_metabolome_ontology/refs/heads/main/emi-ols.ttl"
     },
     {
       "id": "hra",

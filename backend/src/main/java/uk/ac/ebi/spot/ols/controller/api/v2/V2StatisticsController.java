@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.apache.commons.collections4.map.MultiKeyMap;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -16,13 +17,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.model.FilterOption;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
-
 import java.io.IOException;
 import java.util.*;
 
+@Tag(name = "V2 Stats Controller", description = "This endpoint provides statistics about the current state of the ontology index. It includes the number of ontologies, classes, individuals and properties indexed, and the last time the index was modified.")
 @RestController
 @RequestMapping("/api/v2")
 public class V2StatisticsController {

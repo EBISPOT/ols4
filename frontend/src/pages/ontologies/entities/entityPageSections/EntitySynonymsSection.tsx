@@ -37,6 +37,9 @@ export default function EntitySynonymsSection({
                             {synonyms
                                 .map((synonym: Reified<any>) => {
                                     const hasMetadata = synonym.hasMetadata();
+                                    const displayValue = typeof synonym.value === 'object'
+                                        ? synonym.value["http://www.w3.org/2000/01/rdf-schema#label"]
+                                        : synonym.value;
                                     return (
                                         <div
                                             key={
@@ -44,7 +47,7 @@ export default function EntitySynonymsSection({
                                             }
                                             className="bg-grey-default rounded-sm font-mono py-1 px-3 mr-2 my-1 text-sm"
                                         >
-                                            {synonym.value}
+                                            {displayValue}
                                             {hasMetadata && (
                                                 <MetadataTooltip
                                                     metadata={synonym.getMetadata()}
