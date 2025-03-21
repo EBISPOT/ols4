@@ -127,6 +127,13 @@ public class OntologyDownloaderThread implements Runnable {
 
     private static String downloadURL(String url, String filename) throws FileNotFoundException, IOException {
 
+        var asURL = new URL(url);
+        if(asURL.getProtocol().equals("file")) {
+            Files.copy(asURL.openStream(), Paths.get(filename));
+            Files.write(Paths.get(filename + ".mimetype"), "application/octet-stream".getBytes());
+            return "application/octet-stream";
+        }
+
         RequestConfig config = RequestConfig.custom()
                 .setConnectTimeout(5000)
                 .setConnectionRequestTimeout(5000)
