@@ -128,6 +128,8 @@ public class OntologyGraph implements StreamRDF {
         CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
         HttpGet request = new HttpGet(url);
+        request.addHeader("Accept", "application/rdf+xml, text/turtle, text/n3");
+
         HttpResponse response = client.execute(request);
         return response.getEntity();
     }
