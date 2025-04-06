@@ -199,6 +199,56 @@ public class JSON2Solr {
 
     static private void flattenProperties(Map<String,Object> properties, Map<String,Object> flattened) {
 
+        var linkedEntites = properties.get("linkedEntities");
+        if(linkedEntites != null) {
+
+                    /*   "linkedEntities" : {
+            "http://purl.obolibrary.org/obo/HP_0000118" : {
+            "definedBy" : [ "hp" ],
+            "numAppearsIn" : 22.0,
+            "hasLocalDefinition" : true,
+            "label" : [ "Phenotypic abnormality" ],
+            "curie" : "HP:0000118",
+            "type" : [ "class", "entity" ]
+            } */
+
+            List<String> linksTo = new ArrayList<>();
+
+            for(var entry : ((Map<String, Object>) linkedEntites).entrySet()) {
+
+                String entityId = (String) entry.getKey();
+                Map<String, Object> linkedEntity = (Map<String, Object>) entry.getValue();
+
+                linksTo.add(entityId);
+
+                var curie = linkedEntity.get("curie");
+
+                if(curie instanceof Map) {
+                    var curieValue = ((Map) curie).get("value");
+                    linksTo.add((String) curieValue);
+                } else {
+                    linksTo.add((String) curie);
+                }
+    
+                var labels = linkedEntity.get("label");
+
+                if(labels != null) {
+
+                    if(labels instanceof String) {
+                        linksTo.add((String) labels);
+                    } else {
+                        for(var label : (List) labels) {
+                            if(label instanceof String) {
+                                linksTo.add((String) label);
+                            }
+                        }
+                    }
+                }
+
+                flattened.put("linksTo", linksTo);
+            }
+        }
+
         for (String k : properties.keySet()) {
 
             Object v = discardMetadata(properties.get(k));
