@@ -16,7 +16,7 @@ RUN mkdir /opt/neo4j && \
     curl https://dist.neo4j.org/neo4j-community-2025.03.0-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
 
 RUN mkdir /opt/solr && \
-    curl https://archive.apache.org/dist/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
+    curl https://archive.apache.org/dist/solr/solr/9.8.1/solr-9.8.1.tgz | tar -xz --strip-components=1 -C /opt/solr
 
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
 RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
@@ -45,6 +45,12 @@ RUN mkdir /tmp/out
 
 RUN chown -R ols:ols /opt/* /tmp/out
 RUN chmod -R 777 /opt/* /tmp/out
+
+
+# To enable building embeddings. See embeddings/embed.py
+#
+RUN apt update && apt install -y python3 python3-pip && pip3 install openai pandas json_stream
+RUN mkdir -p /mnt/embeddings && chmod -R 777 /mnt/embeddings && chown -R ols:ols /mnt/embeddings
 
 USER ols
 WORKDIR /opt/ols/dataload

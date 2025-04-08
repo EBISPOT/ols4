@@ -994,7 +994,10 @@
     </arr>
   </updateProcessor>-->
   <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
-    <str name="fieldRegex">^[^_].*</str>
+
+    <!-- don't match "embeddings" or any field starting with an underscore-->
+    <str name="fieldRegex">^(?!embeddings$)[^_].*</str>
+
     <lst name="typeMapping">
       <str name="valueClass">java.lang.String</str>
       <str name="fieldType">text_general</str>

@@ -5,6 +5,8 @@ if [ $# == 0 ]; then
     exit 1
 fi
 
+export NEO4J_AUTH=none
+
 $1/bin/neo4j start --verbose
 sleep 20
 

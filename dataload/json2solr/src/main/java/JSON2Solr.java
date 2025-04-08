@@ -97,10 +97,11 @@ public class JSON2Solr {
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+class+" + (String) _class.get("iri");
 
-                                flattenedClass.put("_json", gson.toJson(_class));
                                 flattenedClass.put("id", entityId);
 
                                 flattenProperties(_class, flattenedClass);
+                                _class.remove("embeddings"); // remains in flattenedClass
+                                flattenedClass.put("_json", gson.toJson(_class));
 
                                 classesWriter.println(gson.toJson(flattenedClass));
 
@@ -121,10 +122,12 @@ public class JSON2Solr {
 
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+property+" + (String) property.get("iri");
-                                flattenedProperty.put("_json", gson.toJson(property));
+
                                 flattenedProperty.put("id", entityId);
 
                                 flattenProperties(property, flattenedProperty);
+                                property.remove("embeddings");
+                                flattenedProperty.put("_json", gson.toJson(property));
 
                                 propertiesWriter.println(gson.toJson(flattenedProperty));
 
@@ -145,10 +148,11 @@ public class JSON2Solr {
 
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
-                                flattenedIndividual.put("_json", gson.toJson(individual));
                                 flattenedIndividual.put("id", entityId);
 
                                 flattenProperties(individual, flattenedIndividual);
+                                individual.remove("embeddings");
+                                flattenedIndividual.put("_json", gson.toJson(individual));
 
                                 individualsWriter.println(gson.toJson(flattenedIndividual));
 
