@@ -3,7 +3,7 @@
 # This image, once built, should allow any arbitrary config to be loaded and output neo4j/solr datafiles
 
 
-FROM maven:3.8-jdk-11
+FROM maven:3.8-eclipse-temurin-21
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
 
@@ -13,13 +13,13 @@ RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ol
 # and Solr servers are the standard images specified in docker-compose.yml
 #
 RUN mkdir /opt/neo4j && \
-    curl https://dist.neo4j.org/neo4j-community-4.4.9-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
+    curl https://dist.neo4j.org/neo4j-community-2025.03.0-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
 
 RUN mkdir /opt/solr && \
     curl https://archive.apache.org/dist/solr/solr/9.0.0/solr-9.0.0.tgz | tar -xz --strip-components=1 -C /opt/solr
 
 RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
-RUN echo "dbms.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
+RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
 
 # Copy all the code for dataload into /opt/dataload and build the JARs
 #

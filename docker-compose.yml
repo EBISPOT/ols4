@@ -26,7 +26,7 @@ services:
         ols4-dataload:
           condition: service_completed_successfully
     ols4-neo4j:
-      image: neo4j:4.4.9-community
+      image: neo4j:2025.03.0-community
       ports:
         - 7474:7474
         - 7687:7687

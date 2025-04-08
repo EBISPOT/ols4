@@ -241,12 +241,11 @@ First, make sure the configuration files (that determine which ontologies to loa
 
 Run Neo4j `import` command:
 
-    ./neo4j-admin import \
+    ./neo4j-admin database import full \
     --ignore-empty-strings=true \
     --legacy-style-quoting=false \
     --array-delimiter="|" \
     --multiline-fields=true \
-    --database=neo4j \
     --read-buffer-size=134217728 \
     $(<LOCAL_DIR>/make_csv_import_cmd.sh)
 

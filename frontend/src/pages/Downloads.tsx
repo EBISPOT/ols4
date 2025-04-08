@@ -98,7 +98,7 @@ const data: any[] = [
   },
   {
     description:
-      "The neo4j database generated from ontologies_linked.json by the OLS json2neo tool, after creating db indexes (Requires Neo4j community 4.4.9)",
+      "The neo4j database generated from ontologies_linked.json by the OLS json2neo tool, after creating db indexes (Requires Neo4j community 2025.03.0)",
     downloadLabel: "neo4j.tgz",
     downloadLink:
       "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/neo4j.tgz",
