@@ -1,18 +1,30 @@
 package uk.ac.ebi.spot.ols.repository.neo4j;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import org.neo4j.driver.Record;
+import org.neo4j.driver.Result;
+import org.neo4j.driver.Session;
+import org.neo4j.driver.types.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.neo4j.driver.Values.parameters;
 
@@ -21,6 +33,8 @@ public class OlsNeo4jClient {
 
 	@Autowired
 	Neo4jClient neo4jClient;
+
+	Gson gson = new Gson();
   
 	private static final Logger logger = LoggerFactory.getLogger(OlsNeo4jClient.class);
   
@@ -171,6 +185,42 @@ public class OlsNeo4jClient {
 
 		return edge;
 	}
+
+    public static class SimilarResult {
+        public JsonElement entity;
+        public double score;
+    }
+
+    public Page<JsonElement> getSimilar(String type, String id, Pageable pageable) {
+
+		String query = "MATCH (c:OntologyClass {id: $id}) "
+		+ "CALL db.index.vector.queryNodes('class_embeddings', 10, c.embeddings) "
+		+ "YIELD node AS similar, score "
+		+ "RETURN similar as entity, score "
+		+ "ORDER BY score DESC ";
+
+
+		ArrayList<JsonElement> res = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query, Map.of("id", id));
+
+		for(Record r : result.list()) {
+
+			var rmap = r.asMap();
+
+			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
+			double score = (Double) rmap.get("score");
+
+			var resRow = JsonParser.parseString((String) entity.get("_json"));
+			var json = gson.fromJson(resRow, JsonElement.class);
+			json.getAsJsonObject().addProperty("score", score);
+
+			res.add(resRow);
+		}
+
+		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
 
 	
 }

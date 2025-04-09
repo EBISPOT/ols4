@@ -133,7 +133,7 @@ public class V1GraphRepository {
                         + "edges: collect(distinct { source: startNode(r1).iri, target: endNode(r1).iri, relationship: r1 })\n"
                         + "} AS result";
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
         return (Map<String,Object>) results.get(0).get("result");
     }
 
@@ -146,7 +146,7 @@ public class V1GraphRepository {
                         + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: r })\n"
                         + "} AS result";
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
         return (Map<String,Object>) results.get(0).get("result");
     }
 

@@ -268,6 +268,33 @@ public class V2ClassController {
         );
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the class, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<>(
+                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang)
+                ),
+                HttpStatus.OK
+        );
+    }
+
 
 
     // The ancestors of individuals are classes. So, the /ancestors endpoint is part of the Class controller.

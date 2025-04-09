@@ -47,6 +47,7 @@ import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSect
 import RangeSection from "./entityPageSections/RangeSection";
 import addLinksToText from "./entityPageSections/addLinksToText";
 import { Helmet } from 'react-helmet'
+import { Typography } from "@mui/material";
 
 export default function EntityPage({
   entityType,
@@ -498,6 +499,7 @@ export default function EntityPage({
                 </details>
               </div>
             </div>
+            <SimilarEntitiesSection entity={entity} />
           </div>
         ) : null}
         {!ontology || loading ? (

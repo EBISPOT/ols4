@@ -160,7 +160,7 @@ public class OntologyWriter {
 
             row[n++] = ontologyId + "+" + type + "+" + (String) entity.get("iri");
             row[n++] = nodeLabels;
-	    row[n++] = gson.toJson(entity);
+            int _jsonIdx = n++;
 
             for (String column : properties) {
                 row[n++] = serializeValue(entity, column);
@@ -169,9 +169,12 @@ public class OntologyWriter {
             if(entity.containsKey("embeddings")) {
                 List<Double> embeddings = (List<Double>) entity.get("embeddings");
                 row[n++] = String.join("|", embeddings.stream().map(Object::toString).toArray(String[]::new));
+                entity.remove("embeddings"); // don't want it in the _json field
             } else {
                 row[n++] = "";
             }
+
+            row[_jsonIdx] = gson.toJson(entity);
 
             printer.printRecord(row);
         }

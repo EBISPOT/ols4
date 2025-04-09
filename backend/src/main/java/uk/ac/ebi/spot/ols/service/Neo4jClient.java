@@ -61,12 +61,11 @@ public class Neo4jClient {
 		return count;
 	}
 
-	// only used by OLS3 graph repo, remove at some point
-	public List<Map<String,Object>> rawQuery(String query) {
+	public List<Map<String,Object>> rawQuery(String query, Map<String,Object> parameters) {
 
 		Session session = getSession();
 
-		Result result = session.run(query);
+		Result result = session.run(query, parameters);
 
 		List<Map<String,Object>> list = result.stream().map(r -> r.asMap()).collect(Collectors.toList());
 
