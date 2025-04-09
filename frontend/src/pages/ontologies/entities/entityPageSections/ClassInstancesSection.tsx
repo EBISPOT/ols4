@@ -21,7 +21,6 @@ export default function ClassInstancesSection({
 
   return (
     <div>
-      <div className="font-bold">Instances</div>
       <ul className="list-disc list-inside">
         {classInstances &&
           classInstances.elements.map((instance: Entity) => {

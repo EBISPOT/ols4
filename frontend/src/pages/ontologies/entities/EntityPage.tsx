@@ -48,6 +48,7 @@ import RangeSection from "./entityPageSections/RangeSection";
 import addLinksToText from "./entityPageSections/addLinksToText";
 import { Helmet } from 'react-helmet'
 import { Typography } from "@mui/material";
+import SimilarEntitiesSection from "./entityPageSections/SimilarEntitiesSection";
 
 export default function EntityPage({
   entityType,
@@ -497,9 +498,18 @@ export default function EntityPage({
                     />
                   </div>
                 </details>
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
+                    <span className="capitalize">
+                      Similar {entity.getTypePlural()}
+                    </span>
+                  </summary>
+                  <div className="py-2 break-words space-y-4">
+                    <SimilarEntitiesSection entity={entity} />
+                  </div>
+                </details>
               </div>
             </div>
-            <SimilarEntitiesSection entity={entity} />
           </div>
         ) : null}
         {!ontology || loading ? (
