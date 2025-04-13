@@ -58,6 +58,7 @@ RUN chmod -R 777 /opt/* /tmp/out
 
 # To enable building embeddings.
 #
+RUN apt-get update && apt install -y build-essential cmake
 RUN cd /opt/ols/dataload/embeddings && cargo b --release
 
 USER ols
