@@ -1,7 +1,6 @@
 use clap::Parser;
 use openai_api_rust::{embeddings::{EmbeddingsApi, EmbeddingsBody}, Auth, OpenAI};
 use rusqlite::{Connection, Statement};
-use core::num;
 use std::{
     fs::File, io::BufReader
 };
@@ -127,8 +126,7 @@ fn process_batch(
 
     eprintln!("Found {} documents to embed in this batch", to_embed.len());
 
-
-    if !dry_run {
+    if (!dry_run) && (!to_embed.is_empty()) {
 
         let embeddings = openai.embeddings_create(&EmbeddingsBody {
             model: "text-embedding-3-small".to_string(),
@@ -136,9 +134,13 @@ fn process_batch(
             user: None,
         }).unwrap();
 
+        let embeddings = embeddings.data.unwrap();
+
+        eprintln!("Got {} embeddings back from API", embeddings.len());
+
         let mut n = 0;
 
-        embeddings.data.iter().for_each(|embedding| {
+        for embedding in embeddings.iter() {
 
             let doc = &to_embed[n];
 
@@ -155,7 +157,7 @@ fn process_batch(
             );
 
             n = n + 1;
-        });
+        }
 
     }
 
@@ -205,10 +207,6 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let conn = Connection::open(args.db_path).unwrap();
 
-    let mut sqlite_get_stmt = conn.prepare("SELECT embeddings FROM embeddings WHERE hash = ?").unwrap();
-    let mut sqlite_exists_stmt = conn.prepare("SELECT EXISTS(SELECT 1 FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ? AND hash = ?)").unwrap();
-    let mut sqlite_insert_stmt = conn.prepare("INSERT INTO embeddings (ontologyId, entityType, iri, document, hash, model, embeddings) VALUES (?, ?, ?, ?, ?, ?, ?)").unwrap();
-
     // conn.execute_batch(
     //     format!("PRAGMA journal_mode = OFF;
     //         PRAGMA synchronous = 0;
@@ -245,6 +243,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     } else {
         eprintln!("Index already exists.");
     }
+
+    let mut sqlite_get_stmt = conn.prepare("SELECT embeddings FROM embeddings WHERE hash = ?").unwrap();
+    let mut sqlite_exists_stmt = conn.prepare("SELECT EXISTS(SELECT 1 FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ? AND hash = ?)").unwrap();
+    let mut sqlite_insert_stmt = conn.prepare("INSERT OR REPLACE INTO embeddings (ontologyId, entityType, iri, document, hash, model, embeddings) VALUES (?, ?, ?, ?, ?, ?, ?)").unwrap();
 
     let file = File::open(args.input_file).unwrap();
     let reader = BufReader::new(file);
