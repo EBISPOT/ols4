@@ -127,21 +127,23 @@ fn process_batch(
 
     eprintln!("Found {} documents to embed in this batch", to_embed.len());
 
-    let embeddings = openai.embeddings_create(&EmbeddingsBody {
-        model: "text-embedding-3-small".to_string(),
-        input: to_embed.iter().map(|doc| doc.document.clone()).collect(),
-        user: None,
-    }).unwrap();
 
-    let mut n = 0;
+    if !dry_run {
 
-    embeddings.data.iter().for_each(|embedding| {
+        let embeddings = openai.embeddings_create(&EmbeddingsBody {
+            model: "text-embedding-3-small".to_string(),
+            input: to_embed.iter().map(|doc| doc.document.clone()).collect(),
+            user: None,
+        }).unwrap();
 
-        let doc = &to_embed[n];
+        let mut n = 0;
 
-        let embedding_json = serde_json::to_string(embedding).unwrap();
+        embeddings.data.iter().for_each(|embedding| {
 
-        if !dry_run {
+            let doc = &to_embed[n];
+
+            let embedding_json = serde_json::to_string(embedding).unwrap();
+
             sqlite_insert(&doc.ontology_id,
                 &doc.entity_type,
                 &doc.iri,
@@ -151,10 +153,11 @@ fn process_batch(
                 &embedding_json,
                 sqlite_insert_stmt
             );
-        }
 
-        n = n + 1;
-    });
+            n = n + 1;
+        });
+
+    }
 
     return EmbeddingResult {
         num_unchanged: num_unchanged,
