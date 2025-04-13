@@ -13,6 +13,9 @@ RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.
 ENV JAVA_HOME="/opt/amazon-corretto-21.0.6.7.1-linux-x64/"
 ENV PATH="$PATH:/opt/amazon-corretto-21.0.6.7.1-linux-x64/bin"
 
+# Install Maven
+#
+RUN curl https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz | tar -C /usr/local --strip-components=1 -xzf -
 
 # Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
 #
@@ -34,7 +37,6 @@ RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNati
 
 RUN mkdir /opt/ols && mkdir /opt/ols/dataload && mkdir /opt/ols/ols-shared
 
-
 COPY ./dataload /opt/ols/dataload
 COPY ./ols-shared /opt/ols/ols-shared
 COPY ./pom.xml /opt/ols
@@ -54,8 +56,7 @@ RUN mkdir /tmp/out
 RUN chown -R ols:ols /opt/* /tmp/out
 RUN chmod -R 777 /opt/* /tmp/out
 
-
-# To enable building embeddings. See embeddings/embed.py
+# To enable building embeddings.
 #
 RUN cd /opt/ols/dataload/embeddings && cargo b --release
 
