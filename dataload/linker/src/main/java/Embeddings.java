@@ -35,6 +35,10 @@ public class Embeddings {
 
     public double[] getEmbeddings(String ontologyId, String entityType, String iri) {
 
+        if(this.connection == null) {
+            return null;
+        }
+
         try {
 
             var stmt = this.connection.prepareStatement("SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?");
