@@ -37,14 +37,14 @@ public class Embeddings {
 
         try {
 
-            var stmt = this.connection.prepareStatement("SELECT embedding FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?");
+            var stmt = this.connection.prepareStatement("SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?");
 
             stmt.setString(1, ontologyId);
             stmt.setString(2, entityType);
             stmt.setString(3, iri);
             var rs = stmt.executeQuery();
             if (rs.next()) {
-                String embeddingString = rs.getString("embedding");
+                String embeddingString = rs.getString("embeddings");
                 return gson.fromJson(embeddingString, double[].class);
             } else {
                 return null;
