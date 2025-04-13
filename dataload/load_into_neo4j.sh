@@ -15,6 +15,7 @@ $1/bin/neo4j-admin database import full \
         --read-buffer-size=16777216 \
         --array-delimiter="|" \
         --threads=32 \
+        --verbose \
         $(./make_csv_import_cmd.sh $2)
 
 
