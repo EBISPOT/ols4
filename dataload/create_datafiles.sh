@@ -13,7 +13,7 @@ EMBEDDINGSDIR=$3
 
 JSON_PATH=$OUTDIR/ontologies.json
 JSON_PATH_LINKED=$OUTDIR/ontologies_linked.json
-EMBEDDINGS_PATH=$EMBEDDINGSDIR/embeddings.tsv.gz
+EMBEDDINGS_PATH=$EMBEDDINGSDIR/embeddings.db
 
 rm -f $OUTDIR/*
 
@@ -24,18 +24,10 @@ java $JAVA_OPTS -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.tota
 
 if [ -n "$OPENAI_API_KEY" ]; then
     echo "Found OpenAI API key; embeddings will be created/updated."
-    if [ -f "$EMBEDDINGS_PATH" ]; then
-        echo "Updating existing embeddings"
-        python3 $SCRIPT_PATH/embeddings/embed.py \
-            --old-embeddings-tsv $EMBEDDINGS_PATH \
-            --new-embeddings-tsv $EMBEDDINGS_PATH \
-            --input-file $JSON_PATH
-    else
-        echo "Creating new embeddings"
-        python3 $SCRIPT_PATH/embeddings/embed.py \
-            --new-embeddings-tsv $EMBEDDINGS_PATH \
-            --input-file $JSON_PATH
-    fi
+
+    $SCRIPT_PATH/embeddings/target/release/ols_embed \
+        --db-path $EMBEDDINGSDIR/embeddings.db \
+        --input-file $JSON_PATH 
 else
     echo "OPENAI_API_KEY not set; embeddings will not be created/updated"
 fi
@@ -43,7 +35,7 @@ fi
 LINKER_EMBED_OPTS=""
 if [ -f "$EMBEDDINGS_PATH" ]; then
     echo "Embeddings were found and will be passed to the linker"
-    LINKER_EMBED_OPTS="--embeddingsTsv $EMBEDDINGS_PATH"
+    LINKER_EMBED_OPTS="--embeddingsDb $EMBEDDINGS_PATH"
 else
     echo "No embeddings found to pass to linker"
 fi

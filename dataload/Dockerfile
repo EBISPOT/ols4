@@ -1,16 +1,24 @@
 
-
 # This image, once built, should allow any arbitrary config to be loaded and output neo4j/solr datafiles
 
-
-FROM maven:3.8-eclipse-temurin-21
+FROM rust:1.79-buster
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
+
+# Install JDK
+#
+RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
+ENV JAVA_HOME="/opt/amazon-corretto-21.0.6.7.1-linux-x64/"
+ENV PATH="$PATH:/opt/amazon-corretto-21.0.6.7.1-linux-x64/bin"
+
 
 # Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
 #
 # We use these only as temporary servers for the dataload. The "real" Neo4j 
 # and Solr servers are the standard images specified in docker-compose.yml
+# It is important that the versions match!
 #
 RUN mkdir /opt/neo4j && \
     curl https://dist.neo4j.org/neo4j-community-2025.03.0-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
@@ -49,12 +57,12 @@ RUN chmod -R 777 /opt/* /tmp/out
 
 # To enable building embeddings. See embeddings/embed.py
 #
-RUN apt update && apt install -y python3 python3-pip && pip3 install openai pandas json_stream
-RUN mkdir -p /mnt/embeddings && chmod -R 777 /mnt/embeddings && chown -R ols:ols /mnt/embeddings
+RUN cd /opt/ols/dataload/embeddings && cargo b --release
 
 USER ols
 WORKDIR /opt/ols/dataload
 
 CMD ./dataload.dockersh
+
 
 

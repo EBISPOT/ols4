@@ -1,71 +1,60 @@
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
 
+import org.sqlite.SQLiteConfig;
+import org.sqlite.SQLiteOpenMode;
+
+import com.google.gson.Gson;
+
 public class Embeddings {
 
-    static class CompositeKey {
-        String ontologyId;
-        String entityType;
-        String iri;
+    private Connection connection;
+    private Gson gson;
 
-        public CompositeKey(String ontologyId, String entityType, String iri) {
-            this.ontologyId = ontologyId;
-            this.entityType = entityType;
-            this.iri = iri;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            CompositeKey that = (CompositeKey) o;
-            return ontologyId.equals(that.ontologyId) &&
-                   entityType.equals(that.entityType) &&
-                   iri.equals(that.iri);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(ontologyId, entityType, iri);
-        }
+    public Embeddings() {
+        this.gson = new Gson();
     }
-
-    private Map<CompositeKey, double[]> embeddingsMap = new HashMap<>();
-
-    public void loadEmbeddingsFromFile(String gzippedFilePath) throws IOException {
-        try (GZIPInputStream gzipInputStream = new GZIPInputStream(new FileInputStream(gzippedFilePath));
-             BufferedReader reader = new BufferedReader(new InputStreamReader(gzipInputStream))) {
-
-            String line;
-            reader.readLine();
-
-            while ((line = reader.readLine()) != null) {
-                String[] fields = line.split("\t");
-
-                if (fields.length == 6) {
-                    String ontologyId = fields[0];
-                    String entityType = fields[1];
-                    String iri = fields[2];
-                    String embeddingsStr = fields[5];
-
-                    String[] embeddingStrs = embeddingsStr.split(",");
-                    double[] embeddings = new double[embeddingStrs.length];
-                    for (int i = 0; i < embeddingStrs.length; i++) {
-                        embeddings[i] = Double.parseDouble(embeddingStrs[i]);
-                    }
-
-                    CompositeKey key = new CompositeKey(ontologyId, entityType, iri);
-                    embeddingsMap.put(key, embeddings);
-                }
-            }
-
-            System.out.println("Loaded " + embeddingsMap.size() + " embeddings from " + gzippedFilePath);
+    
+        public void loadEmbeddingsFromFile(String sqlitePath) throws IOException {
+    
+        try {
+            SQLiteConfig config = new SQLiteConfig();
+            config.setReadOnly(true);
+            config.setOpenMode(SQLiteOpenMode.READONLY);
+            this.connection = DriverManager.getConnection("jdbc:sqlite:" + sqlitePath, config.toProperties());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
         }
     }
 
     public double[] getEmbeddings(String ontologyId, String entityType, String iri) {
-        CompositeKey key = new CompositeKey(ontologyId, entityType, iri);
-        return embeddingsMap.get(key);
+
+        try {
+
+            var stmt = this.connection.prepareStatement("SELECT embedding FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?");
+
+            stmt.setString(1, ontologyId);
+            stmt.setString(2, entityType);
+            stmt.setString(3, iri);
+            var rs = stmt.executeQuery();
+            if (rs.next()) {
+                String embeddingString = rs.getString("embedding");
+                return gson.fromJson(embeddingString, double[].class);
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 }

@@ -24,7 +24,7 @@ public class Linker {
         output.setRequired(true);
         options.addOption(output);
 
-        Option embeddingsTsv = new Option(null, "embeddingsTsv", true, "optional path of embeddings TSV file");
+        Option embeddingsTsv = new Option(null, "embeddingsDb", true, "optional path of embeddings sqlite database");
         embeddingsTsv.setRequired(false);
         options.addOption(embeddingsTsv);
 
@@ -48,15 +48,15 @@ public class Linker {
 
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("output");
-        String embeddingsTsvGz = cmd.getOptionValue("embeddingsTsv");
+        String embeddingsDb = cmd.getOptionValue("embeddingsDb");
         String leveldb_path = cmd.getOptionValue("leveldbPath");
 
         LevelDB leveldb = leveldb_path != null ? new LevelDB(leveldb_path) : null;
 
         Embeddings embeddings = new Embeddings();
-        if (embeddingsTsvGz != null) {
-            System.out.println("Loading embeddings from " + embeddingsTsvGz);
-            embeddings.loadEmbeddingsFromFile(embeddingsTsvGz);
+        if (embeddingsDb != null) {
+            System.out.println("Loading embeddings from " + embeddingsDb);
+            embeddings.loadEmbeddingsFromFile(embeddingsDb);
         }
 
         try {
