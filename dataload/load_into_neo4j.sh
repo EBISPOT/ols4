@@ -12,7 +12,7 @@ $1/bin/neo4j-admin database import full \
         --ignore-empty-strings=true \
         --legacy-style-quoting=false \
         --multiline-fields=true \
-        --read-buffer-size=16777216 \
+        --read-buffer-size=409217728 \
         --array-delimiter="|" \
         --threads=32 \
         --verbose \
