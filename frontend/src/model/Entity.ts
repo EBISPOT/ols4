@@ -240,4 +240,53 @@ export default abstract class Entity extends Thing {
     return result;
   }
 
+  getDescriptionsFromProperties(): { property: string; descriptions: Reified<any>[] }[] {
+    const result: { property: string; descriptions: Reified<any>[] }[] = [];
+    // Check if 'definitionProperty' exists in 'this.properties'
+    if (!this.properties || !this.properties.hasOwnProperty("definitionProperty")) {
+      return result; // Return empty array if 'definitionProperty' doesn't exist
+    }
+
+    const definitionProperties = this.properties["definitionProperty"];
+    const definitionPropsArray = Array.isArray(definitionProperties)
+        ? definitionProperties
+        : [definitionProperties];
+
+    definitionPropsArray.forEach((definitionProperty: string) => {
+      if (this.properties.hasOwnProperty(definitionProperty)) {
+        const descriptions = this.properties[definitionProperty];
+        if (descriptions) {
+          const reifiedDescriptions = Reified.fromJson(
+              Array.isArray(descriptions) ? descriptions : [descriptions]
+          );
+
+          if (reifiedDescriptions.length > 0) {
+            // Get property short name for display
+            const propertyName = this.getPropertyShortName(definitionProperty);
+            result.push({
+              property: propertyName,
+              descriptions: reifiedDescriptions
+            });
+          }
+        }
+      }
+    });
+
+    return result;
+  }
+
+  private getPropertyShortName(propertyIri: string): string {
+    // Special case for IAO_0000115
+    if (propertyIri === "http://purl.obolibrary.org/obo/IAO_0000115") {
+      return "Definition";
+    }
+
+    // Extract the last part of the IRI for display
+    const parts = propertyIri.split(/[/#]/);
+    const lastPart = parts[parts.length - 1];
+
+    return lastPart
+        .replace(/^./, str => str.toUpperCase()) // Capitalize first letter
+        .trim();
+  }
 }
