@@ -10,6 +10,7 @@ import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteOpenMode;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 public class Embeddings {
 
@@ -49,7 +50,17 @@ public class Embeddings {
             var rs = stmt.executeQuery();
             if (rs.next()) {
                 String embeddingString = rs.getString("embeddings");
-                return gson.fromJson(embeddingString, double[].class);
+
+                if(embeddingString.startsWith("{")) {
+                    // this is a temporary hack as we have two formats of embeddings in the 300 GB
+                    // database and would be expensive to re-embed everything. TODO: manually
+                    // patch the existing embeddings in the DB to all be the same.
+                    JsonElement jsonElement = gson.fromJson(embeddingString, JsonElement.class);
+                    return gson.fromJson(jsonElement.getAsJsonObject().get("embedding"), double[].class);
+                } else {
+                    return gson.fromJson(embeddingString, double[].class);
+                }
+
             } else {
                 return null;
             }
