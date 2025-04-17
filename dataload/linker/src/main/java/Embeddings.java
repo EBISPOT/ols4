@@ -16,6 +16,7 @@ public class Embeddings {
 
     private Connection connection;
     private Gson gson;
+    private PreparedStatement stmt;
 
     public Embeddings() {
         this.gson = new Gson();
@@ -28,10 +29,15 @@ public class Embeddings {
             config.setReadOnly(true);
             config.setOpenMode(SQLiteOpenMode.READONLY);
             this.connection = DriverManager.getConnection("jdbc:sqlite:" + sqlitePath, config.toProperties());
+            this.stmt = this.connection.prepareStatement(
+                "SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?"
+            );
+
         } catch (SQLException e) {
             e.printStackTrace();
             return;
         }
+
     }
 
     public double[] getEmbeddings(String ontologyId, String entityType, String iri) {
@@ -42,12 +48,10 @@ public class Embeddings {
 
         try {
 
-            var stmt = this.connection.prepareStatement("SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?");
-
-            stmt.setString(1, ontologyId);
-            stmt.setString(2, entityType);
-            stmt.setString(3, iri);
-            var rs = stmt.executeQuery();
+            this.stmt.setString(1, ontologyId);
+            this.stmt.setString(2, entityType);
+            this.stmt.setString(3, iri);
+            var rs = this.stmt.executeQuery();
             if (rs.next()) {
                 String embeddingString = rs.getString("embeddings");
 
