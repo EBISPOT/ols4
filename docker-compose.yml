@@ -18,10 +18,12 @@ services:
       image: solr:9.8.1
       environment:
         - SOLR_HOME=/mnt/ols4-solr-data
+        - JAVA_OPTS=--add-modules jdk.incubator.vector
       ports:
         - 8983:8983
       volumes:
-        - ols4-solr-data:/mnt/ols4-solr-data
+        # - ols4-solr-data:/mnt/ols4-solr-data
+        - /data/ols_from_codon/solr/solr:/mnt/ols4-solr-data
       command: ["-f"]
     ols4-neo4j:
       image: neo4j:2025.03.0-community
@@ -29,9 +31,11 @@ services:
         - 7474:7474
         - 7687:7687
       volumes:
-        - ols4-neo4j-data:/var/lib/neo4j/data
+        # - ols4-neo4j-data:/var/lib/neo4j/data
+        - /data/ols_from_codon/neo4j/neo4j/data:/var/lib/neo4j/data
       environment:
         - NEO4J_AUTH=none
+        - JAVA_OPTS=--add-modules jdk.incubator.vector
     ols4-backend:
       build:
         context: .

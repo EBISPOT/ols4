@@ -183,9 +183,7 @@ public class V2ClassRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+class+" + iri;
-
-        return this.neo4jClient.getSimilar("OntologyClass", id, pageable)
+        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);

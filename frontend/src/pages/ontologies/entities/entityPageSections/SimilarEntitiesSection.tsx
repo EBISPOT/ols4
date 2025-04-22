@@ -13,12 +13,13 @@ type SimilarResult = { entity:Entity, score:number }
 
 export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
 
-    let [similar, setSimilar] = useState<any[]>([]);
+    let [similar, setSimilar] = useState<any[]|null>(null);
 
     const [searchParams] = useSearchParams();
     let lang = searchParams.get("lang") || "en";
 
     useEffect(() => {
+        setSimilar(null)
         const fetchSimilarEntities = async () => {
             let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/classes/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/similar`)
             setSimilar(page.elements.map((s) => new Class(s)))
@@ -27,15 +28,15 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
         if(entity && entity.getOntologyId() && entity.getType() === 'class') {
             fetchSimilarEntities();
         }
-    }, [entity])
+
+    }, [entity?.getIri()])
 
     if(!entity || entity.getType() !== 'class') {
         return <Fragment/>
     }
 
     return <div>
-        <div className="font-bold">Similar {entity.getTypePlural()}</div>
-        { !similar && <LoadingOverlay /> }
+        { !similar && <i>Loading...</i> }
         { similar && similar.length === 0 && <p>No similar {entity.getTypePlural()}</p> }
         { similar && similar.length > 0 && <ul className="list-disc list-inside">
             {similar.filter(
@@ -44,12 +45,12 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
                 }
             ).map((otherEntity:Entity) => {
                 return (
-                <li>
+                <li key={entity.getId()}>
                 <Link
                     className="link-default"
-                    to={`/ontologies/${entity.getOntologyId()}/${
+                    to={`/ontologies/${otherEntity.getOntologyId()}/${
                         otherEntity.getTypePlural()
-                    }/${encodeURIComponent(encodeURIComponent(entity.getIri()))}?lang=${lang}`}
+                    }/${encodeURIComponent(encodeURIComponent(otherEntity.getIri()))}?lang=${lang}`}
                 >
                     {otherEntity.getName()}
                     <span

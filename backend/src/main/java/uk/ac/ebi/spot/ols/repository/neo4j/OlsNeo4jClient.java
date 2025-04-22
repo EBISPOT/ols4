@@ -191,9 +191,14 @@ public class OlsNeo4jClient {
         public double score;
     }
 
-    public Page<JsonElement> getSimilar(String type, String id, Pageable pageable) {
+    public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable) {
 
-		String query = "MATCH (c:OntologyClass {id: $id}) "
+		// Only the defining class has vector embeddings. So instead of searching by
+		// ID (where we may get an imported class with no embeddings), search by IRI
+		// and isDefiningOntology=true
+
+		String query = "MATCH (c:OntologyClass {iri: $iri}) "
+		+ "WHERE \"true\" IN c.isDefiningOntology "
 		+ "CALL db.index.vector.queryNodes('class_embeddings', 10, c.embeddings) "
 		+ "YIELD node AS similar, score "
 		+ "RETURN similar as entity, score "
@@ -203,7 +208,7 @@ public class OlsNeo4jClient {
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("id", id));
+		Result result = session.run(query, Map.of("iri", iri));
 
 		for(Record r : result.list()) {
 
