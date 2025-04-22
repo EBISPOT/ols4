@@ -5,9 +5,10 @@ metadata:
   labels:
     app: {{ .Release.Name }}-frontend
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - name: "application"
-    port: 8080
+    - name: "application"
+      port: 8080
+      targetPort: 8080
   selector:
     app: {{ .Release.Name }}-frontend

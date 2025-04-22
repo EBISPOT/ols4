@@ -5,11 +5,10 @@ metadata:
   labels:
     app: {{ .Release.Name }}-backend
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - name: "application"
-    port: 8080
-    #https://kubernetes.io/docs/concepts/services-networking/service/#nodeport-custom-port
-    nodePort: 30009
+    - name: "application"
+      port: 8080
+      targetPort: 8080
   selector:
     app: {{ .Release.Name }}-backend
