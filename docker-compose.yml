@@ -22,20 +22,26 @@ services:
       ports:
         - 8983:8983
       volumes:
-        # - ols4-solr-data:/mnt/ols4-solr-data
-        - /data/ols_from_codon/solr/solr:/mnt/ols4-solr-data
+        - ols4-solr-data:/mnt/ols4-solr-data
+        # - /data/ols_from_codon/solr/solr:/mnt/ols4-solr-data
       command: ["-f"]
+      depends_on:
+        ols4-dataload:
+          condition: service_completed_successfully
     ols4-neo4j:
       image: neo4j:2025.03.0-community
       ports:
         - 7474:7474
         - 7687:7687
       volumes:
-        # - ols4-neo4j-data:/var/lib/neo4j/data
-        - /data/ols_from_codon/neo4j/neo4j/data:/var/lib/neo4j/data
+        - ols4-neo4j-data:/var/lib/neo4j/data
+        # - /data/ols_from_codon/neo4j/neo4j/data:/var/lib/neo4j/data
       environment:
         - NEO4J_AUTH=none
         - JAVA_OPTS=--add-modules jdk.incubator.vector
+      depends_on:
+        ols4-dataload:
+          condition: service_completed_successfully
     ols4-backend:
       build:
         context: .

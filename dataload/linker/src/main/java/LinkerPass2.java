@@ -106,7 +106,15 @@ public class LinkerPass2 {
                     }
 
                     jsonWriter.name("linkedEntities");
-                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
+                    var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
+
+                    jsonWriter.name("linksTo");
+                    jsonWriter.beginArray();
+                    for(String linkToIri : linksToIris) {
+                        jsonWriter.value(linkToIri);
+                    }
+                    jsonWriter.endArray();
+
 
                     jsonReader.endObject(); // ontology
                     jsonWriter.endObject();
@@ -188,7 +196,14 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+            var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+
+            jsonWriter.name("linksTo");
+            jsonWriter.beginArray();
+            for(String linkToIri : linksToIris) {
+                jsonWriter.value(linkToIri);
+            }
+            jsonWriter.endArray();
 
 
             if(defOfThisEntity.definingOntologyIds.contains(ontologyId)) {
@@ -221,7 +236,9 @@ public class LinkerPass2 {
     }
 
 
-    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+
+        Set<String> linksToIris = new HashSet<>();
 
         jsonWriter.beginObject();
 
@@ -245,6 +262,9 @@ public class LinkerPass2 {
             EntityDefinitionSet iriMapping = pass1Result.iriToDefinitions.get(str);
 
             if(iriMapping != null) {
+
+                linksToIris.add(str);
+
                 jsonWriter.name(str);
                 jsonWriter.beginObject();
                 writeIriMapping(jsonWriter, iriMapping, ontologyId);
@@ -289,6 +309,9 @@ public class LinkerPass2 {
                                     jsonWriter.value(iri);
                                     writeIriMapping(jsonWriter, curieIriMapping,
                                             ontologyId);
+
+                                    linksToIris.add(iri);
+
                                     break;
                                 }
                             }
@@ -341,6 +364,8 @@ public class LinkerPass2 {
         }
 
         jsonWriter.endObject(); // linkedEntities
+
+        return linksToIris;
     }
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
