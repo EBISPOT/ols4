@@ -206,22 +206,29 @@ public class LinkerPass2 {
             jsonWriter.endArray();
 
 
-            if(defOfThisEntity.definingOntologyIds.contains(ontologyId)) {
+            // Obsolete terms do not get embeddings
+            boolean isObsolete = defOfThisEntity.definingDefinitions
+                    .stream()
+                    .anyMatch(def -> def.isObsolete);
+            if(!isObsolete) {
+
                 // Only the defining instance of the term gets embeddings attached.
                 // Otherwise all of the most similar classes would just be the same class imported 
                 // into other ontologies.
                 //
-                var entityEmbeddings = embeddings.getEmbeddings(ontologyId, entityType, entityIri);
+                if(defOfThisEntity.definingOntologyIds.contains(ontologyId)) {
+                    var entityEmbeddings = embeddings.getEmbeddings(ontologyId, entityType, entityIri);
 
-                if(entityEmbeddings != null) {
-                    jsonWriter.name("embeddings");
-                    jsonWriter.beginArray();
-                    jsonWriter.setIndent("");
-                    for(double d : entityEmbeddings) {
-                        jsonWriter.value(d);
+                    if(entityEmbeddings != null) {
+                        jsonWriter.name("embeddings");
+                        jsonWriter.beginArray();
+                        jsonWriter.setIndent("");
+                        for(double d : entityEmbeddings) {
+                            jsonWriter.value(d);
+                        }
+                        jsonWriter.endArray();
+                        jsonWriter.setIndent("  ");
                     }
-                    jsonWriter.endArray();
-                    jsonWriter.setIndent("  ");
                 }
             }
 

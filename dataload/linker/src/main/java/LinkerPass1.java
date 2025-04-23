@@ -236,6 +236,7 @@ public class LinkerPass1 {
 		JsonElement curie = null;
 		Set<String> definedBy = new HashSet<>();
 		Set<String> types = null;
+		boolean isObsolete = false;
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
@@ -248,6 +249,8 @@ public class LinkerPass1 {
 				curie = jsonParser.parse(jsonReader);
 			} else if(key.equals("type")) {
                 types = gson.fromJson(jsonReader, Set.class);
+			} else if(key.equals("isObsolete")) {
+				isObsolete = jsonReader.nextBoolean();
 			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
@@ -292,6 +295,7 @@ public class LinkerPass1 {
         entityDefinition.entityTypes = types;
         entityDefinition.label = label;
 		entityDefinition.curie = curie;
+		entityDefinition.isObsolete = isObsolete;
 
         EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);
 
