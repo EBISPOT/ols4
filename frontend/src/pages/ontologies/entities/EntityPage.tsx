@@ -22,6 +22,7 @@ import {
   getOntology,
 } from "../ontologiesSlice";
 import EntityGraph from "./EntityGraph";
+import EntityGraphContainer from "./EntityGraphContainer";
 import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
 import DefiningOntologiesSection from "./entityPageSections/DefiningOntologiesSection";
@@ -373,17 +374,17 @@ export default function EntityPage({
                   </button>
                 </div>
                 {viewMode === "graph" ? (
-                  <EntityGraph
-                    ontologyId={ontologyId}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                  />
+                    <EntityGraphContainer
+                        ontologyId={ontologyId}
+                        selectedEntity={entity}
+                        entityType={
+                          {
+                            class: "classes",
+                            property: "properties",
+                            individual: "individuals",
+                          }[entity.getType()]
+                        }
+                    />
                 ) : (
                   <EntityTree
                     ontology={ontology}
