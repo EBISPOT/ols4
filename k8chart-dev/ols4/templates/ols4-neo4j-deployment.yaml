@@ -39,7 +39,7 @@ spec:
             - mountPath: "/data_import"
               name: {{ .Release.Name }}-import
           command: ["/bin/bash", "-c"]
-          args: ["rm -rf /data/* && curl /data_import/neo4j.tgz | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
+          args: ["rm -rf /data/* && cat /data_import/neo4j.tgz | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
           resources:
             requests:
               memory: 15Gi
