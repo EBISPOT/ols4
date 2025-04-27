@@ -27,6 +27,9 @@ spec:
         - name: {{ .Release.Name }}-solr-storage
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-solr-pvc
+        - name: {{ .Release.Name }}-import
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-import-pvc
       securityContext:
         fsGroup: 8983
       containers:
@@ -35,8 +38,10 @@ spec:
           volumeMounts:
             - mountPath: "/data"
               name: {{ .Release.Name }}-solr-storage
+            - mountPath: "/data_import"
+              name: {{ .Release.Name }}-import
           command: ["/bin/bash", "-c"]
-          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && cat /data_import/solr.tgz | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           resources:
             requests:
               memory: 8Gi
@@ -45,8 +50,6 @@ spec:
               memory: 8Gi
               cpu: 2
           env:
-            - name: SOLR_TARBALL_URL
-              value: {{.Values.solrTarballUrl}}
             - name: SOLR_HOME
               value: /data
             - name: SOLR_JAVA_MEM
