@@ -14,6 +14,10 @@ spec:
       labels:
         app: {{ .Release.Name }}-solr
     spec:
+      tolerations:
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
