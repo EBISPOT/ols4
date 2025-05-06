@@ -45,7 +45,7 @@ spec:
             - mountPath: "/data_import"
               name: {{ .Release.Name }}-import
           command: ["/bin/bash", "-c"]
-          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && cat /data_import/solr.tgz | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && cat /data_import/solr.tgz | tar --no-same-permissions --no-same-owner -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           resources:
             requests:
               memory: 8Gi
