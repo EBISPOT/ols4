@@ -5,9 +5,11 @@ use std::{
     fs::File, io::BufReader
 };
 use struson::reader::{JsonReader, JsonStreamReader, ValueType};
-use tiktoken_rs::cl100k_base;
+use tiktoken_rs::{cl100k_base, CoreBPE};
 use sha1::Digest;
 use std::error::Error;
+
+const BATCH_SIZE:usize = 1000;
 
 struct DocToEmbed {
     ontology_id:String,
@@ -78,7 +80,7 @@ fn sqlite_insert(
 }
 
 fn process_batch(
-    batch: Vec<DocToEmbed>,
+    batch: &Vec<DocToEmbed>,
     sqlite_get_stmt:&mut Statement,
     sqlite_exists_stmt:&mut Statement,
     sqlite_insert_stmt:&mut Statement,
@@ -252,7 +254,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     let reader = BufReader::new(file);
 
     let mut batch:Vec<DocToEmbed> = Vec::new();
-    let batch_size = 1000;
     let mut current_ont_id = String::new();
 
     let tokenizer = cl100k_base().unwrap();
@@ -280,80 +281,33 @@ fn main() -> Result<(), Box<dyn Error>> {
                 json.begin_array().unwrap();
                 while json.has_next().unwrap() {
                     // class
-
                     total = total + 1;
-
-                    let mut iri:Option<String> = None;
-                    let mut labels:Vec<String> = Vec::new();
-                    let mut synonyms:Vec<String> = Vec::new();
-                    let mut definitions:Vec<String> = Vec::new();
-
-                    json.begin_object().unwrap();
-                    while json.has_next().unwrap() {
-                        let key = json.next_name().unwrap();
-                        if key == "iri" {
-                            iri = Some(json.next_string().unwrap());
-                        } else if key == "label" {
-                            labels.append(&mut get_values(&mut json));
-                        } else if key == "synonym" {
-                            synonyms.append(&mut get_values(&mut json));
-                        } else if key == "definition" {
-                            definitions.append(&mut get_values(&mut json));
-                        } else {
-                            json.skip_value().unwrap();
-                        }
-                    }
-                    json.end_object().unwrap();
-
-                    if !iri.is_some() {
-                        panic!("No IRI found for class");
-                    }
-
-                    let the_iri = iri.unwrap();
-
-                    let mut document = labels.into_iter().chain( synonyms.into_iter()).chain( definitions.into_iter()).collect::<Vec<String>>().join("; ");
-
-                    let mut tokens:Vec<String> = tokenizer
-                        .split_by_token_iter(&document, false)
-                        .map(|result| result.unwrap_or_else(|err| panic!("Tokenization error: {}", err)))
-                        .collect();
-
-                    if tokens.len() > 8000 {
-                        tokens = tokens.into_iter().take(8000).collect();
-                        document = tokens.join(" ");
-                    }
-
-                    if tokens.len() == 0 {
-                        eprintln!("Skipping empty document for {} {} {}", current_ont_id, "class", the_iri);
-                        continue;
-                    }
-
-                    let hash = compute_sha1(&document);
-
-                    batch.push(DocToEmbed {
-                        ontology_id: current_ont_id.to_owned(),
-                        entity_type: "class".to_owned(),
-                        iri: the_iri.clone(),
-                        hash: hash,
-                        document: document
-                    });
-
-                    if batch.len() >= batch_size {
-
-                        let result = process_batch(
-                            batch,
-                            &mut sqlite_get_stmt,
-                            &mut sqlite_exists_stmt,
-                            &mut sqlite_insert_stmt,
-                            &openai,
-                            args.dry_run);
-
-                        num_unchanged = num_unchanged + result.num_unchanged;
-                        num_reused = num_reused + result.num_reused;
-                        num_embedded = num_embedded + result.num_embedded;
-
-                        batch = Vec::new();
-                    }
+                    let result = process_entity("class", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    num_embedded = num_embedded + result.num_embedded;
+                    num_unchanged = num_unchanged + result.num_unchanged;
+                    num_reused = num_reused + result.num_reused;
+                }
+                json.end_array().unwrap();
+            } else if name == "properties" {
+                json.begin_array().unwrap();
+                while json.has_next().unwrap() {
+                    // property
+                    total = total + 1;
+                    let result = process_entity("property", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    num_embedded = num_embedded + result.num_embedded;
+                    num_unchanged = num_unchanged + result.num_unchanged;
+                    num_reused = num_reused + result.num_reused;
+                }
+                json.end_array().unwrap();
+            } else if name == "individuals" {
+                json.begin_array().unwrap();
+                while json.has_next().unwrap() {
+                    // property
+                    total = total + 1;
+                    let result = process_entity("individual", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    num_embedded = num_embedded + result.num_embedded;
+                    num_unchanged = num_unchanged + result.num_unchanged;
+                    num_reused = num_reused + result.num_reused;
                 }
                 json.end_array().unwrap();
             } else {
@@ -368,7 +322,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     if !batch.is_empty() {
         let result = process_batch(
-            batch,
+            &batch,
             &mut sqlite_get_stmt,
             &mut sqlite_exists_stmt,
             &mut sqlite_insert_stmt,
@@ -392,3 +346,100 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+fn process_entity(
+    entity_type:&str,
+    ontology_id:&str,
+    json:&mut JsonStreamReader<BufReader<File>>,
+    batch:&mut Vec<DocToEmbed>,
+    sqlite_get_stmt:&mut Statement,
+    sqlite_exists_stmt:&mut Statement,
+    sqlite_insert_stmt:&mut Statement,
+    openai: &OpenAI,
+    tokenizer: &CoreBPE,
+    dry_run:bool
+) -> EmbeddingResult {
+    let mut iri:Option<String> = None;
+    let mut labels:Vec<String> = Vec::new();
+    let mut synonyms:Vec<String> = Vec::new();
+    let mut definitions:Vec<String> = Vec::new();
+    
+    let mut num_unchanged = 0;
+    let mut num_reused = 0;
+    let mut num_embedded = 0;
+
+    json.begin_object().unwrap();
+    while json.has_next().unwrap() {
+        let key = json.next_name().unwrap();
+        if key == "iri" {
+            iri = Some(json.next_string().unwrap());
+        } else if key == "label" {
+            labels.append(&mut get_values(json));
+        } else if key == "synonym" {
+            synonyms.append(&mut get_values(json));
+        } else if key == "definition" {
+            definitions.append(&mut get_values(json));
+        } else {
+            json.skip_value().unwrap();
+        }
+    }
+    json.end_object().unwrap();
+
+    if !iri.is_some() {
+        panic!("No IRI found for {}", entity_type);
+    }
+
+    let the_iri = iri.unwrap();
+
+    let mut document = labels.into_iter().chain( synonyms.into_iter()).chain( definitions.into_iter()).collect::<Vec<String>>().join("; ");
+
+    let mut tokens:Vec<String> = tokenizer
+        .split_by_token_iter(&document, false)
+        .map(|result| result.unwrap_or_else(|err| panic!("Tokenization error: {}", err)))
+        .collect();
+
+    if tokens.len() > 8000 {
+        tokens = tokens.into_iter().take(8000).collect();
+        document = tokens.join(" ");
+    }
+
+    if tokens.len() == 0 {
+        eprintln!("Skipping empty document for {} {} {}", ontology_id, "class", the_iri);
+        return EmbeddingResult { num_unchanged: 0, num_reused: 0, num_embedded: 0 };
+    }
+
+    let hash = compute_sha1(&document);
+
+    batch.push(DocToEmbed {
+        ontology_id: ontology_id.to_owned(),
+        entity_type: entity_type.to_owned(),
+        iri: the_iri.clone(),
+        hash: hash,
+        document: document
+    });
+
+    if batch.len() >= BATCH_SIZE {
+
+        let result = process_batch(
+            batch,
+            sqlite_get_stmt,
+            sqlite_exists_stmt,
+            sqlite_insert_stmt,
+            &openai,
+            dry_run);
+
+        num_unchanged = num_unchanged + result.num_unchanged;
+        num_reused = num_reused + result.num_reused;
+        num_embedded = num_embedded + result.num_embedded;
+
+        batch.clear();
+    }
+
+    return EmbeddingResult {
+        num_unchanged: num_unchanged,
+        num_reused: num_reused,
+        num_embedded: num_embedded
+    };
+}
+
+
