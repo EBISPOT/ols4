@@ -132,5 +132,16 @@ public class V2PropertyRepository {
                 .map(V2Entity::new);
     }
 
+    public Page<V2Entity> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        return this.neo4jClient.getSimilar("OntologyProperty", iri, pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
+
 }
 

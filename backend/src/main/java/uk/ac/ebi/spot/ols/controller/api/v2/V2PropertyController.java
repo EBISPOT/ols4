@@ -210,6 +210,33 @@ public class V2PropertyController {
                 ), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the property, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<>(
+                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang)
+                ),
+                HttpStatus.OK
+        );
+    }
+
 }
 
 

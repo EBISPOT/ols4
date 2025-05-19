@@ -21,7 +21,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
     useEffect(() => {
         setSimilar(null)
         const fetchSimilarEntities = async () => {
-            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/classes/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/similar`)
+            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/similar`)
             setSimilar(page.elements.map((s) => new Class(s)))
         };
 
@@ -31,7 +31,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
 
     }, [entity?.getIri()])
 
-    if(!entity || entity.getType() !== 'class') {
+    if(!entity || (entity.getType() !== 'class' && entity.getType() !== 'property')) {
         return <Fragment/>
     }
 
