@@ -94,19 +94,19 @@ fn process_batch(
 
     let to_embed = batch.iter().filter(|doc| {
 
-        eprintln!("Checking if we need to embed {} {} {}", doc.ontology_id, doc.entity_type, doc.iri);
+        // eprintln!("Checking if we need to embed {} {} {}", doc.ontology_id, doc.entity_type, doc.iri);
 
         if sqlite_exists(&doc.ontology_id, &doc.entity_type, &doc.iri, &doc.hash, sqlite_exists_stmt) {
             num_unchanged = num_unchanged + 1;
-            eprintln!("Skipping updating embeddings for {} {} {}; document has not changed", doc.ontology_id, doc.entity_type, doc.iri);
+            // eprintln!("Skipping updating embeddings for {} {} {}; document has not changed", doc.ontology_id, doc.entity_type, doc.iri);
             return false
         }
 
-        eprintln!("Checking if we need to embed {} {} {} - part 2", doc.ontology_id, doc.entity_type, doc.iri);
+        // eprintln!("Checking if we need to embed {} {} {} - part 2", doc.ontology_id, doc.entity_type, doc.iri);
 
         if let Some(embedding) = sqlite_get(&doc.hash, sqlite_get_stmt) {
             num_reused = num_reused + 1;
-            eprintln!("Found cached embeddings we can reuse for {} {} {} (hash = {})", doc.ontology_id, doc.entity_type, doc.iri, doc.hash);
+            // eprintln!("Found cached embeddings we can reuse for {} {} {} (hash = {})", doc.ontology_id, doc.entity_type, doc.iri, doc.hash);
             if !dry_run {
                 sqlite_insert(&doc.ontology_id,
                     &doc.entity_type,
@@ -278,6 +278,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             if name == "ontologyId" {
                 current_ont_id = json.next_string().unwrap();
             } else if name == "classes" {
+                eprintln!("Processing classes for ontology {}", current_ont_id);
                 json.begin_array().unwrap();
                 while json.has_next().unwrap() {
                     // class
@@ -289,6 +290,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 }
                 json.end_array().unwrap();
             } else if name == "properties" {
+                eprintln!("Processing properties for ontology {}", current_ont_id);
                 json.begin_array().unwrap();
                 while json.has_next().unwrap() {
                     // property
@@ -300,9 +302,10 @@ fn main() -> Result<(), Box<dyn Error>> {
                 }
                 json.end_array().unwrap();
             } else if name == "individuals" {
+                eprintln!("Processing individuals for ontology {}", current_ont_id);
                 json.begin_array().unwrap();
                 while json.has_next().unwrap() {
-                    // property
+                    // individual
                     total = total + 1;
                     let result = process_entity("individual", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
                     num_embedded = num_embedded + result.num_embedded;

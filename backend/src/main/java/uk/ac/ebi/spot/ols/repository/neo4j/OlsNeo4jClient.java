@@ -197,9 +197,11 @@ public class OlsNeo4jClient {
 		// ID (where we may get an imported class with no embeddings), search by IRI
 		// and isDefiningOntology=true
 
-		String query = "MATCH (c:OntologyClass {iri: $iri}) "
+		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+
+		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
-		+ "CALL db.index.vector.queryNodes('class_embeddings', 10, c.embeddings) "
+		+ "CALL db.index.vector.queryNodes('" + index + "', 10, c.embeddings) "
 		+ "YIELD node AS similar, score "
 		+ "RETURN similar as entity, score "
 		+ "ORDER BY score DESC ";
