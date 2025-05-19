@@ -25,7 +25,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             setSimilar(page.elements.map((s) => new Class(s)))
         };
 
-        if(entity && entity.getOntologyId() && entity.getType() === 'class') {
+        if(entity && entity.getOntologyId() && (entity.getType() === 'class' || entity.getType() === 'property')) {
             fetchSimilarEntities();
         }
 
