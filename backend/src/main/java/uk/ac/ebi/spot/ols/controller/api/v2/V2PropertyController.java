@@ -220,7 +220,7 @@ public class V2PropertyController {
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
                     example = "efo") String ontologyId,
-            @PathVariable("class")
+            @PathVariable("property")
             @Parameter(name = "property",
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
