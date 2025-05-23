@@ -7,11 +7,12 @@ RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ol
 
 # Install JDK
 #
-RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
-        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
+RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-$(uname -m).tar.gz | tar -C /opt -xzf - && \
+        mv /opt/amazon-corretto* /opt/amazon-corretto && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto' >> ~/.bashrc && \
         echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-ENV JAVA_HOME="/opt/amazon-corretto-21.0.6.7.1-linux-x64/"
-ENV PATH="$PATH:/opt/amazon-corretto-21.0.6.7.1-linux-x64/bin"
+ENV JAVA_HOME="/opt/amazon-corretto/"
+ENV PATH="$PATH:/opt/amazon-corretto/bin"
 
 # Install Maven
 #
