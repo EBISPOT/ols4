@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -112,10 +113,15 @@ public class OntologyGraph implements StreamRDF {
         logger.error("parseRDF: Downloading (not predownloaded) {}", url);
         sourceFileTimestamp = System.currentTimeMillis();
 
-        HttpEntity res = getURL(url);
-        InputStream is = res.getContent();
-        String contentType = res.getContentType().getValue();
-        parseRDF(url, is, contentType);
+        var asURL = new URL(url);
+        if(asURL.getProtocol().equals("file")) {
+            parseRDF(url, new FileInputStream(asURL.getPath()), null);
+        } else {
+            HttpEntity res = getURL(url);
+            InputStream is = res.getContent();
+            String contentType = res.getContentType().getValue();
+            parseRDF(url, is, contentType);
+        }
     }
 
     private static HttpEntity getURL(String url) throws FileNotFoundException, IOException {
@@ -128,6 +134,8 @@ public class OntologyGraph implements StreamRDF {
         CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
         HttpGet request = new HttpGet(url);
+        request.addHeader("Accept", "application/rdf+xml, text/turtle, text/n3");
+
         HttpResponse response = client.execute(request);
         return response.getEntity();
     }
