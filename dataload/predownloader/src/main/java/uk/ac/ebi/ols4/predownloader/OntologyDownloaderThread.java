@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.TeeInputStream;
@@ -73,11 +74,20 @@ public class OntologyDownloaderThread implements Runnable {
 
             Lang lang = RDFLanguages.contentTypeToLang(mimetype);
             if(lang == null) {
+                lang = RDFLanguages.filenameToLang(ontologyUrl, Lang.RDFXML);
+            }
+            if(lang == null) {
                 lang = Lang.RDFXML;
+            }
+            
+            InputStream is = new FileInputStream(path);
+
+            if(ontologyUrl.endsWith(".gz")) {
+                is = new GZIPInputStream(is);
             }
 
             // parse to look for imports only
-            createParser(lang).source(new FileInputStream(path)).parse(new StreamRDF() {
+            createParser(lang).source(is).parse(new StreamRDF() {
                 public void start() {}
                 public void quad(Quad quad) {}
                 public void base(String base) {}
