@@ -16,7 +16,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
+import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
 
@@ -229,5 +231,39 @@ public class OlsNeo4jClient {
 		return new PageImpl<JsonElement>(res, pageable, res.size());
     }
 
+    public double getSimilarity(String type, String iri, String iri2) {
+
+		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
+		"MATCH (c2:" + type + " {iri: $iri2, isDefiningOntology:['true']}) " +
+		"RETURN vector.similarity.cosine(c.embeddings, c2.embeddings) AS score";
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query, Map.of("iri", iri, "iri2", iri2));
+
+		for(Record r : result.list()) {
+			var rmap = r.asMap();
+			double score = (Double) rmap.get("score");
+			return score;
+		}
+
+		throw new ResourceNotFoundException("entity not found");
+    }
+
+    public List<Double> getEmbeddingVector(String type, String iri) {
+
+		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
+		"RETURN c.embeddings AS embeddings";
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query, Map.of("iri", iri));
+
+		for(Record r : result.list()) {
+			var rmap = r.asMap();
+			List<Double> embeddings = (List<Double>) rmap.get("embeddings");
+			return embeddings;
+		}
+
+		throw new ResourceNotFoundException("entity not found");
+    }
 	
 }

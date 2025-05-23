@@ -188,4 +188,18 @@ public class V2ClassRepository {
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
+
+    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2) {
+
+        Validation.validateOntologyId(ontologyId);
+
+        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2);
+    }
+
+    public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri) {
+
+        Validation.validateOntologyId(ontologyId);
+
+        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri);
+    }
 }
