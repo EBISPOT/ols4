@@ -3,11 +3,14 @@
 
 FROM rust:1.79-buster
 
+SHELL ["/bin/bash", "-c"]
+
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
 
 # Install JDK
 #
-RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-$(uname -m).tar.gz | tar -C /opt -xzf - && \
+RUN arch=$(uname -m); arch=${arch/x86_64/x64}; \
+        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-$arch.tar.gz | tar -C /opt -xzf - && \
         mv /opt/amazon-corretto* /opt/amazon-corretto && \
         echo 'export JAVA_HOME=/opt/amazon-corretto' >> ~/.bashrc && \
         echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc

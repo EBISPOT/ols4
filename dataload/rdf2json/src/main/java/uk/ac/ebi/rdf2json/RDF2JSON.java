@@ -106,7 +106,8 @@ public class RDF2JSON {
 
             } else {
 
-                String ontologyId = configPath.substring(configPath.lastIndexOf("/") + 1, configPath.lastIndexOf("."));
+                // for example both .owl and .owl.gz is removed from the end of the path
+                String ontologyId = configPath.substring(configPath.lastIndexOf("/") + 1, configPath.indexOf('.', configPath.lastIndexOf("/")));
                 InputJson autoConfig = new InputJson();
                 autoConfig.ontologies = List.of(Map.of("id", ontologyId, "ontology_purl", configPath));
                 return autoConfig;
