@@ -4656,7 +4656,8 @@
       "hiddenProperties": [],
       "hierarchicalProperties": [
         "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://purl.obolibrary.org/obo/ms#part_of"
+        "http://purl.obolibrary.org/obo/ms#part_of",
+        "http://purl.obolibrary.org/obo/pride#part_of"
       ],
       "id": "partof",
       "isSkos": false,
@@ -4677,8 +4678,8 @@
     "loaded": "<loaded>",
     "message": "",
     "numberOfIndividuals": 0,
-    "numberOfProperties": 2,
-    "numberOfTerms": 4,
+    "numberOfProperties": 0,
+    "numberOfTerms": 6,
     "ontologyId": "partof",
     "status": "LOADED",
     "updated": "<updated>"

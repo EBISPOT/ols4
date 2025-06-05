@@ -389,7 +389,7 @@
         "database": "Orphanet",
         "description": "MONDO:equivalentTo",
         "id": "377788",
-        "url": "http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=377788"
+        "url": "http://www.orpha.net/ORDO/Orphanet_377788"
       },
       {
         "database": "SCTID",
@@ -498,7 +498,8 @@
         "oboXrefs": [
           {
             "database": "NCIT",
-            "id": "P378"
+            "id": "P378",
+            "url": "http://purl.obolibrary.org/obo/NCIT_P378"
           }
         ]
       }

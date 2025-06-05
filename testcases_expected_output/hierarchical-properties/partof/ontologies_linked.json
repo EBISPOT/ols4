@@ -9,7 +9,8 @@
       "title": "partof",
       "hierarchical_property": [
         "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://purl.obolibrary.org/obo/ms#part_of"
+        "http://purl.obolibrary.org/obo/ms#part_of",
+        "http://purl.obolibrary.org/obo/pride#part_of"
       ],
       "oboSlims": false,
       "ontologyPurl": "./testcases/hierarchical-properties/partof.rdf",
@@ -35,7 +36,7 @@
         "type": [
           "literal"
         ],
-        "value": "4"
+        "value": "6"
       },
       "numberOfEntities": {
         "type": [
@@ -53,16 +54,10 @@
         "type": [
           "literal"
         ],
-        "value": "2"
+        "value": "0"
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
         {
           "type": [
             "literal"
@@ -74,12 +69,6 @@
             "literal"
           ],
           "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
         }
       ],
       "classes": [
@@ -164,29 +153,6 @@
             "partof"
           ],
           "linkedEntities": {
-            "http://purl.obolibrary.org/obo/ms#part_of": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://purl.obolibrary.org/obo/MS_1003056": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -319,29 +285,6 @@
             "partof"
           ],
           "linkedEntities": {
-            "http://purl.obolibrary.org/obo/ms#part_of": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://purl.obolibrary.org/obo/MS_1000353": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -358,6 +301,251 @@
                   "literal"
                 ],
                 "value": "MS:1000353"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            }
+          }
+        },
+        {
+          "iri": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PRIDE:0000674"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "human gut"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "human gut"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "partof"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "partof"
+          },
+          "relatedFrom": [
+            {
+              "property": "http://purl.obolibrary.org/obo/pride#part_of",
+              "value": "http://purl.obolibrary.org/obo/PRIDE_0000675",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/pride#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+              "isObsolete": false
+            }
+          ],
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "PRIDE_0000674"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "partof"
+          ],
+          "linkedEntities": {
+            "http://purl.obolibrary.org/obo/PRIDE_0000675": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "sample name"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "PRIDE:0000675"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            }
+          }
+        },
+        {
+          "iri": "http://purl.obolibrary.org/obo/PRIDE_0000675",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PRIDE:0000675"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "http://purl.obolibrary.org/obo/PRIDE_0000674"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://purl.obolibrary.org/obo/pride#part_of"
+                }
+              ]
+            }
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "sample name"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+            "http://purl.obolibrary.org/obo/NCIT_C25507",
+            {
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/pride#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+              "isObsolete": false
+            }
+          ],
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "sample name"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "partof"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "partof"
+          },
+          "relatedTo": [
+            {
+              "property": "http://purl.obolibrary.org/obo/pride#part_of",
+              "value": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/pride#part_of",
+              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+              "isObsolete": false
+            }
+          ],
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "PRIDE_0000675"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "partof"
+          ],
+          "linkedEntities": {
+            "http://purl.obolibrary.org/obo/NCIT_C25507": {
+              "url": "http://purl.obolibrary.org/obo/NCIT_C25507",
+              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+              "curie": "ncit:C25507"
+            },
+            "http://purl.obolibrary.org/obo/PRIDE_0000674": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "human gut"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "PRIDE:0000674"
               },
               "type": [
                 "class",
@@ -448,27 +636,9 @@
           ],
           "linkedEntities": {
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000050"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
+              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000050"
             },
             "http://purl.obolibrary.org/obo/UBERON_0003684": {
               "numAppearsIn": 1,
@@ -625,218 +795,20 @@
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000050"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
+              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000050"
             }
           }
         }
       ],
-      "properties": [
-        {
-          "iri": "http://purl.obolibrary.org/obo/BFO_0000050",
-          "type": [
-            "property",
-            "objectProperty",
-            "entity"
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "BFO:0000050"
-          },
-          "directAncestor": [],
-          "hasDirectChildren": false,
-          "hasDirectParents": false,
-          "hasHierarchicalChildren": false,
-          "hasHierarchicalParents": false,
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#ObjectProperty",
-            "http://www.w3.org/2002/07/owl#TransitiveProperty"
-          ],
-          "http://www.w3.org/2000/01/rdf-schema#label": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
-          "imported": false,
-          "isObsolete": false,
-          "isPreferredRoot": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "part_of"
-            }
-          ],
-          "numDescendants": 0,
-          "numHierarchicalDescendants": 0,
-          "ontologyId": {
-            "type": [
-              "literal"
-            ],
-            "value": "partof"
-          },
-          "ontologyIri": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl"
-          },
-          "ontologyPreferredPrefix": {
-            "type": [
-              "literal"
-            ],
-            "value": "partof"
-          },
-          "searchableAnnotationValues": false,
-          "shortForm": {
-            "type": [
-              "literal"
-            ],
-            "value": "BFO_0000050"
-          },
-          "isDefiningOntology": false,
-          "appearsIn": [
-            "partof"
-          ],
-          "linkedEntities": {}
-        },
-        {
-          "iri": "http://purl.obolibrary.org/obo/ms#part_of",
-          "type": [
-            "property",
-            "objectProperty",
-            "entity"
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
-          "directAncestor": [],
-          "hasDirectChildren": false,
-          "hasDirectParents": false,
-          "hasHierarchicalChildren": false,
-          "hasHierarchicalParents": false,
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#ObjectProperty",
-            "http://www.w3.org/2002/07/owl#TransitiveProperty"
-          ],
-          "imported": false,
-          "isObsolete": false,
-          "isPreferredRoot": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "part_of"
-            }
-          ],
-          "numDescendants": 0,
-          "numHierarchicalDescendants": 0,
-          "ontologyId": {
-            "type": [
-              "literal"
-            ],
-            "value": "partof"
-          },
-          "ontologyIri": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl"
-          },
-          "ontologyPreferredPrefix": {
-            "type": [
-              "literal"
-            ],
-            "value": "partof"
-          },
-          "searchableAnnotationValues": false,
-          "shortForm": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
-          "isDefiningOntology": false,
-          "appearsIn": [
-            "partof"
-          ],
-          "linkedEntities": {}
-        }
-      ],
+      "properties": [],
       "individuals": [],
       "linkedEntities": {
         "http://purl.obolibrary.org/obo/BFO_0000050": {
-          "numAppearsIn": 1,
-          "hasLocalDefinition": true,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "part_of"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "BFO:0000050"
-          },
-          "type": [
-            "property",
-            "objectProperty",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/ms#part_of": {
-          "numAppearsIn": 1,
-          "hasLocalDefinition": true,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "part_of"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "part_of"
-          },
-          "type": [
-            "property",
-            "objectProperty",
-            "entity"
-          ]
+          "url": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+          "curie": "bfo:0000050"
         }
       }
     }
