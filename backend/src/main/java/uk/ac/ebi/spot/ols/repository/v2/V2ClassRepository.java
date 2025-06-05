@@ -202,4 +202,14 @@ public class V2ClassRepository {
 
         return this.neo4jClient.getEmbeddingVector("OntologyClass", iri);
     }
+
+    public Page<V2Entity> searchByVector(List<Double> vector, Pageable pageable, String lang) {
+        Validation.validateVector(vector);
+        Validation.validateLang(lang);
+
+        return this.neo4jClient.searchByVector("OntologyClass", vector, pageable)
+                .map(e -> LocalizationTransform.transform(e, lang))
+                .map(RemoveLiteralDatatypesTransform::transform)
+                .map(V2Entity::new);
+    }
 }

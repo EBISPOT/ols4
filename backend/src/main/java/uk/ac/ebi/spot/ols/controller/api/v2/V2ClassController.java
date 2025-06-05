@@ -93,6 +93,23 @@ public class V2ClassController {
         );
     }
 
+    @RequestMapping(path = "/classes/embeddingVector", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
+    public HttpEntity<V2PagedResponse<V2Entity>> searchClassesByVector(
+                @RequestBody List<Double> vector,
+                @PageableDefault(size = 20, page = 0)
+                @Parameter(name = "pageable",
+                        description = "Specify the size of the result you want to get in the output",
+                        example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+        ) throws ResourceNotFoundException, IOException {
+                return new ResponseEntity<>(
+                        new V2PagedResponse<>(
+                        classRepository.searchByVector(vector, pageable, lang)
+                        ),
+                        HttpStatus.OK
+                );
+        }
+
     @RequestMapping(path = "/ontologies/{onto}/classes", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0)

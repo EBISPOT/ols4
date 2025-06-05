@@ -203,7 +203,7 @@ public class OlsNeo4jClient {
 
 		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
-		+ "CALL db.index.vector.queryNodes('" + index + "', 10, c.embeddings) "
+		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c.embeddings) "
 		+ "YIELD node AS similar, score "
 		+ "RETURN similar as entity, score "
 		+ "ORDER BY score DESC ";
@@ -212,7 +212,7 @@ public class OlsNeo4jClient {
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("iri", iri));
+		Result result = session.run(query, Map.of("iri", iri, "size", pageable.getPageSize()));
 
 		for(Record r : result.list()) {
 
@@ -264,6 +264,37 @@ public class OlsNeo4jClient {
 		}
 
 		throw new ResourceNotFoundException("entity not found");
+    }
+
+    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable) {
+
+		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+
+		String query = "CALL db.index.vector.queryNodes('" + index + "', $size, $vec) "
+		+ "YIELD node AS similar, score "
+		+ "RETURN similar as entity, score "
+		+ "ORDER BY score DESC ";
+
+		ArrayList<JsonElement> res = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query, Map.of("vec", vector, "size", pageable.getPageSize()));
+
+		for(Record r : result.list()) {
+
+			var rmap = r.asMap();
+
+			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
+			double score = (Double) rmap.get("score");
+
+			var resRow = JsonParser.parseString((String) entity.get("_json"));
+			var json = gson.fromJson(resRow, JsonElement.class);
+			json.getAsJsonObject().addProperty("score", score);
+
+			res.add(resRow);
+		}
+
+		return new PageImpl<JsonElement>(res, pageable, res.size());
     }
 	
 }
