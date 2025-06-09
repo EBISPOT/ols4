@@ -210,7 +210,7 @@ public class V2PropertyController {
                 ), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",

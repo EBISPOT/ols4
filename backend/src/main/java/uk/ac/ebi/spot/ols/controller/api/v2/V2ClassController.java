@@ -328,7 +328,7 @@ public class V2ClassController {
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",
@@ -355,7 +355,7 @@ public class V2ClassController {
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/embeddingVector", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<String> getEmbeddingByOntology(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",
@@ -380,7 +380,7 @@ public class V2ClassController {
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<String> getSimilarityByOntology(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",
