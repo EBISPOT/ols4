@@ -131,23 +131,6 @@ public class V2ClassController {
         );
     }
 
-    @RequestMapping(path = "/classes/embeddingVector", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
-    public HttpEntity<V2PagedResponse<V2Entity>> searchClassesByVector(
-                @RequestBody List<Double> vector,
-                @PageableDefault(size = 20, page = 0)
-                @Parameter(name = "pageable",
-                        description = "Specify the size of the result you want to get in the output",
-                        example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
-        ) throws ResourceNotFoundException, IOException {
-                return new ResponseEntity<>(
-                        new V2PagedResponse<>(
-                        classRepository.searchByVector(vector, pageable, lang)
-                        ),
-                        HttpStatus.OK
-                );
-        }
-
     @RequestMapping(path = "/ontologies/{onto}/classes", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0)
@@ -327,89 +310,6 @@ public class V2ClassController {
                 HttpStatus.OK
         );
     }
-
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
-            @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
-            @PathVariable("class")
-            @Parameter(name = "class",
-                    description = "The IRI of the class, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
-    ) throws ResourceNotFoundException {
-
-        iri = UriUtils.decode(iri, "UTF-8");
-
-        return new ResponseEntity<>(
-                new V2PagedResponse<>(
-                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang)
-                ),
-                HttpStatus.OK
-        );
-    }
-
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<String> getEmbeddingByOntology(
-            @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
-            @PathVariable("class")
-            @Parameter(name = "class",
-                    description = "The IRI of the class, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
-    ) throws ResourceNotFoundException {
-
-        iri = UriUtils.decode(iri, "UTF-8");
-
-        return new ResponseEntity<>(
-                gson.toJson( classRepository.getEmbeddingVectorByOntologyId(ontologyId, iri) ),
-                HttpStatus.OK
-        );
-    }
-
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<String> getSimilarityByOntology(
-            @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
-            @PathVariable("class")
-            @Parameter(name = "class",
-                    description = "The IRI of the class, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @PathVariable("otherclass")
-            @Parameter(name = "otherclass",
-                    description = "The IRI of the other class, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri2
-    ) throws ResourceNotFoundException {
-
-        iri = UriUtils.decode(iri, "UTF-8");
-        iri2 = UriUtils.decode(iri2, "UTF-8");
-
-        return new ResponseEntity<>(
-                Double.toString( classRepository.getSimilarityByOntologyId(ontologyId, iri, iri2) ),
-                HttpStatus.OK
-        );
-    }
-
-
 
     // The ancestors of individuals are classes. So, the /ancestors endpoint is part of the Class controller.
     //
