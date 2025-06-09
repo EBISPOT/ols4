@@ -19,7 +19,7 @@ ENV PATH="$PATH:/opt/amazon-corretto/bin"
 
 # Install Maven
 #
-RUN curl https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz | tar -C /usr/local --strip-components=1 -xzf -
+RUN curl https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.tar.gz | tar -C /usr/local --strip-components=1 -xzf -
 
 # Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
 #
