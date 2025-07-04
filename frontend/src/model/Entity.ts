@@ -117,9 +117,6 @@ export default abstract class Entity extends Thing {
   getAnnotationPredicates(): string[] {
     let definitionProperties = asArray(this.properties["definitionProperty"]);
     let synonymProperties = asArray(this.properties["synonymProperty"]);
-    let hierarchicalProperties = asArray(
-      this.properties["hierarchicalProperty"]
-    );
     let annotationPredicates = new Set();
 
     for (let predicate of Object.keys(this.properties)) {
@@ -141,12 +138,11 @@ export default abstract class Entity extends Thing {
         if (linkedEntity != undefined && linkedEntity.type && linkedEntity.type.indexOf("dataProperty") !== -1) continue;
       }
 
-      // If the value was already interpreted as definition/synonym/hierarchical, do
+      // If the value was already interpreted as definition/synonym, do
       // not include it as an annotation
       if (
         definitionProperties.indexOf(predicate) !== -1 ||
-        synonymProperties.indexOf(predicate) !== -1 ||
-        hierarchicalProperties.indexOf(predicate) !== -1
+        synonymProperties.indexOf(predicate) !== -1
       ) {
         continue;
       }
