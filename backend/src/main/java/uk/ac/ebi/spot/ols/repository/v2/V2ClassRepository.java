@@ -105,80 +105,90 @@ public class V2ClassRepository {
         );
     }
 
-    public Page<V2Entity> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
+
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
-    public Page<V2Entity> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
+
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
 
-    public Page<V2Entity> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
+
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList(HIERARCHICAL_PARENT.getText()),
-                        Map.of(), pageable)
+                        Map.of(), nodeProps, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
-    public Page<V2Entity> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
 
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
 
-    public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+individual+" + iri;
 
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
     }
 
 
-    public Page<V2Entity> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, String lang) {
+    public Page<V2Entity> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);

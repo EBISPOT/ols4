@@ -86,7 +86,7 @@ public class V2LLMController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<>(
-                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang)
+                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang)
                 ),
                 HttpStatus.OK
         );

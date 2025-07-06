@@ -73,9 +73,8 @@ export default function EntityTree({
     (state) => state.ontologies.manuallyExpandedNodes
   );
 
-  const showObsoleteEnabled = selectedEntity
-    ? selectedEntity.isDeprecated()
-    : useAppSelector((state) => state.ontologies.displayObsolete);
+  const showObsoleteEnabled = (selectedEntity && selectedEntity.isDeprecated()) ? true : useAppSelector((state) => state.ontologies.displayObsolete);
+
   const showSiblingsEnabled = useAppSelector(
     (state) => state.ontologies.displaySiblings
   );
@@ -238,7 +237,7 @@ export default function EntityTree({
             entityIri: absId.split(";").pop(),
             absoluteIdentity: absId,
             lang,
-            showObsoleteEnabled,
+            includeObsoleteEntities: showObsoleteEnabled,
             apiUrl,
           })
         )

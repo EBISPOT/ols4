@@ -112,7 +112,7 @@ public class V2PropertyRepository {
         String id = ontologyId + "+property+" + iri;
 
         return this.neo4jClient.traverseIncomingEdges("OntologyProperty", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(V2Entity::new);
@@ -126,7 +126,7 @@ public class V2PropertyRepository {
         String id = ontologyId + "+property+" + iri;
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyProperty", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(RemoveLiteralDatatypesTransform::transform)
                 .map(e -> LocalizationTransform.transform(e, lang))
                 .map(V2Entity::new);

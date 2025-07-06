@@ -41,7 +41,7 @@ public class V1TermRepository {
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
         return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
@@ -49,7 +49,7 @@ public class V1TermRepository {
 
         List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
-        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
+        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
@@ -57,7 +57,7 @@ public class V1TermRepository {
 
         List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
+        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -65,7 +65,7 @@ public class V1TermRepository {
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
         return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
@@ -73,7 +73,7 @@ public class V1TermRepository {
 
         List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), pageable)
+        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -83,7 +83,7 @@ public class V1TermRepository {
         List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
 
         return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        relationIRIs, Map.of(), pageable)
+                        relationIRIs, Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
@@ -91,7 +91,7 @@ public class V1TermRepository {
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
         return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -101,7 +101,7 @@ public class V1TermRepository {
         V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
 
         return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), pageable)
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
     }
@@ -112,6 +112,7 @@ public class V1TermRepository {
                         "OntologyClass", ontologyId + "+class+" + iri,
                         Arrays.asList(RELATED_TO.getText()),
                         Map.of("property", relation),
+                        Map.of(),
                         pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
 
