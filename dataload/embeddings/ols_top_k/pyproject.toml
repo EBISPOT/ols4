@@ -7,4 +7,6 @@ requires-python = ">=3.13"
 dependencies = [
     "chromadb>=1.0.15",
     "ijson>=3.4.0",
+    "protobuf==3.19.0",
+    "setuptools>=80.9.0",
 ]

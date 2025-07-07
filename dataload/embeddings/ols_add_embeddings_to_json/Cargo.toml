@@ -1,5 +1,5 @@
 [package]
-name = "ols_inject_hierarchy"
+name = "ols_add_embeddings_to_json"
 version = "0.1.0"
 edition = "2021"
 
@@ -12,7 +12,4 @@ csv = "1.3.1"
 hex = "0.4.3"
 sha1 = "0.10.6"
 rusqlite = "0.32.1"
-serde = { version = "1.0.219", features = ["derive"] }
-rayon = "1.10.0"
-indicatif = "0.18.0"
-crossbeam = "0.8.4"
+serde = "1.0.219"

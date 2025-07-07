@@ -4,12 +4,12 @@ use indicatif::{ProgressBar, ProgressStyle};
 use rayon::prelude::*;
 use rusqlite::Connection;
 use serde::Deserialize;
+use serde;
 use std::{
     collections::{HashMap, HashSet, VecDeque}, error::Error, f32::consts::E, fs::File, io::BufReader, path::PathBuf, sync::Arc, thread, time::Duration
 };
 use struson::reader::{JsonReader, JsonStreamReader, ValueType};
 
-/// CLI arguments
 #[derive(Parser, Debug)]
 struct Args {
     #[arg(short, long)]
@@ -58,7 +58,6 @@ impl EntityKey {
 fn main() -> Result<(), Box<dyn Error>> {
     let args = Arc::new(Args::parse());
 
-    // Prepare output DB schema
     {
         let out = Connection::open(&args.output_db)?;
         out.execute_batch(
@@ -98,8 +97,6 @@ fn main() -> Result<(), Box<dyn Error>> {
                  VALUES (?, ?, ?, ?)",
             )?;
             for (oid, etype, iri, emb_json) in write_rx {
-                // Uncomment if you want per-row debug output
-                // eprintln!("Writing: {} {} {}", oid, etype, iri);
                 stmt.execute(&[&oid, &etype, &iri, &emb_json])?;
             }
             drop(stmt);

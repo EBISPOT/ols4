@@ -44,7 +44,7 @@ def fetch_embedding_from_db(ontology_id, entity_type, iri):
         else:
             return None
     except Exception as e:
-        print(f"    ⚠️ DB lookup failed for {ontology_id}:{entity_type}:{iri}: {e}")
+        print(f"    ⚠️ DB lookup failed for {ontology_id}:{entity_type}:{iri}: {e}", file=sys.stderr)
         return None
 
 def parse_ontology_entities(entities, ontology_id, entity_type):
@@ -58,6 +58,10 @@ def parse_ontology_entities(entities, ontology_id, entity_type):
         if iri is None:
             continue
 
+        is_defining = entity.get("isDefiningOntology")
+        if is_defining is not None and is_defining == False:
+            continue
+
         embedding = fetch_embedding_from_db(ontology_id, entity_type, iri)
         if embedding is None:
             continue
@@ -65,7 +69,7 @@ def parse_ontology_entities(entities, ontology_id, entity_type):
         try:
             flat_embedding = [float(x) for x in embedding]
         except Exception as e:
-            print(f"    ⚠️ Skipping invalid embedding for {ontology_id}:{entity_type}:{iri}: {e}")
+            print(f"    ⚠️ Skipping invalid embedding for {ontology_id}:{entity_type}:{iri}: {e}", file=sys.stderr)
             continue
 
         doc_id = f"{ontology_id}:{entity_type}:{iri}"
@@ -78,30 +82,29 @@ def parse_ontology_entities(entities, ontology_id, entity_type):
                 collection.add(documents=batch_docs, embeddings=batch_embeddings, ids=batch_ids)
                 added += len(batch_embeddings)
             except Exception as e:
-                print(f"    ⚠️ Failed to batch add vectors: {e}")
+                print(f"    ⚠️ Failed to batch add vectors: {e}", file=sys.stderr)
             finally:
                 batch_embeddings.clear()
                 batch_ids.clear()
                 batch_docs.clear()
 
-    # Final flush
     if batch_embeddings:
         try:
             collection.add(documents=batch_docs, embeddings=batch_embeddings, ids=batch_ids)
             added += len(batch_embeddings)
         except Exception as e:
-            print(f"    ⚠️ Failed to batch add final vectors: {e}")
+            print(f"    ⚠️ Failed to batch add final vectors: {e}", file=sys.stderr)
 
     total_entities_added[entity_type] += added
     if added > 0:
-        print(f"    → Added {added} {entity_type} embeddings for ontology '{ontology_id}'")
+        print(f"    → Added {added} {entity_type} embeddings for ontology '{ontology_id}'", file=sys.stderr)
 
 def process_input():
     objects = ijson.items(sys.stdin, "ontologies.item", use_float=True)
     count = 0
     for ontology in objects:
         ontology_id = ontology.get("ontologyId", f"unknown_{count}")
-        print(f"\nProcessing ontology #{count+1}: {ontology_id}")
+        print(f"\nProcessing ontology #{count+1}: {ontology_id}", file=sys.stderr)
         for key, value in ontology.items():
             if key == "classes":
                 parse_ontology_entities(value, ontology_id, "class")
@@ -110,9 +113,9 @@ def process_input():
             elif key == "individuals":
                 parse_ontology_entities(value, ontology_id, "individual")
         count += 1
-    print(f"\n✅ Finished processing {count} ontologies")
+    print(f"\n✅ Finished processing {count} ontologies", file=sys.stderr)
     total = sum(total_entities_added.values())
-    print(f"Total entity embeddings added: {total}")
+    print(f"Total entity embeddings added: {total}", file=sys.stderr)
 
 def query_top_k(query_embedding, collection, k=50):
     return collection.query(query_embeddings=[query_embedding], n_results=k)
@@ -121,6 +124,7 @@ if __name__ == "__main__":
     start_time = time.time()
     process_input()
 
+    print(f"entity_type\tiri_1\tontology_id_1\tiri_2\tontology_id_2\tdistance")
     for entity_type, collection in collections.items():
         all_embeddings = collection.get(include=["embeddings"])
         embeddings = all_embeddings["embeddings"]

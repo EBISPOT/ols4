@@ -66,7 +66,8 @@ RUN chmod -R 777 /opt/* /tmp/out
 #### EMBEDDINGS SUPPORT
 ####
 RUN apt-get update && apt install -y build-essential cmake pigz
-RUN cd /opt/ols/dataload/embeddings && cargo b --release
+RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
+        cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
 
 # To enable materialising embeddings using ChromaDB
 # We have to use Debian buster as the base to run on the EBI HPC, so
