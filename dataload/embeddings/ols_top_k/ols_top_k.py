@@ -4,8 +4,18 @@ import chromadb
 from chromadb.config import Settings
 from tqdm import tqdm
 import time
+import sqlite3
+import json
 
-# Initialize Chroma in-memory DB
+if len(sys.argv) < 2:
+    print("Usage: python ols_top_k.py <path_to_embeddings_db>")
+    sys.exit(1)
+
+db_path = sys.argv[1]
+
+conn = sqlite3.connect(db_path)
+cursor = conn.cursor()
+
 chroma_client = chromadb.Client(Settings(anonymized_telemetry=False))
 collections = {
     "class": chroma_client.create_collection(name="class_embeddings"),
@@ -20,6 +30,23 @@ total_entities_added = {
 }
 BATCH_SIZE = 100
 
+def fetch_embedding_from_db(ontology_id, entity_type, iri):
+    try:
+        cursor.execute(
+            """
+            SELECT embeddings FROM embeddings
+            WHERE ontologyId = ? AND entityType = ? AND iri = ?
+            """, (ontology_id, entity_type, iri)
+        )
+        row = cursor.fetchone()
+        if row:
+            return json.loads(row[0])  # embeddings column is a JSON array
+        else:
+            return None
+    except Exception as e:
+        print(f"    ⚠️ DB lookup failed for {ontology_id}:{entity_type}:{iri}: {e}")
+        return None
+
 def parse_ontology_entities(entities, ontology_id, entity_type):
     collection = collections[entity_type]
     batch_embeddings, batch_ids, batch_docs = [], [], []
@@ -27,10 +54,12 @@ def parse_ontology_entities(entities, ontology_id, entity_type):
     added = 0
 
     for entity in tqdm(entities, desc=f"  Parsing {entity_type} entities for {ontology_id}", unit="entity"):
-        embedding = entity.get("embeddings")
         iri = entity.get("iri")
+        if iri is None:
+            continue
 
-        if embedding is None or iri is None:
+        embedding = fetch_embedding_from_db(ontology_id, entity_type, iri)
+        if embedding is None:
             continue
 
         try:
@@ -42,7 +71,7 @@ def parse_ontology_entities(entities, ontology_id, entity_type):
         doc_id = f"{ontology_id}:{entity_type}:{iri}"
         batch_embeddings.append(flat_embedding)
         batch_ids.append(doc_id)
-        batch_docs.append("")
+        batch_docs.append("")  # Optional document text, kept empty
 
         if len(batch_embeddings) >= BATCH_SIZE:
             try:
