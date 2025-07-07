@@ -3,6 +3,7 @@ use crossbeam::channel;
 use indicatif::{ProgressBar, ProgressStyle};
 use rayon::prelude::*;
 use rusqlite::Connection;
+use rusqlite::OpenFlags;
 use serde::Deserialize;
 use serde;
 use std::{
@@ -217,7 +218,7 @@ fn process_one_ontology(
 ) -> Result<Vec<(String, String, String, String)>, Box<dyn Error>> {
     eprintln!("Processing ontology: {}", ontology.id);
 
-    let input = Connection::open(&args.input_db)?;
+    let input = Connection::open_with_flags(&args.input_db, OpenFlags::SQLITE_OPEN_READ_ONLY)?;
     let mut select_stmt = input.prepare(
         "SELECT embeddings FROM embeddings
          WHERE ontologyId = ? AND entityType = ? AND iri = ?",

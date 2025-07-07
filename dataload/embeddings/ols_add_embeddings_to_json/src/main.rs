@@ -1,5 +1,6 @@
 use clap::Parser;
 use rusqlite::{Connection, Statement};
+use rusqlite::OpenFlags;
 use std::{
     fmt::Write, fs::File, io::{self, BufReader}
 };
@@ -147,7 +148,7 @@ where
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
-    let conn = Connection::open(&args.db_path)?;
+    let conn = Connection::open_with_flags(&args.db_path, OpenFlags::SQLITE_OPEN_READ_ONLY)?;
     let mut sqlite_get_stmt = conn.prepare(
         "SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?",
     )?;

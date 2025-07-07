@@ -13,7 +13,7 @@ if len(sys.argv) < 2:
 
 db_path = sys.argv[1]
 
-conn = sqlite3.connect(db_path)
+conn = sqlite3.connect(f'file:{db_path}?mode=ro', uri=True)
 cursor = conn.cursor()
 
 chroma_client = chromadb.Client(Settings(anonymized_telemetry=False))
@@ -40,7 +40,13 @@ def fetch_embedding_from_db(ontology_id, entity_type, iri):
         )
         row = cursor.fetchone()
         if row:
-            return json.loads(row[0])  # embeddings column is a JSON array
+            res = json.loads(row[0])
+            # if its an array just return it
+            if isinstance(res, list):
+                return res
+            # temp hack to be removed
+            elif isinstance(res, dict) and 'embedding' in res:
+                return res['embedding']
         else:
             return None
     except Exception as e:
