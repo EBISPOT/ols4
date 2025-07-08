@@ -57,15 +57,12 @@ RUN cp -r /opt/ols/dataload/solr_config /opt/solr/server/solr
 
 RUN mkdir /tmp/out
 
-RUN chown -R ols:ols /opt/* /tmp/out
-RUN chmod -R 777 /opt/* /tmp/out
-
 
 
 ####
 #### EMBEDDINGS SUPPORT
 ####
-RUN apt-get update && apt install -y build-essential cmake pigz
+RUN apt-get update && apt install -y build-essential cmake pigz vim
 RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
         cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
 
@@ -78,12 +75,17 @@ ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
 ENV UV_TOOL_DIR="/usr/bin"
 ENV UV_TOOL_BIN_DIR="/usr/bin"
 ENV UV_CACHE_DIR="/opt/uv_cache"
+#ENV UV_PROJECT_ENVIRONMENT="/opt/uv_venv"
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
         uv python install cpython-3.13.5-linux-x86_64-gnu
+RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
 ####
 ####
 
 
+
+RUN chown -R ols:ols /opt/* /tmp/out
+RUN chmod -R 777 /opt/* /tmp/out
 
 USER ols
 WORKDIR /opt/ols/dataload
