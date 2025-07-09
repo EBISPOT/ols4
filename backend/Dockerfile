@@ -1,6 +1,5 @@
 
-#FROM maven:3.6.3-adoptopenjdk-14
-FROM maven:3.8-jdk-11
+FROM maven:3.9.10-eclipse-temurin-24
 
 RUN mkdir /opt/ols && mkdir /opt/ols/backend && mkdir /opt/ols/ols-shared
 COPY ./backend /opt/ols/backend
