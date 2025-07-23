@@ -3,10 +3,10 @@ import { LinkedEntity } from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
 
-export default abstract class Entity extends Thing {
-  abstract getParents(): Reified<any>[];
-  abstract getSuperEntities(): Reified<any>[];
-  abstract getEquivalents(): Reified<any>[];
+export default class Entity extends Thing {
+  getParents(): Reified<any>[] { return [] }
+  getSuperEntities(): Reified<any>[] { return [] }
+  getEquivalents(): Reified<any>[] { return [] }
 
   isCanonical(): boolean {
     return this.properties["isDefiningOntology"] === true;

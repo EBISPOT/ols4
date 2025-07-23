@@ -149,13 +149,14 @@ public class LinkerPass2 {
             jsonWriter.beginObject();
             jsonReader.beginObject();
 
-            Set<String> stringsInEntity = new HashSet<String>();
+            Set<String> relatedFromStringsInEntity = new HashSet<String>();
+            Set<String> allOtherStringsInEntity = new HashSet<String>();
             String entityIri = null;
 
             while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
                 String name = jsonReader.nextName();
-                stringsInEntity.add(ExtractIriFromPropertyName.extract(name));
+                allOtherStringsInEntity.add(ExtractIriFromPropertyName.extract(name));
                 jsonWriter.name(name);
 
                 if(name.equals("iri")) {
@@ -165,8 +166,10 @@ public class LinkerPass2 {
                     processCurieObject(jsonReader, jsonWriter, pass1Result, entityIri);
                 } else if (name.equalsIgnoreCase("shortForm")) {
                     processShortFormObject(jsonReader, jsonWriter, pass1Result, entityIri);
+                } else if (name.equalsIgnoreCase("relatedFrom")) {
+                    CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, relatedFromStringsInEntity);
                 } else {
-                    CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, stringsInEntity);
+                    CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, allOtherStringsInEntity);
                 }
             }
 
@@ -197,7 +200,24 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+            jsonWriter.beginObject();
+
+            /*
+             * "relatedFrom" is a special field because it contains INCOMING properties
+             * rather than outgoing. We therefore don't want to include any of the IRIs
+             * referenced in "relatedFrom" in the "linksTo" array because they are not
+             * actually linked to (rather the opposite). But we still need them in "linkedEntities"
+             * so we can display them in the UI. 
+             */
+
+            var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, allOtherStringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+
+            relatedFromStringsInEntity.removeAll(allOtherStringsInEntity);
+            if(relatedFromStringsInEntity.size() > 0) {
+                writeLinkedEntitiesFromGatheredStrings(jsonWriter, relatedFromStringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+            }
+
+            jsonWriter.endObject(); // linkedEntities
 
             jsonWriter.name("linksTo");
             jsonWriter.beginArray();
@@ -247,8 +267,6 @@ public class LinkerPass2 {
     private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         Set<String> linksToIris = new HashSet<>();
-
-        jsonWriter.beginObject();
 
         for(String str : strings) {
 
@@ -370,8 +388,6 @@ public class LinkerPass2 {
 
 
         }
-
-        jsonWriter.endObject(); // linkedEntities
 
         return linksToIris;
     }

@@ -19,7 +19,7 @@ export default function LinkedFromSection({entity, linkedEntities}:{entity:Entit
     useEffect(() => {
         setLinkedFrom(null)
         const fetchLinkedFromEntities = async () => {
-            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/entities`, { linksTo: entity.getIri(), size: '5' })
+            let page = await getPaginated<any>(`api/v2/entities`, { linksTo: entity.getIri(), size: '5' })
             setLinkedFrom(page)
         };
         fetchLinkedFromEntities();
