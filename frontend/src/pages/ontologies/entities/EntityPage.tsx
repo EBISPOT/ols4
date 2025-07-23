@@ -51,6 +51,7 @@ import addLinksToText from "./entityPageSections/addLinksToText";
 import { Helmet } from 'react-helmet'
 import { Typography } from "@mui/material";
 import SimilarEntitiesSection from "./entityPageSections/SimilarEntitiesSection";
+import LinkedFromSection from "./entityPageSections/LinkedFromSection";
 
 export default function EntityPage({
   entityType,
@@ -497,6 +498,10 @@ export default function EntityPage({
                     <ClassInstancesSection
                       entity={entity}
                       classInstances={classInstances}
+                      linkedEntities={linkedEntities}
+                    />
+                    <LinkedFromSection
+                      entity={entity}
                       linkedEntities={linkedEntities}
                     />
                   </div>
