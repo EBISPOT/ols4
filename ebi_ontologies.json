@@ -6,6 +6,9 @@
     },
     {
       "id": "evorao",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
       "ontology_purl": "https://raw.githubusercontent.com/EVORA-project/evora-ontology/refs/heads/main/models/owl/evora_ontology.owl.ttl",
       "base_uri": ["https://w3id.org/evorao/"]
     },
