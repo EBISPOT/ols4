@@ -178,7 +178,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1",
@@ -242,7 +245,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE",
@@ -313,7 +317,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue",
@@ -377,7 +382,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass",
@@ -440,7 +446,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
@@ -503,7 +510,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -569,7 +577,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty",
@@ -633,7 +642,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty",
@@ -696,7 +706,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty",
@@ -759,7 +770,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -823,7 +835,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual",
@@ -884,10 +897,12 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -190,7 +190,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
@@ -253,7 +257,8 @@
           "appearsIn": [
             "owl2primer-subclassof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
@@ -356,12 +361,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

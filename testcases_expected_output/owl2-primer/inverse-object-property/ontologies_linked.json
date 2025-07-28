@@ -152,7 +152,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/inverse-object-property.rdf#hasParent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/inverse-object-property.rdf#hasParent",
@@ -240,11 +243,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/inverse-object-property.rdf#hasChild"
+          ]
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

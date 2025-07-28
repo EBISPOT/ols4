@@ -104,6 +104,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "related-oneof",
@@ -212,6 +217,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "related-oneof",
@@ -294,6 +304,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "related-oneof",
@@ -376,6 +391,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "related-oneof",

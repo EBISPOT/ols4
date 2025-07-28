@@ -365,7 +365,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/MONDO_0005039",
+            "http://purl.obolibrary.org/obo/IAO_0000115",
+            "http://purl.obolibrary.org/obo/MONDO_0005151",
+            "http://www.geneontology.org/formats/oboInOwl#source"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
@@ -486,7 +492,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/IAO_0000115"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/MONDO_0005151",
@@ -607,7 +616,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/IAO_0000115"
+          ]
         }
       ],
       "properties": [
@@ -672,7 +684,8 @@
           "appearsIn": [
             "direct-parent-with-annotation-axiom"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
@@ -735,11 +748,13 @@
           "appearsIn": [
             "direct-parent-with-annotation-axiom"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

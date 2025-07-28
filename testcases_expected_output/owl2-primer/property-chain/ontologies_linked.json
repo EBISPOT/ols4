@@ -155,7 +155,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent",
@@ -218,11 +221,13 @@
           "appearsIn": [
             "owl2primer-property-chain"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

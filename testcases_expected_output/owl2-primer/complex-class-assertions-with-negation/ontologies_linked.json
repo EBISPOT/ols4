@@ -138,7 +138,8 @@
           "appearsIn": [
             "owl2primer-complex-class-assertions-with-negation"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person",
@@ -201,7 +202,8 @@
           "appearsIn": [
             "owl2primer-complex-class-assertions-with-negation"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
@@ -322,10 +324,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Parent"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

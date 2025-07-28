@@ -201,7 +201,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
@@ -264,7 +268,8 @@
           "appearsIn": [
             "owl2primer-object-property-domain-range-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
@@ -367,7 +372,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person"
+          ]
         }
       ],
       "properties": [
@@ -479,11 +487,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man",
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman"
+          ]
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

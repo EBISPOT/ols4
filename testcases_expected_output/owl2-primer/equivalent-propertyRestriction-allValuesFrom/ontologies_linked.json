@@ -168,7 +168,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#hasChild"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-propertyRestriction-allValuesFrom.owl#Person",
@@ -231,7 +234,8 @@
           "appearsIn": [
             "owl2primer-equivalent-propertyrestriction-allvaluesfrom"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -296,11 +300,13 @@
           "appearsIn": [
             "owl2primer-equivalent-propertyrestriction-allvaluesfrom"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -93,8 +93,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1"
           ],
           "hierarchicalParent": [
@@ -102,7 +102,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -113,7 +113,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -181,7 +181,7 @@
           "relatedTo": [
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
               "type": [
                 "related"
               ],
@@ -194,7 +194,7 @@
             },
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
               "type": [
                 "related"
               ],

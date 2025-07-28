@@ -143,7 +143,7 @@
           "relatedTo": [
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
               "type": [
                 "related"
               ],
@@ -156,7 +156,7 @@
             },
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
               "type": [
                 "related"
               ],
@@ -282,7 +282,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         }
       ],
       "properties": [
@@ -347,7 +353,8 @@
           "appearsIn": [
             "related-somevaluesof-oneof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -515,7 +522,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
@@ -681,7 +694,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
@@ -847,10 +866,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

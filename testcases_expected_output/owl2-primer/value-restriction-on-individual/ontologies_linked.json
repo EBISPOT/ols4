@@ -178,7 +178,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#hasParent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/value-restriction-on-individual.rdf#John"
+          ]
         }
       ],
       "properties": [
@@ -243,7 +247,8 @@
           "appearsIn": [
             "owl2primer-value-restriction-on-individual"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -306,10 +311,12 @@
           "appearsIn": [
             "owl2primer-value-restriction-on-individual"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

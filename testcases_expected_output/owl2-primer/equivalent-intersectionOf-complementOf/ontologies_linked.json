@@ -199,7 +199,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
@@ -262,7 +266,8 @@
           "appearsIn": [
             "owl2primer-equivalent-intersectionof-complementof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
@@ -325,12 +330,14 @@
           "appearsIn": [
             "owl2primer-equivalent-intersectionof-complementof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

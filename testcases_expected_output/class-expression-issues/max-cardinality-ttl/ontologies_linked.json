@@ -167,7 +167,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owlhasArm"
+          ]
         }
       ],
       "properties": [
@@ -232,11 +235,13 @@
           "appearsIn": [
             "max-cardinality-ttl"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

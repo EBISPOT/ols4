@@ -175,7 +175,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/MS_1003056"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/MS_1003056",
@@ -307,7 +310,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/MS_1000353"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/PRIDE_0000674",
@@ -412,7 +418,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/PRIDE_0000675"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/PRIDE_0000675",
@@ -552,7 +561,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/PRIDE_0000674"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
@@ -662,7 +674,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/UBERON_0003684"
+          ]
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0003684",
@@ -799,7 +814,10 @@
               "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
               "curie": "bfo:0000050"
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/UBERON_0000916"
+          ]
         }
       ],
       "properties": [],
@@ -810,7 +828,8 @@
           "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
           "curie": "bfo:0000050"
         }
-      }
+      },
+      "linksTo": []
     }
   ]
 }

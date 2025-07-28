@@ -150,7 +150,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#Jim",
@@ -235,10 +238,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/same-individual#James"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

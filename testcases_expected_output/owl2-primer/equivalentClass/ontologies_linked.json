@@ -150,7 +150,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
@@ -237,12 +240,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

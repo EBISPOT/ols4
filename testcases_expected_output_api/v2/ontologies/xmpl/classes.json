@@ -57,6 +57,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://exmpl.org/xmpl/Preferred_name",
+      "http://exmpl.org/xmpl/Synonym"
+    ],
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 2.0,
     "ontologyId": "xmpl",
@@ -164,6 +168,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://exmpl.org/xmpl/Preferred_name",
+      "http://exmpl.org/xmpl/Synonym",
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "xmpl",
@@ -255,6 +264,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://exmpl.org/xmpl/Synonym",
+      "http://exmpl.org/xmpl/XMPL000001"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "xmpl",

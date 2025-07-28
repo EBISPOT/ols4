@@ -196,7 +196,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://example.com/reified-bnode#part_of",
+            "http://example.com/reified-bnode#cell_part"
+          ]
         },
         {
           "iri": "http://example.com/reified-bnode#cell_part",
@@ -353,7 +357,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://example.com/reified-bnode#part_of",
+            "http://example.com/reified-bnode#cell"
+          ]
         }
       ],
       "properties": [
@@ -418,11 +426,13 @@
           "appearsIn": [
             "reified-bnode"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

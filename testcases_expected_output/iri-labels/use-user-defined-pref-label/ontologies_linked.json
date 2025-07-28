@@ -267,7 +267,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://exmpl.org/xmpl/Preferred_name",
+            "http://exmpl.org/xmpl/Synonym"
+          ]
         },
         {
           "iri": "http://exmpl.org/xmpl/XMPL000002",
@@ -490,7 +494,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://exmpl.org/xmpl/Preferred_name",
+            "http://exmpl.org/xmpl/XMPL000001",
+            "http://exmpl.org/xmpl/Synonym"
+          ]
         },
         {
           "iri": "http://exmpl.org/xmpl/XMPL000003",
@@ -687,7 +696,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://exmpl.org/xmpl/XMPL000001",
+            "http://exmpl.org/xmpl/Synonym"
+          ]
         }
       ],
       "properties": [
@@ -756,7 +769,8 @@
           "appearsIn": [
             "xmpl"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://exmpl.org/xmpl/Synonym",
@@ -823,7 +837,8 @@
           "appearsIn": [
             "xmpl"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
@@ -880,7 +895,11 @@
             "entity"
           ]
         }
-      }
+      },
+      "linksTo": [
+        "http://exmpl.org/xmpl/Preferred_name",
+        "http://exmpl.org/xmpl/Synonym"
+      ]
     }
   ]
 }

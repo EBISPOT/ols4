@@ -209,7 +209,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B",
@@ -331,7 +335,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A"
+          ]
         }
       ],
       "properties": [
@@ -396,11 +404,13 @@
           "appearsIn": [
             "related-somevaluesof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

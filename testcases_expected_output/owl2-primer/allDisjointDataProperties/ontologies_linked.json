@@ -138,7 +138,8 @@
           "appearsIn": [
             "owl2primer-alldisjointdataproperties"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -254,7 +255,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
@@ -368,7 +373,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC",
@@ -482,11 +491,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB"
+          ]
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

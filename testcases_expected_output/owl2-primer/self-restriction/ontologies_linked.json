@@ -162,7 +162,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves"
+          ]
         }
       ],
       "properties": [
@@ -227,11 +230,13 @@
           "appearsIn": [
             "owl2primer-self-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

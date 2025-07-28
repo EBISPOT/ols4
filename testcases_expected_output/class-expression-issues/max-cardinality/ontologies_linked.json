@@ -173,7 +173,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm"
+          ]
         }
       ],
       "properties": [
@@ -238,11 +241,13 @@
           "appearsIn": [
             "max-cardinality"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

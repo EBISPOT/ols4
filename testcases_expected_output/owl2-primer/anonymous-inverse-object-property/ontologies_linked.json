@@ -138,7 +138,8 @@
           "appearsIn": [
             "owl2primer-anonymous-inverse-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Orphan",
@@ -256,7 +257,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead",
+            "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild"
+          ]
         }
       ],
       "properties": [
@@ -321,11 +326,13 @@
           "appearsIn": [
             "owl2primer-anonymous-inverse-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

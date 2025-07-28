@@ -44,6 +44,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://example.com/reified-bnode#cell_part",
+      "http://example.com/reified-bnode#part_of"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "reified-bnode",
@@ -139,6 +143,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://example.com/reified-bnode#cell",
+      "http://example.com/reified-bnode#part_of"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "reified-bnode",

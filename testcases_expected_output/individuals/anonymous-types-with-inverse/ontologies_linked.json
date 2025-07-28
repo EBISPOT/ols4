@@ -203,7 +203,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"
+          ]
         }
       ],
       "properties": [
@@ -294,7 +298,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
@@ -383,7 +390,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation"
+          ]
         }
       ],
       "individuals": [
@@ -536,10 +546,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+            "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

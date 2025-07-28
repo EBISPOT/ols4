@@ -150,7 +150,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John",
@@ -235,10 +238,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

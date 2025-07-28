@@ -178,7 +178,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
@@ -241,7 +245,8 @@
           "appearsIn": [
             "owl2primer-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
@@ -304,12 +309,14 @@
           "appearsIn": [
             "owl2primer-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

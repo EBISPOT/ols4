@@ -228,7 +228,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B",
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B",
@@ -291,7 +296,8 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousdisjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
@@ -354,7 +360,8 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousdisjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -419,11 +426,13 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousdisjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

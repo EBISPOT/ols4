@@ -138,7 +138,8 @@
           "appearsIn": [
             "punning-class-individual"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
@@ -292,7 +293,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit"
+          ]
         }
       ],
       "properties": [
@@ -381,7 +387,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ]
         }
       ],
       "individuals": [
@@ -537,7 +546,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
@@ -598,7 +612,8 @@
           "appearsIn": [
             "punning-class-individual"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
@@ -713,10 +728,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }
