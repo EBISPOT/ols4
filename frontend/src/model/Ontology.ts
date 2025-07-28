@@ -14,7 +14,7 @@ export default class Ontology extends Thing {
   }
   getDescription(): string {
     let descriptions = Reified.fromJson<string>(
-      this.properties["description"] || this.properties["definition"] || ""
+       this.properties["definition"] || this.properties["description"] || ""
     );
     return (descriptions[0] && descriptions[0].value) || "";
   }

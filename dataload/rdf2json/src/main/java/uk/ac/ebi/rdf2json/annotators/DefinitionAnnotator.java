@@ -5,6 +5,7 @@ import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.*;
 
@@ -51,7 +52,13 @@ public class DefinitionAnnotator {
 				List<PropertyValue> values = c.properties.getPropertyValues(prop);
 				if(values != null) {
 					for(PropertyValue value : values) {
-						listOfValues.add(value);
+						if (value instanceof PropertyValueLiteral) {
+							PropertyValueLiteral literal = (PropertyValueLiteral) value;
+							String unescapedValue = StringEscapeUtils.unescapeJava(literal.getValue());
+							listOfValues.add(new PropertyValueLiteral(unescapedValue, literal.getDatatype(), literal.getLang()));
+						} else {
+							listOfValues.add(value);
+						}
 					}
 				}
 			}
