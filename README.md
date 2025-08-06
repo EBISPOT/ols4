@@ -4,9 +4,9 @@ The Ontology Lookup Service (OLS) is a repository for biomedical ontologies that
 
 See also:
 
-    - The public OLS instance at EMBL-EBI: <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</a>
-    - [OLS4: a new Ontology Lookup Service for a growing interdisciplinary knowledge ecosystem](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017)
-    - [API documentation](https://www.ebi.ac.uk/ols4/help)
+* The public OLS instance at EMBL-EBI: <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</a></b>
+* [<i>OLS4: a new Ontology Lookup Service for a growing interdisciplinary knowledge ecosystem</i>](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017)
+* [API documentation](https://www.ebi.ac.uk/ols4/help)
 
 If you use OLS in your work, please cite [our recent publication in <i>Bioinformatics</i>](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017).
 
