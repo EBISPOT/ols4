@@ -14,8 +14,6 @@ public class LocalizationTransform {
 
     public static JsonElement transform(JsonElement json, String lang) {
 
-        Validation.validateLang(lang);
-
         if(lang.equals("all")) {
             return json;
         }

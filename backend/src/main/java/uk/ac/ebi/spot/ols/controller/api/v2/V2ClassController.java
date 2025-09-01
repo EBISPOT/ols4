@@ -88,7 +88,6 @@ public class V2ClassController {
             @Parameter(name = "pageable",
                     description = "Specify the size of the result you want to get in the output",
                     example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            JsonTransformOptions outputOpts,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -118,6 +117,7 @@ public class V2ClassController {
             @Parameter(name="searchProperties",
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
                     example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
@@ -145,7 +145,6 @@ public class V2ClassController {
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
                     example = "efo") String ontologyId,
-            JsonTransformOptions outputOpts,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -175,6 +174,7 @@ public class V2ClassController {
             @Parameter(name="searchProperties",
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
                     example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 

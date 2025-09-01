@@ -17,6 +17,7 @@ import uk.ac.ebi.spot.ols.model.mcp.McpClass;
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
+import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 @Service
 public class McpClassService {
@@ -50,6 +51,10 @@ public class McpClassService {
         if(ontologyId != null)
             properties.put("ontologyId", List.of(ontologyId));
 
+        JsonTransformOptions outputOpts = new JsonTransformOptions();
+        outputOpts.resolveReferences = true;
+        outputOpts.manchesterSyntax = true;
+
         var res = entityRepository.find(
             pageable,
             lang,
@@ -59,7 +64,7 @@ public class McpClassService {
             null,
             false,
             properties,
-            true
+            outputOpts
         );
 
         return new McpPage<>(
@@ -89,8 +94,12 @@ public class McpClassService {
             lang = "en";
         }
 
+        JsonTransformOptions outputOpts = new JsonTransformOptions();
+        outputOpts.resolveReferences = true;
+        outputOpts.manchesterSyntax = true;
+
         var res = classRepository.getAncestorsByOntologyId(
-            ontologyId, pageable, classIri, false, lang, true);
+            ontologyId, pageable, classIri, false, lang, outputOpts);
 
         return new McpPage<>(
             res.getContent().stream().map(McpClass::fromJson).toList(),

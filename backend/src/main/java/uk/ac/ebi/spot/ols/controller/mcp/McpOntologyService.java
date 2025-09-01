@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import uk.ac.ebi.spot.ols.model.mcp.McpOntology;
 import uk.ac.ebi.spot.ols.repository.OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 @Service
 public class McpOntologyService {
@@ -28,6 +29,10 @@ public class McpOntologyService {
             lang = "en";
         }
 
+        JsonTransformOptions outputOpts = new JsonTransformOptions();
+        outputOpts.resolveReferences = true;
+        outputOpts.manchesterSyntax = true;
+
         var res = ontologyRepository.find(
             PageRequest.of(0, 1000),
             lang,
@@ -36,7 +41,7 @@ public class McpOntologyService {
             null,
             false,
             null,
-            false
+            outputOpts
         );
 
         return res.getContent().stream().map(McpOntology::fromJson).toList();
