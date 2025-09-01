@@ -3,11 +3,11 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1OntologyConfig;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
-
 import uk.ac.ebi.ols.shared.DefinedFields;
 
 import java.util.Map;

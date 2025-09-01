@@ -10,8 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
+import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.v2.V2OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 @RequestMapping("/api/v2")
 public class HealthCheckController {
     @Autowired
-    V2OntologyRepository ontologyRepository;
+    OntologyRepository ontologyRepository;
 
     @Autowired
     OlsNeo4jClient neo4jClient;
@@ -54,9 +55,11 @@ public class HealthCheckController {
     private boolean checkSolr() {
         Pageable pageable = Pageable.ofSize(20);
         try {
-            V2PagedAndFacetedResponse<V2Entity> result = new V2PagedAndFacetedResponse<>(
+            V2PagedAndFacetedResponse<V2Entity> result = new V2PagedAndFacetedResponse<V2Entity>(
                     ontologyRepository.find(pageable, "en", null, null, null,
-                            false, Map.of()));
+                            false, Map.of(), new JsonTransformOptions())
+                    .map(V2Entity::new)
+                            );
             if (result.totalElements > 0) {
                 logger.info("Solr is initialized.");
                 return true;

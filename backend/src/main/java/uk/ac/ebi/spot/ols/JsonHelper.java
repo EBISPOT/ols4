@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository.v1;
+package uk.ac.ebi.spot.ols;
 
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
@@ -105,12 +105,6 @@ public class JsonHelper {
         return getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
     }
 
-    /**
-     * This methi
-     * @param json
-     * @param predicate
-     * @return
-     */
     public static String getType(JsonObject json, String predicate){
         List<String> types = getValues(json, predicate).stream().map(JsonHelper::objectToString).collect(Collectors.toList());
         types.remove("entity");
@@ -118,7 +112,11 @@ public class JsonHelper {
     }
 
     public static List<JsonObject> getObjects(JsonObject json, String predicate) {
-        return getValues(json, predicate).stream().map(v -> v.getAsJsonObject()).collect(Collectors.toList());
+        return getValues(json, predicate)
+            .stream()
+            .filter(v -> v.isJsonObject())
+            .map(v -> v.getAsJsonObject())
+            .collect(Collectors.toList());
     }
 
     private static List<JsonElement> getArrayElements(JsonArray arr) {

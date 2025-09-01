@@ -2,6 +2,8 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import org.eclipse.jetty.client.ProxyProtocolClientConnectionFactory.V2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -17,7 +19,8 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.v2.V2EntityRepository;
+import uk.ac.ebi.spot.ols.repository.EntityRepository;
+import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -34,7 +37,7 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 public class V2EntityController {
 
     @Autowired
-    V2EntityRepository entityRepository;
+    EntityRepository entityRepository;
 
     @RequestMapping(path = "/entities", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getEntities(
@@ -42,7 +45,6 @@ public class V2EntityController {
             @Parameter(name = "pageable",
                     description = "Specify the size of the result you want to get in the output",
                     example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -74,7 +76,9 @@ public class V2EntityController {
             @RequestParam
             @Parameter(name="searchProperties",
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties
+                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String,Collection<String>> properties = new HashMap<>();
@@ -83,8 +87,8 @@ public class V2EntityController {
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
-                new V2PagedAndFacetedResponse<>(
-                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
+                new V2PagedAndFacetedResponse<V2Entity>(
+                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), outputOpts) .map(V2Entity::new)
                         ),
                     HttpStatus.OK);
     }
@@ -99,7 +103,6 @@ public class V2EntityController {
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
                     example = "efo") String ontologyId,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -131,7 +134,9 @@ public class V2EntityController {
             @RequestParam
             @Parameter(name="searchProperties",
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties
+                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String,Collection<String>> properties = new HashMap<>();
@@ -140,8 +145,8 @@ public class V2EntityController {
         properties.putAll(searchProperties);
 
         return new ResponseEntity<>(
-                new V2PagedAndFacetedResponse<>(
-                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties))
+                new V2PagedAndFacetedResponse<V2Entity>(
+                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), outputOpts).map(V2Entity::new)
                 ),
                 HttpStatus.OK);
     }
@@ -156,14 +161,15 @@ public class V2EntityController {
             @Parameter(name = "entity",
                     description = "The IRI of the entity, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        V2Entity entity = entityRepository.getByOntologyIdAndIri(ontologyId, iri, lang);
+        var entity = entityRepository.getByOntologyIdAndIri(ontologyId, iri, lang, outputOpts);
         if (entity == null) throw new ResourceNotFoundException();
-        return new ResponseEntity<>( entity, HttpStatus.OK);
+        return new ResponseEntity<V2Entity>( new V2Entity(entity), HttpStatus.OK);
     }
 }
 

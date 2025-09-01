@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository.v2.helpers;
+package uk.ac.ebi.spot.ols.repository.helpers;
 
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
-public class V2SearchFieldsParser {
+public class SearchFieldsParser {
 
     public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
 

@@ -2,9 +2,10 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.model.v1.V1OboDefinitionCitation;
 import uk.ac.ebi.spot.ols.model.v1.V1OboXref;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 

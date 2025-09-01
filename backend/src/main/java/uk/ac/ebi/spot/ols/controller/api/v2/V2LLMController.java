@@ -21,8 +21,9 @@ import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.v2.V2ClassRepository;
-import uk.ac.ebi.spot.ols.repository.v2.V2PropertyRepository;
+import uk.ac.ebi.spot.ols.repository.ClassRepository;
+import uk.ac.ebi.spot.ols.repository.PropertyRepository;
+import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -43,10 +44,10 @@ public class V2LLMController {
     Gson gson = new Gson();
 
     @Autowired
-    V2ClassRepository classRepository;
+    ClassRepository classRepository;
 
     @Autowired
-    V2PropertyRepository propertyRepository;
+    PropertyRepository propertyRepository;
 
     @RequestMapping(path = "/classes/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
     public HttpEntity<V2PagedResponse<V2Entity>> searchClassesByVector(
@@ -55,11 +56,12 @@ public class V2LLMController {
                 @Parameter(name = "pageable",
                         description = "Specify the size of the result you want to get in the output",
                         example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+                JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
                 return new ResponseEntity<>(
-                        new V2PagedResponse<>(
-                        classRepository.searchByVector(vector, pageable, lang)
+                        new V2PagedResponse<V2Entity>(
+                        classRepository.searchByVector(vector, pageable, lang, outputOpts).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -79,14 +81,15 @@ public class V2LLMController {
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+        @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+        JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
         return new ResponseEntity<>(
-                new V2PagedResponse<>(
-                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang)
+                new V2PagedResponse<V2Entity>(
+                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts).map(V2Entity::new)
                 ),
                 HttpStatus.OK
         );
@@ -105,8 +108,7 @@ public class V2LLMController {
             @PathVariable("class")
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -160,14 +162,16 @@ public class V2LLMController {
             @Parameter(name = "property",
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
-            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
         return new ResponseEntity<>(
-                new V2PagedResponse<>(
-                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang)
+                new V2PagedResponse<V2Entity>(
+                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts)
+                        .map(V2Entity::new)
                 ),
                 HttpStatus.OK
         );

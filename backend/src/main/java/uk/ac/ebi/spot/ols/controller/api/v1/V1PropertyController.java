@@ -23,7 +23,7 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Tag(name = "Property Controller", description = "NOTE: For IRI parameters, the value must be URL encoded. " +
         "For example, the IRI http://purl.obolibrary.org/obo/DUO_0000041 should be encoded as http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000041.")

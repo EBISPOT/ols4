@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * @author Simon Jupp

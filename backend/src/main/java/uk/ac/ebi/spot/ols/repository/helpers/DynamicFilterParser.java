@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository.v2.helpers;
+package uk.ac.ebi.spot.ols.repository.helpers;
 
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
@@ -7,9 +7,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
-public class V2DynamicFilterParser {
+public class DynamicFilterParser {
 
     public static void addDynamicFiltersToQuery(OlsSolrQuery query, Map<String, Collection<String>> properties) {
+        if(properties == null) {
+            return;
+        }
         for (String k : properties.keySet()) {
             if(k.equals("searchFields") || k.equals("boostFields") || k.equals("facetFields") || k.equals("lang")) {
                 continue;

@@ -2,6 +2,8 @@ package uk.ac.ebi.spot.ols.repository.v1;
 
 import com.google.gson.JsonElement;
 
+import uk.ac.ebi.spot.ols.JsonHelper;
+
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;

@@ -59,16 +59,28 @@ export default function Header({ section }: { section?: string }) {
                 Ontologies
               </li>
             </Link>
-            <Link to={`/help`}>
+            <Link to={`/api`}>
               <li
                 role="menuitem"
                 className={`px-4 py-3  ${
-                  section === "help"
+                  section === "api"
                     ? " bg-opacity-75 bg-neutral-500"
                     : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
-                Help
+                API
+              </li>
+            </Link>
+            <Link to={`/mcp`}>
+              <li
+                role="menuitem"
+                className={`px-4 py-3  ${
+                  section === "mcp"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
+                }`}
+              >
+                MCP
               </li>
             </Link>
             <Link to={`/about`}>

@@ -22,7 +22,7 @@ import java.util.List;
  * Samples, Phenotypes and Ontologies Team, EMBL-EBI
  */
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
 
     /**
