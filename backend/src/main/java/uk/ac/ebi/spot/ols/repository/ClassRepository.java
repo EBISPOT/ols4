@@ -140,6 +140,34 @@ public class ClassRepository {
                 ;
     }
 
+    public Page<JsonElement> getDescendantsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+
+        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
+                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
+    public Page<JsonElement> getHierarchicalDescendantsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+class+" + iri;
+
+        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+
+        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
+                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
 
     public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
 
@@ -170,7 +198,6 @@ public class ClassRepository {
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
-
 
     public Page<JsonElement> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
 

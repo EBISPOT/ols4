@@ -86,7 +86,8 @@ class App extends React.Component {
             element={<EntityPage entityType="individuals" />}
           />
 
-          <Route path={`/help`} element={<Help />} />
+          <Route path={`/api`} element={<API />} />
+          <Route path={`/mcp`} element={<MCP />} />
           <Route path={`/defined-response-fields`} element={<DefinedResponseFields />} />
           <Route path={`/ols3help`} element={<OLS3Help />} />
           <Route path={`/about`} element={<About />} />

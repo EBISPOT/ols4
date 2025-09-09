@@ -110,5 +110,37 @@ public class McpClassService {
         );
     }
     
+    @Tool(description = "Get all descendants of a class in OLS")
+    McpPage<McpClass> getDescendants(
+        String ontologyId,
+        String classIri,
+        @ToolParam(required=false) Integer pageNum,
+        @ToolParam(required=false) Integer pageSize,
+        @ToolParam(required=false) String lang
+    ) throws IOException {
+        var pageable = PageRequest.of(
+            pageNum != null ? pageNum : 0,
+            pageSize != null ? pageSize : 20
+        );
+
+        if(lang == null) {
+            lang = "en";
+        }
+
+        JsonTransformOptions outputOpts = new JsonTransformOptions();
+        outputOpts.resolveReferences = true;
+        outputOpts.manchesterSyntax = true;
+
+        var res = classRepository.getDescendantsByOntologyId(
+            ontologyId, pageable, classIri, false, lang, outputOpts);
+
+        return new McpPage<>(
+            res.getContent().stream().map(McpClass::fromJson).toList(),
+            res.getNumber(),
+            res.getSize(),
+            res.getTotalElements(),
+            res.getTotalPages()
+        );
+    }
 }
 

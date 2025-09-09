@@ -279,6 +279,70 @@ public class V2ClassController {
         );
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getDescendantsByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the class, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                    classRepository.getDescendantsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                    .map(V2Entity::new)
+                ),
+                HttpStatus.OK
+        );
+    }
+
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalDescendants", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalDescendantsByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the class, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                    classRepository.getHierarchicalDescendantsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                    .map(V2Entity::new)
+                ),
+                HttpStatus.OK
+        );
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalChildren", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalChildrenByOntology(
             @PageableDefault(size = 20, page = 0)
