@@ -59,7 +59,7 @@ export default function Header({ section }: { section?: string }) {
                 Ontologies
               </li>
             </Link>
-            <Link to={`/api`}>
+            <Link to={`/api-docs`}>
               <li
                 role="menuitem"
                 className={`px-4 py-3  ${
@@ -68,7 +68,7 @@ export default function Header({ section }: { section?: string }) {
                     : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
-                API
+                API Docs
               </li>
             </Link>
             <Link to={`/mcp`}>
@@ -80,7 +80,7 @@ export default function Header({ section }: { section?: string }) {
                     : "hover:bg-opacity-50 hover:bg-neutral-500"
                 }`}
               >
-                MCP
+                MCP Server
               </li>
             </Link>
             <Link to={`/about`}>

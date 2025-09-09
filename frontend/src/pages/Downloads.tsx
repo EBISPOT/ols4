@@ -17,7 +17,7 @@ export default function Downloads() {
             The OLS internal database format is&thinsp;
             <b>undocumented and subject to change at any time</b>. We therefore
             strongly recommend that the&thinsp;
-            <b>OLS API and/or upstream OWL files from ontology vendors</b> are
+            <b>OLS API and/or upstream OWL files</b> are
             used to access ontology information rather than the OLS data dump,
             with the exception of the SSSOM mappings file which is provided with
             a standardised representation.
