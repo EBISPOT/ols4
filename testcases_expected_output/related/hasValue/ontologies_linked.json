@@ -197,7 +197,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/hasValue.owl#b1"
+          ]
         }
       ],
       "properties": [
@@ -262,7 +266,8 @@
           "appearsIn": [
             "related-hasvalue"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -384,10 +389,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/hasValue.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/hasValue.owl#r"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

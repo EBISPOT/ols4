@@ -59,4 +59,4 @@ echo "Deep Search: $deep_search"
 
 #java -jar ./apitester4/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url $ols_url --outDir $output_dir --compareDir $compare_dir --deep > ./apitester4.log
 
-java -jar ./apitester4/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url $ols_url --outDir $output_dir --compareDir $compare_dir --deep > ./apitester4.log
+java --add-opens java.base/java.lang=ALL-UNNAMED -jar ./apitester4/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url $ols_url --outDir $output_dir --compareDir $compare_dir --deep > ./apitester4.log

@@ -159,7 +159,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN"
+          ]
         }
       ],
       "properties": [
@@ -249,7 +252,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person"
+          ]
         }
       ],
       "individuals": [
@@ -350,7 +356,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Annie",
@@ -449,10 +458,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

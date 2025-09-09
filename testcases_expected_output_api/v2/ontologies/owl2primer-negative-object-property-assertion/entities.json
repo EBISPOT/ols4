@@ -43,6 +43,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife"
+    ],
     "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -115,6 +119,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Woman"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",
@@ -234,6 +242,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-negative-object-property-assertion",

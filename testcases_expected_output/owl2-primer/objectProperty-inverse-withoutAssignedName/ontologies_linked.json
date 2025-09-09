@@ -138,7 +138,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-inverse-withoutassignedname"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Orphan",
@@ -256,7 +257,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#hasChild",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse-withoutAssignedName.owl#Dead"
+          ]
         }
       ],
       "properties": [
@@ -321,11 +326,13 @@
           "appearsIn": [
             "owl2primer-objectproperty-inverse-withoutassignedname"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

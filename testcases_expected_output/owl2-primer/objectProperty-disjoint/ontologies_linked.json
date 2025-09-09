@@ -152,7 +152,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-disjoint.owl#hasSpouse",
@@ -215,11 +218,13 @@
           "appearsIn": [
             "owl2primer-objectproperty-disjoint"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

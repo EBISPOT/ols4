@@ -12,8 +12,8 @@ BASENAME=$(basename $f .json)
 DIRNAME=$(basename $(dirname $f))
 
 TEST_FOLDER=$DIRNAME/$BASENAME
-mkdir ./testcases_output/$DIRNAME
-mkdir ./testcases_output/$TEST_FOLDER
+mkdir -p ./testcases_output/$DIRNAME
+mkdir -p ./testcases_output/$TEST_FOLDER
 
 ./dataload/create_datafiles.sh $f ./testcases_output/$TEST_FOLDER --loadLocalFiles --noDates
 done

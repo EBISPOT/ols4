@@ -133,7 +133,8 @@
           "appearsIn": [
             "owl2primer-class-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
@@ -228,10 +229,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://example.com/owl2primer#Person"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

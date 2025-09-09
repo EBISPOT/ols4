@@ -126,7 +126,8 @@
           "appearsIn": [
             "owl2primer-qualified-cardinality-min-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -191,7 +192,8 @@
           "appearsIn": [
             "owl2primer-qualified-cardinality-min-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -315,10 +317,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-min-restriction.rdf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-min-restriction.rdf#hasChild"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

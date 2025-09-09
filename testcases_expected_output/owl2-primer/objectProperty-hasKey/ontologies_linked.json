@@ -132,7 +132,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business",
@@ -222,7 +223,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         }
       ],
       "properties": [
@@ -334,7 +338,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#hasSSN",
@@ -397,7 +405,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -460,7 +469,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
@@ -568,7 +578,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
@@ -676,10 +690,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

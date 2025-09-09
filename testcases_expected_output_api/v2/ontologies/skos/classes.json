@@ -122,6 +122,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+      "http://www.w3.org/2004/02/skos/core#definition",
+      "http://www.w3.org/2004/02/skos/core#scopeNote"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "skos",
@@ -209,6 +217,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2004/02/skos/core#definition"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "skos",
@@ -345,6 +358,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#definition",
+      "http://www.w3.org/2004/02/skos/core#example",
+      "http://www.w3.org/2004/02/skos/core#scopeNote"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "skos",
@@ -494,6 +515,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "http://www.w3.org/2004/02/skos/core#Collection",
+      "http://www.w3.org/2004/02/skos/core#definition",
+      "http://www.w3.org/2004/02/skos/core#scopeNote"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "skos",

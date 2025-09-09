@@ -49,17 +49,8 @@
     "graph": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/graph"
     },
-    "develops_from": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002202"
-    },
-    "composed_primarily_of": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002473"
-    },
-    "only_in_taxon": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160"
-    },
-    "immediate_transformation_of": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002495"
+    "capable_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002215"
     },
     "has_part": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
@@ -67,8 +58,17 @@
     "existence_ends_during": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002492"
     },
-    "capable_of": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002215"
+    "immediate_transformation_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002495"
+    },
+    "develops_from": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002202"
+    },
+    "only_in_taxon": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160"
+    },
+    "composed_primarily_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001016/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002473"
     }
   }
 }

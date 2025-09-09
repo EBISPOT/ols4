@@ -126,7 +126,8 @@
           "appearsIn": [
             "owl2primer-unqualified-cardinality-exact-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -191,7 +192,8 @@
           "appearsIn": [
             "owl2primer-unqualified-cardinality-exact-restriction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -292,10 +294,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/unqualified-cardinality-exact-restriction.rdf#hasChild"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

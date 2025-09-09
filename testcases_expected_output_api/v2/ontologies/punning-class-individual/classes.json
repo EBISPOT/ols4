@@ -107,6 +107,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "punning-class-individual",

@@ -201,7 +201,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
@@ -265,7 +269,8 @@
           "appearsIn": [
             "owl2primer-object-property-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Woman",
@@ -368,7 +373,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+          ]
         }
       ],
       "properties": [
@@ -433,7 +441,8 @@
           "appearsIn": [
             "owl2primer-object-property-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -573,7 +582,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife",
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
@@ -665,10 +679,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

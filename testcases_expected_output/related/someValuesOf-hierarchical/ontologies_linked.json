@@ -227,7 +227,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
@@ -349,7 +353,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A"
+          ]
         }
       ],
       "properties": [
@@ -414,7 +422,8 @@
           "appearsIn": [
             "related-somevaluesof-hierarchical"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
@@ -442,7 +451,10 @@
             "entity"
           ]
         }
-      }
+      },
+      "linksTo": [
+        "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
+      ]
     }
   ]
 }

@@ -126,7 +126,8 @@
           "appearsIn": [
             "owl2primer-unionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
@@ -189,7 +190,8 @@
           "appearsIn": [
             "owl2primer-unionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Parent",
@@ -301,12 +303,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/unionOf#Father"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

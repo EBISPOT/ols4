@@ -201,7 +201,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
@@ -264,7 +268,8 @@
           "appearsIn": [
             "owl2primer-sub-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
@@ -367,7 +372,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+          ]
         }
       ],
       "properties": [
@@ -432,7 +440,8 @@
           "appearsIn": [
             "owl2primer-sub-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasWife",
@@ -525,11 +534,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse"
+          ]
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

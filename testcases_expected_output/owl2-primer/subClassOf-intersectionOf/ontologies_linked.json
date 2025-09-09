@@ -83,15 +83,15 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent"
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man"
           ],
           "hierarchicalParent": [
             {
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -102,7 +102,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -158,7 +158,7 @@
           "relatedTo": [
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
               "type": [
                 "related"
               ],
@@ -170,7 +170,7 @@
             },
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+              "value": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
               "type": [
                 "related"
               ],
@@ -237,7 +237,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
@@ -359,7 +363,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent",
@@ -481,12 +489,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

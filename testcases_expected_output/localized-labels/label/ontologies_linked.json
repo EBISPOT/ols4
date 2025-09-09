@@ -154,7 +154,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass",
@@ -227,7 +228,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass",
@@ -290,7 +292,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass",
@@ -379,7 +382,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -460,7 +464,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enProperty",
@@ -533,7 +538,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty",
@@ -596,7 +602,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#property",
@@ -665,11 +672,13 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

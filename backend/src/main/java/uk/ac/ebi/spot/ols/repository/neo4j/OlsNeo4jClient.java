@@ -89,7 +89,7 @@ public class OlsNeo4jClient {
     public Page<JsonElement> traverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Map<String,String> targetNodeProps, Pageable pageable) {
 
 		var a = Cypher.node(type).named("a");
-		var b = Cypher.node(type).named("b");
+		var b = Cypher.anyNode().named("b");
 		var edgeRel = a.relationshipTo(b, edgeIRIs.toArray(String[]::new)).named("edge");
 
 		var condition = a.property("id").isEqualTo(Cypher.parameter("id"));
@@ -113,7 +113,7 @@ public class OlsNeo4jClient {
 
 	public Page<JsonElement> traverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Map<String,String> sourceNodeProps, Pageable pageable, String searchQuery) {
 		var a = Cypher.node(type).named("a");
-		var b = Cypher.node(type).named("b");
+		var b = Cypher.anyNode().named("b");
 		var edgeRel = b.relationshipTo(a, edgeIRIs.toArray(String[]::new)).named("edge");
 
 		var condition = a.property("id").isEqualTo(Cypher.parameter("id"));
@@ -154,7 +154,7 @@ public class OlsNeo4jClient {
     public Page<JsonElement> recursivelyTraverseOutgoingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Map<String,String> targetNodeProps, Pageable pageable) {
 
 		var a = Cypher.node(type).named("a");
-		var b = Cypher.node(type).named("b");
+		var b = Cypher.anyNode().named("b");
 		var edgeRel = a.relationshipTo(b, edgeIRIs.toArray(String[]::new)).named("edge").length(1, null);
 
 		var condition = a.property("id").isEqualTo(Cypher.parameter("id"));
@@ -178,7 +178,7 @@ public class OlsNeo4jClient {
     public Page<JsonElement> recursivelyTraverseIncomingEdges(String type, String id, List<String> edgeIRIs, Map<String,String> edgeProps, Map<String,String> sourceNodeProps, Pageable pageable) {
 
 		var a = Cypher.node(type).named("a");
-		var b = Cypher.node(type).named("b");
+		var b = Cypher.anyNode().named("b");
 		var edgeRel = b.relationshipTo(a, edgeIRIs.toArray(String[]::new)).named("edge").length(1, null);
 
 		var condition = a.property("id").isEqualTo(Cypher.parameter("id"));

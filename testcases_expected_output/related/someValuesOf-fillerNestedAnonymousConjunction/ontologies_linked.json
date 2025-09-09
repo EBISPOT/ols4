@@ -315,7 +315,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
@@ -521,7 +528,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
@@ -584,7 +598,8 @@
           "appearsIn": [
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
@@ -647,7 +662,8 @@
           "appearsIn": [
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -712,7 +728,8 @@
           "appearsIn": [
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
@@ -775,11 +792,13 @@
           "appearsIn": [
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

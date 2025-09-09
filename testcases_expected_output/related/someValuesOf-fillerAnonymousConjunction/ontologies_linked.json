@@ -148,7 +148,7 @@
           "relatedTo": [
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
               "type": [
                 "related"
               ],
@@ -160,7 +160,7 @@
             },
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
               "type": [
                 "related"
               ],
@@ -250,7 +250,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
@@ -395,7 +400,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
@@ -540,7 +550,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r"
+          ]
         }
       ],
       "properties": [
@@ -605,11 +620,13 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousconjunction"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

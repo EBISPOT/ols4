@@ -213,7 +213,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Bill",
+            "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John",
+            "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary"
+          ]
         }
       ],
       "properties": [],
@@ -277,7 +282,8 @@
           "appearsIn": [
             "owl2primer-enumeration-of-individuals"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John",
@@ -338,7 +344,8 @@
           "appearsIn": [
             "owl2primer-enumeration-of-individuals"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary",
@@ -399,10 +406,12 @@
           "appearsIn": [
             "owl2primer-enumeration-of-individuals"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

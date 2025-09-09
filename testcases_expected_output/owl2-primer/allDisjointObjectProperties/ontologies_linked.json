@@ -178,7 +178,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
@@ -292,7 +296,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
@@ -406,11 +414,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB"
+          ]
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

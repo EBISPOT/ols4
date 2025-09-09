@@ -65,6 +65,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",
@@ -117,6 +122,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-object-property-assertion",

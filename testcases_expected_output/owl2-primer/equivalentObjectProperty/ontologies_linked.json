@@ -158,7 +158,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
@@ -246,7 +249,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner"
+          ]
         }
       ],
       "individuals": [
@@ -309,7 +315,8 @@
           "appearsIn": [
             "owl2primer-equivalentobjectproperty"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
@@ -417,10 +424,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -150,7 +150,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman",
@@ -237,12 +240,16 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -136,7 +136,8 @@
           "appearsIn": [
             "preferred-root"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
@@ -169,7 +170,10 @@
             "entity"
           ]
         }
-      }
+      },
+      "linksTo": [
+        "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001"
+      ]
     }
   ]
 }

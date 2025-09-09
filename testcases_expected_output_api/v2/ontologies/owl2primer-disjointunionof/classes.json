@@ -58,6 +58,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-disjointunionof",
@@ -116,6 +120,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-disjointunionof",
@@ -176,6 +183,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+    ],
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 2.0,
     "ontologyId": "owl2primer-disjointunionof",

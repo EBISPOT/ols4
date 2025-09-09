@@ -135,6 +135,14 @@
         "url": "https://github.com/EBISPOT/DUO"
       }
     },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://purl.obolibrary.org/obo/OBI_0000066",
+      "http://purl.org/dc/elements/1.1/contributor",
+      "http://purl.org/dc/elements/1.1/creator",
+      "http://purl.org/dc/terms/license"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "308",
@@ -256,6 +264,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "12",
@@ -308,6 +320,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "6",
@@ -405,6 +420,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "32",
@@ -509,6 +529,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://purl.org/dc/terms/creator",
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "6",
@@ -555,6 +579,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "1",

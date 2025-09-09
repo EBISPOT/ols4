@@ -59,6 +59,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-subclassof",
@@ -148,6 +152,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "owl2primer-subclassof",

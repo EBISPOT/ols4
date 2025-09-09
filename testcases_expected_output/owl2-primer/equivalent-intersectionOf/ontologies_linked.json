@@ -202,7 +202,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
@@ -265,7 +269,8 @@
           "appearsIn": [
             "owl2primer-equivalent-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman",
@@ -328,12 +333,14 @@
           "appearsIn": [
             "owl2primer-equivalent-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

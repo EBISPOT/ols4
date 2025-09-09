@@ -432,7 +432,8 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/GO_0008150",
@@ -495,7 +496,8 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/OGMS_0000063",
@@ -737,7 +739,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/efo/EFO_0000400",
+            "http://purl.obolibrary.org/obo/GO_0008150",
+            "http://purl.obolibrary.org/obo/BFO_0000051",
+            "http://purl.obolibrary.org/obo/BFO_0000054"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
@@ -924,7 +932,12 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://purl.obolibrary.org/obo/OGMS_0000063",
+            "http://purl.obolibrary.org/obo/BFO_0000051",
+            "http://purl.obolibrary.org/obo/BFO_0000054"
+          ]
         }
       ],
       "properties": [
@@ -1012,7 +1025,8 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
@@ -1106,11 +1120,13 @@
           "appearsIn": [
             "efo-iri-labels"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -189,7 +189,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
@@ -252,7 +256,8 @@
           "appearsIn": [
             "owl2primer-alldisjointclasses"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Woman",
@@ -378,12 +383,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

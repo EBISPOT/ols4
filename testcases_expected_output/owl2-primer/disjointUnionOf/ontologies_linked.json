@@ -189,7 +189,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
@@ -292,7 +296,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
@@ -404,12 +411,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

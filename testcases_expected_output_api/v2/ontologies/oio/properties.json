@@ -182,6 +182,16 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -276,6 +286,11 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#xref"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -471,6 +486,16 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -666,6 +691,16 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -861,6 +896,16 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -966,6 +1011,12 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1123,6 +1174,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1288,6 +1347,15 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1433,6 +1501,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1578,6 +1654,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1734,6 +1818,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1890,6 +1982,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -1999,6 +2099,12 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#date"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2103,6 +2209,12 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2263,6 +2375,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2419,6 +2539,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2564,6 +2692,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2740,6 +2876,15 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#GOC"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 4.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2791,6 +2936,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -2900,6 +3048,12 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#version"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -3045,6 +3199,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#is_cyclic"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -3201,6 +3363,14 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#Definition",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",
@@ -3310,6 +3480,12 @@
         "url": "http://www.geneontology.org/formats/oboInOwl#saved_by"
       }
     },
+    "linksTo": [
+      "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasURI",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "oio",

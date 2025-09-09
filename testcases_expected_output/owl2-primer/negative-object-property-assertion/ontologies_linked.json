@@ -201,7 +201,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Woman",
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
@@ -264,7 +268,8 @@
           "appearsIn": [
             "owl2primer-negative-object-property-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Woman",
@@ -367,7 +372,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+          ]
         }
       ],
       "properties": [
@@ -432,7 +440,8 @@
           "appearsIn": [
             "owl2primer-negative-object-property-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -542,7 +551,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#hasWife",
+            "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Mary",
@@ -603,10 +616,12 @@
           "appearsIn": [
             "owl2primer-negative-object-property-assertion"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

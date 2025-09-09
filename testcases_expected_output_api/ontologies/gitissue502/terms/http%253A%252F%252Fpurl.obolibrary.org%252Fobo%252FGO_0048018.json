@@ -49,11 +49,11 @@
     "graph": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0048018/graph"
     },
-    "part_of": {
-      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0048018/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
-    },
     "positively_regulates": {
       "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0048018/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002213"
+    },
+    "part_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0048018/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
     }
   }
 }
